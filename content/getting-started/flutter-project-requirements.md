@@ -1,7 +1,6 @@
 ---
 categories:
   - Getting started with Codemagic CI/CD
-date: '2019-03-10T22:47:33+02:00'
 description:
   Make sure your Flutter project is ready for continuous integration (CI)
   and continuous delivery (CD)

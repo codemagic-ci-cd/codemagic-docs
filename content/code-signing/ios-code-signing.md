@@ -1,7 +1,4 @@
 ---
-categories:
-  - Code signing
-date: '2019-03-10T21:29:39+02:00'
 description: Sign Flutter app for iOS
 title: iOS code signing
 weight: 1

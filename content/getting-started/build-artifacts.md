@@ -1,7 +1,6 @@
 ---
 categories:
   - Getting started with Codemagic CI/CD
-date: '2019-02-14T13:35:35+02:00'
 description: What kind of artifacts are generated for Flutter apps on Codemagic CI/CD
 draft: true
 title: Build artifacts

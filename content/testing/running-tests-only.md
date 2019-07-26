@@ -1,6 +1,4 @@
 ---
-categories:
-  - Testing
 description: Run tests only without building the app.
 title: Running tests only
 weight: 4

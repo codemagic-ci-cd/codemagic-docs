@@ -1,7 +1,6 @@
 ---
 categories:
   - Getting started with Codemagic CI/CD
-date: '2019-03-26T16:00:30+02:00'
 description: Manage multiple workflows to fully customize your CI/CD pipeline
 title: Creating workflows
 weight: 3

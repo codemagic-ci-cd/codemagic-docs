@@ -1,7 +1,4 @@
 ---
-categories:
-  - Publishing
-date: '2019-03-14T11:29:36+02:00'
 description: Deploy the Flutter app to Google Play
 title: Publishing to Google Play
 weight: 2

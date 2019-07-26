@@ -1,7 +1,4 @@
 ---
-categories:
-  - Build configuration
-date: '2019-03-31T15:10:05+03:00'
 description:
   Environment variables are useful for storing information that you do
   not want to store in the repository. You can also use Codemagic read-only environment

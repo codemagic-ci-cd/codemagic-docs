@@ -1,6 +1,4 @@
 ---
-categories:
-  - Custom script examples
 description: You can use custom scripts to publish app artifacts to external services.
 title: Publish build artifacts to Amazon S3
 weight: 3

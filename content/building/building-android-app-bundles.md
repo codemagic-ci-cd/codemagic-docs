@@ -1,7 +1,4 @@
 ---
-categories:
-  - Build configuration
-date: '2019-03-31T15:59:20+03:00'
 title: Building Android app bundles
 weight: 3
 ---

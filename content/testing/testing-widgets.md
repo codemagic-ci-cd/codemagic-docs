@@ -1,6 +1,4 @@
 ---
-categories:
-  - Testing
 description:
   Instead of building the entire app, you can run tests on your widgets
   only.

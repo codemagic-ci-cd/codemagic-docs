@@ -1,6 +1,4 @@
 ---
-categories:
-  - Troubleshooting
 description:
   'Establish SSH access to the builder virtual machine to inspect your
   build.  '

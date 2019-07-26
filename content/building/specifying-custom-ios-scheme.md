@@ -1,6 +1,4 @@
 ---
-categories:
-  - Build configuration
 title: Specifying custom iOS scheme
 weight: 4
 ---

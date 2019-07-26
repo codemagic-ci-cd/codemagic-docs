@@ -1,7 +1,4 @@
 ---
-categories:
-  - Code signing
-date: '2019-03-10T22:52:07+02:00'
 description: Sign your Android app for publishing to Google Play Store
 title: Android code signing
 weight: 2

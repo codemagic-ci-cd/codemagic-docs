@@ -1,7 +1,6 @@
 ---
 categories:
   - Getting started with Codemagic CI/CD
-date: '2019-03-10T16:28:20+02:00'
 description: Sign up for Codemagic CI/CD
 title: Signup
 weight: 1
