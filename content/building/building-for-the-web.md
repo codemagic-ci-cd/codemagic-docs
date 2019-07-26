@@ -23,7 +23,7 @@ You can build, test and publish Flutter web apps with Codemagic.
 Codemagic can detect your Flutter web project if it meets the following conditions:
 
 - The project has a `web` folder
-- There’s `flutter_web` dependency in `pubspec.yaml`
+- There’s a `flutter_web` dependency in `pubspec.yaml`
 
 ## Build configuration
 
