@@ -3,17 +3,10 @@ categories:
   - Publishing
 date: '2019-03-11T15:58:01+02:00'
 description: Deploy the Flutter app to App Store and TestFlight
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
 menu:
   docs_sidebar:
     weight: 1
-thumbnail: ''
 title: Publishing to App Store
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 1
 ---
 

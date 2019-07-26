@@ -3,17 +3,10 @@ categories:
   - Custom script examples
 date: '2019-04-07T12:53:30+03:00'
 description: Upload files to be included in your build artifacts ZIP file
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
 menu:
   docs_sidebar:
     weight: 1
-thumbnail: ''
 title: Upload custom artifacts
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 4
 ---
 

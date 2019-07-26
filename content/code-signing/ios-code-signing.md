@@ -3,17 +3,10 @@ categories:
   - Code signing
 date: '2019-03-10T21:29:39+02:00'
 description: Sign Flutter app for iOS
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
 menu:
   docs_sidebar:
     weight: ''
-thumbnail: ''
 title: iOS code signing
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 1
 ---
 

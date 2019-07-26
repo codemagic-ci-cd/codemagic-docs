@@ -3,17 +3,10 @@ categories:
   - Custom script examples
 date: '2019-04-07T12:57:59+03:00'
 description: Create a Git tag referencing your app version
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
 menu:
   docs_sidebar:
     weight: 1
-thumbnail: ''
 title: Add a Git tag with app version
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 2
 ---
 

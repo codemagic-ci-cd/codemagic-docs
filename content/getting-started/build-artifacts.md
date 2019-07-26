@@ -4,14 +4,7 @@ categories:
 date: '2019-02-14T13:35:35+02:00'
 description: What kind of artifacts are generated for Flutter apps on Codemagic CI/CD
 draft: true
-facebook_description: ''
-facebook_image: ''
-facebook_title: ''
-thumbnail: ''
 title: Build artifacts
-twitter_image: ''
-twitter_title: ''
-twitterDescription: ''
 weight: 3
 ---
 

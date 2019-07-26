@@ -3,17 +3,10 @@ categories:
   - Code signing
 date: '2019-03-10T22:52:07+02:00'
 description: Sign your Android app for publishing to Google Play Store
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
 menu:
   docs_sidebar:
     weight: ''
-thumbnail: ''
 title: Android code signing
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 2
 ---
 

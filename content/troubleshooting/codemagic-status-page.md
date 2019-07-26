@@ -2,17 +2,10 @@
 categories:
   - Troubleshooting
 description: Get latest information about the status of Codemagic CI/CD.
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
 menu:
   docs_sidebar:
     weight: 1
-thumbnail: ''
 title: Codemagic status page
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 2
 ---
 

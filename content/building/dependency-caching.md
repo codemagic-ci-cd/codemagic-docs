@@ -2,17 +2,10 @@
 categories:
   - Build configuration
 description: Store your dependencies on Codemagic for a faster build time.
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
 menu:
   docs_sidebar:
     weight: 1
-thumbnail: ''
 title: Dependency caching
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 6
 ---
 

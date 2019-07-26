@@ -2,17 +2,10 @@
 categories:
   - Custom script examples
 description: You can use custom scripts to publish app artifacts to external services.
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
 menu:
   docs_sidebar:
     weight: 1
-thumbnail: ''
 title: Publish build artifacts to Amazon S3
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 3
 ---
 

@@ -7,46 +7,10 @@ params:
   twitterShareHandle: codemagicio
   facebookAuthorHandle: codemagicio
   appLoginLink: https://codemagic.io/
-  defaultFacebookImage: https://codemagic.io/img/facebook.png
-  defaultTwitterImage: https://codemagic.io/img/twitter.png
+  defaultFacebookImage: /uploads/2019/01/default-thumb.png
+  defaultTwitterImage: /uploads/2019/02/twitter.png
   headerLinkTitle: Documentation
   locale: en_GB
-  imageSizing:
-    front-featured:
-      generated-widths:
-        - 470
-        - 940
-        - 1200
-      sizes-attr:
-        "(max-width: 530px) calc(100vw - 60px), (max-width: 1024px) calc((100vw
-        - 100px) * 0.8), (max-width: 1300px) calc((100vw - 100px) * 0.6), calc((1200px
-        - 100px) * 0.6)\n"
-    post-hero:
-      generated-widths:
-        - 470
-        - 940
-        - 1200
-      sizes-attr:
-        "(max-width: 530px) calc(100vw - 60px), (max-width: 1024px) calc(100vw
-        - 100px), 800px\n"
-    post-related:
-      generated-widths:
-        - 470
-        - 940
-        - 1200
-      sizes-attr:
-        "(max-width: 530px) calc(100vw - 60px), (max-width: 1024px) calc((100vw
-        - 100px) * 0.4), (max-width: 1300px) calc((100vw - 100px) / 3 - 40px), calc(1200px
-        / 3 - 40px)\n"
-    category-list:
-      generated-widths:
-        - 470
-        - 940
-        - 1200
-      sizes-attr:
-        "(max-width: 530px) calc(100vw - 60px), (max-width: 1024px) calc((100vw
-        - 100px) * 0.4), (max-width: 1300px) calc(((100vw - 100px) * 0.3333333) -
-        20px), calc(((1200px - 100px) * 0.3333333) - 20px)\n"
 imaging:
   resampleFilter: linear
   quality: 90

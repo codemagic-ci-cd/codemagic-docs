@@ -2,14 +2,7 @@
 categories:
   - Getting started with Codemagic CI/CD
 description: Running the first build on Codemagic without any configuration
-facebook_description: ''
-facebook_image: ''
-facebook_title: ''
-thumbnail: ''
 title: Running the first build
-twitter_image: ''
-twitter_title: ''
-twitterDescription: ''
 weight: 2
 ---
 

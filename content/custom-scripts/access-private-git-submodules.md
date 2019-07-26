@@ -3,17 +3,10 @@ categories:
   - Custom script examples
 date: '2019-04-09T17:40:12+03:00'
 description: Access private Git submodules in Codemagic
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
 menu:
   docs_sidebar:
     weight: 1
-thumbnail: ''
 title: Access private Git submodules
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 1
 ---
 

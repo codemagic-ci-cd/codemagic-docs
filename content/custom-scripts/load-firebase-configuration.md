@@ -3,17 +3,10 @@ categories:
   - Custom script examples
 date: '2019-04-07T13:01:10+03:00'
 description: Load your Firebase configuration files to Codemagic
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
 menu:
   docs_sidebar:
     weight: 1
-thumbnail: ''
 title: Load Firebase configuration
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 5
 ---
 

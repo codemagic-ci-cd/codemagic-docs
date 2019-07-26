@@ -3,14 +3,7 @@ categories:
   - Getting started with Codemagic CI/CD
 date: '2019-03-10T16:28:20+02:00'
 description: Sign up for Codemagic CI/CD
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
-thumbnail: ''
 title: Signup
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 1
 ---
 

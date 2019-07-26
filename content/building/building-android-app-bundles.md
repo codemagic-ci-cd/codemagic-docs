@@ -2,18 +2,10 @@
 categories:
   - Build configuration
 date: '2019-03-31T15:59:20+03:00'
-description: ''
-facebook_description: ''
-facebook_image: /uploads/2019/01/default-thumb.png
-facebook_title: ''
 menu:
   docs_sidebar:
     weight: 1
-thumbnail: ''
 title: Building Android app bundles
-twitter_image: /uploads/2019/02/twitter.png
-twitter_title: ''
-twitterDescription: ''
 weight: 3
 ---
 
