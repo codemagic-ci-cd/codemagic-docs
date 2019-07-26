@@ -4,9 +4,6 @@ categories:
 description:
   Instead of building the entire app, you can run tests on your widgets
   only.
-menu:
-  docs_sidebar:
-    weight: 1
 title: Testing widgets
 weight: 3
 ---

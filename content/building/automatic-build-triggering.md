@@ -2,9 +2,6 @@
 categories:
   - Build configuration
 date: '2019-03-31T15:09:08+03:00'
-menu:
-  docs_sidebar:
-    weight: 1
 title: Automatic build triggering
 weight: 1
 ---

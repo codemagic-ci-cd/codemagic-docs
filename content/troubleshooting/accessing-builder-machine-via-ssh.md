@@ -4,9 +4,6 @@ categories:
 description:
   'Establish SSH access to the builder virtual machine to inspect your
   build.  '
-menu:
-  docs_sidebar:
-    weight: 1
 title: Accessing virtual machine via SSH
 weight: 1
 ---

@@ -3,9 +3,6 @@ categories:
   - Custom script examples
 date: '2019-04-07T13:01:10+03:00'
 description: Load your Firebase configuration files to Codemagic
-menu:
-  docs_sidebar:
-    weight: 1
 title: Load Firebase configuration
 weight: 5
 ---

@@ -1,10 +1,6 @@
 ---
 categories:
   - Build configuration
-description: 'Build '
-menu:
-  docs_sidebar:
-    weight: 1
 title: Specifying custom iOS scheme
 weight: 4
 ---

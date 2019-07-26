@@ -2,9 +2,6 @@
 categories:
   - Testing
 description: View, test and distribute your Codemagic builds with Testmagic
-menu:
-  docs_sidebar:
-    weight: 1
 title: Beta testing with Testmagic
 weight: 5
 ---

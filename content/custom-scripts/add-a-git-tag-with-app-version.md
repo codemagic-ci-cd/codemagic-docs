@@ -3,9 +3,6 @@ categories:
   - Custom script examples
 date: '2019-04-07T12:57:59+03:00'
 description: Create a Git tag referencing your app version
-menu:
-  docs_sidebar:
-    weight: 1
 title: Add a Git tag with app version
 weight: 2
 ---

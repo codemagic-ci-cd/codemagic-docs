@@ -2,9 +2,6 @@
 categories:
   - Build configuration
 date: '2019-04-27T20:24:35+03:00'
-menu:
-  docs_sidebar:
-    weight: 1
 title: Build versioning
 weight: 7
 ---

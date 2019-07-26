@@ -2,9 +2,6 @@
 categories:
   - Build configuration
 description: See how to build a Flutter web app with Codemagic.
-menu:
-  docs_sidebar:
-    weight: 1
 title: Building for the web
 weight: 5
 ---

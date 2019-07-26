@@ -2,9 +2,6 @@
 categories:
   - Getting started with Codemagic CI/CD
 date: '2019-03-21T17:06:39+02:00'
-menu:
-  docs_sidebar:
-    weight: 1
 title: Multiple projects in one repository
 weight: 5
 ---

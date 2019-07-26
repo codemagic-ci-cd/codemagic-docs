@@ -3,9 +3,6 @@ categories:
   - Custom script examples
 date: '2019-03-31T15:25:27+03:00'
 draft: true
-menu:
-  docs_sidebar:
-    weight: 1
 title: Run static code analysis
 weight: ''
 ---

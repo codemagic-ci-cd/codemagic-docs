@@ -9,11 +9,7 @@ nav#docs-menu
     {{ with $categoryArticles }}
       {{ $isInCategory := in $.Params.categories $name }}
       li class={{ if $isInCategory }}open{{end}}
-        {{ $title := $name }}
-        {{ with $data := index (where (site.Home.Param "category_values") "name" $name) 0 }}
-          {{ $title := $data.title }}
-        {{ end }}
-        .category-name {{ $title }}
+        .category-name {{ $name }}
         .category-posts
           {{ range $categoryArticles }}
             {{ $isActivePage := eq $.RelPermalink .RelPermalink }}

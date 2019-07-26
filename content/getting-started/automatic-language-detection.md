@@ -2,9 +2,6 @@
 categories:
   - Getting started with Codemagic CI/CD
 date: '2019-03-21T17:08:18+02:00'
-menu:
-  docs_sidebar:
-    weight: 1
 title: Automatic language detection
 weight: 6
 ---

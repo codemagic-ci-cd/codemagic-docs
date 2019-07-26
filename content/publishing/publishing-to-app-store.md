@@ -3,9 +3,6 @@ categories:
   - Publishing
 date: '2019-03-11T15:58:01+02:00'
 description: Deploy the Flutter app to App Store and TestFlight
-menu:
-  docs_sidebar:
-    weight: 1
 title: Publishing to App Store
 weight: 1
 ---

@@ -3,9 +3,6 @@ categories:
   - Custom script examples
 date: '2019-04-07T12:53:30+03:00'
 description: Upload files to be included in your build artifacts ZIP file
-menu:
-  docs_sidebar:
-    weight: 1
 title: Upload custom artifacts
 weight: 4
 ---

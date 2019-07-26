@@ -2,9 +2,6 @@
 categories:
   - Build configuration
 description: Store your dependencies on Codemagic for a faster build time.
-menu:
-  docs_sidebar:
-    weight: 1
 title: Dependency caching
 weight: 6
 ---

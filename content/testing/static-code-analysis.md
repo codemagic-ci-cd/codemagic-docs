@@ -2,9 +2,6 @@
 categories:
   - Testing
 description: Test your code with flutter analyze.
-menu:
-  docs_sidebar:
-    weight: 1
 title: Static code analysis
 weight: 2
 ---

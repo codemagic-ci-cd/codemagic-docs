@@ -2,9 +2,6 @@
 categories:
   - Troubleshooting
 description: Get latest information about the status of Codemagic CI/CD.
-menu:
-  docs_sidebar:
-    weight: 1
 title: Codemagic status page
 weight: 2
 ---

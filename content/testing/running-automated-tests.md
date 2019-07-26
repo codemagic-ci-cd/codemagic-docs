@@ -4,9 +4,6 @@ categories:
 description:
   Automatically run unit, widget and integration tests every time you build
   your Flutter app.
-menu:
-  docs_sidebar:
-    weight: 1
 title: Running automated tests
 weight: 1
 ---

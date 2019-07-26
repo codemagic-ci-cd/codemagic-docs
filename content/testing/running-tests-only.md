@@ -2,9 +2,6 @@
 categories:
   - Testing
 description: Run tests only without building the app.
-menu:
-  docs_sidebar:
-    weight: 1
 title: Running tests only
 weight: 4
 ---

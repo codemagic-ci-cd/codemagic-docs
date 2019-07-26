@@ -3,9 +3,6 @@ categories:
   - Custom script examples
 date: '2019-04-09T17:40:12+03:00'
 description: Access private Git submodules in Codemagic
-menu:
-  docs_sidebar:
-    weight: 1
 title: Access private Git submodules
 weight: 1
 ---
