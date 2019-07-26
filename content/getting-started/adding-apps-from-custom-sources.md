@@ -9,11 +9,11 @@ weight: 4
 
 You can add apps from other public or private Git-based repositories. This includes repositories requiring **SSH key authentication**. Click **Add app from custom source** on the Applications page to get started.
 
-{{< figure size="medium" src="/uploads/2019/03/add_app_light-1.PNG" caption="" >}}
+{{< figure size="medium" src="../uploads/2019/03/add_app_light-1.PNG" caption="" >}}
 
 Then, fill in all the required fields.
 
-{{< figure size="medium" src="/uploads/2019/03/app_using_ssh_authentication.PNG" caption="" >}}
+{{< figure size="medium" src="../uploads/2019/03/app_using_ssh_authentication.PNG" caption="" >}}
 
 1. Enter the checkout URL of the repository.
 2. If a private key is required to access the repository or any private submodules in it, upload the **SSH private key** file.

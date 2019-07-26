@@ -28,13 +28,13 @@ If your Flutter project is in a subdirectory of the repository, Codemagic cannot
 
 In App settings > Test, you will see the **Flutter test target** and **Flutter drive target** fields displayed if the respective tests are detected. You can specify an exact target to run a specific test.
 
-![](/uploads/2019/04/doc_test_target.PNG)
+![](../uploads/2019/04/doc_test_target.PNG)
 
 ### Selecting simulator or emulator
 
 By default, Codemagic runs your Flutter Driver tests on iOS simulator. You can also run Flutter Driver tests on Android emulator by selecting the respective option in the UI.
 
-![](/uploads/2019/04/doc_emulator_simulator.PNG)
+![](../uploads/2019/04/doc_emulator_simulator.PNG)
 
 {{% notebox %}}
 

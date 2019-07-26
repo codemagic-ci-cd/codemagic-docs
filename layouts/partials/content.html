@@ -3,10 +3,10 @@
 {{ $out := "" }}
 {{ $content := . }}
 
-<!-- prefix all absolute (starting with slash) with language prefix (if applicable) -->
-{{ $urlPrefix := "/" | relLangURL }}
-{{ $in = "<img ([^>]*) ?src=\"/([^\"]+)\" ?([^/>]*) */?>" }}
-{{ $out = $urlPrefix | printf "<img $1 src=\"%s$2\" $3 />" }}
+<!-- prefix all relative images to take into account url prettification
+  which adds one extra level of nesting in rendered site -->
+{{ $in = "<img ([^>]*) ?src=\"../([^\"]+)\" ?([^/>]*) */?>" }}
+{{ $out = "<img $1 src=\"../../$2\" $3 />" }}
 {{ $content = $content | replaceRE $in $out | safeHTML }}
 
 <!-- replace all single images paragraph in content with figures, using alt for caption -->

@@ -20,7 +20,7 @@ You can add environment variables in **App settings > Environment variables**.
 2. Check **Secure** if you wish to hide the value in the UI and build logs and disable editing of the variable. Such variables can be accessed only by the builder VMs during the build.
 3. Click **Add**.
 
-![](/uploads/env_vars.PNG)
+![](../uploads/env_vars.PNG)
 
 To access a variable, add the `$` symbol in front of its name. For example, access `API_TOKEN` by using `$API_TOKEN`. Note that it is required to use quotation marks with multi-line variables when you are referencing them in custom scripts, as shown in the example below:
 

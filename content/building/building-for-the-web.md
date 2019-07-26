@@ -21,7 +21,7 @@ If your project has the proper structure and configuration of a web project, Cod
 
 You can review the build settings in **App settings > Build**.
 
-![](/uploads/2019/05/build_settings.PNG)
+![](../uploads/2019/05/build_settings.PNG)
 
 The following is necessary to build the web app:
 

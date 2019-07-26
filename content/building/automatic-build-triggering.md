@@ -14,7 +14,7 @@ Build triggers can be configured in **App settings > Build triggers**.
 
 The branches targeted for building are selected by entering branch patterns and including or excluding the matching branches. Note that you can either enter the exact name of the branch to select it or use the wildcard symbols listed in the table below to select more than one branch with one pattern.
 
-![](/uploads/tracked branches.PNG)
+![](../uploads/tracked branches.PNG)
 
 The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of branches further. You can check the targeted branches by clicking the eye icon next to **Watched branch patterns**.
 
@@ -29,7 +29,7 @@ To add a new branch pattern:
 
 Under Automatic build triggering, you can select when to trigger builds.
 
-![](/uploads/automatic build triggering.PNG)
+![](../uploads/automatic build triggering.PNG)
 
 **Trigger on every push**. When checked, a build will be started every time you commit code to any of the tracked branches.
 

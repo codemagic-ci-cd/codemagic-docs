@@ -26,7 +26,7 @@ It is also worth pointing out the necessity for each uploaded binary to have a *
 3. Select your app and click **App Information**.
 4. You can then see your app’s identifier (confusingly named **Apple ID**) in the **General Information** section.
 
-![Finding your app's unique identifier](/uploads/2019/03/app store connect_app ID.png)
+![Finding your app's unique identifier](../uploads/2019/03/app store connect_app ID.png)
 
 ## Setting up publishing to App Store Connect on Codemagic
 

@@ -24,9 +24,9 @@ Establishing an SSH connection to the virtual machine is possible only for manua
 
 1. In your app settings, click **Start new build**.
 2. In the **Specify build configuration** popup, check **Enable SSH access** and start the build.
-   {{< figure size="medium" src="/uploads/2019/07/enable_ssh_access.PNG" caption="" >}}
+   {{< figure size="medium" src="../uploads/2019/07/enable_ssh_access.PNG" caption="" >}}
 3. When the build has started, you will shortly see additional instructions for establishing SSH access. Run the automatically generated script in the terminal before the build finishes to establish an SSH connection to the machine running the build.
-   {{< figure size="medium" src="/uploads/2019/07/ssh_access_script.PNG" caption="" >}}
+   {{< figure size="medium" src="../uploads/2019/07/ssh_access_script.PNG" caption="" >}}
 
 If you don't run the script before the build finishes, the unique SSH key expires and can't be used anymore. A new script will be generated every time you run the build, so previous scripts cannot be reused.
 

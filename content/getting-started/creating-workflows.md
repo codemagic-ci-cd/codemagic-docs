@@ -15,13 +15,13 @@ You can create new workflows by duplicating existing ones. In app settings, clic
 
 This creates a new workflow with the exact same settings as you had configured for the original workflow. All your environment variables and scripts, build settings and signing files will be duplicated into the new workflow.
 
-![](/uploads/duplicate_created.PNG)
+![](../uploads/duplicate_created.PNG)
 
 You can then click on the name of the workflow to edit it and configure the workflow settings as you like. Now that you have more than one workflow, you can also delete workflows.
 
 To switch between workflows, click on the workflow name below the app name in app settings.
 
-![](/uploads/select_workflow_ed.png)
+![](../uploads/select_workflow_ed.png)
 
 {{% notebox %}}
 Note that while your workflows started out as duplicates, they become separate entities once created. Any changes made to one workflow won't affect any of the others.

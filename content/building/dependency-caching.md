@@ -25,7 +25,7 @@ You can add other paths to be cached, for example:
 
 1. In your app settings, open the **Dependency caching** section.
 
-   ![](/uploads/2019/04/caching_enabled.PNG)
+   ![](../uploads/2019/04/caching_enabled.PNG)
 
 2. Check the **Enable dependency caching** option. By default, caching is disabled.
 3. Enter the path(s) to the dependencies to be cached and click **Add**. Note that you can delete added paths anytime.

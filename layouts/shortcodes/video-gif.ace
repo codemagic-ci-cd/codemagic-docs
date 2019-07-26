@@ -6,7 +6,8 @@
 {{ $caption := .Get "caption" }}
 {{ $align := .Get "align" }}
 
-{{ $path := strings.TrimPrefix "/uploads/" $src }}
+{{ $path := strings.TrimPrefix "../uploads/" $src }}
+{{ $path = strings.TrimPrefix "/uploads/" $src }}
 {{ $i := (site.GetPage "section" "uploads").Resources.GetMatch $path }}
 
 {{ if $i }}

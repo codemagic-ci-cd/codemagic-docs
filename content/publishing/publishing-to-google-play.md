@@ -23,7 +23,7 @@ Before releasing the app to Google Play, make sure that it meets the [Google Pla
 2. Click on the **Create Service Account** button and follow the link to Google API Console.
 3. In Google API Console, click on the **Create Service Account** button.
 4. Fill in **Service account name** and choose Service Accounts > Service Account User from the Role dropdown. Make sure to check **Furnish a new private key** and select **JSON** as key type.
-   ![](/uploads/2019/03/create service account 2018_marked.png)
+   ![](../uploads/2019/03/create service account 2018_marked.png)
 5. Click **Create** and download the created JSON credentials file. You will need this file to set up publishing to Google Play on Codemagic.
 6. Back in Google Play Console, click **Done** to close the dialog.
 7. Find the new service account and click **Grant Access**.
@@ -48,4 +48,4 @@ The very first version of the app must be added to Google Play manually. You can
 5. If you want to publish the APK even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
 6. Click **Save** to finish the setup.
 
-{{< figure size="medium" src="/uploads/2019/03/google play.png" caption="" >}}
+{{< figure size="medium" src="../uploads/2019/03/google play.png" caption="" >}}
