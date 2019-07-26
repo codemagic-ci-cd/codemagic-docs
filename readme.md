@@ -32,14 +32,9 @@ That folder can be deployed.
 
 # Deploying
 
-## Bitbucket
-
-Run `deploy-to-production` pipeline on required branch. `./public/` folder will be deployed by bitbucket (by running `./ci-deploy.sh` script).
-
 ## Manual
 
 Requires AWS credentials in environment variables (for updating S3).
-We currently have an user `codemagic-hugo-deploy` with access to required buckets (directly attached policies).
 
 ```
 export AWS_ACCESS_KEY_ID=ACTUALACCESSKEY
