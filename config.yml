@@ -54,8 +54,6 @@ mediaTypes:
       - mp4
 
 title: Codemagic Docs
-taxonomies:
-  category: categories
 disableKinds:
   - taxonomy
   - taxonomyTerm

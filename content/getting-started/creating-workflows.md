@@ -11,7 +11,7 @@ Have full control over your CI/CD pipeline with workflows. A workflow is a set o
 
 You can create new workflows by duplicating existing ones. In app settings, click **Duplicate workflow** under Workflow settings.
 
-![](/uploads/duplicate_ed.png)
+![](../../uploads/duplicate_ed.png)
 
 This creates a new workflow with the exact same settings as you had configured for the original workflow. All your environment variables and scripts, build settings and signing files will be duplicated into the new workflow.
 
