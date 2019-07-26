@@ -1,0 +1,28 @@
+= doctype html
+html
+  head
+    {{ .Render "head" }}
+    body#article-page.page
+      #content-wrap
+        #search-results
+        aside#sidebar
+          #menu-toggle
+            .bar.top
+            .bar.middle
+            .bar.bottom
+          #logo
+            a href={{ site.Home.RelPermalink }}
+              {{ $logo := resources.Get "media/logo.svg" | minify }}
+              {{ $logo.Content | safeHTML }}
+              span#logo-label {{ site.Param "headerLinkTitle" }}
+
+          div.search.search--header
+            input.search__input type="text" placeholder="Search"
+            .search__icon.search__icon--search.fas.fa-search
+            .search__icon.search__icon--clear.fas.fa-times
+          {{ partial "sidebar" . }}
+        #main-content
+          main
+            = yield main
+      footer#footer
+    {{ partial "footer" . }}

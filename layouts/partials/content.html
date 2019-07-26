@@ -1,0 +1,22 @@
+
+{{ $in := "" }}
+{{ $out := "" }}
+{{ $content := . }}
+
+<!-- prefix all absolute (starting with slash) with language prefix (if applicable) -->
+{{ $urlPrefix := "/" | relLangURL }}
+{{ $in = "<img ([^>]*) ?src=\"/([^\"]+)\" ?([^/>]*) */?>" }}
+{{ $out = $urlPrefix | printf "<img $1 src=\"%s$2\" $3 />" }}
+{{ $content = $content | replaceRE $in $out | safeHTML }}
+
+<!-- replace all single images paragraph in content with figures, using alt for caption -->
+{{ $in = "<p><img ?([^>]*?) ?src=\"([^\"]+)\" ?([^>]*?) ?alt=\"([^\"]+)\" ?([^/>]*?) */?></p>" }}
+{{ $out = "<figure><img $1 src=\"$2\" $3 alt=\"$4\" $5 /><figcaption>$4</figcaption></figure>" }}
+{{ $content = $content | replaceRE $in $out | safeHTML }}
+
+<!-- replace all single paragraph images in content with figures-->
+{{ $in = "<p><img ?([^>]*?) ?src=\"([^\"]+)\" ?([^/>]*) */?></p>" }}
+{{ $out = "<figure><img $1 src=\"$2\" $3 /></figure>" }}
+{{ $content = $content | replaceRE $in $out | safeHTML }}
+
+{{ $content }}

@@ -1,0 +1,37 @@
+// Brand colors
+$blue: #0957FF;
+$blue-hover: #0944C1;
+$red: #EC0C43;
+$yellow: #FBB03B;
+$magenta: #E944FF;
+$cyan: #33CCFF;
+$black: #151515;
+$blue-gradient: linear-gradient(20deg, $blue-hover 0%, $blue 100%);
+$magenta-gradient: linear-gradient(20deg, $magenta 0%, $yellow 100%);
+$cyan-gradient: linear-gradient(20deg, $magenta 0%, $cyan 100%);
+
+// Supporting colors
+$grey-text-primary: #666666;
+$grey-text-light: #999999;
+$color-twitter-blue: #1DA1F2;
+$color-twitter-blue-hover: #1A8CD2;
+$color-facebook-blue: #3B5998;
+$grey-bg-light: #f6f6f6;
+$grey-bg: #eaeaea;
+
+// Fonts
+$font-family-default: 'ProximaNova-Regular';
+$font-family-bold: 'ProximaNova-Semibold';
+$font-family-serif: 'Noto Serif TC', serif;
+
+
+// Mixins
+@mixin fontAwesome($icon) {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: $icon;
+}
+@mixin fontAwesomeBrand($icon) {
+    font-family: 'Font Awesome 5 Brands';
+    content: $icon;
+}

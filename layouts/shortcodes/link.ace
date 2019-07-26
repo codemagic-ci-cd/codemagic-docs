@@ -1,0 +1,2 @@
+a href={{ .Get 0 | ref . }}
+  {{ .Inner | default (.Get 0 | ref . | absURL) }}

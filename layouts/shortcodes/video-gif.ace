@@ -1,0 +1,24 @@
+/ ffmpeg -f gif -i DevJoke-1-2.gif -pix_fmt yuv420p -c:v libx264 -movflags +faststart -filter:v crop='floor(in_w/2)*2:floor(in_h/2)*2' DevJoke-1-2.mp4
+
+{{ $src := .Get "src" }}
+{{ $size := .Get "size" }}
+{{ $title := .Get "title" }}
+{{ $caption := .Get "caption" }}
+{{ $align := .Get "align" }}
+
+{{ $path := strings.TrimPrefix "/uploads/" $src }}
+{{ $i := (site.GetPage "section" "uploads").Resources.GetMatch $path }}
+
+{{ if $i }}
+  figure class="size-{{ $size }}" class="align-{{ $align }}"
+    video src={{ $i.RelPermalink }} loop= muted= autoplay= playsinline=
+    {{ with $caption }}
+      figcaption {{ . }}
+    {{ end }} 
+
+{{ else }}
+  {{ errorf "missing file for path \"%s\" in video-gif shortcode for page \"%s\"" $src .Page.File.Path }}
+{{ end }}
+
+
+

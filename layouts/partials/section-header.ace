@@ -1,0 +1,4 @@
+header.grey-box
+  {{ with .Title }}
+    h2 {{ . }}
+  {{ end }}

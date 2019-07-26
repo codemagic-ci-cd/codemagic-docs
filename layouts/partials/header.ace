@@ -1,0 +1,22 @@
+
+header.site-header.grey-box
+  nav.global-nav
+    ul.list-unstyled.list-vertical
+      {{ range .Sites }}
+        li
+          a href={{ .Home.Permalink }}
+            {{ if eq .Language site.Language }}
+              strong {{ .Params.Name }}
+            {{ else }}
+              {{ .Params.Name }}
+            {{ end }}
+      {{ end }}
+
+  .search
+    input#search type=text placeholder=search
+    ul.list-unstyled#search-results
+
+  {{ with site.Title }}
+    a.site-header--title href={{ site.Home.RelPermalink }}
+      h1 {{ . }}
+  {{ end }}

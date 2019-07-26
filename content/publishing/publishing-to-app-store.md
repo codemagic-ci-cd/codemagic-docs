@@ -1,0 +1,55 @@
++++
+categories = ["Publishing"]
+date = "2019-03-11T15:58:01+02:00"
+description = "Deploy the Flutter app to App Store and TestFlight"
+facebook_description = ""
+facebook_image = "/uploads/2019/01/default-thumb.png"
+facebook_title = ""
+thumbnail = ""
+title = "Publishing to App Store"
+twitterDescription = ""
+twitter_image = "/uploads/2019/02/twitter.png"
+twitter_title = ""
+weight = 1
+[menu.docs_sidebar]
+weight = 1
+
++++
+Codemagic enables you to automatically publish your app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. To do so, you must first set up [iOS code signing](https://docs.codemagic.io/code-signing/ios-code-signing/) and then configure publishing to App Store Connect.
+
+## Requirements
+
+Codemagic needs your **Apple ID** and [**app-specific password**](https://support.apple.com/en-us/HT204397) as well as your **app’s unique identifier (app ID)** to perform publishing to App Store Connect on your behalf. Publishing to App Store Connect requires that the app be signed with App Store **distribution certificate**.
+
+In addition, the application must be **App Store ready** for build distribution, meaning that it must have all the correct icons and icon sizes, otherwise App Store Connect will tag the binary as invalid, and you will not be able to distribute it at all.
+
+It is also worth pointing out the necessity for each uploaded binary to have a **different version**, otherwise it will be refused by App Store Connect. See the [Build versioning](https://docs.codemagic.io/building/build-versioning/) article for instructions on incrementing app version with Codemagic.
+
+{{% notebox %}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually.  {{% /notebox %}}
+
+## Finding your app ID
+
+1. Log in to [App Store Connect](https://appstoreconnect.apple.com/login).
+2. Navigate to **My Apps**.
+3. Select your app and click **App Information**.
+4. You can then see your app’s identifier (confusingly named **Apple ID**) in the **General Information** section.
+
+![Finding your app's unique identifier](/uploads/2019/03/app store connect_app ID.png)
+
+## Setting up publishing to App Store Connect on Codemagic
+
+1. Navigate to the Publish section in app settings.
+2. Click **App Store Connect**.
+3. Enter your **Apple ID** (for login), your **app-specific password** and **App ID** (your app’s unique identifier in App Store Connect).
+4. Click **Save** to finish the setup.
+
+Once you have successfully set up publishing to App Store Connect, Codemagic will automatically distribute the app to App Store Connect every time you build the workflow. Note that you must manually submit the app to App Store in App Store Connect.
+
+## Submitting an app to App Store
+
+To make your iOS app available to the public, it must be submitted for review in App Store Connect.
+
+1. Log in to [App Store Connect](https://appstoreconnect.apple.com/).
+2. Navigate to **My Apps** and identify the app you would like to publish to App Store.
+3. To start the submission process, click **Prepare for Submission**.
+4. Check that you app metadata is up to date, and once everything is ready, click the **Submit for Review** button.

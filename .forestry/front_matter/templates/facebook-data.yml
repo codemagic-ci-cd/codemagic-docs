@@ -1,0 +1,22 @@
+---
+label: Facebook metadata
+hide_body: false
+fields:
+- name: facebook_title
+  label: Facebook title
+  type: text
+  hidden: false
+  default: ''
+  description: Facebook title. If not set, post title is used
+- name: facebook_description
+  label: Facebook description
+  type: text
+  hidden: false
+  default: ''
+  description: Facebook description. If not set, post description is used
+- name: facebook_image
+  label: Facebook image
+  type: file
+  hidden: false
+  default: "/uploads/2019/01/default-thumb.png"
+  description: Facebook image. If not set, site-wide default Facebook image is used

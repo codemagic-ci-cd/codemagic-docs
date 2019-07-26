@@ -1,0 +1,56 @@
+---
+label: Documentation article
+hide_body: false
+fields:
+- type: include
+  name: baseDocumentationArticle
+  label: Base documentation article
+  template: docs-base-article
+  description: Standard fields for all documentation articles
+- type: field_group
+  name: menu
+  label: Menu
+  hidden: true
+  fields:
+  - type: field_group
+    name: docs_sidebar
+    label: Docs sidebar
+    hidden: true
+    fields:
+    - type: number
+      name: weight
+      label: Weight
+      hidden: false
+      default: '1'
+      config:
+        step: '1'
+pages:
+- content/troubleshooting/codemagic-status-page.md
+- content/troubleshooting/accessing-builder-machine-via-ssh.md
+- content/building/build-versioning.md
+- content/building/dependency-caching.md
+- content/building/specifying-custom-ios-scheme.md
+- content/testing/running-automated-tests.md
+- content/building/building-android-app-bundles.md
+- content/publishing/publishing-to-codemagic-static-pages.md
+- content/custom-scripts/upload-custom-artifacts.md
+- content/custom-scripts/access-private-git-submodules.md
+- content/custom-scripts/publish-build-artifacts-to-amazon-s3.md
+- content/custom-scripts/load-firebase-configuration.md
+- content/code-signing/android-code-signing.md
+- content/custom-scripts/add-a-git-tag-with-app-version.md
+- content/building/building-for-the-web.md
+- content/testing/beta-testing-with-testmagic.md
+- content/custom-scripts/run-static-code-analysis.md
+- content/testing/static-code-analysis.md
+- content/testing/running-tests-only.md
+- content/testing/testing-widgets.md
+- content/building/environment-variables.md
+- content/getting-started/creating-workflows.md
+- content/publishing/publishing-to-app-store.md
+- content/code-signing/ios-code-signing.md
+- content/publishing/publishing-to-google-play.md
+- content/getting-started/automatic-language-detection.md
+- content/getting-started/multiple-projects-in-one-repository.md
+- content/getting-started/adding-apps-from-custom-sources.md
+- content/building/automatic-build-triggering.md

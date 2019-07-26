@@ -1,0 +1,87 @@
+@function getAssetUrl($url) {
+  @return '{{(resources.Get "#{$url}" | fingerprint).RelPermalink }}';
+}
+
+/**
+ * @license
+ * MyFonts Webfont Build ID 3347679, 2017-02-21T09:05:32-0500
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: ProximaNovaA-Medium by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/a-medium/
+ *
+ * Webfont: ProximaNovaS-Medium by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/s-medium/
+ *
+ * Webfont: ProximaNova-Medium by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/medium/
+ *
+ * Webfont: ProximaNovaA-Semibold by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/a-semibold/
+ *
+ * Webfont: ProximaNovaS-Semibold by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/s-semibold/
+ *
+ * Webfont: ProximaNova-Semibold by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/semibold/
+ *
+ * Webfont: ProximaNovaA-Regular by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/a-regular/
+ *
+ * Webfont: ProximaNovaS-Regular by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/s-regular/
+ *
+ * Webfont: ProximaNova-Regular by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/regular/
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=3347679
+ * Licensed pageviews: 1,000,000
+ * Webfonts copyright: Copyright (c) Mark Simonson, 2005. All rights reserved.
+ *
+ * © 2017 MyFonts Inc
+*/
+
+@import url('//hello.myfonts.net/count/3314df');
+
+// FONTS
+@font-face {
+  font-family: 'ProximaNova-Regular';
+  src: url(getAssetUrl(
+    'fonts/proximanova/proximanova-regular-webfont.ttf'
+  ));
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url(getAssetUrl(
+    'fonts/proximanova/proximanova-regular-webfont.ttf'
+  ));
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ProximaNova-Semibold';
+  src: url(getAssetUrl(
+    'fonts/proximanova/proximanova-semibold-webfont.ttf'
+  ));
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url(getAssetUrl(
+    'fonts/proximanova/proximanova-semibold-webfont.ttf'
+  ));
+  font-weight: normal;
+  font-style: bold;
+  font-display: swap;
+}

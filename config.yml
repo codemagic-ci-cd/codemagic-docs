@@ -1,0 +1,73 @@
+---
+copyright:
+  '©Nevercode Ltd | All Rights Reserved | Codemagic is pending trademark
+  of Nevercode Ltd.'
+pygmentsUseClasses: true
+params:
+  twitterShareHandle: codemagicio
+  facebookAuthorHandle: codemagicio
+  appLoginLink: https://codemagic.io/
+  defaultFacebookImage: https://codemagic.io/img/facebook.png
+  defaultTwitterImage: https://codemagic.io/img/twitter.png
+  headerLinkTitle: Documentation
+  locale: en_GB
+  imageSizing:
+    front-featured:
+      generated-widths:
+        - 470
+        - 940
+        - 1200
+      sizes-attr:
+        "(max-width: 530px) calc(100vw - 60px), (max-width: 1024px) calc((100vw
+        - 100px) * 0.8), (max-width: 1300px) calc((100vw - 100px) * 0.6), calc((1200px
+        - 100px) * 0.6)\n"
+    post-hero:
+      generated-widths:
+        - 470
+        - 940
+        - 1200
+      sizes-attr:
+        "(max-width: 530px) calc(100vw - 60px), (max-width: 1024px) calc(100vw
+        - 100px), 800px\n"
+    post-related:
+      generated-widths:
+        - 470
+        - 940
+        - 1200
+      sizes-attr:
+        "(max-width: 530px) calc(100vw - 60px), (max-width: 1024px) calc((100vw
+        - 100px) * 0.4), (max-width: 1300px) calc((100vw - 100px) / 3 - 40px), calc(1200px
+        / 3 - 40px)\n"
+    category-list:
+      generated-widths:
+        - 470
+        - 940
+        - 1200
+      sizes-attr:
+        "(max-width: 530px) calc(100vw - 60px), (max-width: 1024px) calc((100vw
+        - 100px) * 0.4), (max-width: 1300px) calc(((100vw - 100px) * 0.3333333) -
+        20px), calc(((1200px - 100px) * 0.3333333) - 20px)\n"
+imaging:
+  resampleFilter: linear
+  quality: 90
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+buildDrafts: true
+defaultContentLanguage: en
+disable404: true
+
+mediaTypes:
+  video/mp4:
+    suffixes:
+      - mp4
+
+title: Codemagic Docs
+taxonomies:
+  category: categories
+disableKinds:
+  - taxonomy
+  - taxonomyTerm
+  - section

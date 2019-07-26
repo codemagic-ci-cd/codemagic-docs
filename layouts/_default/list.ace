@@ -1,0 +1,11 @@
+= content main
+  .container
+    {{ .Content }}
+  
+  {{ $descendants := slice }}
+  {{ range site.RegularPages }}
+    {{ if .IsDescendant $ }}
+      {{ $descendants = $descendants | append . }}
+    {{ end }}
+  {{ end }}
+

@@ -1,0 +1,23 @@
+nav#docs-menu
+  .search.search--sidebar
+    input.search__input type="text" placeholder="Search"
+    .search__icon.search__icon--search.fas.fa-search
+    .search__icon.search__icon--clear.fas.fa-times
+  {{ range $name := site.Home.Param "category_names" }}
+    {{ $categoryArticles := where site.Pages ".Params.categories" "intersect" (slice $name) }}
+
+    {{ with $categoryArticles }}
+      {{ $isInCategory := in $.Params.categories $name }}
+      li class={{ if $isInCategory }}open{{end}}
+        {{ $title := $name }}
+        {{ with $data := index (where (site.Home.Param "category_values") "name" $name) 0 }}
+          {{ $title := $data.title }}
+        {{ end }}
+        .category-name {{ $title }}
+        .category-posts
+          {{ range $categoryArticles }}
+            {{ $isActivePage := eq $.RelPermalink .RelPermalink }}
+            a class={{ if $isActivePage }}active{{ end }} href={{ .RelPermalink }} {{ .Title }}
+          {{ end }}
+    {{ end }}
+  {{ end }}

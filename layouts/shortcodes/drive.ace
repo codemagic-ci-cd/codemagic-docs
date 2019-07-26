@@ -1,0 +1,12 @@
+
+{{ $id := .Get 0 }}
+{{ $ratio := .Get "ratio" | default 1.6 }}
+{{ $height := div 100 $ratio | lang.NumFmt 2 | safeHTMLAttr }}
+
+{{ if $id }}
+  figure style="position: relative; padding-bottom: {{ $height }}%; height: 0; overflow: hidden;"
+    iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" src="https://drive.google.com/file/d/{{ $id }}/preview" allowtransparency="true"
+{{ else }}
+  {{ errorf "missing id \"%s\" in drive shortcode for page \"%s\"" $id .Page.File.Path }}
+{{ end }}
+

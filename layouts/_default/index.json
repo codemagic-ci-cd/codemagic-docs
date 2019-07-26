@@ -1,0 +1,12 @@
+[{{ range $pageIndex, $ := where .Site.Pages "Kind" "page" }}
+  {{- if $pageIndex }}, {{ end -}}
+  {
+    {{- with .Title }}
+    "title": "{{ htmlEscape . }}",
+    {{- end }}
+    {{- with .Plain }}
+    "content": {{ jsonify . }},
+    {{- end }}
+    "uri": "{{ .RelPermalink }}"
+  }
+  {{- end }}]

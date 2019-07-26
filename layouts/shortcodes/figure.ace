@@ -1,0 +1,11 @@
+{{ $src := .Get "src" }}
+{{ $size := .Get "size" }}
+{{ $title := .Get "title" }}
+{{ $caption := .Get "caption" }}
+{{ $align := .Get "align" }}
+
+figure class="size-{{ $size }}" class="align-{{ $align }}"
+  img src={{ $src }} alt={{ $caption }} title={{ $title }}
+  {{ with $caption }}
+    figcaption {{ . }}
+  {{ end }} 

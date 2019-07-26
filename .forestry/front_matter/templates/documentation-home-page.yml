@@ -1,0 +1,41 @@
+---
+label: Documentation home page
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: Title
+- type: text
+  name: description
+  label: Description
+  description: Description for SEO
+- type: list
+  name: category_names
+  label: Category names
+  config:
+    use_select: false
+    source:
+      type: documents
+- type: field_group_list
+  name: category_values
+  label: Category values
+  description: Extra metadata for categories if needed
+  fields:
+  - type: select
+    name: name
+    config:
+      source:
+        type: documents
+        section: docs
+        file: content/_index.md
+        path: category_names
+    label: Name
+    description: Name matching the previous list
+  - type: text
+    name: title
+    label: Title
+    description: Title to override name when displaying
+  config:
+    labelField: name
+pages:
+- content/_index.md

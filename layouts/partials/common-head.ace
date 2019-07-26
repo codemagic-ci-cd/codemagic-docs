@@ -1,0 +1,46 @@
+meta charset=utf-8
+
+meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes"
+meta http-equiv="X-UA-Compatible" content="IE=edge"
+
+{{ $icon := resources.Get "media/favicon.ico" | fingerprint }}
+link rel=icon type="image/x-icon" href={{ $icon.RelPermalink }}
+
+{{ with .Description }}
+  meta name=description content={{ . }}
+{{ end }}
+title {{ with .Title }}{{ . }}{{ end }}{{ if and .Title site.Title (not .IsHome) }} - {{ site.Title }}{{ end }}
+{{ with .Param "canonical" | default .Permalink }}
+  link rel=canonical href={{ . }}
+{{ end }}
+
+{{ range .AlternativeOutputFormats -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink site.Title | safeHTML }}
+{{ end -}}
+
+{{ partial "opengraph" . }}
+{{ partial "twitter_cards" . }}
+
+
+= javascript
+  !(function(f, b, e, v, n, t, s) {
+    if (f.fbq) return
+    n = f.fbq = function() {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+    }
+    if (!f._fbq) f._fbq = n
+    n.push = n
+    n.loaded = !0
+    n.version = '2.0'
+    n.queue = []
+    t = b.createElement(e)
+    t.async = !0
+    t.src = v
+    s = b.getElementsByTagName(e)[0]
+    s.parentNode.insertBefore(t, s)
+  })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
+  fbq('init', '2000132876774057')
+  fbq('track', 'PageView')
+    
+noscript
+  img height="1" width="1" src="https://www.facebook.com/tr?id=2000132876774057&ev=PageView&noscript=1"
