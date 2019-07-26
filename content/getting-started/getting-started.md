@@ -1,6 +1,4 @@
 ---
-categories:
-  - Getting started with Codemagic CI/CD
 description: Running the first build on Codemagic without any configuration
 title: Running the first build
 weight: 2

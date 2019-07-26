@@ -1,6 +1,4 @@
 ---
-categories:
-  - Getting started with Codemagic CI/CD
 title: Multiple projects in one repository
 weight: 5
 ---

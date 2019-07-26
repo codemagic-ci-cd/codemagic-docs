@@ -1,6 +1,4 @@
 ---
-categories:
-  - Getting started with Codemagic CI/CD
 title: Automatic language detection
 weight: 6
 ---

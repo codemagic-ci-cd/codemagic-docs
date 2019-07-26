@@ -1,6 +1,4 @@
 ---
-categories:
-  - Getting started with Codemagic CI/CD
 description: Sign up for Codemagic CI/CD
 title: Signup
 weight: 1

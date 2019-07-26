@@ -61,8 +61,8 @@ meta property="og:url" content="{{ .Permalink }}"
     meta property="article:publisher" content="https://www.facebook.com/{{ . }}"
   {{ end }}
 
-  {{ with .Param "categories" }}
-    meta property="article:section" content={{ index . 0 }}
+  {{ with .Section }}
+    meta property="article:section" content={{ (index (where site.Menus.main ".Identifier" .) 0).Name }}
   {{ end }}
 
   {{ with .Params.tags }}

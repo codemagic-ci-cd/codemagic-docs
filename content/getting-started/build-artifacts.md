@@ -1,6 +1,4 @@
 ---
-categories:
-  - Getting started with Codemagic CI/CD
 description: What kind of artifacts are generated for Flutter apps on Codemagic CI/CD
 draft: true
 title: Build artifacts

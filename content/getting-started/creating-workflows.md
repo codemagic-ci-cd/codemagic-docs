@@ -1,6 +1,4 @@
 ---
-categories:
-  - Getting started with Codemagic CI/CD
 description: Manage multiple workflows to fully customize your CI/CD pipeline
 title: Creating workflows
 weight: 3

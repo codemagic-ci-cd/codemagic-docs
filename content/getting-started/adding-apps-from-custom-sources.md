@@ -1,6 +1,4 @@
 ---
-categories:
-  - Getting started with Codemagic CI/CD
 description: Add your Flutter app wherever it is hosted
 title: Adding apps from custom sources
 weight: 4
