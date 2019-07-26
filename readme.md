@@ -53,7 +53,7 @@ prod builds need environment variable
 HUGO_ENVIRONMENT=production
 ```
 
-Requires s3deploy (can also download binary from [releases page](https://github.com/bep/s3deploy/releases/))
+Requires s3deploy (you can also download binary from [the releases page](https://github.com/bep/s3deploy/releases/))
 
 ```
 brew install bep/tap/s3deploy
