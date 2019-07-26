@@ -1,20 +1,22 @@
-+++
-categories = ["Code signing"]
-date = "2019-03-10T21:29:39+02:00"
-description = "Sign Flutter app for iOS"
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "iOS code signing"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 1
-[menu.docs_sidebar]
-weight = ""
+---
+categories:
+  - Code signing
+date: '2019-03-10T21:29:39+02:00'
+description: Sign Flutter app for iOS
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+menu:
+  docs_sidebar:
+    weight: ''
+thumbnail: ''
+title: iOS code signing
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 1
+---
 
-+++
 Code signing is required for installing your iOS app on real devices and publishing it to App Store. It enables to identify who developed the app and ensure that all the changes to the app come from you or your team.
 
 To receive a signed `.ipa` file of your app on Codemagic, you need to set up code signing. When you build without code signing, you will receive only `Runner.app` that runs on simulators only.
@@ -37,9 +39,9 @@ For successful signing, the certificate and the provisioning profile must match 
 
 In short, the purpose of the different provisioning profiles is the following:
 
-* **Development**: for testing the app on a real device while developing. The app must be built in **debug** mode.
-* **Ad Hoc:** for distributing the app to non-TestFlight testers (e.g. via [Testmagic](https://testmagic.io/)). The app must be built in **release** mode.
-* **App Store**: for distributing the app via TestFlight or the App Store. The app must be built in **release** mode.
+- **Development**: for testing the app on a real device while developing. The app must be built in **debug** mode.
+- **Ad Hoc:** for distributing the app to non-TestFlight testers (e.g. via [Testmagic](https://testmagic.io/)). The app must be built in **release** mode.
+- **App Store**: for distributing the app via TestFlight or the App Store. The app must be built in **release** mode.
 
 ### Setting up automatic code signing
 

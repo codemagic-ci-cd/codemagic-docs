@@ -1,20 +1,22 @@
-+++
-categories = ["Getting started with Codemagic CI/CD"]
-date = "2019-03-21T17:03:45+02:00"
-description = "Add your Flutter app wherever it is hosted"
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "Adding apps from custom sources"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 4
-[menu.docs_sidebar]
-weight = 1
+---
+categories:
+  - Getting started with Codemagic CI/CD
+date: '2019-03-21T17:03:45+02:00'
+description: Add your Flutter app wherever it is hosted
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+menu:
+  docs_sidebar:
+    weight: 1
+thumbnail: ''
+title: Adding apps from custom sources
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 4
+---
 
-+++
 You can add apps from other public or private Git-based repositories. This includes repositories requiring **SSH key authentication**. Click **Add app from custom source** on the Applications page to get started.
 
 {{< figure size="medium" src="/uploads/2019/03/add_app_light-1.PNG" caption="" >}}

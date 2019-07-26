@@ -1,20 +1,22 @@
-+++
-categories = ["Publishing"]
-date = "2019-03-11T15:58:01+02:00"
-description = "Deploy the Flutter app to App Store and TestFlight"
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "Publishing to App Store"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 1
-[menu.docs_sidebar]
-weight = 1
+---
+categories:
+  - Publishing
+date: '2019-03-11T15:58:01+02:00'
+description: Deploy the Flutter app to App Store and TestFlight
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+menu:
+  docs_sidebar:
+    weight: 1
+thumbnail: ''
+title: Publishing to App Store
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 1
+---
 
-+++
 Codemagic enables you to automatically publish your app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. To do so, you must first set up [iOS code signing](https://docs.codemagic.io/code-signing/ios-code-signing/) and then configure publishing to App Store Connect.
 
 ## Requirements
@@ -25,7 +27,7 @@ In addition, the application must be **App Store ready** for build distribution,
 
 It is also worth pointing out the necessity for each uploaded binary to have a **different version**, otherwise it will be refused by App Store Connect. See the [Build versioning](https://docs.codemagic.io/building/build-versioning/) article for instructions on incrementing app version with Codemagic.
 
-{{% notebox %}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually.  {{% /notebox %}}
+{{% notebox %}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. {{% /notebox %}}
 
 ## Finding your app ID
 

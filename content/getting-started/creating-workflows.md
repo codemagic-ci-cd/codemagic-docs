@@ -1,20 +1,22 @@
-+++
-categories = ["Getting started with Codemagic CI/CD"]
-date = "2019-03-26T16:00:30+02:00"
-description = "Manage multiple workflows to fully customize your CI/CD pipeline"
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "Creating workflows"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 3
-[menu.docs_sidebar]
-weight = 1
+---
+categories:
+  - Getting started with Codemagic CI/CD
+date: '2019-03-26T16:00:30+02:00'
+description: Manage multiple workflows to fully customize your CI/CD pipeline
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+menu:
+  docs_sidebar:
+    weight: 1
+thumbnail: ''
+title: Creating workflows
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 3
+---
 
-+++
 Have full control over your CI/CD pipeline with workflows. A workflow is a set of settings that determines how your app is to be built, tested and published. You can create several workflows for building different configurations of your app. For example, you can use workflows to build different branches of the project, separate your debug and release builds, run builds for different projects or flavors in the repository, test your app with different software versions, and so on.
 
 You can create new workflows by duplicating existing ones. In app settings, click **Duplicate workflow** under Workflow settings.

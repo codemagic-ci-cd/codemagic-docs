@@ -1,24 +1,28 @@
-+++
-categories = ["Troubleshooting"]
-description = "Establish SSH access to the builder virtual machine to inspect your build.  "
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "Accessing virtual machine via SSH"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 1
-[menu.docs_sidebar]
-weight = 1
+---
+categories:
+  - Troubleshooting
+description:
+  'Establish SSH access to the builder virtual machine to inspect your
+  build.  '
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+menu:
+  docs_sidebar:
+    weight: 1
+thumbnail: ''
+title: Accessing virtual machine via SSH
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 1
+---
 
-+++
 Establishing SSH access to the virtual machine running the build is a secure way for inspecting your build during runtime and for a short time after the build has finished. Building in SSH mode gives you the following advantages:
 
-* See the processes running during the CI job
-* Reproduce all commands run during the build
-* Debug your custom scripts
+- See the processes running during the CI job
+- Reproduce all commands run during the build
+- Debug your custom scripts
 
 ## How SSH access works
 
@@ -32,7 +36,7 @@ Establishing an SSH connection to the virtual machine is possible only for manua
 2. In the **Specify build configuration** popup, check **Enable SSH access** and start the build.
    {{< figure size="medium" src="/uploads/2019/07/enable_ssh_access.PNG" caption="" >}}
 3. When the build has started, you will shortly see additional instructions for establishing SSH access. Run the automatically generated script in the terminal before the build finishes to establish an SSH connection to the machine running the build.
-	{{< figure size="medium" src="/uploads/2019/07/ssh_access_script.PNG" caption="" >}}
+   {{< figure size="medium" src="/uploads/2019/07/ssh_access_script.PNG" caption="" >}}
 
 If you don't run the script before the build finishes, the unique SSH key expires and can't be used anymore. A new script will be generated every time you run the build, so previous scripts cannot be reused.
 

@@ -1,19 +1,23 @@
-+++
-categories = ["Testing"]
-description = "Automatically run unit, widget and integration tests every time you build your Flutter app."
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "Running automated tests"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 1
-[menu.docs_sidebar]
-weight = 1
+---
+categories:
+  - Testing
+description:
+  Automatically run unit, widget and integration tests every time you build
+  your Flutter app.
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+menu:
+  docs_sidebar:
+    weight: 1
+thumbnail: ''
+title: Running automated tests
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 1
+---
 
-+++
 Codemagic supports running **unit**, **integration** and **widget** tests. When testing is enabled, tests are run automatically every time your project is built. You can configure the test settings in **App settings > Test**.
 
 ### Detecting tests
@@ -44,7 +48,7 @@ By default, Codemagic runs your Flutter Driver tests on iOS simulator. You can a
 
 {{% notebox %}}
 
-**Tip**: You can set up separate [workflows](https://4jqkxhrybmvg1a.preview.forestry.io/docs/getting-started/creating-workflows/ "Creating workflows") to run tests both on iOS and Android.
+**Tip**: You can set up separate [workflows](https://4jqkxhrybmvg1a.preview.forestry.io/docs/getting-started/creating-workflows/ 'Creating workflows') to run tests both on iOS and Android.
 
 {{% /notebox %}}
 
@@ -52,8 +56,8 @@ By default, Codemagic runs your Flutter Driver tests on iOS simulator. You can a
 
 By default, testing is enabled on Codemagic. You can enable or disable running tests by checking or unchecking the respective option in App settings > Test:
 
-* Enable Flutter test
-* Enable Flutter Driver
+- Enable Flutter test
+- Enable Flutter Driver
 
 ### Stop build if tests fail
 

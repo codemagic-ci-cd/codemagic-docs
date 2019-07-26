@@ -1,21 +1,23 @@
-+++
-categories = ["Code signing"]
-date = "2019-03-10T22:52:07+02:00"
-description = "Sign your Android app for publishing to Google Play Store"
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "Android code signing"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 2
-[menu.docs_sidebar]
-weight = ""
+---
+categories:
+  - Code signing
+date: '2019-03-10T22:52:07+02:00'
+description: Sign your Android app for publishing to Google Play Store
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+menu:
+  docs_sidebar:
+    weight: ''
+thumbnail: ''
+title: Android code signing
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 2
+---
 
-+++
-Code signing is required for distributing your Android app to Google Play store. It enables to identify who developed the app and ensure that all updates to the app come from you. 
+Code signing is required for distributing your Android app to Google Play store. It enables to identify who developed the app and ensure that all updates to the app come from you.
 
 ## Requirements
 
@@ -51,26 +53,29 @@ You can follow the instructions in [Flutter’s documentation](https://flutter.i
 
 ### Configure signing using environment variables
 
-Alternatively, you can use [environment variables](https://docs.codemagic.io/building/environment-variables/ "Environment variables") to prepare your app for code signing.
+Alternatively, you can use [environment variables](https://docs.codemagic.io/building/environment-variables/ 'Environment variables') to prepare your app for code signing.
 
-1. Set the following environment variables in Codemagic (using the values from generating your keystore file):
+1.  Set the following environment variables in Codemagic (using the values from generating your keystore file):
 
-		FCI_KEYSTORE_PASSWORD=myKeystorePassword
-		FCI_KEY_ALIAS=MyReleaseKey
-		FCI_KEY_PASSWORD=myKeypassword
-2. Upload the contents of your base64-encoded keystore file to Codemagic as an environment variable with the name `FCI_KEYSTORE_FILE`.
-3. Add a custom script for decoding the keystore file stored in `FCI_KEYSTORE_FILE`. For example, click on the + icon before **Test** and paste the following script into the **Post-clone script** field:
+        FCI_KEYSTORE_PASSWORD=myKeystorePassword
+        FCI_KEY_ALIAS=MyReleaseKey
+        FCI_KEY_PASSWORD=myKeypassword
 
-		#!/usr/bin/env sh  
-		set -e # exit on first failed commandset  
-		echo $FCI_KEYSTORE_FILE | base64 --decode > $FCI_BUILD_DIR/keystore.jks
-4. Set your signing configuration in `build.gradle` as follows:
+2.  Upload the contents of your base64-encoded keystore file to Codemagic as an environment variable with the name `FCI_KEYSTORE_FILE`.
+3.  Add a custom script for decoding the keystore file stored in `FCI_KEYSTORE_FILE`. For example, click on the + icon before **Test** and paste the following script into the **Post-clone script** field:
+
+        #!/usr/bin/env sh
+        set -e # exit on first failed commandset
+        echo $FCI_KEYSTORE_FILE | base64 --decode > $FCI_BUILD_DIR/keystore.jks
+
+4.  Set your signing configuration in `build.gradle` as follows:
+
 ```
       ...
        android {
            ...
            defaultConfig { ... }
-       
+
            signingConfigs {
                release {
                    if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
@@ -86,7 +91,7 @@ Alternatively, you can use [environment variables](https://docs.codemagic.io/bui
                    }
                }
            }
-       
+
            buildTypes {
                release {
                    ...
@@ -96,6 +101,7 @@ Alternatively, you can use [environment variables](https://docs.codemagic.io/bui
        }
        ...
 ```
+
 ## Setting up Android code signing on Codemagic
 
 You are required to upload your keystore file and provide details about your key in order to receive signed builds on Codemagic.

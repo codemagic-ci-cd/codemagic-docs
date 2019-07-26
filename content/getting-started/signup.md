@@ -1,18 +1,19 @@
-+++
-categories = ["Getting started with Codemagic CI/CD"]
-date = "2019-03-10T16:28:20+02:00"
-description = "Sign up for Codemagic CI/CD"
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "Signup"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 1
+---
+categories:
+  - Getting started with Codemagic CI/CD
+date: '2019-03-10T16:28:20+02:00'
+description: Sign up for Codemagic CI/CD
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+thumbnail: ''
+title: Signup
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 1
+---
 
-+++
 You can sign up with your [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/) or [Bitbucket](https://bitbucket.org/) account.
 
 On signup, Codemagic asks for **read/write** permission to access your repository and create webhooks for automatic building. You will need to authorize Codemagic in order to connect your GitHub/GitLab/Bitbucket account to your Codemagic account.

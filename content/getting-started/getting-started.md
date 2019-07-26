@@ -1,18 +1,18 @@
 ---
-title: Running the first build
 categories:
-- Getting started with Codemagic CI/CD
+  - Getting started with Codemagic CI/CD
 description: Running the first build on Codemagic without any configuration
-thumbnail: ''
-twitter_title: ''
-twitterDescription: ''
-twitter_image: ''
-facebook_title: ''
 facebook_description: ''
 facebook_image: ''
+facebook_title: ''
+thumbnail: ''
+title: Running the first build
+twitter_image: ''
+twitter_title: ''
+twitterDescription: ''
 weight: 2
-
 ---
+
 Upon login, Codemagic will automatically display the list of apps in your repository. Select a Flutter app and start the very first build with preconfigured defaults by clicking **Start your first build**.
 
 {{< figure size="" src="/uploads/2019/07/app_dashboard.PNG" caption="Codemagic Applications page" >}}

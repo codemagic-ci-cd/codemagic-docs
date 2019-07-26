@@ -1,21 +1,23 @@
-+++
-categories = ["Publishing"]
-date = "2019-03-14T11:29:36+02:00"
-description = "Deploy the Flutter app to Google Play"
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "Publishing to Google Play"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 2
-[menu.docs_sidebar]
-weight = 1
+---
+categories:
+  - Publishing
+date: '2019-03-14T11:29:36+02:00'
+description: Deploy the Flutter app to Google Play
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+menu:
+  docs_sidebar:
+    weight: 1
+thumbnail: ''
+title: Publishing to Google Play
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 2
+---
 
-+++
-Codemagic enables you to automatically publish your app to the **internal**, **alpha**, **beta** and **production** tracks on Google Play. To do so, you must first [set up Android code signing](https://docs.codemagic.io/code-signing/android-code-signing/ "Android code signing") and then configure publishing to Google Play.
+Codemagic enables you to automatically publish your app to the **internal**, **alpha**, **beta** and **production** tracks on Google Play. To do so, you must first [set up Android code signing](https://docs.codemagic.io/code-signing/android-code-signing/ 'Android code signing') and then configure publishing to Google Play.
 
 ## Requirements
 
@@ -23,7 +25,7 @@ You will need a **service account in Google Play Console** to obtain the **JSON 
 
 Before releasing the app to Google Play, make sure that it meets the [Google Play’s best practices guidelines](https://developer.android.com/distribute/best-practices/launch/).
 
-{{% notebox %}} Note that if you haven’t published your app to Google Play yet, you must create an entry for your app in Google Play Console and manually upload the very first version of the app before you can automate publishing using Codemagic. In addition, each uploaded binary must have a different version, see how to automatically [increment build version](https://docs.codemagic.io/building/build-versioning/ "Build versioning") on Codemagic. {{% /notebox %}}
+{{% notebox %}} Note that if you haven’t published your app to Google Play yet, you must create an entry for your app in Google Play Console and manually upload the very first version of the app before you can automate publishing using Codemagic. In addition, each uploaded binary must have a different version, see how to automatically [increment build version](https://docs.codemagic.io/building/build-versioning/ 'Build versioning') on Codemagic. {{% /notebox %}}
 
 ## Setting up a service account in Google Play Console
 
@@ -49,10 +51,10 @@ The very first version of the app must be added to Google Play manually. You can
 2. Click **Google Play** to expand the options.
 3. Upload your credentials JSON file.
 4. Select a **track** for publishing.
-   * Internal — publish for internal testing and QA
-   * Alpha — publish for testing with a small group of trusted users
-   * Beta — publish for testing to a wider set of users
-   * Production — release the app to production
+   - Internal — publish for internal testing and QA
+   - Alpha — publish for testing with a small group of trusted users
+   - Beta — publish for testing to a wider set of users
+   - Production — release the app to production
 5. If you want to publish the APK even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
 6. Click **Save** to finish the setup.
 

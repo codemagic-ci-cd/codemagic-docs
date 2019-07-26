@@ -1,27 +1,29 @@
-+++
-categories = ["Build configuration"]
-description = "See how to build a Flutter web app with Codemagic."
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "Building for the web"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 5
-[menu.docs_sidebar]
-weight = 1
+---
+categories:
+  - Build configuration
+description: See how to build a Flutter web app with Codemagic.
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+menu:
+  docs_sidebar:
+    weight: 1
+thumbnail: ''
+title: Building for the web
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 5
+---
 
-+++
 You can build, test and publish Flutter web apps with Codemagic.
 
 ## Project structure requirements
 
 Codemagic can detect your Flutter web project if it meets the following conditions:
 
-* The project has a `web` folder
-* There’s `flutter_web` dependency in `pubspec.yaml`
+- The project has a `web` folder
+- There’s `flutter_web` dependency in `pubspec.yaml`
 
 ## Build configuration
 

@@ -1,20 +1,22 @@
-+++
-categories = ["Build configuration"]
-date = "2019-03-31T15:59:20+03:00"
-description = ""
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "Building Android app bundles"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 3
-[menu.docs_sidebar]
-weight = 1
+---
+categories:
+  - Build configuration
+date: '2019-03-31T15:59:20+03:00'
+description: ''
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+menu:
+  docs_sidebar:
+    weight: 1
+thumbnail: ''
+title: Building Android app bundles
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 3
+---
 
-+++
 You can build your app in [Android app bundle](https://developer.android.com/guide/app-bundle) (`.aab`) format for publishing to Google Play. When you upload your app in `.aab` format, app APKs will be dynamically created and optimized for user’s device configuration when the app is installed from Google Play Store.
 
 {{% notebox %}}

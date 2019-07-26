@@ -1,19 +1,21 @@
-+++
-categories = ["Publishing"]
-description = "Publish each new version of your web app to a custom subdomain."
-facebook_description = ""
-facebook_image = "/uploads/2019/01/default-thumb.png"
-facebook_title = ""
-thumbnail = ""
-title = "Publishing to Codemagic Static Pages"
-twitterDescription = ""
-twitter_image = "/uploads/2019/02/twitter.png"
-twitter_title = ""
-weight = 3
-[menu.docs_sidebar]
-weight = 1
+---
+categories:
+  - Publishing
+description: Publish each new version of your web app to a custom subdomain.
+facebook_description: ''
+facebook_image: /uploads/2019/01/default-thumb.png
+facebook_title: ''
+menu:
+  docs_sidebar:
+    weight: 1
+thumbnail: ''
+title: Publishing to Codemagic Static Pages
+twitter_image: /uploads/2019/02/twitter.png
+twitter_title: ''
+twitterDescription: ''
+weight: 3
+---
 
-+++
 You can publish your web app to a custom subdomain of `codemagic.app` for easy access.
 
 1. Go to **App settings > Publish > Codemagic Static Pages** to configure publishing to Codemagic Static Pages.  
