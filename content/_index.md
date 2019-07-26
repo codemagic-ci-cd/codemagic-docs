@@ -1,14 +1,4 @@
 ---
-category_names:
-  - Getting started with Codemagic CI/CD
-  - Build configuration
-  - Testing
-  - Code signing
-  - Publishing
-  - Custom script examples
-  - Troubleshooting
-  - Working in teams
-  - User settings
 description:
   Browse the Codemagic documentation for a quick overview of how to configure
   Codemagic to get the most out of it.

@@ -1,19 +1,16 @@
 nav#docs-menu
   .search.search--sidebar
-    input.search__input type="text" placeholder="Search"
+    input.search__input type=text placeholder="Search"
     .search__icon.search__icon--search.fas.fa-search
     .search__icon.search__icon--clear.fas.fa-times
-  {{ range $name := site.Home.Param "category_names" }}
-    {{ $categoryArticles := where site.Pages ".Params.categories" "intersect" (slice $name) }}
 
-    {{ with $categoryArticles }}
-      {{ $isInCategory := in $.Params.categories $name }}
-      li class={{ if $isInCategory }}open{{end}}
-        .category-name {{ $name }}
+  ul
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+      li class={{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }}
+        .category-name {{ .Name }}
         .category-posts
-          {{ range $categoryArticles }}
-            {{ $isActivePage := eq $.RelPermalink .RelPermalink }}
-            a class={{ if $isActivePage }}active{{ end }} href={{ .RelPermalink }} {{ .Title }}
+          {{ range where site.Pages "Section" .Identifier }}
+            a class={{ if eq $currentPage .}}active{{ end }} href={{ .RelPermalink }} {{ .Title }}
           {{ end }}
     {{ end }}
-  {{ end }}

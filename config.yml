@@ -23,6 +23,31 @@ buildDrafts: true
 defaultContentLanguage: en
 disable404: true
 
+sectionPagesMenu: main
+menu:
+  main:
+    - identifier: getting-started
+      name: Getting started with Codemagic CI/CD
+      weight: 1
+    - identifier: building
+      name: Build configuration
+      weight: 2
+    - identifier: testing
+      name: Testing
+      weight: 3
+    - identifier: code-signing
+      name: Code signing
+      weight: 4
+    - identifier: publishing
+      name: Publishing
+      weight: 5
+    - identifier: custom-scripts
+      name: Custom script examples
+      weight: 6
+    - identifier: troubleshooting
+      name: Troubleshooting
+      weight: 7
+
 mediaTypes:
   video/mp4:
     suffixes:
@@ -35,5 +60,3 @@ disableKinds:
   - taxonomy
   - taxonomyTerm
   - section
-
-  
