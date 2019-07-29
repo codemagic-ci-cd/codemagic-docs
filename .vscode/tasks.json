@@ -7,6 +7,9 @@
       "label": "build",
       "type": "shell",
       "command": "./build.sh",
+      "windows": {
+        "command": ".\\build.cmd"
+      },
       "group": {
         "kind": "build",
         "isDefault": true
@@ -17,6 +20,9 @@
       "label": "serve",
       "type": "shell",
       "command": "./serve.sh",
+      "windows": {
+        "command": ".\\serve.cmd"
+      },
       "group": "build",
       "isBackground": true,
       "problemMatcher": {
