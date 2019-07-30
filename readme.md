@@ -1,3 +1,8 @@
+# Codemagic public documentation
+
+Welcome to the Codemagic public documentation repository. As a Codemagic user, you can contribute to our documentation to improve it. All pull requests will be reviewed by the Codemagic team. 
+
+
 # Development
 
 requires [Hugo static site generator](https://gohugo.io) latest from [releases page](https://github.com/gohugoio/hugo/releases) or with Homebrew
