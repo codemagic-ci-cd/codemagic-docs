@@ -24,5 +24,5 @@ Preview the site in http://localhost:1313/ by launching:
 ./serve.sh
 ```
 
-It will usually refresh automatically when anything is changed.
+It will usually refresh automatically when anything is changed
 
