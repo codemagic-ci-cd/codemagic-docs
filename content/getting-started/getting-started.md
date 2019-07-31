@@ -4,7 +4,13 @@ title: Running the first build
 weight: 2
 ---
 
-Upon login, Codemagic will automatically display the list of apps in your repository. Select a Flutter app and start the very first build with preconfigured defaults by clicking **Start your first build**.
+Upon login, Codemagic will automatically display the list of apps in your repository. 
+
+{{% notebox %}}
+If you can't see your app listed, it may be because you don't have sufficient permissions or Codemagic has no access to your team or organization. Codemagic requires read/write permission to build your app. Contact your repository admin to review the settings.
+{{% /notebox %}}
+
+Select a Flutter app and start the very first build with preconfigured defaults by clicking **Start your first build**.
 
 {{< figure size="" src="../uploads/2019/07/app_dashboard.PNG" caption="Codemagic Applications page" >}}
 
