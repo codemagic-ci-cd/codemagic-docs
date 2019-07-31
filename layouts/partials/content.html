@@ -13,6 +13,14 @@
   {{ $in = "<img ([^>]*) ?src=\"./([^\"]+)\" ?([^/>]*) */?>" }}
   {{ $out = "<img $1 src=\"../$2\" $3 />" }}
   {{ $content = $content | replaceRE $in $out | safeHTML }}
+
+  {{ $in = "<a ([^>]*) ?href=\"../([^\"]+)\" ?([^/>]*) *>" }}
+  {{ $out = "<a $1 href=\"../../$2\" $3 />" }}
+  {{ $content = $content | replaceRE $in $out | safeHTML }}
+
+  {{ $in = "<a ([^>]*) ?href=\"./([^\"]+)\" ?([^/>]*) *>" }}
+  {{ $out = "<a $1 href=\"../$2\" $3 />" }}
+  {{ $content = $content | replaceRE $in $out | safeHTML }}
 {{ end }}
 
 <!-- replace all single images paragraph in content with figures, using alt for caption -->
