@@ -17,4 +17,4 @@ Then, fill in all the required fields.
 3. If the SSH key is password-protected, you’ll be also asked to enter the **SSH key password**.
 4. Click **Add app**.
 
-Your app will be then listed on the Applications page and you can immediately start running builds.
+Your app will be then listed on the Applications page and you can immediately start running builds. Note that in order to enable automatic builds, you will need to manually [set up webhooks](../building/automatic-build-triggering#webhooks).
