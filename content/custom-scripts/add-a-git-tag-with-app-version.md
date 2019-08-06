@@ -4,10 +4,10 @@ title: Add a Git tag with app version
 weight: 2
 ---
 
-You can use this **pre-publish** script to create a Git tag referencing your app version. The script will check if the build was successful before updating the app version.
+You can use this **pre-publish** script to create a Git tag referencing your app version and push it to your repository. Before creating the tag, the script will check if the build was successful.
 
-1. Save your Git service username and email address as [environment variables](https://docs.codemagic.io/building/environment-variables/) (e.g. `GIT_USERNAME` and `GIT_EMAIL`).
-2. Add the following **pre-publish** script.
+1. In **App settings > Environment variables**, save your Git service username and email address as [environment variables](https://docs.codemagic.io/building/environment-variables/) (e.g. `GIT_USERNAME` and `GIT_EMAIL`).
+2. Click on the + sign between **Build** and **Publish** and add the following **pre-publish** script.
 
 ```
        #!/usr/bin/env sh
