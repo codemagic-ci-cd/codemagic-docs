@@ -34,7 +34,7 @@ Under Automatic build triggering, you can select when to trigger builds.
 
 **Trigger on pull request update** (not supported for apps from custom sources). When checked, Codemagic will run the tests for the opened or updated pull request (merge request in GitLab jargon) without building the Android or the iOS app and pass the result back to the repository.
 
-**Trigger on tag creation** (currently supported for GitHub apps only). When checked, Codemagic will automatically build the tagged commit whenever you create a tag for this app. Note that the watched branch settings have no effect on tag builds.
+**Trigger on tag creation**. When checked, Codemagic will automatically build the tagged commit whenever you create a tag for this app. Note that the watched branch settings have no effect on tag builds.
 
 If you don't check any of these triggering options, you will have to run builds manually for this workflow.
 
