@@ -3,7 +3,7 @@ description:
   'Establish SSH access to the builder virtual machine to inspect your
   build.  '
 title: Accessing virtual machine via SSH
-weight: 1
+weight: 2
 ---
 
 Establishing SSH access to the virtual machine running the build is a secure way for inspecting your build during runtime and for a short time after the build has finished. Building in SSH mode gives you the following advantages:

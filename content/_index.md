@@ -5,10 +5,22 @@ description:
 title: Codemagic Documentation
 ---
 
-Welcome to the Codemagic documentation site!
+Welcome to the Codemagic community documentation!
 
-Here you'll find some essential information for setting up CI/CD for your Flutter app with [Codemagic](https://codemagic.io/). You'll also find step-by-step guides on various topics on our [blog](https://blog.codemagic.io/categories/tutorials/ 'Codemagic blog - Tutorials').
+Here you'll find some essential information for setting up continuous integration and continuous delivery for your Flutter app with [Codemagic](https://codemagic.io/). 
 
-The content of this site is constantly evolving. We're continuously updating it to provide more details and include new features.
+There are also step-by-step guides on various topics available on our [blog](https://blog.codemagic.io/categories/tutorials/ 'Codemagic blog - Tutorials').
 
-You are more than welcome to join our [Slack workspace](https://join.slack.com/t/flutterci/shared_invite/enQtNDcwODIzMjM4MzI2LWJhNWRkMjZlMjk1YzgzNGUwZjQ5NmUxYTI3YjQzODdlMGU1Nzg5OWQ3NGM3NDdhNGIyNjY1YTUzZTgyNTJkMTc 'Slack community for CI/CD and Flutter') to reach out to us and meet fellow Flutter enthusiasts.
+## Powered by the community
+
+As a Codemagic user, you can contribute to our documentation to improve it. Our documentation is available in a public repository on [GitHub](https://github.com/codemagic-ci-cd/codemagic-docs).
+
+To make a contribution, fork the repository, make your changes and start a pull request. All pull requests will be reviewed by the Codemagic team. Read more from the repository's [readme](https://github.com/codemagic-ci-cd/codemagic-docs/blob/master/readme.md).
+
+## Codemagic Slack workspace
+
+If you have problems with setting up Codemagic CI/CD or want to talk to fellow Flutter developers, you are more than welcome to join our [Slack workspace](http://bit.ly/cm-slack 'Slack community for CI/CD and Flutter'). 
+
+## Codemagic status page
+
+We post information about maintenances and known issues with the service on our [status page](https://twitter.com/CodemagicStatus).
