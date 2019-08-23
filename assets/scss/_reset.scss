@@ -36,3 +36,4 @@ b, strong { font-family: $font-family-bold; }
 a { text-decoration: none; transition: color 300ms linear; }
 input { &:focus { outline: none; } }
 img { max-width: 100%; height: auto; vertical-align: middle; border-radius: 2px; }
+em { font-style: italic }
