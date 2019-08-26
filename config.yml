@@ -47,6 +47,9 @@ menu:
     - identifier: troubleshooting
       name: Troubleshooting
       weight: 7
+    - identifier: releases-and-versions
+      name: Releases and versions
+      weight: 8
 
 mediaTypes:
   video/mp4:
