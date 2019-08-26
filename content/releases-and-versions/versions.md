@@ -6,7 +6,7 @@ weight: 2
 **Dart and Flutter**
 
 - Dart `2.4.0`
-- Flutter `$HOME/programs/flutter`, `1.7.8+hotfix.4`
+- Flutter `1.7.8+hotfix.4 ($HOME/programs/flutter)`
 
 **iOS tools**
 
@@ -38,16 +38,16 @@ weight: 2
 
 - Android tools `$HOME/programs/android-sdk-macosx`
 
-**Other applications**
+**Other tools**
 
-- Wget
-- Curl
-- SSH
-- Git
-- Homebrew
-- Python `2.7.16`, `3.7.4`
-- Node `v10.16.0`
-- Npm `6.10.2`
-- Yarn `1.17.3`
-- Gem `2.5.2.2`
-- Ruby `2.3.6p384`
+- wget
+- curl
+- ssh
+- git
+- homebrew
+- python `2.7.16`, `3.7.4`
+- node `v10.16.0`
+- npm `6.10.2`
+- yarn `1.17.3`
+- gem `2.5.2.2`
+- ruby `2.3.6p384`

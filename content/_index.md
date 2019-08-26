@@ -15,7 +15,7 @@ There are also step-by-step guides on various topics available on our [blog](htt
 
 As a Codemagic user, you can contribute to our documentation to improve it. Our documentation is available in a public repository on [GitHub](https://github.com/codemagic-ci-cd/codemagic-docs).
 
-To make a contribution, fork the repository, make your changes and start a pull request. All pull requests will be reviewed by the Codemagic team. Read more from the repository's [readme](https://github.com/codemagic-ci-cd/codemagic-docs/blob/master/readme.md).
+To contribute, fork the repository, make your changes and start a pull request. All pull requests will be reviewed by the Codemagic team. Read more from the repository's [readme](https://github.com/codemagic-ci-cd/codemagic-docs/blob/master/readme.md).
 
 ## Codemagic Slack workspace
 
@@ -23,4 +23,4 @@ If you have problems with setting up Codemagic CI/CD or want to talk to fellow F
 
 ## Codemagic status page
 
-We post information about maintenances and known issues with the service on our [status page](https://twitter.com/CodemagicStatus).
+We post information about maintenances and issues with the service on our [status page](https://twitter.com/CodemagicStatus).
