@@ -5,8 +5,8 @@ weight: 2
 ---
 **Dart and Flutter**
 
-- Dart `2.4.0`
-- Flutter `1.7.8+hotfix.4 ($HOME/programs/flutter)`
+- Dart `2.5.0`
+- Flutter `1.9.1+hotfix.2 ($HOME/programs/flutter)`
 
 **iOS tools**
 
