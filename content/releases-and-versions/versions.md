@@ -32,7 +32,7 @@ weight: 2
 
 `11.0    (/Applications/Xcode-11.app)`
 
-- CocoaPods (1.7.5)
+- CocoaPods `1.7.5`
 
 **Android tools**
 
