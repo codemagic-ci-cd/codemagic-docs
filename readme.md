@@ -4,7 +4,7 @@ Welcome to the [Codemagic](https://codemagic.io/start/) public documentation rep
 
 ## Getting started
 
-To contribute to Codemagic documentation, fork the repository, make your changes and start a pull request. All pull requests will be reviewed by the Codemagic team. 
+To contribute, fork the repository, make your changes and start a pull request. All pull requests will be reviewed by the Codemagic team. 
 
 ### Common issues page
 

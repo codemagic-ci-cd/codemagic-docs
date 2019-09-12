@@ -42,7 +42,7 @@ By default, Codemagic runs your Flutter Driver tests on iOS simulator. You can a
 
 ### Enabling or disabling tests
 
-By default, testing is enabled on Codemagic. You can enable or disable running tests by checking or unchecking the respective option in App settings > Test:
+You can enable or disable running tests by checking or unchecking the respective option in App settings > Test:
 
 - Enable Flutter test
 - Enable Flutter Driver
