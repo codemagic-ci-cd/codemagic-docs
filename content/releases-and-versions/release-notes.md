@@ -8,7 +8,7 @@ weight: 1
 
 ### Support for macOS and Linux apps
 
-Building Flutter desktop apps for macOS and Linux is now supported on Codemagic, see instructions [here](../building/building-for-the-desktop). You can also watch a [demo](https://blog.codemagic.io/codemagic-ci-cd-releases-support-for-flutter-desktop/) of building a desktop app on Codemagic and installing and running it on macOS.
+Building Flutter desktop apps for macOS and Linux is now supported on Codemagic, see instructions [here](../building/building-for-desktop). You can also watch a [demo](https://blog.codemagic.io/codemagic-ci-cd-releases-support-for-flutter-desktop/) of building a desktop app on Codemagic and installing and running it on macOS.
 
 ## August 2019
 
