@@ -16,7 +16,7 @@ Codemagic can detect your Flutter desktop project if it meets the following cond
 ## Build configuration
 
 1. Navigate to **App settings > Build**.
-2. In **Flutter version** dropdown, select **channel Master** as recommended by Flutter. 
+2. Select which Flutter version to use in the **Flutter version** dropdown. Flutter for desktop is available in **channel Master**. 
 3. Under **Build for platforms**, select the platforms for which to build. You can select both **macOS** and **Linux** or only one of them.
 4. Select the build mode.
 5. Click **Save** to finish build configuration. You are now ready to run the build.
