@@ -4,7 +4,11 @@ title: Building for desktop
 weight: 6
 ---
 
-You can use Codemagic to build Flutter desktop apps for macOS and Linux. Building Windows apps is not yet supported. Read more about Flutter's desktop support in Flutter's wiki about [desktop shells](https://github.com/flutter/flutter/wiki/Desktop-shells).
+You can use Codemagic to build Flutter desktop apps for macOS and Linux. Building Windows apps is not yet supported. 
+
+{{% notebox %}}
+Read more about Flutter's desktop support and the required settings for enabling it in Flutter's wiki about [desktop shells](https://github.com/flutter/flutter/wiki/Desktop-shells).
+{{% /notebox %}}
 
 ## Project structure requirements
 
