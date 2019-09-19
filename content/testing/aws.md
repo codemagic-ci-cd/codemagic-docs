@@ -5,7 +5,7 @@ title: Testing on AWS Device Farm
 weight: 5
 ---
 
-You can run Flutter integration tests on physical Android and iOS devices on [AWS Device Farm](https://aws.amazon.com/device-farm/) thanks to our integration with [Sylph](https://github.com/mmcc007/sylph). 
+You can run Flutter integration tests on physical Android and iOS devices on [AWS Device Farm](https://aws.amazon.com/device-farm/) thanks to the integration with [Sylph](https://github.com/mmcc007/sylph). 
 
 {{% notebox %}}
 Using AWS Device Farm requires having an AWS account. You are billed separately by AWS for device usage. See the AWS Device Farm [pricing page](https://aws.amazon.com/device-farm/pricing/) for more information.
