@@ -20,7 +20,7 @@ Using AWS Device Farm requires having an AWS account. You are billed separately 
 We strongly advise you to set up an IAM user with a policy to access Device Farm and no other AWS permissions. Don't use your AWS root account credentials to link Codemagic with Device Farm.
 {{% /notebox %}}
 
-## AWS Device Farm Setup on Codemagic
+## AWS Device Farm setup on Codemagic
 
 1. Navigate to **App settings** > **Test**.
 2. At the top of the section, select **Enable Flutter Driver tests** to enable running integration tests for this workflow.
