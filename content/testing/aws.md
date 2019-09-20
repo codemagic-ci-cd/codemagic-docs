@@ -28,6 +28,8 @@ We strongly advise you to set up an IAM user with a policy to access Device Farm
 4. Enter your **AWS access key ID** and **AWS secret access Key** to the respective fields.
 5. Click **Save** to finish the setup.
 
+For testing on **iOS devices**, additional configuration is needed. Follow the instructions in the [iOS builds](https://github.com/mmcc007/sylph#ios-builds) section in Sylph readme and add the required environment variables to Codemagic in **App settings** > **Environment variables**.
+
 During the build, Codemagic searches the repository for a `sylph.yaml` file to configure the AWS Device Farm test run and generates a default configuration file if no existing configuration is found. By default, we run the tests in your `project_root/test_driver` folder on Google Pixel 2 (OS 8.0.0) regardless of the build platforms you have selected. 
 
 ## Test logs
