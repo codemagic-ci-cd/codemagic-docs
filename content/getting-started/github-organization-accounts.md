@@ -1,7 +1,7 @@
 ---
 description: Grant your GitHub organization access to Codemagic CI/CD oAuth app
 title: GitHub organization accounts
-weight: 6
+weight: 7
 ---
 
 Organizations can restrict access to third-party OAuth applications. As a member, you can request that organization admins authorize the application for use in that organization.
