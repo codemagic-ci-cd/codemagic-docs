@@ -2,7 +2,7 @@
 description:
   Ensure your Flutter project is ready for continuous integration and continuous delivery
 title: Flutter project requirements
-weight: 8
+weight: 9
 ---
 
 To ensure that your app is ready for implementing continuous integration and continuous delivery and for automating the release process with Codemagic, please follow these guides in Flutter documentation:
