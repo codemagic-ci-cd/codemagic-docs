@@ -35,7 +35,7 @@ If you revoke access to previously shared repositories, you will still see all y
 
 ### Team apps
 
-- The restrictions you configure in GitHub app apply to the repositories you share in your team on Codemagic if you don't have GitHub integration enabled for your team in Team settings > Team integrations.
+- The restrictions you configure in GitHub app apply to the repositories you share in your team on Codemagic only if you don't have the GitHub integration enabled for your team in Team settings > Team integrations.
 - If you have enabled the GitHub integration for your team, the connected account makes use of OAuth permissions and the restrictions you configure in GitHub app do not apply.
 
 {{% notebox %}}
