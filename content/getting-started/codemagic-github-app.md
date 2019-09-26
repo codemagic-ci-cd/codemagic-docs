@@ -29,14 +29,15 @@ You can change repository access settings in Codemagic CI/CD app on GitHub anyti
 
 ## Revoking access to previously shared repositories
 
-The settings you configure in Codemagic CI/CD GitHub app prevail over the OAuth integration settings.
+The settings you configure in Codemagic CI/CD GitHub app prevail over the GitHub OAuth integration settings.
 
 If you revoke access to previously shared repositories, you will still see all your apps and build history but won’t be able to build the apps to which Codemagic no longer has access. Such apps will be grayed out and will show up on the Applications page with the **Removed from repository** filter. Apps connected through your Bitbucket or GitLab account as well as apps added from custom sources will remain available as is.
 
 ### Team apps
 
-- The restrictions you configure in GitHub app apply to the repositories you share in your team on Codemagic only if you don't have the GitHub integration enabled for your team in Team settings > Team integrations.
-- If you have enabled the GitHub integration for your team, the connected account makes use of OAuth permissions and the restrictions you configure in GitHub app do not apply.
+The restrictions you configure in GitHub app apply to the repositories you share in your team on Codemagic only if you don't have the GitHub integration enabled for your team in Team settings > Team integrations.
+
+If you have enabled the GitHub integration for your team, the connected account makes use of OAuth permissions and the restrictions you configure in GitHub app do not apply.
 
 {{% notebox %}}
 Currently, Codemagic has no way of knowing whether it has access to team apps before the build is started. Due to this, team apps to which you have revoked access in the GitHub app may not appear grayed out in the UI.
@@ -46,8 +47,4 @@ Currently, Codemagic has no way of knowing whether it has access to team apps be
 
 You can disable the Codemagic CI/CD GitHub app integration in Codemagic by navigating to User settings > Integrations > GitHub App and clicking **Disconnect**. This annuls all settings configured for the Codemagic app in GitHub but won't delete your buid history.
 
-The GitHub app integration is also disabled when you uninstall Codemagic CI/CD app in GitHub. Uninstalling the app does not delete you build history. 
-
-
-
-
+The GitHub app integration is also disabled when you **uninstall** the Codemagic CI/CD app in GitHub. You can still log in to Codemagic with the GitHub app and see your build history if Codemagic CI/CD remains an **authorized GitHub app** in GitHub. Please note that unless you have other active integrations (e.g. GitHub, Bitbucket or GitLab OAuth integration), your Codemagic account will be deleted in two weeks. You can cancel account deletion by navigating to User settings > Delete account and clicking **Cancel deletion** before the two weeks are up.
