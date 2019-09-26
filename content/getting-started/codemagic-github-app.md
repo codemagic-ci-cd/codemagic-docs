@@ -24,7 +24,7 @@ You can change repository access settings in Codemagic CI/CD app on GitHub anyti
 
 **Option 2. Sign up to Codemagic using GitHub app**
 
-1. Click **Join using GitHub App** at [codemagic.io/signup](codemagic.io/signup). You will be authorized via GitHub without granting any access to your repositories. 
+1. Click **Join using GitHub App** at [codemagic.io/signup](https://codemagic.io/signup). You will be authorized via GitHub without granting any access to your repositories. 
 2. In Codemagic, go to User settings > Integrations and click **Install GitHub App**. You will be redirected to GitHub to select the repositories you want to grant access to and finish the installation. **Note** that you can also proceed without installing the app. This way, you can only build apps shared with you in a team you belong to or add apps from custom sources.
 
 ## Revoking access to previously shared repositories
