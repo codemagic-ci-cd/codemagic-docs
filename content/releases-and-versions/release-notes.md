@@ -4,6 +4,12 @@ title: Release notes
 weight: 1
 ---
 
+## October 2019
+
+### Concurrent builds for teams
+
+Teams on Codemagic now have Magic seats available in addition to regular team seats. Purchasing a Magic seat increases your team's build concurrency by 1, allowing to run several builds in parallel. Read more about Magic seats on our [blog](https://blog.codemagic.io/get-additional-build-concurrency-with-magic-seats/) and check out the pricing details [here](https://codemagic.io/pricing/).
+
 ## September 2019
 
 ### Codemagic CI/CD GitHub app (beta)
