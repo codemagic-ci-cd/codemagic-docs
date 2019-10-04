@@ -1,7 +1,7 @@
 ---
 description: You can use custom scripts to publish app artifacts to external services.
 title: Publish build artifacts to Amazon S3
-weight: 3
+weight: 4
 ---
 
 You can use custom scripts to publish your app artifacts to external sources. Here's an example for publishing to [Amazon S3](https://aws.amazon.com/s3/).

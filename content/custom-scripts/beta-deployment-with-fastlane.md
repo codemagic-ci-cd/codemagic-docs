@@ -1,7 +1,7 @@
 ---
 description: Run fastlane scripts to deploy to beta distribution services 
 title: Run fastlane for beta deployment
-weight: 4
+weight: 5
 ---
 
 If your Flutter app has an existing *fastlane* setup for beta deployment, you can easily run *fastlane* scripts as part of the Codemagic build process and publish to Crashlytics, for example. Note that our builder machines have *fastlane* pre-installed. You can use the pre-publish script example below to execute `fastlane beta` for successful Android builds.
