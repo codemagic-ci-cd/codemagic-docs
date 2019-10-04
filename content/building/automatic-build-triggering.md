@@ -28,11 +28,13 @@ To add a new branch pattern:
 
 Under Automatic build triggering, you can select when to trigger builds.
 
-![](../uploads/trigger_on_tag_creation.png)
+![](../uploads/build_triggers.png)
 
 **Trigger on every push**. When checked, a build will be started every time you commit code to any of the tracked branches.
 
-**Trigger on pull request update** (not supported for apps from custom sources). When checked, Codemagic will run the tests for the opened or updated pull request (merge request in GitLab jargon) without building the Android or the iOS app and pass the result back to the repository.
+**Trigger on pull request update** (not supported for apps from custom sources). When checked, your workflow is run when a pull request is opened or updated.
+
+**Skip building platforms on pull request update**. When checked, only tests are run for the opened or updated pull request (merge request in GitLab jargon) without building for platforms.
 
 **Trigger on tag creation**. When checked, Codemagic will automatically build the tagged commit whenever you create a tag for this app. Note that the watched branch settings have no effect on tag builds.
 
