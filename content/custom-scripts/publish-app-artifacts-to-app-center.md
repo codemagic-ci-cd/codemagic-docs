@@ -33,14 +33,14 @@ appcenter distribute release \
 **Example script for publishing ipa**
 ```
 #!/usr/bin/env zsh
-​
+
 echo 'Installing App Center CLI tools'
 npm install -g appcenter-cli
-​
+
 echo "Find build artifacts"
 ipaPath=$(find build -name "*.ipa" | head -1)
 echo "Found ipa at $ipaPath"
-​
+
 echo "Publishing $ipaPath to App Center"
 appcenter distribute release \
     --group Collaborators \
