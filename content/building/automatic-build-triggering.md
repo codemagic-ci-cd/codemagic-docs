@@ -28,7 +28,7 @@ To add a new branch pattern:
 
 Under Automatic build triggering, you can select when to trigger builds.
 
-**Trigger on every push**. When checked, a build will be started every time you commit code to any of the tracked branches.
+**Trigger on push**. When checked, a build will be started every time you commit code to any of the tracked branches.
 
 **Trigger on pull request update** (not supported for apps from custom sources). When checked, your workflow is run when a pull request is opened or updated to verify the resulting merge commit. 
 
