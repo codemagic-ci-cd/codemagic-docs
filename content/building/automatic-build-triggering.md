@@ -20,7 +20,7 @@ To add a new branch pattern:
 1. Navigate to **App settings >** **Build triggers**.
 2. Enter a pattern matching the name of one or more branches in the project.
 3. Select **Include** or **Exclude** from the dropdown to limit the set of targeted branches by either including or excluding the matching branches.
-4. For pull request builds, select whether the tracked branch is the **Source** or the **Target** branch of the pull request. This setting has no effect on other types of builds.
+4. For **pull request builds**, select whether the tracked branch is the **Source** or the **Target** branch of the pull request. This setting has no effect on other types of builds.
 5. Click **Add pattern** to save it. You can always edit or delete added patterns.
 6. Click **Save** at the end of the section for the changes to take effect.
 
@@ -28,13 +28,13 @@ To add a new branch pattern:
 
 Under Automatic build triggering, you can select when to trigger builds.
 
-![](../uploads/build_triggers.png)
-
 **Trigger on every push**. When checked, a build will be started every time you commit code to any of the tracked branches.
 
-**Trigger on pull request update** (not supported for apps from custom sources). When checked, your workflow is run when a pull request is opened or updated.
+**Trigger on pull request update** (not supported for apps from custom sources). When checked, your workflow is run when a pull request is opened or updated to verify the resulting merge commit. 
 
-**Skip building platforms on pull request update**. When checked, only tests are run for the opened or updated pull request (merge request in GitLab jargon) without building for platforms. When unchecked, we build for platforms and generate artifacts but publishing to app stores is not available.
+* For triggering pull requests, you can specify whether each branch pattern matches the **source** or the **target** branch of the pull request.
+
+* If you want to only run tests for pull requests and skip building for platforms, select **Run tests only** under Build > Build for platforms.
 
 **Trigger on tag creation**. When checked, Codemagic will automatically build the tagged commit whenever you create a tag for this app. Note that the watched branch settings have no effect on tag builds.
 
