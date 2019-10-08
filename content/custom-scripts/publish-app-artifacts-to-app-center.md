@@ -20,14 +20,19 @@ echo "Find build artifacts"
 apkPath=$(find build -name "*.apk" | head -1)
 echo "Found apk at $apkPath"
 
-echo "Publishing $apkPath to App Center"
-appcenter distribute release \
-    --group Collaborators \
-    --file $apkPath \
-    --release-notes 'App submission via Codemagic' \
-    --app <username_or_organization>/<application_identifier> \
-    --token $APP_CENTER_TOKEN \
-    --quiet
+if [[ -z ${apkPath} ]]
+then
+    echo "No ipas were found, skip publishing to App Center"
+else
+    echo "Publishing $apkPath to App Center"
+    appcenter distribute release \
+        --group Collaborators \
+        --file "${apkPath}" \
+        --release-notes 'App submission via Codemagic' \
+        --app <username_or_organization>/<application_identifier> \
+        --token "${APP_CENTER_TOKEN}" \
+        --quiet
+fi
 ```
 
 **Example script for publishing ipa**
@@ -41,14 +46,19 @@ echo "Find build artifacts"
 ipaPath=$(find build -name "*.ipa" | head -1)
 echo "Found ipa at $ipaPath"
 
-echo "Publishing $ipaPath to App Center"
-appcenter distribute release \
-    --group Collaborators \
-    --file $ipaPath \
-    --release-notes 'App submission via Codemagic' \
-    --app <username_or_organization>/<application_identifier> \
-    --token $APP_CENTER_TOKEN \
-    --quiet
+if [[ -z ${ipaPath} ]]
+then
+    echo "No ipas were found, skip publishing to App Center"
+else
+    echo "Publishing $ipaPath to App Center"
+    appcenter distribute release \
+        --group Collaborators \
+        --file "${ipaPath}" \
+        --release-notes 'App submission via Codemagic' \
+        --app <username_or_organization>/<application_identifier> \
+        --token "${APP_CENTER_TOKEN}" \
+        --quiet
+fi
 ```
 
 This way, you can use Codemagic to automate publishing of your Android or iOS app to App Center.
