@@ -28,4 +28,4 @@ When building for iOS, the build gets stuck after showing `Xcode build done` in 
 https://github.com/flutter/flutter/issues/28415
 https://github.com/flutter/flutter/issues/35988
 
-Downgrading to earlier Flutter versions can help.
+This issue is known to be fixed on the master channel.
