@@ -14,4 +14,5 @@ jobs:
       - run: sudo dpkg -i hugo_0.58.3_Linux-64bit.deb
       - run: sudo apt-get install -f
       - run: ./deploy.sh
-        working-directory: $GITHUB_WORKSPACE
+        working-directory: ${{ github.workspace }}
+
