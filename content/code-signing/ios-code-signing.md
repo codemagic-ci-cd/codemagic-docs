@@ -26,7 +26,7 @@ For successful signing, the certificate and the provisioning profile must match 
 
 In short, the purpose of the different provisioning profiles is the following:
 
-- **Development**: for testing the app on a real device while developing. The app must be built in **debug** mode.
+- **Development**: for testing the app on a real device while developing. 
 - **Ad Hoc:** for distributing the app to non-TestFlight testers (e.g. via [Testmagic](https://testmagic.io/)). The app must be built in **release** mode.
 - **App Store**: for distributing the app via TestFlight or the App Store. The app must be built in **release** mode.
 
