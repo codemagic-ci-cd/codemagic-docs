@@ -241,7 +241,8 @@ body {
             p, ul, ol, pre, hr, figure { margin: 20px auto; }
             img {
                 border-radius: 2px;
-                box-shadow: 0 0 30px transparentize(black, .9);
+                filter: drop-shadow(0 0 10px transparentize(black, 0.9));
+                -webkit-filter: drop-shadow(0 0 10px transparentize(black, 0.9));
                 max-width: 100%;
             }
             a { color: #158fdc; }
