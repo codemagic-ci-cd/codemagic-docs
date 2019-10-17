@@ -18,3 +18,12 @@ Then, fill in all the required fields.
 4. Click **Add app**.
 
 Your app will be then listed on the Applications page and you can immediately start running builds. Note that in order to enable automatic builds, you will need to manually [set up webhooks](../building/automatic-build-triggering#webhooks).
+
+## Repositories behind firewall
+
+To allow Codemagic access the private repository, the following IP addresses need to be whitelisted:
+
+1. 34.74.32.93
+2. 192.159.66.80/28
+
+The first IP address is used by our backend for checking the branches in the repository. The second IP addresses are used by our builder servers to download the code and build it.
