@@ -53,7 +53,7 @@ Alternatively, you can use [environment variables](https://docs.codemagic.io/bui
 
         #!/usr/bin/env sh
         set -e # exit on first failed commandset
-        echo $FCI_KEYSTORE_FILE | base64 --decode > $FCI_BUILD_DIR/keystore.jks
+        echo $FCI_KEYSTORE_FILE | base64 --decode > $FCI_BUILD_DIR/keystore.jks
 
 4.  Set your signing configuration in `build.gradle` as follows:
 
