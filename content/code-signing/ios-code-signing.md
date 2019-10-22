@@ -41,7 +41,7 @@ To set up automatic code signing:
 3. Select **Automatic** as the code signing method.
 4. Enter your **Apple ID** (Apple Developer portal username) and **Apple Developer portal password**.
 5. Select the provisioning profile type. Note that **Development** requires building your app in **debug** mode, while **Ad hoc** and **App store** require selecting **release** mode in the Build section.
-6. You can also enter your app’s **bundle identifier** (optional). By default, Codemagic detects it automatically from your `project.pbxproj`file.
+6. You can also enter your app's **bundle identifier** (optional). By default, Codemagic detects it automatically from your `project.pbxproj`file.
 7. Click **Save** to finish the setup.
 
 {{< figure size="medium" src="../uploads/2019/03/automatic_code_signing2.PNG" caption="Automatic code signing setup" >}}

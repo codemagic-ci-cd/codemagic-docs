@@ -36,7 +36,7 @@ There are several approaches you can use to prepare your Flutter project for cod
 
 ### Configure signing in build.gradle
 
-You can follow the instructions in [Flutter’s documentation](https://flutter.io/docs/deployment/android#signing-the-app) to configure code signing in Gradle. It's vital that you use the variable names suggested in Flutter documentation as Codemagic will reference them during the build. However, make sure to not commit your `key.properties` file to the repository, Codemagic will generate and populate the `key.properties` file during the build based on the input you provide in the UI.
+You can follow the instructions in [Flutter's documentation](https://flutter.io/docs/deployment/android#signing-the-app) to configure code signing in Gradle. It's vital that you use the variable names suggested in Flutter documentation as Codemagic will reference them during the build. However, make sure to not commit your `key.properties` file to the repository, Codemagic will generate and populate the `key.properties` file during the build based on the input you provide in the UI.
 
 ### Configure signing using environment variables
 
