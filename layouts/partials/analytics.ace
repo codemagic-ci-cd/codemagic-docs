@@ -1,0 +1,9 @@
+= javascript
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag(
+    'config',
+    '{{ site.Param "googleAnalyticsTrackingId" }}',
+    {'optimize_id': '{{ site.Param "googleTagManagerTrackingId" }}'},
+  );

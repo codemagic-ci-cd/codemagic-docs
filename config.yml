@@ -11,6 +11,8 @@ params:
   defaultTwitterImage: /uploads/2019/02/twitter.png
   headerLinkTitle: Documentation
   locale: en_GB
+  googleAnalyticsTrackingId: UA-125963734-2
+  googleTagManagerTrackingId: null
 imaging:
   resampleFilter: linear
   quality: 90
