@@ -12,7 +12,7 @@ params:
   headerLinkTitle: Documentation
   locale: en_GB
   googleAnalyticsTrackingId: UA-125963734-2
-  googleTagManagerTrackingId: null
+  googleTagManagerTrackingId: ''
 imaging:
   resampleFilter: linear
   quality: 90
