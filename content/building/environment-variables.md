@@ -44,7 +44,7 @@ Here you'll find some of the read-only environment variables explained.
 | CI                       | true                                                                                                            |
 | CONTINUOUS_INTEGRATION   | true                                                                                                            |
 | BUILD_NUMBER             | Number of the build for this project in Codemagic                                                               |
-| FLUTTER_ROOT             | Absolute path to flutter SDK                                                                                    |
+| FLUTTER_ROOT             | Absolute path to Flutter SDK                                                                                    |
 | FCI_BRANCH               | The current branch being built, for pull requests it is the destination branch                                  |
 | FCI_COMMIT               | Commit hash that is currently being built by Codemagic, for pull request builds it is the hash of the source commit |
 | FCI_CLONE_UNSHALLOW      | If set to `true`, performs a full clone of the repository instead of top 50 commits                              |
