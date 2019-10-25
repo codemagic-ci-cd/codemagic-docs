@@ -43,7 +43,8 @@ When building for iOS, the build gets stuck after showing `Xcode build done` in 
 **Xcode**: N/A
 
 **Solution**: This is a known issue that occurs randomly and can be traced back to Flutter:
-https://github.com/flutter/flutter/issues/28415
-https://github.com/flutter/flutter/issues/35988
+
+* https://github.com/flutter/flutter/issues/28415
+* https://github.com/flutter/flutter/issues/35988
 
 This issue is known to be fixed on the `master` channel.
