@@ -38,7 +38,7 @@ When building for iOS, the build gets stuck after showing `Xcode build done` in 
     Running Xcode build...                                          
     Xcode build done.                                           203.6s
 
-**Flutter**: `1.7.8+hotfix.3`, `1.7.8+hotfix.4`, `1.9.1+hotfix.2`, `1.9.1+hotfix.4`
+**Flutter**: `1.7.8+hotfix.3`, `1.7.8+hotfix.4`, `1.9.1+hotfix.2`, `1.9.1+hotfix.4`, `1.9.1+hotfix.5`
 
 **Xcode**: N/A
 
