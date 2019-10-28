@@ -4,3 +4,5 @@ baseURL: https://docs.codemagic.io
 params:
   googleAnalyticsTrackingId: UA-125963734-1
   googleTagManagerTrackingId: GTM-TW39Z9J
+  googleOptimizeTrackingId: GTM-TW39Z9J
+  appUserUrl: https://api.codemagic.io/user/

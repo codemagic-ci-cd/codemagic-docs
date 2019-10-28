@@ -7,12 +7,14 @@ params:
   twitterShareHandle: codemagicio
   facebookAuthorHandle: codemagicio
   appLoginLink: https://codemagic.io/
+  appUserUrl: http://localhost:5000/user
   defaultFacebookImage: /uploads/2019/01/default-thumb.png
   defaultTwitterImage: /uploads/2019/02/twitter.png
   headerLinkTitle: Documentation
   locale: en_GB
   googleAnalyticsTrackingId: UA-125963734-2
-  googleTagManagerTrackingId: ''
+  googleTagManagerTrackingId: GTM-PFJ47PW
+  googleOptimizeTrackingId: 'GTM-PZPXGKT'
 imaging:
   resampleFilter: linear
   quality: 90

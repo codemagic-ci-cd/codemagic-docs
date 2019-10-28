@@ -1,9 +1,31 @@
 = javascript
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag(
-    'config',
-    '{{ site.Param "googleAnalyticsTrackingId" }}',
-    {'optimize_id': '{{ site.Param "googleTagManagerTrackingId" }}'},
-  );
+  const analyticsId = '{{ site.Param "googleAnalyticsTrackingId" }}'
+  const gtagId = '{{ site.Param "googleOptimizeTrackingId" }}'
+  const appUserUrl = '{{ site.Param "appUserUrl" }}'
+
+  window.dataLayer = window.dataLayer || []
+  function gtag() {
+    window.dataLayer.push(arguments)
+  }
+  gtag('config', analyticsId, {
+    optimize_id: gtagId,
+    custom_map: { dimension1: 'userState' }
+  })
+  gtag('js', new Date())
+
+  ;(async function() {
+    let userState = null
+    try {
+      const r = await fetch(appUserUrl, {
+        mode: 'cors',
+        credentials: 'include',
+        headers: { Accept: 'application/json' }
+      })
+      const response = await r.json()
+      userState = response.user.ok ? 'Logged In' : 'Guest'
+    } catch (error) {
+      userState = 'Unknown'
+    } finally {
+      gtag('event', 'FetchUser', { 'userState': userState, 'non_interaction': true })
+    }
+  })()
