@@ -15,7 +15,8 @@
       const r = await fetch(appUserUrl, { mode: 'cors', credentials: 'include', headers: { 'Accept': 'application/json' } })
       const response = await r.json()
       if (response.user.ok) {
-        gtag('event', 'Detect User', { 'event_label': 'User', 'user_state': 'User', 'non_interaction': true })
+        window.dataLayer.push({'user_state': 'User'})
+        gtag('event', 'Detect User', { 'event_label': 'User', 'non_interaction': true })
       }
     } catch (error) {}
   })()
