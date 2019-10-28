@@ -14,7 +14,7 @@ params:
   locale: en_GB
   googleAnalyticsTrackingId: UA-125963734-2
   googleTagManagerTrackingId: GTM-PFJ47PW
-  googleOptimizeTrackingId: 'GTM-PZPXGKT'
+  googleOptimizeId: 'GTM-PZPXGKT'
 imaging:
   resampleFilter: linear
   quality: 90

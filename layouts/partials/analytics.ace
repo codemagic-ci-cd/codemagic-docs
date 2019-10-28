@@ -1,31 +1,21 @@
 = javascript
   const analyticsId = '{{ site.Param "googleAnalyticsTrackingId" }}'
-  const gtagId = '{{ site.Param "googleOptimizeTrackingId" }}'
+  const gtagId = '{{ site.Param "googleOptimizeId" }}'
   const appUserUrl = '{{ site.Param "appUserUrl" }}'
 
   window.dataLayer = window.dataLayer || []
   function gtag() {
     window.dataLayer.push(arguments)
   }
-  gtag('config', analyticsId, {
-    optimize_id: gtagId,
-    custom_map: { dimension1: 'userState' }
-  })
+  gtag('config', analyticsId, { 'optimize_id': gtagId, 'custom_map': { 'dimension1': 'user_state' } })
   gtag('js', new Date())
 
   ;(async function() {
-    let userState = null
     try {
-      const r = await fetch(appUserUrl, {
-        mode: 'cors',
-        credentials: 'include',
-        headers: { Accept: 'application/json' }
-      })
+      const r = await fetch(appUserUrl, { mode: 'cors', credentials: 'include', headers: { 'Accept': 'application/json' } })
       const response = await r.json()
-      userState = response.user.ok ? 'Logged In' : 'Guest'
-    } catch (error) {
-      userState = 'Unknown'
-    } finally {
-      gtag('event', 'FetchUser', { 'userState': userState, 'non_interaction': true })
-    }
+      if (response.user.ok) {
+        gtag('event', 'Detect User', { 'event_label': 'User', 'user_state': 'User', 'non_interaction': true })
+      }
+    } catch (error) {}
   })()
