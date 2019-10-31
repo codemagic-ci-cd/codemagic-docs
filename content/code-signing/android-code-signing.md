@@ -8,7 +8,11 @@ Code signing is required for distributing your Android app to Google Play store.
 
 ## Requirements
 
-To receive a signed release APK of your app on Codemagic, you will have to 1) [prepare your Flutter project for code signing](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing), and 2) [set up Android code signing in Codemagic UI](https://docs.codemagic.io/code-signing/android-code-signing/#setting-up-android-code-signing-on-codemagic).
+To receive a signed release APK of your app on Codemagic, you will have to:
+ 
+1. [Prepare your Flutter project for code signing](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing)
+
+2. [Set up Android code signing in Codemagic UI](https://docs.codemagic.io/code-signing/android-code-signing/#setting-up-android-code-signing-on-codemagic)
 
 For code signing, you need to upload the **keystore** containing your **certificate** and **key**. See the instructions for generating the keystore [here](#generating-a-keystore).
 
@@ -16,7 +20,8 @@ As a keystore can hold multiple keys, each key in it must have an **alias**. Bot
 
 {{% notebox %}}
 
-Please note that every app must be signed using the same key throughout its lifespan.
+- Please note that every app must be signed using the same key throughout its lifespan.
+- If you're building Android app bundles, you additionally need to [enroll your app into app signing by Google Play](https://support.google.com/googleplay/android-developer/answer/7384423).
 
 {{% /notebox %}}
 
@@ -34,11 +39,11 @@ You need to upload the keystore and provide the keystore password, key alias and
 
 There are several approaches you can use to prepare your Flutter project for code signing, we have described two of these in this section. Note that whichever approach you use, you still need to [set up Android code signing](https://docs.codemagic.io/code-signing/android-code-signing/#setting-up-android-code-signing-on-codemagic) in the Codemagic UI.
 
-### Configure signing in build.gradle
+### Option 1. Configure signing in `build.gradle`
 
-You can follow the instructions in [Flutter’s documentation](https://flutter.io/docs/deployment/android#signing-the-app) to configure code signing in Gradle. It's vital that you use the variable names suggested in Flutter documentation as Codemagic will reference them during the build. However, make sure to not commit your `key.properties` file to the repository, Codemagic will generate and populate the `key.properties` file during the build based on the input you provide in the UI.
+You can follow the instructions in [Flutter's documentation](https://flutter.io/docs/deployment/android#signing-the-app) to configure code signing in Gradle. It's vital that you use the variable names suggested in Flutter documentation as Codemagic will reference them during the build. However, make sure to not commit your `key.properties` file to the repository, Codemagic will generate and populate the `key.properties` file during the build based on the input you provide in the UI.
 
-### Configure signing using environment variables
+### Option 2. Configure signing using environment variables
 
 Alternatively, you can use [environment variables](https://docs.codemagic.io/building/environment-variables/ 'Environment variables') to prepare your app for code signing.
 
@@ -49,11 +54,11 @@ Alternatively, you can use [environment variables](https://docs.codemagic.io/bui
         FCI_KEY_PASSWORD=myKeypassword
 
 2.  Upload the contents of your base64-encoded keystore file to Codemagic as an environment variable with the name `FCI_KEYSTORE_FILE`.
-3.  Add a custom script for decoding the keystore file stored in `FCI_KEYSTORE_FILE`. For example, click on the + icon before **Test** and paste the following script into the **Post-clone script** field:
+3.  Add a custom script for decoding the keystore file stored in `FCI_KEYSTORE_FILE`. For example, click on the '+' icon before **Test** and paste the following script into the **Post-clone script** field:
 
         #!/usr/bin/env sh
         set -e # exit on first failed commandset
-        echo $FCI_KEYSTORE_FILE | base64 --decode > $FCI_BUILD_DIR/keystore.jks
+        echo $FCI_KEYSTORE_FILE | base64 --decode > $FCI_BUILD_DIR/keystore.jks
 
 4.  Set your signing configuration in `build.gradle` as follows:
 
@@ -95,10 +100,8 @@ You are required to upload your keystore file and provide details about your key
 
 {{< figure size="" src="../uploads/2019/03/code signing.PNG" caption="" >}}
 
-1. Navigate to the Publish section in app settings.
+1. Navigate to the **Publish** section in app settings.
 2. Click **Android code signing**.
 3. Upload your release keystore file.
 4. Enter the **keystore password**, **key alias** and **key password**.
 5. Click **Save** to finish the setup.
-
-{{% notebox %}}Please note that every app must be signed using the same key throughout its lifespan. {{% /notebox %}}

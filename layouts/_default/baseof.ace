@@ -25,4 +25,5 @@ html
           main
             = yield main
       footer#footer
+      {{ partial "analytics" . }}
     {{ partial "footer" . }}

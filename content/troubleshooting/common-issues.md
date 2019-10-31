@@ -12,11 +12,11 @@ This is the list of the most common issues that may cause iOS code signing error
 
 * **The uploaded certificate and provisioning profile do not match.** For example, you're using a development certificate and a distribution profile to sign the build, or the certificate used for signing is not included in the provisioning profile.
 
-* **You don’t have the required entitlements enabled for your app in Apple Developer portal.** In such cases, you will often see an error message similar to this one:
+* **You don't have the required entitlements enabled for your app in Apple Developer portal.** In such cases, you will often see an error message similar to this one:
 
-    > Code Signing Error: “Runner” requires a provisioning profile with the Push Notifications feature. Select a provisioning profile in the Signing & Capabilities editor.
+    > Code Signing Error: "Runner" requires a provisioning profile with the Push Notifications feature. Select a provisioning profile in the Signing & Capabilities editor.
 
-    Check your app’s entitlements by going to **Apple Developer portal > Certificates, identifier & profiles > Identifiers > App ID**.
+    Check your app's entitlements by going to **Apple Developer portal > Certificates, identifier & profiles > Identifiers > App ID**.
 
 * **You haven't specified the iOS scheme to be used for the `archive` action of Xcode build.**  This applies when your app has custom iOS schemes. By default, Codemagic builds the `Runner` scheme, but you can use the `FCI_FLUTTER_SCHEME` [environment variable](..\building\environment-variables) to specify another scheme.
 
@@ -38,12 +38,13 @@ When building for iOS, the build gets stuck after showing `Xcode build done` in 
     Running Xcode build...                                          
     Xcode build done.                                           203.6s
 
-**Flutter**: `1.7.8+hotfix.3`, `1.7.8+hotfix.4`, `1.9.1+hotfix.2`, `1.9.1+hotfix.4`
+**Flutter**: `1.7.8+hotfix.3`, `1.7.8+hotfix.4`, `1.9.1+hotfix.2`, `1.9.1+hotfix.4`, `1.9.1+hotfix.5`
 
 **Xcode**: N/A
 
 **Solution**: This is a known issue that occurs randomly and can be traced back to Flutter:
-https://github.com/flutter/flutter/issues/28415
-https://github.com/flutter/flutter/issues/35988
+
+* https://github.com/flutter/flutter/issues/28415
+* https://github.com/flutter/flutter/issues/35988
 
 This issue is known to be fixed on the `master` channel.

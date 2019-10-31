@@ -12,4 +12,4 @@ You can publish your web app to a custom subdomain of `codemagic.app` for easy a
 3. Check **Publish artifacts even if tests fail** to publish the build even when one or more tests fail. Leaving this option unchecked will publish only successful builds that pass the tests, if any.
 4. Click **Save** to finish the setup. On saving, we'll check the availability of the subdomain name and inform you if the name is already taken.
 
-Now each time you run a build of your web app on Codemagic, you’ll see the web app artifact being published to the web page in Codemagic logs and can immediately access the app at the specified URL.
+Now each time you run a build of your web app on Codemagic, you'll see the web app artifact being published to the web page in Codemagic logs and can immediately access the app at the specified URL.

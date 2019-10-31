@@ -25,4 +25,4 @@ You can connect several repository accounts (GitHub, GitHub app, GitLab, Bitbuck
 2. Click on your account avatar at the bottom left and open **User settings**.
 3. In the **Integrations** section, click **Connect** next to the account you would like to connect to Codemagic.
 
-Once you have connected another account to your Codemagic account, you can log in to Codemagic with either of these accounts. Email notifications with build status reports will be sent to the email address that’s connected with the repository from which you build.
+Once you have connected another account to your Codemagic account, you can log in to Codemagic with either of these accounts. Email notifications with build status reports will be sent to the email address that's connected with the repository from which you build.

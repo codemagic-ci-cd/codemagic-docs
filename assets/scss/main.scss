@@ -317,6 +317,16 @@ body {
               }
             }
 
+            blockquote {
+              overflow: auto;
+              padding: 20px 20px;
+              border-left: 10px solid $grey-bg;
+              background: $grey-bg-light;
+
+              p:first-child {margin-top: 0}
+              p:last-child {margin-bottom: 0}
+            }
+
             .table-wrap {
                 overflow-x: auto;
             }

@@ -40,3 +40,12 @@ Preview the site in http://localhost:1313/ by launching:
 
 It will usually refresh automatically when anything is changed
 
+For testing things that require a subdomain, add a subdomain to your hosts file:
+
+```bash
+# example for MacOS
+
+sudo sh -c "echo '127.0.0.1\tdocs.codemagic.local' >> /etc/hosts"
+```
+
+and preview the site in http://docs.codemagic.local:1313/ instead.

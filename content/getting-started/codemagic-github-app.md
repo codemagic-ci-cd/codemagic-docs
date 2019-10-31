@@ -31,7 +31,7 @@ You can change repository access settings in Codemagic CI/CD app on GitHub anyti
 
 The settings you configure in Codemagic CI/CD GitHub app prevail over the GitHub OAuth integration settings.
 
-If you revoke access to previously shared repositories, you will still see all your apps and build history but won’t be able to build the apps to which Codemagic no longer has access. Such apps will be grayed out and will show up on the Applications page with the **Removed from repository** filter. Apps connected through your Bitbucket or GitLab account as well as apps added from custom sources will remain available as is.
+If you revoke access to previously shared repositories, you will still see all your apps and build history but won't be able to build the apps to which Codemagic no longer has access. Such apps will be grayed out and will show up on the Applications page with the **Removed from repository** filter. Apps connected through your Bitbucket or GitLab account as well as apps added from custom sources will remain available as is.
 
 ### Team apps
 
