@@ -24,7 +24,7 @@ You can get started with YAML easily if you have an existing project set up on C
 2. Expand the **Advanced configuration (beta)** tab.
 3. Click **Download configuration** and save the generated `codemagic.yaml` file to a suitable location. 
 
-Note that in order to use the file for build configuration on Codemagic, it has to be committed to your repository.
+Note that in order to use the file for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the project. 
 
 ## Encrypting sensitive data
 
@@ -41,9 +41,20 @@ An example of an encryp†ed value:
 
 ```Encrypted(Z0FBQUFBQmRyY1FLWXIwVEhqdWphdjRhQ0xubkdoOGJ2bThkNmh4YmdXbFB3S2wyNTN2OERoV3c0YWU0OVBERG42d3Rfc2N0blNDX3FfblZxbUc4d2pWUHJBSVppbXNXNC04U1VqcGlnajZ2VnJVMVFWc3lZZ289)```
 
+## Building with YAML
+
+When detected in repository, `codemagic.yaml` is automatically used for configuring builds that are triggered in response to the events defined in the file. Any configuration in the UI is discarded.
+
+You can also use `codemagic.yaml` for manual builds.
+
+1. In your app settings, click **Start new build**.
+2. In the **Specify build configuration** popup, click **Select workflow from codemagic.yaml**.
+3. Depending on what you have configured in the YAML file, select the **branch** and the **workflow** to be run.
+4. Finally, click **Start new build** to run the build.
+
 ## Template
 
-This is the default template of `codemagic.yaml`.
+This is how `codemagic.yaml` looks like.
 
     workflows:
       my-workflow:
@@ -94,7 +105,7 @@ This is the default template of `codemagic.yaml`.
           - build/**/outputs/**/mapping.txt
           - flutter_drive.log
 
-`Codemagic.yaml` is divided into workflows. Each workflow describes the entire build pipeline from start to finish. Define all your workflows for a project under `workflows`. 
+`Codemagic.yaml` can be used to define several workflows for building a project. Each workflow describes the entire build pipeline from triggers to publishing.
 
     workflows:
       my-workflow:                # workflow name
@@ -109,7 +120,7 @@ This is the default template of `codemagic.yaml`.
 
 The main sections in each workflow are as follows:
 
-* **environment**: Contains the list of environment variables and enables to specify the version of Flutter used for building. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
+* **environment**: Contains your environment variables and enables to specify the version of Flutter used for building. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
 
         environment:
           vars:                 # Define your environment variables here
@@ -121,19 +132,19 @@ The main sections in each workflow are as follows:
             CM_KEY_ALIAS_USERNAME: Encrypted(...)
           flutter: stable       # Define the channel name or version
 
-* **cache**: Enables to define the paths to be cached on Codemagic. See the recommended paths for [dependency caching](./dependency-caching).
+* **cache**: Enables to define the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](./dependency-caching).
 
         cache:
           cache_paths:
             - $FCI_BUILD_DIR/build
             - $FCI_BUILD_DIR/build/dir/to/cache
 
-* **triggering**: Define the events for automatic build triggering and the watched branches. If no events are defined, you can start builds only manually. 
+* **triggering**: Defines the events for automatic build triggering and the watched branches. If no events are defined, you can start builds only manually. 
 
-  >Note that for **pull request builds**, it is required to specify whether the watched branch is the source or the target of pull request.
-
-  >A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches. 
-
+    {{% notebox %}}
+* Note that for **pull request builds**, it is required to specify whether the watched branch is the source or the target of pull request.
+* A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches.
+    {{% /notebox %}}
 
         triggering:
           events:                # List the events that trigger builds
@@ -151,7 +162,50 @@ The main sections in each workflow are as follows:
               include: true
               source: true
 
-* **scripts**: Define the scripts to be run during the build. 
+* **scripts**: Contains the scripts and commands to be run during the build. This is where you can specify the commands to test, build and code sign your project. Below is an example for building a Flutter app in debug mode for Android.
 
         scripts:
-          - ...
+          - |
+            # set up debug key.properties
+            keytool -genkeypair \
+              -alias androiddebugkey \
+              -keypass android \
+              -keystore ~/.android/debug.keystore \
+              -storepass android \
+              -dname 'CN=Android Debug,O=Android,C=US' \
+              -keyalg 'RSA' \
+              -keysize 2048 \
+              -validity 10000
+          - |
+            # set up local properties
+            echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+          - flutter packages pub get
+          - flutter test
+          - flutter build apk --release
+
+    {{% notebox %}}
+You can run scripts in languages other than `shell` by defining the languge with a shebang line or by launching a script file present in your repository.
+    {{% /notebox %}}
+
+* **publishing**: For every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play and Codemagic Static Pages.
+
+        publishing:
+          email:
+            recipients:
+              - name@example.com
+          slack:
+            channel: '#slack-test'
+            notify_on_build_start: true
+          google_play:                        # For Android app
+            credentials: Encrypted(...)
+            track: alpha
+          static_page:                        # For web app
+            subdomain: my-subdomain
+
+* **artifacts**: Determines the paths and names of the artifacts for publishing.
+
+        artifacts:
+          - build/**/outputs/**/*.apk
+          - build/**/outputs/**/*.aab
+          - build/**/outputs/**/mapping.txt
+          - flutter_drive.log
