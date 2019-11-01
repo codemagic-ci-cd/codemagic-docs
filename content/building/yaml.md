@@ -198,17 +198,6 @@ The main sections in each workflow are as follows:
   * The pattern can match several files or folders. If it picks up several files or folders with the same name, the top level file or folder name will be suffixed with `_{number}`.
   * If one of the patterns includes another pattern, duplicate artifacts are not created.
   * `apk`, `aab`, `ipa`, `aar`, `app`, proguard mapping (`mapping.txt`), `flutter_drive.log`, `jar`, `zip`, `xarchive` and `dSYM.zip` files will be available as separate items in the Artifacts section on the build page. The rest of the artifacts will be included in an archive with the following name pattern: `{project-name}_{version}_artifacts.zip`.
-  * When you're building an Android app bundle, we will automatically run a script that generates a signed `app-universal.apk` which is required for publishing to Google Play.
-  AAB ehitamise puhul on meil eksporditud ka universal APK genereerimiseks script
-Ja see paneb .aab kõrvale -universal.apk
-                # generate signed universal apk with user specified keys
-                ~/codemagic-build-scripts/android/generate-universal-apks \\
-                  --ks /tmp/keystore.keystore \\
-                  --ks-pass $CM_KEYSTORE_PASSWORD \\
-                  --ks-key-alias $CM_KEY_ALIAS_USERNAME \\
-                  --key-pass $CM_KEY_ALIAS_PASSWORD \\
-                  --pattern 'build/**/outputs/**/*.aab'
-See on kohustuslik, kui ehitad android app bundle'i ja tahad ka publishida Google Play'sse
 
 * **publishing**: For every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play and Codemagic Static Pages.
 
