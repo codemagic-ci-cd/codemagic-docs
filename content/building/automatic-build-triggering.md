@@ -1,6 +1,6 @@
 ---
 title: Automatic build triggering
-weight: 1
+weight: 2
 ---
 
 In order to fully automate your CI/CD pipeline, you can set up automatic build triggering by configuring which branches to track and when to trigger builds.
