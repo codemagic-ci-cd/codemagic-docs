@@ -1,22 +1,61 @@
 = javascript
+  const userFetchTimeoutMs = 3000
   const analyticsId = '{{ site.Param "googleAnalyticsTrackingId" }}'
-  const gtagId = '{{ site.Param "googleOptimizeId" }}'
+  const optimizeId = '{{ site.Param "googleOptimizeId" }}'
   const appUserUrl = '{{ site.Param "appUserUrl" }}'
 
   window.dataLayer = window.dataLayer || []
   function gtag() {
     window.dataLayer.push(arguments)
   }
-  gtag('config', analyticsId, { 'optimize_id': gtagId, 'custom_map': { 'dimension1': 'user_state' } })
-  gtag('js', new Date())
-
   ;(async function() {
     try {
-      const r = await fetch(appUserUrl, { mode: 'cors', credentials: 'include', headers: { 'Accept': 'application/json' } })
-      const response = await r.json()
+      const response = await fetchJson(appUserUrl, userFetchTimeoutMs)
       if (response.user.ok) {
-        window.dataLayer.push({'user_state': 'User'})
-        gtag('event', 'Detect User', { 'event_label': 'User', 'non_interaction': true })
+        window.dataLayer.push({ user_state: 'User' })
       }
-    } catch (error) {}
+    } finally {
+      gtag('config', analyticsId, {
+        optimize_id: optimizeId,
+        custom_map: { dimension1: 'user_state' }
+      })
+      gtag('js', new Date())
+    }
   })()
+
+  async function fetchJson(url, timeout) {
+    const options = {
+      mode: 'cors',
+      credentials: 'include',
+      headers: { Accept: 'application/json' }
+    }
+    const controller = new AbortController()
+    const signal = controller.signal
+
+    setTimeout(() => controller.abort(), timeout)
+
+    const response = await fetch(url, { ...options, signal })
+    return response.json()
+  }
+
+  !(function(f, b, e, v, n, t, s) {
+    if (f.fbq) return
+    n = f.fbq = function() {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+    }
+    if (!f._fbq) f._fbq = n
+    n.push = n
+    n.loaded = !0
+    n.version = '2.0'
+    n.queue = []
+    t = b.createElement(e)
+    t.async = !0
+    t.src = v
+    s = b.getElementsByTagName(e)[0]
+    s.parentNode.insertBefore(t, s)
+  })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
+  fbq('init', '2000132876774057')
+  fbq('track', 'PageView')
+    
+noscript
+  img height="1" width="1" src="https://www.facebook.com/tr?id=2000132876774057&ev=PageView&noscript=1"

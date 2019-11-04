@@ -13,8 +13,7 @@ params:
   headerLinkTitle: Documentation
   locale: en_GB
   googleAnalyticsTrackingId: UA-125963734-2
-  googleTagManagerTrackingId: GTM-PFJ47PW
-  googleOptimizeId: 'GTM-PZPXGKT'
+  googleOptimizeId: 'GTM-M67KWVX'
 imaging:
   resampleFilter: linear
   quality: 90
