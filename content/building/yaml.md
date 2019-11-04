@@ -3,7 +3,7 @@ title: Advanced configuration with YAML
 weight: 1
 ---
 
-`Codemagic.yaml` is an advanced option for customizing the build and configuring all your workflows in a single file. The file can be committed to version control, and when detected in repository, will be used to configure the build instead of the settings in the UI.
+`codemagic.yaml` is an advanced option for customizing the build and configuring all your workflows in a single file. The file can be committed to version control, and when detected in repository, will be used to configure the build instead of the settings in the UI.
 
 {{% notebox %}}
 
