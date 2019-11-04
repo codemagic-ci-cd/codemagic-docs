@@ -51,7 +51,7 @@ You can also use `codemagic.yaml` for manual builds.
 1. In your app settings, click **Start new build**.
 2. In the **Specify build configuration** popup, click **Select workflow from codemagic.yaml**.
 3. Depending on what you have configured in the YAML file, select the **branch** and the **workflow** to be run.
-4. Finally, click **Start new build** to run the build.
+4. Finally, click **Start new build** to build the workflow.
 
 ## Template
 
@@ -83,7 +83,9 @@ This is the skeleton structure of `codemagic.yaml`.
             recipients:
               - name@example.com
 
-You can use`Codemagic.yaml` to define several workflows for building a project. Each workflow describes the entire build pipeline from triggers to publishing.
+### Workflows
+
+You can use `Codemagic.yaml` to define several workflows for building a project. Each workflow describes the entire build pipeline from triggers to publishing.
 
     workflows:
       my-workflow:                # workflow ID
@@ -96,121 +98,132 @@ You can use`Codemagic.yaml` to define several workflows for building a project. 
         publishing:
         artifacts:
 
-The main sections in each workflow are as follows:
+The main sections in each workflow are described below.
 
-* **environment**: Contains your environment variables and enables to specify the version of Flutter used for building. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
+### Environment
 
-        environment:
-          vars:                 # Define your environment variables here
-            PUBLIC_ENV_VAR: value here
-            SECRET_ENV_VAR: Encrypted(...)
-            CM_KEYSTORE: Encrypted(...)
-            CM_KEYSTORE_PASSWORD: Encrypted(...)
-            CM_KEY_ALIAS_PASSWORD: Encrypted(...)
-            CM_KEY_ALIAS_USERNAME: Encrypted(...)
-          flutter: stable       # Define the channel name or version
+`environment:` Contains your environment variables and enables to specify the version of Flutter used for building. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
 
-* **cache**: Enables to define the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](./dependency-caching).
+    environment:
+      vars:                 # Define your environment variables here
+        PUBLIC_ENV_VAR: value here
+        SECRET_ENV_VAR: Encrypted(...)
+        CM_KEYSTORE: Encrypted(...)
+        CM_KEYSTORE_PASSWORD: Encrypted(...)
+        CM_KEY_ALIAS_PASSWORD: Encrypted(...)
+        CM_KEY_ALIAS_USERNAME: Encrypted(...)
+      flutter: stable       # Define the channel name or version
 
-        cache:
-          cache_paths:
-            - $FCI_BUILD_DIR/build
-            - $FCI_BUILD_DIR/build/dir/to/cache
+### Cache
 
-* **triggering**: Defines the events for automatic build triggering and the watched branches. If no events are defined, you can start builds only manually. 
+`cache:` Enables to define the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](./dependency-caching).
 
-    A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches. Note that for **pull request builds**, it is required to specify whether the watched branch is the source or the target of pull request.
+    cache:
+      cache_paths:
+        - $FCI_BUILD_DIR/build
+        - $FCI_BUILD_DIR/build/dir/to/cache
 
-        triggering:
-          events:                # List the events that trigger builds
-            - push
-            - pull_request
-            - tag
-          branch_patterns:       # Include or exclude watched branches
-            - pattern: '*'
-              include: true
-              source: true
-            - pattern: excluded-target
-              include: false
-              source: false
-            - pattern: included-source
-              include: true
-              source: true
+### Triggering
 
-* **scripts**: Contains the scripts and commands to be run during the build. This is where you can specify the commands to test, build and code sign your project. Below is an example for building a Flutter app in debug mode for Android.
+`triggering:` Defines the events for automatic build triggering and the watched branches. If no events are defined, you can start builds only manually. 
 
-        scripts:
-          - |
-            # set up debug key.properties
-            keytool -genkeypair \
-              -alias androiddebugkey \
-              -keypass android \
-              -keystore ~/.android/debug.keystore \
-              -storepass android \
-              -dname 'CN=Android Debug,O=Android,C=US' \
-              -keyalg 'RSA' \
-              -keysize 2048 \
-              -validity 10000
-          - |
-            # set up local properties
-            echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
-          - flutter packages pub get
-          - flutter test
-          - flutter build apk --release
+A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches. Note that for **pull request builds**, it is required to specify whether the watched branch is the source or the target of pull request.
 
+    triggering:
+      events:                # List the events that trigger builds
+        - push
+        - pull_request
+        - tag
+      branch_patterns:       # Include or exclude watched branches
+        - pattern: '*'
+          include: true
+          source: true
+        - pattern: excluded-target
+          include: false
+          source: false
+        - pattern: included-source
+          include: true
+          source: true
 
-    You can run scripts in languages other than shell (`sh`) by defining the languge with a shebang line or by launching a script file present in your repository.
+### Scripts
 
-    For example, you can specify a different scripting language like this:
+`scripts:` Contains the scripts and commands to be run during the build. This is where you can specify the commands to test, build and code sign your project. Below is an example for building a Flutter app in debug mode for Android.
 
-        scripts:
-        - |
-          #!/usr/local/bin/dart
+    scripts:
+      - |
+        # set up debug key.properties
+        keytool -genkeypair \
+          -alias androiddebugkey \
+          -keypass android \
+          -keystore ~/.android/debug.keystore \
+          -storepass android \
+          -dname 'CN=Android Debug,O=Android,C=US' \
+          -keyalg 'RSA' \
+          -keysize 2048 \
+          -validity 10000
+      - |
+        # set up local properties
+        echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+      - flutter packages pub get
+      - flutter test
+      - flutter build apk --release
 
-          void main() {
+You can run scripts in languages other than shell (`sh`) by defining the languge with a shebang line or by launching a script file present in your repository.
 
-    **Note on building Anroid app bundles**
+For example, you can write a build script with dart like this:
 
-    If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk`, which is required for publishing to Google Play, during the YAML file export. If you're creating a YAML file from a scratch, add the following script to receive this file:
+    scripts:
+    - |
+      #!/usr/local/bin/dart
 
-        # fetch codemagic helper scripts
-        rm -rf ~/codemagic-build-scripts
-        git clone https://github.com/NevercodeHQ/codemagic-build-scripts.git ~/codemagic-build-scripts/ --depth 1
-        
-        # generate signed universal apk with user specified keys
-        ~/codemagic-build-scripts/android/generate-universal-apks \
-          --ks /tmp/keystore.keystore \
-          --ks-pass $CM_KEYSTORE_PASSWORD \
-          --ks-key-alias $CM_KEY_ALIAS_USERNAME \
-          --key-pass $CM_KEY_ALIAS_PASSWORD \
-          --pattern 'build/**/outputs/**/*.aab'
+      void main() {
+
+**Note on building Android app bundles**
+
+If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. This file is required for publishing to Google Play. If you're creating a YAML file from a scratch, add the script below to receive this file:
+
+    # fetch codemagic helper scripts
+    rm -rf ~/codemagic-build-scripts
+    git clone https://github.com/NevercodeHQ/codemagic-build-scripts.git ~/codemagic-build-scripts/ --depth 1
+    
+    # generate signed universal apk with user specified keys
+    ~/codemagic-build-scripts/android/generate-universal-apks \
+      --ks /tmp/keystore.keystore \
+      --ks-pass $CM_KEYSTORE_PASSWORD \
+      --ks-key-alias $CM_KEY_ALIAS_USERNAME \
+      --key-pass $CM_KEY_ALIAS_PASSWORD \
+      --pattern 'build/**/outputs/**/*.aab'
   
-* **artifacts**: Configure the paths and names of the artifacts you would like to use in the following steps, e.g. for publishing, or have available for download on the build page. All paths are relative to the clone directory, but absolute paths are supported as well. You can also use environment variables in artifact patterns.
+### Artifacts
+
+`artifacts:` Configure the paths and names of the artifacts you would like to use in the following steps, e.g. for publishing, or have available for download on the build page. All paths are relative to the clone directory, but absolute paths are supported as well. You can also use environment variables in artifact patterns.
 
 
-        artifacts:
-          - build/**/outputs/**/*.apk                   # relative path for a project in root directory
-          - build/**/outputs/**/*.aab
-          - build/**/outputs/**/mapping.txt
-          - flutter_drive.log
-          - subfolder_name/build/**/outputs/**/*.apk    # relative path for a project in a subfolder
+    artifacts:
+      - build/**/outputs/**/*.apk                   # relative path for a project in root directory
+      - build/**/outputs/**/*.aab
+      - build/**/outputs/**/mapping.txt
+      - flutter_drive.log
+      - subfolder_name/build/**/outputs/**/*.apk    # relative path for a project in subfolder
 
-  * The pattern can match several files or folders. If it picks up several files or folders with the same name, the top level file or folder name will be suffixed with `_{number}`.
-  * If one of the patterns includes another pattern, duplicate artifacts are not created.
-  * `apk`, `aab`, `ipa`, `aar`, `app`, proguard mapping (`mapping.txt`), `flutter_drive.log`, `jar`, `zip`, `xarchive` and `dSYM.zip` files will be available as separate items in the Artifacts section on the build page. The rest of the artifacts will be included in an archive with the following name pattern: `{project-name}_{version}_artifacts.zip`.
+* The pattern can match several files or folders. If it picks up files or folders with the same name, the top level file or folder name will be suffixed with `_{number}`.
+* If one of the patterns includes another pattern, duplicate artifacts are not created.
+* `apk`, `aab`, `ipa`, `aar`, `app`, proguard mapping (`mapping.txt`), `flutter_drive.log`, `jar`, `zip`, `xarchive` and `dSYM.zip` files will be available as separate items in the Artifacts section on the build page. The rest of the artifacts will be included in an archive with the following name pattern: `{project-name}_{version}_artifacts.zip`.
 
-* **publishing**: For every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play and Codemagic Static Pages.
+### Publishing
 
-        publishing:
-          email:
-            recipients:
-              - name@example.com
-          slack:
-            channel: '#slack-test'
-            notify_on_build_start: true
-          google_play:                        # For Android app
-            credentials: Encrypted(...)
-            track: alpha
-          static_page:                        # For web app
-            subdomain: my-subdomain
+`publishing:` For every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play and Codemagic Static Pages.
+
+    publishing:
+      email:
+        recipients:
+          - name@example.com
+      slack:
+        channel: '#slack-test'
+        notify_on_build_start: true
+      google_play:                        # For Android app
+        credentials: Encrypted(...)
+        track: alpha
+      static_page:                        # For web app
+        subdomain: my-subdomain
 
