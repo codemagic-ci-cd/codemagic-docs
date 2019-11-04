@@ -48,10 +48,11 @@ When detected in repository, `codemagic.yaml` is automatically used for configur
 
 You can also use `codemagic.yaml` for manual builds.
 
-1. In your app settings, click **Start new build**.
-2. In the **Specify build configuration** popup, click **Select workflow from codemagic.yaml**.
-3. Depending on what you have configured in the YAML file, select the **branch** and the **workflow** to be run.
-4. Finally, click **Start new build** to build the workflow.
+1. In your app settings, click **Start new build**. 
+2. In the **Specify build configuration** popup, select a **branch**.
+3. If a `codemagic.yaml` file is found in that branch, you can click **Select workflow from codemagic.yaml**.
+4. Then select the YAML **workflow**.
+5. Finally, click **Start new build** to build the workflow.
 
 ## Template
 
@@ -170,13 +171,15 @@ A branch pattern can match the name of a particular branch, or you can use wildc
 
 You can run scripts in languages other than shell (`sh`) by defining the languge with a shebang line or by launching a script file present in your repository.
 
-For example, you can write a build script with dart like this:
+For example, you can write a build script with Dart like this:
 
     scripts:
-    - |
-      #!/usr/local/bin/dart
+        - |
+          #!/usr/local/bin/dart
 
-      void main() {
+          void main() {
+            print('Hello, World!');
+          }
 
 **Note on building Android app bundles**
 
