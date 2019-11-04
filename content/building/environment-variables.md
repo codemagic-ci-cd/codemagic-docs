@@ -4,7 +4,7 @@ description:
   not want to store in the repository. You can also use Codemagic read-only environment
   variables to customize your builds.
 title: Environment variables
-weight: 2
+weight: 3
 ---
 
 Environment variables are useful for storing information that you do not want to store in the repository, such as your credentials or workflow-specific data. In addition, you can make use of a number of read-only environment variables that Codemagic exports to customize your builds.
