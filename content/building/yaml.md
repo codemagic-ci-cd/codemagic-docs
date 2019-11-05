@@ -86,7 +86,7 @@ This is the skeleton structure of `codemagic.yaml`.
 
 ### Workflows
 
-You can use `Codemagic.yaml` to define several workflows for building a project. Each workflow describes the entire build pipeline from triggers to publishing.
+You can use `codemagic.yaml` to define several workflows for building a project. Each workflow describes the entire build pipeline from triggers to publishing.
 
     workflows:
       my-workflow:                # workflow ID
