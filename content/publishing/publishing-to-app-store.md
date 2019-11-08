@@ -1,6 +1,6 @@
 ---
 description: Deploy the Flutter app to App Store and TestFlight
-title: Publishing to App Store
+title: App Store Connect
 weight: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Publish each new version of your web app to a custom subdomain.
-title: Publishing to Codemagic Static Pages
+title: Codemagic Static Pages
 weight: 3
 ---
 

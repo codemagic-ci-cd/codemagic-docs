@@ -1,6 +1,6 @@
 ---
 description: Deploy the Flutter app to Google Play
-title: Publishing to Google Play
+title: Google Play
 weight: 2
 ---
 
