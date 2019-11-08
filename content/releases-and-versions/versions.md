@@ -5,7 +5,7 @@ weight: 2
 ---
 **Dart and Flutter**
 
-- Dart `2.5.2`
+- Dart `2.6.0`
 - Flutter `1.9.1+hotfix.6 ($HOME/programs/flutter)`
 
 **iOS tools**
@@ -26,7 +26,9 @@ weight: 2
 
 `11.1 (11A1027) (/Applications/Xcode-11.1.app)`
 
-`11.2 (11B44) (/Applications/Xcode-11.2.app)`
+`11.2 (11B52) (/Applications/Xcode-11.2.app)`
+
+`11.2.1 (11B53) (/Applications/Xcode-11.2.1.app)`
 
 
 - CocoaPods `1.8.4`
@@ -40,12 +42,14 @@ weight: 2
 - wget `1.20.3`
 - curl `7.54.0`
 - ssh `7.9p1`
-- git `2.23.0`
-- homebrew `2.1.14`
-- python `2.7.16`
-- python3 `3.7.4`
+- git `2.24.0`
+- homebrew `2.1.16`
+- python `2.7.17`
+- python3 `3.7.5`
 - node `12.10.0`
-- npm `6.11.3`
+- npm `6.13.0`
 - yarn `1.19.1`
-- gem `2.5.2.2`
-- ruby `2.3.6p384`
+- gem `3.0.3`
+- ruby `2.6.5p114`
+- firebase `7.6.2`
+- gradle `5.5.1`
