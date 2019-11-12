@@ -14,7 +14,7 @@ Using AWS Device Farm requires having an AWS account. You are billed separately 
 ## Requirements
 
 * An IAM user with Device Farm permissions is required. Follow the instructions outlined in the [setup document](https://docs.aws.amazon.com/devicefarm/latest/developerguide/setting-up.html) to create an IAM user with access to Device Farm and make note of the **access key ID** and **secret access key**.
-* `sylph.yaml` file in the repository for AWS Device Farm configuration (optional). The `sylph.yaml` template is available on [GitHub](https://github.com/mmcc007/sylph/blob/master/example/sylph.yaml).
+* `sylph.yaml` file in the repository for AWS Device Farm configuration (optional). The `sylph.yaml` templates are available on [GitHub](https://github.com/mmcc007/sylph/tree/master/example).
 
 {{% notebox %}}
 We strongly advise you to set up an IAM user with a policy to access Device Farm and no other AWS permissions. Don't use your AWS root account credentials to link Codemagic with Device Farm.
