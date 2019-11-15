@@ -4,7 +4,23 @@ title: Release notes
 weight: 1
 ---
 
+## November 2019
+
+### Make builds public
+
+You can now share your Codemagic builds publicly via a **direct link** to the build or by displaying a **build status badge** in your repository. Anyone accessing the link will be able to see the build logs and download build artifacts. This is a great option for sharing your open-source projects and getting feedback from fellow Flutter developers.
+
+This feature is workflow-specific. In your Workflow settings, click the **Make builds public** toggle to make all existing and future build logs and artifacts of the workflow publicly accessible. Your app and its settings will remain private. Note that direct links to build artifacts and log files will remain accessible even when you disable the feature.
+
+### Download build step logs
+
+We have added the option to download the log of each build step. This makes it easier to view very large log files, search inside them or compare the logs of successful and failed builds.
+
 ## October 2019
+
+### SMS verification for two-factor authentication
+
+Codemagic supports receiving verification codes for two-factor authentication via SMS. This is a good option for those who don’t have their Apple device at hand but have registered a trusted phone number to receive verification codes. If you have multiple trusted phone numbers available, you can choose the number to which the verification code will be sent.
 
 ### Apple Developer Portal integration
 
@@ -24,7 +40,7 @@ Teams on Codemagic now have Magic seats available in addition to regular team se
 
 ## September 2019
 
-### Codemagic CI/CD GitHub app (beta)
+### Codemagic CI/CD GitHub app *beta*
 
 In addition to GitHub OAuth integration, you can now use Codemagic via the GitHub app. The [Codemagic CI/CD GitHub app](https://github.com/marketplace/codemagic-ci-cd) requires less permissions than the GitHub OAuth integration and enables you to configure which repositories Codemagic can access. Read more about the benefits of Codemagic GitHub app on our [blog](https://blog.codemagic.io/codemagic-github-app/) and see our [documentation](../getting-started/codemagic-github-app) for details about the integration. 
 
