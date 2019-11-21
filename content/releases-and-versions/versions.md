@@ -47,7 +47,7 @@ weight: 2
 - python `2.7.17`
 - python3 `3.7.5`
 - node `12.10.0`
-- npm `6.13.0`
+- npm `6.13.1`
 - yarn `1.19.1`
 - gem `3.0.3`
 - ruby `2.6.5p114`
