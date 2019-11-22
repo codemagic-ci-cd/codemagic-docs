@@ -52,17 +52,17 @@ This issue is known to be fixed on the `master` channel.
 ## Version inconsistency between local and Codemagic
 
 **Description**:
-When builds succeed locally but not on Codemagic and throw vague errors for example `Gradle task bundleRelease failed with exit code 1` or build is successful but some functions aren't working. 
+Builds succeed locally but not on Codemagic and throw vague errors, such as `Gradle task bundleRelease failed with exit code 1`, or build is successful but some functions aren't working. 
 
-**Cause**: Usually these issues are caused because plugin and gradle versions used localy aren't the same as on Codemagic. If you are using gradle version different from codemagic, you have to define it in `gradle wrapper`. Otherwise codemagic ignores your `build.gradle` file and your build won't work properly. See which [software versions Codemagic uses](../releases-and-versions/versions/).
+**Cause**: These issues are likely caused because plugin and gradle versions used locally are different from the versions used on Codemagic. If you are using a gradle version that is different from Codemagic, you have to define it in `gradle wrapper`. Otherwise, Codemagic ignores your `build.gradle` file and your build won't work properly. See which [software versions Codemagic uses](../releases-and-versions/versions/).
 
-**Solution**: First you need to make sure that gradlew file isn't in `.gitignore`. Look for `**/android/gradlew` if its there delete it. Then run this command locally `./gradlew wrapper --gradle-version [your gradle version]` this should create `gradlew` and `gradle-wrapper.properties` file in your repository. Commit changes and rerun your build. 
+**Solution**: First, you need to make sure that the `gradlew` file isn't in `.gitignore`. Look for `**/android/gradlew`, and if it's in `.gitignore`, delete it from there. Then run `./gradlew wrapper --gradle-version [your gradle version]` locally to create `gradlew` and `gradle-wrapper.properties` files in your repository. Commit the changes and rerun your Codemagic build. 
 
-**Additional steps**: If during the initial build process, the following error is shown:
+**Additional steps**: Additional steps are required if you see the following error during the build process:
 
 `Error! Failed to check gradle version. Malformed executable tmpABCDEF/gradlew`
 
-Codemagic runs `./gradlew --version` on the builder side to check if it's suitable for execution. If user sees the error message shown above, there is something wrong with checking the gradle version.
+Codemagic runs `./gradlew --version` on the builder side to check if it's suitable for execution. If you see the error message shown above, there is something wrong with checking the gradle version.
 
 **To investigate and fix the issues**:
 
