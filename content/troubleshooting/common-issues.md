@@ -48,3 +48,30 @@ When building for iOS, the build gets stuck after showing `Xcode build done` in 
 * https://github.com/flutter/flutter/issues/35988
 
 This issue is known to be fixed on the `master` channel.
+
+## Version inconsistency between local and Codemagic
+
+**Description**:
+When builds succeed locally but not on Codemagic and throw vague errors for example `Gradle task bundleRelease failed with exit code 1` or build is successful but some functions aren't working. 
+
+**Cause**: Usually these issues are caused because plugin and gradle versions used localy aren't the same as on Codemagic. If you are using gradle version different from codemagic, you have to define it in `gradle wrapper`. Otherwise codemagic ignores your `build.gradle` file and your build won't work properly. See which [software versions Codemagic uses](../releases-and-versions/versions/).
+
+**Solution**: First you need to make sure that gradlew file isn't in `.gitignore`. Look for `**/android/gradlew` if its there delete it. Then run this command locally `./gradlew wrapper --gradle-version [your gradle version]` this should create `gradlew` and `gradle-wrapper.properties` file in your repository. Commit changes and rerun your build. 
+
+**Additional steps**: If during the initial build process, the following error is shown:
+
+`Error! Failed to check gradle version. Malformed executable tmpABCDEF/gradlew`
+
+Codemagic runs `./gradlew --version` on the builder side to check if it's suitable for execution. If user sees the error message shown above, there is something wrong with checking the gradle version.
+
+**To investigate and fix the issues**:
+
+* Make a clean clone of the repository and execute the following commands:
+
+        cd <project_root>
+        chmod +x gradlew
+        ./gradlew --version
+
+* Make a fix for the issue found.
+* Commit changes to the repo.
+* Run the build again in Codemagic.
