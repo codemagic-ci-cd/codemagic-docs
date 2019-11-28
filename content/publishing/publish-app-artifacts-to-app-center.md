@@ -22,7 +22,7 @@ echo "Found apk at $apkPath"
 
 if [[ -z ${apkPath} ]]
 then
-    echo "No ipas were found, skip publishing to App Center"
+    echo "No apks were found, skip publishing to App Center"
 else
     echo "Publishing $apkPath to App Center"
     appcenter distribute release \
@@ -43,7 +43,7 @@ echo 'Installing App Center CLI tools'
 npm install -g appcenter-cli
 
 echo "Find build artifacts"
-ipaPath=$(find build -name "*.ipa" | head -1)
+ipaPath=$(find ~/ipas -name "*.ipa" | head -1)
 echo "Found ipa at $ipaPath"
 
 if [[ -z ${ipaPath} ]]
