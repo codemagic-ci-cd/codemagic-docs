@@ -22,7 +22,7 @@ echo "Found apk at $apkPath"
 
 if [[ -z ${apkPath} ]]
 then
-    echo "No ipas were found, skip publishing to App Center"
+    echo "No apks were found, skip publishing to App Center"
 else
     echo "Publishing $apkPath to App Center"
     appcenter distribute release \
