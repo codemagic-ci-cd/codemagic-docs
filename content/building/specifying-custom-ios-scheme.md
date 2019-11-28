@@ -1,6 +1,6 @@
 ---
 title: Specifying custom iOS scheme
-weight: 5
+weight: 6
 ---
 
 By default, Codemagic builds the iOS app using the `Runner` scheme. You can specify a custom iOS scheme for the `xcodebuild` command with the `FCI_FLUTTER_SCHEME` environment variable. A different iOS scheme can be specified for each workflow.

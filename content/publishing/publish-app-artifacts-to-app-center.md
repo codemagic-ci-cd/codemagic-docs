@@ -1,7 +1,7 @@
 ---
 description: Upload your apk or ipa file to App Center
 title: Publish app artifacts to App Center
-weight: 3
+weight: 6
 ---
 
 As a custom build step, Codemagic can publish your app artifact to App Center using the [App Center Command Line Interface](https://github.com/microsoft/appcenter-cli). An **App Center API token** is required for publishing. It is advisable to create a new token for use on Codemagic, see the commands related to API tokens [here](https://github.com/microsoft/appcenter-cli#commands) or manage your tokens in [App Center settings](https://appcenter.ms/settings/apitokens).

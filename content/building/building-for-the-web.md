@@ -1,7 +1,7 @@
 ---
 description: Build a Flutter web app with Codemagic.
 title: Building for the web
-weight: 6
+weight: 7
 ---
 
 You can build, test and publish Flutter web apps with Codemagic.
