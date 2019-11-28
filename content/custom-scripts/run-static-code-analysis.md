@@ -1,7 +1,7 @@
 ---
 draft: true
 title: Run static code analysis
-weight: 3
+weight:
 ---
 
 You can use this **pre-test** script to run static code analysis with `flutter analyze`.
