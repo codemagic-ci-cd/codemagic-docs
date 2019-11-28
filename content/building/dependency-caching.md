@@ -1,7 +1,7 @@
 ---
 description: Store your dependencies on Codemagic for a faster build time.
 title: Dependency caching
-weight: 8
+weight: 9
 ---
 
 You can speed up your builds by storing dependencies on Codemagic. To use caching, you must **enable dependency caching** in app settings. Note that caching is workflow-specific.
