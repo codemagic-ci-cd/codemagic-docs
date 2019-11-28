@@ -1,7 +1,7 @@
 ---
 description: Load your Firebase configuration files to Codemagic
 title: Load Firebase configuration
-weight: 6
+weight: 1
 ---
 
 Instead of committing the Firebase config files to your repository, you can upload them to Codemagic as [environment variables](https://docs.codemagic.io/building/environment-variables/) and reference them in a custom script. Note that the Firebase config file (`google-services.json` for Android or `GoogleService-Info.plist` for iOS) must be Base64-encoded.
