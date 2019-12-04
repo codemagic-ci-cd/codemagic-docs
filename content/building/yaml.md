@@ -40,7 +40,18 @@ If you wish to add new environment variables to the YAML file, you can encrypt t
 
 An example of an encrypted value:
 
-```Encrypted(Z0FBQUFBQmRyY1FLWXIwVEhqdWphdjRhQ0xubkdoOGJ2bThkNmh4YmdXbFB3S2wyNTN2OERoV3c0YWU0OVBERG42d3Rfc2N0blNDX3FfblZxbUc4d2pWUHJBSVppbXNXNC04U1VqcGlnajZ2VnJVMVFWc3lZZ289)```
+```
+Encrypted(Z0FBQUFBQmRyY1FLWXIwVEhqdWphdjRhQ0xubkdoOGJ2bThkNmh4YmdXbFB3S2wyNTN2OERoV3c0YWU0OVBERG42d3Rfc2N0blNDX3FfblZxbUc4d2pWUHJBSVppbXNXNC04U1VqcGlnajZ2VnJVMVFWc3lZZ289)
+```
+
+{{% notebox %}}Note that when the value is uploaded as a file, it is encoded to `base64`.{{% /notebox %}}
+
+Writing the base64-encoded environment variable to a file can be done like this:
+
+```
+scripts:
+  - echo $MY_FILE | base64 --decode > my-file.json
+```
 
 ## Building with YAML
 
