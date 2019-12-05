@@ -13,7 +13,7 @@ You can do that by saving the SSH key to your repository as a secure [environmen
         ...
         -----END OPENSSH PRIVATE KEY-----
 
-1.  If you wish to use a **custom** environment variable name without the suffix `_SSH_KEY`, add the following **post-clone** script to add the key to the SSH agent.
+2.  If you wish to use a **custom** environment variable name without the suffix `_SSH_KEY`, add the following **post-clone** script to add the key to the SSH agent.
 
         #!/usr/bin/env sh
         echo "${CUSTOM_SSH_KEY_NAME}" > /tmp/ssh_key
