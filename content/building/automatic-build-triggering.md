@@ -48,19 +48,18 @@ To set up a webhook for automatic build triggering on Codemagic, you must regist
 
 {{% notebox %}}
 The payload URL has the following format:  
-`https://api.codemagic.io/hooks/[yourappID]`
+`https://api.codemagic.io/hooks/[appId]`
 {{% /notebox %}}
 
 You can find your app ID in the browser URL after `app/` when you open the app on Codemagic: `https://codemagic.io/app/[yourappID]`
 
-## Skipping builds
+## Custom build triggers
 
-If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
-
-## Custom automatic build triggers
-To add automatic triggers from custom source you're going to need [AWS lambda](https://aws.amazon.com/lambda/). In AWS lambda function, you'll have to call the following command: 
+Build triggering in response to custom events can be set up using [AWS Lambda](https://aws.amazon.com/lambda/). In AWS Lambda function, call the following command: 
 
 `POST https://api.codemagic.io/builds`
+
+Content:
 
         {
         "appId": "----appId----",
@@ -68,16 +67,16 @@ To add automatic triggers from custom source you're going to need [AWS lambda](h
         "branch": "masters"
         }
 
-**header:** `x-auth-token: -----id-----`
-{{% notebox %}}
-For `x-auth-token` contact Codemagic support.
-{{% /notebox %}}
+Header:
 
-`WorkflowId` and `appId` you can get from your settings.
+`"x-auth-token": "-----id-----"`
 
-App settings > Workflow settings > Badge markdown
+You can find the `WorkflowId` and `appId` from your settings: **App settings** > **Workflow settings** > **Build status badge** > **Badge markdown**. 
 
-**e.g.**`(api.codemagic.io/apps/5da6c2739f20ef593ed55251/5da6c2739f20ef593ed55250/status_badge.svg)`
+Badge markdown has the following format: `(api.codemagic.io/apps/[appId]/[workflowId]/status_badge.svg)`
 
-AppId is the first serial and WorkflowId is the second.
+Contact the Codemagic team to obtain the `x-auth-token`.
 
+## Skipping builds
+
+If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
