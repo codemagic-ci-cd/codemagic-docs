@@ -1,6 +1,7 @@
 ---
 title: Multiple projects in one repository
 weight: 5
+draft: true
 ---
 
 Codemagic is able to detect multiple projects in a repository provided that each project has its `pubspec.yaml` file.

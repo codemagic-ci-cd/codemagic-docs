@@ -4,7 +4,7 @@ title: Setting up projects
 weight: 2
 ---
 
-Codemagic allows you to build, test and publish Flutter apps (Android, iOS, web, macOS, Linux), native Android and iOS apps, native apps containing Flutter modules, Flutter widgets and Flutter packages. Projects can be configured via GIU (Flutter projects only or using [`codemagic.yaml`](../building/yaml) (all projects).
+Codemagic allows you to build, test and publish Flutter apps (Android, iOS, web, macOS, Linux), native Android and iOS apps, native apps containing Flutter modules, Flutter widgets and Flutter packages. Projects can be configured via GIU (Flutter projects only) or using [`codemagic.yaml`](../building/yaml) (all projects).
 
 Upon login, Codemagic will automatically display the list of apps in the [connected repositories](./signup#connecting-several-repository-accounts). If you want to build an app that is not available through the account you signed up with, you can [add the app from custom source](./adding-apps-from-custom-sources).
 
@@ -34,11 +34,11 @@ Codemagic is able to detect multiple Flutter projects in a repository provided t
 
 The first build is run for the project whose `pubspec.yaml` file was found first. After the first build, you can select the project for building from the **Project file path** dropdown in the Build section of app settings.
 
-{{< figure size="medium" src="../uploads/2019/03/multiple_projects_dark.png" caption="Select which project to build" >}}
+{{< figure size="medium" src="../uploads/flutter-multiproject.png" caption="Select which project to build" >}}
 
 ## Next steps
 
-You can then continue to customize how you want Codemagic to build, test and publish your app in **App settings**. Note that there are 
+You can then continue to customize how you want Codemagic to build, test and publish your project using either the GUI or `codemagic.yaml`. Note that you can also add custom build steps in the GUI by expanding sections before or after the default build steps visible in App settings.
 
 * Enable [automatic builds](../building/automatic-build-triggering)
 * Enable [automated tests](../testing/running-automated-tests)
@@ -47,3 +47,4 @@ You can then continue to customize how you want Codemagic to build, test and pub
 * Set up [publishing to Google Play](../publishing/publishing-to-google-play)
 * Set up [publishing to App Store Connect](../publishing/publishing-to-app-store)
 * [Increment build version](../building/build-versioning)
+* Browse the list of [Codemagic read-only environment variables](../building/environment-variables)
