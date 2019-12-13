@@ -33,14 +33,13 @@ weight: 2
 
 - CocoaPods `1.8.4`
 
-- Fastlane `2.136.0`
-
 **Android tools**
 
 - Android tools `$HOME/programs/android-sdk-macosx`
 
 **Other tools**
 
+- fastlane `2.136.0`
 - wget `1.20.3`
 - curl `7.54.0`
 - ssh `7.9p1`
