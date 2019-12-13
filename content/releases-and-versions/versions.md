@@ -30,7 +30,6 @@ weight: 2
 
 `11.3 (11C24b) (/Applications/Xcode-11.3.app)`
 
-
 - CocoaPods `1.8.4`
 
 **Android tools**
