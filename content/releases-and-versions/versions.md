@@ -6,7 +6,7 @@ weight: 2
 **Dart and Flutter**
 
 - Dart `2.6.1`
-- Flutter `1.9.1+hotfix.6 ($HOME/programs/flutter)`
+- Flutter `1.12.13+hotfix.5 ($HOME/programs/flutter)`
 
 **iOS tools**
 
@@ -30,7 +30,6 @@ weight: 2
 
 `11.3 (11C24b) (/Applications/Xcode-11.3.app)`
 
-
 - CocoaPods `1.8.4`
 
 **Android tools**
@@ -39,6 +38,7 @@ weight: 2
 
 **Other tools**
 
+- fastlane `2.136.0`
 - wget `1.20.3`
 - curl `7.54.0`
 - ssh `7.9p1`
