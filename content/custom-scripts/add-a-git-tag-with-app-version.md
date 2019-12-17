@@ -4,7 +4,7 @@ title: Add a Git tag with app version
 weight: 2
 ---
 
-You can use Codemagic to greate a Git tag and push it to your repository.
+You can use Codemagic to create a Git tag and push it to your repository.
 
 {{% notebox %}}
 
