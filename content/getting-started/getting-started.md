@@ -4,7 +4,7 @@ title: Setting up projects
 weight: 2
 ---
 
-Codemagic allows you to build, test and publish Flutter apps (Android, iOS, web, macOS, Linux), native Android and iOS apps, native apps containing Flutter modules, Flutter widgets and Flutter packages. Projects can be configured via GIU (Flutter projects only) or using [`codemagic.yaml`](../building/yaml) (all projects).
+Codemagic allows you to build, test and publish Flutter apps (Android, iOS, web, macOS, Linux), native Android and iOS apps, native apps containing Flutter modules, Flutter widgets and Flutter packages. Projects can be configured via GUI (Flutter projects only) or using [`codemagic.yaml`](../building/yaml) (all projects).
 
 Upon login, Codemagic will automatically display the list of apps in the [connected repositories](./signup#connecting-several-repository-accounts). If you want to build an app that is not available through the account you signed up with, you can [add the app from custom source](./adding-apps-from-custom-sources).
 
