@@ -51,11 +51,11 @@ The payload URL has the following format:
 `https://api.codemagic.io/hooks/[appId]`
 {{% /notebox %}}
 
-You can find your app ID in the browser URL after `app/` when you open the app on Codemagic: `https://codemagic.io/app/[yourappID]`
+You can find your app ID in the browser URL after `app/` when you open the app on Codemagic: `https://codemagic.io/app/[appId]`
 
 ## Custom build triggers
 
-Build triggering in response to custom events can be set up using [AWS Lambda](https://aws.amazon.com/lambda/). In AWS Lambda function, call the following command: 
+Build triggering in response to custom events can be set up by sending a `POST` request to the `https://api.codemagic.io/builds` endpoint. 
 
 `POST https://api.codemagic.io/builds`
 
