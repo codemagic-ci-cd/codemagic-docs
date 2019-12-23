@@ -18,13 +18,13 @@ Upon login, Codemagic will automatically display the list of apps in the [connec
 
 ## Running the first build
 
-An app is not fully set up before you run the first build. During the build, Codemagic will fetch app sources, list the branches in it, look for tests and create webhooks for automatic building (for apps added via OAuth). If your repository contains multiple projects, you can select the right project after the first build, read more about it [below](#multiple-projects-in-one-repository).
+* If it's a **Flutter project**, you can start the very first build with preconfigured defaults by clicking **Start your first build** on the Applications page. This will run a debug build of your master branch for the available platforms using the latest stable version of Flutter. [Tests](../testing/running-automated-tests) are disabled by default. Alternatively, you can click the **gear icon** to configure app settings, e.g. change the Flutter or Xcode version, prior to building. 
 
-* If it's a **Flutter project**, you can start the very first build with preconfigured defaults by clicking **Start your first build** on the Applications page. This will run a debug build of your master branch for the available platforms using the latest stable version of Flutter. Note that tests are disabled by default. Alternatively, you can click the **gear icon** to configure app settings prior to building.
+    Note that if the repository contains multiple projects, you can select the right project after the first build, read more about it [below](#multiple-projects-in-one-repository).
 
 * If it's a **non-Flutter project**, e.g. a native Android or iOS app or an app containing Flutter modules, you must first create a [codemagic.yaml](../building/yaml) file for build configuration and commit it to your repository. Then, click the **gear icon** > **Start your first build** in app settings to select a branch and YAML configuration to build.
 
-You can monitor the build progress right in your browser and expand each build step for more details.
+As the build starts, you can monitor the build progress right in your browser and expand each build step for more details.
 
 After the build has finished successfully, you will immediately have **artifacts** available for download which you will also receive on the email that was configured for the app repository.
 
@@ -48,3 +48,4 @@ You can then continue to customize how you want Codemagic to build, test and pub
 * Set up [publishing to App Store Connect](../publishing/publishing-to-app-store)
 * [Increment build version](../building/build-versioning)
 * Browse the list of [Codemagic read-only environment variables](../building/environment-variables)
+* See the list of [preinstalled software and versions](../releases-and-versions/versions)
