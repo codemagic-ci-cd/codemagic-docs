@@ -48,10 +48,34 @@ To set up a webhook for automatic build triggering on Codemagic, you must regist
 
 {{% notebox %}}
 The payload URL has the following format:  
-`https://api.codemagic.io/hooks/[yourappID]`
+`https://api.codemagic.io/hooks/[appId]`
 {{% /notebox %}}
 
-You can find your app ID in the browser URL after `app/` when you open the app on Codemagic: `https://codemagic.io/app/[yourappID]`
+You can find your app ID in the browser URL after `app/` when you open the app on Codemagic: `https://codemagic.io/app/[appId]`
+
+## Custom build triggers
+
+Build triggering in response to custom events can be set up by sending a `POST` request to the `https://api.codemagic.io/builds` endpoint. 
+
+`POST https://api.codemagic.io/builds`
+
+Content:
+
+        {
+        "appId": "----appId----",
+        "workflowId": "-----workflowId-----,
+        "branch": "masters"
+        }
+
+Header:
+
+`"x-auth-token": "-----id-----"`
+
+You can find the `WorkflowId` and `appId` from your settings: **App settings** > **Workflow settings** > **Build status badge** > **Badge markdown**. 
+
+Badge markdown has the following format: `(api.codemagic.io/apps/[appId]/[workflowId]/status_badge.svg)`
+
+Contact the Codemagic team to obtain the `x-auth-token`.
 
 ## Skipping builds
 

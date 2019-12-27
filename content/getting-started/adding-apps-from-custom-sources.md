@@ -4,20 +4,35 @@ title: Adding apps from custom sources
 weight: 4
 ---
 
-You can add apps from public or private Git-based repositories. This includes repositories requiring **SSH key authentication**. Click **Add app from custom source** on the Applications page to get started.
+You can add apps from public or private Git-based repositories. This includes repositories requiring **SSH key authentication**. 
 
-{{< figure size="" src="../uploads/add-app-from-custom-source1.png" caption="" >}}
+{{% notebox %}}
+Note that apps added from custom sources have some limitations.
 
-Then, fill in all the required fields.
+* Webhooks for automatic build triggering need to be [set up manually](../building/automatic-build-triggering/#webhooks).
+* [Automatic builds](../building/automatic-build-triggering) are available on code push and tag creation but not on pull request creation or update.   
+{{% /notebox %}}
 
-{{< figure size="" src="../uploads/add-app-from-custom-source2.png" caption="" >}}
+To add an app from custom source:
 
-1. Enter the Git URL for cloning the repository. The URL should be in the following format: `https://example.com/username/repo.git` or `git@example.com/username/repo.git`. 
-2. If a private key is required to access the repository or any private submodules in it, upload the **SSH private key** file.
-3. If the SSH key is password-protected, you'll be also asked to enter the **SSH key password**.
-4. Click **Add app**.
+1. Click **Add app from custom source** on the Applications page.
 
-Your app will be then listed on the Applications page and you can immediately start running builds. Note that in order to enable automatic builds, you will need to manually [set up webhooks](../building/automatic-build-triggering#webhooks).
+    {{< figure size="" src="../uploads/add-app-from-custom-source1.png" caption="" >}}
+
+2. Then, fill in all the required fields.
+
+    {{< figure size="" src="../uploads/add-app-from-custom-source2.png" caption="" >}}
+
+    * Enter the **Repository URL** for cloning the repository. The URL should be in the following format:
+    `https://example.com/username/repo.git` or `git@example.com/username/repo.git`. 
+
+    * If a private key is required to access the repository or any private submodules in it, upload the **SSH private key** file.
+
+    * If the SSH key is password-protected, you'll be also asked to enter the **SSH key password**.
+
+3. Click **Add app**.
+
+Your app will be then listed on the Applications page and you can immediately start running builds.
 
 ## Repositories behind firewall
 
