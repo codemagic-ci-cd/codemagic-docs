@@ -51,13 +51,19 @@ If you have previously set up workflow-specific credentials, you can remove them
 
 ### Setting up automatic code signing for a workflow
 
-1. In your app settings, navigate to the **Publish** section.
-2. Click on **iOS code signing** to expand this step.
-3. Select **Automatic** as the code signing method. If you haven't enabled the Apple Developer Portal integration yet, you will be asked to enable it before you can continue configuration.
-4. If you belong to more than one team, select the **Developer portal team**.
-5. Select the provisioning profile type.
-6. You can also enter your app's **Bundle identifier** (optional). By default, Codemagic looks for it from your `project.pbxproj`file.
-7. Click **Save** to finish the setup.
+1. Go to your **App settings**.
+2. Make sure that you have **Release** mode selected in **Build** settings.
+   ![Selecting Release mode in Build configuration](/uploads/build_configuration-1.png)
+
+3. In the **Publish** section, click on iOS code signing to expand this step.
+   ![Selecting iOS code signing in the Publish section](/uploads/publish_ioscodesigning-1.png)
+
+4. Select **Automatic** as the code signing method.
+   ![Automatic code signing setup for iOS](/uploads/2fa_ios_code_signing.png)
+5. Enter your **Apple ID** (Apple developer portal username) and **Apple developer portal password**.
+6. Then choose the **provisioning profile type**.
+7. You can also enter your app's **bundle identifier** (optional). By default, Codemagic detects it automatically from your repository.
+8. Finally, click **Save** to finish the setup. If your Apple developer account has two-step verification or two-step authentication enabled, you will be asked to enter your verification code in a popup and click **Save** again.
 
 As the next step, you can configure publishing to App Store Connect to distribute your signed app to testers or submit it for review.
 
