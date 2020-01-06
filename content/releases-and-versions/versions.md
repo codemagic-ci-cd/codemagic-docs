@@ -13,33 +13,33 @@ weight: 2
 
 - System Version `macOS 10.14.6 (18G2022)`
 - Kernel Version `Darwin 18.7.0`
-- Disk `300GB (Free Space: 48GB)`
+- Disk `322G (Free Space: 51G)`
 
 ## Pre-installed tools
 
 - Android tools `$HOME/programs/android-sdk-macosx`
-- curl `7.54.0`
 - cocoapods `1.8.4`
+- curl
 - dart `2.7.0`
-- docker
+- docker `19.03.5`
 - fastlane `2.138.0`
 - firebase `7.6.2`
 - flutter `1.12.13+hotfix.5 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - git `2.24.1`
-- gradle `5.5.1`
+- gradle `N/A`
 - homebrew `2.2.1`
-- jq `1.6`
+- jq
 - node `12.14.0`
 - npm `6.13.4`
 - python `2.7.17`
 - python3 `3.7.5`
 - ruby `2.6.5p114`
-- ssh `7.9p1`
+- ssh
 - sudo
 - tar
 - unzip
-- wget `1.20.3`
+- wget
 - yarn `1.21.1`
 - zip
 
@@ -47,7 +47,7 @@ weight: 2
 
 This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
-Xcode path: `/Applications/Xcode-11.3.app`
+Xcode path: /Applications/Xcode-11.3.app
 
 With Xcode 11.3 build version 11C29 the following runtimes and devices are installed:
 
