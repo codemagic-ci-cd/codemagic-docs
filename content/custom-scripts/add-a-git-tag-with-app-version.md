@@ -29,7 +29,7 @@ Pushing git tags from Codemagic to repository requires **write access** to the r
         then
           new_version=v1.0.$BUILD_NUMBER
           git tag $new_version
-          git push "https://your-username:$APP_PASSWORD_ENV_VARIABLE@your-git-service.com/your-username/your-repo.git" -tags
+          git push "https://your-username:$APP_PASSWORD_ENV_VARIABLE@your-git-service.com/your-username/your-repo.git" --tags
         fi
     Where:
 
