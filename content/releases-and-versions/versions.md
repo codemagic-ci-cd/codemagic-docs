@@ -6,8 +6,15 @@ weight: 2
 
 ## Hardware
 
-- Mac Mini
-- Mac Pro
+**Mac Mini**
+
+- 2.3GHz Quad Core CPU
+- 8GB RAM
+
+**Mac Pro**
+
+- 3.7GHz Quad Core CPU
+- 32GB RAM
 
 ## System
 
