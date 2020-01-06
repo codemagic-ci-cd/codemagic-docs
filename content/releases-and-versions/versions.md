@@ -6,8 +6,8 @@ weight: 2
 
 ## Hardware
 
-- **Mac Mini** 2.3GHz Quad Core/8GB
-- or **Mac Pro** 3.7GHz Quad Core/32GB
+- **Mac Mini** 2.3GHz Quad Core / 8GB
+- or **Mac Pro** 3.7GHz Quad Core / 32GB
 
 ## System
 
