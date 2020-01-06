@@ -1,27 +1,30 @@
 ---
-description: A list of software and versions available out-of-the-box on Codemagic.
-title: macOS Builder Specification
+description: A list of tools available out-of-the-box on Codemagic build machines.
+title: macOS build machine specification
 weight: 2
 ---
-**System**
+
+## Hardware
+
+- Mac Mini
+- Mac Pro
+
+## System
 
 - System Version `macOS 10.14.6 (18G2022)`
 - Kernel Version `Darwin 18.7.0`
-- Disk `300G (Free Space: 48G)
+- Disk `300GB (Free Space: 48GB)`
 
-**Dart and Flutter**
-
-- Dart `2.7.0`
-- Flutter `1.12.13+hotfix.5 ($HOME/programs/flutter)`
-
-**Pre-installed Tools**
+## Pre-installed tools
 
 - Android tools `$HOME/programs/android-sdk-macosx`
 - curl `7.54.0`
 - cocoapods `1.8.4`
+- dart `2.7.0`
 - docker
 - fastlane `2.138.0`
 - firebase `7.6.2`
+- flutter `1.12.13+hotfix.5 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - git `2.24.1`
 - gradle `5.5.1`
@@ -40,13 +43,16 @@ weight: 2
 - yarn `1.21.1`
 - zip
 
-**Xcode 11.3 (11C29)**
+## Xcode 11.3 (11C29)
+
+This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-11.3.app`
 
-With Xcode 11.3 Build version 11C29 we install the following:
+With Xcode 11.3 build version 11C29 the following runtimes and devices are installed:
 
-***Runtimes***
+### Runtimes
+
 - iOS 10.0
 - iOS 10.1
 - iOS 10.2
@@ -68,7 +74,8 @@ With Xcode 11.3 Build version 11C29 we install the following:
 - tvOS 13.3
 - watchOS 6.1
 
-***Devices***
+### Devices
+
 - iPhone 4s
 - iPhone 5
 - iPhone 5s
@@ -120,7 +127,7 @@ With Xcode 11.3 Build version 11C29 we install the following:
 - Apple Watch Series 5 - 40mm
 - Apple Watch Series 5 - 44mm
 
-**Available Xcode versions**
+## Other Xcode versions
 
 - 11.2.1 (11B500) `/Applications/Xcode-11.2.1.app`
 - 11.1 (11A1027) `/Applications/Xcode-11.1.app`
