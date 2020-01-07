@@ -112,7 +112,6 @@ workflows:
 
 The `appId` can be found from the URL of your App Build `https://codemagic.io/app/[APP_ID]]`
 
-
 ## Skipping builds
 
 If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
