@@ -77,7 +77,7 @@ Badge markdown has the following format: `(api.codemagic.io/apps/[appId]/[workfl
 
 Contact the Codemagic team to obtain the `x-auth-token`.
 
-**When Using YAML Confiiguration**
+## Custom build triggers with YAML Advanced Configuration
 
 You can also configure custom build triggers when using Advanced Configuration Settings with a codemagic.yaml file. 
 Build triggering in response to custom events can be set up by sending a `POST` request to the `https://api.codemagic.io/builds` endpoint. 
