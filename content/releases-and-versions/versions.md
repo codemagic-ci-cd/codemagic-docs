@@ -6,14 +6,14 @@ weight: 2
 
 ## Hardware
 
-- **Mac Mini** 2.3GHz Quad Core / 8GB
-- or **Mac Pro** 3.7GHz Quad Core / 32GB
+- Mac Mini `2.3GHz Quad Core / 8GB`
+- Mac Pro `3.7GHz Quad Core / 32GB`
 
 ## System
 
-- System Version `macOS 10.14.6 (18G2022)`
-- Kernel Version `Darwin 18.7.0`
-- Disk `322G (Free Space: 51G)`
+- System version `macOS 10.14.6 (18G2022)`
+- Kernel version `Darwin 18.7.0`
+- Disk `322GB (Free Space: 51GB)`
 
 ## Pre-installed tools
 
@@ -47,9 +47,9 @@ weight: 2
 
 This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
-Xcode path: /Applications/Xcode-11.3.app
+Xcode path: `/Applications/Xcode-11.3.app`
 
-With Xcode 11.3 build version 11C29 the following runtimes and devices are installed:
+With Xcode `11.3` build version `11C29` the following runtimes and devices are installed:
 
 ### Runtimes
 
