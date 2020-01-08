@@ -18,7 +18,8 @@ This is the list of the most common issues that may cause iOS code signing error
 
     Check your app's entitlements by going to **Apple Developer portal > Certificates, identifier & profiles > Identifiers > App ID**.
 
-* **You haven't specified the iOS scheme to be used for the `archive` action of Xcode build.**  This applies when your app has custom iOS schemes. By default, Codemagic builds the `Runner` scheme, but you can use the `FCI_FLUTTER_SCHEME` [environment variable](https://docs.codemagic.io/building/environment-variables/) to specify another scheme.
+
+* **You haven't specified the iOS scheme to be used for the `archive` action of Xcode build.**  This applies when your app has custom iOS schemes. By default, Codemagic builds the `Runner` scheme, but you can use the `FCI_FLUTTER_SCHEME` [environment variable](../building/environment-variables) to specify another scheme.
 
 * **The bundle ID you have entered in automatic code signing setup on Codemagic does not match the bundle ID in the build configuration that is used for archiving the app with Xcode.** Codemagic assigns provisioning profiles to the build targets and configurations before building the iOS app. That assignment is based on the bundle ID match in both provisioning profile and the build configuration. In the case signing configuration is not assigned to the build target/configuration that is used for archiving, the build will fail.
 
