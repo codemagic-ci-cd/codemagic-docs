@@ -1,0 +1,31 @@
+{{ if .IsPage }}
+  <section class="page-metadata">
+    <p>
+      <a href="{{ .Permalink }}">“{{ .Title }}”</a>
+      was last updated on {{ .Lastmod.Format "January 2, 2006" }}
+      {{- with .GitInfo -}}
+        :
+        {{ .Subject }}
+        <a
+          href="{{ site.Params.pageRepoCommitPrefix }}{{ .Hash }}"
+          class="footer-edit-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ({{ .AbbreviatedHash }})
+          {{- /**/ -}}
+        </a>
+        {{- /**/ -}}
+        .
+      {{- end }}
+      <a
+        href="{{ site.Params.pageRepoEditPrefix }}{{ .File.Path }}"
+        class="edit-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      > 
+        Improve this page&nbsp;<i class="fas fa-edit"></i>
+      </a>
+    </p>
+  </section>
+{{ end }}
