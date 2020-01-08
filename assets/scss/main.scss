@@ -367,11 +367,12 @@ body {
             }
         }
         #toc {
-            width: 260px;
+            width: 230px;
             position: fixed;
             right: 0;
             top: 30px;
             overflow: auto;
+            padding-right: 30px;
 
             .heading {
                 color: #aaaaaa;
@@ -384,22 +385,23 @@ body {
             a {
                 display: block;
                 color: $black;
-                padding: 5px 15px;
+                padding: 5px;
                 font-size: 14px;
-
-                &.item-H2 {  }
-                &.item-H3 { margin-left: 5px; }
-                &.item-H4 { margin-left: 10px; }
-                &.item-H5 { margin-left: 15px; }
-                &.item-H6 { margin-left: 20px; }
+                line-height: 1.25;
             }
 
             ul, ol {
               list-style-type: none;
               padding-left: 0;
               li {
+                padding: 0;
                 margin: 0;
               }
+            }
+
+            ul ul {
+              margin: 5px 0;
+              padding-left: 15px;
             }
         }
         @media (max-width: 1200px) {
