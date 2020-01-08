@@ -77,6 +77,41 @@ Badge markdown has the following format: `(api.codemagic.io/apps/[appId]/[workfl
 
 Contact the Codemagic team to obtain the `x-auth-token`.
 
+## Custom build triggers with YAML configuration
+
+You can also configure custom build triggers when using `codemagic.yaml` file for build configuration. 
+Build triggering in response to custom events can be set up by sending a `POST` request to the `https://api.codemagic.io/builds` endpoint. 
+
+`POST https://api.codemagic.io/builds`
+
+Content:
+
+        {
+        "appId": "----appId----",
+        "fileWorkflowId": "Workflow name in YAML file",
+        "branch": "master"
+        }
+
+Header:
+
+`"x-auth-token": "-----id-----"`
+
+The `fileWorkflowId` is the `workflow ID` provided in your `codemagic.yaml` configuration file shown below:
+```
+workflows:
+  my-workflow:                # workflow ID 
+    name: My workflow name    # workflow name displayed in UI
+    environment:
+    cache:
+    triggering:
+    branch_patterns:
+    scripts:
+    publishing:
+    artifacts:
+```
+
+The `appId` can be found from the URL of your app build: `https://codemagic.io/app/[appId]`
+
 ## Skipping builds
 
 If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
