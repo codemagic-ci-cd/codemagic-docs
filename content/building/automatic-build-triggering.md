@@ -75,7 +75,7 @@ You can find the `workflowId` and `appId` from your **App settings** > **Workflo
 
 Badge markdown has the following format: `(api.codemagic.io/apps/[appId]/[workflowId]/status_badge.svg)`
 
-`x-auth-token` is available via **User settings** > **Integrations** > **Codemagic API** > **Show**
+`x-auth-token` is available via **User settings** > **Integrations** > **Codemagic API** > **Show**.
 
 
 ## Custom build triggers with YAML configuration
@@ -112,6 +112,8 @@ workflows:
 ```
 
 The `appId` can be found from the URL of your app build: `https://codemagic.io/app/[appId]`
+
+`x-auth-token` is available via **User settings** > **Integrations** > **Codemagic API** > **Show**.
 
 ## Skipping builds
 
