@@ -29,6 +29,7 @@ In App settings > Test, you will see the **Flutter test target** and **Flutter d
 ### Running Flutter Driver tests
 
 There are several options for running integration tests during the build. You can select one option per workflow:
+
 * iOS simulator (selected by default)
 * Android emulator
 * [AWS Device Farm](./aws) --- enables to run tests on physical Android and iOS devices. Requires an AWS account and additional setup.
