@@ -13,13 +13,9 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
       - uses: actions/checkout@master
-      - run: curl --location --remote-name https://github.com/gohugoio/hugo/releases/download/v0.58.3/hugo_extended_0.58.3_Linux-64bit.deb
-      - run: sudo dpkg -i hugo_extended_0.58.3_Linux-64bit.deb
-      - run: sudo apt-get install -f
+      - run: curl --location https://github.com/gohugoio/hugo/releases/download/v0.61.0/hugo_extended_0.61.0_Linux-64bit.tar.gz | \
+          tar -vxzO hugo > /usr/local/bin/hugo && chmod a+x /usr/local/bin/hugo
       - run: hugo --minify
         working-directory: ${{ github.workspace }}
-      - run: sudo pip install awscli
-      - run: aws s3 sync public s3://docs.codemagic.io
+      - run: hugo deploy docs.codemagic.io
         working-directory: ${{ github.workspace }}
-      - run: aws cloudfront create-invalidation --distribution-id EM3VDRI1IYP45 --paths '/*'
-
