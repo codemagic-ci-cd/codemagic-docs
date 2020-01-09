@@ -5,33 +5,3 @@ params:
   googleAnalyticsTrackingId: UA-125963734-1
   googleOptimizeId: GTM-TW39Z9J
   appUserUrl: https://api.codemagic.io/user
-
-deployment:
-  order:
-    - '.*\.jpe?g$'
-    - '.*\.gif$'
-    - '.*\.png$'
-    - '.*\.mp4$'
-    - '.*\.mov$'
-
-  targets:
-    - name: 'docs.codemagic.io'
-      URL: s3://docs-staging.codemagic.io?region=us-east-1
-      # cloudFrontDistributionID: EM3VDRI1IYP45
-
-  matchers:
-    # static assets are fingerprinted, cache them for 1 year
-    - pattern: '^.+\\.(js|css|svg|ttf|woff|woff2)$'
-      cacheControl: 'max-age=31536000, no-transform, public'
-      gzip: true
-    # content images are not fingerprinted yet, cache them for 1 week
-    - pattern: '^.+\\.(ico|pdf|jpg|JPG|jpeg|png|PNG|gif|GIF|mp4|mov|mkv)$'
-      cacheControl: 'max-age=604800, no-transform, public'
-      gzip: false
-    # main content
-    - pattern: '^.+\\.(html|xml|json)$'
-      gzip: true
-    # rss
-    - pattern: '^.+\\.xml$'
-      contentType: 'application/rss+xml; charset=utf-8'
-      gzip: true
