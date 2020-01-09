@@ -3,7 +3,7 @@ name: Site Deployment
 on:
   push:
     branches:
-      - master
+      - hugo-61
 
 jobs:
   build:
