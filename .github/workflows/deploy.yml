@@ -11,15 +11,9 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: AKIAVIULH47FJUBBUV5U
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      HUGO_ENV: PRODUCTION
     steps:
       - uses: actions/checkout@master
-      - run: curl --location --remote-name https://github.com/gohugoio/hugo/releases/download/v0.58.3/hugo_extended_0.58.3_Linux-64bit.deb
-      - run: sudo dpkg -i hugo_extended_0.58.3_Linux-64bit.deb
-      - run: sudo apt-get install -f
-      - run: hugo --minify
-        working-directory: ${{ github.workspace }}
-      - run: sudo pip install awscli
-      - run: aws s3 sync public s3://docs.codemagic.io
-        working-directory: ${{ github.workspace }}
-      - run: aws cloudfront create-invalidation --distribution-id EM3VDRI1IYP45 --paths '/*'
-
+      - run: curl --location https://github.com/gohugoio/hugo/releases/download/v0.61.0/hugo_extended_0.61.0_Linux-64bit.tar.gz | tar -vxzO hugo > hugo && chmod a+x hugo
+      - run: ./hugo --minify
+      - run: ./hugo deploy --invalidateCDN true --maxDeletes -1

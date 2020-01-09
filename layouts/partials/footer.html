@@ -1,0 +1,15 @@
+{{ if .IsPage }}
+  <section class="page-metadata">
+    <p>
+      Page last updated on {{ .Lastmod.Format "January 2, 2006" }}.
+      <a
+        href="{{ site.Params.pageRepoEditPrefix }}{{ .File.Path }}"
+        class="edit-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      > 
+        Improve this page&nbsp;<i class="fas fa-edit"></i>
+      </a>
+    </p>
+  </section>
+{{ end }}
