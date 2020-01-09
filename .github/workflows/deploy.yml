@@ -3,7 +3,7 @@ name: Site Deployment
 on:
   push:
     branches:
-      - hugo-61
+      - master
 
 jobs:
   build:
@@ -16,4 +16,4 @@ jobs:
       - uses: actions/checkout@master
       - run: curl --location https://github.com/gohugoio/hugo/releases/download/v0.61.0/hugo_extended_0.61.0_Linux-64bit.tar.gz | tar -vxzO hugo > hugo && chmod a+x hugo
       - run: ./hugo --minify
-      - run: ./hugo deploy
+      - run: ./hugo deploy --invalidateCDN true --maxDeletes -1
