@@ -12,7 +12,7 @@ html
             .bar.bottom
           #logo
             a href={{ site.Home.RelPermalink }}
-              {{ $logo := resources.Get "media/logo.svg" | minify }}
+              {{ $logo := resources.Get "media/logo.svg" }}
               {{ $logo.Content | safeHTML }}
               span#logo-label {{ site.Param "headerLinkTitle" }}
 
