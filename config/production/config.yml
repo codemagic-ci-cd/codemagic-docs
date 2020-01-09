@@ -8,11 +8,11 @@ params:
 
 deployment:
   order:
-    - '*.jpe?g$'
-    - '*.gif$'
-    - '*.png$'
-    - '*.mp4$'
-    - '*.mov$'
+    - '.*\.jpe?g$'
+    - '.*\.gif$'
+    - '.*\.png$'
+    - '.*\.mp4$'
+    - '.*\.mov$'
 
   targets:
     - name: 'docs.codemagic.io'
