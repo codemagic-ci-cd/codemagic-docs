@@ -30,7 +30,7 @@ After the build has finished successfully, you will immediately have **artifacts
 
 ### Multiple projects in one repository
 
-Codemagic is able to detect multiple Flutter projects in a repository provided that each project has its `pubspec.yaml` file.
+Codemagic supports monorepos and is able to detect multiple Flutter projects in a repository provided that each project has its `pubspec.yaml` file.
 
 The first build is run for the project whose `pubspec.yaml` file was found first. After the first build, you can select the project for building from the **Project file path** dropdown in the Build section of app settings.
 
