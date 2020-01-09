@@ -77,7 +77,7 @@ You can find the `workflowId` and `appId` from your **App settings** > **Workflo
 
 Badge markdown has the following format: `(api.codemagic.io/apps/[appId]/[workflowId]/status_badge.svg)`
 
-For use with YAML configuration, workflowId is the workflow ID in your codemagic.yaml configuration file shown below:
+For use with YAML configuration, `workflowId` is the workflow ID in your `codemagic.yaml` configuration file shown below:
 ```
 workflows:
   my-workflow:                # workflow ID 
