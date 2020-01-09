@@ -14,6 +14,8 @@ params:
   locale: en_GB
   googleAnalyticsTrackingId: UA-125963734-2
   googleOptimizeId: 'GTM-M67KWVX'
+  pageRepoCommitPrefix: 'https://github.com/codemagic-ci-cd/codemagic-docs/commit/'
+  pageRepoEditPrefix: 'https://github.com/codemagic-ci-cd/codemagic-docs/edit/master/content/'
 imaging:
   resampleFilter: linear
   quality: 90
@@ -25,6 +27,7 @@ outputs:
 buildDrafts: true
 defaultContentLanguage: en
 disable404: true
+enableGitInfo: true
 
 sectionPagesMenu: main
 menu:
