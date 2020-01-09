@@ -69,51 +69,20 @@ Content:
 
 Header:
 
-`"x-auth-token": "-----id-----"`
+`"x-auth-token": "----token----"`
+
+`x-auth-token` is available via **User settings** > **Integrations** > **Codemagic API** > **Show**.
 
 You can find the `workflowId` and `appId` from your **App settings** > **Workflow settings** > **Build status badge** > **Badge markdown**.
 
 Badge markdown has the following format: `(api.codemagic.io/apps/[appId]/[workflowId]/status_badge.svg)`
 
-`x-auth-token` is available via **User settings** > **Integrations** > **Codemagic API** > **Show**.
-
-
-## Custom build triggers with YAML configuration
-
-You can also configure custom build triggers when using `codemagic.yaml` file for build configuration. 
-Build triggering in response to custom events can be set up by sending a `POST` request to the `https://api.codemagic.io/builds` endpoint. 
-
-`POST https://api.codemagic.io/builds`
-
-Content:
-
-        {
-        "appId": "----appId----",
-        "fileWorkflowId": "Workflow name in YAML file",
-        "branch": "master"
-        }
-
-Header:
-
-`"x-auth-token": "-----id-----"`
-
-The `fileWorkflowId` is the `workflow ID` provided in your `codemagic.yaml` configuration file shown below:
+For YAML configuration you can get the `workflowId` from your `codemagic.yaml` configuration file shown below:
 ```
 workflows:
   my-workflow:                # workflow ID 
     name: My workflow name    # workflow name displayed in UI
-    environment:
-    cache:
-    triggering:
-    branch_patterns:
-    scripts:
-    publishing:
-    artifacts:
 ```
-
-The `appId` can be found from the URL of your app build: `https://codemagic.io/app/[appId]`
-
-`x-auth-token` is available via **User settings** > **Integrations** > **Codemagic API** > **Show**.
 
 ## Skipping builds
 
