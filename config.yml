@@ -79,7 +79,7 @@ deployment:
   targets:
     - name: 'docs.codemagic.io'
       URL: s3://docs-staging.codemagic.io?region=us-east-1
-      # cloudFrontDistributionID: EM3VDRI1IYP45
+      cloudFrontDistributionID: EM3VDRI1IYP45
 
   matchers:
     # static assets are fingerprinted, cache them for 1 year
