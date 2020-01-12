@@ -27,7 +27,7 @@ weight: 2
 - flutter `1.12.13+hotfix.5 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - git `2.24.1`
-- gradle `N/A`
+- gradle `5.5.1`
 - homebrew `2.2.1`
 - jq
 - node `12.14.0`
@@ -137,3 +137,4 @@ With Xcode `11.3` build version `11C29` the following runtimes and devices are i
 - 10.1 (10B61) `/Applications/Xcode-10.1.app`
 - 10.0 (10A255) `/Applications/Xcode-10.app`
 - 9.4.1 (9F2000) `/Applications/Xcode-9.4.app`
+
