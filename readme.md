@@ -1,6 +1,7 @@
 # Codemagic community documentation
 
 
+
 Welcome to the [Codemagic](https://codemagic.io/start/) public documentation repository. As a Codemagic user, you can contribute to our documentation to improve it. 
 
 ## Getting started
