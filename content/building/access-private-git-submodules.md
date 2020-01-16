@@ -13,11 +13,12 @@ If your project requires accessing any private Git submodules or dependencies, y
         ...
         -----END OPENSSH PRIVATE KEY-----
 
+
     {{% notebox %}}
-The `-----END OPENSSH PRIVATE KEY-----` line needs to be followed by the new line character `\n` for the key to be usable.
+Note that the `-----END OPENSSH PRIVATE KEY-----` line needs to be followed by an empty line for the key to be usable.
 {{% /notebox %}}
 
-All environment variables whose name has the suffix `_SSH_KEY` will be automatically added to the SSH agent and will be ready for use during the whole build process. Check the `Preparing build machine` step in builds logs to verify that the key has been successfully added to the SSH agent.
+All environment variables whose name has the suffix `_SSH_KEY` will be automatically added to the SSH agent and will be ready for use during the whole build process. Check the `Preparing build machine` step in build logs to verify that the key has been successfully added to the SSH agent.
 
 If you wish to use a **custom** environment variable name without the suffix `_SSH_KEY`, add the following **post-clone** script to add the key to the SSH agent.
 
@@ -26,3 +27,11 @@ If you wish to use a **custom** environment variable name without the suffix `_S
         chmod 600 /tmp/ssh_key
         eval `ssh-agent -s`
         ssh-add /tmp/ssh_key
+
+## Generating a SSH key
+
+Different repository hosting services have different minimum requirements for the length of the SSH key, varying from 2048 bits to 4096 bits. We recommend creating a 4096 bit key for increased security. Run the script below in your terminal to create a 4096 bit SSH key:
+
+        ssh-keygen -t rsa -b 4096 -f ~/Desktop/codemagic_ssh_key -q -N ""
+
+This will create two new files on your desktop: `codemagic_ssh_key` (private key) and `codemagic_ssh_key.pub` (public key). 
