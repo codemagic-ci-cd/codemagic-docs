@@ -8,7 +8,7 @@ If your project requires accessing any private Git submodules or dependencies, y
 
 1. [Create a SSH key pair](#generating-a-ssh-key) for use with Codemagic. Note that the SSH key **cannot** be password-protected.
 2. Add the **public key** to your repository settings.
-2. Then in Codemagic, add the **private key** for accessing the repository as an [environment variable](https://docs.codemagic.io/building/environment-variables/). Make sure to check **Secure**. For example:
+3. Then in Codemagic, add the **private key** for accessing the repository as an [environment variable](https://docs.codemagic.io/building/environment-variables/). Make sure to check **Secure**. For example:
 
         SSH_KEY = -----BEGIN OPENSSH PRIVATE KEY-----
         ...
