@@ -29,7 +29,7 @@ It is also worth pointing out the necessity for each uploaded binary to have a *
 
 1. Navigate to the Publish section in app settings.
 2. Click **App Store Connect**.
-3. Enter your **Apple ID** (for login), your **app-specific password** and **App ID** (your app's unique identifier in App Store Connect).
+3. Enter your **Apple ID** (the email address used for login), your **app-specific password** and **App ID** (your app's unique identifier in App Store Connect).
 4. Click **Save** to finish the setup.
 
 Once you have successfully set up publishing to App Store Connect, Codemagic will automatically distribute the app to App Store Connect every time you build the workflow. Note that you must manually submit the app to App Store in App Store Connect.
