@@ -23,8 +23,8 @@ To add an app from custom source:
 
     {{< figure size="" src="../uploads/add-app-from-custom-source2.png" caption="" >}}
 
-    * Enter the **Repository URL** for cloning the repository. The URL should be in the following format:
-    `https://example.com/username/repo.git` or `git@example.com/username/repo.git`. 
+    * Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository on clicking **Clone** / **Clone or download**. Depending on the authentication method, choose either the HTTPS or SSH URL. The most common URL formats are as follows:
+    `https://example.com/username/repo.git` or `git@example.com:username/repo.git`. 
 
     * If a private key is required to access the repository or any private submodules in it, upload the **SSH private key** file.
 
