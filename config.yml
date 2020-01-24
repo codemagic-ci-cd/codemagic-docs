@@ -56,6 +56,9 @@ menu:
     - identifier: releases-and-versions
       name: Releases and versions
       weight: 8
+    - identifier: rest-api
+      name: Codemagic API
+      weight: 9
 
 mediaTypes:
   video/mp4:
