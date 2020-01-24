@@ -7,14 +7,14 @@ APIs for managing applications are currently available for developers to preview
 
 ## Add a new application
 
-`POST /apps/new`
+`POST /apps`
 
 Adds git repository to application list.
 
 ### Parameters
 
-| **Name**     | **Type** | **Description** |
-| ------------ | -------- | --------------- |
+| **Name**        | **Type** | **Description** |
+| --------------- | -------- | --------------- |
 | `repositoryUrl` | `string` | **Required.** SSH or HTTPS url to the repository. |
 
 ### Example
