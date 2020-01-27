@@ -14,7 +14,7 @@ APIs for managing builds are currently available for developers to preview. Duri
 | **Name**     | **Type** | **Description** |
 | ------------ | -------- | --------------- |
 | `appId`      | `string` | **Required.** The application identifier. |
-| `workflowId` | `string` | **Required.** The workflow identifier as specified in yaml file. |
+| `workflowId` | `string` | **Required.** The workflow identifier as specified in YAML file. |
 | `branch`     | `string` | **Required.** The branch name. |
 
 ### Example
@@ -49,4 +49,4 @@ APIs for managing builds are currently available for developers to preview. Duri
 
 `POST /builds/:id/cancel`
 
-The request will return `208 Already Reported` if build already finished.
+The request will return `208 Already Reported` if the build has already finished.
