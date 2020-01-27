@@ -9,13 +9,13 @@ APIs for managing applications are currently available for developers to preview
 
 `POST /apps`
 
-Adds git repository to application list.
+Adds a Git repository to the applications list.
 
 ### Parameters
 
 | **Name**        | **Type** | **Description** |
 | --------------- | -------- | --------------- |
-| `repositoryUrl` | `string` | **Required.** SSH or HTTPS url to the repository. |
+| `repositoryUrl` | `string` | **Required.** SSH or HTTPS URL for cloning the repository. |
 
 ### Example
 
