@@ -16,5 +16,3 @@ Here are some examples of the build arguments you can use to increment the app v
 `--build-name=2.0.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER + 100))`
 
 `--build-name=1.0.0 --build-number=$BUILD_NUMBER`
-
-`--build-number=$(git rev-list HEAD --count)`
