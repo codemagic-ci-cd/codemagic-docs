@@ -16,11 +16,11 @@ Unit and widget tests: `project_root/test`
 
 Integration tests (Flutter Driver tests): `project_root/test_driver`
 
-{{% notebox %}}
+{{<notebox>}}
 
 If your Flutter project is in a subdirectory of the repository, Codemagic cannot detect your tests automatically unless you add at least one test file in the `project_root/test` or `project_root/test_driver` folder.
 
-{{% /notebox %}}
+{{</notebox>}}
 
 ### Specifying the test target
 
@@ -34,11 +34,11 @@ There are several options for running integration tests during the build. You ca
 * Android emulator
 * [AWS Device Farm](./aws) --- enables to run tests on physical Android and iOS devices. Requires an AWS account and additional setup.
 
-{{% notebox %}}
+{{<notebox>}}
 
 **Tip**: You can set up separate [workflows](../getting-started/creating-workflows/) to run tests both on iOS and Android.
 
-{{% /notebox %}}
+{{</notebox>}}
 
 ### Stop build if tests fail
 

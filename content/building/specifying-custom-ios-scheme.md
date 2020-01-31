@@ -9,10 +9,10 @@ For example, to change default scheme to custom scheme named `Staging`
 
 ![](../uploads/custom_ios_scheme.png)
 
-{{% notebox %}}
+{{<notebox>}}
 
 Don't forget to click **Save** after adding the variable.
 
-{{% /notebox %}}
+{{</notebox>}}
 
 You can read more about environment variables and how to use them in the [Environment variables](https://docs.codemagic.io/building/environment-variables/) section.

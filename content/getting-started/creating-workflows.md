@@ -20,6 +20,6 @@ To switch between workflows, click on the workflow name below the app name in ap
 
 ![](../uploads/select_workflow_ed.png)
 
-{{% notebox %}}
+{{<notebox>}}
 Note that while your workflows started out as duplicates, they become separate entities once created. Any changes made to one workflow won't affect any of the others.
-{{% /notebox %}}
+{{</notebox>}}

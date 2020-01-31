@@ -6,9 +6,9 @@ weight: 8
 
 You can use Codemagic to build Flutter desktop apps for macOS and Linux. Building Windows apps is not yet supported. 
 
-{{% notebox %}}
+{{<notebox>}}
 Read more about Flutter's desktop support and the required settings for enabling it in Flutter's wiki about [desktop shells](https://github.com/flutter/flutter/wiki/Desktop-shells).
-{{% /notebox %}}
+{{</notebox>}}
 
 ## Project structure requirements
 
@@ -25,10 +25,10 @@ Codemagic can detect your Flutter desktop project if it meets the following cond
 4. Select the build mode.
 5. Click **Save** to finish build configuration. You are now ready to run the build.
 
-{{% notebox %}}
+{{<notebox>}}
 * Note that if your project has any tests, you can enable them in **App settings > Test**.
 * Code signing for desktop apps is not yet supported.
-{{% /notebox %}}
+{{</notebox>}}
 
 ## Build artifacts
 

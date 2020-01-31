@@ -6,7 +6,7 @@ weight: 2
 
 You can use Codemagic to create a Git tag and push it to your repository.
 
-{{% notebox %}}
+{{<notebox>}}
 
 Pushing git tags from Codemagic to repository requires **write access** to the repository. Depending on the Git service and authentication method, Codemagic may not have write access to your repository and you may need to grant it separately in your Git service settings. We recommend that you create a dedicated app password / personal access token for Codemagic.
 
@@ -14,7 +14,7 @@ Pushing git tags from Codemagic to repository requires **write access** to the r
 * For repositories hosted on GitHub, create a [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) with **repo** scope.
 * For repositories hosted on GitLab, create a [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) with **write_repository** scope.
 
-{{% /notebox %}}
+{{</notebox>}}
 
 1. Add your app password / personal access token to Codemagic as a secure [environment variable](../building/environment-variables).
 
@@ -41,6 +41,6 @@ Pushing git tags from Codemagic to repository requires **write access** to the r
 
     Before creating the tag, the script will check if the build was successful.
 
-{{% notebox %}}
+{{<notebox>}}
 Make sure to use the `https` repository URL for pushing. Using the `ssh` format is not supported with app passwords or personal access tokens
-{{% /notebox %}}
+{{</notebox>}}

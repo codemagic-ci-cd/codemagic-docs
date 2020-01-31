@@ -5,11 +5,11 @@ weight: 5
 
 You can build your app in [Android app bundle](https://developer.android.com/guide/app-bundle) (`.aab`) format for publishing to Google Play. When you upload your app in `.aab` format, app APKs will be dynamically created and optimized for user's device configuration when the app is installed from Google Play Store.
 
-{{% notebox %}}
+{{<notebox>}}
 
 Android app bundles are supported starting from Flutter v1.1.5.
 
-{{% /notebox %}}
+{{</notebox>}}
 
 Building an Android app bundle requires additional configuration as described in the sections below.
 

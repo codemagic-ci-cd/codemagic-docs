@@ -7,11 +7,11 @@ weight: 1
 
 You can sign up with your [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/) or [Bitbucket](https://bitbucket.org/) account via OAuth. On signup, Codemagic asks for **read/write** permission to access your repositories and create webhooks for automatic building. You will need to authorize Codemagic in order to connect your GitHub/GitLab/Bitbucket account to your Codemagic account.
 
-{{% notebox %}}
+{{<notebox>}}
 
 Please be assured that Codemagic will not store any of your source code or use your data for any other purpose than providing continuous integration and delivery service to you.
 
-{{% /notebox %}}
+{{</notebox>}}
 
 ## Sign up via Codemagic GitHub app
 

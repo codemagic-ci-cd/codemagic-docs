@@ -6,12 +6,12 @@ weight: 4
 
 You can add apps from public or private Git-based repositories. This includes repositories requiring **SSH key authentication**. 
 
-{{% notebox %}}
+{{<notebox>}}
 Note that apps added from custom sources have some limitations.
 
 * Webhooks for automatic build triggering need to be [set up manually](../building/automatic-build-triggering/#webhooks).
 * [Automatic builds](../building/automatic-build-triggering) are available on code push and tag creation but not on pull request creation or update.   
-{{% /notebox %}}
+{{</notebox>}}
 
 To add an app from custom source:
 

@@ -10,11 +10,11 @@ Upon login, Codemagic will automatically display the list of apps in the [connec
 
 {{< figure size="" src="../uploads/2019/07/app_dashboard.PNG" caption="Codemagic Applications page" >}}
 
-{{% notebox %}}
+{{<notebox>}}
 * If you can't see your app listed, it may be because you don't have sufficient permissions or Codemagic has no access to your team or organization. Codemagic requires read/write permission to build your app. Contact your repository admin to review the settings.
 * If your app requires accessing private Git submodules or dependencies, you need to give Codemagic access to them in order to build successfully. See how to do that [here](../building/access-private-git-submodules). 
 
-{{% /notebox %}}
+{{</notebox>}}
 
 ## Running the first build
 

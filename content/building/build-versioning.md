@@ -7,7 +7,7 @@ If you are going to publish your app to App Store Connect or Google Play, each u
 
 The `BUILD_NUMBER` read-only environment variable holds the total count of builds (including the ongoing build) for this project in Codemagic. In other words, if you have triggered 10 builds for some project in Codemagic, the next time you build it, `BUILD_NUMBER` will be exported as `11`.
 
-{{% notebox %}} Please note that the number of builds in `BUILD_NUMBER` is counted separately for each workflow. {{% /notebox %}}
+{{<notebox>}} Please note that the number of builds in `BUILD_NUMBER` is counted separately for each workflow. {{</notebox>}}
 
 ## Incrementing app version
 
