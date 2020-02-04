@@ -21,9 +21,11 @@ The signing certificates — development or distribution — help to identify wh
 
 A provisioning profile — development or distribution — contains information about the app ID, the devices on which the app can be installed and the certificates that can be used for signing the app. Note that if your app contains app extensions, you need an additional provisioning profile for each app extension. The provisioning profiles can be managed and [downloaded](#downloading-provisioning-profile) via Apple Developer portal.
 
-{{% notebox %}} 
+{{<notebox >}} 
+**Automatic code signing without a Mac**
+
 With **automatic code signing**, Codemagic will create both the **certificate** and the **provisioning profile** for you on your behalf. When using our **manual code signing** method, you will need to upload the signing certificate and provisioning profile manually.  
-{{% /notebox %}}
+{{</notebox>}}
 
 For successful signing, the certificate and the provisioning profile must match in the following way:
 
@@ -42,12 +44,12 @@ With the automatic code signing feature, Codemagic will generate a signing certi
 {{<notebox>}}
 **Apple Developer Portal integration**
 
-To use automatic code signing, you are required to enable the **Developer Portal** integration in **User settings > Integrations** for personal projects and in **Team settings > Team integrations** for projects shared in the team (if you're the team owner). This allows you to convneniently use the same Apple Developer Portal credentials for automatic code signing across all projects and workflows.
-
-If you have previously set up workflow-specific credentials, you can remove them in the iOS automatic code signing settings after setting up the integration.
+To use automatic code signing, you are required to enable the **Developer Portal** integration. If you have previously set up workflow-specific credentials, you can remove them in the iOS automatic code signing settings after setting up the integration.
 {{</notebox>}}
 
 ### Enabling the Apple Developer Portal integration
+
+Apple Developer Portal integration can be enabled in **User settings > Integrations** for personal projects and in **Team settings > Team integrations** for projects shared in the team (if you're the team owner). This allows you to convneniently use the same Apple Developer Portal credentials for automatic code signing across all projects and workflows.
 
 1. In the list of available integrations, click the **Connect** button for **Developer Portal**.
 2. Enter your **Apple ID** (Apple Developer Portal username) and **password**.
@@ -56,39 +58,35 @@ If you have previously set up workflow-specific credentials, you can remove them
 
 ### Setting up automatic code signing for a workflow
 
-1. Go to your **App settings**.
-2. Make sure that you have **Release** mode selected in **Build** settings.
-   ![Selecting Release mode in Build configuration](/uploads/build_configuration-1.png)
+1. Go to **App settings > Publish > iOS code signing**.
+2. Select **Automatic** as the code signing method. If you haven't enabled the Apple Developer Portal integration yet, you will be asked to enable it before you can continue configuration.
+3. If you belong to several Apple Developer teams, select the right team in the **Developer portal team** field.
+4. Select the **provisioning profile type** used for provisioning the build. Codemagic will automatically select or generate a matching certificate for code signing.
+7. Enter your app's **bundle identifier** (optional). By default, Codemagic looks for it from your `project.pbxproj` file. 
 
-3. In the **Publish** section, click on iOS code signing to expand this step.
-   ![Selecting iOS code signing in the Publish section](/uploads/publish_ioscodesigning-1.png)
+    >Note that if your app contains app extensions, an additional provisioning profile is required for each extension. Codemagic will use the bundle identifier to find the relevant provisioning profiles. If your bundle identifier is `com.example.app`, the matching profiles are the ones with `com.example.app` and `com.example.app.*` as bundle identifier.
 
-4. Select **Automatic** as the code signing method.
-   ![Automatic code signing setup for iOS](/uploads/2fa_ios_code_signing.png)
-5. Enter your **Apple ID** (Apple developer portal username) and **Apple developer portal password**.
-6. Then choose the **provisioning profile type**.
-7. You can also enter your app's **bundle identifier** (optional). By default, Codemagic detects it automatically from your repository.
-8. Finally, click **Save** to finish the setup. If your Apple developer account has two-step verification or two-step authentication enabled, you will be asked to enter your verification code in a popup and click **Save** again.
+8. Finally, click **Save** to finish the setup.
 
-As the next step, you can configure publishing to App Store Connect to distribute your signed app to testers or submit it for review.
+{{< figure size="medium" src="../uploads/automatic_code_signing.png" caption="Automatic code signing setup" >}}
+
+As the next step, you can [configure publishing to App Store Connect](./publishing/publish-app-artifacts-to-app-center) to distribute your app to testers via TestFlight or submit it to App Store.
 
 ## Manual code signing
 
-With the manual code signing method, you are required to upload the signing certificate and the matching provisioning profile to Codemagic in order to receive signed builds for the workflow at hand.
+With the manual code signing method, you are required to upload the signing certificate and the matching provisioning profile(s) to Codemagic in order to receive signed builds.
 
-1. In your App settings, navigate to the Publish section.
-2. Click on **iOS code signing** to expand this step.
-3. Select **Manual** as the code signing method.
-4. Upload your signing certificate (in `.p12` format) and provisioning profile (`.mobileprovision`). Note that if your app contains app extensions, you are required to upload an additional provisioning profile for each extension.
+1. Go to **App settings > Publish > iOS code signing**.
+2. Select **Manual** as the code signing method.
+3. Upload your signing certificate (in `.p12` format). If your certificate is password-protected, enter the **Certificate password**. 
+4. Upload your provisioning profile (`.mobileprovision`). Note that if your app contains app extensions, you are required to upload an additional provisioning profile for each extension.
 5. Click **Save** to finish the setup.
 
-{{< figure size="medium" src="../uploads/2019/03/manual_code_signing.PNG" caption="Manual code signing setup" >}}
+{{< figure size="medium" src="../uploads/manual_code_signing.png" caption="Manual code signing setup" >}}
 
-Codemagic will now create a signed `.ipa` file with every build. Note that you must also set up publishing to App Store Connect to distribute the app to the App Store.
+Codemagic will now create a signed `.ipa` file with every build. Note that you must also [set up publishing to App Store Connect](./publishing/publish-app-artifacts-to-app-center) to distribute the app via TestFlight or submit it to the App Store.
 
 ## Exporting signing certificate
-
-## Downloading provisioning profile
 
 You will need a Mac to generate the signing certificate.
 
@@ -100,6 +98,8 @@ To export the signing certificate:
 4. Save the certificate when prompted. Be sure to leave the file format filled as **Personal Information Exchange (.p12)** because saving the certificate with the **.cer** extension will not include your private key.
    {{< figure size="medium" src="../uploads/2019/03/keychain_certificate.PNG" caption="" >}}
 5. Enter the certificate export password when prompted (optional).
+
+## Downloading provisioning profile
 
 You can manage your distribution profiles in [Apple Developer portal](https://developer.apple.com/account/ios/profile/profileList.action).
 
