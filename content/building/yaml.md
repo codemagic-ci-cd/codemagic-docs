@@ -118,7 +118,7 @@ The main sections in each workflow are described below.
 
     environment:
       vars:                 # Define your environment variables here
-        PUBLIC_ENV_VAR: value here
+        PUBLIC_ENV_VAR: "value here"
         SECRET_ENV_VAR: Encrypted(...)
         CM_KEYSTORE: Encrypted(...)
         CM_KEYSTORE_PASSWORD: Encrypted(...)
