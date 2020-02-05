@@ -12,9 +12,9 @@ To receive a signed `.ipa` file of your app on Codemagic, you need to set up cod
 
 Before you can start signing or distributing your app, you need to [enroll as an iOS developer](https://developer.apple.com/programs/enroll/) and [register an app ID](https://developer.apple.com/account/ios/identifier/bundle/create) in Apple Developer portal. Then, you need a **signing certificate** and a **provisioning profile** to sign the build.
 
-{{% notebox %}}  
+{{<notebox>}}  
 With our **automatic code signing** feature, Codemagic will create both the certificate and the provisioning profile for you on your behalf. When using our **manual code signing** method, you will need to first export the certificate and the provisioning profile in order to upload them, see [how to export the certificate and the provisioning profile](#exporting-signing-certificate-and-provisioning-profile).  
-{{% /notebox %}}
+{{</notebox>}}
 
 The certificate is issued by Apple and enables to identify who developed the code. Codemagic expects your certificate to be in **Personal Information Exchange (.p12)** format.
 
@@ -34,13 +34,13 @@ In short, the purpose of the different provisioning profiles is the following:
 
 With the automatic code signing feature, Codemagic will generate a signing certificate and a matching provisioning profile for you in-app and use them for code signing during the build. Depending on the selected provisioning profile type, Codemagic will create a development or a distribution certificate and a development, Ad hoc or App store provisioning profile. The provisioning profile (except for Distribution) will include all the devices you have registered on your Apple Developer account.
 
-{{% notebox %}}
+{{<notebox>}}
 **Apple Developer Portal integration**
 
 To use automatic code signing, you are required to enable the **Developer Portal** integration in **User settings > Integrations** for personal projects and in **Team settings > Team integrations** for projects shared in the team (if you're the team owner). This allows you to convneniently use the same Apple Developer Portal credentials for automatic code signing across all projects and workflows.
 
 If you have previously set up workflow-specific credentials, you can remove them in the iOS automatic code signing settings after setting up the integration.
-{{% /notebox %}}
+{{</notebox>}}
 
 ### Enabling the Apple Developer Portal integration
 

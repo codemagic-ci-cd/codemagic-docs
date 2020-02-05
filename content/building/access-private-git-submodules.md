@@ -1,7 +1,7 @@
 ---
 description: Access any private Git submodules or dependencies in Codemagic
 title: Accessing private repositories
-weight: 4
+weight: 5
 ---
 
 If your project requires accessing any private Git submodules or dependencies, you'll need to grant Codemagic access to them in order to build successfully.
@@ -14,9 +14,9 @@ If your project requires accessing any private Git submodules or dependencies, y
         ...
         -----END OPENSSH PRIVATE KEY-----
 
-    {{% notebox %}}
+    {{<notebox>}}
 Note that the `-----END OPENSSH PRIVATE KEY-----` line needs to be followed by an empty line for the key to be usable.
-{{% /notebox %}}
+{{</notebox>}}
 
 All environment variables whose name has the suffix `_SSH_KEY` will be automatically added to the SSH agent and will be ready for use during the whole build process. Check the `Preparing build machine` step in build logs to verify that the key has been successfully added to the SSH agent.
 

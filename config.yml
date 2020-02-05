@@ -50,12 +50,15 @@ menu:
     - identifier: custom-scripts
       name: Custom script examples
       weight: 6
+    - identifier: rest-api
+      name: Codemagic API
+      weight: 7
     - identifier: troubleshooting
       name: Troubleshooting
-      weight: 7
+      weight: 8
     - identifier: releases-and-versions
       name: Releases and versions
-      weight: 8
+      weight: 9
 
 mediaTypes:
   video/mp4:
