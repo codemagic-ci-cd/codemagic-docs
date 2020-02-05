@@ -4,7 +4,7 @@ title: Setting up projects
 weight: 2
 ---
 
-Codemagic allows you to build, test and publish Flutter apps (Android, iOS, web, macOS, Linux), native Android and iOS apps, native apps containing Flutter modules, Flutter widgets and Flutter packages. Projects can be configured via GUI (Flutter projects only) or using [`codemagic.yaml`](../building/yaml) (all projects).
+Codemagic allows you to build, test and publish Flutter apps (Android, iOS, web, macOS, Linux), Flutter widgets, native Android and iOS apps and native apps containing Flutter modules. Projects can be configured via GUI (Flutter projects only) or using [`codemagic.yaml`](../building/yaml) (all projects).
 
 Upon login, Codemagic will automatically display the list of apps in the [connected repositories](./signup#connecting-several-repository-accounts). If you want to build an app that is not available through the account you signed up with, you can [add the app from custom source](./adding-apps-from-custom-sources).
 
@@ -28,7 +28,7 @@ As the build starts, you can monitor the build progress right in your browser an
 
 After the build has finished successfully, you will immediately have **artifacts** available for download which you will also receive on the email that was configured for the app repository.
 
-### Multiple projects in one repository
+## Multiple projects in one repository
 
 Codemagic supports monorepos and is able to detect multiple Flutter projects in a repository provided that each project has its `pubspec.yaml` file.
 
