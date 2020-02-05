@@ -74,7 +74,7 @@ This is the skeleton structure of `codemagic.yaml`.
         name: My workflow name
         environment:
           vars:
-            PUBLIC_ENV_VAR: value here
+            PUBLIC_ENV_VAR: "value here"
           flutter: stable
         cache:
           cache_paths:
