@@ -24,7 +24,7 @@ A provisioning profile — development or distribution — contains information 
 {{<notebox >}} 
 **Automatic code signing without a Mac**
 
-With **automatic code signing**, Codemagic will create both the **certificate** and the **provisioning profile** for you on your behalf. When using our **manual code signing** method, you will need to upload the signing certificate and provisioning profile manually.  
+With **automatic code signing**, Codemagic will create both the **certificate** and the **provisioning profile** for you on your behalf. 
 {{</notebox>}}
 
 For successful signing, the certificate and the provisioning profile must match in the following way:
