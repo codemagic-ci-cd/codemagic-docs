@@ -6,6 +6,10 @@ weight: 1
 
 ## January 2020
 
+### Rescan application
+
+Rescanning the application updates the repository settings in Codemagic. This is useful when you have moved or renamed your repository, moved the Flutter project inside the repository or renamed the folder containing the project. The **Rescan application** option is available in **App settings > Repository settings**. Additionally, you can now see the path of the `pubspec.yaml` file that is used for building in **App settings > Build > Project file path**.
+
 ### GitHub releases
 
 The Publish section in app settings now contains an integration with GitHub for publishing Android artifacts to a GitHub release. Publishing to GitHub happens only for successful builds triggered on tag creation and is unavailable for manual builds. Read more about GitHub releases here: https://help.github.com/en/github/administering-a-repository/about-releases.
