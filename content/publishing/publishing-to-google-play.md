@@ -12,7 +12,7 @@ You will need a **service account in Google Play Console** to obtain the **JSON 
 
 Before releasing the app to Google Play, make sure that it meets the [Google Play's best practices guidelines](https://developer.android.com/distribute/best-practices/launch/).
 
-{{% notebox %}} Note that if you haven't published your app to Google Play yet, you must create an entry for your app in Google Play Console and manually upload the very first version of the app before you can automate publishing using Codemagic. In addition, each uploaded binary must have a different version, see how to automatically [increment build version](https://docs.codemagic.io/building/build-versioning/ 'Build versioning') on Codemagic. {{% /notebox %}}
+{{<notebox>}} Note that if you haven't published your app to Google Play yet, you must create an entry for your app in Google Play Console and manually upload the very first version of the app before you can automate publishing using Codemagic. In addition, each uploaded binary must have a different version, see how to automatically [increment build version](https://docs.codemagic.io/building/build-versioning/ 'Build versioning') on Codemagic. {{</notebox>}}
 
 ## Setting up a service account in Google Play Console
 
@@ -32,9 +32,9 @@ Before releasing the app to Google Play, make sure that it meets the [Google Pla
 
 Once you configure publishing to Google Play, Codemagic will automatically distribute the app to Google Play every time you build the workflow.
 
-{{% notebox %}}
+{{<notebox>}}
 The very first version of the app must be added to Google Play manually. You can download the **app_release.apk** from the build artifacts.
-{{% /notebox %}}
+{{</notebox>}}
 
 1. Navigate to the Publish section in app settings.
 2. Click **Google Play** to expand the options.

@@ -5,7 +5,7 @@ weight: 1
 
 `codemagic.yaml` is an advanced option for customizing the build and configuring all your workflows in a single file. The file can be committed to version control, and when detected in repository, will be used to configure the build instead of the settings in the UI.
 
-{{% notebox %}}
+{{<notebox>}}
 
 **Limitations**
 
@@ -15,7 +15,7 @@ The YAML feature is currently in *beta* and has the following limitations:
 * The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail**.
 * YAML configuration cannot be used with apps from custom sources.
 
-{{% /notebox %}}
+{{</notebox>}}
 
 ## Exporting current configuration as YAML
 
@@ -44,7 +44,7 @@ An example of an encrypted value:
 Encrypted(Z0FBQUFBQmRyY1FLWXIwVEhqdWphdjRhQ0xubkdoOGJ2bThkNmh4YmdXbFB3S2wyNTN2OERoV3c0YWU0OVBERG42d3Rfc2N0blNDX3FfblZxbUc4d2pWUHJBSVppbXNXNC04U1VqcGlnajZ2VnJVMVFWc3lZZ289)
 ```
 
-{{% notebox %}}Note that when the value is uploaded as a file, it is encoded to `base64`.{{% /notebox %}}
+{{<notebox>}}Note that when the value is uploaded as a file, it is encoded to `base64`.{{</notebox>}}
 
 Writing the base64-encoded environment variable to a file can be done like this:
 

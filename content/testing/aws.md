@@ -7,18 +7,18 @@ weight: 5
 
 You can run Flutter integration tests on physical Android and iOS devices on [AWS Device Farm](https://aws.amazon.com/device-farm/) thanks to the integration with [Sylph](https://github.com/mmcc007/sylph). 
 
-{{% notebox %}}
+{{<notebox>}}
 Using AWS Device Farm requires having an AWS account. You are billed separately by AWS for device usage. See the AWS Device Farm [pricing page](https://aws.amazon.com/device-farm/pricing/) for more information.
-{{% /notebox %}}
+{{</notebox>}}
 
 ## Requirements
 
 * An IAM user with Device Farm permissions is required. Follow the instructions outlined in the [setup document](https://docs.aws.amazon.com/devicefarm/latest/developerguide/setting-up.html) to create an IAM user with access to Device Farm and make note of the **access key ID** and **secret access key**.
 * `sylph.yaml` file in the repository for AWS Device Farm configuration (optional). The `sylph.yaml` templates are available on [GitHub](https://github.com/mmcc007/sylph/tree/master/example).
 
-{{% notebox %}}
+{{<notebox>}}
 We strongly advise you to set up an IAM user with a policy to access Device Farm and no other AWS permissions. Don't use your AWS root account credentials to link Codemagic with Device Farm.
-{{% /notebox %}}
+{{</notebox>}}
 
 ## AWS Device Farm setup on Codemagic
 

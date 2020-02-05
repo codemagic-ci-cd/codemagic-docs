@@ -39,9 +39,9 @@ The restrictions you configure in GitHub app apply to the repositories you share
 
 If you have enabled the GitHub integration for your team, the connected account makes use of OAuth permissions and the restrictions you configure in GitHub app do not apply.
 
-{{% notebox %}}
+{{<notebox>}}
 Currently, Codemagic has no way of knowing whether it has access to team apps before the build is started. Due to this, team apps to which you have revoked access in the GitHub app may not appear grayed out in the UI.
-{{% /notebox %}}
+{{</notebox>}}
 
 ## Disabling Codemagic CI/CD GitHub app integration
 

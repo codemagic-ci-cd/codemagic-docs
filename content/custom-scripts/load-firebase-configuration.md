@@ -16,10 +16,10 @@ Instead of committing the Firebase config files to your repository, you can uplo
         echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
         echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
 
-{{% notebox %}}
+{{<notebox>}}
 
 `post-clone script failed on base64 decode. The command could not be found`
 If you received this error message when using the script above, it may be due to some invisible Unicode characters in the script after copy-pasting it. Try removing the space between the `base64` command and the `--decode` option and then adding it back.
-{{% /notebox %}}
+{{</notebox>}}
 
 For more details about using base64 and loading the Firebase configuration in Codemagic, see the step-by-step guide [here](https://blog.codemagic.io/how-to-load-firebase-config-in-codemagic-with-environment-variables/).

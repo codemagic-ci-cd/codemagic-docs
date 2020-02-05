@@ -46,10 +46,10 @@ For accounts with sufficient permissions, Codemagic creates the webhooks necessa
 
 To set up a webhook for automatic build triggering on Codemagic, you must register the Codemagic **payload URL** in your repository settings and select Repository push, Branch push and PR merge events.
 
-{{% notebox %}}
+{{<notebox>}}
 The payload URL has the following format:  
 `https://api.codemagic.io/hooks/[appId]`
-{{% /notebox %}}
+{{</notebox>}}
 
 You can find your app ID in the browser URL after `app/` when you open the app on Codemagic: `https://codemagic.io/app/[appId]`
 
