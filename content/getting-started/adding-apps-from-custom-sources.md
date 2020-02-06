@@ -10,7 +10,8 @@ You can add apps from public or private Git-based repositories.
 Note that apps added from custom sources have some limitations.
 
 * Webhooks for automatic build triggering need to be [set up manually](../building/automatic-build-triggering/#webhooks).
-* Using `codemagic.yaml` for build configuration is currently not supported.  
+* Using `codemagic.yaml` for build configuration is not supported yet.  
+
 {{</notebox>}}
 
 ## Connecting repository via HTTP/HTTPS
