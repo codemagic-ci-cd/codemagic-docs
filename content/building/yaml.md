@@ -12,7 +12,7 @@ weight: 1
 
 The YAML feature is currently in *beta* and has the following limitations:
 
-* Only Android and web app configuration can be exported. The commands for building and code signing iOS apps are currently not generated and you cannot configure iOS publishing in YAML yet.
+* Exporting configuration from UI is supported for Android, iOS and web.
 * The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail**.
 * YAML configuration cannot be used with apps from custom sources.
 
