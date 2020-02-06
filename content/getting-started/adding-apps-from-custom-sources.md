@@ -19,7 +19,7 @@ Note that apps added from custom sources have some limitations.
 
     {{< figure size="medium" src="../uploads/add-app-from-custom-source1.png" caption="" >}}
 
-2. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository on clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `https://example.com/username/repo.git`.
+2. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository on clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `https://example.com/path/to/repository.git`.
 
     {{< figure size="medium" src="../uploads/add_app_nourl.png" caption="" >}}
 
