@@ -1,5 +1,6 @@
 ---
-title: Advanced configuration with YAML
+title: Configuration as code (YAML)
+description: Customize the build and configure all your workflows in a single file.
 weight: 1
 ---
 
