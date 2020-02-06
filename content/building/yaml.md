@@ -132,27 +132,25 @@ The main sections in each workflow are described below.
 
 #### Setting up code signing for iOS
 
-In order to use **automatic code signing** where Codemagic creates and manages signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect. 
+In order to use **automatic code signing** where Codemagic creates and manages signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the following environment variables: 
 
-`APP_STORE_CONNECT_PRIVATE_KEY`
+* `APP_STORE_CONNECT_PRIVATE_KEY`
 
-It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api).
+  It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api).
 
-1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
-2. Click on the '+' sign to generate a new API key. 
-3. Enter the name for the key and select an access level (`Admin`, `App Manager` or `Developer`).
-4. Click **Generate**.
-5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key. Note that the key can only be downloaded once.
+  1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
+  2. Click on the '+' sign to generate a new API key. 
+  3. Enter the name for the key and select an access level (`Admin`, `App Manager` or `Developer`).
+  4. Click **Generate**.
+  5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key. Note that the key can only be downloaded once.
 
-`APP_STORE_CONNECT_KEY_IDENTIFIER`
+* `APP_STORE_CONNECT_KEY_IDENTIFIER`
 
-This is the **Key ID** of the key.
+  This is the **Key ID** of the key.
 
-`APP_STORE_CONNECT_ISSUER_ID`
+* `APP_STORE_CONNECT_ISSUER_ID`
 
-This is the **Issuer ID** displayed above the table of active keys.
-
-{{< figure size="medium" src="" caption="" >}}
+  This is the **Issuer ID** displayed above the table of active keys.
 
 In order to use **manual code signing** and upload the signing certificate and provisioning profile yourself, upload the encrypted signing certificate, the certificate password and the provisioning profile to the following environment variables:
 
