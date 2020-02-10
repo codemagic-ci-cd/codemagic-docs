@@ -12,7 +12,7 @@ weight: 1
 
 The YAML feature is currently in *beta* and has the following limitations:
 
-* Exporting configuration from UI is supported for Android, iOS and web.
+* Exporting configuration from UI is supported for Flutter-based Android, iOS and web apps.
 * The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail**.
 * YAML configuration cannot be used with apps from custom sources yet.
 
@@ -77,9 +77,10 @@ This is the skeleton structure of `codemagic.yaml`.
           vars:
             PUBLIC_ENV_VAR: "value here"
           flutter: stable
+          xcode: latest
         cache:
           cache_paths:
-            - $FCI_BUILD_DIR/build
+            - ~/.pub
         triggering:
           events:
             - push
@@ -118,17 +119,29 @@ The main sections in each workflow are described below.
 `environment:` Contains your environment variables and enables to specify the version of Flutter used for building. This is also where you are required to add credentials and API keys required for code signing. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
 
     environment:
-      vars:                 # Define your environment variables here
+      vars:             # Define your environment variables here
         PUBLIC_ENV_VAR: "value here"
         SECRET_ENV_VAR: Encrypted(...)
-        CM_KEYSTORE: Encrypted(...)             # Android code signing
-        CM_KEYSTORE_PASSWORD: Encrypted(...)    # Android code signing
-        CM_KEY_ALIAS_PASSWORD: Encrypted(...)   # Android code signing
-        CM_KEY_ALIAS_USERNAME: Encrypted(...)   # Android code signing
-        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)       # iOS automatic code signing
-        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)  # iOS automatic code signing
-        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)     # iOS automatic code signing
-      flutter: stable       # Define the channel name or version
+        
+        # Android code signing
+        CM_KEYSTORE: Encrypted(...)
+        CM_KEYSTORE_PASSWORD: Encrypted(...)
+        CM_KEY_ALIAS_PASSWORD: Encrypted(...)
+        CM_KEY_ALIAS_USERNAME: Encrypted(...)
+        
+        # iOS automatic code signing
+        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
+        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
+        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
+        CERTIFICATE_PRIVATE_KEY: Encrypted(...)
+
+        # iOS manual code signing
+        CM_CERTIFICATE: Encrypted(...)
+        CM_CERTIFICATE_PASSWORD: Encrypted(...)
+        CM_PROVISIONING_PROFILE: Encrypted(...)
+
+      flutter: stable   # Define the channel name or version (e.g. v1.13.4)
+      xcode: latest     # Define latest, edge or version (e.g. 11.2)
 
 #### Setting up code signing for iOS
 
@@ -146,13 +159,17 @@ In order to use **automatic code signing** where Codemagic creates and manages s
 
 * `APP_STORE_CONNECT_KEY_IDENTIFIER`
 
-  This is the **Key ID** of the key.
+  In **App Store Connect > Users and Access > Keys**, this is the **Key ID** of the key.
 
 * `APP_STORE_CONNECT_ISSUER_ID`
 
-  This is the **Issuer ID** displayed above the table of active keys.
+  In **App Store Connect > Users and Access > Keys**, this is the **Issuer ID** displayed above the table of active keys.
 
-In order to use **manual code signing** and upload the signing certificate and provisioning profile yourself, upload the encrypted signing certificate, the certificate password and the provisioning profile to the following environment variables:
+* `CERTIFICATE_PRIVATE_KEY`
+
+  RSA 2048 bit private key to be included in the signing certificate. Read more about it [here](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d).
+
+In order to use **manual code signing**, upload the encrypted signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile to the following environment variables:
 
     CM_CERTIFICATE: Encrypted(...)
     CM_CERTIFICATE_PASSWORD: Encrypted(...)
@@ -164,8 +181,8 @@ In order to use **manual code signing** and upload the signing certificate and p
 
     cache:
       cache_paths:
-        - $FCI_BUILD_DIR/build
-        - $FCI_BUILD_DIR/build/dir/to/cache
+        - ~/.pub
+        - ...
 
 ### Triggering
 
@@ -230,7 +247,7 @@ For example, you can write a build script with Dart like this:
 
 **Note on building Android app bundles**
 
-If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. This file is required for publishing to Google Play. If you're creating a YAML file from a scratch, add the script below to receive this file:
+If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you're creating a YAML file from a scratch, add the script below to receive this file:
 
     # fetch codemagic helper scripts
     rm -rf ~/codemagic-build-scripts
@@ -279,12 +296,17 @@ Below is an example of building a Flutter app for iOS with manual code signing.
         PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
         mkdir -p "$PROFILES_HOME"
         PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-        echo ${CM_PROVISIONING_PROFILE_1} | base64 --decode > $PROFILE_PATH
+        echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
         echo "Saved provisioning profile $PROFILE_PATH"
       - |
         # set up signing certificate
         echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+
+        # when using a password-protected certificate
         keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
+        # when using a certificate that is not password-protected
+        keychain add-certificates --certificate /tmp/certificate.p12
+
       - flutter build ios --debug --flavor dev --no-codesign
       - xcode-project use-profiles
       - xcode-project build-ipa --workspace ios/Runner.xcworkspace --config Debug --scheme dev
@@ -315,12 +337,12 @@ Below is an example of building a Flutter app for iOS with manual code signing.
         recipients:
           - name@example.com
       slack:
-        channel: '#slack-test'
+        channel: '#channel-name'
         notify_on_build_start: true
       google_play:                        # For Android app
         credentials: Encrypted(...)
         track: alpha
-      app_store_connect:
+      app_store_connect:                  # For iOS app
         app_id: '...'                     # App's unique identifier in App Store Connect
         apple_id: name@example.com        # Email address used for login
         password: Encrypted(...)          # App-specific password
