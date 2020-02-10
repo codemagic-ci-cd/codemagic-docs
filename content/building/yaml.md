@@ -173,7 +173,7 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
 Alternatively, each property can be specified in the [scripts](#scripts) section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch%E2%80%91signing%E2%80%91files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
 {{</notebox>}}
 
-In order to use **manual code signing**, upload the encrypted signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile to the following environment variables:
+In order to use **manual code signing**, [encrypt](https://docs.codemagic.io/building/yaml/#encrypting-sensitive-data) your signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile, and set the encrypted values to the following environment variables:
 
     CM_CERTIFICATE: Encrypted(...)
     CM_CERTIFICATE_PASSWORD: Encrypted(...)
@@ -275,11 +275,13 @@ Below is an example of building a Flutter app for iOS with automatic code signin
           - flutter test
           - find . -name "Podfile" -execdir pod install \;
           - keychain initialize
-          - app-store-connect fetch-signing-files "com.example.capybara.dev" --type IOS_APP_DEVELOPMENT --create       # Specify bundle ID and provisioning profile type
+          - app-store-connect fetch-signing-files "io.codemagic.app" \  # Fetch signing files for specified bundle ID
+                --type IOS_APP_DEVELOPMENT \  # Specify provisioning profile type*
+                --create  # Allow creating resources if existing are not found.
           - keychain add-certificates
           - flutter build ios --debug --flavor dev --no-codesign
           - xcode-project use-profiles
-          - xcode-project build-ipa --workspace ios/Runner.xcworkspace --config Debug --scheme dev
+          - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
 
 * The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch%E2%80%91signing%E2%80%91files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
 
@@ -309,7 +311,7 @@ Below is an example of building a Flutter app for iOS with manual code signing.
 
       - flutter build ios --debug --flavor dev --no-codesign
       - xcode-project use-profiles
-      - xcode-project build-ipa --workspace ios/Runner.xcworkspace --config Debug --scheme dev
+      - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
 
 ### Artifacts
 
@@ -348,4 +350,3 @@ Below is an example of building a Flutter app for iOS with manual code signing.
         password: Encrypted(...)          # App-specific password
       static_page:                        # For web app
         subdomain: my-subdomain
-
