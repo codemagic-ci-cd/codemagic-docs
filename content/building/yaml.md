@@ -311,7 +311,7 @@ Below is an example of building a Flutter app for iOS with manual code signing.
 
       - flutter build ios --debug --flavor dev --no-codesign
       - xcode-project use-profiles
-      - xcode-project build-ipa --workspace ios/Runner.xcworkspace --config Debug --scheme dev
+      - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
 
 ### Artifacts
 
