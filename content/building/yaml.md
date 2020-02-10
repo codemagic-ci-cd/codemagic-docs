@@ -80,7 +80,7 @@ This is the skeleton structure of `codemagic.yaml`.
           xcode: latest
         cache:
           cache_paths:
-            - ~/.pub
+            - ~/.pub-cache
         triggering:
           events:
             - push
@@ -116,7 +116,7 @@ The main sections in each workflow are described below.
 
 ### Environment
 
-`environment:` Contains your environment variables and enables to specify the version of Flutter used for building. This is also where you are required to add credentials and API keys required for code signing. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
+`environment:` Contains your environment variables and enables to specify the version of Flutter used for building. This is also where you can add credentials and API keys required for code signing. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
 
     environment:
       vars:             # Define your environment variables here
@@ -145,7 +145,7 @@ The main sections in each workflow are described below.
 
 #### Setting up code signing for iOS
 
-In order to use **automatic code signing** where Codemagic creates and manages signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the following environment variables: 
+In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below.
 
 * `APP_STORE_CONNECT_PRIVATE_KEY`
 
@@ -153,7 +153,7 @@ In order to use **automatic code signing** where Codemagic creates and manages s
 
   1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
   2. Click on the '+' sign to generate a new API key. 
-  3. Enter the name for the key and select an access level (`Admin`, `App Manager` or `Developer`).
+  3. Enter the name for the key and select an access level (`Admin` or `Developer`).
   4. Click **Generate**.
   5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key. Note that the key can only be downloaded once.
 
@@ -167,7 +167,11 @@ In order to use **automatic code signing** where Codemagic creates and manages s
 
 * `CERTIFICATE_PRIVATE_KEY`
 
-  RSA 2048 bit private key to be included in the signing certificate. Read more about it [here](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d).
+  A RSA 2048 bit private key to be included in the signing certificate. Read more about it [here](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d).
+
+{{<notebox>}}
+Alternatively, each property can be specified in the [scripts](#scripts) section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch%E2%80%91signing%E2%80%91files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
+{{</notebox>}}
 
 In order to use **manual code signing**, upload the encrypted signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile to the following environment variables:
 
@@ -181,7 +185,7 @@ In order to use **manual code signing**, upload the encrypted signing certificat
 
     cache:
       cache_paths:
-        - ~/.pub
+        - ~/.pub-cache
         - ...
 
 ### Triggering
@@ -249,17 +253,13 @@ For example, you can write a build script with Dart like this:
 
 If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you're creating a YAML file from a scratch, add the script below to receive this file:
 
-    # fetch codemagic helper scripts
-    rm -rf ~/codemagic-build-scripts
-    git clone https://github.com/NevercodeHQ/codemagic-build-scripts.git ~/codemagic-build-scripts/ --depth 1
-    
     # generate signed universal apk with user specified keys
-    ~/codemagic-build-scripts/android/generate-universal-apks \
-      --ks /tmp/keystore.keystore \
-      --ks-pass $CM_KEYSTORE_PASSWORD \
-      --ks-key-alias $CM_KEY_ALIAS_USERNAME \
-      --key-pass $CM_KEY_ALIAS_PASSWORD \
-      --pattern 'build/**/outputs/**/*.aab'
+    universal-apk generate \
+          --ks /tmp/keystore.keystore \
+          --ks-pass $CM_KEYSTORE_PASSWORD \
+          --ks-key-alias $CM_KEY_ALIAS_USERNAME \
+          --key-pass $CM_KEY_ALIAS_PASSWORD \
+          --pattern 'build/**/outputs/**/*.aab'
   
 #### Building for iOS
 
