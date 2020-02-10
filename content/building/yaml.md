@@ -169,7 +169,7 @@ In order to use **automatic code signing** where Codemagic creates and manages s
 
   RSA 2048 bit private key to be included in the signing certificate. Read more about it [here](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d).
 
-In order to use **manual code signing**, upload the encrypted signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile to the following environment variables:
+In order to use **manual code signing**, [encrypt](https://docs.codemagic.io/building/yaml/#encrypting-sensitive-data) your signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile, and set the encrypted values to the following environment variables:
 
     CM_CERTIFICATE: Encrypted(...)
     CM_CERTIFICATE_PASSWORD: Encrypted(...)
