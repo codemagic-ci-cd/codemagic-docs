@@ -237,18 +237,6 @@ Below is an example of building a Flutter app for Android.
       - flutter test
       - flutter build apk --release
 
-You can run scripts in languages other than shell (`sh`) by defining the languge with a shebang line or by launching a script file present in your repository.
-
-For example, you can write a build script with Dart like this:
-
-    scripts:
-        - |
-          #!/usr/local/bin/dart
-
-          void main() {
-            print('Hello, World!');
-          }
-
 **Note on building Android app bundles**
 
 If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you're creating a YAML file from a scratch, add the script below to receive this file:
@@ -312,6 +300,20 @@ Below is an example of building a Flutter app for iOS with manual code signing.
       - flutter build ios --debug --flavor dev --no-codesign
       - xcode-project use-profiles
       - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
+
+#### Running custom scripts
+ 
+You can run scripts in languages other than shell (`sh`) by defining the languge with a shebang line or by launching a script file present in your repository.
+
+For example, you can write a build script with Dart like this:
+
+    scripts:
+        - |
+          #!/usr/local/bin/dart
+
+          void main() {
+            print('Hello, World!');
+          }
 
 ### Artifacts
 
