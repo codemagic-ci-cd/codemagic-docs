@@ -80,7 +80,7 @@ This is the skeleton structure of `codemagic.yaml`.
           xcode: latest
         cache:
           cache_paths:
-            - ~/.pub
+            - ~/.pub-cache
         triggering:
           events:
             - push
@@ -348,4 +348,3 @@ Below is an example of building a Flutter app for iOS with manual code signing.
         password: Encrypted(...)          # App-specific password
       static_page:                        # For web app
         subdomain: my-subdomain
-
