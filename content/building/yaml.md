@@ -275,7 +275,9 @@ Below is an example of building a Flutter app for iOS with automatic code signin
           - flutter test
           - find . -name "Podfile" -execdir pod install \;
           - keychain initialize
-          - app-store-connect fetch-signing-files "com.example.capybara.dev" --type IOS_APP_DEVELOPMENT --create       # Specify bundle ID and provisioning profile type
+          - app-store-connect fetch-signing-files "io.codemagic.app" \  # Fetch signing files for specified bundle ID
+                --type IOS_APP_DEVELOPMENT \  # Specify provisioning profile type*
+                --create  # Allow creating resources if existing are not found.
           - keychain add-certificates
           - flutter build ios --debug --flavor dev --no-codesign
           - xcode-project use-profiles
