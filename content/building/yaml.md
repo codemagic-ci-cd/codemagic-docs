@@ -153,7 +153,7 @@ In order to use **automatic code signing** where Codemagic creates and manages s
 
   1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
   2. Click on the '+' sign to generate a new API key. 
-  3. Enter the name for the key and select an access level (`Admin`, `App Manager` or `Developer`).
+  3. Enter the name for the key and select an access level (`Admin` or `Developer`).
   4. Click **Generate**.
   5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key. Note that the key can only be downloaded once.
 
