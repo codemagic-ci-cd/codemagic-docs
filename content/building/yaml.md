@@ -13,8 +13,8 @@ weight: 1
 The YAML feature is currently in *beta* and has the following limitations:
 
 * Exporting configuration from UI is supported for Flutter-based Android, iOS and web apps.
-* The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail**.
-* YAML configuration cannot be used with apps from custom sources yet.
+* The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail** and publishing to Codemagic Static Pages.
+* YAML configuration is not yet available for apps from custom sources.
 
 {{</notebox>}}
 
@@ -302,7 +302,7 @@ Below is an example of building a Flutter app for iOS with manual code signing.
       - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
 
 #### Running custom scripts
- 
+
 You can run scripts in languages other than shell (`sh`) by defining the languge with a shebang line or by launching a script file present in your repository.
 
 For example, you can write a build script with Dart like this:
@@ -350,5 +350,3 @@ For example, you can write a build script with Dart like this:
         app_id: '...'                     # App's unique identifier in App Store Connect
         apple_id: name@example.com        # Email address used for login
         password: Encrypted(...)          # App-specific password
-      static_page:                        # For web app
-        subdomain: my-subdomain
