@@ -4,6 +4,16 @@ title: Release notes
 weight: 1
 ---
 
+## February 2020
+
+### Codemagic CLI tools
+
+We have developed a variety of CLI utilities to assist with building, code signing and publishing apps, collectively known as Codemagic CLI tools: https://github.com/codemagic-ci-cd/cli-tools. The CLI tools are open source, so you are welcome to install them locally as well as share feedback and contribute.
+
+### YAML for iOS
+
+In addition to using `codemagic.yaml` for building Android and web projects, you can now use it build, code sign and publish iOS apps. Read more about how to get started with YAML [here](../building/yaml).
+
 ## January 2020
 
 ### Rescan application
