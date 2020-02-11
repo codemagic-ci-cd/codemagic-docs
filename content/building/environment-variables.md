@@ -63,7 +63,7 @@ Here you'll find some of the read-only environment variables explained.
 | FCI_KEYSTORE_PATH        | Path of the file in our VM                                                                                      |
 | FCI_ARTIFACT_LINKS       | Information about generated build artifacts that is available in post-publishing step                           |
 
-`$FCI_ARTIFACT_LINKS` environment variable is JSON list in the form: 
+`$FCI_ARTIFACT_LINKS` environment variable value is a JSON encoded list in the form: 
 
     [
         {
