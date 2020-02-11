@@ -67,7 +67,7 @@ Here you'll find some of the read-only environment variables explained.
 
     [
         {
-            "name": "Capybara_Release.ipa",
+            "name": "Codemagic_Release.ipa",
             "type": "ipa",
             "url": "https://api.codemagic.io/artifacts/2e7564b2-9ffa-40c2-b9e0-8980436ac717/81c5a723-b162-488a-854e-3f5f7fdfb22f/Capybara_Release.ipa",
             "md5": "d2884be6985dad3ffc4d6f85b3a3642a",
@@ -75,4 +75,3 @@ Here you'll find some of the read-only environment variables explained.
             "bundleId": "io.codemagic.capybara"
         }
     ]                                                                                   
-
