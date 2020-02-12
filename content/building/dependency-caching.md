@@ -6,11 +6,7 @@ weight: 10
 
 You can speed up your builds by storing dependencies on Codemagic. To use caching, you must **enable dependency caching** in app settings. Note that caching is workflow-specific.
 
-By default, Codemagic offers to cache the following path:
-
-`$FCI_BUILD_DIR/build`
-
-You can add other paths to be cached, for example:
+You can add paths to be cached, for example:
 
 | **Path**                                    | **Description**                                  |
 | ------------------------------------------- | ------------------------------------------------ |
