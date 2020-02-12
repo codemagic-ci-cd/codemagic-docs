@@ -14,7 +14,7 @@ In addition, the application must be **App Store ready** for build distribution,
 
 It is also worth pointing out the necessity for each uploaded binary to have a **different version**, otherwise it will be refused by App Store Connect. See the [Build versioning](https://docs.codemagic.io/building/build-versioning/) article for instructions on incrementing app version with Codemagic.
 
-{{% notebox %}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. {{% /notebox %}}
+{{<notebox>}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. {{</notebox>}}
 
 ## Finding your app ID
 
@@ -23,13 +23,13 @@ It is also worth pointing out the necessity for each uploaded binary to have a *
 3. Select your app and click **App Information**.
 4. You can then see your app's identifier (confusingly named **Apple ID**) in the **General Information** section.
 
-![Finding your app's unique identifier](../uploads/2019/03/app store connect_app ID.png)
+{{< figure size="medium" src="../uploads/2019/03/app store connect_app ID.png" caption="Finding your app's unique identifier" >}}
 
 ## Setting up publishing to App Store Connect on Codemagic
 
 1. Navigate to the Publish section in app settings.
 2. Click **App Store Connect**.
-3. Enter your **Apple ID** (for login), your **app-specific password** and **App ID** (your app's unique identifier in App Store Connect).
+3. Enter your **Apple ID** (the email address used for login), your **app-specific password** and **App ID** (your app's unique identifier in App Store Connect).
 4. Click **Save** to finish the setup.
 
 Once you have successfully set up publishing to App Store Connect, Codemagic will automatically distribute the app to App Store Connect every time you build the workflow. Note that you must manually submit the app to App Store in App Store Connect.

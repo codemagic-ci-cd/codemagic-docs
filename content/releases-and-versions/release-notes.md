@@ -4,6 +4,41 @@ title: Release notes
 weight: 1
 ---
 
+## February 2020
+
+### Codemagic CLI tools
+
+We have developed a variety of CLI utilities to assist with building, code signing and publishing apps, collectively known as Codemagic CLI tools: https://github.com/codemagic-ci-cd/cli-tools. The CLI tools are open source, so you are welcome to install them locally as well as share feedback and contribute.
+
+### YAML for iOS
+
+In addition to using `codemagic.yaml` for building Android and web projects, you can now use it build, code sign and publish iOS apps. Read more about how to get started with YAML [here](../building/yaml).
+
+## January 2020
+
+### Rescan application
+
+Rescanning the application updates the repository settings in Codemagic. This is useful when you have moved or renamed your repository, moved the Flutter project inside the repository or renamed the folder containing the project. The **Rescan application** option is available in **App settings > Repository settings**. Additionally, you can now see the path of the `pubspec.yaml` file that is used for building in **App settings > Build > Project file path**.
+
+### GitHub releases
+
+The Publish section in app settings now contains an integration with GitHub for publishing Android artifacts to a GitHub release. Publishing to GitHub happens only for successful builds triggered on tag creation and is unavailable for manual builds. Read more about GitHub releases here: https://help.github.com/en/github/administering-a-repository/about-releases.
+
+### Codemagic API key
+
+We have made Codemagic API key available from the UI, which will make integrating Codemagic to your workflows even easier. The key is available in **User settings > Integrations > Codemagic API**. Currently, the API key can be used to set up custom build triggers, read more about it [here](../building/automatic-build-triggering/#custom-build-triggers).
+
+### Transfer personal paid minutes to team
+
+You can now transfer all personal paid build minutes to your team account from user settings and team settings.
+Note that you will see the **Transfer** button only if you have any minutes to transfer and are part of a team.
+
+## December 2019
+
+### Mac Pro trial
+
+Codemagic now has Mac Pro build machines available for business plan users. To test out Mac Pros, all users and teams get 3 Mac Pro builds without any additional cost as a one-time offer. You can choose to run a build on a Mac Pro when starting build manually. 
+
 ## November 2019
 
 ### Make builds public

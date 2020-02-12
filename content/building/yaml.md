@@ -1,21 +1,22 @@
 ---
-title: Advanced configuration with YAML
+title: Configuration as code (YAML)
+description: Customize the build and configure all your workflows in a single file.
 weight: 1
 ---
 
 `codemagic.yaml` is an advanced option for customizing the build and configuring all your workflows in a single file. The file can be committed to version control, and when detected in repository, will be used to configure the build instead of the settings in the UI.
 
-{{% notebox %}}
+{{<notebox>}}
 
 **Limitations**
 
 The YAML feature is currently in *beta* and has the following limitations:
 
-* Only Android and web app configuration can be exported. The commands for building and code signing iOS apps are currently not generated and you cannot configure iOS publishing in YAML yet.
-* The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail**.
-* YAML configuration cannot be used with apps from custom sources.
+* Exporting configuration from UI is supported for Flutter-based Android, iOS and web apps.
+* The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail** and publishing to Codemagic Static Pages.
+* YAML configuration is not yet available for apps from custom sources.
 
-{{% /notebox %}}
+{{</notebox>}}
 
 ## Exporting current configuration as YAML
 
@@ -44,7 +45,7 @@ An example of an encrypted value:
 Encrypted(Z0FBQUFBQmRyY1FLWXIwVEhqdWphdjRhQ0xubkdoOGJ2bThkNmh4YmdXbFB3S2wyNTN2OERoV3c0YWU0OVBERG42d3Rfc2N0blNDX3FfblZxbUc4d2pWUHJBSVppbXNXNC04U1VqcGlnajZ2VnJVMVFWc3lZZ289)
 ```
 
-{{% notebox %}}Note that when the value is uploaded as a file, it is encoded to `base64`.{{% /notebox %}}
+{{<notebox>}}Note that when the value is uploaded as a file, it is encoded to `base64`.{{</notebox>}}
 
 Writing the base64-encoded environment variable to a file can be done like this:
 
@@ -74,11 +75,12 @@ This is the skeleton structure of `codemagic.yaml`.
         name: My workflow name
         environment:
           vars:
-            PUBLIC_ENV_VAR: value here
+            PUBLIC_ENV_VAR: "value here"
           flutter: stable
+          xcode: latest
         cache:
           cache_paths:
-            - $FCI_BUILD_DIR/build
+            - ~/.pub-cache
         triggering:
           events:
             - push
@@ -107,24 +109,75 @@ You can use `codemagic.yaml` to define several workflows for building a project.
         triggering:
         branch_patterns:
         scripts:
-        publishing:
         artifacts:
+        publishing:
 
 The main sections in each workflow are described below.
 
 ### Environment
 
-`environment:` Contains your environment variables and enables to specify the version of Flutter used for building. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
+`environment:` Contains your environment variables and enables to specify the version of Flutter used for building. This is also where you can add credentials and API keys required for code signing. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
 
     environment:
-      vars:                 # Define your environment variables here
-        PUBLIC_ENV_VAR: value here
+      vars:             # Define your environment variables here
+        PUBLIC_ENV_VAR: "value here"
         SECRET_ENV_VAR: Encrypted(...)
+        
+        # Android code signing
         CM_KEYSTORE: Encrypted(...)
         CM_KEYSTORE_PASSWORD: Encrypted(...)
         CM_KEY_ALIAS_PASSWORD: Encrypted(...)
         CM_KEY_ALIAS_USERNAME: Encrypted(...)
-      flutter: stable       # Define the channel name or version
+        
+        # iOS automatic code signing
+        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
+        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
+        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
+        CERTIFICATE_PRIVATE_KEY: Encrypted(...)
+
+        # iOS manual code signing
+        CM_CERTIFICATE: Encrypted(...)
+        CM_CERTIFICATE_PASSWORD: Encrypted(...)
+        CM_PROVISIONING_PROFILE: Encrypted(...)
+
+      flutter: stable   # Define the channel name or version (e.g. v1.13.4)
+      xcode: latest     # Define latest, edge or version (e.g. 11.2)
+
+#### Setting up code signing for iOS
+
+In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below.
+
+* `APP_STORE_CONNECT_PRIVATE_KEY`
+
+  It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api).
+
+  1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
+  2. Click on the '+' sign to generate a new API key. 
+  3. Enter the name for the key and select an access level (`Admin` or `Developer`).
+  4. Click **Generate**.
+  5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key. Note that the key can only be downloaded once.
+
+* `APP_STORE_CONNECT_KEY_IDENTIFIER`
+
+  In **App Store Connect > Users and Access > Keys**, this is the **Key ID** of the key.
+
+* `APP_STORE_CONNECT_ISSUER_ID`
+
+  In **App Store Connect > Users and Access > Keys**, this is the **Issuer ID** displayed above the table of active keys.
+
+* `CERTIFICATE_PRIVATE_KEY`
+
+  A RSA 2048 bit private key to be included in the signing certificate. Read more about it [here](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d).
+
+{{<notebox>}}
+Alternatively, each property can be specified in the [scripts](#scripts) section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch%E2%80%91signing%E2%80%91files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
+{{</notebox>}}
+
+In order to use **manual code signing**, [encrypt](https://docs.codemagic.io/building/yaml/#encrypting-sensitive-data) your signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile, and set the encrypted values to the following environment variables:
+
+    CM_CERTIFICATE: Encrypted(...)
+    CM_CERTIFICATE_PASSWORD: Encrypted(...)
+    CM_PROVISIONING_PROFILE: Encrypted(...)
 
 ### Cache
 
@@ -132,8 +185,8 @@ The main sections in each workflow are described below.
 
     cache:
       cache_paths:
-        - $FCI_BUILD_DIR/build
-        - $FCI_BUILD_DIR/build/dir/to/cache
+        - ~/.pub-cache
+        - ...
 
 ### Triggering
 
@@ -159,7 +212,11 @@ A branch pattern can match the name of a particular branch, or you can use wildc
 
 ### Scripts
 
-`scripts:` Contains the scripts and commands to be run during the build. This is where you can specify the commands to test, build and code sign your project. Below is an example for building a Flutter app in debug mode for Android.
+`scripts:` Contains the scripts and commands to be run during the build. This is where you can specify the commands to test, build and code sign your project. 
+
+#### Building for Android
+
+Below is an example of building a Flutter app for Android.
 
     scripts:
       - |
@@ -180,6 +237,72 @@ A branch pattern can match the name of a particular branch, or you can use wildc
       - flutter test
       - flutter build apk --release
 
+**Note on building Android app bundles**
+
+If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you're creating a YAML file from a scratch, add the script below to receive this file:
+
+    # generate signed universal apk with user specified keys
+    universal-apk generate \
+          --ks /tmp/keystore.keystore \
+          --ks-pass $CM_KEYSTORE_PASSWORD \
+          --ks-key-alias $CM_KEY_ALIAS_USERNAME \
+          --key-pass $CM_KEY_ALIAS_PASSWORD \
+          --pattern 'build/**/outputs/**/*.aab'
+  
+#### Building for iOS
+
+{{<notebox>}}
+Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md) utility for generating and managing certificates and provisioning profiles and performing code signing.
+{{</notebox>}}
+
+Below is an example of building a Flutter app for iOS with automatic code signing. 
+
+    scripts:
+          - flutter packages pub get
+          - flutter analyze
+          - flutter test
+          - find . -name "Podfile" -execdir pod install \;
+          - keychain initialize
+          - app-store-connect fetch-signing-files "io.codemagic.app" \  # Fetch signing files for specified bundle ID
+                --type IOS_APP_DEVELOPMENT \  # Specify provisioning profile type*
+                --create  # Allow creating resources if existing are not found.
+          - keychain add-certificates
+          - flutter build ios --debug --flavor dev --no-codesign
+          - xcode-project use-profiles
+          - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
+
+* The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch%E2%80%91signing%E2%80%91files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
+
+Below is an example of building a Flutter app for iOS with manual code signing.
+
+    scripts:
+      - flutter packages pub get
+      - flutter analyze
+      - flutter test
+      - find . -name "Podfile" -execdir pod install \;
+      - keychain initialize
+      - |
+        # set up provisioning profiles
+        PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+        mkdir -p "$PROFILES_HOME"
+        PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
+        echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+        echo "Saved provisioning profile $PROFILE_PATH"
+      - |
+        # set up signing certificate
+        echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+
+        # when using a password-protected certificate
+        keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
+        # when using a certificate that is not password-protected
+        keychain add-certificates --certificate /tmp/certificate.p12
+
+      - flutter build ios --debug --flavor dev --no-codesign
+      - xcode-project use-profiles
+      - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
+
+#### Running custom scripts
+
 You can run scripts in languages other than shell (`sh`) by defining the languge with a shebang line or by launching a script file present in your repository.
 
 For example, you can write a build script with Dart like this:
@@ -192,33 +315,18 @@ For example, you can write a build script with Dart like this:
             print('Hello, World!');
           }
 
-**Note on building Android app bundles**
-
-If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. This file is required for publishing to Google Play. If you're creating a YAML file from a scratch, add the script below to receive this file:
-
-    # fetch codemagic helper scripts
-    rm -rf ~/codemagic-build-scripts
-    git clone https://github.com/NevercodeHQ/codemagic-build-scripts.git ~/codemagic-build-scripts/ --depth 1
-    
-    # generate signed universal apk with user specified keys
-    ~/codemagic-build-scripts/android/generate-universal-apks \
-      --ks /tmp/keystore.keystore \
-      --ks-pass $CM_KEYSTORE_PASSWORD \
-      --ks-key-alias $CM_KEY_ALIAS_USERNAME \
-      --key-pass $CM_KEY_ALIAS_PASSWORD \
-      --pattern 'build/**/outputs/**/*.aab'
-  
 ### Artifacts
 
 `artifacts:` Configure the paths and names of the artifacts you would like to use in the following steps, e.g. for publishing, or have available for download on the build page. All paths are relative to the clone directory, but absolute paths are supported as well. You can also use environment variables in artifact patterns.
 
-
     artifacts:
       - build/**/outputs/**/*.apk                   # relative path for a project in root directory
+      - subfolder_name/build/**/outputs/**/*.apk    # relative path for a project in subfolder
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
-      - subfolder_name/build/**/outputs/**/*.apk    # relative path for a project in subfolder
 
 * The pattern can match several files or folders. If it picks up files or folders with the same name, the top level file or folder name will be suffixed with `_{number}`.
 * If one of the patterns includes another pattern, duplicate artifacts are not created.
@@ -226,18 +334,19 @@ If your app settings in Codemagic have building Android app bundles enabled, we 
 
 ### Publishing
 
-`publishing:` For every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play and Codemagic Static Pages.
+`publishing:` For every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Codemagic Static Pages.
 
     publishing:
       email:
         recipients:
           - name@example.com
       slack:
-        channel: '#slack-test'
+        channel: '#channel-name'
         notify_on_build_start: true
       google_play:                        # For Android app
         credentials: Encrypted(...)
         track: alpha
-      static_page:                        # For web app
-        subdomain: my-subdomain
-
+      app_store_connect:                  # For iOS app
+        app_id: '...'                     # App's unique identifier in App Store Connect
+        apple_id: name@example.com        # Email address used for login
+        password: Encrypted(...)          # App-specific password

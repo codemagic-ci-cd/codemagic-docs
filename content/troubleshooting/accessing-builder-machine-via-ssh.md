@@ -28,17 +28,17 @@ Establishing an SSH connection to the virtual machine is possible only for manua
 
 If you don't run the script before the build finishes, the unique SSH key expires and can't be used anymore. A new script will be generated every time you run the build, so previous scripts cannot be reused.
 
-{{% notebox %}}
+{{<notebox>}}
 Note that the script for establishing SSH connection works natively on Linux and MacOS, but requires additional software like Git-bash on Windows.
-{{% /notebox %}}
+{{</notebox>}}
 
 ## SSH session time limit
 
 The SSH session remains active for a maximum of 20 minutes after all build steps are completed or until the maximum build duration limit is reached, whichever comes first. If you log out from the virtual machine during an active SSH session, the build is finished automatically and you cannot access the builder via SSH for this session. You would have to run a new build to establish a new SSH connection.
 
-{{% notebox %}}
+{{<notebox>}}
 If you have finished debugging the build, don't forget to end the session to avoid losing build time.
-{{% /notebox %}}
+{{</notebox>}}
 
 ## Debugging via SSH
 

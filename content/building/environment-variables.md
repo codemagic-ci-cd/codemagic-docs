@@ -4,7 +4,7 @@ description:
   not want to store in the repository. You can also use Codemagic read-only environment
   variables to customize your builds.
 title: Environment variables
-weight: 3
+weight: 4
 ---
 
 Environment variables are useful for storing information that you do not want to store in the repository, such as your credentials or workflow-specific data. In addition, you can make use of a number of read-only environment variables that Codemagic exports to customize your builds.
@@ -61,3 +61,17 @@ Here you'll find some of the read-only environment variables explained.
 | FCI_KEY_PASSWORD         | Password of Android key as configured in the UI                                                                 |
 | FCI_KEY_ALIAS            | Alias of the key as configured in the UI                                                                        |
 | FCI_KEYSTORE_PATH        | Path of the file in our VM                                                                                      |
+| FCI_ARTIFACT_LINKS       | Information about generated build artifacts that is available in post-publishing step. Read more about it below. |
+
+`$FCI_ARTIFACT_LINKS` environment variable value is a JSON encoded list in the follwoing form: 
+
+    [
+        {
+            "name": "Codemagic_Release.ipa",
+            "type": "ipa",
+            "url": "https://api.codemagic.io/artifacts/2e7564b2-9ffa-40c2-b9e0-8980436ac717/81c5a723-b162-488a-854e-3f5f7fdfb22f/Codemagic_Release.ipa",
+            "md5": "d2884be6985dad3ffc4d6f85b3a3642a",
+            "versionName": "1.0.2",
+            "bundleId": "io.codemagic.app"
+        }
+    ]                                                                                   
