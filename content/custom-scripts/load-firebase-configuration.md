@@ -11,10 +11,12 @@ Instead of committing the Firebase config files to your repository, you can uplo
 
         #!/usr/bin/env sh
 
-        set -e # exit on first failed commandset
+        set -e # exit on first failed command
+        
+        PROJECT_ROOT=$FCI_BUILD_DIR/myproject           # ADD YOUR PROJECT FOLDER HERE!!!
 
-        echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
-        echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
+        echo $ANDROID_FIREBASE_SECRET | base64 --decode > $PROJECT_ROOT/android/app/google-services.json
+        echo $IOS_FIREBASE_SECRET | base64 --decode > $PROJECT_ROOT/ios/Runner/GoogleService-Info.plist
 
 {{<notebox>}}
 
