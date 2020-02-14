@@ -10,7 +10,7 @@ weight: 1
 
 **Limitations**
 
-The YAML feature has the following limitations:
+The YAML feature is currently in *beta* and has the following limitations:
 
 * Exporting configuration from UI is supported for Flutter-based Android, iOS and web apps.
 * The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail** and publishing to Codemagic Static Pages.
@@ -23,7 +23,7 @@ The YAML feature has the following limitations:
 You can get started with YAML easily if you have an existing project set up on Codemagic. 
 
 1. Navigate to your app settings.
-2. Click **Download configuration** on the right sidebar in the **Configuration as code** section.
+2. Click **Download configuration** on the right sidebar in the **Configuration as code (beta)** section.
 
 Note that in order to use the file for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
 
@@ -34,7 +34,7 @@ During the export, Codemagic automatically encrypts the secret environment varia
 If you wish to add new environment variables to the YAML file, you can encrypt them via Codemagic UI. 
 
 1. Navigate to your app settings.
-2. Click **Encrypt environment variables** on the right sidebar in the **Configuration as code** section.
+2. Click **Encrypt environment variables** on the right sidebar in the **Configuration as code (beta)** section.
 3. Paste the value of the variable in the field or upload it as a file.
 4. Click **Encrypt**. 
 5. Copy the encrypted value and paste it to the configuration file.
