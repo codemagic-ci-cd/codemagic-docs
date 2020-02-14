@@ -25,7 +25,7 @@ You can get started with YAML easily if you have an existing project set up on C
 1. Navigate to your app settings.
 2. Click **Download configuration** on the right sidebar in the **Configuration as code** section.
 
-Note that in order to use the file for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of repository.
+Note that in order to use the file for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
 
 ## Encrypting sensitive data
 
@@ -33,10 +33,11 @@ During the export, Codemagic automatically encrypts the secret environment varia
 
 If you wish to add new environment variables to the YAML file, you can encrypt them via Codemagic UI. 
 
-1. In your app settings on the right sidebar in the **Configuration as code** section, click **Encrypt environment variables**.
-2. Paste the value of the variable in the field or upload it as a file.
-3. Click **Encrypt**. 
-4. Copy the encrypted value and paste it to the configuration file.
+1. Navigate to your app settings.
+2. Click **Encrypt environment variables** on the right sidebar in the **Configuration as code** section.
+3. Paste the value of the variable in the field or upload it as a file.
+4. Click **Encrypt**. 
+5. Copy the encrypted value and paste it to the configuration file.
 
 An example of an encrypted value:
 
