@@ -11,9 +11,9 @@ weight: 2
 
 ## System
 
-- System version `macOS 10.14.6 (18G2022)`
-- Kernel version `Darwin 18.7.0`
-- Disk `322GB (Free Space: 46GB)`
+- System version `macOS 10.15.3 (19D76)`
+- Kernel version `Darwin 19.3.0`
+- Disk `322GB (Free Space: 49GB)`
 
 ## Pre-installed tools
 
@@ -22,16 +22,16 @@ weight: 2
 - curl
 - dart `2.7.1`
 - docker `19.03.5`
-- fastlane `2.140.0`
+- fastlane `2.141.0`
 - firebase `7.6.2`
 - flutter `1.12.13+hotfix.8 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - git `2.25.0`
 - gradle `5.5.1`
-- homebrew `2.2.4`
+- homebrew `2.2.5`
 - jq
 - node `12.14.0`
-- npm `6.13.6`
+- npm `6.13.7`
 - python `2.7.17`
 - python3 `3.7.6`
 - ruby `2.6.5p114`
@@ -40,7 +40,7 @@ weight: 2
 - tar
 - unzip
 - wget
-- yarn `1.21.1`
+- yarn `1.22.0`
 - zip
 
 ## Xcode 11.3.1 (11C505)
@@ -53,9 +53,6 @@ With Xcode `11.3.1` build version `11C505` the following runtimes and devices ar
 
 ### Runtimes
 
-- iOS 10.0
-- iOS 10.1
-- iOS 10.2
 - iOS 10.3
 - iOS 11.0
 - iOS 11.1
@@ -129,6 +126,7 @@ With Xcode `11.3.1` build version `11C505` the following runtimes and devices ar
 
 ## Other Xcode versions
 
+- 11.4 (11N111s) `/Applications/Xcode-11.4.app`
 - 11.2.1 (11B500) `/Applications/Xcode-11.2.1.app`
 - 11.1 (11A1027) `/Applications/Xcode-11.1.app`
 - 11.0 (11A420a) `/Applications/Xcode-11.app`
@@ -136,5 +134,4 @@ With Xcode `11.3.1` build version `11C505` the following runtimes and devices ar
 - 10.2.1 (10E1001) `/Applications/Xcode-10.2.app`
 - 10.1 (10B61) `/Applications/Xcode-10.1.app`
 - 10.0 (10A255) `/Applications/Xcode-10.app`
-- 9.4.1 (9F2000) `/Applications/Xcode-9.4.app`
 
