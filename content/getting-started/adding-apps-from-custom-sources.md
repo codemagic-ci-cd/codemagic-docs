@@ -50,6 +50,8 @@ Your app will be then listed on the Applications page and you can immediately st
 
 Your app will be then listed on the Applications page and you can immediately start running builds.
 
+{{<notebox>}}If you need to update the SSH key, you can upload a new one in **App settings > Repository settings > Update SSH key**.{{</notebox>}}
+
 ## Repositories behind firewall
 
 To allow Codemagic access the private repository, the following IP addresses need to be whitelisted:
