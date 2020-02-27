@@ -14,7 +14,6 @@ The YAML feature is currently in *beta* and has the following limitations:
 
 * Exporting configuration from UI is supported for Flutter-based Android, iOS and web apps.
 * The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail** and publishing to Codemagic Static Pages.
-* YAML configuration is not yet available for apps from custom sources.
 
 {{</notebox>}}
 
