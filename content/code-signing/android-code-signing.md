@@ -98,10 +98,11 @@ Alternatively, you can use [environment variables](https://docs.codemagic.io/bui
 
 You are required to upload your keystore file and provide details about your key in order to receive signed builds on Codemagic.
 
-{{< figure size="" src="../uploads/2019/03/code signing.PNG" caption="" >}}
-
 1. Navigate to the **Publish** section in app settings.
 2. Click **Android code signing**.
 3. Upload your release keystore file.
 4. Enter the **keystore password**, **key alias** and **key password**.
-5. Click **Save** to finish the setup.
+5. Click **Save**.
+6. Select *Enabled* under **Enable Android code signing** at the top of the section to enable code signing.
+7. Click **Save** to finish the setup.
+
