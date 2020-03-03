@@ -46,5 +46,5 @@ The very first version of the app must be added to Google Play manually. You can
    - Production --- release the app to production
 5. If you want to publish the APK even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
 6. Click **Save**.
-7. Select *Enabled* under **Enable Google Play Publisher** at the top of the section to enable publishing.
+7. Select *Enabled* under **Enable Google Play Publishing** at the top of the section to enable publishing.
 8. Click **Save** to finish the setup.
