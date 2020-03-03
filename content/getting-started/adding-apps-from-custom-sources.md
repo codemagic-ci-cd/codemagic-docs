@@ -17,13 +17,7 @@ You can add apps from public or private Git-based repositories.
     {{< figure size="medium" src="../uploads/add-app-from-custom-source1.png" caption="" >}}
 
 2. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository on clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `https://example.com/path/to/repository.git`.
-
-    {{< figure size="medium" src="../uploads/add_app_nourl.png" caption="" >}}
-
 3. If it's a private repository that requires username and password for authentication, check **Private repository** and enter the **Username** and **Password**. Leave this option unchecked for public repositories.
-
-    {{< figure size="medium" src="../uploads/add_app_private.png" caption="" >}}
-
 4. Click **Add app**.
 
 Your app will be then listed on the Applications page and you can immediately start running builds.
@@ -35,18 +29,26 @@ Your app will be then listed on the Applications page and you can immediately st
     {{< figure size="medium" src="../uploads/add-app-from-custom-source1.png" caption="" >}}
 
 2. Enter the **Repository URL** for **cloning** the repository. Usually, the URL is in this format: ` git@example.com:username/repo.git `.
-
-    {{< figure size="medium" src="../uploads/add_app_nourl.png" caption="" >}}
-
 3. Upload the **SSH private key** file. If your key is password-protected, enter the **SSH key password**.
-
-    {{< figure size="medium" src="../uploads/add-app-from-custom-source2.png" caption="" >}}
-
 4. Click **Add app**.
 
 Your app will be then listed on the Applications page and you can immediately start running builds.
 
 {{<notebox>}}If you need to update the SSH key, you can upload a new one in **App settings > Repository settings > Update SSH key**.{{</notebox>}}
+
+## (Optional) Generate SSH key in Codemagic 
+[comment]: <> (Not sure if the best way to put this here, maybe under connecting repository via SSH?)
+If you don't have an SSH key at hand then Codemagic can generate secure **4096 bit** SSH key for you in-app:
+
+1. Click **Add app from custom source** on the Applications page.
+2. Enter the **Repository URL** for **cloning** the repository. Usually, the URL is in this format: ` git@example.com:username/repo.git `.
+3. Click **Generate SSH key**.
+4. Click **Copy to clipboard** and add this to your repositories Access Keys (this name may vary depending on platform used) or if using self-hosted repository, user should add the key to `authorized_keys`.
+5. After key is added to the repository click **Add application**.
+
+{{<notebox>}}For safety purposes it's important not to close the **Add application from custom source** tab, otherwise you'll need to regenerate the SSH key again.{{</notebox>}}
+
+
 
 ## Repositories behind firewall
 
