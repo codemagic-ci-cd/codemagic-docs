@@ -37,13 +37,12 @@ Your app will be then listed on the Applications page and you can immediately st
 {{<notebox>}}If you need to update the SSH key, you can upload a new one in **App settings > Repository settings > Update SSH key**.{{</notebox>}}
 
 ## (Optional) Generate SSH key in Codemagic 
-[comment]: <> (Not sure if the best way to put this here, maybe under connecting repository via SSH?)
 If you don't have an SSH key at hand then Codemagic can generate secure **4096 bit** SSH key for you in-app:
 
 1. Click **Add app from custom source** on the Applications page.
 2. Enter the **Repository URL** for **cloning** the repository. Usually, the URL is in this format: ` git@example.com:username/repo.git `.
 3. Click **Generate SSH key**.
-4. Click **Copy to clipboard** and add this to your repositories Access Keys (this name may vary depending on platform used) or if using self-hosted repository, user should add the key to `authorized_keys`.
+4. Click **Copy to clipboard** and add this to your repositories Access Keys ([Github](https://developer.github.com/v3/guides/managing-deploy-keys/#setup-2), [Gitlab](https://www.deployhq.com/support/projects/updating-your-project-repository/uploading-your-public-key-to-gitlab-manually), [Bitbucket](https://confluence.atlassian.com/bitbucket/use-access-keys-294486051.html)). For self-hosted repository, request your git server admins to allow the access for the provided public key.
 5. After key is added to the repository click **Add application**.
 
 {{<notebox>}}For safety purposes it's important not to close the **Add application from custom source** tab, otherwise you'll need to regenerate the SSH key again.{{</notebox>}}
