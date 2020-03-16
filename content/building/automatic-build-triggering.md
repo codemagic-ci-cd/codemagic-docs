@@ -42,9 +42,9 @@ If you don't check any of these triggering options, you will have to run builds 
 
 ## Webhooks
 
-For accounts with sufficient permissions, Codemagic creates the webhooks necessary for automatic build triggering after it was enabled in settings.
+Codemagic automatically adds webhook to GitHub, GitLab, and Bitbucket after any of **Automatic build triggering** options were enabled in **App Settings**.
 
-However, in some cases, you may have to manually set up the webhook to enable automatic builds in response to events in the repository.
+In case of failure to add webhook, you should manually set up the webhook to enable automatic builds in response to events in the repository.
 
 For GitHub, enter your project and navigate to **Settings** > **Webhooks** > **Add webhook**, paste **payload URL** from below, make sure **Content type** is `application/json` and select events: **Branch or tag creation**, **Pull requests**, and **Pushes**.
 
