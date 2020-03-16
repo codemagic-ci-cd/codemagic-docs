@@ -42,7 +42,7 @@ If you don't check any of these triggering options, you will have to run builds 
 
 ## Webhooks
 
-For accounts with sufficient permissions, Codemagic creates the webhooks necessary for automatic build triggering during the initial build run.
+For accounts with sufficient permissions, Codemagic creates the webhooks necessary for automatic build triggering after it was enabled in settings.
 
 However, in some cases, you may have to manually set up the webhook to enable automatic builds in response to events in the repository.
 
