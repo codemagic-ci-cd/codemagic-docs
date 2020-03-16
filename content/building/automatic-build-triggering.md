@@ -42,9 +42,15 @@ If you don't check any of these triggering options, you will have to run builds 
 
 ## Webhooks
 
-For accounts with sufficient permissions, Codemagic creates the webhooks necessary for automatic build triggering during the initial build run. However, in some cases, such as when you add an app from a custom source, you may have to manually set up the webhook to enable automatic builds in response to events in the repository.
+For accounts with sufficient permissions, Codemagic creates the webhooks necessary for automatic build triggering during the initial build run.
 
-To set up a webhook for automatic build triggering on Codemagic, you must register the Codemagic **payload URL** in your repository settings and select Repository push, Branch push and PR merge events.
+However, in some cases, you may have to manually set up the webhook to enable automatic builds in response to events in the repository.
+
+For GitHub, enter your project and navigate to **Settings** > **Webhooks** > **Add webhook**, paste **payload URL** from below, make sure **Content type** is `application/json` and select events: **Branch or tag creation**, **Pull requests**, and **Pushes**.
+
+For GitLab hosted repositories, **Settings** > **Webhooks**, paste **payload URL** and check the following boxes in **Trigger** section **Push events**, **Tag push events**, **Merge request events**. Also, be sure to enable **SSL verification**.
+
+Finally, for Bitbucket users, enter your application repository, go to **Settings** > **Webhooks** (in **Workflow** section) > **Add webhook**, then choose arbitrary title and paste **payload URL** in **URL** field. In **Triggers** select *Choose from a full list of triggers* and choose **Push** in **Repository** section and **Created**, **Updated**, **Merged** in **Pull Request** section.
 
 {{<notebox>}}
 The payload URL has the following format:  
@@ -52,6 +58,7 @@ The payload URL has the following format:
 {{</notebox>}}
 
 You can find your app ID in the browser URL after `app/` when you open the app on Codemagic: `https://codemagic.io/app/[appId]`
+
 
 ## Custom build triggers
 
