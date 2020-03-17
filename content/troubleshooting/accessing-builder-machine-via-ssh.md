@@ -35,7 +35,7 @@ Establishing a VNC connection to the virtual machine is possible only for manual
 
 1. Click **Start new build**.
 2. In the **Specify build configuration** popup, check **Enable remote access** and start the build.
-3. Use the given **Host**, **Port** and **Username** and **Password** on your VNC client to establish the connection.
+3. Use the given **Host**, **Port**, **Username** and **Password** on your VNC client to establish the connection.
 
 {{<notebox>}}
 You can download a VNC client for Windows [here](https://www.realvnc.com/en/connect/download/viewer/windows/).
