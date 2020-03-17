@@ -11,11 +11,9 @@ The **SSH access** allows you to access the build machine only through a termina
 
 The **VNC client** allows you to graphically access the remote build machine. It has multiple versions of Xcode and iOS simulators preinstalled, so you can run and test your iOS apps or change Xcode configuration files without owning a Mac yourself. 
 
-The remote session can be started during runtime or shortly after the build has finished. 
-
 ## How remote access to build machines works
 
-All virtual machines are located within the private network. In order to allow users to connect to the virtual machine, Codemagic creates a temporary SSH tunnel and VNC access through the public gateway. A unique SSH key and user credentails are generated before each build which is valid for the duration of the build. The unique key and user credentials are revoked after the build is finished and cannot be reused.
+All virtual machines are located within the private network. In order to allow users to connect to the virtual machine, Codemagic allows a temporary SSH or VNC access through the public gateway using a unique SSH key or user credentails that are generated before each build. The unique key and user credentials are valid for the duration of the build only and are revoked after the build is finished.
 
 ## Setting up SSH connection to the virtual machine
 
