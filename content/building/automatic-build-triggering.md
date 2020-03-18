@@ -42,23 +42,21 @@ If you don't check any of these triggering options, you will have to run builds 
 
 ## Webhooks
 
-Codemagic automatically adds webhook to GitHub, GitLab, and Bitbucket after any of **Automatic build triggering** options were enabled in **App Settings**.
+Codemagic automatically adds webhooks to GitHub, GitLab, and Bitbucket after you have enabled any of the triggers in **App settings** > **Automatic build triggering**.
 
-In case of failure to add webhook, you should manually set up the webhook to enable automatic builds in response to events in the repository.
+In case of failure to add a webhook, you should manually set up the webhook in your repository hosting service to enable automatic builds in response to events in the repository.
 
-For GitHub, enter your project and navigate to **Settings** > **Webhooks** > **Add webhook**, paste **payload URL** from below, make sure **Content type** is `application/json` and select events: **Branch or tag creation**, **Pull requests**, and **Pushes**.
+* **GitHub**: Open your project and navigate to **Settings** > **Webhooks** > **Add webhook**, paste the **payload URL** from below, make sure **Content type** is `application/json` and select the following events: **Branch or tag creation**, **Pull requests**, **Pushes**.
 
-For GitLab hosted repositories, **Settings** > **Webhooks**, paste **payload URL** and check the following boxes in **Trigger** section **Push events**, **Tag push events**, **Merge request events**. Also, be sure to enable **SSL verification**.
+* **GitLab**: Navigate to **Settings** > **Webhooks**, paste the **payload URL** and check the following boxes in the **Trigger** section: **Push events**, **Tag push events**, **Merge request events**. Also, be sure to enable **SSL verification**.
 
-Finally, for Bitbucket users, enter your application repository, go to **Settings** > **Webhooks** (in **Workflow** section) > **Add webhook**, then choose arbitrary title and paste **payload URL** in **URL** field. In **Triggers** select *Choose from a full list of triggers* and choose **Push** in **Repository** section and **Created**, **Updated**, **Merged** in **Pull Request** section.
+* **Bitbucket**: Open your application repository, go to **Settings** > **Webhooks** (in **Workflow** section) > **Add webhook**, then enter an arbitrary title for the webhook and paste the **payload URL** in the **URL** field. For **Triggers**, select **Choose from a full list of triggers** and select the following events: **Push** in the **Repository** section and **Created**, **Updated**, **Merged** in the **Pull Request** section.
 
 {{<notebox>}}
-The payload URL has the following format:  
-`https://api.codemagic.io/hooks/[appId]`
-{{</notebox>}}
+The payload URL has the following format: `https://api.codemagic.io/hooks/[appId]`. 
 
 You can find your app ID in the browser URL after `app/` when you open the app on Codemagic: `https://codemagic.io/app/[appId]`
-
+{{</notebox>}}
 
 ## Custom build triggers
 
