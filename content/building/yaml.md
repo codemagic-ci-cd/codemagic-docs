@@ -115,7 +115,7 @@ The main sections in each workflow are described below.
 
 ### Environment
 
-`environment:` Contains your environment variables and enables to specify the version of Flutter used for building. This is also where you can add credentials and API keys required for code signing. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
+`environment:` Contains your environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, node and nmp used for building. This is also where you can add credentials and API keys required for code signing. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
 
     environment:
       vars:             # Define your environment variables here
@@ -141,6 +141,13 @@ The main sections in each workflow are described below.
 
       flutter: stable   # Define the channel name or version (e.g. v1.13.4)
       xcode: latest     # Define latest, edge or version (e.g. 11.2)
+      cocoapods: 1.9.1  # Define default or version
+      node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
+      nmp: 6.13.7       # Define default, latest, next, lts or version
+
+{{<notebox>}}
+See the default software versions on Codemagic build machines [here](../releases-and-versions/versions/).
+{{</notebox>}}
 
 #### Setting up code signing for iOS
 
