@@ -4,6 +4,30 @@ title: Release notes
 weight: 1
 ---
 
+## March 2020
+
+### More options to configure your build environment
+
+We recently updated the UI in the Build section of app settings with a dropdown field for `CocoaPods` version selection to make it easier to build with the versions required by your app. With `codemagic.yaml`, you have even more options available and can define which `Flutter`, `Xcode`, `CocoaPods`, `Node` and `npm` version to use for the build. See how to define software versions in YAML file [here](../building/yaml#environment).
+
+### Remote access to build machine via VNC
+
+We have good news to everyone developing on Windows or Linux. You can now launch and interact with graphical applications on the remote macOS machine running your build and perform actions you can only do on mac hardware:
+
+* Configure Xcode project settings
+
+* Create a developer certificate for iOS code signing
+
+* Launch iOS app on simulator
+
+* Set up CocoaPods, etc.
+
+Your project is already available on the machine, so it’s easy to run your iOS app on simulator. See the [documentation](../troubleshooting/accessing-builder-machine-via-ssh).
+
+### Toggles for enabling/disabling publishing options
+
+We have improved Codemagic UI for publishing options and added the **Enabled** checkbox to the settings that allows to easily enable or disable an option. This way you no longer have to delete the configuration in order to turn off the feature for a workflow. In addition, the enabled/disabled status is displayed for each publishing option when you open the Publish section, so you can have a better overview of what the workflow is configured to do.
+
 ## February 2020
 
 ### Codemagic CLI tools
