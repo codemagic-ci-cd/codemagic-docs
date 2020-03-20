@@ -265,7 +265,7 @@ function getResults(index, query) {
   }
 
   return index.lunrIndex
-    .search(query)
+    .search(query + '~1')
     .slice(0, 16)
     .map(function(result) {
       var positions = { title: [], content: [] }
