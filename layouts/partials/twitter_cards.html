@@ -1,0 +1,20 @@
+{{ with .Param "twitter_title" | default .Title }}
+  <meta name="twitter:title" content="{{ . }}" />
+{{ end }}
+
+{{ with .Param "twitterDescription" | default .Description | default (site.Param "description") }}
+  <meta name="twitter:description" content="{{ . }}" />
+{{ end }}
+
+{{ with .Param "twitter_image" | default (site.Param "defaultTwitterImage") }}
+  <meta name="twitter:card" content="summary" />
+  {{/* summary_large_image is not suitable */}}
+  <meta property="twitter:image" content="{{ . | absURL }}" />
+{{ end }}
+
+{{ with .Site.Social.twitter }}
+  <meta name="twitter:site" content="@{{ . }}" />
+{{ end }}
+
+<meta name="twitter:site" content="@{{ site.Param "twitterShareHandle" }}" />
+<meta name="twitter:creator" content="@{{ site.Param "twitterShareHandle" }}" />

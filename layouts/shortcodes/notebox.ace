@@ -1,2 +1,0 @@
-.notebox
-  {{ .Inner | markdownify }}

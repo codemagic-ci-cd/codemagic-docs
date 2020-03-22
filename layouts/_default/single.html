@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ partial "content" . }}
+  {{ with .TableOfContents }}
+    <aside id="toc">
+      <div class="heading">Table of contents</div>
+      {{ . }}
+    </aside>
+  {{ end }}
+{{ end }}

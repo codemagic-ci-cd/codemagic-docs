@@ -1,4 +1,0 @@
-{{ $script := resources.Get "js/main.js" | fingerprint }}
-script src={{ $script.RelPermalink }} integrity={{ $script.Data.Integrity }}
-
-{{ partial "search" . }}

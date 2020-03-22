@@ -1,3 +1,0 @@
-= content main
-  h1 {{ .Title }}
-  {{ .Content }}

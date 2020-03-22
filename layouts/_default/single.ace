@@ -1,8 +1,0 @@
-= content main
-  h1 {{ .Title }}
-  {{ partial "content" . }}
-  {{ with .TableOfContents }}
-    aside#toc
-      .heading Table of contents
-      {{ . }}
-  {{ end }}
