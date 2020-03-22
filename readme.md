@@ -27,7 +27,7 @@ brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/79894aee20
 
 For general info see [Hugo documentation](https://gohugo.io/documentation/).
 
-Content is in `content` in blackfriday markdown format ([basic markdown example](https://github.com/markdownlint/markdownlint/blob/master/example/markdown_spec.md));
+Content is in `content` in [CommonMark](https://commonmark.org/help/) markdown format, as implemented by [goldmark](https://github.com/yuin/goldmark);
 
 Layout templates are in `layouts` in HTML format and go template syntax for "actions" ([Hugo documentation](https://gohugo.io/templates/introduction/)).
 
