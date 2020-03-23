@@ -131,6 +131,7 @@ function matchPositionObject(builder) {
 
 function getSearchIndex(pages) {
   var lunrIndex = lunr(function() {
+    this.k1(0.5)
     this.use(matchPositionObject)
     this.ref('uri')
     this.field('title', { boost: 15 })
