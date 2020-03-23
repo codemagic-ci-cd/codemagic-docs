@@ -108,34 +108,39 @@ function matchPositionObject(builder) {
   lunr.Pipeline.registerFunction(pipelineFunction, 'positionObjMetadata')
   builder.pipeline.before(lunr.stemmer, pipelineFunction)
   builder.metadataWhitelist.push('positionObject')
+}
 
-  var removeLeadingDot = function(query) {
+function removeLeadingDot(builder) {
+  var pipelineFunction = function(query) {
     query.str = query.str.replace(/^\./, '')
     return query
   }
-  lunr.Pipeline.registerFunction(removeLeadingDot, 'removeLeadingDot')
-  builder.searchPipeline.before(lunr.stemmer, removeLeadingDot)
+  lunr.Pipeline.registerFunction(pipelineFunction, 'removeLeadingDot')
+  builder.searchPipeline.before(lunr.stemmer, pipelineFunction)
+}
 
-  var edgeNgramTokenizer = function(token) {
+function edgeNgramTokenizer(builder) {
+  var pipelineFunction = function(token) {
     tokens = Array(token.toString().length).fill().map(function(x, i) {
-      return token.clone().update(function() {
-        return token.toString().slice(0, i + 1)
+      return token.clone(function(str) {
+        return str.slice(0, i + 1)
       })
     })
     return tokens
   }
-
-  lunr.Pipeline.registerFunction(edgeNgramTokenizer, 'edgeNgramTokenizer')
-  builder.pipeline.add(edgeNgramTokenizer)
+  lunr.Pipeline.registerFunction(pipelineFunction, 'edgeNgramTokenizer')
+  builder.pipeline.add(pipelineFunction)
 }
 
 function getSearchIndex(pages) {
   var lunrIndex = lunr(function() {
-    this.k1(0.5)
-    this.use(matchPositionObject)
     this.ref('uri')
     this.field('title', { boost: 15 })
     this.field('content', { boost: 5 })
+    this.use(matchPositionObject)
+    this.use(removeLeadingDot)
+    this.use(edgeNgramTokenizer)
+    this.k1(0.5)
     pages.forEach(this.add, this)
   })
   var pageIndex = pages.reduce(function(all, page) {
