@@ -108,6 +108,13 @@ function matchPositionObject(builder) {
   lunr.Pipeline.registerFunction(pipelineFunction, 'positionObjMetadata')
   builder.pipeline.before(lunr.stemmer, pipelineFunction)
   builder.metadataWhitelist.push('positionObject')
+
+  var removeLeadingDot = function(query) {
+    query.str = query.str.replace(/^\./, '')
+    return query
+  }
+  lunr.Pipeline.registerFunction(removeLeadingDot, 'removeLeadingDot')
+  builder.searchPipeline.before(lunr.stemmer, removeLeadingDot)
 }
 
 function getSearchIndex(pages) {
