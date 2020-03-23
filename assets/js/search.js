@@ -115,6 +115,18 @@ function matchPositionObject(builder) {
   }
   lunr.Pipeline.registerFunction(removeLeadingDot, 'removeLeadingDot')
   builder.searchPipeline.before(lunr.stemmer, removeLeadingDot)
+
+  var edgeNgramTokenizer = function(token) {
+    tokens = Array(token.toString().length).fill().map(function(x, i) {
+      return token.clone().update(function() {
+        return token.toString().slice(0, i + 1)
+      })
+    })
+    return tokens
+  }
+
+  lunr.Pipeline.registerFunction(edgeNgramTokenizer, 'edgeNgramTokenizer')
+  builder.pipeline.add(edgeNgramTokenizer)
 }
 
 function getSearchIndex(pages) {
