@@ -108,6 +108,13 @@ function matchPositionObject(builder) {
   lunr.Pipeline.registerFunction(pipelineFunction, 'positionObjMetadata')
   builder.pipeline.before(lunr.stemmer, pipelineFunction)
   builder.metadataWhitelist.push('positionObject')
+
+  var searchQueryRemoveDots = function(query) {
+    query.str = query.str.replace('.', '')
+    return query
+  }
+  lunr.Pipeline.registerFunction(searchQueryRemoveDots, 'searchQueryRemoveDots')
+  builder.searchPipeline.before(lunr.stemmer, searchQueryRemoveDots)
 }
 
 function getSearchIndex(pages) {
@@ -265,7 +272,7 @@ function getResults(index, query) {
   }
 
   return index.lunrIndex
-    .search(query + '~1')
+    .search(query)
     .slice(0, 16)
     .map(function(result) {
       var positions = { title: [], content: [] }
