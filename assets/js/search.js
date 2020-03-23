@@ -129,7 +129,7 @@ function edgeNgramTokenizer(builder) {
     return tokens
   }
   lunr.Pipeline.registerFunction(pipelineFunction, 'edgeNgramTokenizer')
-  builder.pipeline.add(pipelineFunction)
+  builder.pipeline.before(lunr.stemmer, pipelineFunction)
 }
 
 function getSearchIndex(pages) {
