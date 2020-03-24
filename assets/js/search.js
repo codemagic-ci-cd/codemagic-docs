@@ -1,5 +1,3 @@
-lunr.tokenizer.separator = /[\s]+/
-
 function initSearch(indexURL) {
   $.getJSON(indexURL)
     .then(getSearchIndex)
@@ -176,6 +174,7 @@ function edgeNgramTokenizer(builder) {
 }
 
 function getSearchIndex(pages) {
+  lunr.tokenizer.separator = /[\s]+/
   var lunrIndex = lunr(function() {
     this.ref('uri')
     this.field('title', { boost: 15 })
