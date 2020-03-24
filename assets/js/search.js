@@ -109,7 +109,7 @@ function prunePlugins (builder) {
 function trimmerDashSupport (builder) {
   var pipelineFunction = function(token) {
     return token.update(function (str) {
-      return str.replace(/[^A-Za-z0-9_\-\$#!\/]+/, '').replace(/[^A-Za-z0-9_]+$/, '')
+      return str.replace(/^[^A-Za-z0-9_\-\$#!\/]+/, '').replace(/[^A-Za-z0-9_]+$/, '')
     })
   }
   lunr.Pipeline.registerFunction(pipelineFunction, 'trimmer-dash-support')
