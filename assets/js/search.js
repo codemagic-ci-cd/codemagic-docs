@@ -1,11 +1,4 @@
 lunr.tokenizer.separator = /[\s]+/
-lunr.trimmer = function (token) {
-  return token.update(function (s) {
-    return s.replace(/[^A-Za-z0-9_\-]+/, '').replace(/[^A-Za-z0-9_\-]+$/, '')
-  })
-}
-lunr.Pipeline.registerFunction(lunr.trimmer, 'custom-trimmer')
-
 
 function initSearch(indexURL) {
   $.getJSON(indexURL)
@@ -110,8 +103,19 @@ function updateInputs(query) {
 
 function prunePlugins (builder) {
   builder.pipeline.remove(lunr.stemmer)
+  builder.pipeline.remove(lunr.trimmer)
   builder.pipeline.remove(lunr.stopWordFilter)
   builder.searchPipeline.remove(lunr.stemmer)
+}
+
+function trimmerDashSupport (builder) {
+  var pipelineFunction = function(token) {
+    return token.update(function (str) {
+      return str.replace(/[^A-Za-z0-9_\-]+/, '').replace(/[^A-Za-z0-9_\-]+$/, '')
+    })
+  }
+  lunr.Pipeline.registerFunction(pipelineFunction, 'trimmer-dash-support')
+  builder.pipeline.add(pipelineFunction)
 }
 
 function addPositionMetadata(builder) {
@@ -178,6 +182,7 @@ function getSearchIndex(pages) {
     this.field('content', { boost: 5 })
 
     this.use(prunePlugins)
+    this.use(trimmerDashSupport)
     this.use(edgeNgramTokenizer)
     this.use(addPositionMetadata)
 
