@@ -99,30 +99,98 @@ function updateInputs(query) {
   }
 }
 
-function matchPositionObject(builder) {
+function prunePlugins (builder) {
+  builder.pipeline.remove(lunr.stemmer)
+  builder.pipeline.remove(lunr.trimmer)
+  builder.pipeline.remove(lunr.stopWordFilter)
+  builder.searchPipeline.remove(lunr.stemmer)
+}
+
+function trimmerDashSupport (builder) {
+  var pipelineFunction = function(token) {
+    return token.update(function (str) {
+      return str.replace(/[^A-Za-z0-9_\-\$#!\/]+/, '').replace(/[^A-Za-z0-9_]+$/, '')
+    })
+  }
+  lunr.Pipeline.registerFunction(pipelineFunction, 'trimmer-dash-support')
+  builder.pipeline.add(pipelineFunction)
+}
+
+function addPositionMetadata(builder) {
   var pipelineFunction = function(token) {
     var p = token.metadata.position
     token.metadata.positionObject = { start: p[0], length: p[1] }
     return token
   }
-  lunr.Pipeline.registerFunction(pipelineFunction, 'positionObjMetadata')
-  builder.pipeline.before(lunr.stemmer, pipelineFunction)
+  lunr.Pipeline.registerFunction(pipelineFunction, 'position-metadata')
+  builder.pipeline.add(pipelineFunction)
   builder.metadataWhitelist.push('positionObject')
+}
 
-  var removeLeadingDot = function(query) {
-    query.str = query.str.replace(/^\./, '')
+function splitSearchWords(builder) {
+  var pipelineFunction = function (token) {
+    words = token.toString().split(' ')
+    tokens = Array(words.length).fill().map(function(x, i) {
+      return token.clone(function (str) {
+        return words[i]
+      })
+    })
+    return tokens
+  }
+  lunr.Pipeline.registerFunction(pipelineFunction, 'split-search-words')
+  builder.searchPipeline.add(pipelineFunction)
+}
+
+function lowerCaseSearchPipeline (builder) {
+  var pipelineFunction = function (token) {
+    return token.update(function (str) {
+      return str.toLowerCase()
+    })
+  }
+  lunr.Pipeline.registerFunction(pipelineFunction, 'lower-case-search-pipeline')
+  builder.searchPipeline.add(pipelineFunction)
+}
+
+function formatSearchWord(builder) {
+  var pipelineFunction = function(query) {
+    query.str = query.str.replace(/^[\.<]+/, '').replace(/>/, '')
     return query
   }
-  lunr.Pipeline.registerFunction(removeLeadingDot, 'removeLeadingDot')
-  builder.searchPipeline.before(lunr.stemmer, removeLeadingDot)
+  lunr.Pipeline.registerFunction(pipelineFunction, 'format-search-word')
+  builder.searchPipeline.add(pipelineFunction)
+}
+
+function edgeNgramTokenizer(builder) {
+  var pipelineFunction = function(token) {
+    tokens = Array(token.toString().length).fill().map(function(x, i) {
+      return token.clone(function(str) {
+        return str.slice(0, i + 1)
+      })
+    })
+    return tokens
+  }
+  lunr.Pipeline.registerFunction(pipelineFunction, 'edge-ngram-tokenizer')
+  builder.pipeline.add(pipelineFunction)
 }
 
 function getSearchIndex(pages) {
+  lunr.tokenizer.separator = /[\s;\&=]+/
   var lunrIndex = lunr(function() {
-    this.use(matchPositionObject)
     this.ref('uri')
     this.field('title', { boost: 15 })
     this.field('content', { boost: 5 })
+
+    this.use(prunePlugins)
+    this.use(trimmerDashSupport)
+    this.use(edgeNgramTokenizer)
+    this.use(addPositionMetadata)
+
+    this.use(splitSearchWords)
+    this.use(lowerCaseSearchPipeline)
+    this.use(formatSearchWord)
+
+    this.k1(0.5)
+
     pages.forEach(this.add, this)
   })
   var pageIndex = pages.reduce(function(all, page) {
@@ -272,7 +340,9 @@ function getResults(index, query) {
   }
 
   return index.lunrIndex
-    .search(query)
+    .query(function (lunrQuery) {
+      lunrQuery.term(query)
+    })
     .slice(0, 16)
     .map(function(result) {
       var positions = { title: [], content: [] }
