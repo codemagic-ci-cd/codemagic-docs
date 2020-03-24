@@ -151,12 +151,12 @@ function lowerCaseSearchPipeline (builder) {
   builder.searchPipeline.add(pipelineFunction)
 }
 
-function removeLeadingDot(builder) {
+function formatSearchWord(builder) {
   var pipelineFunction = function(query) {
-    query.str = query.str.replace(/^\./, '')
+    query.str = query.str.replace(/^[\.<]+/, '').replace(/>/, '')
     return query
   }
-  lunr.Pipeline.registerFunction(pipelineFunction, 'remove-leading-dot')
+  lunr.Pipeline.registerFunction(pipelineFunction, 'format-search-word')
   builder.searchPipeline.add(pipelineFunction)
 }
 
@@ -174,7 +174,7 @@ function edgeNgramTokenizer(builder) {
 }
 
 function getSearchIndex(pages) {
-  lunr.tokenizer.separator = /[\s]+/
+  lunr.tokenizer.separator = /[\s;\&]+/
   var lunrIndex = lunr(function() {
     this.ref('uri')
     this.field('title', { boost: 15 })
@@ -187,7 +187,7 @@ function getSearchIndex(pages) {
 
     this.use(splitSearchWords)
     this.use(lowerCaseSearchPipeline)
-    this.use(removeLeadingDot)
+    this.use(formatSearchWord)
 
     this.k1(0.5)
 
