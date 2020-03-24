@@ -174,7 +174,7 @@ function edgeNgramTokenizer(builder) {
 }
 
 function getSearchIndex(pages) {
-  lunr.tokenizer.separator = /[\s;\&]+/
+  lunr.tokenizer.separator = /[\s;\&=]+/
   var lunrIndex = lunr(function() {
     this.ref('uri')
     this.field('title', { boost: 15 })
