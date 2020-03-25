@@ -55,3 +55,9 @@ To allow Codemagic access the private repository, the following IP addresses nee
 
 1. `34.74.32.93` - used by our backend for getting basic information about the repository
 2. `192.159.66.80/28` - used by our builder servers to download the code and build it
+
+## Changing custom source repository URLs
+
+Currently you can't change a custom source repository URL from the Codemagic portal yourself.
+
+If you changed your project URL, lets say at Azure DevOps, and you want to update it on your Codemagic app builds, please get in contact with the dev team at the [Slack Community](https://codemagicio.slack.com), and if you think this should be part of our features go to the feature request [#119449](https://portal.feedback.eu.pendo.io/app/#/case/119449) and give your support to prioritize this feature.
