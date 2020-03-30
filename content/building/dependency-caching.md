@@ -18,12 +18,10 @@ You can add paths to be cached, for example:
 ## Enabling dependency caching
 
 1. In your app settings, open the **Dependency caching** section.
-   ![](../uploads/2020/dependency-cache.png)
-   
 2. Check the **Enable dependency caching** option. By default, caching is disabled.
 3. Enter the path(s) to the dependencies to be cached and click **Add**. Note that you can delete added paths anytime.
 4. Click **Save** to save the settings.
 
-## Remove cashed dependencies
+## Removing cashed dependencies
 
-In order to clear the collected cache, navigate to **Dependency caching** section and click on **Clear cache**. During the next build dependencies will be downloaded afresh.
+In order to clear the collected cache, navigate to the **Dependency caching** section in app settings and click **Clear cache**. During the next build, dependencies will be downloaded afresh.
