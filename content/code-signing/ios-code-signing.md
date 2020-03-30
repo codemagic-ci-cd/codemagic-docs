@@ -47,7 +47,7 @@ To use automatic code signing, you are required to enable the **Apple Developer 
 
 ### Enabling the Apple Developer Portal integration
 
-Apple Developer Portal integration can be enabled in **User settings > Integrations** for personal projects and in **Team settings > Team integrations** for projects shared in the team (if you're the team owner). This allows you to convneniently use the same Apple Developer Portal credentials for automatic code signing across all projects and workflows.
+Apple Developer Portal integration can be enabled in **User settings > Integrations** for personal projects and in **Team settings > Team integrations** for projects shared in the team (if you're the team owner). This allows you to conveniently use the same Apple Developer Portal credentials for automatic code signing across all projects and workflows.
 
 1. In the list of available integrations, click the **Connect** button for **Developer Portal**.
 2. Enter your **Apple ID** (Apple Developer Portal username) and **password**.
