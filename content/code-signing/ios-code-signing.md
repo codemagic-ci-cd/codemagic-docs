@@ -69,7 +69,7 @@ Apple Developer Portal integration can be enabled in **User settings > Integrati
 
 {{< figure size="medium" src="../uploads/automatic_code_signing.png" caption="Automatic code signing setup" >}}
 
-As the next step, you can [configure publishing to App Store Connect](./publishing/publishing-to-app-store) to distribute the app via TestFlight or submit it to the App Store.
+As the next step, you can [configure publishing to App Store Connect](../publishing/publishing-to-app-store) to distribute the app via TestFlight or submit it to the App Store.
 
 ## Manual code signing
 
@@ -87,7 +87,7 @@ With the manual code signing method, you are required to upload the signing cert
 
 {{< figure size="medium" src="../uploads/manual_code_signing.png" caption="Manual code signing setup" >}}
 
-Codemagic will now create a signed `.ipa` file with every build. Note that you must also [set up publishing to App Store Connect](./publishing/publishing-to-app-store) to distribute the app via TestFlight or submit it to the App Store.
+Codemagic will now create a signed `.ipa` file with every build. Note that you must also [set up publishing to App Store Connect](../publishing/publishing-to-app-store) to distribute the app via TestFlight or submit it to the App Store.
 
 #### Exporting certificates and provisioning profiles
 
