@@ -173,7 +173,9 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
 
 * `CERTIFICATE_PRIVATE_KEY`
 
-  A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) Codemagic creates. This can be any existing or new private SSH key. You can find a tutorial for creating a new 2048 bit RSA key [here](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+  A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the following script in your terminal:
+
+      ssh-keygen -t rsa -b 2048 -f ~/Desktop/codemagic_private_key -q -N ""
 
 {{<notebox>}}
 Alternatively, each property can be specified in the [scripts](#scripts) section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch%E2%80%91signing%E2%80%91files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
