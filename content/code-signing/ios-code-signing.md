@@ -57,6 +57,10 @@ Apple Developer Portal integration can be enabled in **User settings > Integrati
 
 ### Setting up automatic code signing
 
+{{<notebox >}} 
+The actions that Codemagic can perform on your behalf depend on your [Apple Developer Program user role](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
+{{</notebox>}}
+
 1. Go to **App settings > Publish > iOS code signing**.
 2. Select **Automatic** as the code signing method. If you haven't enabled the Apple Developer Portal integration yet, you will be asked to enable it before you can continue configuration.
 3. If you belong to several Apple Developer teams, select the right team in the **Developer portal team** field.
