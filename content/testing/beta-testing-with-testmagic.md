@@ -4,7 +4,7 @@ title: Beta testing with Testmagic
 weight: 6
 ---
 
-Codemagic is seamlessly integrated with [Testmagic](https://testmagic.io/), a simple mobile app for viewing, testing and distributing your Codemagic builds. You can download it from [Google Play](https://play.google.com/store/apps/details?id=io.nevercode.testmagic&hl=en) for Android and request the app download link for iOS via the #testmagic channel in our [Slack community](https://join.slack.com/t/flutterci/shared_invite/enQtNDcwODIzMjM4MzI2LWJhNWRkMjZlMjk1YzgzNGUwZjQ5NmUxYTI3YjQzODdlMGU1Nzg5OWQ3NGM3NDdhNGIyNjY1YTUzZTgyNTJkMTc).
+Codemagic is seamlessly integrated with [Testmagic](https://testmagic.io/), a simple mobile app for viewing, testing and distributing your Codemagic builds. You can download it from [Google Play](https://play.google.com/store/apps/details?id=io.nevercode.testmagic&hl=en) for Android or join the testflight group for iOS - [link](https://testflight.apple.com/join/lEQLSjoe). For discussions, join #testmagic channel in our [Slack community](https://join.slack.com/t/flutterci/shared_invite/enQtNDcwODIzMjM4MzI2LWJhNWRkMjZlMjk1YzgzNGUwZjQ5NmUxYTI3YjQzODdlMGU1Nzg5OWQ3NGM3NDdhNGIyNjY1YTUzZTgyNTJkMTc).
 
 With Testmagic, you can:
 
