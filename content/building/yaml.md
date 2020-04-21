@@ -14,7 +14,6 @@ The YAML feature is currently in *beta* and has the following limitations:
 
 * Exporting configuration from UI is supported for Flutter-based Android, iOS and web apps.
 * The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail** and publishing to Codemagic Static Pages.
-* YAML configuration is not yet available for apps from custom sources.
 
 {{</notebox>}}
 
@@ -23,10 +22,9 @@ The YAML feature is currently in *beta* and has the following limitations:
 You can get started with YAML easily if you have an existing project set up on Codemagic. 
 
 1. Navigate to your app settings.
-2. Expand the **Advanced configuration (beta)** tab.
-3. Click **Download configuration** and save the generated `codemagic.yaml` file to a suitable location. 
+2. Click **Download configuration** on the right sidebar in the **Configuration as code (beta)** section.
 
-Note that in order to use the file for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the project. 
+Note that in order to use the file for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
 
 ## Encrypting sensitive data
 
@@ -34,10 +32,11 @@ During the export, Codemagic automatically encrypts the secret environment varia
 
 If you wish to add new environment variables to the YAML file, you can encrypt them via Codemagic UI. 
 
-1. In your app settings > Advanced configuration (beta), click **Encrypt environment variables**.
-2. Paste the value of the variable in the field or upload it as a file.
-3. Click **Encrypt**. 
-4. Copy the encrypted value and paste it to the configuration file.
+1. Navigate to your app settings.
+2. Click **Encrypt environment variables** on the right sidebar in the **Configuration as code (beta)** section.
+3. Paste the value of the variable in the field or upload it as a file.
+4. Click **Encrypt**. 
+5. Copy the encrypted value and paste it to the configuration file.
 
 An example of an encrypted value:
 
@@ -116,7 +115,7 @@ The main sections in each workflow are described below.
 
 ### Environment
 
-`environment:` Contains your environment variables and enables to specify the version of Flutter used for building. This is also where you can add credentials and API keys required for code signing. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
+`environment:` Contains your environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and nmp used for building. This is also where you can add credentials and API keys required for code signing. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
 
     environment:
       vars:             # Define your environment variables here
@@ -142,10 +141,17 @@ The main sections in each workflow are described below.
 
       flutter: stable   # Define the channel name or version (e.g. v1.13.4)
       xcode: latest     # Define latest, edge or version (e.g. 11.2)
+      cocoapods: 1.9.1  # Define default or version
+      node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
+      npm: 6.13.7       # Define default, latest, next, lts or version
+
+{{<notebox>}}
+See the default software versions on Codemagic build machines [here](../releases-and-versions/versions/).
+{{</notebox>}}
 
 #### Setting up code signing for iOS
 
-In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below.
+In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
 
 * `APP_STORE_CONNECT_PRIVATE_KEY`
 
@@ -167,7 +173,9 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
 
 * `CERTIFICATE_PRIVATE_KEY`
 
-  A RSA 2048 bit private key to be included in the signing certificate. Read more about it [here](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d).
+  A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the following command in your terminal:
+
+      ssh-keygen -t rsa -b 2048 -f ~/Desktop/codemagic_private_key -q -N ""
 
 {{<notebox>}}
 Alternatively, each property can be specified in the [scripts](#scripts) section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch%E2%80%91signing%E2%80%91files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.

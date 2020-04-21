@@ -47,7 +47,7 @@ To use automatic code signing, you are required to enable the **Apple Developer 
 
 ### Enabling the Apple Developer Portal integration
 
-Apple Developer Portal integration can be enabled in **User settings > Integrations** for personal projects and in **Team settings > Team integrations** for projects shared in the team (if you're the team owner). This allows you to convneniently use the same Apple Developer Portal credentials for automatic code signing across all projects and workflows.
+Apple Developer Portal integration can be enabled in **User settings > Integrations** for personal projects and in **Team settings > Team integrations** for projects shared in the team (if you're the team owner). This allows you to conveniently use the same Apple Developer Portal credentials for automatic code signing across all projects and workflows.
 
 1. In the list of available integrations, click the **Connect** button for **Developer Portal**.
 2. Enter your **Apple ID** (Apple Developer Portal username) and **password**.
@@ -56,6 +56,10 @@ Apple Developer Portal integration can be enabled in **User settings > Integrati
 4. Enter the verification code and click **Save** one more time. On successful authentication, the Apple Developer Portal integration will be enabled.
 
 ### Setting up automatic code signing
+
+{{<notebox >}} 
+The actions that Codemagic can perform on your behalf depend on your [Apple Developer Program user role](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
+{{</notebox>}}
 
 1. Go to **App settings > Publish > iOS code signing**.
 2. Select **Automatic** as the code signing method. If you haven't enabled the Apple Developer Portal integration yet, you will be asked to enable it before you can continue configuration.
@@ -69,7 +73,7 @@ Apple Developer Portal integration can be enabled in **User settings > Integrati
 
 {{< figure size="medium" src="../uploads/automatic_code_signing.png" caption="Automatic code signing setup" >}}
 
-As the next step, you can [configure publishing to App Store Connect](./publishing/publish-app-artifacts-to-app-center) to distribute your app to testers via TestFlight or submit it to App Store.
+As the next step, you can [configure publishing to App Store Connect](../publishing/publishing-to-app-store) to distribute the app via TestFlight or submit it to the App Store.
 
 ## Manual code signing
 
@@ -87,7 +91,7 @@ With the manual code signing method, you are required to upload the signing cert
 
 {{< figure size="medium" src="../uploads/manual_code_signing.png" caption="Manual code signing setup" >}}
 
-Codemagic will now create a signed `.ipa` file with every build. Note that you must also [set up publishing to App Store Connect](./publishing/publish-app-artifacts-to-app-center) to distribute the app via TestFlight or submit it to the App Store.
+Codemagic will now create a signed `.ipa` file with every build. Note that you must also [set up publishing to App Store Connect](../publishing/publishing-to-app-store) to distribute the app via TestFlight or submit it to the App Store.
 
 #### Exporting certificates and provisioning profiles
 

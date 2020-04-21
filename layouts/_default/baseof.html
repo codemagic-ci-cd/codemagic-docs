@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html>
+  <head>
+    {{ .Render "head" }}
+  </head>
+  <body id="article-page" class="page">
+    <div id="content-wrap">
+      <div id="search-results"></div>
+      <aside id="sidebar">
+        <div id="menu-toggle">
+          <div class="bar top"></div>
+          <div class="bar middle"></div>
+          <div class="bar bottom"></div>
+        </div>
+        <div id="logo">
+          <a href="{{ site.Home.RelPermalink }}">
+            {{ $logo := resources.Get "media/logo.svg" }}
+            {{ $logo.Content | safeHTML }}
+            <span id="logo-label">{{ site.Param "headerLinkTitle" }}</span>
+          </a>
+        </div>
+        <div class="search search--header">
+          <input class="search__input" type="text" placeholder="Search">
+          <div class="search__icon search__icon--search fas fa-search"></div>
+          <div class="search__icon search__icon--clear fas fa-times"></div>
+        </div>
+        {{ partial "sidebar" . }}
+      </aside>
+      <div id="main-content">
+        <main>
+          {{ block "main" . }}{{ end }}
+        </main>
+      </div>
+    </div>
+    <footer id="footer">
+      {{ partial "footer" . }}
+    </footer>
+    {{ partial "analytics" . }}
+    {{ partial "site-footer" . }}
+  </body>
+</html>

@@ -42,16 +42,21 @@ If you don't check any of these triggering options, you will have to run builds 
 
 ## Webhooks
 
-For accounts with sufficient permissions, Codemagic creates the webhooks necessary for automatic build triggering during the initial build run. However, in some cases, such as when you add an app from a custom source, you may have to manually set up the webhook to enable automatic builds in response to events in the repository.
+Codemagic automatically adds webhooks to GitHub, GitLab, and Bitbucket after you have enabled any of the triggers in **App settings** > **Automatic build triggering**.
 
-To set up a webhook for automatic build triggering on Codemagic, you must register the Codemagic **payload URL** in your repository settings and select Repository push, Branch push and PR merge events.
+In case of failure to add a webhook, you should manually set up the webhook in your repository hosting service to enable automatic builds in response to events in the repository.
+
+* **GitHub**: Open your project and navigate to **Settings** > **Webhooks** > **Add webhook**, paste the **payload URL** from below, make sure **Content type** is `application/json` and select the following events: **Branch or tag creation**, **Pull requests**, **Pushes**.
+
+* **GitLab**: Navigate to **Settings** > **Webhooks**, paste the **payload URL** and check the following boxes in the **Trigger** section: **Push events**, **Tag push events**, **Merge request events**. Also, be sure to enable **SSL verification**.
+
+* **Bitbucket**: Open your application repository, go to **Settings** > **Webhooks** (in **Workflow** section) > **Add webhook**, then enter an arbitrary title for the webhook and paste the **payload URL** in the **URL** field. For **Triggers**, select **Choose from a full list of triggers** and select the following events: **Push** in the **Repository** section and **Created**, **Updated**, **Merged** in the **Pull Request** section.
 
 {{<notebox>}}
-The payload URL has the following format:  
-`https://api.codemagic.io/hooks/[appId]`
-{{</notebox>}}
+The payload URL has the following format: `https://api.codemagic.io/hooks/[appId]`. 
 
 You can find your app ID in the browser URL after `app/` when you open the app on Codemagic: `https://codemagic.io/app/[appId]`
+{{</notebox>}}
 
 ## Custom build triggers
 

@@ -30,7 +30,7 @@ If you wish to use a **custom** environment variable name without the suffix `_S
 
 ## Generating a SSH key
 
-Different repository hosting services have different minimum requirements for the length of the SSH key, varying from 2048 bits to 4096 bits. We recommend creating a 4096 bit key for increased security. Run the script below in your terminal to create a 4096 bit SSH key:
+Different repository hosting services have different minimum requirements for the length of the SSH key, varying from 2048 bits to 4096 bits. We recommend creating a 4096 bit key for increased security. Run the command below in your terminal to create a 4096 bit SSH key:
 
         ssh-keygen -t rsa -b 4096 -f ~/Desktop/codemagic_ssh_key -q -N ""
 

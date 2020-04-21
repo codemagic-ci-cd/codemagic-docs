@@ -11,51 +11,48 @@ weight: 2
 
 ## System
 
-- System version `macOS 10.14.6 (18G2022)`
-- Kernel version `Darwin 18.7.0`
-- Disk `322GB (Free Space: 46GB)`
+- System version `macOS 10.15.4 (19E266)`
+- Kernel version `Darwin 19.4.0`
+- Disk `322GB (Free Space: 39GB)`
 
 ## Pre-installed tools
 
 - Android tools `$HOME/programs/android-sdk-macosx`
-- cocoapods `1.8.4`
+- cocoapods `1.9.1`
 - curl
-- dart `2.7.1`
-- docker `19.03.5`
-- fastlane `2.140.0`
+- dart `2.7.2`
+- docker `19.03.8`
+- fastlane `2.144.0`
 - firebase `7.6.2`
-- flutter `1.12.13+hotfix.8 ($HOME/programs/flutter)`
+- flutter `1.12.13+hotfix.9 ($HOME/programs/flutter)`
 - gem `3.0.3`
-- git `2.25.0`
+- git `2.26.0`
 - gradle `5.5.1`
-- homebrew `2.2.4`
+- homebrew `2.2.11`
 - jq
 - node `12.14.0`
-- npm `6.13.6`
+- npm `6.13.7`
 - python `2.7.17`
-- python3 `3.7.6`
+- python3 `3.7.7`
 - ruby `2.6.5p114`
 - ssh
 - sudo
 - tar
 - unzip
 - wget
-- yarn `1.21.1`
+- yarn `1.22.4`
 - zip
 
-## Xcode 11.3.1 (11C505)
+## Xcode 11.4 (11E146)
 
 This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
-Xcode path: `/Applications/Xcode-11.3.app`
+Xcode path: `/Applications/Xcode-11.4.app`
 
-With Xcode `11.3.1` build version `11C505` the following runtimes and devices are installed:
+With Xcode `11.4` build version `11E146` the following runtimes and devices are installed:
 
 ### Runtimes
 
-- iOS 10.0
-- iOS 10.1
-- iOS 10.2
 - iOS 10.3
 - iOS 11.0
 - iOS 11.1
@@ -70,9 +67,10 @@ With Xcode `11.3.1` build version `11C505` the following runtimes and devices ar
 - iOS 13.1
 - iOS 13.2
 - iOS 13.3
+- iOS 13.4
 - tvOS 11.3
-- tvOS 13.3
-- watchOS 6.1
+- tvOS 13.4
+- watchOS 6.2
 
 ### Devices
 
@@ -109,8 +107,10 @@ With Xcode `11.3.1` build version `11C505` the following runtimes and devices ar
 - iPad Pro (10.5-inch)
 - iPad (6th generation)
 - iPad (7th generation)
-- iPad Pro (11-inch)
+- iPad Pro (11-inch) (1st generation)
 - iPad Pro (12.9-inch) (3rd generation)
+- iPad Pro (11-inch) (2nd generation)
+- iPad Pro (12.9-inch) (4th generation)
 - iPad mini (5th generation)
 - iPad Air (3rd generation)
 - Apple TV
@@ -129,6 +129,7 @@ With Xcode `11.3.1` build version `11C505` the following runtimes and devices ar
 
 ## Other Xcode versions
 
+- 11.3.1 (11C505) `/Applications/Xcode-11.3.app`
 - 11.2.1 (11B500) `/Applications/Xcode-11.2.1.app`
 - 11.1 (11A1027) `/Applications/Xcode-11.1.app`
 - 11.0 (11A420a) `/Applications/Xcode-11.app`
@@ -136,5 +137,4 @@ With Xcode `11.3.1` build version `11C505` the following runtimes and devices ar
 - 10.2.1 (10E1001) `/Applications/Xcode-10.2.app`
 - 10.1 (10B61) `/Applications/Xcode-10.1.app`
 - 10.0 (10A255) `/Applications/Xcode-10.app`
-- 9.4.1 (9F2000) `/Applications/Xcode-9.4.app`
 

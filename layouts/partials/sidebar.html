@@ -1,0 +1,21 @@
+<nav id="docs-menu">
+  <div class="search search--sidebar">
+    <input class="search__input" type="text" placeholder="Search">
+    <div class="search__icon search__icon--search fas fa-search"></div>
+    <div class="search__icon search__icon--clear fas fa-times"></div>
+  </div>
+
+  <ul>
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+      <li class="{{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }}">
+        <div class="category-name">{{ .Name }}</div>
+        <div class="category-posts">
+          {{ range where site.Pages "Section" .Identifier -}}
+            <a class="{{ if eq $currentPage .}}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{- end }}
+        </div>
+      </li>
+    {{ end }}
+  </ul>
+</nav>

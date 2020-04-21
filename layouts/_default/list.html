@@ -1,6 +1,7 @@
-= content main
-  .container
+{{ define "main" }}
+  <div class="container">
     {{ .Content }}
+  </div>
   
   {{ $descendants := slice }}
   {{ range site.RegularPages }}
@@ -8,4 +9,4 @@
       {{ $descendants = $descendants | append . }}
     {{ end }}
   {{ end }}
-
+{{ end }}

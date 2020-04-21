@@ -11,9 +11,10 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: AKIAVIULH47FJUBBUV5U
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      HUGO_ENV: PRODUCTION
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - run: curl --location https://github.com/gohugoio/hugo/releases/download/v0.61.0/hugo_extended_0.61.0_Linux-64bit.tar.gz | tar -vxzO hugo > hugo && chmod a+x hugo
-      - run: ./hugo --minify
-      - run: ./hugo deploy --invalidateCDN true --maxDeletes -1
+      - run: ./hugo --environment production --minify
+      - run: ./hugo deploy --environment production --invalidateCDN true --maxDeletes -1
