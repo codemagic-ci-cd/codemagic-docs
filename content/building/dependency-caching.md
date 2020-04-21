@@ -19,9 +19,7 @@ You can add paths to be cached, for example:
 
 {{<notebox>}}
 
-**Limitations**
-
-Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up ios builds with Xcode 10.2 or later
+Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up iOS builds with Xcode 10.2 or later
 
 {{</notebox>}}
 
