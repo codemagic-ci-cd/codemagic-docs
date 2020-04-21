@@ -6,24 +6,24 @@ weight: 10
 
 You can speed up your builds by storing dependencies on Codemagic. To use caching, you must **enable dependency caching** in app settings. Note that caching is workflow-specific.
 
-{{<notebox>}}
-
-**Limitations**
-
-Xcode DerivedData cache only works on local machines, which makes it not possible to speed up ios builds on CIs by caching DerivedData (using Xcode 10.2 or later).
-
-However, caching `$HOME/Library/Caches/CocoaPods` can speed up `pod install` step which is default step done by `flutter build ios`
-
-{{</notebox>}}
-
 
 You can add paths to be cached, for example:
 
 | **Path**                                    | **Description**                                  |
 | ------------------------------------------- | ------------------------------------------------ |
-| `$FCI_BUILD_DIR/build`                      | Build cache                                      |
-| `$HOME/.pub-cache`                          | Dart cache                                       |
+| `$FLUTTER_ROOT/.pub-cache`                  | Dart cache                                       |
 | `$HOME/.gradle/caches`                      | Gradle cache. Note: do not cache `$HOME/.gradle` |
+| `$HOME/Library/Caches/CocoaPods`            | CocoaPods cache                                  |
+
+&nbsp;
+
+{{<notebox>}}
+
+**Limitations**
+
+Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up ios builds with Xcode 10.2 or later
+
+{{</notebox>}}
 
 ## Enabling dependency caching
 
