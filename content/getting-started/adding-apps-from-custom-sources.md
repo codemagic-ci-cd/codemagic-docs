@@ -31,7 +31,7 @@ Your app will be then listed on the Applications page and you can immediately st
 2. Enter the **Repository URL** for **cloning** the repository. Usually, the URL is in this format: ` git@example.com:username/repo.git `.
 3. Upload the **SSH private key** file. If your key is password-protected, enter the **Private key passphrase**. 
 
-    **Alternatively**, you can click **Generate key pair** and have Codemagic create a SSH key pair for you, read more about it [below](#generating-a-key-pair-in-codemagic).
+    **Alternatively**, you can click **Generate key pair** and have Codemagic create an SSH key pair for you, read more about it [below](#generating-a-key-pair-in-codemagic).
 4. Click **Add application**.
 
 Your app will be then listed on the Applications page and you can immediately start running builds.
