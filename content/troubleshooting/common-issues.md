@@ -4,6 +4,20 @@ title: Common issues
 weight: 1
 ---
 
+## Two-factor authentication for Apple Developer Portal integration fails
+
+Recently, Apple changed their private API which affects the way third-party systems offer two-factor authentication for Apple Developer Portal. This may result in two-factor authentication failing for the Apple Developer Portal integration in Codemagic despite entering a correct authentication code.
+
+        Apple Developer Portal authentication failed
+        Two factor authentication failed for user@domain.com: Incorrect Verification Code: Incorrect verification code
+
+If you see the error message above and are convinced you have entered the correct authentication code, you can try the following workarounds:
+
+ * Change your Apple Developer Portal password
+ * Log out from all the devices except the one you want to use for receiving the authentication code
+
+If the suggestions above do not work for you, you can export your current UI configuration and switch to building using `codemagic.yaml`, see more information in [Configuration as code (YAML)](../building/yaml).
+
 ## iOS code signing troubleshooting
 
 This is the list of the most common issues that may cause iOS code signing errors during a CI build.
@@ -22,33 +36,6 @@ This is the list of the most common issues that may cause iOS code signing error
 * **You haven't specified the iOS scheme to be used for the `archive` action of Xcode build.**  This applies when your app has custom iOS schemes. By default, Codemagic builds the `Runner` scheme, but you can use the `FCI_FLUTTER_SCHEME` [environment variable](../building/environment-variables) to specify another scheme.
 
 * **The bundle ID you have entered in automatic code signing setup on Codemagic does not match the bundle ID in the build configuration that is used for archiving the app with Xcode.** Codemagic assigns provisioning profiles to the build targets and configurations before building the iOS app. That assignment is based on the bundle ID match in both provisioning profile and the build configuration. In the case signing configuration is not assigned to the build target/configuration that is used for archiving, the build will fail.
-
-## iOS build hangs at `Xcode build done`
-
-**Description**:
-When building for iOS, the build gets stuck after showing `Xcode build done` in the log but does not finish and eventually times out.
-
-**Log output**: 
-
-    == Building for iOS ==
-
-    == /usr/local/bin/flutter build ios --release --no-codesign ==
-    Warning: Building for device with codesigning disabled. You will have to manually codesign before deploying to device.
-    Building net.butterflyapp.trainer for device (ios-release)...
-    Running pod install...                                              3.7s
-    Running Xcode build...                                          
-    Xcode build done.                                           203.6s
-
-**Flutter**: `1.7.8+hotfix.3`, `1.7.8+hotfix.4`, `1.9.1+hotfix.2`, `1.9.1+hotfix.4`, `1.9.1+hotfix.5`
-
-**Xcode**: N/A
-
-**Solution**: This is a known issue that occurs randomly and can be traced back to Flutter:
-
-* https://github.com/flutter/flutter/issues/28415
-* https://github.com/flutter/flutter/issues/35988
-
-This issue is known to be fixed on the `master` channel.
 
 ## Version inconsistency between local and Codemagic
 
@@ -78,3 +65,30 @@ Codemagic runs `./gradlew --version` on the builder side to check if it's suitab
 * Make a fix for the issue found.
 * Commit changes to the repo.
 * Run the build again in Codemagic.
+
+## iOS build hangs at `Xcode build done`
+
+**Description**:
+When building for iOS, the build gets stuck after showing `Xcode build done` in the log but does not finish and eventually times out.
+
+**Log output**: 
+
+    == Building for iOS ==
+
+    == /usr/local/bin/flutter build ios --release --no-codesign ==
+    Warning: Building for device with codesigning disabled. You will have to manually codesign before deploying to device.
+    Building net.butterflyapp.trainer for device (ios-release)...
+    Running pod install...                                              3.7s
+    Running Xcode build...                                          
+    Xcode build done.                                           203.6s
+
+**Flutter**: `1.7.8+hotfix.3`, `1.7.8+hotfix.4`, `1.9.1+hotfix.2`, `1.9.1+hotfix.4`, `1.9.1+hotfix.5`
+
+**Xcode**: N/A
+
+**Solution**: This is a known issue that occurs randomly and can be traced back to Flutter:
+
+* https://github.com/flutter/flutter/issues/28415
+* https://github.com/flutter/flutter/issues/35988
+
+This issue is known to be fixed on the `master` channel.
