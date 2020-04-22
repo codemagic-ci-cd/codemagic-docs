@@ -11,7 +11,7 @@ Recently, Apple changed their private API which affects the way third-party syst
         Apple Developer Portal authentication failed
         Two factor authentication failed for user@domain.com: Incorrect Verification Code: Incorrect verification code
 
-If you see the error message above and are convinced you have entered the correct vertification code, you can try the following workarounds:
+If you see the error message above and are convinced you have entered the correct authentication code, you can try the following workarounds:
 
  * Change your Apple Developer Portal password
  * Log out from all the devices except the one you want to use for receiving the authentication code
