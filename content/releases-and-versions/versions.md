@@ -11,9 +11,9 @@ weight: 2
 
 ## System
 
-- System version `macOS 10.15.4 (19E266)`
+- System version `macOS 10.15.4 (19E287)`
 - Kernel version `Darwin 19.4.0`
-- Disk `322GB (Free Space: 39GB)`
+- Disk `322GB (Free Space: 38GB)`
 
 ## Pre-installed tools
 
@@ -22,16 +22,16 @@ weight: 2
 - curl
 - dart `2.7.2`
 - docker `19.03.8`
-- fastlane `2.144.0`
+- fastlane `2.145.0`
 - firebase `7.6.2`
 - flutter `1.12.13+hotfix.9 ($HOME/programs/flutter)`
 - gem `3.0.3`
-- git `2.26.0`
+- git `2.26.1`
 - gradle `5.5.1`
-- homebrew `2.2.11`
+- homebrew `2.2.13`
 - jq
 - node `12.14.0`
-- npm `6.13.7`
+- npm `6.14.4`
 - python `2.7.17`
 - python3 `3.7.7`
 - ruby `2.6.5p114`
@@ -43,13 +43,13 @@ weight: 2
 - yarn `1.22.4`
 - zip
 
-## Xcode 11.4 (11E146)
+## Xcode 11.4.1 (11E503a)
 
 This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-11.4.app`
 
-With Xcode `11.4` build version `11E146` the following runtimes and devices are installed:
+With Xcode `11.4.1` build version `11E503a` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -81,7 +81,7 @@ With Xcode `11.4` build version `11E146` the following runtimes and devices are 
 - iPhone 6
 - iPhone 6s
 - iPhone 6s Plus
-- iPhone SE
+- iPhone SE (1st generation)
 - iPhone 7
 - iPhone 7 Plus
 - iPhone 8
@@ -93,6 +93,7 @@ With Xcode `11.4` build version `11E146` the following runtimes and devices are 
 - iPhone 11
 - iPhone 11 Pro
 - iPhone 11 Pro Max
+- iPhone SE (2nd generation)
 - iPad 2
 - iPad Retina
 - iPad Air
