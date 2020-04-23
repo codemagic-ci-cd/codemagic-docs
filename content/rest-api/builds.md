@@ -11,11 +11,12 @@ APIs for managing builds are currently available for developers to preview. Duri
 
 ### Parameters
 
-| **Name**     | **Type** | **Description** |
-| ------------ | -------- | --------------- |
-| `appId`      | `string` | **Required.** The application identifier. |
-| `workflowId` | `string` | **Required.** The workflow identifier as specified in YAML file. |
-| `branch`     | `string` | **Required.** The branch name. |
+| **Name**      | **Type** | **Description** |
+| ------------- | -------- | --------------- |
+| `appId`       | `string` | **Required.** The application identifier. |
+| `workflowId`  | `string` | **Required.** The workflow identifier as specified in YAML file. |
+| `branch`      | `string` | **Required.** The branch name. |
+| `environment` | `object` | Optional. Specify environment variables and software versions to override values defined in workflow settings. | 
 
 ### Example
 
@@ -23,7 +24,17 @@ APIs for managing builds are currently available for developers to preview. Duri
 {
     "appId": "5c9c064185dd2310123b8e96",
     "workflowId": "release",
-    "branch": "master"
+    "branch": "master",
+    "environment": {
+        "variables": {
+            "ENVIRONMENT_VARIABLE_1": "...",
+            "ENVIRONMENT_VARIABLE_2": "..."
+        },
+        "softwareVersions": {
+            "xcode": "11.4.1",
+            "flutter": "v1.12.13+hotfix.9"
+        }
+    }
 }
 ```
 
