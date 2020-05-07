@@ -30,6 +30,6 @@ Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up iOS b
 3. Enter the path(s) to the dependencies to be cached and click **Add**. Note that you can delete added paths anytime.
 4. Click **Save** to save the settings.
 
-## Removing cashed dependencies
+## Removing cached dependencies
 
 In order to clear the collected cache, navigate to the **Dependency caching** section in app settings and click **Clear cache**. During the next build, dependencies will be downloaded afresh.
