@@ -135,7 +135,5 @@ With Xcode `11.4.1` build version `11E503a` the following runtimes and devices a
 - 11.1 (11A1027) `/Applications/Xcode-11.1.app`
 - 11.0 (11A420a) `/Applications/Xcode-11.app`
 - 10.3 (10G8) `/Applications/Xcode-10.3.app`
-- 10.2.1 (10E1001) `/Applications/Xcode-10.2.app`
-- 10.1 (10B61) `/Applications/Xcode-10.1.app`
-- 10.0 (10A255) `/Applications/Xcode-10.app`
+
 
