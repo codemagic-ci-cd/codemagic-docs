@@ -13,22 +13,22 @@ weight: 2
 
 - System version `macOS 10.15.4 (19E287)`
 - Kernel version `Darwin 19.4.0`
-- Disk `322GB (Free Space: 38GB)`
+- Disk `322GB (Free Space: 48GB)`
 
 ## Pre-installed tools
 
 - Android tools `$HOME/programs/android-sdk-macosx`
 - cocoapods `1.9.1`
 - curl
-- dart `2.7.2`
+- dart `2.8.1`
 - docker `19.03.8`
-- fastlane `2.145.0`
+- fastlane `2.146.1`
 - firebase `7.6.2`
-- flutter `1.12.13+hotfix.9 ($HOME/programs/flutter)`
+- flutter `1.17.0 ($HOME/programs/flutter)`
 - gem `3.0.3`
-- git `2.26.1`
+- git `2.26.2`
 - gradle `5.5.1`
-- homebrew `2.2.13`
+- homebrew `2.2.15`
 - jq
 - node `12.14.0`
 - npm `6.14.4`
@@ -130,10 +130,10 @@ With Xcode `11.4.1` build version `11E503a` the following runtimes and devices a
 
 ## Other Xcode versions
 
+- 11.5 (11N605f) `/Applications/Xcode-11.5.app`
 - 11.3.1 (11C505) `/Applications/Xcode-11.3.app`
 - 11.2.1 (11B500) `/Applications/Xcode-11.2.1.app`
 - 11.1 (11A1027) `/Applications/Xcode-11.1.app`
 - 11.0 (11A420a) `/Applications/Xcode-11.app`
 - 10.3 (10G8) `/Applications/Xcode-10.3.app`
-
 
