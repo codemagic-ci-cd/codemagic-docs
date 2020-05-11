@@ -72,6 +72,7 @@ This is the skeleton structure of `codemagic.yaml`.
     workflows:
       my-workflow:
         name: My workflow name
+        max_build_duration: 60
         environment:
           vars:
             PUBLIC_ENV_VAR: "value here"
@@ -103,6 +104,7 @@ You can use `codemagic.yaml` to define several workflows for building a project.
     workflows:
       my-workflow:                # workflow ID
         name: My workflow name    # workflow name displayed in UI
+        max_build_duration: 60    # build duration in minutes (min 1, max 120)
         environment:
         cache:
         triggering:

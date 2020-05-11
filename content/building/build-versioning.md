@@ -1,6 +1,6 @@
 ---
 title: Build versioning
-weight: 11
+weight: 10
 ---
 
 If you are going to publish your app to App Store Connect or Google Play, each uploaded binary must have a new version. There are several approaches you can use for build versioning on Codemagic. One of the easiest ways to increment app version with every build is by using the `BUILD_NUMBER` read-only environment variable in **build arguments**.
