@@ -4,6 +4,21 @@ title: Release notes
 weight: 1
 ---
 
+## May 2020
+
+### Increase or decrease maximum build duration
+
+You can now have control over the maximum build duration and set a different value per each workflow. If the build reaches the set limit, it will end with a timeout. The default value is 60 minutes and the maximum value is 120 minutes.
+Note that timeouts do not consume any build minutes. See the relevant documentation [here](../building/timeout/).
+
+## April 2020
+
+### Dynamic workflows with Codemagic API
+
+You can now configure your build and Flutter/Xcode/Cocoapods versions dynamically using API. If you have several similar workflows, you can now combine them into one and create parametrized API calls. This way you can run your workflows without having to change the settings in UI or in codemagic.yaml.
+
+See [our documentation](../rest-api/builds/) for more information.
+
 ## March 2020
 
 ### More options to configure your build environment
