@@ -19,10 +19,16 @@ Please follow the format of existing issues for consistency.
 
 ## Development
 
-Development requires [Hugo static site generator](https://gohugo.io) v0.61.0 from [releases page](https://github.com/gohugoio/hugo/releases) or with Homebrew
+Development requires [Hugo static site generator](https://gohugo.io) v0.61.0 from [releases page](https://github.com/gohugoio/hugo/releases) or with Homebrew for Linux and macOS users.
 
 ```
 brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/79894aee20a146d6cf7db7b4a362e7d491f499a1/Formula/hugo.rb
+```
+
+Windows users can install [Chocolatey](https://chocolatey.org/install). After that Hugo can be installed with
+
+```
+choco install hugo-extended --version 0.61.0
 ```
 
 For general info see [Hugo documentation](https://gohugo.io/documentation/).
@@ -33,9 +39,13 @@ Layout templates are in `layouts` in HTML format and go template syntax for "act
 
 ## Preview
 
-Preview the site in http://localhost:1313/ by launching:
+Linux and macOS users can preview the site in http://localhost:1313/ by launching:
 ```
 ./serve.sh
+```
+Windows users launch:
+```
+./serve.cmd
 ```
 
 It will usually refresh automatically when anything is changed
