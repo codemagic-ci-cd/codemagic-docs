@@ -15,7 +15,7 @@ Note that timeouts do not consume any build minutes. See the relevant documentat
 
 ### Dynamic workflows with Codemagic API
 
-You can now configure your build and Flutter/Xcode/Cocoapods versions dynamically using API. If you have several similar workflows, you can now combine them into one and create parametrized API calls. This way you can run your workflows without having to change the settings in UI or in codemagic.yaml.
+You can now configure your build and Flutter/Xcode/Cocoapods versions dynamically using API. If you have several similar workflows, you can now combine them into one and create parametrized API calls. This way you can run your workflows without having to change the settings in UI or in `codemagic.yaml`.
 
 See [our documentation](../rest-api/builds/) for more information.
 
