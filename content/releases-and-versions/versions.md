@@ -13,7 +13,7 @@ weight: 2
 
 - System version `macOS 10.15.4 (19E287)`
 - Kernel version `Darwin 19.4.0`
-- Disk `322GB (Free Space: 48GB)`
+- Disk `322GB (Free Space: 47GB)`
 
 ## Pre-installed tools
 
@@ -24,7 +24,7 @@ weight: 2
 - docker `19.03.8`
 - fastlane `2.146.1`
 - firebase `7.6.2`
-- flutter `1.17.0 ($HOME/programs/flutter)`
+- flutter `1.17.1 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - git `2.26.2`
 - gradle `5.5.1`
