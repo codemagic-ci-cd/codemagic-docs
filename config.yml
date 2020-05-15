@@ -38,27 +38,30 @@ menu:
     - identifier: building
       name: Build configuration
       weight: 2
+    - identifier: yaml
+      name: Building with YAML
+      weight: 3
     - identifier: testing
       name: Testing
-      weight: 3
+      weight: 4
     - identifier: code-signing
       name: Code signing
-      weight: 4
+      weight: 5
     - identifier: publishing
       name: Publishing
-      weight: 5
+      weight: 6
     - identifier: custom-scripts
       name: Custom script examples
-      weight: 6
+      weight: 7
     - identifier: rest-api
       name: Codemagic API
-      weight: 7
+      weight: 8
     - identifier: troubleshooting
       name: Troubleshooting
-      weight: 8
+      weight: 9
     - identifier: releases-and-versions
       name: Releases and versions
-      weight: 9
+      weight: 10
 
 mediaTypes:
   video/mp4:
