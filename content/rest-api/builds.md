@@ -18,6 +18,12 @@ APIs for managing builds are currently available for developers to preview. Duri
 | `branch`      | `string` | **Required.** The branch name. |
 | `environment` | `object` | Optional. Specify environment variables and software versions to override values defined in workflow settings. | 
 
+### Curl request
+
+```bash
+curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '{"appId": "<app_id>","workflowId": "<workflow_id>","branch": "<git_branch_name>"}' https://api.codemagic.io/builds
+```
+
 ### Example
 
 ```javascript
