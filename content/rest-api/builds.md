@@ -66,4 +66,10 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '
 
 `POST /builds/:id/cancel`
 
+### Curl request
+
+```bash
+curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request POST https://api.codemagic.io/builds/<build_id>/cancel
+```
+
 The request will return `208 Already Reported` if the build has already finished.
