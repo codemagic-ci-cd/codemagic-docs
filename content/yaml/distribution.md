@@ -1,6 +1,6 @@
 ---
-title: Code signing
-description: Code signing with YAML.
+title: Distribution
+description: Code signing and publishing with YAML.
 weight: 2
 ---
 
@@ -41,3 +41,22 @@ In order to use **manual code signing**, [encrypt](https://docs.codemagic.io/bui
     CM_CERTIFICATE: Encrypted(...)
     CM_CERTIFICATE_PASSWORD: Encrypted(...)
     CM_PROVISIONING_PROFILE: Encrypted(...)
+
+### Publishing
+
+`publishing:` For every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Codemagic Static Pages.
+
+    publishing:
+      email:
+        recipients:
+          - name@example.com
+      slack:
+        channel: '#channel-name'
+        notify_on_build_start: true
+      google_play:                        # For Android app
+        credentials: Encrypted(...)
+        track: alpha
+      app_store_connect:                  # For iOS app
+        app_id: '...'                     # App's unique identifier in App Store Connect
+        apple_id: name@example.com        # Email address used for login
+        password: Encrypted(...)          # App-specific password

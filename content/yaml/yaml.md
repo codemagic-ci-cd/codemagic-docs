@@ -4,7 +4,7 @@ description: Customize the build and configure all your workflows in a single fi
 weight: 1
 ---
 
-`codemagic.yaml` is an advanced option for customizing the build and configuring all your workflows in a single file. The file can be committed to version control, and when detected in repository, will be used to configure the build instead of the settings in the UI.
+`codemagic.yaml` is an advanced option for customizing the build and configuring all your workflows in a single file. This file can be committed to version control, and when it is detected in the repository it will be referenced to configure the build (instead of using the settings in the UI).
 
 {{<notebox>}}
 
@@ -38,7 +38,7 @@ If you wish to add new environment variables to the YAML file, you can encrypt t
 4. Click **Encrypt**. 
 5. Copy the encrypted value and paste it to the configuration file.
 
-An example of an encrypted value:
+The encrypted value will look something like this:
 
 ```
 Encrypted(Z0FBQUFBQmRyY1FLWXIwVEhqdWphdjRhQ0xubkdoOGJ2bThkNmh4YmdXbFB3S2wyNTN2OERoV3c0YWU0OVBERG42d3Rfc2N0blNDX3FfblZxbUc4d2pWUHJBSVppbXNXNC04U1VqcGlnajZ2VnJVMVFWc3lZZ289)
@@ -200,5 +200,17 @@ A branch pattern can match the name of a particular branch, or you can use wildc
 * The pattern can match several files or folders. If it picks up files or folders with the same name, the top level file or folder name will be suffixed with `_{number}`.
 * If one of the patterns includes another pattern, duplicate artifacts are not created.
 * `apk`, `aab`, `ipa`, `aar`, `app`, proguard mapping (`mapping.txt`), `flutter_drive.log`, `jar`, `zip`, `xarchive` and `dSYM.zip` files will be available as separate items in the Artifacts section on the build page. The rest of the artifacts will be included in an archive with the following name pattern: `{project-name}_{version}_artifacts.zip`.
+
+### Distribution
+
+All the apps that run on iOS devices need to be signed by trusted developers with a valid certificate from Apple. This confirms the author of the code and guarantees that the code has not been tampered with since it was signed. After code signing, the generated artifacts can be easily published to external services. Both code singing and publishing is explained [here](./distribution/) in more detail.
+
+### Testing
+
+Examples of testing are available [here](./testing/).
+
+### Templates
+
+To get started, check out he [example scripts](./templates/) for different applications.
 
 

@@ -1,7 +1,7 @@
 ---
-title: Scripts
-description: Code signing with YAML.
-weight: 3
+title: Templates
+description: Templates with YAML.
+weight: 4
 ---
 
 `scripts:` Contains the scripts and commands to be run during the build. This is where you can specify the commands to test, build and code sign your project. 
@@ -92,6 +92,77 @@ Below is an example of building a Flutter app for iOS with manual code signing.
       - flutter build ios --debug --flavor dev --no-codesign
       - xcode-project use-profiles
       - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
+
+### Building for Native
+
+Below is an example of building a React Native app with code signing.
+
+    workflows:
+     react-native:
+        name: react native
+        environment:
+          vars:
+            CM_KEYSTORE: <your_encrypted_keystore>
+            CM_KEYSTORE_PASSWORD: <your_encrypted_keystore_password>
+            CM_KEY_ALIAS_PASSWORD: <your_encrypted_key_password>
+            CM_KEY_ALIAS_USERNAME: <your_encrypted_key_name>
+            CM_CERTIFICATE: <your_encrypted_developer_certificate>
+            CM_CERTIFICATE_PASSWORD: <your_encrypted_developer_certificate_password>
+            CM_PROVISIONING_PROFILE: <your_encrypted_provisioning_profile>
+          xcode: latest
+          cocoapods: default
+        triggering:
+          events:
+            - push
+          branch_patterns:
+            - pattern: '*'
+              include: true
+              source: true
+        scripts:
+         - npm install
+          - |
+            # set up key.properties
+            echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+            cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
+            storePassword=$CM_KEYSTORE_PASSWORD
+            keyPassword=$CM_KEY_ALIAS_PASSWORD
+            keyAlias=$CM_KEY_ALIAS_USERNAME
+            storeFile=/tmp/keystore.keystore
+            EOF
+         - echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/android/local.properties"
+          - cd android && ./gradlew bundleRelease
+          - |
+            # generate signed universal apk with user specified keys
+            universal-apk generate \
+            --ks /tmp/keystore.keystore \
+            --ks-pass $CM_KEYSTORE_PASSWORD \
+            --ks-key-alias $CM_KEY_ALIAS_USERNAME \
+            --key-pass $CM_KEY_ALIAS_PASSWORD \
+            --pattern 'android/app/build/outputs/**/**/*.aab'
+          - find . -name "Podfile" -execdir pod install \;
+          - keychain initialize
+          - |
+            # set up provisioning profiles
+            PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+            mkdir -p "$PROFILES_HOME"
+            PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
+            echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+            echo "Saved provisioning profile $PROFILE_PATH"
+          - |
+            # set up signing certificate
+            echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+            keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
+          - xcode-project use-profiles
+          - xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
+        artifacts:
+          - android/app/build/outputs/**/**/*.apk
+          - android/app/build/outputs/**/**/*.aab
+          - build/ios/ipa/*.ipa
+          - /tmp/xcodebuild_logs/*.log
+        publishing:
+          email:
+            recipients:
+              - <your_email>
 
 ### Running custom scripts
 
