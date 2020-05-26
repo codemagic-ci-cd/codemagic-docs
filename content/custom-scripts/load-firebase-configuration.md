@@ -10,10 +10,17 @@ Instead of committing the Firebase config files to your repository, you can uplo
 2.  Add the following **pre-build** script echoing your variables to load the Firebase configuration in Codemagic.
 
         #!/usr/bin/env sh
-
         set -e # exit on first failed command
-        
-        PROJECT_ROOT=$FCI_BUILD_DIR/myproject           # ADD YOUR PROJECT FOLDER PATH HERE
+
+        echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
+        echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
+
+    In case your project is in a nested folder structure, you need to reflect it. It can be done like
+
+        #!/usr/bin/env sh
+        set -e # exit on first failed command
+
+        PROJECT_ROOT=$FCI_BUILD_DIR/myproject/path      # ADD YOUR PROJECT FOLDER PATH HERE
 
         echo $ANDROID_FIREBASE_SECRET | base64 --decode > $PROJECT_ROOT/android/app/google-services.json
         echo $IOS_FIREBASE_SECRET | base64 --decode > $PROJECT_ROOT/ios/Runner/GoogleService-Info.plist
