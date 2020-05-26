@@ -15,7 +15,7 @@ Instead of committing the Firebase config files to your repository, you can uplo
         echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
         echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
 
-    In case your project is in a nested folder structure, you need to reflect it. It can be done like
+    In case your project is in a nested folder structure, it has to be reflected and the script should be following: 
 
         #!/usr/bin/env sh
         set -e # exit on first failed command
