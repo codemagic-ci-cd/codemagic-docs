@@ -8,3 +8,5 @@ You can choose between Mac Mini or Mac Pro when running the build. Specification
 {{<notebox>}}
 Mac Pro machines are available for teams and users that have enabled billing in team or user settings respectively.
 {{</notebox>}}
+
+This setup is workflow-based and thus it will be used by default for all builds of this workflow, both the manually started ones and the ones that are triggered automatically.
