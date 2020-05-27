@@ -60,3 +60,7 @@ The SSH or VNC session remains active for a maximum of 20 minutes after all buil
 {{<notebox>}}
 If you have finished debugging the build, don't forget to end the session to avoid losing build time.
 {{</notebox>}}
+
+## Closer look
+
+If you want to know more about setting up remote access, there is a detailed overview on both SSH and VNC connection <a href="https://blog.codemagic.io/remote-access-to-virtual-mac-build-machine/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','dynamic-workflows-with-codemagic-api')">on our blog.</a>

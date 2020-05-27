@@ -5,6 +5,8 @@ weight: 3
 
 APIs for managing builds are currently available for developers to preview. During the preview period, the API may change without advance notice.
 
+If you have multiple similar workflows for the same project, you might be interested in using <a href="https://blog.codemagic.io/dynamic-workflows-with-codemagic-api/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','dynamic-workflows-with-codemagic-api')">Dynamic Workflows</a> to make your life easier.
+
 ## Start a new build
 
 `POST /builds`
