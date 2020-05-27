@@ -100,3 +100,8 @@ deployment:
     - pattern: '^.+\\.xml$'
       contentType: 'application/rss+xml; charset=utf-8'
       gzip: true
+
+markup:
+    goldmark:
+        renderer:
+            unsafe: true

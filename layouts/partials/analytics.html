@@ -56,6 +56,17 @@
   })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
   fbq('init', '2000132876774057')
   fbq('track', 'PageView')
+
+  // Google Tag event
+  function sendGtag(action, label, nonInteraction) {
+    var pageName = 'docs-' + window.location.pathname
+    var eventParameters = { event_category: pageName, event_label: label }
+    if (nonInteraction) {
+      eventParameters.non_interaction = true
+    }
+    window.gtag('event', action, eventParameters)
+  }
+
 </script>
     
 <noscript>
