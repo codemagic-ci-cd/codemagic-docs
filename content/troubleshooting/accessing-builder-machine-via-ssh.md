@@ -63,4 +63,4 @@ If you have finished debugging the build, don't forget to end the session to avo
 
 ## Closer look
 
-If you want to know more about setting up remote access, there is a detailed overview on both SSH and VNC connection <a href="https://blog.codemagic.io/remote-access-to-virtual-mac-build-machine/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','dynamic-workflows-with-codemagic-api')">on our blog.</a>
+If you want to know more about setting up remote access, there is a detailed overview on both SSH and VNC connection <a href="https://blog.codemagic.io/remote-access-to-virtual-mac-build-machine/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','remote-access-to-virtual-mac-build-machine')">on our blog.</a>

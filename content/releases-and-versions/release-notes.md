@@ -37,7 +37,7 @@ We have good news to everyone developing on Windows or Linux. You can now launch
 
 * Set up CocoaPods, etc.
 
-Your project is already available on the machine, so it’s easy to run your iOS app on simulator. To find out more, see the [documentation](../troubleshooting/accessing-builder-machine-via-ssh) or <a href="https://blog.codemagic.io/remote-access-to-virtual-mac-build-machine/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','dynamic-workflows-with-codemagic-api')">our detailed blog post about remote access.</a> 
+Your project is already available on the machine, so it’s easy to run your iOS app on simulator. To find out more, see the [documentation](../troubleshooting/accessing-builder-machine-via-ssh) or <a href="https://blog.codemagic.io/remote-access-to-virtual-mac-build-machine/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','remote-access-to-virtual-mac-build-machine')">our detailed blog post about remote access.</a> 
 
 ### Toggles for enabling/disabling publishing options
 
@@ -51,7 +51,7 @@ We have developed a variety of CLI utilities to assist with building, code signi
 
 ### YAML for iOS
 
-In addition to using `codemagic.yaml` for building Android and web projects, you can now use it to build, code sign and publish iOS apps. If you are interested in getting started with YAML, check out our [documentation](../building/yaml) or <a href="https://blog.codemagic.io/how-to-add-flutter-modules-to-native-ios-project-and-test-it-on-codemagic/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','dynamic-workflows-with-codemagic-api')">this article</a> about using YAML when building a Native iOS project.
+In addition to using `codemagic.yaml` for building Android and web projects, you can now use it to build, code sign and publish iOS apps. If you are interested in getting started with YAML, check out our [documentation](../building/yaml) or <a href="https://blog.codemagic.io/how-to-add-flutter-modules-to-native-ios-project-and-test-it-on-codemagic/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','how-to-add-flutter-modules-to-native-ios-project-and-test-it-on-codemagic')">this article</a> about using YAML when building a Native iOS project.
 
 ## January 2020
 
