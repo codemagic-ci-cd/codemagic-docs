@@ -361,6 +361,8 @@ For example, you can write a build script with Dart like this:
         apple_id: name@example.com        # Email address used for login
         password: Encrypted(...)          # App-specific password
 
-### Example
+### Examples
 
-If you want to know more about using YAML, there is a complete example of building a native iOS app with a Flutter module <a href="https://blog.codemagic.io/how-to-add-flutter-modules-to-native-ios-project-and-test-it-on-codemagic/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','how-to-add-flutter-modules-to-native-ios-project-and-test-it-on-codemagic')">here</a>. This article also describes how to use YAML to test this app on Codemagic CI/CD.
+Some examples about using YAML can be found here:
+* <a href="https://blog.codemagic.io/distributing-module-yaml/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','distributing-module-yaml')">Native Android project</a> 
+* <a href="https://blog.codemagic.io/distributing-native-ios-sdk-with-flutter-module-using-codemagic/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','distributing-native-ios-sdk-with-flutter-module-using-codemagic')">Native iOS project</a>

@@ -113,6 +113,6 @@ To export the provisioning profile:
 3. Select the provisioning profile you would like to export and click **Download**.
 4. Save it to have it ready.
 
-## Example
+## Additional information
 
-If you are yearning for a more detailed example, Souvik Biswas has written a complete step-by-step <a href="https://blog.codemagic.io/distributing-native-ios-sdk-with-flutter-module-using-codemagic/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','distributing-native-ios-sdk-with-flutter-module-using-codemagic')">overview about distributing a Native iOS project,</a> including both code signing and publishing it to App Store Connect.
+More information about iOS code signing is available <a href="https://blog.codemagic.io/how-to-code-sign-publish-ios-apps/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','how-to-code-sign-publish-ios-apps')">here</a>.
