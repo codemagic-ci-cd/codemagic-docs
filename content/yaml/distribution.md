@@ -4,7 +4,7 @@ description: Code signing and publishing with YAML.
 weight: 2
 ---
 
-#### Setting up code signing for iOS
+### Setting up code signing for iOS
 
 In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
 
