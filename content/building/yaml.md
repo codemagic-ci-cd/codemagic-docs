@@ -360,3 +360,9 @@ For example, you can write a build script with Dart like this:
         app_id: '...'                     # App's unique identifier in App Store Connect
         apple_id: name@example.com        # Email address used for login
         password: Encrypted(...)          # App-specific password
+
+### Examples
+
+Some examples about using YAML can be found here:
+* <a href="https://blog.codemagic.io/distributing-module-yaml/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','distributing-module-yaml')">Native Android project</a> 
+* <a href="https://blog.codemagic.io/distributing-native-ios-sdk-with-flutter-module-using-codemagic/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','distributing-native-ios-sdk-with-flutter-module-using-codemagic')">Native iOS project</a>

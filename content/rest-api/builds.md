@@ -102,3 +102,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 ```
 
 The request will return `208 Already Reported` if the build has already finished.
+
+{{<notebox>}}
+If you have multiple similar workflows for the same project, you can configure your workflows dynamically using API calls, read more about it <a href="https://blog.codemagic.io/dynamic-workflows-with-codemagic-api/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','dynamic-workflows-with-codemagic-api')">here</a>.
+{{</notebox>}}
