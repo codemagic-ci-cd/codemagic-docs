@@ -112,3 +112,7 @@ To export the provisioning profile:
 2. Navigate to **Certificates, Identifiers & Profiles > Profiles**.
 3. Select the provisioning profile you would like to export and click **Download**.
 4. Save it to have it ready.
+
+## Additional information
+
+More information about iOS code signing is available <a href="https://blog.codemagic.io/how-to-code-sign-publish-ios-apps/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','how-to-code-sign-publish-ios-apps')">here</a>.
