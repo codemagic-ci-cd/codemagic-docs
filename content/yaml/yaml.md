@@ -67,7 +67,7 @@ You can also use `codemagic.yaml` for manual builds.
 
 ## Template
 
-This is the skeleton structure of `codemagic.yaml`.
+This is the skeleton structure of `codemagic.yaml`:
 
     workflows:
       my-workflow:
@@ -96,6 +96,8 @@ This is the skeleton structure of `codemagic.yaml`.
           email:
             recipients:
               - name@example.com
+
+More specific example scripts for different applications are available [here](./templates/).
 
 ### Workflows
 
@@ -208,9 +210,5 @@ All the apps that run on iOS devices need to be signed by trusted developers wit
 ### Testing
 
 Examples of testing are available [here](./testing/).
-
-### Templates
-
-To get started, check out he [example scripts](./templates/) for different applications.
 
 
