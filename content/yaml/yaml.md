@@ -143,6 +143,9 @@ The main sections in each workflow are described below.
         CM_CERTIFICATE_PASSWORD: Encrypted(...)
         CM_PROVISIONING_PROFILE: Encrypted(...)
 
+        # publishing a package to pub.dev
+        CREDENTIALS: Encrypted(...)
+
       flutter: stable   # Define the channel name or version (e.g. v1.13.4)
       xcode: latest     # Define latest, edge or version (e.g. 11.2)
       cocoapods: 1.9.1  # Define default or version

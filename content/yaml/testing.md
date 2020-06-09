@@ -30,3 +30,8 @@ Ui test's also known as Instrumental tests:
     -sdk iphonesimulator \
     -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
     test | xcpretty (edited) 
+
+### Flutter drive test
+
+    flutter emulators --launch apple_ios_simulator                  # for android use: flutter emulators --launch emulator
+    flutter drive --target=test_driver/my_drive_target.dart
