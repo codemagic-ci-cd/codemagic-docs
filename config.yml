@@ -39,7 +39,7 @@ menu:
       name: Build configuration
       weight: 2
     - identifier: yaml
-      name: Building with YAML
+      name: Codemagic with YAML
       weight: 3
     - identifier: testing
       name: Testing

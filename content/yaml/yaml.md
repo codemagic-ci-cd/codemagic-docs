@@ -186,6 +186,14 @@ A branch pattern can match the name of a particular branch, or you can use wildc
           source: true
 
 
+### Scripts
+
+Sõltuvalt sellest, mis appi sa buildid, script varieerub. See on see osa, kus sul on kõik commandid, mis on vajalikud appi buildimiseks.
+
+### Testing
+
+Examples of testing are available [here](./testing/).
+
 ### Artifacts
 
 `artifacts:` Configure the paths and names of the artifacts you would like to use in the following steps, e.g. for publishing, or have available for download on the build page. All paths are relative to the clone directory, but absolute paths are supported as well. You can also use environment variables in artifact patterns.
@@ -203,12 +211,8 @@ A branch pattern can match the name of a particular branch, or you can use wildc
 * If one of the patterns includes another pattern, duplicate artifacts are not created.
 * `apk`, `aab`, `ipa`, `aar`, `app`, proguard mapping (`mapping.txt`), `flutter_drive.log`, `jar`, `zip`, `xarchive` and `dSYM.zip` files will be available as separate items in the Artifacts section on the build page. The rest of the artifacts will be included in an archive with the following name pattern: `{project-name}_{version}_artifacts.zip`.
 
-### Distribution
+### Publishing
 
 All the apps that run on iOS devices need to be signed by trusted developers with a valid certificate from Apple. This confirms the author of the code and guarantees that the code has not been tampered with since it was signed. After code signing, the generated artifacts can be easily published to external services. Both code singing and publishing is explained [here](./distribution/) in more detail.
-
-### Testing
-
-Examples of testing are available [here](./testing/).
 
 

@@ -1,7 +1,7 @@
 ---
-title: Distribution
+title: Publishing
 description: Code signing and publishing with YAML.
-weight: 2
+weight: 4
 ---
 
 ### Setting up code signing for iOS
