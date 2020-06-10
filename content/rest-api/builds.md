@@ -46,19 +46,38 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '
 
 ### Response
 
+The request is asynchronous. To find the started build you can find the most recent build fetching the next [endpoint](#get-build-statuses).
+
+## Get build statuses
+
+`GET /builds`
+
+Return information of already running builds on Codemagic.
+
+### Curl request
+
+```bash
+curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/builds
+```
+
+### Response
+
 ```javascript
 {
-    "application": {
-        "_id": "5c9c064185dd2310123b8e96",
-        "appName": "my-repo"
-    },
-    "build": {
-        "_id": "5c9c025185ed4300133b2a17",
-        "appId": "5c9c064185dd2310123b8e96",
-        "branch": "master",
-        "index": 1,
-        "status": "queued"
-    }
+   "applications": [
+        {
+           "_id":"5d85eaa0e941e00019e81bc2",
+           "appName":"counter_flutter"
+        },
+   ],
+   "builds": [
+        {
+            "_id":"5ec8eea2261f342603f4d0bc",
+            "startedAt":"2020-05-23T09:36:39.028+0000",
+            "status":"building",
+            "workflowId":"5d85f242e941e00019e81bd2"
+        },
+   ]
 }
 ```
 
