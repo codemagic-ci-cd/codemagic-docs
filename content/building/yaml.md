@@ -180,7 +180,7 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
       ssh-keygen -t rsa -b 2048 -f ~/Desktop/codemagic_private_key -q -N ""
 
 {{<notebox>}}
-Alternatively, each property can be specified in the [scripts](#scripts) section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch%E2%80%91signing%E2%80%91files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
+Alternatively, each property can be specified in the [scripts](#scripts) section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
 {{</notebox>}}
 
 In order to use **manual code signing**, [encrypt](https://docs.codemagic.io/building/yaml/#encrypting-sensitive-data) your signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile, and set the encrypted values to the following environment variables:
@@ -262,7 +262,7 @@ If your app settings in Codemagic have building Android app bundles enabled, we 
 #### Building for iOS
 
 {{<notebox>}}
-Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md) utility for generating and managing certificates and provisioning profiles and performing code signing.
+Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) utility for generating and managing certificates and provisioning profiles and performing code signing.
 {{</notebox>}}
 
 Below is an example of building a Flutter app for iOS with automatic code signing. 
@@ -281,7 +281,7 @@ Below is an example of building a Flutter app for iOS with automatic code signin
           - xcode-project use-profiles
           - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
 
-* The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch%E2%80%91signing%E2%80%91files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
+* The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
 
 Below is an example of building a Flutter app for iOS with manual code signing.
 
