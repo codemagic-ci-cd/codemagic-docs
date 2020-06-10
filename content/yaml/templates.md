@@ -52,21 +52,21 @@ If your app settings in Codemagic have building Android app bundles enabled, we 
 
     - |
       # generate signed universal apk with user specified keys
-      universal-apk generate \
+      android-app-bundle build-universal-apk \
+        --pattern 'project_directory/build/**/outputs/**/*.aab' \
         --ks /tmp/keystore.keystore \
         --ks-pass $CM_KEYSTORE_PASSWORD \
         --ks-key-alias $CM_KEY_ALIAS_USERNAME \
-        --key-pass $CM_KEY_ALIAS_PASSWORD \
-        --pattern 'project_directory/build/**/outputs/**/*.aab'
+        --key-pass $CM_KEY_ALIAS_PASSWORD
 
 {{<notebox>}}
-Codemagic uses the [universal-apk](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/universal-apk/README.md) utility for generating universal APK files from Android App Bundles.
+Codemagic uses the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) utility to build universal APK files from Android App Bundles.
 {{</notebox>}}
 
 ### iOS builds
 
 {{<notebox>}}
-Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md) utility to manage macOS keychains and certificates.
+Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) utility to manage macOS keychains and certificates.
 {{</notebox>}}
 
 #### Setup manual code signing
@@ -92,7 +92,7 @@ Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/
 #### Setup automatic code signing
 
 {{<notebox>}}
-Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md) utility for generating and managing certificates and provisioning profiles and performing code signing.
+Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) utility for generating and managing certificates and provisioning profiles and performing code signing.
 {{</notebox>}}
 
     - find . -name "Podfile" -execdir pod install \;
@@ -103,7 +103,7 @@ Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-to
     - keychain add-certificates
 
 {{<notebox>}}
-The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch%E2%80%91signing%E2%80%91files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
+The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
 {{</notebox>}}
 
 #### Build an unsigned application .app
@@ -113,7 +113,7 @@ The available provisioning profile types are described [here](https://github.com
 #### Build a signed iOS application archive .ipa
 
 {{<notebox>}}
-Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md) to prepare iOS application code signing properties for build.
+Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for build.
 {{</notebox>}}
 
       - xcode-project use-profiles
