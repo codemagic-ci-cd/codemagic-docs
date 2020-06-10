@@ -6,11 +6,13 @@ weight: 2
 
 `scripts:` Contains the scripts and commands to be run during the build. This is where you can specify the commands to test, build and code sign your project.
 
+Following templates provide `scripts:` lines to perform different operations.
+
 ### Android builds
 
-For gradle codesigning configuration refer to the [documentation](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing).
+For gradle codesigning configuration refer to the [documentation](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing). The following templates show codesigning using `key.properties`.
 
-#### Default debug codesigning:
+#### Build apk with default debug code signing:
 
     - |
       # set up debug key.properties
@@ -26,8 +28,9 @@ For gradle codesigning configuration refer to the [documentation](https://docs.c
     - |
       # set up local properties
       echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+    - flutter build apk --debug
 
-#### Code signing with user specified keys
+#### Build apk code signed with user specified keys
 
     - |
       # set up key.properties
@@ -41,6 +44,7 @@ For gradle codesigning configuration refer to the [documentation](https://docs.c
     - |
       # set up local properties
       echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+    - flutter build apk --release
 
 #### Build app bundle with user specified keys
 
@@ -55,9 +59,17 @@ If your app settings in Codemagic have building Android app bundles enabled, we 
         --key-pass $CM_KEY_ALIAS_PASSWORD \
         --pattern 'project_directory/build/**/outputs/**/*.aab'
 
+{{<notebox>}}
+Codemagic uses the [universal-apk](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/universal-apk/README.md) utility for generating universal APK files from Android App Bundles.
+{{</notebox>}}
+
 ### iOS builds
 
-#### Setup manual codesigning
+{{<notebox>}}
+Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md) utility to manage macOS keychains and certificates.
+{{</notebox>}}
+
+#### Setup manual code signing
 
     - find . -name "Podfile" -execdir pod install \;
     - keychain initialize
@@ -77,7 +89,7 @@ If your app settings in Codemagic have building Android app bundles enabled, we 
       # when using a certificate that is not password-protected
       keychain add-certificates --certificate /tmp/certificate.p12
 
-#### Setup automatic codesigning
+#### Setup automatic code signing
 
 {{<notebox>}}
 Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md) utility for generating and managing certificates and provisioning profiles and performing code signing.
@@ -99,6 +111,10 @@ The available provisioning profile types are described [here](https://github.com
       - flutter build ios --debug --flavor dev --no-codesign
 
 #### Build a signed iOS application archive .ipa
+
+{{<notebox>}}
+Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md) to prepare iOS application code signing properties for build.
+{{</notebox>}}
 
       - xcode-project use-profiles
       - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
@@ -125,7 +141,7 @@ After that `credentials.json` will be generated which you can use to login witho
 ### Flutter add-to-app
 
 Please refer to [the guidlines](https://flutter.dev/docs/development/add-to-app).
-The templates were inspired with add-to-app [flutter samples](https://github.com/flutter/samples/tree/master/add_to_app).
+The templates were inspired by add-to-app [flutter samples](https://github.com/flutter/samples/tree/master/add_to_app).
 
 #### Using a flutter package (with dependencies) as a library
 
@@ -168,7 +184,7 @@ iOS:
 
 ### Native app
 
-Android (build with gradle):
+Android (built with gradle):
 
     - ./gradlew bundleRelease
 
