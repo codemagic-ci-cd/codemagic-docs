@@ -72,6 +72,7 @@ This is the skeleton structure of `codemagic.yaml`.
     workflows:
       my-workflow:
         name: My workflow name
+        instance_type: mac_mini
         max_build_duration: 60
         environment:
           vars:
@@ -104,6 +105,7 @@ You can use `codemagic.yaml` to define several workflows for building a project.
     workflows:
       my-workflow:                # workflow ID
         name: My workflow name    # workflow name displayed in UI
+        instance_type: mac_mini   # machine type to use (currently supported: `mac_mini` and `mac_pro`)
         max_build_duration: 60    # build duration in minutes (min 1, max 120)
         environment:
         cache:
