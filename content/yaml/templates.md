@@ -46,7 +46,7 @@ For gradle codesigning configuration refer to the [documentation](https://docs.c
       echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
     - flutter build apk --release
 
-#### Build app bundle with user specified keys
+#### Build an apk with user specified keys from app bundle
 
 If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you're creating a YAML file from a scratch, add the script below to receive this file:
 
