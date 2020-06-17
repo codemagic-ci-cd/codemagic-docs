@@ -1,7 +1,7 @@
 ---
 title: Testing
 description: Testing with YAML.
-weight: 3
+weight: 5
 ---
 
 There are two types of tests that users can run when developing mobile apps, unit tests (for testing code) and instrumentation tests (for testing the UI and the application in general). These tests take place in a simulator (iOS) or emulator (android), depending on the platform.

@@ -1,7 +1,7 @@
 ---
 title: Templates
 description: Templates with YAML.
-weight: 2
+weight: 4
 ---
 
 `scripts:` Contains the scripts and commands to be run during the build. This is where you can specify the commands to test, build and code sign your project.
@@ -181,16 +181,6 @@ iOS:
       flutter build ios-framework --output=$FCI_BUILD_DIR/my_ios_app/Flutter
     - xcode-project use-profiles
     - xcode-project build-ipa --project "my_ios_app/MyXcWorkspace.xcodeproj" --scheme "MyScheme"
-
-### Native app
-
-Android (built with gradle):
-
-    - ./gradlew bundleRelease
-
-Build an iOS project (swift):
-
-    - xcode-project build-ipa --project "MyXcodeProject.xcodeproj" --scheme "MyScheme"
 
 ### React Native
 
