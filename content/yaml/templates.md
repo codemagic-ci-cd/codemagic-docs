@@ -1,7 +1,7 @@
 ---
 title: Templates
 description: Templates with YAML.
-weight: 4
+weight: 5
 ---
 
 `scripts:` Contains the scripts and commands to be run during the build. This is where you can specify the commands to test, build and code sign your project.
@@ -69,7 +69,7 @@ Codemagic uses the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-t
 Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) utility to manage macOS keychains and certificates.
 {{</notebox>}}
 
-#### Setup manual code signing
+#### Set up manual code signing
 
     - find . -name "Podfile" -execdir pod install \;
     - keychain initialize
@@ -89,7 +89,7 @@ Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/
       # when using a certificate that is not password-protected
       keychain add-certificates --certificate /tmp/certificate.p12
 
-#### Setup automatic code signing
+#### Set up automatic code signing
 
 {{<notebox>}}
 Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) utility for generating and managing certificates and provisioning profiles and performing code signing.
@@ -127,7 +127,7 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
       cd build/web
       7z a -r ../web.zip ./*
 
-### Publishing a flutter package to pub.dev
+### Publishing a Flutter package to pub.dev
 
 In order to get publishing permissions, first you will need to login to pub.dev locally. It can be done with running `pub publish --dry-run`.
 After that `credentials.json` will be generated which you can use to login without the need of Google confirmation through browser.
@@ -182,17 +182,6 @@ iOS:
     - xcode-project use-profiles
     - xcode-project build-ipa --project "my_ios_app/MyXcWorkspace.xcodeproj" --scheme "MyScheme"
 
-### React Native
-
-Android:
-
-    - npm install
-    - echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/android/local.properties"
-    - cd android && ./gradlew bundleRelease
-
-iOS:
-
-    - xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
 
 ### Run custom script
 
