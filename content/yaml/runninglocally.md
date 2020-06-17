@@ -6,7 +6,13 @@ weight: 7
 
 #### Using Codemagic CLI tools locally
 
-[Codemagic-cli-tools](https://pypi.org/project/codemagic-cli-tools/) is a set of tools to simplify builds at Codemagic. They can installed with pip `pip3 install codemagic-cli-tools` and run locally. Note that it requires Python >=3.7
+[codemagic-cli-tools](https://pypi.org/project/codemagic-cli-tools/) is a set of tools to simplify builds at Codemagic. They can installed with pip `pip3 install codemagic-cli-tools` and run locally.
+
+Please view the full documentation at [CLI tools](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs#cli-tools)
+
+{{<notebox>}}
+Requires: Python >=3.7
+{{</notebox>}}
 
 ### Build and code sign an xcode project
 
@@ -29,11 +35,23 @@ To use provisioning profile from `/path/to/profile.mobileprovision` in your xcod
 
 ### Generate a universal apk with user specified keys from app bundle
 
-To build an apk from app bundle `/path/to/my-app.aab` with keystore `/path/to/keystore.keystore`, KEYSTORE_PASSWORD, KEY_ALIAS and KEY_ALIAS_PASSWORD, use [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) tool.
+To build an apk from app bundle `/path/to/my-app.aab` with keystore `/path/to/keystore.keystore`, KEYSTORE_PASSWORD, KEY_ALIAS and KEY_PASSWORD, use [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) tool.
 
     android-app-bundle build-universal-apk \
         --pattern 'path/to/my-app.aab' \
         --ks /path/to/keystore.keystore \
         --ks-pass KEYSTORE_PASSWORD \
         --ks-key-alias KEY_ALIAS \
-        --key-pass KEY_ALIAS_PASSWORD
+        --key-pass KEY_PASSWORD
+
+{{<notebox>}}
+Alternatively to entering `ISSUER_ID`, `KEY_IDENTIFIER`, `PRIVATE_KEY`, `CERTIFICATE_PASSWORD`,  `KEYSTORE_PASSWORD`, `KEY_PASSWORD` in plaintext, it may also be specified using a `@env:` prefix followed by a environment variable name, or `@file:` prefix followed by a path to the file containing the value. Example: `@env:<variable>` uses the value in the environment variable named `<variable>`, and `@file:<file_path>` uses the value from file at `<file_path>`.
+
+Please refer to documentation for more details.
+{{</notebox>}}
+
+### Generate a changelog text from git history
+
+To generate a changelog text from git history, use [git-changelog](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/git-changelog#git-changelog) tool. For example, to generate a changelog to `CHANGELOG` file starting from the previous tag, use:
+
+    git-changelog generate --previous-commit `git rev-list --tags --skip=1  --max-count=1` > CHANGELOG
