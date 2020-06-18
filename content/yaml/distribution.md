@@ -1,7 +1,7 @@
 ---
 title: Publishing
 description: Code signing and publishing with YAML.
-weight: 7
+weight: 8
 ---
 
 ### Setting up code signing for iOS
@@ -10,7 +10,7 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
 
 * `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api).
+  It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
 
   1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
   2. Click on the '+' sign to generate a new API key. 
@@ -33,10 +33,10 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
       ssh-keygen -t rsa -b 2048 -f ~/Desktop/codemagic_private_key -q -N ""
 
 {{<notebox>}}
-Alternatively, each property can be specified in the [scripts](#scripts) section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
+Alternatively, each property can be specified in the scripts section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
 {{</notebox>}}
 
-In order to use **manual code signing**, [encrypt](https://docs.codemagic.io/building/yaml/#encrypting-sensitive-data) your signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile, and set the encrypted values to the following environment variables:
+In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sensitive-data) your signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile, and set the encrypted values to the following environment variables:
 
     CM_CERTIFICATE: Encrypted(...)
     CM_CERTIFICATE_PASSWORD: Encrypted(...)
@@ -44,7 +44,7 @@ In order to use **manual code signing**, [encrypt](https://docs.codemagic.io/bui
 
 ### Publishing
 
-`publishing:` For every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Codemagic Static Pages.
+`publishing:` for every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Codemagic Static Pages.
 
     publishing:
       email:
@@ -60,6 +60,8 @@ In order to use **manual code signing**, [encrypt](https://docs.codemagic.io/bui
         app_id: '...'                     # App's unique identifier in App Store Connect
         apple_id: name@example.com        # Email address used for login
         password: Encrypted(...)          # App-specific password
+
+Firebase app distribution can be done with a [custom script](../yaml/running-a-custom-script).
 
 ### Examples
 

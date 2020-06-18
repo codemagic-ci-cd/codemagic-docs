@@ -97,7 +97,6 @@ This is the skeleton structure of `codemagic.yaml`:
             recipients:
               - name@example.com
 
-More specific example scripts for different applications are available [here](./templates/).
 
 ### Workflows
 
@@ -119,7 +118,7 @@ The main sections in each workflow are described below.
 
 ### Environment
 
-`environment:` Contains your environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and nmp used for building. This is also where you can add credentials and API keys required for code signing. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
+`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and nmp used for building. This is also where you can add credentials and API keys required for code signing. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
 
     environment:
       vars:             # Define your environment variables here
@@ -159,7 +158,7 @@ See the default software versions on Codemagic build machines [here](../releases
 
 ### Cache
 
-`cache:` Enables to define the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](./dependency-caching).
+`cache:` defines the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](./dependency-caching).
 
     cache:
       cache_paths:
@@ -168,7 +167,7 @@ See the default software versions on Codemagic build machines [here](../releases
 
 ### Triggering
 
-`triggering:` Defines the events for automatic build triggering and the watched branches. If no events are defined, you can start builds only manually. 
+`triggering:` defines the events for automatic build triggering and watched branches. If no events are defined, you can start builds only manually. 
 
 A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches. Note that for **pull request builds**, it is required to specify whether the watched branch is the source or the target of pull request.
 
@@ -191,15 +190,15 @@ A branch pattern can match the name of a particular branch, or you can use wildc
 
 ### Scripts
 
-Sõltuvalt sellest, mis appi sa buildid, script varieerub. See on see osa, kus sul on kõik commandid, mis on vajalikud appi buildimiseks.
+Scripts specify what kind of application is built. Thus, this section includes all the commands to actually build an application. There are example scripts for building a [React Native application](./building-a-react-native-app/), a [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
 
 ### Testing
 
-Examples of testing are available [here](./testing/).
+There are two types of tests that users can run when developing mobile apps, unit tests (for testing code) and instrumentation tests (for testing the UI and the application in general). These tests take place in a simulator (iOS) or emulator (android), depending on the platform. Examples of testing are available [here](./testing/).
 
 ### Artifacts
 
-`artifacts:` Configure the paths and names of the artifacts you would like to use in the following steps, e.g. for publishing, or have available for download on the build page. All paths are relative to the clone directory, but absolute paths are supported as well. You can also use environment variables in artifact patterns.
+Configure the paths and names of the artifacts you would like to use in the following steps, e.g. for publishing, or have available for download on the build page. All paths are relative to the clone directory, but absolute paths are supported as well. You can also use environment variables in artifact patterns.
 
     artifacts:
       - build/**/outputs/**/*.apk                   # relative path for a project in root directory
@@ -210,6 +209,7 @@ Examples of testing are available [here](./testing/).
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
 
+There are several things to keep in mind about patterns:
 * The pattern can match several files or folders. If it picks up files or folders with the same name, the top level file or folder name will be suffixed with `_{number}`.
 * If one of the patterns includes another pattern, duplicate artifacts are not created.
 * `apk`, `aab`, `ipa`, `aar`, `app`, proguard mapping (`mapping.txt`), `flutter_drive.log`, `jar`, `zip`, `xarchive` and `dSYM.zip` files will be available as separate items in the Artifacts section on the build page. The rest of the artifacts will be included in an archive with the following name pattern: `{project-name}_{version}_artifacts.zip`.

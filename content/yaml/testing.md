@@ -1,10 +1,8 @@
 ---
 title: Testing
 description: Testing with YAML.
-weight: 6
+weight: 7
 ---
-
-There are two types of tests that users can run when developing mobile apps, unit tests (for testing code) and instrumentation tests (for testing the UI and the application in general). These tests take place in a simulator (iOS) or emulator (android), depending on the platform.
 
 ### React Native unit test
 
@@ -18,7 +16,7 @@ For non-UI tests or unit testing:
 
     ./gradlew test
 
-Ui test's also known as Instrumental tests:
+Ui test's also known as instrumental tests:
 
     ./gradlew connectedAndroidTest
 

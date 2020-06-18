@@ -1,7 +1,7 @@
 ---
 title: Templates
 description: Templates with YAML.
-weight: 5
+weight: 6
 ---
 
 `scripts:` Contains the scripts and commands to be run during the build. This is where you can specify the commands to test, build and code sign your project.
@@ -182,16 +182,3 @@ iOS:
     - xcode-project use-profiles
     - xcode-project build-ipa --project "my_ios_app/MyXcWorkspace.xcodeproj" --scheme "MyScheme"
 
-
-### Run custom script
-
-You can run scripts in languages other than shell (`sh`) by defining the languge with a shebang line or by launching a script file present in your repository.
-
-For example, you can write a build script with Dart like this:
-
-    - |
-      #!/usr/local/bin/dart
-
-      void main() {
-        print('Hello, World!');
-      }

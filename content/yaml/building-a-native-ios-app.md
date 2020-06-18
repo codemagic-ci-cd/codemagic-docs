@@ -1,6 +1,6 @@
 ---
 title: Building a native iOS app
-description: Building an iOS app with YAML
+description: Building an iOS app with YAML.
 weight: 3
 ---
 

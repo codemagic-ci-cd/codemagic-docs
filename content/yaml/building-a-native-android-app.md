@@ -1,6 +1,6 @@
 ---
 title: Building a native Android app
-description: Building an Android app with YAML
+description: Building an Android app with YAML.
 weight: 2
 ---
 
