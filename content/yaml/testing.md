@@ -6,13 +6,13 @@ weight: 7
 
 Test scripts are added under `scripts` in the [overall architecture](../yaml/yaml/#template), before the build commands.
 
-### React Native unit test
+## React Native unit test
 
 This is a basic example with jest, given that jest tests are defined in the package.json file.
 
     npm test
 
-### Native Android
+## Native Android
 
 For non-UI tests or unit testing:
 
@@ -22,7 +22,7 @@ Ui test's also known as instrumental tests:
 
     ./gradlew connectedAndroidTest
 
-### Native iOS
+## Native iOS
 
     xcodebuild \
     -workspace MyAwesomeApp.xcworkspace \
@@ -31,10 +31,10 @@ Ui test's also known as instrumental tests:
     -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
     test | xcpretty (edited) 
 
-### Flutter drive test
+## Flutter test
     flutter test
 
-### Flutter drive test
+## Flutter drive test
 
     flutter emulators --launch apple_ios_simulator                  # for android use: flutter emulators --launch emulator
     flutter drive --target=test_driver/my_drive_target.dart

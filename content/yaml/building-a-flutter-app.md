@@ -1,18 +1,16 @@
 ---
-title: Templates
-description: Templates with YAML.
-weight: 6
+title: Building a Flutter app
+description: Building a Flutter app with YAML.
+weight: 2
 ---
 
-`scripts:` Contains the scripts and commands to be run during the build. This is where you can specify the commands to test, build and code sign your project.
+With `codemagic.yaml`, you can use Codemagic to build, test and publish Flutter apps. You can read more about how to use codemagic.yaml and see the structure of the file [HERE](../yaml/yaml).
 
-Following templates provide `scripts:` lines to perform different operations.
+## Android builds
 
-### Android builds
+The following templates show code signing using `key.properties`.
 
-For gradle codesigning configuration refer to the [documentation](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing). The following templates show codesigning using `key.properties`.
-
-#### Build the APK with default debug code signing:
+### Build the APK with default debug code signing:
 
     - |
       # set up debug key.properties
@@ -30,7 +28,7 @@ For gradle codesigning configuration refer to the [documentation](https://docs.c
       echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
     - flutter build apk --debug
 
-#### Build apk code signed with user specified keys
+### Build APK code signed with user-specified keys
 
     - |
       # set up key.properties
@@ -46,9 +44,9 @@ For gradle codesigning configuration refer to the [documentation](https://docs.c
       echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
     - flutter build apk --release
 
-#### Build an apk with user specified keys from app bundle
+### Build an APK with user-specified keys from app bundle
 
-If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you're creating a YAML file from a scratch, add the script below to receive this file:
+If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you are creating a YAML file from a scratch, add the script below to receive this file:
 
     - |
       # generate signed universal apk with user specified keys
@@ -63,13 +61,13 @@ If your app settings in Codemagic have building Android app bundles enabled, we 
 Codemagic uses the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) utility to build universal APK files from Android App Bundles.
 {{</notebox>}}
 
-### iOS builds
+## iOS builds
 
 {{<notebox>}}
 Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) utility to manage macOS keychains and certificates.
 {{</notebox>}}
 
-#### Set up manual code signing
+### Set up manual code signing
 
     - find . -name "Podfile" -execdir pod install \;
     - keychain initialize
@@ -89,7 +87,7 @@ Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/
       # when using a certificate that is not password-protected
       keychain add-certificates --certificate /tmp/certificate.p12
 
-#### Set up automatic code signing
+### Set up automatic code signing
 
 {{<notebox>}}
 Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) utility for generating and managing certificates and provisioning profiles and performing code signing.
@@ -106,11 +104,11 @@ Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-to
 The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
 {{</notebox>}}
 
-#### Build an unsigned application .app
+### Build an unsigned application .app
 
       - flutter build ios --debug --flavor dev --no-codesign
 
-#### Build a signed iOS application archive .ipa
+### Build a signed iOS application archive .ipa
 
 {{<notebox>}}
 Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for build.
@@ -119,13 +117,29 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
       - xcode-project use-profiles
       - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
 
-### Web builds
+## Web builds
 
     - flutter config --enable-web
     - |
       flutter build web --release
       cd build/web
       7z a -r ../web.zip ./*
+
+## Testing a Flutter application
+
+Testing Flutter applications with YAML is very simple, just use the relevant test scripts (for the regular or drive test) under `scripts`.
+
+### Flutter test
+    flutter test
+
+## Flutter drive test
+
+    flutter emulators --launch apple_ios_simulator                  # for android use: flutter emulators --launch emulator
+    flutter drive --target=test_driver/my_drive_target.dart
+
+Ifyou want to read more about testing with YAML in general, there are several examples [HERE](../yaml/testing).
+
+## Publishing a Flutter package
 
 ### Publishing a Flutter package to pub.dev
 
@@ -143,7 +157,7 @@ After that `credentials.json` will be generated which you can use to login witho
 Please refer to [the guidlines](https://flutter.dev/docs/development/add-to-app).
 The templates were inspired by add-to-app [flutter samples](https://github.com/flutter/samples/tree/master/add_to_app).
 
-#### Using a flutter package (with dependencies) as a library
+### Using a flutter package (with dependencies) as a library
 
 Android:
 
@@ -162,7 +176,7 @@ iOS:
     - xcode-project use-profiles
     - xcode-project build-ipa --workspace "my_ios_app/MyXcWorkspace.xcworkspace" --scheme "MyScheme"
 
-### Using a prebuilt flutter module:
+## Using a prebuilt flutter module:
 
 Android:
 
@@ -181,4 +195,3 @@ iOS:
       flutter build ios-framework --output=$FCI_BUILD_DIR/my_ios_app/Flutter
     - xcode-project use-profiles
     - xcode-project build-ipa --project "my_ios_app/MyXcWorkspace.xcodeproj" --scheme "MyScheme"
-

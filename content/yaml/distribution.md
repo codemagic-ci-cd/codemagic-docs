@@ -4,7 +4,7 @@ description: Code signing and publishing with YAML.
 weight: 8
 ---
 
-### Setting up code signing for iOS
+## Setting up code signing for iOS
 
 In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
 
@@ -42,7 +42,7 @@ In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sens
     CM_CERTIFICATE_PASSWORD: Encrypted(...)
     CM_PROVISIONING_PROFILE: Encrypted(...)
 
-### Publishing
+## Publishing
 
 `publishing:` for every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Codemagic Static Pages.
 
@@ -63,7 +63,7 @@ In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sens
 
 Firebase app distribution can be done with a [custom script](../yaml/running-a-custom-script).
 
-### Examples
+## Examples
 
 More detailed examples about using YAML for code signing and publishing can be found here:
 

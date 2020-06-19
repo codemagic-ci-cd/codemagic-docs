@@ -190,7 +190,7 @@ A branch pattern can match the name of a particular branch, or you can use wildc
 
 ### Scripts
 
-Scripts specify what kind of application is built. Thus, this section includes all the commands to actually build an application. There are example scripts for building a [React Native application](./building-a-react-native-app/), a [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
+Scripts specify what kind of application is built.  This is where you can specify the commands to test, build and code sign your project. There are example scripts available for building a [Flutter application](./building-a-flutter-app/), [React Native application](./building-a-react-native-app/), [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
 
 ### Testing
 
