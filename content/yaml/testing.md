@@ -4,6 +4,8 @@ description: Testing with YAML.
 weight: 7
 ---
 
+Test scripts are added under `scripts` in the overall architecture, before the build commands.
+
 ### React Native unit test
 
 This is a basic example with jest, given that jest tests are defined in the package.json file.
@@ -28,6 +30,9 @@ Ui test's also known as instrumental tests:
     -sdk iphonesimulator \
     -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
     test | xcpretty (edited) 
+
+### Flutter drive test
+    flutter test
 
 ### Flutter drive test
 

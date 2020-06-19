@@ -12,7 +12,7 @@ Following templates provide `scripts:` lines to perform different operations.
 
 For gradle codesigning configuration refer to the [documentation](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing). The following templates show codesigning using `key.properties`.
 
-#### Build apk with default debug code signing:
+#### Build the APK with default debug code signing:
 
     - |
       # set up debug key.properties
