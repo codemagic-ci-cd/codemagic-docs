@@ -61,7 +61,7 @@ In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sens
         apple_id: name@example.com        # Email address used for login
         password: Encrypted(...)          # App-specific password
 
-Firebase app distribution can be done with a [custom script](../yaml/running-a-custom-script).
+<!---Firebase app distribution can be done with a [custom script](../yaml/running-a-custom-script). [TODO: Stas will add this example on Monday]--->
 
 ## Examples
 

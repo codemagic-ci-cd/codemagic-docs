@@ -4,7 +4,7 @@ description: Building a Flutter app with YAML.
 weight: 2
 ---
 
-With `codemagic.yaml`, you can use Codemagic to build, test and publish Flutter apps. You can read more about how to use codemagic.yaml and see the structure of the file [HERE](../yaml/yaml).
+With `codemagic.yaml`, you can use Codemagic to build, test and publish Flutter apps. You can read more about how to use codemagic.yaml and see the structure of the file [here](../yaml/yaml).
 
 ## Android builds
 
@@ -137,7 +137,7 @@ Testing Flutter applications with YAML is very simple, just use the relevant tes
     flutter emulators --launch apple_ios_simulator                  # for android use: flutter emulators --launch emulator
     flutter drive --target=test_driver/my_drive_target.dart
 
-If you want to read more about testing with YAML in general, there are several examples [HERE](../yaml/testing).
+If you want to read more about testing with YAML in general, there are several examples [here](../yaml/testing).
 
 ## Publishing a Flutter package
 

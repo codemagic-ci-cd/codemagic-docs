@@ -28,4 +28,4 @@ To test an application, add the test script to the `scripts` section of your cod
 
 ## Publishing
 
-All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. Script examples for all of them are available [HERE](../yaml/distribution/#publishing).
+All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. Script examples for all of them are available [here](../yaml/distribution/#publishing).

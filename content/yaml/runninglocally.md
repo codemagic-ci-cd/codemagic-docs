@@ -31,7 +31,7 @@ To use the provisioning profile from `/path/to/profile.mobileprovision` in your 
     xcode-project use-profiles --project /path/to/MyProject.xcodeproj --profile /path/to/profile.mobileprovision
     xcode-project build-ipa --project /path/to/MyProject.xcodeproj --scheme MyScheme
 
-## Generate a universal apk with user specified keys from app bundle
+## Generate a universal APK with user specified keys from app bundle
 
 To build an APK from the app bundle `/path/to/my-app.aab` with keystore `/path/to/keystore.keystore`, KEYSTORE_PASSWORD, KEY_ALIAS and KEY_PASSWORD, use [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) tool:
 

@@ -158,7 +158,7 @@ See the default software versions on Codemagic build machines [here](../releases
 
 ### Cache
 
-`cache:` defines the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](./dependency-caching).
+`cache:` defines the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](https://docs.codemagic.io/building/dependency-caching/).
 
     cache:
       cache_paths:
@@ -169,7 +169,7 @@ See the default software versions on Codemagic build machines [here](../releases
 
 `triggering:` defines the events for automatic build triggering and watched branches. If no events are defined, you can start builds only manually. 
 
-A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches. Note that for **pull request builds**, it is required to specify whether the watched branch is the source or the target of pull request.
+A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches. Note that for **pull request builds**, you have to specify whether the watched branch is the source or the target of the pull request.
 
     triggering:
       events:                # List the events that trigger builds
@@ -194,7 +194,7 @@ Scripts specify what kind of application is built.  This is where you can specif
 
 ### Testing
 
-There are two types of tests that users can run when developing mobile apps, unit tests (for testing code) and instrumentation tests (for testing the UI and the application in general). These tests take place in a simulator (iOS) or emulator (android), depending on the platform. Examples of testing are available [here](./testing/).
+There are two types of tests that users can run when developing mobile apps, unit tests (for testing code) and instrumentation tests (for testing the UI and the application in general). These tests take place in a simulator (iOS) or emulator (Android), depending on the platform. Examples of testing are available [here](./testing/).
 
 ### Artifacts
 

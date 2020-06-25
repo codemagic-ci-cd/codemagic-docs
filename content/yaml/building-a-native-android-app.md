@@ -11,12 +11,12 @@ The necessary command for building native Android application goes under `script
 
 ## Testing an Android app
 
-The code for testing an Android app also goes under `scripts`. A few examples of testing can be found [HERE](../yaml/testing).
+The code for testing an Android app also goes under `scripts`. A few examples of testing can be found [here](../yaml/testing).
 
 ## Code signing
 
-For gradle code signing configuration refer to the [documentation](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing). More information about code singing with YAML in general is [HERE](../yaml/distribution).
+For gradle code signing configuration refer to the [documentation](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing). More information about code singing with YAML in general is [here](../yaml/distribution).
 
 ## Publishing
 
-All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. Script examples for all of them are available [HERE](../yaml/distribution/#publishing).
+All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. Script examples for all of them are available [here](../yaml/distribution/#publishing).
