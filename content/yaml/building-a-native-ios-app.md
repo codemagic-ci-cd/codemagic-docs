@@ -4,11 +4,11 @@ description: Building an iOS app with YAML.
 weight: 4
 ---
 
-With `codemagic.yaml`, you can use Codemagic to build, test and publish native iOS apps written in Swift or Objective C. You can read more about how to use codemagic.yaml and see the structure of the file [HERE](../yaml/yaml).
+With `codemagic.yaml`, you can use Codemagic to build, test and publish native iOS apps. You can read more about how to use codemagic.yaml and see the structure of the file [HERE](../yaml/yaml).
 
 ## Building a native iOS app
 
-For building an iOS app with Swift, you need to run the following command in the scripts section:
+For building an iOS app, you need to run the following command in the scripts section:
 
     - xcode-project build-ipa --project "MyXcodeProject.xcodeproj" --scheme "MyScheme"
 
@@ -31,4 +31,4 @@ A full example of iOS code singing with YAML is available [HERE](../yaml/distrib
 
 ## Publishing
 
-All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Codemagic Static Pages. Script examples for all of them are available [HERE](../yaml/distribution/#publishing).
+All generated artifacts can be published to external services. The available integrations currently are email, Slack and App Store Connect. Script examples for all of them are available [HERE](../yaml/distribution/#publishing).

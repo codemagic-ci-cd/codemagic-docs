@@ -106,7 +106,7 @@ The available provisioning profile types are described [here](https://github.com
 
 ### Build an unsigned application .app
 
-      - flutter build ios --debug --flavor dev --no-codesign
+      - flutter build ios --debug --no-codesign
 
 ### Build a signed iOS application archive .ipa
 
@@ -137,7 +137,7 @@ Testing Flutter applications with YAML is very simple, just use the relevant tes
     flutter emulators --launch apple_ios_simulator                  # for android use: flutter emulators --launch emulator
     flutter drive --target=test_driver/my_drive_target.dart
 
-Ifyou want to read more about testing with YAML in general, there are several examples [HERE](../yaml/testing).
+If you want to read more about testing with YAML in general, there are several examples [HERE](../yaml/testing).
 
 ## Publishing a Flutter package
 
@@ -154,7 +154,7 @@ After that `credentials.json` will be generated which you can use to login witho
 
 ### Flutter add-to-app
 
-Please refer to [the guidlines](https://flutter.dev/docs/development/add-to-app).
+Please refer to [the guidelines](https://flutter.dev/docs/development/add-to-app).
 The templates were inspired by add-to-app [flutter samples](https://github.com/flutter/samples/tree/master/add_to_app).
 
 ### Using a flutter package (with dependencies) as a library

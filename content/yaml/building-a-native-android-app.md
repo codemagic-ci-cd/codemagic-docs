@@ -5,9 +5,9 @@ weight: 3
 ---
 ## Building an Android app
 
-Native Android app is written in Java. The necessary command for building the application goes under `scripts` in the [overall architecture](../yaml/yaml/#template) in the `codemagic.yaml` file. For Android (built with gradle), the script looks like this:
+The necessary command for building native Android application goes under `scripts` in the [overall architecture](../yaml/yaml/#template) in the `codemagic.yaml` file. For Android (built with gradle), the script looks like this:
 
-    - ./gradlew bundleRelease
+    - ./gradlew bundleDebug
 
 ## Testing an Android app
 
@@ -19,4 +19,4 @@ For gradle code signing configuration refer to the [documentation](https://docs.
 
 ## Publishing
 
-All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Codemagic Static Pages. Script examples for all of them are available [HERE](../yaml/distribution/#publishing).
+All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. Script examples for all of them are available [HERE](../yaml/distribution/#publishing).
