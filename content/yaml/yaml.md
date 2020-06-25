@@ -2,6 +2,8 @@
 title: Configuration as code (YAML)
 description: Customize the build and configure all your workflows in a single file.
 weight: 1
+aliases:
+  - 'path/to/previous'
 ---
 
 `codemagic.yaml` is an advanced option for customizing the build and configuring all your workflows in a single file. This file can be committed to version control, and when it is detected in the repository it will be referenced to configure the build (instead of using the settings in the UI).
