@@ -105,6 +105,34 @@ iOS
         firebase appdistribution:distribute --app <your_ios_application_firebase_id> --groups <your_ios_testers_group> $ipaPath
       fi 
 
+#### Publish an app with Fastlane
+
+Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
+
+Before running a lane, you should install Fastlane Firebase app distribution plugin
+
+        - |
+          # install fastlane-plugin-firebase_app_distribution
+          gem install bundler
+          sudo gem install fastlane-plugin-firebase_app_distribution --user-install
+
+Then you only need to call a lane:
+
+Android
+
+    - |
+      # execute fastlane android publishing task
+      cd android
+      bundle install
+      bundle exec fastlane <your_android_lane>
+
+iOS
+
+    - |
+      # execute fastlane ios publishing task
+      cd ios
+      bundle install
+      bundle exec fastlane <your_ios_lane>
 
 
 #### Publish an Android app with Gradle
