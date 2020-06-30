@@ -13,7 +13,7 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
   It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
 
   1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
-  2. Click on the '+' sign to generate a new API key. 
+  2. Click on the '+' sign to generate a new API key.
   3. Enter the name for the key and select an access level (`Admin` or `Developer`).
   4. Click **Generate**.
   5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key. Note that the key can only be downloaded once.
@@ -62,6 +62,103 @@ In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sens
         password: Encrypted(...)          # App-specific password
 
 <!---Firebase app distribution can be done with a [custom script](../yaml/running-a-custom-script). [TODO: Stas will add this example on Monday]--->
+
+### Publish an app to Firebase App Distribution
+
+If you use a Firebase service, encrypt `google-services.json` as `ANDROID_FIREBASE_SECRET` environment variable for Android
+or `GoogleService-Info.plist` as `IOS_FIREBASE_SECRET` for iOS.
+
+    echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
+    echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
+
+#### Publish an app using Firebase CLI
+
+Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
+
+Android
+
+    - |
+      # publish the app to Firebase App Distribution
+      apkPath=$(find build -name "*.apk" | head -1)
+      echo "Found apk at $apkPath"
+        
+      if [[ -z ${apkPath} ]]
+      then
+        echo "No apks were found, skip publishing to Firebase App Distribution"
+      else
+        echo "Publishing $apkPath to Firebase App Distribution"
+        firebase appdistribution:distribute --app <your_android_application_firebase_id> --groups <your_android_testers_group> $apkPath
+      fi  
+
+iOS
+
+    - |
+      # publish the app to Firebase App Distribution
+      ipaPath=$(find build -name "*.ipa" | head -1)
+      echo "Found ipa at $ipaPath"
+
+      if [[ -z ${ipaPath} ]]
+      then
+        echo "No ipas were found, skip publishing to Firebase App Distribution"
+      else
+        echo "Publishing $ipaPath to Firebase App Distribution"
+        firebase appdistribution:distribute --app <your_ios_application_firebase_id> --groups <your_ios_testers_group> $ipaPath
+      fi 
+
+
+
+#### Publish an Android app with Gradle
+
+To authorize an application for Firebase App Distribution, use [Google service account](https://firebase.google.com/docs/app-distribution/android/distribute-gradle#authenticate_using_a_service_account).
+Encrypt and add to environment variables these credentials (the file is named something like `yourappname-6e632def9ad4.json`) as `GOOGLE_APP_CREDENTIALS`. Specify the filepath in your `build.gradle` in `firebaseAppDistribution` as `serviceCredentialsFile="your/file/path.json"`.
+
+    buildTypes {
+        ...
+        release {
+            ...
+            firebaseAppDistribution {
+                ...
+                serviceCredentialsFile="<your/file/path.json>"
+            }
+        }
+
+ Note that in case the credentials file is not specified in `firebaseAppDistribution` build type, it will search the filepath in `GOOGLE_APPLICATION_CREDENTIALS` environment variable.
+
+Decode application credentials for Firebase authorization
+
+    echo $GOOGLE_APP_CREDENTIALS | base64 --decode > $FCI_BUILD_DIR/you/file/path.json
+
+Build the application
+
+    - |
+        # set up local properties
+        echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+    - flutter packages pub get
+    - flutter build apk --release
+
+Call the gradlew task for distribution
+
+    - |
+        # distribute app to firebase with gradle plugin
+        cd $FCI_BUILD_DIR/android
+        ./gradlew appDistributionUploadRelease
+
+{{<notebox>}}
+
+If you didn't specify `serviceCredentialsFile`, you may export it to random location like `/tmp/google-application-credentials.json`
+
+    echo $GOOGLE_APP_CREDENTIALS | base64 --decode > /tmp/google-application-credentials.json
+
+And then export the filepath on the gradlew task
+
+    - |
+        # distribute app to firebase with gradle plugin
+        export GOOGLE_APPLICATION_CREDENTIALS=/tmp/google-application-credentials.json
+        cd $FCI_BUILD_DIR/android
+        ./gradlew appDistributionUploadRelease
+
+{{</notebox>}}
+
 
 ## Examples
 
