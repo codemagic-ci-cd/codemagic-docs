@@ -4,7 +4,7 @@ description: Building a Flutter app with YAML.
 weight: 2
 ---
 
-With `codemagic.yaml`, you can use Codemagic to build, test and publish Flutter apps. You can read more about how to use codemagic.yaml and see the structure of the file [here](../yaml/yaml).
+With `codemagic.yaml`, you can use Codemagic to build, test and publish Flutter apps. You can read more about how to use `codemagic.yaml` and see the structure of the file [here](../yaml/yaml).
 
 ## Android builds
 
@@ -28,7 +28,7 @@ The following templates show code signing using `key.properties`.
       echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
     - flutter build apk --debug
 
-### Build APK code signed with user-specified keys
+### Build APK code signed with release keys
 
     - |
       # set up key.properties
@@ -44,7 +44,7 @@ The following templates show code signing using `key.properties`.
       echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
     - flutter build apk --release
 
-### Build an APK with user-specified keys from app bundle
+### Build an APK with release keys from app bundle
 
 If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you are creating a YAML file from a scratch, add the script below to receive this file:
 
@@ -176,7 +176,7 @@ iOS:
     - xcode-project use-profiles
     - xcode-project build-ipa --workspace "my_ios_app/MyXcWorkspace.xcworkspace" --scheme "MyScheme"
 
-## Using a prebuilt flutter module:
+## Using a prebuilt flutter module
 
 Android:
 
