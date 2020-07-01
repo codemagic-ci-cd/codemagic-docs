@@ -152,12 +152,12 @@ After that `credentials.json` will be generated which you can use to login witho
     - flutter pub publish --dry-run
     - flutter pub publish -f
 
-### Flutter add-to-app
+## Flutter add-to-app
 
 Please refer to [the guidelines](https://flutter.dev/docs/development/add-to-app).
 The templates were inspired by add-to-app [flutter samples](https://github.com/flutter/samples/tree/master/add_to_app).
 
-### Using a flutter package (with dependencies) as a library
+#### Using a flutter package (with dependencies) as a library
 
 Android:
 
@@ -176,7 +176,7 @@ iOS:
     - xcode-project use-profiles
     - xcode-project build-ipa --workspace "my_ios_app/MyXcWorkspace.xcworkspace" --scheme "MyScheme"
 
-## Using a prebuilt flutter module
+#### Using a prebuilt flutter module
 
 Android:
 
