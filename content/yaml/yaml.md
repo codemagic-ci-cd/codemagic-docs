@@ -10,9 +10,7 @@ aliases:
 
 {{<notebox>}}
 
-**Limitations**
-
-The YAML feature currently has the following limitations:
+The YAML feature currently has the following **limitations**:
 
 * Exporting configuration from UI is supported for Flutter-based Android, iOS and web apps.
 * The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail** and publishing to Codemagic Static Pages.
@@ -61,11 +59,12 @@ When detected in repository, `codemagic.yaml` is automatically used for configur
 
 You can also use `codemagic.yaml` for manual builds.
 
-1. In your app settings, click **Start new build**. 
-2. In the **Specify build configuration** popup, select a **branch**.
-3. If a `codemagic.yaml` file is found in that branch, you can click **Select workflow from codemagic.yaml**.
-4. Then select the YAML **workflow**.
-5. Finally, click **Start new build** to build the workflow.
+1. In your app settings, click **Configure for building**. 
+2. Choose a suitable **project type**.
+3. Select a branch in the dropdown on the left of the **Check for configuration file** button.
+4. If a `codemagic.yaml` file is found in that branch, you can click **Select workflow from codemagic.yaml**.
+5. Then select the YAML **workflow**.
+6. Finally, click **Start your first build** to build the workflow.
 
 ## Template
 
@@ -220,6 +219,6 @@ There are several things to keep in mind about patterns:
 
 ### Publishing
 
-All the apps that run on iOS devices need to be signed by trusted developers with a valid certificate from Apple. This confirms the author of the code and guarantees that the code has not been tampered with since it was signed. After code signing, the generated artifacts can be easily published to external services. Both code singing and publishing is explained [here](./distribution/) in more detail.
+Both Android and iOS apps need to be signed before releasing. This confirms the author of the code and guarantees that the code has not been tampered with since it was signed. After code signing, the generated artifacts can be easily published to external services. The available integrations are currently email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Both code singing and publishing is explained [here](./distribution/) in more detail.
 
 

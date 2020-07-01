@@ -1,6 +1,6 @@
 ---
 title: Building a React Native app
-description: Building an iOS app with YAML.
+description: Building a React Native app with YAML.
 weight: 5
 ---
 
@@ -21,7 +21,7 @@ Script for building an iOS application:
 
 ## Testing
 
-To test an application, add the test script to the `scripts` section of your code. This is a basic example with jest, given that jest tests are defined in the package.json file:
+To test an application, add the test script to the `scripts` section of your code. This is a basic example with jest, given that jest tests are defined in the `package.json` file:
 
     npm test
 

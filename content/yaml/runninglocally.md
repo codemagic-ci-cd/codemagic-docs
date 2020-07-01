@@ -48,8 +48,8 @@ Alternatively to entering `ISSUER_ID`, `KEY_IDENTIFIER`, `PRIVATE_KEY`, `CERTIFI
 Please refer to documentation for more details.
 {{</notebox>}}
 
-## Generate a changelog text from git history
+## Generate a changelog text from Git history
 
-To generate a changelog text from git history, use the [git-changelog](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/git-changelog#git-changelog) tool. For example, to generate a changelog to `CHANGELOG` file starting from the previous tag, use:
+To generate a changelog text from Git history, use the [git-changelog](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/git-changelog#git-changelog) tool. For example, to generate a changelog to `CHANGELOG` file starting from the previous tag, use:
 
     git-changelog generate --previous-commit `git rev-list --tags --skip=1  --max-count=1` > CHANGELOG

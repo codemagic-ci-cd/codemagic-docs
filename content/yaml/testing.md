@@ -18,7 +18,7 @@ For non-UI tests or unit testing:
 
     ./gradlew test
 
-UI test's also known as instrumental tests:
+UI tests (also known as instrumental tests):
 
     ./gradlew connectedAndroidTest
 

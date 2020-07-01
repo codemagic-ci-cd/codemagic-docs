@@ -1,5 +1,5 @@
 ---
-title: Publishing
+title: Code signing and publishing
 description: Code signing and publishing with YAML.
 weight: 8
 ---
@@ -13,7 +13,7 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
   It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
 
   1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
-  2. Click on the '+' sign to generate a new API key.
+  2. Click on the + sign to generate a new API key.
   3. Enter the name for the key and select an access level (`Admin` or `Developer`).
   4. Click **Generate**.
   5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key. Note that the key can only be downloaded once.
@@ -42,6 +42,42 @@ In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sens
     CM_CERTIFICATE_PASSWORD: Encrypted(...)
     CM_PROVISIONING_PROFILE: Encrypted(...)
 
+## Setting up manual code signing
+
+With the manual code signing method, you are required to upload the signing certificate and the matching provisioning profile(s) to Codemagic in order to receive signed builds.
+
+    - find . -name "Podfile" -execdir pod install \;
+    - keychain initialize
+    - |
+      # set up provisioning profiles
+      PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+      mkdir -p "$PROFILES_HOME"
+      PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
+      echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+      echo "Saved provisioning profile $PROFILE_PATH"
+    - |
+      # set up signing certificate
+      echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+
+      # when using a password-protected certificate
+      keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
+      # when using a certificate that is not password-protected
+      keychain add-certificates --certificate /tmp/certificate.p12
+
+### Setting up automatic code signing
+
+Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) utility for generating and managing certificates and provisioning profiles and performing code signing.
+
+    - find . -name "Podfile" -execdir pod install \;
+    - keychain initialize
+    - app-store-connect fetch-signing-files "io.codemagic.app" \  # Fetch signing files for specified bundle ID (use "$(xcode-project detect-bundle-id)" if not specified)
+      --type IOS_APP_DEVELOPMENT \  # Specify provisioning profile type*
+      --create  # Allow creating resources if existing are not found.
+    - keychain add-certificates
+
+The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
+
+
 ## Publishing
 
 `publishing:` for every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Codemagic Static Pages.
@@ -61,9 +97,18 @@ In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sens
         apple_id: name@example.com        # Email address used for login
         password: Encrypted(...)          # App-specific password
 
-<!---Firebase app distribution can be done with a [custom script](../yaml/running-a-custom-script). [TODO: Stas will add this example on Monday]--->
+### Publishing a Flutter package to pub.dev
 
-### Publish an app to Firebase App Distribution
+In order to get publishing permissions, first you will need to log in to pub.dev locally. It can be done with running `pub publish --dry-run`.
+After that `credentials.json` will be generated which you can use to login without the need of Google confirmation through browser.
+
+`credentials.json` can be found in the pub cache directory (`~/.pub-cache/credentials.json` on MacOS and Linux, `%APPDATA%\Pub\Cache\credentials.json` on Windows)
+
+    - echo $CREDENTIALS | base64 --decode > "$FLUTTER_ROOT/.pub-cache/credentials.json"
+    - flutter pub publish --dry-run
+    - flutter pub publish -f
+
+### Publishing an app to Firebase App Distribution
 
 If you use a Firebase service, encrypt `google-services.json` as `ANDROID_FIREBASE_SECRET` environment variable for Android
 or `GoogleService-Info.plist` as `IOS_FIREBASE_SECRET` for iOS.
@@ -71,7 +116,7 @@ or `GoogleService-Info.plist` as `IOS_FIREBASE_SECRET` for iOS.
     echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
     echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
 
-#### Publish an app using Firebase CLI
+#### Publishing an app using Firebase CLI
 
 Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
 
@@ -105,7 +150,7 @@ iOS
         firebase appdistribution:distribute --app <your_ios_application_firebase_id> --groups <your_ios_testers_group> $ipaPath
       fi 
 
-#### Publish an app with Fastlane
+#### Publishing an app with Fastlane
 
 Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
 
@@ -116,7 +161,7 @@ Before running a lane, you should install Fastlane Firebase app distribution plu
           gem install bundler
           sudo gem install fastlane-plugin-firebase_app_distribution --user-install
 
-Then you only need to call a lane:
+Then you need to call a lane. This code is similar for Android and iOS.
 
 Android
 
@@ -135,7 +180,7 @@ iOS
       bundle exec fastlane <your_ios_lane>
 
 
-#### Publish an Android app with Gradle
+#### Publishing an Android app with Gradle
 
 To authorize an application for Firebase App Distribution, use [Google service account](https://firebase.google.com/docs/app-distribution/android/distribute-gradle#authenticate_using_a_service_account).
 Encrypt and add to environment variables these credentials (the file is named something like `yourappname-6e632def9ad4.json`) as `GOOGLE_APP_CREDENTIALS`. Specify the filepath in your `build.gradle` in `firebaseAppDistribution` as `serviceCredentialsFile="your/file/path.json"`.
@@ -152,11 +197,11 @@ Encrypt and add to environment variables these credentials (the file is named so
 
  Note that in case the credentials file is not specified in `firebaseAppDistribution` build type, it will search the filepath in `GOOGLE_APPLICATION_CREDENTIALS` environment variable.
 
-Decode application credentials for Firebase authorization
+Decode application credentials for Firebase authorization:
 
     echo $GOOGLE_APP_CREDENTIALS | base64 --decode > $FCI_BUILD_DIR/you/file/path.json
 
-Build the application
+Build the application:
 
     - |
         # set up local properties
@@ -186,7 +231,6 @@ And then export the filepath on the gradlew task
         ./gradlew appDistributionUploadRelease
 
 {{</notebox>}}
-
 
 ## Examples
 
