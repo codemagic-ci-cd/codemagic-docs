@@ -11,7 +11,7 @@ React Native is a cross-platform solution that allows you to build apps for both
 Script for building an Android application:
 
     - echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/android/local.properties"
-    - cd android && ./gradlew bundleRelease
+    - cd android && ./gradlew bundleDebug
 
 ## iOS
 

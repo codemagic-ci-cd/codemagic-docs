@@ -10,7 +10,7 @@ With `codemagic.yaml`, you can use Codemagic to build, test and publish Flutter 
 
 The following templates show code signing using `key.properties`.
 
-### Build the APK with default debug code signing:
+### Build .apk with default debug code signing
 
     - |
       # set up debug key.properties
@@ -28,7 +28,7 @@ The following templates show code signing using `key.properties`.
       echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
     - flutter build apk --debug
 
-### Build APK code signed with release keys
+### Build .apk code signed with release keys
 
     - |
       # set up key.properties
@@ -44,7 +44,7 @@ The following templates show code signing using `key.properties`.
       echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
     - flutter build apk --release
 
-### Build an APK with release keys from app bundle
+### Build .apk with release keys from app bundle
 
 If your app settings in Codemagic have building Android app bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you are creating a YAML file from a scratch, add the script below to receive this file:
 
@@ -58,7 +58,7 @@ If your app settings in Codemagic have building Android app bundles enabled, we 
         --key-pass $CM_KEY_ALIAS_PASSWORD
 
 {{<notebox>}}
-Codemagic uses the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) utility to build universal APK files from Android App Bundles.
+Codemagic uses the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) utility to build universal .apk files from Android App Bundles.
 {{</notebox>}}
 
 ## iOS builds
