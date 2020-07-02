@@ -19,13 +19,11 @@ Script for building an iOS application:
 
     - xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
 
-## Testing
+{{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}}
 
-To test an application, add the test script to the `scripts` section of your code. This is a basic example with jest, given that jest tests are defined in the `package.json` file:
+## Testing and publishing
 
-    npm test
+We have collected Testing and publishing is documented:
 
-
-## Publishing
-
-All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. Script examples for all of them are available [here](../yaml/distribution/#publishing).
+* Testing examples for a React Native app can be found [here](../yaml/testing/#react-native-unit-test).
+* All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store. It is also possible to publish elsewhere with custom scripts. Script examples for different options are available [here](../yaml/distribution/#publishing).

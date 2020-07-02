@@ -215,7 +215,7 @@ Build the application:
     - flutter packages pub get
     - flutter build apk --release
 
-Call the gradlew task for distribution
+Call the `gradlew` task for distribution
 
     - |
         # distribute app to firebase with gradle plugin

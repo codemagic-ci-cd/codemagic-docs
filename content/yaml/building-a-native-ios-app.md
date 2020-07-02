@@ -18,23 +18,10 @@ For building an archived iOS app (.ipa), you need to run the following command i
 
     - xcode-project build-ipa --project "MyXcodeProject.xcodeproj" --scheme "MyScheme"
 
-## Testing an iOS app
+## Testing and publishing
 
-The code for testing an iOS app also goes under `scripts`. The relevant code for a native iOS app looks like this:
+To test, code sign and publish an iOS app:
 
-    xcodebuild \
-        -workspace MyAwesomeApp.xcworkspace \
-        -scheme MyAwesomeApp \
-        -sdk iphonesimulator \
-        -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
-        test | xcpretty
-
-More examples of testing with YAML can be found [here](../yaml/testing).
-
-## Code signing
-
-A full example of iOS code singing with YAML is available [here](../yaml/distribution).
-
-## Publishing
-
-All generated artifacts can be published to external services. The available integrations currently are email, Slack and App Store Connect. Script examples for all of them are available [here](../yaml/distribution/#publishing).
+* The code for testing an iOS app also goes under `scripts`, before build commands. An example for testing an iOS app can be found [here](../yaml/testing/#native-ios).
+* A full example of iOS code singing with YAML is available [here](../yaml/distribution).
+* All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../yaml/distribution/#publishing).

@@ -8,7 +8,7 @@ Test scripts are added under `scripts` in the [overall architecture](../yaml/yam
 
 ## React Native unit test
 
-This is a basic example with jest, given that jest tests are defined in the package.json file.
+This is a basic example with jest, given that jest tests are defined in the `package.json` file.
 
     npm test
 
