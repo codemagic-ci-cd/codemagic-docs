@@ -4,6 +4,20 @@ title: Release notes
 weight: 1
 ---
 
+## June 2020
+
+### New billing model
+
+We have moved to a post-paid billing model that comes with a more consistent billing experience and premium features, such as Mac Pro builds. Read more about what changed, who wins from this and how to take advantage of the new billing model on [our blog](https://blog.codemagic.io/codemagic-new-billing/). If you are interested in numbers, check out our updated [pricing page](https://codemagic.io/pricing/) for a quick overview of free and paid features. A short guide for selecting Mac Pro as the machine type is available in our [documentation](https://docs.codemagic.io/building/machine-type/).
+
+The new billing model will apply to all new users and teams signing up after 1st of June, 2020 as well as to existing users that have not purchased any paid build minutes or team seats. However, all existing users will be able to opt in for the improved billing model.
+If you have any questions or concerns, do not hesitate to reach out in our [#pricing channel](https://codemagicio.slack.com/archives/CHWC14F17).
+
+### Adding company details to the invoice
+
+We are continuing to improve our new billing model, and the first improvement is here!
+You can now provide your company details, such as company name, address or VAT number, in order to see them on the invoice and specify a billing email for receiving invoices. You can enter the company details in team or user settings when enabling billing and adding a new credit card, or by clicking **Update billing details** on the right sidebar when you have already enabled billing.
+
 ## May 2020
 
 ### Increase or decrease maximum build duration
