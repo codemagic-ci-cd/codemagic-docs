@@ -4,7 +4,7 @@ description: Custom scripts with YAML.
 weight: 6
 ---
 
-You can run scripts in languages other than shell (`sh`) by defining the languge with a shebang line or by launching a script file present in your repository.
+You can run shell (`sh`) scripts directly in your `.yaml` file, or run scripts in other languages by defining the language with a shebang line or by launching a script file present in your repository.
 
 For example, you can write a build script with Dart like this:
 

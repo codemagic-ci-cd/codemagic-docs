@@ -7,7 +7,7 @@ weight: 3
 
 The necessary command for building native Android application goes under `scripts` in the [overall architecture](../yaml/yaml/#template) in the `codemagic.yaml` file. For Android (built with gradle), the script looks like this:
 
-    - ./gradlew bundleDebug
+    - ./gradlew build
 
 ## Testing and publishing
 
