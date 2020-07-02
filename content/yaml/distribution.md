@@ -42,7 +42,7 @@ In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sens
     CM_CERTIFICATE_PASSWORD: Encrypted(...)
     CM_PROVISIONING_PROFILE: Encrypted(...)
 
-## Setting up manual code signing
+### Setting up manual code signing
 
 With the manual code signing method, you are required to upload the signing certificate and the matching provisioning profile(s) to Codemagic in order to receive signed builds.
 
@@ -80,7 +80,7 @@ The available provisioning profile types are described [here](https://github.com
 
 ## Publishing
 
-`publishing:` for every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Codemagic Static Pages.
+`publishing:` for every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play and App Store Connect.
 
     publishing:
       email:

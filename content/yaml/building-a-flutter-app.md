@@ -93,4 +93,4 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
 To test and publish a Flutter app:
 
 * Testing examples for a flutter app can be found [here](../yaml/testing/#flutter-test).
-* All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts. Script examples for different options are available [here](../yaml/distribution/#publishing-a-flutter-package-to-pubdev).
+* All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store. It is also possible to publish elsewhere with custom scripts. Script examples for different options are available [here](../yaml/distribution/#publishing-a-flutter-package-to-pubdev).

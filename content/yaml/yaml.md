@@ -64,7 +64,7 @@ You can also use `codemagic.yaml` for manual builds.
 3. Select a branch in the dropdown on the left of the **Check for configuration file** button.
 4. If a `codemagic.yaml` file is found in that branch, you can click **Select workflow from codemagic.yaml**.
 5. Then select the YAML **workflow**.
-6. Finally, click **Start your first build** to build the workflow.
+6. Finally, click **Start your first build** to build the app.
 
 ## Template
 
