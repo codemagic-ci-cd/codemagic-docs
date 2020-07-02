@@ -18,6 +18,8 @@ For building an archived iOS app (.ipa), you need to run the following command i
 
     - xcode-project build-ipa --project "MyXcodeProject.xcodeproj" --scheme "MyScheme"
 
+{{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}} 
+
 ## Testing and publishing
 
 To test, code sign and publish an iOS app:

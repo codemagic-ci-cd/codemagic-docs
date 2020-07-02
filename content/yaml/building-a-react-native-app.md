@@ -20,6 +20,9 @@ Script for building an iOS application:
     - xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
 
 
-## Publishing
+## Testing and publishing
 
-All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. Script examples for all of them are available [here](../yaml/distribution/#publishing).
+To test and publish a React Native app:
+
+* The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Naive app can be found [here](../yaml/testing/#react-native-unit-test).
+* All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../yaml/distribution/#publishing).
