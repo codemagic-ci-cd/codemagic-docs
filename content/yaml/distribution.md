@@ -144,7 +144,7 @@ Use the following script:
 ### Publishing a Flutter package to pub.dev
 
 In order to get publishing permissions, first you will need to log in to pub.dev locally. It can be done with running `pub publish --dry-run`.
-After that `credentials.json` will be generated which you can use to login without the need of Google confirmation through browser.
+After that `credentials.json` will be generated which you can use to log in without the need of Google confirmation through browser.
 
 `credentials.json` can be found in the pub cache directory (`~/.pub-cache/credentials.json` on MacOS and Linux, `%APPDATA%\Pub\Cache\credentials.json` on Windows)
 

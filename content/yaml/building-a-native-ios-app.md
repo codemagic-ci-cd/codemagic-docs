@@ -4,7 +4,7 @@ description: Building an iOS app with YAML.
 weight: 4
 ---
 
-With `codemagic.yaml`, you can use Codemagic to build, test and publish native iOS apps. You can read more about how to use codemagic.yaml and see the structure of the file [here](../yaml/yaml).
+With `codemagic.yaml`, you can use Codemagic to build, test and publish native iOS apps. You can read more about how to use `codemagic.yaml` and see the structure of the file [here](../yaml/yaml).
 
 ## Building an unsigned native iOS app (.app)
 
