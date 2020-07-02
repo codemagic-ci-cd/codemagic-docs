@@ -19,6 +19,7 @@ Script for building an iOS application:
 
     - xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
 
+{{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}} 
 
 ## Testing and publishing
 
