@@ -11,19 +11,13 @@ React Native is a cross-platform solution that allows you to build apps for both
 Script for building an Android application:
 
     - echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/android/local.properties"
-    - cd android && ./gradlew bundleDebug
+    - cd android && ./gradlew build
 
 ## iOS
 
 Script for building an iOS application:
 
     - xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
-
-## Testing
-
-To test an application, add the test script to the `scripts` section of your code. This is a basic example with jest, given that jest tests are defined in the `package.json` file:
-
-    npm test
 
 
 ## Publishing

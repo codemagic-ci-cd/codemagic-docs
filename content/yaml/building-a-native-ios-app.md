@@ -20,16 +20,7 @@ For building an archived iOS app (.ipa), you need to run the following command i
 
 ## Testing an iOS app
 
-The code for testing an iOS app also goes under `scripts`. The relevant code for a native iOS app looks like this:
-
-    xcodebuild \
-        -workspace MyAwesomeApp.xcworkspace \
-        -scheme MyAwesomeApp \
-        -sdk iphonesimulator \
-        -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
-        test | xcpretty
-
-More examples of testing with YAML can be found [here](../yaml/testing).
+Examples of testing with YAML can be found [here](../yaml/testing).
 
 ## Code signing
 
