@@ -219,6 +219,6 @@ There are several things to keep in mind about patterns:
 
 ### Publishing
 
-Both Android and iOS apps need to be signed before releasing. This confirms the author of the code and guarantees that the code has not been tampered with since it was signed. After code signing, the generated artifacts can be easily published to external services. The available integrations are currently email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Both code singing and publishing is explained [here](./distribution/) in more detail.
+Both Android and iOS apps need to be signed before releasing. This confirms the author of the code and guarantees that the code has not been tampered with since it was signed. After code signing, the generated artifacts can be easily published to external services. The available integrations are currently email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Both code singing and publishing is explained [here](./distribution/) in more detail.
 
 
