@@ -6,6 +6,10 @@ weight: 8
 
 ## Setting up code signing for iOS
 
+{{<notebox>}}
+Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) utility to manage macOS keychains and certificates.
+{{</notebox>}}
+
 In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
 
 * `APP_STORE_CONNECT_PRIVATE_KEY`
@@ -66,7 +70,9 @@ With the manual code signing method, you are required to upload the signing cert
 
 ### Setting up automatic code signing
 
+{{<notebox>}}
 Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) utility for generating and managing certificates and provisioning profiles and performing code signing.
+{{</notebox>}}
 
     - find . -name "Podfile" -execdir pod install \;
     - keychain initialize

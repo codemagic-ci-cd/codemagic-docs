@@ -63,17 +63,15 @@ Codemagic uses the [Android-App-Bundle](https://github.com/codemagic-ci-cd/cli-t
 
 ## iOS builds
 
-{{<notebox>}}
-Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) utility to manage macOS keychains and certificates.
-{{</notebox>}}
-
 ### Building an unsigned application .app
 
       - flutter build ios --debug --no-codesign
 
 ### Building a signed iOS application archive .ipa
 
+{{<notebox>}}
 Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for build.
+{{</notebox>}}
 
       - xcode-project use-profiles
       - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
