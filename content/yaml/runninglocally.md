@@ -45,7 +45,7 @@ To build an APK from the app bundle `/path/to/my-app.aab` with keystore `/path/t
 {{<notebox>}}
 Alternatively to entering `ISSUER_ID`, `KEY_IDENTIFIER`, `PRIVATE_KEY`, `CERTIFICATE_PASSWORD`,  `KEYSTORE_PASSWORD`, `KEY_PASSWORD` in plaintext, it may also be specified using an `@env:` prefix followed by an environment variable name, or `@file:` prefix followed by a path to the file containing the value. Example: `@env:<variable>` uses the value in the environment variable named `<variable>`, and `@file:<file_path>` uses the value from file at `<file_path>`.
 
-Please refer to documentation for more details.
+Please refer to [documentation](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs#cli-tools) for more details.
 {{</notebox>}}
 
 ## Generate a changelog text from Git history

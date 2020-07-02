@@ -25,11 +25,11 @@ UI tests (also known as instrumental tests):
 ## Native iOS
 
     xcodebuild \
-    -workspace MyAwesomeApp.xcworkspace \
-    -scheme MyAwesomeApp \
-    -sdk iphonesimulator \
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
-    test | xcpretty (edited) 
+        -workspace MyAwesomeApp.xcworkspace \
+        -scheme MyAwesomeApp \
+        -sdk iphonesimulator \
+        -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
+        test | xcpretty
 
 ## Flutter test
     flutter test

@@ -83,6 +83,44 @@ Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-to
 
 The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
 
+## Setting up code signing for Android
+
+The following templates show code signing using `key.properties`.
+
+### Set up default debug key.properties
+
+    - |
+      # set up debug key.properties
+      keytool -genkeypair \
+        -alias androiddebugkey \
+        -keypass android \
+        -keystore ~/.android/debug.keystore \
+        -storepass android \
+        -dname 'CN=Android Debug,O=Android,C=US' \
+        -keyalg 'RSA' \
+        -keysize 2048 \
+        -validity 10000
+
+### Set up code signing with user specified keys
+
+In order to do code signing [encrypt](../yaml/yaml/#encrypting-sensitive-data) your keystore file, keystore password (if keystore is password protected), key alias and key alias password (if key alias is password protected) and set the encrypted values to the following environment variables:
+
+    CM_KEYSTORE: Encrypted(...)
+    CM_KEYSTORE_PASSWORD: Encrypted(...)
+    CM_KEY_ALIAS_USERNAME: Encrypted(...)
+    CM_KEY_ALIAS_PASSWORD: Encrypted(...)
+
+Use the following script:
+
+    - |
+      # set up key.properties
+      echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+      cat >> "$FCI_BUILD_DIR/project_directory/android/key.properties" <<EOF
+      storePassword=$CM_KEYSTORE_PASSWORD
+      keyPassword=$CM_KEY_ALIAS_PASSWORD
+      keyAlias=$CM_KEY_ALIAS_USERNAME
+      storeFile=/tmp/keystore.keystore
+      EOF
 
 ## Publishing
 
