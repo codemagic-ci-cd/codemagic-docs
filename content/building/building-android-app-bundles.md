@@ -1,17 +1,17 @@
 ---
-title: Building Android app bundles
+title: Building Android App Bundles
 weight: 6
 ---
 
-You can build your app in [Android app bundle](https://developer.android.com/guide/app-bundle) (`.aab`) format for publishing to Google Play. When you upload your app in `.aab` format, app APKs will be dynamically created and optimized for user's device configuration when the app is installed from Google Play Store.
+You can build your app in [Android App Bundle](https://developer.android.com/guide/app-bundle) (`.aab`) format for publishing to Google Play. When you upload your app in `.aab` format, app APKs will be dynamically created and optimized for user's device configuration when the app is installed from Google Play Store.
 
 {{<notebox>}}
 
-Android app bundles are supported starting from Flutter v1.1.5.
+Android App Bundles are supported starting from Flutter v1.1.5.
 
 {{</notebox>}}
 
-Building an Android app bundle requires additional configuration as described in the sections below.
+Building an Android App Bundle requires additional configuration as described in the sections below.
 
 ## Enable building app bundles in Codemagic
 
@@ -21,7 +21,7 @@ In the Build section of app settings, check **Build Android App Bundles** under 
 
 ## Prepare the app bundle for uploading to Google Play
 
-In order to upload your Android app bundle to Google Play, you will need to:
+In order to upload your Android App Bundle to Google Play, you will need to:
 
 1. Build the app in **Release** mode.
 2. Set up [Android code signing](https://docs.codemagic.io/code-signing/android-code-signing/) in Codemagic to sign the app bundle.
