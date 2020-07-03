@@ -4,9 +4,7 @@ description: Using Codemagic CLI tools locally or in other environments.
 weight: 9
 ---
 
-[codemagic-cli-tools](https://pypi.org/project/codemagic-cli-tools/) is a set of tools to simplify builds at Codemagic. They can be installed with pip (`pip3 install codemagic-cli-tools`) and run locally.
-
-Please view the full documentation at [CLI tools](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs#cli-tools)
+[codemagic-cli-tools](https://pypi.org/project/codemagic-cli-tools/) is a set of tools to simplify builds at Codemagic. They can be installed with pip (`pip3 install codemagic-cli-tools`) and run locally. For more information, review the full documentation on [CLI tools](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs#cli-tools).
 
 {{<notebox>}}
 Requires: Python >= 3.7
@@ -18,10 +16,10 @@ To fetch (or create and download) the provisioning profile(s) and certificate fo
 
     app-store-connect fetch-signing-files --issuer-id ISSUER_ID --key-id KEY_IDENTIFIER --private-key PRIVATE_KEY --certificate-key PRIVATE_KEY MY_BUNDLE_ID
 
- By default, certificate will be saved to `$HOME/Library/MobileDevice/Certificates` and the provisioning profile(s) will be saved to `$HOME/Library/MobileDevice/Provisioning Profiles`.
+ By default, your certificate will be saved to `$HOME/Library/MobileDevice/Certificates` and the provisioning profile(s) will be saved to `$HOME/Library/MobileDevice/Provisioning Profiles`.
  Refer to [Setting up code signing for iOS](/yaml/distribution/) for more information about accessing App Store Connect.
 
-To initialize keychain at system default keychain path with empty keychain password and add your `certificate.p12` with certificate password use [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) tool with the following command:
+To initialize keychain at system default keychain path with empty keychain password and add your `certificate.p12` with certificate password, use the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) tool with the following command:
 
     keychain initialize
     keychain add-certificates --certificate /path/to/certificate.p12 --certificate-password CERTIFICATE_PASSWORD
@@ -33,7 +31,7 @@ To use the provisioning profile from `/path/to/profile.mobileprovision` in your 
 
 ## Generate a universal APK with user specified keys from app bundle
 
-To build an APK from the app bundle `/path/to/my-app.aab` with keystore `/path/to/keystore.keystore`, KEYSTORE_PASSWORD, KEY_ALIAS and KEY_PASSWORD, use [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) tool:
+To build an APK from the app bundle `/path/to/my-app.aab` with keystore `/path/to/keystore.keystore`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD`, use the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) tool:
 
     android-app-bundle build-universal-apk \
         --pattern 'path/to/my-app.aab' \

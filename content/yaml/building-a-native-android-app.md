@@ -9,10 +9,10 @@ The necessary command for building native Android application goes under `script
 
     - ./gradlew build
 
-## Testing and publishing
+## Testing, code signing and publishing an Android app
 
 To test, code sign and publish an Android app:
 
 * The code for testing an Android app also goes under `scripts`. A few examples of testing can be found [here](../yaml/testing).
-* For Gradle code signing configuration refer to the [documentation](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing). More information about code signing with YAML in general is [here](../yaml/distribution).
+* All Android applications need to be signed before release. For Gradle code signing configuration refer to the [documentation](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing). More information about code signing with YAML in general is [here](../yaml/distribution).
 * All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../yaml/distribution/#publishing).

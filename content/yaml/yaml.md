@@ -59,12 +59,12 @@ When detected in repository, `codemagic.yaml` is automatically used for configur
 
 You can also use `codemagic.yaml` for manual builds.
 
-1. In your app settings, click **Configure for building**. 
+1. In your app settings, click **Set up build**. 
 2. Choose a suitable **project type**.
 3. Select a branch in the dropdown on the left of the **Check for configuration file** button.
 4. If a `codemagic.yaml` file is found in that branch, you can click **Select workflow from codemagic.yaml**.
 5. Then select the YAML **workflow**.
-6. Finally, click **Start your first build** to build the app.
+6. Finally, click **Start new build** to build the app.
 
 ## Template
 

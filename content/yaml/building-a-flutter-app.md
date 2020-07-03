@@ -16,7 +16,7 @@ Set up local properties
 
     - flutter build apk --release
 
-### Building universal .apk from an existing app bundle with user specified keys
+### Building universal .apk from an existing app bundle with user-specified keys
 
 If your app settings in Codemagic have building Android App Bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you are creating a YAML file from a scratch, add the following script to receive that file:
 
@@ -58,9 +58,10 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
       cd build/web
       7z a -r ../web.zip ./*
 
-## Testing and publishing
+## Testing, code signing and publishing a Flutter app
 
-To test and publish a Flutter app:
+To test, code sign and publish a Flutter app:
 
 * Testing examples for a flutter app can be found [here](../yaml/testing/#flutter-test).
+* All iOS and Android applications need to be signed before release. Different script examples are available [here](../yaml/distribution/).
 * All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts. Script examples for different options are available [here](../yaml/distribution/#publishing-a-flutter-package-to-pubdev).

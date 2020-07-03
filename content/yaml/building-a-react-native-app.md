@@ -18,15 +18,20 @@ Building an Android application:
 
 ## iOS
 
+{{<notebox>}}
+Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for build.
+{{</notebox>}}
+
 Script for building an iOS application:
 
     - xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
 
 {{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}} 
 
-## Testing and publishing
+## Testing, code signing and publishing
 
 To test and publish a React Native app:
 
 * The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Naive app can be found [here](../yaml/testing/#react-native-unit-test).
+* All iOS and Android applications need to be signed before release. Different script examples are available [here](../yaml/distribution/).
 * All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../yaml/distribution/#publishing).

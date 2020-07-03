@@ -26,19 +26,20 @@ Upon login, Codemagic will automatically display the list of apps in the [connec
 
 ### Flutter project
 
-If it's a **Flutter project**, you can configure your project by clicking **Configure for building**. Then you have to select your app type (**Flutter app**) and on the application settings page you can click **Start your first build**. This will run a debug build of your master branch for the available platforms using the latest stable version of Flutter. [Tests](../testing/running-automated-tests) are disabled by default. If you want to change the preconfigured settings, e.g. the Flutter or Xcode version, you can configure everything prior to building. 
+If it's a **Flutter project**, you can configure your project by clicking **Set up build**. Then you have to select your app type (**Flutter app**) and on the application settings page you can click **Start new build**. This will run a debug build of your master branch for the available platforms using the latest stable version of Flutter. [Tests](../testing/running-automated-tests) are disabled by default. If you want to change the preconfigured settings, e.g. the Flutter or Xcode version, you can configure everything prior to building. 
 
 > Note that if the repository contains multiple projects, you can select the right project after the first build, read more about it [below](#multiple-projects-in-one-repository).
 
 ### Non-Flutter project
 
 If it's a **non-Flutter project**, e.g. a native Android or iOS app or an app containing Flutter modules, follow these steps: 
-1. Choose a suitable project type. 
-2. Download or copy the configuration file example.
-3. Use this file example to create a [`codemagic.yaml`](../building/yaml) file for the build configuration. Make all the necessary changes in your `codemagic.yaml` file to match your project. For example, if you have private dependencies, give Codemagic the necessary access rights and include these dependencies in the configuration file (read more about it [here](https://docs.codemagic.io/building/access-private-git-submodules/)). 
-4. When you are done, commit the configuration file to your repository. The name of the file must be `codemagic.yaml` and it must be located in the `root` directory of the repository.
-5. Choose the branch you pushed it into and click **Check for configuration file**. 
-6. When the system finds the configuration file, click **Start new build**.
+1. Start your project by clicking **Set up build**. 
+2. Choose a suitable project type. 
+3. Download or copy the configuration file example.
+4. Use this file example to create a [`codemagic.yaml`](../building/yaml) file for the build configuration. Make all the necessary changes in your `codemagic.yaml` file to match your project. For example, if you have private dependencies, give Codemagic the necessary access rights and include these dependencies in the configuration file (read more about it [here](https://docs.codemagic.io/building/access-private-git-submodules/)). 
+5. When you are done, commit the configuration file to your repository. The name of the file must be `codemagic.yaml` and it must be located in the `root` directory of the repository.
+6. Choose the branch you pushed it into and click **Check for configuration file**. 
+7. When the system finds the configuration file, click **Start new build**.
 
 {{<notebox>}}
 There will also be an automatic **Getting started guide** that guides you through this process step-by-step.
