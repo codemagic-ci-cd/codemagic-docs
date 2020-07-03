@@ -64,4 +64,4 @@ To test, code sign and publish a Flutter app:
 
 * Testing examples for a flutter app can be found [here](../yaml/testing/#flutter-test).
 * All iOS and Android applications need to be signed before release. Different script examples are available [here](../yaml/distribution/).
-* All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts. Script examples for different options are available [here](../yaml/distribution/#publishing-a-flutter-package-to-pubdev).
+* All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with [custom scripts](../yaml/running-a-custom-script/). Script examples for different options are available [here](../yaml/distribution/#publishing-a-flutter-package-to-pubdev).

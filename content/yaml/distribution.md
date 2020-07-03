@@ -4,6 +4,12 @@ description: Code signing and publishing with YAML.
 weight: 8
 ---
 
+All Android and iOS applications have to be digitally signed before release to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. In the case of mobile apps, this means that users can be assured that the apps they download from the App Store Connect or Google Play Store are from developers they can trust.
+
+For iOS, we use Codemagic CLI tools to perform code signing and publishing for iOS apps - these tools are open source and can also be [used locally](../yaml/runninglocally/) or in other environments. Android applications are usually signed using Gradle. This page here covers the most common scripts, but different options for code signing have also been covered extensively on our blog. For example, there is a [blog post](https://blog.codemagic.io/distributing-native-ios-sdk-with-flutter-module-using-codemagic/) about code signing iOS apps with `codemagic.yaml`. There are also [step-by-step instructions](https://blog.codemagic.io/the-simple-guide-to-android-code-signing/) available on our blog for Android code signing.
+
+All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts - for example, in addition to traditional solutions, there are also some examples about Firebase App Distribution [below](../yaml/distribution/#publishing).
+
 ## Setting up code signing for iOS
 
 {{<notebox>}}

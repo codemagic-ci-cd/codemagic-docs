@@ -7,7 +7,7 @@ weight: 9
 [codemagic-cli-tools](https://pypi.org/project/codemagic-cli-tools/) is a set of tools to simplify builds at Codemagic. They can be installed with pip (`pip3 install codemagic-cli-tools`) and run locally. For more information, review the full documentation on [CLI tools](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs#cli-tools).
 
 {{<notebox>}}
-Requires: Python >= 3.7
+Requires: Python ≥ 3.7
 {{</notebox>}}
 
 ## Build and code sign an Xcode project
