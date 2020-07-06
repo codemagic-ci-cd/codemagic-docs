@@ -20,7 +20,7 @@ You can add apps from public or private Git-based repositories.
 3. If it's a private repository that requires username and password for authentication, check **Private repository** and enter the **Username** and **Password**. Leave this option unchecked for public repositories.
 4. Click **Add application**.
 
-Your app will be then listed on the Applications page and you can immediately start running builds.
+Your app will be then listed on the Applications page and you can then continue configuring your project by clicking on **Configure for building**.
 
 ## Connecting repository via SSH
 
@@ -34,7 +34,7 @@ Your app will be then listed on the Applications page and you can immediately st
     **Alternatively**, you can click **Generate key pair** and have Codemagic create an SSH key pair for you, read more about it [below](#generating-a-key-pair-in-codemagic).
 4. Click **Add application**.
 
-Your app will be then listed on the Applications page and you can immediately start running builds.
+Your app will be then listed on the Applications page and you can then continue configuring your project by clicking on **Configure for building**.
 
 {{<notebox>}}If you need to update the private key in Codemagic, you can upload or generate a new one in **App settings > Repository settings > Repository access settings**.{{</notebox>}}
 

@@ -21,7 +21,7 @@ As a keystore can hold multiple keys, each key in it must have an **alias**. Bot
 {{<notebox>}}
 
 - Please note that every app must be signed using the same key throughout its lifespan.
-- If you're building Android app bundles, you additionally need to [enroll your app into app signing by Google Play](https://support.google.com/googleplay/android-developer/answer/7384423).
+- If you're building Android App Bundles, you additionally need to [enroll your app into app signing by Google Play](https://support.google.com/googleplay/android-developer/answer/7384423).
 
 {{</notebox>}}
 
