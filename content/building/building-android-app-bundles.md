@@ -15,7 +15,7 @@ Building an Android App Bundle requires additional configuration as described in
 
 ## Enable building app bundles in Codemagic
 
-In the Build section of app settings, check **Build Android App Bundles** under Build for platforms.
+In the **Build section** of app settings, tick **Android** and then check **Build Android App Bundles** under **Build for platforms**.
 
 ## Prepare the app bundle for uploading to Google Play
 
