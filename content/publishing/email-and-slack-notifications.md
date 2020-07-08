@@ -16,7 +16,7 @@ If a buid failed, failure reason will be sent with the link to check build logs.
 
 ### MS Teams
 
-To be able to receive an email from Codemagic to your MS Teams account, please go to your MS Teams account make sure to set `Anyone can send emails to this address` in `Get email address` -> `advanced settings`.
+To be able to receive an email from Codemagic to your MS Teams account, please go to your MS Teams account and make sure to set `Anyone can send emails to this address` in `Get email address` -> `advanced settings`.
 
 From the whole address e.g. `My awesome company <543l5kj43.some.address@somedomain.teams.ms>` use only the part in angle brackets.
 
