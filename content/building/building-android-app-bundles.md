@@ -17,8 +17,6 @@ Building an Android App Bundle requires additional configuration as described in
 
 In the Build section of app settings, check **Build Android App Bundles** under Build for platforms.
 
-![](../uploads/androi_app_bundles.PNG)
-
 ## Prepare the app bundle for uploading to Google Play
 
 In order to upload your Android App Bundle to Google Play, you will need to:
