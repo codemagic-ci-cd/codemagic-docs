@@ -8,26 +8,26 @@ weight: 8
 
 Email publishing settings can be found in **App settings > Publish > Email**.
 
-Email publishing is the only publishing option which is set enabled (`Enable email publishing`) by default. Initially Codemagic uses the email which is specified as default one in the service you used to login (Github, Bitbucket, Gitlab). You can fill in multiple emails.
+Email publishing is the only publishing option that is enabled by default. Codemagic uses the email specified as the default one in the service you used to log in (Github, Bitbucket, Gitlab). You can add multiple email addresses.
 
 If a build has finished successfully, release notes (if passed) and generated artifacts are published to the provided email.
 
-If a buid failed, failure reason will be sent with the link to check build logs. Check `Publish artifacts even if tests fail` to publish artifacts even when one or more tests fail. If the option is unchecked, generated artifacts (if any) will be attached to successful builds only.
+If a build failed, you will be emailed a link for the build logs. Check **Publish artifacts even if tests fail** to publish artifacts even when one or more tests fail. If that option is unchecked, generated artifacts (if there are any) will be attached only to successful builds.
 
 ### MS Teams
 
-To be able to receive an email from Codemagic to your MS Teams account, please go to your MS Teams account and make sure to set `Anyone can send emails to this address` in `Get email address` -> `advanced settings`.
+To be able to receive emails from Codemagic to your MS Teams account, please go to your MS Teams account and make sure to choose **Anyone can send emails to this address** in `Get email address` -> `advanced settings`.
 
-From the whole address e.g. `My awesome company <543l5kj43.some.address@somedomain.teams.ms>` use only the part in angle brackets.
+Use only the part in angle brackets from the whole address line (e.g. `My awesome company <543l5kj43.some.address@somedomain.teams.ms>`).
 
 ## Slack
 
-Slack publishing settings can be found in **App settings > Publish > Slack**.
+Publishing settings for Slack can be found in `App settings > Publish > Slack`.
 
-To be able to use this publishing option you need to enable Slack integration at **User settings > Integration > Slack**. Once your Slack workspace is connected, you can choose a channel to be used.
+To be able to use this publishing option, you need to enable Slack integration at `User settings > Integration > Slack`. Once your Slack workspace is connected, you can choose a channel that is going to be used for this.
 
 If a build finished successfully, release notes (if passed) and generated artifacts are published in the specified channel.
 
-If a build has failed, build logs link is sent. Check `Publish artifacts even if tests fail` to publish artifacts even when one or more tests fail. If the option is unchecked, generated artifacts (if any) will be attached to successful builds only.
+If a build has failed, a link for the build logs is sent out. Check **Publish artifacts even if tests fail** to publish artifacts even when one or more tests fail. If the option is unchecked, generated artifacts (if any) will be attached to successful builds only.
 
-Check `Notify when build starts` checkbox to receive a build started notification.
+To receive a notification when a build starts, check the checkbox **Notify when build starts**.
