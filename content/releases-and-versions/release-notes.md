@@ -4,6 +4,25 @@ title: Release notes
 weight: 1
 ---
 
+## July 2020
+
+### New project setup guide
+
+Codemagic launches a new project setup guide that makes building and configuring your **Flutter, native iOS, Android** and **React Native** projects even easier.
+
+To give all mobile projects an even smoother and faster lift-off, we have updated our first build flow. Instead of having a default workflow without any configuration, you can just click **Set up build** when starting your first build, select the project type that you’re about to build, update it based on your needs and start building!
+
+If you are not building a Flutter project, you still need to use the `codemagic.yaml` file to configure the workflow, but with a click of a button, you will get a template that suits your selected project type that you can modify according to your needs. You can read step-by-step examples of using the `codemagic.yaml` file to configure [native Android](https://blog.codemagic.io/native-android-getting-started-guide-with-codemagic-cicd/) and [native iOS](https://blog.codemagic.io/native-ios-getting-started-guide-with-codemagic/) apps on our blog.
+<!--- I'll add React Native link as well when the article arrives in the second half of July. --> 
+
+### Cancel pending builds
+
+We have added a much-requested feature to cancel ongoing and queued webhook-triggered builds on push and pull request commit when a new build has been triggered for the same branch. This is convenient when you’re making several commits and don’t want to wait for the previous builds to finish while you’re only interested in the build for the most recent commit. 
+
+You can enable this feature in the UI by navigating to **App settings > Build triggers > Automatic build triggering** and selecting **Cancel outdated webhook builds**, or by setting `cancel_pending_builds: true` in the [triggering section](https://docs.codemagic.io/yaml/yaml/) of the YAML file.
+
+> If you’re interested in running builds in parallel, get in touch with our sales team through the [Codemagic business page](https://codemagic.io/business/).
+
 ## June 2020
 
 ### New billing model
