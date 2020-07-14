@@ -40,7 +40,7 @@ Under Automatic build triggering, you can select when to trigger builds.
 
 **Cancel outdated webhook builds**. When checked, Codemagic will automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch. We recommend enabling this feature when you're making several commits, each of which triggers a build.
 
-If you don't check any of these triggering options, you will have to run builds manually for this workflow.
+If you don't enable any automatic build triggers, you can only start builds manually for this workflow.
 
 ## Webhooks
 
