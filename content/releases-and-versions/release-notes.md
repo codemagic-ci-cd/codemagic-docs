@@ -19,7 +19,7 @@ If you are not building a Flutter project, you still need to use the `codemagic.
 
 We have added a much-requested feature to cancel ongoing and queued webhook-triggered builds on push and pull request commit when a new build has been triggered for the same branch. This is convenient when you’re making several commits and don’t want to wait for the previous builds to finish while you’re only interested in the build for the most recent commit. 
 
-You can enable this feature in the UI by navigating to **App settings > Build triggers > Automatic build triggering** and selecting **Cancel outdated webhook builds**, or by setting `cancel_pending_builds: true` in the [triggering section](https://docs.codemagic.io/yaml/yaml/) of the YAML file.
+You can enable this feature in the UI by navigating to **App settings > Build triggers > Automatic build triggering** and selecting **Cancel outdated webhook builds**, or by setting `cancel_pending_builds: true` in the [triggering section](../yaml/yaml/#triggering) of the YAML file.
 
 > If you’re interested in running builds in parallel, get in touch with our sales team through the [Codemagic business page](https://codemagic.io/business/).
 
