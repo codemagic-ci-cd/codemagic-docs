@@ -14,13 +14,19 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
 
 For building an unsigned iOS app (.app), you need to run the following command in the scripts section:
 
-    - xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" -scheme "MyScheme" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+    - |
+      cd ios
+      xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" \
+                       -scheme "MyScheme" \
+                       CODE_SIGN_INDENTITY="" \
+                        CODE_SIGNING_REQUIRED=NO \
+                        CODE_SIGNING_ALLOWED=NO
 
 ## Building a native iOS app archive (.ipa)
 
 For building an archived iOS app (.ipa), you need to run the following command in the scripts section:
 
-    - xcode-project build-ipa --project "MyXcodeProject.xcodeproj" --scheme "MyScheme"
+    - xcode-project build-ipa --project "ios/MyXcodeProject.xcodeproj" --scheme "MyScheme"
 
 {{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}} 
 
