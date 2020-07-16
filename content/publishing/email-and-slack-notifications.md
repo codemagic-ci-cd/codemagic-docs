@@ -16,15 +16,15 @@ If a build failed, you will be emailed a link for the build logs. Check **Publis
 
 ### MS Teams
 
-To be able to receive emails from Codemagic to your MS Teams account, please go to your MS Teams account and make sure to choose **Anyone can send emails to this address** in `Get email address` -> `advanced settings`.
+To be able to receive emails from Codemagic to your MS Teams account, please go to your MS Teams account and make sure to choose **Anyone can send emails to this address** in **Get email address > advanced settings**.
 
 Use only the part in angle brackets from the whole address line (e.g. `My awesome company <543l5kj43.some.address@somedomain.teams.ms>`).
 
 ## Slack
 
-Publishing settings for Slack can be found in `App settings > Publish > Slack`.
+Publishing settings for Slack can be found in **App settings > Publish > Slack**.
 
-To be able to use this publishing option, you need to enable Slack integration at `User settings > Integration > Slack`. Once your Slack workspace is connected, you can choose a channel that is going to be used for this.
+To be able to use this publishing option, you need to enable Slack integration at **User settings > Integration > Slack**. Once your Slack workspace is connected, you can choose a channel that is going to be used for this.
 
 If a build finished successfully, release notes (if passed) and generated artifacts are published in the specified channel.
 
