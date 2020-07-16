@@ -14,7 +14,12 @@ Requires: Python ≥ 3.7
 
 To fetch (or create and download) the provisioning profile(s) and certificate for `MY_BUNDLE_ID` app, use the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) tool.
 
-    app-store-connect fetch-signing-files --issuer-id ISSUER_ID --key-id KEY_IDENTIFIER --private-key PRIVATE_KEY --certificate-key PRIVATE_KEY MY_BUNDLE_ID
+    app-store-connect fetch-signing-files \
+        --issuer-id ISSUER_ID \
+        --key-id KEY_IDENTIFIER \
+        --private-key PRIVATE_KEY \
+        --certificate-key PRIVATE_KEY \
+        MY_BUNDLE_ID
 
  By default, your certificate will be saved to `$HOME/Library/MobileDevice/Certificates` and the provisioning profile(s) will be saved to `$HOME/Library/MobileDevice/Provisioning Profiles`.
  Refer to [Setting up code signing for iOS](/yaml/distribution/) for more information about accessing App Store Connect.
@@ -34,7 +39,7 @@ To use the provisioning profile from `/path/to/profile.mobileprovision` in your 
 To build an APK from the app bundle `/path/to/my-app.aab` with keystore `/path/to/keystore.keystore`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD`, use the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) tool:
 
     android-app-bundle build-universal-apk \
-        --pattern 'path/to/my-app.aab' \
+        --bundle 'path/to/my-app.aab' \
         --ks /path/to/keystore.keystore \
         --ks-pass KEYSTORE_PASSWORD \
         --ks-key-alias KEY_ALIAS \
