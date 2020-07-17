@@ -16,16 +16,18 @@ Set up local properties
 
     - flutter build apk --release
 
-### Building universal .apk from an existing app bundle with user-specified keys
+### Building universal .apk(s) from existing app bundle(s) with user-specified keys
 
-If your app settings in Codemagic have building Android App Bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you are creating a YAML file from a scratch, add the following script to receive that file:
+If your app settings in Codemagic have building Android App Bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you are creating a YAML file from a scratch, add the following script to receive those file(s):
 
     - android-app-bundle build-universal-apk \
-        --pattern 'project_directory/build/**/outputs/**/*.aab' \
+        --bundle 'project_directory/build/**/outputs/**/*.aab' \
         --ks /tmp/keystore.keystore \
         --ks-pass $CM_KEYSTORE_PASSWORD \
         --ks-key-alias $CM_KEY_ALIAS_USERNAME \
         --key-pass $CM_KEY_ALIAS_PASSWORD
+
+Please make sure to wrap the `--bundle` pattern in single quotes. If `--bundle` option is not specified, default glob pattern `**/*.aab` will be used.
 
 More information about Android code signing can be found [here](../yaml/distribution/#setting-up-code-signing-for-android).
 
