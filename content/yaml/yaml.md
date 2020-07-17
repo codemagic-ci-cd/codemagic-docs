@@ -90,7 +90,7 @@ This is the skeleton structure of `codemagic.yaml`:
             - pattern: '*'
               include: true
               source: true
-          cancel_pending_builds: false
+          cancel_previous_builds: false
         scripts:
           - ...
         artifacts:
@@ -175,7 +175,7 @@ See the default software versions on Codemagic build machines [here](../releases
 
 A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches. Note that for **pull request builds**, you have to specify whether the watched branch is the source or the target of the pull request.
 
-To avoid running builds on outdated commits, you can set `cancel_pending_builds` to automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch.
+To avoid running builds on outdated commits, you can set `cancel_previous_builds` to automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch.
 
     triggering:
       events:                       # List the events that trigger builds
@@ -192,7 +192,7 @@ To avoid running builds on outdated commits, you can set `cancel_pending_builds`
         - pattern: included-source
           include: true
           source: true
-      cancel_pending_builds: false  # Set to `true` to automatically cancel outdated webhook builds
+      cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
 
 ### Scripts
 
