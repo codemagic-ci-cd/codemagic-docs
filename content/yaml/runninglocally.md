@@ -40,9 +40,9 @@ Note that `--project` option can be either a path literal, or a glob pattern to 
 
 `--profile` option can be a glob pattern as well (Default is `$HOME/Library/MobileDevice/Provisioning Profiles/*.mobileprovision`).
 
-## Generate a universal APK with user specified keys from app bundle
+## Generate universal .apk(s) with user specified keys from app bundle
 
-To build APK(s) from the app bundle(s) found with `/path/to/**/*.aab` glob pattern with keystore `/path/to/keystore.keystore`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD`, use the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) tool:
+To build .apk files(s) from the app bundle(s) found with `/path/to/**/*.aab` glob pattern with keystore `/path/to/keystore.keystore`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD`, use the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) tool:
 
     android-app-bundle build-universal-apk \
         --bundle '/path/to/**/*.aab' \

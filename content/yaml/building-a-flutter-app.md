@@ -18,7 +18,7 @@ Set up local properties
 
 ### Building universal .apk(s) from existing app bundle(s) with user-specified keys
 
-If your app settings in Codemagic have building Android App Bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you are creating a YAML file from a scratch, add the following script to receive those file(s):
+If your app settings in Codemagic have building Android App Bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you are creating a YAML file from a scratch, add the following script to receive the .apk file(s):
 
     - android-app-bundle build-universal-apk \
         --bundle 'project_directory/build/**/outputs/**/*.aab' \

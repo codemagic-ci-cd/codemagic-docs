@@ -8,7 +8,7 @@ Code signing is required for distributing your Android app to Google Play store.
 
 ## Requirements
 
-To receive a signed release APK of your app on Codemagic, you will have to:
+To receive a signed release .apk of your app on Codemagic, you will have to:
  
 1. [Prepare your Flutter project for code signing](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing)
 
