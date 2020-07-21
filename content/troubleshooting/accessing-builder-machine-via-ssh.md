@@ -41,6 +41,8 @@ Establishing a VNC connection to the virtual machine is possible only for manual
 You can download a VNC client for Windows [here](https://www.realvnc.com/en/connect/download/viewer/windows/).
 {{</notebox>}}
 
+Using realvnc make sure you add IP and Port number <Host ID>:<Port number> (for example: 192:159.66.83:16543)
+
 New credentials will be generated every time you run the build, so previous credentials cannot be reused.
 
 ## Using the remote build machine
