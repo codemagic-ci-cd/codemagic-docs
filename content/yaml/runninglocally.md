@@ -29,21 +29,29 @@ To initialize keychain at system default keychain path with empty keychain passw
     keychain initialize
     keychain add-certificates --certificate /path/to/certificate.p12 --certificate-password CERTIFICATE_PASSWORD
 
+Note that `--certificate` option can be either a path literal, or a glob pattern to match certificates.
+
 To use the provisioning profile from `/path/to/profile.mobileprovision` in your Xcode project `/path/to/MyProject.xcodeproj` and generate an .ipa archive using `MyScheme` scheme, use [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) with the following command:
 
     xcode-project use-profiles --project /path/to/MyProject.xcodeproj --profile /path/to/profile.mobileprovision
     xcode-project build-ipa --project /path/to/MyProject.xcodeproj --scheme MyScheme
 
-## Generate a universal APK with user specified keys from app bundle
+Note that `--project` option can be either a path literal, or a glob pattern to match projects in working directory (Default is `**/*.xcodeproj`).
 
-To build an APK from the app bundle `/path/to/my-app.aab` with keystore `/path/to/keystore.keystore`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD`, use the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) tool:
+`--profile` option can be a glob pattern as well (Default is `$HOME/Library/MobileDevice/Provisioning Profiles/*.mobileprovision`).
+
+## Generate universal .apk(s) with user specified keys from app bundle
+
+To build .apk files(s) from the app bundle(s) found with `/path/to/**/*.aab` glob pattern with keystore `/path/to/keystore.keystore`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD`, use the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) tool:
 
     android-app-bundle build-universal-apk \
-        --bundle 'path/to/my-app.aab' \
+        --bundle '/path/to/**/*.aab' \
         --ks /path/to/keystore.keystore \
         --ks-pass KEYSTORE_PASSWORD \
         --ks-key-alias KEY_ALIAS \
         --key-pass KEY_PASSWORD
+
+If `--bundle` option is not specified, default glob pattern `**/*.aab` will be used. Please make sure to wrap the pattern in single quotes.
 
 {{<notebox>}}
 Alternatively to entering `ISSUER_ID`, `KEY_IDENTIFIER`, `PRIVATE_KEY`, `CERTIFICATE_PASSWORD`,  `KEYSTORE_PASSWORD`, `KEY_PASSWORD` in plaintext, it may also be specified using an `@env:` prefix followed by an environment variable name, or `@file:` prefix followed by a path to the file containing the value. Example: `@env:<variable>` uses the value in the environment variable named `<variable>`, and `@file:<file_path>` uses the value from file at `<file_path>`.
