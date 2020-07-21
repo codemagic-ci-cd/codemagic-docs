@@ -12,8 +12,7 @@ Codemagic launches a new project setup guide that makes building and configuring
 
 To give all mobile projects an even smoother and faster lift-off, we have updated our first build flow. Instead of having a default workflow without any configuration, you can just click **Set up build** when starting your first build, select the project type that you’re about to build, update it based on your needs and start building!
 
-If you are not building a Flutter project, you still need to use the `codemagic.yaml` file to configure the workflow, but with a click of a button, you will get a template that suits your selected project type that you can modify according to your needs. You can read step-by-step examples of using the `codemagic.yaml` file to configure [native Android](https://blog.codemagic.io/native-android-getting-started-guide-with-codemagic-cicd/) and [native iOS](https://blog.codemagic.io/native-ios-getting-started-guide-with-codemagic/) apps on our blog.
-<!--- I'll add React Native link as well when the article arrives in the second half of July. --> 
+If you are not building a Flutter project, you still need to use the `codemagic.yaml` file to configure the workflow, but with a click of a button, you will get a template that suits your selected project type that you can modify according to your needs. You can read step-by-step examples of using the `codemagic.yaml` file to configure [native Android](https://blog.codemagic.io/native-android-getting-started-guide-with-codemagic-cicd/), [native iOS](https://blog.codemagic.io/native-ios-getting-started-guide-with-codemagic/) and [React Native](https://blog.codemagic.io/react-native-getting-started-guide-with-codemagic/) apps on our blog.
 
 ### Cancel pending builds
 
