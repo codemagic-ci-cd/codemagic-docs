@@ -17,7 +17,7 @@ Codemagic allows you to build, test and publish a host of different applications
 Upon login, Codemagic will automatically display the list of apps in the [connected repositories](./signup#connecting-several-repository-accounts). If you want to build an app that is not available through the account you signed up with, you can [add the app from custom source](./adding-apps-from-custom-sources).
 
 {{<notebox>}}
-* If you can't see your app listed, it may be because you don't have sufficient permissions or Codemagic has no access to your team or organization. Codemagic OAuth app requires read/write permission to build your app. Contact your repository admin to review the setting for GitHub organisations see this [link](./github-organization-accounts).
+* If you can't see your app listed, it may be because you don't have sufficient permissions or Codemagic has no access to your team or organization. Codemagic OAuth app requires read/write permission to build your app. Contact your repository admin to review the setting for GitHub organisations, see this [link](./github-organization-accounts).
 * You can add your project with read only access via [GitHub app](./codemagic-github-app) or [SSH connection](./adding-apps-from-custom-sources).
 * If your app requires accessing private Git submodules or dependencies, you need to give Codemagic access to them in order to build successfully. See how to do that [here](../building/access-private-git-submodules). 
 
