@@ -9,7 +9,7 @@ Code signing is required for distributing your Android app to Google Play store.
 ## Requirements
 
 To receive a signed release .apk of your app on Codemagic, you will have to:
- 
+
 1. [Prepare your Flutter project for code signing](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing)
 
 2. [Set up Android code signing in Codemagic UI](https://docs.codemagic.io/code-signing/android-code-signing/#setting-up-android-code-signing-on-codemagic)
@@ -29,7 +29,7 @@ As a keystore can hold multiple keys, each key in it must have an **alias**. Bot
 
 You can create a keystore for signing your release builds with the Java Keytool utility by running the following command:
 
-    keytool -genkey -v -keystore keystore_name.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+    keytool -genkey -v -keystore keystore_name.jks -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
 
 Keytool then prompts you to enter your personal details for creating the certificate, provide an alias for the key as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **keystore_name.keystore** in the directory you're in. The key is valid for 10,000 days.
 
@@ -39,7 +39,7 @@ You need to upload the keystore and provide the keystore password, key alias and
 
 There are several approaches you can use to prepare your Flutter project for code signing, we have described two of these in this section. Note that whichever approach you use, you still need to [set up Android code signing](https://docs.codemagic.io/code-signing/android-code-signing/#setting-up-android-code-signing-on-codemagic) in the Codemagic UI.
 
-### Option 1. Configure signing in `build.gradle`
+### Option 1. Configure signing following Flutter's documentation
 
 You can follow the instructions in [Flutter's documentation](https://flutter.dev/docs/deployment/android#signing-the-app) to configure code signing in Gradle. It's vital that you use the variable names suggested in Flutter documentation as Codemagic will reference them during the build. However, make sure to not commit your `key.properties` file to the repository, Codemagic will generate and populate the `key.properties` file during the build based on the input you provide in the UI.
 
@@ -47,20 +47,7 @@ You can follow the instructions in [Flutter's documentation](https://flutter.dev
 
 Alternatively, you can use [environment variables](https://docs.codemagic.io/building/environment-variables/ 'Environment variables') to prepare your app for code signing.
 
-1.  Set the following environment variables in Codemagic (using the values from generating your keystore file):
-
-        FCI_KEYSTORE_PASSWORD=myKeystorePassword
-        FCI_KEY_ALIAS=MyReleaseKey
-        FCI_KEY_PASSWORD=myKeypassword
-
-2.  Upload the contents of your base64-encoded keystore file to Codemagic as an environment variable with the name `FCI_KEYSTORE_FILE`.
-3.  Add a custom script for decoding the keystore file stored in `FCI_KEYSTORE_FILE`. For example, click on the '+' icon before **Test** and paste the following script into the **Post-clone script** field:
-
-        #!/usr/bin/env sh
-        set -e # exit on first failed commandset
-        echo $FCI_KEYSTORE_FILE | base64 --decode > $FCI_BUILD_DIR/keystore.jks
-
-4.  Set your signing configuration in `build.gradle` as follows:
+Set your signing configuration in `build.gradle` as follows:
 
 ```
       ...
@@ -71,7 +58,7 @@ Alternatively, you can use [environment variables](https://docs.codemagic.io/bui
            signingConfigs {
                release {
                    if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
-                       storeFile file(System.getenv()["FCI_BUILD_DIR"] + "/keystore.jks")
+                       storeFile file(System.getenv()["FCI_KEYSTORE_PATH"])
                        storePassword System.getenv()["FCI_KEYSTORE_PASSWORD"]
                        keyAlias System.getenv()["FCI_KEY_ALIAS"]
                        keyPassword System.getenv()["FCI_KEY_PASSWORD"]
