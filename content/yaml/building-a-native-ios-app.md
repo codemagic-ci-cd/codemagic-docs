@@ -22,11 +22,17 @@ For building an unsigned iOS app (.app), you need to run the following command i
                        CODE_SIGNING_REQUIRED=NO \
                        CODE_SIGNING_ALLOWED=NO
 
+Your artifact will be generated at the default Xcode path (unless you explicitly specified another path with `CONFIGURATION_BUILD_DIR` option) and you can find it by having the next path under `artifacts` in your `codemagic.yaml`:
+
+    $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+
 ## Building a native iOS app archive (.ipa)
 
 For building an archived iOS app (.ipa), you need to run the following command in the scripts section:
 
     - xcode-project build-ipa --project "$FCI_BUILD_DIR/MyXcodeProject.xcodeproj" --scheme "MyScheme"
+
+You can change the default artifact location `build/ios/ipa` by specifying [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option.
 
 {{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}} 
 
