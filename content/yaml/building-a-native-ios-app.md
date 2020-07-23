@@ -22,6 +22,8 @@ For building an unsigned iOS app (.app), you need to run the following command i
                        CODE_SIGNING_REQUIRED=NO \
                        CODE_SIGNING_ALLOWED=NO
 
+If you don't have a workspace, use `-project "MyXcodeProject.xcodeproj"` instead of `-workspace "MyXcodeWorkspace.xcworkspace"` option.
+
 Your artifact will be generated at the default Xcode path (unless you explicitly specified another path with `CONFIGURATION_BUILD_DIR` option) and you can find it by having the next path under `artifacts` in your `codemagic.yaml`:
 
     $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
