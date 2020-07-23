@@ -38,9 +38,24 @@ After the test run, you will see an overview of how many tests failed, passed or
 
 {{< figure size="medium" src="/uploads/aws_log.png" caption="" >}}
 
+## Changing the Flutter version used for testing
 
+Sylph comes with a predefined Flutter version set [here](https://github.com/mmcc007/sylph/blob/master/lib/resources/test_spec.yaml#L32) and doesn't yet support version changing.
 
+If you want to test your application with another Flutter version, follow these steps:
 
+1. Fork the [Sylph repository](https://github.com/mmcc007/sylph) and change the Flutter version in `test_spec.yaml` to the desired one. Note that the version name is followed with the channel name.
+2. In Codemagic, add a pre-test script to activate your fork. 
 
+    If you made your changes to the forked repository on the default branch, you can simply mention the git URL to activate it:
 
+    ```
+    pub global activate -s git https://github.com/your_username/sylph.git
+    ```
 
+    If you made your changes on a specific branch e.g. `flutter_1.17.5`, you can clone the specific branch and specify the path to the cloned repository:
+
+    ```
+    git clone --branch your_branch_name https://github.com/your_username/sylph.git $HOME/sylph
+    pub global activate -s path $HOME/sylph
+    ```
