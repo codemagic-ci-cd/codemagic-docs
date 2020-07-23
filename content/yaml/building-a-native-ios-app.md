@@ -38,9 +38,10 @@ For building an archived iOS app (.ipa), you need to run the following command i
 
     - xcode-project build-ipa --project "$FCI_BUILD_DIR/MyXcodeProject.xcodeproj" --scheme "MyScheme"
 
-You can change the default artifact location `build/ios/ipa` by specifying [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option, and dSYM is still available with default Xcode path:
+You can change the default artifact location `build/ios/ipa` by specifying [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option. Xcode build log can be found with `/tmp/xcodebuild_logs/*.log` pattern, and dSYM is still available with default Xcode path:
 
     - build/ios/ipa/*.ipa
+    - /tmp/xcodebuild_logs/*.log
     - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 
 {{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}} 
