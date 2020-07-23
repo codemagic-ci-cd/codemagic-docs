@@ -31,7 +31,7 @@ You can create a keystore for signing your release builds with the Java Keytool 
 
     keytool -genkey -v -keystore keystore_name.jks -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
 
-Keytool then prompts you to enter your personal details for creating the certificate, provide an alias for the key as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **keystore_name.jks** in the directory you're in. The key is valid for 10,000 days.
+Keytool then prompts you to enter your personal details for creating the certificate, as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **keystore_name.jks** in the directory you're in. The key is valid for 10,000 days.
 
 You need to upload the keystore and provide the keystore password, key alias and key password to have Codemagic sign your Android app on your behalf.
 
