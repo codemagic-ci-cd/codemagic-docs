@@ -14,7 +14,6 @@ You can use custom scripts to publish your app artifacts to external sources. He
         set -e
         set -x
 
-        cd $FCI_BUILD_DIR
         sudo pip3 install awscli --upgrade
         aws s3 sync <FOLDER OR FILE> s3://<BUCKET_NAME>
 

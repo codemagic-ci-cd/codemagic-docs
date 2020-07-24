@@ -14,13 +14,11 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
 
 For building an unsigned iOS app (.app), you need to run the following command in the scripts section:
 
-    - |
-      cd $FCI_BUILD_DIR
-      xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" \
-                       -scheme "MyScheme" \
-                       CODE_SIGN_INDENTITY="" \
-                       CODE_SIGNING_REQUIRED=NO \
-                       CODE_SIGNING_ALLOWED=NO
+    xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" \
+                     -scheme "MyScheme" \
+                     CODE_SIGN_INDENTITY="" \
+                     CODE_SIGNING_REQUIRED=NO \
+                     CODE_SIGNING_ALLOWED=NO
 
 If you don't have a workspace, use `-project "MyXcodeProject.xcodeproj"` instead of the `-workspace "MyXcodeWorkspace.xcworkspace"` option.
 
@@ -36,7 +34,7 @@ If you have Xcode Debugging Symbols enabled, dSYM file will be generated in the 
 
 For building an archived iOS app (.ipa), you need to run the following command in the scripts section:
 
-    - xcode-project build-ipa --project "$FCI_BUILD_DIR/MyXcodeProject.xcodeproj" --scheme "MyScheme"
+    - xcode-project build-ipa --project "MyXcodeProject.xcodeproj" --scheme "MyScheme"
 
 You can change the default artifact location `build/ios/ipa` by specifying [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option. Xcode build log can be found with `/tmp/xcodebuild_logs/*.log` pattern, and dSYM is still available with default Xcode path:
 
