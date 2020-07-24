@@ -22,7 +22,7 @@ For building an unsigned iOS app (.app), you need to run the following command i
 
 If you don't have a workspace, use `-project "MyXcodeProject.xcodeproj"` instead of the `-workspace "MyXcodeWorkspace.xcworkspace"` option.
 
-Your artifact will be generated at the default Xcode path (unless you explicitly specify another path using the `CONFIGURATION_BUILD_DIR` option) by adding the following pattern in the `artifacts` section of `codemagic.yaml`:
+Your artifact will be generated at the default Xcode path. You can access it by adding the following pattern in the `artifacts` section of `codemagic.yaml`:
 
     $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
 
@@ -32,15 +32,22 @@ If you have Xcode Debugging Symbols enabled, dSYM file will be generated in the 
 
 ## Building a native iOS app archive (.ipa)
 
-For building an archived iOS app (.ipa), you need to run the following command in the scripts section:
+For building an archived iOS app (.ipa) from your Xcode project, you need to run the following command in the scripts section:
 
     - xcode-project build-ipa --project "MyXcodeProject.xcodeproj" --scheme "MyScheme"
 
+You can use it to build your Xcode workspace:
+
+    - xcode-project build-ipa --workspace "MyXcodeWorkspace.xcworkspace" --scheme "MyScheme"
+
+Please check [documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#build-ipa) to learn about more optional arguments to `xcode-project build-ipa`.
+
 You can change the default artifact location `build/ios/ipa` by specifying [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option. Xcode build log can be found with `/tmp/xcodebuild_logs/*.log` pattern, and dSYM is still available with default Xcode path:
 
-    - build/ios/ipa/*.ipa
-    - /tmp/xcodebuild_logs/*.log
-    - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+    artifacts:
+        - build/ios/ipa/*.ipa
+        - /tmp/xcodebuild_logs/*.log
+        - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 
 {{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}} 
 
