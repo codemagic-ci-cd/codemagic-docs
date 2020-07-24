@@ -14,19 +14,41 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
 
 For building an unsigned iOS app (.app), you need to run the following command in the scripts section:
 
-    - |
-      cd $FCI_BUILD_DIR
-      xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" \
-                       -scheme "MyScheme" \
-                       CODE_SIGN_INDENTITY="" \
-                       CODE_SIGNING_REQUIRED=NO \
-                       CODE_SIGNING_ALLOWED=NO
+    scripts:
+        - xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" \
+                           -scheme "MyScheme" \
+                           CODE_SIGN_INDENTITY="" \
+                           CODE_SIGNING_REQUIRED=NO \
+                           CODE_SIGNING_ALLOWED=NO
+
+If you don't have a workspace, use `-project "MyXcodeProject.xcodeproj"` instead of the `-workspace "MyXcodeWorkspace.xcworkspace"` option.
+
+Your artifact will be generated at the default Xcode path. You can access it by adding the following pattern in the `artifacts` section of `codemagic.yaml`:
+
+    $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+
+If you have Xcode Debugging Symbols enabled, the dSYM file will be generated in the same directory as the app and can be accessed with the following artifact pattern:
+
+    $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 
 ## Building a native iOS app archive (.ipa)
 
-For building an archived iOS app (.ipa), you need to run the following command in the scripts section:
+For building an archived iOS app (.ipa) from your Xcode project, you need to run the following command in the scripts section:
 
-    - xcode-project build-ipa --project "$FCI_BUILD_DIR/MyXcodeProject.xcodeproj" --scheme "MyScheme"
+    - xcode-project build-ipa --project "MyXcodeProject.xcodeproj" --scheme "MyScheme"
+
+You can also build an archive from your Xcode workspace:
+
+    - xcode-project build-ipa --workspace "MyXcodeWorkspace.xcworkspace" --scheme "MyScheme"
+
+Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#build-ipa) to learn about more optional arguments to `xcode-project build-ipa`.
+
+By default, your artifacts will be generated into `build/ios/ipa` but you can specify a different location using the [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option. The Xcode build log can be made available with the `/tmp/xcodebuild_logs/*.log` pattern and the dSYM file will be still available at the default Xcode path.
+
+    artifacts:
+        - build/ios/ipa/*.ipa
+        - /tmp/xcodebuild_logs/*.log
+        - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 
 {{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}} 
 

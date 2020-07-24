@@ -249,7 +249,7 @@ Encrypt and add to environment variables these credentials (the file is named so
 
 Decode application credentials for Firebase authorization:
 
-    echo $GOOGLE_APP_CREDENTIALS | base64 --decode > $FCI_BUILD_DIR/you/file/path.json
+    echo $GOOGLE_APP_CREDENTIALS | base64 --decode > $FCI_BUILD_DIR/your/file/path.json
 
 Build the application:
 
@@ -263,7 +263,7 @@ Call the `gradlew` task for distribution
 
     - |
         # distribute app to firebase with gradle plugin
-        cd $FCI_BUILD_DIR/android
+        cd android
         ./gradlew appDistributionUploadRelease
 
 {{<notebox>}}
@@ -277,7 +277,7 @@ And then export the filepath on the gradlew task
     - |
         # distribute app to firebase with gradle plugin
         export GOOGLE_APPLICATION_CREDENTIALS=/tmp/google-application-credentials.json
-        cd $FCI_BUILD_DIR/android
+        cd android
         ./gradlew appDistributionUploadRelease
 
 {{</notebox>}}
