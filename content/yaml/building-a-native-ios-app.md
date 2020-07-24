@@ -43,7 +43,7 @@ You can also build an archive from your Xcode workspace:
 
 Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#build-ipa) to learn about more optional arguments to `xcode-project build-ipa`.
 
-By default, your artifacts will be generated into `build/ios/ipa` but you can by specify a different location using the [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option. The Xcode build log can be made available with the `/tmp/xcodebuild_logs/*.log` pattern and the dSYM file will be still available at the default Xcode path.
+By default, your artifacts will be generated into `build/ios/ipa` but you can specify a different location using the [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option. The Xcode build log can be made available with the `/tmp/xcodebuild_logs/*.log` pattern and the dSYM file will be still available at the default Xcode path.
 
     artifacts:
         - build/ios/ipa/*.ipa
