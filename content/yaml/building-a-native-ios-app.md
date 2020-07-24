@@ -26,7 +26,7 @@ Your artifact will be generated at the default Xcode path. You can access it by 
 
     $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
 
-If you have Xcode Debugging Symbols enabled, dSYM file will be generated in the same directory as the app and can be accessed with pattern:
+If you have Xcode Debugging Symbols enabled, the dSYM file will be generated in the same directory as the app and can be accessed with the following artifact pattern:
 
     $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 
@@ -36,13 +36,13 @@ For building an archived iOS app (.ipa) from your Xcode project, you need to run
 
     - xcode-project build-ipa --project "MyXcodeProject.xcodeproj" --scheme "MyScheme"
 
-You can use it to build your Xcode workspace:
+You can also build an archive from your Xcode workspace:
 
     - xcode-project build-ipa --workspace "MyXcodeWorkspace.xcworkspace" --scheme "MyScheme"
 
-Please check [documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#build-ipa) to learn about more optional arguments to `xcode-project build-ipa`.
+Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#build-ipa) to learn about more optional arguments to `xcode-project build-ipa`.
 
-You can change the default artifact location `build/ios/ipa` by specifying [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option. Xcode build log can be found with `/tmp/xcodebuild_logs/*.log` pattern, and dSYM is still available with default Xcode path:
+By default, your artifacts will be generated into `build/ios/ipa` but you can by specify a different location using the [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option. The Xcode build log can be made available with the `/tmp/xcodebuild_logs/*.log` pattern and the dSYM file will be still available at the default Xcode path.
 
     artifacts:
         - build/ios/ipa/*.ipa
