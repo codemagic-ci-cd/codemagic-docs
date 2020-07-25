@@ -56,12 +56,15 @@ menu:
     - identifier: rest-api
       name: Codemagic API
       weight: 8
+    - identifier: teams
+      name: Teams
+      weight: 9
     - identifier: troubleshooting
       name: Troubleshooting
-      weight: 9
+      weight: 10
     - identifier: releases-and-versions
       name: Releases and versions
-      weight: 10
+      weight: 11
 
 mediaTypes:
   video/mp4:
