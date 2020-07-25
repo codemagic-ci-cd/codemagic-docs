@@ -42,7 +42,7 @@ Only the team owner can delete teams. To do so, go to the lower part of the page
 
 ## User roles
 
-All members in a team will be able to configure app settings, start and view builds. However, as seen above, team owners have some additional rights. Only team owners can change the team's name, add or remove members <!---or change their roles,--> or delete teams.
+All members in a team will be able to configure app settings, start and view builds. However, as seen above, team owners have some additional rights. Only team owners can change the team's name, add or remove shared applications, add or remove members <!---or change their roles,--> or delete teams.
 
 ## Team integrations
 
