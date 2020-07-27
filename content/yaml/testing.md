@@ -18,7 +18,7 @@ For non-UI tests or unit testing:
 
     ./gradlew test
 
-UI tests (also known as instrumental tests):
+UI tests (also known as instrumented tests):
 
     ./gradlew connectedAndroidTest
 
@@ -32,7 +32,21 @@ UI tests (also known as instrumental tests):
         test | xcpretty
 
 ## Flutter test
+
     flutter test
+
+**Tip:** you can display Flutter test results visually in the build view if you use expanded form of the script in codemagic.yaml.
+Just include the `test_report` field with a glob pattern matching the test result file location:
+
+```yaml
+scripts:
+  - echo 'previous step'
+  - name: Unit tests
+    script: |
+      mkdir -p test-results
+      flutter test --machine > test-results/flutter.json
+    test_report: test-results/flutter.json
+```
 
 ## Flutter drive test
 
