@@ -28,7 +28,7 @@ Changing the name of your team is very simple - just click on the name and you w
 
 To add or remove shared applications, click on **Shared applications** to see the list of available applications. Now just tick the boxes for applications you wish to share with your team — or untick the ones you don't wish to share anymore. This can only be done by the team owner.
 
-### Adding or removing team members
+### Adding/Removing team members
 
 You can add one additional user for free by clicking on **Invite team member**. If you need to add more users, just enable billing (by clicking **Enable billing to add more members**) and you can add additional members to the team. This can only be done by the team owner.
 
