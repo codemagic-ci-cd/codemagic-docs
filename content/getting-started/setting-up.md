@@ -54,12 +54,14 @@ After the build has finished successfully, you will immediately have **artifacts
 
 ## Multiple projects in one repository
 
-Codemagic supports monorepos and is able to detect multiple Flutter projects in a repository provided that each project has its `pubspec.yaml` file.
+Codemagic supports monorepos and is able to detect multiple Flutter projects in a repository or projects not in the repository root provided that each project has its `pubspec.yaml` file with `flutter` dependency.
 
-The first build is run for the project whose `pubspec.yaml` file was found first. After the first build, you can select the project for building from the **Project file path** dropdown in the Build section of app settings.
+In case of multiple projects the first build is run for the project with highest number of platforms (presence of `android`, `ios` etc. directories). After the first build, you can select the project for building from the **Project file path** dropdown in the Build section of app settings.
+
+The scan is run for the first build only. If you change your project location or add new ones, try **rescanning the application**. This updates the repository settings in Codemagic, which is useful when you renamed your repository, moved the Flutter project inside the repository, renamed the folder containing the project or added new project(s). The **Rescan application** option is available in **App settings > Repository settings**.
 
 {{<notebox>}}
-If your projects don't show up, try **rescanning the application**. This updates the repository settings in Codemagic, which is useful when you have moved or renamed your repository, moved the Flutter project inside the repository or renamed the folder containing the project. The **Rescan application** option is available in **App settings > Repository settings**.
+**Rescan** option is not available for repositories added from custom source. Instead project paths are scanned on each new build and updated on change.
 {{</notebox>}}
 
 ## Next steps
