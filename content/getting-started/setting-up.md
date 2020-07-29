@@ -56,12 +56,10 @@ After the build has finished successfully, you will immediately have **artifacts
 
 Codemagic supports monorepos and is able to detect multiple Flutter projects in a repository or projects not in the repository root provided that each project has its `pubspec.yaml` file with `flutter` dependency.
 
-In case of multiple projects the first build is run for the project with highest number of platforms (presence of `android`, `ios` etc. directories). After the first build, you can select the project for building from the **Project file path** dropdown in the Build section of app settings.
-
-The scan is run for the first build only. If you change your project location or add new ones, try **rescanning the application**. This updates the repository settings in Codemagic, which is useful when you renamed your repository, moved the Flutter project inside the repository, renamed the folder containing the project or added new project(s). The **Rescan application** option is available in **App settings > Repository settings**.
+Initially applications have only one project path `.` which means the root of the repository. We run scan during the first build and in case of multiple projects the first build is run for the project with highest number of platforms (presence of `android`, `ios` etc. directories). You can select the project for building from the **Project path** dropdown in the Build section of app settings. If you change your project location in the repository, rename it's parent directory or add new projects, try **rescanning project paths**. The **Rescan** button is available on the right from **Project path** dropdown. It asks you which branch you want to search for projects and will update the project paths correspondingly to the content of chosen branch.
 
 {{<notebox>}}
-**Rescan** option is not available for repositories added from custom source. Instead project paths are scanned on each new build and updated on change.
+**Rescan** option is not available for repositories added from custom source. Instead project paths are scanned on each new build and are updated on change.
 {{</notebox>}}
 
 ## Next steps
