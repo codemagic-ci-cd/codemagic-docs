@@ -8,7 +8,7 @@ Codemagic enables you to automatically publish your app to App Store Connect for
 
 ## Requirements
 
-Codemagic needs your **Apple ID** and [**app-specific password**](https://support.apple.com/en-us/HT204397) as well as your **app's unique identifier (app ID)** to perform publishing to App Store Connect on your behalf. Publishing to App Store Connect requires that the app be signed with App Store **distribution certificate**.
+Codemagic needs your **Apple ID** and [**app-specific password**](https://support.apple.com/en-us/HT204397) to perform publishing to App Store Connect on your behalf. Publishing to App Store Connect requires that the app be signed with App Store **distribution certificate**.
 
 In addition, the application must be **App Store ready** for build distribution, meaning that it must have all the correct icons and icon sizes, otherwise App Store Connect will tag the binary as invalid, and you will not be able to distribute it at all.
 
@@ -16,20 +16,11 @@ It is also worth pointing out the necessity for each uploaded binary to have a *
 
 {{<notebox>}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. {{</notebox>}}
 
-## Finding your app ID
-
-1. Log in to [App Store Connect](https://appstoreconnect.apple.com/login).
-2. Navigate to **My Apps**.
-3. Select your app and click **App Information**.
-4. You can then see your app's identifier (confusingly named **Apple ID**) in the **General Information** section.
-
-{{< figure size="medium" src="../uploads/2019/03/app store connect_app ID.png" caption="Finding your app's unique identifier" >}}
-
 ## Setting up publishing to App Store Connect on Codemagic
 
 1. Navigate to the Publish section in app settings.
 2. Click **App Store Connect**.
-3. Enter your **Apple ID** (the email address used for login), your **app-specific password** and **App ID** (your app's unique identifier in App Store Connect).
+3. Enter your **Apple ID** (the email address used for login) and your **app-specific password**.
 4. Select **Enable App Store Connect publishing** at the top of the section to enable publishing.
 5. Click **Save** to finish the setup.
 
