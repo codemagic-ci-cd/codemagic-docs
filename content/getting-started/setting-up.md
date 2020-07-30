@@ -56,10 +56,10 @@ After the build has finished successfully, you will immediately have **artifacts
 
 Codemagic supports monorepos and is able to detect multiple Flutter projects in a repository or projects not in the repository root provided that each project has its `pubspec.yaml` file with `flutter` dependency.
 
-Initially applications have only one project path `.` which means the root of the repository. We run scan during the first build and in case of multiple projects the first build is run for the project with highest number of platforms (presence of `android`, `ios` etc. directories). You can select the project for building from the **Project path** dropdown in the Build section of app settings. If you change your project location in the repository, rename it's parent directory or add new projects, try **rescanning project paths**. The **Rescan** button is available on the right from **Project path** dropdown. It asks you which branch you want to search for projects and will update the project paths correspondingly to the content of chosen branch.
+Initially applications have only one project path `.` which means the root of the repository. We run scan during the first build and in case of multiple projects the first build is run for the project with highest number of platforms (presence of `android`, `ios` etc. directories). You can select the project for building from the **Project path** dropdown in the Build section of app settings. If you have changed your project location in the repository, renamed it's parent directory or added new projects, try **rescanning project paths**. The button is available on the right from **Project path** dropdown. It asks you which branch you want to search for projects and will update the project paths correspondingly to the content of the chosen branch.
 
 {{<notebox>}}
-**Rescan** option is not available for repositories added from custom source. Instead project paths are scanned on each new build and are updated on change.
+**Rescan** option is not available for repositories added from custom source. Instead, project paths are scanned on each new build and are updated on change.
 {{</notebox>}}
 
 ## Next steps
