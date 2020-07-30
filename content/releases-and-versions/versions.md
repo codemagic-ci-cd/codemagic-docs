@@ -13,7 +13,7 @@ weight: 2
 
 - System version `macOS 10.15.4 (19E287)`
 - Kernel version `Darwin 19.4.0`
-- Disk `322GB (Free Space: 43GB)`
+- Disk `322GB (Free Space: 50GB)`
 
 ## Pre-installed tools
 
@@ -22,18 +22,18 @@ weight: 2
 - curl
 - dart `2.8.4`
 - docker `19.03.8`
-- fastlane `2.150.3`
+- fastlane `2.153.1`
 - firebase `7.6.2`
 - flutter `1.17.5 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - git `2.27.0`
-- gradle `5.5.1`
-- homebrew `2.4.3`
+- gradle `6.1.1`
+- homebrew `2.4.8`
 - jq
 - node `12.14.0`
-- npm `6.14.5`
+- npm `6.14.7`
 - python `2.7.17`
-- python3 `3.7.8`
+- python3 `3.8.5`
 - ruby `2.6.5p114`
 - ssh
 - sudo
@@ -43,21 +43,16 @@ weight: 2
 - yarn `1.22.4`
 - zip
 
-## Xcode 11.5 (11E608c)
+## Xcode 11.6 (11E708)
 
 This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
-Xcode path: `/Applications/Xcode-11.5.app`
+Xcode path: `/Applications/Xcode-11.6.app`
 
-With Xcode `11.5` build version `11E608c` the following runtimes and devices are installed:
+With Xcode `11.6` build version `11E708` the following runtimes and devices are installed:
 
 ### Runtimes
 
-- iOS 10.3
-- iOS 11.0
-- iOS 11.1
-- iOS 11.2
-- iOS 11.3
 - iOS 11.4
 - iOS 12.0
 - iOS 12.1
@@ -69,6 +64,7 @@ With Xcode `11.5` build version `11E608c` the following runtimes and devices are
 - iOS 13.3
 - iOS 13.4
 - iOS 13.5
+- iOS 13.6
 - tvOS 11.3
 - tvOS 13.4
 - watchOS 6.2
@@ -131,7 +127,7 @@ With Xcode `11.5` build version `11E608c` the following runtimes and devices are
 
 ## Other Xcode versions
 
-- 11.6 (11N700h) `/Applications/Xcode-11.6.app`
+- 11.5 (11E608c) `/Applications/Xcode-11.5.app`
 - 11.4.1 (11E503a) `/Applications/Xcode-11.4.app`
 - 11.3.1 (11C505) `/Applications/Xcode-11.3.app`
 - 11.2.1 (11B500) `/Applications/Xcode-11.2.1.app`
