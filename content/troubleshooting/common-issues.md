@@ -92,3 +92,24 @@ When building for iOS, the build gets stuck after showing `Xcode build done` in 
 * https://github.com/flutter/flutter/issues/35988
 
 This issue is known to be fixed on the `master` channel.
+
+## iOS build error with `Provisioning profile`
+
+**Description**:
+
+This issue takes place when trying to use an outdated  Provisioning profile that do not include 
+Associated Domains. 
+
+**Log output**: 
+
+❌ error: Provisioning profile "CodeMagic" doesn't support the Associated Domains capability. (in target 'Runner' from project 'Runner') 
+❌ error: Provisioning profile "CodeMagic" doesn't include the com.apple.developer.associated-domains entitlement. (in target 'Runner' from project 'Runner')
+
+**Solution**: 
+
+ Log in to Apple Developer Account and verify :
+  - That you have the correct bundle Id.  
+  - If missing add the Associated Domain Entitlement from there.
+  - Update Provisioning profile and use it in to configure your project.
+
+ 
