@@ -97,7 +97,7 @@ This issue is known to be fixed on the `master` channel.
 
 **Description**:
 
-This issue takes place when trying to use an outdated  Provisioning profile that do not include 
+This issue takes place when trying to use an outdated **Provisioning** profile that do not include 
 Associated Domains. 
 
 **Log output**: 
