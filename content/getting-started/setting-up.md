@@ -54,12 +54,12 @@ After the build has finished successfully, you will immediately have **artifacts
 
 ## Multiple projects in one repository
 
-Codemagic supports monorepos and is able to detect multiple Flutter projects in a repository provided that each project has its `pubspec.yaml` file.
+Codemagic supports monorepos and is able to detect multiple Flutter projects in a repository or projects not in the repository root provided that each project has its `pubspec.yaml` file with `flutter` dependency.
 
-The first build is run for the project whose `pubspec.yaml` file was found first. After the first build, you can select the project for building from the **Project file path** dropdown in the Build section of app settings.
+Initially, the only project path for every application is `.` — the root of the repository. We run scan during the first build and in case of multiple projects, the first build is run for the project with highest number of platforms (presence of `android`, `ios` etc. directories). You can select the project for building from the **Project path** dropdown in the Build section of app settings. If you have changed your project location in the repository, renamed its parent directory or added new projects, try **rescanning project paths**. There is a button for it on the right from the **Project path** dropdown. It asks you, which branch you want to search for projects, and will update the project paths according to the content of the chosen branch.
 
 {{<notebox>}}
-If your projects don't show up, try **rescanning the application**. This updates the repository settings in Codemagic, which is useful when you have moved or renamed your repository, moved the Flutter project inside the repository or renamed the folder containing the project. The **Rescan application** option is available in **App settings > Repository settings**.
+**Rescan** option is not available for repositories added from custom source. Instead, project paths are scanned on each new build and are updated on change.
 {{</notebox>}}
 
 ## Next steps
