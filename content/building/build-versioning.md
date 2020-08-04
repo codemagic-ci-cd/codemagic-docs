@@ -16,3 +16,18 @@ Here are some examples of the build arguments you can use to increment the app v
 `--build-name=2.0.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER + 100))`
 
 `--build-name=1.0.0 --build-number=$BUILD_NUMBER`
+
+
+When build number should be fetched from *pubsec.yaml* 
+
+- add a prebuild script that install [yq](https://github.com/mikefarah/yq), a lightweight and portable command-line YAML processor, add the
+following command to the pre build script so yq can be installed. 
+
+```
+#!/usr/bin/env sh
+HOMEBREW_NO_AUTO_UPDATE=1 brew install yq
+```
+
+The head to App settings > Build > and in the *Build arguments* field:
+
+`--build-number=$(cat ./pubspec.yaml | yq r - version)`  
