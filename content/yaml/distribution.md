@@ -143,7 +143,6 @@ Use the following script:
         credentials: Encrypted(...)
         track: alpha
       app_store_connect:                  # For iOS app
-        app_id: '...'                     # App's unique identifier in App Store Connect
         apple_id: name@example.com        # Email address used for login
         password: Encrypted(...)          # App-specific password
 
@@ -176,14 +175,14 @@ Android
       # publish the app to Firebase App Distribution
       apkPath=$(find build -name "*.apk" | head -1)
       echo "Found apk at $apkPath"
-        
+
       if [[ -z ${apkPath} ]]
       then
         echo "No apks were found, skip publishing to Firebase App Distribution"
       else
         echo "Publishing $apkPath to Firebase App Distribution"
         firebase appdistribution:distribute --app <your_android_application_firebase_id> --groups <your_android_testers_group> $apkPath
-      fi  
+      fi
 
 iOS
 
@@ -198,7 +197,7 @@ iOS
       else
         echo "Publishing $ipaPath to Firebase App Distribution"
         firebase appdistribution:distribute --app <your_ios_application_firebase_id> --groups <your_ios_testers_group> $ipaPath
-      fi 
+      fi
 
 #### Publishing an app with Fastlane
 
