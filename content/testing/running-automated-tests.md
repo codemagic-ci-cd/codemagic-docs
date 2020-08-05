@@ -34,6 +34,23 @@ There are several options for running integration tests during the build. You ca
 * Android emulator
 * [AWS Device Farm](./aws) --- enables to run tests on physical Android and iOS devices. Requires an AWS account and additional setup.
 
+Devices available on the machine are:
+
+```sh
+> flutter emulators
+3 available emulators:
+
+emulator            • emulator      • Google • android
+nc-emulator         • nc-emulator   • Google • android
+apple_ios_simulator • iOS Simulator • Apple  • ios
+```
+
+It's recommended to launch desired emulator before the tests start:
+
+```sh
+flutter emulators --launch ios
+```
+
 {{<notebox>}}
 
 **Tip**: You can set up separate [workflows](../getting-started/creating-workflows/) to run tests both on iOS and Android.
