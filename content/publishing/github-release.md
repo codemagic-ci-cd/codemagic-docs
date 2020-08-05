@@ -21,7 +21,7 @@ Publishing to GitHub happens only for successful builds triggered on tag creatio
 
 {{</notebox>}}
 
-You can control which of the generated artifacts will be uploaded to the created release by defining artifact name glob patterns. You can use a specific name e.g. `app-release.apk` or use glob patterns. Two patterns `*.apk` and `*.ipa` are added by default. To add a new pattern, enter the pattern and click **Add**. Don't forget to click **Save** when you are done. Note that you can delete added patterns anytime.
+You can control which of the generated artifacts will be uploaded to the created release by defining artifact name glob patterns. You can use a specific name, e.g. `app-release.apk` or use glob patterns. Two patterns `*.apk` and `*.ipa` are added by default. To add a new pattern, enter the pattern and click **Add**. Don't forget to click **Save** when you are done. Note that you can delete added patterns anytime.
 
 {{<notebox>}}
 
