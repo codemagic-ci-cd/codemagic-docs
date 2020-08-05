@@ -13,7 +13,7 @@ Codemagic enables you to automatically create a GitHub release and upload genera
 
 ## Setting up GitHub release publishing.
 
-The setting can be found in **App settings > Publish > GitHub releases**. You can enable it with **Create a release and publish artifacts** checkbox. To notify users that the release is not ready for production and may be unstable, mark it as **pre-release** by enabling checkbox **Mark build as pre-release**.
+The setting can be found in **App settings > Publish > GitHub releases**. To enable it, check the **Create a release and publish artifacts** checkbox. To notify users that the release is not ready for production and may be unstable, mark it as **pre-release** by enabling checkbox **Mark build as pre-release**.
 
 {{<notebox>}}
 
@@ -21,7 +21,7 @@ Publishing to GitHub happens only for successful builds triggered on tag creatio
 
 {{</notebox>}}
 
-You can control which of the generated artifacts will be uploaded to the created release by defining artifact name glob patterns. You can use a specific name e.g. `app-release.apk` or use glob patterns. Two patterns `*.apk` and `*.ipa` are added by default, you can delete them. To add a new pattern, enter the pattern and click **Add**. Don't forget to click **Save**. Note that you can delete added patterns anytime.
+You can control which of the generated artifacts will be uploaded to the created release by defining artifact name glob patterns. You can use a specific name e.g. `app-release.apk` or use glob patterns. Two patterns `*.apk` and `*.ipa` are added by default. To add a new pattern, enter the pattern and click **Add**. Don't forget to click **Save** when you are done. Note that you can delete added patterns anytime.
 
 {{<notebox>}}
 
