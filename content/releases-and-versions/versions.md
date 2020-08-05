@@ -28,7 +28,7 @@ weight: 2
 - gem `3.0.3`
 - git `2.27.0`
 - gradle `6.1.1`
-- homebrew `2.4.8`
+- homebrew `2.4.9`
 - jq
 - node `12.14.0`
 - npm `6.14.7`
@@ -41,6 +41,7 @@ weight: 2
 - unzip
 - wget
 - yarn `1.22.4`
+- yq
 - zip
 
 ## Xcode 11.6 (11E708)
