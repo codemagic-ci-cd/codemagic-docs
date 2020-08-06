@@ -36,12 +36,8 @@ There are several options for running integration tests during the build. You ca
 
 Devices available on the machine are:
 
-```sh
-> flutter emulators
-3 available emulators:
-
+```
 emulator            • emulator      • Google • android
-nc-emulator         • nc-emulator   • Google • android
 apple_ios_simulator • iOS Simulator • Apple  • ios
 ```
 
@@ -49,6 +45,12 @@ It's recommended to launch desired emulator before the tests start:
 
 ```sh
 flutter emulators --launch ios
+```
+
+or
+
+```
+flutter emulators --launch emulator
 ```
 
 {{<notebox>}}
