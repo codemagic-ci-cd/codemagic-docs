@@ -156,7 +156,7 @@ GitHub releases publishing only works for GitHub repositories.
 
 Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
 
-Note that using `*` wildcard in the beginning of the pattern requires to wrap the pattern in quotes, otherwise it will violate `yaml` syntax.
+Note that using `*` wildcard in the beginning of the pattern requires quotation marks around the pattern, otherwise it will violate the `yaml` syntax.
 {{</notebox>}}
 
 
