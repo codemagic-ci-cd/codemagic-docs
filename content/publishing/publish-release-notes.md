@@ -8,10 +8,10 @@ Create custom release notes file(s) to notify users of the changes as you publis
 
 Release notes can be published to:
 
-* **email**. The release notes will be included in the publishing email of a successful build if you have publishing to email configured in App settings > Publish > Email.
-* **Slack**. The release notes will be included in the Slack notification of a successful build if you have Slack publishing configured in App settings > Publish > Slack.
-* **GitHub Releases**. The release notes will be published to a release if you have GitHub releases configured in App settings > Publish > GitHub releases.
-* **Google Play**. The release notes will be published to Google Play Console if you have Google Play publishing configured in App settings > Publish > Google Play.
+* **email**. The release notes will be included in the publishing email of a successful build if you have the publishing configured in **App settings > Publish > Email**.
+* **Slack**. The release notes will be included in the Slack notification of a successful build if you have the publishing configured in **App settings > Publish > Slack**.
+* **GitHub Releases**. The release notes will be published to a release if you have the publishing configured in **App settings > Publish > GitHub releases**.
+* **Google Play**. The release notes will be published to Google Play Console if you have the publishing configured in **App settings > Publish > Google Play**.
 
 ## Setting up release notes
 
