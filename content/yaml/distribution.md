@@ -145,6 +145,20 @@ Use the following script:
       app_store_connect:                  # For iOS app
         apple_id: name@example.com        # Email address used for login
         password: Encrypted(...)          # App-specific password
+      github_releases:
+        prerelease: false
+        artifact_patterns:
+          - app-release.apk
+          - '*.aab'
+
+{{<notebox>}}
+GitHub releases publishing only works for GitHub repositories.
+
+Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
+
+Note that using `*` wildcard in the beginning of the pattern requires quotation marks around the pattern, otherwise it will violate the `yaml` syntax.
+{{</notebox>}}
+
 
 ### Publishing a Flutter package to pub.dev
 
