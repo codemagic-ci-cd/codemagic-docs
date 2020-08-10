@@ -31,3 +31,9 @@ If a build finished successfully, release notes (if passed) and generated artifa
 If a build has failed, a link for the build logs is sent out. Check **Publish artifacts even if tests fail** to publish artifacts even when one or more tests fail. If the option is unchecked, generated artifacts (if any) will be attached to successful builds only.
 
 To receive a notification when a build starts, check the checkbox **Notify when build starts**.
+
+
+{{<notebox>}}
+* `app`, `ipa`, `apk`, archive with Flutter web build directory and Linux application bundle files will be published.
+* All the artifacts found by patterns in `.yaml` configuration will be published. More information on artifacts with `.yaml` configuration is [here](https://docs.codemagic.io/yaml/yaml/#artifacts).
+{{</notebox>}}
