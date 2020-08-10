@@ -78,3 +78,8 @@ Safari
             safaridriver --port 4444 &
             flutter config --enable-web
             flutter drive --target=test_driver/button_pressing.dart --browser-name safari --release
+
+
+{{<notebox>}}
+Make sure you use Flutter channel **Beta** or higher since web platform is not available on **Stable**.
+{{</notebox>}}
