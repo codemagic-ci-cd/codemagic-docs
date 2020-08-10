@@ -50,5 +50,31 @@ scripts:
 
 ## Flutter drive test
 
-    flutter emulators --launch apple_ios_simulator                  # for android use: flutter emulators --launch emulator
-    flutter drive --target=test_driver/my_drive_target.dart
+#### On a mobile emulator
+
+        flutter emulators --launch apple_ios_simulator             # for android use: flutter emulators --launch emulator
+        flutter drive --target=test_driver/my_drive_target.dart
+
+#### Web on a browser
+
+Chrome
+
+      scripts:
+        - echo 'previous step'
+        - name: 'Flutter drive web test'
+          script: |
+            chromedriver --port=4444 &
+            flutter config --enable-web
+            flutter drive --target=test_driver/button_pressing.dart -d chrome --browser-name chrome --release
+
+
+Safari
+
+      scripts:
+        - echo 'previous step'
+        - name: 'Flutter drive web test'
+          script: |
+            sudo safaridriver --enable
+            safaridriver --port 4444 &
+            flutter config --enable-web
+            flutter drive --target=test_driver/button_pressing.dart --browser-name safari --release
