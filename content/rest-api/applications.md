@@ -67,3 +67,26 @@ Adds a Git repository to the applications list.
     "appName": "my-repo"
 }
 ```
+
+## Encrypt an environment variable
+
+`POST /apps/:id/encrypt-environment-variable`
+
+Generates an encrypted string that will be decrypted inside our machines when building the app. It can be used in YAML environment variables without exposing the plain text content in version control.
+
+Note that the variables will need to be re-generated when moving the app to a different team.
+
+### CURL example
+
+```bash
+curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
+ -H 'X-Auth-Token: your-token' \
+ -H 'Content-Type: application/json;charset=utf-8' \
+ --data '{"value":"your value"}'
+```
+
+### Response
+
+```json
+{"encrypted":"Encrypted(Z0FBQUFBQmZMVkhwb3Q3QlJtRlVOeVFJcEJvTTRtWnZablpqMS0xN2V6dllTell1ODZSd2FUcnNqMUlZT09QY1paV0pjbVRfUlVJeDUxRWIzX1paOEZlc1dSdi1XMXlkUFVIdjNIZ2VqcE5Ja0tpMjlPWjhlSTQ9)"}
+```
