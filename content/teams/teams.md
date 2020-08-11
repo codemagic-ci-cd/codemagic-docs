@@ -3,7 +3,7 @@ title: Working in teams
 weight: 1
 ---
 
-If more than one developer is contributing to a project, it is wiser to set up a team so that everyone could work on the project together. Up to two seats in a team are free of charge but it is possible to invite more members by purchasing additional seats. Billing information is available [here](https://codemagic.io/pricing/).
+If more than one developer is contributing to a project, it is wiser to set up a team so that everyone could work on the project together. Up to two seats in a team are free of charge, but it is possible to invite more members by purchasing additional seats. Billing information is available [here](https://codemagic.io/pricing/).
 
 {{<notebox>}}Note that teams who enabled billing before June, 2020, and have not yet migrated to the new billing, still operate under the previous billing system. Changing team roles and having multiple owners is not possible in such teams.{{</notebox>}}
 
