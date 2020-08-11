@@ -68,7 +68,7 @@ Adds a Git repository to the applications list.
 }
 ```
 
-## Encrypt and environment variable
+## Encrypt an environment variable
 
 `POST /apps/:id/encrypt-environment-variable`
 
