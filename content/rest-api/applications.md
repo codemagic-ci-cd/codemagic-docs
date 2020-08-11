@@ -78,7 +78,7 @@ Note that the variables will need to be re-generated when moving the app to a di
 
 ### CURL example
 
-```bash
+```
 curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
  -H 'X-Auth-Token: your-token' \
  -H 'Content-Type: application/json;charset=utf-8' \
