@@ -43,7 +43,7 @@ To receive a notification when a build starts, check the checkbox **Notify when 
 
 ## Published artifacts
 
-When setting up email or Slack publishing, Codemagic publishes the following artifacts:
+When you set up email or Slack publishing, Codemagic publishes the following artifacts:
 
 * `app`, `ipa`, `apk`, the archive with Flutter web build directory, Linux application bundle files
 * All the artifacts found by patterns in `codemagic.yaml`, read more about it [here](../yaml/yaml/#artifacts).
