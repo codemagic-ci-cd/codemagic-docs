@@ -78,6 +78,7 @@ As the next step, you can [configure publishing to App Store Connect](../publish
 ## Manual code signing
 
 With the manual code signing method, you are required to upload the signing certificate and the matching provisioning profile(s) to Codemagic in order to receive signed builds.
+This is required when distributing your app via Apple Developer Enterprise Program or Apple Business Manager. 
 
 >See how to [export certificates and provisioning profiles](#exporting-certificates-and-provisioning-profiles).
 
