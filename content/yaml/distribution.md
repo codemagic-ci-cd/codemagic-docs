@@ -153,13 +153,13 @@ Use the following script:
 
 {{<notebox>}}
 
-Slack publishing will only work after Slack integration is enabled. For personal applications it's done from **User settings > Integration > Slack**, and for applications which belong to a team it's done from **Teams > Your_team > Team integrations > Slack**.
+A prerequisite for Slack publishing is connecting the Slack workspace in **User settings > Integrations > Slack** for personal applications and in **Teams > Your_team > Team integrations > Slack** for team apps.
 
 {{</notebox>}}
 <br>
 
 {{<notebox>}}
-GitHub releases publishing only works for GitHub repositories.
+GitHub releases is available for GitHub repositories only.
 
 Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
 
