@@ -48,16 +48,16 @@ scripts:
     test_report: test-results/flutter.json
 ```
 
-## Flutter integration test
+## Flutter integration tests
 
-`flutter_driver` dependency allows you to run integration tests on a real device or emulator. Thus, Android application tests can be run on a Android emulator, iOS application tests can be run on an iOS simulator, and web application tests can be run on a web browser driver.
+The `flutter_driver` dependency allows you to run integration tests on a real device or emulator. Android application tests can be run on an Android emulator, iOS application tests can be run on an iOS simulator, and web application tests can be run on a web browser driver.
 
-### Running an iOS/Android application tests on a mobile simulator/emulator
+### Running iOS/Android application tests on a mobile simulator/emulator
 
         flutter emulators --launch apple_ios_simulator             # for android use: flutter emulators --launch emulator
         flutter drive --target=test_driver/my_drive_target.dart
 
-### Running a web application tests on a web browser driver
+### Running web application tests on a web browser driver
 
 Chrome
 
@@ -83,5 +83,5 @@ Safari
 
 
 {{<notebox>}}
-Make sure you use Flutter channel **Beta** or higher since Flutter for web is not yet available on **Stable**.
+Make sure to use Flutter channel **Beta** or higher since Flutter for web is not yet available on **Stable**.
 {{</notebox>}}
