@@ -15,7 +15,7 @@ If the build finishes successfully, release notes (if passed) and the generated 
 If the build fails, you will be sent a link to the build logs. Check the **Publish artifacts even if tests fail** option in the UI to publish artifacts even when one or more tests fail. If that option is unchecked, generated artifacts (if there are any) will be attached only to successful builds.
 
 {{<notebox>}}
-See how to set up email publishing with YAML [here](https://docs.codemagic.io/yaml/distribution/#publishing). Note that skipping publishing artifacts when tests fail is not available for YAML builds.
+See how to set up email publishing with YAML [here](../yaml/distribution/#publishing). Note that skipping publishing artifacts when tests fail is not available for YAML builds.
 {{</notebox>}}
 
 ### MS Teams
@@ -37,7 +37,7 @@ If the build fails, a link to the build logs is published. Check **Publish artif
 To receive a notification when a build starts, check the checkbox **Notify when build starts**.
 
 {{<notebox>}}
-* See how to set up Slack publishing and notifications with YAML [here](https://docs.codemagic.io/yaml/distribution/#publishing). Note that connecting the Slack integration either in user or team settings in Codemagic UI is a prerequisite for publishing to Slack.
+* See how to set up Slack publishing and notifications with YAML [here](../yaml/distribution/#publishing). Note that connecting the Slack integration either in user or team settings in Codemagic UI is a prerequisite for publishing to Slack.
 * Skipping publishing artifacts when tests fail is not available for YAML builds.
 {{</notebox>}}
 
@@ -46,4 +46,4 @@ To receive a notification when a build starts, check the checkbox **Notify when 
 When setting up email or Slack publishing, Codemagic publishes the following artifacts:
 
 * `app`, `ipa`, `apk`, the archive with Flutter web build directory, Linux application bundle files
-* All the artifacts found by patterns in `codemagic.yaml`, read more about it [here](https://docs.codemagic.io/yaml/yaml/#artifacts).
+* All the artifacts found by patterns in `codemagic.yaml`, read more about it [here](../yaml/yaml/#artifacts).
