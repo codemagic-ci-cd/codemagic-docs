@@ -214,7 +214,7 @@ body {
           }
 
             h1 {
-                font-size: 50px;
+                font-size: 48px;
                 position: relative;
                 padding-bottom: 40px;
                 margin-top: 0;
@@ -230,11 +230,11 @@ body {
                     left: 0;
                 }
             }
-            h2 { font-size: 33px; }
-            h3 { font-size: 29px; }
-            h4 { font-size: 26px; }
-            h5 { font-size: 23px; }
-            h6 { font-size: 20px; }
+            h2 { font-size: 36px; }
+            h3 { font-size: 26px; }
+            h4 { font-size: 22px; }
+            h5 { font-size: 20px; }
+            h6 { font-size: 18px; }
 
 
             p, li { line-height: 28px; }
@@ -415,24 +415,18 @@ body {
         @media (max-width: 760px) {
             margin: 80px 0 0;
             main {
-                h1 { font-size: 40px; }
-                h2 { font-size: 33px; }
-                h3 { font-size: 29px; }
-                h4 { font-size: 26px; }
-                h5 { font-size: 23px; }
-                h6 { font-size: 20px; }
+                h1 { font-size: 30px; }
+                h2 { font-size: 24px; }
+                h3 { font-size: 21px; }
+                h4 { font-size: 18px; }
+                h5 { font-size: 18px; }
+                h6 { font-size: 18px; }
             }
         }
         @media (max-width: 480px) {
             main {
                 font-size: 14px;
                 padding: 32px 40px 50px 40px;
-                h1 { font-size: 30px; }
-                h2 { font-size: 26px; }
-                h3 { font-size: 24px; }
-                h4 { font-size: 22px; }
-                h5 { font-size: 20px; }
-                h6 { font-size: 18px; }
                 p, li { line-height: 22px; }
                 p, ul, ol, pre, hr, figure { margin: 20px auto; }
                 figure {
