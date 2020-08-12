@@ -196,7 +196,18 @@ To avoid running builds on outdated commits, you can set `cancel_previous_builds
 
 ### Scripts
 
-Scripts specify what kind of application is built. This is where you can specify the commands to test, build and code sign your project. There are example scripts available for building a [Flutter application](./building-a-flutter-app/), [React Native application](./building-a-react-native-app/), [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
+Scripts specify what kind of application is built. This is where you can specify the commands to test, build and code sign your project.
+
+    scripts:
+      - flutter test
+      - |
+        #!/usr/bin/env python3
+
+        print('Multiline python script')
+      - name: Build for iOS
+        script: flutter build ios
+
+There are example scripts available for building a [Flutter application](./building-a-flutter-app/), [React Native application](./building-a-react-native-app/), [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
 
 ### Testing
 
