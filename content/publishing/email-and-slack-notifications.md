@@ -24,10 +24,19 @@ Use only the part in angle brackets from the whole address line (e.g. `My awesom
 
 Publishing settings for Slack can be found in **App settings > Publish > Slack**.
 
-To be able to use this publishing option, you need to enable Slack integration at **User settings > Integration > Slack**. Once your Slack workspace is connected, you can choose a channel that is going to be used for this.
+To be able to use this publishing option for your personal applications, you need to enable Slack integration at **User settings > Integration > Slack**. Once your Slack workspace is connected, you can choose a channel that is going to be used for this. 
+
+Similarly, if you want to use this publishing option for an application which belongs to a team, you need to enable Slack integration at **Teams > Your_team > Team integrations > Slack**.
 
 If a build finished successfully, release notes (if passed) and generated artifacts are published in the specified channel.
 
 If a build has failed, a link for the build logs is sent out. Check **Publish artifacts even if tests fail** to publish artifacts even when one or more tests fail. If the option is unchecked, generated artifacts (if any) will be attached to successful builds only.
 
 To receive a notification when a build starts, check the checkbox **Notify when build starts**.
+
+
+{{<notebox>}}
+* `app`, `ipa`, `apk`, archive with Flutter web build directory and Linux application bundle files will be published.
+* Email and Slack publishing settings can also be set from `codemagic.yaml`. More details [here](https://docs.codemagic.io/yaml/distribution/#publishing). Keep in mind that Slack integration still needs to be enabled.
+* All the artifacts found by patterns in `.yaml` configuration will be published. More information on artifacts with `.yaml` configuration is [here](https://docs.codemagic.io/yaml/yaml/#artifacts).
+{{</notebox>}}

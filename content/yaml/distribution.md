@@ -130,7 +130,7 @@ Use the following script:
 
 ## Publishing
 
-`publishing:` for every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play and App Store Connect.
+`publishing:` for every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Github releases.
 
     publishing:
       email:
@@ -150,6 +150,13 @@ Use the following script:
         artifact_patterns:
           - app-release.apk
           - '*.aab'
+
+{{<notebox>}}
+
+Slack publishing will only work after Slack integration is enabled. For personal applications it's done from **User settings > Integration > Slack**, and for applications which belong to a team it's done from **Teams > Your_team > Team integrations > Slack**.
+
+{{</notebox>}}
+<br>
 
 {{<notebox>}}
 GitHub releases publishing only works for GitHub repositories.
