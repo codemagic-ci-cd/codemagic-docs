@@ -24,7 +24,7 @@ weight: 2
 - docker `19.03.8`
 - fastlane `2.153.1`
 - firebase `7.6.2`
-- flutter `1.17.5 ($HOME/programs/flutter)`
+- flutter `1.20.2 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - git `2.27.0`
 - gradle `6.1.1`
