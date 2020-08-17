@@ -24,7 +24,7 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
 
   1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
   2. Click on the + sign to generate a new API key.
-  3. Enter the name for the key and select an access level (`Admin` or `Developer`).
+  3. Enter the name for the key and select an access level (`Developer` or `App Manager`).
   4. Click **Generate**.
   5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key. Note that the key can only be downloaded once.
 
@@ -46,13 +46,13 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
 Alternatively, each property can be specified in the scripts section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
 {{</notebox>}}
 
+### Setting up manual code signing
+
 In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sensitive-data) your signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile, and set the encrypted values to the following environment variables:
 
     CM_CERTIFICATE: Encrypted(...)
     CM_CERTIFICATE_PASSWORD: Encrypted(...)
     CM_PROVISIONING_PROFILE: Encrypted(...)
-
-### Setting up manual code signing
 
 With the manual code signing method, you are required to upload the signing certificate and the matching provisioning profile(s) to Codemagic in order to receive signed builds.
 
