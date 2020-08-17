@@ -10,9 +10,9 @@ Code signing is required for distributing your Android app to Google Play store.
 
 To receive a signed release .apk of your app on Codemagic, you will have to:
 
-1. [Prepare your Flutter project for code signing](https://docs.codemagic.io/code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing)
+1. [Prepare your Flutter project for code signing](#preparing-your-flutter-project-for-code-signing)
 
-2. [Set up Android code signing in Codemagic UI](https://docs.codemagic.io/code-signing/android-code-signing/#setting-up-android-code-signing-on-codemagic)
+2. [Set up Android code signing in Codemagic UI](#setting-up-android-code-signing-on-codemagic)
 
 For code signing, you need to upload the **keystore** containing your **certificate** and **key**. See the instructions for generating the keystore [here](#generating-a-keystore).
 
@@ -37,7 +37,7 @@ You need to upload the keystore and provide the keystore password, key alias and
 
 ## Preparing your Flutter project for code signing
 
-There are several approaches you can use to prepare your Flutter project for code signing, we have described two of these in this section. Note that whichever approach you use, you still need to [set up Android code signing](https://docs.codemagic.io/code-signing/android-code-signing/#setting-up-android-code-signing-on-codemagic) in the Codemagic UI.
+There are several approaches you can use to prepare your Flutter project for code signing, we have described two of these in this section. Note that whichever approach you use, you still need to [set up Android code signing](#setting-up-android-code-signing-on-codemagic) in the Codemagic UI.
 
 ### Option 1. Configure signing following Flutter's documentation
 
@@ -45,7 +45,7 @@ You can follow the instructions in [Flutter's documentation](https://flutter.dev
 
 ### Option 2. Configure signing using environment variables
 
-Alternatively, you can use [environment variables](https://docs.codemagic.io/building/environment-variables/ 'Environment variables') to prepare your app for code signing.
+Alternatively, you can use [environment variables](../building/environment-variables/ 'Environment variables') to prepare your app for code signing.
 
 Set your signing configuration in `build.gradle` as follows:
 

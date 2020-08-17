@@ -4,7 +4,7 @@ title: App Store Connect
 weight: 1
 ---
 
-Codemagic enables you to automatically publish your app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. To do so, you must first set up [iOS code signing](https://docs.codemagic.io/code-signing/ios-code-signing/) and then configure publishing to App Store Connect.
+Codemagic enables you to automatically publish your app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. To do so, you must first set up [iOS code signing](../code-signing/ios-code-signing/) and then configure publishing to App Store Connect.
 
 ## Requirements
 
@@ -12,7 +12,7 @@ Codemagic needs your **Apple ID** and [**app-specific password**](https://suppor
 
 In addition, the application must be **App Store ready** for build distribution, meaning that it must have all the correct icons and icon sizes, otherwise App Store Connect will tag the binary as invalid, and you will not be able to distribute it at all.
 
-It is also worth pointing out the necessity for each uploaded binary to have a **different version**, otherwise it will be refused by App Store Connect. See the [Build versioning](https://docs.codemagic.io/building/build-versioning/) article for instructions on incrementing app version with Codemagic.
+It is also worth pointing out the necessity for each uploaded binary to have a **different version**, otherwise it will be refused by App Store Connect. See the [Build versioning](../building/build-versioning/) article for instructions on incrementing app version with Codemagic.
 
 {{<notebox>}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. {{</notebox>}}
 

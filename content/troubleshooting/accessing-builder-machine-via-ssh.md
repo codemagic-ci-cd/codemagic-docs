@@ -49,7 +49,7 @@ You can use the remote session to reproduce all commands run during the build, r
 
 * To access the clone of your project on the VM, run `cd $FCI_BUILD_DIR` in the terminal. 
 
-* The command `printenv` prints all the environment variables exported during the build. You can see some of Codemagic read-only environment variables explained [here](https://docs.codemagic.io/building/environment-variables/#codemagic-read-only-environment-variables).
+* The command `printenv` prints all the environment variables exported during the build. You can see some of Codemagic read-only environment variables explained [here](../building/environment-variables/#codemagic-read-only-environment-variables).
 
 * The `sudo` command is available so you can execute all commands with root privileges.
 
