@@ -46,7 +46,9 @@ If you don't enable any automatic build triggers, you can only start builds manu
 
 Codemagic automatically adds webhooks to GitHub, GitLab, and Bitbucket after you have enabled any of the triggers in **App settings** > **Automatic build triggering**.
 
-In case of failure to add a webhook, you should manually set up the webhook in your repository hosting service to enable automatic builds in response to events in the repository.
+### Setup webhooks manually
+
+In case of failure to add a webhook automatically, adding triggers in `codemagic.yaml` workflow settings, or app being added from a custom source, you should manually set up the webhook in your repository hosting service to enable automatic builds in response to events in the repository.
 
 * **GitHub**: Open your project and navigate to **Settings** > **Webhooks** > **Add webhook**, paste the **payload URL** from below, make sure **Content type** is `application/json` and select the following events: **Branch or tag creation**, **Pull requests**, **Pushes**.
 
