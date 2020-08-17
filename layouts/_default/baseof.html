@@ -5,20 +5,13 @@
     {{ .Render "head" }}
   </head>
   <body id="article-page" class="page">
+    {{ partial "header" . }}
     <div id="content-wrap">
       <div id="search-results"></div>
       <aside id="sidebar">
-        <div id="menu-toggle">
-          <div class="bar top"></div>
-          <div class="bar middle"></div>
-          <div class="bar bottom"></div>
-        </div>
+        <div class="overlay"></div>
         <div id="logo">
-          <a href="{{ site.Home.RelPermalink }}">
-            {{ $logo := resources.Get "media/logo.svg" }}
-            {{ $logo.Content | safeHTML }}
-            <span id="logo-label">{{ site.Param "headerLinkTitle" }}</span>
-          </a>
+          Codemagic Documentation
         </div>
         <div class="search search--header">
           <input class="search__input" type="text" placeholder="Search">

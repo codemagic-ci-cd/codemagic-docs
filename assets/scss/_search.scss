@@ -38,11 +38,15 @@
       }
     }
 
+    @media (max-width: 1000px) {
+      right: 40px;
+    }
+
     @media (max-width: 500px) {
       width: 40px;
 
       &.search--active {
-        width: calc(100% - 100px);
+        width: calc(100% - 80px);
       }
 
       .search__input {
@@ -91,6 +95,10 @@
   @media (min-width: 1001px) {
     margin-left: 360px;
     margin-top: 0;
+  }
+
+  @media (max-width: 1000px) {
+    margin-top: 140px;
   }
 
   &:empty {
