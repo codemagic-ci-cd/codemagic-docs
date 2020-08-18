@@ -66,10 +66,38 @@ Codemagic runs `./gradlew --version` on the builder side to check if it's suitab
 * Commit changes to the repo.
 * Run the build again in Codemagic.
 
+## iOS build hangs at `Xcode build done`
+
+**Description**:
+When building for iOS, the build gets stuck after showing `Xcode build done` in the log but does not finish and eventually times out.
+
+**Log output**: 
+
+    == Building for iOS ==
+
+    == /usr/local/bin/flutter build ios --release --no-codesign ==
+    Warning: Building for device with codesigning disabled. You will have to manually codesign before deploying to device.
+    Building net.butterflyapp.trainer for device (ios-release)...
+    Running pod install...                                              3.7s
+    Running Xcode build...                                          
+    Xcode build done.                                           203.6s
+
+**Flutter**: `1.7.8+hotfix.3`, `1.7.8+hotfix.4`, `1.9.1+hotfix.2`, `1.9.1+hotfix.4`, `1.9.1+hotfix.5`
+
+**Xcode**: N/A
+
+**Solution**: This is a known issue that occurs randomly and can be traced back to Flutter:
+
+* https://github.com/flutter/flutter/issues/28415
+* https://github.com/flutter/flutter/issues/35988
+
+This issue is known to be fixed on the `master` channel.
+
 ## iOS build errors with `Provisioning profile`
 This is the list of the most common issues that may cause iOS provisioning profile errors during a CI build.
 
-### **You are using an outdated Provisioning profile that does not include Associated Domains.** In such cases, you will often see an error message similar to this one:
+### You are using an outdated Provisioning profile that does not include Associated Domains.
+In such cases, you will often see an error message similar to this one:
 ```
 ❌ error: Provisioning profile "CodeMagic" doesn't support the Associated Domains capability. (in target 'Runner' from project 'Runner').
  
@@ -82,7 +110,8 @@ Log in to Apple Developer Account and verify:
 * If missing add the Associated Domain Entitlement from there.
 * Update Provisioning profile and use it in to configure your project.
 
-### **The bundle identifiers are not properly set for your project.** In such cases, you will often see an error message similar to this one:
+### The bundle identifiers are not properly set for your project. 
+In such cases, you will often see an error message similar to this one:
 ```
 ❌ error: Runner has conflicting provisioning settings. Runner is automatically signed, but code signing identity Apple Push Services has been manually specified. Set the code signing identity value to “iPhone Developer” in the build settings editor, or switch to manual signing in the Signing & Capabilities editor. (in target ‘Runner’ from project ‘Runner’)
 ```
