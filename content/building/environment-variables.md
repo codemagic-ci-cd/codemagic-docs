@@ -81,7 +81,7 @@ Flutter projects can be configured both in .yaml file as well as in the Codemagi
 
 ## Accessing environment variables from your application
 
-The next examples show how to place your Google Maps api key into an Android or iOS application from an environment variable. Doing it allows you to not store your secret key in the source code.
+The next examples show how to place your Google Maps API key into an Android or iOS application from an environment variable. Doing it allows you not to store your secret key in the source code.
 
 1. Add your key as an environment variable **MAPS_API_KEY**
 
