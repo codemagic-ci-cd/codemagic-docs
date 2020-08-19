@@ -39,7 +39,7 @@ In short, the purpose of the different provisioning profiles is the following:
 
 ## Automatic code signing
 
-Codemagic makes automatic code signing possible by connecting to the App Store Connect via its API for creating and managing your code signing certificates and provisioning profiles. It is possible to set up several code signing identities and use different code signing settings per workflow.
+Codemagic makes automatic code signing possible by connecting to the [App Store Connect via its API](https://developer.apple.com/app-store-connect/api/) for creating and managing your code signing certificates and provisioning profiles. It is possible to set up several code signing identities and use different code signing settings per workflow.
 
 >The following sections describe how to set up automatic code signing for builds configured in the UI. If you're building with `codemagic.yaml`, please refer [here](../yaml/distribution#setting-up-code-signing-for-ios).
 
