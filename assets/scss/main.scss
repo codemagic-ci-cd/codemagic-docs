@@ -245,7 +245,12 @@ body {
                 -webkit-filter: drop-shadow(0 0 10px transparentize(black, 0.9));
                 max-width: 100%;
             }
-            a { color: #158fdc; }
+            a {
+              color: #158fdc;
+              code {
+                color: #158fdc;
+              }
+            }
             figure {
                 text-align: center;
 
@@ -277,10 +282,12 @@ body {
             code {
               font-family: monospace;
               background: $grey-bg-light;
+              color: #c71585;
               font-size: 0.9em;
-              padding: 5px 10px;
+              padding: 2px 4px;
               word-break: break-word;
               border-radius: 2px;
+              border: 1px solid $grey-bg;
             }
             pre {
                 background: $grey-bg;
