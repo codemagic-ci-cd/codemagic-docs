@@ -72,3 +72,78 @@ $(document).ready(function() {
     $(this).wrap('<div class="table-wrap"></div>')
   })
 })
+
+// Table of content
+
+let lastScrollPosition = 0
+
+$(document).ready(function () {
+    elementsTopPosition()
+})
+$(window).on('load scroll resize', function () {
+    elementsTopPosition()
+})
+$(window).on('scroll', function () {
+    const currentScrollPosition = $(window).scrollTop()
+    window.scrollingDown = currentScrollPosition > lastScrollPosition
+    lastScrollPosition = currentScrollPosition
+})
+
+// Adjust elements positions depending on content shown
+function elementsTopPosition() {
+  const windowHeight = $(window).height()
+  const topOfWindow = $(window).scrollTop()
+  const footerPosition = $('#footer').offset().top
+  const toc = $('#toc')
+  const progress = (topOfWindow / (footerPosition - windowHeight)) * 100
+
+  if (toc.length) {
+      const tableOfContentHeight = $('#TableOfContents').height()
+      let contentTablePull = 0
+      if (tableOfContentHeight > windowHeight * 0.9) {
+          heightDifference = tableOfContentHeight - windowHeight * 0.8
+          contentTablePull = heightDifference * progress / 100
+      }
+      const tableOfContentTop = 30 - contentTablePull
+      toc.css('top', tableOfContentTop)
+  }
+}
+
+function isOnScreen(elem) {
+    if (elem.length === 0) {
+        return;
+    }
+    const viewportTop = $(window).scrollTop()
+    const viewportHeight = $(window).height()
+    const viewportBottom = viewportTop + viewportHeight
+    const top = $(elem).offset().top
+    const height = $(elem).height()
+    const bottom = top + height
+
+    return (top >= viewportTop && top < viewportBottom) ||
+        (bottom > viewportTop && bottom <= viewportBottom) ||
+        (height > viewportHeight && top <= viewportTop && bottom >= viewportBottom)
+}
+
+function setContentTableHeaderActive(id) {
+    $('#TableOfContents ul li a').removeClass('active');
+    $(`#TableOfContents ul li a[href="#${id}"]`).addClass('active');
+}
+
+// Sidemenu scroll spy
+$(window).ready(function () {
+    const observer = new IntersectionObserver(function (entries) {
+        headers = Array.from($('#main-content h2, #main-content h3'))
+        headersOnScreen = headers.filter(h => isOnScreen(h))
+        if (headersOnScreen.length) {
+            setContentTableHeaderActive(headersOnScreen[0].id)
+        } else if (entries[0].intersectionRatio == 0 && !window.scrollingDown) {
+            currentIndex = headers.findIndex(header => header.id === entries[0].target.getAttribute('id'))
+            previousHeader = currentIndex ? currentIndex - 1 : 0
+            setContentTableHeaderActive(headers[previousHeader].id)
+        }
+    });
+    document.querySelectorAll('#main-content h2, #main-content h3').forEach(function (header) {
+        observer.observe(header);
+    });
+});
