@@ -78,3 +78,40 @@ Flutter projects can be configured both in .yaml file as well as in the Codemagi
 4. Click **Save** to save the settings.
 
 ![](../uploads/env_vars.PNG)
+
+## Accessing environment variables from your application
+
+The following examples show how to place your Google Maps API key into an Android or iOS application from an environment variable. With this approach you will not have to store your secret key in the repository.
+
+1. Add your key as an environment variable with the name `MAPS_API_KEY`
+
+### Android
+
+2. Read the key from an environment variable to `build.gradle`
+
+        defaultConfig {
+            // Other values set here
+            resValue "string", "maps_api_key", "$System.env.MAPS_API_KEY"
+        }
+
+3. Read the key from the `build.gradle` value to `AndroidManifest.xml`
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="@string/maps_api_key"/>
+
+### iOS (Swift)
+
+2. Read the key from the environment variable to `Info.plist`
+
+        <key>MAPS_API_KEY</key>
+        <string>$(MAPS_API_KEY)</string>
+
+3. Read the key from the `Info.plist` value to `AppDelegate.swift`
+
+        GMSServices.provideAPIKey(Bundle.main.object(forInfoDictionaryKey: "MAPS_API_KEY") as? String ?? "")
+
+### iOS (Objective-C)
+
+2.  Read your key from the environemnt variable to `AppDelegate.m` as in the [example](https://github.com/flutter/plugins/blob/master/packages/google_maps_flutter/google_maps_flutter/example/ios/Runner/AppDelegate.m).
+
+        [GMSServices provideAPIKey:[[NSProcessInfo processInfo] environment][@"MAPS_API_KEY"]];
