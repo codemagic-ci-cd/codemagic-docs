@@ -1,22 +1,20 @@
 const desktopScreenWidth = 1001;
-const backendURL = 'https://api.codemagic.io'
 
 // Category toggle open
-var navCategory = $('#docs-menu li')
+var navCategory = $('[data-js-docs-menu-item]')
 navCategory.each(function() {
-  $('.category-name', this).on('click', function() {
+  $('[data-js-category-name]', this).on('click', function() {
     var $parent = $(this).parent()
 
-    $parent.find('.category-posts').slideToggle(150, function complete() {
+    $parent.find('[data-js-category-posts]').slideToggle(150, function complete() {
       $parent.toggleClass('open')
     })
   })
 })
 // Menu toggle
-var menuToggle = $('#sidebar #logo')
-menuToggle.on('click', function(e) {
+$('[data-js-docs-menu-toggle]').on('click', function(e) {
   $(this).toggleClass('open')
-  $('#docs-menu').toggleClass('open')
+  $('[data-js-docs-menu]').toggleClass('open')
 })
 
 // Create permalinks
@@ -82,7 +80,7 @@ $(document).ready(function() {
 
   // Fetch user
   async function fetchUser() {
-      const url = `${backendURL}/user`
+      const url = '{{ site.Param "backendURL" }}/user'
       const timeout = 3000
 
       const controller = new AbortController()
@@ -108,22 +106,14 @@ $(document).ready(function() {
   }
 
   // Menu toggle
-  $('#menu-toggle').on('click', function() {
+  $('[data-js-header-menu-toggle]').on('click', function() {
       $(this).toggleClass('open')
-      const visible = $('#header-menu-wrap').is(':visible')
+      const visible = $('[data-js-header-menu-wrap]').is(':visible')
       if (visible) {
-          $('#header-menu-wrap').slideUp(200)
-          $('#progress-indicator').css('zIndex', 11)
+          $('[data-js-header-menu-wrap]').slideUp(200)
       } else {
-          $('#header-menu-wrap').slideDown(200)
-          $('#progress-indicator').css('zIndex', 9)
+          $('[data-js-header-menu-wrap]').slideDown(200)
       }
-  })
-
-  // Accept cookies
-  $('#accept-cookies').on('click', function() {
-      setCookie('codemagic_accept_cookies', true, 28)
-      $('#cookie-notice').hide()
   })
 
   // Open extenral links in new tab
@@ -135,23 +125,7 @@ $(document).ready(function() {
       }
   })
 
-  // // scroll fragment links
-  // $(document).on('click', 'a[href^="#"]', function(event) {
-  //     event.preventDefault()
-  //     var scrollTarget = $($.attr(this, 'href')).offset().top - 160
-  //     $('html, body').animate({ scrollTop: scrollTarget }, 300)
-  //   })
-
   authenticateUser()
-  window.headerIntialClasses = $('#header').attr('class')
-  setHeaderStyle()
-  setCookieNotification()
-
-  // Trigger scroll dependent functions
-  $(window).on('scroll', function() {
-      // Prevents scroll event from triggering before document is ready
-      setHeaderStyle()
-  })
 
   // Log user in
   async function authenticateUser() {
@@ -191,7 +165,7 @@ $(document).ready(function() {
         .addClass('transition-in')
     $('#header-auth-loading .grey-line').show()
     if ($(window).innerWidth() < 841) {
-        $('#menu-toggle').removeClass('open')
+        $('[data-js-header-menu-toggle]').removeClass('open')
         $('#header-menu-wrap').slideUp(200)
     }
     $('#header-menu-wrap').slideUp(200)
@@ -227,53 +201,6 @@ $(document).ready(function() {
     }
   }
 
-  // Header style toggle
-  function setHeaderStyle() {
-    const navTrigger = $('#nav-trigger')
-    if (navTrigger.length) {
-        const cutoff = 40
-        const distance = $(window).scrollTop() - navTrigger.offset().top - cutoff
-        if (distance > 10 && !$('#header').hasClass('white')) {
-            $('#header').addClass('white')
-        }
-        if (distance < 10 && $('#header').hasClass('white')) {
-            $('#header').attr('class', window.headerIntialClasses)
-        }
-    }
-  }
-
-  // Email validation
-  function validateEmail(email) {
-    var re = new RegExp('[a-zA-Z0-9_\\.\\+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-\\.]+')
-    return re.test(String(email).toLowerCase())
-  }
-
-  // Cookies
-  function setCookie(name, value, days) {
-    var expires = ''
-    if (days) {
-        var date = new Date()
-        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
-        expires = '; expires=' + date.toUTCString()
-    }
-    document.cookie = `${name}=${value || ''}${expires}; path=/; domain=${window.location.hostname}; SameSite=Lax`
-  }
-  function getCookie(name) {
-    var nameEQ = name + '='
-    var ca = document.cookie.split(';')
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i]
-        while (c.charAt(0) === ' ') c = c.substring(1, c.length)
-        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length)
-    }
-  }
-  function setCookieNotification() {
-    var accepted = getCookie('codemagic_accept_cookies')
-    if (!accepted) {
-        $('#cookie-notice').show()
-    }
-  }
-
   function activeUserChanges() {
     $(document).ready(function() {
         $('[ad-type*="product"]').hide()
@@ -293,10 +220,10 @@ $(document).ready(function() {
 })
 
 let lastScrollPosition = 0
-const sidebar = $('#sidebar')
-const header = $('#header')
-const docsMenu = $('#docs-menu')
-const contentWrap = $('#content-wrap')
+const sidebar = $('[data-js-sidebar]')
+const header = $('[data-js-header]')
+const docsMenu = $('[data-js-docs-menu]')
+const contentWrap = $('[data-js-content-wrap]')
 
 if ($(window).scrollTop() === 0) {
   header.css('top', 0)
@@ -310,18 +237,21 @@ $(window).on('scroll', function() {
 })
 
 $(window).on('load scroll resize', function() {
-  if ($(window).width() < desktopScreenWidth) {
+  const headerHeight = header.innerHeight()
+  const sidebarHeight = sidebar.innerHeight()
+  if (window.innerWidth < desktopScreenWidth) {
     if (window.scrollingDown) {
       sidebar.css('top', 0)
-      header.css('top', -header.innerHeight())
-      docsMenu.css('top', sidebar.innerHeight())
+      header.css('top', -headerHeight)
+      docsMenu.css('top', sidebarHeight)
       contentWrap.css('paddingTop', 0)
     } else {
-      const headerHeight = header.innerHeight()
       header.css('top', 0)
       sidebar.css('top', headerHeight)
-      docsMenu.css('top', header.innerHeight() + sidebar.innerHeight())
+      docsMenu.css('top', headerHeight + sidebarHeight)
       contentWrap.css('paddingTop', headerHeight)
     }
+  } else {
+    docsMenu.css('top', 90)
   }
 })

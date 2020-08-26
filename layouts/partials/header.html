@@ -1,28 +1,26 @@
-{{ $landingURL := "https://codemagic.io" }}
-{{ $blogURL := "https://blog.codemagic.io" }}
 <div id="nav-trigger"></div>
-<header id="header">
+<header id="header" data-js-header>
     <div class="inner">
-        <a href='{{ $landingURL }}/start' id="header-logo" onclick="sendGtag('Logo_clicked', 'CodemagicMenu')" target="_blank">{{ partial "codemagic-logo" . }}</a>
-        <div id="menu-toggle">
+        <a href='{{ site.Param "landingURL" }}/start' id="header-logo" onclick="sendGtag('Logo_clicked', 'CodemagicMenu')" target="_blank">{{ partial "codemagic-logo" . }}</a>
+        <div id="menu-toggle" data-js-header-menu-toggle>
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <div id="header-menu-wrap">
+        <div id="header-menu-wrap" data-js-header-menu-wrap>
             <nav id="header-main-menu">
-                <a class="menu-link" href='{{ $landingURL }}/pricing' onclick="sendGtag('Pricing_clicked', 'CodemagicMenu')" target="_blank">Pricing</a>
-                <a class="menu-link" href='{{ $landingURL }}/business' onclick="sendGtag('Business_clicked', 'CodemagicMenu')" target="_blank">Business</a>
+                <a class="menu-link" href='{{ site.Param "landingURL" }}/pricing' onclick="sendGtag('Pricing_clicked', 'CodemagicMenu')" target="_blank">Pricing</a>
+                <a class="menu-link" href='{{ site.Param "landingURL" }}/business' onclick="sendGtag('Business_clicked', 'CodemagicMenu')" target="_blank">Business</a>
                 <a class="menu-link" href='/' onclick="sendGtag('Documentation_clicked', 'CodemagicMenu')">Documentation</a>
-                <a class="menu-link" href='{{ $blogURL }}' onclick="sendGtag('Blog_clicked', 'CodemagicMenu')" target="_blank">Blog</a>
+                <a class="menu-link" href='{{ site.Param "blogURL" }}' onclick="sendGtag('Blog_clicked', 'CodemagicMenu')" target="_blank">Blog</a>
             </nav>
             <aside id="header-authentication">
                 <div id="header-auth-visitor">
-                    <a class="auth-link" href='{{ $landingURL }}/login' id="login-link" onclick="sendGtag('Login_clicked', 'CodemagicMenu')">Login</a>
-                    <a href='{{ $landingURL }}/signup' id="signup-btn" class="btn" onclick="sendGtag('Signup_clicked', 'CodemagicMenu')">Sign
+                    <a class="auth-link" href='{{ site.Param "landingURL" }}/login' id="login-link" onclick="sendGtag('Login_clicked', 'CodemagicMenu')">Login</a>
+                    <a href='{{ site.Param "landingURL" }}/signup' id="signup-btn" class="btn" onclick="sendGtag('Signup_clicked', 'CodemagicMenu')">Sign
                         up</a>
                 </div>
-                <a id="header-auth-user" href='{{ $landingURL }}/apps'>
+                <a id="header-auth-user" href='{{ site.Param "landingURL" }}/apps'>
                     <div class="label">Return to app</div>
                     <div id="header-user-avatar"></div>
                 </a>

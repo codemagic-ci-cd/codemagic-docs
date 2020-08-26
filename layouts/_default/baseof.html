@@ -6,11 +6,11 @@
   </head>
   <body id="article-page" class="page">
     {{ partial "header" . }}
-    <div id="content-wrap">
+    <div id="content-wrap" data-js-content-wrap>
       <div id="search-results"></div>
-      <aside id="sidebar">
+      <aside id="sidebar" data-js-sidebar>
         <div class="overlay"></div>
-        <div id="logo">
+        <div id="sidebar__header" data-js-docs-menu-toggle>
           Codemagic Documentation
         </div>
         <div class="search search--header">
