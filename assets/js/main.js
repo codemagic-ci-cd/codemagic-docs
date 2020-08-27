@@ -224,6 +224,7 @@ const sidebar = $('[data-js-sidebar]')
 const header = $('[data-js-header]')
 const docsMenu = $('[data-js-docs-menu]')
 const contentWrap = $('[data-js-content-wrap]')
+const searchResults = $('[data-js-search-results]')
 
 if ($(window).scrollTop() === 0) {
   header.css('top', 0)
@@ -247,15 +248,18 @@ $(window).on('load scroll resize', function() {
       sidebar.css('top', 0)
       header.css('top', -headerHeight)
       docsMenu.css('top', sidebarHeight)
+      searchResults.css('margin-top', sidebarHeight)
       contentWrap.css('paddingTop', 0)
     } else {
       header.css('top', 0)
       sidebar.css('top', headerHeight)
       docsMenu.css('top', headerHeight + sidebarHeight)
+      searchResults.css('margin-top', headerHeight + sidebarHeight)
       contentWrap.css('paddingTop', headerHeight)
     }
   } else {
     docsMenu.css('top', 90)
+    searchResults.css('margin-top', 76)
   }
   elementsTopPosition() // TOC
 })
