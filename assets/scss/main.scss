@@ -380,7 +380,20 @@ body {
             top: 30px;
             overflow: auto;
             padding-right: 30px;
-            bottom: 0;
+            nav {
+              position: relative;
+              padding-left: 10px;
+              &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: block;
+                border-right: 2px solid $grey-bg;
+                height: 100%;
+                transition: all 300ms ease-in-out;
+              }
+            }
 
             .heading {
                 color: #aaaaaa;
@@ -392,10 +405,30 @@ body {
             }
             a {
                 display: block;
+                position: relative;
                 color: $black;
-                padding: 5px;
                 font-size: 14px;
-                line-height: 1.25;
+                line-height: 20px;
+                padding: 5px;
+                color: $grey-text-light;
+                transition: all 300ms ease-in-out;
+                &:hover,
+                &.active:hover {
+                    color: $blue;
+                }
+                &.active {
+                    color: $black;
+                    font-family: $font-family-bold;
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: -10px;
+                        top: 0;
+                        display: block;
+                        border-right: 2px solid $blue;
+                        height: 100%;
+                    }
+                }
             }
 
             ul, ol {
@@ -404,12 +437,13 @@ body {
               li {
                 padding: 0;
                 margin: 0;
+                li a {
+                  padding-left: 15px;
+                }
               }
             }
-
             ul ul {
-              margin: 5px 0;
-              padding-left: 15px;
+              margin: 0;
             }
         }
         @media (max-width: 1200px) {
