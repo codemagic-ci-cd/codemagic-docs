@@ -17,25 +17,25 @@ All virtual machines are located within the private network. In order to allow u
 
 ## Setting up SSH connection to the virtual machine
 
-Establishing an SSH connection to the virtual machine is possible only for manually triggered builds. Setting it up requires both enabling remote access in UI and running an automatically generated script in your terminal.
+Establishing an SSH connection to the virtual machine is possible only for manually triggered builds.
 
 1. Click **Start new build**.
-2. In the **Specify build configuration** popup, check **Enable remote access** and start the build.
-3. When the build has started, you will shortly see additional instructions for establishing SSH access. Run the automatically generated script in the terminal before the build finishes to establish an SSH connection to the machine running the build.
+2. In the **Specify build configuration** popup, review your build configuration and click **Start new build** once again.
+3. When the build has started, click **Explore build machine** above the build steps to see the instructions for establishing SSH access. Run the automatically generated script in the terminal before the build finishes to establish an SSH connection to the machine running the build.
 
 If you don't run the script before the build finishes, the unique SSH key expires and can't be used anymore. A new script will be generated every time you run the build, so previous scripts cannot be reused.
 
 {{<notebox>}}
-Note that the script for establishing SSH connection works natively on Linux and MacOS, but requires additional software like Git-bash on Windows.
+Note that the script for establishing SSH connection works natively on Linux and MacOS but requires additional software like Git-bash on Windows.
 {{</notebox>}}
 
 ## Setting up VNC connection to the virtual machine
 
-Establishing a VNC connection to the virtual machine is possible only for manually triggered builds. Setting it up requires enabling remote access in UI and configuring access on your VNC client.
+Establishing a VNC connection to the virtual machine is possible only for manually triggered builds.
 
 1. Click **Start new build**.
-2. In the **Specify build configuration** popup, check **Enable remote access** and start the build.
-3. Use the given **Host**, **Port**, **Username** and **Password** on your VNC client to establish the connection.
+2. In the **Specify build configuration** popup, review your build configuration and click **Start new build** once again.
+3. When the build has started, click **Explore build machine** above the build steps to see the instructions for setting up VNC access. Use the given **Host**, **Port**, **Username** and **Password** on your VNC client to establish the connection.
 
 {{<notebox>}}
 You can download VNC Viewer for Windows [here](https://www.realvnc.com/en/connect/download/viewer/windows/). Using VNC Viewer, make sure to add the values for **Host** and **Port** into the address field in this format: `<Host>:<Port>` (for example `192.159.66.83:16543`).
@@ -49,7 +49,7 @@ You can use the remote session to reproduce all commands run during the build, r
 
 * To access the clone of your project on the VM, run `cd $FCI_BUILD_DIR` in the terminal. 
 
-* The command `printenv` prints all the environment variables exported during the build. You can see some of Codemagic read-only environment variables explained [here](https://docs.codemagic.io/building/environment-variables/#codemagic-read-only-environment-variables).
+* The command `printenv` prints all the environment variables exported during the build. You can see some of Codemagic read-only environment variables explained [here](../building/environment-variables/#codemagic-read-only-environment-variables).
 
 * The `sudo` command is available so you can execute all commands with root privileges.
 
