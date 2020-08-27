@@ -137,38 +137,38 @@ $(document).ready(function() {
         if (json.user.ok) {
             window.loggedIn = true
             window.auth._id = json.user._id
-            $('#header-auth-user').addClass('transition-in')
-            $('#header-user-avatar').html('<img src="' + auth.avatarUrl + '" alt=""/>')
+            $('[data-js-header-auth-user]').addClass('transition-in')
+            $('[data-js-header-user-avatar]').html('<img src="' + auth.avatarUrl + '" alt=""/>')
             activeUserChanges()
         } else {
             window.loggedIn = false
-            $('#header-auth-visitor').addClass('transition-in')
+            $('[data-js-header-auth-visitor]').addClass('transition-in')
             visitorChanges()
         }
     } else {
         window.loggedIn = false
-        $('#header-auth-visitor').addClass('transition-in')
+        $('[data-js-header-auth-visitor]').addClass('transition-in')
         visitorChanges()
     }
-    $('#header-auth-loading').addClass('transition-out')
+    $('[data-js-header-auth-loading]').addClass('transition-out')
     setTimeout(function() {
-        $('#header-auth-loading .grey-line').hide()
+        $('[data-js-header-auth-loading-grey-line]').hide()
     }, 1000)
   }
 
-  $('#header-auth-logout').on('click', userLogout)
+  $('[data-js-header-auth-logout]').on('click', userLogout)
 
   async function userLogout() {
-    $('#header-authentication').addClass('loading')
-    $('#header-auth-loading')
+    $('[data-js-header-authentication]').addClass('loading')
+    $('[data-js-header-auth-loading]')
         .removeClass('transition-out')
         .addClass('transition-in')
-    $('#header-auth-loading .grey-line').show()
+    $('[data-js-header-auth-loading-grey-line]').show()
     if ($(window).innerWidth() < 841) {
         $('[data-js-header-menu-toggle]').removeClass('open')
-        $('#header-menu-wrap').slideUp(200)
+        $('[data-js-header-menu-wrap]').slideUp(200)
     }
-    $('#header-menu-wrap').slideUp(200)
+    $('[data-js-header-menu-wrap]').slideUp(200)
 
     const url = '{{ site.Param "backendURL" }}/logout'
     const options = {
@@ -179,12 +179,12 @@ $(document).ready(function() {
     }
     try {
         await fetch(url, options)
-        $('#header-auth-user')
+        $('[data-js-header-auth-user]')
             .removeClass('transition-in')
             .addClass('transition-out')
         setTimeout(function() {
-            $('#header-auth-loading .grey-line').hide()
-            $('#header-auth-visitor')
+            $('[data-js-header-auth-loading-grey-line]').hide()
+            $('[data-js-header-auth-visitor]')
                 .removeClass('transition-out')
                 .addClass('transition-in')
         }, 1000)
@@ -194,8 +194,8 @@ $(document).ready(function() {
     } finally {
         auth = { loaded: true }
         window.loggedIn = false
-        $('#header-authentication').removeClass('loading')
-        $('#header-auth-loading')
+        $('[data-js-header-authentication]').removeClass('loading')
+        $('[data-js-header-auth-loading]')
             .removeClass('transition-in')
             .addClass('transition-out')
     }
@@ -267,7 +267,7 @@ function elementsTopPosition() {
   const windowHeight = $(window).height()
   const topOfWindow = $(window).scrollTop()
   const footerPosition = $('#footer').offset().top
-  const toc = $('#toc')
+  const toc = $('[data-js-toc]')
   const progress = (topOfWindow / (footerPosition - windowHeight)) * 100
 
   if (toc.length) {
