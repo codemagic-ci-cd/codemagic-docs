@@ -34,44 +34,59 @@ For successful signing, the certificate and the provisioning profile must match 
 In short, the purpose of the different provisioning profiles is the following:
 
 - **Development**: for testing the app on a real device while developing. 
-- **Ad Hoc:** for distributing the app to non-TestFlight testers (e.g. via [Testmagic](https://testmagic.io/)). The app must be built in **release** mode.
+- **Ad Hoc:** for distributing the app to non-TestFlight testers. The app must be built in **release** mode.
 - **App Store**: for distributing the app via TestFlight or the App Store. The app must be built in **release** mode.
 
 ## Automatic code signing
 
-Based on the selected provisioning profile type, Codemagic will create a development or a distribution certificate and a development, Ad hoc or App store provisioning profile. The provisioning profile (except for Distribution) will include all the devices you have registered on your Apple Developer account.
+Codemagic makes automatic code signing possible by connecting to [App Store Connect via its API](https://developer.apple.com/app-store-connect/api/) for creating and managing your code signing certificates and provisioning profiles. It is possible to set up several code signing identities and use different code signing settings per workflow.
 
-{{<notebox>}}
-To use automatic code signing, you are required to enable the **Apple Developer portal** integration.
-{{</notebox>}}
+The following sections describe how to set up automatic code signing for builds configured in the UI. If you're building with `codemagic.yaml`, please refer [here](../yaml/distribution#setting-up-code-signing-for-ios).
 
-### Enabling the Apple Developer Portal integration
+### Step 1. Creating an App Store API key for Codemagic
 
-Apple Developer Portal integration can be enabled in **User settings > Integrations** for personal projects and in **Team settings > Team integrations** for projects shared in the team (if you're the team owner). This allows you to conveniently use the same Apple Developer Portal credentials for automatic code signing across all projects and workflows.
+It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
 
-1. In the list of available integrations, click the **Connect** button for **Developer Portal**.
-2. Enter your **Apple ID** (Apple Developer Portal username) and **password**.
-3. Click **Save**. Codemagic will attempt to establish a connection to Apple Developer Portal and will ask for a verification code for two-factor authentication or two-step verification. 
-    >If you have set up several trusted phone numbers, select the phone number to which the verification code will be sent.
-4. Enter the verification code and click **Save** one more time. On successful authentication, the Apple Developer Portal integration will be enabled.
-
-### Setting up automatic code signing
+1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
+2. Click on the + sign to generate a new API key.
+3. Enter the name for the key and select an access level. We recommend choosing either `Developer` or `App Manager`, read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
+4. Click **Generate**.
+5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
 {{<notebox >}} 
-The actions that Codemagic can perform on your behalf depend on your [Apple Developer Program user role](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
+Take note of the **Issuer ID** above the table of active keys as well as the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in Codemagic UI.
 {{</notebox>}}
+
+### Step 2. Connecting the Apple Developer Portal integration for your team/account
+
+The Apple Developer Portal integration can be enabled in **User settings > Integrations** for personal projects and in **Team settings > Team integrations** for projects shared in the team (if you're the team owner). This allows you to conveniently use the same credentials for automatic code signing across different apps and workflows.
+
+{{<notebox >}} 
+Note that users who had previously set up the session-based intgeration have been automatically migrated to use the API-key based setup.
+{{</notebox>}}
+
+1. In the list of available integrations, click the **Connect** button for **Developer Portal**.
+2. In the **App Store Connect API key name**, provide a name for the key you are going to set up the integration with. This is for identifying the key in Codemagic.
+3. Enter the **Issuer ID** related to your Apple Developer account. You can find it above the table of active keys on the Keys tab of the [Users and Access](https://appstoreconnect.apple.com/access/api) page.
+4. Enter the **Key ID** of the key to be used for code signing.
+5. In the **API key** field, upload the private API key downloaded from App Store Connect.
+6. Click **Save** to finish the setup.
+
+If you work with multiple Apple Developer teams, you can add additional keys by clicking **Add another key** right after adding the first key and repeating the steps described above. You can delete existing keys or add new ones when you click **Manage keys** next to the Developer Portal integration in user or team settings.
+
+### Step 3. Enabling automatic code signing for workflow
+
+Once the Apple Developer Portal has been enabled for the account or team the app belongs to, you can easily enable automatic code signing per workflow.
 
 1. Go to **App settings > Publish > iOS code signing**.
 2. Select **Automatic** as the code signing method. If you haven't enabled the Apple Developer Portal integration yet, you will be asked to enable it before you can continue configuration.
-3. If you belong to several Apple Developer teams, select the right team in the **Developer portal team** field.
-4. Select the **provisioning profile type** used for provisioning the build. Codemagic will automatically select or generate a matching certificate for code signing.
+3. If you have several keys available, select the right key in the **App Store Connect API key** field.
+4. Select the **provisioning profile type** used for provisioning the build. Codemagic will automatically select or generate a matching certificate for code signing. The provisioning profiles (except for Distribution) will include all the devices you have registered on your Apple Developer account at the time of creating the profile.
 7. Enter your app's **bundle identifier** (optional). By default, Codemagic looks for it from your `project.pbxproj` file. 
 
     >Note that if your app contains app extensions, an additional provisioning profile is required for each extension. Codemagic will use the bundle identifier to find the relevant provisioning profiles. If your bundle identifier is `com.example.app`, the matching profiles are the ones with `com.example.app` and `com.example.app.*` as bundle identifier.
 
 8. Finally, click **Save** to finish the setup.
-
-{{< figure size="medium" src="../uploads/automatic_code_signing.png" caption="Automatic code signing setup" >}}
 
 As the next step, you can [configure publishing to App Store Connect](../publishing/publishing-to-app-store) to distribute the app via TestFlight or submit it to the App Store.
 

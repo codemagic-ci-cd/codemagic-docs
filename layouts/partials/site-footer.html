@@ -1,4 +1,4 @@
-{{ $script := resources.Get "js/main.js" | fingerprint }}
+{{ $script := resources.Get "js/main.js" | resources.ExecuteAsTemplate "" . | minify | fingerprint }}
 <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
 
 {{ partial "search" . }}

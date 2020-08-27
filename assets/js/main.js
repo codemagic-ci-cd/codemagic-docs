@@ -72,6 +72,7 @@ $(document).ready(function() {
   contentTable.each(function() {
     $(this).wrap('<div class="table-wrap"></div>')
   })
+  elementsTopPosition()
 })
 
 $(document).ready(function() {
@@ -127,7 +128,6 @@ $(document).ready(function() {
 
   authenticateUser()
 
-  // Log user in
   async function authenticateUser() {
     const { response, json } = await window.userRequest
     window.auth = { loaded: true }
@@ -157,7 +157,7 @@ $(document).ready(function() {
   }
 
   $('#header-auth-logout').on('click', userLogout)
-  // Log user out
+
   async function userLogout() {
     $('#header-authentication').addClass('loading')
     $('#header-auth-loading')
@@ -230,10 +230,13 @@ if ($(window).scrollTop() === 0) {
   sidebar.css('top', header.innerHeight())
 }
 
-$(window).on('scroll', function() {
-    const currentScrollPosition = $(window).scrollTop()
-    window.scrollingDown = currentScrollPosition > lastScrollPosition
-    lastScrollPosition = currentScrollPosition
+$(window).on('scroll', function () {
+  const currentScrollPosition = $(window).scrollTop()
+  // to not consider scrolling bounce effect as scrolling
+  if (currentScrollPosition >= 0 && currentScrollPosition <= $('body').height() - $(window).height()) {
+      window.scrollingDown = currentScrollPosition > lastScrollPosition
+      lastScrollPosition = currentScrollPosition
+  }
 })
 
 $(window).on('load scroll resize', function() {
@@ -254,4 +257,66 @@ $(window).on('load scroll resize', function() {
   } else {
     docsMenu.css('top', 90)
   }
+  elementsTopPosition() // TOC
 })
+
+// Table of content
+
+// Adjust elements positions depending on content shown
+function elementsTopPosition() {
+  const windowHeight = $(window).height()
+  const topOfWindow = $(window).scrollTop()
+  const footerPosition = $('#footer').offset().top
+  const toc = $('#toc')
+  const progress = (topOfWindow / (footerPosition - windowHeight)) * 100
+
+  if (toc.length) {
+      const tableOfContentHeight = $('#TableOfContents').height()
+      let contentTablePull = 0
+      if (tableOfContentHeight > windowHeight * 0.9) {
+          heightDifference = tableOfContentHeight - windowHeight * 0.8
+          contentTablePull = heightDifference * progress / 100
+      }
+      const tableOfContentTop = 70 - contentTablePull
+      toc.css('top', tableOfContentTop)
+  }
+}
+
+function isOnScreen(elem) {
+    if (elem.length === 0) {
+        return;
+    }
+    const viewportTop = $(window).scrollTop()
+    const viewportHeight = $(window).height()
+    const viewportBottom = viewportTop + viewportHeight
+    const top = $(elem).offset().top
+    const height = $(elem).height()
+    const bottom = top + height
+
+    return (top >= viewportTop && top < viewportBottom) ||
+        (bottom > viewportTop && bottom <= viewportBottom) ||
+        (height > viewportHeight && top <= viewportTop && bottom >= viewportBottom)
+}
+
+function setContentTableHeaderActive(id) {
+    $('#TableOfContents ul li a').removeClass('active');
+    $(`#TableOfContents ul li a[href="#${id}"]`).addClass('active');
+}
+
+// Sidemenu scroll spy
+$(window).ready(function () {
+    const observer = new IntersectionObserver(function (entries) {
+        headers = Array.from($('#main-content h2, #main-content h3'))
+        headersOnScreen = headers.filter(h => isOnScreen(h))
+        if (headersOnScreen.length) {
+            setContentTableHeaderActive(headersOnScreen[0].id)
+        } else if (entries[0].intersectionRatio == 0 && !window.scrollingDown) {
+            currentIndex = headers.findIndex(header => header.id === entries[0].target.getAttribute('id'))
+            previousHeader = currentIndex ? currentIndex - 1 : 0
+            setContentTableHeaderActive(headers[previousHeader].id)
+        }
+    });
+    document.querySelectorAll('#main-content h2, #main-content h3').forEach(function (header) {
+        observer.observe(header);
+    });
+});
