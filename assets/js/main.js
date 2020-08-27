@@ -13,7 +13,7 @@ navCategory.each(function() {
 })
 // Menu toggle
 $('[data-js-docs-menu-toggle]').on('click', function(e) {
-  $(this).toggleClass('open')
+  $('[data-js-docs-menu-toggle-icon]').toggleClass('open')
   $('[data-js-docs-menu]').toggleClass('open')
 })
 

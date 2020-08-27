@@ -39,7 +39,6 @@ body {
         background: white;
         z-index: 10;
         transition: top 300ms ease-in-out;
-
         .overlay {
           position: absolute;
           top: 0;
@@ -51,28 +50,6 @@ body {
           box-shadow: 0 0 30px rgba(0,0,0,0.1);
           display: none;
         }
-
-        #menu-toggle {
-            display: none;
-            height: 50px;
-            width: 50px;
-            cursor: pointer;
-            z-index: 1;
-
-            .bar {
-                height: 3px;
-                width: 30px;
-                background: $black;
-                position: relative;
-                margin: auto;
-                transition: all 300ms ease-in-out;
-
-                &.top { top: 15px; }
-                &.middle { top: 20px; }
-                &.bottom { top: 25px; }
-            }
-            &:hover { .bar { background: $blue; } }
-        }
         &__header {
             margin: 0 40px;
             font-size: 22px;
@@ -80,6 +57,48 @@ body {
             position: relative;
             z-index: 1;
             padding: 45px 0;
+        }
+        &__toggle {
+          display: none;
+          width: 17px;
+          height: 12px;
+          margin-right: 5px;
+          position: relative;
+          cursor: pointer;
+          .bar {
+              position: absolute;
+              height: 2px;
+              width: 17px;
+              border-radius: 2px;
+              background-color: white;
+              transition: all 300ms linear;
+              cursor: pointer;
+              overflow: hidden;
+              &:nth-child(1) {
+                  top: 0px;
+              }
+              &:nth-child(2) {
+                  top: 5px;
+              }
+              &:nth-child(3) {
+                  top: 10px;
+              }
+              background-color: $black;
+          }
+          &.open .bar {
+              &:nth-child(1) {
+                  top: 5px;
+                  transform: rotate(45deg);
+              }
+              &:nth-child(2) {
+                  top: 5px;
+                  width: 0;
+              }
+              &:nth-child(3) {
+                  top: 5px;
+                  transform: rotate(-45deg);
+              }
+          }
         }
         #docs-menu {
             background: white;
@@ -152,22 +171,13 @@ body {
             }
 
             #menu-toggle { display: block; }
+            #sidebar__toggle { display: inline-block; }
             #sidebar__header {
                 font-size: 16px;
                 margin: 0;
                 padding: 0;
                 width: fit-content;
                 cursor: pointer;
-                &::before  {
-                  font-family: 'Font Awesome 5 Free';
-                  font-weight: 900;
-                  content: "\f0c9";
-                  margin-right: 7px;
-                  cursor: pointer;
-                }
-                &.open::after {
-                  transform: rotate(180deg);
-                }
             }
             #docs-menu {
                 position: fixed;
