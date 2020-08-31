@@ -38,7 +38,7 @@ To test and publish a React Native app:
 
 ## iOS workflow example
 
-The following example shows a workflow that can be used to publish your iOS app to App Store Connect:
+The following example shows a workflow that can be used to publish your iOS app to App Store Connect.
 
     workflows:
         ios-workflow:
