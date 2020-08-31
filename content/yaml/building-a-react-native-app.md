@@ -36,7 +36,7 @@ To test and publish a React Native app:
 * All iOS and Android applications need to be signed before release. Different script examples are available [here](../yaml/distribution/).
 * All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../yaml/distribution/#publishing).
 
-## iOS Workflow example
+## iOS workflow example
 
 The following example shows a workflow that can be used to publish your iOS app to App Store Connect:
 
