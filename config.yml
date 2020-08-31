@@ -11,7 +11,7 @@ params:
   backendURL: http://localhost:5000
   landingURL: http://localhost:3000
   appURL: http://localhost:3000
-  blogURL: https://blog.codemagic.io
+  blogURL: http://localhost
   defaultFacebookImage: /uploads/2019/01/default-thumb.png
   defaultTwitterImage: /uploads/2019/02/twitter.png
   headerLinkTitle: Documentation

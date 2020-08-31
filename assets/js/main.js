@@ -12,7 +12,7 @@ navCategory.each(function() {
   })
 })
 // Menu toggle
-$('[data-js-docs-menu-toggle]').on('click', function(e) {
+$('[data-js-docs-menu-toggle]').on('click', function() {
   $('[data-js-docs-menu-toggle-icon]').toggleClass('open')
   $('[data-js-docs-menu]').toggleClass('open')
 })
@@ -139,16 +139,13 @@ $(document).ready(function() {
             window.auth._id = json.user._id
             $('[data-js-header-auth-user]').addClass('transition-in')
             $('[data-js-header-user-avatar]').html('<img src="' + auth.avatarUrl + '" alt=""/>')
-            activeUserChanges()
         } else {
             window.loggedIn = false
             $('[data-js-header-auth-visitor]').addClass('transition-in')
-            visitorChanges()
         }
     } else {
         window.loggedIn = false
         $('[data-js-header-auth-visitor]').addClass('transition-in')
-        visitorChanges()
     }
     $('[data-js-header-auth-loading]').addClass('transition-out')
     setTimeout(function() {
@@ -188,7 +185,6 @@ $(document).ready(function() {
                 .removeClass('transition-out')
                 .addClass('transition-in')
         }, 1000)
-        visitorChanges()
     } catch (error) {
         location.reload()
     } finally {
@@ -199,23 +195,6 @@ $(document).ready(function() {
             .removeClass('transition-in')
             .addClass('transition-out')
     }
-  }
-
-  function activeUserChanges() {
-    $(document).ready(function() {
-        $('[ad-type*="product"]').hide()
-    })
-    $('#footer-cta .btn')
-        .text('Return to app')
-        .attr('href', '{{ site.Param "appURL" }}/apps')
-  }
-  function visitorChanges() {
-    $(document).ready(function() {
-        $('[ad-type*="product"]').show()
-    })
-    $('#footer-cta .btn')
-        .text('Get Started Now')
-        .attr('href', '{{ site.Param "appURL" }}/signup')
   }
 })
 
@@ -233,7 +212,7 @@ if ($(window).scrollTop() === 0) {
 
 $(window).on('scroll', function () {
   const currentScrollPosition = $(window).scrollTop()
-  // to not consider scrolling bounce effect as scrolling
+  // do not consider scrolling bounce effect as scrolling
   if (currentScrollPosition >= 0 && currentScrollPosition <= $('body').height() - $(window).height()) {
       window.scrollingDown = currentScrollPosition > lastScrollPosition
       lastScrollPosition = currentScrollPosition
