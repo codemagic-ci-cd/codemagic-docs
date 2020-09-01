@@ -1,5 +1,9 @@
 buildDrafts: false
 baseURL: https://docs.codemagic.io
+backendURL: https://api.codemagic.io
+landingURL: https://codemagic.io
+appURL: https://codemagic.io
+blogURL: https://blog.codemagic.io
 
 params:
   googleAnalyticsTrackingId: UA-125963734-1
