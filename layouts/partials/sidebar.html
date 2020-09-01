@@ -1,4 +1,4 @@
-<nav id="docs-menu" data-js-docs-menu>
+<nav id="docs-menu">
   <div class="search search--sidebar">
     <input class="search__input" type="text" placeholder="Search">
     <div class="search__icon search__icon--search fas fa-search"></div>
@@ -8,9 +8,9 @@
   <ul>
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
-      <li class="{{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }}" data-js-docs-menu-item>
-        <div class="category-name" data-js-category-name>{{ .Name }}</div>
-        <div class="category-posts" data-js-category-posts>
+      <li class="{{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }}">
+        <div class="category-name">{{ .Name }}</div>
+        <div class="category-posts">
           {{ range where site.Pages "Section" .Identifier -}}
             <a class="{{ if eq $currentPage .}}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
           {{- end }}
