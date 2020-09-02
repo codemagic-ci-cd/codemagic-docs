@@ -106,10 +106,10 @@ In such cases, you will often see an error message similar to this one:
 
 **Solution**:
 
-Log in to Apple Developer Account and verify:
-* That you have the correct bundle Id.
-* If missing add the Associated Domain Entitlement from there.
-* Update Provisioning profile and use it in to configure your project.
+Log in to your Apple Developer account and verify:
+* That you are using the correct bundle identifier.
+* If missing, add the Associated Domain Entitlement from there.
+* Update the provisioning profile and use it to configure your project.
 
 ### The bundle identifiers are not properly set for your project. 
 In such cases, you will often see an error message similar to this one:
