@@ -117,4 +117,4 @@ The following example shows a workflow that can be used to publish your iOS app 
         publishing:
             app_store_connect:                 
             apple_id: your_apple_id@example.com  # PUT YOUR APPLE ID HERE  
-            password: Encrypted(...)
+            password: Encrypted(...) # PUT YOUR APP-SPECIFIC-PASSWORD HERE https://support.apple.com/en-us/HT204397
