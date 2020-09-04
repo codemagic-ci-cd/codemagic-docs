@@ -4,7 +4,7 @@ title: Google Play
 weight: 2
 ---
 
-Codemagic enables you to automatically publish your app to the **internal**, **alpha**, **beta** and **production** tracks on Google Play. To do so, you must first [set up Android code signing](https://docs.codemagic.io/code-signing/android-code-signing/ 'Android code signing') and then configure publishing to Google Play.
+Codemagic enables you to automatically publish your app to the **internal**, **alpha**, **beta** and **production** tracks on Google Play. To do so, you must first [set up Android code signing](../code-signing/android-code-signing/ 'Android code signing') and then configure publishing to Google Play.
 
 ## Requirements
 
@@ -12,7 +12,7 @@ You will need a **service account in Google Play Console** to obtain the **JSON 
 
 Before releasing the app to Google Play, make sure that it meets the [Google Play's best practices guidelines](https://developer.android.com/distribute/best-practices/launch/).
 
-{{<notebox>}} Note that if you haven't published your app to Google Play yet, you must create an entry for your app in Google Play Console and manually upload the very first version of the app before you can automate publishing using Codemagic. In addition, each uploaded binary must have a different version, see how to automatically [increment build version](https://docs.codemagic.io/building/build-versioning/ 'Build versioning') on Codemagic. {{</notebox>}}
+{{<notebox>}} Note that if you haven't published your app to Google Play yet, you must create an entry for your app in Google Play Console and manually upload the very first version of the app before you can automate publishing using Codemagic. In addition, each uploaded binary must have a different version, see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic. {{</notebox>}}
 
 ## Setting up a service account in Google Play Console
 

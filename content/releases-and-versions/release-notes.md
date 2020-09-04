@@ -26,7 +26,7 @@ You can enable this feature in the UI by navigating to **App settings > Build tr
 
 ### New billing model
 
-We have moved to a post-paid billing model that comes with a more consistent billing experience and premium features, such as Mac Pro builds. Read more about what changed, who wins from this and how to take advantage of the new billing model on [our blog](https://blog.codemagic.io/codemagic-new-billing/). If you are interested in numbers, check out our updated [pricing page](https://codemagic.io/pricing/) for a quick overview of free and paid features. A short guide for selecting Mac Pro as the machine type is available in our [documentation](https://docs.codemagic.io/building/machine-type/).
+We have moved to a post-paid billing model that comes with a more consistent billing experience and premium features, such as Mac Pro builds. Read more about what changed, who wins from this and how to take advantage of the new billing model on [our blog](https://blog.codemagic.io/codemagic-new-billing/). If you are interested in numbers, check out our updated [pricing page](https://codemagic.io/pricing/) for a quick overview of free and paid features. A short guide for selecting Mac Pro as the machine type is available in our [documentation](../building/machine-type/).
 
 The new billing model will apply to all new users and teams signing up after 1st of June, 2020 as well as to existing users that have not purchased any paid build minutes or team seats. However, all existing users will be able to opt in for the improved billing model.
 If you have any questions or concerns, do not hesitate to reach out in our [#pricing channel](https://codemagicio.slack.com/archives/CHWC14F17).

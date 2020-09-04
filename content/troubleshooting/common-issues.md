@@ -93,26 +93,30 @@ When building for iOS, the build gets stuck after showing `Xcode build done` in 
 
 This issue is known to be fixed on the `master` channel.
 
-## iOS build error with `Provisioning profile`
+## iOS build errors with `Provisioning profile`
+This is the list of the most common issues that may cause iOS provisioning profile errors during a CI build.
 
-**Description**:
-
-This issue takes place when trying to use an outdated **Provisioning profile** that does not include 
-Associated Domains. 
-
-**Log output**: 
-
+### You are using an outdated Provisioning profile that does not include Associated Domains.
+In such cases, you will often see an error message similar to this one:
 ```
 ❌ error: Provisioning profile "CodeMagic" doesn't support the Associated Domains capability. (in target 'Runner' from project 'Runner').
  
 ❌ error: Provisioning profile "CodeMagic" doesn't include the com.apple.developer.associated-domains entitlement. (in target 'Runner' from project 'Runner').
 ```
 
-**Solution**: 
+**Solution**:
 
- Log in to Apple Developer Account and verify :
-  - That you have the correct bundle Id.  
-  - If missing add the Associated Domain Entitlement from there.
-  - Update Provisioning profile and use it in to configure your project.
+Log in to your Apple Developer account and verify:
+* That you are using the correct bundle identifier.
+* If missing, add the Associated Domain Entitlement from there.
+* Update the provisioning profile and use it to configure your project.
 
- 
+### The bundle identifiers are not properly set for your project. 
+In such cases, you will often see an error message similar to this one:
+```
+❌ error: Runner has conflicting provisioning settings. Runner is automatically signed, but code signing identity Apple Push Services has been manually specified. Set the code signing identity value to “iPhone Developer” in the build settings editor, or switch to manual signing in the Signing & Capabilities editor. (in target ‘Runner’ from project ‘Runner’)
+```
+
+**Solution**:
+* Confirm that you have set the correct bundle identifiers for all targets in Xcode.
+* Verify that the bundle identifier set in Xcode matches the bundle identifier set in the UI under code signing.

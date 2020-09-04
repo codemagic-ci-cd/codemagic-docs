@@ -162,7 +162,7 @@ See the default software versions on Codemagic build machines [here](../releases
 
 ### Cache
 
-`cache:` defines the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](https://docs.codemagic.io/building/dependency-caching/).
+`cache:` defines the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](../building/dependency-caching/).
 
     cache:
       cache_paths:

@@ -1,0 +1,37 @@
+<div id="nav-trigger"></div>
+<header id="header" data-js-header>
+    <div class="inner">
+        <a href='{{ site.Param "landingURL" }}/start' id="header-logo" onclick="sendGtag('Logo_clicked', 'CodemagicMenu')" target="_blank">{{ partial "codemagic-logo" . }}</a>
+        <div id="menu-toggle" data-js-header-menu-toggle>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div id="header-menu-wrap" data-js-header-menu-wrap>
+            <nav id="header-main-menu">
+                <a class="menu-link" href='{{ site.Param "landingURL" }}/pricing' onclick="sendGtag('Pricing_clicked', 'CodemagicMenu')" target="_blank">Pricing</a>
+                <a class="menu-link" href='{{ site.Param "landingURL" }}/business' onclick="sendGtag('Business_clicked', 'CodemagicMenu')" target="_blank">Business</a>
+                <a class="menu-link" href='/' onclick="sendGtag('Documentation_clicked', 'CodemagicMenu')">Documentation</a>
+                <a class="menu-link" href='{{ site.Param "blogURL" }}' onclick="sendGtag('Blog_clicked', 'CodemagicMenu')" target="_blank">Blog</a>
+            </nav>
+            <aside id="header-authentication" data-js-header-authentication>
+                <div id="header-auth-visitor" data-js-header-auth-visitor>
+                    <a class="auth-link" href='{{ site.Param "landingURL" }}/login' id="login-link" onclick="sendGtag('Login_clicked', 'CodemagicMenu')">Login</a>
+                    <a href='{{ site.Param "landingURL" }}/signup' id="signup-btn" class="btn" onclick="sendGtag('Signup_clicked', 'CodemagicMenu')">Sign
+                        up</a>
+                </div>
+                <a id="header-auth-user" href='{{ site.Param "landingURL" }}/apps' data-js-header-auth-user>
+                    <div class="label">Return to app</div>
+                    <div id="header-user-avatar" data-js-header-user-avatar></div>
+                </a>
+                <div id="header-auth-logout" data-js-header-auth-logout>
+                    Log out
+                </div>
+                <div id="header-auth-loading" data-js-header-auth-loading>
+                    <div class="grey-line" data-js-header-auth-loading-grey-line></div>
+                    <div class="red-line"></div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</header>

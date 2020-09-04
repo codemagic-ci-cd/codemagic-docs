@@ -23,4 +23,4 @@ Codemagic can detect your Flutter web project if it meets the following conditio
 
 ## Build artifacts
 
-At the end of a successful build, Codemagic generates a `.zip` file of the contents of `$FCI_BUILD_DIR/build` and exports this as an artifact. You can either download it or set up publishing to [Codemagic Static Pages](https://docs.codemagic.io/publishing/publishing-to-codemagic-static-pages/). You can also use custom script to publish to third-party hosting sites.
+At the end of a successful build, Codemagic generates a `.zip` file of the contents of `$FCI_BUILD_DIR/build` and exports this as an artifact. You can either download it or set up publishing to [Codemagic Static Pages](../publishing/publishing-to-codemagic-static-pages/). You can also use custom script to publish to third-party hosting sites.
