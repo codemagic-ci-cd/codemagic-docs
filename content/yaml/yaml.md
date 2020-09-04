@@ -172,7 +172,7 @@ See the default software versions on Codemagic build machines [here](../releases
 ### Triggering
 
 {{<notebox>}}
-You should manually set up the webhook in your repository hosting service to enable automatic builds in response to events in the repository. Please refer to the [documentation](../building/automatic-build-triggering/#setup-webhooks-manually) for details.
+You need to set up webhooks in the repository hosting service to enable automatic builds in response to events in the repository. Please refer [here](../building/automatic-build-triggering/#setup-webhooks-manually) for details.
 {{</notebox>}}
 
 `triggering:` defines the events for automatic build triggering and watched branches. If no events are defined, you can start builds only manually. 
