@@ -7,7 +7,7 @@ weight: 4
 You can add apps from public or private Git-based repositories. 
 
 {{<notebox>}}
-* Note that webhooks for automatic build triggering need to be [set up manually](../building/automatic-build-triggering/#webhooks).
+* Note that webhooks for automatic build triggering need to be [set up manually](../building/automatic-build-triggering/#setup-webhooks-manually).
 {{</notebox>}}
 
 ## Connecting repository via HTTP/HTTPS
