@@ -1,20 +1,20 @@
 ---
 title: Building a native app with a Flutter module
 description: Building a native iOS or Android app with a Flutter module
-weight: 5
+weight: 6
 ---
 
 ## Add-to-app
 
-It’s sometimes not practical to rewrite your entire application in Flutter all at once. For those situations, Flutter can be integrated into your existing application piecemeal, as a library or module. That module can then be imported into your Android or iOS (currently supported platforms) app to render a part of your app’s UI in Flutter. Or, just to run shared Dart logic. Please refer to [the guidlines](https://flutter.dev/docs/development/add-to-app) for more information.
+Flutter can be integrated into your existing application as a library to render a part of your app’s UI in Flutter. To add a Flutter module to an existing app, please refer to [the official Flutter documentation](https://flutter.dev/docs/development/add-to-app).
 
-The templates were inspired with add-to-app [flutter samples](https://github.com/flutter/samples/tree/master/add_to_app). It implies that Flutter module directory (reffered in templates as `my_flutter_module`) is on the same level as the host app directory (reffered as `my_host_app`). 
+The examples below show how to build apps containing Flutter modules using `codemagic.yaml`. The examples provided here are inspired by [Flutter add-to-app samples](https://github.com/flutter/samples/tree/master/add_to_app) where the Flutter module directory (reffered to as `my_flutter_module` in templates) is on the same level as the host app directory (reffered to as `my_host_app`). 
 
-#### Using Flutter module (with dependencies) as a library
+### Using a Flutter module (with dependencies) as a library
 
-Using Flutter module as a library means that it will be built from the source each time the host app builds. 
+Using a Flutter module as a library means that it will be built from the source each time the host app builds. 
 
-* Android:
+* In an Android app:
 
 ```yaml
 scripts:
@@ -23,7 +23,7 @@ scripts:
   - cd my_host_app && ./gradlew assembleDebug
 ```
 
-* iOS:
+* In an iOS app:
 
 ```yaml
 scripts:
@@ -50,11 +50,11 @@ If you don't have a workspace, use
 `-workspace "MyXcodeWorkspace.xcworkspace"` option.
 {{</notebox>}}
 
-#### Using a prebuilt Flutter module:
+### Using a prebuilt Flutter module
 
-Using Flutter module as a prebuilt module means that you don't need to build it every time host app builds if the module doesn't change. If you don't do changes in the Flutter module, you may speed up your overall building time by precompiling your Flutter module once, committing it to the repository and reusing it afterwards without the need to build it from source.
+Using a prebuilt module means that you don't need to build it every time the host app is built. You may speed up your overall building time by precompiling your Flutter module once, committing it to the repository and reusing it afterwards without the need to build it from source.
 
-* Android:
+* In an Android app:
 
 ```yaml
 scripts:
@@ -71,7 +71,7 @@ scripts:
       ./gradlew assembleDebug
 ```
 
-* iOS:
+* In an iOS app:
 
 ```yaml
 scripts:
