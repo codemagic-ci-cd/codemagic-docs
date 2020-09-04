@@ -1,7 +1,7 @@
 ---
 title: Code signing and publishing
 description: Code signing and publishing with YAML.
-weight: 8
+weight: 9
 ---
 
 All Android and iOS applications have to be digitally signed before release to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. In the case of mobile apps, this means that users can be assured that the apps they download from the App Store Connect or Google Play Store are from developers they can trust.

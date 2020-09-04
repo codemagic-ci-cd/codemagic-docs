@@ -1,7 +1,7 @@
 ---
 title: Using Codemagic CLI tools locally
 description: Using Codemagic CLI tools locally or in other environments.
-weight: 9
+weight: 10
 ---
 
 [codemagic-cli-tools](https://pypi.org/project/codemagic-cli-tools/) is a set of tools to simplify builds at Codemagic. They can be installed with pip (`pip3 install codemagic-cli-tools`) and run locally. For more information, review the full documentation on [CLI tools](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs#cli-tools).
