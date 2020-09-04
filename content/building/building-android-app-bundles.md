@@ -22,8 +22,8 @@ In the **Build section** of app settings, tick **Android** and then choose **And
 In order to upload your Android App Bundle to Google Play, you will need to:
 
 1. Build the app in **Release** mode.
-2. Set up [Android code signing](https://docs.codemagic.io/code-signing/android-code-signing/) in Codemagic to sign the app bundle.
-3. Set up [publishing to Google Play](https://docs.codemagic.io/publishing/publishing-to-google-play/) in Codemagic to upload your app bundle to one of Google Play tracks.
+2. Set up [Android code signing](../code-signing/android-code-signing/) in Codemagic to sign the app bundle.
+3. Set up [publishing to Google Play](../publishing/publishing-to-google-play/) in Codemagic to upload your app bundle to one of Google Play tracks.
 4. [Enroll your app into app signing by Google Play](https://support.google.com/googleplay/android-developer/answer/7384423) to have Google sign the .apk(s) that are generated from the app bundle during installation.
 
 When you enroll an app into app signing by Google Play, Google will manage your app's signing key for you and use it to sign the .apk for distribution. Note that the app must be signed with the same key throughout its lifecycle, so if the app has already been uploaded to Google Play, make sure to export and upload your original key to Google Play for app signing. It is then recommended to create a new key ("upload key") for signing your app updates and uploading them to Google Play.

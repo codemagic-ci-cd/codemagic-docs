@@ -6,9 +6,9 @@ weight: 8
 
 All Android and iOS applications have to be digitally signed before release to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. In the case of mobile apps, this means that users can be assured that the apps they download from the App Store Connect or Google Play Store are from developers they can trust.
 
-For iOS, we use Codemagic CLI tools to perform code signing and publishing for iOS apps - these tools are open source and can also be [used locally](../yaml/runninglocally/) or in other environments. Android applications are usually signed using Gradle. This page here covers the most common scripts, but different options for code signing have also been covered extensively on our blog. For example, there is a [blog post](https://blog.codemagic.io/distributing-native-ios-sdk-with-flutter-module-using-codemagic/) about code signing iOS apps with `codemagic.yaml`. There are also [step-by-step instructions](https://blog.codemagic.io/the-simple-guide-to-android-code-signing/) available on our blog for Android code signing.
+For iOS, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to perform code signing and publishing for iOS apps ⏤ these tools are open source and can also be [used locally](../yaml/runninglocally/) or in other environments. Android applications are usually signed using Gradle. This page here covers the most common scripts, but different options for code signing have also been covered extensively on our blog. For example, there is a [blog post](https://blog.codemagic.io/distributing-native-ios-sdk-with-flutter-module-using-codemagic/) about code signing iOS apps with `codemagic.yaml`. There are also [step-by-step instructions](https://blog.codemagic.io/the-simple-guide-to-android-code-signing/) available on our blog for Android code signing.
 
-All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts - for example, in addition to traditional solutions, there are also some examples about Firebase App Distribution [below](../yaml/distribution/#publishing).
+All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts, see the examples [below](../yaml/distribution/#publishing).
 
 ## Setting up code signing for iOS
 
@@ -24,7 +24,7 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
 
   1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
   2. Click on the + sign to generate a new API key.
-  3. Enter the name for the key and select an access level (`Admin` or `Developer`).
+  3. Enter the name for the key and select an access level (`Developer` or `App Manager`).
   4. Click **Generate**.
   5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key. Note that the key can only be downloaded once.
 
@@ -40,19 +40,19 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
 
   A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the following command in your terminal:
 
-      ssh-keygen -t rsa -b 2048 -f ~/Desktop/codemagic_private_key -q -N ""
+      ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
 
 {{<notebox>}}
 Alternatively, each property can be specified in the scripts section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
 {{</notebox>}}
+
+### Setting up manual code signing
 
 In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sensitive-data) your signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile, and set the encrypted values to the following environment variables:
 
     CM_CERTIFICATE: Encrypted(...)
     CM_CERTIFICATE_PASSWORD: Encrypted(...)
     CM_PROVISIONING_PROFILE: Encrypted(...)
-
-### Setting up manual code signing
 
 With the manual code signing method, you are required to upload the signing certificate and the matching provisioning profile(s) to Codemagic in order to receive signed builds.
 
@@ -130,7 +130,7 @@ Use the following script:
 
 ## Publishing
 
-`publishing:` for every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play and App Store Connect.
+`publishing:` for every successful build, you can publish the generated artifacts to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Github releases.
 
     publishing:
       email:
@@ -152,7 +152,14 @@ Use the following script:
           - '*.aab'
 
 {{<notebox>}}
-GitHub releases publishing only works for GitHub repositories.
+
+A prerequisite for Slack publishing is connecting the Slack workspace in **User settings > Integrations > Slack** for personal applications and in **Teams > Your_team > Team integrations > Slack** for team apps.
+
+{{</notebox>}}
+<br>
+
+{{<notebox>}}
+GitHub releases is available for GitHub repositories only.
 
 Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
 

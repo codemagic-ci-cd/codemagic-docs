@@ -162,7 +162,7 @@ See the default software versions on Codemagic build machines [here](../releases
 
 ### Cache
 
-`cache:` defines the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](https://docs.codemagic.io/building/dependency-caching/).
+`cache:` defines the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](../building/dependency-caching/).
 
     cache:
       cache_paths:
@@ -196,7 +196,18 @@ To avoid running builds on outdated commits, you can set `cancel_previous_builds
 
 ### Scripts
 
-Scripts specify what kind of application is built. This is where you can specify the commands to test, build and code sign your project. There are example scripts available for building a [Flutter application](./building-a-flutter-app/), [React Native application](./building-a-react-native-app/), [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
+Scripts specify what kind of application is built. This is where you can specify the commands to test, build and code sign your project.
+
+    scripts:
+      - flutter test
+      - |
+        #!/usr/bin/env python3
+
+        print('Multiline python script')
+      - name: Build for iOS
+        script: flutter build ios
+
+There are example scripts available for building a [Flutter application](./building-a-flutter-app/), [React Native application](./building-a-react-native-app/), [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
 
 ### Testing
 
@@ -218,7 +229,7 @@ Configure the paths and names of the artifacts you would like to use in the foll
 There are several things to keep in mind about patterns:
 * The pattern can match several files or folders. If it picks up files or folders with the same name, the top level file or folder name will be suffixed with `_{number}`.
 * If one of the patterns includes another pattern, duplicate artifacts are not created.
-* `apk`, `aab`, `ipa`, `aar`, `app`, proguard mapping (`mapping.txt`), `flutter_drive.log`, `jar`, `zip`, `xarchive` and `dSYM.zip` files will be available as separate items in the Artifacts section on the build page. The rest of the artifacts will be included in an archive with the following name pattern: `{project-name}_{version}_artifacts.zip`.
+* `apk`, `aab`, `aar`, `ipa`, `app`, proguard mapping (`mapping.txt`), `flutter_drive.log`, `jar`, `zip`, `xarchive` and `dSYM.zip` files will be available as separate items in the Artifacts section on the build page. The rest of the artifacts will be included in an archive with the following name pattern: `{project-name}_{version}_artifacts.zip`.
 
 ### Publishing
 
