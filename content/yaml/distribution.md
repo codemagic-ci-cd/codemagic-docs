@@ -16,7 +16,9 @@ All generated artifacts can be published to external services. The available int
 Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) utility to manage macOS keychains and certificates.
 {{</notebox>}}
 
-In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
+### Setting up automatic code signing
+
+In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](#encrypting-sensitive-data) the values of the variables before adding them to the configuration file. Note that when using Codemagic UI to encrypt files, they will also be base64 encoded and you will have to base64 decode in order for the configuration to work. When adding the variables through the UI and exporting the .yaml file, they will automatically be decoded.
 
 * `APP_STORE_CONNECT_PRIVATE_KEY`
 
@@ -46,6 +48,19 @@ In order to use **automatic code signing** and have Codemagic manage signing cer
 Alternatively, each property can be specified in the scripts section as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
 {{</notebox>}}
 
+{{<notebox>}}
+Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) utility for generating and managing certificates and provisioning profiles and performing code signing.
+{{</notebox>}}
+
+    - find . -name "Podfile" -execdir pod install \;
+    - keychain initialize
+    - app-store-connect fetch-signing-files "io.codemagic.app" \  # Fetch signing files for specified bundle ID (use "$(xcode-project detect-bundle-id)" if not specified)
+      --type IOS_APP_DEVELOPMENT \  # Specify provisioning profile type*
+      --create  # Allow creating resources if existing are not found.
+    - keychain add-certificates
+
+The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
+
 ### Setting up manual code signing
 
 In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sensitive-data) your signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile, and set the encrypted values to the following environment variables:
@@ -73,21 +88,6 @@ With the manual code signing method, you are required to upload the signing cert
       keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
       # when using a certificate that is not password-protected
       keychain add-certificates --certificate /tmp/certificate.p12
-
-### Setting up automatic code signing
-
-{{<notebox>}}
-Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) utility for generating and managing certificates and provisioning profiles and performing code signing.
-{{</notebox>}}
-
-    - find . -name "Podfile" -execdir pod install \;
-    - keychain initialize
-    - app-store-connect fetch-signing-files "io.codemagic.app" \  # Fetch signing files for specified bundle ID (use "$(xcode-project detect-bundle-id)" if not specified)
-      --type IOS_APP_DEVELOPMENT \  # Specify provisioning profile type*
-      --create  # Allow creating resources if existing are not found.
-    - keychain add-certificates
-
-The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
 
 ## Setting up code signing for Android
 
