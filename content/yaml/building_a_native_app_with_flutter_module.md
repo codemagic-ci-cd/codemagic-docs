@@ -52,7 +52,7 @@ If you don't have a workspace, use
 
 ### Using a prebuilt Flutter module
 
-Using a prebuilt module means that you don't need to build it every time the host app is built. You may speed up your overall building time by precompiling your Flutter module once, committing it to the repository and reusing it afterwards without the need to build it from source.
+Using a prebuilt module means that you don't need to build it every time the host app is built if there are no changes to the module. You may speed up your overall building time by precompiling your Flutter module once, committing it to the repository and reusing it afterwards without the need to build it from source.
 
 * In an Android app:
 
