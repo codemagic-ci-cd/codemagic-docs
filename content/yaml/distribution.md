@@ -16,7 +16,7 @@ All generated artifacts can be published to external services. The available int
 Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) utility to manage macOS keychains and certificates.
 {{</notebox>}}
 
-In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](#encrypting-sensitive-data) the values of the variables before adding them to the configuration file. For keys, encrypt the content of the key files, not the files themselves.
+In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](#encrypting-sensitive-data) the values of the variables before adding them to the configuration file. For keys, encrypt the content of the key files, not the key files themselves.
 
 * `APP_STORE_CONNECT_PRIVATE_KEY`
 
