@@ -23,7 +23,8 @@ Here you'll find some of the read-only environment variables explained.
 |--------------------------|-----------------------------------------------------------------------------------------------------------------|
 | CI                       | true                                                                                                            |
 | CONTINUOUS_INTEGRATION   | true                                                                                                            |
-| BUILD_NUMBER             | Number of the build for this project in Codemagic                                                               |
+| BUILD_NUMBER             | Number of the build for this project in Codemagic for the given workflow                                        |
+| PROJECT_BUILD_NUMBER     | Number of the build for this project in Codemagic                                                               |
 | FLUTTER_ROOT             | Absolute path to Flutter SDK                                                                                    |
 | FCI_BRANCH               | The current branch being built, for pull requests it is the source branch                                       |
 | FCI_REPO_SLUG            | The slug of the repository that is currently being built in the form owner_name/repository_name. Unset in case of custom source added repository|
