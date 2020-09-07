@@ -18,7 +18,7 @@ Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/
 
 ### Setting up automatic code signing
 
-In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](../yaml/yaml/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file. Note that in order to properly encrypt the App Store Connect private key and the certificate private key, copy the contents of the files and encrypt the content instead of the files themselves in the [Codemagic encryption interface](../yaml/yaml/#encrypting-sensitive-data). You can then add the encrypted values to the respective environment variables.
+In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](../yaml/yaml/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file. Note that when encrypting files via the UI, they are base64 encoded, thus in order to properly encrypt the App Store Connect private key and the certificate private key, copy the contents of the files and encrypt the content instead of the files themselves in the [Codemagic encryption interface](../yaml/yaml/#encrypting-sensitive-data). You can then add the encrypted values to the respective environment variables.
 
 * `APP_STORE_CONNECT_PRIVATE_KEY`
 
