@@ -12,7 +12,7 @@ Instead of creating a session with Apple Developer Portal, we are now using App 
 
 ### Support for multiple team oweners
 
-Coemagic teams can now have multiple team owners. Team owners can manage team integrations, add or remove team members and set up billing. Team owners can also upgrade members to owners or downgrade other owners to member. Read more about how teams work [here](../teams/teams).
+Codemagic teams can now have multiple team owners. Team owners can manage team integrations, add or remove team members and set up billing. Team owners can also upgrade members to owners or downgrade other owners to member. Read more about how teams work [here](../teams/teams).
 
 ## July 2020
 
