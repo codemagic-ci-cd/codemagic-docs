@@ -4,19 +4,18 @@ title: Common issues
 weight: 1
 ---
 
-## Two-factor authentication for Apple Developer Portal integration fails
+## iOS errors regarding creating authentication sessions
 
-Recently, Apple changed their private API which affects the way third-party systems offer two-factor authentication for Apple Developer Portal. This may result in two-factor authentication failing for the Apple Developer Portal integration in Codemagic despite entering a correct authentication code.
+When App Store Connect is not correctly set up, users might encounter an error message similar to the following:
 
-        Apple Developer Portal authentication failed
-        Two factor authentication failed for user@domain.com: Incorrect Verification Code: Incorrect verification code
+```
+altool[xxx:xxx] *** Error: Unable to validate archive '/Users/builder/ipas/xxx'.
+altool[xxx:xxx] *** Error: code -22020 (Unable to validate your application. We are unable to create an authentication session.)
+```
 
-If you see the error message above and are convinced you have entered the correct authentication code, you can try the following workarounds:
+The most common reason for the occurrence of this error message is using Apple ID password instead of [app-specific password](https://support.apple.com/en-us/HT204397) in App Store Connect publishing settings. 
 
- * Change your Apple Developer Portal password
- * Log out from all the devices except the one you want to use for receiving the authentication code
-
-If the suggestions above do not work for you, you can export your current UI configuration and switch to building using `codemagic.yaml`, see more information in [Configuration as code (YAML)](../building/yaml).
+To generate an app-specific password, sign in to your [Apple ID account page](https://appleid.apple.com/account/manage), navigate to the **Security** section and click **Generate Password...** below **App-Specific Passwords**. The generated app-specific password will be in this format: `abcd-efgh-ijkl-mnop`. Insert this value into the Codemagic UI or as a password in `codemagic.yaml` when setting up publishing to App Store Connect. Note that the password should be generated with the same Apple account that you are using for publishing.
 
 ## iOS code signing troubleshooting
 
