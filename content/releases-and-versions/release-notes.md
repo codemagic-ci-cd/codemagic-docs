@@ -4,6 +4,16 @@ title: Release notes
 weight: 1
 ---
 
+## August 2020
+
+### Using App Store Connect API for Apple Developer Portal integration
+
+Instead of creating a session with Apple Developer Portal, we are now using App Store Connect API keys for authentication. This means there will be no more expiring sessions or hassle with two-factor authentication when using automatic code signing. It is possible to set up several keys for code signing and select the right key in workflow settings. See how to [set up the Apple Developer Portal in Codemagic app](../code-signing/ios-code-signing/#automatic-code-signing) for builds that are configured in the UI. When building with `codemagic.yaml`, the API keys are added in the configuration file, see the instructions [here](../yaml/distribution/#setting-up-code-signing-for-ios).
+
+### Support for multiple team oweners
+
+Codemagic teams can now have multiple team owners. Team owners can manage team integrations, add or remove team members and set up billing. Team owners can also upgrade members to owners or downgrade other owners to member. Read more about how teams work [here](../teams/teams).
+
 ## July 2020
 
 ### New project setup guide
