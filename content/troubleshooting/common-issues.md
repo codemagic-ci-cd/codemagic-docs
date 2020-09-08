@@ -4,7 +4,7 @@ title: Common issues
 weight: 1
 ---
 
-## iOS errors regarding creating authenticated sessions
+## iOS errors regarding creating authentication sessions
 
 When App Store Connect is not correctly set up, users might encounter an error message similar to the following:
 
@@ -13,7 +13,7 @@ altool[xxx:xxx] *** Error: Unable to validate archive '/Users/builder/ipas/xxx'.
 altool[xxx:xxx] *** Error: code -22020 (Unable to validate your application. We are unable to create an authentication session.)
 ```
 
-The most common reason for the occurrence of this error message is that the user has not properly set up his/hers App-specific password and has used the Apple Developer account password instead.
+The most common reason for the occurrence of this error message is using Apple ID password instead of [app-specific password](https://support.apple.com/en-us/HT204397) in App Store Connect publishing settings. 
 
 To generate an app-specific password, sign in to your [Apple ID account page](https://appleid.apple.com/account/manage), navigate to the **Security** section and click **Generate Password...** below **App-Specific Passwords**. The generated app-specific password will be in this format: `abcd-efgh-ijkl-mnop`. Insert this value into the Codemagic UI or as a password in `codemagic.yaml` when setting up publishing to App Store Connect. Note that the password should be generated with the same Apple account that you are using for publishing.
 
