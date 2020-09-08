@@ -15,7 +15,7 @@ altool[xxx:xxx] *** Error: code -22020 (Unable to validate your application. We 
 
 The most common reason for the occurrence of this error message is that the user has not properly set up his/hers App-specific password and has used the Apple Developer account password instead.
 
-To generate an App-specific password, sign into your [Apple ID account page](https://appleid.apple.com/account/manage) and under security section click Generate Password below App-Specific Passwords. The format for this password should be in the form of `abcd-efgh-ijkl-mnop`. Insert this value into the Codemagic UI. Please take note that the password should be generated with the same Apple account that is set in the UI to avoid any other errors.
+To generate an app-specific password, sign in to your [Apple ID account page](https://appleid.apple.com/account/manage), navigate to the **Security** section and click **Generate Password...** below **App-Specific Passwords**. The generated app-specific password will be in this format: `abcd-efgh-ijkl-mnop`. Insert this value into the Codemagic UI or as a password in `codemagic.yaml` when setting up publishing to App Store Connect. Note that the password should be generated with the same Apple account that you are using for publishing.
 
 ## iOS code signing troubleshooting
 
