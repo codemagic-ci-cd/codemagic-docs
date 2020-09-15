@@ -94,7 +94,7 @@ The following example shows a workflow that can be used to publish your iOS app 
                     agvtool new-version -all $(($BUILD_NUMBER +1))
                 - name: Set up code signing settings on Xcode project
                   script: |
-                    xcode-project use-profiles
+                    xcode-project use-profiles --project ios/*.xcodeproj
                 - name: Build ipa for distribution
                   script: |
                     xcode-project build-ipa --workspace "$FCI_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme $XCODE_SCHEME
