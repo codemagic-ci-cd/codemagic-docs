@@ -1,6 +1,6 @@
 ---
 description: Access any private Git submodules or dependencies in Codemagic
-title: Accessing private repositories
+title: Accessing private dependencies and git submodules
 weight: 5
 ---
 
