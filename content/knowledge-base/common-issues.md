@@ -1,7 +1,12 @@
 ---
 description: Find out how to overcome frequent issues with building your Flutter app on Codemagic. 
 title: Common issues
-weight: 1
+weight: 4
+aliases:
+    - '../troubleshooting/common-issues'
+    - '../custom-scripts/add-a-git-tag-with-app-version'
+    - '../custom-scripts/load-firebase-configuration'
+    - '../custom-scripts/upload-custom-artifacts'
 ---
 
 ## Two-factor authentication for Apple Developer Portal integration fails

@@ -1,13 +1,13 @@
 ---
-description: Add your Flutter app wherever it is hosted
-title: Adding apps from custom sources
-weight: 4
+description: Add your mobile app from any private or public repository
+title: Adding repositories
+weight: 2
 ---
 
-You can add apps from public or private Git-based repositories. 
+When you sign up via OAuth, Codemagic already has access to the repositories you have available on your Git provider account. However, you can add apps from public or private as well as from cloud-based or self-hosted Git repositories. 
 
 {{<notebox>}}
-* Note that webhooks for automatic build triggering need to be [set up manually](../building/automatic-build-triggering/#setup-webhooks-manually).
+* Note that webhooks for automatic build triggering need to be [created manually](../building/automatic-build-triggering/#setup-webhooks-manually).
 {{</notebox>}}
 
 ## Connecting repository via HTTP/HTTPS
@@ -34,7 +34,7 @@ Your app will be then listed on the Applications page and you can then continue 
     **Alternatively**, you can click **Generate key pair** and have Codemagic create an SSH key pair for you, read more about it [below](#generating-a-key-pair-in-codemagic).
 4. Click **Add application**.
 
-Your app will be then listed on the Applications page and you can then continue configuring your project by clicking on **Configure for building**.
+You can then continue configuring your project by selecting a starter workflow.
 
 {{<notebox>}}If you need to update the private key in Codemagic, you can upload or generate a new one in **App settings > Repository settings > Repository access settings**.{{</notebox>}}
 

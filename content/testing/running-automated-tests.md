@@ -41,7 +41,7 @@ emulator            • emulator      • Google • android
 apple_ios_simulator • iOS Simulator • Apple  • ios
 ```
 
-It's recommended to launch desired emulator before the tests start:
+It's recommended to launch the desired emulator before the tests start:
 
 ```sh
 flutter emulators --launch ios
@@ -55,10 +55,10 @@ flutter emulators --launch emulator
 
 {{<notebox>}}
 
-**Tip**: You can set up separate [workflows](../getting-started/creating-workflows/) to run tests both on iOS and Android.
+**Tip**: You can set up separate [workflows](../flutter/creating-workflows/) to run tests both on iOS and Android.
 
 {{</notebox>}}
 
 ### Stop build if tests fail
 
-Selecting the **Stop build if tests fail** option will stop the build immediately when any of the tests fail. As the tests are run before building the app for selected platforms, you can get the result of the build faster. Such builds will have the status "failed".
+Selecting the **Stop build if tests fail** option will stop the build immediately when any of the tests fail. Such builds will have the status "failed".
