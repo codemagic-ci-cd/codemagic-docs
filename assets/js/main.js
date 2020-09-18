@@ -1,14 +1,10 @@
 const desktopScreenWidth = 1001;
 
 // Category toggle open
-var navCategory = $('[data-js-docs-menu-item]')
-navCategory.each(function() {
-  $('[data-js-category-name]', this).on('click', function() {
-    var $parent = $(this).parent()
-
-    $parent.find('[data-js-category-posts]').slideToggle(150, function complete() {
-      $parent.toggleClass('open')
-    })
+$('[data-js-category-name]').on('click', function() {
+  var $parent = $(this).parent()
+  $(this).siblings('[data-js-category-posts]').slideToggle(150, function complete() {
+    $parent.toggleClass('open')
   })
 })
 // Menu toggle

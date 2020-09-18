@@ -118,7 +118,9 @@ body {
                     position: relative;
                     cursor: pointer;
                     line-height: 1.2;
-
+                    &--nested {
+                      padding-left: 10px;
+                    }
                     &::after {
                         @include fontAwesome('\f0d7');
                         position: absolute;
@@ -128,11 +130,11 @@ body {
                 }
                 .category-posts {
                     display: none;
-                    
+                    padding-left: 40px;
                     a {
                         display: block;
                         color: $black;
-                        padding: 5px 5px 5px 50px;
+                        padding: 5px 5px 5px 15px;
                         position: relative;
                         font-size: 14px;
                         opacity: 0;
@@ -140,10 +142,14 @@ body {
     
                         &:hover, &.active { color: $blue; }
                     }
+                    &--nested {
+                      margin-bottom: 5px;
+                      padding-left: 15px;
+                    }
                 }
                 &.open {
-                    .category-name { &::after { transform: rotate(180deg); } }
-                    .category-posts {
+                    & > .category-name { &::after { transform: rotate(180deg); } }
+                    & > .category-posts {
                         display: block;
                         a { opacity: 1; }
                     }
