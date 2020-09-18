@@ -1,7 +1,7 @@
 ---
 title: Building a React Native app
 description: Building a React Native app with YAML.
-weight: 5
+weight: 7
 ---
 
 React Native is a cross-platform solution that allows you to build apps for both iOS and Android faster using a single language. When working with YAML, the basics are still the same, the build scripts are added to the `scripts` section in the [overall architecture](../yaml/yaml/#template).

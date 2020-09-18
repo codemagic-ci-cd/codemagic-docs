@@ -1,7 +1,7 @@
 ---
 title: Testing
 description: Testing with YAML.
-weight: 8
+weight: 1
 ---
 
 Test scripts are added under `scripts` in the [overall architecture](../yaml/yaml/#template), before the build commands.

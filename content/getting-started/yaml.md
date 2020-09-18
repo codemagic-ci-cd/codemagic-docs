@@ -1,74 +1,59 @@
 ---
-title: Configuration as code (YAML)
+title: Using codemagic.yaml
 description: Customize the build and configure all your workflows in a single file.
-weight: 1
+weight: 3
 aliases:
   - '../building/yaml'
 ---
 
-`codemagic.yaml` is an advanced option for customizing the build and configuring all your workflows in a single file. This file can be committed to version control, and when it is detected in the repository it will be referenced to configure the build (instead of using the settings in the UI).
-
-{{<notebox>}}
-
-The YAML feature currently has the following **limitations**:
-
-* Exporting configuration from UI is supported for Flutter-based Android, iOS and web apps.
-* The exported configuration is not identical to the settings in UI and lacks the configuration for some features, such as **Stop build if tests fail** and publishing to Codemagic Static Pages.
-
-{{</notebox>}}
-
-## Exporting current configuration as YAML
-
-You can get started with YAML easily if you have an existing project set up on Codemagic. 
-
-1. Navigate to your app settings.
-2. Click **Download configuration** on the right sidebar in the **Configuration as code** section.
-
-Note that in order to use the file for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
-
-## Encrypting sensitive data
-
-During the export, Codemagic automatically encrypts the secret environment variables in your build configuration. 
-
-If you wish to add new environment variables to the YAML file, you can encrypt them via Codemagic UI. 
-
-1. Navigate to your app settings.
-2. Click **Encrypt environment variables** on the right sidebar in the **Configuration as code** section.
-3. Paste the value of the variable in the field or upload it as a file.
-4. Click **Encrypt**. 
-5. Copy the encrypted value and paste it to the configuration file.
-
-The encrypted value will look something like this:
-
-```
-Encrypted(Z0FBQUFBQmRyY1FLWXIwVEhqdWphdjRhQ0xubkdoOGJ2bThkNmh4YmdXbFB3S2wyNTN2OERoV3c0YWU0OVBERG42d3Rfc2N0blNDX3FfblZxbUc4d2pWUHJBSVppbXNXNC04U1VqcGlnajZ2VnJVMVFWc3lZZ289)
-```
-
-{{<notebox>}}Note that when the value is uploaded as a file, it is encoded to `base64`.{{</notebox>}}
-
-Writing the base64-encoded environment variable to a file can be done like this:
-
-```
-scripts:
-  - echo $MY_FILE | base64 --decode > my-file.json
-```
+`codemagic.yaml` is a highly customizable configuration file for setting up your CI/CD pipeline with Codemagic. Configure all your workflows in a single file and commit the file to version control.
 
 ## Building with YAML
 
-When detected in repository, `codemagic.yaml` is automatically used for configuring builds that are triggered in response to the events defined in the file. Any configuration in the UI is ignored.
+In order to use `codemagic.yaml` for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
 
-You can also use `codemagic.yaml` for manual builds.
+When detected in repository, `codemagic.yaml` is automatically used for configuring builds that are triggered in response to the events defined in the file, provided that a [webhook](../building/webhooksš) is set up. 
 
-1. In your app settings, click **Set up build**. 
-2. Choose a suitable **project type**.
-3. Select a branch in the dropdown on the left of the **Check for configuration file** button.
-4. If a `codemagic.yaml` file is found in that branch, you can click **Select workflow from codemagic.yaml**.
-5. Then select the YAML **workflow**.
-6. Finally, click **Start new build** to build the app.
+Builds can be also started manually by clicking **Start new build** in Codemagic and selecting the branch and workflow to build in the **Specify build configuration** popup.
+
+## Syntax
+
+`codemagic.yaml` follows the traditional [YAML syntax](https://yaml.org/). You can customize the file by running custom scripts in the `scripts` section(s). 
+
+### Naming sections
+
+For easier reading of the configuration file and build logs, you can divide the scripts into meaningful sections with descriptive names.
+
+    scripts:
+      - name: Build for iOS
+        script: flutter build ios
+
+### Reusing sections
+
+If a particular section would be reused multiple times in the file, e.g. in each workflow, you can avoid repetitions by using **anchors**. This is also convenient when you need to make changes to the code as you would have to edit it in just one place. 
+
+Define the section to be reused by adding `&` in front of it.
+
+    scripts:
+      - &increment_build_number
+        name: Increment build number
+        script: |
+          #!/bin/sh
+          set -e
+          set -x
+          cd $FCI_BUILD_DIR
+          agvtool new-version -all $(($PROJECT_BUILD_NUMBER +1))
+
+Reuse the defined section elsewhere by adding a `*` in front of it.
+
+    scripts:
+      - script1
+      - *increment_build_number
+      - script3
 
 ## Template
 
-This is the skeleton structure of `codemagic.yaml`:
+This is the skeleton structure of `codemagic.yaml`. Each section along with the configuration options is described in more detail below.
 
     workflows:
       my-workflow:
@@ -99,11 +84,14 @@ This is the skeleton structure of `codemagic.yaml`:
           email:
             recipients:
               - name@example.com
-
+          scripts:
+            - |
+              #!/usr/bin/env zsh
+              echo 'Post-publish script'
 
 ### Workflows
 
-You can use `codemagic.yaml` to define several workflows for building a project. Each workflow describes the entire build pipeline from triggers to publishing.
+You can use `codemagic.yaml` to define several workflows for building a project. Each workflow describes the entire build pipeline from triggers to publishing. For example, you may want to have separate workflows for developing, testing and publishing the app.
 
     workflows:
       my-workflow:                # workflow ID
@@ -122,7 +110,7 @@ The main sections in each workflow are described below.
 
 ### Environment
 
-`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and npm used for building. This is also where you can add credentials and API keys required for code signing. Make sure to [encrypt the values](#encrypting-sensitive-data) of variables that hold sensitive data. 
+`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and npm used for building. This is also where you can add credentials and API keys required for [code signing](../building/signing). Make sure to [encrypt the values](./yaml#encrypting-sensitive-data) of variables that hold sensitive data. 
 
     environment:
       vars:             # Define your environment variables here
@@ -159,10 +147,23 @@ The main sections in each workflow are described below.
 See the default software versions on Codemagic build machines [here](../releases-and-versions/versions/).
 {{</notebox>}}
 
-
 ### Cache
 
-`cache:` defines the paths to be cached and stored on Codemagic. See the recommended paths for [dependency caching](../building/dependency-caching/).
+`cache:` defines the paths to be cached and stored on Codemagic. For example, you may consider caching the following paths:
+
+| **Path**                                    | **Description**                                  |
+| ------------------------------------------- | ------------------------------------------------ |
+| `$FLUTTER_ROOT/.pub-cache`                  | Dart cache                                       |
+| `$HOME/.gradle/caches`                      | Gradle cache. Note: do not cache `$HOME/.gradle` |
+| `$HOME/Library/Caches/CocoaPods`            | CocoaPods cache                                  |
+
+<br>
+
+{{<notebox>}}
+
+Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up iOS builds with Xcode 10.2 or later.
+
+{{</notebox>}}
 
     cache:
       cache_paths:
@@ -172,10 +173,10 @@ See the default software versions on Codemagic build machines [here](../releases
 ### Triggering
 
 {{<notebox>}}
-You need to set up webhooks in the repository hosting service to enable automatic builds in response to events in the repository. Please refer [here](../building/automatic-build-triggering/#setup-webhooks-manually) for details.
+Webhook in the repository hosting service is required in order to be able to start builds automatically in response to events in the repository. Please refer [here](../building/webhooks) for details about how to set up webhooks.
 {{</notebox>}}
 
-`triggering:` defines the events for automatic build triggering and watched branches. If no events are defined, you can start builds only manually. 
+`triggering:` defines the events for automatic build triggering and watched branches. If no events are defined, you can start builds only manually.
 
 A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches. Note that for **pull request builds**, you have to specify whether the watched branch is the source or the target of the pull request.
 
@@ -198,9 +199,15 @@ To avoid running builds on outdated commits, you can set `cancel_previous_builds
           source: true
       cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
 
+{{<notebox>}}For information about using API calls to trigger builds, look [here](../rest-api/overview/).{{</notebox>}}
+
+#### Skipping builds
+
+If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
+
 ### Scripts
 
-Scripts specify what kind of application is built. This is where you can specify the commands to test, build and code sign your project.
+Scripts specify what kind of application is built. This is where you can specify the commands to [test](./testing/), build and [code sign](./signing) your project. You can also run shell (`sh`) scripts directly in your `.yaml` file, or run scripts in other languages by defining the language with a shebang line or by launching a script file present in your repository.
 
     scripts:
       - flutter test
@@ -213,13 +220,9 @@ Scripts specify what kind of application is built. This is where you can specify
 
 There are example scripts available for building a [Flutter application](./building-a-flutter-app/), [React Native application](./building-a-react-native-app/), [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
 
-### Testing
-
-There are two types of tests that users can run when developing mobile apps, unit tests (for testing code) and instrumentation tests (for testing the UI and the application in general). These tests take place in a simulator (iOS) or emulator (Android), depending on the platform. Examples of testing are available [here](./testing/).
-
 ### Artifacts
 
-Configure the paths and names of the artifacts you would like to use in the following steps, e.g. for publishing, or have available for download on the build page. All paths are relative to the clone directory, but absolute paths are supported as well. You can also use environment variables in artifact patterns.
+Configure the paths and names of the artifacts you would like to use in the following steps, e.g. for publishing, or have available for download on the build page. All paths are relative to the clone directory, but absolute paths are supported as well. You can also use [environment variables](../building/environment-variables) in artifact patterns.
 
     artifacts:
       - build/**/outputs/**/*.apk                   # relative path for a project in root directory
@@ -237,6 +240,13 @@ There are several things to keep in mind about patterns:
 
 ### Publishing
 
-Both Android and iOS apps need to be signed before releasing. This confirms the author of the code and guarantees that the code has not been tampered with since it was signed. After code signing, the generated artifacts can be easily published to external services. The available integrations are currently email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Both code singing and publishing is explained [here](./distribution/) in more detail.
+This is the section where you can set up publishing to external services. Codemagic has a number of integrations (e.g. email, Slack, Google Play, App Store Connect, GitHub releases) for publishing but you can also use custom scripts to publish elsewhere (e.g. Firebase App Distribution). See the examples [here](../building/distribution).
 
-
+    publishing:
+      email:
+        recipients:
+          - name@example.com
+      scripts:
+        - |
+          #!/usr/bin/env zsh
+          echo 'Post-publish script'

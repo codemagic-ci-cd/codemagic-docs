@@ -4,9 +4,9 @@ title: Load Firebase configuration
 weight: 1
 ---
 
-Instead of committing the Firebase config files to your repository, you can upload them to Codemagic as [environment variables](../building/environment-variables/) and reference them in a custom script. Note that the Firebase config file (`google-services.json` for Android or `GoogleService-Info.plist` for iOS) must be Base64-encoded.
+Instead of committing the Firebase configuration files to your repository, you can upload them to Codemagic as [environment variables](../building/environment-variables/) and reference them in a custom script. Note that the Firebase configuration file (`google-services.json` for Android or `GoogleService-Info.plist` for iOS) must be Base64-encoded.
 
-1.  Save your Firebase config files as environment variables, e.g. `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET`. Make sure to check **Secure**.
+1.  Save your Firebase config files as environment variables, e.g. `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET`. 
 2.  Add the following **pre-build** script echoing your variables to load the Firebase configuration in Codemagic.
 
         #!/usr/bin/env sh
@@ -15,7 +15,7 @@ Instead of committing the Firebase config files to your repository, you can uplo
         echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
         echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
 
-    In case your project is in a nested folder structure, it has to be reflected and the script should be following: 
+    In case your project is in a nested folder structure, it has to be reflected and the script should be as follows: 
 
         #!/usr/bin/env sh
         set -e # exit on first failed command

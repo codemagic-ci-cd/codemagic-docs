@@ -37,37 +37,37 @@ sectionPagesMenu: main
 menu:
   main:
     - identifier: getting-started
-      name: Getting started with Codemagic CI/CD
+      name: Getting started
       weight: 1
     - identifier: building
-      name: Build configuration
+      name: Configuration
       weight: 2
-    - identifier: yaml
-      name: Codemagic with YAML
-      weight: 3
-    - identifier: testing
-      name: Testing
-      weight: 4
-    - identifier: code-signing
-      name: Code signing
-      weight: 5
-    - identifier: publishing
-      name: Publishing
-      weight: 6
-    - identifier: custom-scripts
-      name: Custom script examples
-      weight: 7
     - identifier: rest-api
       name: Codemagic API
-      weight: 8
-    - identifier: teams
-      name: Teams
-      weight: 9
+      weight: 3
+    - identifier: knowledge-base
+      name: Knowledge base
+      weight: 4
+    - identifier: settings
+      name: Codemagic settings
+      weight: 5
+    - identifier: releases-and-versions
+      name: Codemagic releases and build machines
+      weight: 6
     - identifier: troubleshooting
       name: Troubleshooting
+      weight: 7
+    - identifier: flutter
+      name: Configuring Flutter projects via UI
+      weight: 8
+    - identifier: testing
+      name: Testing
+      weight: 9
+    - identifier: code-signing
+      name: Code signing
       weight: 10
-    - identifier: releases-and-versions
-      name: Releases and versions
+    - identifier: publishing
+      name: Publishing
       weight: 11
 
 mediaTypes:

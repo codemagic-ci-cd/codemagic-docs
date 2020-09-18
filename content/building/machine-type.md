@@ -1,13 +1,14 @@
 ---
 description: Choose between Mac Mini or Mac Pro
-title: Machine type
-weight: 12
+title: Build machine type
+weight: 11
 ---
 
-You can choose between Mac Mini or Mac Pro when running the build. Specifications for these machines are available [here](../releases-and-versions/versions/#hardware). 
+Codemagic currently offers two types of machines for running builds: Mac mini (default) and Mac Pro. Specifications for these machines are available [here](../releases-and-versions/versions/#hardware). 
 
-The machine type can be chosen in the drop-down menu on the right of the screen, under the workflow settings. This setting is workflow-based and will be used by default for all builds of this workflow, both the manually started ones and the ones that are triggered automatically.
+* In `codemagic.yaml`, the build machine type can be specified in [workflow section](../getting-started/yaml#workflows). 
+* For Flutter projects configured via UI, the build machine type can be selected in **App settings > Workflow settings > Machine**.
 
 {{<notebox>}}
-Mac Pro machines are available for teams and users that have enabled billing in team or user settings respectively.
+Mac Pro machines are available for teams and users that have enabled [billing](../settings/billing) in team or user settings respectively.
 {{</notebox>}}
