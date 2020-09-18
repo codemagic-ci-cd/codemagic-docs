@@ -6,17 +6,17 @@ weight: 2
 
 All Android and iOS applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
 
-For iOS, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to perform code signing and publishing for iOS apps ⏤ these tools are open source and can also be [used locally](../yaml/running-locally/) or in other environments. Android applications are usually signed using Gradle.
-
 ## Setting up code signing for iOS
 
+Signing iOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. You can upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or use the automatic code signing option where Codemagic takes care of code signing and signing files management on your behalf. Read more about the two options below.
+
 {{<notebox>}}
-Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) utility to manage macOS keychains and certificates.
+Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to perform iOS code signing ⏤ these tools are open source and can also be [used locally](../yaml/running-locally/) or in other environments. Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) utility to manage macOS keychains and certificates.
 {{</notebox>}}
 
 ### Setting up automatic code signing
 
-In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](../yaml/yaml/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file. Note that when encrypting files via the UI, they are base64 encoded, thus in order to properly encrypt the App Store Connect private key and the certificate private key, copy the contents of the files and encrypt the content instead of the files themselves in the [Codemagic encryption interface](../yaml/yaml/#encrypting-sensitive-data). You can then add the encrypted values to the respective environment variables.
+In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](../yaml/yaml/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file. Note that when encrypting files via the UI, they are base64 encoded and would have to be decoded during the build. 
 
 * `APP_STORE_CONNECT_PRIVATE_KEY`
 

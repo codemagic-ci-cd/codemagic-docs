@@ -10,30 +10,46 @@ aliases:
 
 ## Building with YAML
 
+In order to use `codemagic.yaml` for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
+
 When detected in repository, `codemagic.yaml` is automatically used for configuring builds that are triggered in response to the events defined in the file, provided that a [webhook](../building/webhooksš) is set up. 
 
 Builds can be also started manually by clicking **Start new build** in Codemagic and selecting the branch and workflow to build in the **Specify build configuration** popup.
 
 ## Syntax
 
-`Codemagic.yaml` follows the traditional [YAML syntax](https://yaml.org/). You can customize the file by running custom scripts in the `scripts` section(s). 
+`codemagic.yaml` follows the traditional [YAML syntax](https://yaml.org/). You can customize the file by running custom scripts in the `scripts` section(s). 
+
+### Naming sections
 
 For easier reading of the configuration file and build logs, you can divide the scripts into meaningful sections with descriptive names.
 
-scripts:
-  - name: Build for iOS
-    script: flutter build ios
+    scripts:
+      - name: Build for iOS
+        script: flutter build ios
 
-If a particular section would be reused multiple times in the file, e.g. in each workflow, you can avoid repetitions by using anchors. This is also convenient when you need to make changes to the code as you would have to edit it in just one place. Define the section to be reused by adding `&` in front of it and then reuse it elsewhere with `*` in front of its name.
+### Reusing sections
 
-    - &increment_build_number
-    - name: Increment build number
-      script: |
-        #!/bin/sh
-        set -e
-        set -x
-        cd $FCI_BUILD_DIR
-        agvtool new-version -all $(($BUILD_NUMBER +1))
+If a particular section would be reused multiple times in the file, e.g. in each workflow, you can avoid repetitions by using **anchors**. This is also convenient when you need to make changes to the code as you would have to edit it in just one place. 
+
+Define the section to be reused by adding `&` in front of it.
+
+    scripts:
+      - &increment_build_number
+        name: Increment build number
+        script: |
+          #!/bin/sh
+          set -e
+          set -x
+          cd $FCI_BUILD_DIR
+          agvtool new-version -all $(($PROJECT_BUILD_NUMBER +1))
+
+Reuse the defined section elsewhere by adding a `*` in front of it.
+
+    scripts:
+      - script1
+      - *increment_build_number
+      - script3
 
 ## Template
 
