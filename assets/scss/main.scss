@@ -266,9 +266,12 @@ body {
                 max-width: 100%;
             }
             a {
-              color: #158fdc;
+              color: $blue;
+              &:hover {
+                color: $blue-hover;
+              }
               code {
-                color: #158fdc;
+                color: $blue;
               }
             }
             figure {
