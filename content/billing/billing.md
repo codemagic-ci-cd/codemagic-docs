@@ -1,6 +1,6 @@
 ---
 title: Billing
-weight: 2
+weight: 1
 ---
 
 In order to use the paid features of Codemagic (see our pricing [here](https://codemagic.io/pricing/)), you must enable billing. 
