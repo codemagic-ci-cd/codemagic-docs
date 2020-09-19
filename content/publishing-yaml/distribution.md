@@ -72,20 +72,9 @@ Codemagic enables you to automatically publish your iOS app to App Store Connect
         apple_id: name@example.com        # Email address used for login
         password: Encrypted(...)          # App-specific password
 
+### GitHub releases
 
     publishing:
-      email:
-        recipients:
-          - name@example.com
-      slack:
-        channel: '#channel-name'
-        notify_on_build_start: true       # To receive a notification when a build starts
-      google_play:                        # For Android app
-        credentials: Encrypted(...)
-        track: alpha
-      app_store_connect:                  # For iOS app
-        apple_id: name@example.com        # Email address used for login
-        password: Encrypted(...)          # App-specific password
       github_releases:
         prerelease: false
         artifact_patterns:

@@ -35,7 +35,7 @@ UI tests (also known as instrumented tests):
 
     flutter test
 
-**Tip:** you can display Flutter test results visually in the build view if you use expanded form of the script in codemagic.yaml.
+**Tip:** you can display Flutter test results visually in the build overview if you use expanded form of the script in codemagic.yaml.
 Just include the `test_report` field with a glob pattern matching the test result file location:
 
 ```yaml
