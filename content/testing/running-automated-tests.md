@@ -24,7 +24,7 @@ If your Flutter project is in a subdirectory of the repository, Codemagic cannot
 
 ### Specifying the test target
 
-In App settings > Test, you will see the **Flutter test target** and **Flutter drive target** fields displayed if the respective tests are detected. You can specify the exact target to run a specific test.
+In **App settings > Test**, you will see the **Flutter test target** and **Flutter drive target** fields displayed if the respective tests are detected. You can specify the exact target to run a specific test.
 
 ### Running Flutter Driver tests
 
