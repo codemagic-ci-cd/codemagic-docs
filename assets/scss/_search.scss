@@ -15,8 +15,8 @@
     @media (max-width: 1000px) {
       display: none;
     }
-    margin: 10px 40px 10px 20px;
-    width: calc(100% - 40px - 20px);
+    margin: 10px 0;
+    width: 100%;
   }
 
   &.search--header {
