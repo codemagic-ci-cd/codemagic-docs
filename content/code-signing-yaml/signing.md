@@ -11,12 +11,12 @@ All Android and iOS applications have to be digitally signed before they are mad
 Signing iOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. You can upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or use the automatic code signing option where Codemagic takes care of code signing and signing files management on your behalf. Read more about the two options below.
 
 {{<notebox>}}
-Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to perform iOS code signing ⏤ these tools are open source and can also be [used locally](../yaml/running-locally/) or in other environments. Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) utility to manage macOS keychains and certificates.
+Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to perform iOS code signing ⏤ these tools are open source and can also be [used locally](../building/running-locally/) or in other environments. Codemagic uses the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) utility to manage macOS keychains and certificates.
 {{</notebox>}}
 
 ### Setting up automatic code signing
 
-In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](../yaml/yaml/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file. Note that when encrypting files via the UI, they are base64 encoded and would have to be decoded during the build. 
+In order to use **automatic code signing** and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect and define the environment variables listed below. Make sure to [encrypt](../building/encrypting/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file. Note that when encrypting files via the UI, they are base64 encoded and would have to be decoded during the build. 
 
 * `APP_STORE_CONNECT_PRIVATE_KEY`
 
@@ -61,7 +61,7 @@ The available provisioning profile types are described [here](https://github.com
 
 ### Setting up manual code signing
 
-In order to use **manual code signing**, [encrypt](../yaml/yaml/#encrypting-sensitive-data) your signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile, and set the encrypted values to the following environment variables:
+In order to use **manual code signing**, [encrypt](../building/encrypting/#encrypting-sensitive-data) your signing certificate, the certificate password (if the certificate is password-protected) and the provisioning profile, and set the encrypted values to the following environment variables:
 
     CM_CERTIFICATE: Encrypted(...)
     CM_CERTIFICATE_PASSWORD: Encrypted(...)
@@ -107,7 +107,7 @@ The following templates show code signing using `key.properties`.
 
 ### Set up code signing with user specified keys
 
-In order to do code signing [encrypt](../yaml/yaml/#encrypting-sensitive-data) your keystore file, keystore password (if keystore is password protected), key alias and key alias password (if key alias is password protected) and set the encrypted values to the following environment variables:
+In order to do code signing [encrypt](../building/encrypting/#encrypting-sensitive-data) your keystore file, keystore password (if keystore is password protected), key alias and key alias password (if key alias is password protected) and set the encrypted values to the following environment variables:
 
     CM_KEYSTORE: Encrypted(...)
     CM_KEYSTORE_PASSWORD: Encrypted(...)

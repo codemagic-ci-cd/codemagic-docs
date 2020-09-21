@@ -24,7 +24,7 @@ To fetch (or create and download) the provisioning profile(s) and certificate fo
         MY_BUNDLE_ID
 
  By default, your certificate will be saved to `$HOME/Library/MobileDevice/Certificates` and the provisioning profile(s) will be saved to `$HOME/Library/MobileDevice/Provisioning Profiles`.
- Refer to [Setting up code signing for iOS](/yaml/distribution/) for more information about accessing App Store Connect.
+ Refer to [Setting up code signing for iOS../code-signing-yaml/signing/) for more information about accessing App Store Connect.
 
 To initialize keychain at system default keychain path with empty keychain password and add your `certificate.p12` with certificate password, use the [keychain](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md#keychain) tool with the following command:
 

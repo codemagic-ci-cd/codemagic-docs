@@ -7,7 +7,7 @@ In order to use the paid features of Codemagic (see our pricing [here](https://c
 
 Note that:
 * Build time usage is counted separately for your personal account and each team. 
-* Billing is managed separately for your personal account and each [team](./teams). 
+* Billing is managed separately for your personal account and each [team](../teams/teams). 
 
 ## Enabling billing
 

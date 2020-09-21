@@ -19,7 +19,7 @@ Encrypted(Z0FBQUFBQmRyY1FLWXIwVEhqdWphdjRhQ0xubkdoOGJ2bThkNmh4YmdXbFB3S2wyNTN2OE
 ```
 
 {{<notebox>}}
-Note that when you upload a file for encryption, it is encoded to `base64` and would have to be decoded during the build. If you want to encrypt a key file, copy-paste the contents of the key file to the encryption interface and use the encrypted value in your configuration.
+Note that when you upload a file for encryption, it is encoded to `base64` and would have to be decoded during the build. If you want to encrypt a file (plaintext, JSON, plist), copy-paste the contents of it to the encryption interface and use the encrypted value in your configuration.
 {{</notebox>}}
 
 Writing the base64-encoded environment variable to a file can be done like this:

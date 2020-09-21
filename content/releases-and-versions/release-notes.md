@@ -8,7 +8,7 @@ weight: 1
 
 ### Using App Store Connect API for Apple Developer Portal integration
 
-Instead of creating a session with Apple Developer Portal, we are now using App Store Connect API keys for authentication. This means there will be no more expiring sessions or hassle with two-factor authentication when using automatic code signing. It is possible to set up several keys for code signing and select the right key in workflow settings. See how to [set up the Apple Developer Portal in Codemagic app](../code-signing/ios-code-signing/#automatic-code-signing) for builds that are configured in the UI. When building with `codemagic.yaml`, the API keys are added in the configuration file, see the instructions [here](../yaml/distribution/#setting-up-code-signing-for-ios).
+Instead of creating a session with Apple Developer Portal, we are now using App Store Connect API keys for authentication. This means there will be no more expiring sessions or hassle with two-factor authentication when using automatic code signing. It is possible to set up several keys for code signing and select the right key in workflow settings. See how to [set up the Apple Developer Portal in Codemagic app](../code-signing/ios-code-signing/#automatic-code-signing) for builds that are configured in the UI. When building with `codemagic.yaml`, the API keys are added in the configuration file, see the instructions [here](../code-signing-yaml/signing/#setting-up-code-signing-for-ios).
 
 ### Support for multiple team oweners
 
@@ -28,7 +28,7 @@ If you are not building a Flutter project, you still need to use the `codemagic.
 
 We have added a much-requested feature to cancel ongoing and queued webhook-triggered builds on push and pull request commit when a new build has been triggered for the same branch. This is convenient when you’re making several commits and don’t want to wait for the previous builds to finish while you’re only interested in the build for the most recent commit. 
 
-You can enable this feature in the UI by navigating to **App settings > Build triggers > Automatic build triggering** and selecting **Cancel outdated webhook builds**, or by setting `cancel_previous_builds: true` in the [triggering section](../yaml/yaml/#triggering) of the YAML file.
+You can enable this feature in the UI by navigating to **App settings > Build triggers > Automatic build triggering** and selecting **Cancel outdated webhook builds**, or by setting `cancel_previous_builds: true` in the [triggering section](../getting-started/yaml/#triggering) of the YAML file.
 
 > If you’re interested in running builds in parallel, get in touch with our sales team through the [Codemagic business page](https://codemagic.io/business/).
 

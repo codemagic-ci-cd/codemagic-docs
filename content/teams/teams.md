@@ -51,7 +51,7 @@ By default, team creator's credentials are used to access repository information
 
 ### Billing
 
-Billing is managed separately for each team. To use the paid features, such as additional build minutes or additional team members, team owners will have to enable billing by clicking **Enable billing** on the right sidebar. See more details about billing [here](./billing).
+Billing is managed separately for each team. To use the paid features, such as additional build minutes or additional team members, team owners will have to enable billing by clicking **Enable billing** on the right sidebar. See more details about billing [here](../billing/billing).
 
 ## Leaving the team
 

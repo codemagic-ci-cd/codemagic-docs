@@ -4,11 +4,11 @@ description: Building a Flutter app with YAML.
 weight: 6
 ---
 
-With `codemagic.yaml`, you can use Codemagic to build, test and publish Flutter apps, widgets, Flutter or Dart packages. The necessary build commands go under `scripts` in the [overall architecture](../yaml/yaml/#template) of the `codemagic.yaml` file. You can find some examples for building the most common types of Flutter projects below.
-
 {{<notebox>}}
 For documentation on building Flutter projects using the settings in Codemagic UI, please refer to [**Building Flutter apps via UI**](../flutter/flutter-projects).
 {{</notebox>}}
+
+With `codemagic.yaml`, you can use Codemagic to build, test and publish Flutter apps, widgets, Flutter or Dart packages. The necessary build commands go under `scripts` in the [overall architecture](../getting-started/yaml#template) of the `codemagic.yaml` file. You can find some examples for building the most common types of Flutter projects below.
 
 ## Exporting configuration from UI
 
@@ -61,7 +61,7 @@ If your app settings in Codemagic have building Android App Bundles enabled, we 
 
 Please make sure to wrap the `--bundle` pattern in single quotes. If `--bundle` option is not specified, default glob pattern `**/*.aab` will be used.
 
-More information about Android code signing can be found [here](../yaml/distribution/#setting-up-code-signing-for-android).
+More information about Android code signing can be found [here](../code-signing-yaml/signing/#setting-up-code-signing-for-android).
 
 {{<notebox>}}
 Codemagic uses the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) utility to build universal .apk files from Android App Bundles.
@@ -96,6 +96,6 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
 
 To test, code sign and publish a Flutter app:
 
-* Testing examples for a flutter app can be found [here](../yaml/testing/#flutter-test).
-* All iOS and Android applications need to be signed before release. Different script examples are available [here](../yaml/distribution/).
-* All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with [custom scripts](../yaml/running-a-custom-script/). Script examples for different options are available [here](../yaml/distribution/#publishing-a-flutter-package-to-pubdev).
+* Testing examples for a flutter app can be found [here](../testing-yaml/testing/#flutter-test).
+* All iOS and Android applications need to be signed before release. Different script examples are available [here](../publishing-yaml/distribution/).
+* All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with [custom scripts](../getting-started/yaml#scripts). Script examples for different options are available [here](../publishing-yaml/distribution/#publishing-a-flutter-package-to-pubdev).

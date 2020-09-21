@@ -14,9 +14,7 @@ Build triggers can be configured in **App settings > Build triggers**.
 
 You can configure the branches to track under **Watched branch patterns**. 
 
-The branches tracked for building are selected by entering branch patterns and including or excluding the matching branches. Note that you can either enter the exact name of the branch to select it or use the wildcard symbols listed in the table below to select more than one branch with one pattern.
-
-![](../uploads/2019/07/branch_patterns-1.png)
+The branches tracked for building are selected by entering branch patterns and including or excluding the matching branches. Note that you can either enter the exact name of the branch to select it or use the wildcard symbols to select more than one branch with one pattern. Click **Show pattern examples** in the UI for tips.
 
 The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of branches further. In the case of conflicting patterns, the latter one will prevail. You can check the targeted branches by clicking the eye icon next to **Watched branch patterns**.
 

@@ -1,6 +1,6 @@
 ---
-description: Sign up for Codemagic CI/CD
-title: Signup
+description: Sign up to Codemagic CI/CD
+title: Signing up to Codemagic
 weight: 1
 ---
 

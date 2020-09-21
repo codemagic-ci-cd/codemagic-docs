@@ -4,7 +4,7 @@ description: Testing with YAML.
 weight: 1
 ---
 
-Test scripts are added under `scripts` in the [overall architecture](../yaml/yaml/#template), before the build commands.
+Test scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
 
 ## React Native unit test
 

@@ -12,21 +12,21 @@ aliases:
 
 In order to use `codemagic.yaml` for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
 
-When detected in repository, `codemagic.yaml` is automatically used for configuring builds that are triggered in response to the events defined in the file, provided that a [webhook](../building/webhooksš) is set up. 
+When detected in repository, `codemagic.yaml` is automatically used for configuring builds that are triggered in response to the events defined in the file, provided that a [webhook](../building/webhooks) is set up. 
 
 Builds can be also started manually by clicking **Start new build** in Codemagic and selecting the branch and workflow to build in the **Specify build configuration** popup.
 
 ## Syntax
 
-`codemagic.yaml` follows the traditional [YAML syntax](https://yaml.org/). You can customize the file by running custom scripts in the `scripts` section(s). 
+`codemagic.yaml` follows the traditional [YAML syntax](https://yaml.org/). Here are a few tips and tricks on how to better structure the file.
 
-### Naming sections
+### Section names
 
 For easier reading of the configuration file and build logs, you can divide the scripts into meaningful sections with descriptive names.
 
     scripts:
-      - name: Build for iOS
-        script: flutter build ios
+      - name: Build for iOS         # Name of the section
+        script: flutter build ios   # The script(s) to be run in that section
 
 ### Reusing sections
 
@@ -35,7 +35,7 @@ If a particular section would be reused multiple times in the file, e.g. in each
 Define the section to be reused by adding `&` in front of it.
 
     scripts:
-      - &increment_build_number
+      - &increment_build_number       # Defined section
         name: Increment build number
         script: |
           #!/bin/sh
@@ -48,7 +48,7 @@ Reuse the defined section elsewhere by adding a `*` in front of it.
 
     scripts:
       - script1
-      - *increment_build_number
+      - *increment_build_number       # Reused section
       - script3
 
 ## Template
@@ -173,7 +173,7 @@ Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up iOS b
 ### Triggering
 
 {{<notebox>}}
-Webhook in the repository hosting service is required in order to be able to start builds automatically in response to events in the repository. Please refer [here](../building/webhooks) for details about how to set up webhooks.
+For automatic build triggering, a webhook in the repository is required. In your app settings, click **Create webhook** on the right sidebar under **Webhooks** to have Codemagic create a webhook. If you need to set up a webhook manually, refer [here](../building/webhooks) for details.
 {{</notebox>}}
 
 `triggering:` defines the events for automatic build triggering and watched branches. If no events are defined, you can start builds only manually.
@@ -207,7 +207,7 @@ If you do not wish Codemagic to build a particular commit, include `[skip ci]` o
 
 ### Scripts
 
-Scripts specify what kind of application is built. This is where you can specify the commands to [test](./testing/), build and [code sign](./signing) your project. You can also run shell (`sh`) scripts directly in your `.yaml` file, or run scripts in other languages by defining the language with a shebang line or by launching a script file present in your repository.
+Scripts specify what kind of application is built. This is where you can specify the commands to [test](../testing-yaml/testing/), build and [code sign](../code-signing-yaml/signing) your project. You can also run shell (`sh`) scripts directly in your `.yaml` file, or run scripts in other languages by defining the language with a shebang line or by launching a script file present in your repository.
 
     scripts:
       - flutter test
@@ -240,7 +240,7 @@ There are several things to keep in mind about patterns:
 
 ### Publishing
 
-This is the section where you can set up publishing to external services. Codemagic has a number of integrations (e.g. email, Slack, Google Play, App Store Connect, GitHub releases) for publishing but you can also use custom scripts to publish elsewhere (e.g. Firebase App Distribution). See the examples [here](../building/distribution).
+This is the section where you can set up publishing to external services. Codemagic has a number of integrations (e.g. email, Slack, Google Play, App Store Connect, GitHub releases) for publishing but you can also use custom scripts to publish elsewhere (e.g. Firebase App Distribution). See the examples [here](../publishing-yaml/distribution).
 
     publishing:
       email:

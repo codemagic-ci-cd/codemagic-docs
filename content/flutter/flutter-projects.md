@@ -8,10 +8,10 @@ aliases:
     - '../building/building-for-desktop'
 ---
 
-With Codemagic, you can build and test Flutter apps for Android, iOS, web, macOS and Linux as well as [test widgets](../testing/testing-widgets). It is also possible to set up a [workflow](./flutter/creating-workflows) that runs tests only.
+With Codemagic, you can build and test Flutter apps for Android, iOS, web, macOS and Linux as well as [test widgets](../testing/testing-widgets). It is also possible to set up a [workflow](../flutter/creating-workflows) that runs tests only.
 
 {{<notebox>}}
-If you're interested in building Flutter/Dart packages and publishing them to [pub.dev](https://pub.dev/), you can do so with [`codemagic.yaml`](../getting-started/yaml), see an example [here](../building/distribution/#publishing-a-flutter-package-to-pubdev).
+If you're interested in building Flutter/Dart packages and publishing them to [pub.dev](https://pub.dev/), you can do so with [`codemagic.yaml`](../getting-started/yaml), see an example [here](../publishing-yaml/distribution/#publishing-a-flutter-package-to-pubdev).
 {{</notebox>}}
 
 ## Selecting build platforms and versions

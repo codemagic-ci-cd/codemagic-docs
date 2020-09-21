@@ -4,7 +4,7 @@ description: How to set up publishing and build status notifications
 weight: 3
 ---
 
-All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts, see the examples [below](../yaml/distribution/#publishing).
+All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts, see the examples below.
 
 ## Integrations for publishing and notifications
 
@@ -74,6 +74,12 @@ Codemagic enables you to automatically publish your iOS app to App Store Connect
 
 ### GitHub releases
 
+Publishing GitHub releases is available for GitHub repositories only.
+
+Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
+
+Note that using `*` wildcard in the beginning of the pattern requires quotation marks around the pattern, otherwise it will violate the `yaml` syntax.
+
     publishing:
       github_releases:
         prerelease: false
@@ -81,23 +87,7 @@ Codemagic enables you to automatically publish your iOS app to App Store Connect
           - app-release.apk
           - '*.aab'
 
-{{<notebox>}}
-
-A prerequisite for Slack publishing is connecting the Slack workspace in **User settings > Integrations > Slack** for personal applications and in **Teams > Your_team > Team integrations > Slack** for team apps.
-
-{{</notebox>}}
-<br>
-
-{{<notebox>}}
-GitHub releases is available for GitHub repositories only.
-
-Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
-
-Note that using `*` wildcard in the beginning of the pattern requires quotation marks around the pattern, otherwise it will violate the `yaml` syntax.
-{{</notebox>}}
-
-
-### Publishing a Flutter package to pub.dev
+## Publishing a Flutter package to pub.dev
 
 In order to get publishing permissions, first you will need to log in to pub.dev locally. It can be done with running `pub publish --dry-run`.
 After that `credentials.json` will be generated which you can use to log in without the need of Google confirmation through browser.
@@ -108,7 +98,7 @@ After that `credentials.json` will be generated which you can use to log in with
     - flutter pub publish --dry-run
     - flutter pub publish -f
 
-### Publishing an app to Firebase App Distribution
+## Publishing an app to Firebase App Distribution
 
 If you use a Firebase service, encrypt `google-services.json` as `ANDROID_FIREBASE_SECRET` environment variable for Android
 or `GoogleService-Info.plist` as `IOS_FIREBASE_SECRET` for iOS.
@@ -116,7 +106,7 @@ or `GoogleService-Info.plist` as `IOS_FIREBASE_SECRET` for iOS.
     echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
     echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
 
-#### Publishing an app using Firebase CLI
+### Publishing an app using Firebase CLI
 
 Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
 
@@ -150,7 +140,7 @@ iOS
         firebase appdistribution:distribute --app <your_ios_application_firebase_id> --groups <your_ios_testers_group> $ipaPath
       fi
 
-#### Publishing an app with Fastlane
+### Publishing an app with Fastlane
 
 Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
 
@@ -180,7 +170,7 @@ iOS
       bundle exec fastlane <your_ios_lane>
 
 
-#### Publishing an Android app with Gradle
+### Publishing an Android app with Gradle
 
 To authorize an application for Firebase App Distribution, use [Google service account](https://firebase.google.com/docs/app-distribution/android/distribute-gradle#authenticate_using_a_service_account).
 Encrypt and add to environment variables these credentials (the file is named something like `yourappname-6e632def9ad4.json`) as `GOOGLE_APP_CREDENTIALS`. Specify the filepath in your `build.gradle` in `firebaseAppDistribution` as `serviceCredentialsFile="your/file/path.json"`.
@@ -231,10 +221,3 @@ And then export the filepath on the gradlew task
         ./gradlew appDistributionUploadRelease
 
 {{</notebox>}}
-
-## Examples
-
-More detailed examples about using YAML for code signing and publishing can be found here:
-
-* <a href="https://blog.codemagic.io/distributing-module-yaml/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','distributing-module-yaml')">Native Android project</a>
-* <a href="https://blog.codemagic.io/distributing-native-ios-sdk-with-flutter-module-using-codemagic/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','distributing-native-ios-sdk-with-flutter-module-using-codemagic/')">Native iOS project</a>
