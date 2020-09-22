@@ -284,9 +284,12 @@ body {
                 max-width: 100%;
             }
             a {
-              color: $cyan-dark;
+              color: $blue;
+              &:hover {
+                color: $blue-hover;
+              }
               code {
-                color: $cyan-dark;
+                color: $blue;
               }
             }
             figure {
