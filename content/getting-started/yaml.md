@@ -4,6 +4,7 @@ description: Customize the build and configure all your workflows in a single fi
 weight: 3
 aliases:
   - '../building/yaml'
+  - '../yaml/yaml'
 ---
 
 `codemagic.yaml` is a highly customizable configuration file for setting up your CI/CD pipeline with Codemagic. Configure all your workflows in a single file and commit the file to version control.
@@ -110,7 +111,7 @@ The main sections in each workflow are described below.
 
 ### Environment
 
-`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and npm used for building. This is also where you can add credentials and API keys required for [code signing](../building/signing). Make sure to [encrypt the values](./yaml#encrypting-sensitive-data) of variables that hold sensitive data. 
+`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and npm used for building. This is also where you can add credentials and API keys required for [code signing](../building/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
 
     environment:
       vars:             # Define your environment variables here

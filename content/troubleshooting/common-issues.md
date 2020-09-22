@@ -5,7 +5,6 @@ weight: 4
 aliases:
     - '../troubleshooting/common-issues'
     - '../custom-scripts/add-a-git-tag-with-app-version'
-    - '../custom-scripts/load-firebase-configuration'
     - '../custom-scripts/upload-custom-artifacts'
 ---
 

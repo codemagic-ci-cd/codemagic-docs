@@ -2,6 +2,8 @@
 title: Adding environment variables
 description: How to add environment variables in Codemagic UI
 weight: 4
+aliases:
+  - '../building/environment-variables'
 ---
 
 Environment variables are useful for making available for Codemagic the credentials, configuration files or API keys that are required for successful building or integration with external services. For more information about the use of environment variables and a list of Codemagic read-only environment variables, refer [here](../building/environment-variables).

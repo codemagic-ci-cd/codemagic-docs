@@ -2,6 +2,8 @@
 title: Building a native Android app
 description: Building an Android app with YAML.
 weight: 4
+aliases:
+  - '../yaml/building-a-native-android-app'
 ---
 
 ## Setting up an Android project

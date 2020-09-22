@@ -2,6 +2,8 @@
 title: Building a native iOS app
 description: Building an iOS app with YAML.
 weight: 5
+aliases:
+  - '../yaml/building-a-native-ios-app'
 ---
 
 With `codemagic.yaml`, you can use Codemagic to build, test and publish native iOS apps. You can read more about how to use `codemagic.yaml` and see the structure of the file [here](../getting-started/yaml).

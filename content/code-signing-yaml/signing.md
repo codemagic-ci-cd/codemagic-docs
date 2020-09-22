@@ -2,6 +2,8 @@
 title: Code signing
 description: How to set up code signing in codemagic.yaml
 weight: 2
+aliases:
+  - '../yaml/distribution'
 ---
 
 All Android and iOS applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.

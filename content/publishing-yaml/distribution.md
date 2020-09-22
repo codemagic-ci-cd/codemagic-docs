@@ -2,6 +2,8 @@
 title: Publishing
 description: How to set up publishing and build status notifications
 weight: 3
+aliases: 
+    - '../yaml/distribution'
 ---
 
 All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts, see the examples below.
