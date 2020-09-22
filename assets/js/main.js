@@ -42,22 +42,21 @@ function createTableOfContents() {
   hashScroll()
 }
 
-function getHeaderOffset() {
-  let offset = $('[data-js-header]').innerHeight()
+function scrollToAnchor(target) {
+  const headerHeight = $('[data-js-header]').innerHeight()
+  const targetMarginTop = 40
+  let offset = headerHeight + targetMarginTop
   if (window.innerWidth < desktopScreenWidth) {
     offset += $('[data-js-sidebar]').innerHeight()
   }
-  return offset
+  $('html, body').animate({ scrollTop: target.offset().top - offset }, 300)
 }
 
 // Scroll to heading from url
 function hashScroll() {
   if (window.location.hash) {
     const target = $(window.location.hash)
-    const targetMarginTop = 40
-    const offset = getHeaderOffset() + targetMarginTop
-    const scrollTarget = target.offset().top - offset
-    $('html, body').animate({ scrollTop: scrollTarget }, 300)
+    scrollToAnchor(target)
     history.pushState(
       '',
       document.title,
@@ -68,10 +67,8 @@ function hashScroll() {
 // Scroll to selected heading on click
 $(document).on('click', 'a[href^="#"]', function(event) {
   event.preventDefault()
-  const targetMarginTop = 40
-  const offset = getHeaderOffset() + targetMarginTop
-  const scrollTarget = $($.attr(this, 'href')).offset().top - offset
-  $('html, body').animate({ scrollTop: scrollTarget }, 300)
+  const target = $($.attr(this, 'href'))
+  scrollToAnchor(target)
 })
 
 // Copy section link to clipboard
