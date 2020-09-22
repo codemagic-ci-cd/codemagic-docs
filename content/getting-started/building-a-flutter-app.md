@@ -88,11 +88,12 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
 
 ## Web builds
 
-    - |
-      flutter config --enable-web
-      flutter build web --release
-      cd build/web
-      7z a -r ../web.zip ./*
+    - name: Build web
+      script: |
+        flutter config --enable-web
+        flutter build web --release
+        cd build/web
+        7z a -r ../web.zip ./*
 
 ## Testing, code signing and publishing a Flutter app
 

@@ -47,48 +47,46 @@ To test, code sign and publish an Android app:
 The following example shows how to set up a workflow that builds your app and publishes to a Google Play internal track.
 
     workflows:
-        android-workflow:
-            name: Android Workflow
-            max_build_duration: 60
-            instance_type: mac_pro
-            environment:
-                vars:
-                    CM_KEYSTORE: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE FILE HERE
-                    CM_KEYSTORE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED PASSWORD FOR THE KEYSTORE FILE HERE
-                    CM_KEY_ALIAS_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE ALIAS PASSWORD HERE
-                    CM_KEY_ALIAS_USERNAME: Encrypted(...) #PUT THE ENCRYPTED KEYSTORE USERNAME HERE
-                node: latest
-            triggering:
-                events:
-                    - push
-                    - tag
-                    - pull_request
-                branch_patterns:
-                    - pattern: release
-                    include: true
-                    source: true
-            scripts:
-                - name: Set up local properties
-                  script: |
-                    echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/android/local.properties"
-                - name: Set up keystore
-                  script: |
-                    echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-                    cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
-                    storePassword=$CM_KEYSTORE_PASSWORD
-                    keyPassword=$CM_KEY_ALIAS_PASSWORD
-                    keyAlias=$CM_KEY_ALIAS_USERNAME
-                    storeFile=/tmp/keystore.keystore
-                    EOF
-                - name: Build Android app
-                  script: |
-                    ./gradlew assembleRelease
-            artifacts:
-                - android/app/build/outputs/**/**/*.apk
-            publishing:
-                google_play:
-                    credentials: Encrypted(...) # PUT YOUR ENCRYPTED GOOGLE PLAY JSON CREDENTIALS FILE HERE
-                    track: internal
+      android-workflow:
+        name: Android Workflow
+        max_build_duration: 60
+        instance_type: mac_pro
+        environment:
+          vars:
+            CM_KEYSTORE: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE FILE HERE
+            CM_KEYSTORE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED PASSWORD FOR THE KEYSTORE FILE HERE
+            CM_KEY_ALIAS_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE ALIAS PASSWORD HERE
+            CM_KEY_ALIAS_USERNAME: Encrypted(...) #PUT THE ENCRYPTED KEYSTORE USERNAME HERE
+          node: latest
+        triggering:
+          events:
+            - push
+            - tag
+            - pull_request
+          branch_patterns:
+            - pattern: release
+              include: true
+              source: true
+        scripts:
+          - name: Set up local properties
+            script: echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/local.properties"
+          - name: Set up key.properties file for code signing
+            script: |
+              echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+              cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
+              storePassword=$CM_KEYSTORE_PASSWORD
+              keyPassword=$CM_KEY_ALIAS_PASSWORD
+              keyAlias=$CM_KEY_ALIAS_USERNAME
+              storeFile=/tmp/keystore.keystore
+              EOF
+          - name: Build Android app
+            script: ./gradlew assembleRelease
+        artifacts:
+          - app/build/outputs/**/**/*.apk
+        publishing:
+          google_play:
+            credentials: Encrypted(...) # PUT YOUR ENCRYPTED GOOGLE PLAY JSON CREDENTIALS FILE HERE
+            track: internal
 
 {{<notebox>}}Note that you should incremenet the versionCode in `android/app/build.gradle`. {{</notebox>}}
 

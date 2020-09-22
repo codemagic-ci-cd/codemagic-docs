@@ -38,12 +38,7 @@ Define the section to be reused by adding `&` in front of it.
     scripts:
       - &increment_build_number       # Defined section
         name: Increment build number
-        script: |
-          #!/bin/sh
-          set -e
-          set -x
-          cd $FCI_BUILD_DIR
-          agvtool new-version -all $(($PROJECT_BUILD_NUMBER +1))
+        script: agvtool new-version -all $(($PROJECT_BUILD_NUMBER +1))
 
 Reuse the defined section elsewhere by adding a `*` in front of it.
 
@@ -86,9 +81,7 @@ This is the skeleton structure of `codemagic.yaml`. Each section along with the 
             recipients:
               - name@example.com
           scripts:
-            - |
-              #!/usr/bin/env zsh
-              echo 'Post-publish script'
+            - echo 'Post-publish script'
 
 ### Workflows
 
@@ -121,7 +114,7 @@ The main sections in each workflow are described below.
         # Android code signing
         CM_KEYSTORE: Encrypted(...)
         CM_KEYSTORE_PASSWORD: Encrypted(...)
-        CM_KEY_ALIAS_PASSWORD: Encrypted(...)
+        CM_KEY_ALIAS_PASSWORD: my_key_alias
         CM_KEY_ALIAS_USERNAME: Encrypted(...)
         
         # iOS automatic code signing
@@ -135,8 +128,13 @@ The main sections in each workflow are described below.
         CM_CERTIFICATE_PASSWORD: Encrypted(...)
         CM_PROVISIONING_PROFILE: Encrypted(...)
 
-        # publishing a package to pub.dev
-        CREDENTIALS: Encrypted(...)
+        # Firebase secrets
+        ANDROID_FIREBASE_SECRET: Encrypted(...)
+        IOS_FIREBASE_SECRET: Encrypted(...)
+
+        SSH_KEY_GITHUB: Encrypted(...)     # defining an ssh key used to download private dependencies
+        CREDENTIALS: Encrypted(...)        # publishing a package to pub.dev
+        APP_CENTER_TOKEN: Encrypted(...)   # publishing an application to App Center
 
       flutter: stable   # Define the channel name or version (e.g. v1.13.4)
       xcode: latest     # Define latest, edge or version (e.g. 11.2)
@@ -168,7 +166,7 @@ Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up iOS b
 
     cache:
       cache_paths:
-        - ~/.pub-cache
+        - ~/.gradle/caches
         - ...
 
 ### Triggering
@@ -210,8 +208,13 @@ If you do not wish Codemagic to build a particular commit, include `[skip ci]` o
 
 Scripts specify what kind of application is built. This is where you can specify the commands to [test](../testing-yaml/testing/), build and [code sign](../code-signing-yaml/signing) your project. You can also run shell (`sh`) scripts directly in your `.yaml` file, or run scripts in other languages by defining the language with a shebang line or by launching a script file present in your repository.
 
+When you set `ignore_failure` to `true`, the workflow will continue to run even if the script fails
+
     scripts:
-      - flutter test
+      - echo "single line script"
+      - name: Flutter test
+        script: flutter test
+        ignore_failure: true
       - |
         #!/usr/bin/env python3
 
@@ -247,7 +250,7 @@ This is the section where you can set up publishing to external services. Codema
       email:
         recipients:
           - name@example.com
-      scripts:
-        - |
-          #!/usr/bin/env zsh
-          echo 'Post-publish script'
+    scripts:
+      - |
+        echo 'This is a Post-publish script'
+        echo 'This script is multiline'

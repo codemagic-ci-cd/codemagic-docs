@@ -63,15 +63,7 @@ Here you'll find some of the read-only environment variables explained.
 
 ## Using environment variables
 
-To access a variable, add the `$` symbol in front of its name. For example, access `API_TOKEN` by using `$API_TOKEN`. Note that it is required to use quotation marks with multi-line variables when you are referencing them in custom scripts, as shown in the example below:
-
-    > MY_VAR="var
-    > value"
-    > echo $MY_VAR
-    < var value
-    > echo "$MY_VAR"
-    < var
-    < value
+To access a variable, add the `$` symbol in front of its name. For example, access `API_TOKEN` by using `$API_TOKEN`. Note that it is required to use quotation marks with multi-line variables when you are referencing them in custom scripts.
 
 ## Accessing environment variables from your application
 

@@ -114,33 +114,31 @@ Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documen
 
 Android
 
-    - |
-      # publish the app to Firebase App Distribution
-      apkPath=$(find build -name "*.apk" | head -1)
-      echo "Found apk at $apkPath"
+    - name: Publish the app to Firebase App Distribution
+      script: |
+        apkPath=$(find build -name "*.apk" | head -1)
 
-      if [[ -z ${apkPath} ]]
-      then
-        echo "No apks were found, skip publishing to Firebase App Distribution"
-      else
-        echo "Publishing $apkPath to Firebase App Distribution"
-        firebase appdistribution:distribute --app <your_android_application_firebase_id> --groups <your_android_testers_group> $apkPath
-      fi
+        if [[ -z ${apkPath} ]]
+        then
+          echo "No apks were found, skip publishing to Firebase App Distribution"
+        else
+          echo "Publishing $apkPath to Firebase App Distribution"
+          firebase appdistribution:distribute --app <your_android_application_firebase_id> --groups <your_android_testers_group> $apkPath
+        fi
 
 iOS
 
-    - |
-      # publish the app to Firebase App Distribution
-      ipaPath=$(find build -name "*.ipa" | head -1)
-      echo "Found ipa at $ipaPath"
+    - name: Publish the app to Firebase App Distribution
+      script: |
+        ipaPath=$(find build -name "*.ipa" | head -1)
 
-      if [[ -z ${ipaPath} ]]
-      then
-        echo "No ipas were found, skip publishing to Firebase App Distribution"
-      else
-        echo "Publishing $ipaPath to Firebase App Distribution"
-        firebase appdistribution:distribute --app <your_ios_application_firebase_id> --groups <your_ios_testers_group> $ipaPath
-      fi
+        if [[ -z ${ipaPath} ]]
+        then
+          echo "No ipas were found, skip publishing to Firebase App Distribution"
+        else
+          echo "Publishing $ipaPath to Firebase App Distribution"
+          firebase appdistribution:distribute --app <your_ios_application_firebase_id> --groups <your_ios_testers_group> $ipaPath
+        fi
 
 ### Publishing an app with Fastlane
 
@@ -148,28 +146,28 @@ Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documen
 
 Before running a lane, you should install Fastlane Firebase app distribution plugin
 
-        - |
-          # install fastlane-plugin-firebase_app_distribution
-          gem install bundler
-          sudo gem install fastlane-plugin-firebase_app_distribution --user-install
+        - name: Install fastlane-plugin-firebase_app_distribution
+          script: |
+            gem install bundler
+            sudo gem install fastlane-plugin-firebase_app_distribution --user-install
 
 Then you need to call a lane. This code is similar for Android and iOS.
 
 Android
 
-    - |
-      # execute fastlane android publishing task
-      cd android
-      bundle install
-      bundle exec fastlane <your_android_lane>
+    - name: Execute fastlane android publishing task
+      script: |
+        cd android
+        bundle install
+        bundle exec fastlane <your_android_lane>
 
 iOS
 
-    - |
-      # execute fastlane ios publishing task
-      cd ios
-      bundle install
-      bundle exec fastlane <your_ios_lane>
+    - name: Execute fastlane ios publishing task
+      script: |
+        cd ios
+        bundle install
+        bundle exec fastlane <your_ios_lane>
 
 
 ### Publishing an Android app with Gradle
@@ -195,18 +193,14 @@ Decode application credentials for Firebase authorization:
 
 Build the application:
 
-    - |
-        # set up local properties
-        echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+    - echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
     - flutter packages pub get
     - flutter build apk --release
 
 Call the `gradlew` task for distribution
 
-    - |
-        # distribute app to firebase with gradle plugin
-        cd android
-        ./gradlew appDistributionUploadRelease
+    - name: Distribute app to firebase with gradle plugin
+      script: cd android && ./gradlew appDistributionUploadRelease
 
 {{<notebox>}}
 
@@ -216,10 +210,9 @@ If you didn't specify `serviceCredentialsFile`, you may export it to random loca
 
 And then export the filepath on the gradlew task
 
-    - |
-        # distribute app to firebase with gradle plugin
+    - name: Distribute app to firebase with gradle plugin
+      script: |
         export GOOGLE_APPLICATION_CREDENTIALS=/tmp/google-application-credentials.json
-        cd android
-        ./gradlew appDistributionUploadRelease
+        cd android && ./gradlew appDistributionUploadRelease
 
 {{</notebox>}}

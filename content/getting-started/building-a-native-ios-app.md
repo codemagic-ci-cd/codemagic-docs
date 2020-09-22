@@ -17,11 +17,11 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
 For building an unsigned iOS app (.app), you need to run the following command in the scripts section:
 
     scripts:
-        - xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" \
-                           -scheme "MyScheme" \
-                           CODE_SIGN_INDENTITY="" \
-                           CODE_SIGNING_REQUIRED=NO \
-                           CODE_SIGNING_ALLOWED=NO
+      - xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" \
+                         -scheme "MyScheme" \
+                         CODE_SIGN_INDENTITY="" \
+                         CODE_SIGNING_REQUIRED=NO \
+                         CODE_SIGNING_ALLOWED=NO
 
 If you don't have a workspace, use `-project "MyXcodeProject.xcodeproj"` instead of the `-workspace "MyXcodeWorkspace.xcworkspace"` option.
 
@@ -48,9 +48,9 @@ Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci
 By default, your artifacts will be generated into `build/ios/ipa` but you can specify a different location using the [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option. The Xcode build log can be made available with the `/tmp/xcodebuild_logs/*.log` pattern and the dSYM file will be still available at the default Xcode path.
 
     artifacts:
-        - build/ios/ipa/*.ipa
-        - /tmp/xcodebuild_logs/*.log
-        - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 
 {{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}} 
 
@@ -67,56 +67,49 @@ To test, code sign and publish an iOS app:
 The following example shows a workflow that can be used to publish your iOS app to App Store Connect.
 
     workflows:
-        ios-workflow:
-            name: ios_workflow
-            environment:
-                vars:
-                    XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace"  # PUT YOUR WORKSPACE NAME HERE
-                    XCODE_SCHEME: "YOUR_SCHEME_NAME" # PUT THE NAME OF YOUR SCHEME HERE
-                    CM_CERTIFICATE: Encrypted(...) # PUT THE ENCRYPTED DISTRIBUTION CERTIFICATE HERE
-                    CM_CERTIFICATE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED CERTIFICATE PASSWORD HERE
-                    CM_PROVISIONING_PROFILE: Encrypted(...) # PUT THE ENCRYPTED PROVISIONING PROFILE HERE
-                xcode: latest
-                cocoapods: default
-            triggering:
-                events:
-                    - push
-                branch_patterns:
-                    - pattern: master
-                        include: true
-                        source: true
-            scripts:
-                - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-                script: |
-                    keychain initialize
-                - name: Set up Provisioning profiles from environment variables
-                script: |
-                    PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
-                    mkdir -p "$PROFILES_HOME"
-                    PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-                    echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
-                    echo "Saved provisioning profile $PROFILE_PATH"
-                - name: Set up signing certificate
-                script: |
-                    echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-                    keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
-                - name: Increment build number
-                script: |
-                    #!/bin/sh
-                    set -e
-                    set -x
-                    cd $FCI_BUILD_DIR
-                    agvtool new-version -all $(($BUILD_NUMBER +1))
-                - name: Set up code signing settings on Xcode project
-                script: |
-                    xcode-project use-profiles
-                - name: Build ipa for distribution
-                script: |
-                    xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
-            artifacts:
-                - build/ios/ipa/*.ipa
-                - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-            publishing:
-                app_store_connect:                 
-                    apple_id: your_apple_id@example.com  # PUT YOUR APPLE ID HERE  
-                    password: Encrypted(...) # PUT YOUR APP-SPECIFIC-PASSWORD HERE https://support.apple.com/en-us/HT204397
+      ios-workflow:
+        name: ios_workflow
+        environment:
+          vars:
+            XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace"  # PUT YOUR WORKSPACE NAME HERE
+            XCODE_SCHEME: "YOUR_SCHEME_NAME" # PUT THE NAME OF YOUR SCHEME HERE
+            CM_CERTIFICATE: Encrypted(...) # PUT THE ENCRYPTED DISTRIBUTION CERTIFICATE HERE
+            CM_CERTIFICATE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED CERTIFICATE PASSWORD HERE
+            CM_PROVISIONING_PROFILE: Encrypted(...) # PUT THE ENCRYPTED PROVISIONING PROFILE HERE
+          xcode: latest
+          cocoapods: default
+        triggering:
+          events:
+            - push
+          branch_patterns:
+            - pattern: master
+              include: true
+              source: true
+        scripts:
+          - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+            script: keychain initialize
+          - name: Set up Provisioning profiles from environment variables
+            script: |
+              PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+              mkdir -p "$PROFILES_HOME"
+              PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
+              echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+              echo "Saved provisioning profile $PROFILE_PATH"
+          - name: Set up signing certificate
+            script: |
+              echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+              keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
+          - name: Increment build number
+            script: agvtool new-version -all $(($BUILD_NUMBER +1))
+          - name: Set up code signing settings on Xcode project
+            script: xcode-project use-profiles
+          - name: Build ipa for distribution
+            script: xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+        artifacts:
+          - build/ios/ipa/*.ipa
+          - /tmp/xcodebuild_logs/*.log
+          - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+        publishing:
+          app_store_connect:                 
+            apple_id: your_apple_id@example.com  # PUT YOUR APPLE ID HERE  
+            password: Encrypted(...) # PUT YOUR APP-SPECIFIC-PASSWORD HERE https://support.apple.com/en-us/HT204397

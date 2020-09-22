@@ -23,7 +23,7 @@ All environment variables whose name has the suffix `_SSH_KEY` will be automatic
 If you wish to use a **custom** environment variable name without the suffix `_SSH_KEY`, add the following **post-clone** script to add the key to the SSH agent.
 
         #!/usr/bin/env sh
-        echo "${CUSTOM_SSH_KEY_NAME}" > /tmp/ssh_key
+        echo "${CUSTOM_KEY_NAME}" > /tmp/ssh_key
         chmod 600 /tmp/ssh_key
         eval `ssh-agent -s`
         ssh-add /tmp/ssh_key

@@ -52,12 +52,15 @@ Alternatively, each property can be specified in the scripts section as a comman
 Codemagic uses the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) utility for generating and managing certificates and provisioning profiles and performing code signing.
 {{</notebox>}}
 
-    - find . -name "Podfile" -execdir pod install \;
-    - keychain initialize
-    - app-store-connect fetch-signing-files "io.codemagic.app" \  # Fetch signing files for specified bundle ID (use "$(xcode-project detect-bundle-id)" if not specified)
-      --type IOS_APP_DEVELOPMENT \  # Specify provisioning profile type*
-      --create  # Allow creating resources if existing are not found.
-    - keychain add-certificates
+    - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+      script: keychain initialize
+    - name: Fetch signing files
+      script: |
+        app-store-connect fetch-signing-files "io.codemagic.app" \  # Fetch signing files for specified bundle ID (use "$(xcode-project detect-bundle-id)" if not specified)
+          --type IOS_APP_DEVELOPMENT \  # Specify provisioning profile type*
+          --create  # Allow creating resources if existing are not found.
+    - name: Set up signing certificate
+      script: keychain add-certificates
 
 The available provisioning profile types are described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store).
 
@@ -71,23 +74,24 @@ In order to use **manual code signing**, [encrypt](../building/encrypting/#encry
 
 With the manual code signing method, you are required to upload the signing certificate and the matching provisioning profile(s) to Codemagic in order to receive signed builds.
 
-    - find . -name "Podfile" -execdir pod install \;
-    - keychain initialize
-    - |
-      # set up provisioning profiles
-      PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
-      mkdir -p "$PROFILES_HOME"
-      PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-      echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
-      echo "Saved provisioning profile $PROFILE_PATH"
-    - |
-      # set up signing certificate
-      echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
 
-      # when using a password-protected certificate
-      keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
-      # when using a certificate that is not password-protected
-      keychain add-certificates --certificate /tmp/certificate.p12
+      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+        script: keychain initialize
+      - name: Set up Provisioning profiles from environment variables
+        script: |
+          PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+          mkdir -p "$PROFILES_HOME"
+          PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
+          echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+          echo "Saved provisioning profile $PROFILE_PATH"
+      - name: Set up signing certificate
+        script: |
+          echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+          # when using a password-protected certificate
+          keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
+          # when using a certificate that is not password-protected
+          keychain add-certificates --certificate /tmp/certificate.p12
+
 
 ## Setting up code signing for Android
 
@@ -95,17 +99,17 @@ The following templates show code signing using `key.properties`.
 
 ### Set up default debug key.properties
 
-    - |
-      # set up debug key.properties
-      keytool -genkeypair \
-        -alias androiddebugkey \
-        -keypass android \
-        -keystore ~/.android/debug.keystore \
-        -storepass android \
-        -dname 'CN=Android Debug,O=Android,C=US' \
-        -keyalg 'RSA' \
-        -keysize 2048 \
-        -validity 10000
+    - name: Set up debug key.properties
+      script: |
+        keytool -genkeypair \
+          -alias androiddebugkey \
+          -keypass android \
+          -keystore ~/.android/debug.keystore \
+          -storepass android \
+          -dname 'CN=Android Debug,O=Android,C=US' \
+          -keyalg 'RSA' \
+          -keysize 2048 \
+          -validity 10000
 
 ### Set up code signing with user specified keys
 
@@ -118,12 +122,12 @@ In order to do code signing [encrypt](../building/encrypting/#encrypting-sensiti
 
 Use the following script:
 
-    - |
-      # set up key.properties
-      echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-      cat >> "$FCI_BUILD_DIR/project_directory/android/key.properties" <<EOF
-      storePassword=$CM_KEYSTORE_PASSWORD
-      keyPassword=$CM_KEY_ALIAS_PASSWORD
-      keyAlias=$CM_KEY_ALIAS_USERNAME
-      storeFile=/tmp/keystore.keystore
-      EOF
+    - name: Set up key.properties
+      script: |
+        echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+        cat >> "$FCI_BUILD_DIR/project_directory/android/key.properties" <<EOF
+        storePassword=$CM_KEYSTORE_PASSWORD
+        keyPassword=$CM_KEY_ALIAS_PASSWORD
+        keyAlias=$CM_KEY_ALIAS_USERNAME
+        storeFile=/tmp/keystore.keystore
+        EOF
