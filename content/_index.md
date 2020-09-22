@@ -5,11 +5,11 @@ description:
 title: Codemagic Documentation
 ---
 
-Welcome to the Codemagic community documentation!
+Welcome to Codemagic documentation!
 
-Here you'll find some essential information for setting up continuous integration and continuous delivery for your Flutter app with [Codemagic](https://codemagic.io/). 
+Here you'll find some essential information for setting up continuous integration and continuous delivery for your mobile apps with [Codemagic](https://codemagic.io/). 
 
-There are also step-by-step guides on various topics available on our [blog](https://blog.codemagic.io/categories/tutorials/ 'Codemagic blog - Tutorials').
+There are also step-by-step guides on various topics available on our [blog](https://blog.codemagic.io/categories/product/ 'Codemagic blog - Tutorials').
 
 ## Powered by the community
 
