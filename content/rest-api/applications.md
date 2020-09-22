@@ -19,23 +19,23 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 
 ### Response
 
-```javascript
+```json
 {
-   "application":{
-      "_id":"5d85eaa0e941e00019e81bc2",
-      "appName":"counter_flutter",
-      "branches":[
-         "master"
-      ],
-      "workflowIds":[
-         "5d85f242e941e00019e81bd2"
-      ],
-      "workflows":{
-         "5d85f242e941e00019e81bd2":{
-            "name":"Android Workflow"
-         }
+  "application": {
+    "_id": "5d85eaa0e941e00019e81bc2",
+    "appName": "counter_flutter",
+    "branches": [
+      "master"
+    ],
+    "workflowIds": [
+      "5d85f242e941e00019e81bd2"
+    ],
+    "workflows": {
+      "5d85f242e941e00019e81bd2": {
+        "name": "Android Workflow"
       }
-   }
+    }
+  }
 }
 ```
 
@@ -53,18 +53,18 @@ Adds a Git repository to the applications list.
 
 ### Example
 
-```javascript
+```json
 {
-    "repositoryUrl": "git@github.com:my-organization/my-repo.git"
+  "repositoryUrl": "git@github.com:my-organization/my-repo.git"
 }
 ```
 
 ### Response
 
-```javascript
+```json
 {
-    "_id": "5c9c064185dd2310123b8e96",
-    "appName": "my-repo"
+  "_id": "5c9c064185dd2310123b8e96",
+  "appName": "my-repo"
 }
 ```
 
@@ -82,11 +82,11 @@ Note that the variables will need to be re-generated when moving the app to a di
 curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
  -H 'X-Auth-Token: your-token' \
  -H 'Content-Type: application/json;charset=utf-8' \
- --data '{"value":"your value"}'
+ --data '{"value": "your value"}'
 ```
 
 ### Response
 
 ```json
-{"encrypted":"Encrypted(Z0FBQUFBQmZMVkhwb3Q3QlJtRlVOeVFJcEJvTTRtWnZablpqMS0xN2V6dllTell1ODZSd2FUcnNqMUlZT09QY1paV0pjbVRfUlVJeDUxRWIzX1paOEZlc1dSdi1XMXlkUFVIdjNIZ2VqcE5Ja0tpMjlPWjhlSTQ9)"}
+{"encrypted": "Encrypted(Z0FBQUFBQmZMVkhwb3Q3QlJtRlVOeVFJcEJvTTRtWnZablpqMS0xN2V6dllTell1ODZSd2FUcnNqMUlZT09QY1paV0pjbVRfUlVJeDUxRWIzX1paOEZlc1dSdi1XMXlkUFVIdjNIZ2VqcE5Ja0tpMjlPWjhlSTQ9)"}
 ```
