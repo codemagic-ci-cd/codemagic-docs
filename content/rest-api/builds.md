@@ -48,7 +48,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '
 
 The request is asynchronous. To find the started build you can find the most recent build fetching the next [endpoint](#get-build-statuses).
 
-## Get builds history
+## Get list of builds
 
 `GET /builds`
 
