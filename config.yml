@@ -52,7 +52,7 @@ menu:
       name: Publishing
       weight: 5
     - identifier: setup-flutter
-      name: Configuring Flutter projects (UI)
+      name: Flutter projects via UI
       weight: 6
     - identifier: flutter
       name: Build configuration
