@@ -1,10 +1,12 @@
 ---
 title: Testing
 description: Testing with YAML.
-weight: 8
+weight: 1
+aliases:
+  - '../yaml/testing'
 ---
 
-Test scripts are added under `scripts` in the [overall architecture](../yaml/yaml/#template), before the build commands.
+Test scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
 
 ## React Native unit test
 
@@ -24,6 +26,7 @@ UI tests (also known as instrumented tests):
 
 ## Native iOS
 
+    set -o pipefail
     xcodebuild \
         -workspace MyAwesomeApp.xcworkspace \
         -scheme MyAwesomeApp \
@@ -31,11 +34,22 @@ UI tests (also known as instrumented tests):
         -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
         test | xcpretty
 
+If may want to export the test log, you can do this by splitting the standard output to a file
+    
+    set -o pipefail
+    xcodebuild \
+        -workspace MyAwesomeApp.xcworkspace \
+        -scheme MyAwesomeApp \
+        -sdk iphonesimulator \
+        -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
+        test | xcpretty |& tee "/tmp/xcodetest.log"
+
+
 ## Flutter test
 
     flutter test
 
-**Tip:** you can display Flutter test results visually in the build view if you use expanded form of the script in codemagic.yaml.
+**Tip:** you can display Flutter test results visually in the build overview if you use expanded form of the script in codemagic.yaml.
 Just include the `test_report` field with a glob pattern matching the test result file location:
 
 ```yaml

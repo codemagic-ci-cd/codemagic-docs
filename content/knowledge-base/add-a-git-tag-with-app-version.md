@@ -1,14 +1,16 @@
 ---
 description: Create a Git tag referencing your app version
-title: Add a Git tag with app version
+title: Adding a Git tag with app version
 weight: 2
+aliases:
+  - '../custom-scripts/add-a-git-tag-with-app-version'
 ---
 
 You can use Codemagic to create a Git tag and push it to your repository.
 
 {{<notebox>}}
 
-Pushing git tags from Codemagic to repository requires **write access** to the repository. Depending on the Git service and authentication method, Codemagic may not have write access to your repository and you may need to grant it separately in your Git service settings. We recommend that you create a dedicated app password / personal access token for Codemagic.
+Pushing Git tags from Codemagic to repository requires **write access** to the repository. Depending on the Git service and authentication method, Codemagic may not have write access to your repository and you may need to grant it separately in your Git service settings. We recommend that you create a dedicated app password / personal access token for Codemagic.
 
 * For repositories hosted on Bitbucket, create an [app password](https://confluence.atlassian.com/bitbucket/app-passwords-828781300.html) with **write** permission for repositories.
 * For repositories hosted on GitHub, create a [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) with **repo** scope.
@@ -18,7 +20,7 @@ Pushing git tags from Codemagic to repository requires **write access** to the r
 
 1. Add your app password / personal access token to Codemagic as a secure [environment variable](../building/environment-variables).
 
-2. Click on the '**+**' sign between **Build** and **Publish** in your app settings and add the following **Pre-publish** script.  Note that you need to replace the placeholders with your actual environment variable name and Git service details.
+2. Add the following **pre-publish script**.  Note that you need to replace the placeholders with your actual environment variable name and Git service details.
 
         #!/usr/bin/env sh
 

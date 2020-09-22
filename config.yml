@@ -35,40 +35,59 @@ enableGitInfo: true
 
 sectionPagesMenu: main
 menu:
-  main:
+  main:  
     - identifier: getting-started
-      name: Getting started with Codemagic CI/CD
+      name: Getting started
       weight: 1
     - identifier: building
-      name: Build configuration
+      name: Configuration
       weight: 2
-    - identifier: yaml
-      name: Codemagic with YAML
+    - identifier: testing-yaml
+      name: Testing
       weight: 3
+    - identifier: code-signing-yaml
+      name: Code signing
+      weight: 4
+    - identifier: publishing-yaml
+      name: Publishing
+      weight: 5
+    - identifier: setup-flutter
+      name: Flutter projects via UI
+      weight: 6
+    - identifier: flutter
+      name: Build configuration
+      weight: 1
+      parent: setup-flutter
     - identifier: testing
       name: Testing
-      weight: 4
+      weight: 2
+      parent: setup-flutter
     - identifier: code-signing
       name: Code signing
-      weight: 5
+      weight: 3
+      parent: setup-flutter
     - identifier: publishing
       name: Publishing
-      weight: 6
-    - identifier: custom-scripts
-      name: Custom script examples
-      weight: 7
+      weight: 4
+      parent: setup-flutter
     - identifier: rest-api
       name: Codemagic API
-      weight: 8
+      weight: 7
     - identifier: teams
       name: Teams
+      weight: 8
+    - identifier: knowledge-base
+      name: Knowledge base
       weight: 9
+    - identifier: billing
+      name: Billing
+      weight: 10    
+    - identifier: releases-and-versions
+      name: Codemagic releases and build machines
+      weight: 11
     - identifier: troubleshooting
       name: Troubleshooting
-      weight: 10
-    - identifier: releases-and-versions
-      name: Releases and versions
-      weight: 11
+      weight: 12
 
 mediaTypes:
   video/mp4:

@@ -1,7 +1,9 @@
 ---
 title: Building a native app with a Flutter module
 description: Building a native iOS or Android app with a Flutter module
-weight: 6
+weight: 8
+aliases:
+  - '../yaml/building_a_native_app_with_flutter_module'
 ---
 
 ## Add-to-app

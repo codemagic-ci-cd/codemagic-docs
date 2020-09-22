@@ -1,42 +1,40 @@
 ---
 title: Build versioning
-weight: 10
+weight: 8
 ---
 
-If you are going to publish your app to App Store Connect or Google Play, each uploaded binary must have a new version. There are several approaches you can use for build versioning on Codemagic. One of the easiest ways to increment app version with every build is by using the `BUILD_NUMBER` read-only environment variable in **build arguments**.
+If you are going to publish your app to App Store Connect or Google Play, each uploaded binary must have a new version. There are several approaches you can use for build versioning on Codemagic. One of the easiest ways to increment app version with every build is by using the environment variables that Codemagic exports during the build. There are two environment variables that count the number of builds:
 
-The `BUILD_NUMBER` read-only environment variable holds the total count of builds (including the ongoing build) for this project in Codemagic. In other words, if you have triggered 10 builds for some project in Codemagic, the next time you build it, `BUILD_NUMBER` will be exported as `11`.
+* `BUILD_NUMBER`. Holds the total count of builds (including the ongoing build) for a specific **workflow** in Codemagic. TIn other words, if you have triggered 10 builds for some workflow in Codemagic, the next time you build it, `BUILD_NUMBER` will be exported as `11`.
 
-{{<notebox>}} Please note that the number of builds in `BUILD_NUMBER` is counted separately for each workflow. {{</notebox>}}
+* `PROJECT_BUILD_NUMBER`. Holds the total count of builds (including the ongoing build) for a **project** in Codemagic. In contrast with `BUILD_NUMBER`, `PROJECT_BUILD_NUMBER` will increase every time you build any of the workflows of the app.
 
-## Incrementing app version
+## Incrementing app version using environment variables
 
-Here are some examples of the build arguments you can use to increment the app version. You can enter the build arguments in **App settings > Build > Build arguments**.
+Here are some examples how you can increment the app version using Codemagic's read-only environment variables in build arguments:
 
 `--build-name=2.0.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER + 100))`
 
 `--build-name=1.0.0 --build-number=$BUILD_NUMBER`
 
 
-## When build number should be fetched from pubsec.yaml
+## Fetching build number from pubsec.yaml
 
-- add a prebuild script that install [yq](https://github.com/mikefarah/yq), a lightweight and portable command-line YAML processor, add the
-following command to the pre build script so yq can be installed. 
+Add a pre-build script that installs [yq](https://github.com/mikefarah/yq), a lightweight and portable command-line YAML processor: 
 
 ```
 #!/usr/bin/env sh
 HOMEBREW_NO_AUTO_UPDATE=1 brew install yq
 ```
 
-The head to App settings > Build > and in the *Build arguments* field:
+Then add the following build arguments:
 
 `--build-number=$(cat ./pubspec.yaml | yq r - version)`  
 
 
 ## Set Xcode project build number via command line
 
-Calling agvtool is another way of forcing Xcode to set the 
-build version for your next build. 
+Calling agvtool is another way of forcing Xcode to set the build version for your next build. 
 
 ```
 #!/bin/sh
@@ -46,6 +44,3 @@ set -x
 cd $FCI_BUILD_DIR/ios
 agvtool new-version -all $(($BUILD_NUMBER + 1))
 ```
-
-
-

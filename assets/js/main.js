@@ -1,16 +1,24 @@
 const desktopScreenWidth = 1001;
 
-// Category toggle open
-var navCategory = $('[data-js-docs-menu-item]')
-navCategory.each(function() {
-  $('[data-js-category-name]', this).on('click', function() {
-    var $parent = $(this).parent()
+$('[data-js-docs-menu-item].open').parents('[data-js-docs-menu-item]').addClass('open')
 
-    $parent.find('[data-js-category-posts]').slideToggle(150, function complete() {
-      $parent.toggleClass('open')
+// Open - open only current category
+// Close - close current and all descendant categories
+$('[data-js-category-name]').on('click', function() {
+  const parent = $(this).parent()
+  if (parent.hasClass('open')) {
+    parent.find('[data-js-category-posts]').each(function(_,item) {
+      $(item).slideUp(150, function complete() {
+        $(item).parent().removeClass('open')
+      })
     })
-  })
+  } else {
+    $(this).siblings('[data-js-category-posts]').slideDown(150, function complete() {
+      parent.addClass('open')
+    })
+  }
 })
+
 // Menu toggle
 $('[data-js-docs-menu-toggle]').on('click', function() {
   $('[data-js-docs-menu-toggle-icon]').toggleClass('open')

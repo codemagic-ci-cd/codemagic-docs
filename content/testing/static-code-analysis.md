@@ -11,5 +11,3 @@ To run `flutter analyze`, Codemagic specifies the `analyze` command in the **Flu
 If you check **Stop build if tests fail**, the build will fail if any issues are detected during static code analysis.
 
 When enabled, `flutter analyze` will be run with each build. You can see the results and the logs of the analysis under the **Running tests** step in build overview.
-
-{{< figure size="medium" src="../uploads/2019/05/flutter_analyze_output.png" caption="" >}}

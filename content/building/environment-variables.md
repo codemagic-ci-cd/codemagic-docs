@@ -4,7 +4,7 @@ description:
   not want to store in the repository. You can also use Codemagic read-only environment
   variables to customize your builds.
 title: Environment variables
-weight: 4
+weight: 7
 ---
 
 Environment variables are useful for storing information that you do not want to store in the repository, such as your credentials or workflow-specific data. In addition, you can make use of a number of read-only environment variables that Codemagic exports to customize your builds.
@@ -63,26 +63,7 @@ Here you'll find some of the read-only environment variables explained.
 
 ## Using environment variables
 
-To access a variable, add the `$` symbol in front of its name. For example, access `API_TOKEN` by using `$API_TOKEN`. Note that it is required to use quotation marks with multi-line variables when you are referencing them in custom scripts, as shown in the example below:
-
-    > MY_VAR="var
-    > value"
-    > echo $MY_VAR
-    < var value
-    > echo "$MY_VAR"
-    < var
-    < value
-    
-## Adding environment variables to Flutter projects via UI
-
-Flutter projects can be configured both in .yaml file as well as in the Codemagic web app graphical user interface. You can add environment variables to your Flutter projects in **App settings > Environment variables**.
-
-1. Enter the name and the value of the variable.
-2. Check **Secure** if you wish to hide the value both in the UI and in build logs and disable editing of the variable. Such variables can be accessed only by the build machines during the build.
-3. Click **Add**.
-4. Click **Save** to save the settings.
-
-![](../uploads/env_vars.PNG)
+To access a variable, add the `$` symbol in front of its name. For example, access `API_TOKEN` by using `$API_TOKEN`. Note that it is required to use quotation marks with multi-line variables when you are referencing them in custom scripts.
 
 ## Accessing environment variables from your application
 

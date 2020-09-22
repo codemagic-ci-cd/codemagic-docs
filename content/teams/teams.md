@@ -1,9 +1,9 @@
 ---
-title: Working in teams
+title: Teams
 weight: 1
 ---
 
-If more than one developer is contributing to a project, it is wiser to set up a team so that everyone could work on the project together. Up to two seats in a team are free of charge, but it is possible to invite more members by purchasing additional seats. Billing information is available [here](https://codemagic.io/pricing/).
+If more than one developer is contributing to a project, it is wiser to set up a team so that everyone could work on the project together. Up to two seats in a team are free of charge, but it is possible to invite more members by purchasing additional seats. Pricing information is available [here](https://codemagic.io/pricing/).
 
 {{<notebox>}}Note that teams who enabled billing before June, 2020, and have not yet migrated to the new billing, still operate under the previous billing system. Changing team roles and having multiple owners is not possible in such teams.{{</notebox>}}
 
@@ -51,11 +51,7 @@ By default, team creator's credentials are used to access repository information
 
 ### Billing
 
-Billing is managed separately for each team. To use the paid features, such as additional build minutes or additional team members, team owners will have to enable billing by clicking **Enable billing** on the right sidebar. 
-
-After billing is enabled, billing information (amount due, next payment date and billing history) will be visible on the right of the page. There, you can also click **Update billing details** to change the billing information or add additional details, such as company name, billing email, address and tax ID.
-
-To disable billing, click on the **Disable billing** button in the **Danger zone**. On disabling billing, you will be immediately charged for the used paid build minutes and paid team seats.
+Billing is managed separately for each team. To use the paid features, such as additional build minutes or additional team members, team owners will have to enable billing by clicking **Enable billing** on the right sidebar. See more details about billing [here](../billing/billing).
 
 ## Leaving the team
 
