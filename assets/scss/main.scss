@@ -57,6 +57,18 @@ body {
             position: relative;
             z-index: 1;
             padding: 45px 0;
+            .sidebar__header--link {
+              display: inline;
+            }
+            .sidebar__header--plaintext {
+              display: none;
+            }
+            a {
+              color: black;
+              &:hover {
+                color: $blue;
+              }
+            }
         }
         &__toggle {
           display: none;
@@ -178,6 +190,12 @@ body {
                 padding: 0;
                 width: fit-content;
                 cursor: pointer;
+                .sidebar__header--link {
+                  display: none;
+                }
+                .sidebar__header--plaintext {
+                  display: inline-block;
+                }
             }
             #docs-menu {
                 position: fixed;
