@@ -41,12 +41,22 @@ function createTableOfContents() {
   })
   hashScroll()
 }
+
+function getHeaderOffset() {
+  let offset = $('[data-js-header]').innerHeight()
+  if (window.innerWidth < desktopScreenWidth) {
+    offset += $('[data-js-sidebar]').innerHeight()
+  }
+  return offset
+}
+
 // Scroll to heading from url
 function hashScroll() {
-  var target = window.location.hash
-  var hashElement = $('' + target + '')
-  if (hashElement.offset()) {
-    var scrollTarget = hashElement.offset().top - 40
+  if (window.location.hash) {
+    const target = $(window.location.hash)
+    const targetMarginTop = 40
+    const offset = getHeaderOffset() + targetMarginTop
+    const scrollTarget = target.offset().top - offset
     $('html, body').animate({ scrollTop: scrollTarget }, 300)
     history.pushState(
       '',
@@ -58,7 +68,9 @@ function hashScroll() {
 // Scroll to selected heading on click
 $(document).on('click', 'a[href^="#"]', function(event) {
   event.preventDefault()
-  var scrollTarget = $($.attr(this, 'href')).offset().top - 40
+  const targetMarginTop = 40
+  const offset = getHeaderOffset() + targetMarginTop
+  const scrollTarget = $($.attr(this, 'href')).offset().top - offset
   $('html, body').animate({ scrollTop: scrollTarget }, 300)
 })
 
