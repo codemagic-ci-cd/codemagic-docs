@@ -19,7 +19,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 
 ### Response
 
-```json
+```yaml
 {
   "application": {
     "_id": "5d85eaa0e941e00019e81bc2",
@@ -53,7 +53,7 @@ Adds a Git repository to the applications list.
 
 ### Example
 
-```json
+```yaml
 {
   "repositoryUrl": "git@github.com:my-organization/my-repo.git"
 }
@@ -61,7 +61,7 @@ Adds a Git repository to the applications list.
 
 ### Response
 
-```json
+```yaml
 {
   "_id": "5c9c064185dd2310123b8e96",
   "appName": "my-repo"
@@ -87,6 +87,6 @@ curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
 
 ### Response
 
-```json
+```yaml
 {"encrypted": "Encrypted(Z0FBQUFBQmZMVkhwb3Q3QlJtRlVOeVFJcEJvTTRtWnZablpqMS0xN2V6dllTell1ODZSd2FUcnNqMUlZT09QY1paV0pjbVRfUlVJeDUxRWIzX1paOEZlc1dSdi1XMXlkUFVIdjNIZ2VqcE5Ja0tpMjlPWjhlSTQ9)"}
 ```

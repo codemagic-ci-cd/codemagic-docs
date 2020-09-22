@@ -26,7 +26,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '
 
 ### Example
 
-```json
+```yaml
 {
   "appId": "5c9c064185dd2310123b8e96",
   "workflowId": "release",
@@ -70,7 +70,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 
 ### Response
 
-```json
+```yaml
 {
   "applications": [
     {
@@ -127,7 +127,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 
 ### Response
 
-```json
+```yaml
 {
   "application": {
     "_id": "5d85eaa0e941e00019e81bc2",
