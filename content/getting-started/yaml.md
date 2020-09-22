@@ -111,7 +111,7 @@ The main sections in each workflow are described below.
 
 ### Environment
 
-`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and npm used for building. This is also where you can add credentials and API keys required for [code signing](../building/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
+`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and npm used for building. This is also where you can add credentials and API keys required for [code signing](../code-signing-yaml/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
 
     environment:
       vars:             # Define your environment variables here
