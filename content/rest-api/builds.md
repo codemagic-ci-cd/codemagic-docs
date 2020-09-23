@@ -10,7 +10,7 @@ APIs for managing builds are currently available for developers to preview. Duri
 `POST /builds`
 
 {{<notebox>}}
-Starting a build from API request is similar to starting it from UI, which means the build is started manually (as opposite to starting it automatically from a webhook). Therefore the logic set up in `triggering` section of `codemagic.yaml` or `Build triggers` in UI for Flutter projects won't be taken into account.
+Note that when starting builds from an API request, the workflow and branch information is passed with the curl request and any configuration related to triggers or branches in UI settings or in codemagic.yaml is ignored.
 {{</notebox>}}
 
 ### Parameters
