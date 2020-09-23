@@ -29,6 +29,7 @@ Here you'll find some of the read-only environment variables explained.
 | FCI_BRANCH               | The current branch being built, for pull requests it is the source branch                                       |
 | FCI_REPO_SLUG            | The slug of the repository that is currently being built in the form `owner_name/repository_name`. Unset for repositories added from custom source|
 | FCI_COMMIT               | Commit hash that is currently being built by Codemagic, for pull request builds it is the hash of the source commit |
+| FCI_PREVIOUS_COMMIT      | Commit hash of the previous successful build, unset if there is no previous successful build                    |
 | FCI_PULL_REQUEST         | `true`, if the current build is building a pull request, `false` otherwise                                      |
 | FCI_PULL_REQUEST_NUMBER  | Set to Integer ID of the pull request for the Git provider (Bitbucket, Github etc) if the current build is building a pull request, unset otherwise|
 | FCI_CLONE_UNSHALLOW      | If set to `true` performs a full clone of the repository instead of top 50 commits                             |
