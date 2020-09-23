@@ -13,4 +13,3 @@ You can add environment variables to your Flutter projects in **App settings > E
 1. Enter the name and the value of the variable.
 2. Check **Secure** if you wish to hide the value both in the UI and in build logs and disable editing of the variable. Such variables can be accessed only by the build machines during the build. Note that when storing sensitive information in environment variables, it is recommended to [encrypt](../building/encrypting) the values of the variables.
 3. Click **Add**.
-4. Click **Save** to save the settings.

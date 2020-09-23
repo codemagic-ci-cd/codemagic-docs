@@ -1,5 +1,5 @@
 ---
-description: Store your dependencies on Codemagic for a faster build time.
+description: Speed up your builds by storing dependencies on Codemagic.
 title: Dependency caching
 weight: 6
 aliases: 
@@ -30,7 +30,6 @@ Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up iOS b
 1. In your app settings, open the **Dependency caching** section.
 2. Check the **Enable dependency caching** option. By default, caching is disabled.
 3. Enter the path(s) to the dependencies to be cached and click **Add**. Note that you can delete added paths anytime.
-4. Click **Save** to save the settings.
 
 ## Removing cached dependencies
 

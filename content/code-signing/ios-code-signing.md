@@ -86,8 +86,6 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 
     >Note that if your app contains app extensions, an additional provisioning profile is required for each extension. Codemagic will use the bundle identifier to find the relevant provisioning profiles. If your bundle identifier is `com.example.app`, the matching profiles are the ones with `com.example.app` and `com.example.app.*` as bundle identifier.
 
-8. Finally, click **Save** to finish the setup.
-
 As the next step, you can [configure publishing to App Store Connect](../publishing/publishing-to-app-store) to distribute the app via TestFlight or submit it to the App Store.
 
 ## Manual code signing
@@ -103,7 +101,6 @@ This is required when distributing your app via Apple Developer Enterprise Progr
 2. Select **Manual** as the code signing method.
 3. Upload your signing certificate (in `.p12` format). If your certificate is password-protected, enter the **Certificate password**. 
 4. Upload your provisioning profile (`.mobileprovision`). Note that if your app contains app extensions, you are required to upload an additional provisioning profile for each extension.
-5. Click **Save** to finish the setup.
 
 {{< figure size="medium" src="../uploads/manual_code_signing.png" caption="Manual code signing setup" >}}
 
