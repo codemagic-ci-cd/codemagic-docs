@@ -9,6 +9,10 @@ APIs for managing builds are currently available for developers to preview. Duri
 
 `POST /builds`
 
+{{<notebox>}}
+Starting a build from API request is similar to starting it from UI, which means the build is started manually (as opposite to starting it automatically from a webhook). Therefore the logic set up in `triggering` section of `codemagic.yaml` or `Build triggers` in UI for Flutter projects won't be taken into account.
+{{</notebox>}}
+
 ### Parameters
 
 | **Name**      | **Type** | **Description** |
@@ -46,7 +50,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '
 
 ### Response
 
-The request is asynchronous. To find the started build you can find the most recent build fetching the next [endpoint](#get-build-statuses).
+The request is asynchronous. To find the started build you can find the most recent build fetching the next [endpoint](#get-list-of-builds).
 
 ## Get list of builds
 
