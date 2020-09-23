@@ -9,6 +9,10 @@ APIs for managing builds are currently available for developers to preview. Duri
 
 `POST /builds`
 
+{{<notebox>}}
+Note that when starting builds from an API request, the workflow and branch information is passed with the curl request and any configuration related to triggers or branches in UI settings or in codemagic.yaml is ignored.
+{{</notebox>}}
+
 ### Parameters
 
 | **Name**      | **Type** | **Description** |
@@ -46,7 +50,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '
 
 ### Response
 
-The request is asynchronous. To find the started build you can find the most recent build fetching the next [endpoint](#get-build-statuses).
+The request is asynchronous. The started build is the most recent item in the list when you fetch the [list of builds](#get-list-of-builds).
 
 ## Get list of builds
 
