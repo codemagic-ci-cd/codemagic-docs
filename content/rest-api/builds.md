@@ -50,7 +50,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '
 
 ### Response
 
-The request is asynchronous. To find the started build you can find the most recent build fetching the next [endpoint](#get-list-of-builds).
+The request is asynchronous. The started build is the most recent item in the list when you fetch the [list of builds](#get-list-of-builds).
 
 ## Get list of builds
 
