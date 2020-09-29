@@ -2,7 +2,7 @@
 title: Publishing
 description: How to set up publishing and build status notifications
 weight: 3
-aliases: 
+aliases:
     - '../yaml/distribution'
 ---
 
@@ -12,14 +12,20 @@ All generated artifacts can be published to external services. The available int
 
 Codemagic has out-of-the-box support for publishing to the services listed below. Read more about each individual integration and see the configuration examples below.
 
-### Email 
+### Email
 
 If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the provided email address(es). If the build fails, an email with a link to build logs will be sent.
+
+If you don't want to receive an email notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
 
     publishing:
       email:
         recipients:
           - name@example.com
+        notify:              # Optional value to send an email notification on build success or failure
+          success: false     # Set to true if not specified
+          failure: false     # Set to true if not specified
+
 
 ### Slack
 
@@ -27,10 +33,15 @@ In oder to set up publishing to Slack, you first need to connect the Slack works
 
 You can then define the channel where build notifications and artifacts will be sent to. If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the specified channel. If the build fails, a link to the build logs is published. When you set `notify_on_build_start` to `true`, the channel will be notified when a build starts.
 
+If you don't want to receive a slack notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
+
     publishing:
       slack:
         channel: '#channel-name'
-        notify_on_build_start: true       # To receive a notification when a build starts
+        notify_on_build_start: true    # To receive a notification when a build starts
+        notify:                        # Optional value to send a slack notification on build success or failure
+          success: false               # Set to true if not specified
+          failure: false               # Set to true if not specified
 
 ### Google Play
 
@@ -67,7 +78,7 @@ The proper way to add your keys in `codemagic.yaml` is to copy the contents of t
 
 ### App Store Connect
 
-Codemagic enables you to automatically publish your iOS app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. 
+Codemagic enables you to automatically publish your iOS app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store.
 
     publishing:
       app_store_connect:                  # For iOS app
