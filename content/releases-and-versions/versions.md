@@ -1,7 +1,7 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
-title: macOS build machine specification (Xcode 11)
-weight: 2
+title: macOS build machine specification (Xcode 11.x)
+weight: 3
 ---
 
 ## Hardware
