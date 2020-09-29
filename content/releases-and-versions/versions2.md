@@ -1,6 +1,6 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
-title: macOS build machine specification (Xcode 11)
+title: macOS build machine specification (Xcode 12)
 weight: 2
 ---
 
@@ -11,30 +11,30 @@ weight: 2
 
 ## System
 
-- System version `macOS 10.15.4 (19E287)`
-- Kernel version `Darwin 19.4.0`
-- Disk `322GB (Free Space: 62GB)`
+- System version `macOS 10.15.5 (19F101)`
+- Kernel version `Darwin 19.5.0`
+- Disk `322GB (Free Space: 97GB)`
 
 ## Pre-installed tools
 
 - Android tools `$HOME/programs/android-sdk-macosx`
 - cocoapods `1.9.3`
 - curl
-- dart `2.9.2`
-- docker `19.03.8`
-- fastlane `2.157.3`
-- firebase `7.6.2`
+- dart `2.9.3`
+- docker `19.03.12`
+- fastlane `2.160.0`
+- firebase `8.10.0`
 - flutter `1.20.4 ($HOME/programs/flutter)`
-- gem `3.0.3`
+- gem `3.1.2`
 - git `2.28.0`
 - gradle `6.1.1`
-- homebrew `2.4.16`
+- homebrew `2.5.2`
 - jq
-- node `12.14.0`
-- npm `6.14.7`
-- python `2.7.17`
+- node `12.18.4`
+- npm `6.14.8`
+- python `2.7.16`
 - python3 `3.8.5`
-- ruby `2.6.5p114`
+- ruby `2.7.1p83`
 - ssh
 - sudo
 - tar
@@ -44,13 +44,13 @@ weight: 2
 - yq
 - zip
 
-## Xcode 11.7 (11E801a)
+## Xcode 12.0.1 (12A7300)
 
 This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
-Xcode path: `/Applications/Xcode-11.7.app`
+Xcode path: `/Applications/Xcode-12.app`
 
-With Xcode `11.7` build version `11E801a` the following runtimes and devices are installed:
+With Xcode `12.0.1` build version `12A7300` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -64,6 +64,7 @@ With Xcode `11.7` build version `11E801a` the following runtimes and devices are
 - iOS 13.5
 - iOS 13.6
 - iOS 13.7
+- iOS 14.0
 - tvOS 11.3
 - tvOS 11.4
 - tvOS 12.0
@@ -71,7 +72,9 @@ With Xcode `11.7` build version `11E801a` the following runtimes and devices are
 - tvOS 13.2
 - tvOS 13.3
 - tvOS 13.4
+- tvOS 14.0
 - watchOS 6.2
+- watchOS 7.0
 
 ### Devices
 
@@ -90,11 +93,12 @@ With Xcode `11.7` build version `11E801a` the following runtimes and devices are
 - iPhone X
 - iPhone Xs
 - iPhone Xs Max
-- iPhone Xʀ
+- iPhone XÊ€
 - iPhone 11
 - iPhone 11 Pro
 - iPhone 11 Pro Max
 - iPhone SE (2nd generation)
+- iPod touch (7th generation)
 - iPad 2
 - iPad Retina
 - iPad Air
@@ -103,7 +107,7 @@ With Xcode `11.7` build version `11E801a` the following runtimes and devices are
 - iPad mini 4
 - iPad Air 2
 - iPad Pro (9.7-inch)
-- iPad Pro (12.9-inch)
+- iPad Pro (12.9-inch) (1st generation)
 - iPad (5th generation)
 - iPad Pro (12.9-inch) (2nd generation)
 - iPad Pro (10.5-inch)
@@ -115,6 +119,8 @@ With Xcode `11.7` build version `11E801a` the following runtimes and devices are
 - iPad Pro (12.9-inch) (4th generation)
 - iPad mini (5th generation)
 - iPad Air (3rd generation)
+- iPad (8th generation)
+- iPad Air (4th generation)
 - Apple TV
 - Apple TV 4K
 - Apple TV 4K (at 1080p)
@@ -128,14 +134,11 @@ With Xcode `11.7` build version `11E801a` the following runtimes and devices are
 - Apple Watch Series 4 - 44mm
 - Apple Watch Series 5 - 40mm
 - Apple Watch Series 5 - 44mm
+- Apple Watch SE - 40mm
+- Apple Watch SE - 44mm
+- Apple Watch Series 6 - 40mm
+- Apple Watch Series 6 - 44mm
 
 ## Other Xcode versions
 
-- 11.6 (11E708) `/Applications/Xcode-11.6.app`
-- 11.5 (11E608c) `/Applications/Xcode-11.5.app`
-- 11.4.1 (11E503a) `/Applications/Xcode-11.4.app`
-- 11.3.1 (11C505) `/Applications/Xcode-11.3.app`
-- 11.2.1 (11B500) `/Applications/Xcode-11.2.1.app`
-- 11.1 (11A1027) `/Applications/Xcode-11.1.app`
-- 11.0 (11A420a) `/Applications/Xcode-11.app`
-
+- 12.2 (12B5018i) `/Applications/Xcode-12.2.app`
