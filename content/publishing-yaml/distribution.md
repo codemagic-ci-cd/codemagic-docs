@@ -22,9 +22,9 @@ If you don't want to receive an email notification on build success or failure, 
       email:
         recipients:
           - name@example.com
-        notify:              # Optional value to send an email notification on build success or failure
-          success: false     # Set to true if not specified
-          failure: false     # Set to true if not specified
+        notify:
+          success: false     # To not receive a notification when a build succeeds
+          failure: false     # To not receive a notification when a build fails
 
 
 ### Slack
@@ -39,9 +39,9 @@ If you don't want to receive a slack notification on build success or failure, y
       slack:
         channel: '#channel-name'
         notify_on_build_start: true    # To receive a notification when a build starts
-        notify:                        # Optional value to send a slack notification on build success or failure
-          success: false               # Set to true if not specified
-          failure: false               # Set to true if not specified
+        notify:
+          success: false               # To not receive a notification when a build succeeds
+          failure: false               # To not receive a notification when a build fails
 
 ### Google Play
 
