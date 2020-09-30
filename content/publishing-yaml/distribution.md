@@ -128,7 +128,6 @@ Android
     - name: Publish the app to Firebase App Distribution
       script: |
         apkPath=$(find build -name "*.apk" | head -1)
-    
         if [[ -z ${apkPath} ]]
         then
           echo "No apks were found, skip publishing to Firebase App Distribution"
@@ -142,7 +141,6 @@ iOS
     - name: Publish the app to Firebase App Distribution
       script: |
         ipaPath=$(find build -name "*.ipa" | head -1)
-    
         if [[ -z ${ipaPath} ]]
         then
           echo "No ipas were found, skip publishing to Firebase App Distribution"
