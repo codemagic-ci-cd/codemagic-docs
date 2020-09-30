@@ -128,7 +128,7 @@ Android
     - name: Publish the app to Firebase App Distribution
       script: |
         apkPath=$(find build -name "*.apk" | head -1)
-
+    
         if [[ -z ${apkPath} ]]
         then
           echo "No apks were found, skip publishing to Firebase App Distribution"
@@ -142,7 +142,7 @@ iOS
     - name: Publish the app to Firebase App Distribution
       script: |
         ipaPath=$(find build -name "*.ipa" | head -1)
-
+    
         if [[ -z ${ipaPath} ]]
         then
           echo "No ipas were found, skip publishing to Firebase App Distribution"
@@ -227,3 +227,17 @@ And then export the filepath on the gradlew task
         cd android && ./gradlew appDistributionUploadRelease
 
 {{</notebox>}}
+
+### Publishing web applications to Firebase Hosting
+
+Publishing web applications to Firebase Hosting With Codemagic publishing to Firebase Hosting is a straight-forward process as the Firebase CLI is already pre-installed on our virtual machines. To get started, you will need to obtain your Firebase token. In order to do that, run `firebase login:ci` in your local terminal.
+
+After running the command, your default browser should prompt for authorization to your Firebase project - when access is granted, the necessary token will appear in your terminal. 
+
+The next step is to add your token to Codemagic. To properly set everything up, please [encrypt](https://github.com/codemagic-ci-cd/codemagic-docs/blob/master/content/building/encrypting) the token using Codemagic UI and set it under your environment variables with the name `FIREBASE_TOKEN`. Now all that is needed to publish to Firebase Hosting is to add the publishing step to your .yaml file
+
+    - name: Publish to Firebase Hosting
+      script: |
+        firebase deploy --token "$FIREBASE_TOKEN"
+
+Make sure to add the publishing step after the build step. After the build is finished, you can now find your application published to Firebase Hosting, it is also possible to retrieve the direct URL from the log output in the UI. Please note that before trying to publish to Firebase Hosting, you will have to set it up for your project locally. You can find more information in the official [documentation](https://firebase.google.com/docs/hosting/quickstart) for Firebase.
