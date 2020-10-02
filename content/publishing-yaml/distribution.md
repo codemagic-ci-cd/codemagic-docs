@@ -230,17 +230,17 @@ And then export the filepath on the gradlew task
 
 Publishing web applications to Firebase Hosting With Codemagic publishing to Firebase Hosting is a straight-forward process as the Firebase CLI is already pre-installed on our virtual machines. Please note that before trying to publish to Firebase Hosting, you will have to set it up for your project locally. You can find more information in the official [documentation](https://firebase.google.com/docs/hosting/quickstart) for Firebase.
 
-1. To get started with adding Firebase Hosting to Codemagic, you will need to obtain your Firebase token. In order to do that, run `firebase login:ci` in your local terminal. After running the command, your default browser should prompt for authorization to your Firebase project - when access is granted, the necessary token will appear in your terminal.
-2. [Encrypt](https://github.com/codemagic-ci-cd/codemagic-docs/blob/master/content/building/encrypting) the token using the Codemagic UI.
-3. Add your encrypted token to your .yaml file by setting it under your environment variables with the name `FIREBASE_TOKEN`.
-4. Create a new script for publishing to Firebase Hosting in your scripts section of the .yaml after the build step
+1. To get started with adding Firebase Hosting to Codemagic, you will need to obtain your Firebase token. In order to do that, run `firebase login:ci` in your local terminal. 
+2. After running the command, your default browser should prompt for authorization to your Firebase project - when access is granted, the necessary token will appear in your terminal.
+3. Copy and [encrypt](https://github.com/codemagic-ci-cd/codemagic-docs/blob/master/content/building/encrypting) the token using the Codemagic UI.
+4. Add your encrypted token to your .yaml file by setting it under your environment variables with the name `FIREBASE_TOKEN`.
+5. Create a new script for publishing to Firebase Hosting in your scripts section of the .yaml after the build step
 ```
     - name: Publish to Firebase Hosting
       script: |
         firebase deploy --token "$FIREBASE_TOKEN"
 ```
-When the build is successful, you can find your application published to Firebase Hosting. It is also possible to retrieve the direct URL from the log output in the UI in case of a successful build under the publishing script:
-
+When the build is successful, you can find your application published to Firebase Hosting. It is also possible to retrieve the direct URL from the log output in the UI in case of a successful build under the publishing script
 ```
 ✔  Deploy complete!
 
