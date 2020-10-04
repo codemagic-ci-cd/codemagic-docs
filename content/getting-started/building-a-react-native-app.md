@@ -1,7 +1,7 @@
 ---
 title: Building a React Native app
 description: Building a React Native app with YAML.
-weight: 7
+weight: 8
 aliases: 
     - '../yaml/building-a-react-native-app'
 ---
