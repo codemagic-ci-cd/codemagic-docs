@@ -234,13 +234,13 @@ Publishing web applications to Firebase Hosting With Codemagic publishing to Fir
 2. After running the command, your default browser should prompt for authorization to your Firebase project - when access is granted, the necessary token will appear in your terminal.
 3. Copy and [encrypt](https://github.com/codemagic-ci-cd/codemagic-docs/blob/master/content/building/encrypting) the token using the Codemagic UI.
 4. Add your encrypted token to your .yaml file by setting it under your environment variables with the name `FIREBASE_TOKEN`.
-5. Create a new script for publishing to Firebase Hosting in your scripts section of the .yaml after the build step
+5. Create a new script for publishing to Firebase Hosting in your scripts section of the .yaml file and add it right after the build step
 ```
     - name: Publish to Firebase Hosting
       script: |
         firebase deploy --token "$FIREBASE_TOKEN"
 ```
-When the build is successful, you can find your application published to Firebase Hosting. It is also possible to retrieve the direct URL from the log output in the UI in case of a successful build under the publishing script
+When the build is successful, you can see your application published to Firebase Hosting. You can find the direct URL to the deployed build also from the log output in Codemagic UI:
 ```
 ✔  Deploy complete!
 
