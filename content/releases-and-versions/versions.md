@@ -1,13 +1,13 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
-title: macOS build machine specification (Xcode 11.x)
-weight: 3
+title: macOS build machine specification
+weight: 2
 ---
 
 ## Hardware
 
-- Standard VM on Mac mini `2.3GHz Quad Core / 8GB`
-- Premium VM on Mac Pro `3.7GHz Quad Core / 32GB`
+- Mac Mini `2.3GHz Quad Core / 8GB`
+- Mac Pro `3.7GHz Quad Core / 32GB`
 
 ## System
 
@@ -18,17 +18,20 @@ weight: 3
 ## Pre-installed tools
 
 - Android tools `$HOME/programs/android-sdk-macosx`
+- aws `1.18.105`
 - cocoapods `1.9.3`
+- cordova `8.1.2`
 - curl
 - dart `2.9.2`
 - docker `19.03.8`
 - fastlane `2.157.3`
 - firebase `7.6.2`
-- flutter `1.20.4 ($HOME/programs/flutter)`
+- flutter `1.22.0 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - git `2.28.0`
 - gradle `6.1.1`
 - homebrew `2.4.16`
+- ionic `4.11.0`
 - jq
 - node `12.14.0`
 - npm `6.14.7`

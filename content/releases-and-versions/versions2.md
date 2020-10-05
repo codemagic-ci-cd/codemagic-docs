@@ -1,34 +1,37 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
-title: macOS build machine specification (Xcode 12+)
+title: macOS build machine specification
 weight: 2
 ---
 
 ## Hardware
 
-- Standard VM on Mac mini `2.3GHz Quad Core / 8GB`
-- Premium VM on Mac Pro `3.7GHz Quad Core / 32GB`
+- Mac Mini `2.3GHz Quad Core / 8GB`
+- Mac Pro `3.7GHz Quad Core / 32GB`
 
 ## System
 
 - System version `macOS 10.15.5 (19F101)`
 - Kernel version `Darwin 19.5.0`
-- Disk `322GB (Free Space: 97GB)`
+- Disk `322GB (Free Space: 93GB)`
 
 ## Pre-installed tools
 
 - Android tools `$HOME/programs/android-sdk-macosx`
+- aws `2.0.50`
 - cocoapods `1.9.3`
+- cordova `10.0.0`
 - curl
 - dart `2.9.3`
 - docker `19.03.12`
 - fastlane `2.160.0`
 - firebase `8.10.0`
-- flutter `1.20.4 ($HOME/programs/flutter)`
+- flutter `1.22.0 ($HOME/programs/flutter)`
 - gem `3.1.2`
 - git `2.28.0`
 - gradle `6.1.1`
 - homebrew `2.5.2`
+- ionic `5.4.16`
 - jq
 - node `12.18.4`
 - npm `6.14.8`
@@ -93,7 +96,7 @@ With Xcode `12.0.1` build version `12A7300` the following runtimes and devices a
 - iPhone X
 - iPhone Xs
 - iPhone Xs Max
-- iPhone XÊ€
+- iPhone Xʀ
 - iPhone 11
 - iPhone 11 Pro
 - iPhone 11 Pro Max
@@ -142,3 +145,4 @@ With Xcode `12.0.1` build version `12A7300` the following runtimes and devices a
 ## Other Xcode versions
 
 - 12.2 (12B5018i) `/Applications/Xcode-12.2.app`
+
