@@ -16,7 +16,7 @@ The apps you have available on Codemagic are listed on the Applications page. Se
 4. Then edit the configuration file to adjust it to your project needs and commit it to the root of your repository.
     * For an overview about using `codemagic.yaml`, please refer [here](./yaml). 
     * Read more about adding configuration for [testing](../testing-yaml/testing), [code signing](../code-signing-yaml/signing) and [publishing](../publishing-yaml/distribution).
-    * See the full Android workflow example [below](#android-workflow-example).
+    * See the full workflow examples below.
 5. Back in app settings in Codemagic, scan for the `codemagic.yaml` file by selecting a **branch** to scan and clicking the **Check for configuration file** button at the top of the page. Note that you can have different configuration files in different branches.
 6. If a `codemagic.yaml` file is found in that branch, you can click **Select workflow from codemagic.yaml** and select the **workflow** to build.
 7. Finally, click **Start new build** to build the app.
@@ -35,7 +35,7 @@ To test, code sign and publish Ionic Android and iOS apps:
 * The code for testing an Ionic Android app also goes under `scripts`. A few examples of testing can be found [here](../testing-yaml/testing).
 * All Android applications need to be signed before release. For Gradle code signing configuration for **Ionic Capacitor** apps refer to the [documentation](../code-signing/android-code-signing/). More information about code signing with YAML in general is [here](../code-signing-yaml/signing). If you are building **Ionic Cordova** Android apps see the workflow sample below.
 * All iOS applications need to be signed before release. For iOS code signing configuration refer to the iOS code signing documentation [here](../code-signing/ios-code-signing/)
-* All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../publishing-yaml/distribution/#publishing).
+* All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../publishing-yaml/distribution/).
 
 ## Android Ionic Capacitor workflow example
 
@@ -45,7 +45,7 @@ The following example shows how to set up a workflow that builds your **Ionic Ca
       ionic-capacitor-android-workflow:
           name: Ionic Capacitor Android Workflow
           max_build_duration: 120
-          instance_type: mac_pro
+          instance_type: mac_mini
           environment:
               vars:
                 # Android Keystore environment variables
@@ -126,7 +126,7 @@ workflows:
   ionic-cordova-android-workflow:
       name: Ionic Cordova Android Workflow
       max_build_duration: 120
-      instance_type: mac_pro
+      instance_type: mac_mini
       environment:
           vars:
             # Android Keystore environment variables
@@ -192,7 +192,7 @@ workflows:
     ionic-capacitor-ios-workflow:
         name: Ionic Capacitor iOS Workflow
         max_build_duration: 120
-        instance_type: mac_pro
+        instance_type: mac_mini
         environment:
             vars:
                 # Ionic Capacitor Xcode worskspace and scheme
@@ -245,10 +245,6 @@ workflows:
               script: |
                 # app-store-connect fetch-signing-files "com.nevercode.ncionicapp" --type IOS_APP_STORE --create
                 app-store-connect fetch-signing-files $(xcode-project detect-bundle-id) --type IOS_APP_STORE --create
-            # - name: Set up signing certificate (Use with manual code signing)
-            #   script: |
-            #     echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-            #     keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD 
             - name: Add certificates to keychain
               script: |
                 keychain add-certificates
@@ -296,7 +292,7 @@ workflows:
     ionic-cordova-ios-workflow:
         name: Ionic Cordova iOS Workflow
         max_build_duration: 120
-        instance_type: mac_pro
+        instance_type: mac_mini
         environment:
             vars:
                 # Ionic Xcode worskspace and scheme
@@ -351,10 +347,6 @@ workflows:
               script: |
                 # app-store-connect fetch-signing-files "com.nevercode.ncionicapp" --type IOS_APP_STORE --create
                 app-store-connect fetch-signing-files $(xcode-project detect-bundle-id) --type IOS_APP_STORE --create
-            # - name: Set up signing certificate (Use with manual code signing)
-            #   script: |
-            #     echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-            #     keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD 
             - name: Add certificates to keychain
               script: |
                 keychain add-certificates
