@@ -207,7 +207,7 @@ If you do not wish Codemagic to build a particular commit, include `[skip ci]` o
 
 ### Scripts
 
-Scripts specify what kind of application is built. This is where you can specify the commands to [test](../testing-yaml/testing/), build and [code sign](../code-signing-yaml/signing) your project. You can also run shell (`sh`) scripts directly in your `.yaml` file, or run scripts in other languages by defining the language with a shebang line or by launching a script file present in your repository.
+Scripts specify what kind of application is built. This is where you can specify the commands to [test](../testing-yaml/testing/), build and code sign your project (see our documentation for [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android)). You can also run shell (`sh`) scripts directly in your `.yaml` file, or run scripts in other languages by defining the language with a shebang line or by launching a script file present in your repository.
 
     scripts:
       - flutter test

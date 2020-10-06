@@ -61,7 +61,7 @@ If your app settings in Codemagic have building Android App Bundles enabled, we 
 
 Please make sure to wrap the `--bundle` pattern in single quotes. If `--bundle` option is not specified, default glob pattern `**/*.aab` will be used.
 
-More information about Android code signing can be found [here](../code-signing-yaml/signing/#setting-up-code-signing-for-android).
+More information about Android code signing can be found [here](../code-signing-yaml/signing-android).
 
 {{<notebox>}}
 Codemagic uses the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) utility to build universal .apk files from Android App Bundles.
