@@ -2,6 +2,8 @@
 title: Publishing
 description: How to set up publishing and build status notifications
 weight: 3
+aliases:
+    - '../yaml/distribution'
 ---
 
 All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts, see the examples below.
@@ -10,14 +12,20 @@ All generated artifacts can be published to external services. The available int
 
 Codemagic has out-of-the-box support for publishing to the services listed below. Read more about each individual integration and see the configuration examples below.
 
-### Email 
+### Email
 
 If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the provided email address(es). If the build fails, an email with a link to build logs will be sent.
+
+If you don't want to receive an email notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
 
     publishing:
       email:
         recipients:
           - name@example.com
+        notify:
+          success: false     # To not receive a notification when a build succeeds
+          failure: false     # To not receive a notification when a build fails
+
 
 ### Slack
 
@@ -25,10 +33,15 @@ In oder to set up publishing to Slack, you first need to connect the Slack works
 
 You can then define the channel where build notifications and artifacts will be sent to. If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the specified channel. If the build fails, a link to the build logs is published. When you set `notify_on_build_start` to `true`, the channel will be notified when a build starts.
 
+If you don't want to receive a slack notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
+
     publishing:
       slack:
         channel: '#channel-name'
-        notify_on_build_start: true       # To receive a notification when a build starts
+        notify_on_build_start: true    # To receive a notification when a build starts
+        notify:
+          success: false               # To not receive a notification when a build succeeds
+          failure: false               # To not receive a notification when a build fails
 
 ### Google Play
 
@@ -65,7 +78,7 @@ The proper way to add your keys in `codemagic.yaml` is to copy the contents of t
 
 ### App Store Connect
 
-Codemagic enables you to automatically publish your iOS app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. 
+Codemagic enables you to automatically publish your iOS app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store.
 
     publishing:
       app_store_connect:                  # For iOS app
@@ -112,33 +125,31 @@ Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documen
 
 Android
 
-    - |
-      # publish the app to Firebase App Distribution
-      apkPath=$(find build -name "*.apk" | head -1)
-      echo "Found apk at $apkPath"
+    - name: Publish the app to Firebase App Distribution
+      script: |
+        apkPath=$(find build -name "*.apk" | head -1)
 
-      if [[ -z ${apkPath} ]]
-      then
-        echo "No apks were found, skip publishing to Firebase App Distribution"
-      else
-        echo "Publishing $apkPath to Firebase App Distribution"
-        firebase appdistribution:distribute --app <your_android_application_firebase_id> --groups <your_android_testers_group> $apkPath
-      fi
+        if [[ -z ${apkPath} ]]
+        then
+          echo "No apks were found, skip publishing to Firebase App Distribution"
+        else
+          echo "Publishing $apkPath to Firebase App Distribution"
+          firebase appdistribution:distribute --app <your_android_application_firebase_id> --groups <your_android_testers_group> $apkPath
+        fi
 
 iOS
 
-    - |
-      # publish the app to Firebase App Distribution
-      ipaPath=$(find build -name "*.ipa" | head -1)
-      echo "Found ipa at $ipaPath"
+    - name: Publish the app to Firebase App Distribution
+      script: |
+        ipaPath=$(find build -name "*.ipa" | head -1)
 
-      if [[ -z ${ipaPath} ]]
-      then
-        echo "No ipas were found, skip publishing to Firebase App Distribution"
-      else
-        echo "Publishing $ipaPath to Firebase App Distribution"
-        firebase appdistribution:distribute --app <your_ios_application_firebase_id> --groups <your_ios_testers_group> $ipaPath
-      fi
+        if [[ -z ${ipaPath} ]]
+        then
+          echo "No ipas were found, skip publishing to Firebase App Distribution"
+        else
+          echo "Publishing $ipaPath to Firebase App Distribution"
+          firebase appdistribution:distribute --app <your_ios_application_firebase_id> --groups <your_ios_testers_group> $ipaPath
+        fi
 
 ### Publishing an app with Fastlane
 
@@ -146,28 +157,28 @@ Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documen
 
 Before running a lane, you should install Fastlane Firebase app distribution plugin
 
-        - |
-          # install fastlane-plugin-firebase_app_distribution
-          gem install bundler
-          sudo gem install fastlane-plugin-firebase_app_distribution --user-install
+        - name: Install fastlane-plugin-firebase_app_distribution
+          script: |
+            gem install bundler
+            sudo gem install fastlane-plugin-firebase_app_distribution --user-install
 
 Then you need to call a lane. This code is similar for Android and iOS.
 
 Android
 
-    - |
-      # execute fastlane android publishing task
-      cd android
-      bundle install
-      bundle exec fastlane <your_android_lane>
+    - name: Execute fastlane android publishing task
+      script: |
+        cd android
+        bundle install
+        bundle exec fastlane <your_android_lane>
 
 iOS
 
-    - |
-      # execute fastlane ios publishing task
-      cd ios
-      bundle install
-      bundle exec fastlane <your_ios_lane>
+    - name: Execute fastlane ios publishing task
+      script: |
+        cd ios
+        bundle install
+        bundle exec fastlane <your_ios_lane>
 
 
 ### Publishing an Android app with Gradle
@@ -193,18 +204,14 @@ Decode application credentials for Firebase authorization:
 
 Build the application:
 
-    - |
-        # set up local properties
-        echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+    - echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
     - flutter packages pub get
     - flutter build apk --release
 
 Call the `gradlew` task for distribution
 
-    - |
-        # distribute app to firebase with gradle plugin
-        cd android
-        ./gradlew appDistributionUploadRelease
+    - name: Distribute app to firebase with gradle plugin
+      script: cd android && ./gradlew appDistributionUploadRelease
 
 {{<notebox>}}
 
@@ -214,10 +221,9 @@ If you didn't specify `serviceCredentialsFile`, you may export it to random loca
 
 And then export the filepath on the gradlew task
 
-    - |
-        # distribute app to firebase with gradle plugin
+    - name: Distribute app to firebase with gradle plugin
+      script: |
         export GOOGLE_APPLICATION_CREDENTIALS=/tmp/google-application-credentials.json
-        cd android
-        ./gradlew appDistributionUploadRelease
+        cd android && ./gradlew appDistributionUploadRelease
 
 {{</notebox>}}

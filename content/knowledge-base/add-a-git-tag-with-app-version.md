@@ -2,6 +2,8 @@
 description: Create a Git tag referencing your app version
 title: Adding a Git tag with app version
 weight: 2
+aliases:
+  - '../custom-scripts/add-a-git-tag-with-app-version'
 ---
 
 You can use Codemagic to create a Git tag and push it to your repository.

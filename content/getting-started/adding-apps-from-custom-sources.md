@@ -12,10 +12,7 @@ When you sign up via OAuth, Codemagic already has access to the repositories you
 
 ## Connecting repository via HTTP/HTTPS
 
-1. Click **Add app from custom source** on the Applications page.
-
-    {{< figure size="medium" src="../uploads/add-app-from-custom-source1.png" caption="" >}}
-
+1. Click **Add repository** on the Applications page.
 2. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository on clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `https://example.com/path/to/repository.git`.
 3. If it's a private repository that requires username and password for authentication, check **Private repository** and enter the **Username** and **Password**. Leave this option unchecked for public repositories.
 4. Click **Add application**.

@@ -76,7 +76,7 @@ If tests fail, the status of the build will be “failed” and you'll receive a
 
 Builds can be started manually from Codemagic or automatically in response to events in the repository, see more about [automatic build triggering](./automatic-build-triggering) here. 
 
-You can start builds manually by clicking **Start new build** in app settings or build overview. On clicking the button, the **Specify build configuration** popup is displated where you can select the branch and the [workflow](./creating-workflows) to build. If you also have the `codemagic.yaml` file available in the repository, you can click **Select workflow from codemagic.yaml** in the popup to select a YAML workflow to build.
+You can start builds manually by clicking **Start new build** in app settings or build overview. On clicking the button, the **Specify build configuration** popup is displayed where you can select the branch and the [workflow](./creating-workflows) to build. If you also have the `codemagic.yaml` file available in the repository, you can click **Select workflow from codemagic.yaml** in the popup to select a YAML workflow to build.
 
 For information about using API calls to trigger builds, look [here](../rest-api/overview/).
 

@@ -11,7 +11,7 @@ Codemagic enables you to automatically create a GitHub release and upload genera
 1. The setting is only available for GitHub repositories. 
 2. You need to enable automatic build triggering on tag creation. This setting can be found in **App settings > Build triggers > Trigger on tag creation**. Don't forget to add a branch pattern and ensure the webhook exists.
 
-## Setting up GitHub release publishing.
+## Setting up GitHub release publishing
 
 The setting can be found in **App settings > Publish > GitHub releases**. To enable it, check the **Create a release and publish artifacts** checkbox. To notify users that the release is not ready for production and may be unstable, mark it as **pre-release** by enabling checkbox **Mark build as pre-release**.
 
@@ -25,11 +25,14 @@ You can control which of the generated artifacts will be uploaded to the created
 
 {{<notebox>}}
 
-Next pattern wildcards are supported:
+The following pattern wildcards are supported:
 
-1. `*`      matches everything
-2. `?`       matches any single character
-3. `[seq]`   matches any character in seq
-3. `[!seq]`  matches any character not in seq
+`*`      matches everything
+
+`?`       matches any single character
+
+`[seq]`   matches any character in seq
+
+`[!seq]`  matches any character not in seq
 
 {{</notebox>}}

@@ -2,6 +2,9 @@
 description: Sign up to Codemagic CI/CD
 title: Signing up to Codemagic
 weight: 1
+aliases:
+  - '../getting-started/codemagic-github-app'
+  - '../getting-started/github-organization-accounts'
 ---
 
 You can sign up to Codemagic using a GitHub, GitLab or Bitbucket account and then add apps from any self-hosted or cloud-based Git repository, see [Adding repositories](./adding-apps-from-custom-sources).

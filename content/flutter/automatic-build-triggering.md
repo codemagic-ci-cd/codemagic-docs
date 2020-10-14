@@ -20,12 +20,11 @@ The first (i.e. topmost) pattern in the list is applied first. Each following pa
 
 To add a new branch pattern:
 
-1. Navigate to **App settings >** **Build triggers**.
+1. Navigate to **App settings > Build triggers**.
 2. Enter a pattern matching the name of one or more branches in the project.
 3. Select **Include** or **Exclude** from the dropdown to limit the set of targeted branches by either including or excluding the matching branches.
 4. For **pull request builds**, select whether the tracked branch is the **Source** or the **Target** branch of the pull request. This setting has no effect on other types of builds.
 5. Click **Add pattern** to save it. You can always edit or delete added patterns.
-6. Click **Save** at the end of the section for the changes to take effect.
 
 ## Build triggers
 
@@ -43,6 +42,6 @@ Under **Automatic build triggering**, you can select when to trigger builds.
 
 **Cancel outdated webhook builds**. When checked, Codemagic will automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch. We recommend enabling this feature when you're making several commits, each of which triggers a build.
 
-If you don't enable any automatic build triggers, you can only start builds manually for this workflow.
+If you don't enable any automatic build triggers, you can start builds only manually for this workflow.
 
-Codemagic automatically adds webhooks to GitHub, GitLab, and Bitbucket after you have enabled any of the triggers in **App settings > Build triggers >Automatic build triggering**. In the case Codemagic is unable to create a webhook, you would have to [set up webhooks manually](../building/webhooks).
+Codemagic automatically adds webhooks to GitHub, GitLab, and Bitbucket after you have enabled any of the triggers in **App settings > Build triggers > Automatic build triggering**. In the case Codemagic is unable to create a webhook, you would have to [set up webhooks manually](../building/webhooks).

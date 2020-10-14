@@ -2,6 +2,8 @@
 title: Testing
 description: Testing with YAML.
 weight: 1
+aliases:
+  - '../yaml/testing'
 ---
 
 Test scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
@@ -24,12 +26,24 @@ UI tests (also known as instrumented tests):
 
 ## Native iOS
 
+    set -o pipefail
     xcodebuild \
         -workspace MyAwesomeApp.xcworkspace \
         -scheme MyAwesomeApp \
         -sdk iphonesimulator \
         -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
         test | xcpretty
+
+If may want to export the test log, you can do this by splitting the standard output to a file
+    
+    set -o pipefail
+    xcodebuild \
+        -workspace MyAwesomeApp.xcworkspace \
+        -scheme MyAwesomeApp \
+        -sdk iphonesimulator \
+        -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
+        test | xcpretty |& tee "/tmp/xcodetest.log"
+
 
 ## Flutter test
 
