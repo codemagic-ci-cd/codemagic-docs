@@ -53,14 +53,34 @@ environment:
   CM_KEY_ALIAS_PASSWORD: Encrypted(...)
 ```
 
-3. In the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, you will need to decode the keystore file and add it before the build command. For example:
+3. In the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, you will need to decode the keystore file and add it before the build command. You can choose any path to your keystore file. For example:
 
 ```
 scripts:
-  - name: Export keystore
-    script: echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
   - name: Build Android
-    cd android && ./gradlew assembleRelease
+    script: |
+      export CM_KEYSTORE_PATH="/tmp/keystore.keystore"
+      echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+      cd android && ./gradlew assembleRelease
+```
+
+Pay attention to the fact that scripts are executed as separate processes and environment variables defined inside one script won't be accessible in another script. Therefore, if you want to access your `CM_KEYSTORE_PATH` variable from multiple scripts, it makes sense to define it in the `environment` section.
+
+```
+environment:  
+  CM_KEYSTORE_PATH: /tmp/keystore.keystore
+  CM_KEYSTORE: Encrypted(...)
+  CM_KEYSTORE_PASSWORD: Encrypted(...)
+  CM_KEY_ALIAS_USERNAME: Encrypted(...)
+  CM_KEY_ALIAS_PASSWORD: Encrypted(...)
+...
+scripts:
+  ...
+  - name: Export keystore
+    script: echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+  - name: Build Android
+    script: cd android && ./gradlew assembleRelease
+  ...
 ```
 
 ## Signing Android apps using key.properties
@@ -69,17 +89,17 @@ The following templates show code signing using `key.properties`.
 
 ### Set up default debug key.properties
 
-    - |
-      # set up debug key.properties
-      keytool -genkeypair \
-        -alias androiddebugkey \
-        -keypass android \
-        -keystore ~/.android/debug.keystore \
-        -storepass android \
-        -dname 'CN=Android Debug,O=Android,C=US' \
-        -keyalg 'RSA' \
-        -keysize 2048 \
-        -validity 10000
+    - name: Set up debug key.properties
+      script: |
+        keytool -genkeypair \
+          -alias androiddebugkey \
+          -keypass android \
+          -keystore ~/.android/debug.keystore \
+          -storepass android \
+          -dname 'CN=Android Debug,O=Android,C=US' \
+          -keyalg 'RSA' \
+          -keysize 2048 \
+          -validity 10000
 
 ### Set up code signing with user-specified keys
 
@@ -92,12 +112,12 @@ In order to do code signing [encrypt](../building/encrypting/#encrypting-sensiti
 
 Use the following script:
 
-    - |
-      # set up key.properties
-      echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-      cat >> "$FCI_BUILD_DIR/project_directory/android/key.properties" <<EOF
-      storePassword=$CM_KEYSTORE_PASSWORD
-      keyPassword=$CM_KEY_ALIAS_PASSWORD
-      keyAlias=$CM_KEY_ALIAS_USERNAME
-      storeFile=/tmp/keystore.keystore
-      EOF
+    - name: Set up key.properties
+      script: |
+        echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+        cat >> "$FCI_BUILD_DIR/project_directory/android/key.properties" <<EOF
+        storePassword=$CM_KEYSTORE_PASSWORD
+        keyPassword=$CM_KEY_ALIAS_PASSWORD
+        keyAlias=$CM_KEY_ALIAS_USERNAME
+        storeFile=/tmp/keystore.keystore
+        EOF
