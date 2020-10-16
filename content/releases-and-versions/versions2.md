@@ -13,7 +13,7 @@ weight: 2
 
 - System version `macOS 10.15.5 (19F101)`
 - Kernel version `Darwin 19.5.0`
-- Disk `322GB (Free Space: 96GB)`
+- Disk `322GB (Free Space: 71GB)`
 
 ## Pre-installed tools
 
@@ -22,28 +22,28 @@ weight: 2
 - cocoapods `1.9.3`
 - cordova `10.0.0`
 - curl
-- dart `2.9.3`
+- dart `2.10.1`
 - docker `19.03.12`
-- fastlane `2.160.0`
+- fastlane `2.163.0`
 - firebase `8.10.0`
 - flutter `1.22.1 ($HOME/programs/flutter)`
 - gem `3.1.2`
 - git `2.28.0`
 - gradle `6.1.1`
-- homebrew `2.5.2`
+- homebrew `2.5.6`
 - ionic `5.4.16`
 - jq
 - node `12.18.4`
 - npm `6.14.8`
 - python `2.7.16`
-- python3 `3.8.5`
+- python3 `3.8.6`
 - ruby `2.7.1p83`
 - ssh
 - sudo
 - tar
 - unzip
 - wget
-- yarn `1.22.5`
+- yarn `1.22.10`
 - yq
 - zip
 
@@ -144,5 +144,5 @@ With Xcode `12.0.1` build version `12A7300` the following runtimes and devices a
 
 ## Other Xcode versions
 
-- 12.2 (12B5018i) `/Applications/Xcode-12.2.app`
-
+- 12.2 (12B5035g) `/Applications/Xcode-12.2.app`
+- 12.1 (12A7403) `/Applications/Xcode-12.1.app`
