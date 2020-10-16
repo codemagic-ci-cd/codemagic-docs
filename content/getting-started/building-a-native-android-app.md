@@ -15,7 +15,7 @@ The apps you have available on Codemagic are listed on the Applications page. Se
 3. Download the example configuration for Android App or copy it to clipboard.
 4. Then edit the configuration file to adjust it to your project needs and commit it to the root of your repository.
     * For an overview about using `codemagic.yaml`, please refer [here](./yaml). 
-    * Read more about adding configuration for [testing](../testing-yaml/testing), [code signing](../code-signing-yaml/signing) and [publishing](../publishing-yaml/distribution).
+    * Read more about adding configuration for [testing](../testing-yaml/testing), [code signing](../code-signing-yaml/signing-android) and [publishing](../publishing-yaml/distribution).
     * See the full Android workflow example [below](#android-workflow-example).
 5. Back in app settings in Codemagic, scan for the `codemagic.yaml` file by selecting a **branch** to scan and clicking the **Check for configuration file** button at the top of the page. Note that you can have different configuration files in different branches.
 6. If a `codemagic.yaml` file is found in that branch, you can click **Select workflow from codemagic.yaml** and select the **workflow** to build.
@@ -39,7 +39,7 @@ The necessary command for building native Android application goes under `script
 To test, code sign and publish an Android app:
 
 * The code for testing an Android app also goes under `scripts`. A few examples of testing can be found [here](../testing-yaml/testing).
-* All Android applications need to be signed before release. For Gradle code signing configuration refer to the [documentation](../code-signing/android-code-signing/#preparing-your-flutter-project-for-code-signing). More information about code signing with YAML in general is [here](../code-signing-yaml/signing).
+* All Android applications need to be signed before release, see how to do that [here](../code-signing-yaml/signing-android).
 * All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../publishing-yaml/distribution/#publishing).
 
 ## Android workflow example
@@ -87,6 +87,7 @@ The following example shows how to set up a workflow that builds your app and pu
           google_play:
             credentials: Encrypted(...) # PUT YOUR ENCRYPTED GOOGLE PLAY JSON CREDENTIALS FILE HERE
             track: internal
+
 
 {{<notebox>}}Note that you should incremenet the versionCode in `android/app/build.gradle`. {{</notebox>}}
 

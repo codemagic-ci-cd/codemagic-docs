@@ -2,10 +2,6 @@
 description: Find out how to overcome frequent issues with building your Flutter app on Codemagic. 
 title: Common issues
 weight: 4
-aliases:
-    - '../troubleshooting/common-issues'
-    - '../custom-scripts/add-a-git-tag-with-app-version'
-    - '../custom-scripts/upload-custom-artifacts'
 ---
 
 ## iOS errors regarding creating authentication sessions

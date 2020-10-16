@@ -3,7 +3,7 @@ title: Building a React Native app
 description: Building a React Native app with YAML.
 weight: 8
 aliases: 
-    - '../yaml/building-a-react-native-app'
+  - '../yaml/building-a-react-native-app'
 ---
 
 React Native is a cross-platform solution that allows you to build apps for both iOS and Android faster using a single language. When working with YAML, the basics are still the same, the build scripts are added to the `scripts` section in the [overall architecture](../getting-started/yaml#template).
@@ -35,7 +35,7 @@ Script for building an iOS application:
 To test and publish a React Native app:
 
 * The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Naive app can be found [here](../testing-yaml/testing/#react-native-unit-test).
-* All iOS and Android applications need to be signed before release. Different script examples are available [here](../code-signing-yaml/signing/).
+* All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
 * All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../publishing-yaml/distribution/#publishing).
 
 ## iOS workflow example
@@ -101,7 +101,6 @@ The following example shows a workflow that can be used to publish your iOS app 
             apple_id: your_apple_id@example.com  # PUT YOUR APPLE ID HERE
             password: Encrypted(...) # THE ENCRYPTED APP-SPECIFIC PASSWORD GOES HERE
 
-
 ## Android workflow example
 
 The following example shows how to set up a workflow that builds your app and publishes to a Google Play internal track.
@@ -149,7 +148,6 @@ The following example shows how to set up a workflow that builds your app and pu
           google_play:
             credentials: Encrypted(...) # PUT YOUR ENCRYPTED GOOGLE PLAY JSON CREDENTIALS FILE HERE
             track: internal
-
     
 {{<notebox>}}Note that you should incremenet the versionCode in `android/app/build.gradle` {{</notebox>}}
 
