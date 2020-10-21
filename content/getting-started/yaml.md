@@ -141,6 +141,7 @@ The main sections in each workflow are described below.
       cocoapods: 1.9.1  # Define default or version
       node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
       npm: 6.13.7       # Define default, latest, next, lts or version
+      ndk: r21d         # Define default or revision (e.g. r19c)
 
 {{<notebox>}}
 See the default software versions on Codemagic build machines [here](../releases-and-versions/versions/).
