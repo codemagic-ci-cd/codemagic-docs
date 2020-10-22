@@ -10,7 +10,7 @@ weight: 1
 
 Instead of creating a session with Apple Developer Portal, we are now using App Store Connect API keys for authentication. This means there will be no more expiring sessions or hassle with two-factor authentication when using automatic code signing. It is possible to set up several keys for code signing and select the right key in workflow settings. See how to [set up the Apple Developer Portal in Codemagic app](../code-signing/ios-code-signing/#automatic-code-signing) for builds that are configured in the UI. When building with `codemagic.yaml`, the API keys are added in the configuration file, see the instructions [here](../code-signing-yaml/signing-ios).
 
-### Support for multiple team oweners
+### Support for multiple team owners
 
 Codemagic teams can now have multiple team owners. Team owners can manage team integrations, add or remove team members and set up billing. Team owners can also upgrade members to owners or downgrade other owners to member. Read more about how teams work [here](../teams/teams).
 
