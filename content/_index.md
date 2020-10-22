@@ -19,7 +19,7 @@ To contribute, fork the repository, make your changes and start a pull request. 
 
 ## Codemagic Slack workspace
 
-If you have problems with setting up Codemagic CI/CD or want to talk to fellow Flutter developers, you are welcome to join our [Slack workspace](https://join.slack.com/t/codemagicio/shared_invite/enQtNzQyODExMTQyMDcwLTQ2NTJjODE3NTA2Njg3Y2ViYmZiNGE1MWMyYWNjY2I0MzRmM2M2YmZhOTE1YTc5YjNkMmI0MzQzZWU0MzA4OGM 'Slack community for CI/CD and Flutter'). 
+If you have problems with setting up Codemagic CI/CD or want to talk to fellow Flutter developers, you are welcome to join our [Slack workspace](https://slack.codemagic.io 'Slack community for CI/CD and Flutter'). 
 
 ## Codemagic status page
 
