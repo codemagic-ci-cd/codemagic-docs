@@ -13,7 +13,7 @@ weight: 2
 
 - System version `macOS 10.15.5 (19F101)`
 - Kernel version `Darwin 19.5.0`
-- Disk `322GB (Free Space: 71GB)`
+- Disk `322GB (Free Space: 72GB)`
 
 ## Pre-installed tools
 
@@ -47,13 +47,13 @@ weight: 2
 - yq
 - zip
 
-## Xcode 12.0.1 (12A7300)
+## Xcode 12.1 (12A7403)
 
 This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
-Xcode path: `/Applications/Xcode-12.app`
+Xcode path: `/Applications/Xcode-12.1.app`
 
-With Xcode `12.0.1` build version `12A7300` the following runtimes and devices are installed:
+With Xcode `12.1` build version `12A7403` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -67,7 +67,7 @@ With Xcode `12.0.1` build version `12A7300` the following runtimes and devices a
 - iOS 13.5
 - iOS 13.6
 - iOS 13.7
-- iOS 14.0
+- iOS 14.1
 - tvOS 11.3
 - tvOS 11.4
 - tvOS 12.0
@@ -101,6 +101,10 @@ With Xcode `12.0.1` build version `12A7300` the following runtimes and devices a
 - iPhone 11 Pro
 - iPhone 11 Pro Max
 - iPhone SE (2nd generation)
+- iPhone 12 mini
+- iPhone 12
+- iPhone 12 Pro
+- iPhone 12 Pro Max
 - iPod touch (7th generation)
 - iPad 2
 - iPad Retina
@@ -145,4 +149,4 @@ With Xcode `12.0.1` build version `12A7300` the following runtimes and devices a
 ## Other Xcode versions
 
 - 12.2 (12B5035g) `/Applications/Xcode-12.2.app`
-- 12.1 (12A7403) `/Applications/Xcode-12.1.app`
+- 12.0.1 (12A7300) `/Applications/Xcode-12.app`
