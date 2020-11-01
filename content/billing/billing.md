@@ -11,16 +11,22 @@ Note that:
 
 ## Enabling billing
 
-Billing can be enabled in **User settings** for your personal account and in **team settings** for a team.
+Billing can be enabled in **User settings** for your personal account and in **team settings** for a team, or on the Billing page that is accessible from the left navigation bar.
 
-In settings, click **Enable billing** on the right sidebar. You will be asked for credit card information, or you can select an existing credit card if you have already registered one in Codemagic. To finish, click **Confirm and enable billing**.
+On clicking **Enable billing**, you will be asked to enter credit card information or offered the option to select an existing credit card if you have had billing enabled previously. To finish, click **Confirm and enable billing**.
 
-After billing is enabled, billing information (amount due, next payment date and billing history) will be visible on the right of the page. You will be charged monthly based on your usage of the paid features.
+When billing is enabled, you will be charged monthly based on usage.
 
-## Updating billing details
+## Managing billing and updating billing details
 
-Once you have enabled billing, you can click **Update billing details** on the right sidebar in team or user settings to change the billing information or add additional details, such as company name, billing email, address and tax ID.
+To manage billing for your team or personal account, navigate to the Billing page and select the team or account. 
 
-## Disabling billing
+When billing has been enabled, you will see the current usage, the due amount and the next payment date. This is also where you can download the invoices for previous billing periods.
 
-To disable billing, click on the **Disable billing** button in the **Danger zone**. On disabling billing, you will be immediately charged for the used paid features.
+### Updating billing details
+
+Click on **Update billing details** to change the billing information or add additional details, such as company name, billing email, address and tax ID.
+
+### Disabling billing
+
+To disable billing, click **Disable billing** in the Billing details section. On disabling billing, you will be immediately charged for the used paid features.
