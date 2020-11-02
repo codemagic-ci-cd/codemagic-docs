@@ -24,7 +24,7 @@ Note that when you upload a file for encryption, it is encoded to `base64` and w
 
 Writing the base64-encoded environment variable to a file can be done like this:
 
-```
+```yaml
 scripts:
   - echo $MY_FILE | base64 --decode > my-file.json
 ```

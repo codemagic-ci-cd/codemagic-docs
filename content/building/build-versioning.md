@@ -13,30 +13,32 @@ If you are going to publish your app to App Store Connect or Google Play, each u
 
 Here are some examples how you can increment the app version using Codemagic's read-only environment variables in build arguments:
 
-`--build-name=2.0.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER + 100))`
+```bash
+--build-name=2.0.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER + 100))
 
-`--build-name=1.0.0 --build-number=$BUILD_NUMBER`
-
+--build-name=1.0.0 --build-number=$BUILD_NUMBER
+```
 
 ## Fetching build number from pubsec.yaml
 
 Add a pre-build script that installs [yq](https://github.com/mikefarah/yq), a lightweight and portable command-line YAML processor: 
 
-```
+```bash
 #!/usr/bin/env sh
 HOMEBREW_NO_AUTO_UPDATE=1 brew install yq
 ```
 
 Then add the following build arguments:
 
-`--build-number=$(cat ./pubspec.yaml | yq r - version)`  
-
+```bash
+--build-number=$(cat ./pubspec.yaml | yq r - version)
+```
 
 ## Set Xcode project build number via command line
 
 Calling agvtool is another way of forcing Xcode to set the build version for your next build. 
 
-```
+```bash
 #!/bin/sh
 set -e
 set -x

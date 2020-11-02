@@ -13,9 +13,11 @@ Environment variables are useful for storing information that you do not want to
 
 Codemagic exports several read-only environment variables during the build that you can use in scripts to customize the build process. Environment variables added by user will override Codemagic defaults. You can check which environment variables are exported by inserting the following script before or after any of the default build steps:
 
-    #!/bin/sh
-    set -ex
-    printenv
+```bash
+#!/bin/sh
+set -ex
+printenv
+```
 
 Here you'll find some of the read-only environment variables explained.
 
@@ -51,17 +53,18 @@ Here you'll find some of the read-only environment variables explained.
 
 `$FCI_ARTIFACT_LINKS` environment variable value is a JSON encoded list in the following form: 
 
-    [
-        {
-            "name": "Codemagic_Release.ipa",
-            "type": "ipa",
-            "url": "https://api.codemagic.io/artifacts/2e7564b2-9ffa-40c2-b9e0-8980436ac717/81c5a723-b162-488a-854e-3f5f7fdfb22f/Codemagic_Release.ipa",
-            "md5": "d2884be6985dad3ffc4d6f85b3a3642a",
-            "versionName": "1.0.2",
-            "bundleId": "io.codemagic.app"
-        }
-    ]                                                                                   
-
+```json
+[
+    {
+        "name": "Codemagic_Release.ipa",
+        "type": "ipa",
+        "url": "https://api.codemagic.io/artifacts/2e7564b2-9ffa-40c2-b9e0-8980436ac717/81c5a723-b162-488a-854e-3f5f7fdfb22f/Codemagic_Release.ipa",
+        "md5": "d2884be6985dad3ffc4d6f85b3a3642a",
+        "versionName": "1.0.2",
+        "bundleId": "io.codemagic.app"
+    }
+]                                                                                   
+```
 ## Using environment variables
 
 To access a variable, add the `$` symbol in front of its name. For example, access `API_TOKEN` by using `$API_TOKEN`. Note that it is required to use quotation marks with multi-line variables when you are referencing them in custom scripts.
@@ -76,29 +79,35 @@ The following examples show how to place your Google Maps API key into an Androi
 
 2. Read the key from an environment variable to `build.gradle`
 
-        defaultConfig {
-            // Other values set here
-            resValue "string", "maps_api_key", "$System.env.MAPS_API_KEY"
-        }
-
+```gradle
+defaultConfig {
+    // Other values set here
+    resValue "string", "maps_api_key", "$System.env.MAPS_API_KEY"
+}
+```
 3. Read the key from the `build.gradle` value to `AndroidManifest.xml`
 
-        <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="@string/maps_api_key"/>
-
+```xml
+<meta-data android:name="com.google.android.geo.API_KEY"
+    android:value="@string/maps_api_key"/>
+```
 ### iOS (Swift)
 
 2. Read the key from the environment variable to `Info.plist`
 
-        <key>MAPS_API_KEY</key>
-        <string>$(MAPS_API_KEY)</string>
-
+```xml
+<key>MAPS_API_KEY</key>
+<string>$(MAPS_API_KEY)</string>
+```
 3. Read the key from the `Info.plist` value to `AppDelegate.swift`
 
-        GMSServices.provideAPIKey(Bundle.main.object(forInfoDictionaryKey: "MAPS_API_KEY") as? String ?? "")
-
+```swift
+GMSServices.provideAPIKey(Bundle.main.object(forInfoDictionaryKey: "MAPS_API_KEY") as? String ?? "")
+```
 ### iOS (Objective-C)
 
 2.  Read your key from the environemnt variable to `AppDelegate.m` as in the [example](https://github.com/flutter/plugins/blob/master/packages/google_maps_flutter/google_maps_flutter/example/ios/Runner/AppDelegate.m).
 
-        [GMSServices provideAPIKey:[[NSProcessInfo processInfo] environment][@"MAPS_API_KEY"]];
+```objective-c
+[GMSServices provideAPIKey:[[NSProcessInfo processInfo] environment][@"MAPS_API_KEY"]];
+```

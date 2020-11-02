@@ -35,30 +35,34 @@ Take note of the **Issuer ID** above the table of active keys as well as the **K
 
 Save the API key and the related information as [environment](../getting-started/yaml#environment) variables. Make sure to [encrypt](../building/encrypting/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
 
-    environment:
-      vars: 
-        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
-        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
-        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
-        CERTIFICATE_PRIVATE_KEY: Encrypted(...)
+```yaml
+environment:
+  vars:
+    APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
+    APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
+    APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
+    CERTIFICATE_PRIVATE_KEY: Encrypted(...)
+```
 
-* `APP_STORE_CONNECT_KEY_IDENTIFIER`
+- `APP_STORE_CONNECT_KEY_IDENTIFIER`
 
   In **App Store Connect > Users and Access > Keys**, this is the **Key ID** of the key.
 
-* `APP_STORE_CONNECT_ISSUER_ID`
+- `APP_STORE_CONNECT_ISSUER_ID`
 
   In **App Store Connect > Users and Access > Keys**, this is the **Issuer ID** displayed above the table of active keys.
 
-* `APP_STORE_CONNECT_PRIVATE_KEY`
+- `APP_STORE_CONNECT_PRIVATE_KEY`
 
   This is the private API key downloaded from App Store Connect. Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
 
-* `CERTIFICATE_PRIVATE_KEY`
+- `CERTIFICATE_PRIVATE_KEY`
 
   A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the following command in your terminal:
 
-      ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
+```bash
+ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
+```
 
 {{<notebox>}}
 Alternatively, each property can be specified in the `scripts` section of the YAML file as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
@@ -68,53 +72,58 @@ Alternatively, each property can be specified in the `scripts` section of the YA
 
 To code sign the app, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands. 
 
-    scripts:
-      ... your dependencies installation
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-        script: keychain initialize
-      - name: Fetch signing files
-        script: |
-          app-store-connect fetch-signing-files "io.codemagic.app" \  # Fetch signing files for specified bundle ID (use "$(xcode-project detect-bundle-id)" if not specified)
-            --type IOS_APP_DEVELOPMENT \  # Specify provisioning profile type*
-            --create  # Allow creating resources if existing are not found.
-      - name: Set up signing certificate
-        script: keychain add-certificates
-      - name: Set up code signing settings on Xcode project
-        script: xcode-project use-profiles
-      ... your build commands
+```yaml
+scripts:
+  ... your dependencies installation
+  - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+    script: keychain initialize
+  - name: Fetch signing files
+    script: |
+      app-store-connect fetch-signing-files "io.codemagic.app" \  # Fetch signing files for specified bundle ID (use "$(xcode-project detect-bundle-id)" if not specified)
+        --type IOS_APP_DEVELOPMENT \  # Specify provisioning profile type*
+        --create  # Allow creating resources if existing are not found.
+  - name: Set up signing certificate
+    script: keychain add-certificates
+  - name: Set up code signing settings on Xcode project
+    script: xcode-project use-profiles
+  ... your build commands
+```
 
-Based on the specified bundle ID and [provisioning profile type]((https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store)), Codemagic will fetch or create the relevant provisioning profile and certificate to code sign the build.
+Based on the specified bundle ID and [provisioning profile type](<(https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store)>), Codemagic will fetch or create the relevant provisioning profile and certificate to code sign the build.
 
 ## Manual code signing
 
 In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build.
 
-    environment:
-      CM_CERTIFICATE: Encrypted(...)
-      CM_CERTIFICATE_PASSWORD: Encrypted(...)
-      CM_PROVISIONING_PROFILE: Encrypted(...)
+```yaml
+environment:
+  CM_CERTIFICATE: Encrypted(...)
+  CM_CERTIFICATE_PASSWORD: Encrypted(...)
+  CM_PROVISIONING_PROFILE: Encrypted(...)
+```
 
-Then add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands. 
+Then add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
 
-    scripts:
-      ... your dependencies installation
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-        script: keychain initialize
-      - name: Set up Provisioning profiles from environment variables
-        script: |
-          PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
-          mkdir -p "$PROFILES_HOME"
-          PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-          echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
-          echo "Saved provisioning profile $PROFILE_PATH"
-      - name: Set up signing certificate
-        script: |
-          echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-
-          # when using a password-protected certificate
-          keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
-          # when using a certificate that is not password-protected
-          keychain add-certificates --certificate /tmp/certificate.p12
-      - name: Set up code signing settings on Xcode project
-        script: xcode-project use-profiles
-      ... your build commands
+```yaml
+scripts:
+  ... your dependencies installation
+  - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+    script: keychain initialize
+  - name: Set up Provisioning profiles from environment variables
+    script: |
+      PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+      mkdir -p "$PROFILES_HOME"
+      PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
+      echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+      echo "Saved provisioning profile $PROFILE_PATH"
+  - name: Set up signing certificate
+    script: |
+      echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+      # when using a password-protected certificate
+      keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
+      # when using a certificate that is not password-protected
+      keychain add-certificates --certificate /tmp/certificate.p12
+  - name: Set up code signing settings on Xcode project
+    script: xcode-project use-profiles
+  ... your build commands
+```

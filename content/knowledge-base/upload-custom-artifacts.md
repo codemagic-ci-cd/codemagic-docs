@@ -10,6 +10,8 @@ You can use a custom script to upload custom artifacts, such as screenshots, to 
 
 For example, add this **post-test** script to copy screenshots to `$FCI_EXPORT_DIR`.
 
-    #!/usr/bin/env sh
+```bash
+#!/usr/bin/env sh
 
-    cp  -r build/screenshots $FCI_EXPORT_DIR/screenshots
+cp  -r build/screenshots $FCI_EXPORT_DIR/screenshots
+```

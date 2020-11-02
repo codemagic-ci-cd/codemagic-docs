@@ -22,26 +22,29 @@ Pushing Git tags from Codemagic to repository requires **write access** to the r
 
 2. Add the following **pre-publish script**.  Note that you need to replace the placeholders with your actual environment variable name and Git service details.
 
-        #!/usr/bin/env sh
+  ```bash
+  #!/usr/bin/env sh
 
-        set -e # exit on first failed commandset
-        set -x # print all executed commands to the log
+  set -e # exit on first failed commandset
+  set -x # print all executed commands to the log
 
-        if [ "$FCI_BUILD_STEP_STATUS" == "success" ]
-        then
-          new_version=v1.0.$BUILD_NUMBER
-          git tag $new_version
-          git push "https://your-username:$APP_PASSWORD_ENV_VARIABLE@your-git-service.com/your-repo.git" --tags
-        fi
-    Where:
+  if [ "$FCI_BUILD_STEP_STATUS" == "success" ]
+  then
+    new_version=v1.0.$BUILD_NUMBER
+    git tag $new_version
+    git push "https://your-username:$APP_PASSWORD_ENV_VARIABLE@your-git-service.com/your-repo.git" --tags
+  fi
+  ```
 
-    * `BUILD_NUMBER` is the read-only environment variable that holds the total count of builds for this project in Codemagic.
-    * `your-username` is your Git service username
-    * `APP_PASSWORD_ENV_VARIABLE` is the name of the environment variable that holds your app password / personal access token.
-    * `your-git-service.com` is the name of your Git service, e.g. github.com, bitbucket.com or gitlab.com.
-    * `your-repo` is the name of your repository
+  Where:
 
-    Before creating the tag, the script will check if the build was successful.
+  * `BUILD_NUMBER` is the read-only environment variable that holds the total count of builds for this project in Codemagic.
+  * `your-username` is your Git service username
+  * `APP_PASSWORD_ENV_VARIABLE` is the name of the environment variable that holds your app password / personal access token.
+  * `your-git-service.com` is the name of your Git service, e.g. github.com, bitbucket.com or gitlab.com.
+  * `your-repo` is the name of your repository
+
+  Before creating the tag, the script will check if the build was successful.
 
 {{<notebox>}}
 Make sure to use the `https` repository URL for pushing. Using the `ssh` format is not supported with app passwords or personal access tokens

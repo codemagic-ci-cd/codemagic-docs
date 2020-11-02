@@ -48,13 +48,13 @@ If you want to test your application with another Flutter version, follow these 
 
     If you made your changes to the forked repository on the default branch, you can simply mention the git URL to activate it:
 
-    ```
+    ```bash
     pub global activate -s git https://github.com/your_username/sylph.git
     ```
 
     If you made your changes on a specific branch e.g. `flutter_1.17.5`, you can clone the specific branch and specify the path to the cloned repository:
 
-    ```
+    ```bash
     git clone --branch your_branch_name https://github.com/your_username/sylph.git $HOME/sylph
     pub global activate -s path $HOME/sylph
     ```
