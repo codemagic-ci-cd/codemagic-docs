@@ -2,7 +2,6 @@
 copyright:
   '©Nevercode Ltd | All Rights Reserved | Codemagic is pending trademark
   of Nevercode Ltd.'
-pygmentsUseClasses: true
 params:
   twitterShareHandle: codemagicio
   facebookAuthorHandle: codemagicio
@@ -134,3 +133,5 @@ markup:
     goldmark:
         renderer:
             unsafe: true
+    highlight:
+        style: github

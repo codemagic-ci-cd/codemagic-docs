@@ -365,15 +365,13 @@ body {
             code {
               font-family: monospace;
               background: $grey-bg-light;
-              color: #c71585;
               font-size: 0.9em;
               padding: 2px 4px;
               word-break: break-word;
               border-radius: 2px;
-              border: 1px solid $grey-bg;
             }
             pre {
-                background: $grey-bg;
+                background: $grey-bg-light !important;
                 padding: 40px;
                 font-family: monospace;
                 font-size: 14px;
@@ -382,7 +380,11 @@ body {
 
                 code {
                   background: transparent;
+                  font-size: 1em;
                   padding: 0;
+                  span {
+                    background: transparent !important;
+                  }
                 }
             }
             .notebox {
@@ -403,7 +405,10 @@ body {
               }
 
               code {
-                background: $grey-bg
+                background: $grey-bg;
+              }
+              pre {
+                background: $grey-bg !important;
               }
             }
 
@@ -477,6 +482,14 @@ body {
                 height: 100%;
                 transition: all 300ms ease-in-out;
               }
+            }
+
+            code {
+              color: inherit;
+              font-family: inherit;
+              background: inherit;
+              font-size: inherit;
+              padding: 0;
             }
 
             .heading {
