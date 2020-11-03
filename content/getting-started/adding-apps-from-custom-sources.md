@@ -51,7 +51,7 @@ After you have added the public key to your repository settings, finish adding t
 To allow Codemagic access the private repository, the following IP addresses need to be whitelisted:
 
 1. `34.74.234.56` - used by our backend for getting basic information about the repository
-2. `199.7.162.128/29` - used by our builder servers to download the code and build it
+2. `199.7.162.128/29` - used by our build servers to download the code and build it
 
 ## Modifying repository access settings
 
