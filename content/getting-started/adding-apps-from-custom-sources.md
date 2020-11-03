@@ -41,7 +41,7 @@ After you have added the public key to your repository settings, finish adding t
 
 1. Click **Add repository** on the Applications page.
 2. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository on clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `https://example.com/path/to/repository.git`.
-3. If your repository is private then enter your **Username** and **Password**. Otherwise, check **Public repository** if your repository is public.
+3. If your repository is private, then enter your **Username** and **Password**. In the case of a public repository, check **Public repository**.
 4. Click **Add application**.
 
 Your app will be then listed on the Applications page and you can then continue configuring your project by clicking on **Configure for building**.
