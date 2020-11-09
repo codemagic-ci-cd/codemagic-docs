@@ -11,7 +11,7 @@ Note that:
 
 ## Enabling billing
 
-Billing can be enabled in **User settings** for your personal account and in **team settings** for a team, or on the **Billing** page that is accessible from the left navigation bar.
+Billing can be enabled for your personal account or team on the **Billing** page that is accessible from the left navigation bar.
 
 On clicking **Enable billing**, you will be asked to enter credit card information or offered the option to select an existing credit card if you have had billing enabled previously. To finish, click **Confirm and enable billing**.
 
