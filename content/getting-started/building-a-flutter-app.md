@@ -44,22 +44,27 @@ In order to use `codemagic.yaml` for manual builds, you must select the workflow
 
 Set up local properties
 
-    - echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
-
+```yaml
+- echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+```
 ### Building .apk
 
-    - flutter build apk --release
+```yaml
+- flutter build apk --release
+```
 
 ### Building universal .apk(s) from existing app bundle(s) with user-specified keys
 
 If your app settings in Codemagic have building Android App Bundles enabled, we will automatically include a script for generating a signed `app-universal.apk` during the YAML export. If you are creating a YAML file from a scratch, add the following script to receive the .apk file(s):
 
-    - android-app-bundle build-universal-apk \
-        --bundle 'project_directory/build/**/outputs/**/*.aab' \
-        --ks /tmp/keystore.keystore \
-        --ks-pass $CM_KEYSTORE_PASSWORD \
-        --ks-key-alias $CM_KEY_ALIAS_USERNAME \
-        --key-pass $CM_KEY_ALIAS_PASSWORD
+```yaml
+- android-app-bundle build-universal-apk \
+  --bundle 'project_directory/build/**/outputs/**/*.aab' \
+  --ks /tmp/keystore.keystore \
+  --ks-pass $CM_KEYSTORE_PASSWORD \
+  --ks-key-alias $CM_KEY_ALIAS_USERNAME \
+  --key-pass $CM_KEY_ALIAS_PASSWORD
+```
 
 Please make sure to wrap the `--bundle` pattern in single quotes. If `--bundle` option is not specified, default glob pattern `**/*.aab` will be used.
 
@@ -73,7 +78,9 @@ Codemagic uses the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-t
 
 ### Building an unsigned application .app
 
-      - flutter build ios --debug --no-codesign
+```yaml
+- flutter build ios --debug --no-codesign
+```
 
 ### Building a signed iOS application archive .ipa
 
@@ -81,19 +88,23 @@ Codemagic uses the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-t
 Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for build.
 {{</notebox>}}
 
-      - xcode-project use-profiles
-      - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
+```yaml
+- xcode-project use-profiles
+- xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
+```
 
 {{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}}
 
 ## Web builds
 
-    - name: Build web
-      script: |
-        flutter config --enable-web
-        flutter build web --release
-        cd build/web
-        7z a -r ../web.zip ./*
+```yaml
+- name: Build web
+  script: |
+    flutter config --enable-web
+    flutter build web --release
+    cd build/web
+    7z a -r ../web.zip ./*
+```
 
 ## Testing, code signing and publishing a Flutter app
 

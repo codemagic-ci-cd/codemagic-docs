@@ -9,7 +9,7 @@ If your Flutter app has an existing *fastlane* setup for beta deployment, you ca
 1. Before running the script, navigate to **App settings > Environment variables** and add the API keys / secrets required for authorizing with the third-party service as secure [environment variables](../building/environment-variables). 
 2. Click on the + sign between **Build** and **Publish** and paste your script to the pre-publish script field.
 
-```
+```bash
 #!/usr/bin/env sh
 
 set -e # exit on first failed command

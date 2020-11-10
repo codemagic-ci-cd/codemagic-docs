@@ -13,9 +13,9 @@ An active user is anyone who triggers a build manually from the UI or via the AP
 
 Codemagic distinguishes users by the email address that is associated with their Codemagic account (when starting builds manually) or with the commit author (when triggering builds from a webhook). We recommend setting the email address in your git configuration to match the email address used in Codemagic to avoid getting counted twice. You can configure the email address in your terminal as follows:
 
-```
-$ git config --global user.name "John Doe"
-$ git config --global user.email johndoe@example.com
+```bash
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
 ```
 
 ## User limit

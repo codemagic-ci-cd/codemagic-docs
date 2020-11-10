@@ -10,7 +10,8 @@ As a custom build step, Codemagic can publish your app artifact to App Center us
 2. In your app settings, expand the step between Build and Publish and add the respective **post-build** script.
 
 **Example script for publishing apk**
-```
+
+```bash
 #!/usr/bin/env zsh
 
 echo 'Installing App Center CLI tools'
@@ -36,7 +37,8 @@ fi
 ```
 
 **Example script for publishing ipa**
-```
+
+```bash
 #!/usr/bin/env zsh
 
 echo 'Installing App Center CLI tools'

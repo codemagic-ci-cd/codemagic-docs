@@ -29,7 +29,9 @@ As a keystore can hold multiple keys, each key in it must have an **alias**. Bot
 
 You can create a keystore for signing your release builds with the Java Keytool utility by running the following command:
 
-    keytool -genkey -v -keystore keystore_name.jks -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+```bash
+keytool -genkey -v -keystore keystore_name.jks -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+```
 
 Keytool then prompts you to enter your personal details for creating the certificate, as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **keystore_name.jks** in the directory you're in. The key is valid for 10,000 days.
 
@@ -49,36 +51,36 @@ Alternatively, you can use [environment variables](../building/environment-varia
 
 Set your signing configuration in `build.gradle` as follows:
 
-```
-      ...
-       android {
-           ...
-           defaultConfig { ... }
+```gradle
+...
+android {
+    ...
+    defaultConfig { ... }
 
-           signingConfigs {
-               release {
-                   if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
-                       storeFile file(System.getenv()["FCI_KEYSTORE_PATH"])
-                       storePassword System.getenv()["FCI_KEYSTORE_PASSWORD"]
-                       keyAlias System.getenv()["FCI_KEY_ALIAS"]
-                       keyPassword System.getenv()["FCI_KEY_PASSWORD"]
-                   } else {
-                       storeFile file("/path/to/local/myreleasekey.keystore")
-                       storePassword "password"
-                       keyAlias "MyReleaseKey"
-                       keyPassword "password"
-                   }
-               }
-           }
+    signingConfigs {
+        release {
+            if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
+                storeFile file(System.getenv()["FCI_KEYSTORE_PATH"])
+                storePassword System.getenv()["FCI_KEYSTORE_PASSWORD"]
+                keyAlias System.getenv()["FCI_KEY_ALIAS"]
+                keyPassword System.getenv()["FCI_KEY_PASSWORD"]
+            } else {
+                storeFile file("/path/to/local/myreleasekey.keystore")
+                storePassword "password"
+                keyAlias "MyReleaseKey"
+                keyPassword "password"
+            }
+        }
+    }
 
-           buildTypes {
-               release {
-                   ...
-                   signingConfig signingConfigs.release
-               }
-           }
-       }
-       ...
+    buildTypes {
+        release {
+            ...
+            signingConfig signingConfigs.release
+        }
+    }
+}
+...
 ```
 
 ## Setting up Android code signing on Codemagic

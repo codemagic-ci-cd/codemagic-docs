@@ -57,9 +57,11 @@ Codemagic runs `./gradlew --version` on the builder side to check if it's suitab
 
 * Make a clean clone of the repository and execute the following commands:
 
-        cd <project_root>
-        chmod +x gradlew
-        ./gradlew --version
+```bash
+cd <project_root>
+chmod +x gradlew
+./gradlew --version
+```
 
 * Make a fix for the issue found.
 * Commit changes to the repo.
@@ -72,14 +74,16 @@ When building for iOS, the build gets stuck after showing `Xcode build done` in 
 
 **Log output**: 
 
-    == Building for iOS ==
+```
+== Building for iOS ==
 
-    == /usr/local/bin/flutter build ios --release --no-codesign ==
-    Warning: Building for device with codesigning disabled. You will have to manually codesign before deploying to device.
-    Building net.butterflyapp.trainer for device (ios-release)...
-    Running pod install...                                              3.7s
-    Running Xcode build...                                          
-    Xcode build done.                                           203.6s
+== /usr/local/bin/flutter build ios --release --no-codesign ==
+Warning: Building for device with codesigning disabled. You will have to manually codesign before deploying to device.
+Building net.butterflyapp.trainer for device (ios-release)...
+Running pod install...                                              3.7s
+Running Xcode build...
+Xcode build done.                                           203.6s
+```
 
 **Flutter**: `1.7.8+hotfix.3`, `1.7.8+hotfix.4`, `1.9.1+hotfix.2`, `1.9.1+hotfix.4`, `1.9.1+hotfix.5`
 

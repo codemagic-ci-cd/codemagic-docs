@@ -25,9 +25,11 @@ Builds can be also started manually by clicking **Start new build** in Codemagic
 
 For easier reading of the configuration file and build logs, you can divide the scripts into meaningful sections with descriptive names.
 
-    scripts:
-      - name: Build for iOS         # Name of the section
-        script: flutter build ios   # The script(s) to be run in that section
+```yaml
+scripts:
+  - name: Build for iOS         # Name of the section
+    script: flutter build ios   # The script(s) to be run in that section
+```
 
 ### Reusing sections
 
@@ -35,70 +37,78 @@ If a particular section would be reused multiple times in the file, e.g. in each
 
 Define the section to be reused by adding `&` in front of it.
 
-    scripts:
-      - &increment_build_number       # Defined section
-        name: Increment build number
-        script: agvtool new-version -all $(($PROJECT_BUILD_NUMBER +1))
+```yaml
+scripts:
+  - &increment_build_number       # Defined section
+    name: Increment build number
+    script: agvtool new-version -all $(($PROJECT_BUILD_NUMBER +1))
+```
 
 Reuse the defined section elsewhere by adding a `*` in front of it.
 
-    scripts:
-      - script1
-      - *increment_build_number       # Reused section
-      - script3
+```yaml
+scripts:
+  - script1
+  - *increment_build_number       # Reused section
+  - script3
+```
 
 ## Template
 
 This is the skeleton structure of `codemagic.yaml`. Each section along with the configuration options is described in more detail below.
 
-    workflows:
-      my-workflow:
-        name: My workflow name
-        instance_type: mac_mini
-        max_build_duration: 60
-        environment:
-          vars:
-            PUBLIC_ENV_VAR: "value here"
-          flutter: stable
-          xcode: latest
-        cache:
-          cache_paths:
-            - ~/.pub-cache
-        triggering:
-          events:
-            - push
-          branch_patterns:
-            - pattern: '*'
-              include: true
-              source: true
-          cancel_previous_builds: false
-        scripts:
-          - ...
-        artifacts:
-          - build/**/outputs/**/*.aab
-        publishing:
-          email:
-            recipients:
-              - name@example.com
-          scripts:
-            - echo 'Post-publish script'
+```yaml
+workflows:
+  my-workflow:
+    name: My workflow name
+    instance_type: mac_mini
+    max_build_duration: 60
+    environment:
+      vars:
+        PUBLIC_ENV_VAR: "value here"
+      flutter: stable
+      xcode: latest
+    cache:
+      cache_paths:
+        - ~/.pub-cache
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: '*'
+          include: true
+          source: true
+      cancel_previous_builds: false
+    scripts:
+      - ...
+    artifacts:
+      - build/**/outputs/**/*.aab
+    publishing:
+      email:
+        recipients:
+          - name@example.com
+      scripts:
+        - echo 'Post-publish script'
+```
 
 ### Workflows
 
 You can use `codemagic.yaml` to define several workflows for building a project. Each workflow describes the entire build pipeline from triggers to publishing. For example, you may want to have separate workflows for developing, testing and publishing the app.
 
-    workflows:
-      my-workflow:                # workflow ID
-        name: My workflow name    # workflow name displayed in UI
-        instance_type: mac_mini   # machine type to use (currently supported: `mac_mini` and `mac_pro`)
-        max_build_duration: 60    # build duration in minutes (min 1, max 120)
-        environment:
-        cache:
-        triggering:
-        branch_patterns:
-        scripts:
-        artifacts:
-        publishing:
+```yaml
+workflows:
+  my-workflow:                # workflow ID
+    name: My workflow name    # workflow name displayed in UI
+    instance_type: mac_mini   # machine type to use (currently supported: `mac_mini` and `mac_pro`)
+    max_build_duration: 60    # build duration in minutes (min 1, max 120)
+    environment:
+    cache:
+    triggering:
+    branch_patterns:
+    scripts:
+    artifacts:
+    publishing:
+```
 
 The main sections in each workflow are described below.
 
@@ -106,42 +116,44 @@ The main sections in each workflow are described below.
 
 `environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and npm used for building. This is also where you can add credentials and API keys required for [code signing](../code-signing-yaml/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
 
-    environment:
-      vars:             # Define your environment variables here
-        PUBLIC_ENV_VAR: "value here"
-        SECRET_ENV_VAR: Encrypted(...)
-        
-        # Android code signing
-        CM_KEYSTORE: Encrypted(...)
-        CM_KEYSTORE_PASSWORD: Encrypted(...)
-        CM_KEY_ALIAS_PASSWORD: my_key_alias
-        CM_KEY_ALIAS_USERNAME: Encrypted(...)
-        
-        # iOS automatic code signing
-        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
-        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
-        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
-        CERTIFICATE_PRIVATE_KEY: Encrypted(...)
+```yaml
+environment:
+  vars:             # Define your environment variables here
+    PUBLIC_ENV_VAR: "value here"
+    SECRET_ENV_VAR: Encrypted(...)
+    
+    # Android code signing
+    CM_KEYSTORE: Encrypted(...)
+    CM_KEYSTORE_PASSWORD: Encrypted(...)
+    CM_KEY_ALIAS_PASSWORD: my_key_alias
+    CM_KEY_ALIAS_USERNAME: Encrypted(...)
+    
+    # iOS automatic code signing
+    APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
+    APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
+    APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
+    CERTIFICATE_PRIVATE_KEY: Encrypted(...)
 
-        # iOS manual code signing
-        CM_CERTIFICATE: Encrypted(...)
-        CM_CERTIFICATE_PASSWORD: Encrypted(...)
-        CM_PROVISIONING_PROFILE: Encrypted(...)
+    # iOS manual code signing
+    CM_CERTIFICATE: Encrypted(...)
+    CM_CERTIFICATE_PASSWORD: Encrypted(...)
+    CM_PROVISIONING_PROFILE: Encrypted(...)
 
-        # Firebase secrets
-        ANDROID_FIREBASE_SECRET: Encrypted(...)
-        IOS_FIREBASE_SECRET: Encrypted(...)
+    # Firebase secrets
+    ANDROID_FIREBASE_SECRET: Encrypted(...)
+    IOS_FIREBASE_SECRET: Encrypted(...)
 
-        SSH_KEY_GITHUB: Encrypted(...)     # defining an ssh key used to download private dependencies
-        CREDENTIALS: Encrypted(...)        # publishing a package to pub.dev
-        APP_CENTER_TOKEN: Encrypted(...)   # publishing an application to App Center
+    SSH_KEY_GITHUB: Encrypted(...)     # defining an ssh key used to download private dependencies
+    CREDENTIALS: Encrypted(...)        # publishing a package to pub.dev
+    APP_CENTER_TOKEN: Encrypted(...)   # publishing an application to App Center
 
-      flutter: stable   # Define the channel name or version (e.g. v1.13.4)
-      xcode: latest     # Define latest, edge or version (e.g. 11.2)
-      cocoapods: 1.9.1  # Define default or version
-      node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
-      npm: 6.13.7       # Define default, latest, next, lts or version
-      ndk: r21d         # Define default or revision (e.g. r19c)
+  flutter: stable   # Define the channel name or version (e.g. v1.13.4)
+  xcode: latest     # Define latest, edge or version (e.g. 11.2)
+  cocoapods: 1.9.1  # Define default or version
+  node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
+  npm: 6.13.7       # Define default, latest, next, lts or version
+  ndk: r21d         # Define default or revision (e.g. r19c)
+```
 
 {{<notebox>}}
 See the default software versions on Codemagic build machines [here](../releases-and-versions/versions/).
@@ -165,10 +177,12 @@ Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up iOS b
 
 {{</notebox>}}
 
-    cache:
-      cache_paths:
-        - ~/.gradle/caches
-        - ...
+```yaml
+cache:
+  cache_paths:
+    - ~/.gradle/caches
+    - ...
+```
 
 ### Triggering
 
@@ -182,22 +196,24 @@ A branch pattern can match the name of a particular branch, or you can use wildc
 
 To avoid running builds on outdated commits, you can set `cancel_previous_builds` to automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch.
 
-    triggering:
-      events:                       # List the events that trigger builds
-        - push
-        - pull_request
-        - tag
-      branch_patterns:              # Include or exclude watched branches
-        - pattern: '*'
-          include: true
-          source: true
-        - pattern: excluded-target
-          include: false
-          source: false
-        - pattern: included-source
-          include: true
-          source: true
-      cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
+```yaml
+triggering:
+  events:                       # List the events that trigger builds
+    - push
+    - pull_request
+    - tag
+  branch_patterns:              # Include or exclude watched branches
+    - pattern: '*'
+      include: true
+      source: true
+    - pattern: excluded-target
+      include: false
+      source: false
+    - pattern: included-source
+      include: true
+      source: true
+  cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
+```
 
 {{<notebox>}}For information about using API calls to trigger builds, look [here](../rest-api/overview/).{{</notebox>}}
 
@@ -211,17 +227,19 @@ Scripts specify what kind of application is built. This is where you can specify
 
 When you set `ignore_failure` to `true`, the workflow will continue to run even if the script fails.
 
-    scripts:
-      - echo "single line script"
-      - name: Flutter test
-        script: flutter test
-        ignore_failure: true
-      - |
-        #!/usr/bin/env python3
+```yaml
+scripts:
+  - echo "single line script"
+  - name: Flutter test
+    script: flutter test
+    ignore_failure: true
+  - |
+    #!/usr/bin/env python3
 
-        print('Multiline python script')
-      - name: Build for iOS
-        script: flutter build ios
+    print('Multiline python script')
+  - name: Build for iOS
+    script: flutter build ios
+```
 
 There are example scripts available for building a [Flutter application](./building-a-flutter-app/), [React Native application](./building-a-react-native-app/), [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
 
@@ -229,14 +247,16 @@ There are example scripts available for building a [Flutter application](./build
 
 Configure the paths and names of the artifacts you would like to use in the following steps, e.g. for publishing, or have available for download on the build page. All paths are relative to the clone directory, but absolute paths are supported as well. You can also use [environment variables](../building/environment-variables) in artifact patterns.
 
-    artifacts:
-      - build/**/outputs/**/*.apk                   # relative path for a project in root directory
-      - subfolder_name/build/**/outputs/**/*.apk    # relative path for a project in subfolder
-      - build/**/outputs/**/*.aab
-      - build/**/outputs/**/mapping.txt
-      - build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
-      - flutter_drive.log
+```yaml
+artifacts:
+  - build/**/outputs/**/*.apk                   # relative path for a project in root directory
+  - subfolder_name/build/**/outputs/**/*.apk    # relative path for a project in subfolder
+  - build/**/outputs/**/*.aab
+  - build/**/outputs/**/mapping.txt
+  - build/ios/ipa/*.ipa
+  - /tmp/xcodebuild_logs/*.log
+  - flutter_drive.log
+```
 
 There are several things to keep in mind about patterns:
 * The pattern can match several files or folders. If it picks up files or folders with the same name, the top level file or folder name will be suffixed with `_{number}`.
@@ -247,11 +267,13 @@ There are several things to keep in mind about patterns:
 
 This is the section where you can set up publishing to external services. Codemagic has a number of integrations (e.g. email, Slack, Google Play, App Store Connect, GitHub releases) for publishing but you can also use custom scripts to publish elsewhere (e.g. Firebase App Distribution). See the examples [here](../publishing-yaml/distribution).
 
-    publishing:
-      email:
-        recipients:
-          - name@example.com
-    scripts:
-      - |
-        echo 'This is a Post-publish script'
-        echo 'This script is multiline'
+```yaml
+publishing:
+  email:
+    recipients:
+      - name@example.com
+scripts:
+  - |
+    echo 'This is a Post-publish script'
+    echo 'This script is multiline'
+```

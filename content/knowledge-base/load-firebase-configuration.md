@@ -11,21 +11,25 @@ Instead of committing the Firebase configuration files to your repository, you c
 1.  Save your Firebase config files as environment variables, e.g. `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET`. 
 2.  Add the following **pre-build** script echoing your variables to load the Firebase configuration in Codemagic.
 
-        #!/usr/bin/env sh
-        set -e # exit on first failed command
+  ```bash
+  #!/usr/bin/env sh
+  set -e # exit on first failed command
 
-        echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
-        echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
+  echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
+  echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
+  ```
 
-    In case your project is in a nested folder structure, it has to be reflected and the script should be as follows: 
+  In case your project is in a nested folder structure, it has to be reflected and the script should be as follows: 
 
-        #!/usr/bin/env sh
-        set -e # exit on first failed command
+  ```bash
+  #!/usr/bin/env sh
+  set -e # exit on first failed command
 
-        PROJECT_ROOT=$FCI_BUILD_DIR/myproject/path      # ADD YOUR PROJECT FOLDER PATH HERE
+  PROJECT_ROOT=$FCI_BUILD_DIR/myproject/path      # ADD YOUR PROJECT FOLDER PATH HERE
 
-        echo $ANDROID_FIREBASE_SECRET | base64 --decode > $PROJECT_ROOT/android/app/google-services.json
-        echo $IOS_FIREBASE_SECRET | base64 --decode > $PROJECT_ROOT/ios/Runner/GoogleService-Info.plist
+  echo $ANDROID_FIREBASE_SECRET | base64 --decode > $PROJECT_ROOT/android/app/google-services.json
+  echo $IOS_FIREBASE_SECRET | base64 --decode > $PROJECT_ROOT/ios/Runner/GoogleService-Info.plist
+  ```
 
 {{<notebox>}}
 

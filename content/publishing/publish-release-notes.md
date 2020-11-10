@@ -31,13 +31,15 @@ Language localization code is referred to a BCP-47 language tag as used in Googl
 
 3. Create a `release_notes.json` file with the following content:
 
-        [
-            {
-                "language": string, # Language localization code (a BCP-47 language tag)
-                "text": string      # The text in the given language
-            },
-            ...
-        ]
+    ```json
+    [
+        {
+            "language": string, # Language localization code (a BCP-47 language tag)
+            "text": string      # The text in the given language
+        },
+        ...
+    ]
+    ```
 
     Add this file to the root of your project. Notes with missing `language` or `text` fields will not be taken into account. Please refer to the [list of supported languages](https://support.google.com/googleplay/android-developer/table/4419860?hl=en).
 

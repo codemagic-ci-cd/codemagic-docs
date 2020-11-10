@@ -49,7 +49,7 @@ flutter emulators --launch ios
 
 or
 
-```
+```bash
 flutter emulators --launch emulator
 ```
 

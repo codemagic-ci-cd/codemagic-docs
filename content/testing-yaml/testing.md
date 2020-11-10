@@ -12,38 +12,47 @@ Test scripts are added under `scripts` in the [overall architecture](../getting-
 
 This is a basic example with jest, given that jest tests are defined in the `package.json` file.
 
-    npm test
+```bash
+npm test
+```
 
 ## Native Android
 
 For non-UI tests or unit testing:
 
-    ./gradlew test
+```bash
+./gradlew test
+```
 
 UI tests (also known as instrumented tests):
 
-    ./gradlew connectedAndroidTest
+```bash
+./gradlew connectedAndroidTest
+```
 
 ## Native iOS
 
-    set -o pipefail
-    xcodebuild \
-        -workspace MyAwesomeApp.xcworkspace \
-        -scheme MyAwesomeApp \
-        -sdk iphonesimulator \
-        -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
-        test | xcpretty
+```bash
+set -o pipefail
+xcodebuild \
+    -workspace MyAwesomeApp.xcworkspace \
+    -scheme MyAwesomeApp \
+    -sdk iphonesimulator \
+    -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
+    test | xcpretty
+```
 
 If may want to export the test log, you can do this by splitting the standard output to a file
-    
-    set -o pipefail
-    xcodebuild \
-        -workspace MyAwesomeApp.xcworkspace \
-        -scheme MyAwesomeApp \
-        -sdk iphonesimulator \
-        -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
-        test | xcpretty |& tee "/tmp/xcodetest.log"
 
+```bash
+set -o pipefail
+xcodebuild \
+    -workspace MyAwesomeApp.xcworkspace \
+    -scheme MyAwesomeApp \
+    -sdk iphonesimulator \
+    -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
+    test | xcpretty |& tee "/tmp/xcodetest.log"
+```
 
 ## Flutter test
 
@@ -68,33 +77,37 @@ The `flutter_driver` dependency allows you to run integration tests on a real de
 
 ### Running iOS/Android application tests on a mobile simulator/emulator
 
-        flutter emulators --launch apple_ios_simulator             # for android use: flutter emulators --launch emulator
-        flutter drive --target=test_driver/my_drive_target.dart
+```bash
+flutter emulators --launch apple_ios_simulator             # for android use: flutter emulators --launch emulator
+flutter drive --target=test_driver/my_drive_target.dart
+```
 
 ### Running web application tests on a web browser driver
 
 Chrome
 
-      scripts:
-        - echo 'previous step'
-        - name: 'Flutter drive web test'
-          script: |
-            chromedriver --port=4444 &
-            flutter config --enable-web
-            flutter drive --target=test_driver/button_pressing.dart -d chrome --browser-name chrome --release
-
+```yaml
+scripts:
+  - echo 'previous step'
+  - name: 'Flutter drive web test'
+    script: |
+      chromedriver --port=4444 &
+      flutter config --enable-web
+      flutter drive --target=test_driver/button_pressing.dart -d chrome --browser-name chrome --release
+```
 
 Safari
 
-      scripts:
-        - echo 'previous step'
-        - name: 'Flutter drive web test'
-          script: |
-            sudo safaridriver --enable
-            safaridriver --port 4444 &
-            flutter config --enable-web
-            flutter drive --target=test_driver/button_pressing.dart --browser-name safari --release
-
+```yaml
+scripts:
+  - echo 'previous step'
+  - name: 'Flutter drive web test'
+    script: |
+      sudo safaridriver --enable
+      safaridriver --port 4444 &
+      flutter config --enable-web
+      flutter drive --target=test_driver/button_pressing.dart --browser-name safari --release
+```
 
 {{<notebox>}}
 Make sure to use Flutter channel **Beta** or higher since Flutter for web is not yet available on **Stable**.
