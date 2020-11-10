@@ -6,7 +6,7 @@
         <div class="category-name" data-js-category-name>{{ .Name }}</div>
         <div class="category-posts" data-js-category-posts>
           {{- if .HasChildren }}
-            {{ template "content-menu" (dict "menuItems" .Children "currentPage" $currentPage) . }}
+            {{ template "content-menu" (dict "menuItems" .Children "currentPage" $currentPage)}}
           {{- end }}
           {{ range where site.Pages "Section" .Identifier -}}
             <a class="{{ if eq $currentPage .}}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
@@ -23,5 +23,5 @@
     <div class="search__icon search__icon--search fas fa-search"></div>
     <div class="search__icon search__icon--clear fas fa-times"></div>
   </div>
-  {{ template "content-menu" (dict "menuItems" .Site.Menus.main "currentPage" .) . }}
+  {{ template "content-menu" (dict "menuItems" .Site.Menus.main "currentPage" .)}}
 </nav>
