@@ -10,15 +10,6 @@ When you sign up via OAuth, Codemagic already has access to the repositories you
 * Note that webhooks for automatic build triggering need to be [created manually](../building/webhooks).
 {{</notebox>}}
 
-## Connecting repository via HTTP/HTTPS
-
-1. Click **Add repository** on the Applications page.
-2. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository on clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `https://example.com/path/to/repository.git`.
-3. If it's a private repository that requires username and password for authentication, check **Private repository** and enter the **Username** and **Password**. Leave this option unchecked for public repositories.
-4. Click **Add application**.
-
-Your app will be then listed on the Applications page and you can then continue configuring your project by clicking on **Configure for building**.
-
 ## Connecting repository via SSH
 
 1. Click **Add app from custom source** on the Applications page.
@@ -46,12 +37,21 @@ After you have added the public key to your repository settings, finish adding t
 
 {{<notebox>}}Don't close the **Add application from custom source** module before you have finished adding the app, otherwise you'll need to start over and generate a new SSH key.{{</notebox>}}
 
+## Connecting repository via HTTP/HTTPS
+
+1. Click **Add repository** on the Applications page.
+2. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository on clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `https://example.com/path/to/repository.git`.
+3. If your repository is private, then enter your **Username** and **Password**. In the case of a public repository, check **Public repository**.
+4. Click **Add application**.
+
+Your app will be then listed on the Applications page and you can then continue configuring your project by clicking on **Configure for building**.
+
 ## Repositories behind firewall
 
 To allow Codemagic access the private repository, the following IP addresses need to be whitelisted:
 
 1. `34.74.234.56` - used by our backend for getting basic information about the repository
-2. `192.159.66.80/28` and `199.7.162.128/29` - used by our builder servers to download the code and build it
+2. `199.7.162.128/29` - used by our build servers to download the code and build it
 
 ## Modifying repository access settings
 
