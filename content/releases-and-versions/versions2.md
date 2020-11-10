@@ -151,3 +151,4 @@ With Xcode `12.1` build version `12A7403` the following runtimes and devices are
 - 12.2 (12B5035g) `/Applications/Xcode-12.2.app`
 - 12.1.1 (12A7605b) `/Applications/Xcode-12.1.1.app`
 - 12.0.1 (12A7300) `/Applications/Xcode-12.app`
+
