@@ -23,7 +23,7 @@ This example shows how to set up code signing using Gradle.
               if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
                   storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
                   storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
-                  keyAlias System.getenv()["CM_KEY_ALIAS"]
+                  keyAlias System.getenv()["CM_KEY_ALIAS_USERNAME"]
                   keyPassword System.getenv()["CM_KEY_ALIAS_PASSWORD"]
               } else {
                   storeFile file("/path/to/local/myreleasekey.keystore")
