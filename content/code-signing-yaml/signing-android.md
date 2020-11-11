@@ -49,8 +49,8 @@ This example shows how to set up code signing using Gradle.
 environment:  
   FCI_KEYSTORE: Encrypted(...)
   FCI_KEYSTORE_PASSWORD: Encrypted(...)
-  FCI_KEY_ALIAS_USERNAME: Encrypted(...)
-  FCI_KEY_ALIAS_PASSWORD: Encrypted(...)
+  FCI_KEY_ALIAS: Encrypted(...)
+  FCI_KEY_PASSWORD: Encrypted(...)
 ```
 
 3. In the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, you will need to decode the keystore file and add it before the build command. You can choose any path to your keystore file. For example:
