@@ -23,8 +23,8 @@ This example shows how to set up code signing using Gradle.
               if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
                   storeFile file(System.getenv()["FCI_KEYSTORE_PATH"])
                   storePassword System.getenv()["FCI_KEYSTORE_PASSWORD"]
-                  keyAlias System.getenv()["FCI_KEY_ALIAS_USERNAME"]
-                  keyPassword System.getenv()["FCI_KEY_ALIAS_PASSWORD"]
+                  keyAlias System.getenv()["FCI_KEY_ALIAS"]
+                  keyPassword System.getenv()["FCI_KEY_PASSWORD"]
               } else {
                   storeFile file("/path/to/local/myreleasekey.keystore")
                   storePassword "password"
@@ -71,8 +71,8 @@ environment:
   FCI_KEYSTORE_PATH: /tmp/keystore.keystore
   FCI_KEYSTORE: Encrypted(...)
   FCI_KEYSTORE_PASSWORD: Encrypted(...)
-  FCI_KEY_ALIAS_USERNAME: Encrypted(...)
-  FCI_KEY_ALIAS_PASSWORD: Encrypted(...)
+  FCI_KEY_ALIAS: Encrypted(...)
+  FCI_KEY_PASSWORD: Encrypted(...)
 ...
 scripts:
   ...
@@ -109,8 +109,8 @@ In order to do code signing [encrypt](../building/encrypting/#encrypting-sensiti
 ```yaml
 FCI_KEYSTORE: Encrypted(...)
 FCI_KEYSTORE_PASSWORD: Encrypted(...)
-FCI_KEY_ALIAS_USERNAME: Encrypted(...)
-FCI_KEY_ALIAS_PASSWORD: Encrypted(...)
+FCI_KEY_ALIAS: Encrypted(...)
+FCI_KEY_PASSWORD: Encrypted(...)
 ```
 
 Use the following script:
@@ -121,8 +121,8 @@ Use the following script:
     echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
     cat >> "$FCI_BUILD_DIR/project_directory/android/key.properties" <<EOF
     storePassword=$FCI_KEYSTORE_PASSWORD
-    keyPassword=$FCI_KEY_ALIAS_PASSWORD
-    keyAlias=$FCI_KEY_ALIAS_USERNAME
+    keyPassword=$FCI_KEY_PASSWORD
+    keyAlias=$FCI_KEY_ALIAS
     storeFile=/tmp/keystore.keystore
     EOF
 ```
