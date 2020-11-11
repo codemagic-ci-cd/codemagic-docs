@@ -52,8 +52,8 @@ workflows:
         # Android Keystore environment variables
         FCI_KEYSTORE: Encrypted(...) # <-- Put your encrypted keystore file here
         FCI_KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore password here
-        FCI_KEY_ALIAS_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore alias password here
-        FCI_KEY_ALIAS_USERNAME: Encrypted(...) # <-- Put your encrypted keystore alias username here
+        FCI_KEY_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore alias password here
+        FCI_KEY_ALIAS: Encrypted(...) # <-- Put your encrypted keystore alias username here
       node: latest
     triggering:
       events:
@@ -76,8 +76,8 @@ workflows:
           echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
           cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
           storePassword=$FCI_KEYSTORE_PASSWORD
-          keyPassword=$FCI_KEY_ALIAS_PASSWORD
-          keyAlias=$FCI_KEY_ALIAS_USERNAME
+          keyPassword=$FCI_KEY_PASSWORD
+          keyAlias=$FCI_KEY_ALIAS
           storeFile=/tmp/keystore.keystore
           EOF
       - name: Update dependencies and copy web assets to native project
@@ -134,8 +134,8 @@ workflows:
         # Android Keystore environment variables
         FCI_KEYSTORE: Encrypted(...) # <-- Put your encrypted keystore file here
         FCI_KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore password here
-        FCI_KEY_ALIAS_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore alias password here
-        FCI_KEY_ALIAS_USERNAME: Encrypted(...) # <-- Put your encrypted keystore alias username here
+        FCI_KEY_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore alias password here
+        FCI_KEY_ALIAS: Encrypted(...) # <-- Put your encrypted keystore alias username here
         FCI_KEYSTORE_PATH: /tmp/keystore.keystore
       node: latest
     triggering:
@@ -168,8 +168,8 @@ workflows:
             -digestalg SHA1 \
             -keystore $FCI_KEYSTORE_PATH \
             -storepass $FCI_KEYSTORE_PASSWORD \
-            -keypass $FCI_KEY_ALIAS_PASSWORD \
-            $APK_PATH $FCI_KEY_ALIAS_USERNAME
+            -keypass $FCI_KEY_PASSWORD \
+            $APK_PATH $FCI_KEY_ALIAS
     artifacts:
       - platforms/android/app/build/outputs/**/*.apk
     publishing:
