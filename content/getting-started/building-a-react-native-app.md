@@ -123,8 +123,8 @@ workflows:
       vars:
         FCI_KEYSTORE: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE FILE HERE
         FCI_KEYSTORE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED PASSWORD FOR THE KEYSTORE FILE HERE
-        FCI_KEY_ALIAS_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE ALIAS PASSWORD HERE
-        FCI_KEY_ALIAS_USERNAME: Encrypted(...) #PUT THE ENCRYPTED KEYSTORE USERNAME HERE
+        FCI_KEY_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE ALIAS PASSWORD HERE
+        FCI_KEY_ALIAS: Encrypted(...) #PUT THE ENCRYPTED KEYSTORE ALIAS HERE
       node: latest
     triggering:
       events:
@@ -145,8 +145,8 @@ workflows:
           echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
           cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
           storePassword=$FCI_KEYSTORE_PASSWORD
-          keyPassword=$FCI_KEY_ALIAS_PASSWORD
-          keyAlias=$FCI_KEY_ALIAS_USERNAME
+          keyPassword=$FCI_KEY_PASSWORD
+          keyAlias=$FCI_KEY_ALIAS
           storeFile=/tmp/keystore.keystore
           EOF
       - name: Build Android app
