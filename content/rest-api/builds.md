@@ -50,7 +50,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '
 
 ### Response
 
-The request returns the ID of the started build in json as `{"buildId":"5fabc6414c483700143f4f92"}`.
+The request returns the ID of the started build in JSON as `{"buildId":"5fabc6414c483700143f4f92"}`.
 
 
 ## Get list of builds
