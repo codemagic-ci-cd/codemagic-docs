@@ -97,9 +97,9 @@ In order to use manual code signing, [encrypt](../building/encrypting/#encryptin
 
 ```yaml
 environment:
-  CM_CERTIFICATE: Encrypted(...)
-  CM_CERTIFICATE_PASSWORD: Encrypted(...)
-  CM_PROVISIONING_PROFILE: Encrypted(...)
+  FCI_CERTIFICATE: Encrypted(...)
+  FCI_CERTIFICATE_PASSWORD: Encrypted(...)
+  FCI_PROVISIONING_PROFILE: Encrypted(...)
 ```
 
 Then add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
@@ -114,13 +114,13 @@ scripts:
       PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
       mkdir -p "$PROFILES_HOME"
       PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-      echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+      echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
       echo "Saved provisioning profile $PROFILE_PATH"
   - name: Set up signing certificate
     script: |
-      echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+      echo $FCI_CERTIFICATE | base64 --decode > /tmp/certificate.p12
       # when using a password-protected certificate
-      keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
+      keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $FCI_CERTIFICATE_PASSWORD
       # when using a certificate that is not password-protected
       keychain add-certificates --certificate /tmp/certificate.p12
   - name: Set up code signing settings on Xcode project

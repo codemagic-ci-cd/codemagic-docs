@@ -21,10 +21,10 @@ This example shows how to set up code signing using Gradle.
       signingConfigs {
           release {
               if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
-                  storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
-                  storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
-                  keyAlias System.getenv()["CM_KEY_ALIAS_USERNAME"]
-                  keyPassword System.getenv()["CM_KEY_ALIAS_PASSWORD"]
+                  storeFile file(System.getenv()["FCI_KEYSTORE_PATH"])
+                  storePassword System.getenv()["FCI_KEYSTORE_PASSWORD"]
+                  keyAlias System.getenv()["FCI_KEY_ALIAS_USERNAME"]
+                  keyPassword System.getenv()["FCI_KEY_ALIAS_PASSWORD"]
               } else {
                   storeFile file("/path/to/local/myreleasekey.keystore")
                   storePassword "password"
@@ -47,10 +47,10 @@ This example shows how to set up code signing using Gradle.
 
 ```yaml
 environment:  
-  CM_KEYSTORE: Encrypted(...)
-  CM_KEYSTORE_PASSWORD: Encrypted(...)
-  CM_KEY_ALIAS_USERNAME: Encrypted(...)
-  CM_KEY_ALIAS_PASSWORD: Encrypted(...)
+  FCI_KEYSTORE: Encrypted(...)
+  FCI_KEYSTORE_PASSWORD: Encrypted(...)
+  FCI_KEY_ALIAS_USERNAME: Encrypted(...)
+  FCI_KEY_ALIAS_PASSWORD: Encrypted(...)
 ```
 
 3. In the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, you will need to decode the keystore file and add it before the build command. You can choose any path to your keystore file. For example:
@@ -59,25 +59,25 @@ environment:
 scripts:
   - name: Build Android
     script: |
-      export CM_KEYSTORE_PATH="/tmp/keystore.keystore"
-      echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+      export FCI_KEYSTORE_PATH="/tmp/keystore.keystore"
+      echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
       cd android && ./gradlew assembleRelease
 ```
 
-Pay attention to the fact that scripts are executed as separate processes and environment variables defined inside one script won't be accessible in another script. Therefore, if you want to access your `CM_KEYSTORE_PATH` variable from multiple scripts, it makes sense to define it in the `environment` section.
+Pay attention to the fact that scripts are executed as separate processes and environment variables defined inside one script won't be accessible in another script. Therefore, if you want to access your `FCI_KEYSTORE_PATH` variable from multiple scripts, it makes sense to define it in the `environment` section.
 
 ```yaml
 environment:  
-  CM_KEYSTORE_PATH: /tmp/keystore.keystore
-  CM_KEYSTORE: Encrypted(...)
-  CM_KEYSTORE_PASSWORD: Encrypted(...)
-  CM_KEY_ALIAS_USERNAME: Encrypted(...)
-  CM_KEY_ALIAS_PASSWORD: Encrypted(...)
+  FCI_KEYSTORE_PATH: /tmp/keystore.keystore
+  FCI_KEYSTORE: Encrypted(...)
+  FCI_KEYSTORE_PASSWORD: Encrypted(...)
+  FCI_KEY_ALIAS_USERNAME: Encrypted(...)
+  FCI_KEY_ALIAS_PASSWORD: Encrypted(...)
 ...
 scripts:
   ...
   - name: Export keystore
-    script: echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+    script: echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
   - name: Build Android
     script: cd android && ./gradlew assembleRelease
   ...
@@ -107,10 +107,10 @@ The following templates show code signing using `key.properties`.
 In order to do code signing [encrypt](../building/encrypting/#encrypting-sensitive-data) your keystore file, keystore password (if keystore is password protected), key alias and key alias password (if key alias is password protected) and set the encrypted values to the following environment variables:
 
 ```yaml
-CM_KEYSTORE: Encrypted(...)
-CM_KEYSTORE_PASSWORD: Encrypted(...)
-CM_KEY_ALIAS_USERNAME: Encrypted(...)
-CM_KEY_ALIAS_PASSWORD: Encrypted(...)
+FCI_KEYSTORE: Encrypted(...)
+FCI_KEYSTORE_PASSWORD: Encrypted(...)
+FCI_KEY_ALIAS_USERNAME: Encrypted(...)
+FCI_KEY_ALIAS_PASSWORD: Encrypted(...)
 ```
 
 Use the following script:
@@ -118,11 +118,11 @@ Use the following script:
 ```yaml
 - name: Set up key.properties
   script: |
-    echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+    echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
     cat >> "$FCI_BUILD_DIR/project_directory/android/key.properties" <<EOF
-    storePassword=$CM_KEYSTORE_PASSWORD
-    keyPassword=$CM_KEY_ALIAS_PASSWORD
-    keyAlias=$CM_KEY_ALIAS_USERNAME
+    storePassword=$FCI_KEYSTORE_PASSWORD
+    keyPassword=$FCI_KEY_ALIAS_PASSWORD
+    keyAlias=$FCI_KEY_ALIAS_USERNAME
     storeFile=/tmp/keystore.keystore
     EOF
 ```

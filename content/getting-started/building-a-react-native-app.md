@@ -58,9 +58,9 @@ workflows:
       vars:
         XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace"  # YOUR WORKSPACE NAME HERE
         XCODE_SCHEME: "YOUR_SCHEME_NAME" # THE NAME OF YOUR SCHEME HERE
-        CM_CERTIFICATE: Encrypted(...) # PUT THE ENCRYPTED DISTRIBUTION CERTIFICATE HERE
-        CM_CERTIFICATE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED CERTIFICATE PASSWORD HERE
-        CM_PROVISIONING_PROFILE: Encrypted(...) # PUT THE ENCRYPTED PROVISIONING PROFILE HERE
+        FCI_CERTIFICATE: Encrypted(...) # PUT THE ENCRYPTED DISTRIBUTION CERTIFICATE HERE
+        FCI_CERTIFICATE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED CERTIFICATE PASSWORD HERE
+        FCI_PROVISIONING_PROFILE: Encrypted(...) # PUT THE ENCRYPTED PROVISIONING PROFILE HERE
       node: latest
       xcode: latest
       cocoapods: default
@@ -88,12 +88,12 @@ workflows:
           PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
           mkdir -p "$PROFILES_HOME"
           PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-          echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+          echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
           echo "Saved provisioning profile $PROFILE_PATH"
       - name: Set up signing certificate
         script: |
-          echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-          keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
+          echo $FCI_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+          keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $FCI_CERTIFICATE_PASSWORD
       - name: Increment build number
         script: cd ios && agvtool new-version -all $(($BUILD_NUMBER +1))
       - name: Set up code signing settings on Xcode project
@@ -121,10 +121,10 @@ workflows:
     instance_type: mac_pro
     environment:
       vars:
-        CM_KEYSTORE: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE FILE HERE
-        CM_KEYSTORE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED PASSWORD FOR THE KEYSTORE FILE HERE
-        CM_KEY_ALIAS_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE ALIAS PASSWORD HERE
-        CM_KEY_ALIAS_USERNAME: Encrypted(...) #PUT THE ENCRYPTED KEYSTORE USERNAME HERE
+        FCI_KEYSTORE: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE FILE HERE
+        FCI_KEYSTORE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED PASSWORD FOR THE KEYSTORE FILE HERE
+        FCI_KEY_ALIAS_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE ALIAS PASSWORD HERE
+        FCI_KEY_ALIAS_USERNAME: Encrypted(...) #PUT THE ENCRYPTED KEYSTORE USERNAME HERE
       node: latest
     triggering:
       events:
@@ -142,11 +142,11 @@ workflows:
         script: echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/android/local.properties"
       - name: Set up key.properties file for code signing
         script: |
-          echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+          echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
           cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
-          storePassword=$CM_KEYSTORE_PASSWORD
-          keyPassword=$CM_KEY_ALIAS_PASSWORD
-          keyAlias=$CM_KEY_ALIAS_USERNAME
+          storePassword=$FCI_KEYSTORE_PASSWORD
+          keyPassword=$FCI_KEY_ALIAS_PASSWORD
+          keyAlias=$FCI_KEY_ALIAS_USERNAME
           storeFile=/tmp/keystore.keystore
           EOF
       - name: Build Android app

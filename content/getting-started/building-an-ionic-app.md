@@ -50,10 +50,10 @@ workflows:
     environment:
       vars:
         # Android Keystore environment variables
-        CM_KEYSTORE: Encrypted(...) # <-- Put your encrypted keystore file here
-        CM_KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore password here
-        CM_KEY_ALIAS_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore alias password here
-        CM_KEY_ALIAS_USERNAME: Encrypted(...) # <-- Put your encrypted keystore alias username here
+        FCI_KEYSTORE: Encrypted(...) # <-- Put your encrypted keystore file here
+        FCI_KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore password here
+        FCI_KEY_ALIAS_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore alias password here
+        FCI_KEY_ALIAS_USERNAME: Encrypted(...) # <-- Put your encrypted keystore alias username here
       node: latest
     triggering:
       events:
@@ -73,11 +73,11 @@ workflows:
           echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/android/local.properties"
       - name: Set up keystore
         script: |
-          echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+          echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
           cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
-          storePassword=$CM_KEYSTORE_PASSWORD
-          keyPassword=$CM_KEY_ALIAS_PASSWORD
-          keyAlias=$CM_KEY_ALIAS_USERNAME
+          storePassword=$FCI_KEYSTORE_PASSWORD
+          keyPassword=$FCI_KEY_ALIAS_PASSWORD
+          keyAlias=$FCI_KEY_ALIAS_USERNAME
           storeFile=/tmp/keystore.keystore
           EOF
       - name: Update dependencies and copy web assets to native project
@@ -132,11 +132,11 @@ workflows:
     environment:
       vars:
         # Android Keystore environment variables
-        CM_KEYSTORE: Encrypted(...) # <-- Put your encrypted keystore file here
-        CM_KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore password here
-        CM_KEY_ALIAS_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore alias password here
-        CM_KEY_ALIAS_USERNAME: Encrypted(...) # <-- Put your encrypted keystore alias username here
-        CM_KEYSTORE_PATH: /tmp/keystore.keystore
+        FCI_KEYSTORE: Encrypted(...) # <-- Put your encrypted keystore file here
+        FCI_KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore password here
+        FCI_KEY_ALIAS_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore alias password here
+        FCI_KEY_ALIAS_USERNAME: Encrypted(...) # <-- Put your encrypted keystore alias username here
+        FCI_KEYSTORE_PATH: /tmp/keystore.keystore
       node: latest
     triggering:
       events:
@@ -161,15 +161,15 @@ workflows:
         script: ionic cordova build android --release --no-interactive --prod --device
       - name: Sign APK
         script: |
-          echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+          echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
           APK_PATH=$(find platforms/android/app/build/outputs/apk/release -name "*.apk" | head -1)
           jarsigner \
             -sigalg SHA1withRSA \
             -digestalg SHA1 \
-            -keystore $CM_KEYSTORE_PATH \
-            -storepass $CM_KEYSTORE_PASSWORD \
-            -keypass $CM_KEY_ALIAS_PASSWORD \
-            $APK_PATH $CM_KEY_ALIAS_USERNAME
+            -keystore $FCI_KEYSTORE_PATH \
+            -storepass $FCI_KEYSTORE_PASSWORD \
+            -keypass $FCI_KEY_ALIAS_PASSWORD \
+            $APK_PATH $FCI_KEY_ALIAS_USERNAME
     artifacts:
       - platforms/android/app/build/outputs/**/*.apk
     publishing:
@@ -201,9 +201,9 @@ workflows:
         XCODE_WORKSPACE: "ios/App/App.xcworkspace"
         XCODE_SCHEME: "App"
         # Manual Code Signing
-        # CM_CERTIFICATE: Encrypted(...) # <-- Put your encrypted certificate file here
-        # CM_CERTIFICATE_PASSWORD: Encrypted(...) # <-- Put your encrypted certificate password here
-        # CM_PROVISIONING_PROFILE: Encrypted(...) # <-- Put your encrypted provisioning profile here
+        # FCI_CERTIFICATE: Encrypted(...) # <-- Put your encrypted certificate file here
+        # FCI_CERTIFICATE_PASSWORD: Encrypted(...) # <-- Put your encrypted certificate password here
+        # FCI_PROVISIONING_PROFILE: Encrypted(...) # <-- Put your encrypted provisioning profile here
         #
         # Automatic Code Signing 
         # https://docs.codemagic.io/yaml/distribution/
@@ -241,7 +241,7 @@ workflows:
       #     PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
       #     mkdir -p "$PROFILES_HOME"
       #     PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-      #     echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+      #     echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
       #     echo "Saved provisioning profile $PROFILE_PATH"
       - name: Fetch signing files
         script: |
@@ -301,9 +301,9 @@ workflows:
         XCODE_WORKSPACE: "platforms/ios/YOUR_APP.xcworkspace" # <- Update with your workspace name
         XCODE_SCHEME: "YOUR_SCHEME" # <- Update with your workspace scheme
         # Manual Code Signing
-        # CM_CERTIFICATE: Encrypted(...) # <-- Put your encrypted certificate file here
-        # CM_CERTIFICATE_PASSWORD: Encrypted(...) # <-- Put your encrypted certificate password here
-        # CM_PROVISIONING_PROFILE: Encrypted(...) # <-- Put your encrypted provisioning profile here
+        # FCI_CERTIFICATE: Encrypted(...) # <-- Put your encrypted certificate file here
+        # FCI_CERTIFICATE_PASSWORD: Encrypted(...) # <-- Put your encrypted certificate password here
+        # FCI_PROVISIONING_PROFILE: Encrypted(...) # <-- Put your encrypted provisioning profile here
         #
         # Automatic Code Signing 
         # https://docs.codemagic.io/yaml/distribution/
@@ -343,7 +343,7 @@ workflows:
       #     PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
       #     mkdir -p "$PROFILES_HOME"
       #     PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-      #     echo ${CM_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+      #     echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
       #     echo "Saved provisioning profile $PROFILE_PATH"
       - name: Fetch signing files
         script: |
