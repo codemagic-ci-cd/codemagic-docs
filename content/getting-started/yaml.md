@@ -125,8 +125,8 @@ environment:
     # Android code signing
     FCI_KEYSTORE: Encrypted(...)
     FCI_KEYSTORE_PASSWORD: Encrypted(...)
-    FCI_KEY_ALIAS_PASSWORD: my_key_alias
-    FCI_KEY_ALIAS_USERNAME: Encrypted(...)
+    FCI_KEY_PASSWORD: Encrypted(...)
+    FCI_KEY_ALIAS: Encrypted(...)
     
     # iOS automatic code signing
     APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
