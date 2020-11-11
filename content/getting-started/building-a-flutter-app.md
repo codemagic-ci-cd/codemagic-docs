@@ -62,8 +62,8 @@ If your app settings in Codemagic have building Android App Bundles enabled, we 
   --bundle 'project_directory/build/**/outputs/**/*.aab' \
   --ks /tmp/keystore.keystore \
   --ks-pass $FCI_KEYSTORE_PASSWORD \
-  --ks-key-alias $FCI_KEY_ALIAS_USERNAME \
-  --key-pass $FCI_KEY_ALIAS_PASSWORD
+  --ks-key-alias $FCI_KEY_ALIAS \
+  --key-pass $FCI_KEY_PASSWORD
 ```
 
 Please make sure to wrap the `--bundle` pattern in single quotes. If `--bundle` option is not specified, default glob pattern `**/*.aab` will be used.
