@@ -123,10 +123,10 @@ environment:
     SECRET_ENV_VAR: Encrypted(...)
     
     # Android code signing
-    CM_KEYSTORE: Encrypted(...)
-    CM_KEYSTORE_PASSWORD: Encrypted(...)
-    CM_KEY_ALIAS_PASSWORD: my_key_alias
-    CM_KEY_ALIAS_USERNAME: Encrypted(...)
+    FCI_KEYSTORE: Encrypted(...)
+    FCI_KEYSTORE_PASSWORD: Encrypted(...)
+    FCI_KEY_ALIAS_PASSWORD: my_key_alias
+    FCI_KEY_ALIAS_USERNAME: Encrypted(...)
     
     # iOS automatic code signing
     APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
@@ -135,9 +135,9 @@ environment:
     CERTIFICATE_PRIVATE_KEY: Encrypted(...)
 
     # iOS manual code signing
-    CM_CERTIFICATE: Encrypted(...)
-    CM_CERTIFICATE_PASSWORD: Encrypted(...)
-    CM_PROVISIONING_PROFILE: Encrypted(...)
+    FCI_CERTIFICATE: Encrypted(...)
+    FCI_CERTIFICATE_PASSWORD: Encrypted(...)
+    FCI_PROVISIONING_PROFILE: Encrypted(...)
 
     # Firebase secrets
     ANDROID_FIREBASE_SECRET: Encrypted(...)
