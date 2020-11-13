@@ -109,6 +109,14 @@ publishing:
       - '*.aab'
 ```
 
+{{<notebox>}}
+GithubApp authorization has higher priority over Github and will be taken by default if enabled.
+Codemagic CI/CD GithubApp asks only read permission to repository content, while write permission is needed to create a release.
+Therefore, it is not possible to publish a Github release from Codemagic having GithubApp authorization.
+We consciously allow this limitation because it is better to not be able to publish a Github release than to ask every user for write permissions.
+If you nevertheless want to publish a Github release, you will need to remove GithubApp integration.
+{{</notebox>}}
+
 ## Publishing a Flutter package to pub.dev
 
 In order to get publishing permissions, first you will need to log in to pub.dev locally. It can be done with running `pub publish --dry-run`.
