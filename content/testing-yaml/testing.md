@@ -7,6 +7,8 @@ aliases:
 ---
 
 Test scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
+You can display test results visually in the build overview if you use expanded form of the script in codemagic.yaml.
+Just include the `test_report` field with a glob pattern matching the test result file location. Supported test report formats are Junit and Flutter `--machine` report.
 
 ## React Native unit test
 
@@ -21,37 +23,66 @@ npm test
 For non-UI tests or unit testing:
 
 ```bash
-./gradlew test
+- name: Test
+  script: ./gradlew test
+  test_report: app/build/test-results/**/*.xml
 ```
 
 UI tests (also known as instrumented tests):
 
 ```bash
-./gradlew connectedAndroidTest
+- name: Launch emulator
+  script: |
+    cd $ANDROID_HOME/tools
+    emulator -avd emulator &
+    adb wait-for-device
+- name: Test
+  script: |
+    set -e
+    ./gradlew connectedAndroidTest
+    adb logcat -d > emulator.log
+```
+
+**Tip:**: you can save the emulator lor with `adb logcat -d > emulator.log` command.
+
+Instrumentation test with Firbase test lab
+
+```bash
+    environment:
+      vars:
+        ...
+        GCLOUD_SERVICE_CREDENTIALS: # encrypted key of your google service account with role Editor
+        GCLOUD_PROJECT: # name of your gcloud project
+    scripts:
+      ...
+      - name: Authorize gcloud service account
+        script: |
+          GCLOUD_SERVICE_CREDENTIALS_PATH=$FCI_BUILD_DIR/google-services-credentials.json
+          echo $GCLOUD_SERVICE_CREDENTIALS | base64 --decode > $GCLOUD_SERVICE_CREDENTIALS_PATH
+          gcloud auth activate-service-account --key-file=$GCLOUD_SERVICE_CREDENTIALS_PATH
+          gcloud config set project $GCLOUD_PROJECT
+      - name: Firebase connected test
+        script: |
+          ./gradlew assembleDevDebugAndroidTest                                            # assemble a test to run it on firebase
+          gcloud firebase test android run \
+            --app "app/dev/release/app.aab" \                                              # path to your actual application
+            --test "$(find app/build/outputs/apk/androidTest -name "*.apk" | head -1)" \   # path to the assembled test
+            --device "model=Nexus5X,version=23" \                                          # a device available from gcloud firebase test android models list
+            --timeout "45m" \
+            --type "instrumentation" \
+            --quiet
 ```
 
 ## Native iOS
 
 ```bash
-set -o pipefail
-xcodebuild \
-    -workspace MyAwesomeApp.xcworkspace \
-    -scheme MyAwesomeApp \
-    -sdk iphonesimulator \
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
-    test | xcpretty
-```
-
-If may want to export the test log, you can do this by splitting the standard output to a file
-
-```bash
-set -o pipefail
-xcodebuild \
-    -workspace MyAwesomeApp.xcworkspace \
-    -scheme MyAwesomeApp \
-    -sdk iphonesimulator \
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
-    test | xcpretty |& tee "/tmp/xcodetest.log"
+- name: iOS test
+    script: |
+    xcode-project run-tests \
+        --workspace MyAwesomeApp.xcworkspace \
+        --scheme MyAwesomeApp \
+        --device "iPhone 11"
+    test_report: build/ios/test/*.xml
 ```
 
 ## Flutter test
