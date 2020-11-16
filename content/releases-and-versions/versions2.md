@@ -13,7 +13,7 @@ weight: 2
 
 - System version `macOS 10.15.5 (19F101)`
 - Kernel version `Darwin 19.5.0`
-- Disk `322GB (Free Space: 48GB)`
+- Disk `322GB (Free Space: 38GB)`
 
 ## Pre-installed tools
 
@@ -23,14 +23,14 @@ weight: 2
 - cordova `10.0.0`
 - curl
 - dart `2.10.3`
-- docker `19.03.12`
+- docker `19.03.13`
 - fastlane `2.166.0`
 - firebase `8.10.0`
 - flutter `1.22.3 ($HOME/programs/flutter)`
-- gem `3.1.2`
+- gem `3.1.4`
 - git `2.29.2`
 - gradle `6.1.1`
-- homebrew `2.5.8`
+- homebrew `2.5.9`
 - ionic `5.4.16`
 - jq
 - node `12.18.4`
@@ -67,6 +67,8 @@ With Xcode `12.1` build version `12A7403` the following runtimes and devices are
 - iOS 13.5
 - iOS 13.6
 - iOS 13.7
+- iOS 14.0
+- iOS 14.1
 - iOS 14.1
 - tvOS 11.3
 - tvOS 11.4
@@ -77,6 +79,7 @@ With Xcode `12.1` build version `12A7403` the following runtimes and devices are
 - tvOS 13.4
 - tvOS 14.0
 - watchOS 6.2
+- watchOS 7.0
 - watchOS 7.0
 
 ### Devices
@@ -148,6 +151,7 @@ With Xcode `12.1` build version `12A7403` the following runtimes and devices are
 
 ## Other Xcode versions
 
-- 12.2 (12B5035g) `/Applications/Xcode-12.2.app`
+- 12.2 (12B5044c) `/Applications/Xcode-12.2.app`
 - 12.1.1 (12A7605b) `/Applications/Xcode-12.1.1.app`
 - 12.0.1 (12A7300) `/Applications/Xcode-12.app`
+
