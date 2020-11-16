@@ -8,6 +8,9 @@ aliases:
 
 Test scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
 
+You can display test results visually in the build overview if you use expanded form of the script in `codemagic.yaml`.
+Just include the `test_report` field with a glob pattern matching the test result file location. Supported test report formats are [Junit XML](https://llg.cubic.org/docs/junit/) `.JSON` for Flutter's `--machine` report.
+
 ## React Native unit test
 
 This is a basic example with jest, given that jest tests are defined in the `package.json` file.
@@ -21,38 +24,42 @@ npm test
 For non-UI tests or unit testing:
 
 ```bash
-./gradlew test
+- name: Test
+  script: ./gradlew test
+  test_report: app/build/test-results/**/*.xml
 ```
 
 UI tests (also known as instrumented tests):
 
 ```bash
-./gradlew connectedAndroidTest
+- name: Launch emulator
+  script: |
+    cd $ANDROID_HOME/tools
+    emulator -avd emulator &
+    adb wait-for-device
+- name: Test
+  script: |
+    set -e
+    ./gradlew connectedAndroidTest
+    adb logcat -d > emulator.log
+  test_report: app/build/outputs/androidTest-results/connected/*.xml
 ```
+
+**Tip**: you can save the emulator log with the `adb logcat -d > emulator.log` command.
 
 ## Native iOS
 
 ```bash
-set -o pipefail
-xcodebuild \
-    -workspace MyAwesomeApp.xcworkspace \
-    -scheme MyAwesomeApp \
-    -sdk iphonesimulator \
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
-    test | xcpretty
+- name: iOS test
+    script: |
+    xcode-project run-tests \
+        --workspace MyAwesomeApp.xcworkspace \
+        --scheme MyAwesomeApp \
+        --device "iPhone 11"
+    test_report: build/ios/test/*.xml
 ```
 
-If may want to export the test log, you can do this by splitting the standard output to a file
-
-```bash
-set -o pipefail
-xcodebuild \
-    -workspace MyAwesomeApp.xcworkspace \
-    -scheme MyAwesomeApp \
-    -sdk iphonesimulator \
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1' \
-    test | xcpretty |& tee "/tmp/xcodetest.log"
-```
+Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
 
 ## Flutter test
 
