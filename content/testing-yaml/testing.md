@@ -8,7 +8,7 @@ aliases:
 
 Test scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
 You can display test results visually in the build overview if you use expanded form of the script in codemagic.yaml.
-Just include the `test_report` field with a glob pattern matching the test result file location. Supported test report formats are Junit and Flutter `--machine` report.
+Just include the `test_report` field with a glob pattern matching the test result file location. Supported test report formats are [Junit XML](https://llg.cubic.org/docs/junit/) and Flutter `--machine` report in `.json` format.
 
 ## React Native unit test
 
@@ -41,9 +41,10 @@ UI tests (also known as instrumented tests):
     set -e
     ./gradlew connectedAndroidTest
     adb logcat -d > emulator.log
+  test_report: app/build/outputs/androidTest-results/connected/*.xml
 ```
 
-**Tip:**: you can save the emulator lor with `adb logcat -d > emulator.log` command.
+**Tip:**: you can save the emulator log with `adb logcat -d > emulator.log` command.
 
 Instrumentation test with Firbase test lab
 
@@ -84,6 +85,8 @@ Instrumentation test with Firbase test lab
         --device "iPhone 11"
     test_report: build/ios/test/*.xml
 ```
+
+Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn about more optional arguments to `xcode-project run-tests`.
 
 ## Flutter test
 
