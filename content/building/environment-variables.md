@@ -29,6 +29,7 @@ Here you'll find some of the read-only environment variables explained.
 | PROJECT_BUILD_NUMBER     | Number of the build for this project in Codemagic                                                                                                               |
 | FLUTTER_ROOT             | Absolute path to Flutter SDK                                                                                                                                    |
 | FCI_BRANCH               | The current branch being built, for pull requests it is the source branch                                                                                       |
+| FCI_TAG                  | The tag being built if started from a tag webhook, unset otherwise
 | FCI_REPO_SLUG            | The slug of the repository that is currently being built in the form `owner_name/repository_name`. Unset for repositories added from custom source              |
 | FCI_COMMIT               | Commit hash that is currently being built by Codemagic, for pull request builds it is the hash of the source commit                                             |
 | FCI_PREVIOUS_COMMIT      | Commit hash of the previous successful build, unset if there is no previous successful build                                                                    |
