@@ -110,7 +110,7 @@ publishing:
 ```
 
 {{<notebox>}}
-Note that Codemagic needs **write** permission to be able to publish a GitHub release. If you have signed up via Codemagic GitHub app or have enabled the GitHub app integration, publishing to GitHub is not possible as Codemagic only has **read** access to the repository. If you wish to publish GitHub releases, remove the integration with GitHub app in your user or team settings and authenticate via OAuth. Read more about the signup options [here](../getting-started/signup).
+Note that Codemagic needs **write** permission to be able to publish a GitHub release. If you have signed up via Codemagic GitHub app or have enabled the GitHub app integration, publishing to GitHub is not possible as Codemagic only has **read** access to the repository. If you wish to publish GitHub releases, we recommend you authenticate via OAuth and remove the GitHub app integration in user or team settings as otherwise the GitHub app limitations will prevail. Read more about the signup options [here](../getting-started/signup).
 {{</notebox>}}
 
 ## Publishing a Flutter package to pub.dev
