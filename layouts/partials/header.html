@@ -10,7 +10,10 @@
         <div id="header-menu-wrap" data-js-header-menu-wrap>
             <nav id="header-main-menu">
                 <a class="menu-link" href='{{ site.Param "landingURL" }}/pricing' onclick="sendGtag('Pricing_clicked', 'CodemagicMenu')" target="_blank">Pricing</a>
-                <a class="menu-link" href='{{ site.Param "landingURL" }}/business' onclick="sendGtag('Business_clicked', 'CodemagicMenu')" target="_blank">Business</a>
+                <a class="menu-link" href='{{ site.Param "landingURL" }}/enterprise'
+                    onclick="sendGtag('Enterprise_clicked', 'CodemagicMenu')" target="_blank">
+                    Enterprise
+                </a>
                 <a class="menu-link" href='/' onclick="sendGtag('Documentation_clicked', 'CodemagicMenu')">Documentation</a>
                 <a class="menu-link" href='{{ site.Param "blogURL" }}' onclick="sendGtag('Blog_clicked', 'CodemagicMenu')" target="_blank">Blog</a>
                 <a class="menu-link" href='{{ site.Param "landingURL" }}/integrations' onclick="sendGtag('Integrations_clicked', 'CodemagicMenu')" target="_blank">Integrations</a>
