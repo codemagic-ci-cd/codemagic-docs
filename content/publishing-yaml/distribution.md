@@ -1,7 +1,7 @@
 ---
-title: Publishing
+title: Publishing and deployment
 description: How to set up publishing and build status notifications
-weight: 3
+weight: 1
 aliases:
     - '../yaml/distribution'
 ---

@@ -54,6 +54,10 @@ Owners can upgrade members to owners by clicking on the three dots next to their
 
 Users that have triggered builds can be invited to the team by clicking **Add to team** on the email address in the list of users.
 
+## Public dashboards
+
+The public dashboards feature makes it possible to share team's builds and build artifacts via a public link. Read more about this feature [here](./public-dashboards).
+
 ## Managing team integrations
 
 In Team integrations, it is possible to set up integrations to be used with team apps.
