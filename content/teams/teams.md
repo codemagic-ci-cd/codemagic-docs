@@ -56,7 +56,7 @@ Users that have triggered builds can be invited to the team by clicking **Add to
 
 ## Public dashboards
 
-The public dashboards feature makes it possible to share team's builds and build artifacts via a public link. Read more about this feature [here](./public-dashboards).
+The public dashboards feature makes it possible to share team's builds and build artifacts via a public link. Read more about this feature [here](../publishing-yaml/public-dashboards).
 
 ## Managing team integrations
 
