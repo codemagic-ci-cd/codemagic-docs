@@ -54,7 +54,7 @@ Codemagic enables you to automatically publish your app to the `internal`, `alph
 publishing:
   google_play:                        # For Android app
     credentials: Encrypted(...)       # JSON key file for Google Play service account
-    track: alpha                      # Name of the track: internal, alpha, beta, production
+    track: alpha                      # Name of the track: internal, alpha, beta, production, internal app sharing
 ```
 
 {{<notebox>}}
