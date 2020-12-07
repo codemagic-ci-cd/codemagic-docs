@@ -104,7 +104,6 @@ workflows:
     environment:
     cache:
     triggering:
-    branch_patterns:
     scripts:
     artifacts:
     publishing:
