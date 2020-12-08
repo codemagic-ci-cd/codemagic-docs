@@ -34,7 +34,17 @@ Integrate Slack publishing into your Codemagic build pipeline to get notified wh
 
 #### Connecting your Slack workspace
 
-To set up publishing to Slack, you first need to connect your Slack workspace in **User settings > Integrations > Slack** for personal apps and in **Teams > Your_team > Team integrations > Slack** for team apps. Click **Connect** next to the Slack integration. You will be then redirected to an authorization page. Review the requested permissions and click **Allow** to give Codemagic Slack app access to your Slack workspace and allow it post build status updates and build artifacts.
+To set up publishing to Slack, you first need to connect your Slack workspace in **User settings > Integrations > Slack** for personal apps and in **Teams > Your_team > Team integrations > Slack** for team apps. 
+
+![List of integrations](../uploads/slack_connect.png)
+
+Click **Connect** next to the Slack integration. You will be then redirected to an authorization page. Review the requested permissions and click **Allow** to give Codemagic Slack app access to your Slack workspace and allow it post build status updates and build artifacts.
+
+![Authorization page](../uploads/slack_allow.png)
+
+After you have successfully authorized Codemagic and connected your workspace, you will be redirected back to Codemagic. You can disconnect your Slack workspace anytime by clicking **Disconnect**.
+
+![Slack integration is enabled](../uploads/slack_connected.png)
 
 #### Configuring Slack publishing
 
