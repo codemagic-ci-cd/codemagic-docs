@@ -1,6 +1,6 @@
 ---
 title: Build status badges
-description: Use Codemagic status badges to display the status
+description: Use Codemagic status badges to display the status of the build
 weight: 3
 aliases:
 ---
