@@ -53,9 +53,10 @@ workflows:
   android-workflow:
     name: Android Workflow
     max_build_duration: 60
-    instance_type: mac_pro
+    instance_type: mac_mini
     environment:
       vars:
+        FCI_KEYSTORE_PATH: /tmp/keystore.keystore
         FCI_KEYSTORE: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE FILE HERE
         FCI_KEYSTORE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED PASSWORD FOR THE KEYSTORE FILE HERE
         FCI_KEY_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE ALIAS PASSWORD HERE
@@ -75,12 +76,12 @@ workflows:
         script: echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/local.properties"
       - name: Set up key.properties file for code signing
         script: |
-          echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+          echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
           cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
           storePassword=$FCI_KEYSTORE_PASSWORD
           keyPassword=$FCI_KEY_PASSWORD
           keyAlias=$FCI_KEY_ALIAS
-          storeFile=/tmp/keystore.keystore
+          storeFile=$FCI_KEYSTORE_PATH
           EOF
       - name: Build Android app
         script: ./gradlew assembleRelease
