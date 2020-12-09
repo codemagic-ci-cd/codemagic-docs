@@ -30,6 +30,6 @@ To use the build status badge with markdown, e.g. when adding it to a repository
 
 {{<notebox>}}
 
-- If builds are set to public (or the user has logged in and has access to the build), then clicking on the link will open up the build page on Codemagic.
+If builds are set to public (or the user has logged in and has access to the build), then clicking on the link will open up the build page on Codemagic.
 
 {{</notebox>}}
