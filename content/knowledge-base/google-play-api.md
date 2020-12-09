@@ -25,9 +25,6 @@ Once the service account has been created, click on 'Create key'
 Make sure that the key type is set to JSON and click 'Create'
 ![Google cloud json](../uploads/google_cloud_four.png)
 
-Make sure that the key type is set to JSON and click 'Create'
-![Google cloud json](../uploads/google_cloud_four.png)
-
 Navigate back to Google Play API access and grant the service account access
 ![Google play grant](../uploads/google_play_two.png)
 
