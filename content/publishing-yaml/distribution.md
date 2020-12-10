@@ -38,7 +38,7 @@ To set up publishing to Slack, you first need to connect your Slack workspace in
 
 ![List of integrations](../uploads/slack_connect.png)
 
-Click **Connect** next to the Slack integration. You will be then redirected to an authorization page. Review the requested permissions and click **Allow** to give Codemagic Slack app access to your Slack workspace and allow it post build status updates and build artifacts.
+Click **Connect** next to the Slack integration. You will be then redirected to an authorization page. Review the requested permissions and click **Allow** to give Codemagic Slack app access to your Slack workspace and allow it post build status updates and build artifacts (see also Codemagic's [privacy policy](https://codemagic.io/privacy-policy/)).
 
 ![Authorization page](../uploads/slack_allow.png)
 
