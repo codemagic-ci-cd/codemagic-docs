@@ -16,10 +16,6 @@ If your project requires accessing any private Git submodules or dependencies, y
     -----END OPENSSH PRIVATE KEY-----
     ```
 
-    {{<notebox>}}
-Note that the `-----END OPENSSH PRIVATE KEY-----` line needs to be followed by an empty line for the key to be usable.
-{{</notebox>}}
-
 All environment variables whose name has the suffix `_SSH_KEY` will be automatically added to the SSH agent and will be ready for use during the whole build process. Check the `Preparing build machine` step in build logs to verify that the key has been successfully added to the SSH agent.
 
 If you wish to use a **custom** environment variable name without the suffix `_SSH_KEY`, add the following **post-clone** script to add the key to the SSH agent.
