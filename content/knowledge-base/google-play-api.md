@@ -1,57 +1,58 @@
 ---
-title: Google Play API access
+title: Configuring Google Play API access
 description: How to set up a Google Play service account for Codemagic
 weight: 5
 ---
 
-In order to allow Codemagic to publish applications to Google Play, it is first necessary to set up the proper Google Play API access. 
+In order to allow Codemagic publish applications to Google Play, it is necessary to set up access using Google Play API. 
 
-## Setting up your Google Play service account for Codemagic
+## Setting up the service account on Google Play and Google Cloud Platform
 
-### Setting up the service account on Google Play and Google Cloud Platform
-
-To get started, open up Google Play and navigate to API access under settings and click on 'Create new service account'
+1. In Google Play Console, navigate to **Settings > API access** and click **Create new servie account**.<br><br>
 ![Google play start](../uploads/google_play_start.png)
 
-This will lead you to the Google Cloud Platform, where you can get started in creating your service account
+2. This will lead you to the Google Cloud Platform where you can start creating your service account by clicking **+ Create service account** at the top of the page.<br><br>
 ![Google cloud platform](../uploads/google_cloud_start.png)
 
-Give the service account 'Editor' access
+3. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
+
+4. In step 2, click the **Select a role** dropdown menu and choose **Project > Editor** as the role.<br><br>
 ![Google cloud editor](../uploads/google_cloud_two.png)
 
-Once the service account has been created, click on 'Create key'
+5. In step 3, you can leave the fields blank and click **Done**.
+
+6. In the list of created service accounts, identify the account you have just created and click on the menu in the **Actions** column, then click **Create key**.<br><br>
 ![Google cloud key](../uploads/google_cloud_three.png)
 
-Make sure that the key type is set to JSON and click 'Create'
+7. Make sure that the key type is set to `JSON` and click **Create**. Save the key file in a secure location to have it available.<br><br>
 ![Google cloud json](../uploads/google_cloud_four.png)
 
-Navigate back to Google Play API access and grant the service account access
+8. Navigate back to **Google Play Console > Settings > API access** and click **Grant access** next to the created account.<br><br>
 ![Google play grant](../uploads/google_play_two.png)
 
-If you wish to grant the service account access to all of your applications, just click 'Invite user'
-![Google play all](../uploads/google_play_three.png)
-
-If you wish to grant the service account access to a single app or group of apps, then click on 'App permissions' and add the apps that you wish to grant access for
+9. On the **App permissions** tab, add the applications you wish to grant access to.<br><br>
 ![Google play selected](../uploads/google_play_four.png)
 
-Leave all the default options and click 'Apply'
+10. Go with the default settings for app permissions and click **Apply**.<br><br> 
 ![Google play apply](../uploads/google_play_five.png)
 
-Once that has been done, click 'Invite user' to finish setting up the service account on Google Play
-![Google play finish](../uploads/google_play_finish.png)
+11. On the **Account permissions** tab, leave everything as is (there is no need to grant the service account **Admin** acces).<br><br>
+![Google play all](../uploads/google_play_three.png)
 
-### Using the service account with YAML
+12. Finally, click **Invite user** to finish setting up the service account on Google Play.
 
-Navigate to your app in the Codemagic UI and select 'Encrypt environment variables'
+## Using the service account with codemagic.yaml
+
+In order to set up publishing to Google Play, you need to encrypt the contents of the service account `JSON` key file and add the encrypted value to the Codemagic configuration file.
+
+1. Navigate to your app settings in the Codemagic UI and click **Encrypt environment variables** at the bottom of the screen.<br><br>
 ![Service account encrypt yaml](../uploads/google_play_yaml_one.png)
 
-Upload or drop in your JSON key file and copy the encrypted variable
+2. Upload or drop the `JSON` key file to the encryption interface and copy the encrypted value.
 ![Service account encrypt copy](../uploads/google_play_yaml_two.png)
 
-Add the encrypted variable to your YAML under google_play publishing and commit the changes
-![Service account yaml](../uploads/google_play_yaml_three.png)
+2. In your configuration file, set the encrypted value to the `credentials` variable under `google_play` publishing and commit the changes.
 
-### Using the service account with Flutter UI projects
+## Using the service account with Flutter UI projects
 
-Navigate to your app in the Codemagic UI and upload your JSON and save changes
-![Service account UI](../uploads/google_play_ui.png)
+When configuring Flutter projects through the UI, the service account `JSON` key file must be uploaded to Codemagic in Google Play publishing settings. Follow the instructions [here](../publishing/publishing-to-google-play).
