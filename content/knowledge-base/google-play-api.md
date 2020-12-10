@@ -8,7 +8,7 @@ In order to allow Codemagic publish applications to Google Play, it is necessary
 
 ## Setting up the service account on Google Play and Google Cloud Platform
 
-1. In Google Play Console, navigate to **Settings > API access** and click **Create new servie account**.<br><br>
+1. In Google Play Console, navigate to **Settings > API access** and click **Create new service account**.<br><br>
 ![Google play start](../uploads/google_play_start.png)
 
 2. This will lead you to the Google Cloud Platform where you can start creating your service account by clicking **+ Create service account** at the top of the page.<br><br>
@@ -36,7 +36,7 @@ In order to allow Codemagic publish applications to Google Play, it is necessary
 10. Go with the default settings for app permissions and click **Apply**.<br><br> 
 ![Google play apply](../uploads/google_play_five.png)
 
-11. On the **Account permissions** tab, leave everything as is (there is no need to grant the service account **Admin** acces).<br><br>
+11. On the **Account permissions** tab, leave everything as is (there is no need to grant the service account **Admin** access).<br><br>
 ![Google play all](../uploads/google_play_three.png)
 
 12. Finally, click **Invite user** to finish setting up the service account on Google Play.
@@ -51,7 +51,18 @@ In order to set up publishing to Google Play, you need to encrypt the contents o
 2. Upload or drop the `JSON` key file to the encryption interface and copy the encrypted value.
 ![Service account encrypt copy](../uploads/google_play_yaml_two.png)
 
-2. In your configuration file, set the encrypted value to the `credentials` variable under `google_play` publishing and commit the changes.
+3. In your configuration file, set the encrypted value to the `credentials` variable under `google_play` publishing and commit the changes.
+```yaml
+workflows:
+    publish-workflow:
+        name: Publish to Google Play
+        ...
+        publishing:
+            google_play:
+                credentials: Encrypted(...)
+                track: alpha # specify the Google Play destination track
+```
+
 
 ## Using the service account with Flutter UI projects
 
