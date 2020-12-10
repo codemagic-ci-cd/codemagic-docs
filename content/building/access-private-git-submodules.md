@@ -1,7 +1,7 @@
 ---
 description: If your project requires accessing any private Git submodules or dependencies, you'll need to grant Codemagic access to them in order to build successfully.
 title: Accessing private dependencies and Git submodules
-weight: 4
+weight: 1
 ---
 
 If your project requires accessing any private Git submodules or dependencies, you'll need to grant Codemagic access to them in order to build successfully.
