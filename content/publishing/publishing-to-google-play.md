@@ -8,7 +8,7 @@ Codemagic enables you to automatically publish your app to the **internal**, **a
 
 ## Requirements
 
-You will need a **service account in Google Play Console** to obtain the **JSON credentials file**. See how to do that [here](../publishing-yaml/distribution#creating-a-service-account-in-google-play-console). In addition, you must build the app in **release mode** and set up **Android code signing**.
+You will need a **service account in Google Play Console** to obtain the **JSON credentials file**. See how to do that [here](../knowledge-base/google-play-api/). In addition, you must build the app in **release mode** and set up **Android code signing**.
 
 Before releasing the app to Google Play, make sure that it meets the [Google Play's best practices guidelines](https://developer.android.com/distribute/best-practices/launch/).
 

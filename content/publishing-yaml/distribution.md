@@ -66,7 +66,7 @@ publishing:
 
 ### Google Play
 
-Codemagic enables you to automatically publish your app to the `internal`, `alpha`, `beta` and `production` tracks on Google Play. In order to do so, you will need to set up a service account in Google Play Console and add the JSON key file to your Codemagic configuration file, see how to [create a service account](#creating-a-service-account-in-google-play-console).
+Codemagic enables you to automatically publish your app to the `internal`, `alpha`, `beta` and `production` tracks on Google Play. In order to do so, you will need to set up a service account in Google Play Console and add the `JSON` key file to your Codemagic configuration file, see how to [set up a service account](../knowledge-base/google-play-api/).
 
 ```yaml
 publishing:
@@ -78,26 +78,6 @@ publishing:
 {{<notebox>}}
 The proper way to add your keys in `codemagic.yaml` is to copy the contents of the key file and [encrypt](../building/encrypting) it. Then add the encrypted value into the configuration file.
 {{</notebox>}}
-
-#### Creating a service account in Google Play Console
-
-1. In Google Play Console, navigate to **Settings > API access**.
-
-2. Click on the **Create Service Account** button and follow the link to **Google API Console**.
-
-3. In Google API Console, click on the **Create Service Account** button.
-
-4. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
-
-5. In step 2, click the **Select a role** dropdown menu and choose **Project > Editor** as the role.
-
-6. In step 3, you can leave the fields blank and click **Done**.
-
-7. In the list of created service accounts, identify the account you have just created and click on the menu in the **Actions** column.
-
-8. Click **Create key** and select **JSON** as the key type.
-
-9. Click **Create** and save the key file in a secure location to have it available.
 
 ### App Store Connect
 
