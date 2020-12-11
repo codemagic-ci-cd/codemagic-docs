@@ -18,7 +18,8 @@ For building an unsigned iOS app (.app), you need to run the following command i
 
 ```yaml
 scripts:
-  - xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" \
+  - |
+    xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" \
     -scheme "MyScheme" \
     CODE_SIGN_INDENTITY="" \
     CODE_SIGNING_REQUIRED=NO \
