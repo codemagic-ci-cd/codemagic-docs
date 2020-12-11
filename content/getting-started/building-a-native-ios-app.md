@@ -17,13 +17,7 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
 For building an unsigned iOS app (.app), you need to run the following command in the scripts section:
 
 ```yaml
-scripts:
-  - |
-    xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" \
-    -scheme "MyScheme" \
-    CODE_SIGN_INDENTITY="" \
-    CODE_SIGNING_REQUIRED=NO \
-    CODE_SIGNING_ALLOWED=NO
+- xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" -scheme "MyScheme" CODE_SIGN_INDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 ```
 
 If you don't have a workspace, use `-project "MyXcodeProject.xcodeproj"` instead of the `-workspace "MyXcodeWorkspace.xcworkspace"` option.
