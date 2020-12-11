@@ -68,11 +68,17 @@ publishing:
 
 Codemagic enables you to automatically publish your app to the `internal`, `alpha`, `beta` and `production` tracks on Google Play. In order to do so, you will need to set up a service account in Google Play Console and add the `JSON` key file to your Codemagic configuration file, see how to [set up a service account](../knowledge-base/google-play-api/).
 
+If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates) Codemagic allows setting the update priority. Otherwise, `in_app_update_priority` can be omitted or set to `0`.
+
+In addition, Codemagic supports [staged releases](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en), allowing users to choose which fraction of the testers or users get access to the application. To release to everyone, omit `rollout_fraction` from codemagic.yaml. 
+
 ```yaml
 publishing:
   google_play:                        # For Android app
     credentials: Encrypted(...)       # JSON key file for Google Play service account
     track: alpha                      # Name of the track: internal, alpha, beta, production, internal app sharing
+    in_app_update_priority: 3         # Priority of the release (only set if in-app updates are supported): integer in range [0, 5]
+    rollout_fraction: 0.25            # Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
 ```
 
 {{<notebox>}}
