@@ -30,7 +30,7 @@ The very first version of the app must be added to Google Play manually. You can
    - Alpha --- publish for testing with a small group of trusted users
    - Beta --- publish for testing to a wider set of users
    - Production --- release the app to production
-5. If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates), set the desired priority, if not, leave it at default
-6. In case you want to release a [staged version](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en) of your application, which reaches only a fraction of users, set Rollout fraction to a value between 0 and 1, for full release, leave the value empty
+5. If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates), set the desired priority. If not, select **Default**.
+6. In case you want to release a [staged version](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en) of your application, which reaches only a fraction of users, set **Rollout fraction** to a value between 0 and 1. To release to everyone, leave the value empty.
 7. If you want to publish the .apk even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
 8. Select **Enable Google Play publishing** at the top of the section to enable publishing.
