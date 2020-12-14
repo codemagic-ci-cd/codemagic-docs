@@ -1,7 +1,7 @@
 ---
 title: Webhooks
 description: Set up webhooks for automatic builds
-weight: 10
+weight: 4
 ---
 
 Webhooks are necessary in order to be able to trigger builds automatically in response to events in the repository.
