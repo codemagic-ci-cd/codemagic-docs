@@ -1,7 +1,7 @@
 ---
-title: Publishing
+title: Publishing and deployment
 description: How to set up publishing and build status notifications
-weight: 3
+weight: 1
 aliases:
     - '../yaml/distribution'
 ---
@@ -30,11 +30,29 @@ publishing:
 
 ### Slack
 
-In oder to set up publishing to Slack, you first need to connect the Slack workspace in **User settings > Integrations > Slack** for personal applications and in **Teams > Your_team > Team integrations > Slack** for team apps.
+Integrate Slack publishing into your Codemagic build pipeline to get notified when a build starts and receive build artifacts or logs when the build finishes.
 
-You can then define the channel where build notifications and artifacts will be sent to. If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the specified channel. If the build fails, a link to the build logs is published. When you set `notify_on_build_start` to `true`, the channel will be notified when a build starts.
+#### Connecting your Slack workspace
 
-If you don't want to receive a slack notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
+To set up publishing to Slack, you first need to connect your Slack workspace in **User settings > Integrations > Slack** for personal apps and in **Teams > Your_team > Team integrations > Slack** for team apps. 
+
+![List of integrations](../uploads/slack_connect.png)
+
+Click **Connect** next to the Slack integration. You will be then redirected to an authorization page. Review the requested permissions and click **Allow** to give Codemagic Slack app access to your Slack workspace and allow it post build status updates and build artifacts (see also our [privacy policy](https://codemagic.io/privacy-policy/)).
+
+![Authorization page](../uploads/slack_allow.png)
+
+After you have successfully authorized Codemagic and connected your workspace, you will be redirected back to Codemagic. You can disconnect your Slack workspace anytime by clicking **Disconnect**.
+
+![Slack integration is enabled](../uploads/slack_connected.png)
+
+#### Configuring Slack publishing
+
+The Slack channel for publishing is configured separately for each workflow in the `publishing` section of `codemagic.yaml` (refer [here](../publishing/email-and-slack-notifications/#slack) if you're configuring app settings in the UI). 
+
+If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the specified channel. If the build fails, a link to the build logs is published. When you set `notify_on_build_start` to `true`, the channel will be notified when a build starts.
+
+If you don't want to receive a Slack notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
 
 ```yaml
 publishing:
@@ -48,38 +66,24 @@ publishing:
 
 ### Google Play
 
-Codemagic enables you to automatically publish your app to the `internal`, `alpha`, `beta` and `production` tracks on Google Play. In order to do so, you will need to set up a service account in Google Play Console and add the JSON key file to your Codemagic configuration file, see how to [create a service account](#creating-a-service-account-in-google-play-console).
+Codemagic enables you to automatically publish your app to the `internal`, `alpha`, `beta` and `production` tracks on Google Play. In order to do so, you will need to set up a service account in Google Play Console and add the `JSON` key file to your Codemagic configuration file, see how to [set up a service account](../knowledge-base/google-play-api/).
+
+If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates) Codemagic allows setting the update priority. Otherwise, `in_app_update_priority` can be omitted or set to `0`.
+
+In addition, Codemagic supports [staged releases](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en), allowing users to choose which fraction of the testers or users get access to the application. To release to everyone, omit `rollout_fraction` from codemagic.yaml. 
 
 ```yaml
 publishing:
   google_play:                        # For Android app
     credentials: Encrypted(...)       # JSON key file for Google Play service account
-    track: alpha                      # Name of the track: internal, alpha, beta, production
+    track: alpha                      # Name of the track: internal, alpha, beta, production, internal app sharing
+    in_app_update_priority: 3         # Priority of the release (only set if in-app updates are supported): integer in range [0, 5]
+    rollout_fraction: 0.25            # Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
 ```
 
 {{<notebox>}}
 The proper way to add your keys in `codemagic.yaml` is to copy the contents of the key file and [encrypt](../building/encrypting) it. Then add the encrypted value into the configuration file.
 {{</notebox>}}
-
-#### Creating a service account in Google Play Console
-
-1. In Google Play Console, navigate to **Settings > API access**.
-
-2. Click on the **Create Service Account** button and follow the link to **Google API Console**.
-
-3. In Google API Console, click on the **Create Service Account** button.
-
-4. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
-
-5. In step 2, click the **Select a role** dropdown menu and choose **Project > Editor** as the role.
-
-6. In step 3, you can leave the fields blank and click **Done**.
-
-7. In the list of created service accounts, identify the account you have just created and click on the menu in the **Actions** column.
-
-8. Click **Create key** and select **JSON** as the key type.
-
-9. Click **Create** and save the key file in a secure location to have it available.
 
 ### App Store Connect
 

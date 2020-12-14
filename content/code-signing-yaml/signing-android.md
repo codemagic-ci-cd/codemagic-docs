@@ -46,7 +46,8 @@ This example shows how to set up code signing using Gradle.
 2. Add your keystore and keystore details in the [`environment`](../getting-started/yaml#environment) section of the configuration file. [Encrypt](../building/encrypting/#encrypting-sensitive-data) your keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) and set the encrypted values to the following environment variables. Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build.
 
 ```yaml
-environment:  
+environment:
+  FCI_KEYSTORE_PATH: /tmp/keystore.keystore
   FCI_KEYSTORE: Encrypted(...)
   FCI_KEYSTORE_PASSWORD: Encrypted(...)
   FCI_KEY_ALIAS: Encrypted(...)
@@ -59,28 +60,8 @@ environment:
 scripts:
   - name: Build Android
     script: |
-      export FCI_KEYSTORE_PATH="/tmp/keystore.keystore"
       echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
       cd android && ./gradlew assembleRelease
-```
-
-Pay attention to the fact that scripts are executed as separate processes and environment variables defined inside one script won't be accessible in another script. Therefore, if you want to access your `FCI_KEYSTORE_PATH` variable from multiple scripts, it makes sense to define it in the `environment` section.
-
-```yaml
-environment:  
-  FCI_KEYSTORE_PATH: /tmp/keystore.keystore
-  FCI_KEYSTORE: Encrypted(...)
-  FCI_KEYSTORE_PASSWORD: Encrypted(...)
-  FCI_KEY_ALIAS: Encrypted(...)
-  FCI_KEY_PASSWORD: Encrypted(...)
-...
-scripts:
-  ...
-  - name: Export keystore
-    script: echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
-  - name: Build Android
-    script: cd android && ./gradlew assembleRelease
-  ...
 ```
 
 ## Signing Android apps using key.properties
@@ -107,6 +88,7 @@ The following templates show code signing using `key.properties`.
 In order to do code signing [encrypt](../building/encrypting/#encrypting-sensitive-data) your keystore file, keystore password (if keystore is password protected), key alias and key alias password (if key alias is password protected) and set the encrypted values to the following environment variables:
 
 ```yaml
+FCI_KEYSTORE_PATH: /tmp/keystore.keystore
 FCI_KEYSTORE: Encrypted(...)
 FCI_KEYSTORE_PASSWORD: Encrypted(...)
 FCI_KEY_ALIAS: Encrypted(...)
@@ -118,11 +100,11 @@ Use the following script:
 ```yaml
 - name: Set up key.properties
   script: |
-    echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+    echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
     cat >> "$FCI_BUILD_DIR/project_directory/android/key.properties" <<EOF
     storePassword=$FCI_KEYSTORE_PASSWORD
     keyPassword=$FCI_KEY_PASSWORD
     keyAlias=$FCI_KEY_ALIAS
-    storeFile=/tmp/keystore.keystore
+    storeFile=$FCI_KEYSTORE_PATH
     EOF
 ```

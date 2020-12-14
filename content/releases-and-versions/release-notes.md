@@ -30,7 +30,7 @@ We have added a much-requested feature to cancel ongoing and queued webhook-trig
 
 You can enable this feature in the UI by navigating to **App settings > Build triggers > Automatic build triggering** and selecting **Cancel outdated webhook builds**, or by setting `cancel_previous_builds: true` in the [triggering section](../getting-started/yaml/#triggering) of the YAML file.
 
-> If you’re interested in running builds in parallel, get in touch with our sales team through the [Codemagic business page](https://codemagic.io/business/).
+> If you’re interested in running builds in parallel, get in touch with our sales team through the [Codemagic business page](https://codemagic.io/enterprise/).
 
 ## June 2020
 
