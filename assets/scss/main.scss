@@ -410,6 +410,11 @@ body {
               pre {
                 background: $grey-bg !important;
               }
+              ol li, 
+              ul li {
+                font-size: .9em;
+                line-height: 22px;
+              }
             }
 
             blockquote {
