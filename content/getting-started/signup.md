@@ -7,21 +7,19 @@ aliases:
   - '../getting-started/github-organization-accounts'
 ---
 
-You can sign up to Codemagic using a GitHub, GitLab or Bitbucket account or a regular email address. After signup, you can add apps from any self-hosted or cloud-based Git repository, see [Adding repositories](./adding-apps-from-custom-sources).
+You can sign up to Codemagic using a [GitHub](https://github.com/), [Bitbucket](https://bitbucket.org/) or [GitLab](https://about.gitlab.com/) account or a regular email address. After signup, you can add apps from any self-hosted or cloud-based Git repository, see [Adding repositories](./adding-apps-from-custom-sources).
 
 ## Sign up via GitHub
 
 Codemagic offers two types of integration with GitHub.
 
-Select **All repositories** to sign up via OAuth. This integration requires read/write access to your repositories and is the preferred integration method if you're looking to publish GitHub releases or push tags to the repository.
+* Select **All repositories** to sign up via OAuth. This integration requires read/write access to your repositories and is the preferred integration method if you're looking to publish GitHub releases or push tags to the repository.
 
-Select **Selected repositories only** to sign up using Codemagic GitHub app. This integration requires read access to your code and you can grant access to selected repositories only. Note that you will also need to [install the Codemagic CI/CD GitHub app](https://github.com/apps/codemagic-ci-cd) to share repositories. This is the preferred integration method if you want to use GitHub Checks. Read more about the integration [here](#sign-up-via-codemagic-github-app).
+* Select **Selected repositories only** to sign up using Codemagic GitHub app. This integration requires read access to your code and you can grant access to selected repositories only. Note that you will also need to [install the Codemagic CI/CD GitHub app](https://github.com/apps/codemagic-ci-cd) to share repositories. This is the preferred integration method if you want to use GitHub Checks. Read more about the integration [here](#sign-up-via-codemagic-github-app).
 
 ### All repositories (OAuth)
 
-Instead of creating a separate account for Codemagic, you can use your [GitHub](https://github.com/) account to sign up to Codemagic. 
-
-When authenticating via OAuth, Codemagic asks for **read/write** permission to access your repositories and create webhooks for automatic building. Write permission is also required for pushing tags to the repository. 
+When authenticating via OAuth, Codemagic asks for **read/write** permission to access your GitHub repositories and create webhooks for automatic building. Write permission is also required for pushing tags to the repository. 
 
 You will need to authorize Codemagic to connect the GitHub account to your Codemagic account. Once you log in to Codemagic, you will see all your GitHub repositories listed.
 
@@ -47,12 +45,12 @@ With the GitHub app integration, you have more control over the repositories you
 3. In Codemagic, click **Install GitHub App** on the Applications page. If you already have another repository integration enabled for your personal account, you can find the installation button in **User settings > Integrations > Install GitHub App**. 
 4. You will be then redirected to GitHub to proceed with installation. Click **Install**.
 5. Next, select the GitHub account or organization where you want to install the app.
-6. Select whether to grant access to **All repositories** or select the repositories to share one by one by choosing **Only select repositories**.
-7. Click **Install & Authorize** (you may be asked to confirm that action by entering your password). After successful installation, you will be redirected back to Codemagic and you can see the status for the GitHub App integration as connected.
+6. Select whether to grant access to **All repositories** or select the repositories to share by choosing **Only select repositories**.
+7. Click **Install & Authorize** (you may be asked to confirm that action by entering your password). After successful installation, you will be redirected back to Codemagic and you can see the status for the GitHub app integration as connected.
 
 #### Configuring accounts and repository access settings
 
-If you want to install Codemagic GitHub App to another GitHub account/organization or change repository access settings, navigate to **GitHub > Settings > Applications > Installed GitHub Apps > Codemagic CI/CD** or go directly to [https://github.com/apps/codemagic-ci-cd](https://github.com/apps/codemagic-ci-cd) and click **Configure**. Note that the settings you configure in Codemagic CI/CD GitHub app prevail over the GitHub OAuth integration settings.
+If you want to install Codemagic GitHub app to another GitHub account/organization or change repository access settings, navigate to **GitHub > Settings > Applications > Installed GitHub Apps > Codemagic CI/CD** or go directly to [https://github.com/apps/codemagic-ci-cd](https://github.com/apps/codemagic-ci-cd) and click **Configure**. Note that the settings you configure in Codemagic CI/CD GitHub app prevail over the GitHub OAuth integration settings.
 
 If you revoke access to previously shared repositories, you will still see all your apps and build history but won't be able to build the apps to which Codemagic no longer has access. Such apps will be grayed out and will show up on the Applications page with the **Removed from repository** filter.
 
@@ -61,7 +59,7 @@ If you revoke access to previously shared repositories, you will still see all y
 The repository access settings configured in Codemagic GitHub app apply to the repositories you share in your Codemagic team only if:
 
 * GitHub app integration is connected in **Team settings > Team integrations**.
-* The primary team owner has connected the GitHub app integration for their personal account in **User settings > Integration** and the team has not enabled the GitHub integration. If the regular GitHub integration is enabled for the team, the connected account makes use of OAuth permissions and the restrictions you configure in GitHub app do not apply.
+* The primary team owner has connected the GitHub app integration for their personal account in **User settings > Integrations** and the team has not enabled the GitHub integration. If the regular GitHub integration is enabled for the team, the connected account makes use of OAuth permissions and the restrictions you configure in GitHub app do not apply.
 
 {{<notebox>}}
 Currently, Codemagic has no way of knowing whether it has access to team apps before the build is started. Due to this, team apps to which you have revoked access in the GitHub app may not appear grayed out in the UI.
@@ -69,17 +67,15 @@ Currently, Codemagic has no way of knowing whether it has access to team apps be
 
 #### Disabling Codemagic GitHub app integration
 
-You can disable the Codemagic CI/CD GitHub app integration in Codemagic by navigating to **User settings > Integrations > GitHub App** and clicking **Disconnect**. This annuls all settings configured for the Codemagic app in GitHub but won't delete your buid history.
+The Codemagic CI/CD GitHub app integration can be disabled by clicking **Disconnect** in **User settings > Integrations > GitHub App** for your personal account or in **Team settings > Team Integrations > GitHub App** to disconnect it from the team. This annuls all settings configured for the Codemagic app in GitHub but won't delete your buid history.
 
 The GitHub app integration is also disabled when you **uninstall** the Codemagic CI/CD app in GitHub. You can still log in to Codemagic with the GitHub app and see your build history if Codemagic CI/CD remains an **authorized GitHub app** in GitHub. Please note that unless you have other active integrations (e.g. GitHub, Bitbucket or GitLab OAuth integration), your Codemagic account will be deleted in two weeks. You can cancel account deletion by navigating to **User settings > Delete account** and clicking **Cancel deletion** before the two weeks are up.
 
 ## Sign up via Bitbucket or GitLab
 
-Instead of creating a separate account for Codemagic, you can use your [Bitbucket](https://bitbucket.org/) or [GitLab](https://about.gitlab.com/) account to sign up to Codemagic. 
+When authenticating using a Bitbucket or GitLab account via OAuth, Codemagic asks for **read/write** permission to access your repositories and create webhooks for automatic building. Write permission is also required for pushing tags to the repository. 
 
-When authenticating via OAuth, Codemagic asks for **read/write** permission to access your repositories and create webhooks for automatic building. Write permission is also required for pushing tags to the repository. 
-
-You will need to authorize Codemagic to connect the Bitbucket/GitLab account to your Codemagic account. Once you log in to Codemagic, you will see all your GitHub repositories listed.
+You will need to authorize Codemagic to connect the Bitbucket/GitLab account to your Codemagic account. Once you log in to Codemagic, you will see all your repositories listed.
 
 ## Sign up via email
 
