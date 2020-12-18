@@ -4,6 +4,46 @@ title: Release notes
 weight: 1
 ---
 
+## November 2020
+
+### In-app priority and rollout fraction for Android releases
+
+Using both the UI and `codemagic.yaml`, you can now set two additional parameters for your Android builds that you publish to users through Google Play.
+
+* **In-app priority** determines how strongly your app update will be recommended to existing users. The priority ranges from `0` (default) to `5` (high-priority update). Note that this feature is available only via Google Play API and for apps that support in-app updates.
+* **Rollout fraction** enables you to roll out the release to a percentage of users. Rollout fraction is a value between `0` and `1`, e.g. `0.25` to release to 25% of users.
+
+### Filtering on Builds page and Public dashboards
+
+We have added filtering on the Builds page so you can filter builds based on team, application, workflow and branch.
+
+The Builds page also contains a new feature — **Public dashboards**. Public dashboards make it possible for teams to share the list of team’s builds, release notes (if passed) and build artifacts with people outside Codemagic using a public link (build logs will not be exposed). This is a convenient option for distributing builds to testers or sharing build artifacts with stakeholders.
+See the documentation [here](../publishing-yaml/public-dashboards/).
+
+### YAML file validation before starting a build
+
+We have improved the experience of using the `codemagic.yaml` file. Now you can see syntax errors in the UI before you start the build. We have included more information about the format, invalid keys or values in the error message to help you fix it without running builds. If there are issues with the YAML file, the build is not started.
+
+### Billing page
+
+There is now a Billing page for managing billing across teams and your personal account. This is where you can enable billing, see your usage, view your invoices and change the card used for payment. Read more about managing billing in Codemagic [here](../billing/billing).
+
+### Billing teams based on active users
+
+Starting from November 1, there are no more free minutes for teams and we count every user that triggers builds. Read more about this change on our [blog](https://blog.codemagic.io/pricing-changes-for-teams/). See how we count users in teams [here](../teams/users). 
+
+## October 2020
+
+### Email signup
+
+We have added the option to authenticate with Codemagic using email. Both on signup and on login, Codemagic sends users a temporary six-character authentication key that they are required to enter in the browser.
+
+## September 2020
+
+### Global Save button in Flutter app settings
+
+Instead of having to save your settings in each section, there is now one global **Save** button to save the changes you have made in your workflow. We’ll notify you if you have unsaved changes and point you to any errors there might be when saving the configuration. This helps to ensure that none of your changes remain unsaved by accident.
+
 ## August 2020
 
 ### Using App Store Connect API for Apple Developer Portal integration
