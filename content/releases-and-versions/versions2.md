@@ -13,7 +13,7 @@ weight: 2
 
 - System version `macOS 10.15.5 (19F101)`
 - Kernel version `Darwin 19.5.0`
-- Disk `322GB (Free Space: 37GB)`
+- Disk `322GB (Free Space: 33GB)`
 
 ## Pre-installed tools
 
@@ -22,15 +22,15 @@ weight: 2
 - cocoapods `1.10.0`
 - cordova `10.0.0`
 - curl
-- dart `2.10.3`
-- docker `19.03.13`
-- fastlane `2.167.0`
+- dart `2.10.4`
+- docker `20.10.0`
+- fastlane `2.170.0`
 - firebase `8.10.0`
-- flutter `1.22.4 ($HOME/programs/flutter)`
+- flutter `1.22.5 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - git `2.29.2`
 - gradle `6.1.1`
-- homebrew `2.5.9`
+- homebrew `2.6.2`
 - ionic `5.4.16`
 - jq
 - node `12.18.4`
@@ -47,13 +47,13 @@ weight: 2
 - yq
 - zip
 
-## Xcode 12.2 (12B45b)
+## Xcode 12.3 (12C33)
 
 This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
-Xcode path: `/Applications/Xcode-12.2.app`
+Xcode path: `/Applications/Xcode-12.3.app`
 
-With Xcode `12.2` build version `12B45b` the following runtimes and devices are installed:
+With Xcode `12.3` build version `12C33` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -67,7 +67,7 @@ With Xcode `12.2` build version `12B45b` the following runtimes and devices are 
 - iOS 13.5
 - iOS 13.6
 - iOS 13.7
-- iOS 14.2
+- iOS 14.3
 - tvOS 11.3
 - tvOS 11.4
 - tvOS 12.0
@@ -75,10 +75,10 @@ With Xcode `12.2` build version `12B45b` the following runtimes and devices are 
 - tvOS 13.2
 - tvOS 13.3
 - tvOS 13.4
-- tvOS 14.2
+- tvOS 14.3
 - watchOS 6.2
 - watchOS 7.0
-- watchOS 7.1
+- watchOS 7.2
 
 ### Devices
 
@@ -149,7 +149,7 @@ With Xcode `12.2` build version `12B45b` the following runtimes and devices are 
 
 ## Other Xcode versions
 
-- 12.3 (12C5020f) `/Applications/Xcode-12.3.app`
+- 12.2 (12B45b) `/Applications/Xcode-12.2.app`
 - 12.1.1 (12A7605b) `/Applications/Xcode-12.1.1.app`
 - 12.1 (12A7403) `/Applications/Xcode-12.1.app`
 - 12.0.1 (12A7300) `/Applications/Xcode-12.app`
