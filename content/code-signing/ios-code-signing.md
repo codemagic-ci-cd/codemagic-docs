@@ -62,7 +62,7 @@ Take note of the **Issuer ID** above the table of active keys as well as the **K
 The Apple Developer Portal integration can be enabled in **User settings > Integrations** for personal projects and in **Team settings > Team integrations** for projects shared in the team (if you're the team owner). This allows you to conveniently use the same credentials for automatic code signing across different apps and workflows.
 
 {{<notebox >}} 
-Note that users who had previously set up the session-based intgeration have been automatically migrated to use the API-key based setup.
+Note that users who had previously set up the session-based integration have been automatically migrated to use the API-key based setup.
 {{</notebox>}}
 
 1. In the list of available integrations, click the **Connect** button for **Developer Portal**.
