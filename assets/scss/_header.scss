@@ -83,6 +83,87 @@
         display: block;
     }
 }
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    box-shadow: 0px 3px 60px #06225d29;
+    background: white;
+    top: 100%;
+    border-radius: 20px;
+    padding: 30px;
+    &.open {
+        display: block;
+    }
+}
+.menu-link.toggle-dropdown-button {
+    position: relative;
+    &::after {
+        content: '\f078';
+        font-family: 'Font Awesome 5 Free';
+        transition: all 160ms linear;
+        display: inline-block;
+        font-weight: 600;
+        font-size: 9px;
+        margin-left: 10px;
+        vertical-align: middle;
+    }
+    &.open {
+        &::after {
+            transform: rotate(180deg);
+        }
+    }
+}
+.menu-block {
+    &__header {
+        color: $black-l;
+        font-size: 12px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+    &__links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 20px;
+    }
+    &__link {
+        font-size: 13px;
+        display: flex;
+        height: 56px;
+        align-items: center;
+        padding: 0 20px;
+        border-radius: 10px;
+        color: $black-l;
+        box-shadow: 0px 3px 46px $shadow-blue;
+        i {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        svg {
+            width: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+            * {
+                transition: fill 200ms linear;
+                stroke: none;
+                fill: $black-l;
+                opacity: 1;
+            }
+            &.ios {
+                position: relative;
+                bottom: 3px;
+            }
+        }
+        &:hover {
+            color: $blue;
+            svg * {
+                fill: $blue;
+            }
+        }
+    }
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+}
 #header-menu-wrap {
     flex: 1;
     display: flex;
@@ -230,7 +311,7 @@
         transition: color 300ms linear;
 
         &:hover {
-            color: $red;
+            color: $blue;
         }
         @at-root #header-authentication.loading & {
             display: none;
@@ -264,7 +345,8 @@
         height: 100vh;
         overflow: auto;
 
-        .menu-link {
+        .menu-link,
+        .menu-block__link {
             position: relative;
             display: block;
             color: $black;
@@ -273,9 +355,11 @@
             padding: 0 50px;
             border-bottom: 1px solid $grey-l;
 
-            &::after {
+            &:not(.toggle-dropdown-button)::after {
                 content: '\f061';
                 font-family: 'Font Awesome 5 Free';
+            }
+            &::after {
                 position: absolute;
                 right: 50px;
                 transition: right 300ms ease-in-out;
@@ -284,9 +368,36 @@
             &:focus {
                 background-color: $grey-xl;
                 color: $blue;
-                &::after {
-                    right: 46px;
+            }
+            &:not(.toggle-dropdown-button) {
+                &:hover,
+                &:focus {
+                    &::after {
+                        right: 46px;
+                    }
                 }
+            }
+        }
+        .menu-dropdown {
+            position: static;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 0;
+        }
+        .menu-block {
+            &__links {
+                display: block;
+            }
+            &__link {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0 80px;
+            }
+            &__header {
+                display: none;
+            }
+            &:not(:last-child) {
+                margin: 0;
             }
         }
     }
@@ -408,14 +519,21 @@
     }
 }
 @media (max-width: 420px) {
-    #header-menu-wrap .menu-link {
-        padding: 0 20px;
-
-        &::after {
-            right: 20px;
+    #header-menu-wrap {
+        .menu-link {
+            padding: 0 20px;
         }
-        &:hover::after {
-            right: 16px;
+        .menu-block__link {
+            padding: 0 50px;
+        }
+        .menu-link,
+        .menu-block__link {
+            &::after {
+                right: 20px;
+            }
+            &:not(.toggle-dropdown-button):hover::after {
+                right: 16px;
+            }
         }
     }
 }
@@ -456,7 +574,7 @@
     height: 48px;
     line-height: 48px;
     padding: 0 40px;
-    border-radius: 50px;
+    border-radius: 10px;
     text-align: center;
     cursor: pointer;
     transition: all 160ms linear;
