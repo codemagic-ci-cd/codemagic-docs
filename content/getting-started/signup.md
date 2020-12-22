@@ -15,7 +15,7 @@ Codemagic offers two types of integration with GitHub.
 
 * Select **All repositories** to sign up via OAuth. This integration requires read/write access to your repositories and is the preferred integration method if you're looking to publish GitHub releases or push tags to the repository.
 
-* Select **Selected repositories only** to sign up using Codemagic GitHub app. This integration requires read access to your code and you can grant access to selected repositories only. Note that you will also need to [install the Codemagic CI/CD GitHub app](https://github.com/apps/codemagic-ci-cd) to share repositories. This is the preferred integration method if you want to use GitHub Checks. Read more about the integration [here](#sign-up-via-codemagic-github-app).
+* Select **Selected repositories only** to sign up using Codemagic GitHub app. This integration requires read access to your code and you can grant access to selected repositories only. Note that you will also need to [install the Codemagic CI/CD GitHub app](https://github.com/apps/codemagic-ci-cd) to share repositories. This is the preferred integration method if you want to use GitHub Checks. Read more about the integration [here](#selected-repositories-github-app).
 
 ### All repositories (OAuth)
 
