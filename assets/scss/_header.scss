@@ -389,6 +389,9 @@
                 box-shadow: none;
                 border-radius: 0;
                 padding: 0 80px;
+                svg {
+                    display: none;
+                }
             }
             &__header {
                 display: none;
