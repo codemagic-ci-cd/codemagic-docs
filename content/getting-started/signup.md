@@ -50,7 +50,7 @@ With the GitHub app integration, you have more control over the repositories you
 
 #### Configuring accounts and repository access settings
 
-If you want to install Codemagic GitHub app to another GitHub account/organization or change repository access settings, navigate to **GitHub > Settings > Applications > Installed GitHub Apps > Codemagic CI/CD** or go directly to [https://github.com/apps/codemagic-ci-cd](https://github.com/apps/codemagic-ci-cd) and click **Configure**. Note that the settings you configure in Codemagic CI/CD GitHub app prevail over the GitHub OAuth integration settings.
+If you want to install Codemagic GitHub app to another GitHub account/organization or change repository access settings, navigate to **GitHub > Settings > Applications > Installed GitHub Apps > Codemagic CI/CD** or go directly to [https://github.com/apps/codemagic-ci-cd](https://github.com/apps/codemagic-ci-cd) and click **Configure**. If there are issues with the integration, try disconnecting and connecting the integration in Codemagic. Note that the settings you configure in Codemagic CI/CD GitHub app prevail over the GitHub OAuth integration settings.
 
 If you revoke access to previously shared repositories, you will still see all your apps and build history but won't be able to build the apps to which Codemagic no longer has access. Such apps will be grayed out and will show up on the Applications page with the **Removed from repository** filter.
 
