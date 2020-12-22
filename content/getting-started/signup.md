@@ -40,6 +40,10 @@ Read more about [GitHub organizations and OAuth app restrictions](https://help.g
 
 With the GitHub app integration, you have more control over the repositories you share with Codemagic, and instead of write access, only **read** access to your code is required.
 
+{{<notebox>}}
+If you already have a Codemagic account, you can enable the GitHub app integration in your **User settings > Integrations** for your personal account or in **Team settings > Team integrations** for your team.
+{{</notebox>}}
+
 1. Click **GitHub** at [codemagic.io/signup](https://codemagic.io/signup) and select **Selected repositories only** to sign up via Codemagic GitHub app. 
 2. Click **Authorize Codemagic** to verify your identity. You will be authenticated via GitHub without granting access to any of your repositories.
 3. In Codemagic, click **Install GitHub App** on the Applications page. If you already have another repository integration enabled for your personal account, you can find the installation button in **User settings > Integrations > Install GitHub App**. 
