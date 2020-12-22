@@ -62,7 +62,7 @@ The public dashboards feature makes it possible to share team's builds and build
 
 In Team integrations, it is possible to set up integrations to be used with team apps.
 
-By default, team creator's credentials are used to access repository information. It is advisable to configure access to the shared repositories on the team level in the **Team integrations** section. Set up an integration with a service where your repositories are hosted by clicking **Connect** next to its name.
+Unless team owners have connected an integration in team settings, team creator's credentials are used to access repository information. It is advisable to configure access to the shared repositories on the team level in the **Team integrations** section. Set up an integration with a service where your repositories are hosted by clicking **Connect** next to its name.
 
 ## Managing billing
 
