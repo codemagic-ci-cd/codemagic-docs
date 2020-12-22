@@ -74,7 +74,7 @@
                                     href='{{ site.Param "landingURL" }}/integrations'
                                     class="menu-block__link"
                                     onclick="sendGtag('Integrations_clicked', 'CodemagicMenu')"
-                                    ><i class="fas fa-plug"></i>Integrations</a
+                                    >{{ readFile "/assets/svg/plug.svg" | safeHTML }} Integrations</a
                                 >
                             </li>
                             <li>
@@ -83,7 +83,7 @@
                                     class="menu-block__link"
                                     onclick="sendGtag('Blog_clicked', 'CodemagicMenu')"
                                     target="_blank"
-                                    ><i class="fas fa-book"></i>Blog</a
+                                    >{{ readFile "/assets/svg/book.svg" | safeHTML }} Blog</a
                                 >
                             </li>
                         </ul>
