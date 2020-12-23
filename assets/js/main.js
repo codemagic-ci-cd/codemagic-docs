@@ -83,6 +83,7 @@ $('h1, h2, h3, h4, h5, h6').on('click', 'i.ctc', function() {
 })
 
 $(document).ready(function() {
+  addMenuListeners()
   createTableOfContents()
   // Wrap tables for responsiveness
   var contentTable = $('#main-content main table')
@@ -320,3 +321,17 @@ $(window).ready(function () {
         observer.observe(header);
     });
 });
+
+const addMenuListeners = () => {
+    $('[data-js-toggle-menu-product-dropdown]').on('click', function () {
+        $(this).toggleClass('open')
+        $('[data-js-menu-product-dropdown]').toggleClass('open')
+    })
+    window.addEventListener('click', function (e) {
+        const select = document.querySelector('[data-js-menu-product-dropdown], [data-js-toggle-menu-product-dropdown]')
+        if (!select.contains(e.target)) {
+            select.classList.remove('open')
+            $('[data-js-menu-product-dropdown]').removeClass('open')
+        }
+    })
+}

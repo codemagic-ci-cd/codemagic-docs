@@ -1,0 +1,14 @@
+{
+    "printWidth": 120,
+    "bracketSpacing": true,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "all",
+    "overrides": [
+        {
+            "files": ["*.md", "*.markdown"],
+            "options": { "tabWidth": 2 }
+        }
+    ]
+}
