@@ -98,6 +98,7 @@ Read more about the different schemes in [Apple's documentation](https://help.ap
 **Note:** If you are using Flutter version 1.24.0-6.0 or higher, the recommended command for building an .ipa archive is `flutter build ipa` as shown below. Read more about it in [Flutter's documentation](https://flutter.dev/docs/deployment/ios#create-a-build-archive).
 
 ```yaml
+- xcode-project use-profiles
 - flutter build ipa --export-options-plist=/Users/builder/export_options.plist
 ```
 
