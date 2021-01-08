@@ -388,7 +388,7 @@ body {
                 }
             }
             .notebox {
-              background: $grey-bg-light;
+              background: transparentize($blue, 0.95);
               border-left: 10px solid $blue;
               padding: 30px 40px;
               text-align: left;
