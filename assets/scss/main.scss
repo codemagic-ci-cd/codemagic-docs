@@ -405,7 +405,7 @@ body {
               }
 
               code {
-                background: $grey-bg;
+                background: transparentize($blue, 0.95);
               }
               pre {
                 background: $grey-bg !important;
