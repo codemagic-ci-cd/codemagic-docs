@@ -168,7 +168,7 @@ Incrementing the version code can be done as follows:
     android {
         ...
         
-        def appVersionCode = Integer.valueOf(System.env.BUILD_NUMBER ?: 0)
+        def appVersionCode = Integer.valueOf(System.env.BUILD_NUMBER ?: 1)
         defaultConfig {
             ...
             versionCode appVersionCode
