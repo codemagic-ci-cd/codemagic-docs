@@ -39,6 +39,18 @@ In order to upload your Android App Bundle to Google Play, you will need to:
 
 When you enroll an app into app signing by Google Play, Google will manage your app's signing key for you and use it to sign the .apk for distribution. Note that the app must be signed with the same key throughout its lifecycle, so if the app has already been uploaded to Google Play, make sure to export and upload your original key to Google Play for app signing. It is then recommended to create a new key ("upload key") for signing your app updates and uploading them to Google Play.
 
+### Building iOS apps
+
+To build for iOS, select **iOS** as the build platform in **App settings > Build > Build for platforms**. To build a release archive, you also need to set up [code signing](../code-signing/ios-code-signing/).
+
+{{<notebox>}}
+**Using `flutter build ipa`**
+
+As of Flutter version 1.24.0-6.0, it is possible to use the `flutter build ipa` command to build an .ipa. Using this command can reduce build time.
+
+To use the `flutter build ipa` command in Codemagic, you need to enable code signing and select the **Use `flutter build ipa`** checkbox in **App settings > Build > iOS build command**.
+{{</notebox>}}
+
 ### Building for the web
 
 Codemagic can detect your Flutter web project if it contains a `web` folder. To build for the web, select **Web** as the build platform in **App settings > Build > Build for platforms**.
