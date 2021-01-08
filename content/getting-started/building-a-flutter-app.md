@@ -93,17 +93,13 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
 - xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
 ```
 
-{{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}}
+Read more about the different schemes in [Apple's documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).
 
-### Building a signed iOS application archive .ipa with Flutter command [beta]
+**Note:** If you are using Flutter version 1.24.0-6.0 or higher, the recommended command for building an .ipa archive is `flutter build ipa` as shown below. Read more about it in [Flutter's documentation](https://flutter.dev/docs/deployment/ios#create-a-build-archive).
 
 ```yaml
 - flutter build ipa --export-options-plist=/Users/builder/export_options.plist
 ```
-
-This option is not currently available in stable channel. Flutter 1.24.0-6.0 or higher is required.
-
-{{<notebox>}}Read more about building ipa archive with Flutter [Flutter documentation](https://flutter.dev/docs/deployment/ios#create-a-build-archive).{{</notebox>}}
 
 ## Web builds
 
