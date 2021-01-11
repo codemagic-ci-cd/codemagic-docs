@@ -16,7 +16,7 @@ It is also worth pointing out the necessity for each uploaded binary to have a *
 
 {{<notebox>}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. {{</notebox>}}
 
-## Setting up publishing to App Store Connect on Codemagic
+## Setting up publishing to App Store Connect on Codemagic 
 
 1. Navigate to the Publish section in app settings.
 2. Click **App Store Connect**.
