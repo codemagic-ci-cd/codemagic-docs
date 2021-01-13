@@ -1,7 +1,7 @@
 ---
 title: GitHub Checks
 description: Report PR build statuses to GitHub as checks
-weight: 8
+weight: 9
 ---
 
 {{<notebox>}}
