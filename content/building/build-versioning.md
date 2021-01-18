@@ -31,7 +31,7 @@ HOMEBREW_NO_AUTO_UPDATE=1 brew install yq
 Then add the following build arguments:
 
 ```bash
---build-number=$(cat ./pubspec.yaml | yq r - version)
+--build-number=$(yq e .version pubspec.yaml)
 ```
 
 ## Set Xcode project build number via command line
