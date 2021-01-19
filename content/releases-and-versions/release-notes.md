@@ -4,7 +4,27 @@ title: Release notes
 weight: 1
 ---
 
-## November 2020
+## January 2021
+
+### Scheduled builds
+
+Whether you configure your builds in the UI or use the codemagic.yaml configuration file, you can now schedule your workflows to run on days and time that suits you the best. See how to [create build schedules](../building/scheduling).  
+
+### Support for `flutter build ipa`
+
+You can now use the `flutter build ipa` command to generate an .ipa file from the Flutter source. To use this build command with Flutter builds configured in the UI, select the **Use flutter build ipa** checkbox in **App settings > Build > iOS build command**. You can also use it in your codemagic.yaml configuration, see an example [here](../getting-started/building-a-flutter-app/#building-a-signed-ios-application-archive-ipa).
+
+Note that:
+* This command is available from Flutter version `1.24.0-6.0`.
+* You still need to set up code singing in your Codemagic configuration.
+
+## December 2020
+
+### GitHub Checks and GitHub app integration for teams
+
+For repositories added via [Codemagic GitHub app](https://github.com/apps/codemagic-ci-cd), Codemagic now supports reporting the build summary of PR builds to GitHub Checks. Your Codemagic workflow will appear as a check and you will see the status and logs of individual build steps on the Checks tab of the PR. See how to set up GitHub Checks [here](../building/github-checks/).
+
+In addition, it is now possible to connect the GitHub app integration in team settings as a team integration. Learn more about the GitHub app integration [here](../getting-started/signup/#selected-repositories-github-app).
 
 ### In-app priority and rollout fraction for Android releases
 
@@ -12,6 +32,8 @@ Using both the UI and `codemagic.yaml`, you can now set two additional parameter
 
 * **In-app priority** determines how strongly your app update will be recommended to existing users. The priority ranges from `0` (default) to `5` (high-priority update). Note that this feature is available only via Google Play API and for apps that support in-app updates.
 * **Rollout fraction** enables you to roll out the release to a percentage of users. Rollout fraction is a value between `0` and `1`, e.g. `0.25` to release to 25% of users.
+
+## November 2020
 
 ### Filtering on Builds page and Public dashboards
 
