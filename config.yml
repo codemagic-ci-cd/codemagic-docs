@@ -69,24 +69,27 @@ menu:
       name: Publishing
       weight: 4
       parent: setup-flutter
-    - identifier: rest-api
-      name: Codemagic API
-      weight: 7
     - identifier: teams
       name: Teams
-      weight: 8
+      weight: 7
+    - identifier: billing
+      name: Billing
+      weight: 8  
     - identifier: knowledge-base
       name: Knowledge base
       weight: 9
-    - identifier: billing
-      name: Billing
-      weight: 10    
-    - identifier: releases-and-versions
-      name: Codemagic releases and build machines
-      weight: 11
+    - identifier: rest-api
+      name: Codemagic API
+      weight: 10 
     - identifier: troubleshooting
       name: Troubleshooting
+      weight: 11
+    - identifier: specs
+      name: Build machine specs
       weight: 12
+    - identifier: notes
+      name: Release notes
+      weight: 13
 
 mediaTypes:
   video/mp4:
