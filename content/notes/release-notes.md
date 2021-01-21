@@ -1,6 +1,8 @@
 ---
 description: Information about Codemagic feature releases
-title: Release notes
+title: Codemagic feature releases
+aliases:  
+  - '../releases-and-versions/release-notes'
 weight: 1
 ---
 
