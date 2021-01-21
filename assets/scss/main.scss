@@ -120,6 +120,8 @@ body {
             bottom: 0;
             right: 0;
             padding: 10px 40px;
+            width: 100%;
+            box-sizing: border-box;
 
             & > ul > li {
               & > .category-name {
