@@ -26,7 +26,7 @@ In order to set up publishing to Slack, you first need to connect the Slack work
 
 Once your Slack workspace is connected, you can enable Slack publishing and select a channel for publishing in **App settings > Publish > Slack** when using the UI configuration.
 
-in order to publish to private channels you need to invite Codemagic app to the channels, otherwise the app does not have access to private channels. To invite Codemagic app to private channels write `@codemagic` in the channel. If you are in the codemagic web app, refresh the page and the new channel will become available in the dropdown menu.
+In order to publish to **private channels**, you need to invite Codemagic app to the channels, otherwise the app does not have access to private channels. To invite Codemagic app to private channels, write `@codemagic` in the channel. If you are in the Codemagic web app, refresh the page and the new channel will become available in the dropdown menu.
 
 If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the specified channel.
 
