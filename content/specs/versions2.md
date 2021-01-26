@@ -1,9 +1,7 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 12+)
-aliases:
-  - '../releases-and-versions/versions2'
-weight: 1
+weight: 2
 ---
 
 ## Hardware
@@ -15,7 +13,7 @@ weight: 1
 
 - System version `macOS 10.15.5 (19F101)`
 - Kernel version `Darwin 19.5.0`
-- Disk `322GB (Free Space: 33GB)`
+- Disk `322GB (Free Space: 31GB)`
 
 ## Pre-installed tools
 
@@ -24,21 +22,21 @@ weight: 1
 - cocoapods `1.10.0`
 - cordova `10.0.0`
 - curl
-- dart `2.10.4`
-- docker `20.10.0`
-- fastlane `2.170.0`
+- dart `2.10.5`
+- docker `20.10.2`
+- fastlane `2.172.0`
 - firebase `8.10.0`
 - flutter `1.22.5 ($HOME/programs/flutter)`
 - gem `3.1.4`
-- git `2.29.2`
+- git `2.30.0`
 - gradle `6.1.1`
-- homebrew `2.6.2`
+- homebrew `2.7.5`
 - ionic `5.4.16`
 - jq
 - node `12.18.4`
-- npm `6.14.8`
+- npm `7.4.0`
 - python `2.7.16`
-- python3 `3.8.6`
+- python3 `3.8.7`
 - ruby `2.7.1p83`
 - ssh
 - sudo
@@ -151,8 +149,7 @@ With Xcode `12.3` build version `12C33` the following runtimes and devices are i
 
 ## Other Xcode versions
 
+- 12.4 (12D4e) `/Applications/Xcode-12.4.app`
 - 12.2 (12B45b) `/Applications/Xcode-12.2.app`
 - 12.1.1 (12A7605b) `/Applications/Xcode-12.1.1.app`
-- 12.1 (12A7403) `/Applications/Xcode-12.1.app`
 - 12.0.1 (12A7300) `/Applications/Xcode-12.app`
-
