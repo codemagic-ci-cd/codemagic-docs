@@ -1,9 +1,7 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 11.x)
-aliases:
-  - '../releases-and-versions/versions'
-weight: 2
+weight: 3
 ---
 
 ## Hardware
@@ -28,7 +26,7 @@ weight: 2
 - docker `19.03.8`
 - fastlane `2.157.3`
 - firebase `7.6.2`
-- flutter `1.22.5 ($HOME/programs/flutter)`
+- flutter `1.22.2 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - git `2.28.0`
 - gradle `6.1.1`
