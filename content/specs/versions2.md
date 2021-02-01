@@ -49,13 +49,13 @@ weight: 1
 - yq
 - zip
 
-## Xcode 12.3 (12C33)
+## Xcode 12.4 (12D4e)
 
 This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
-Xcode path: `/Applications/Xcode-12.3.app`
+Xcode path: `/Applications/Xcode-12.4.app`
 
-With Xcode `12.3` build version `12C33` the following runtimes and devices are installed:
+With Xcode `12.4` build version `12D4e` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -69,7 +69,7 @@ With Xcode `12.3` build version `12C33` the following runtimes and devices are i
 - iOS 13.5
 - iOS 13.6
 - iOS 13.7
-- iOS 14.3
+- iOS 14.4
 - tvOS 11.3
 - tvOS 11.4
 - tvOS 12.0
@@ -151,7 +151,8 @@ With Xcode `12.3` build version `12C33` the following runtimes and devices are i
 
 ## Other Xcode versions
 
-- 12.4 (12D4e) `/Applications/Xcode-12.4.app`
+- 12.3 (12C33) `/Applications/Xcode-12.3.app`
 - 12.2 (12B45b) `/Applications/Xcode-12.2.app`
 - 12.1.1 (12A7605b) `/Applications/Xcode-12.1.1.app`
 - 12.0.1 (12A7300) `/Applications/Xcode-12.app`
+
