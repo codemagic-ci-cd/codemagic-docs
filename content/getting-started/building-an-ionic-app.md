@@ -241,7 +241,7 @@ workflows:
       #     PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
       #     mkdir -p "$PROFILES_HOME"
       #     PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-      #     echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+      #     echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
       #     echo "Saved provisioning profile $PROFILE_PATH"
       - name: Fetch signing files
         script: |
@@ -343,7 +343,7 @@ workflows:
       #     PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
       #     mkdir -p "$PROFILES_HOME"
       #     PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-      #     echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > $PROFILE_PATH
+      #     echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
       #     echo "Saved provisioning profile $PROFILE_PATH"
       - name: Fetch signing files
         script: |
