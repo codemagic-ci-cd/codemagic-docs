@@ -19,11 +19,7 @@ Please follow the format of existing issues for consistency.
 
 ## Development
 
-Development requires [Hugo static site generator](https://gohugo.io) v077.0 from [releases page](https://github.com/gohugoio/hugo/releases) or with Homebrew for Linux and macOS users.
-
-```
-brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/79894aee20a146d6cf7db7b4a362e7d491f499a1/Formula/hugo.rb
-```
+Development requires [Hugo static site generator](https://gohugo.io) hugo_extended v0.77.0 from [releases page](https://github.com/gohugoio/hugo/releases).
 
 Windows users can install [Chocolatey](https://chocolatey.org/install). After that Hugo can be installed with
 
