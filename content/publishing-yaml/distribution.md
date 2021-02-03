@@ -85,6 +85,8 @@ publishing:
     rollout_fraction: 0.25            # Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
 ```
 
+You can override the specified in publishing track with environment variable `GOOGLE_PLAY_TRACK`.
+
 {{<notebox>}}
 The proper way to add your keys in `codemagic.yaml` is to copy the contents of the key file and [encrypt](../building/encrypting) it. Then add the encrypted value into the configuration file.
 {{</notebox>}}
