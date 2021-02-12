@@ -79,7 +79,7 @@
             transform: rotate(-45deg);
         }
     }
-    @media (max-width: 840px) {
+    @media (max-width: 900px) {
         display: block;
     }
 }
@@ -167,7 +167,7 @@
     justify-content: space-between;
     align-items: center;
 
-    @media (min-width: 841px) {
+    @media (min-width: 901px) {
         .menu-link,
         #login-link,
         .label {
@@ -194,7 +194,7 @@
     color: $black;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1065px) {
     #header-logo {
         margin-right: 20px;
     }
@@ -204,7 +204,7 @@
         padding: 0 10px;
     }
 }
-@media (min-width: 841px) {
+@media (min-width: 901px) {
     #signup-btn {
         background-color: $blue;
         color: white;
@@ -329,7 +329,7 @@
         }
     }
 }
-@media (max-width: 840px) {
+@media (max-width: 900px) {
     #header-menu-wrap {
         display: none;
         position: fixed;
