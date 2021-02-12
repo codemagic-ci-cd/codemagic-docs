@@ -97,9 +97,10 @@ In order to use manual code signing, [encrypt](../building/encrypting/#encryptin
 
 ```yaml
 environment:
-  FCI_CERTIFICATE: Encrypted(...)
-  FCI_CERTIFICATE_PASSWORD: Encrypted(...)
-  FCI_PROVISIONING_PROFILE: Encrypted(...)
+  vars:
+    FCI_CERTIFICATE: Encrypted(...)
+    FCI_CERTIFICATE_PASSWORD: Encrypted(...)
+    FCI_PROVISIONING_PROFILE: Encrypted(...)
 ```
 
 Then add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
