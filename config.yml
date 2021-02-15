@@ -50,9 +50,12 @@ menu:
     - identifier: publishing-yaml
       name: Publishing
       weight: 5
+    - identifier: integrations
+      name: Integrations
+      weight: 6
     - identifier: setup-flutter
       name: Flutter projects via UI
-      weight: 6
+      weight: 7
     - identifier: flutter
       name: Build configuration
       weight: 1
@@ -87,9 +90,6 @@ menu:
     - identifier: specs
       name: Build machine specs
       weight: 12
-    - identifier: notes
-      name: Release notes
-      weight: 13
 
 mediaTypes:
   video/mp4:
