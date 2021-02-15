@@ -8,7 +8,7 @@ weight: 9
 Reporting to GitHub Checks is available for repositories connected via [Codemagic GitHub App](../getting-started/signup/#selected-repositories-github-app) integration.
 {{</notebox>}}
 
-If you have set up [checks](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-status-checks#checks) in GitHub, your workflow build summary will appear in the Checks tab of the pull request in GitHub. For every build on the branch to be merged, Codemagic will report the build summary along with the status and logs of individual build steps to GitHub. Failed checks will block merging the pull request.
+If you have set up [checks](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-status-checks#checks) in GitHub, your workflow build summary will appear in the Checks tab of the pull request in GitHub. For every build on the branch to be merged, Codemagic will report the build summary along with the status and logs of individual build steps to GitHub. Failed checks will block merging the pull request. In case reporting commit check failed, Codemagic attempts to report commit status.
 
 Checks can be set up in GitHub when configuring [branch protection rules](https://docs.github.com/en/github/administering-a-repository/managing-a-branch-protection-rule) for a repository. 
 
