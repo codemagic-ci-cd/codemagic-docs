@@ -58,7 +58,7 @@ If you want to transition your issue to another status you will need to know wha
 
 ## Adding formatted comments to a Jira issue
 
-Copy the **.scripts** folder to the root of your project. This folder contains a template file called **jira.json** which is used to add formatted comments to a Jira issue. 
+Copy the **.templates** folder to the root of your project. This folder contains a template file called **jira.json** which is used to add formatted comments to a Jira issue. 
 
 The Atlassasion Document Format (ADF) is used to format the comment layout and style. Click [here](https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/) for more information about ADF and how to modify this template. 
 
