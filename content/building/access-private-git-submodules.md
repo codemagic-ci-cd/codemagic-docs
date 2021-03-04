@@ -21,9 +21,22 @@ All environment variables whose name has the suffix `_SSH_KEY` will be automatic
 If you wish to use a **custom** environment variable name without the suffix `_SSH_KEY`, add the following **post-clone** script to add the key to the SSH agent.
 
 ```bash
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 echo "${CUSTOM_KEY_NAME}" > /tmp/ssh_key
 chmod 600 /tmp/ssh_key
 eval `ssh-agent -s`
 ssh-add /tmp/ssh_key
+```
+
+### Using multiple SSH keys
+
+Pay attention to the fact that when multiple SSH keys added, git will still try to take the first one (for example, when installing private dependencies). You may swap your environment variables in a way that the required SSH key goes first. But a more robust solution will be to add the key to the SSH agent explicitly before invoking a command which requires it.
+
+```bash
+#!/usr/bin/env bash
+echo "${MY_SSH_KEY}" > /tmp/ssh_key
+chmod 600 /tmp/ssh_key
+eval `ssh-agent -s`
+ssh-add /tmp/ssh_key
+... # following command(s) that requires the key
 ```
