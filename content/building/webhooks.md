@@ -6,7 +6,7 @@ weight: 4
 
 Webhooks are necessary in order to be able to trigger builds automatically in response to events in the repository.
 
-* **GitHub**: Open your project and navigate to **Settings** > **Webhooks** > **Add webhook**, paste the **payload URL** from below, make sure **Content type** is `application/json` and select the following events: **Branch or tag creation**, **Pull requests**, **Pushes**.
+* **GitHub**: Open your project and navigate to **Settings** > **Webhooks** > **Add webhook**, paste the **payload URL** from below (both `application/json` or `application/x-www-form-urlencoded` are supported as the **Content type**), and select the following events: **Branch or tag creation**, **Pull requests**, **Pushes**.
 
 * **GitLab**: Navigate to **Settings** > **Webhooks**, paste the **payload URL** and check the following boxes in the **Trigger** section: **Push events**, **Tag push events**, **Merge request events**. Also, be sure to enable **SSL verification**.
 
