@@ -38,5 +38,5 @@ echo "${MY_SSH_KEY}" > /tmp/ssh_key
 chmod 600 /tmp/ssh_key
 eval `ssh-agent -s`
 ssh-add /tmp/ssh_key
-... # following command(s) that requires the key
+... # enter the commands that require the key
 ```
