@@ -30,7 +30,7 @@ ssh-add /tmp/ssh_key
 
 ### Using multiple SSH keys
 
-Pay attention to the fact that when multiple SSH keys added, git will still try to take the first one (for example, when installing private dependencies). You may swap your environment variables in a way that the required SSH key goes first. But a more robust solution will be to add the key to the SSH agent explicitly before invoking a command which requires it.
+When you add multiple SSH keys, git will by default attempt to use the first key available, which may cause problems when installing private dependencies. As a workaround, you can change the order of your environment variables in a way that the required SSH key comes first. A more robust solution would be to explicitly add the key to the SSH agent before invoking a command which requires it, as in the example below.
 
 ```bash
 #!/usr/bin/env bash
