@@ -51,7 +51,7 @@ agvtool new-version -all $(($BUILD_NUMBER + 1))
 
 Use [get-latest-app-store-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-app-store-build-number.md#get-latest-app-store-build-number) or [get-latest-testflight-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-testflight-build-number.md#get-latest-testflight-build-number) actions from [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/app-store-connect#app-store-connect) Codemagic CLI Tool to get the latest build numbers.
 
-In order to do that, you need to provide API access to App Store Connect API by providing `ISSUER_ID`, `KEY_IDENTIFIER` and `PRIVATE_KEY` as arguments to the , as defined below.
+In order to do that, you need to provide API access to App Store Connect API by providing `ISSUER_ID`, `KEY_IDENTIFIER` and `PRIVATE_KEY` as arguments to the action, as defined below.
 
 Additionally, you will need to provide the Application Apple ID (an automatically generated ID assigned to your app, e.g. `1234567890`).
 It can be found under **General > App Information > Apple ID** under your application in App Store Connect.
@@ -102,7 +102,7 @@ Alternatively, each property can be specified in the `scripts` section of the YA
 
 #### Saving to environment variables in UI (for Flutter projects)
 
-Add the following environment variables to your Flutter project in **App settings > Environment variables** (See the details [here](https://docs.codemagic.io/flutter/env-variables/))
+Add the following environment variables to your Flutter project in **App settings > Environment variables** (See the details [here](https://docs.codemagic.io/flutter/env-variables/)):
 
 - `APP_STORE_CONNECT_ISSUER_ID`
 - `APP_STORE_CONNECT_KEY_IDENTIFIER`
@@ -112,7 +112,7 @@ Add the following environment variables to your Flutter project in **App setting
 
 Once you have the App Store Connect API access set with mentioned above environment variables, you can get the build number using the tool and set your incremented project version.
 
-Add the following script under your `scripts` field for `codemagic.yaml`, or as a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) in UI settings (for Flutter projects)
+Add the following script under your `scripts` field for `codemagic.yaml`, or as a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) in UI settings (for Flutter projects):
 
 ```bash
 export APP_STORE_CONNECT_PRIVATE_KEY=$(echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode) # if you encrypted the file itself, not its content
@@ -120,7 +120,7 @@ LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number '12345
 agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 ```
 
-To use the latest build number from Testflight use a similar script
+To use the latest build number from Testflight use a similar script:
 
 ```bash
 export APP_STORE_CONNECT_PRIVATE_KEY=$(echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode) # if you encrypted the file itself, not its content
@@ -166,11 +166,11 @@ Alternatively, credentials can be specified as a command argument with the dedic
 
 ### Saving the API access argument to environment variables in UI (for Flutter projects)
 
-Add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutter project in **App settings > Environment variables** (See the details [here](https://docs.codemagic.io/flutter/env-variables/))
+Add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutter project in **App settings > Environment variables** (See the details [here](https://docs.codemagic.io/flutter/env-variables/)).
 
 ### Get the build number
 
-Once you have the Google Play Developer API access set with the mentioned above environment variable, you can get the build number using the tool
+Once you have the Google Play Developer API access set with the mentioned above environment variable, you can get the build number using the tool:
 
 ```bash
 export GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=$(echo $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS | base64 --decode) # if you encrypted the file itself, not its content
@@ -185,10 +185,10 @@ There are number of ways how you can pass the obtained build number to an Androi
 
 #### Get the build number in UI settings (for Flutter projects)
 
-If you encrypted the content (not the file) of your gcloud service account credentials and added it as the environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immideately as a build argument to your android build command and increment it
+If you encrypted the content (not the file) of your gcloud service account credentials and added it as the environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immideately as a build argument to your android build command to increment the build number:
 
 ```bash
 --build-number=$(($(google-play get-latest-build-number --package-name 'com.google.example') + 1))  # use your own package name
 ```
 
-Alternatively you can add a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) and write the build number to a file, which will be read from your `android/app/build.gradle` during the build (See details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file))
+Alternatively you can add a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) and write the build number to a file, which will be read from your `android/app/build.gradle` during the build (See details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file)).
