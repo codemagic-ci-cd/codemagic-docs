@@ -30,9 +30,13 @@ To add a new branch pattern:
 
 Under **Automatic build triggering**, you can select when to trigger builds.
 
+{{<notebox>}}
+Codemagic automatically adds webhooks to the repositories added via GitHub app or from GitHub, GitLab or Bitbucket via the OAuth integration after you have enabled any of the triggers in this section. For repositories added via SSH or HTTP/HTTPS, you would have to [set up webhooks manually](../building/webhooks). Note that webhook triggers might not be supported for all repository providers.
+{{</notebox>}}
+
 **Trigger on push**. When checked, a build will be started every time you commit code to any of the tracked branches.
 
-**Trigger on pull request update** (not supported for apps from custom sources). When checked, your workflow is run when a pull request is opened or updated to verify the resulting merge commit. 
+**Trigger on pull request update**. When checked, your workflow is run when a pull request is opened or updated to verify the resulting merge commit. 
 
 * For triggering pull requests, you can specify whether each branch pattern matches the **source** or the **target** branch of the pull request.
 
@@ -43,5 +47,3 @@ Under **Automatic build triggering**, you can select when to trigger builds.
 **Cancel outdated webhook builds**. When checked, Codemagic will automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch. We recommend enabling this feature when you're making several commits, each of which triggers a build.
 
 If you don't enable any automatic build triggers, you can start builds only manually for this workflow.
-
-Codemagic automatically adds webhooks to GitHub, GitLab, and Bitbucket after you have enabled any of the triggers in **App settings > Build triggers > Automatic build triggering**. In the case Codemagic is unable to create a webhook, you would have to [set up webhooks manually](../building/webhooks).
