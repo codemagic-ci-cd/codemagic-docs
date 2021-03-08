@@ -36,7 +36,7 @@ Then add the following build arguments:
 
 ## Set Xcode project build number via command line
 
-Calling agvtool is another way of forcing Xcode to set the build version for your next build. 
+Calling agvtool is another way of forcing Xcode to set the build version for your next build.
 
 ```bash
 #!/bin/sh
@@ -104,7 +104,7 @@ Add the following environment variables to your Flutter project in **App setting
 - `APP_STORE_CONNECT_KEY_IDENTIFIER`
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-### Set the build number with `avgtool`
+### Set the build number with `agvtool`
 
 Once you have the App Store Connect API access set with mentioned above environment variables, you can get the build number using the tool and set your incremented project version.
 
