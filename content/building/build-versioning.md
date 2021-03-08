@@ -143,7 +143,7 @@ In order to do that, you need to provide API access to Google Play Developer API
 Additionally, you will need to provide the package name of the app in Google Play Console (Ex. `com.google.example`).
 
 {{<notebox>}}
-If you use `codemagic.yaml` config and you have [Google Play publishing](https://docs.codemagic.io/publishing-yaml/distribution/#google-play) setup, you are good to go directly to [Get the build number](#get-the-build-number)
+If you use `codemagic.yaml` config and you have [Google Play publishing](https://docs.codemagic.io/publishing-yaml/distribution/#google-play) setup, you can reuse the existing service account credentials and go directly to [Get the build number](#get-the-build-number). Only make sure they are specified under the`GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable.
 {{</notebox>}}
 
 ### Creating Google service account credentials
