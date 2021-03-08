@@ -170,7 +170,7 @@ LATEST_BUILD_NUMBER=google-play get-latest-build-number --package-name 'com.goog
 ```
 
 {{<notebox>}}
-By default, the action will try to get the latest build number as the maximum build number across all tracks (`internal`, `alpha`, `beta`, `production`). If you want to limit the search, you can specify a particular track(s) with `--tracks` optional argument. Check the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--tracksinternal--alpha--beta--production).
+By default, the action will try to get the latest build number as the maximum build number across all tracks (`internal`, `alpha`, `beta`, `production`). If you want to limit the search, you can specify a particular track(s) with the optional argument `--tracks` described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--tracksinternal--alpha--beta--production).
 {{</notebox>}}
 
 There are number of ways how you can pass the obtained build number to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Check the [android-versioning-example repository](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for more details.
