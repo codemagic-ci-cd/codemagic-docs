@@ -15,24 +15,24 @@ weight: 1
 
 - System version `macOS 10.15.5 (19F101)`
 - Kernel version `Darwin 19.5.0`
-- Disk `322GB (Free Space: 31GB)`
+- Disk `322GB (Free Space: 26GB)`
 
 ## Pre-installed tools
 
 - Android tools `$HOME/programs/android-sdk-macosx`
 - aws `2.0.50`
-- cocoapods `1.10.0`
+- cocoapods `1.10.1`
 - cordova `10.0.0`
 - curl
 - dart `2.10.5`
 - docker `20.10.2`
 - fastlane `2.172.0`
 - firebase `8.10.0`
-- flutter `1.22.6 ($HOME/programs/flutter)`
+- flutter `2.0.1 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - git `2.30.0`
 - gradle `6.1.1`
-- homebrew `2.7.5`
+- homebrew `3.0.4`
 - ionic `5.4.16`
 - jq
 - node `12.18.4`
