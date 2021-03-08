@@ -56,6 +56,10 @@ In order to do that, you need to provide API access to App Store Connect API by 
 Additionally, you will need to provide the Application Apple ID (an automatically generated ID assigned to your app, e.g. `1234567890`).
 It can be found under **General > App Information > Apple ID** under your application in App Store Connect.
 
+{{<notebox>}}
+If you use `codemagic.yaml` config and you have [Automatic code signing](https://docs.codemagic.io/code-signing-yaml/signing-ios/#automatic-code-signing) setup, you are good to go directly to [Set the build number with `agvtool`](#set-the-build-number-with-agvtool)
+{{</notebox>}}
+
 ### Creating the App Store Connect API key
 
 It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
@@ -80,7 +84,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 
   This is the private API key downloaded from App Store Connect. Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
 
-#### to `codemagic.yaml` config
+#### Saving to `codemagic.yaml` config
 
 Save the API key and the related information as [environment](../getting-started/yaml#environment) variables. Make sure to [encrypt](./encrypting/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
 
@@ -96,7 +100,7 @@ environment:
 Alternatively, each property can be specified in the `scripts` section of the YAML file as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
 {{</notebox>}}
 
-#### to environment variables in UI (for Flutter projects)
+#### Saving to environment variables in UI (for Flutter projects)
 
 Add the following environment variables to your Flutter project in **App settings > Environment variables** (See the details [here](https://docs.codemagic.io/flutter/env-variables/))
 
@@ -137,6 +141,10 @@ Use [get-latest-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/
 In order to do that, you need to provide API access to Google Play Developer API by providing `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` as arguments to the action, as defined below.
 
 Additionally, you will need to provide the package name of the app in Google Play Console (Ex. `com.google.example`).
+
+{{<notebox>}}
+If you use `codemagic.yaml` config and you have [Google Play publishing](https://docs.codemagic.io/publishing-yaml/distribution/#google-play) setup, you are good to go directly to [Get the build number](#get-the-build-number)
+{{</notebox>}}
 
 ### Creating Google service account credentials
 
