@@ -51,7 +51,7 @@ agvtool new-version -all $(($BUILD_NUMBER + 1))
 
 Use [get-latest-app-store-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-app-store-build-number.md#get-latest-app-store-build-number) or [get-latest-testflight-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-testflight-build-number.md#get-latest-testflight-build-number) actions from [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/app-store-connect#app-store-connect) Codemagic CLI Tool to get the latest build numbers.
 
-In order to do that, you need to provide API access to App Store Connect API by providing `ISSUER_ID`, `KEY_IDENTIFIER` and `PRIVATE_KEY` as arguments to the action, similarly how it's done while [Signing iOS apps](https://docs.codemagic.io/code-signing-yaml/signing-ios/).
+In order to do that, you need to provide API access to App Store Connect API by providing `ISSUER_ID`, `KEY_IDENTIFIER` and `PRIVATE_KEY` as arguments to the , as defined below.
 
 Additionally, you will need to provide the Application Apple ID (an automatically generated ID assigned to your app, e.g. `1234567890`).
 It can be found under **General > App Information > Apple ID** under your application in App Store Connect.
@@ -66,17 +66,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 4. Click **Generate**.
 5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
-### Saving the API key to environment variables
-
-Save the API key and the related information as [environment](../getting-started/yaml#environment) variables. Make sure to [encrypt](./encrypting/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
-
-```yaml
-environment:
-  vars:
-    APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
-    APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
-    APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
-```
+### Saving the API access arguments to environment variables
 
 - `APP_STORE_CONNECT_KEY_IDENTIFIER`
 
@@ -90,11 +80,35 @@ environment:
 
   This is the private API key downloaded from App Store Connect. Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
 
+#### to `codemagic.yaml` config
+
+Save the API key and the related information as [environment](../getting-started/yaml#environment) variables. Make sure to [encrypt](./encrypting/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
+
+```yaml
+environment:
+  vars:
+    APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
+    APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
+    APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
+```
+
 {{<notebox>}}
 Alternatively, each property can be specified in the `scripts` section of the YAML file as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
 {{</notebox>}}
 
-Once you have the App Store Connect API access set with mentioned above environment variables, you can get the build number using the tool and set your incremented project version
+#### to environment variables in UI (for Flutter projects)
+
+Add the following environment variables to your Flutter project in **App settings > Environment variables** (See the details [here](https://docs.codemagic.io/flutter/env-variables/))
+
+- `APP_STORE_CONNECT_ISSUER_ID`
+- `APP_STORE_CONNECT_KEY_IDENTIFIER`
+- `APP_STORE_CONNECT_PRIVATE_KEY`
+
+### Set the build number with `avgtool`
+
+Once you have the App Store Connect API access set with mentioned above environment variables, you can get the build number using the tool and set your incremented project version.
+
+Add the following script under your `scripts` field for `codemagic.yaml`, or as a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) in UI settings (for Flutter projects)
 
 ```bash
 export APP_STORE_CONNECT_PRIVATE_KEY=$(echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode) # if you encrypted the file itself, not its content
@@ -102,7 +116,7 @@ LATEST_BUILD_NUMBER=app-store-connect get-latest-app-store-build-number '1234567
 agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 ```
 
-To use the latest build number from Testflight use a similar command
+To use the latest build number from Testflight use a similar script
 
 ```bash
 export APP_STORE_CONNECT_PRIVATE_KEY=$(echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode) # if you encrypted the file itself, not its content
@@ -118,18 +132,17 @@ Alternatively, if you use `YAML` configuration, you may just export the value to
 
 ## Use Codemagic CLI Tools to get the latest build number from Google Play
 
-Use [get-latest-build-number]() action from [google-play]() Codemagic CLI Tool to get the latest build number from Google Play.
+Use [get-latest-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#get-latest-build-number) action from [google-play](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/google-play#google-play) Codemagic CLI Tool to get the latest build number from Google Play.
 
-In order to do that, you need to provide API access to Google Play Developer API by providing `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` as arguments to the action, similarly how it's done while for [Google Play publishing](https://docs.codemagic.io/publishing-yaml/distribution/#google-play).
-
-Package name of the app in Google Play Console (Ex: com.google.example)
-
+In order to do that, you need to provide API access to Google Play Developer API by providing `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` as arguments to the action, as defined below.
 
 Additionally, you will need to provide the package name of the app in Google Play Console (Ex. `com.google.example`).
 
 ### Creating Google service account credentials
 
 You will need to set up a service account in Google Play Console and create a JSON key with credentials. See how to [set up a service account and create a key](../knowledge-base/google-play-api/#setting-up-the-service-account-on-google-play-and-google-cloud-platform).
+
+### Saving the API access argument to environment variables in `codemagic.yaml` config
 
 Save the API key as an [environment](../getting-started/yaml#environment) variable. Make sure to [encrypt](./encrypting/#encrypting-sensitive-data) the values of the variable before adding it to the configuration file.
 
@@ -140,8 +153,14 @@ environment:
 ```
 
 {{<notebox>}}
-Alternatively, credentials can be specified as a command argument with the dedicated flag, see the details [here](). But anyway you should have them in environment variables so that they can be decrypted. In that case, the environment variable will be fallback for missing value in the script.
+Alternatively, credentials can be specified as a command argument with the dedicated flag, see the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--credentialsgcloud_service_account_credentials). But anyway you should have them in environment variables so that they can be decrypted. In that case, the environment variable will be fallback for missing value in the script.
 {{</notebox>}}
+
+### Saving the API access argument to environment variables in UI (for Flutter projects)
+
+Add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutter project in **App settings > Environment variables** (See the details [here](https://docs.codemagic.io/flutter/env-variables/))
+
+### Get the build number
 
 Once you have the Google Play Developer API access set with the mentioned above environment variable, you can get the build number using the tool
 
@@ -151,7 +170,17 @@ LATEST_BUILD_NUMBER=google-play get-latest-build-number --package-name 'com.goog
 ```
 
 {{<notebox>}}
-By default, the action will try to get the latest build number as the maximum build number across all tracks (`internal`, `alpha`, `beta`, `production`). If you want to limit the search, you can specify a particular track(s) with `--tracks` optional argument. Check the details [here]().
+By default, the action will try to get the latest build number as the maximum build number across all tracks (`internal`, `alpha`, `beta`, `production`). If you want to limit the search, you can specify a particular track(s) with `--tracks` optional argument. Check the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--tracksinternal--alpha--beta--production).
 {{</notebox>}}
 
 There are number of ways how you can pass the obtained build number to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Check the [android-versioning-example repository](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for more details.
+
+#### Get the build number in UI settings (for Flutter projects)
+
+If you encrypted the content (not the file) of your gcloud service account credentials and added it as the environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immideately as a build argument to your android build command and increment it
+
+```bash
+--build-number=$(($(google-play get-latest-build-number --package-name 'com.google.example') + 1))  # use your own package name
+```
+
+Alternatively you can add a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) and write the build number to a file, which will be read from your `android/app/build.gradle` during the build (See details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file))
