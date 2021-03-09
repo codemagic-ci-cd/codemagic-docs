@@ -6,6 +6,12 @@ aliases:
 weight: 1
 ---
 
+## March 2021
+
+### Auto-increment build numbers
+
+Using [Codemagic CLI Tools](https://github.com/codemagic-ci-cd/cli-tools), you can now set your build number based on the currently published build number in the [Google Play](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/README.md), [App Store](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-app-store-build-number.md), or [Test Flight](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-testflight-build-number.md). See the [build versioning docs](../building/build-versioning) for all the details on how to set up the [Apple App Store](../building/build-versioning/#use-codemagic-cli-tools-to-get-the-latest-build-number-from-app-store-or-testflight) and [Google Play](../building/build-versioning/#use-codemagic-cli-tools-to-get-the-latest-build-number-from-google-play) credentials and script commands to enable auto-versioning in yaml or Flutter UI configuration. See the [Android Versioning Sample Application](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for an example of using various versioning methods in Android.
+
 ## January 2021
 
 ### Scheduled builds
