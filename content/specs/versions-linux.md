@@ -41,7 +41,6 @@ weight: 4
 - wget
 - yarn `1.22.5`
 - yq `3.3.2`
-- zip
 
 ## Android Studio 4.1.2 (201.8743.12.41.7042882)
 
