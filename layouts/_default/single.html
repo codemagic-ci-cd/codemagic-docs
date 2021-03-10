@@ -3,6 +3,9 @@
   {{ with .Description }}
     <p class="description">{{.}}</p>
   {{ end }}
+  {{ with .Params.StartLineBreak }}
+    <br/>
+  {{ end }}
   {{ partial "content" . }}
   {{ with .TableOfContents }}
     <aside id="toc" data-js-toc>
