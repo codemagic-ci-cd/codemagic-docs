@@ -51,7 +51,7 @@ weight: 1
 
 ## Xcode 12.5 (12E5244e)
 
-This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
+This is the Xcode version used by default when you select `edge` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-12.5.app`
 
