@@ -1,5 +1,5 @@
 ---
-description: Upload your apk or ipa file to App Center
+description: How to upload an apk or ipa file to App Center in a Flutter UI post-build script
 title: Publish app artifacts to App Center
 weight: 6
 ---

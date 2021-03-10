@@ -1,5 +1,4 @@
 ---
-description: Create a Git tag referencing your app version
 title: Adding a Git tag with app version
 weight: 2
 aliases:

@@ -1,5 +1,5 @@
 ---
-description: Speed up your builds by storing dependencies on Codemagic.
+description: How to cache dependencies for builds configured with the Flutter UI
 title: Dependency caching
 weight: 6
 aliases: 

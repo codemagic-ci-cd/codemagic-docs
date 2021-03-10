@@ -1,5 +1,5 @@
 ---
-description: Get latest information about the status of Codemagic CI/CD.
+description: How to get the latest information about uptime status of Codemagic
 title: Codemagic status page
 weight: 3
 ---

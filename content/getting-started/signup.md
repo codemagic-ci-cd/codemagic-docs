@@ -1,5 +1,4 @@
 ---
-description: Sign up to Codemagic CI/CD
 title: Signing up to Codemagic
 weight: 1
 aliases:

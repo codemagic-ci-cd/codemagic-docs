@@ -1,5 +1,5 @@
 ---
-description: Sign your Android app for publishing to Google Play Store
+description: How to set up Android code signing in the Flutter UI
 title: Android code signing
 weight: 2
 ---

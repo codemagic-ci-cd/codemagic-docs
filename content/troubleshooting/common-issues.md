@@ -1,5 +1,5 @@
 ---
-description: Find out how to overcome frequent issues with building your Flutter app on Codemagic. 
+description: How to overcome common issues building mobile apps on Codemagic 
 title: Common issues
 weight: 4
 ---

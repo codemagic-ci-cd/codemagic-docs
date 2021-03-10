@@ -1,5 +1,5 @@
 ---
-description: Deploy the Flutter app to Google Play
+description: Deploy a Flutter app to Google Play using the Flutter UI
 title: Google Play
 weight: 2
 ---

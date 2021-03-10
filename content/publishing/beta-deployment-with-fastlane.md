@@ -1,5 +1,5 @@
 ---
-description: Run fastlane scripts to deploy to beta distribution services 
+description: How to deploy to fastlane beta in a Flutter UI pre-publish script 
 title: Run fastlane for beta deployment
 weight: 7
 ---

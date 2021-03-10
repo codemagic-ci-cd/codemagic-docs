@@ -1,6 +1,6 @@
 ---
-title: Using Codemagic CLI tools locally
-description: Using Codemagic CLI tools locally or in other environments.
+title: Codemagic CLI tools
+description: How to use Codemagic CLI tools locally or in other environments
 weight: 10
 aliases: 
     - '../yaml/runninglocally'

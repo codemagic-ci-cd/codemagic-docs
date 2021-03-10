@@ -1,5 +1,5 @@
 ---
-description: Create a secure SSH key pair in your terminal
+description: How to create a secure SSH key pair in terminal
 title: Generating an SSH key
 weight: 1
 ---

@@ -1,6 +1,6 @@
 ---
 title: Build status badges
-description: Use Codemagic status badges to display the status of the build
+description: How to add build status badges using codemagic.yaml
 weight: 3
 aliases:
 ---

@@ -1,5 +1,5 @@
 ---
-description: Information about Codemagic feature releases
+description: Codemagic release log for key features
 title: Codemagic feature releases
 aliases:  
   - '../releases-and-versions/release-notes'

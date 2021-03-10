@@ -1,5 +1,5 @@
 ---
-description: Sign Flutter app for iOS
+description: How to set up iOS code signing in the Flutter UI
 title: iOS code signing
 weight: 1
 ---

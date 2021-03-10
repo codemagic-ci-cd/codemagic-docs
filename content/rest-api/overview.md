@@ -1,6 +1,5 @@
 ---
 title: Overview
-description: Overview of Codemagic API.
 weight: 1
 ---
 

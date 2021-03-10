@@ -1,6 +1,6 @@
 ---
 title: Using codemagic.yaml
-description: Customize the build and configure all your workflows in a single file.
+description: Configure all your workflows in a single file
 weight: 3
 aliases:
   - '../building/yaml'

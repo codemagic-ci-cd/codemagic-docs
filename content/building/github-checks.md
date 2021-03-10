@@ -1,6 +1,6 @@
 ---
 title: GitHub Checks
-description: Report PR build statuses to GitHub as checks
+description: How to report PR build statuses to GitHub as checks
 weight: 9
 ---
 

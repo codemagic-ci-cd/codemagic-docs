@@ -1,6 +1,6 @@
 ---
 title: Publishing and deployment
-description: How to set up publishing and build status notifications
+description: How to set up publishing and build status notifications in codemagic.yaml
 weight: 1
 aliases:
     - '../yaml/distribution'

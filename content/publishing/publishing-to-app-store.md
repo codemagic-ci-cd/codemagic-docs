@@ -1,5 +1,5 @@
 ---
-description: Deploy the Flutter app to App Store and TestFlight
+description: How to deploy a Flutter app to App Store and TestFlight using the Flutter UI
 title: App Store Connect
 weight: 1
 ---

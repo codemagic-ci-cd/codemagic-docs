@@ -1,5 +1,6 @@
 ---
 title: Build versioning
+description: How to set a new build number to push to app stores
 weight: 5
 ---
 

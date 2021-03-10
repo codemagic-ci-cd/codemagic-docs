@@ -1,6 +1,5 @@
 ---
-description:
-  Run Flutter Driver tests on physical Android and iOS devices.
+description: How to configure Flutter Driver tests in the Flutter UI 
 title: Testing on AWS Device Farm
 weight: 5
 ---

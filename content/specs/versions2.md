@@ -1,5 +1,5 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic build machines.
+description: A list of tools available out-of-the-box on Codemagic build machines
 title: macOS build machine specification (Xcode 12+)
 aliases:
   - '../releases-and-versions/versions2'

@@ -1,5 +1,5 @@
 ---
-description: Receive artifacts of successful builds and build status updates with email or Slack.
+description: How to configure build status updates with links to artifacts in the Flutter UI
 title: Email and Slack notifications
 weight: 8
 ---

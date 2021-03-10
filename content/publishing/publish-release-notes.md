@@ -1,5 +1,5 @@
 ---
-description: Publish release notes with the build.
+description: How to publish build release notes using the Flutter UI
 title: Publish release notes
 weight: 4
 ---
