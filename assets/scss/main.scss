@@ -301,16 +301,6 @@ body {
                 padding-bottom: 40px;
                 margin-top: 0;
                 margin-bottom: 40px;
-
-                &::after {
-                    content: "";
-                    width: 150px;
-                    height: 10px;
-                    background: $grey-bg;
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                }
             }
             h2 { font-size: 36px; }
             h3 { font-size: 26px; }
