@@ -6,6 +6,10 @@ weight: 1
 
 Codemagic enables you to automatically publish your app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. To do so, you must first set up [iOS code signing](../code-signing/ios-code-signing/) and then configure publishing to App Store Connect.
 
+{{<notebox>}}
+This guide only applies to workflows configured with the **Flutter UI**. If your workflow is configured with **codemagic.yaml** please go to [Publishing to App Store Connect using codemagic.yaml](../publishing-yaml/distribution/#app-store-connect).
+{{</notebox>}}
+
 ## Requirements
 
 Codemagic needs your **Apple ID** and [**app-specific password**](https://support.apple.com/en-us/HT204397) to perform publishing to App Store Connect on your behalf. Publishing to App Store Connect requires that the app be signed with App Store **distribution certificate**.
