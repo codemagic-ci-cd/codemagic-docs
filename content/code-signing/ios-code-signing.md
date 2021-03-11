@@ -8,6 +8,10 @@ Code signing is required by Apple for integrating app services, installing your 
 
 To receive a signed `.ipa` file of your app on Codemagic, you need to set up code signing.
 
+{{<notebox>}}
+This guide only applies to workflows configured with the **Flutter UI**. If your workflow is configured with **codemagic.yaml** please go to [Signing iOS apps using codemagic.yaml](../code-signing-yaml/signing-ios). 
+{{</notebox>}}
+
 ## Prerequisites
 
 Before you can start signing or distributing your app, there are a few things you need.

@@ -1,10 +1,14 @@
 ---
 title: Signing Android apps
-description: How to set up code signing in codemagic.yaml
+description: How to set up Android code signing in codemagic.yaml
 weight: 2
 ---
 
 All Android applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. There are several ways to set up code signing for Android apps.
+
+{{<notebox>}}
+This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter UI** please go to [Signing Android apps using the Flutter UI](../code-signing/android-code-signing).
+{{</notebox>}}
 
 ## Signing Android apps using Gradle
 

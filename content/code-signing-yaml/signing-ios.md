@@ -1,11 +1,17 @@
 ---
 title: Signing iOS apps
-description: How to set up code signing in codemagic.yaml
+description: How to set up iOS code signing in codemagic.yaml
 weight: 1
 aliases: '../code-signing-yaml/signing'
 ---
 
 All iOS applications have to be digitally signed before they can be installed on real devices or made available to the public.
+
+{{<notebox>}}
+This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter UI** please go to [Signing iOS apps using the Flutter UI](../code-signing/ios-code-signing).
+{{</notebox>}}
+
+## Prerequisites
 
 Signing iOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. You can upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or use the automatic code signing option where Codemagic takes care of code signing and signing files management on your behalf. Read more about the two options below.
 
