@@ -1,6 +1,6 @@
 ---
 title: Build triggers
-description: How to enable automatic builds
+description: How to enable automatic builds in the Flutter workflow editor
 weight: 3
 aliases:
     - '../building/automatic-build-triggering'

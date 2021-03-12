@@ -1,5 +1,6 @@
 ---
 title: Build versioning
+description: How to set a new build number to push to app stores
 weight: 5
 ---
 
@@ -100,7 +101,7 @@ environment:
 Alternatively, each property can be specified in the `scripts` section of the YAML file as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
 {{</notebox>}}
 
-#### Saving to environment variables in UI (for Flutter projects)
+#### Saving to environment variables in the Flutter workflow editor
 
 Add the following environment variables to your Flutter project in **App settings > Environment variables** (See the details [here](https://docs.codemagic.io/flutter/env-variables/)):
 
@@ -112,7 +113,7 @@ Add the following environment variables to your Flutter project in **App setting
 
 Once you have the App Store Connect API access set with mentioned above environment variables, you can get the build number using the tool and set your incremented project version.
 
-Add the following script under your `scripts` field for `codemagic.yaml`, or as a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) in UI settings (for Flutter projects):
+Add the following script under your `scripts` field for `codemagic.yaml`, or as a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) in the Flutter workflow editor:
 
 ```bash
 export APP_STORE_CONNECT_PRIVATE_KEY=$(echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode) # if you encrypted the file itself, not its content
@@ -164,7 +165,7 @@ environment:
 Alternatively, credentials can be specified as a command argument with the dedicated flag, see the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--credentialsgcloud_service_account_credentials). But anyway you should have them in environment variables so that they can be decrypted. In that case, the environment variable will be fallback for missing value in the script.
 {{</notebox>}}
 
-### Saving the API access argument to environment variables in UI (for Flutter projects)
+### Saving the API access argument to environment variables in the Flutter workflow editor
 
 Add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutter project in **App settings > Environment variables** (See the details [here](https://docs.codemagic.io/flutter/env-variables/)).
 
@@ -183,7 +184,7 @@ By default, the action will try to get the latest build number as the maximum bu
 
 There are number of ways how you can pass the obtained build number to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Check the [android-versioning-example repository](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for more details.
 
-#### Get the build number in UI settings (for Flutter projects)
+#### Get the build number in the Flutter workflow editor
 
 If you encrypted the content (not the file) of your gcloud service account credentials and added it as the environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immideately as a build argument to your android build command to increment the build number:
 

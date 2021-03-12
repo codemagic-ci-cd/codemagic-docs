@@ -7,7 +7,7 @@ You can invite your team members to join the team in Codemagic free of charge. W
 
 ## Active users
 
-An active user is anyone who triggers a build manually from the UI or via the API, or automaticlly from a webhook in response to events in the repository. Active users are marked with a green badge with the build count on it. The number of active users for the ongoing subscription period is shown on the right sidebar in team settings. 
+An active user is anyone who triggers a build manually from the Codemagic UI or via the API, or automaticlly from a webhook in response to events in the repository. Active users are marked with a green badge with the build count on it. The number of active users for the ongoing subscription period is shown on the right sidebar in team settings.
 
 The active users count is reset at the beginning of every month. To see the active users of previous subscription periods, check the Billing history on the [Billing](../billing/billing) page.
 

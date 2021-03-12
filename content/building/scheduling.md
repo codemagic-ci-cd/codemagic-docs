@@ -2,6 +2,7 @@
 title: Scheduling builds
 description: Create schedules to run builds at regular intervals
 weight: 8
+startLineBreak: true
 ---
 
 {{<notebox>}}

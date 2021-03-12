@@ -1,5 +1,5 @@
 ---
-description: Add your mobile app from any private or public repository
+description: How to add an app to Codemagic from any private or public repository
 title: Adding repositories
 weight: 2
 ---
@@ -7,9 +7,8 @@ weight: 2
 When you sign up via OAuth, Codemagic already has access to the repositories you have available on your Git provider account. However, you can add apps from public or private as well as from cloud-based or self-hosted Git repositories.
 
 {{<notebox>}}
-
-- Note that webhooks for automatic build triggering need to be [created manually](../building/webhooks).
-  {{</notebox>}}
+Note that webhooks for automatic build triggering need to be [created manually](../building/webhooks).
+{{</notebox>}}
 
 ## Connecting repository via SSH
 

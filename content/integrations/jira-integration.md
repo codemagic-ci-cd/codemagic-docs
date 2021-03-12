@@ -1,6 +1,6 @@
 ---
 title: Jira integration
-description: Integrate your workflows with Jira
+description: How to integrate your workflows with Jira using codemagic.yaml
 weight: 1
 ---
 

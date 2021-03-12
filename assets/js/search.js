@@ -178,6 +178,7 @@ function getSearchIndex(pages) {
   var lunrIndex = lunr(function() {
     this.ref('uri')
     this.field('title', { boost: 15 })
+    this.field('subtitle', { boost: 10 })
     this.field('content', { boost: 5 })
 
     this.use(prunePlugins)
@@ -315,6 +316,7 @@ function getResultHtml(resultList, query) {
           $('<a>', { text: result.title, href: result.uri }).markRanges(
             result.positions.title
           ),
+          $('<p>', { text: result.subtitle }),
           snippets
             ? $('<p>', {
                 html: snippets.map(function(s) {
@@ -345,7 +347,7 @@ function getResults(index, query) {
     })
     .slice(0, 16)
     .map(function(result) {
-      var positions = { title: [], content: [] }
+      var positions = { title: [], subtitle: [], content: [] }
       $.each(result.matchData.metadata, function(_, termMetaData) {
         $.each(termMetaData, function(field, data) {
           positions[field].push.apply(positions[field], data.positionObject)

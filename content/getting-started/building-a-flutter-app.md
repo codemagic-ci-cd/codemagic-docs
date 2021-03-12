@@ -1,36 +1,37 @@
 ---
 title: Building a Flutter app
-description: Building a Flutter app with YAML.
+description: How to build a Flutter app with codemagic.yaml
 weight: 6
 aliases:	
   - '../yaml/building-a-flutter-app'
+startLineBreak: true
 ---
 
 {{<notebox>}}
-For documentation on building Flutter projects using the settings in Codemagic UI, please refer to [**Building Flutter apps via UI**](../flutter/flutter-projects).
+For documentation on building Flutter projects using the workflow editor, please refer to [**Building Flutter apps via the workflow editor**](../flutter/flutter-projects).
 {{</notebox>}}
 
 With `codemagic.yaml`, you can use Codemagic to build, test and publish Flutter apps, widgets, Flutter or Dart packages. The necessary build commands go under `scripts` in the [overall architecture](../getting-started/yaml#template) of the `codemagic.yaml` file. You can find some examples for building the most common types of Flutter projects below.
 
-## Exporting configuration from UI
+## Exporting configuration from the Flutter workflow editor
 
 You can get started with YAML easily if you have an existing project set up in Codemagic UI. 
 
-1. Navigate to your app settings.
+1. Navigate to your app workflow settings.
 2. In the **Configuration as code** section on the right sidebar, click **Download configuration**.
 
 {{<notebox>}}
 
 The YAML feature currently has the following **limitations**:
 
-* Exporting configuration from UI is supported for Flutter-based Android, iOS and web apps.
-* The exported configuration is not identical to the settings in the UI and lacks the configuration for some features, such as **Stop build if tests fail** and publishing to Codemagic Static Pages.
+* Exporting configuration from the workflow editor is supported for Flutter-based Android, iOS and web apps.
+* The exported configuration is not identical to the settings in the workflow editor and lacks the configuration for some features, such as **Stop build if tests fail** and publishing to Codemagic Static Pages.
 
 {{</notebox>}}
 
 ## Building with YAML
 
-In order to use `codemagic.yaml` for build configuration in Codemagic, it has to be committed to your repository. The file must be located in the root directory of the repository. When detected in the repository, `codemagic.yaml` is automatically used for configuring builds that are triggered in response to the events defined in the file. Any configuration in the UI is ignored.
+In order to use `codemagic.yaml` for build configuration in Codemagic, it has to be committed to your repository. The file must be located in the root directory of the repository. When detected in the repository, `codemagic.yaml` is automatically used for configuring builds that are triggered in response to the events defined in the file. Any configuration in the Flutter workflow editor is ignored.
 
 In order to use `codemagic.yaml` for manual builds, you must select the workflow to build from `codemagic.yaml`:
 

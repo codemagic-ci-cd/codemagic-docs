@@ -1,5 +1,5 @@
 ---
-description: Load your Firebase configuration files to Codemagic
+description: How to load Firebase configuration files into environment variables in a Flutter workflow editor pre-build script
 title: Loading Firebase configuration
 weight: 3
 aliases:

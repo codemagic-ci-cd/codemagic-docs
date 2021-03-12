@@ -54,7 +54,7 @@ menu:
       name: Integrations
       weight: 6
     - identifier: setup-flutter
-      name: Flutter projects via UI
+      name: Flutter workflow editor
       weight: 7
     - identifier: flutter
       name: Build configuration

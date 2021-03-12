@@ -1,5 +1,5 @@
 ---
-description: You can use custom scripts to publish app artifacts to external services.
+description: How to use Flutter workflow editor custom scripts to publish app artifacts to external services
 title: Publish build artifacts to Amazon S3
 weight: 5
 ---

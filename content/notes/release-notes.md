@@ -1,5 +1,5 @@
 ---
-description: Information about Codemagic feature releases
+description: Codemagic release log for key features
 title: Codemagic feature releases
 aliases:  
   - '../releases-and-versions/release-notes'
@@ -10,17 +10,17 @@ weight: 1
 
 ### Auto-increment build numbers
 
-Using [Codemagic CLI Tools](https://github.com/codemagic-ci-cd/cli-tools), you can now set your build number based on the currently published build number in the [Google Play](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/README.md), [App Store](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-app-store-build-number.md), or [Test Flight](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-testflight-build-number.md). See the [build versioning docs](../building/build-versioning) for all the details on how to set up the [Apple App Store](../building/build-versioning/#use-codemagic-cli-tools-to-get-the-latest-build-number-from-app-store-or-testflight) and [Google Play](../building/build-versioning/#use-codemagic-cli-tools-to-get-the-latest-build-number-from-google-play) credentials and script commands to enable auto-versioning in yaml or Flutter UI configuration. See the [Android Versioning Sample Application](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for an example of using various versioning methods in Android.
+Using [Codemagic CLI Tools](https://github.com/codemagic-ci-cd/cli-tools), you can now set your build number based on the currently published build number in the [Google Play](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/README.md), [App Store](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-app-store-build-number.md), or [Test Flight](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-testflight-build-number.md). See the [build versioning docs](../building/build-versioning) for all the details on how to set up the [Apple App Store](../building/build-versioning/#use-codemagic-cli-tools-to-get-the-latest-build-number-from-app-store-or-testflight) and [Google Play](../building/build-versioning/#use-codemagic-cli-tools-to-get-the-latest-build-number-from-google-play) credentials and script commands to enable auto-versioning in codemagic.yaml or the Flutter workflow editor. See the [Android Versioning Sample Application](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for an example of using various versioning methods in Android.
 
 ## January 2021
 
 ### Scheduled builds
 
-Whether you configure your builds in the UI or use the codemagic.yaml configuration file, you can now schedule your workflows to run on days and time that suits you the best. See how to [create build schedules](../building/scheduling).  
+Whether you configure your builds in the Flutter workflow editor or codemagic.yaml configuration file, you can now schedule your workflows to run on days and time that suits you the best. See how to [create build schedules](../building/scheduling).
 
 ### Support for `flutter build ipa`
 
-You can now use the `flutter build ipa` command to generate an .ipa file from the Flutter source. To use this build command with Flutter builds configured in the UI, select the **Use flutter build ipa** checkbox in **App settings > Build > iOS build command**. You can also use it in your codemagic.yaml configuration, see an example [here](../getting-started/building-a-flutter-app/#building-a-signed-ios-application-archive-ipa).
+You can now use the `flutter build ipa` command to generate an .ipa file from the Flutter source. To use this build command with Flutter builds configured in the workflow editor, select the **Use flutter build ipa** checkbox in **App settings > Build > iOS build command**. You can also use it in your codemagic.yaml configuration, see an example [here](../getting-started/building-a-flutter-app/#building-a-signed-ios-application-archive-ipa).
 
 Note that:
 * This command is available from Flutter version `1.24.0-6.0`.
@@ -36,7 +36,7 @@ In addition, it is now possible to connect the GitHub app integration in team se
 
 ### In-app priority and rollout fraction for Android releases
 
-Using both the UI and `codemagic.yaml`, you can now set two additional parameters for your Android builds that you publish to users through Google Play.
+Using both the Flutter workflow editor and `codemagic.yaml`, you can now set two additional parameters for your Android builds that you publish to users through Google Play.
 
 * **In-app priority** determines how strongly your app update will be recommended to existing users. The priority ranges from `0` (default) to `5` (high-priority update). Note that this feature is available only via Google Play API and for apps that support in-app updates.
 * **Rollout fraction** enables you to roll out the release to a percentage of users. Rollout fraction is a value between `0` and `1`, e.g. `0.25` to release to 25% of users.
@@ -78,7 +78,7 @@ Instead of having to save your settings in each section, there is now one global
 
 ### Using App Store Connect API for Apple Developer Portal integration
 
-Instead of creating a session with Apple Developer Portal, we are now using App Store Connect API keys for authentication. This means there will be no more expiring sessions or hassle with two-factor authentication when using automatic code signing. It is possible to set up several keys for code signing and select the right key in workflow settings. See how to [set up the Apple Developer Portal in Codemagic app](../code-signing/ios-code-signing/#automatic-code-signing) for builds that are configured in the UI. When building with `codemagic.yaml`, the API keys are added in the configuration file, see the instructions [here](../code-signing-yaml/signing-ios).
+Instead of creating a session with Apple Developer Portal, we are now using App Store Connect API keys for authentication. This means there will be no more expiring sessions or hassle with two-factor authentication when using automatic code signing. It is possible to set up several keys for code signing and select the right key in workflow settings. See how to [set up the Apple Developer Portal in Codemagic app](../code-signing/ios-code-signing/#automatic-code-signing) for builds that are configured in the Flutter workflow editor. When building with `codemagic.yaml`, the API keys are added in the configuration file, see the instructions [here](../code-signing-yaml/signing-ios).
 
 ### Support for multiple team owners
 
@@ -98,7 +98,7 @@ If you are not building a Flutter project, you still need to use the `codemagic.
 
 We have added a much-requested feature to cancel ongoing and queued webhook-triggered builds on push and pull request commit when a new build has been triggered for the same branch. This is convenient when you’re making several commits and don’t want to wait for the previous builds to finish while you’re only interested in the build for the most recent commit. 
 
-You can enable this feature in the UI by navigating to **App settings > Build triggers > Automatic build triggering** and selecting **Cancel outdated webhook builds**, or by setting `cancel_previous_builds: true` in the [triggering section](../getting-started/yaml/#triggering) of the YAML file.
+You can enable this feature in the Flutter workflow editor by navigating to **App settings > Build triggers > Automatic build triggering** and selecting **Cancel outdated webhook builds**, or by setting `cancel_previous_builds: true` in the [triggering section](../getting-started/yaml/#triggering) of the `codemagic.yaml` file.
 
 > If you’re interested in running builds in parallel, get in touch with our sales team through the [Codemagic business page](https://codemagic.io/enterprise/).
 
@@ -127,7 +127,7 @@ Note that timeouts do not consume any build minutes. See the relevant documentat
 
 ### Dynamic workflows with Codemagic API
 
-You can now configure your build and Flutter/Xcode/Cocoapods versions dynamically using API. If you have several similar workflows, you can now combine them into one and create parametrized API calls. This way you can run your workflows without having to change the settings in UI or in `codemagic.yaml`.
+You can now configure your build and Flutter/Xcode/Cocoapods versions dynamically using API. If you have several similar workflows, you can now combine them into one and create parametrized API calls. This way you can run your workflows without having to change the settings in the Flutter workflow editor or in the `codemagic.yaml` file.
 
 See [our documentation](../rest-api/builds/) or the <a href="https://blog.codemagic.io/dynamic-workflows-with-codemagic-api/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','dynamic-workflows-with-codemagic-api')">article about dynamic workflows</a> for more information.
 
@@ -135,7 +135,7 @@ See [our documentation](../rest-api/builds/) or the <a href="https://blog.codema
 
 ### More options to configure your build environment
 
-We recently updated the UI in the Build section of app settings with a dropdown field for `CocoaPods` version selection to make it easier to build with the versions required by your app. With `codemagic.yaml`, you have even more options available and can define which `Flutter`, `Xcode`, `CocoaPods`, `Node` and `npm` version to use for the build. See how to define software versions in YAML file [here](../building/yaml#environment).
+We recently updated the Flutter workflow editor in the Build section of app settings with a dropdown field for `CocoaPods` version selection to make it easier to build with the versions required by your app. With `codemagic.yaml`, you have even more options available and can define which `Flutter`, `Xcode`, `CocoaPods`, `Node` and `npm` version to use for the build. See how to define software versions in YAML file [here](../building/yaml#environment).
 
 ### Remote access to build machine via VNC
 
@@ -153,7 +153,7 @@ Your project is already available on the machine, so it’s easy to run your iOS
 
 ### Toggles for enabling/disabling publishing options
 
-We have improved Codemagic UI for publishing options and added the **Enabled** checkbox to the settings that allows to easily enable or disable an option. This way you no longer have to delete the configuration in order to turn off the feature for a workflow. In addition, the enabled/disabled status is displayed for each publishing option when you open the Publish section, so you can have a better overview of what the workflow is configured to do.
+We have improved the Flutter workflow editor for publishing options and added the **Enabled** checkbox to the settings that allows to easily enable or disable an option. This way you no longer have to delete the configuration in order to turn off the feature for a workflow. In addition, the enabled/disabled status is displayed for each publishing option when you open the Publish section, so you can have a better overview of what the workflow is configured to do.
 
 ## February 2020
 
@@ -177,7 +177,7 @@ The Publish section in app settings now contains an integration with GitHub for 
 
 ### Codemagic API key
 
-We have made Codemagic API key available from the UI, which will make integrating Codemagic to your workflows even easier. The key is available in **User settings > Integrations > Codemagic API**. Currently, the API key can be used to set up custom build triggers, read more about it [here](../building/automatic-build-triggering/#custom-build-triggers).
+We have made Codemagic API key available from the user settings UI, which will make integrating Codemagic to your workflows even easier. The key is available in **User settings > Integrations > Codemagic API**. Currently, the API key can be used to set up custom build triggers, read more about it [here](../building/automatic-build-triggering/#custom-build-triggers).
 
 ### Transfer personal paid minutes to team
 

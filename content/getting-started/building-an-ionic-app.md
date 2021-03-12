@@ -1,6 +1,6 @@
 ---
 title: Building an Ionic app 
-description: Building an Ionic app with YAML.
+description: How to build an Ionic app with codemagic.yaml
 weight: 7
 aliases:
   - '../yaml/building-an-ionic-app'

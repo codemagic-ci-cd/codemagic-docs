@@ -1,6 +1,6 @@
 ---
 title: Testing
-description: Testing with YAML.
+description: How to run tests with codemagic.yaml
 weight: 1
 aliases:
   - '../yaml/testing'
@@ -11,7 +11,7 @@ Test scripts are added under `scripts` in the [overall architecture](../getting-
 You can display test results visually in the build overview if you use expanded form of the script in `codemagic.yaml`.
 Just include the `test_report` field with a glob pattern matching the test result file location. Supported test report formats are [Junit XML](https://llg.cubic.org/docs/junit/) `.JSON` for Flutter's `--machine` report.
 
-## React Native unit test
+## React Native unit tests
 
 This is a basic example with jest, given that jest tests are defined in the `package.json` file.
 
@@ -21,7 +21,7 @@ npm test
 
 ## Native Android
 
-For non-UI tests or unit testing:
+For non-UI tests or unit tests:
 
 ```bash
 - name: Test
@@ -29,7 +29,7 @@ For non-UI tests or unit testing:
   test_report: app/build/test-results/**/*.xml
 ```
 
-UI tests (also known as instrumented tests):
+For UI tests (also known as instrumented tests):
 
 ```bash
 - name: Launch emulator
@@ -61,7 +61,7 @@ UI tests (also known as instrumented tests):
 
 Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
 
-## Flutter test
+## Flutter unit tests
 
     flutter test
 
@@ -117,5 +117,5 @@ scripts:
 ```
 
 {{<notebox>}}
-Make sure to use Flutter channel **Beta** or higher since Flutter for web is not yet available on **Stable**.
+Flutter for web is available in Flutter version **2.0.0** or higher on the **stable** channel.
 {{</notebox>}}

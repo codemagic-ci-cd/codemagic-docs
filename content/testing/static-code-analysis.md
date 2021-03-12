@@ -1,5 +1,5 @@
 ---
-description: Test your code with flutter analyze.
+description: How to run Flutter analyze in Flutter workflow editor configured builds
 title: Static code analysis
 weight: 2
 ---

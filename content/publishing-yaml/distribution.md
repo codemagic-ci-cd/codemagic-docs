@@ -1,6 +1,6 @@
 ---
 title: Publishing and deployment
-description: How to set up publishing and build status notifications
+description: How to set up publishing and build status notifications in codemagic.yaml
 weight: 1
 aliases:
     - '../yaml/distribution'
@@ -48,7 +48,7 @@ After you have successfully authorized Codemagic and connected your workspace, y
 
 #### Configuring Slack publishing
 
-The Slack channel for publishing is configured separately for each workflow in the `publishing` section of `codemagic.yaml` (refer [here](../publishing/email-and-slack-notifications/#slack) if you're configuring app settings in the UI).
+The Slack channel for publishing is configured separately for each workflow in the `publishing` section of `codemagic.yaml` (refer [here](../publishing/email-and-slack-notifications/#slack) if you're configuring app settings in the Flutter workflow editor).
 
 {{<notebox>}}
 In order to publish to **private channels**, you need to invite Codemagic app to the channels, otherwise the app does not have access to private channels. To invite Codemagic app to private channels, write `@codemagic` in the channel.

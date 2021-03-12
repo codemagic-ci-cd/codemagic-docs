@@ -11,4 +11,4 @@ Mac Pro machines are available for teams and users that have enabled [billing](.
 {{</notebox>}}
 
 * In `codemagic.yaml`, the build machine type can be specified in [workflow section](../getting-started/yaml#workflows). 
-* For Flutter projects configured via UI, the build machine type can be selected in **App settings > Workflow settings > Machine**.
+* For Flutter projects configured via the Flutter workflow editor, the build machine type can be selected in **App settings > Workflow settings > Machine**.

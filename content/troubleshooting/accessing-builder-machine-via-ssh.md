@@ -1,6 +1,5 @@
 ---
-description:
-  'Establish SSH or VNC access to the virtual build machine'
+description: How to connect to build machine with SSH or VNC
 title: Remote access to build machine
 weight: 2
 ---

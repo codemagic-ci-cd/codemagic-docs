@@ -1,5 +1,5 @@
 ---
-description: View, test and distribute your Codemagic builds with Testmagic
+description: How to configure Testmagic distribution in the Flutter workflow editor
 title: Beta testing with Testmagic
 weight: 6
 draft: true

@@ -1,5 +1,5 @@
 ---
-description: Publish each new version of your web app to a custom subdomain.
+description: How to publish a web app to a custom subdomain using the Flutter workflow editor
 title: Codemagic Static Pages
 weight: 3
 ---

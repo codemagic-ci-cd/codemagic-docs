@@ -1,11 +1,17 @@
 ---
 title: Signing iOS apps
-description: How to set up code signing in codemagic.yaml
+description: How to set up iOS code signing in codemagic.yaml
 weight: 1
 aliases: '../code-signing-yaml/signing'
 ---
 
 All iOS applications have to be digitally signed before they can be installed on real devices or made available to the public.
+
+{{<notebox>}}
+This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Signing iOS apps using the Flutter workflow editor](../code-signing/ios-code-signing).
+{{</notebox>}}
+
+## Prerequisites
 
 Signing iOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. You can upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or use the automatic code signing option where Codemagic takes care of code signing and signing files management on your behalf. Read more about the two options below.
 
@@ -28,7 +34,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
 {{<notebox >}} 
-Take note of the **Issuer ID** above the table of active keys as well as the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in Codemagic UI.
+Take note of the **Issuer ID** above the table of active keys as well as the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in the Codemagic UI.
 {{</notebox>}}
 
 ### Saving the API key to environment variables
@@ -54,7 +60,7 @@ environment:
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+  This is the private API key downloaded from App Store Connect. Note that when encrypting files via the UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
 
 - `CERTIFICATE_PRIVATE_KEY`
 
@@ -93,7 +99,7 @@ Based on the specified bundle ID and [provisioning profile type](https://github.
 
 ## Manual code signing
 
-In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build.
+In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when encrypting files via the UI, they will be base64 encoded and would have to be decoded during the build.
 
 ```yaml
 environment:

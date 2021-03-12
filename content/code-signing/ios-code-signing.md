@@ -1,5 +1,5 @@
 ---
-description: Sign Flutter app for iOS
+description: How to set up iOS code signing in the Flutter workflow editor
 title: iOS code signing
 weight: 1
 ---
@@ -7,6 +7,10 @@ weight: 1
 Code signing is required by Apple for integrating app services, installing your iOS app on real devices, and for uploading it to App Store Connect so that it can be distributed through TestFlight or App Store. It enables to identify who developed the app and ensure that all the changes to the app come from you or your team.
 
 To receive a signed `.ipa` file of your app on Codemagic, you need to set up code signing.
+
+{{<notebox>}}
+This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Signing iOS apps using codemagic.yaml](../code-signing-yaml/signing-ios).
+{{</notebox>}}
 
 ## Prerequisites
 

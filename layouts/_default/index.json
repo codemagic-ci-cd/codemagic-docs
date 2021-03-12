@@ -4,6 +4,11 @@
     {{- with .Title }}
     "title": "{{ htmlEscape . }}",
     {{- end }}
+    {{- if .Description }}
+    "subtitle": "{{ htmlEscape .Description }}",
+    {{- else }}
+    "subtitle": "",
+    {{- end }}
     {{- with .Plain }}
     "content": {{ jsonify . }},
     {{- end }}

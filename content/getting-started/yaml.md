@@ -1,6 +1,6 @@
 ---
 title: Using codemagic.yaml
-description: Customize the build and configure all your workflows in a single file.
+description: Configure all your workflows in a single file
 weight: 3
 aliases:
   - '../building/yaml'
@@ -98,7 +98,7 @@ You can use `codemagic.yaml` to define several workflows for building a project.
 ```yaml
 workflows:
   my-workflow:                # workflow ID
-    name: My workflow name    # workflow name displayed in UI
+    name: My workflow name    # workflow name displayed in Codemagic UI
     instance_type: mac_mini   # machine type to use (currently supported: `mac_mini` and `mac_pro`)
     max_build_duration: 60    # build duration in minutes (min 1, max 120)
     environment:
