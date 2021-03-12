@@ -15,7 +15,7 @@ altool[xxx:xxx] *** Error: code -22020 (Unable to validate your application. We 
 
 The most common reason for the occurrence of this error message is using Apple ID password instead of [app-specific password](https://support.apple.com/en-us/HT204397) in App Store Connect publishing settings. 
 
-To generate an app-specific password, sign in to your [Apple ID account page](https://appleid.apple.com/account/manage), navigate to the **Security** section and click **Generate Password...** below **App-Specific Passwords**. The generated app-specific password will be in this format: `abcd-efgh-ijkl-mnop`. Insert this value into the Codemagic UI or as a password in `codemagic.yaml` when setting up publishing to App Store Connect. Note that the password should be generated with the same Apple account that you are using for publishing.
+To generate an app-specific password, sign in to your [Apple ID account page](https://appleid.apple.com/account/manage), navigate to the **Security** section and click **Generate Password...** below **App-Specific Passwords**. The generated app-specific password will be in this format: `abcd-efgh-ijkl-mnop`. Insert this value into the Flutter workflow editor or as a password in `codemagic.yaml` when setting up publishing to App Store Connect. Note that the password should be generated with the same Apple account that you are using for publishing.
 
 ## iOS code signing troubleshooting
 
@@ -122,4 +122,4 @@ In such cases, you will often see an error message similar to this one:
 
 **Solution**:
 * Confirm that you have set the correct bundle identifiers for all targets in Xcode.
-* Verify that the bundle identifier set in Xcode matches the bundle identifier set in the UI under code signing.
+* Verify that the bundle identifier set in Xcode matches the bundle identifier set in the Flutter workflow editor under code signing.

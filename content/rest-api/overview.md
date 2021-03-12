@@ -13,4 +13,4 @@ When making calls to REST API methods, an access token must be included as an HT
 x-auth-token: my-secret-token
 ```
 
-The access token is available via UI in **User settings > Integrations > Codemagic API > Show**.
+The access token is available via the Codemagic UI in **User settings > Integrations > Codemagic API > Show**.

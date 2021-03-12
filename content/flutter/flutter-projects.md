@@ -1,6 +1,6 @@
 ---
 title: Building Flutter projects
-description: How to configure Flutter app builds using the Codemagic UI
+description: How to configure Flutter app builds using the Flutter workflow editor
 weight: 1
 aliases:
     - '../building/building-android-app-bundles'

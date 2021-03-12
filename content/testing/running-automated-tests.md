@@ -1,5 +1,5 @@
 ---
-description: How to run automated tests in builds configured with the Flutter UI
+description: How to run automated tests in builds configured with the Flutter workflow editor
 title: Running automated tests
 weight: 1
 ---

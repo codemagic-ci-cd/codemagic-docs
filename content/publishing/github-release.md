@@ -1,5 +1,5 @@
 ---
-description: How to create a GitHub release with artifacts using the Flutter UI
+description: How to create a GitHub release with artifacts using the Flutter workflow editor
 title: GitHub releases
 weight: 9
 ---

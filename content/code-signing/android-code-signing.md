@@ -1,5 +1,5 @@
 ---
-description: How to set up Android code signing in the Flutter UI
+description: How to set up Android code signing in the Flutter workflow editor
 title: Android code signing
 weight: 2
 ---
@@ -7,7 +7,7 @@ weight: 2
 Code signing is required for distributing your Android app to Google Play store. It enables to identify who developed the app and ensure that all updates to the app come from you.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **Flutter UI**. If your workflow is configured with **codemagic.yaml** please go to [Signing Android apps using codemagic.yaml](../code-signing-yaml/signing-android).
+This guide only applies to workflows configured with the **Flutter workflow editory**. If your workflow is configured with **codemagic.yaml** please go to [Signing Android apps using codemagic.yaml](../code-signing-yaml/signing-android).
 {{</notebox>}}
 
 ## Requirements
@@ -16,7 +16,7 @@ To receive a signed release .apk of your app on Codemagic, you will have to:
 
 1. [Prepare your Flutter project for code signing](#preparing-your-flutter-project-for-code-signing)
 
-2. [Set up Android code signing in Codemagic UI](#setting-up-android-code-signing-on-codemagic)
+2. [Set up Android code signing in the Flutter workflow editor](#setting-up-android-code-signing-on-codemagic)
 
 For code signing, you need to upload the **keystore** containing your **certificate** and **key**. See the instructions for generating the keystore [here](#generating-a-keystore).
 
@@ -43,11 +43,11 @@ You need to upload the keystore and provide the keystore password, key alias and
 
 ## Preparing your Flutter project for code signing
 
-There are several approaches you can use to prepare your Flutter project for code signing, we have described two of these in this section. Note that whichever approach you use, you still need to [set up Android code signing](#setting-up-android-code-signing-on-codemagic) in the Codemagic UI.
+There are several approaches you can use to prepare your Flutter project for code signing, we have described two of these in this section. Note that whichever approach you use, you still need to [set up Android code signing](#setting-up-android-code-signing-on-codemagic) in the Flutter workflow editor.
 
 ### Option 1. Configure signing following Flutter's documentation
 
-You can follow the instructions in [Flutter's documentation](https://flutter.dev/docs/deployment/android#signing-the-app) to configure code signing in Gradle. It's vital that you use the variable names suggested in Flutter documentation as Codemagic will reference them during the build. However, make sure to not commit your `key.properties` file to the repository, Codemagic will generate and populate the `key.properties` file during the build based on the input you provide in the UI.
+You can follow the instructions in [Flutter's documentation](https://flutter.dev/docs/deployment/android#signing-the-app) to configure code signing in Gradle. It's vital that you use the variable names suggested in Flutter documentation as Codemagic will reference them during the build. However, make sure to not commit your `key.properties` file to the repository, Codemagic will generate and populate the `key.properties` file during the build based on the input you provide in the workflow editor.
 
 ### Option 2. Configure signing using environment variables
 

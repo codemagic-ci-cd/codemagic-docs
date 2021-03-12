@@ -1,5 +1,5 @@
 ---
-description: How to configure Flutter Driver tests in the Flutter UI 
+description: How to configure Flutter Driver tests in the Flutter workflow editor
 title: Testing on AWS Device Farm
 weight: 5
 ---

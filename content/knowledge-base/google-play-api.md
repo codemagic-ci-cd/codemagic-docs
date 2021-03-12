@@ -64,6 +64,6 @@ workflows:
 ```
 
 
-## Using the service account with Flutter UI projects
+## Using the service account with projects configured with the Flutter workflow editor
 
-When configuring Flutter projects through the UI, the service account `JSON` key file must be uploaded to Codemagic in Google Play publishing settings. Follow the instructions [here](../publishing/publishing-to-google-play).
+When configuring Flutter projects through the workflow editor, the service account `JSON` key file must be uploaded to Codemagic in Google Play publishing settings. Follow the instructions [here](../publishing/publishing-to-google-play).

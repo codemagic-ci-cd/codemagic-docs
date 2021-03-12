@@ -1,5 +1,5 @@
 ---
-description: Deploy a Flutter app to Google Play using the Flutter UI
+description: Deploy a Flutter app to Google Play using the Flutter workflow editor
 title: Google Play
 weight: 2
 ---
@@ -7,7 +7,7 @@ weight: 2
 Codemagic enables you to automatically publish your app to the **internal**, **alpha**, **beta** and **production** tracks on Google Play. To do so, you must first [set up Android code signing](../code-signing/android-code-signing/ 'Android code signing') and then configure publishing to Google Play.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **Flutter UI**. If your workflow is configured with **codemagic.yaml** please go to [Publishing to Google Play using codemagic.yaml](../publishing-yaml/distribution/#google-play).
+This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Publishing to Google Play using codemagic.yaml](../publishing-yaml/distribution/#google-play).
 {{</notebox>}}
 
 ## Requirements

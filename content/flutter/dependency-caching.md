@@ -1,5 +1,5 @@
 ---
-description: How to cache dependencies for builds configured with the Flutter UI
+description: How to cache dependencies for builds configured with the Flutter workflow editor
 title: Dependency caching
 weight: 6
 aliases: 

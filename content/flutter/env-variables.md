@@ -1,6 +1,6 @@
 ---
 title: Adding environment variables
-description: How to add environment variables in the Flutter UI
+description: How to add environment variables in the Flutter workflow editor
 weight: 4
 aliases:
 ---

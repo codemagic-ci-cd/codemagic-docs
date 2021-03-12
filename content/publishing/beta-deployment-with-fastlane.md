@@ -1,5 +1,5 @@
 ---
-description: How to deploy to fastlane beta in a Flutter UI pre-publish script 
+description: How to deploy to fastlane beta in the Flutter workflow editor pre-publish script
 title: Run fastlane for beta deployment
 weight: 7
 ---

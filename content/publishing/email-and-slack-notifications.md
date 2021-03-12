@@ -1,5 +1,5 @@
 ---
-description: How to configure build status updates with links to artifacts in the Flutter UI
+description: How to configure build status updates with links to artifacts in the Flutter workflow editor
 title: Email and Slack notifications
 weight: 8
 ---
@@ -12,7 +12,7 @@ Email publishing is the only publishing option that is enabled by default. Codem
 
 If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the provided email.
 
-If the build fails, you will be sent a link to the build logs. Check the **Publish artifacts even if tests fail** option in the UI to publish artifacts even when one or more tests fail. If that option is unchecked, generated artifacts (if there are any) will be attached only to successful builds.
+If the build fails, you will be sent a link to the build logs. Check the **Publish artifacts even if tests fail** option in the workflow editor to publish artifacts even when one or more tests fail. If that option is unchecked, generated artifacts (if there are any) will be attached only to successful builds.
 
 ### MS Teams
 
@@ -24,7 +24,7 @@ Use only the part in angle brackets from the whole address line (e.g. `My awesom
 
 In order to set up publishing to Slack, you first need to connect the Slack workspace in **User settings > Integrations > Slack** for your personal apps and in **Teams > Your_team > Team integrations > Slack** for the team apps. 
 
-Once your Slack workspace is connected, you can enable Slack publishing and select a channel for publishing in **App settings > Publish > Slack** when using the UI configuration.
+Once your Slack workspace is connected, you can enable Slack publishing and select a channel for publishing in **App settings > Publish > Slack** when using the workflow editor.
 
 In order to publish to **private channels**, you need to invite Codemagic app to the channels, otherwise the app does not have access to private channels. To invite Codemagic app to private channels, write `@codemagic` in the channel. If you are in the Codemagic web app, refresh the page and the new channel will become available in the dropdown menu.
 

@@ -1,5 +1,5 @@
 ---
-description: How to configure workflows in the Flutter UI 
+description: How to configure workflows in the Flutter workflow editor
 title: Workflows
 weight: 2
 aliases:
