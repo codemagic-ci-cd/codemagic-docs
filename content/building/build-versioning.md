@@ -22,18 +22,14 @@ Here are some examples how you can increment the app version using Codemagic's r
 
 ## Fetching build number from pubsec.yaml
 
-Add a pre-build script that installs [yq](https://github.com/mikefarah/yq), a lightweight and portable command-line YAML processor:
-
-```bash
-#!/usr/bin/env sh
-HOMEBREW_NO_AUTO_UPDATE=1 brew install yq
-```
-
-Then add the following build arguments:
+Add the following build argument:
 
 ```bash
 --build-number=$(yq e .version pubspec.yaml)
 ```
+
+It uses [yq](https://github.com/mikefarah/yq), a lightweight and portable command-line YAML processor.
+
 
 ## Set Xcode project build number via command line
 
