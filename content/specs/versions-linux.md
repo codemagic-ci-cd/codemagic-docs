@@ -20,11 +20,12 @@ weight: 4
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
+- aws `1.18.69`
 - curl `7.68.0`
 - dart `2.10.5`
 - docker `20.10.2`
 - firebase `9.1.0`
-- flutter `2.0.1 ($HOME/programs/flutter)`
+- flutter `2.0.2 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - git `2.25.1`
 - ionic `5.4.16`
@@ -41,6 +42,7 @@ weight: 4
 - wget
 - yarn `1.22.5`
 - yq `3.3.2`
+- zip
 
 ## Android Studio 4.1.2 (201.8743.12.41.7042882)
 
