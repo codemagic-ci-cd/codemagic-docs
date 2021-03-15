@@ -66,11 +66,12 @@ Returns information about builds from the Codemagic build history. Filters are a
 | `appId`       | `string` | **Optional.** The application identifier. |
 | `workflowId`  | `string` | **Optional.** The workflow identifier as specified in YAML file. |
 | `branch`      | `string` | **Optional.** The branch name. |
+| `tag`         | `string` | **Optional.** The tag name. |
 
 ### Curl request
 
 ```bash
-curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/builds?appId=<app_id>&workflowId=<workflow_id>&branch=<branch_name>
+curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/builds?appId=<app_id>&workflowId=<workflow_id>&branch=<branch_name>&tag=<tag_name>
 ```
 
 ### Response
@@ -90,6 +91,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
       "appId": "5d85eaa0e941e00019e81bc2",
       "workflowId": "5d85f242e941e00019e81bd2",
       "branch": "develop",
+      "tag": null,
       "status": "finished",
       "startedAt": "2020-09-08T07:18:02.203+0000",
       "finishedAt": "2020-09-08T07:20:13.040+0000",
