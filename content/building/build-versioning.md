@@ -44,7 +44,7 @@ cd $FCI_BUILD_DIR/ios
 agvtool new-version -all $(($BUILD_NUMBER + 1))
 ```
 
-## Use Codemagic CLI Tools to get the latest build number from App Store or TestFlight
+## App Store or TestFlight latest build number using Codemagic CLI Tools
 
 Use [get-latest-app-store-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-app-store-build-number.md#get-latest-app-store-build-number) or [get-latest-testflight-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-testflight-build-number.md#get-latest-testflight-build-number) actions from [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/app-store-connect#app-store-connect) Codemagic CLI Tool to get the latest build numbers.
 
@@ -131,7 +131,7 @@ You can specify an optional argument `--app-store-version=APP_STORE_VERSION` to 
 
 Alternatively, if you use `YAML` configuration, you may just export the value to an environment variable and use it under your `CFBundleVersion` in `Info.plist`.
 
-## Use Codemagic CLI Tools to get the latest build number from Google Play
+## Google Play latest build number using Codemagic CLI Tools 
 
 Use [get-latest-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#get-latest-build-number) action from [google-play](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/google-play#google-play) Codemagic CLI Tool to get the latest build number from Google Play.
 
