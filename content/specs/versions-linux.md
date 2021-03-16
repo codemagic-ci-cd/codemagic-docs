@@ -3,7 +3,7 @@ description: A list of tools available out-of-the-box on Codemagic build machine
 title: Linux (beta) build machine specification
 aliases:
   - '../releases-and-versions/versions-linux'
-weight: 4
+weight: 5
 ---
 
 ## Hardware
