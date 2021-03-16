@@ -1,15 +1,15 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
-title: Linux (beta) build machine specification
+title: Linux build machine specification
 aliases:
   - '../releases-and-versions/versions-linux'
-weight: 4
+weight: 5
 ---
 
 ## Hardware
 
-- Standard VM with Linux `4 vCPUs, 16 GB memory`
-- Premium VM with Linux `coming soon`
+- Standard VM on Linux `4 vCPUs, 16 GB memory`
+- Premium VM on Linux `8 vCPUs, 32 GB memory`
 
 ## System
 
