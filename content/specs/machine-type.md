@@ -1,16 +1,29 @@
 ---
-description: Choose between Mac Mini or Mac Pro
+description: How to configure build machine type
 title: Build machine type
 weight: 1
 aliases:
     - '../building/machine-type/'
 ---
 
-Codemagic currently offers two types of machines for running builds: Mac mini (macOS standard VM, default) and Mac Pro (macOS premium VM). Specifications for these machines are available [here](../releases-and-versions/versions/#hardware). 
+## Configuring build machine type
+
+In `codemagic.yaml`, the build machine type can be specified with [Instance type](../getting-started/yaml#instance-type).
+
+For Flutter projects configured via the Flutter workflow editor, the build machine type can be selected in **App settings > Workflow settings > Machine**.
+
+## Mac Mini and Mac Pro
+
+Codemagic offers two types of macOS machines for running builds: Mac Mini (macOS standard VM, default) and Mac Pro (macOS premium VM). Specifications for these machines are available [here](../specs/versions/#hardware). 
 
 {{<notebox>}}
-Mac Pro machines are available for teams and users that have enabled [billing](../billing/billing) in team or user settings respectively.
+Mac Pro machines are only available for teams and users that have [billing enabled](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for the per minute rate.
 {{</notebox>}}
 
-* In `codemagic.yaml`, the build machine type can be specified in [workflow section](../getting-started/yaml#workflows). 
-* For Flutter projects configured via the Flutter workflow editor, the build machine type can be selected in **App settings > Workflow settings > Machine**.
+## Linux Standard and Linux Premium
+
+Codemagic offers two types of linux machines for running builds: Linux standard VM and Linux premium VM. Linux machines support nested virtualisation, including Android emulator support with hardware acceleration. Specifications for these machines are available [here](../specs/versions-linux/#hardware).
+
+{{<notebox>}}
+Linux Standard and Premium machines are only available for teams and users that have [enabled billing](../billing/billing) for builds configured with [codemagic.yaml](../getting-started/yaml/). See the [pricing page](https://codemagic.io/pricing/) for the per minute rate.
+{{</notebox>}}
