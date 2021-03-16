@@ -99,7 +99,7 @@ You can use `codemagic.yaml` to define several workflows for building a project.
 workflows:
   my-workflow:                # workflow ID
     name: My workflow name    # workflow name displayed in Codemagic UI
-    instance_type: mac_mini   # machine type to use (currently supported: `mac_mini` and `mac_pro`)
+    instance_type: mac_mini   # machine instance type
     max_build_duration: 60    # build duration in minutes (min 1, max 120)
     environment:
     cache:
@@ -110,6 +110,18 @@ workflows:
 ```
 
 The main sections in each workflow are described below.
+
+### Instance Type
+
+`instance_type: ` specifies the [build machine type](../specs/machine-type) to use for the build. The supported build machines are:
+* `mac_mini`
+* `mac_pro`
+* `linux`
+* `linux_x2`
+
+{{<notebox>}}
+Note that `mac_pro`, `linux`, and `linux_x2` are only available for teams and users with [billing enabled](../billing/billing/).
+{{</notebox>}}
 
 ### Environment
 
