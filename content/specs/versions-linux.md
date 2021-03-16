@@ -8,8 +8,8 @@ weight: 5
 
 ## Hardware
 
-- Standard VM with Linux `4 vCPUs, 16 GB memory`
-- Premium VM with Linux `coming soon`
+- Standard VM on Linux `4 vCPUs, 16 GB memory`
+- Premium VM on Linux `8 vCPUs, 32 GB memory`
 
 ## System
 
