@@ -30,8 +30,10 @@ To add a new branch pattern:
 
 Under **Automatic build triggering**, you can select when to trigger builds.
 
-{{<notebox>}}
 Codemagic automatically adds webhooks to the repositories added via GitHub app or from GitHub, GitLab or Bitbucket via the OAuth integration after you have enabled any of the triggers in this section. For repositories added via SSH or HTTP/HTTPS, you would have to [set up webhooks manually](../building/webhooks). Note that webhook triggers might not be supported for all repository providers.
+
+{{<notebox>}}
+If you have a `codemagic.yaml` in the repository, it is automatically used for configuring builds that are triggered in response to the events defined in the file and any configuration in the Flutter workflow editor is ignored.
 {{</notebox>}}
 
 **Trigger on push**. When checked, a build will be started every time you commit code to any of the tracked branches.

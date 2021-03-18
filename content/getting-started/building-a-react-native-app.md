@@ -8,6 +8,27 @@ aliases:
 
 React Native is a cross-platform solution that allows you to build apps for both iOS and Android faster using a single language. When working with YAML, the basics are still the same, the build scripts are added to the `scripts` section in the [overall architecture](../getting-started/yaml#template).
 
+## Setting up a React Native project
+
+The apps you have available on Codemagic are listed on the Applications page. See how to add additional apps [here](./adding-apps-from-custom-sources).
+
+1. On the Applications page, click **Set up build** next to the app you want to start building. 
+2. On the popup, select **React Native App** as the project type and click **Continue**.
+3. Download the example configuration for React Native or copy it to clipboard.
+4. Then edit the configuration file to adjust it to your project needs and commit it to the root of your repository.
+    * For an overview about using `codemagic.yaml`, please refer [here](./yaml). 
+    * Read more about adding configuration for [testing](../testing-yaml/testing), [iOS code signing](../code-signing-yaml/signing-ios), [Android code signing](../code-signing-yaml/signing-android) and [publishing](../publishing-yaml/distribution).
+    * See the full workflow examples below.
+5. Back in app settings in Codemagic, scan for the `codemagic.yaml` file by selecting a **branch** to scan and clicking the **Check for configuration file** button at the top of the page. Note that you can have different configuration files in different branches.
+6. If a `codemagic.yaml` file is found in that branch, you can click **Start your first build** and select the **branch** and **workflow** to build.
+7. Finally, click **Start new build** to build the app.
+
+{{<notebox>}}
+**Tip**
+
+Note that you need to set up a [webhook](../building/webhooks) for automatic build triggering. Click the **Create webhook** button on the right sidebar in app settings to add a webhook (not available for apps added via SSH/HTTP/HTTPS).
+{{</notebox>}}
+
 ## Android
 
 Set up local properties
