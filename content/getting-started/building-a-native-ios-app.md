@@ -6,10 +6,26 @@ aliases:
   - '../yaml/building-a-native-ios-app'
 ---
 
-With `codemagic.yaml`, you can use Codemagic to build, test and publish native iOS apps. You can read more about how to use `codemagic.yaml` and see the structure of the file [here](../getting-started/yaml).
+## Setting up an iOS project
+
+The apps you have available on Codemagic are listed on the Applications page. See how to add additional apps [here](./adding-apps-from-custom-sources).
+
+1. On the Applications page, click **Set up build** next to the app you want to start building. 
+2. On the popup, select **iOS App** as the project type and click **Continue**.
+3. Download the example configuration for iOS App or copy it to clipboard.
+4. Then edit the configuration file to adjust it to your project needs and commit it to the root of your repository.
+    * For an overview about using `codemagic.yaml`, please refer [here](./yaml). 
+    * Read more about adding configuration for [testing](../testing-yaml/testing), [code signing](../code-signing-yaml/signing-ios) and [publishing](../publishing-yaml/distribution).
+    * See the full iOS workflow example [below](#ios-workflow-example).
+5. Back in app settings in Codemagic, scan for the `codemagic.yaml` file by selecting a **branch** to scan and clicking the **Check for configuration file** button at the top of the page. Note that you can have different configuration files in different branches.
+6. If a `codemagic.yaml` file is found in that branch, you can click **Start your first build** and select the **branch** and **workflow** to build.
+7. Finally, click **Start new build** to build the app.
 
 {{<notebox>}}
-Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for build.
+**Tip**
+
+Note that you need to set up a [webhook](../building/webhooks) for automatic build triggering. Click the **Create webhook** button on the right sidebar in app settings to add a webhook (not available for apps added via SSH/HTTP/HTTPS).
+
 {{</notebox>}}
 
 ## Building an unsigned native iOS app (.app)
@@ -34,6 +50,10 @@ $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 ```
 
 ## Building a native iOS app archive (.ipa)
+
+{{<notebox>}}
+Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for build.
+{{</notebox>}}
 
 For building an archived iOS app (.ipa) from your Xcode project, you need to run the following command in the scripts section:
 
