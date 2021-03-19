@@ -113,11 +113,13 @@ The main sections in each workflow are described below.
 
 ### Instance Type
 
-`instance_type: ` specifies the [build machine type](../specs/machine-type) to use for the build. The supported build machines are:
-* `mac_mini`
-* `mac_pro`
-* `linux`
-* `linux_x2`
+`instance_type:` specifies the [build machine type](../specs/machine-type) to use for the build. The supported build machines are:
+| **Instance Type** | **Build Machine** |
+| ------------- | ----------------- |
+| `mac_mini`    | macOS standard VM |
+| `mac_pro`     | macOS premium VM  |
+| `linux`       | Linux standard VM |
+| `linux_x2`    | Linux premium VM  |
 
 {{<notebox>}}
 Note that `mac_pro`, `linux`, and `linux_x2` are only available for teams and users with [billing enabled](../billing/billing/).
