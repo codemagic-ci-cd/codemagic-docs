@@ -42,8 +42,8 @@ The YAML feature currently has the following **limitations**:
 1. In order to use `codemagic.yaml` for build configuration in Codemagic, commit the file to the root directory of your repository.
 2. Back in app settings in Codemagic, select the **`codemagic.yaml`** tab.
 3. Scan for the `codemagic.yaml` file by selecting a **branch** to scan and clicking the **Check for configuration file** button at the top of the page. Note that you can have different configuration files in different branches.
-6. If a `codemagic.yaml` file is found in that branch, you can click **Start your first build** and select the **branch** and **workflow** to build.
-7. Finally, click **Start new build** to build the app.
+4. If a `codemagic.yaml` file is found in that branch, you can click **Start your first build** and select the **branch** and **workflow** to build.
+5. Finally, click **Start new build** to build the app.
 
 ## Android builds
 
