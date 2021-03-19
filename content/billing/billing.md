@@ -34,3 +34,11 @@ To change the card used for payments, click **Edit** in the credit card section 
 ### Disabling billing
 
 To disable billing, click **Disable billing** in the Billing details section. On disabling billing, you will be immediately charged for the used paid features.
+
+## Billing per Team User
+
+For pay-as-you-go team plans, each team user is billed at the rate on the [pricing page](https://codemagic.io/pricing/). See the [counting team users](../teams/users) guide for details on how we count team users.
+
+## Billing per build minute
+
+For pay-as-you-go team and user plans, each build minute is billed at the rate on our [pricing page](https://codemagic.io/pricing/) based on the build [machine type](../specs/machine-type) used for the build. Builds that time out or fail because of a Codemagic service error will not count towards billing usage. Builds that fail for any other reason will count towards billing usage.
