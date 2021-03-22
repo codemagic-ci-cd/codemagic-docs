@@ -44,6 +44,12 @@ weight: 5
 - yq `3.3.2`
 - zip
 
+## Java versions
+
+- **15**: version `15-ea (2020-09-15)`, OpenJDK Runtime Environment
+- **11**: version `11.0.10 (2021-01-19)`, OpenJDK Runtime Environment
+- **1.8**: version `1.8.0_282`, OpenJDK Runtime Environment
+
 ## Android Studio 4.1.2 (201.8743.12.41.7042882)
 
 Android Studio path: `~/programs/android-studio`
