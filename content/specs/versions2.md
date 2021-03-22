@@ -1,6 +1,6 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines
-title: macOS build machine specification (Xcode 12+)
+title: macOS build machine specification (Xcode 12.0 - 12.4)
 aliases:
   - '../releases-and-versions/versions2'
 weight: 3
@@ -48,6 +48,24 @@ weight: 3
 - yarn `1.22.10`
 - yq
 - zip
+
+## Android emulators
+
+- **emulator**
+
+    - Device: `pixel_2 (Google)`
+    - Path: `/Users/builder/.android/avd/emulator.avd`
+    - Target: `Google APIs (Google Inc.)`
+    - Based on: `Android 10.0 (Q)`
+    - Tag/API: `google_apis/x86`
+    - Skin: `pixel_2`
+    - Sdcard: `512M`
+## Java versions
+
+- **15**: version `15.0.1`, JVM `Zulu 15.28.51`
+- **11**: version `11.0.9.1`, JVM `Zulu 11.43.55`
+- **1.8**: version `1.8.0_275`, JVM `Zulu 8.50.0.51`
+- **1.7**: version `1.7.0_285`, JVM `Zulu 7.42.0.51`
 
 ## Xcode 12.4 (12D4e)
 

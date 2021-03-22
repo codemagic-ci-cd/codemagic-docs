@@ -49,6 +49,24 @@ weight: 2
 - yq
 - zip
 
+## Android emulators
+
+- **emulator**
+
+    - Device: `pixel_3a (Google)`
+    - Path: `/Users/builder/.android/avd/emulator.avd`
+    - Target: `Google Play (Google Inc.)`
+    - Based on: `Android 10.0 (Q)`
+    - Tag/API: `google_apis_playstore/x86`
+    - Skin: `pixel_3a`
+    - Sdcard: `512M`
+
+## Java versions
+
+- **15**: version `15.0.2`, JVM `Zulu 15.29.15`
+- **11**: version `11.0.10`, JVM `Zulu 11.45.27`
+- **1.8**: version `1.8.0_282`, JVM `Zulu 8.52.0.23`
+
 ## Xcode 12.5 (12E5244e)
 
 This is the Xcode version used when you select `12.5` in build settings. Other available versions are listed [here](#other-xcode-versions).

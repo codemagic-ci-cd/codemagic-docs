@@ -134,13 +134,13 @@ environment:
   vars:             # Define your environment variables here
     PUBLIC_ENV_VAR: "value here"
     SECRET_ENV_VAR: Encrypted(...)
-    
+
     # Android code signing
     FCI_KEYSTORE: Encrypted(...)
     FCI_KEYSTORE_PASSWORD: Encrypted(...)
     FCI_KEY_PASSWORD: Encrypted(...)
     FCI_KEY_ALIAS: Encrypted(...)
-    
+
     # iOS automatic code signing
     APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
     APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
@@ -166,10 +166,15 @@ environment:
   node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
   npm: 6.13.7       # Define default, latest, next, lts or version
   ndk: r21d         # Define default or revision (e.g. r19c)
+  java: 1.8         # Define default, or platform version (e.g. 11). The default platform version is 1.8
 ```
 
 {{<notebox>}}
-See the default software versions on Codemagic build machines [here](../releases-and-versions/versions/).
+See the default software versions on Codemagic build machines:
+- [macOS build machine specification (Xcode 11.x)](../releases-and-versions/versions/)
+- [macOS build machine specification (Xcode 12.0-12.4)](../releases-and-versions/versions2/)
+- [macOS build machine specification (Xcode 12.5+)](../releases-and-versions/versions3/)
+- [Linux build machine specification](../releases-and-versions/versions-linux/)
 {{</notebox>}}
 
 ### Cache
