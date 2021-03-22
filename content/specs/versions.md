@@ -49,6 +49,24 @@ weight: 4
 - yq
 - zip
 
+## Android emulators
+
+- **emulator**
+
+    - Device: `pixel_2 (Google)`
+    - Path: `/Users/builder/.android/avd/emulator.avd`
+    - Target: `Google APIs (Google Inc.)`
+    - Based on: `Android 9.0 (Pie)`
+    - Tag/API: `google_apis/x86`
+    - Skin: `pixel_2`
+    - Sdcard: `512M`
+## Java versions
+
+- **14**: version `14.0.2`, JVM `OpenJDK 14.0.2`
+- **9**: version `9.0.4`, JVM `OpenJDK 9.0.4`
+- **1.8**: version `1.8.0_202`, JVM `Java SE 8`
+- **1.7**: version `1.7.0_272`, JVM `Zulu 7.40.0.15`
+
 ## Xcode 11.7 (11E801a)
 
 This is the Xcode version used by default when you select `11.7` in build settings in the workflow editor for Flutter apps or set Xcode version to `11.7` in your codemagic.yaml file. Other available versions are listed [here](#other-xcode-versions).

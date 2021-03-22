@@ -44,6 +44,18 @@ weight: 5
 - yq `3.3.2`
 - zip
 
+## Android emulators
+
+- **emulator**
+
+    - Device: `pixel_4 (Google)`
+    - Path: `/home/builder/.android/avd/emulator.avd`
+    - Target: `Google Play (Google Inc.)`
+    - Based on: `Android 10.0 (Q)`
+    - Tag/API: `google_apis_playstore/x86`
+    - Skin: `pixel_4`
+    - Sdcard: `512M`
+
 ## Java versions
 
 - **15**: version `15-ea (2020-09-15)`, OpenJDK Runtime Environment
