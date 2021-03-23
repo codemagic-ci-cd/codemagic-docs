@@ -128,10 +128,13 @@ scripts:
   - name: Set up signing certificate
     script: |
       echo $FCI_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-      # when using a password-protected certificate
-      keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $FCI_CERTIFICATE_PASSWORD
-      # when using a certificate that is not password-protected
-      keychain add-certificates --certificate /tmp/certificate.p12
+      if [ "$FCI_CERTIFICATE_PASSWORD" = "" ]; then
+        # when using a certificate that is not password-protected
+        keychain add-certificates --certificate /tmp/certificate.p12
+      else
+        # when using a password-protected certificate
+        keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $FCI_CERTIFICATE_PASSWORD
+      fi
   - name: Set up code signing settings on Xcode project
     script: xcode-project use-profiles
   ... your build commands
