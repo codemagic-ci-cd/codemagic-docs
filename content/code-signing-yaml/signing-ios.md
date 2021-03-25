@@ -128,7 +128,7 @@ scripts:
   - name: Set up signing certificate
     script: |
       echo $FCI_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-      if [ "$FCI_CERTIFICATE_PASSWORD" = "" ]; then
+      if [ -z ${FCI_CERTIFICATE_PASSWORD+x} ]; then
         # when using a certificate that is not password-protected
         keychain add-certificates --certificate /tmp/certificate.p12
       else
