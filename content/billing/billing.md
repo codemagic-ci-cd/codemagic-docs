@@ -35,10 +35,16 @@ To change the card used for payments, click **Edit** in the credit card section 
 
 To disable billing, click **Disable billing** in the Billing details section. On disabling billing, you will be immediately charged for the used paid features.
 
-## Billing per Team User
+## Billing per team user
 
 For pay-as-you-go team plans, each team user is billed at the rate on the [pricing page](https://codemagic.io/pricing/). See the [counting team users](../teams/users) guide for details on how we count team users.
 
 ## Billing per build minute
 
 For pay-as-you-go team and user plans, each build minute is billed at the rate on our [pricing page](https://codemagic.io/pricing/) based on the build [machine type](../specs/machine-type) used for the build. Builds that time out or fail because of a Codemagic service error will not count towards billing usage. Builds that fail for any other reason will count towards billing usage.
+
+## Overdue invoices
+
+Invoices that have not been paid on the due date are shown as "Overdue" on the [Billing](https://codemagic.io/billing/) page. This usually happens when there are problems with charging the card, of which team or account owners are notified by email. Codemagic will then attempt to retry the payment in 3, 5 or 7 days. If all retries for a payment fail, the subscription is cancelled.
+
+Team or account owners can manually retry the payment by clicking on the overdue invoice in **Billing history** and selecting **Pay invoice** on the popup with invoice details.
