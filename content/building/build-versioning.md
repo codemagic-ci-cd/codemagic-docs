@@ -126,7 +126,12 @@ agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 ```
 
 {{<notebox>}}
-You can specify an optional argument `--app-store-version=APP_STORE_VERSION` to get the latest build number for a particular version of your application (`CFBundleShortVersionString`). Check the details for [get-latest-app-store-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-app-store-build-number.md#optional-arguments-for-action-get-latest-app-store-build-number) or for [get-latest-testflight-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-testflight-build-number.md#optional-arguments-for-action-get-latest-testflight-build-number).
+Helpful optional arguments:
+
+* `--app-store-version=APP_STORE_VERSION` to get the latest build number for a particular version of your application (`CFBundleShortVersionString`)
+* `--platform=IOS | MAC_OS | TV_OS` to specify which platform to get the latest build number
+
+Check the details for [get-latest-app-store-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-app-store-build-number.md#optional-arguments-for-action-get-latest-app-store-build-number) or for [get-latest-testflight-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-testflight-build-number.md#optional-arguments-for-action-get-latest-testflight-build-number).
 {{</notebox>}}
 
 Alternatively, if you use `YAML` configuration, you may just export the value to an environment variable and use it under your `CFBundleVersion` in `Info.plist`.
