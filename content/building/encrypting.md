@@ -7,10 +7,10 @@ weight: 3
 If you wish to store sensitive information, such as login details or API keys, in environment variables or in your configuration file, it is important to encrypt the data so as to not expose it. You can easily encrypt values and files using the encryption interface in Codemagic.
 
 1. Click open your app in Codemagic.
-2. Click **Encrypt environment variables** at the bottom of the page (or on the right sidebar in the **Configuration as code** section if it's a Flutter app).
+2. Click **Secret variables** on the sidebar next to the YAML window (or click **Encrypt environment variables** on the right sidebar in the **Configuration as code** section if you are using the Flutter workflow editor).
 3. Paste the value of the variable in the field or upload it as a file.
 4. Click **Encrypt**. 
-5. Copy the encrypted value and paste it to the configuration file.
+5. Copy the encrypted value and paste it as the value of the variable.
 
 The encrypted value will look something like this:
 

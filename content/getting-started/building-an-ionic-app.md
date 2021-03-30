@@ -12,11 +12,8 @@ The apps you have available on Codemagic are listed on the Applications page. Se
 
 1. On the Applications page, click **Set up build** next to the app you want to start building. 
 2. On the popup, select **Ionic App** as the project type and click **Continue**.
-3. Download the example configuration for Ionic App or copy it to clipboard.
-4. Then edit the configuration file to adjust it to your project needs and commit it to the root of your repository.
-    * For an overview about using `codemagic.yaml`, please refer [here](./yaml). 
-    * Read more about adding configuration for [testing](../testing-yaml/testing), [iOS code signing](../code-signing-yaml/signing-ios), [Android code signing](../code-signing-yaml/signing-android) and [publishing](../publishing-yaml/distribution).
-    * See the full workflow examples below.
+3. Create a [`codemagic.yaml`](./yaml) file and add in it the commands to build, test and publish your project. See the full workflow examples below.
+4. Commit the configuration file to the root of your repository.
 5. Back in app settings in Codemagic, scan for the `codemagic.yaml` file by selecting a **branch** to scan and clicking the **Check for configuration file** button at the top of the page. Note that you can have different configuration files in different branches.
 6. If a `codemagic.yaml` file is found in that branch, you can click **Start your first build** and select the **branch** and **workflow** to build.
 7. Finally, click **Start new build** to build the app.
