@@ -70,7 +70,7 @@ publishing:
 
 ### Google Play
 
-Codemagic enables you to automatically publish your app to the predifined `internal`, `alpha`, `beta` and `production` tracks on Google Play, or to your custom closed testing tracks. In order to do so, you will need to set up a service account in Google Play Console and add the `JSON` key file to your Codemagic configuration file, see how to [set up a service account](../knowledge-base/google-play-api/). The proper way to add your keys to `codemagic.yaml` is to [encrypt](../building/encrypting) the contents of the key file and add the encrypted value into the configuration file.
+Codemagic enables you to automatically publish your app either to one of the predefined tracks (`internal`, `alpha`, `beta` and `production`) on Google Play, or to your custom closed testing tracks. In order to do so, you will need to set up a service account in Google Play Console and add the `JSON` key file to your Codemagic configuration file, see how to [set up a service account](../knowledge-base/google-play-api/). The proper way to add your keys to `codemagic.yaml` is to [encrypt](../building/encrypting) the contents of the key file and add the encrypted value into the configuration file.
 
 If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates) Codemagic allows setting the update priority. Otherwise, `in_app_update_priority` can be omitted or set to `0`.
 
