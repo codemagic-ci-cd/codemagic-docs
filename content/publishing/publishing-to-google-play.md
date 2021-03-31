@@ -34,8 +34,8 @@ The very first version of the app must be added to Google Play manually. You can
    - Alpha --- publish for testing with a small group of trusted users
    - Beta --- publish for testing to a wider set of users
    - Production --- release the app to production
-   - Custom --- release the app to custom closed testing track
-5. If you want to publish to custom track, enter the custom track name.
+   - Custom --- release the app to a custom closed testing track
+5. If you want to publish to a custom track, enter the custom track name.
 6. If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates), set the desired priority. If not, select **Default**.
 7. In case you want to release a [staged version](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en) of your application, which reaches only a fraction of users, set **Rollout fraction** to a value between 0 and 1. To release to everyone, leave the value empty.
 8. If you want to publish the .apk even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
