@@ -295,3 +295,53 @@ When the build is successful, you can see your application published to Firebase
 Project Console: https://console.firebase.google.com/project/your-project/overview
 Hosting URL: https://your-project.web.app
 ```
+
+## Publishing web applications to Netlify
+
+Publishing web applications to Netlify with Codemagic is done with the Netlify API.
+
+1. To get started with publishing web apps to Netlify with Codemagic, you will need to obtain your Netlify personal access token. In order to do that, go to user settings in Netlify and you can find personal access tokens under the Applications section.
+2. Copy and encrypt the token using the Codemagic UI.
+3. Add your encrypted token to your codemagic.yaml file by setting it under your environment variables with the name NETLIFY_TOKEN.
+4. Create a new script for publishing to Netlify in Post-publishing scripts in the UI or in your scripts section of the codemagic.yaml file and add it after the build step.
+
+```
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+curl -H "Content-Type: application/zip" \
+     -H "Authorization: Bearer $NETLIFY_TOKEN" \
+     --data-binary "@$FCI_BUILD_OUTPUT_DIR/web-web.zip" \
+     https://api.netlify.com/api/v1/sites
+```
+
+When the build is successful, you can see your application published to Netlify. In Netlify you can change the name of the site under site settings. It is automatically creating a new site with a random name.
+If you wish to update your site, then you need to specify the website's URL in the script.
+
+```
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+curl -H "Content-Type: application/zip" \
+     -H "Authorization: Bearer $NETLIFY_TOKEN" \
+     --data-binary "@$FCI_BUILD_OUTPUT_DIR/web-web.zip" \
+     https://api.netlify.com/api/v1/sites/'your_website_url_here'/deploys
+```
+
+For example:
+
+```
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+curl -H "Content-Type: application/zip" \
+     -H "Authorization: Bearer $NETLIFY_TOKEN" \
+     --data-binary "@$FCI_BUILD_OUTPUT_DIR/web-web.zip" \
+     https://api.netlify.com/api/v1/sites/condescending-murdock-1637a0.netlify.app/deploys
+```
