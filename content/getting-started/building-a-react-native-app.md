@@ -62,135 +62,28 @@ To test and publish a React Native app:
 * All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
 * All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../publishing-yaml/distribution/#publishing).
 
-## iOS workflow example
+## iOS and Android workflow examples
 
-The following example shows a workflow that can be used to publish your iOS app to App Store Connect.
+Please refer to the React Native demo project on GitHub:
 
-```yaml
-workflows:
-  ios-workflow:
-    name: iOS Workflow
-    max_build_duration: 60
-    instance_type: mac_pro
-    environment:
-      vars:
-        XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace"  # YOUR WORKSPACE NAME HERE
-        XCODE_SCHEME: "YOUR_SCHEME_NAME" # THE NAME OF YOUR SCHEME HERE
-        FCI_CERTIFICATE: Encrypted(...) # PUT THE ENCRYPTED DISTRIBUTION CERTIFICATE HERE
-        FCI_CERTIFICATE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED CERTIFICATE PASSWORD HERE
-        FCI_PROVISIONING_PROFILE: Encrypted(...) # PUT THE ENCRYPTED PROVISIONING PROFILE HERE
-      node: latest
-      xcode: latest
-      cocoapods: default
-    triggering:
-      events:
-        - push
-        - tag
-        - pull_request
-      branch_patterns:
-        - pattern: develop
-          include: true
-          source: true
-    scripts:
-      - name: Install npm dependencies
-        script: npm install
-      - name: Install CocoaPods dependencies
-        script: |
-            cd ios 
-            pod repo update
-            pod install
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-        script: keychain initialize
-      - name: Set up Provisioning profiles from environment variables
-        script: |
-          PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
-          mkdir -p "$PROFILES_HOME"
-          PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-          echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
-          echo "Saved provisioning profile $PROFILE_PATH"
-      - name: Set up signing certificate
-        script: |
-          echo $FCI_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-          keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $FCI_CERTIFICATE_PASSWORD
-      - name: Increment build number
-        script: cd ios && agvtool new-version -all $(($BUILD_NUMBER +1))
-      - name: Set up code signing settings on Xcode project
-        script: xcode-project use-profiles
-      - name: Build ipa for distribution
-        script: xcode-project build-ipa --workspace "$FCI_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme $XCODE_SCHEME
-    artifacts:
-      - build/ios/ipa/*.ipa
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-    publishing:
-      app_store_connect:
-        apple_id: your_apple_id@example.com  # PUT YOUR APPLE ID HERE
-        password: Encrypted(...) # THE ENCRYPTED APP-SPECIFIC PASSWORD GOES HERE
-```
+[https://github.com/codemagic-ci-cd/react-native-demo-project](https://github.com/codemagic-ci-cd/react-native-demo-project)
 
-## Android workflow example
+This shows how to configure the **codemagic.yaml** so you can build and publish your **iOS** app to **App Store Connect**.
 
-The following example shows how to set up a workflow that builds your app and publishes to a Google Play internal track.
+It also contains a workflow that shows how to build and publish your **Android** app to a **Google Play** internal track.
 
-```yaml
-workflows:
-  android-workflow:
-    name: Android Workflow
-    max_build_duration: 60
-    instance_type: mac_pro
-    environment:
-      vars:
-        FCI_KEYSTORE_PATH: /tmp/keystore.keystore
-        FCI_KEYSTORE: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE FILE HERE
-        FCI_KEYSTORE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED PASSWORD FOR THE KEYSTORE FILE HERE
-        FCI_KEY_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE ALIAS PASSWORD HERE
-        FCI_KEY_ALIAS: Encrypted(...) #PUT THE ENCRYPTED KEYSTORE ALIAS HERE
-      node: latest
-    triggering:
-      events:
-        - push
-        - tag
-        - pull_request
-      branch_patterns:
-        - pattern: release
-          include: true
-          source: true
-    scripts:
-      - name: Install npm dependencies
-        script: npm install
-      - name: Set up local properties
-        script: echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/android/local.properties"
-      - name: Set up key.properties file for code signing
-        script: |
-          echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
-          cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
-          storePassword=$FCI_KEYSTORE_PASSWORD
-          keyPassword=$FCI_KEY_PASSWORD
-          keyAlias=$FCI_KEY_ALIAS
-          storeFile=$FCI_KEYSTORE_PATH
-          EOF
-      - name: Build Android app
-        script: cd android && ./gradlew assembleRelease
-    artifacts:
-      - android/app/build/outputs/**/**/*.apk
-    publishing:
-      google_play:
-        credentials: Encrypted(...) # PUT YOUR ENCRYPTED GOOGLE PLAY JSON CREDENTIALS FILE HERE
-        track: internal
-```
+## Build versioning your React Native app
 
-{{<notebox>}}Note that you should incremenet the versionCode in `android/app/build.gradle` {{</notebox>}}
+### Android versioning
 
-Incrementing the version code can be done as follows:
+{{<notebox>}}When using automatic build versioning in **codemagic.yaml** please note that configuration changes still need to be made in `android/app/build.gradle` {{</notebox>}}
 
-```gradle
-    android {
-        ...
-        
-        def appVersionCode = Integer.valueOf(System.env.BUILD_NUMBER ?: 1)
-        defaultConfig {
-            ...
-            versionCode appVersionCode
-            ...
-        }
-    }
-```
+In the [build.gradle](https://github.com/codemagic-ci-cd/react-native-demo-project/blob/master/android/app/build.gradle) note how the versionCode is set in the `defaultConfig{}`.
+
+Additionally, pay attention to how `signingConfigs{}` and `buildTypes{}` are configured for debug and release.
+
+### iOS versioning
+
+{{<notebox>}}Build versioning for iOS projects is performed as a script step in the codemagic.yaml{{</notebox>}}
+ 
+See the **Increment build number** script in the [codemagic.yaml](https://github.com/codemagic-ci-cd/react-native-demo-project/blob/master/codemagic.yaml) in the React Native demo project on GitHub.
