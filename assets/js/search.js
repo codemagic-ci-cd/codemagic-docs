@@ -78,8 +78,10 @@ const updateFromInput = (query) => {
 
 const updateFromUrl = () => {
     const query = decodeURIComponent((window.location.search || '').slice(3)) || null
-    updateInputs(query)
-    window.setTimeout(() => updateResults(query))
+    if (window.location.search.indexOf('utm_') < 0) {
+        updateInputs(query)
+        window.setTimeout(() => updateResults(query))
+    }
 }
 
 const updateUrl = (query) =>
