@@ -85,6 +85,10 @@ publishing:
     rollout_fraction: 0.25            # Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
 ```
 
+If you are getting a 400 error related to app being in draft status it means you need to promote your draft build to the next level up of testing tracks. Play Console will show you how to do this. You'll need to go through the steps, fill out questionnaires, upload various screen shots and then after approval you can move to the Alpha testing track and Codemagic will publish (publishing builds on Draft status is not supported).
+
+If you are getting an error related to permissions then it is likely an issue related to the service account that has been created. Go through the steps of creating a service account once more carefully see how to [set up a service account](../knowledge-base/google-play-api/).
+
 {{<notebox>}}
 You can override the publishing track specified in the configuration file using the environment variable `GOOGLE_PLAY_TRACK`. This is useful if you're starting your builds via [Codemagic API](../rest-api/overview/) and want to build different configurations without editing the configuration file.
 {{</notebox>}}
