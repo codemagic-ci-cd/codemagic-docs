@@ -17,18 +17,17 @@ Deprecating OAuth does not affect GitHub repositories that are added over SSH or
 
 The key difference between OAuth and GitHub App integrations is the scope of permissions. While OAuth requires you to grant Codemagic **write access** to all your repositories, the GitHub App integration requests only **read access** to your code and you can select which repositories you share with Codemagic.
 
-In addition, the GitHub app integration will also make it possible to use [GitHub Checks](../building/github-checks).
+In addition, the GitHub App integration will also make it possible to use [GitHub Checks](../building/github-checks).
 
 ### Deprecting GitHub releases in Flutter workflow editor
 
-Without write access to the repository, Codemagic will no longer be able to push GitHub releases without additional configuration. Therefore, we will be removing the GitHub releases section in Flutter workflow editor. You can continue to
-publish GitHub releases by setting up a personal access token and using a custom script in the ... step.
+Without write access to the repository, Codemagic will no longer be able to push GitHub releases without additional configuration. Therefore, we will be removing the GitHub releases section from Flutter workflow editor. You can continue to publish GitHub releases by setting up a personal access token and using a custom script in the ... step.
 
 ...
 
 ## Switching to GitHub App
 
-From April 19 onwards, users logging in to Codemagic with their GitHub account will be prompted to authorize and install the GitHub app if they do not already have it installed.
+From April 19 onwards, users logging in to Codemagic with their GitHub account will be prompted to authorize and install the GitHub App if they do not already have it installed.
 
 If you log in via email, Bitbucket or GitLab but have repositories that are accessed via the GitHub OAuth integration, you should enable the GitHub App integration in your user or team settings.
 
