@@ -17,9 +17,11 @@ Deprecating OAuth does not affect GitHub repositories that are added over SSH or
 
 The key difference between OAuth and GitHub App integrations is the scope of permissions. While OAuth requires you to grant Codemagic **write access** to all your repositories, the GitHub App integration requests only **read access** to your code and you can select which repositories you share with Codemagic.
 
+In addition, the GitHub app integration will also make it possible to use [GitHub Checks](../building/github-checks).
+
 ### Deprecting GitHub releases in Flutter workflow editor
 
-Without write access to the repository, Codemagic will no longer be able to push GitHub releases without additional configuration. Therefore, we will be removing the GitHub releases section in Flutter workflow editor. You can continue to P
+Without write access to the repository, Codemagic will no longer be able to push GitHub releases without additional configuration. Therefore, we will be removing the GitHub releases section in Flutter workflow editor. You can continue to
 publish GitHub releases by setting up a personal access token and using a custom script in the ... step.
 
 ...
@@ -45,6 +47,7 @@ Note that teams use team owner's integrations configured in their user settings 
 5. A popup window opens for you to select the organization or account where to install the app. Pick the installation location.
 6. Then choose whether to share **All repositories** from the account or configure the repositories to share by choosing **Select repositories only**.
 7. Click **Install & Authorize** to finish installation (you may be asked to confirm that action by entering your password).
-  If you do not have the permission to install the app under an organization, you will see the button **Authorize & Request** instead. An approval from the organization owner or app manager is needed to authorize the installation of the app.
+
+    If you do not have the permission to install the app under an organization, you will see the button **Authorize & Request** instead. An approval from the organization owner or app manager is needed to authorize the installation of the app.
 
 Once you have successfully enabled the GitHub App integration, you can click **Manage integration** in Integrations to install the app to another account, configure the shared repositories or disconnect the integration.

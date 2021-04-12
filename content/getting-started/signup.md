@@ -46,14 +46,16 @@ If you already have a Codemagic account, you can enable the GitHub app integrati
 1. Click **GitHub** at [codemagic.io/signup](https://codemagic.io/signup) and select **Selected repositories only** to sign up via Codemagic GitHub app. 
 2. Click **Authorize Codemagic** to verify your identity. You will be authenticated via GitHub without granting access to any of your repositories.
 3. In Codemagic, click **Install GitHub App** on the Applications page. If you already have another repository integration enabled for your personal account, you can find the installation button in **User settings > Integrations > Install GitHub App**. 
-4. You will be then redirected to GitHub to proceed with installation. Click **Install**.
+4. Click **Finish installation** and then **Install app**. You will be then redirected to GitHub to proceed with installation.
 5. Next, select the GitHub account or organization where you want to install the app.
 6. Select whether to grant access to **All repositories** or select the repositories to share by choosing **Only select repositories**.
-7. Click **Install & Authorize** (you may be asked to confirm that action by entering your password). After successful installation, you will be redirected back to Codemagic and you can see the status for the GitHub app integration as connected.
+7. Click **Install & Authorize** (you may be asked to confirm that action by entering your password). After successful installation, you will be redirected back to Codemagic and you can see the status for the GitHub app integration as connected. If you do not have the permission to install the app under an organization, you will see the button **Authorize & Request** instead. An approval from the organization owner or app manager is needed to authorize the installation of the app.
 
-#### Configuring accounts and repository access settings
+#### Configuring accounts and repositories
 
-If you want to install Codemagic GitHub app to another GitHub account/organization or change repository access settings, navigate to **GitHub > Settings > Applications > Installed GitHub Apps > Codemagic CI/CD** or go directly to [https://github.com/apps/codemagic-ci-cd](https://github.com/apps/codemagic-ci-cd) and click **Configure**. If there are issues with the integration, try disconnecting and connecting the integration in Codemagic. Note that the settings you configure in Codemagic CI/CD GitHub app prevail over the GitHub OAuth integration settings.
+If you want to install Codemagic GitHub app to another GitHub account/organization or change repository access settings, e.g. add new repositories, navigate to the integrations section and click **Manage integration > Configure**. Then select an account to configure. Make the necessary changes and click **Save**.
+
+You can access the same settings in GitHub by navigating to **GitHub > Settings > Applications > Installed GitHub Apps > Codemagic CI/CD** or going directly to [https://github.com/apps/codemagic-ci-cd](https://github.com/apps/codemagic-ci-cd) and clicking **Configure**. Note that the settings you configure in Codemagic CI/CD GitHub app prevail over the GitHub OAuth integration settings.
 
 If you revoke access to previously shared repositories, you will still see all your apps and build history but won't be able to build the apps to which Codemagic no longer has access. Such apps will be grayed out and will show up on the Applications page with the **Removed from repository** filter.
 
@@ -61,16 +63,16 @@ If you revoke access to previously shared repositories, you will still see all y
 
 The repository access settings configured in Codemagic GitHub app apply to the repositories you share in your Codemagic team only if:
 
-* GitHub app integration is connected in **Team settings > Team integrations**.
-* The primary team owner has connected the GitHub app integration for their personal account in **User settings > Integrations** and the team has not enabled the GitHub integration. If the regular GitHub integration is enabled for the team, the connected account makes use of OAuth permissions and the restrictions you configure in GitHub app do not apply.
+* GitHub App integration is connected in **Team settings > Team integrations**.
+* The primary team owner has connected the GitHub App integration for their personal account in **User settings > Integrations** and the team has not enabled the GitHub (OAuth) integration. If the regular GitHub integration is enabled for the team, the connected account makes use of OAuth permissions and the restrictions you configure in GitHub App do not apply.
 
 {{<notebox>}}
 Currently, Codemagic has no way of knowing whether it has access to team apps before the build is started. Due to this, team apps to which you have revoked access in the GitHub app may not appear grayed out in the UI.
 {{</notebox>}}
 
-#### Disabling Codemagic GitHub app integration
+#### Diconnecting Codemagic GitHub app integration
 
-The Codemagic CI/CD GitHub app integration can be disabled by clicking **Disconnect** in **User settings > Integrations > GitHub App** for your personal account or in **Team settings > Team Integrations > GitHub App** to disconnect it from the team. This annuls all settings configured for the Codemagic app in GitHub but won't delete your buid history.
+The Codemagic CI/CD GitHub App integration can be disabled by clicking **Disconnect** in **User settings > Integrations > GitHub App** for your personal account or in **Team settings > Team Integrations > GitHub App** to disconnect it from the team. This annuls all settings configured for the Codemagic app in GitHub but won't delete your buid history.
 
 The GitHub app integration is also disabled when you **uninstall** the Codemagic CI/CD app in GitHub. You can still log in to Codemagic with the GitHub app and see your build history if Codemagic CI/CD remains an **authorized GitHub app** in GitHub. Please note that unless you have other active integrations (e.g. GitHub, Bitbucket or GitLab OAuth integration), your Codemagic account will be deleted in two weeks. You can cancel account deletion by navigating to **User settings > Delete account** and clicking **Cancel deletion** before the two weeks are up.
 
