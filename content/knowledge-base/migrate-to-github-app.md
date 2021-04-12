@@ -21,14 +21,14 @@ In addition, the GitHub App integration will also make it possible to use [GitHu
 
 ### Deprecting GitHub releases in Flutter workflow editor
 
-Without write access to the repository, Codemagic will no longer be able to push GitHub releases without additional configuration. Therefore, we will be removing the GitHub releases section from Flutter workflow editor. You can continue to publish GitHub releases by setting up a personal access token and using a custom script in the Pre-publish step.
+Without write access to the repository, Codemagic will no longer be able to push GitHub releases without additional configuration. Therefore, we will be removing the GitHub releases section from Flutter workflow editor. You can continue to publish GitHub releases by setting up a personal access token and using a custom script in the **Pre-publish** step.
+
+1. Create a personal access token in GitHub as described [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+2. Save it as an environment variable with the name `GITHUB_TOKEN`.
+3. Add the following custom script in the **pre-publish** step that publishes the artifacts with tag builds.
 
 ```bash
 #!/usr/bin/env zsh
-
-# Make sure that you have exported your GitHub personal access token as
-# environment variable `GITHUB_TOKEN`. GitHub CLI uses token from this
-# environment variable for authentication.
 
 # Publish only for tag builds
 if [ -z ${FCI_TAG} ]; then
