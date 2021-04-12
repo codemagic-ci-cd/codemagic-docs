@@ -57,7 +57,7 @@ If you log in via email, Bitbucket or GitLab but have repositories that are acce
 
 ### Enabling the GitHub App intgeration in Codemagic
 
-GitHub App can be enabled separately for your **personal account** in Codemagic user settings or for a **team** in team settings.
+GitHub App can be enabled separately for your **personal account** in Codemagic user settings or for a **team** in team settings. The steps may vary slightly depending on whether the app has been already authorized or installed on your GitHub account or not.
 
 {{<notebox>}}
 Note that teams use team owner's integrations configured in their user settings if no integrations are connected in Team integrations. We recommend setting up the integrations for teams in Team integrations.
