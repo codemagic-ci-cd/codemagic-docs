@@ -96,3 +96,6 @@ You are required to upload your keystore file and provide details about your key
 3. Upload your release keystore file.
 4. Enter the **keystore password**, **key alias** and **key password**.
 5. Select **Enable Android code signing** at the top of the section to enable code signing.
+
+
+{{< youtube lYp9MAfouXE >}}
