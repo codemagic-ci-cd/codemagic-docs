@@ -21,9 +21,33 @@ In addition, the GitHub App integration will also make it possible to use [GitHu
 
 ### Deprecting GitHub releases in Flutter workflow editor
 
-Without write access to the repository, Codemagic will no longer be able to push GitHub releases without additional configuration. Therefore, we will be removing the GitHub releases section from Flutter workflow editor. You can continue to publish GitHub releases by setting up a personal access token and using a custom script in the ... step.
+Without write access to the repository, Codemagic will no longer be able to push GitHub releases without additional configuration. Therefore, we will be removing the GitHub releases section from Flutter workflow editor. You can continue to publish GitHub releases by setting up a personal access token and using a custom script in the Pre-publish step.
 
-...
+```bash
+#!/usr/bin/env zsh
+
+# Make sure that you have exported your GitHub personal access token as
+# environment variable `GITHUB_TOKEN`. GitHub CLI uses token from this
+# environment variable for authentication.
+
+# Publish only for tag builds
+if [ -z ${FCI_TAG} ]; then
+   echo "Not a tag build will not publish GitHub release"
+   exit 0
+fi
+
+# See more options about `gh release create` usage from GitHub CLI
+# official docs at https://cli.github.com/manual/gh_release_create
+
+gh release create "${FCI_TAG}" \
+    --title "<Your Application Name> ${FCI_TAG}" \
+    --notes-file changelog.md
+    path/to/build-artifact.ipa \
+    path/to/build-artifact.apk
+
+# Note that you don't need to include title and changelog if you do not want to.
+# Any number of artifacts can be included with the release.
+```
 
 ## Switching to GitHub App
 
@@ -33,7 +57,7 @@ If you log in via email, Bitbucket or GitLab but have repositories that are acce
 
 ### Enabling the GitHub App intgeration in Codemagic
 
-GitHub App can be enabled separately for your **personal account** in Codemagic user settings or for a **team** in team settings. 
+GitHub App can be enabled separately for your **personal account** in Codemagic user settings or for a **team** in team settings.
 
 {{<notebox>}}
 Note that teams use team owner's integrations configured in their user settings if no integrations are connected in Team integrations. We recommend setting up the integrations for teams in Team integrations.
@@ -41,7 +65,7 @@ Note that teams use team owner's integrations configured in their user settings 
 
 1. In your team or user settings, navigate to the integrations section.
 2. Click **Connect** next to the GitHub App integration.
-3. You will be redirected to GitHub to authorize Codemagic, click **Authorize Codemagic**. 
+3. You will be redirected to GitHub to authorize Codemagic, click **Authorize Codemagic**.
 4. Back in the Integrations section, click **Finish installation** and then **Install app**. Note that at this stage you can also revoke your authorization of the app by clicking **Disconnect**.
 5. A popup window opens for you to select the organization or account where to install the app. Pick the installation location.
 6. Then choose whether to share **All repositories** from the account or configure the repositories to share by choosing **Select repositories only**.
