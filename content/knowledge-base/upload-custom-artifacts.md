@@ -1,7 +1,7 @@
 ---
 description: How to upload files to be included in your build artifacts ZIP file
 title: Uploading custom artifacts
-weight: 4
+weight: 5
 aliases:
   - '../custom-scripts/upload-custom-artifacts'
 ---

@@ -1,7 +1,7 @@
 ---
 title: Configuring Google Play API access
 description: How to set up a Google Play service account for Codemagic
-weight: 5
+weight: 6
 ---
 
 In order to allow Codemagic publish applications to Google Play, it is necessary to set up access using Google Play API. 
