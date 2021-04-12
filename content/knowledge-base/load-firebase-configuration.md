@@ -1,7 +1,7 @@
 ---
 description: How to load Firebase configuration files into environment variables in a Flutter workflow editor pre-build script
 title: Loading Firebase configuration
-weight: 3
+weight: 4
 aliases:
   - '../custom-scripts/load-firebase-configuration'
 ---

@@ -1,6 +1,6 @@
 ---
 title: Adding a Git tag with app version
-weight: 2
+weight: 3
 aliases:
   - '../custom-scripts/add-a-git-tag-with-app-version'
 ---
