@@ -1,8 +1,6 @@
 ---
 title: Migrating from GitHub OAuth to GitHub App
 weight: 1
-aliases:
-  - '../custom-scripts/add-a-git-tag-with-app-version'
 ---
 
 On April 19, 2021, Codemagic will deprecate the GitHub OAuth integration due to GitHub ending support for OAuth App integrations, you can read more about it [here](https://developer.github.com/changes/2020-02-14-deprecating-oauth-app-endpoint/). We are asking everyone currently logging in and accessing their GitHub repositories in Codemagic via the GitHub OAuth integration to switch to the GitHub App to continue building their GitHub repositories after the deprecation date.
