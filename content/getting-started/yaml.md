@@ -19,6 +19,10 @@ Builds can be also started manually by clicking **Start new build** in Codemagic
 
 ## Syntax
 
+{{<notebox>}}
+Use the Codemagic JSON schema to validate `codemagic.yaml` in your IDE, see how to set it up [here](../knowledge-base/validate-yaml/).
+{{</notebox>}}
+
 `codemagic.yaml` follows the traditional [YAML syntax](https://yaml.org/). Here are a few tips and tricks on how to better structure the file.
 
 ### Section names
