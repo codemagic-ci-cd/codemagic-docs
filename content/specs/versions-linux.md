@@ -27,6 +27,7 @@ weight: 5
 - firebase `9.1.0`
 - flutter `2.0.4 ($HOME/programs/flutter)`
 - gem `3.1.4`
+- gh `1.8.1`
 - git `2.25.1`
 - ionic `5.4.16`
 - jq `jq-1.6`
