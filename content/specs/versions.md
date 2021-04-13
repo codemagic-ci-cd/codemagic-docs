@@ -1,9 +1,9 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic build machines
+description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 11.x)
 aliases:
   - '../releases-and-versions/versions'
-weight: 4
+weight: 2
 ---
 
 ## Hardware
@@ -15,7 +15,7 @@ weight: 4
 
 - System version `macOS 10.15.4 (19E287)`
 - Kernel version `Darwin 19.4.0`
-- Disk `322GB (Free Space: 57GB)`
+- Disk `322GB (Free Space: 61GB)`
 
 ## Pre-installed tools
 
@@ -30,9 +30,10 @@ weight: 4
 - firebase `7.6.2`
 - flutter `2.0.4 ($HOME/programs/flutter)`
 - gem `3.0.3`
+- gh `1.8.1`
 - git `2.28.0`
 - gradle `6.1.1`
-- homebrew `3.0.4`
+- homebrew `3.1.0`
 - ionic `4.11.0`
 - jq
 - node `12.14.0`
@@ -60,6 +61,7 @@ weight: 4
     - Tag/API: `google_apis/x86`
     - Skin: `pixel_2`
     - Sdcard: `512M`
+
 ## Java versions
 
 - **14**: version `14.0.2`, JVM `OpenJDK 14.0.2`
@@ -69,7 +71,7 @@ weight: 4
 
 ## Xcode 11.7 (11E801a)
 
-This is the Xcode version used by default when you select `11.7` in build settings in the workflow editor for Flutter apps or set Xcode version to `11.7` in your codemagic.yaml file. Other available versions are listed [here](#other-xcode-versions).
+This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-11.7.app`
 
