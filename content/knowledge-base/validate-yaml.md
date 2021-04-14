@@ -8,7 +8,9 @@ Using the Codemagic JSON schema, you can validate your `codemagic.yaml` for stru
 
 The JSON schema does not validate the maximum build duration value, software version values, credentials, environment variable values or whether you have access to any paid features.
 
-To set up validation, you need:
+Codemagic JSON schema is available out of the box in the IDEs that are integrated with [schemastore.org](http://schemastore.org/).
+
+To set up validation manually, you need:
 
 * YAML language support in the IDE
 * To configure the IDE to use the Codemagic JSON schema for validation available at [https://static.codemagic.io/codemagic-schema.json](https://static.codemagic.io/codemagic-schema.json)
@@ -18,18 +20,19 @@ To set up validation, you need:
 This is an example of using the Codemagic JSON schema for validating codemagic.yaml in Visual Studio Code.
 
 1. In VS Code, make sure you have installed and enabled an extension for YAML language support, e.g. **redhat.vscode-yaml**.
-2. Then navigate to **Code > Preferences > Extensions > Settings > Extensions > YAML**.
+2. Then navigate to **Code > Preferences > Settings > Extensions > YAML**.
 3. Scroll to the **Yaml: Schemas** section and click **Edit in settings.json**.
 4. Append the follwing snippet to the end of the file:
 
-```yaml
-"yaml.schemas": {
-"https://static.codemagic.io/codemagic-schema.json": "codemagic.yaml",
+```json
+    "yaml.schemas": {
+        "https://static.codemagic.io/codemagic-schema.json": "codemagic.yaml"
+    }
 ```
 
 The full contents of the `settings.json` file should look something like this:
 
-```yaml
+```json
 {
     "git.confirmSync": false,
     "git.autofetch": true,
