@@ -15,14 +15,13 @@ weight: 5
 
 - System version `Ubuntu 20.04.1 LTS`
 - Kernel version `5.4.0-1036-gcp`
-- Disk `97GB (Free Space: 60GB)`
+- Disk `97GB (Free Space: 62GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - aws `1.18.69`
 - curl `7.68.0`
-- dart `2.10.5`
 - docker `20.10.2`
 - firebase `9.1.0`
 - flutter `2.0.4 ($HOME/programs/flutter)`
@@ -37,6 +36,7 @@ weight: 5
 - python `3.8.5`
 - ruby `2.7.2p137`
 - ssh
+- snapcraft `4.6.2`
 - sudo
 - tar
 - unzip
