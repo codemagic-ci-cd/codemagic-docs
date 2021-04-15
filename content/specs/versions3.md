@@ -15,7 +15,7 @@ weight: 2
 
 - System version `macOS 11.2 (20D64)`
 - Kernel version `Darwin 20.3.0`
-- Disk `322GB (Free Space: 94GB)`
+- Disk `322GB (Free Space: 98GB)`
 
 ## Pre-installed tools
 
@@ -24,15 +24,15 @@ weight: 2
 - cocoapods `1.10.1`
 - cordova `10.0.0`
 - curl
-- dart `2.10.5`
 - docker `20.10.2`
 - fastlane `2.176.0`
 - firebase `9.3.0`
 - flutter `2.0.4 ($HOME/programs/flutter)`
 - gem `3.1.4`
+- gh `1.8.1`
 - git `2.30.1`
 - gradle `6.1.1`
-- homebrew `3.0.4`
+- homebrew `3.1.0`
 - ionic `6.12.4`
 - jq
 - node `14.15.5`
@@ -163,4 +163,3 @@ With Xcode `12.5` build version `12E5244e` the following runtimes and devices ar
 ## Other Xcode versions
 
 - 12.4 (12D4e) `/Applications/Xcode-12.4.app`
-

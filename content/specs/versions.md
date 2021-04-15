@@ -1,5 +1,5 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic build machines
+description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 11.x)
 aliases:
   - '../releases-and-versions/versions'
@@ -15,7 +15,7 @@ weight: 4
 
 - System version `macOS 10.15.4 (19E287)`
 - Kernel version `Darwin 19.4.0`
-- Disk `322GB (Free Space: 57GB)`
+- Disk `322GB (Free Space: 60GB)`
 
 ## Pre-installed tools
 
@@ -24,15 +24,15 @@ weight: 4
 - cocoapods `1.10.1`
 - cordova `8.1.2`
 - curl
-- dart `2.9.2`
 - docker `19.03.8`
 - fastlane `2.157.3`
 - firebase `7.6.2`
 - flutter `2.0.4 ($HOME/programs/flutter)`
 - gem `3.0.3`
+- gh `1.8.1`
 - git `2.28.0`
 - gradle `6.1.1`
-- homebrew `3.0.4`
+- homebrew `3.1.0`
 - ionic `4.11.0`
 - jq
 - node `12.14.0`
@@ -60,6 +60,7 @@ weight: 4
     - Tag/API: `google_apis/x86`
     - Skin: `pixel_2`
     - Sdcard: `512M`
+
 ## Java versions
 
 - **14**: version `14.0.2`, JVM `OpenJDK 14.0.2`

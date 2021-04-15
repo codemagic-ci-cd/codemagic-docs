@@ -5,7 +5,7 @@ weight: 1
 
 On April 19, 2021, Codemagic will deprecate the GitHub OAuth integration due to GitHub ending support for OAuth App integrations, you can read more about it [here](https://developer.github.com/changes/2020-02-14-deprecating-oauth-app-endpoint/). We are asking everyone currently logging in and accessing their GitHub repositories in Codemagic via the GitHub OAuth integration to switch to the GitHub App to continue building their GitHub repositories after the deprecation date.
 
-## Who are affected?
+## Who needs to migrate?
 
 If you signed up or log in to Codemagic via GitHub (All repositories, OAuth), then this means we are using the OAuth integration to access the repositories on your GitHub account. In the Integrations section in your user or team settings, you can see the GitHub OAuth integration enabled.
 
@@ -57,7 +57,7 @@ If you log in via email, Bitbucket or GitLab but have repositories that are acce
 
 ### Enabling the GitHub App intgeration in Codemagic
 
-GitHub App can be enabled separately for your **personal account** in Codemagic user settings or for a **team** in team settings.
+GitHub App can be enabled separately for your **personal account** in Codemagic user settings or for a **team** in team settings. The steps may vary slightly depending on whether the app has been already authorized or installed on your GitHub account or not.
 
 {{<notebox>}}
 Note that teams use team owner's integrations configured in their user settings if no integrations are connected in Team integrations. We recommend setting up the integrations for teams in Team integrations.
