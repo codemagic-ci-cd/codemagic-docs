@@ -15,7 +15,7 @@ weight: 4
 
 - System version `macOS 10.15.4 (19E287)`
 - Kernel version `Darwin 19.4.0`
-- Disk `322GB (Free Space: 61GB)`
+- Disk `322GB (Free Space: 60GB)`
 
 ## Pre-installed tools
 
@@ -24,7 +24,6 @@ weight: 4
 - cocoapods `1.10.1`
 - cordova `8.1.2`
 - curl
-- dart `2.9.2`
 - docker `19.03.8`
 - fastlane `2.157.3`
 - firebase `7.6.2`
