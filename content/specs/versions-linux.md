@@ -24,7 +24,7 @@ weight: 5
 - curl `7.68.0`
 - docker `20.10.2`
 - firebase `9.1.0`
-- flutter `2.0.4 ($HOME/programs/flutter)`
+- flutter `2.0.5 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
