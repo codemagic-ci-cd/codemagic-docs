@@ -211,6 +211,13 @@ triggering:
     - pattern: included-source
       include: true
       source: true
+  tag_patterns:                 # Include or exlude watched tag labels
+    - pattern: '*'
+      include: true
+    - pattern: exluded-tag
+      include: false
+    - pattern: included-tag
+      include: true
   cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
 ```
 
