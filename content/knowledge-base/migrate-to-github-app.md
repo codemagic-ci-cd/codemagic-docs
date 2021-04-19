@@ -17,35 +17,13 @@ The key difference between OAuth and GitHub App integrations is the scope of per
 
 In addition, the GitHub App integration will also make it possible to use [GitHub Checks](../building/github-checks).
 
-### Deprecting GitHub releases in Flutter workflow editor
+### Changes related to publishing GitHub releases
 
-Without write access to the repository, Codemagic will no longer be able to push GitHub releases without additional configuration. Therefore, we will be removing the GitHub releases section from Flutter workflow editor. You can continue to publish GitHub releases by setting up a personal access token and using a custom script in the **Pre-publish** step.
+Without write access to the repository, Codemagic will no longer be able to push GitHub releases without additional configuration. Publishing GitHub releases now requires setting up a [personal access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) in GitHub and saving it as an environment variable in Codemagic.
 
-1. Create a personal access token in GitHub as described [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
-2. Save it as an environment variable with the name `GITHUB_TOKEN`.
-3. Add the following custom script in the **pre-publish** step that publishes the artifacts with tag builds.
+Due to these changes, **we will be removing the GitHub releases section from Flutter workflow editor**. You can continue to publish GitHub releases by setting up a personal access token and using a custom script in the **Pre-publish** step. See the instructions [here](../publishing/github-release/).
 
-```bash
-#!/usr/bin/env zsh
-
-# Publish only for tag builds
-if [ -z ${FCI_TAG} ]; then
-   echo "Not a tag build will not publish GitHub release"
-   exit 0
-fi
-
-# See more options about `gh release create` usage from GitHub CLI
-# official docs at https://cli.github.com/manual/gh_release_create
-
-gh release create "${FCI_TAG}" \
-    --title "<Your Application Name> ${FCI_TAG}" \
-    --notes-file changelog.md
-    path/to/build-artifact.ipa \
-    path/to/build-artifact.apk
-
-# Note that you don't need to include title and changelog if you do not want to.
-# Any number of artifacts can be included with the release.
-```
+For builds configured in `codemagic.yaml`, update your configuration by saving the personal access token to the `environment` section, see more details [here](../publishing-yaml/distribution/#github-releases). 
 
 ## Switching to GitHub App
 

@@ -108,22 +108,32 @@ publishing:
 
 Publishing GitHub releases is available for GitHub repositories only.
 
+{{<notebox>}}
+As of deprecating the GitHub OAuth integration, Codemagic no longer has write access to the repositories. Setting up a personal access token is needed to publish releases to GitHub.
+{{</notebox>}}
+
 Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
 
-Note that using `*` wildcard in the beginning of the pattern requires quotation marks around the pattern, otherwise it will violate the `yaml` syntax.
+1. Create a personal access token in GitHub as described [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+2. Add the personal access token as an environment variable with the name `GITHUB_TOKEN` in the `environment` section.
+3. In the `triggering` section, configure triggering on tag creation. Don't forget to add a branch pattern and ensure the webhook exists.
 
-```yaml
-publishing:
-  github_releases:
-    prerelease: false
-    artifact_patterns:
-      - app-release.apk
-      - '*.aab'
-```
+  ```yaml
+  triggering:
+    events:
+      - tag
+  ```
 
-{{<notebox>}}
-Note that Codemagic needs **write** permission to be able to publish a GitHub release. If you have signed up via Codemagic GitHub app or have enabled the GitHub app integration, publishing to GitHub is not possible as Codemagic only has **read** access to the repository. If you wish to publish GitHub releases, we recommend you authenticate via OAuth and remove the GitHub app integration in user or team settings as otherwise the GitHub app limitations will prevail. Read more about the signup options [here](../getting-started/signup).
-{{</notebox>}}
+4. Set up publishing to GitHub releases in the `publishing` section and specify the artifacts to publish. If this is a prerelease build, set `prerelease` to true.  Note that using the `*` wildcard in the beginning of the pattern requires quotation marks around the pattern, otherwise it will violate the `yaml` syntax.
+
+  ```yaml
+  publishing:
+    github_releases:
+      prerelease: false
+      artifact_patterns:
+        - app-release.apk
+        - '*.aab'
+  ```
 
 ## Publishing a Flutter package to pub.dev
 

@@ -37,7 +37,7 @@ In the Integrations section in your user or team settings, click **Manage integr
 
 You can also access the same settings in GitHub by going directly to [https://github.com/apps/codemagic-ci-cd](https://github.com/apps/codemagic-ci-cd) and clicking **Configure**.
 
-These settings allow you to revisit your repository access settings should you want to share access to additional repositories or revoke access to a previously shared repository. In addition, you can disconnect an account by clicking **Uninstall** in the danger zone.
+These settings allow you to revisit your repository access configuration should you want to share access to additional repositories or revoke access to a previously shared repository. In addition, you can disconnect an account by clicking **Uninstall** in the danger zone.
 
 If you revoke access to previously shared repositories, you will still see all your apps and build history but won't be able to build the apps to which Codemagic no longer has access. Such apps will be grayed out and will show up on the Applications page with the **Removed from repository** filter.
 
@@ -49,7 +49,7 @@ The GitHub app integration is also disabled when you **uninstall** the Codemagic
 
 ### Repository is unavailable
 
-Here are some common scenarios to double check if you can't see your repository listed in Codemagic or it's shown as unavailable.
+Here are some tips on what to check if you can't see your repository listed in Codemagic or it's shown as unavailable.
 
 * If you chose to grant access to **select repositories only** as opposed to all repositories when setting up the GitHub App, make sure you have also granted access to the repository in question. Click **Manage integration > Configure** in team or user integrations to configure repository access settings.
 * Your personal Codemagic account and each team have separate integrations. Make sure you have connected the GitHub App integration in the right team or in your user settings.
