@@ -40,6 +40,8 @@ Under **Automatic build triggering**, you can select when to trigger builds.
 
 **Trigger on tag creation**. When checked, Codemagic will automatically build the tagged commit whenever you create a tag for this app. Note that the watched branch settings have no effect on tag builds.
 
+If enabled, you would be able to specify tag patterns to trigger builds. Similarly to **Watched branch patterns**, the first pattern in the list is applied first and each pattern will limit the set of tag labels further. In the case of conflicting patterns, the latter one will prevail. You could use wildcard symbols, click **Show pattern examples** for more information.
+
 **Cancel outdated webhook builds**. When checked, Codemagic will automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch. We recommend enabling this feature when you're making several commits, each of which triggers a build.
 
 If you don't enable any automatic build triggers, you can start builds only manually for this workflow.
