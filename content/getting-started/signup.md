@@ -24,7 +24,7 @@ Note that the GitHub App integration can be connected separately for your person
 
 1. In your user or team settings in Codemagic, navigate to the Integrations section and locate the GitHub App integration. The next steps may vary slightly depending on whether you have already authorized Codemagic or have the Codemagic GitHub App installed.
 2. Click **Connect** next to the GitHub App integration, and when redirected to GitHub, click **Authorize Codemagic**.
-3. Back in the Integrations section, click **Finish installation** and then **Install app**. Note that at this stage you can also revoke your authorization of the app by clicking **Disconnect**.
+3. Back in the Integrations section, click **Finish installation** and then **Install app**.
 4. A popup window opens for you to select the organization or account where to install the app. Pick the installation location. You can later install the app to additional accounts.
 5. Then choose whether to share **All repositories** from the account or select the repositories to share by choosing **Select repositories only**.
 6. Click **Install & Authorize** to finish installation (you may be asked to confirm that action by entering your password). If you do not have the permission to install the app under an organization, you will see the button **Authorize & Request** instead. An approval from the organization owner or app manager is needed to authorize the installation.
@@ -43,9 +43,9 @@ If you revoke access to previously shared repositories, you will still see all y
 
 ### Disconnecting Codemagic GitHub app integration
 
-The Codemagic CI/CD GitHub App integration can be disabled by clicking **Manage integration > Disconnect** in **User settings > Integrations > GitHub App** for your personal account or in **Team settings > Team Integrations > GitHub App** to disconnect it from the team. This annuls all settings configured for the Codemagic app in GitHub but won't delete your buid history. 
+The GitHub app integration can be removed when you **uninstall** the Codemagic CI/CD app in GitHub. You can still log in to Codemagic with the GitHub App and see your build history if Codemagic CI/CD remains an **authorized GitHub app** in GitHub. 
 
-The GitHub app integration is also disabled when you **uninstall** the Codemagic CI/CD app in GitHub. You can still log in to Codemagic with the GitHub App and see your build history if Codemagic CI/CD remains an **authorized GitHub app** in GitHub. 
+You can visit [https://github.com/settings/installations](https://github.com/settings/installations) for personal accounts or github(dot)com/organizations/your-organization/settings/installations for organization accounts to check whether Codemagic CI/CD is listed both under installed and authorized GitHub Apps.
 
 ### Repository is unavailable
 
