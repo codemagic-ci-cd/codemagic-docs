@@ -28,6 +28,10 @@ Note that you need to set up a [webhook](../building/webhooks) for automatic bui
 
 ## Android
 
+{{<notebox>}}
+You can find an up-to-date codemagic.yaml React Native Android workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/codemagic.yaml#L5).
+{{</notebox>}}
+
 Set up local properties
 
 ```yaml
@@ -43,8 +47,10 @@ Building an Android application:
 ## iOS
 
 {{<notebox>}}
-Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for build.
+You can find an up-to-date codemagic.yaml React Native iOS workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/codemagic.yaml#L72).
 {{</notebox>}}
+
+Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for build.
 
 Script for building an iOS application:
 
@@ -52,7 +58,7 @@ Script for building an iOS application:
 - xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
 ```
 
-{{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}} 
+Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46). 
 
 ## Testing, code signing and publishing
 
@@ -61,16 +67,6 @@ To test and publish a React Native app:
 * The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Naive app can be found [here](../testing-yaml/testing/#react-native-unit-test).
 * All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
 * All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../publishing-yaml/distribution/#publishing).
-
-## iOS and Android workflow examples
-
-Please refer to the React Native demo project on GitHub:
-
-[https://github.com/codemagic-ci-cd/react-native-demo-project](https://github.com/codemagic-ci-cd/react-native-demo-project)
-
-This shows how to configure the **codemagic.yaml** so you can build and publish your **iOS** app to **App Store Connect**.
-
-It also contains a workflow that shows how to build and publish your **Android** app to a **Google Play** internal track.
 
 ## Build versioning your React Native app
 

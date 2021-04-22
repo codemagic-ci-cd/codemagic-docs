@@ -47,6 +47,10 @@ The YAML feature currently has the following **limitations**:
 
 ## Android builds
 
+{{<notebox>}}
+You can find an up-to-date codemagic.yaml Flutter Android workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/flutter/flutter-yaml-demo-project/codemagic.yaml#L2).
+{{</notebox>}}
+
 Set up local properties
 
 ```yaml
@@ -80,6 +84,10 @@ Codemagic uses the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-t
 {{</notebox>}}
 
 ## iOS builds
+
+{{<notebox>}}
+You can find an up-to-date codemagic.yaml Flutter iOS workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/flutter/flutter-yaml-demo-project/codemagic.yaml#L72).
+{{</notebox>}}
 
 ### Building an unsigned application .app
 
