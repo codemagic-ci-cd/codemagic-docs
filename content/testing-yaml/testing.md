@@ -69,7 +69,7 @@ workflows:
   
   my-workflow:
     name: <your workflow name>
-      instance_type: linux                # specify linux or linux_2 for Linux instances; mac-mini or mac-pro for Macintosh instances
+      instance_type: linux                # specify linux or linux_2 for Linux instances; mac_mini or mac_pro for MacOS instances
       max_build_duration: 60
   ...
 
@@ -146,7 +146,7 @@ workflows:
   
   my-workflow:
     name: <your workflow name>
-      instance_type: linux                # specify linux or linux_2 for Linux instances; mac-mini or mac-pro for Macintosh instances
+      instance_type: linux                # specify linux or linux_2 for Linux instances; mac_mini or mac_pro for MacOS instances
       max_build_duration: 60
   ...
 
