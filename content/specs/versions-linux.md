@@ -42,7 +42,7 @@ weight: 5
 - unzip
 - wget
 - yarn `1.22.5`
-- yq `3.3.2`
+- yq `4.6.1`
 - zip
 
 ## Android emulators
