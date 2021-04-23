@@ -35,7 +35,7 @@ module.exports = {
 };
 ```
 
-`present` is a preset that is used as a base for Jest’s configuration. A preset should point to an npm module that has a `jest-preset.json` or `jest-preset.js` file at the root.
+`preset` is a preset that is used as a base for Jest’s configuration. A preset should point to an npm module that has a `jest-preset.json` or `jest-preset.js` file at the root.
 
 `setUpFilesAfterEnv` specifies a list of paths to modules that run some code to configure or set up the testing framework before each test file in the suite is executed.
 
@@ -69,7 +69,7 @@ workflows:
   
   my-workflow:
     name: <your workflow name>
-      instance_type: linux                # specify linux or linux_2 for Linux instances; mac_mini or mac_pro for MacOS instances
+      instance_type: linux                # specify linux or linux_2 for Linux instances; mac_mini or mac_pro for macOS instances
       max_build_duration: 60
   ...
 
@@ -102,7 +102,7 @@ You need to install and setup WebDriverIO in your project root directory before 
 ```bash
 npx wdio config
 ```
-Once it done, `wdio.conf` file will be generated inside the `tests` directory.
+Once it's done, `wdio.conf` file will be generated inside the `tests` directory.
 
 Perform the following changes to configure WebDriverIO to work with Appium and run tests on Android Emulator:
 
@@ -146,7 +146,7 @@ workflows:
   
   my-workflow:
     name: <your workflow name>
-      instance_type: linux                # specify linux or linux_2 for Linux instances; mac_mini or mac_pro for MacOS instances
+      instance_type: linux                # specify linux or linux_2 for Linux instances; mac_mini or mac_pro for macOS instances
       max_build_duration: 60
   ...
 
