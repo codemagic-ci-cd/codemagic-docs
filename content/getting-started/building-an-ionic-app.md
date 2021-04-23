@@ -36,6 +36,10 @@ To test, code sign and publish Ionic Android and iOS apps:
 
 ## Android Ionic Capacitor workflow example
 
+{{<notebox>}}
+You can find an up-to-date codemagic.yaml Ionic Android workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/ionic/ionic-capacitor-demo-project/codemagic.yaml#L95).
+{{</notebox>}}
+
 The following example shows how to set up a workflow that builds your **Ionic Capacitor** Android app and publishes to a Google Play internal track.
 
 ```yaml
@@ -183,6 +187,10 @@ workflows:
 ```
 
 ## iOS Ionic Capacitor workflow example
+
+{{<notebox>}}
+You can find an up-to-date codemagic.yaml Ionic iOS workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/ionic/ionic-capacitor-demo-project/codemagic.yaml#L2).
+{{</notebox>}}
 
 The following example shows a workflow that can be used to publish your **Ionic Capacitor** iOS app to App Store Connect.
 

@@ -87,6 +87,10 @@ To test, code sign and publish an iOS app:
 
 ## iOS workflow example
 
+{{<notebox>}}
+You can find an up-to-date codemagic.yaml iOS workflow in Codemagic Sample Projects for [automatic code signing](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/ios/ios-automatic-code-signing-demo-project/codemagic.yaml) and [manual code signing](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/ios/ios-manual-code-signing-demo-project/codemagic.yaml).
+{{</notebox>}}
+
 The following example shows a workflow that can be used to publish your iOS app to App Store Connect.
 
 ```yaml
