@@ -36,6 +36,7 @@ weight: 5
 - python `3.8.5`
 - ruby `2.7.2p137`
 - ssh
+- snapcraft `4.6.2`
 - sudo
 - tar
 - unzip
