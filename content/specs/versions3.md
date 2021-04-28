@@ -15,28 +15,28 @@ weight: 2
 
 - System version `macOS 11.2 (20D64)`
 - Kernel version `Darwin 20.3.0`
-- Disk `322GB (Free Space: 98GB)`
+- Disk `322GB (Free Space: 90GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
-- aws `2.1.29`
+- aws `2.1.39`
 - cocoapods `1.10.1`
 - cordova `10.0.0`
 - curl
 - docker `20.10.2`
-- fastlane `2.176.0`
+- fastlane `2.181.0`
 - firebase `9.3.0`
-- flutter `2.0.5 ($HOME/programs/flutter)`
+- flutter `2.0.5 ($HOME/programs/flutter_2_0_5)`
 - gem `3.1.4`
-- gh `1.8.1`
-- git `2.30.1`
+- gh `1.9.2`
+- git `2.31.1`
 - gradle `6.1.1`
-- homebrew `3.1.0`
+- homebrew `3.1.3`
 - ionic `6.12.4`
 - jq
 - node `14.15.5`
-- npm `7.5.3`
+- npm `7.10.0`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
@@ -63,17 +63,17 @@ weight: 2
 
 ## Java versions
 
-- **15**: version `15.0.2`, JVM `Zulu 15.29.15`
-- **11**: version `11.0.10`, JVM `Zulu 11.45.27`
-- **1.8**: version `1.8.0_282`, JVM `Zulu 8.52.0.23`
+- **16**: version `16`, JVM `Zulu 16.28.11`
+- **11**: version `11.0.11`, JVM `Zulu 11.48.21`
+- **1.8**: version `1.8.0_292`, JVM `Zulu 8.54.0.21`
 
-## Xcode 12.5 (12E5244e)
+## Xcode 12.5 (12E262)
 
-This is the Xcode version used when you select `12.5` in build settings. Other available versions are listed [here](#other-xcode-versions).
+This is the Xcode version used by default when you select `edge` in build settings in the workflow editor for Flutter apps or set Xcode version to `edge` in your codemagic.yaml file. Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-12.5.app`
 
-With Xcode `12.5` build version `12E5244e` the following runtimes and devices are installed:
+With Xcode `12.5` build version `12E262` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -142,9 +142,13 @@ With Xcode `12.5` build version `12E5244e` the following runtimes and devices ar
 - iPad Air (3rd generation)
 - iPad (8th generation)
 - iPad Air (4th generation)
+- iPad Pro (11-inch) (3rd generation)
+- iPad Pro (12.9-inch) (5th generation)
 - Apple TV
 - Apple TV 4K
 - Apple TV 4K (at 1080p)
+- Apple TV 4K (2nd generation)
+- Apple TV 4K (at 1080p) (2nd generation)
 - Apple Watch - 38mm
 - Apple Watch - 42mm
 - Apple Watch Series 2 - 38mm
@@ -163,3 +167,4 @@ With Xcode `12.5` build version `12E5244e` the following runtimes and devices ar
 ## Other Xcode versions
 
 - 12.4 (12D4e) `/Applications/Xcode-12.4.app`
+
