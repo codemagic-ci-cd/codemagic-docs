@@ -43,7 +43,11 @@ If you revoke access to previously shared repositories, you will still see all y
 
 ### Disconnecting Codemagic GitHub app integration
 
-The GitHub app integration can be removed when you **uninstall** the Codemagic CI/CD app in GitHub. You can still log in to Codemagic with the GitHub App and see your build history if Codemagic CI/CD remains an **authorized GitHub app** in GitHub. 
+The GitHub app integration can be removed when you **uninstall** the Codemagic CI/CD app in GitHub. You can still log in to Codemagic with the GitHub App if Codemagic CI/CD remains an **authorized GitHub app** in GitHub. 
+
+On Codemagic user settings the Disconnect button that opens when you click on the GitHub app integration will remain on the dialogue. Clicking it will delete the GitHub access token that Codemagic had stored which means we no longer interact with GitHub.
+
+Disconnecting the GitHub app from Codemagic alone will not revoke the authorization or installation of the GitHub app on GitHub. This needs to be done by you on GitHub.
 
 You can visit [https://github.com/settings/installations](https://github.com/settings/installations) for personal accounts or github(dot)com/organizations/your-organization/settings/installations for organization accounts to check whether Codemagic CI/CD is listed both under installed and authorized GitHub Apps.
 
