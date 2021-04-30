@@ -1,7 +1,7 @@
 ---
 title: Building a Cordova app 
 description: How to build a Cordova app with codemagic.yaml
-weight: 8
+weight: 9
 ---
 
 ## Setting up a Cordova project

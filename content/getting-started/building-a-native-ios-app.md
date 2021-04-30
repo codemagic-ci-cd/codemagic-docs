@@ -1,7 +1,7 @@
 ---
 title: Building a native iOS app
 description: How to build an iOS app with codemagic.yaml
-weight: 5
+weight: 6
 aliases:
   - '../yaml/building-a-native-ios-app'
 ---
