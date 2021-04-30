@@ -72,7 +72,7 @@ environment:
   ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
   ```
 
-   If you wish to use existing certificates and don't have the used previously private key, or those certificates were created via a Certificate Authority request, you can [export](https://help.apple.com/xcode/mac/current/#/dev154b28f09) used certificate(s) into `.p12` container(s) and get used private key to be able to fetch these certificates from another machine. You can export the private key and convert it using the next command
+   If you wish to use existing certificates and don't have the used previously private key, or those certificates were created via a Certificate Authority request or via Xcode, you can [export](https://help.apple.com/xcode/mac/current/#/dev154b28f09) used certificate(s) into `.p12` container(s) and get used private key to be able to fetch these certificates from another machine. You can export the private key and convert it using the next command
 
     ```bash
     openssl pkcs12 -in <your_certificate_name>.p12 -nodes -nocerts | openssl rsa -out <your_private_key_name>.key
