@@ -1,7 +1,7 @@
 ---
 title: Building a React Native app
 description: How to build a React Native app with codemagic.yaml
-weight: 8
+weight: 9
 aliases: 
   - '../yaml/building-a-react-native-app'
 ---

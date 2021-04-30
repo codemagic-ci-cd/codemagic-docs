@@ -1,7 +1,7 @@
 ---
 title: Building a native app with a Flutter module
 description: How to build a native iOS or Android app with a Flutter module using codemagic.yaml
-weight: 9
+weight: 10
 aliases:
   - '../yaml/building_a_native_app_with_flutter_module'
 ---
