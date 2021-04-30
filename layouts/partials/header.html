@@ -56,6 +56,24 @@
                                     {{ readFile "/assets/svg/platforms/android.svg" | safeHTML }} Native Android</a
                                 >
                             </li>
+                            <li>
+                                <a
+                                    href='{{ site.Param "landingURL" }}/cordova-continuous-integration'
+                                    class="menu-block__link"
+                                    onclick="sendGtag('Cordova_clicked', 'CodemagicMenu')"
+                                >
+                                    {{ readFile "/assets/svg/platforms/cordova.svg" | safeHTML }} Cordova</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href='{{ site.Param "landingURL" }}/ionic-continuous-integration'
+                                    class="menu-block__link"
+                                    onclick="sendGtag('Ionic_clicked', 'CodemagicMenu')"
+                                >
+                                    {{ readFile "/assets/svg/platforms/ionic.svg" | safeHTML }} Ionic</a
+                                >
+                            </li>
                         </ul>
                     </div>
                     <div class="menu-block">
