@@ -1,7 +1,7 @@
 ---
 description: How to set up macOS code signing in the Flutter workflow editor
 title: macOS code signing
-weight: 1
+weight: 2
 ---
 
 Code signing is required by Apple for integrating app services, installing your macOS app on another machine or for uploading it to distribute it through Mac App Store or outside of Mac App Store. It enables to identify who developed the app and ensure that all the changes to the app come from you or your team.
@@ -86,6 +86,8 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 4. Mark the checkbox **Project type setting > is Mac Catalyst** if you need a Mac Catalyst profile.
 7. Enter your app's **bundle identifier** (optional). By default, Codemagic looks for it from your `project.pbxproj` file.
 
+{{< figure size="medium" src="../uploads/automatic_code_signing_macos.png" caption="Automatic macOS code signing setup" >}}
+
 As the next step, you can [configure publishing to App Store Connect](../publishing/publishing-to-app-store) to distribute submit the app to App Store Connect and distribute later on via Mac App Store.
 
 ## Manual code signing to publish to Mac App Store
@@ -101,7 +103,7 @@ With the manual code signing method, you are required to upload the `Mac App Dis
 3. Upload your `Mac Installer Distribution` signing certificate (in `.p12` format). If your certificate is password-protected, enter the **Certificate password**.
 4. Upload your provisioning profile (`.provisionprofile`). Note that if your app contains app extensions, you are required to upload an additional provisioning profile for each extension.
 
-{{< figure size="medium" src="../uploads/manual_code_signing_macos.png" caption="Manual code signing setup" >}}
+{{< figure size="medium" src="../uploads/manual_code_signing_macos.png" caption="Manual macOS code signing setup" >}}
 
 Codemagic will now create a signed `.pkg` file with every build. Note that you must also [set up publishing to App Store Connect](../publishing/publishing-to-app-store) to distribute submit the app to App Store Connect and distribute later on via Mac App Store.
 

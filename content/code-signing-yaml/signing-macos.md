@@ -1,11 +1,11 @@
 ---
 title: Signing macOS apps
 description: How to set up macOS code signing in codemagic.yaml
-weight: 1
+weight: 2
 aliases: '../code-signing-yaml/signing'
 ---
 
-All macOS applications have to be digitally signed before they can be installed devices or made available to the public via Mac App Store or outside of Mac App Stores.
+All macOS applications have to be digitally signed before they can be installed on devices or made available to the public via Mac App Store or outside of Mac App Store.
 
 {{<notebox>}}
 This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Signing macOS apps using the Flutter workflow editor](../code-signing/ios-code-signing).
@@ -84,25 +84,25 @@ Alternatively, each property can be specified in the `scripts` section of the YA
 
 ## Publishing to Mac App Store
 
-In order to publish to Mac App Store, the application must be signed with a `Mac App Distribution` certificate using `Mac App Store` provisioning profile. Additionally, the application must be packaged into an `.pkg` Installer package which should be signed with `Mac Installer Distribution` certificate.
+In order to publish to Mac App Store, the application must be signed with a `Mac App Distribution` certificate using `Mac App Store` provisioning profile. Additionally, the application must be packaged into a `.pkg` Installer package which should be signed with `Mac Installer Distribution` certificate.
 
 ### Fetch signing files automatically
 
-To code sign the app using existing certificates and profile, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands.
+To code sign the app add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands.
 
 ```yaml
 scripts:
   ... your dependencies installation
   - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
     script: keychain initialize
-  - name: Fetch signing files
+  - name: Fetch Mac App Distribution certificate and Mac App Store profile
     script: |
       app-store-connect fetch-signing-files \
         "io.codemagic.app" \  # Fetch signing files for specified bundle ID (use "$(xcode-project detect-bundle-id)" if not specified)
         --platform MAC_OS \
         --type MAC_APP_STORE \  # Specify provisioning profile type *
         --create  # Allow creating resources if existing are not found. You may omit this flag if you already have the required certificate and profile and provided the corresponding private key
-  - name: Get or create if not exists Installer certificate
+  - name: Fetch Mac Installer Distribution certificates
     script: |
       app-store-connect create-certificate --type MAC_INSTALLER_DISTRIBUTION --save || \   # You may omit this command if you already have the installer certificate and provided the corresponding private key
         app-store-connect list-certificates --type MAC_INSTALLER_DISTRIBUTION --save
@@ -176,14 +176,18 @@ To package your application into an `.pkg` Installer package and sign it `Mac In
     script: |
       set -x
 
-      APP_NAME=$(find . -name "*.app")                                                              # Command to find the path to your generated app, may be different
+      APP_NAME=$(find . -name "*.app")                                        # Command to find the path to your generated app, may be different
       cd $(dirname "$APP_NAME")
       PACKAGE_NAME=$(basename "$APP_NAME" .app).pkg
-      xcrun productbuild --component "$APP_NAME" /Applications/ unsigned.pkg                        # Create and unsigned package
-      INSTALLER_CERT_NAME=$(keychain list-certificates \                                            # Find the installer certificate commmon name in keychain
-        | jq '.[] | select(.common_name | contains("Mac Developer Installer")) | .common_name' \
+      xcrun productbuild --component "$APP_NAME" /Applications/ unsigned.pkg  # Create and unsigned package
+      INSTALLER_CERT_NAME=$(keychain list-certificates \                      # Find the installer certificate commmon name in keychain
+        | jq '.[] \
+          | select(.common_name \
+          | contains("Mac Developer Installer")) \
+          | .common_name' \
         | xargs)
-      xcrun productsign --sign "$INSTALLER_CERT_NAME" unsigned.pkg "$PACKAGE_NAME"                  # Sign the package
+      xcrun productsign --sign "$INSTALLER_CERT_NAME" unsigned.pkg "$PACKAGE_NAME" # Sign the package
+      rm -f unsigned.pkg                                                       # Optionally remove the not needed unsigned package
 ```
 
 Do not forget to specify the path to your generated package in [artifacts section](http://localhost:1313/getting-started/yaml/#artifacts)
