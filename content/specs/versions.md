@@ -70,7 +70,9 @@ weight: 4
 
 ## Xcode 11.7 (11E801a)
 
-This is the Xcode version used by default when you select `11.7` in build settings in the workflow editor for Flutter apps or set Xcode version to `11.7` in your codemagic.yaml file. Other available versions are listed [here](#other-xcode-versions).
+This is the Xcode version used by default when you select `11.7` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `11.7` in your codemagic.yaml file. 
+Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-11.7.app`
 

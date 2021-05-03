@@ -69,7 +69,9 @@ weight: 2
 
 ## Xcode 12.5 (12E262)
 
-This is the Xcode version used by default when you select `edge` in build settings in the workflow editor for Flutter apps or set Xcode version to `edge` in your codemagic.yaml file. Other available versions are listed [here](#other-xcode-versions).
+This is the Xcode version used by default when you select `12.5`, `latest` or `edge` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `12.5`, `latest` or `edge` in your codemagic.yaml file. 
+Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-12.5.app`
 
