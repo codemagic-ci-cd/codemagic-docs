@@ -95,11 +95,11 @@ You can override the publishing track specified in the configuration file using 
 
 ### App Store Connect
 
-Codemagic enables you to automatically publish your iOS app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store.
+Codemagic enables you to automatically publish your iOS or macOS app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store.
 
 ```yaml
 publishing:
-  app_store_connect:                  # For iOS app
+  app_store_connect:                  # For iOS or macOS app
     apple_id: name@example.com        # Email address used for login
     password: Encrypted(...)          # App-specific password
 ```
