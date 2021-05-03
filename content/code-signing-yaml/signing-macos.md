@@ -2,16 +2,16 @@
 title: Signing macOS apps
 description: How to set up macOS code signing in codemagic.yaml
 weight: 2
-aliases: '../code-signing-yaml/signing'
 ---
 
 All macOS applications have to be digitally signed before they can be installed on devices or made available to the public via Mac App Store or outside of Mac App Store.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor**, please go to [Signing macOS apps using the Flutter workflow editor](../code-signing/macos-code-signing).
+This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Signing macOS apps using the Flutter workflow editor](../code-signing/macos-code-signing).
 {{</notebox>}}
 
 ## Prerequisites
+
 
 Signing macOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. 
 
@@ -20,6 +20,7 @@ Note that in order to publish to Mac App Store, the application must be signed w
 Notarization for distributing the app outside the Mac App Store is not yet available.
 
 You can upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or use the automatic code signing option where Codemagic takes care of code signing and signing files management on your behalf. Read more about the two options below.
+
 
 To set up publishing the code-signed application to App Store Connect, refer [here](../publishing-yaml/distribution/#app-store-connect).
 
@@ -194,4 +195,4 @@ To package your application into an `.pkg` Installer package and sign it with th
       rm -f unsigned.pkg                                                       # Optionally remove the not needed unsigned package
 ```
 
-Don't forget to specify the path to your generated package in the [artifacts section](http://localhost:1313/getting-started/yaml/#artifacts).
+Don't forget to specify the path to your generated package in the [artifacts section](../getting-started/yaml/#artifacts).
