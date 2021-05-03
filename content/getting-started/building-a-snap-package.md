@@ -8,30 +8,30 @@ aliases:
 
 ## Setting up Snap packaging
 
-To set up Snap packaging create `snapcraft.yaml` file with necessary configurations according to [Snapcraft guide for Flutter](https://snapcraft.io/docs/flutter-applications) or general [`snapcraft.yaml` guide](https://snapcraft.io/docs/creating-snapcraft-yaml).
+To set up Snap packaging, create a `snapcraft.yaml` file with the necessary configurations according to [Snapcraft guide for Flutter](https://snapcraft.io/docs/flutter-applications) or follow the general [`snapcraft.yaml` guide](https://snapcraft.io/docs/creating-snapcraft-yaml).
 
-Optionally, run `snapcraft snap` command locally to ensure that everything is set up.
+Optionally, run the `snapcraft snap` command locally to ensure that everything is set up.
 
 {{<notebox>}}
 **Note**
 
-You should store `snapcraft.yaml` in the repository root. Another option is to store `snapcraft.yaml` in `.snap` folder that is located in repository root.
+You should store the `snapcraft.yaml` file in the repository root. Another option is to store `snapcraft.yaml` in the `.snap` folder that is located in repository root.
 
 {{</notebox>}}
 
 ## Building Snap packages
 
-Include `snapcraft snap` command in `codemagic.yaml` file scripts section as in the example below. The output of this command is `.snap` artifact. It could later be used for [publishing to Snapcraft store](../publishing-yaml/distribution/).
+Include the `snapcraft snap` command in the scripts section of your `codemagic.yaml` file as in the example below. The output of this command is a `.snap` artifact. It can later be used for [publishing to the Snapcraft Snap Store](../publishing-yaml/distribution/).
 
-Additionally, you may want to install the generated `.snap` package onto your machine. Package would not be code signed unless you publish it to Snapcraft store. You would need to use `--dangerous` flag to install package without code signing:
+Additionally, you may want to install the generated `.snap` package onto your machine. The package will not be code signed unless you publish it to Snapcraft. You would need to use the `--dangerous` flag to install the package without code signing:
 
     snap install your-package.snap --dangerous
 
-**Note**: Snap is only available on Linux instances. Make sure to have `instance_type: linux` in your `codemagic.yaml`.
+**Note**: Snap is only available on Linux instances. Make sure to have `instance_type: linux` or `instance_type: linux_x2` in your `codemagic.yaml`.
 
 ## Sample `codemagic.yaml`
 
-In case you are packaging Flutter application, be sure to set `SNAPCRAFT_BUILD_ENVIRONMENT` environmet variable to be `host`. It is required to avoid virtualization. Read more about virtualization options [here](https://flutter.dev/docs/deployment/linux).
+In case you are packaging a Flutter application, be sure to set `SNAPCRAFT_BUILD_ENVIRONMENT` environment variable to `host`. It is required to avoid virtualization. Read more about virtualization options [here](https://flutter.dev/docs/deployment/linux).
 
 ```yaml
 workflows:
