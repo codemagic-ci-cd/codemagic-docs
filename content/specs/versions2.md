@@ -70,7 +70,9 @@ weight: 3
 
 ## Xcode 12.4 (12D4e)
 
-This is the Xcode version used by default when you select `latest` in build settings. Other available versions are listed [here](#other-xcode-versions).
+This is the Xcode version used by default when you select `12.4` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `12.4` in your codemagic.yaml file. 
+Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-12.4.app`
 
