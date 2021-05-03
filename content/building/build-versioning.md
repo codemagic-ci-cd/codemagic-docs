@@ -20,12 +20,12 @@ Here are some examples how you can increment the app version using Codemagic's r
 --build-name=1.0.0 --build-number=$BUILD_NUMBER
 ```
 
-## Fetching build number from pubsec.yaml
+## Fetching build name and build number from pubsec.yaml
 
 Add the following build argument:
 
 ```bash
---build-number=$(yq e .version pubspec.yaml)
+--build-name=$(yq e .version pubspec.yaml | cut -d "+" -f1) --build-number=$(yq e .version pubspec.yaml | cut -d "+" -f2) 
 ```
 
 It uses [yq](https://github.com/mikefarah/yq), a lightweight and portable command-line YAML processor.
