@@ -36,14 +36,14 @@ workflows:
         - '**/*.snap'
 ```
 
-Additionally, you may want to install the generated `.snap` package onto your machine. The package will not be code signed unless you publish it to Snapcraft. You would need to use the `--dangerous` flag to install the package without code signing:
+Additionally, you may want to install the generated `.snap` package onto your machine for testing. The package will not be code signed unless you publish it to Snapcraft, so you would need to use the `--dangerous` flag to install the package without code signing:
 
     snap install your-package.snap --dangerous
 
 In case you are packaging a **Flutter application**, be sure to set `SNAPCRAFT_BUILD_ENVIRONMENT` environment variable to `host`. It is required to avoid virtualization. Read more about virtualization options [here](https://flutter.dev/docs/deployment/linux). Additionally, Snapcraft manages all the dependencies according to `snapcraft.yaml` configuration. There is no need to include Flutter version in `codemagic.yaml`.
 
 {{<notebox>}}
-**Note**: Snap is only available on Linux instances. Make sure to have `instance_type: linux` or `instance_type: linux_x2` in your `codemagic.yaml`.
+**Note**: Snap is only available on Linux instances. Make sure to have `instance_type: linux` or `instance_type: linux_x2` in your `codemagic.yaml`. See the build machine specification [here](../specs/versions-linux/).
 {{</notebox>}}
 
 ## Publishing snap packages
