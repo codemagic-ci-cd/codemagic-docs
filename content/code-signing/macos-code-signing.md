@@ -4,7 +4,7 @@ title: macOS code signing
 weight: 2
 ---
 
-Code signing is required by Apple for integrating app services, installing your macOS app on another machine or for uploading it to distribute it through Mac App Store or outside of Mac App Store. It enables to identify who developed the app and ensure that all the changes to the app come from you or your team.
+Code signing is required by Apple for integrating app services, installing your macOS app on another machine or for uploading it to distribute it through the Mac App Store or outside of Mac App Store. It enables to identify who developed the app and ensure that all the changes to the app come from you or your team.
 
 To create an application package which can be published to Mac App Store on Codemagic, you need to set up code signing.
 
@@ -31,19 +31,21 @@ With **automatic code signing**, Codemagic will create both the certificate and 
 With **manual code signing**, you need to upload the signing files manually.
 {{</notebox>}}
 
-Signing an application with a development certificate and profile requires the UUID of the machine which does the build to be present in the profile. Therefore, it's not possible to do with Codemagic since the build machine won't be listed in the used profile.
+Signing an application with a development certificate and profile requires the UUID of the machine which builds the appliction to be present in the profile. Therefore, using a development certificate is not possible on Codemagic since the build machine won't be listed in the used profile.
 
-Distibution is possible to Mac App Store (using `Mac App Distribution` and `Mac Installer Distribution` certificates and `Mac App Store` profile) and outside of Mac App Store (using `Developer ID Application` certificate and `Developer ID` profile). **Currently Codemagic UI only supports publishing to Mac App Store.**
+Distibution is possible to Mac App Store (using `Mac App Distribution` and `Mac Installer Distribution` certificates and `Mac App Store` profile) and outside of Mac App Store (using `Developer ID Application` certificate and `Developer ID` profile). 
 
-## Automatic code signing to publish to Mac App Store
+**Note**: Currently, Codemagic only supports code signing the app for publishing to the Mac App Store.
+
+## Automatic code signing
 
 Codemagic makes automatic code signing possible by connecting to [App Store Connect via its API](https://developer.apple.com/app-store-connect/api/) for creating and managing your code signing certificates and provisioning profiles. It is possible to set up several code signing identities and use different code signing settings per workflow.
 
 The following sections describe how to set up automatic code signing for builds configured in the UI. If you're building with `codemagic.yaml`, please refer [here](../code-signing-yaml/signing-macos).
 
-Note that Apple Developer Portal has a limitation of maximum 2 macOS distribution certificates per team. This means that if you already have 2 of `Mac Installer Distribution` certificates, Codemagic won't be able to create new ones. It also won't be able to use existing certificates because the private key required to install them is only stored on your machine.
+Note that Apple Developer Portal has a limitation of maximum 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` certificates, Codemagic won't be able to create new ones. Using existing certificates won't be possible because the private key required to install them is only stored on your machine.
 
-If any of the existing certificates are not used, you may revoke them, which makes it possible for Codemagic to create new certificates using a Codemagic team specific private key which is only stored on Codemagic. Alternatively, you can use [manual code signing option](#manual-code-signing-to-publish-to-mac-app-store).
+You may revoke an existing certifiate to allow Codemagic create a new one using a Codemagic team specific private key which is only stored on Codemagic. Alternatively, you can use [manual code signing](#manual-code-signing-to-publish-to-mac-app-store).
 
 ### Step 1. Creating an App Store API key for Codemagic
 
@@ -88,11 +90,11 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 
 {{< figure size="medium" src="../uploads/automatic_code_signing_macos.png" caption="Automatic macOS code signing setup" >}}
 
-As the next step, you can [configure publishing to App Store Connect](../publishing/publishing-to-app-store) to distribute submit the app to App Store Connect and distribute later on via Mac App Store.
+As the next step, you can [configure publishing to App Store Connect](../publishing/publishing-to-app-store) to submit the app to App Store Connect and distribute it via Mac App Store.
 
-## Manual code signing to publish to Mac App Store
+## Manual code signing
 
-With the manual code signing method, you are required to upload the `Mac App Distribution` and `Mac Installer Distribution` certificates and `Mac App Store` profile. You can also upload additional profiles if required.
+With the manual code signing method, you are required to upload the `Mac App Distribution` and `Mac Installer Distribution` certificates and the `Mac App Store` profile. You can also upload additional profiles if required.
 >See how to [export certificates and provisioning profiles](#exporting-certificates-and-provisioning-profiles).
 
 ### Setting up manual code signing
@@ -105,7 +107,7 @@ With the manual code signing method, you are required to upload the `Mac App Dis
 
 {{< figure size="medium" src="../uploads/manual_code_signing_macos.png" caption="Manual macOS code signing setup" >}}
 
-Codemagic will now create a signed `.pkg` file with every build. Note that you must also [set up publishing to App Store Connect](../publishing/publishing-to-app-store) to distribute submit the app to App Store Connect and distribute later on via Mac App Store.
+Codemagic will now create a signed `.pkg` file with every build. Note that you must also [set up publishing to App Store Connect](../publishing/publishing-to-app-store) to submit the app to App Store Connect and distribute it via Mac App Store.
 
 #### Exporting certificates and provisioning profiles
 

@@ -8,15 +8,23 @@ aliases: '../code-signing-yaml/signing'
 All macOS applications have to be digitally signed before they can be installed on devices or made available to the public via Mac App Store or outside of Mac App Store.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Signing macOS apps using the Flutter workflow editor](../code-signing/ios-code-signing).
+This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor**, please go to [Signing macOS apps using the Flutter workflow editor](../code-signing/macos-code-signing).
 {{</notebox>}}
 
 ## Prerequisites
 
-Signing macOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. You can upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or use the automatic code signing option where Codemagic takes care of code signing and signing files management on your behalf. Read more about the two options below.
+Signing macOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. 
+
+Note that in order to publish to Mac App Store, the application must be signed with a `Mac App Distribution` certificate using a `Mac App Store` provisioning profile. Additionally, the application must be packaged into a `.pkg` Installer package which should be signed with a `Mac Installer Distribution` certificate.
+
+Notarization for distributing the app outside the Mac App Store is not yet available.
+
+You can upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or use the automatic code signing option where Codemagic takes care of code signing and signing files management on your behalf. Read more about the two options below.
+
+To set up publishing the code-signed application to App Store Connect, refer [here](../publishing-yaml/distribution/#app-store-connect).
 
 {{<notebox>}}
-Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to perform iOS code signing ⏤ these tools are open source and can also be [used locally](../building/running-locally/) or in other environments. More specifically, we use the [xcode-project utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md) for preparing the code signing properties for the build, the [keychain utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md) for managing macOS keychains and certificates, and the [app-store-connect utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md) for creating and downloading code signing certificates and provisioning profiles. The latter makes use of the App Store Connect API for authenticating with Apple Developer Portal.
+Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to perform macOS code signing ⏤ these tools are open source and can also be [used locally](../building/running-locally/) or in other environments. More specifically, we use the [xcode-project utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md) for preparing the code signing properties for the build, the [keychain utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md) for managing macOS keychains and certificates, and the [app-store-connect utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md) for creating and downloading code signing certificates and provisioning profiles. The latter makes use of the App Store Connect API for authenticating with Apple Developer Portal.
 {{</notebox>}}
 
 ## Automatic code signing
@@ -66,13 +74,13 @@ environment:
 
   A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic fetches or creates.
 
-  App Developer Portal has a limitation of maximum 2 macOS distribution certificates per team. This means that if you already have 2 of `Mac Installer Distribution` or `Developer ID Application` certificates, you won't be able to create new ones. If any of those are not used, you may revoke them, which will make it possible to create new certificates with the specified new certificate private key. You can create a new 2048 bit RSA key by running the following command in your terminal:
+  App Developer Portal has a limitation of maximum 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` or `Developer ID Application` certificates, you won't be able to create new ones. If any of those are not used, you may revoke them, which will make it possible to create new certificates with the specified new certificate private key. You can create a new 2048 bit RSA key by running the following command in your terminal:
 
   ```bash
   ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
   ```
 
-   If you wish to use existing certificates and don't have the used previously private key, or those certificates were created via a Certificate Authority request or via Xcode, you can [export](https://help.apple.com/xcode/mac/current/#/dev154b28f09) used certificate(s) into `.p12` container(s) and get used private key to be able to fetch these certificates from another machine. You can export the private key and convert it using the next command
+   If you wish to use existing certificates and don't have the private key used to create them available, or those certificates were created via a Certificate Authority request or via Xcode, you can [export](https://help.apple.com/xcode/mac/current/#/dev154b28f09) the existing certificate(s) into `.p12` container(s) and get the used private key so as to be able to fetch these certificates from another machine. You can export the private key and convert it using the following command:
 
     ```bash
     openssl pkcs12 -in <your_certificate_name>.p12 -nodes -nocerts | openssl rsa -out <your_private_key_name>.key
@@ -82,13 +90,9 @@ environment:
 Alternatively, each property can be specified in the `scripts` section of the YAML file as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
 {{</notebox>}}
 
-## Publishing to Mac App Store
+### Adding steps to code sign the app
 
-In order to publish to Mac App Store, the application must be signed with a `Mac App Distribution` certificate using `Mac App Store` provisioning profile. Additionally, the application must be packaged into a `.pkg` Installer package which should be signed with `Mac Installer Distribution` certificate.
-
-### Fetch signing files automatically
-
-To code sign the app add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands.
+To code sign the app, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands.
 
 ```yaml
 scripts:
@@ -115,7 +119,7 @@ scripts:
 
 \* Based on the specified bundle ID and [provisioning profile type](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--mac_catalyst_app_development--mac_catalyst_app_direct--mac_catalyst_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store), Codemagic will fetch or create the relevant provisioning profile and certificate to code sign the build.
 
-### Provide signing files manually
+## Provide signing files manually
 
 In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when encrypting files via the UI, they will be base64 encoded and would have to be decoded during the build.
 
@@ -167,9 +171,9 @@ scripts:
   ... your build commands
 ```
 
-### Package the application
+### Packaging the application
 
-To package your application into an `.pkg` Installer package and sign it `Mac Installer Distribution` certificate, use the following script
+To package your application into an `.pkg` Installer package and sign it with the `Mac Installer Distribution` certificate, use the following script:
 
 ```yaml
   - name: Package application
@@ -190,4 +194,4 @@ To package your application into an `.pkg` Installer package and sign it `Mac In
       rm -f unsigned.pkg                                                       # Optionally remove the not needed unsigned package
 ```
 
-Do not forget to specify the path to your generated package in [artifacts section](http://localhost:1313/getting-started/yaml/#artifacts)
+Don't forget to specify the path to your generated package in the [artifacts section](http://localhost:1313/getting-started/yaml/#artifacts).
