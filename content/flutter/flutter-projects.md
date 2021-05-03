@@ -8,7 +8,7 @@ aliases:
     - '../building/building-for-desktop'
 ---
 
-With Codemagic, you can build and test Flutter apps for Android, iOS, web, macOS and Linux as well as [test widgets](../testing/testing-widgets). It is also possible to set up a [workflow](../flutter/creating-workflows) that runs tests only. While Android, iOS and web builds can be run in the same workflow, macOS and Linux platforms are each built in a separate workflow and on different build instances.
+With Codemagic, you can build and test Flutter apps for Android, iOS, web, macOS and Linux as well as [test widgets](../testing/testing-widgets). It is also possible to set up a [workflow](../flutter/creating-workflows) that runs tests only.
 
 {{<notebox>}}
 If you're interested in building Flutter/Dart packages and publishing them to [pub.dev](https://pub.dev/), you can do so with [`codemagic.yaml`](../getting-started/yaml), see an example [here](../publishing-yaml/distribution/#publishing-a-flutter-package-to-pubdev).
@@ -16,7 +16,7 @@ If you're interested in building Flutter/Dart packages and publishing them to [p
 
 ## Selecting build platforms and build machines
 
-At the beginning of the workflow, first select the platforms to build and then specify a build machine type to run the build on. Note that the availability of build machine instances depends on the selected build platforms and whether you have billing enabled or not.
+At the beginning of the workflow, first select the platforms to build and then specify a build machine type to run the build on. While Android, iOS and web builds can be run in the same workflow, macOS and Linux platforms are each built in a separate workflow and on different build instances. Note that the availability of build machine instances depends on the selected build platforms and whether you have billing enabled or not.
 
 * iOS and macOS builds can be run on macOS build machines
 * Android and Web builds can be run on macOS or Linux build machines
@@ -31,7 +31,7 @@ Then scroll down to the **Build** section to specify the **Flutter** version, se
 
 Make sure to also select the **Android build format** to determine which build artifacts to generate.
 
-Whe you're building for release, you will need to build the app in Release mode and set up [code signing](../code-signing/android-code-signing/).
+When you're building for release, you will need to build the app in Release mode and set up [code signing](../code-signing/android-code-signing/).
 
 ### Building Android app bundles
 
@@ -52,13 +52,13 @@ In your app settings, select **iOS** under **Build for platforms** and an availa
 
 Then scroll down to the **Build** section to specify the **Flutter**, **Xcode** and **Cocoapods** versions, select the build **Mode** (**Debug**, **Release** or **Profile**) or add additional build arguments, e.g. for [build versioning](../building/build-versioning) or verbose logging. 
 
-Whe you're building for release, you will need to build the app in Release mode and set up [code signing](../code-signing/ios-code-signing/).
+When you're building for release, you will need to build the app in Release mode and set up [code signing](../code-signing/ios-code-signing/).
 
 {{<notebox>}}
 **Using `flutter build ipa`**
 
 The `flutter build ipa` command is available as of Flutter version 1.24.0-6.0 and is the recommended option to build an .ipa archive. To use this build command, 
-enable code signing and select the **Use `flutter build ipa`** checkbox in build settings.
+enable code signing and select the **Use flutter build ipa** checkbox in build settings.
 {{</notebox>}}
 
 ## Building web apps
@@ -89,11 +89,15 @@ Then scroll down to the **Build** section to specify the **Flutter** version, se
 
 At the end of a successful build, Codemagic outputs a downloadable `.zip` file. 
 
-### Building Snap packages
+### Building snap packages
 
 Snaps are packaged apps that can be published to and installed from the [Spancraft Snap Store](https://snapcraft.io/store). Building a snap package requires having a `snapcraft.yaml` configuration file in the root of the repository, read more about how to [create a `snapcraft.yaml` file for a Flutter app](https://snapcraft.io/docs/flutter-applications). 
 
-To build a Snap package, select the **Build Snap package** checkboc in the **Build** section of your Linux workflow. When building a snap, the build configuration comes from the `snapcraft.yaml` file and the Flutter version, build mode or build arguments selected in Codemagic have no effect. To publish the snap to the Snap Store, set up [publishing to the Snap Store](../publishing/snap-store).
+To build a snap package, select the **Build Snap package** checkbox in the **Build** section of your Linux workflow. When building a snap, the build configuration comes from the `snapcraft.yaml` file and the Flutter version, build mode and build arguments selected in Codemagic have no effect. To publish the snap to the Snap Store, set up [publishing to the Snap Store](../publishing/snap-store).
+
+Additionally, you may want to install the generated `.snap` package onto your machine. The package will not be code signed unless you publish it to Snapcraft. You would need to use the `--dangerous` flag to install the package without code signing:
+
+    snap install your-package.snap --dangerous
 
 ## Running tests only
 
