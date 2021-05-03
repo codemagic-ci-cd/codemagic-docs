@@ -74,7 +74,7 @@ The script section for publishing to Jira contains several actions which set env
 
 First, it uses **jq** (a command-line tool for parsing JSON) to parse the contents of the Codemagic environment variable `$FCI_ARTIFACT_LINKS` to find information such as the articact url, filename, bundle id and version name and store the values in environment varaibles.
 
-See this link about the JSON data that [$FCI_ARTIFACT_LINKS](http://localhost:1313/building/environment-variables/#codemagic-read-only-environment-variables) contains.
+See this link about the JSON data that [$FCI_ARTIFACT_LINKS](../building/environment-variables/#codemagic-read-only-environment-variables) contains.
 
 ### Setting additional environment variables
 
@@ -84,5 +84,5 @@ Addtional environment variables are then set such as the build number, build dat
 
 1. The script performs a request to add a comment to Jira issue specified using the jira.json as the payload.
 2. Another request is used to transition the issue to a different status.
-3. The script checks to see if XML test results have been generated. See [here](http://localhost:1313/testing-yaml/testing/) for information about using `test_report` to generate a test report .xml output. If **xml test results** are available then they will be uploaded  to the Jira issue.
+3. The script checks to see if XML test results have been generated. See [here](../testing-yaml/testing/) for information about using `test_report` to generate a test report .xml output. If **xml test results** are available then they will be uploaded  to the Jira issue.
 4. If **release notes** have been created then these are uploaded to the Jira issue.
