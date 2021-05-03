@@ -1,7 +1,7 @@
 ---
 description: How to publish a web app to a custom subdomain using the Flutter workflow editor
 title: Codemagic Static Pages
-weight: 3
+weight: 4
 ---
 
 You can publish your web app to a custom subdomain of `codemagic.app` for easy access.

@@ -14,21 +14,28 @@ With Codemagic, you can build and test Flutter apps for Android, iOS, web, macOS
 If you're interested in building Flutter/Dart packages and publishing them to [pub.dev](https://pub.dev/), you can do so with [`codemagic.yaml`](../getting-started/yaml), see an example [here](../publishing-yaml/distribution/#publishing-a-flutter-package-to-pubdev).
 {{</notebox>}}
 
-## Selecting build platforms and versions
+## Selecting build platforms and build machines
 
-You can select the platforms to build for and specify the **Flutter version**, **Xcode version** and **CocoaPods version** to be used for building in **App settings > Build**.
+At the beginning of the workflow, first select the platforms to build and then specify a build machine type to run the build on. While Android, iOS and web builds can be run in the same workflow, macOS and Linux platforms are each built in a separate workflow and on different build instances. Note that the availability of build machine instances depends on the selected build platforms and whether you have billing enabled or not.
 
-When you're building for **Android**, make sure to also specify the **Android build format** to determine which build artifacts to generate.
+* iOS and macOS builds can be run on macOS build machines
+* Android and Web builds can be run on macOS or Linux build machines
+* Linux builds can be run on Linux build machines
+* a Run tests only workflow can be run on macOS or Linux build machines
 
-This is also where you can selet the build **Mode** (**Debug**, **Release** or **Profile**) and specify additional build arguments, e.g. for [build versioning](../building/build-versioning) or verbose logging.
+## Building Android apps
+
+In your app settings, select **Android** under **Build for platforms** and an available build machine type.
+
+Then scroll down to the **Build** section to specify the **Flutter** version, select the build **Mode** (**Debug**, **Release** or **Profile**) or add additional build arguments, e.g. for [build versioning](../building/build-versioning) or verbose logging.
+
+Make sure to also select the **Android build format** to determine which build artifacts to generate.
+
+When you're building for release, you will need to build the app in Release mode and set up [code signing](../code-signing/android-code-signing/).
 
 ### Building Android app bundles
 
 You can build your app in [Android App Bundle](https://developer.android.com/guide/app-bundle) (`.aab`) format for publishing to Google Play. When you upload your app in `.aab` format, app  .apk(s) will be dynamically created and optimized for user's device configuration when the app is installed from Google Play Store.
-
-In **App settings > Build > Build for platforms**, select **Android** and then choose **Android app bundle (AAB)** as the **Android build format**.
-
-#### Prepare the app bundle for uploading to Google Play
 
 In order to upload your Android App Bundle to Google Play, you will need to:
 
@@ -39,46 +46,60 @@ In order to upload your Android App Bundle to Google Play, you will need to:
 
 When you enroll an app into app signing by Google Play, Google will manage your app's signing key for you and use it to sign the .apk for distribution. Note that the app must be signed with the same key throughout its lifecycle, so if the app has already been uploaded to Google Play, make sure to export and upload your original key to Google Play for app signing. It is then recommended to create a new key ("upload key") for signing your app updates and uploading them to Google Play.
 
-### Building iOS apps
+## Building iOS apps
 
-To build for iOS, select **iOS** as the build platform in **App settings > Build > Build for platforms**. To build a release archive, you also need to set up [code signing](../code-signing/ios-code-signing/).
+In your app settings, select **iOS** under **Build for platforms** and an available build machine type.
+
+Then scroll down to the **Build** section to specify the **Flutter**, **Xcode** and **Cocoapods** versions, select the build **Mode** (**Debug**, **Release** or **Profile**) or add additional build arguments, e.g. for [build versioning](../building/build-versioning) or verbose logging. 
+
+When you're building for release, you will need to build the app in Release mode and set up [code signing](../code-signing/ios-code-signing/).
 
 {{<notebox>}}
 **Using `flutter build ipa`**
 
-As of Flutter version 1.24.0-6.0, it is possible to use the `flutter build ipa` command to build an .ipa. Using this command can reduce build time.
-
-To use the `flutter build ipa` command in Codemagic, you need to enable code signing and select the **Use `flutter build ipa`** checkbox in **App settings > Build > iOS build command**.
+The `flutter build ipa` command is available as of Flutter version 1.24.0-6.0 and is the recommended option to build an .ipa archive. To use this build command, 
+enable code signing and select the **Use flutter build ipa** checkbox in build settings.
 {{</notebox>}}
 
-### Building for the web
+## Building web apps
 
-Codemagic can detect your Flutter web project if it contains a `web` folder. To build for the web, select **Web** as the build platform in **App settings > Build > Build for platforms**.
+Codemagic can detect your Flutter web project if it contains a `web` folder. 
 
-{{<notebox>}}
-Flutter for web is currently in beta. Make sure to select channel Beta or a later Flutter version to build for web.
-{{</notebox>}}
+Then scroll down to the **Build** section to specify the **Flutter** version, select the build **Mode** (**Debug**, **Release** or **Profile**) or add additional build arguments, e.g. for [build versioning](../building/build-versioning) or verbose logging. 
 
-At the end of a successful build, Codemagic generates a `.zip` file of the contents of `$FCI_BUILD_DIR/build` and exports this as an artifact. You can either download it or set up publishing to [Codemagic Static Pages](../publishing/publishing-to-codemagic-static-pages/). You can also use custom scripts to publish to third-party hosting sites.
+At the end of a successful build, Codemagic outputs a `.zip` file of the contents of `$FCI_BUILD_DIR/build` and exports this as an artifact. You can either download it or set up publishing to [Codemagic Static Pages](../publishing/publishing-to-codemagic-static-pages/). You can also use custom scripts to publish to third-party hosting sites.
 
-### Building for desktop
+## Building macOS apps
 
-You can use Codemagic to build Flutter desktop apps for macOS and Linux. Building Windows apps is not yet supported. 
+Codemagic can detect your Flutter macOS project if it contains a `macos` folder for the macOS application.
 
-{{<notebox>}}
-Read more about Flutter's desktop support and the required settings for enabling it in Flutter's wiki about [desktop shells](https://github.com/flutter/flutter/wiki/Desktop-shells).
-{{</notebox>}}
+In your app settings, select **macOS** under **Build for platforms** and an available build machine type.
 
-Codemagic can detect your Flutter desktop project if it meets the following conditions:
+Then scroll down to the **Build** section to specify the **Flutter**, **Xcode** and **CocoaPods** version, select the build **Mode** (**Debug**, **Release** or **Profile**) or add additional build arguments, e.g. for [build versioning](../building/build-versioning) or verbose logging. 
 
-- The project contains a `macos` folder for the macOS application
-- The project contains a `linux` folder for the Linux application
+At the end of a successful build, Codemagic outputs a downloadable `.zip` file containing an `.app` archive. If you build for releasing to the App Store, you need to also set up [code signing](../code-signing/macos-code-signing/) to receive a `.pkg` file.
 
-To build for the **macOS** or **Linux**, select the respective option in **App settings > Build > Build for platforms**. Make sure to also select a Flutter version that has desktop support available.
+## Building Linux apps
 
-At the end of a successful build, Codemagic generates a downloadable `.zip` file for each desktop platform. The application can be installed on your machine, but since it is built without code signing, you may have to allow installating applications from unidentified developers.
+Codemagic can detect your Flutter Linux project if it contains a `linux` folder for the Linux application.
 
-### Running tests only
+In your app settings, select **Linux** under **Build for platforms** and an available build machine type.
+
+Then scroll down to the **Build** section to specify the **Flutter** version, select the build **Mode** (**Debug**, **Release** or **Profile**) or add additional build arguments, e.g. for [build versioning](../building/build-versioning) or verbose logging. 
+
+At the end of a successful build, Codemagic outputs a downloadable `.zip` file. 
+
+### Building snap packages
+
+Snaps are packaged apps that can be published to and installed from the [Spancraft Snap Store](https://snapcraft.io/store). Building a snap package requires having a `snapcraft.yaml` configuration file in the root of the repository, read more about how to [create a `snapcraft.yaml` file for a Flutter app](https://snapcraft.io/docs/flutter-applications). 
+
+To build a snap package, select the **Build Snap package** checkbox in the **Build** section of your Linux workflow. When building a snap, the build configuration comes from the `snapcraft.yaml` file and the Flutter version, build mode and build arguments selected in Codemagic have no effect. To publish the snap to the Snap Store, set up [publishing to the Snap Store](../publishing/snap-store).
+
+Additionally, you may want to install the generated `.snap` package onto your machine. The package will not be code signed unless you publish it to Snapcraft. You would need to use the `--dangerous` flag to install the package without code signing:
+
+    snap install your-package.snap --dangerous
+
+## Running tests only
 
 In some cases you may want to run only tests and not build the entire project, e.g. when you're triggering a build on pull request update. To do so, [enable testing](../testing/running-automated-tests), and then in **App settings > Build > Build for platforms**, select **Run tests only**. Codemagic will then build the workflow until the testing step and skip building the app.
 
