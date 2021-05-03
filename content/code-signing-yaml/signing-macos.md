@@ -2,13 +2,12 @@
 title: Signing macOS apps
 description: How to set up macOS code signing in codemagic.yaml
 weight: 2
-aliases: '../code-signing-yaml/signing'
 ---
 
 All macOS applications have to be digitally signed before they can be installed on devices or made available to the public via Mac App Store or outside of Mac App Store.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Signing macOS apps using the Flutter workflow editor](../code-signing/ios-code-signing).
+This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Signing macOS apps using the Flutter workflow editor](../code-signing/macos-code-signing).
 {{</notebox>}}
 
 ## Prerequisites
