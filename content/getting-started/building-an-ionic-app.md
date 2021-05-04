@@ -1,16 +1,16 @@
 ---
 title: Building an Ionic app 
-description: How to build an Ionic app with codemagic.yaml
-weight: 7
+description: How to build an Ionic Capacitor or Ionic Cordova app with codemagic.yaml
+weight: 8
 aliases:
   - '../yaml/building-an-ionic-app'
 ---
 
-## Setting up an Ionic Capacitor/Cordova project
+## Setting up an Ionic project
 
 The apps you have available on Codemagic are listed on the Applications page. See how to add additional apps [here](./adding-apps-from-custom-sources).
 
-1. On the Applications page, click **Set up build** next to the app you want to start building. 
+1. On the [Applications page](https://codemagic.io/apps), click **Set up build** next to the app you want to start building. 
 2. On the popup, select **Ionic App** as the project type and click **Continue**.
 3. Create a [`codemagic.yaml`](./yaml) file and add in it the commands to build, test and publish your project. See the full workflow examples below.
 4. Commit the configuration file to the root of your repository.
@@ -19,20 +19,19 @@ The apps you have available on Codemagic are listed on the Applications page. Se
 7. Finally, click **Start new build** to build the app.
 
 {{<notebox>}}
-**Tip**
+**Automatic build triggers**
 
 Note that you need to set up a [webhook](../building/webhooks) for automatic build triggering. Click the **Create webhook** button on the right sidebar in app settings to add a webhook (not available for apps added via SSH/HTTP/HTTPS).
-
 {{</notebox>}}
 
-## Testing, code signing and publishing Ionic Android and iOS apps
+## Testing, code signing, and publishing Ionic Android and iOS apps
 
-To test, code sign and publish Ionic Android and iOS apps:
+To test, code sign, and publish Ionic Android and iOS apps:
 
 * The code for testing an Ionic Android app also goes under `scripts`. A few examples of testing can be found [here](../testing-yaml/testing).
-* All Android applications need to be signed before release. For Gradle code signing configuration for **Ionic Capacitor** apps refer to the [documentation](../code-signing/android-code-signing/). More information about code signing with YAML in general is [here](../code-signing-yaml/signing). If you are building **Ionic Cordova** Android apps see the workflow sample below.
-* All iOS applications need to be signed before release. For iOS code signing configuration refer to the iOS code signing documentation [here](../code-signing/ios-code-signing/)
-* All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../publishing-yaml/distribution/).
+* All Android apps need to be signed before release. See the [Android code signing docs](../code-signing/android-code-signing/) or the sample workflow below for more details.
+* All iOS apps need to be signed before release. See the [iOS code signing docs](../code-signing/ios-code-signing/) or the sample workflow below for more details.
+* All generated artifacts can be published to external services, such as email, Slack, and Google Play. The list of available integrations and script examples can be found in [publishing and deployment](../publishing-yaml/distribution/).
 
 ## Android Ionic Capacitor workflow example
 
@@ -238,7 +237,7 @@ workflows:
         script: |
           # npx cap copy # <- use this is you don't need to update native dependencies
           npx cap sync # <- update native dependencies and copy web assets to native project
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
         script: |
           keychain initialize
       # - name: Set up Provisioning profiles from environment variables (Use with manual code signing)
@@ -340,7 +339,7 @@ workflows:
       - name: Cocoapods installation
         script: |
           cd platforms/ios && pod install
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
         script: |
           keychain initialize
       # - name: Set up Provisioning profiles from environment variables (Use with manual code signing)

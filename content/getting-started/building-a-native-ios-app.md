@@ -1,7 +1,7 @@
 ---
 title: Building a native iOS app
 description: How to build an iOS app with codemagic.yaml
-weight: 5
+weight: 6
 aliases:
   - '../yaml/building-a-native-ios-app'
 ---
@@ -114,7 +114,7 @@ workflows:
           include: true
           source: true
     scripts:
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
         script: keychain initialize
       - name: Set up Provisioning profiles from environment variables
         script: |

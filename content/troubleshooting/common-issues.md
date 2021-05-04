@@ -78,7 +78,7 @@ When building for iOS, the build gets stuck after showing `Xcode build done` in 
 == Building for iOS ==
 
 == /usr/local/bin/flutter build ios --release --no-codesign ==
-Warning: Building for device with codesigning disabled. You will have to manually codesign before deploying to device.
+Warning: Building for device with code signing disabled. You will have to manually codesign before deploying to device.
 Building net.butterflyapp.trainer for device (ios-release)...
 Running pod install...                                              3.7s
 Running Xcode build...
