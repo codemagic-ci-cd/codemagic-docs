@@ -20,6 +20,7 @@ weight: 2
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
+- Android NDK `22.1.7171670`
 - aws `2.1.39`
 - cocoapods `1.10.1`
 - cordova `10.0.0`
