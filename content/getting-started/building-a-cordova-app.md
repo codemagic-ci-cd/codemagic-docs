@@ -27,8 +27,8 @@ Note that you need to set up a [webhook](../building/webhooks) for automatic bui
 
 To build, code sign, and publish Cordova Android and iOS apps:
 
-* All Android apps need to be signed before release. See the [Android codesigning docs](../code-signing/android-code-signing/) or the sample workflow below for more details.
-* All iOS apps need to be signed before release. See the [iOS codesigning docs](../code-signing/ios-code-signing/) or the sample workflow below for more details.
+* All Android apps need to be signed before release. See the [Android code signing docs](../code-signing/android-code-signing/) or the sample workflow below for more details.
+* All iOS apps need to be signed before release. See the [iOS code signing docs](../code-signing/ios-code-signing/) or the sample workflow below for more details.
 * All generated artifacts can be published to external services, such as email, Slack, and Google Play. The list of available integrations and script examples can be found in [publishing and deployment](../publishing-yaml/distribution/).
 
 
@@ -72,7 +72,7 @@ workflows:
         script: |
           cordova platform remove ios --nosave
           cordova platform add ios --confirm --no-interactive --noresources --save  
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
         script: |
           keychain initialize
       - name: Fetch signing files

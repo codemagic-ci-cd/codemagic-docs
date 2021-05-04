@@ -29,8 +29,8 @@ Note that you need to set up a [webhook](../building/webhooks) for automatic bui
 To test, code sign, and publish Ionic Android and iOS apps:
 
 * The code for testing an Ionic Android app also goes under `scripts`. A few examples of testing can be found [here](../testing-yaml/testing).
-* All Android apps need to be signed before release. See the [Android codesigning docs](../code-signing/android-code-signing/) or the sample workflow below for more details.
-* All iOS apps need to be signed before release. See the [iOS codesigning docs](../code-signing/ios-code-signing/) or the sample workflow below for more details.
+* All Android apps need to be signed before release. See the [Android code signing docs](../code-signing/android-code-signing/) or the sample workflow below for more details.
+* All iOS apps need to be signed before release. See the [iOS code signing docs](../code-signing/ios-code-signing/) or the sample workflow below for more details.
 * All generated artifacts can be published to external services, such as email, Slack, and Google Play. The list of available integrations and script examples can be found in [publishing and deployment](../publishing-yaml/distribution/).
 
 ## Android Ionic Capacitor workflow example
@@ -237,7 +237,7 @@ workflows:
         script: |
           # npx cap copy # <- use this is you don't need to update native dependencies
           npx cap sync # <- update native dependencies and copy web assets to native project
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
         script: |
           keychain initialize
       # - name: Set up Provisioning profiles from environment variables (Use with manual code signing)
@@ -339,7 +339,7 @@ workflows:
       - name: Cocoapods installation
         script: |
           cd platforms/ios && pod install
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
         script: |
           keychain initialize
       # - name: Set up Provisioning profiles from environment variables (Use with manual code signing)

@@ -83,7 +83,7 @@ To code sign the app, add the following commands in the [`scripts`](../getting-s
 ```yaml
 scripts:
   ... your dependencies installation
-  - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+  - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
     script: keychain initialize
   - name: Fetch signing files
     script: |
@@ -116,7 +116,7 @@ Then add the code signing configuration and the commands to code sign the build 
 ```yaml
 scripts:
   ... your dependencies installation
-  - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+  - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
     script: keychain initialize
   - name: Set up Provisioning profiles from environment variables
     script: |
