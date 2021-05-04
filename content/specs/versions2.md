@@ -20,6 +20,7 @@ weight: 3
 ## Pre-installed tools
 
 - Android tools `$HOME/programs/android-sdk-macosx`
+- Android NDK `22.0.7026061`
 - aws `2.0.50`
 - cocoapods `1.10.1`
 - cordova `10.0.0`
