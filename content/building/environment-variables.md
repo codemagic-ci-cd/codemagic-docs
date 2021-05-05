@@ -4,12 +4,12 @@ title: Environment variables
 weight: 2
 ---
 
-Environment variables are useful for storing information that you do not want to store in the repository, such as your credentials or workflow-specific data. In addition, you can make use of a number of read-only environment variables that Codemagic exports to customize your builds. 
+Environment variables are useful for storing information that you do not want to store in the repository, such as your credentials or workflow-specific data. In addition, you can make use of a number of read-only environment variables that Codemagic exports to customize your builds.
 
 {{<notebox>}}
-You can add evironment variables in the [environment](../getting-started/yaml/#environment) section of the `codemagic.yaml` confguration file or in the [Environment variables](../flutter/env-variables/) section in the Flutter workflow editor. 
+You can add evironment variables in the [environment](../getting-started/yaml/#environment) section of the `codemagic.yaml` confguration file or in the [Environment variables](../flutter/env-variables/) section in the Flutter workflow editor.
 
-See how to [encrypt sensitive information](./encrypting) in Codemagic. 
+See how to [encrypt sensitive information](./encrypting) in Codemagic.
 {{</notebox>}}
 
 ## Codemagic read-only environment variables
@@ -22,14 +22,16 @@ set -ex
 printenv
 ```
 
-Here is the list of Codemagic read-only environment variables that may be useful in your build configuration.
+Here you'll find some of the read-only environment variables explained.
 
 | **Environment variable** | **Value**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ANDROID_SDK_ROOT         | Absolute path to Android SDK and tools                                                                                                                          |
 | CI                       | true                                                                                                                                                            |
 | CONTINUOUS_INTEGRATION   | true                                                                                                                                                            |
 | BUILD_NUMBER             | Number of the build for this project in Codemagic for the given workflow                                                                                        |
 | PROJECT_BUILD_NUMBER     | Number of the build for this project in Codemagic                                                                                                               |
+| FLUTTER_ROOT             | Absolute path to Flutter SDK                                                                                                                                    |
 | FCI_BRANCH               | The current branch being built, for pull requests it is the source branch                                                                                       |
 | FCI_TAG                  | The tag being built if started from a tag webhook, unset otherwise
 | FCI_REPO_SLUG            | The slug of the repository that is currently being built in the form `owner_name/repository_name`. Unset for repositories added from custom source              |
@@ -68,23 +70,6 @@ Here is the list of Codemagic read-only environment variables that may be useful
   }
 ]
 ```
-
-## Build machine environment variables
-
-Here is the list of build machine read-only environment variables that may be useful in your build configuration. See the [build machine specs](../specs/machine-type/) for the most up to date versions of pre-installed software.
-
-| **Environment variable**       | **Value**                                                                            |
-| ------------------------------ | ------------------------------------------------------------------------------------ |
-| ANDROID_NDK_ROOT               | Absolute path to Android NDK                                                         |
-| ANDROID_SDK_ROOT               | Absolute path to Android SDK and tools                                               |
-| FLUTTER_ROOT                   | Absolute path to Flutter SDK                                                         |
-| GRADLE_HOME                    | Absolute path to Gradle home directory                                               |
-| HOME                           | Absolute path to build root folder                                                   |
-| JAVA_HOME                      | Absolute path to Java home directory                                                 |
-| RBENV_VERSION                  | Ruby version                                                                         |
-| SNAPCRAFT_BUILD_ENVIRONMENT    | Snap Craft build environment                                                         |
-| SHELL                          | Absolute path to currently running shell program                                     |
-| TMPDIR                         | Absolute path to dir to use for temporary files                                      |
 
 ## Using environment variables
 
