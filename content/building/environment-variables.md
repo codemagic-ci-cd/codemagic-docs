@@ -26,6 +26,7 @@ Here you'll find some of the read-only environment variables explained.
 
 | **Environment variable** | **Value**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ANDROID_SDK_ROOT         | Absolute path to Android SDK and tools                                                                                                                          |
 | CI                       | true                                                                                                                                                            |
 | CONTINUOUS_INTEGRATION   | true                                                                                                                                                            |
 | BUILD_NUMBER             | Number of the build for this project in Codemagic for the given workflow                                                                                        |
