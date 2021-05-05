@@ -14,7 +14,7 @@ For Flutter projects configured via the Flutter workflow editor, the build machi
 
 ## Mac Mini and Mac Pro
 
-Codemagic offers two types of macOS machines for running builds: Mac mini (macOS standard VM, default) and Mac Pro (macOS premium VM). Specifications for these machines are available [here](../specs/versions2/#hardware). 
+Codemagic offers two types of macOS machines for running builds: Mac mini (macOS standard VM, default) and Mac Pro (macOS premium VM). Specifications for these machines are available for [Xcode 11.x](../specs/versions/#hardware), [Xcode 12.0 - 12.4](../specs/versions2/#hardware), and [Xcode 12.5](../specs/versions3/#hardware). 
 
 {{<notebox>}}
 Mac Pro machines are only available for teams and users that have [billing enabled](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for the per minute rate.
