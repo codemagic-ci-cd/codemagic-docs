@@ -70,7 +70,7 @@ workflows:
           npm install
       - name: Set Android SDK location
         script: |
-          echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/android/local.properties"
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$FCI_BUILD_DIR/android/local.properties"
       - name: Set up keystore
         script: |
           echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore

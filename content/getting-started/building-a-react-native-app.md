@@ -35,7 +35,7 @@ You can find an up-to-date codemagic.yaml React Native Android workflow in [Code
 Set up local properties
 
 ```yaml
-- echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/android/local.properties"
+- echo "sdk.dir=$ANDROID_SDK_ROOT" > "$FCI_BUILD_DIR/android/local.properties"
 ```
 
 Building an Android application:

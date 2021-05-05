@@ -20,7 +20,7 @@ Using a Flutter module as a library means that it will be built from the source 
 
 ```yaml
 scripts:
-  - echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/my_host_app/local.properties"
+  - echo "sdk.dir=$ANDROID_SDK_ROOT" > "$FCI_BUILD_DIR/my_host_app/local.properties"
   - cd my_flutter_module && flutter pub get
   - cd my_host_app && ./gradlew assembleDebug
 ```
@@ -61,7 +61,7 @@ Using a prebuilt module means that you don't need to build it every time the hos
 ```yaml
 scripts:
   - echo 'previous step'
-  - echo "sdk.dir=$HOME/programs/android-sdk-macosx" > "$FCI_BUILD_DIR/my_host_app/local.properties"
+  - echo "sdk.dir=$ANDROID_SDK_ROOT" > "$FCI_BUILD_DIR/my_host_app/local.properties"
   - name: Precompile the Flutter module
     script: |
       cd my_flutter_module
