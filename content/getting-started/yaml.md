@@ -245,36 +245,6 @@ triggering:
 ```
 
 {{<notebox>}}For information about using API calls to trigger builds, look [here](../rest-api/overview/).{{</notebox>}}
-
-#### Skipping builds
-
-If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
-
-You can avoid unnecessary builds when functional components of your repository were not modified. Use conditional workflow execution to skip building workflow if watched files were not updated since successful build.
-
-You should specify files to watch in `changeset` by using `includes` and `excludes` keys.
-
-```yaml
-workflows:
-  build-app:
-    name: Build App
-    triggering:
-      events:
-        - push
-    when:
-      changeset:
-        includes:
-          - '.'
-        excludes:
-          - '**/*.md'
-```
-
-In this case, build would be skipped if there were no changes to the repository except Markdown files `.md`.
-
-Note that `codemagic.yaml` is always included in change set by default.
-
-Both keys `includes` and `excludes` in `changeset` are *optional*. If `includes` key is not specified, its value would defalut to `'.'`. `excludes` value defaults to an empty array.
-
 ### Scripts
 
 Scripts specify what kind of application is built. This is where you can specify the commands to [test](../testing-yaml/testing/), build and code sign your project (see our documentation for [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android)). You can also run shell (`sh`) scripts directly in your `.yaml` file, or run scripts in other languages by defining the language with a shebang line or by launching a script file present in your repository.
@@ -333,10 +303,39 @@ scripts:
     echo 'This script is multiline'
 ```
 
-### Monorepos (Conditional execution)
-#### Conditional workflow execution
+### Conditional execution
+#### Skip building a commit
 
-If your workflow is responsible to building a part of your application, use conditional workflow execution. Specify the path to the application in change set as in the example below
+If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
+
+#### Watch for changes in files
+
+You can avoid unnecessary builds when functional components of your repository were not modified. Use conditional workflow execution to skip building workflow if watched files were not updated since the last successful build.
+
+You should specify files to watch in `changeset` by using `includes` and `excludes` keys.
+
+```yaml
+workflows:
+  build-app:
+    name: Build App
+    triggering:
+      events:
+        - push
+    when:
+      changeset:
+        includes:
+          - '.'
+        excludes:
+          - '**/*.md'
+```
+
+In this case, build would be skipped if there were no changes to the repository except Markdown files `.md`.
+
+Note that `codemagic.yaml` is always included in change set by default.
+
+Both keys `includes` and `excludes` in `changeset` are *optional*. If `includes` key is not specified, its value would defalut to `'.'`. `excludes` value defaults to an empty array.
+
+If you use a monorepo, each workflow could be responsible to building a part of your application, use conditional workflow execution. Specify the path to the application in change set as in the example below
 
 ```yaml
 workflows:
@@ -352,8 +351,6 @@ workflows:
 ```
 
 As a result, all commits don't affect `android` folder will not be built.
-
-#### Conditional step execution
 
 You may also want to skip some specific steps when building your application. Use the same approach with scripts
 
@@ -371,8 +368,3 @@ workflows:
             excludes:
               - '**/*.md'
 ```
-
-
-Note that `codemagic.yaml` is always included in change set by default.
-
-Both keys `includes` and `excludes` in `changeset` are *optional*. If `includes` key is not specified, its value would defalut to `'.'`. `excludes` value defaults to an empty array.
