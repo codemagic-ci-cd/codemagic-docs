@@ -4,12 +4,12 @@ title: Environment variables
 weight: 2
 ---
 
-Environment variables are useful for storing information that you do not want to store in the repository, such as your credentials or workflow-specific data. In addition, you can make use of a number of read-only environment variables that Codemagic exports to customize your builds. 
+Environment variables are useful for storing information that you do not want to store in the repository, such as your credentials or workflow-specific data. In addition, you can make use of a number of read-only environment variables that Codemagic exports to customize your builds.
 
 {{<notebox>}}
-You can add evironment variables in the [environment](../getting-started/yaml/#environment) section of the `codemagic.yaml` confguration file or in the [Environment variables](../flutter/env-variables/) section in the Flutter workflow editor. 
+You can add evironment variables in the [environment](../getting-started/yaml/#environment) section of the `codemagic.yaml` confguration file or in the [Environment variables](../flutter/env-variables/) section in the Flutter workflow editor.
 
-See how to [encrypt sensitive information](./encrypting) in Codemagic. 
+See how to [encrypt sensitive information](./encrypting) in Codemagic.
 {{</notebox>}}
 
 ## Codemagic read-only environment variables
@@ -26,6 +26,7 @@ Here you'll find some of the read-only environment variables explained.
 
 | **Environment variable** | **Value**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ANDROID_SDK_ROOT         | Absolute path to Android SDK and tools                                                                                                                          |
 | CI                       | true                                                                                                                                                            |
 | CONTINUOUS_INTEGRATION   | true                                                                                                                                                            |
 | BUILD_NUMBER             | Number of the build for this project in Codemagic for the given workflow                                                                                        |
