@@ -22,7 +22,7 @@ set -ex
 printenv
 ```
 
-Here you'll find the description of Codemagic read-only environment variables that may be useful in your build configuration.
+Here is the list of Codemagic read-only environment variables that may be useful in your build configuration.
 
 | **Environment variable** | **Value**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -53,8 +53,6 @@ Here you'll find the description of Codemagic read-only environment variables th
 | FCI_KEY_ALIAS            | Alias of the key as configured in the UI                                                                                                                        |
 | FCI_KEYSTORE_PATH        | Path of the file in our VM                                                                                                                                      |
 | FCI_ARTIFACT_LINKS       | Information about generated build artifacts that is available in post-publishing step. Read more about it below.                                                |
-| FCI_DEVELOPER_DIR        | Absolute path to ?                                                                                                                                              |
-| FLUTTERCI_DEVELOPER_DIR  | Absolute path to ?                                                                                                                                              |
 
 `$FCI_ARTIFACT_LINKS` environment variable value is a JSON encoded list in the following form:
 
@@ -73,36 +71,20 @@ Here you'll find the description of Codemagic read-only environment variables th
 
 ## Build machine environment variables
 
-Here you'll find the description of build machine read-only environment variables that may be useful in your build configuration. See the [build machine specs](../specs/machine-type/) for the most up to date versions of pre-installed software.
+Here is the list of build machine read-only environment variables that may be useful in your build configuration. See the [build machine specs](../specs/machine-type/) for the most up to date versions of pre-installed software.
 
 | **Environment variable**       | **Value**                                                                            |
 | ------------------------------ | ------------------------------------------------------------------------------------ |
-| ADB_INSTALL_TIMEOUT            | ?                                                                                    |
-| ANDROID_HOME                   | Absolute path to Android SDK and tools                                               |
-| ANDROID_NDK_HOME               | Absolute path to Android NDK                                                         |
 | ANDROID_NDK_ROOT               | Absolute path to Android NDK                                                         |
-| ANDROID_PREFS_ROOT             | Absolute path to Android SDK and tools                                               |
 | ANDROID_SDK_ROOT               | Absolute path to Android SDK and tools                                               |
 | FLUTTER_ROOT                   | Absolute path to Flutter SDK                                                         |
-| GIT_MERGE_AUTOEDIT             | ?                                                                                    |
-| GOOGLE_APPLICATION_CREDENTIALS | ?                                                                                    |
 | GRADLE_HOME                    | Absolute path to Gradle home directory                                               |
 | HOME                           | Absolute path to build root folder                                                   |
 | JAVA_HOME                      | Absolute path to Java home directory                                                 |
-| LANG                           | ?                                                                                    |
-| LANGUAGE                       | ?                                                                                    |
-| LC_ALL                         | ?                                                                                    |
-| LC_CTYPE                       | ?                                                                                    |
-| NDK_HOME                       | Absolute path to Android NDK                                                         |
 | RBENV_VERSION                  | Ruby version                                                                         |
 | SNAPCRAFT_BUILD_ENVIRONMENT    | Snap Craft build environment                                                         |
 | SHELL                          | Absolute path to currently running shell program                                     |
-| SSH_AGENT_PID                  | ?                                                                                    |
-| SSH_AUTH_SOCK                  | ?                                                                                    |
-| SSH_CLIENT                     | ?                                                                                    |
-| SSH_CONNECTION                 | ?                                                                                    |
 | TMPDIR                         | Absolute path to dir to use for temporary files                                      |
-| USER                           | System user                                                                          |
 
 ## Using environment variables
 
