@@ -303,12 +303,12 @@ scripts:
     echo 'This script is multiline'
 ```
 
-### Conditional execution
-#### Skip building a commit
+## Conditional execution
+### Skip building a commit
 
 If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
 
-#### Watch for changes in files
+### Watch for changes in files
 
 You can avoid unnecessary builds when functional components of your repository were not modified. Use conditional workflow execution to skip building workflow if watched files were not updated since the last successful build.
 
