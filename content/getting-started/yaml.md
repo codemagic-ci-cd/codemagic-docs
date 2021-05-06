@@ -303,16 +303,18 @@ scripts:
     echo 'This script is multiline'
 ```
 
-## Conditional execution
+## Conditional build triggers
+
+You can skip building particular commits or watch for changes in specific files to trigger builds. It's possible to define build conditions per workflow or specific build steps.
 ### Skip building a commit
 
 If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
 
 ### Watch for changes in files
 
-You can avoid unnecessary builds when functional components of your repository were not modified. Use conditional workflow execution to skip building workflow if watched files were not updated since the last successful build.
+You can avoid unnecessary builds when functional components of your repository were not modified. Use conditional workflow triggering to skip building the workflow if the watched files were not updated since the last successful build.
 
-You should specify files to watch in `changeset` by using `includes` and `excludes` keys.
+You should specify the files to watch in `changeset` by using the `includes` and `excludes` keys.
 
 ```yaml
 workflows:
@@ -329,13 +331,13 @@ workflows:
           - '**/*.md'
 ```
 
-In this case, build would be skipped if there were no changes to the repository except Markdown files `.md`.
+In this case, build would be skipped if there were changes only to Markdown files `.md`.
 
-Note that `codemagic.yaml` is always included in change set by default.
+Note that `codemagic.yaml` is always included in the change set by default.
 
-Both keys `includes` and `excludes` in `changeset` are *optional*. If `includes` key is not specified, its value would defalut to `'.'`. `excludes` value defaults to an empty array.
+Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value would defalut to `'.'`. The `excludes` key defaults to no exlusions.
 
-If you use a monorepo, each workflow could be responsible to building a part of your application, use conditional workflow execution. Specify the path to the application in change set as in the example below
+If you use a monorepo, each workflow could be responsible for building a part of your application. Use conditional workflow triggering and specify the path to the application in the changeset as in the example below.
 
 ```yaml
 workflows:
@@ -350,7 +352,9 @@ workflows:
           - 'android/'
 ```
 
-As a result, all commits don't affect `android` folder will not be built.
+As a result, all commits with changes outside of the android folder will not trigger a build.
+
+## Conditional build step execution
 
 You may also want to skip some specific steps when building your application. Use the same approach with scripts
 
