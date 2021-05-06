@@ -352,7 +352,7 @@ workflows:
           - 'android/'
 ```
 
-As a result, all commits with changes outside of the android folder will not trigger a build.
+As a result, commits with changes outside of the android folder will not trigger a build.
 
 ## Conditional build step execution
 
