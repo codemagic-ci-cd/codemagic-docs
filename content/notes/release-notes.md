@@ -8,7 +8,7 @@ weight: 1
 
 ## May 2021
 
-### Conditional build status and conditional build steps
+### Conditional build triggers and build steps
 
 In codemagic.yaml configured workflows, you can now specify [conditional build triggers](../getting-started/yaml/#conditional-build-triggers) and [conditional build steps](../getting-started/yaml/#conditional-build-step-execution) depending on which files were changed in the last commit. For example, you can skip builds for commits that only have changes in markdown files or only run an Android workflow only when files changed in an android directory. Skipped builds will be marked skipped in the builds list.
 
