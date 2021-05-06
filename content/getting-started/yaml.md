@@ -333,7 +333,7 @@ workflows:
 
 In this case, build would be skipped if there were changes only to Markdown files `.md`.
 
-Note that `codemagic.yaml` is always included in the change set by default.
+Note that `codemagic.yaml` is always included in the changeset by default.
 
 Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value would defalut to `'.'`. The `excludes` key defaults to no exlusions.
 
