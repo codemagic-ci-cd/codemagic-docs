@@ -6,6 +6,24 @@ aliases:
 weight: 1
 ---
 
+## May 2021
+
+### Conditional build status and conditional build steps
+
+In codemagic.yaml configured workflows, you can now specify [conditional build triggers](../getting-started/yaml/#conditional-build-triggers) and [conditional build steps](../getting-started/yaml/#conditional-build-step-execution) depending on which files were changed in the last commit. For example, you can skip builds for commits that only have changes in markdown files or only run an Android workflow only when files changed in an android directory. Skipped builds will be marked skipped in the builds list.
+
+### Flutter macOS and Linux desktop publishing
+
+You can now build and publish Flutter apps to the macOS App Store. This can be configured in [codemagic.yaml](../publishing-yaml/distribution/#app-store-connect) or [Flutter workflow editor](../publishing/publishing-to-app-store/). See the step-by-step macOS code signing guide for [codemagic.yaml](../code-signing-yaml/signing-macos/) and [Flutter workflow editor](../code-signing/macos-code-signing/). macOS publishing is limited to [macOS build machines](../specs/machine-type/#mac-mini-and-mac-pro).
+
+You can now build and publish Flutter apps to the Linux [Snapcraft Snap Store](https://snapcraft.io/snap-store). This can be configured in [codemagic.yaml](../getting-started/building-a-snap-package/) or [Flutter workflow editor](../publishing/snap-store/). Linux publishing is limited to [Linux build machines](../specs/machine-type/#linux-standard-and-linux-premium).
+
+## April 2021
+
+### codemagic.yaml inline editing and validation
+
+You can edit your [codemagic.yaml](../getting-started/yaml/) configuration and see validation errors right from the Codemagic UI. Validation is also automatically supported in all IDEs that implement the [JSON Schema Store](https://www.schemastore.org/json/) standard (such as IntelliJ and VS Code).
+
 ## March 2021
 
 ### Auto-increment build numbers
