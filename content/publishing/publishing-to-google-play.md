@@ -38,5 +38,9 @@ The very first version of the app must be added to Google Play manually. You can
 5. If you want to publish to a custom track, enter the custom track name.
 6. If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates), set the desired priority. If not, select **Default**.
 7. In case you want to release a [staged version](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en) of your application, which reaches only a fraction of users, set **Rollout fraction** to a value between 0 and 1. To release to everyone, leave the value empty.
-8. If you want to publish the .apk even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
-9. Select **Enable Google Play publishing** at the top of the section to enable publishing.
+8. If you are getting the next error `Changes cannot be sent for review automatically. Please set the query parameter changesNotSentForReview to true`, mark the checkbox **Do not send changes for review**.
+
+    But if the checkbox is marked and the app is sent for review automatically, you will get the error `Changes are sent for review automatically. The query parameter changesNotSentForReview must not be set.`
+
+9. If you want to publish the .apk even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
+10. Select **Enable Google Play publishing** at the top of the section to enable publishing.

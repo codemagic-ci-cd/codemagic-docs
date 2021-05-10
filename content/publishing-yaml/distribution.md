@@ -83,7 +83,18 @@ publishing:
     track: alpha                      # Name of the track: internal, alpha, beta, production, internal app sharing, or your custom track name
     in_app_update_priority: 3         # Priority of the release (only set if in-app updates are supported): integer in range [0, 5]
     rollout_fraction: 0.25            # Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
+    changes_not_sent_for_review: True # To be used ONLY if your app cannot be sent for review automatically *
 ```
+
+{{<notebox>}}
+\* The field `changes_not_sent_for_review` is required if you are getting the next error:
+
+`Changes cannot be sent for review automatically. Please set the query parameter changesNotSentForReview to true. Once committed, the changes in this edit can be sent for review from the Google Play Console UI.`
+
+If your changes are sent to review automatically, but the field is still set to `True`, you will get the next error:
+
+`Changes are sent for review automatically. The query parameter changesNotSentForReview must not be set.`
+{{</notebox>}}
 
 If you are getting a 400 error related to app being in draft status it means you need to promote your draft build to the next level up of testing tracks. Play Console will show you how to do this. You'll need to go through the steps, fill out questionnaires, upload various screen shots and then after approval you can move to the Alpha testing track and Codemagic will publish (publishing builds on Draft status is not supported).
 
