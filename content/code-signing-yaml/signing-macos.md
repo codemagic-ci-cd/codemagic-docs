@@ -102,14 +102,16 @@ scripts:
     script: keychain initialize
   - name: Fetch Mac App Distribution certificate and Mac App Store profile
     script: |
+      # Allow creating resources if existing are not found with `--create` flag. You may omit this flag if you already have the required certificate and profile and provided the corresponding private key
       app-store-connect fetch-signing-files \
-        "io.codemagic.app" \  # Fetch signing files for specified bundle ID (use "$(xcode-project detect-bundle-id)" if not specified)
+        "io.codemagic.app" \
         --platform MAC_OS \
-        --type MAC_APP_STORE \  # Specify provisioning profile type *
-        --create  # Allow creating resources if existing are not found. You may omit this flag if you already have the required certificate and profile and provided the corresponding private key
+        --type MAC_APP_STORE \
+        --create
   - name: Fetch Mac Installer Distribution certificates
     script: |
-      app-store-connect create-certificate --type MAC_INSTALLER_DISTRIBUTION --save || \   # You may omit this command if you already have the installer certificate and provided the corresponding private key
+      # You may omit the first command if you already have the installer certificate and provided the corresponding private key
+      app-store-connect create-certificate --type MAC_INSTALLER_DISTRIBUTION --save || \
         app-store-connect list-certificates --type MAC_INSTALLER_DISTRIBUTION --save
   - name: Set up signing certificate
     script: keychain add-certificates
@@ -117,6 +119,8 @@ scripts:
     script: xcode-project use-profiles
   ... your build commands
 ```
+
+Instead of specifying the exact bundle-id, you can use `"$(xcode-project detect-bundle-id)"`.
 
 \* Based on the specified bundle ID and [provisioning profile type](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--mac_catalyst_app_development--mac_catalyst_app_direct--mac_catalyst_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store), Codemagic will fetch or create the relevant provisioning profile and certificate to code sign the build.
 
@@ -185,7 +189,9 @@ To package your application into an `.pkg` Installer package and sign it with th
       cd $(dirname "$APP_NAME")
       PACKAGE_NAME=$(basename "$APP_NAME" .app).pkg
       xcrun productbuild --component "$APP_NAME" /Applications/ unsigned.pkg  # Create and unsigned package
-      INSTALLER_CERT_NAME=$(keychain list-certificates \                      # Find the installer certificate commmon name in keychain
+
+      # Find the installer certificate commmon name in keychain
+      INSTALLER_CERT_NAME=$(keychain list-certificates \
         | jq '.[] \
           | select(.common_name \
           | contains("Mac Developer Installer")) \

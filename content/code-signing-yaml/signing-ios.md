@@ -87,15 +87,18 @@ scripts:
     script: keychain initialize
   - name: Fetch signing files
     script: |
-      app-store-connect fetch-signing-files "io.codemagic.app" \  # Fetch signing files for specified bundle ID (use "$(xcode-project detect-bundle-id)" if not specified)
-        --type IOS_APP_DEVELOPMENT \  # Specify provisioning profile type*
-        --create  # Allow creating resources if existing are not found.
+      # You can allow creating resources if existing are not found with `--create` flag
+      app-store-connect fetch-signing-files "io.codemagic.app" \
+        --type IOS_APP_DEVELOPMENT \
+        --create
   - name: Set up signing certificate
     script: keychain add-certificates
   - name: Set up code signing settings on Xcode project
     script: xcode-project use-profiles
   ... your build commands
 ```
+
+Instead of specifying the exact bundle-id, you can use `"$(xcode-project detect-bundle-id)"`.
 
 Based on the specified bundle ID and [provisioning profile type](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--mac_catalyst_app_development--mac_catalyst_app_direct--mac_catalyst_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store), Codemagic will fetch or create the relevant provisioning profile and certificate to code sign the build.
 
