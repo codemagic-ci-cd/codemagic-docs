@@ -35,6 +35,8 @@ To change the card used for payments, click **Edit** in the credit card section 
 
 To disable billing, click **Disable billing** in the Billing details section. On disabling billing, you will be immediately charged for the used paid features.
 
+Note that you may only disable billing if there are no unpaid invoices.
+
 ## Billing per team user
 
 For pay-as-you-go team plans, each team user is billed at the rate on the [pricing page](https://codemagic.io/pricing/). See the [counting team users](../teams/users) guide for details on how we count team users.
