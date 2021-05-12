@@ -88,7 +88,7 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 2. Select **Automatic** as the code signing method. If you haven't enabled the Apple Developer Portal integration yet, you will be asked to enable it before you can continue configuration.
 3. If you have several keys available, select the right key in the **App Store Connect API key** field.
 4. Select the **provisioning profile type** used for provisioning the build. Codemagic will automatically select or generate a matching certificate for code signing. The provisioning profiles (except for Distribution) will include all the devices you have registered on your Apple Developer account at the time of creating the profile.
-7. Enter your app's **bundle identifier** (optional). By default, Codemagic looks for it from your `project.pbxproj` file. 
+7. Select your app's **bundle identifier**. Codemagic lists all the bundle IDs available for the selected App Store Connect API key. If you can't see your app's bundle identifier listed, create one in [Apple Developer Portal](https://developer.apple.com/account/resources/identifiers/add/bundleId).
 
     >Note that if your app contains app extensions, an additional provisioning profile is required for each extension. Codemagic will use the bundle identifier to find the relevant provisioning profiles. If your bundle identifier is `com.example.app`, the matching profiles are the ones with `com.example.app` and `com.example.app.*` as bundle identifier.
 
