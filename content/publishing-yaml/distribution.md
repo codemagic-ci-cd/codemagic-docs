@@ -120,7 +120,7 @@ publishing:
 Publishing GitHub releases is available for GitHub repositories only.
 
 {{<notebox>}}
-As of deprecating the GitHub OAuth integration, Codemagic no longer has write access to the repositories. Setting up a personal access token is needed to publish releases to GitHub.
+As of deprecating the GitHub OAuth integration, Codemagic no longer has write access to the repositories. Setting up a personal access token is needed to publish releases to GitHub. Please follow the instructions below.
 {{</notebox>}}
 
 Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
@@ -135,16 +135,29 @@ Publishing happens only for successful builds triggered on tag creation and is u
       - tag
   ```
 
-4. Set up publishing to GitHub releases in the `publishing` section and specify the artifacts to publish. If this is a prerelease build, set `prerelease` to true.  Note that using the `*` wildcard in the beginning of the pattern requires quotation marks around the pattern, otherwise it will violate the `yaml` syntax.
+4. Add the following script after the build or to publishing scripts that publishes the artifacts with tag builds. Edit the placeholders like your application name and the path to build artifacts to match your setup.
 
-  ```yaml
-  publishing:
-    github_releases:
-      prerelease: false
-      artifact_patterns:
-        - app-release.apk
-        - '*.aab'
-  ```
+    ```bash
+    #!/usr/bin/env zsh
+
+    # Publish only for tag builds
+    if [ -z ${FCI_TAG} ]; then
+    echo "Not a tag build will not publish GitHub release"
+    exit 0
+    fi
+
+    # See more options about `gh release create` usage from GitHub CLI
+    # official docs at https://cli.github.com/manual/gh_release_create
+
+    gh release create "${FCI_TAG}" \
+        --title "<Your Application Name> ${FCI_TAG}" \
+        --notes-file changelog.md \
+        path/to/build-artifact.ipa \
+        path/to/build-artifact.apk
+
+    # Note that you don't need to include title and changelog if you do not want to.
+    # Any number of artifacts can be included with the release.
+    ```
 
 ## Publishing a Flutter package to pub.dev
 
