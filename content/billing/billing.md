@@ -35,7 +35,7 @@ To change the card used for payments, click **Edit** in the credit card section 
 
 To disable billing, click **Disable billing** in the Billing details section. On disabling billing, you will be immediately charged for the used paid features.
 
-Note that you may only disable billing if there are no unpaid invoices. In case you have unpaid invoices, please verify or update your card information. Then navigate to Billing history and find any invoice that is not in status paid. Finally, open up each not paid invoice and click **Pay invoice** to retry the payment.
+Note that you may only disable billing if there are no unpaid invoices. In case you have unpaid invoices, please verify or update your card information. Then navigate to Billing history and find any invoice that is not in paid status. Finally, open up each not paid invoice and click **Pay invoice** to retry the payment.
 
 ## Billing per team user
 
