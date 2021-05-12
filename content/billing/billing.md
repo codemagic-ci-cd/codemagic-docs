@@ -35,7 +35,7 @@ To change the card used for payments, click **Edit** in the credit card section 
 
 To disable billing, click **Disable billing** in the Billing details section. On disabling billing, you will be immediately charged for the used paid features.
 
-Note that you may only disable billing if there are no unpaid invoices. In case you have unpaid invoices, please verify or update your card information. Then navigate to Billing history and find any invoice that is not in paid status. Finally, open up each not paid invoice and click **Pay invoice** to retry the payment.
+Note that you may only disable billing if there are no unpaid invoices. In case you have unpaid invoices, please verify or update your card information. Then navigate to Billing history and find any invoice that is not in paid status. Finally, open up each unpaid invoice and click **Pay invoice** to retry the payment.
 
 ## Billing per team user
 
@@ -49,8 +49,8 @@ For pay-as-you-go team and user plans, each build minute is billed at the rate o
 
 Invoices that have not been paid on the due date are shown as "Overdue" or "Failed" on the [Billing](https://codemagic.io/billing/) page. This usually happens when there are problems with charging the card, of which team or account owners are notified by email. Codemagic will then attempt to retry the payment in 3, 5 or 7 days.
 
-As soon as there is a failed invoice payment, your subscription will be put on hold. In order to continue building all invoices should be paid.
+As soon as there is a failed invoice payment, your subscription will be put on hold and running builds will be disabled. In order to continue building all invoices should be paid.
 
 Team or account owners can manually retry the payment by clicking on the overdue invoice in **Billing history** and selecting **Pay invoice** on the popup with invoice details.
 
-Note that, overdue invoices should be paid before subscription could be disabled. Please refer to [Disable billing](/billing/billing/#disabling-billing) section for further info.
+Note that overdue invoices should be paid before subscription can be disabled. Please refer to the [Disable billing](/billing/billing/#disabling-billing) section for further info.
