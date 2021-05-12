@@ -86,9 +86,7 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 2. Select **Automatic** as the code signing method. If you haven't enabled the Apple Developer Portal integration yet, you will be asked to enable it before you can continue configuration.
 3. If you have several keys available, select the right key in the **App Store Connect API key** field.
 4. Mark the checkbox **Project type setting > is Mac Catalyst** if you need a Mac Catalyst profile.
-7. Enter your app's **bundle identifier** (optional). By default, Codemagic looks for it from your `project.pbxproj` file.
-
-{{< figure size="medium" src="../uploads/automatic_code_signing_macos.png" caption="Automatic macOS code signing setup" >}}
+7. Select your app's **bundle identifier**. Codemagic lists all the bundle IDs available for the selected App Store Connect API key. If you can't see your app's bundle identifier listed, create one in [Apple Developer Portal](https://developer.apple.com/account/resources/identifiers/add/bundleId).
 
 As the next step, you can [configure publishing to App Store Connect](../publishing/publishing-to-app-store) to submit the app to App Store Connect and distribute it via Mac App Store.
 
