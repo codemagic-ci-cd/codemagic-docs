@@ -69,7 +69,11 @@ environment:
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. Note that when encrypting files via the UI, they will be base64 encoded and would have to be decoded during the build. Alternatively, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+  This is the private API key downloaded from App Store Connect.
+
+  {{<notebox>}}
+  Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+  {{</notebox>}}
 
 - `CERTIFICATE_PRIVATE_KEY`
 
@@ -87,9 +91,11 @@ environment:
     openssl pkcs12 -in <your_certificate_name>.p12 -nodes -nocerts | openssl rsa -out <your_private_key_name>.key
     ```
 
-{{<notebox>}}
+  {{<notebox>}}
+  Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+  {{</notebox>}}
+
 Alternatively, each property can be specified in the `scripts` section of the YAML file as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
-{{</notebox>}}
 
 ### Adding steps to code sign the app
 

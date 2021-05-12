@@ -190,6 +190,10 @@ workflows:
 {{<notebox>}}
 You can find an up-to-date codemagic.yaml Ionic iOS workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/ionic/ionic-capacitor-demo-project/codemagic.yaml#L2).
 {{</notebox>}}
+<br>
+{{<notebox>}}
+Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+{{</notebox>}}
 
 The following example shows a workflow that can be used to publish your **Ionic Capacitor** iOS app to App Store Connect.
 
@@ -292,6 +296,10 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
 ## iOS Ionic Cordova workflow example
 
 The following example shows a workflow that can be used to publish your **Ionic Cordova** iOS app to App Store Connect.
+<br>
+{{<notebox>}}
+Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+{{</notebox>}}
 
 ```yaml
 workflows:

@@ -79,7 +79,11 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+  This is the private API key downloaded from App Store Connect.
+
+{{<notebox>}}
+  Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+{{</notebox>}}
 
 #### Saving to `codemagic.yaml` config
 
@@ -155,6 +159,10 @@ You will need to set up a service account in Google Play Console and create a JS
 ### Saving the API access argument to environment variables in `codemagic.yaml` config
 
 Save the API key as an [environment](../getting-started/yaml#environment) variable. Make sure to [encrypt](./encrypting/#encrypting-sensitive-data) the values of the variable before adding it to the configuration file.
+
+{{<notebox>}}
+  Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+{{</notebox>}}
 
 ```yaml
 environment:

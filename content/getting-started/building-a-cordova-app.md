@@ -37,6 +37,10 @@ To build, code sign, and publish Cordova Android and iOS apps:
 {{<notebox>}}
 You can find an up-to-date codemagic.yaml Cordova iOS workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/cordova/cordova-demo-project/codemagic.yaml#L2).
 {{</notebox>}}
+<br>
+{{<notebox>}}
+Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternativey, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+{{</notebox>}}
 
 The following example workflow shows how to build your **Cordova** iOS app and publish to App Store Connect.
 
