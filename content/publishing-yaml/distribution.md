@@ -115,7 +115,7 @@ publishing:
     password: Encrypted(...)          # App-specific password
 ```
 
-### GitHub releases
+## GitHub releases
 
 Publishing GitHub releases is available for GitHub repositories only.
 
