@@ -47,8 +47,10 @@ For pay-as-you-go team and user plans, each build minute is billed at the rate o
 
 ## Overdue and failed invoice payments
 
-Invoices that have not been paid on the due date are shown as "Overdue" or "Failed" on the [Billing](https://codemagic.io/billing/) page. This usually happens when there are problems with charging the card, of which team or account owners are notified by email. Codemagic will then attempt to retry the payment in 3, 5 or 7 days. If all retries for a payment fail, the subscription would be cancelled.
+Invoices that have not been paid on the due date are shown as "Overdue" or "Failed" on the [Billing](https://codemagic.io/billing/) page. This usually happens when there are problems with charging the card, of which team or account owners are notified by email. Codemagic will then attempt to retry the payment in 3, 5 or 7 days.
+
+As soon as there is a failed invoice payment, your subscription will be put on hold. In order to continue building all invoices should be paid.
 
 Team or account owners can manually retry the payment by clicking on the overdue invoice in **Billing history** and selecting **Pay invoice** on the popup with invoice details.
 
-Overdue invoices should be paid before subscription could be disabled. Please refer to [Disable billing](/billing/billing/#disabling-billing) section for further info.
+Note that, overdue invoices should be paid before subscription could be disabled. Please refer to [Disable billing](/billing/billing/#disabling-billing) section for further info.
