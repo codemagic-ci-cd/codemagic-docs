@@ -192,9 +192,9 @@ To package your application into an `.pkg` Installer package and sign it with th
 
       # Find the installer certificate commmon name in keychain
       INSTALLER_CERT_NAME=$(keychain list-certificates \
-        | jq '.[] \
-          | select(.common_name \
-          | contains("Mac Developer Installer")) \
+        | jq '.[]
+          | select(.common_name
+          | contains("Mac Developer Installer"))
           | .common_name' \
         | xargs)
       xcrun productsign --sign "$INSTALLER_CERT_NAME" unsigned.pkg "$PACKAGE_NAME" # Sign the package
