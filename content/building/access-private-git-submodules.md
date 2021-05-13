@@ -17,7 +17,15 @@ If your project requires accessing any private Git submodules or dependencies, y
 
 All environment variables whose name has the suffix `_SSH_KEY` will be automatically added to the SSH agent and will be ready for use during the whole build process. Check the `Preparing build machine` step in build logs to verify that the key has been successfully added to the SSH agent.
 
-If you wish to use a **custom** environment variable name without the suffix `_SSH_KEY`, add the following **post-clone** script to add the key to the SSH agent.
+{{<notebox>}}
+Do not add an environment variable with the `_SSH_KEY` suffix if your repository was added using a different SSH key. If you do so, the repository's key will be overwritten and it won't be possible to clone it.
+{{</notebox>}}
+
+### Using multiple SSH keys
+
+When you add multiple SSH keys, or need to use a different key for private dependencies apart of the one used to clone your repository, git will by default attempt to use the first key available. This may cause problems when installing private dependencies.
+
+If you use yaml configuration, explicitly add the key to the SSH agent before invoking a command which requires it, as in the example below.
 
 ```bash
 #!/usr/bin/env bash
@@ -25,17 +33,7 @@ echo "${CUSTOM_KEY_NAME}" > /tmp/ssh_key
 chmod 600 /tmp/ssh_key
 eval `ssh-agent -s`
 ssh-add /tmp/ssh_key
-```
-
-### Using multiple SSH keys
-
-When you add multiple SSH keys, git will by default attempt to use the first key available, which may cause problems when installing private dependencies. As a workaround, you can change the order of your environment variables in a way that the required SSH key comes first. A more robust solution would be to explicitly add the key to the SSH agent before invoking a command which requires it, as in the example below.
-
-```bash
-#!/usr/bin/env bash
-echo "${MY_SSH_KEY}" > /tmp/ssh_key
-chmod 600 /tmp/ssh_key
-eval `ssh-agent -s`
-ssh-add /tmp/ssh_key
 ... # enter the commands that require the key
 ```
+
+But if you added a repository with an SSH key and want to use a different key to fetch dependencies, it's not possible to do in UI settings. Scripts are executed in independent shell, so the key explicitly added in a post-clone script will be lost as soon as the script finishes. The best thing to do in such case would be to use the same key for both your repository and your private dependency. You may need to add the key to your account, not to the specific repository.
