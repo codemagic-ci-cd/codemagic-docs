@@ -185,7 +185,7 @@ To package your application into an `.pkg` Installer package and sign it with th
     script: |
       set -x
 
-      APP_NAME=$(find . -name "*.app")                                        # Command to find the path to your generated app, may be different
+      APP_NAME=$(find $(pwd) -name "*.app")                                        # Command to find the path to your generated app, may be different
       cd $(dirname "$APP_NAME")
       PACKAGE_NAME=$(basename "$APP_NAME" .app).pkg
       xcrun productbuild --component "$APP_NAME" /Applications/ unsigned.pkg  # Create and unsigned package
