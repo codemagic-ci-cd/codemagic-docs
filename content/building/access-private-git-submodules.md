@@ -18,7 +18,7 @@ If your project requires accessing any private Git submodules or dependencies, y
 All environment variables whose name has the suffix `_SSH_KEY` will be automatically added to the SSH agent and will be ready for use during the whole build process. Check the `Preparing build machine` step in build logs to verify that the key has been successfully added to the SSH agent.
 
 {{<notebox>}}
-Do not add an environment variable with the `_SSH_KEY` suffix if your repository was added using a different SSH key. If you do so, the repository's key will be overwritten and it won't be possible to clone it.
+Do not add an environment variable with the `_SSH_KEY` suffix if your repository was added using a different SSH key. If you do so, the repository's key will be overwritten and it won't be possible to clone the repository.
 {{</notebox>}}
 
 ### Using multiple SSH keys
@@ -36,4 +36,4 @@ ssh-add /tmp/ssh_key
 ... # enter the commands that require the key
 ```
 
-But if you added a repository with an SSH key and want to use a different key to fetch dependencies, it's not possible to do in UI settings. Scripts are executed in independent shell, so the key explicitly added in a post-clone script will be lost as soon as the script finishes. The best thing to do in such case would be to use the same key for both your repository and your private dependency. You may need to add the key to your account, not to the specific repository.
+But if you added a repository with an SSH key and want to use a different key to fetch dependencies, it's not possible to do in Workflow editor. Scripts are executed in independent shells, so the key explicitly added in a post-clone script will be lost as soon as the script finishes. The best thing to do in such case would be to use the same key for both your repository and your private dependency. You may need to add the key to your account, not to the specific repository.
