@@ -219,7 +219,7 @@ workflows:
         channel: '#channel-name'
         notify_on_build_start: true   # To receive a notification when a build starts
         notify:
-          success: true               # To not receive a notification when a build succeeds
+          success: true               # To receive a notification when a build succeeds
           failure: false              # To not receive a notification when a build fails
       app_store_connect:
         apple_id: $APPLE_ID
