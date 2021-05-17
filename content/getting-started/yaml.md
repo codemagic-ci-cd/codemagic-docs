@@ -329,6 +329,18 @@ Note that in this example the `SUCCESS` file will not be created if some build s
 
 Unlike the scripts run in the scripts section before the publishing step, the post-publish scripts are run regardless of the status of previous scripts.
 
+You may also check if there are artifacts to be published in post-publish scripts
+
+```yaml
+publishing:
+  scripts:
+    - name: Publish artifacts if present
+      script: |
+        if ls /path/to/artifacts/**/*.ipa 1> /dev/null 2>&1; then
+          # publish artifacts
+        fi
+```
+
 ## Conditional build triggers
 
 You can skip building particular commits or watch for changes in specific files to trigger builds. It's possible to define build conditions per workflow or specific build steps.
