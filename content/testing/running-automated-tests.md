@@ -59,4 +59,4 @@ flutter emulators --launch emulator
 
 ### Stop build if tests fail
 
-Selecting the **Stop build if tests fail** option will stop the build immediately when any of the tests fail. Such builds will have the status "failed".
+Selecting the **Stop build if tests fail** option will stop the build after finishing all the enabled tests when any of the tests fail. Such builds will have the status "failed".
