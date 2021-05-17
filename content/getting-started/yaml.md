@@ -297,10 +297,10 @@ publishing:
   email:
     recipients:
       - name@example.com
-scripts:
-  - |
-    echo 'This is a Post-publish script'
-    echo 'This script is multiline'
+  scripts:
+    - |
+      echo 'This is a Post-publish script'
+      echo 'This script is multiline'
 ```
 
 ## Conditional build triggers
