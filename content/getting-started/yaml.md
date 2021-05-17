@@ -329,7 +329,7 @@ Note that in this example the `SUCCESS` file will not be created if some build s
 
 Unlike the scripts run in the scripts section before the publishing step, the post-publish scripts are run regardless of the status of previous scripts.
 
-You may also check if there are artifacts to be published in post-publish scripts
+You may also check if there are artifacts to be published before running post-publish scripts
 
 ```yaml
 publishing:
