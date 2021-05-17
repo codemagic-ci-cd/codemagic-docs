@@ -69,13 +69,13 @@ environment:
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. Note that when encrypting files via the UI, they will be base64 encoded and would have to be decoded during the build. Alternatively, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+  This is the private API key downloaded from App Store Connect. You'll need to [encrypt](../building/encrypting/) the **contents** of the file in the codemagic.yaml editor UI (and not the file itself). On macOS you can use `pbcopy < AuthKey_XXXXXX.p8` to copy the contents of the private key and paste this into the UI encryption tool.
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic fetches or creates.
+  A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic fetches or creates. You'll need to either create a new certificate and private key or find an existing one. You'll need to [encrypt](../building/encrypting/) the **contents** of the private key in the codemagic.yaml editor UI (and not the file itself). On macOS, you can use `pbcopy < private_key` to copy the contents of the private key and paste this into the UI encryption tool.
 
-  App Developer Portal has a limitation of maximum 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` or `Developer ID Application` certificates, you won't be able to create new ones. If any of those are not used, you may revoke them, which will make it possible to create new certificates with the specified new certificate private key. You can create a new 2048 bit RSA key by running the following command in your terminal:
+  App Developer Portal has a limitation of maximum 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` or `Developer ID Application` certificates, you won't be able to create new ones. If any of those are not used, you may revoke them in the [Apple Developer Portal](https://developer.apple.com/account/resources/certificates/list), which will make it possible to create new certificates with the specified new certificate private key. You can create a new 2048 bit RSA key by running the following command in your terminal:
 
   ```bash
   ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
@@ -185,16 +185,16 @@ To package your application into an `.pkg` Installer package and sign it with th
     script: |
       set -x
 
-      APP_NAME=$(find . -name "*.app")                                        # Command to find the path to your generated app, may be different
+      APP_NAME=$(find $(pwd) -name "*.app")                                        # Command to find the path to your generated app, may be different
       cd $(dirname "$APP_NAME")
       PACKAGE_NAME=$(basename "$APP_NAME" .app).pkg
       xcrun productbuild --component "$APP_NAME" /Applications/ unsigned.pkg  # Create and unsigned package
 
       # Find the installer certificate commmon name in keychain
       INSTALLER_CERT_NAME=$(keychain list-certificates \
-        | jq '.[] \
-          | select(.common_name \
-          | contains("Mac Developer Installer")) \
+        | jq '.[]
+          | select(.common_name
+          | contains("Mac Developer Installer"))
           | .common_name' \
         | xargs)
       xcrun productsign --sign "$INSTALLER_CERT_NAME" unsigned.pkg "$PACKAGE_NAME" # Sign the package
