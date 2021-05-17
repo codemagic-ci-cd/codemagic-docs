@@ -303,6 +303,30 @@ publishing:
       echo 'This script is multiline'
 ```
 
+Add custom scripts to call different actions depending on final build status. See the example below
+
+```yaml
+scripts:
+  - name: Report build start
+    script: # build started
+
+    . . .
+
+  - name: Build finished successfully
+    script: touch ~/SUCCESS
+publishing:
+  scripts:
+    - name: Report build status
+      script: |
+        if [ -a "~/SUCCESS" ] ; then
+           # build successful
+        else
+           # build failed
+        fi
+```
+
+Note that in this example the `SUCCESS` file will not be created if some build step failed. Publishing script will be executed regardless of final build status.
+
 ## Conditional build triggers
 
 You can skip building particular commits or watch for changes in specific files to trigger builds. It's possible to define build conditions per workflow or specific build steps.
