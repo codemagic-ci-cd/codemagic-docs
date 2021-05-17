@@ -325,7 +325,9 @@ publishing:
         fi
 ```
 
-Note that in this example the `SUCCESS` file will not be created if some build step failed. The publishing script will be executed regardless of the final build status.
+Note that in this example the `SUCCESS` file will not be created if some build step failed. We it's only used to distinguish between failed and successfull builds. 
+
+Unlike the scripts run in the scripts section before the publishing step, the post-publish scripts are run regardless of the status of previous scripts.
 
 ## Conditional build triggers
 
