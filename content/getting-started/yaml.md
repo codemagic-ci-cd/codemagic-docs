@@ -292,7 +292,7 @@ There are several things to keep in mind about patterns:
 
 Codemagic has a number of integrations (e.g. email, Slack, Google Play, App Store Connect) for publishing but you can also publish elsewhere with custom scripts (e.g. Firebase App Distribution). See the examples [here](../publishing-yaml/distribution).
 
-Note that unlike the scripts run in the `scripts` section before the publishing step, the post-publish scripts are run regardless of the status of previous scripts. You can specify conditions for running the scripts. For example, you can check whether artifacts were generated or what the build status was.
+Note that unlike the scripts the scripts section, the scripts in publishing scripts section are run regardless of the build status. You can specify conditions for running the scripts. For example, you can check whether artifacts were generated or what the build status was.
 
 ```yaml
 publishing:
