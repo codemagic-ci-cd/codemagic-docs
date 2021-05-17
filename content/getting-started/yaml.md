@@ -290,7 +290,9 @@ There are several things to keep in mind about patterns:
 
 ### Publishing
 
-This is the section where you can set up publishing to external services. Codemagic has a number of integrations (e.g. email, Slack, Google Play, App Store Connect) for publishing but you can also use custom scripts to publish elsewhere (e.g. Firebase App Distribution). See the examples [here](../publishing-yaml/distribution).
+Codemagic has a number of integrations (e.g. email, Slack, Google Play, App Store Connect) for publishing but you can also publish elsewhere with custom scripts (e.g. Firebase App Distribution). See the examples [here](../publishing-yaml/distribution).
+
+Note that unlike the scripts run in the `scripts` section before the publishing step, the post-publish scripts are run regardless of the status of previous scripts. You can specify conditions for running the scripts. For example, you can check whether artifacts were generated or what the build status was.
 
 ```yaml
 publishing:
@@ -298,12 +300,11 @@ publishing:
     recipients:
       - name@example.com
   scripts:
-    - |
-      echo 'This is a Post-publish script'
-      echo 'This script is multiline'
+    script: |
+      if ls /path/to/artifacts/**/*.ipa 1> /dev/null 2>&1; then
+        # publish artifacts
+      fi 
 ```
-
-Add custom scripts to call different actions depending on final build status. See the example below
 
 ```yaml
 scripts:
@@ -322,22 +323,6 @@ publishing:
            # build successful
         else
            # build failed
-        fi
-```
-
-Note that in this example the `SUCCESS` file will not be created if some build step failed. We it's only used to distinguish between failed and successfull builds. 
-
-Unlike the scripts run in the scripts section before the publishing step, the post-publish scripts are run regardless of the status of previous scripts.
-
-You may also check if there are artifacts to be published before running post-publish scripts
-
-```yaml
-publishing:
-  scripts:
-    - name: Publish artifacts if present
-      script: |
-        if ls /path/to/artifacts/**/*.ipa 1> /dev/null 2>&1; then
-          # publish artifacts
         fi
 ```
 
