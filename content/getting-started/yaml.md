@@ -290,17 +290,46 @@ There are several things to keep in mind about patterns:
 
 ### Publishing
 
-This is the section where you can set up publishing to external services. Codemagic has a number of integrations (e.g. email, Slack, Google Play, App Store Connect) for publishing but you can also use custom scripts to publish elsewhere (e.g. Firebase App Distribution). See the examples [here](../publishing-yaml/distribution).
+Codemagic has a number of integrations (e.g. email, Slack, Google Play, App Store Connect) for publishing but you can also publish elsewhere with custom scripts (e.g. Firebase App Distribution). See the examples [here](../publishing-yaml/distribution).
+
+Note that by default the publishing scripts are run regardless of the build status. You can specify additional conditions with if statements.
 
 ```yaml
 publishing:
   email:
     recipients:
       - name@example.com
+  scripts:
+    script: |
+      apkPath=$(find build -name "*.apk" | head -1)
+      if [[ -z ${apkPath} ]]
+      then
+        echo "No .apk were found"
+      else
+        echo "Publishing .apk artifacts"
+      fi
+```
+
+You can also use the publishing scripts to report build status.
+
+```yaml
 scripts:
-  - |
-    echo 'This is a Post-publish script'
-    echo 'This script is multiline'
+  - name: Report build start
+    script: # build started
+
+    . . .
+
+  - name: Build finished successfully
+    script: touch ~/SUCCESS
+publishing:
+  scripts:
+    - name: Report build status
+      script: |
+        if [ -a "~/SUCCESS" ] ; then
+           # build successful
+        else
+           # build failed
+        fi
 ```
 
 ## Conditional build triggers
