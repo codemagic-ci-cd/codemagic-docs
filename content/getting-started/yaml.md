@@ -310,7 +310,7 @@ publishing:
       fi
 ```
 
-You can also use the post-publishing scripts to report build status.
+You can also use the publishing scripts to report build status.
 
 ```yaml
 scripts:
