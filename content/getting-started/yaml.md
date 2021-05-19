@@ -17,6 +17,18 @@ When detected in repository, `codemagic.yaml` is automatically used for configur
 
 Builds can be also started manually by clicking **Start new build** in Codemagic and selecting the branch and workflow to build in the **Specify build configuration** popup.
 
+You can readily commit `codemagic.yaml` with the following content to test it out:
+
+```yaml
+workflows:
+  hello-world:
+    name: Hello world worklfow
+    scripts:
+        - echo "Hello world!"
+```
+
+The scripts in script section will be run right after the repository is cloned.
+
 ## Syntax
 
 `codemagic.yaml` follows the traditional [YAML syntax](https://yaml.org/). Here are a few tips and tricks on how to better structure the file.
