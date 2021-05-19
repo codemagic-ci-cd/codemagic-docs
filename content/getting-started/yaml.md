@@ -425,16 +425,16 @@ workflows:
     working_directory: mobile
     scripts:
       - name: Prepare
-        script: # current working directory is /Users/builder/clone/mobile
+        script: pwd # current working directory is /Users/builder/clone/mobile
       - name: Build iOS
-        script: # iOS build command
         working_directory: mobile/ios
+        script: pwd # current working directory is /Users/builder/clone/mobile/ios
       - name: Build Android
-        script: # Android build command
         working_directory: mobile/android
-      - name: Logs
-        script: # Process logs in /Users/builder/Library/Logs folder
+        script: pwd # current working directory is /Users/builder/clone/mobile/android
+      - name: Process Logs
         working_directory: /Users/builder/Library/Logs
+        script: pwd # current working directory is /Users/builder/Library/Logs
 ```
 
 Working directory paths are relative to the repository clone directory, e.g. if `mobile` is the working directory, then the script will be executed in `/Users/builder/clone/mobile`.
