@@ -410,7 +410,7 @@ You may select working directory globally for the entire workflow or for locally
 workflows:
   build-ios:
     name: Build iOS and Android
-    working_directory: mobile/
+    working_directory: mobile
     scripts:
       - name: Prepare
         script: # current working directory is /Users/builder/clone/mobile
