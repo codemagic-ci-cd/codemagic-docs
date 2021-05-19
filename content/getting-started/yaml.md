@@ -19,6 +19,18 @@ Builds can be also started manually by clicking **Start new build** in Codemagic
 
 ## Syntax
 
+You can readily commit `codemagic.yaml` with the following content to test it out:
+
+```yaml
+workflows:
+  hello-world:
+    name: Hello world worklfow
+    scripts:
+        - echo "Hello world!"
+```
+
+The scripts in the `scripts` section will be run right after the repository is cloned.
+
 `codemagic.yaml` follows the traditional [YAML syntax](https://yaml.org/). Here are a few tips and tricks on how to better structure the file.
 
 {{<notebox>}}
