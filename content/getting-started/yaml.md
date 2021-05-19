@@ -425,6 +425,6 @@ workflows:
         working_directory: /Users/builder/Library/Logs
 ```
 
-Relative path to working directory are counted based on repository clone directory, e.g. if `mobile` is the working directory then the script will be executed in `/Users/builder/clone/mobile`.
+Working directory paths are relative to the repository clone directory, e.g. if `mobile` is the working directory, then the script will be executed in `/Users/builder/clone/mobile`.
 
 Note that you could specify absolute path as a working directory as well.
