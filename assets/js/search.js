@@ -290,12 +290,8 @@ const getAlgoliaResults = (query) =>
     query
         ? algolia
             .search(`'${query}`, {
-                hitsPerPage: 16,
                 highlightPreTag: '<mark data-markjs="true">',
                 highlightPostTag: '</mark>',
-                attributesToSnippet: [
-                    'content:100',
-                ]
             }).then((result) => {
                 return result.hits;
             })
