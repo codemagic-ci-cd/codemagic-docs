@@ -98,10 +98,8 @@ const updateUrl = (query) =>
 const updateResults = async (query) => {
     let result, algoliaResult
     try {
-        result = getResults(query)
-        console.log("fuse: ", result)
+        // result = getResults(query)
         algoliaResult = await getAlgoliaResults(query)
-        console.log("algolia: ", algoliaResult)
     } catch (error) {
         result = error
     }
