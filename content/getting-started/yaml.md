@@ -420,7 +420,7 @@ You may select a working directory globally for the entire workflow or for indiv
 
 ```yaml
 workflows:
-  build-ios:
+  build-apps:
     name: Build iOS and Android
     working_directory: mobile
     scripts:
