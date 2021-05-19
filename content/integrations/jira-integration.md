@@ -12,7 +12,7 @@ The following example shows how to set up integration with Jira using the **code
 
 ## Getting started
 
-1. Clone the [Jira integratrion starter project](https://github.com/codemagic-ci-cd/jira_integration_demo_project) from the Codemagic GitHub page.
+1. Clone the [Jira integratrion starter project](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/jira_integration_demo_project) from the Codemagic GitHub page.
 
 2. You will need access to a Jira account and can [sign up](https://www.atlassian.com/software/jira) for free.
 
