@@ -427,4 +427,4 @@ workflows:
 
 Working directory paths are relative to the repository clone directory, e.g. if `mobile` is the working directory, then the script will be executed in `/Users/builder/clone/mobile`.
 
-Note that you could specify absolute path as a working directory as well.
+Note that you can specify an absolute path as a working directory as well.
