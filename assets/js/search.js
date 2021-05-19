@@ -1,5 +1,7 @@
 let fuse
 
+const algolia = algoliasearch("27CIRMYZIB", "7e88305c04e90188508daa6c89e5f4df").initIndex("codemagic_docs");
+
 const fuseOptions = {
     includeMatches: true,
     findAllMatches: true,
@@ -92,14 +94,19 @@ const updateUrl = (query) =>
             (query ? '?q=' + encodeURIComponent(query) : ''),
     )
 
-const updateResults = (query) => {
-    let result
+// TODO - Remove fuse or algolia search after deciding which to keep
+const updateResults = async (query) => {
+    let result, algoliaResult
     try {
         result = getResults(query)
+        console.log("fuse: ", result)
+        algoliaResult = await getAlgoliaResults(query)
+        console.log("algolia: ", algoliaResult)
     } catch (error) {
         result = error
     }
-    $('#search-results').html(getResultHtml(result, query))
+    // $('#search-results').html(getResultHtml(result, query))
+    $('#search-results').html(getAlgoliaResultHtml(algoliaResult, query))
 }
 
 const updateInputs = (query) => {
@@ -247,6 +254,51 @@ const getResults = (query) =>
                       positions,
                   }
               })
+        : null
+
+const getAlgoliaResultHtml = (algoliaResultList, query) => {
+    if (!algoliaResultList) return null
+
+    if (algoliaResultList instanceof Error) {
+        return $('<div>', {
+            class: 'no-results-message',
+            text: 'Invalid search query: ' + algoliaResultList.message,
+        })
+    }
+
+    if (!algoliaResultList.length) {
+        return $('<div>', {
+            class: 'no-results-message',
+            text: 'No results matching "' + query + '"',
+        })
+    }
+
+    return $('<ul>', {
+        html: algoliaResultList.map((result) => {
+            return $('<li>', {
+                html: [
+                    $('<a>', { html: result._highlightResult.title.value, href: result.uri }),
+                    $('<p>', { html: result._highlightResult.subtitle.value }),
+                    $('<p>', { html: result._snippetResult.content.value}),
+                ],
+            })
+        }),
+    })
+}
+
+const getAlgoliaResults = (query) =>
+    query
+        ? algolia
+            .search(`'${query}`, {
+                hitsPerPage: 16,
+                highlightPreTag: '<mark data-markjs="true">',
+                highlightPostTag: '</mark>',
+                attributesToSnippet: [
+                    'content:100',
+                ]
+            }).then((result) => {
+                return result.hits;
+            })
         : null
 
 const debounce = (func, wait, immediate) => {

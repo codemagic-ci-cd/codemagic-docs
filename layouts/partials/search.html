@@ -4,6 +4,7 @@
     integrity="sha384-iqnguDoMujGknA4B5Jk7pbSn7sb7M8Tc0zVsTNQXm629Xx00jGEpD9TsZXbfNjKO"
     crossorigin="anonymous"
 ></script>
+<script defer src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js"></script>
 
 {{ $searchScript := resources.Get "js/search.js" | minify | fingerprint }}
 <script defer src="{{ $searchScript.RelPermalink }}" integrity="{{ $searchScript.Data.Integrity }}"></script>
