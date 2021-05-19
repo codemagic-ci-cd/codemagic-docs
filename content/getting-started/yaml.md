@@ -401,3 +401,30 @@ workflows:
             excludes:
               - '**/*.md'
 ```
+
+## Working directory
+
+You may select a working directory globally for the entire workflow or for individual scripts only. If not specified, the global working directory defaults to the directory where the repository is cloned (`/Users/builder/clone`). You can override the global working directory by specifying the working directory in the individual steps. Consider the example below:
+
+```yaml
+workflows:
+  build-ios:
+    name: Build iOS and Android
+    working_directory: mobile
+    scripts:
+      - name: Prepare
+        script: # current working directory is /Users/builder/clone/mobile
+      - name: Build iOS
+        script: # iOS build command
+        working_directory: mobile/ios
+      - name: Build Android
+        script: # Android build command
+        working_directory: mobile/android
+      - name: Logs
+        script: # Process logs in /Users/builder/Library/Logs folder
+        working_directory: /Users/builder/Library/Logs
+```
+
+Working directory paths are relative to the repository clone directory, e.g. if `mobile` is the working directory, then the script will be executed in `/Users/builder/clone/mobile`.
+
+Note that you can specify an absolute path as a working directory as well.
