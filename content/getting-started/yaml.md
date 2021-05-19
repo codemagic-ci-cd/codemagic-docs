@@ -404,7 +404,7 @@ workflows:
 
 ## Working directory
 
-You may select working directory globally for the entire workflow or for locally individual scripts. If not specified, global working directory defaults to the directory where the repository is cloned (`/Users/builder/clone`). You can override global working directory by specifying working directory in the individual steps. Consider the example below:
+You may select a working directory globally for the entire workflow or for individual scripts only. If not specified, the global working directory defaults to the directory where the repository is cloned (`/Users/builder/clone`). You can override the global working directory by specifying the working directory in the individual steps. Consider the example below:
 
 ```yaml
 workflows:
