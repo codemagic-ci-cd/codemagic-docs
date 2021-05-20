@@ -20,17 +20,6 @@ Here are some examples how you can increment the app version using Codemagic's r
 --build-name=1.0.0 --build-number=$BUILD_NUMBER
 ```
 
-## Fetching build number from pubsec.yaml
-
-Add the following build argument:
-
-```bash
---build-number=$(yq e .version pubspec.yaml)
-```
-
-It uses [yq](https://github.com/mikefarah/yq), a lightweight and portable command-line YAML processor.
-
-
 ## Set Xcode project build number via command line
 
 Calling agvtool is another way of forcing Xcode to set the build version for your next build.
