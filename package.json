@@ -4,7 +4,7 @@
     "scripts": {
         "algolia": "node algolia.js"
     },
-    "dependencies": {
+    "devDependencies": {
         "algolia-indexing": "^1.2.0"
     }
 }
