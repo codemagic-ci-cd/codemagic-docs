@@ -20,16 +20,24 @@ Here are some examples how you can increment the app version using Codemagic's r
 --build-name=1.0.0 --build-number=$BUILD_NUMBER
 ```
 
-## Fetching build number from pubsec.yaml
+## Fetching Flutter build name and build number from pubspec.yaml
 
-Add the following build argument:
+You can retrieve your build name build number defined in pubspec.yaml to use in build commands with [yq](https://github.com/mikefarah/yq), a lightweight and portable command-line YAML processor.
+
+If your pubspec.yaml `version` is `1.2.3`, you may retrieve the build name with:
 
 ```bash
---build-number=$(yq e .version pubspec.yaml)
+export PUB_BUILD_NAME=$(yq e .version pubspec.yaml) #1.2.3
 ```
 
-It uses [yq](https://github.com/mikefarah/yq), a lightweight and portable command-line YAML processor.
+If your pubspec.yaml `version` is `1.2.3+100` you may retrieve the build name and build number with:
 
+```bash
+export $PUB_BUILD_NAME=$(yq e .version pubspec.yaml | cut -d "+" -f1) #1.2.3
+export $PUB_BUILD_NUMBER=$(yq e .version pubspec.yaml | cut -d "+" -f2) #100
+```
+
+By default, Flutter will build with the build name and build version defined in pubspec.yaml `version` field. You can override these with the `--build-name` and `--build-number` build arguments.
 
 ## Set Xcode project build number via command line
 
