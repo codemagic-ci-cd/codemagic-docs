@@ -18,3 +18,7 @@ jobs:
       - run: curl --location https://github.com/gohugoio/hugo/releases/download/v0.77.0/hugo_extended_0.77.0_Linux-64bit.tar.gz | tar -vxzO hugo > hugo && chmod a+x hugo
       - run: ./hugo --environment production --minify
       - run: ./hugo deploy --environment production --invalidateCDN true --maxDeletes -1
+
+      - run: yarn install
+      - name: Update search index
+        run: yarn run algolia ${{ secrets.ALGOLIA_ADMIN_KEY }}
