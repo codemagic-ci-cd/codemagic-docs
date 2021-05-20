@@ -1,0 +1,10 @@
+{
+    "name": "codemagic-docs",
+    "version": "1.0.0",
+    "scripts": {
+        "algolia": "node algolia.js"
+    },
+    "dependencies": {
+        "algolia-indexing": "^1.2.0"
+    }
+}
