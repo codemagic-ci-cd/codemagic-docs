@@ -29,6 +29,8 @@ weight: 2
 - fastlane `2.181.0`
 - firebase `9.3.0`
 - flutter `2.2.0 ($HOME/programs/flutter)`
+- gcloud
+- gsutil
 - gem `3.1.4`
 - gh `1.9.2`
 - git `2.31.1`
