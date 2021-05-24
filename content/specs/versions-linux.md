@@ -29,6 +29,9 @@ weight: 5
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
+- Google Cloud SDK `325.0.0`
+- gsutil `4.58`
+
 - ionic `5.4.16`
 - jq `jq-1.6`
 - node `14.15.3`

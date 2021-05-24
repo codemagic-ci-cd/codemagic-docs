@@ -32,7 +32,9 @@ weight: 2
 - gem `3.1.4`
 - gh `1.9.2`
 - git `2.31.1`
+- Google Cloud SDK `327.0.0`
 - gradle `6.1.1`
+- gsutil `4.58`
 - homebrew `3.1.3`
 - ionic `6.12.4`
 - jq
