@@ -145,6 +145,10 @@ Note that `mac_pro`, `linux`, and `linux_x2` are only available for teams and us
 
 `environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node, npm and Ruby used for building. This is also where you can add credentials and API keys required for [code signing](../code-signing-yaml/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
 
+{{<notebox>}}
+Using a non-default version of Ruby for MacOS builds will increase the time of your `Preparing build machine` step significantly. 
+{{</notebox>}}
+
 ```yaml
 environment:
   vars:             # Define your environment variables here
