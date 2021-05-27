@@ -24,7 +24,7 @@ You can readily commit `codemagic.yaml` with the following content to test it ou
 ```yaml
 workflows:
   hello-world:
-    name: Hello world worklfow
+    name: Hello world workflow
     scripts:
         - echo "Hello world!"
 ```
@@ -143,7 +143,7 @@ Note that `mac_pro`, `linux`, and `linux_x2` are only available for teams and us
 
 ### Environment
 
-`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and npm used for building. This is also where you can add credentials and API keys required for [code signing](../code-signing-yaml/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
+`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node, npm and Ruby used for building. This is also where you can add credentials and API keys required for [code signing](../code-signing-yaml/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
 
 ```yaml
 environment:
@@ -183,6 +183,7 @@ environment:
   npm: 6.13.7       # Define default, latest, next, lts or version
   ndk: r21d         # Define default or revision (e.g. r19c)
   java: 1.8         # Define default, or platform version (e.g. 11). The default platform version is 1.8
+  ruby: 2.7.2       # Define default or version
 ```
 
 {{<notebox>}}
