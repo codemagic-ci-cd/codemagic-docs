@@ -39,6 +39,8 @@ Here you'll find some of the read-only environment variables explained.
 | FCI_PREVIOUS_COMMIT      | Commit hash of the previous successful build, unset if there is no previous successful build                                                                    |
 | FCI_PULL_REQUEST         | `true`, if the current build is building a pull request, `false` otherwise                                                                                      |
 | FCI_PULL_REQUEST_NUMBER  | Set to Integer ID of the pull request for the Git provider (Bitbucket, Github etc) if the current build is building a pull request, unset otherwise             |
+
+| FCI_PULL_REQUEST_DEST    | The destination branch, if the current build is building a pull request, unset otherwise                                                                                      |
 | FCI_CLONE_UNSHALLOW      | If set to `true` performs a full clone of the repository instead of top 50 commits                                                                              |
 | FCI_CLONE_DEPTH          | Specifies the number of commits to be fetched from the repository when cloning, default: 50. Specifying a smaller number can decrease the default fetching time |
 | FCI_PROJECT_ID           | UUID of the project that is being built                                                                                                                         |
