@@ -25,10 +25,13 @@ weight: 5
 - curl `7.68.0`
 - docker `20.10.2`
 - firebase `9.1.0`
-- flutter `2.2.0 ($HOME/programs/flutter)`
+- flutter `2.2.1 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
+- Google Cloud SDK `325.0.0`
+- gsutil `4.58`
+
 - ionic `5.4.16`
 - jq `jq-1.6`
 - node `14.15.3`
