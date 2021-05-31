@@ -22,12 +22,12 @@ Pushing Git tags from Codemagic to repository requires **write access** to the r
 2. Add the following **pre-publish script**.  Note that you need to replace the placeholders with your actual environment variable name and Git service details.
 
   ```bash
-  #!/usr/bin/env sh
+  #!/usr/bin/env bash
 
   set -e # exit on first failed commandset
   set -x # print all executed commands to the log
 
-  if [ "$FCI_BUILD_STEP_STATUS" == "success" ]
+  if [ "$FCI_BUILD_STEP_STATUS" = "success" ]
   then
     new_version=v1.0.$BUILD_NUMBER
     git tag $new_version

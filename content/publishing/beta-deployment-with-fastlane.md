@@ -10,12 +10,12 @@ If your Flutter app has an existing *fastlane* setup for beta deployment, you ca
 2. Click on the + sign between **Build** and **Publish** and paste your script to the pre-publish script field.
 
 ```bash
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -e # exit on first failed command
 set -x # print all executed commands to the log
 
-if [ "$FCI_BUILD_STEP_STATUS" == "success" ]
+if [ "$FCI_BUILD_STEP_STATUS" = "success" ]
 then
         gem install bundler
         cd android
