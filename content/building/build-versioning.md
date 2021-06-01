@@ -176,7 +176,7 @@ There are number of ways how you can pass the obtained build number to an Androi
 
 #### Get the build number in the Flutter workflow editor
 
-If you encrypted the content (not the file) of your gcloud service account credentials and added it as the environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immideately as a build argument to your android build command to increment the build number:
+If you encrypted the content (not the file) of your gcloud service account credentials and added it as the environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immediately as a build argument to your android build command to increment the build number:
 
 ```bash
 --build-number=$(($(google-play get-latest-build-number --package-name 'com.google.example') + 1))  # use your own package name
