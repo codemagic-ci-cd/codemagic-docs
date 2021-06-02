@@ -297,10 +297,17 @@ And select the Project ID
 
 Run tests on the preferred platform and device
 
+    # Android
     gcloud firebase test android run \
         --type instrumentation \
-        --app app-debug-unaligned.apk \
-        --test app-debug-test-unaligned.apk \
-        --device model=Nexus6,version=21,locale=en,orientation=portrait  \
-        --device model=Nexus7,version=19,locale=fr,orientation=landscape
+        --app your-app.apk \
+        --test your-app-test.apk \
+        --device model=TestDevice1,version=AndroidVersion1  \
+        --device model=TestDevice2,version=AndroidVersion2  \
+        --environment-variables coverage=true,coverageFile="/sdcard/coverage.ec" \
+        --directories-to-pull /sdcard
 
+    # iOS
+    gcloud firebase test ios run --test PATH/TO/MyTests.zip \
+        --device model=MODEL_ID_1,version=VERSION_ID_1,locale=LOCALE_1,orientation=ORIENTATION_1 \
+        --device model=MODEL_ID_2,version=VERSION_ID_2,locale=LOCALE_2,orientation=ORIENTATION_2
