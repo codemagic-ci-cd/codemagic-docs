@@ -60,6 +60,12 @@ The SSH or VNC session remains active for a maximum of 20 minutes after all buil
 If you have finished debugging the build, don't forget to end the session to avoid losing build time.
 {{</notebox>}}
 
-## Closer look
+## Useful tips for debugging
 
-If you want to know more about setting up remote access, there is a detailed overview on both SSH and VNC connection <a href="https://blog.codemagic.io/remote-access-to-virtual-mac-build-machine/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','remote-access-to-virtual-mac-build-machine')">on our blog.</a>
+* You can access your project on the builder machine by running `cd $FCI_BUILD_DIR`
+* If you encounter an error during the build, a good way to get started is by digging into the build logs on Codemagic and rerunning the first failed command.
+* The command `printenv` prints all the environment variables exported during the build. See [environment variables](../building/environment-variables/) for an explanation of read-only environment variables.
+* The `sudo` command is available to execute any commands with root privileges.
+* During an active SSH session, you can rerun the build with a different configuration right from the terminal.
+* Before terminating the connection, you can copy-paste the contents of the terminal window to keep a record of your actions on the builder machine.
+
