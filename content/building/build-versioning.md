@@ -20,17 +20,6 @@ Here are some examples how you can increment the app version using Codemagic's r
 --build-name=1.0.0 --build-number=$BUILD_NUMBER
 ```
 
-## Fetching build number from pubsec.yaml
-
-Add the following build argument:
-
-```bash
---build-number=$(yq e .version pubspec.yaml)
-```
-
-It uses [yq](https://github.com/mikefarah/yq), a lightweight and portable command-line YAML processor.
-
-
 ## Set Xcode project build number via command line
 
 Calling agvtool is another way of forcing Xcode to set the build version for your next build.
@@ -187,7 +176,7 @@ There are number of ways how you can pass the obtained build number to an Androi
 
 #### Get the build number in the Flutter workflow editor
 
-If you encrypted the content (not the file) of your gcloud service account credentials and added it as the environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immideately as a build argument to your android build command to increment the build number:
+If you encrypted the content (not the file) of your gcloud service account credentials and added it as the environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immediately as a build argument to your android build command to increment the build number:
 
 ```bash
 --build-number=$(($(google-play get-latest-build-number --package-name 'com.google.example') + 1))  # use your own package name

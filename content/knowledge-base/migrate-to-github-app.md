@@ -32,5 +32,5 @@ From April 19 onwards, users logging in to Codemagic with their GitHub account w
 If you log in via email, Bitbucket or GitLab but have repositories that are accessed via the GitHub OAuth integration, you should enable the GitHub App integration in your user or team settings. Note that GitHub App must be enabled separately for your **personal account** in Codemagic user settings and each **team** in team settings. 
 
 {{<notebox>}}
-See how to connect the GitHub App integration, manage access to accounts and repositories and troubleshoot issues with repository access [here](../getting-started/signup/#connecting-the-github-app-integration).
+See how to connect the GitHub App integration, manage access to accounts and repositories and troubleshoot issues with repository access [here](../getting-started/adding-apps-from-custom-sources/#configuring-the-github-app-integration).
 {{</notebox>}}

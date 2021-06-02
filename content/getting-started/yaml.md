@@ -29,7 +29,11 @@ workflows:
         - echo "Hello world!"
 ```
 
+<<<<<<< HEAD
 The scripts in script section will be run right after the repository is cloned.
+=======
+The scripts in the `scripts` section will be run right after the repository is cloned.
+>>>>>>> c885b0db656691deca6411f5a5979fc16286614f
 
 `codemagic.yaml` follows the traditional [YAML syntax](https://yaml.org/). Here are a few tips and tricks on how to better structure the file.
 
@@ -420,21 +424,21 @@ You may select a working directory globally for the entire workflow or for indiv
 
 ```yaml
 workflows:
-  build-ios:
+  build-apps:
     name: Build iOS and Android
     working_directory: mobile
     scripts:
       - name: Prepare
-        script: # current working directory is /Users/builder/clone/mobile
+        script: pwd # current working directory is /Users/builder/clone/mobile
       - name: Build iOS
-        script: # iOS build command
         working_directory: mobile/ios
+        script: pwd # current working directory is /Users/builder/clone/mobile/ios
       - name: Build Android
-        script: # Android build command
         working_directory: mobile/android
-      - name: Logs
-        script: # Process logs in /Users/builder/Library/Logs folder
+        script: pwd # current working directory is /Users/builder/clone/mobile/android
+      - name: Process Logs
         working_directory: /Users/builder/Library/Logs
+        script: pwd # current working directory is /Users/builder/Library/Logs
 ```
 
 Working directory paths are relative to the repository clone directory, e.g. if `mobile` is the working directory, then the script will be executed in `/Users/builder/clone/mobile`.

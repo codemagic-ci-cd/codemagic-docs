@@ -8,9 +8,21 @@ weight: 1
 
 ## May 2021
 
+### Webhooks monitor
+
+We added a Webhooks tab to the application settings page. Here you can view a list of all webhooks received for your application, the webhook request and response,  a description of which workflows were built or skipped because of the processed webhook, and a button for automatically creating a webhook in your application's Git provider (if added via GitHub, Bitbucket, GitLab).
+
+### Working directory in codemagic.yaml
+
+You can specify a working directory for an entire workflow or for an individual build step script in codemagic.yaml. This can either be an absolute path or relative to the clone directory. Refer to the [docs](../getting-started/yaml/#working-directory) for example usage.
+
 ### Conditional build triggers and build steps
 
 In codemagic.yaml configured workflows, you can now specify [conditional build triggers](../getting-started/yaml/#conditional-build-triggers) and [conditional build steps](../getting-started/yaml/#conditional-build-step-execution) depending on which files were changed in the last commit. For example, you can skip builds for commits that only have changes in markdown files or only run an Android workflow only when files changed in an android directory. Skipped builds will be marked skipped in the builds list.
+
+### Bundle ID list in Flutter iOS & macOS code signing 
+
+In Flutter workflow editor [iOS](../code-signing/ios-code-signing/) and [macOS](../code-signing/macos-code-signing/) code signing, you can now specify your Apple App Bundle ID directly from the list in [Appple Developer Portal](https://developer.apple.com/account/resources/identifiers/list/bundleId) with the Codemagic integration.
 
 ### Flutter macOS and Linux desktop publishing
 
@@ -19,6 +31,10 @@ You can now build and publish Flutter apps to the macOS App Store. This can be c
 You can now build and publish Flutter apps to the Linux [Snapcraft Snap Store](https://snapcraft.io/snap-store). This can be configured in [codemagic.yaml](../getting-started/building-a-snap-package/) or [Flutter workflow editor](../publishing/snap-store/). Linux publishing is limited to [Linux build machines](../specs/machine-type/#linux-standard-and-linux-premium).
 
 ## April 2021
+
+### Git tag label pattern matching
+
+You can now match Git tag label patterns like branch names (e.g. choose to build `*release*` but not `*-dev` tags). See the codemagic.yaml [triggering docs](https://docs.codemagic.io/getting-started/yaml/#triggering) or workflow editor Build triggers > pattern examples for more information.
 
 ### codemagic.yaml inline editing and validation
 

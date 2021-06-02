@@ -28,11 +28,13 @@ weight: 2
 - docker `20.10.2`
 - fastlane `2.181.0`
 - firebase `9.3.0`
-- flutter `2.0.6 ($HOME/programs/flutter)`
+- flutter `2.2.1 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.9.2`
 - git `2.31.1`
+- Google Cloud SDK `327.0.0`
 - gradle `6.1.1`
+- gsutil `4.58`
 - homebrew `3.1.3`
 - ionic `6.12.4`
 - jq
