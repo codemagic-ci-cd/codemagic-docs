@@ -311,3 +311,5 @@ Run tests on the preferred platform and device
     gcloud firebase test ios run --test PATH/TO/MyTests.zip \
         --device model=MODEL_ID_1,version=VERSION_ID_1,locale=LOCALE_1,orientation=ORIENTATION_1 \
         --device model=MODEL_ID_2,version=VERSION_ID_2,locale=LOCALE_2,orientation=ORIENTATION_2
+
+Check (this sample project)[https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/flutter/flutter-integration-tests-demo-project] and the relevant (codemagic.yaml)[https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/flutter/flutter-integration-tests-demo-project/codemagic.yaml] file for integrating Firebase Driver tests into your workflows.
