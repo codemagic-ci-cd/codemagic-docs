@@ -103,6 +103,7 @@ Add the following script under your `scripts` field for `codemagic.yaml`, or as 
 ```bash
 export APP_STORE_CONNECT_PRIVATE_KEY=$(echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode) # if you encrypted the file itself, not its content
 LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number '1234567890') # The argument is your application's Apple ID
+cd $FCI_BUILD_DIR/ios
 agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 ```
 
@@ -111,6 +112,7 @@ To use the latest build number from Testflight use a similar script:
 ```bash
 export APP_STORE_CONNECT_PRIVATE_KEY=$(echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode) # if you encrypted the file itself, not its content
 LATEST_BUILD_NUMBER=$(app-store-connect get-latest-testflight-build-number '1234567890') # The argument is your application's Apple ID
+cd $FCI_BUILD_DIR/ios
 agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 ```
 
