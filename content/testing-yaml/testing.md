@@ -278,3 +278,29 @@ scripts:
 {{<notebox>}}
 Flutter for web is available in Flutter version **2.0.0** or higher on the **stable** channel.
 {{</notebox>}}
+
+## Firebase Test Lab
+
+Firebase Test Lab provides cloud-based infrastructure for testing Android apps.
+
+Refer [CLI documentation for Android](https://firebase.google.com/docs/test-lab/android/command-line) and [CLI documentation for iOS](https://firebase.google.com/docs/test-lab/ios/command-line) for the detailed description.
+
+Codemagic machines come with installed gcloud CLI tools.
+
+To autenticate use
+
+    gcloud auth login
+
+And select the Project ID
+
+    gcloud config set project
+
+Run tests on the preferred platform and device
+
+    gcloud firebase test android run \
+        --type instrumentation \
+        --app app-debug-unaligned.apk \
+        --test app-debug-test-unaligned.apk \
+        --device model=Nexus6,version=21,locale=en,orientation=portrait  \
+        --device model=Nexus7,version=19,locale=fr,orientation=landscape
+
