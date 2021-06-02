@@ -29,11 +29,7 @@ workflows:
         - echo "Hello world!"
 ```
 
-<<<<<<< HEAD
-The scripts in script section will be run right after the repository is cloned.
-=======
 The scripts in the `scripts` section will be run right after the repository is cloned.
->>>>>>> c885b0db656691deca6411f5a5979fc16286614f
 
 `codemagic.yaml` follows the traditional [YAML syntax](https://yaml.org/). Here are a few tips and tricks on how to better structure the file.
 
