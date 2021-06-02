@@ -30,7 +30,6 @@ There are several options for running integration tests during the build. You ca
 
 * iOS simulator (selected by default)
 * Android emulator
-* [AWS Device Farm](./aws) --- enables to run tests on physical Android and iOS devices. Requires an AWS account and additional setup.
 
 Devices available on the machine are:
 
