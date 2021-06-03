@@ -31,13 +31,13 @@ scripts:
 
 ## Flutter integration tests
 
-The `flutter_driver` dependency allows you to run integration tests on a real device or emulator. Android application tests can be run on an Android emulator, iOS application tests can be run on an iOS simulator, and web application tests can be run on a web browser driver.
+The `integration_test` dependency allows you to run integration tests on a real device or emulator. Android application tests can be run on an Android emulator, iOS application tests can be run on an iOS simulator, and web application tests can be run on a web browser driver.
 
 ### Running iOS/Android application tests on a mobile simulator/emulator
 
 ```bash
 flutter emulators --launch apple_ios_simulator             # for android use: flutter emulators --launch emulator
-flutter drive --target=test_driver/my_drive_target.dart
+flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d <device_id>
 ```
 
 ### Running web application tests on a web browser driver
@@ -47,11 +47,11 @@ Chrome
 ```yaml
 scripts:
   - echo 'previous step'
-  - name: 'Flutter drive web test'
+  - name: 'Flutter integration_test for web'
     script: |
       chromedriver --port=4444 &
       flutter config --enable-web
-      flutter drive --target=test_driver/button_pressing.dart -d chrome --browser-name chrome --release
+      flutter driver --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d web-server --release --browser-name chrome
 ```
 
 Safari
@@ -59,12 +59,12 @@ Safari
 ```yaml
 scripts:
   - echo 'previous step'
-  - name: 'Flutter drive web test'
+  - name: 'Flutter integration tests for web'
     script: |
       sudo safaridriver --enable
       safaridriver --port 4444 &
       flutter config --enable-web
-      flutter drive --target=test_driver/button_pressing.dart --browser-name safari --release
+      flutter driver --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d web-server --release --browser-name safari
 ```
 
 ## React Native Unit Tests using Jest
