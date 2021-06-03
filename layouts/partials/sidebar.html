@@ -18,10 +18,5 @@
 {{ end }}
 
 <nav id="docs-menu" data-js-docs-menu>
-  <div class="search search--sidebar">
-    <input class="search__input" type="text" placeholder="Search">
-    <div class="search__icon search__icon--search fas fa-search"></div>
-    <div class="search__icon search__icon--clear fas fa-times"></div>
-  </div>
   {{ template "content-menu" (dict "menuItems" .Site.Menus.main "currentPage" .)}}
 </nav>

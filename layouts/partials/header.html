@@ -1,120 +1,22 @@
 <div id="nav-trigger"></div>
 <header id="header" data-js-header>
     <div class="inner">
-        <a
-            href='{{ site.Param "landingURL" }}/start'
-            id="header-logo"
-            onclick="sendGtag('Logo_clicked', 'CodemagicMenu')"
-            target="_blank"
+        <a href="/" id="header-logo" onclick="sendGtag('Logo_clicked', 'CodemagicMenu')"
             >{{ partial "codemagic-logo" . }}</a
         >
-        <div id="menu-toggle" data-js-header-menu-toggle>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        <div class="search search--header">
+            <input class="search__input" type="text" placeholder="Search" />
+            <div class="search__icon search__icon--search fas fa-search"></div>
+            <div class="search__icon search__icon--clear fas fa-times"></div>
+        </div>
+        <div class="toggle-wrapper">
+            <div id="menu-toggle" data-js-header-menu-toggle>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
         <div id="header-menu-wrap" data-js-header-menu-wrap>
-            <nav id="header-menu">
-                <a class="menu-link toggle-dropdown-button" data-js-toggle-menu-product-dropdown>Product</a>
-                <div class="menu-dropdown" data-js-menu-product-dropdown>
-                    <div class="menu-block">
-                        <p class="menu-block__header">Use Codemagic CI/CD for</p>
-                        <ul class="menu-block__links">
-                            <li>
-                                <a
-                                    href="https://flutterci.com"
-                                    class="menu-block__link"
-                                    onclick="sendGtag('Flutter_clicked', 'CodemagicMenu')"
-                                    target="_blank"
-                                >
-                                    {{ readFile "/assets/svg/platforms/flutter.svg" | safeHTML }} Flutter</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href='{{ site.Param "landingURL" }}/react-native-continuous-integration'
-                                    class="menu-block__link"
-                                    onclick="sendGtag('React_native_clicked', 'CodemagicMenu')"
-                                >
-                                    {{ readFile "/assets/svg/platforms/react.svg" | safeHTML }} React Native</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href='{{ site.Param "landingURL" }}/ios-continuous-integration'
-                                    class="menu-block__link"
-                                    onclick="sendGtag('iOS_clicked', 'CodemagicMenu')"
-                                    >{{ readFile "/assets/svg/platforms/ios.svg" | safeHTML }} Native iOS</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href='{{ site.Param "landingURL" }}/android-continuous-integration'
-                                    class="menu-block__link"
-                                    onclick="sendGtag('Android_clicked', 'CodemagicMenu')"
-                                >
-                                    {{ readFile "/assets/svg/platforms/android.svg" | safeHTML }} Native Android</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href='{{ site.Param "landingURL" }}/cordova-continuous-integration'
-                                    class="menu-block__link"
-                                    onclick="sendGtag('Cordova_clicked', 'CodemagicMenu')"
-                                >
-                                    {{ readFile "/assets/svg/platforms/cordova.svg" | safeHTML }} Cordova</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href='{{ site.Param "landingURL" }}/ionic-continuous-integration'
-                                    class="menu-block__link"
-                                    onclick="sendGtag('Ionic_clicked', 'CodemagicMenu')"
-                                >
-                                    {{ readFile "/assets/svg/platforms/ionic.svg" | safeHTML }} Ionic</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="menu-block">
-                        <p class="menu-block__header">Discover more from</p>
-                        <ul class="menu-block__links">
-                            <li>
-                                <a
-                                    href='{{ site.Param "landingURL" }}/integrations'
-                                    class="menu-block__link"
-                                    onclick="sendGtag('Integrations_clicked', 'CodemagicMenu')"
-                                    >{{ readFile "/assets/svg/plug.svg" | safeHTML }} Integrations</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href='{{ site.Param "blogURL" }}'
-                                    class="menu-block__link"
-                                    onclick="sendGtag('Blog_clicked', 'CodemagicMenu')"
-                                    target="_blank"
-                                    >{{ readFile "/assets/svg/book.svg" | safeHTML }} Blog</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <a
-                    class="menu-link"
-                    href='{{ site.Param "landingURL" }}/pricing'
-                    onclick="sendGtag('Pricing_clicked', 'CodemagicMenu')"
-                    >Pricing</a
-                >
-                <a
-                    class="menu-link"
-                    href='{{ site.Param "landingURL" }}/enterprise'
-                    onclick="sendGtag('Enterprise_clicked', 'CodemagicMenu')"
-                    >Enterprise</a
-                >
-                <a class="menu-link" href="/" onclick="sendGtag('Documentation_clicked', 'CodemagicMenu')"
-                    >Documentation</a
-                >
-            </nav>
             <aside id="header-authentication" data-js-header-authentication>
                 <div id="header-auth-visitor" data-js-header-auth-visitor>
                     <a
