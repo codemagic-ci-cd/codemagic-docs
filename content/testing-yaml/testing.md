@@ -51,7 +51,7 @@ scripts:
     script: |
       chromedriver --port=4444 &
       flutter config --enable-web
-      flutter driver --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d web-server --release --browser-name chrome
+      flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d web-server --release --browser-name chrome
 ```
 
 Safari
@@ -64,7 +64,7 @@ scripts:
       sudo safaridriver --enable
       safaridriver --port 4444 &
       flutter config --enable-web
-      flutter driver --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d web-server --release --browser-name safari
+      flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d web-server --release --browser-name safari
 ```
 
 ## React Native Unit Tests using Jest
