@@ -34,29 +34,38 @@ Note that Codemagic machines come with installed gcloud CLI tools. Refer [CLI do
 
 ```yaml
  - name: Run Firebase Test Lab tests
-        script: |
-          set -ex
-          echo $GCLOUD_KEY_FILE | base64 --decode > ./gcloud_key_file.json
-          gcloud auth activate-service-account --key-file=gcloud_key_file.json
-      
-          gcloud --quiet config set project $FIREBASE_PROJECT
-      
-        # Android
-          gcloud firebase test android run \
-            --type instrumentation \
-            --app your-app.apk \
-            --test your-app-test.apk \
-            --device model=TestDevice1,version=AndroidVersion1  \
-            --device model=TestDevice2,version=AndroidVersion2  \
-            --environment-variables coverage=true,coverageFile="/sdcard/coverage.ec" \
-            --directories-to-pull /sdcard
-            --timeout 3m
+   script: |
+     set -ex
+     echo $GCLOUD_KEY_FILE | base64 --decode > ./gcloud_key_file.json
+     gcloud auth activate-service-account --key-file=gcloud_key_file.json
 
-        # iOS
-          gcloud firebase test ios run --test PATH/TO/MyTests.zip \
-            --device model=MODEL_ID_1,version=VERSION_ID_1,locale=LOCALE_1,orientation=ORIENTATION_1 \
-            --device model=MODEL_ID_2,version=VERSION_ID_2,locale=LOCALE_2,orientation=ORIENTATION_2
-            --timeout 3m
+     gcloud --quiet config set project $FIREBASE_PROJECT
+```
+
+### Android
+```yaml
+gcloud firebase test android run \
+  --type instrumentation \
+  --app your-app.apk \
+  --test your-app-test.apk \
+  --device model=TestDevice1,version=AndroidVersion1  \
+  --device model=TestDevice2,version=AndroidVersion2  \
+  --environment-variables coverage=true,coverageFile="/sdcard/coverage.ec" \
+  --directories-to-pull /sdcard
+  --timeout 3m
+```
+
+### iOS
+
+Package your application and prepare it for the upload to Firebase Test Lab as desicribed [here](https://firebase.google.com/docs/test-lab/ios/run-xctest#package-app).
+
+Use generated `MyTests.zip` to start testing:
+
+```yaml
+  gcloud firebase test ios run --test PATH/TO/MyTests.zip \
+    --device model=MODEL_ID_1,version=VERSION_ID_1,locale=LOCALE_1,orientation=ORIENTATION_1 \
+    --device model=MODEL_ID_2,version=VERSION_ID_2,locale=LOCALE_2,orientation=ORIENTATION_2
+    --timeout 3m
 ```
 
 Check out [this sample Flutter project](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/flutter/flutter-integration-tests-demo-project) and the relevant [codemagic.yaml](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/flutter/flutter-integration-tests-demo-project/codemagic.yaml) file for setting up integration tests in Firebase.
