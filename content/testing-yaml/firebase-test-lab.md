@@ -59,7 +59,7 @@ gcloud firebase test android run \
 
 Package your application and prepare it for the upload to Firebase Test Lab as desicribed [here](https://firebase.google.com/docs/test-lab/ios/run-xctest#package-app).
 
-Use generated `MyTests.zip` to start testing:
+Use the generated `MyTests.zip` to start testing:
 
 ```yaml
   gcloud firebase test ios run --test PATH/TO/MyTests.zip \
