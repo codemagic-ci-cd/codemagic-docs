@@ -59,3 +59,7 @@ flutter emulators --launch emulator
 ### Stop build if tests fail
 
 Selecting the **Stop build if tests fail** option will stop the build after finishing all the enabled tests when any of the tests fail. Such builds will have the status "failed".
+
+### Running tests in Firebase Test Lab
+
+Integration tests can also be run on real devices in Firebase Test Lab when using the [integration_test](https://github.com/flutter/flutter/tree/master/packages/integration_test) package. This is possible using a custom script, see a detailed guide [here](https://blog.codemagic.io/codemagic-flutter-integration-tests-firebase-test-lab/). Note that in this case there is no need to enable driver tests in the UI.
