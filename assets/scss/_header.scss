@@ -9,6 +9,9 @@
     @media (max-width: 1000px) {
         margin: auto 40px;
     }
+    @media (max-width: 560px) {
+        margin: auto 10px auto 40px;
+    }
 }
 #header {
     position: fixed;
@@ -278,7 +281,7 @@
         top: 0;
         left: 0;
         flex: none;
-        right: 100px;
+        right: 85px;
         box-shadow: 0 0 20px transparentize($black, 0.7);
         overflow: auto;
     }
