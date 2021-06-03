@@ -15,7 +15,7 @@ If your project requires accessing any private Git submodules or dependencies, y
     -----END OPENSSH PRIVATE KEY-----
     ```
 
-All environment variables whose name has the suffix `_SSH_KEY` will be automatically added to the SSH agent and will be ready for use during the whole build process. Check the `Preparing build machine` step in build logs to verify that the key has been successfully added to the SSH agent.
+All environment variables whose name has the suffix `_SSH_KEY` will be automatically added to the SSH agent and will be ready for use during the whole build process. Check the `Fetching app sources` step in build logs to verify that the key has been successfully added to the SSH agent.
 
 {{<notebox>}}
 Do not add an environment variable with the `_SSH_KEY` suffix if your repository was added using a different SSH key. If you do so, the repository's key will be overwritten and it won't be possible to clone the repository.
