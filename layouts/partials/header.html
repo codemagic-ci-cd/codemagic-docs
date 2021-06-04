@@ -4,10 +4,10 @@
         <a href="/" id="header-logo" onclick="sendGtag('Logo_clicked', 'CodemagicMenu')"
             >{{ partial "codemagic-logo" . }}</a
         >
-        <div class="search search--header">
-            <input class="search__input" type="text" placeholder="Search" />
-            <div class="search__icon search__icon--search fas fa-search"></div>
-            <div class="search__icon search__icon--clear fas fa-times"></div>
+        <div class="search search--header" data-js-search>
+            <input class="search__input" type="text" placeholder="Search" data-js-search-input />
+            <div class="search__icon search__icon--search fas fa-search" data-js-search-icon></div>
+            <div class="search__icon search__icon--clear fas fa-times" data-js-search-clear-icon></div>
         </div>
         <div class="toggle-wrapper">
             <div id="menu-toggle" data-js-header-menu-toggle>

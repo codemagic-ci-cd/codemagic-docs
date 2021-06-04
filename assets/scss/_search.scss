@@ -5,6 +5,7 @@
     height: 100%;
     font-size: 18px;
     .search__input {
+        font-family: inherit;
         font-size: 18px;
         border: none;
         border-right: 1px solid $grey-bg;
@@ -47,6 +48,7 @@
         &--search {
             left: 0;
             color: $grey-text-light;
+            cursor: pointer;
         }
         &--clear {
             right: 0;

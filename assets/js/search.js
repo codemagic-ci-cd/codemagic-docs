@@ -1,28 +1,29 @@
-
-const algolia = algoliasearch("27CIRMYZIB", "7e88305c04e90188508daa6c89e5f4df").initIndex("codemagic_docs");
+const algolia = algoliasearch('27CIRMYZIB', '7e88305c04e90188508daa6c89e5f4df').initIndex('codemagic_docs')
 
 $(document).ready(() => {
     initSearchEvents()
 })
 
 const initSearchEvents = () => {
-    $('.search__icon--search').on('click', () => {
-        $(this).closest('.search').find('.search__input').trigger('focus')
+    $('[data-js-search-icon]').on('click', () => {
+        $('[data-js-search-input]').trigger('focus')
     })
-    $('.search__icon--clear').on('mousedown', () => {
+    $('[data-js-search-clear-icon]').on('mousedown', () => {
         // mousedown is before blur, 'click' wouldn't work because after blur the icon disappears
         updateFromInput(null)
     })
 
-    $('.search__input')
-        .bind('focus focusin', () => {
-            $('.search').addClass('search--active')
+    $('[data-js-search-input]')
+        .bind('change keyup input', (event) => {
+            if (event.target.value.trim().length) $('[data-js-search]').addClass('search--active')
+            else $('[data-js-search]').removeClass('search--active')
         })
         .bind('blur focusout', (event) => {
+            console.log(event)
             if (event.target.value) {
                 return
             }
-            $('.search').removeClass('search--active')
+            $('[data-js-search]').removeClass('search--active')
         })
         .on('keyup', (event) => {
             if (event.keyCode === 27) {
@@ -76,9 +77,9 @@ const updateResults = async (query) => {
 }
 
 const updateInputs = (query) => {
-    var $inputs = $('.search__input')
+    var $inputs = $('[data-js-search-input]')
     $inputs.val(query)
-    query === null ? $inputs.trigger('blur') : query && $('.search').addClass('search--active')
+    query === null ? $inputs.trigger('blur') : query && $('[data-js-search]').addClass('search--active')
 }
 
 const getResultHtml = (algoliaResultList, query) => {
@@ -104,7 +105,7 @@ const getResultHtml = (algoliaResultList, query) => {
                 html: [
                     $('<a>', { html: result._highlightResult.title.value, href: result.uri }),
                     $('<p>', { html: result._highlightResult.subtitle.value }),
-                    $('<p>', { html: result._snippetResult.content.value}),
+                    $('<p>', { html: result._snippetResult.content.value }),
                 ],
             })
         }),
@@ -114,12 +115,13 @@ const getResultHtml = (algoliaResultList, query) => {
 const getResults = (query) =>
     query
         ? algolia
-            .search(`'${query}`, {
-                highlightPreTag: '<mark data-markjs="true">',
-                highlightPostTag: '</mark>',
-            }).then((result) => {
-                return result.hits;
-            })
+              .search(`'${query}`, {
+                  highlightPreTag: '<mark data-markjs="true">',
+                  highlightPostTag: '</mark>',
+              })
+              .then((result) => {
+                  return result.hits
+              })
         : null
 
 const debounce = (func, wait, immediate) => {
