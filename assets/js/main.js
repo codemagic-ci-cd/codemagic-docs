@@ -241,9 +241,13 @@ $(window).on('load scroll resize', function () {
             contentWrap.css('paddingTop', headerHeight)
         }
     } else {
-        docsMenu.css('top', 90)
+        sidebar.css('top', 0)
         searchResults.css('margin-top', 76)
         sidebar.css('top', 0)
+        header.css('top', 0)
+        docsMenu.css('top', 78)
+        searchResults.css('margin-top', 76)
+        contentWrap.css('paddingTop', headerHeight)
     }
     elementsTopPosition() // TOC
 })
