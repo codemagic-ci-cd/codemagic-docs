@@ -249,7 +249,7 @@ triggering:
   tag_patterns:                 # Include or exlude watched tag labels
     - pattern: '*'
       include: true
-    - pattern: exluded-tag
+    - pattern: excluded-tag
       include: false
     - pattern: included-tag
       include: true
@@ -312,6 +312,7 @@ publishing:
     recipients:
       - name@example.com
   scripts:
+    name: Check for apk
     script: |
       apkPath=$(find build -name "*.apk" | head -1)
       if [[ -z ${apkPath} ]]
@@ -376,7 +377,7 @@ In this case, build would be skipped if there were changes only to Markdown file
 
 Note that `codemagic.yaml` is always included in the changeset by default.
 
-Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value would defalut to `'.'`. The `excludes` key defaults to no exlusions.
+Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value would default to `'.'`. The `excludes` key defaults to no exclusions.
 
 If you use a monorepo, each workflow could be responsible for building a part of your application. Use conditional workflow triggering and specify the path to the application in the changeset as in the example below.
 
