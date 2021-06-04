@@ -20,7 +20,7 @@
 <nav id="docs-menu" data-js-docs-menu>
   {{ template "content-menu" (dict "menuItems" .Site.Menus.main "currentPage" .)}}
   <div class="external-links">
-    <a id="codemagic-landing-link" href="https://codemagic.io/start" target="_blank">Codemagic</a>
-    <a id="codemagic-blog-link" href="https://blog.codemagic.io" target="_blank">Codemagic Blog</a>
+    <a id="codemagic-landing-link" onclick="sendGtag('Codemagic_clicked', 'DocumentationMenu')" href="https://codemagic.io/start" target="_blank">Codemagic</a>
+    <a id="codemagic-blog-link" onclick="sendGtag('Blog_clicked', 'DocumentationMenu')" href="https://blog.codemagic.io" target="_blank">Codemagic Blog</a>
   </div>
 </nav>
