@@ -209,11 +209,6 @@ const docsMenu = $('[data-js-docs-menu]')
 const contentWrap = $('[data-js-content-wrap]')
 const searchResults = $('[data-js-search-results]')
 
-if ($(window).scrollTop() === 0) {
-    header.css('top', 0)
-    sidebar.css('top', header.innerHeight())
-}
-
 $(window).on('scroll', function () {
     const currentScrollPosition = $(window).scrollTop()
     // do not consider scrolling bounce effect as scrolling
