@@ -246,7 +246,7 @@ $(window).on('load scroll resize', function () {
         sidebar.css('top', 0)
         header.css('top', 0)
         docsMenu.css('top', 78)
-        searchResults.css('margin-top', 76)
+        searchResults.css('margin-top', headerHeight)
         contentWrap.css('paddingTop', headerHeight)
     }
     elementsTopPosition() // TOC
