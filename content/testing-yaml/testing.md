@@ -37,7 +37,7 @@ The `integration_test` dependency allows you to run integration tests on a real 
 
 ```bash
 flutter emulators --launch apple_ios_simulator             # for android use: flutter emulators --launch emulator
-flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d <device_id>
+flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d iPhone  # for android use: -d emulator-5554 
 ```
 
 ### Running web application tests on a web browser driver
