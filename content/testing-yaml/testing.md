@@ -47,7 +47,7 @@ Chrome
 ```yaml
 scripts:
   - echo 'previous step'
-  - name: 'Flutter integration_test for web'
+  - name: 'Flutter integration test for web'
     script: |
       chromedriver --port=4444 &
       flutter config --enable-web
@@ -59,7 +59,7 @@ Safari
 ```yaml
 scripts:
   - echo 'previous step'
-  - name: 'Flutter integration tests for web'
+  - name: 'Flutter integration test for web'
     script: |
       sudo safaridriver --enable
       safaridriver --port 4444 &
