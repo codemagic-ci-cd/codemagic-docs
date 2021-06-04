@@ -312,6 +312,7 @@ publishing:
     recipients:
       - name@example.com
   scripts:
+    name: Check for apk
     script: |
       apkPath=$(find build -name "*.apk" | head -1)
       if [[ -z ${apkPath} ]]
