@@ -72,6 +72,7 @@ body {
             position: relative;
             z-index: 1;
             padding: 20px 0;
+            border-bottom: 1px solid $grey-bg;
             a {
                 color: black;
                 &:hover {
@@ -174,6 +175,27 @@ body {
                     }
                 }
             }
+            .external-links {
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid $grey-bg;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                a {
+                    font-size: 18px;
+                    font-family: $font-family-bold;
+                    color: $black;
+                    &::after {
+                        @include fontAwesome('\f35d');
+                        font-size: 14px;
+                        margin-left: 5px;
+                    }
+                    &:hover {
+                        color: $blue;
+                    }
+                }
+            }
         }
         @media (min-width: 1001px) {
             #docs-menu {
@@ -217,6 +239,8 @@ body {
                 transform: translateY(-120%);
                 box-shadow: 0 0 30px transparentize(black, 0.9);
                 overflow: auto;
+                padding-top: 15px;
+                padding-bottom: 20px;
                 transition: transform 300ms ease-in-out, top 300ms ease-in-out;
 
                 &.open {
