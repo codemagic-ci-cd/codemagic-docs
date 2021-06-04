@@ -87,9 +87,15 @@ body {
             top: 76px;
             bottom: 0;
             right: 0;
-            padding: 0 40px 50px;
+            padding: 0 40px 0;
             width: 100%;
             box-sizing: border-box;
+
+            &::after {
+                content: '';
+                display: block;
+                padding-bottom: 50px;
+            }
 
             & > ul > li {
                 & > .category-name {
