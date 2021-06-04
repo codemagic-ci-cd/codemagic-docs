@@ -19,7 +19,6 @@ const initSearchEvents = () => {
             else $('[data-js-search]').removeClass('search--active')
         })
         .bind('blur focusout', (event) => {
-            console.log(event)
             if (event.target.value) {
                 return
             }

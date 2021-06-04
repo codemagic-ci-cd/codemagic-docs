@@ -4,7 +4,7 @@
 }
 .inner {
     width: auto;
-    margin: auto 40px auto 0;
+    margin: auto 0;
     height: 100%;
     @media (max-width: 1000px) {
         margin: auto 40px;
@@ -126,7 +126,7 @@
             display: inline-block;
             height: 48px;
             line-height: 48px;
-            padding: 0 24px;
+            padding-right: 24px;
             color: $black;
             cursor: pointer;
 
@@ -259,7 +259,7 @@
         }
     }
     #header-authentication {
-        width: 220px;
+        width: 240px;
         height: 48px;
         position: relative;
         overflow: hidden;
@@ -271,6 +271,12 @@
                 animation: fadeIn 300ms forwards, moveUp 600ms forwards;
             }
         }
+    }
+}
+@media (min-width: 1001px) {
+    #header-auth-visitor,
+    #header-auth-user {
+        justify-content: center;
     }
 }
 @media (max-width: 560px) {
