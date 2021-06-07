@@ -107,7 +107,7 @@ yarn test
 
 In React Native, 3rd party modules are oftentimes published as **untranspiled**. Since all files inside `node_modules` are not transformed by default, Jest will not understand the code in these modules, resulting in syntax errors. To overcome this, you need to use `transformIgnorePatterns` to allow transpiling such modules.
 
-Below is a configuration for the same which needs to be specficied in `package.json`:
+Below is a configuration for the same which needs to be specified in `package.json`:
 
 ```json
 "jest": {
