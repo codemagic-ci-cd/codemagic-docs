@@ -238,12 +238,12 @@ workflows:
 
 ```bash
 - name: iOS test
-    script: |
+  script: |
     xcode-project run-tests \
         --workspace MyAwesomeApp.xcworkspace \
         --scheme MyAwesomeApp \
         --device "iPhone 11"
-    test_report: build/ios/test/*.xml
+  test_report: build/ios/test/*.xml
 ```
 
 Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
