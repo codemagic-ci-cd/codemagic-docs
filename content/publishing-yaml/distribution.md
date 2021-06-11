@@ -118,7 +118,7 @@ publishing:
     api_key: Encrypted(...)           # Contents of the API key, can also reference environment variable such as $APP_STORE_CONNECT_PRIVATE_KEY
     key_id: 3MD9688D9K                # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
     issuer_id: 21d78e2f-b8ad-...      # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
-    submit_to_testflight: True        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight
+    submit_to_testflight: True        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.  
 ```
 
 ## GitHub releases
