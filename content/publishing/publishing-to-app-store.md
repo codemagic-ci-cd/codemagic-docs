@@ -4,7 +4,7 @@ title: App Store Connect
 weight: 1
 ---
 
-Codemagic enables you to automatically publish your app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. To do so, you must first set up [iOS code signing](../code-signing/ios-code-signing/) using distribution code signing [certificate](https://developer.apple.com/support/certificates/) and then configure publishing to App Store Connect.
+Codemagic enables you to automatically publish your app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. To do so, you must first set up [iOS code signing](../code-signing/ios-code-signing/) using a distribution code signing [certificate](https://developer.apple.com/support/certificates/) and then configure publishing to App Store Connect.
 
 {{<notebox>}}
 This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Publishing to App Store Connect using codemagic.yaml](../publishing-yaml/distribution/#app-store-connect).
@@ -14,7 +14,7 @@ This guide only applies to workflows configured with the **Flutter workflow edit
 
 Codemagic needs your **[App Store Connect API key](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api)** to perform publishing to App Store Connect on your behalf. Publishing to App Store Connect requires that the app is code signed with a [distribution certificate](https://developer.apple.com/support/certificates/).
 
-In addition, the application must be **App Store ready** for build distribution, meaning that it must have all the correct icons and icon sizes. Otherwise App Store Connect will tag the binary as invalid, and you will not be able to distribute it at all.
+In addition, the application must be **App Store ready** for build distribution, meaning that it must have all the correct icons and icon sizes. Otherwise, App Store Connect will tag the binary as invalid, and you will not be able to distribute it at all.
 
 It is also worth pointing out the necessity for each uploaded binary to have a **different version**, otherwise it will be refused by App Store Connect. See the [Build versioning](../building/build-versioning/) article for instructions on incrementing app version with Codemagic.
 
@@ -22,7 +22,7 @@ It is also worth pointing out the necessity for each uploaded binary to have a *
 
 ## Setting up publishing to App Store Connect on Codemagic
 
-In this section we give step-by-step instructions on how to configure publishing App Store Connect using Flutter workflow editor.
+In this section we give step-by-step instructions on how to configure publishing to App Store Connect using Flutter workflow editor.
 
 ### Step 1. Creating an App Store API key for Codemagic
     
