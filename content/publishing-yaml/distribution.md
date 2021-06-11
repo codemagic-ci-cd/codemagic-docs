@@ -83,7 +83,7 @@ publishing:
     track: alpha                      # Name of the track: internal, alpha, beta, production, internal app sharing, or your custom track name
     in_app_update_priority: 3         # Priority of the release (only set if in-app updates are supported): integer in range [0, 5]
     rollout_fraction: 0.25            # Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
-    changes_not_sent_for_review: True # To be used ONLY if your app cannot be sent for review automatically *
+    changes_not_sent_for_review: true # To be used ONLY if your app cannot be sent for review automatically *
 ```
 
 {{<notebox>}}
@@ -91,7 +91,7 @@ publishing:
 
 `Changes cannot be sent for review automatically. Please set the query parameter changesNotSentForReview to true. Once committed, the changes in this edit can be sent for review from the Google Play Console UI.`
 
-If your changes are sent to review automatically, but the field is still set to `True`, you will get the next error:
+If your changes are sent to review automatically, but the field is still set to `true`, you will get the next error:
 
 `Changes are sent for review automatically. The query parameter changesNotSentForReview must not be set.`
 {{</notebox>}}
@@ -106,13 +106,19 @@ You can override the publishing track specified in the configuration file using 
 
 ### App Store Connect
 
-Codemagic enables you to automatically publish your iOS or macOS app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store.
+Codemagic enables you to automatically publish your iOS or macOS app to [App Store Connect](https://appstoreconnect.apple.com/) for beta testing with [TestFlight](https://developer.apple.com/testflight/) or distributing the app to users via App Store. Codemagic uses the **App Store Connect API key** for authenticating communication with Apple's services. You can read more about generating an API key from Apple's [documentation page](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api). 
+
+Please note that
+1. for App Store Connect publishing, the provided key needs to have [App Manager permission](https://help.apple.com/app-store-connect/#/deve5f9a89d7),
+2. and in order to submit your iOS application to App Store Connect, it must be code signed with a distribution [certificate](https://developer.apple.com/support/certificates/).  
 
 ```yaml
 publishing:
   app_store_connect:                  # For iOS or macOS app
-    apple_id: name@example.com        # Email address used for login
-    password: Encrypted(...)          # App-specific password
+    api_key: Encrypted(...)           # Contents of the API key, can also reference environment variable such as $APP_STORE_CONNECT_PRIVATE_KEY
+    key_id: 3MD9688D9K                # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
+    issuer_id: 21d78e2f-b8ad-...      # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
+    submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.  
 ```
 
 ## GitHub releases
