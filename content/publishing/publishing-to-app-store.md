@@ -22,7 +22,7 @@ It is also worth pointing out the necessity for each uploaded binary to have a *
 
 ## Setting up publishing to App Store Connect on Codemagic
 
-In this section we give step-by-step instructions on how to configure publishing App Store Connect using Flutter workflow editor.
+In this section we give step-by-step instructions on how to configure publishing to App Store Connect using Flutter workflow editor.
 
 ### Step 1. Creating an App Store API key for Codemagic
 
