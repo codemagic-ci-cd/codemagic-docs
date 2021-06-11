@@ -25,6 +25,10 @@ It is also worth pointing out the necessity for each uploaded binary to have a *
 In this section we give step-by-step instructions on how to configure publishing App Store Connect using Flutter workflow editor.
 
 ### Step 1. Creating an App Store API key for Codemagic
+    
+{{<notebox>}}
+You may also reuse any of the keys you've already set up for automatic [iOS](../code-signing/ios-code-signing/#automatic-code-signing) or [macOS](../code-signing/macos-code-signing/#automatic-code-signing) code signing.
+{{</notebox>}}
 
 It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
 
