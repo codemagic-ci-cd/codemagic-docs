@@ -33,7 +33,7 @@ The UI section for setting up publishing GitHub releases is deprecated in Flutte
 
     gh release create "${FCI_TAG}" \
         --title "<YouTube> ${FCI_TAG}" \
-        --notes-file changelog.md \
+        --notes-file studio.md \
         path/to/build-artifact.ipa \
         path/to/build-artifact.apk
 
