@@ -34,7 +34,7 @@ As a keystore can hold multiple keys, each key in it must have an **alias**. Bot
 You can create a keystore for signing your release builds with the Java Keytool utility by running the following command:
 
 ```bash
-keytool -genkey -v -keystore keystore_name.jks -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+keytool -genkey -v -keystore keystore_name.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias alias_name
 ```
 
 Keytool then prompts you to enter your personal details for creating the certificate, as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **keystore_name.jks** in the directory you're in. The key is valid for 10,000 days.
