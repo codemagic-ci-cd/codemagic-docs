@@ -56,7 +56,7 @@ flutter emulators --launch emulator
 
 {{</notebox>}}
 
-It is also possible to use `flutter test` to run integration tests using the `integration_test` dependency. When using `flutter test integration_test` instead of `flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart` it is possible to generate machine readable output, and the results will be displayed in the UI. To do so add `test integration_test` under `Flutter drive arguments` in the **Flutter workflow editor**.
+It is also possible to use `flutter test` to run integration tests using the `integration_test` dependency. When using `flutter test integration_test` instead of `flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart` it is possible to generate machine readable output, and the results will be displayed in the UI once the tests have been completed. To do so add `test integration_test` under `Flutter drive arguments` in the **Flutter workflow editor**.
 
 ### Stop build if tests fail
 
