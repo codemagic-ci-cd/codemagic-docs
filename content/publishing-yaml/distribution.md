@@ -118,7 +118,7 @@ publishing:
     api_key: Encrypted(...)           # Contents of the API key, can also reference environment variable such as $APP_STORE_CONNECT_PRIVATE_KEY
     key_id: 3MD9688D9K                # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
     issuer_id: 21d78e2f-b8ad-...      # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
-    submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.
+    submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.  
 ```
 
 Submitting a build for TestFlight beta review depends on Apple's build processing time. By default, Codemagic will repeat submission attempts for 20 minutes. You can change how long the submission attempts should be tried by setting the `APP_STORE_CONNECT_MAX_BUILD_PROCESSING_WAIT` environment variable. For example, to set a 42-minute timeout:
