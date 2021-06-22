@@ -121,7 +121,7 @@ publishing:
     submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.
 ```
 
-Submitting a build for TestFlight beta review depends on Apple's build processing time. By default, Codemagic will repeat submission attemps for 20 minutes. You could change for how long the submission attempts should be tried by setting `APP_STORE_CONNECT_MAX_BUILD_PROCESSING_WAIT` environment variable. For example, setting 42 minutes timeout:
+Submitting a build for TestFlight beta review depends on Apple's build processing time. By default, Codemagic will repeat submission attempts for 20 minutes. You can change how long the submission attempts should be tried by setting the `APP_STORE_CONNECT_MAX_BUILD_PROCESSING_WAIT` environment variable. For example, to set a 42-minute timeout:
 
 ```yaml
 environment:
