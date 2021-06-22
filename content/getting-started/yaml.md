@@ -182,7 +182,7 @@ environment:
   node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
   npm: 6.13.7       # Define default, latest, next, lts or version
   ndk: r21d         # Define default or revision (e.g. r19c)
-  java: 1.8         # Define default, or platform version (e.g. 11). The default platform version is 1.8
+  java: 1.8         # Define platform version (e.g. 11)
 ```
 
 {{<notebox>}}
