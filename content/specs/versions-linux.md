@@ -42,7 +42,7 @@ weight: 5
 - ssh
 - snapcraft `4.6.2`
 - sudo
-- tar
+- tar / bsdtar
 - unzip
 - wget
 - yarn `1.22.5`
