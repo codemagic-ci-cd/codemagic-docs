@@ -13,7 +13,7 @@ aliases:
 
 In order to use `codemagic.yaml` for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
 
-When detected in repository, `codemagic.yaml` is automatically used for configuring builds that are triggered in response to the events defined in the file, provided that a [webhook](../building/webhooks) is set up. 
+When detected in repository, `codemagic.yaml` is automatically used for configuring builds that are triggered in response to the events defined in the file, provided that a [webhook](../building/webhooks) is set up. When no `codemagic.yaml` file is found in selected branch, example configuration file will be displayed instead. You can change which example template you want to use as your boilerplate by making a selection from the right-side dropdown in blue notification banner, on top of the editor.
 
 Builds can be also started manually by clicking **Start new build** in Codemagic and selecting the branch and workflow to build in the **Specify build configuration** popup.
 
