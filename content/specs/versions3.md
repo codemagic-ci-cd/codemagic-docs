@@ -15,7 +15,7 @@ weight: 2
 
 - System version `macOS 11.2 (20D64)`
 - Kernel version `Darwin 20.3.0`
-- Disk `322GB (Free Space: 93GB)`
+- Disk `322GB (Free Space: 92GB)`
 
 ## Pre-installed tools
 
@@ -28,12 +28,12 @@ weight: 2
 - docker `20.10.2`
 - fastlane `2.181.0`
 - firebase `9.3.0`
-- flutter `2.2.1 ($HOME/programs/flutter)`
+- flutter `2.2.2 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.9.2`
 - git `2.31.1`
 - Google Cloud SDK `327.0.0`
-- gradle `6.1.1`
+- gradle `6.7.1`
 - gsutil `4.58`
 - homebrew `3.1.3`
 - ionic `6.12.4`
@@ -66,9 +66,9 @@ weight: 2
 
 ## Java versions
 
-- **16**: version `16`, JVM `Zulu 16.28.11`
-- **11**: version `11.0.11`, JVM `Zulu 11.48.21`
-- **1.8**: version `1.8.0_292`, JVM `Zulu 8.54.0.21`
+- **16** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-16.jdk/Contents/Home`
+- **11.0.11** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_292** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
 ## Xcode 12.5 (12E262)
 
@@ -131,3 +131,4 @@ With Xcode `12.5` build version `12E262` the following runtimes and devices are 
 ## Other Xcode versions
 
 - 12.4 (12D4e) `/Applications/Xcode-12.4.app`
+
