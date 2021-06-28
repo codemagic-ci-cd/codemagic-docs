@@ -28,12 +28,12 @@ weight: 4
 - docker `19.03.8`
 - fastlane `2.157.3`
 - firebase `7.6.2`
-- flutter `2.2.1 ($HOME/programs/flutter)`
+- flutter `2.2.2 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - gh `1.8.1`
 - git `2.28.0`
 - Google Cloud SDK `270.0.0`
-- gradle `6.1.1`
+- gradle `6.7.1`
 - gsutil `4.46`
 - homebrew `3.1.0`
 - ionic `4.11.0`
@@ -66,10 +66,10 @@ weight: 4
 
 ## Java versions
 
-- **14**: version `14.0.2`, JVM `OpenJDK 14.0.2`
-- **9**: version `9.0.4`, JVM `OpenJDK 9.0.4`
-- **1.8**: version `1.8.0_202`, JVM `Java SE 8`
-- **1.7**: version `1.7.0_272`, JVM `Zulu 7.40.0.15`
+- **14.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/openjdk-14.0.2.jdk/Contents/Home`
+- **9.0.4** JAVA_HOME: `/Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home`
+- **1.8.0_202** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home`
+- **1.7.0_272** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
 ## Xcode 11.7 (11E801a)
 
