@@ -48,7 +48,7 @@ In order to set up publishing to Google Play, you need to encrypt the contents o
 1. Navigate to your app settings in the Codemagic UI and click **Encrypt environment variables** at the bottom of the screen.<br><br>
 ![Service account encrypt yaml](../uploads/google_play_yaml_one.png)
 
-2. Upload or drop the `JSON` key file to the encryption interface and copy the encrypted value.
+2. Paste the contents of your `JSON` key file to the encryption interface and copy the encrypted value.
 ![Service account encrypt copy](../uploads/google_play_yaml_two.png)
 
 3. In your configuration file, set the encrypted value to the `credentials` variable under `google_play` publishing and commit the changes.
