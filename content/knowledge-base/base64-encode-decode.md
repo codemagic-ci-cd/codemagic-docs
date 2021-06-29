@@ -22,6 +22,7 @@ Once done, you can base64 decode it during build time in your scripts section us
 
   echo $YOUR_ENVIRONMENT_VARIABLE | base64 --decode > /path/to/decode/to/your_file_name.extension
   ```
+Note that encryption is not necessary if the file is not secret.
 
 {{<notebox>}}
 
