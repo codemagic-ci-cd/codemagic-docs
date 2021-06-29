@@ -1,7 +1,7 @@
 ---
 title: Video resources
 description:
-weight: 8
+weight: 9
 ---
 
 A variety of video tutorials and webinars are available on the Codemagic YouTube channel.
