@@ -126,7 +126,7 @@ Instead of specifying the exact bundle-id, you can use `"$(xcode-project detect-
 
 ## Provide signing files manually
 
-In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when encrypting files via the UI, they will be base64 encoded and would have to be decoded during the build.
+In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that to encrypt files, they will have to be base64 encoded and will have to be decoded during the build.
 
 ```yaml
 environment:
