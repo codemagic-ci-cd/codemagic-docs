@@ -64,7 +64,7 @@ snapcraft export-login snapcraft-login-credentials
 ```yaml
 SNAPCRAFT_LOGIN_CREDENTIALS: Encrypted(...)
 ```
-4. In the `scripts` section, add steps to log in to Snapcraft via CLI, build the snap package and release it to the desired channel.
+4. In the `scripts` section, add steps to base64 decode the credentials file, log in to Snapcraft via CLI, build the snap package and release it to the desired channel.
 
 ```yaml
 scripts:
