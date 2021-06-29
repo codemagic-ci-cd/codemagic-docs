@@ -31,7 +31,7 @@ With MacOS, in order to base64 encode a file and copy the contents to your clipb
   ```
 After the command has been run, you can paste the string from your clipboard to our encryption tool and then save the encrypted string to an environment variable.
 
-Once done, you can base64 decode it during build time in your scripts section using the following command:
+Finally, base64 decode it during build time in your scripts section using the following command:
 
   ```bash
   echo $YOUR_ENVIRONMENT_VARIABLE | base64 --decode > /path/to/decode/to/your_file_name.extension
