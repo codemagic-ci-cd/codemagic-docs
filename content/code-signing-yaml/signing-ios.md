@@ -104,7 +104,7 @@ Based on the specified bundle ID and [provisioning profile type](https://github.
 
 ## Manual code signing
 
-In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when encrypting files, you will have to manually [base64 encode](../knowledge-base/base64-encode-decode/) them and then decode during the build.
+In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when encrypting files, you will have to locally base64 encode them and then decode during the build.
 
 ```yaml
 environment:
