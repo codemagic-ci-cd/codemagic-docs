@@ -24,7 +24,7 @@ Encrypted(Z0FBQUFBQmRyY1FLWXIwVEhqdWphdjRhQ0xubkdoOGJ2bThkNmh4YmdXbFB3S2wyNTN2OE
 
 If you wish to encrypt a **file** to add to your workflow, you will first have to base64 encode it and then encrypt the received string. To use the file, you will have to decode it during the build.
 
-With MacOS, in order to base64 encode a file and copy the contents to your clipboard, you can run the following command in the terminal:
+On MacOS, in order to base64 encode a file and copy the contents to your clipboard, you can run the following command in the terminal:
 
   ```bash
   cat your_file_name.extension | base64 | pbcopy 
