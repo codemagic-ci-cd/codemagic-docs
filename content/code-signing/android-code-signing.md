@@ -4,7 +4,7 @@ title: Android code signing
 weight: 3
 ---
 
-Code signing is required for distributing your Android app to Google Play store. It enables to identify who developed the app and ensure that all updates to the app come from you.
+Code signing is required for distributing your Android app to the Google Play store. It enables you to identify who developed the app and ensure that all updates to the app come from you.
 
 {{<notebox>}}
 This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Signing Android apps using codemagic.yaml](../code-signing-yaml/signing-android).
@@ -25,7 +25,7 @@ As a keystore can hold multiple keys, each key in it must have an **alias**. Bot
 {{<notebox>}}
 
 - Please note that every app must be signed using the same key throughout its lifespan.
-- If you're building Android App Bundles, you additionally need to [enroll your app into app signing by Google Play](https://support.google.com/googleplay/android-developer/answer/7384423).
+- If you're building Android App Bundles, you additionally need to [enrol your app into app signing by Google Play](https://support.google.com/googleplay/android-developer/answer/7384423).
 
 {{</notebox>}}
 
