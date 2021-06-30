@@ -1,7 +1,7 @@
 ---
 description: How to publish build release notes
 title: Publish release notes
-weight: 9
+weight: 2
 ---
 
 Create custom release notes file(s) to notify users of the changes as you publish a new version of your app.
