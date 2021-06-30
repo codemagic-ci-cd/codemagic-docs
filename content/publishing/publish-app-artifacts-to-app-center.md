@@ -63,4 +63,4 @@ else
 fi
 ```
 
-This way, you can use Codemagic to automate publishing of your Android or iOS app to App Center.
+This way, you can use Codemagic to automate the publishing of your Android or iOS app to App Center.

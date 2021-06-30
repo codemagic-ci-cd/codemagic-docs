@@ -57,7 +57,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 2. Click on the + sign to generate a new API key.
 3. Enter the name for the key and select an access level. We recommend choosing either `Developer` or `App Manager`, read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
 4. Click **Generate**.
-5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
+5. As soon as the key is generated, you can see it added to the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
 {{<notebox >}} 
 Take note of the **Issuer ID** above the table of active keys as well as the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in Codemagic UI.
@@ -127,7 +127,7 @@ To export the signing certificate:
 
 To export the provisioning profile:
 
-1. Log in to Apple Developer portal.
+1. Log in to the Apple Developer portal.
 2. Navigate to **Certificates, Identifiers & Profiles > Profiles**.
 3. Select the provisioning profile you would like to export and click **Download**.
 4. Save it to have it ready.

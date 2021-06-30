@@ -4,7 +4,7 @@ description: How to set a new build number to push to app stores
 weight: 5
 ---
 
-If you are going to publish your app to App Store Connect or Google Play, each uploaded binary must have a new version. There are several approaches you can use for build versioning on Codemagic. One of the easiest ways to increment app version with every build is by using the environment variables that Codemagic exports during the build. There are two environment variables that count the number of builds:
+If you are going to publish your app to App Store Connect or Google Play, each uploaded binary must have a new version. There are several approaches you can use for build versioning on Codemagic. One of the easiest ways to increment the application version with every build is by using the environment variables that Codemagic exports during the build. There are two environment variables that count the number of builds:
 
 * `BUILD_NUMBER`. Holds the total count of builds (including the ongoing build) for a specific **workflow** in Codemagic. In other words, if you have triggered 10 builds for some workflow in Codemagic, the next time you build it, `BUILD_NUMBER` will be exported as `11`.
 
@@ -54,7 +54,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 2. Click on the + sign to generate a new API key.
 3. Enter the name for the key and select an access level. We recommend choosing either `Developer` or `App Manager`, read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
 4. Click **Generate**.
-5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
+5. As soon as the key is generated, you can see it added to the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
 ### Saving the API access arguments to environment variables
 
@@ -150,7 +150,7 @@ environment:
 ```
 
 {{<notebox>}}
-Alternatively, credentials can be specified as a command argument with the dedicated flag, see the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--credentialsgcloud_service_account_credentials). But anyway you should have them in environment variables so that they can be decrypted. In that case, the environment variable will be fallback for missing value in the script.
+Alternatively, credentials can be specified as a command argument with the dedicated flag, see the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--credentialsgcloud_service_account_credentials). But anyway you should have them in environment variables so that they can be decrypted. In that case, the environment variable will be a fallback for the missing value in the script.
 {{</notebox>}}
 
 ### Saving the API access argument to environment variables in the Flutter workflow editor
@@ -170,7 +170,7 @@ LATEST_BUILD_NUMBER=$(google-play get-latest-build-number --package-name 'com.go
 By default, the action will try to get the latest build number as the maximum build number across all tracks (`internal`, `alpha`, `beta`, `production`). If you want to limit the search, you can specify a particular track(s) with the optional argument `--tracks` described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--tracksinternal--alpha--beta--production).
 {{</notebox>}}
 
-There are number of ways how you can pass the obtained build number to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Check the [android-versioning-example repository](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for more details.
+There are a number of ways how you can pass the obtained build number to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Check the [android-versioning-example repository](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for more details.
 
 #### Get the build number in the Flutter workflow editor
 
@@ -180,4 +180,4 @@ If you encrypted the content (not the file) of your gcloud service account crede
 --build-number=$(($(google-play get-latest-build-number --package-name 'com.google.example') + 1))  # use your own package name
 ```
 
-Alternatively you can add a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) and write the build number to a file, which will be read from your `android/app/build.gradle` during the build (See details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file)).
+Alternatively, you can add a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) and write the build number to a file, which will be read from your `android/app/build.gradle` during the build (See details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file)).

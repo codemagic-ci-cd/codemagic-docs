@@ -9,7 +9,7 @@ startLineBreak: true
 This feature is available for [teams](../teams/teams) only.
 {{</notebox>}}
 
-You can schedule Codemagic to automatically build your app on certain days and time. This way, your QA can start the day with the latest version of the app, or you can configure a workflow to run the long test suits at a convenient time and only run fast tests with builds triggered by commits to the repo.
+You can schedule Codemagic to automatically build your app on certain days and times. This way, your QA can start the day with the latest version of the app, or you can configure a workflow to run the long test suits at a convenient time and only run fast tests with builds triggered by commits to the repo.
 
 ## Setting up scheduled builds
 
@@ -22,6 +22,6 @@ You can schedule Codemagic to automatically build your app on certain days and t
 
 Saved schedules for each app are displayed in the **Scheduled builds** section on the right sidebar in app settings. If you no longer need the schedule, you can delete it by hovering on the schedule and clicking the trash bin icon.
 
-Builds that are triggered from a schedule are marked with "scheduled" on the **Builds** page and have "Schedule" as the trigger in build overview.
+Builds that are triggered from a schedule are marked with "scheduled" on the **Builds** page and have "Schedule" as the trigger in the build overview.
 
 Note that the user who is the author of the commit that is built is counted as an active user. Read more about [how we count active users](../teams/users).

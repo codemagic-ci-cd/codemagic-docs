@@ -29,7 +29,7 @@ Click on **Update billing details** to change the billing information or add add
 
 ### Changing card
 
-To change the card used for payments, click **Edit** in the credit card section under the billing details. You can then click **Add new card** to register a new card or select a different card from already registered cards.
+To change the card used for payments, click **Edit** in the credit card section under the billing details. You can then click **New card** to register a new card or select a different card from already registered cards.
 
 ### Disabling billing
 
@@ -53,4 +53,4 @@ As soon as there is a failed invoice payment, your subscription will be put on h
 
 Team or account owners can manually retry the payment by clicking on the overdue invoice in **Billing history** and selecting **Pay invoice** on the popup with invoice details.
 
-Note that overdue invoices should be paid before subscription can be disabled. Please refer to the [Disable billing](/billing/billing/#disabling-billing) section for further info.
+Note that overdue invoices should be paid before the subscription can be disabled. Please refer to the [Disable billing](/billing/billing/#disabling-billing) section for further info.

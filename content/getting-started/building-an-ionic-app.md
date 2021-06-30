@@ -39,7 +39,7 @@ To test, code sign, and publish Ionic Android and iOS apps:
 You can find an up-to-date codemagic.yaml Ionic Android workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/ionic/ionic-capacitor-demo-project/codemagic.yaml#L95).
 {{</notebox>}}
 
-The following example shows how to set up a workflow that builds your **Ionic Capacitor** Android app and publishes to a Google Play internal track.
+The following example shows how to set up a workflow that builds your **Ionic Capacitor** Android app and publishes it to a Google Play internal track.
 
 ```yaml
 workflows:
@@ -121,7 +121,7 @@ android {
 ```
 ## Android Ionic Cordova workflow example
 
-The following example shows how to set up a workflow that builds your **Ionic Cordova** Android app and publishes to a Google Play internal track.
+The following example shows how to set up a workflow that builds your **Ionic Cordova** Android app and publishes it to a Google Play internal track.
 
 ```yaml
 workflows:
@@ -286,7 +286,7 @@ workflows:
 ```
 
 {{<notebox>}}
-Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) CLI command to prepare iOS application code signing properties for build.
+Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) CLI command to prepare iOS application code signing properties for the build.
 {{</notebox>}}
 
 ## iOS Ionic Cordova workflow example

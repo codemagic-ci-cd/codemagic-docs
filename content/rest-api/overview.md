@@ -7,7 +7,7 @@ Users can make calls to Codemagic REST API for better integration with other too
 
 ## Authentication
 
-When making calls to REST API methods, an access token must be included as an HTTP header in every call in order for the call to be successful.
+When making calls to REST API methods, an access token must be included as an HTTP header in every call for the call to be successful.
 
 ```
 x-auth-token: my-secret-token

@@ -14,9 +14,9 @@ This guide only applies to workflows configured with the **Flutter workflow edit
 
 You will need a **service account in Google Play Console** to obtain the **JSON credentials file**. See how to do that [here](../knowledge-base/google-play-api/). In addition, you must build the app in **release mode** and set up **Android code signing**.
 
-Before releasing the app to Google Play, make sure that it meets the [Google Play's best practices guidelines](https://developer.android.com/distribute/best-practices/launch/).
+Before releasing the app to Google Play, ensure that it meets [Google Play's best practices guidelines](https://developer.android.com/distribute/best-practices/launch/).
 
-{{<notebox>}} Note that if you haven't published your app to Google Play yet, you must create an entry for your app in Google Play Console and manually upload the very first version of the app before you can automate publishing using Codemagic. In addition, each uploaded binary must have a different version, see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic. {{</notebox>}}
+{{<notebox>}} Note that if you haven't published your app to Google Play yet, you must create an entry for your app in Google Play Console and manually upload the very first version of the app before you can automate publishing using Codemagic. In addition, each uploaded binary must have a different version; see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic. {{</notebox>}}
 
 ## Setting up publishing to Google Play on Codemagic
 
@@ -38,7 +38,7 @@ The very first version of the app must be added to Google Play manually. You can
 5. If you want to publish to a custom track, enter the custom track name.
 6. If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates), set the desired priority. If not, select **Default**.
 7. In case you want to release a [staged version](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en) of your application, which reaches only a fraction of users, set **Rollout fraction** to a value between 0 and 1. To release to everyone, leave the value empty.
-8. If you are getting the next error `Changes cannot be sent for review automatically. Please set the query parameter changesNotSentForReview to true`, mark the checkbox **Do not send changes for review**.
+8. If you are getting the next error: `Changes cannot be sent for review automatically. Please set the query parameter changesNotSentForReview to true`, mark the checkbox **Do not send changes for review**.
 
     But if the checkbox is marked and the app is sent for review automatically, you will get the error `Changes are sent for review automatically. The query parameter changesNotSentForReview must not be set.`
 

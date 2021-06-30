@@ -6,9 +6,9 @@ weight: 1
 
 The [codemagic-sample-projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects) repository on the Codemagic GitHub page contains a collection of sample projects which show how to configure your workflows using the **codemagic.yaml** configuration file. 
 
-You can use the **codemagic.yaml** from these projects as a template for your own workflow configuration. 
+You can use the **codemagic.yaml** from these projects as a template for your workflow configuration. 
 
-For further information on how configure the **codemagic.yaml** for your projects, please refer to our [getting started guide](https://docs.codemagic.io/getting-started/yaml/). 
+For further information on how to configure the **codemagic.yaml** for your projects, please refer to our [getting started guide](https://docs.codemagic.io/getting-started/yaml/). 
 
 ### Flutter Samples
 * [Flutter YAML workflow sample](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/flutter/flutter-yaml-demo-project)

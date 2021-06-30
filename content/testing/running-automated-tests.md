@@ -8,7 +8,7 @@ Codemagic supports running **unit**, **integration** and **widget** tests as wel
 
 ### Detecting tests
 
-During the first build of your app, Codemagic will scan the content of the repository and automatically detect the tests according to the project structure. The expected locations of the tests are as follows:
+During the first build of your app, Codemagic will scan the repository's content and automatically detect the tests according to the project structure. The expected locations of the tests are as follows:
 
 Unit and widget tests: `project_root/test`
 

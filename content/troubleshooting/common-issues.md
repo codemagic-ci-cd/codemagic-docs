@@ -13,9 +13,9 @@ altool[xxx:xxx] *** Error: Unable to validate archive '/Users/builder/ipas/xxx'.
 altool[xxx:xxx] *** Error: code -22020 (Unable to validate your application. We are unable to create an authentication session.)
 ```
 
-The most common reason for the occurrence of this error message is using Apple ID password instead of [app-specific password](https://support.apple.com/en-us/HT204397) in App Store Connect publishing settings. 
+The most common reason for this error message is using your Apple ID password instead of [app-specific password](https://support.apple.com/en-us/HT204397) in App Store Connect publishing settings. 
 
-To generate an app-specific password, sign in to your [Apple ID account page](https://appleid.apple.com/account/manage), navigate to the **Security** section and click **Generate Password...** below **App-Specific Passwords**. The generated app-specific password will be in this format: `abcd-efgh-ijkl-mnop`. Insert this value into the Flutter workflow editor or as a password in `codemagic.yaml` when setting up publishing to App Store Connect. Note that the password should be generated with the same Apple account that you are using for publishing.
+To generate an app-specific password, sign in to your [Apple ID account page](https://appleid.apple.com/account/manage), navigate to the **Security** section, and click **Generate Password...** below **App-Specific Passwords**. The generated app-specific password will be in this format: `abcd-efgh-ijkl-mnop`. Insert this value into the Flutter workflow editor or as a password in `codemagic.yaml` when setting up publishing to App Store Connect. Note that the password should be generated with the same Apple account that you are using for publishing.
 
 ## iOS code signing troubleshooting
 
@@ -25,7 +25,7 @@ This is the list of the most common issues that may cause iOS code signing error
 
 * **The uploaded certificate and provisioning profile do not match.** For example, you're using a development certificate and a distribution profile to sign the build, or the certificate used for signing is not included in the provisioning profile.
 
-* **You don't have the required entitlements enabled for your app in Apple Developer portal.** In such cases, you will often see an error message similar to this one:
+* **You don't have the required entitlements enabled for your app in the Apple Developer portal.** In such cases, you will often see an error message similar to this one:
 
     > Code Signing Error: "Runner" requires a provisioning profile with the Push Notifications feature. Select a provisioning profile in the Signing & Capabilities editor.
 
@@ -39,9 +39,9 @@ This is the list of the most common issues that may cause iOS code signing error
 ## Version inconsistency between local and Codemagic
 
 **Description**:
-Builds succeed locally but not on Codemagic and throw vague errors, such as `Gradle task bundleRelease failed with exit code 1`, or build is successful but some functions aren't working. 
+Builds succeed locally but not on Codemagic and throw vague errors, such as `Gradle task bundleRelease failed with exit code 1`, or the build is successful, but some functions aren't working. 
 
-**Cause**: These issues are likely caused because plugin and gradle versions used locally are different from the versions used on Codemagic. If you are using a gradle version that is different from Codemagic, you have to define it in `gradle wrapper`. Otherwise, Codemagic ignores your `build.gradle` file and your build won't work properly. See which [software versions Codemagic uses](../releases-and-versions/versions/).
+**Cause**: These issues are likely caused because plugin and gradle versions used locally are different from the versions used on Codemagic. If you are using a gradle version that is different from Codemagic, you have to define it in `gradle wrapper`. Otherwise, Codemagic ignores your `build.gradle` file, and your build won't work properly. See which [software versions Codemagic uses](../releases-and-versions/versions/).
 
 **Solution**: First, you need to make sure that the `gradlew` file isn't in `.gitignore`. Look for `**/android/gradlew`, and if it's in `.gitignore`, delete it from there. Then add `!gradle-wrapper.jar` to a new line in `.gitignore` to create an exception so that `gradle-wrapper.jar` would also be excluded from `.gitignore`.
 

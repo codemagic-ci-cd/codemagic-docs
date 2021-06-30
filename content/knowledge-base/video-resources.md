@@ -6,4 +6,4 @@ weight: 8
 
 A variety of video tutorials and webinars are available on the Codemagic YouTube channel.
 
-Click [here](https://www.youtube.com/channel/UC6iPpISHwCnNreb53c0eYvg) to visit our channel and don't forget to subscribe to be updated when new content is released.
+Click [here](https://www.youtube.com/channel/UC6iPpISHwCnNreb53c0eYvg) to visit our channel, and don't forget to subscribe to be updated when new content is released.

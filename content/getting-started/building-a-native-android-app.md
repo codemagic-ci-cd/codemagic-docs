@@ -47,7 +47,7 @@ To test, code sign and publish an Android app:
 You can find an up-to-date codemagic.yaml Android workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/android/android-espresso-demo-project/codemagic.yaml).
 {{</notebox>}}
 
-The following example shows how to set up a workflow that builds your app and publishes to a Google Play internal track.
+The following example shows how to set up a workflow that builds your app and publishes it to a Google Play internal track.
 
 ```yaml
 workflows:

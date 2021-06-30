@@ -4,7 +4,7 @@ description: Encrypt your credentials and key files
 weight: 3
 ---
 
-If you wish to store sensitive information, such as login details or API keys, in environment variables or in your configuration file, it is important to encrypt the data so as to not expose it. You can easily encrypt values and files using the encryption interface in Codemagic.
+If you wish to store sensitive information, such as login details or API keys, in environment variables or your configuration file, it is important to encrypt the data to not expose it. You can easily encrypt values and files using the encryption interface in Codemagic.
 
 {{<notebox>}}
 For security reasons, encrypted environment variables work only in the team where they were created. When moving an app from your personal account to a team or from one team to another, you should re-encrypt the variables.

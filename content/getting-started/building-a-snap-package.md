@@ -40,7 +40,7 @@ Additionally, you may want to install the generated `.snap` package onto your ma
 
     snap install your-package.snap --dangerous
 
-In case you are packaging a **Flutter application**, be sure to set `SNAPCRAFT_BUILD_ENVIRONMENT` environment variable to `host`. It is required to avoid virtualization. Read more about virtualization options [here](https://flutter.dev/docs/deployment/linux). Additionally, Snapcraft manages all the dependencies according to `snapcraft.yaml` configuration. There is no need to include Flutter version in `codemagic.yaml`.
+In case you are packaging a **Flutter application**, be sure to set `SNAPCRAFT_BUILD_ENVIRONMENT` environment variable to `host`. It is required to avoid virtualization. Read more about virtualization options [here](https://flutter.dev/docs/deployment/linux). Additionally, Snapcraft manages all the dependencies according to `snapcraft.yaml` configuration. There is no need to include the Flutter version in `codemagic.yaml`.
 
 {{<notebox>}}
 **Note**: Snap is only available on Linux instances. Make sure to have `instance_type: linux` or `instance_type: linux_x2` in your `codemagic.yaml`. See the build machine specification [here](../specs/versions-linux/).

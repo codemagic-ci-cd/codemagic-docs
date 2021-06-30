@@ -5,7 +5,7 @@ weight: 3
 aliases:
 ---
 
-Adding Codemagic status badges to repositories helps to keep the latest build status visible. The build status badge is workflow-specific, and displays whether the build passed or failed. 
+Adding Codemagic status badges to repositories helps to keep the latest build status visible. The build status badge is workflow-specific and displays whether the build passed or failed. 
 
 ## Adding status badges to your repository
 

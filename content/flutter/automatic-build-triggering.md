@@ -16,14 +16,14 @@ You can configure the branches to track under **Watched branch patterns**.
 
 The branches tracked for building are selected by entering branch patterns and including or excluding the matching branches. Note that you can either enter the exact name of the branch to select it or use the wildcard symbols to select more than one branch with one pattern. Click **Show pattern examples** in the UI for tips.
 
-The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of branches further. In the case of conflicting patterns, the latter one will prevail. You can check the targeted branches by clicking the eye icon next to **Watched branch patterns**.
+The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of branches further. In the case of conflicting patterns, the latter will prevail. You can check the targeted branches by clicking the eye icon next to **Watched branch patterns**.
 
 To add a new branch pattern:
 
 1. Navigate to **App settings > Build triggers**.
 2. Enter a pattern matching the name of one or more branches in the project.
 3. Select **Include** or **Exclude** from the dropdown to limit the set of targeted branches by either including or excluding the matching branches.
-4. For **pull request builds**, select whether the tracked branch is the **Source** or the **Target** branch of the pull request. This setting has no effect on other types of builds.
+4. For **pull request builds**, select whether the tracked branch is the **Source** or the **Target** branch of the pull request. This setting does not affect other types of builds.
 5. Click **Add pattern** to save it. You can always edit or delete added patterns.
 
 ## Build triggers
@@ -44,9 +44,9 @@ If you have a `codemagic.yaml` in the repository, it is automatically used for c
 
 * If you want to only run tests for pull requests and skip building for platforms, select **Run tests only** under Build > Build for platforms.
 
-**Trigger on tag creation**. When checked, Codemagic will automatically build the tagged commit whenever you create a tag for this app. Note that the watched branch settings have no effect on tag builds.
+**Trigger on tag creation**. When checked, Codemagic will automatically build the tagged commit whenever you create a tag for this app. Note that the watched branch settings do not affect tag builds.
 
-If enabled, you would be able to specify tag patterns to trigger builds. Similarly to **Watched branch patterns**, the first pattern in the list is applied first and each pattern will limit the set of tag labels further. In the case of conflicting patterns, the latter one will prevail. Using wildcard symbols is supported, click **Show pattern examples** for more information.
+If enabled, you would be able to specify tag patterns to trigger builds. Similarly to **Watched branch patterns**, the first pattern in the list is applied first and each pattern will limit the set of tag labels further. In the case of conflicting patterns, the latter will prevail. Using wildcard symbols is supported, click **Show pattern examples** for more information.
 
 **Cancel outdated webhook builds**. When checked, Codemagic will automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch. We recommend enabling this feature when you're making several commits, each of which triggers a build.
 
