@@ -33,7 +33,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 2. Click on the + sign to generate a new API key.
 3. Enter the name for the key and select an access level. We recommend choosing either `Developer` or `App Manager`, read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
 4. Click **Generate**.
-5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
+5. As soon as the key is generated, you can see it added to the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
 {{<notebox >}} 
 Take note of the **Issuer ID** above the table of active keys as well as the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in the Codemagic UI.
@@ -66,7 +66,7 @@ environment:
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Note that you should encrypt the **contents** of the file and save the encrypted value to the environment variable. 
+  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Note that you should encrypt the **contents** of the file and save the encrypted value to the environment variable. 
 
 ```bash
 ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
