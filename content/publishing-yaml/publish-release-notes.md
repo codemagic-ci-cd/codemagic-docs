@@ -1,5 +1,5 @@
 ---
-description: How to publish build release notes
+description: How to pass release notes with successful builds
 title: Publish release notes
 weight: 9
 ---
