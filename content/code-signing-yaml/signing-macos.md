@@ -4,7 +4,7 @@ description: How to set up macOS code signing in codemagic.yaml
 weight: 2
 ---
 
-All macOS applications have to be digitally signed before they can be installed on devices or made available to the public via Mac App Store or outside of Mac App Store.
+All macOS applications have to be digitally signed before they can be installed on devices or made available to the public via the Mac App Store or outside of the Mac App Store.
 
 {{<notebox>}}
 This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Signing macOS apps using the Flutter workflow editor](../code-signing/macos-code-signing).
@@ -25,7 +25,7 @@ You can upload your signing certificate and distribution profile to Codemagic to
 To set up publishing the code-signed application to App Store Connect, refer [here](../publishing-yaml/distribution/#app-store-connect).
 
 {{<notebox>}}
-Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to perform macOS code signing ⏤ these tools are open source and can also be [used locally](../building/running-locally/) or in other environments. More specifically, we use the [xcode-project utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md) for preparing the code signing properties for the build, the [keychain utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md) for managing macOS keychains and certificates, and the [app-store-connect utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md) for creating and downloading code signing certificates and provisioning profiles. The latter makes use of the App Store Connect API for authenticating with Apple Developer Portal.
+Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to perform macOS code signing ⏤ these tools are open source and can also be [used locally](../building/running-locally/) or in other environments. More specifically, we use the [xcode-project utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md) for preparing the code signing properties for the build, the [keychain utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md) for managing macOS keychains and certificates, and the [app-store-connect utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md) for creating and downloading code signing certificates and provisioning profiles. The latter makes use of the App Store Connect API for authenticating with the Apple Developer Portal.
 {{</notebox>}}
 
 ## Automatic code signing
@@ -40,7 +40,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 2. Click on the + sign to generate a new API key.
 3. Enter the name for the key and select an access level. We recommend choosing either `Developer` or `App Manager`, read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
 4. Click **Generate**.
-5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
+5. As soon as the key is generated, you can see it added to the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
 {{<notebox >}}
 Take note of the **Issuer ID** above the table of active keys as well as the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in the Codemagic UI.
@@ -69,19 +69,19 @@ environment:
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. You'll need to [encrypt](../building/encrypting/) the **contents** of the file in the codemagic.yaml editor UI (and not the file itself). On macOS you can use `pbcopy < AuthKey_XXXXXX.p8` to copy the contents of the private key and paste this into the UI encryption tool.
+  This is the private API key downloaded from App Store Connect. You'll need to [encrypt](../building/encrypting/) the **contents** of the file in the codemagic.yaml editor UI (and not the file itself). On macOS, you can use `pbcopy < AuthKey_XXXXXX.p8` to copy the contents of the private key and paste this into the UI encryption tool.
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic fetches or creates. You'll need to either create a new certificate and private key or find an existing one. You'll need to [encrypt](../building/encrypting/) the **contents** of the private key in the codemagic.yaml editor UI (and not the file itself). On macOS, you can use `pbcopy < private_key` to copy the contents of the private key and paste this into the UI encryption tool.
+  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic fetches or creates. You'll need to either create a new certificate and private key or find an existing one. You'll need to [encrypt](../building/encrypting/) the **contents** of the private key in the codemagic.yaml editor UI (and not the file itself). On macOS, you can use `pbcopy < private_key` to copy the contents of the private key and paste this into the UI encryption tool.
 
-  App Developer Portal has a limitation of maximum 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` or `Developer ID Application` certificates, you won't be able to create new ones. If any of those are not used, you may revoke them in the [Apple Developer Portal](https://developer.apple.com/account/resources/certificates/list), which will make it possible to create new certificates with the specified new certificate private key. You can create a new 2048 bit RSA key by running the following command in your terminal:
+  App Developer Portal has a limitation of maximum of 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` or `Developer ID Application` certificates, you won't be able to create new ones. If any of those are not used, you may revoke them in the [Apple Developer Portal](https://developer.apple.com/account/resources/certificates/list), which will make it possible to create new certificates with the specified new certificate private key. You can create a new 2048 bit RSA key by running the following command in your terminal:
 
   ```bash
   ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
   ```
 
-   If you wish to use existing certificates and don't have the private key used to create them available, or those certificates were created via a Certificate Authority request or via Xcode, you can [export](https://help.apple.com/xcode/mac/current/#/dev154b28f09) the existing certificate(s) into `.p12` container(s) and get the used private key so as to be able to fetch these certificates from another machine. You can export the private key and convert it using the following command:
+   If you wish to use existing certificates and don't have the private key used to create them available, or those certificates were created via a Certificate Authority request or via Xcode, you can [export](https://help.apple.com/xcode/mac/current/#/dev154b28f09) the existing certificate(s) into `.p12` container(s) and get the used private key to be able to fetch these certificates from another machine. You can export the private key and convert it using the following command:
 
     ```bash
     openssl pkcs12 -in <your_certificate_name>.p12 -nodes -nocerts | openssl rsa -out <your_private_key_name>.key
