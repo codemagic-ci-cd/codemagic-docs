@@ -12,7 +12,7 @@ aliases:
 Requires: Python ≥ 3.7
 {{</notebox>}}
 
-## Build and code sign an Xcode project
+## Build and codesign an Xcode project
 
 To fetch (or create and download) the provisioning profile(s) and certificate for `MY_BUNDLE_ID` app, use the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) tool.
 
@@ -43,11 +43,11 @@ xcode-project use-profiles --project /path/to/MyProject.xcodeproj --profile /pat
 xcode-project build-ipa --project /path/to/MyProject.xcodeproj --scheme MyScheme
 ```
 
-Note that `--project` option can be either a path literal, or a glob pattern to match projects in working directory (Default is `**/*.xcodeproj`).
+Note that `--project` option can be either a path literal, or a glob pattern to match projects in the working directory (default is `**/*.xcodeproj`).
 
-`--profile` option can be a glob pattern as well (Default is `$HOME/Library/MobileDevice/Provisioning Profiles/*.mobileprovision`).
+`--profile` option can be a glob pattern as well (default is `$HOME/Library/MobileDevice/Provisioning Profiles/*.mobileprovision`).
 
-## Generate universal .apk(s) with user specified keys from app bundle
+## Generate universal .apk(s) with user-specified keys from the app bundle
 
 To build .apk files(s) from the app bundle(s) found with `/path/to/**/*.aab` glob pattern with keystore `/path/to/keystore.keystore`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` and `KEY_PASSWORD`, use the [android-app-bundle](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/android-app-bundle#android-app-bundle) tool:
 
@@ -65,7 +65,7 @@ If `--bundle` option is not specified, default glob pattern `**/*.aab` will be u
 {{<notebox>}}
 Alternatively to entering `ISSUER_ID`, `KEY_IDENTIFIER`, `PRIVATE_KEY`, `CERTIFICATE_PASSWORD`,  `KEYSTORE_PASSWORD`, `KEY_PASSWORD` in plaintext, it may also be specified using an `@env:` prefix followed by an environment variable name, or `@file:` prefix followed by a path to the file containing the value. Example: `@env:<variable>` uses the value in the environment variable named `<variable>`, and `@file:<file_path>` uses the value from file at `<file_path>`.
 
-Please refer to [documentation](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs#cli-tools) for more details.
+Please refer to the [documentation](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs#cli-tools) for more details.
 {{</notebox>}}
 
 ## Generate a changelog text from Git history
