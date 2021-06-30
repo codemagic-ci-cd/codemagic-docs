@@ -47,4 +47,4 @@ For App Store Connect, supported languages and codes are listed [here](https://d
     Add this file to the root of your project. Notes with missing `language` or `text` fields will not be taken into account.
 
     * Release notes with `en-US` language code will be published to email and Slack, given that a file with `en-US` language code exists. If not, the first release notes will be published.
-    * For App Store Connect and Google Play, all the found release notes will be published with corresponding language codes, omiting language codes that are not supported.
+    * For both App Store Connect and Google Play, only the release notes with the supported language codes will be published, omitting language codes that are not supported.
