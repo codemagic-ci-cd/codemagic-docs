@@ -4,9 +4,9 @@ title: macOS code signing
 weight: 2
 ---
 
-Code signing is required by Apple for integrating app services, installing your macOS app on another machine or for uploading it to distribute it through the Mac App Store or outside of Mac App Store. It enables to identify who developed the app and ensure that all the changes to the app come from you or your team.
+Code signing is required by Apple for integrating app services, installing your macOS app on another machine or uploading it to distribute it through the Mac App Store or outside of Mac App Store. It enables to identify who developed the app and ensure that all the changes to the app come from you or your team.
 
-To create an application package which can be published to Mac App Store on Codemagic, you need to set up code signing.
+To create an application package that can be published to Mac App Store on Codemagic, you need to set up code signing.
 
 {{<notebox>}}
 This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Signing macOS apps using codemagic.yaml](../code-signing-yaml/signing-macos).
@@ -17,7 +17,7 @@ This guide only applies to workflows configured with the **Flutter workflow edit
 Before you can start signing or distributing your app, there are a few things you need.
 
 * [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership
-* An [app ID](https://developer.apple.com/account/resources/identifiers/bundleId/add/) for your macOS app in Apple Developer portal
+* An [app ID](https://developer.apple.com/account/resources/identifiers/bundleId/add/) for your macOS app in the Apple Developer portal
 * **signing certificates** (`Personal Information Exchange, .p12`)
 * A **provisioning profile** (`.provisionprofile`)
 
@@ -31,9 +31,9 @@ With **automatic code signing**, Codemagic will create both the certificate and 
 With **manual code signing**, you need to upload the signing files manually.
 {{</notebox>}}
 
-Signing an application with a development certificate and profile requires the UUID of the machine which builds the appliction to be present in the profile. Therefore, using a development certificate is not possible on Codemagic since the build machine won't be listed in the used profile.
+Signing an application with a development certificate and profile requires the UUID of the machine which builds the application to be present in the profile. Therefore, using a development certificate is not possible on Codemagic since the build machine won't be listed in the used profile.
 
-Distibution is possible to Mac App Store (using `Mac App Distribution` and `Mac Installer Distribution` certificates and `Mac App Store` profile) and outside of Mac App Store (using `Developer ID Application` certificate and `Developer ID` profile). 
+Distribution is possible to Mac App Store (using `Mac App Distribution` and `Mac Installer Distribution` certificates and `Mac App Store` profile) and outside of Mac App Store (using `Developer ID Application` certificate and `Developer ID` profile). 
 
 **Note**: Currently, Codemagic only supports code signing the app for publishing to the Mac App Store.
 
@@ -43,9 +43,9 @@ Codemagic makes automatic code signing possible by connecting to [App Store Conn
 
 The following sections describe how to set up automatic code signing for builds configured in the UI. If you're building with `codemagic.yaml`, please refer [here](../code-signing-yaml/signing-macos).
 
-Note that Apple Developer Portal has a limitation of maximum 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` certificates, Codemagic won't be able to create new ones. Using existing certificates won't be possible because the private key required to install them is only stored on your machine.
+Note that Apple Developer Portal has a limitation of maximum of 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` certificates, Codemagic won't be able to create new ones. Using existing certificates won't be possible because the private key required to install them is only stored on your machine.
 
-You may revoke an existing certifiate to allow Codemagic create a new one using a Codemagic team specific private key which is only stored on Codemagic. Alternatively, you can use [manual code signing](#manual-code-signing-to-publish-to-mac-app-store).
+You may revoke an existing certificate to allow Codemagic to create a new one using a Codemagic team-specific private key which is only stored on Codemagic. Alternatively, you can use [manual code signing](#manual-code-signing-to-publish-to-mac-app-store).
 
 ### Step 1. Creating an App Store API key for Codemagic
 
@@ -55,7 +55,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 2. Click on the + sign to generate a new API key.
 3. Enter the name for the key and select an access level. We recommend choosing either `Developer` or `App Manager`, read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
 4. Click **Generate**.
-5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
+5. As soon as the key is generated, you can see it added to the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
 {{<notebox >}}
 Take note of the **Issuer ID** above the table of active keys as well as the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in Codemagic UI.
@@ -122,7 +122,7 @@ To export the signing certificate:
 
 To export the provisioning profile:
 
-1. Log in to Apple Developer portal.
+1. Log in to the Apple Developer portal.
 2. Navigate to **Certificates, Identifiers & Profiles > Profiles**.
 3. Select the provisioning profile you would like to export and click **Download**.
 4. Save it to have it ready.
