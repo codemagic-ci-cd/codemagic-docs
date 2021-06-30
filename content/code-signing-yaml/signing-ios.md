@@ -62,13 +62,11 @@ environment:
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. Note that when encrypting files via the UI, they will be base64 encoded and would have to be decoded during the build. Alternatively, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+  This is the private API key downloaded from App Store Connect. Encrypt the **contents** of the file and save the encrypted value to the environment variable.
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the following command in your terminal. 
-  
-  Similarly to the above note that when encrypting files via the UI, they will be base64 encoded and would have to be decoded during the build. Alternatively, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+  A RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Note that you should encrypt the **contents** of the file and save the encrypted value to the environment variable. 
 
 ```bash
 ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
@@ -106,7 +104,7 @@ Based on the specified bundle ID and [provisioning profile type](https://github.
 
 ## Manual code signing
 
-In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when encrypting files via the UI, they will be base64 encoded and would have to be decoded during the build.
+In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when encrypting files, you will have to locally base64 encode them and then decode during the build.
 
 ```yaml
 environment:

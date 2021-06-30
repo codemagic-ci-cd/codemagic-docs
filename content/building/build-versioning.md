@@ -68,7 +68,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. Note that when encrypting files via UI, they will be base64 encoded and would have to be decoded during the build. Alternatively, you can encrypt the **contents** of the file and save the encrypted value to the environment variable.
+  This is the private API key downloaded from App Store Connect. Encrypt the **contents** of the file and save the encrypted value to the environment variable.
 
 #### Saving to `codemagic.yaml` config
 
@@ -101,7 +101,6 @@ Once you have the App Store Connect API access set with mentioned above environm
 Add the following script under your `scripts` field for `codemagic.yaml`, or as a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) in the Flutter workflow editor:
 
 ```bash
-export APP_STORE_CONNECT_PRIVATE_KEY=$(echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode) # if you encrypted the file itself, not its content
 LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number '1234567890') # The argument is your application's Apple ID
 agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 ```
@@ -109,7 +108,6 @@ agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 To use the latest build number from Testflight use a similar script:
 
 ```bash
-export APP_STORE_CONNECT_PRIVATE_KEY=$(echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode) # if you encrypted the file itself, not its content
 LATEST_BUILD_NUMBER=$(app-store-connect get-latest-testflight-build-number '1234567890') # The argument is your application's Apple ID
 agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 ```
