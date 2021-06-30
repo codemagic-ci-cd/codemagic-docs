@@ -78,7 +78,7 @@ To make your iOS app available to the public, it must be submitted for review in
 
 ## Submitting release notes
 
-To add localized release notes that will appear in Test Details (What to test?) section, include `release_notes.json` with the following content
+To add localized release notes that will appear in the Test Details (What to test?) section, include a `release_notes.json` with the following content:
 
 ```json
 [
