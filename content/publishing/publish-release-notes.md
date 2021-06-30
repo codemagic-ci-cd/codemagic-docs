@@ -22,7 +22,7 @@ There are three supported options to set up release notes:
     * For Google Play it will be published under `en-US` language localization code.
 
 {{<notebox>}}
-For App Store Connect supported languages and codes are listed [here](https://developer.apple.com/documentation/appstoreconnectapi/betabuildlocalizationcreaterequest/data/attributes). For Google Play Console supported languages and codes are listed [here](https://support.google.com/googleplay/android-developer/table/4419860?hl=en).
+For App Store Connect, supported languages and codes are listed [here](https://developer.apple.com/documentation/appstoreconnectapi/betabuildlocalizationcreaterequest/data/attributes). For Google Play Console, supported languages and codes are listed [here](https://support.google.com/googleplay/android-developer/table/4419860?hl=en).
 {{</notebox>}}
 
 2. Create a `release_notes_<language_localization_code>.txt` file for every language used, e.g. `release_notes_en-GB.txt`, `release_notes_it.txt`, and add them to the root of your project.
