@@ -19,7 +19,7 @@ Instead of committing the Firebase configuration files to your repository, you c
   echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
   ```
 
-  In case your project is in a nested folder structure, it has to be reflected and the script should be as follows: 
+  In case your project is in a nested folder structure, it has to be reflected, and the script should be as follows: 
 
   ```bash
   #!/usr/bin/env sh
@@ -34,7 +34,7 @@ Instead of committing the Firebase configuration files to your repository, you c
 {{<notebox>}}
 
 `post-clone script failed on base64 decode. The command could not be found`
-If you received this error message when using the script above, it may be due to some invisible Unicode characters in the script after copy-pasting it. Try removing the space between the `base64` command and the `--decode` option and then adding it back.
+If you received this error message when using the script above, it might be due to some invisible Unicode characters in the script after copy-pasting it. Try removing the space between the `base64` command and the `--decode` option and then adding it back.
 {{</notebox>}}
 
 For more details about using base64 and loading the Firebase configuration in Codemagic, see the step-by-step guide [here](https://blog.codemagic.io/how-to-load-firebase-config-in-codemagic-with-environment-variables/).

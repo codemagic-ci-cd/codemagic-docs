@@ -4,17 +4,17 @@ description: How to set up a Google Play service account for Codemagic
 weight: 6
 ---
 
-In order to allow Codemagic publish applications to Google Play, it is necessary to set up access using Google Play API. 
+In order to allow Codemagic to publish applications to Google Play, it is necessary to set up access using Google Play API. 
 
 ## Setting up the service account on Google Play and Google Cloud Platform
 
 1. In Google Play Console, navigate to **Settings > API access** and click **Create new service account**.<br><br>
 ![Google play start](../uploads/google_play_start.png)
 
-2. This will lead you to the Google Cloud Platform where you can start creating your service account by clicking **+ Create service account** at the top of the page.<br><br>
+2. This will lead you to the Google Cloud Platform, where you can start creating your service account by clicking **+ Create service account** at the top of the page.<br><br>
 ![Google cloud platform](../uploads/google_cloud_start.png)
 
-3. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
+3. In step 1, fill in the **Service account details** and click **Create**. The service account's name will allow you to identify it among other service accounts you may have created.
 
 4. In step 2, click the **Select a role** dropdown menu and choose **Basic > Editor** as the role.<br><br>
 ![Google cloud editor](../uploads/google_cloud_two.png)

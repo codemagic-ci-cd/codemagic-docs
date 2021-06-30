@@ -16,16 +16,16 @@ Release notes can be published to:
 
 There are three supported options to set up release notes:
 
-1. Create a `release_notes.txt` file and add it to the root of your project. When it's present, Codemagic will fetch the content of that file and publish it with the build.
-    * For email and Slack it will be published as is.
-    * For Google Play it will be published under `en-US` language localization code.
+1. Create a `release_notes.txt` file and add it to the root of your project. Codemagic will fetch the content of that file and publish it with the build when it's present.
+    * For email and Slack, it will be published as is.
+    * For Google Play, it will be published under `en-US` language localization code.
 
 {{<notebox>}}
 Language localization code is referred to a BCP-47 language tag as used in Google Play Services.
 {{</notebox>}}
 
 2. Create a `release_notes_<language_localization_code>.txt` file for every language used, e.g. `release_notes_en-GB.txt`, `release_notes_it.txt`, and add them to the root of your project.
-    * Release notes with `en-US` language code will be published to email and Slack in case file with `en-US` language code exists. If not, the first found release notes will be published.
+    * Release notes with `en-US` language code will be published to email and Slack in case a file with `en-US` language code exists. If not, the first found release notes will be published.
     * For Google Play, all the release notes will be published with corresponding language codes.
 
 3. Create a `release_notes.json` file with the following content:

@@ -10,7 +10,7 @@ aliases:
 
 Flutter can be integrated into your existing application as a library to render a part of your app’s UI in Flutter. To add a Flutter module to an existing app, please refer to [the official Flutter documentation](https://flutter.dev/docs/development/add-to-app).
 
-The examples below show how to build apps containing Flutter modules using `codemagic.yaml`. The examples provided here are inspired by [Flutter add-to-app samples](https://github.com/flutter/samples/tree/master/add_to_app) where the Flutter module directory (reffered to as `my_flutter_module` in templates) is on the same level as the host app directory (reffered to as `my_host_app`). 
+The examples below show how to build apps containing Flutter modules using `codemagic.yaml`. The examples provided here are inspired by [Flutter add-to-app samples](https://github.com/flutter/samples/tree/master/add_to_app) where the Flutter module directory (referred to as `my_flutter_module` in templates) is on the same level as the host app directory (referred to as `my_host_app`). 
 
 ### Using a Flutter module (with dependencies) as a library
 
@@ -54,7 +54,7 @@ If you don't have a workspace, use
 
 ### Using a prebuilt Flutter module
 
-Using a prebuilt module means that you don't need to build it every time the host app is built if there are no changes to the module. You may speed up your overall building time by precompiling your Flutter module once, committing it to the repository and reusing it afterwards without the need to build it from source.
+Using a prebuilt module means that you don't need to build it every time the host app is built if there are no changes to the module. You may speed up your overall building time by precompiling your Flutter module once, committing it to the repository and reusing it afterwards without the need to build it from the source.
 
 * In an Android app:
 

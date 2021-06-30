@@ -4,7 +4,7 @@ description: How to run tests on Firebase Test Lab
 weight: 2
 ---
 
-Firebase Test Lab provides cloud-based infrastructure for testing Android and iOS apps on a range of devices and configurations. You can test your apps on Firebase Test Lab as part of the Codemagic build workflow provided you have set up a Firebase project.
+Firebase Test Lab provides a cloud-based infrastructure for testing Android and iOS apps on various devices and configurations. You can test your apps on Firebase Test Lab as part of the Codemagic build workflow provided you have set up a Firebase project.
 
 To set up testing on Firebase Test Lab in Codemagic, follow these steps.
 
@@ -57,7 +57,7 @@ gcloud firebase test android run \
 
 ### iOS
 
-Package your application and prepare it for the upload to Firebase Test Lab as desicribed [here](https://firebase.google.com/docs/test-lab/ios/run-xctest#package-app).
+Package your application and prepare it for upload to Firebase Test Lab as described [here](https://firebase.google.com/docs/test-lab/ios/run-xctest#package-app).
 
 Use the generated `MyTests.zip` to start testing:
 

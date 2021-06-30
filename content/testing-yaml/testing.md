@@ -16,7 +16,7 @@ For instructions on testing your app on real devices in Firebase Test Lab, refer
 
     flutter test
 
-**Tip:** you can display Flutter test results visually in the build overview if you use expanded form of the script in codemagic.yaml.
+**Tip:** you can display Flutter test results visually in the build overview if you use the expanded form of the script in codemagic.yaml.
 Just include the `test_report` field with a glob pattern matching the test result file location:
 
 ```yaml

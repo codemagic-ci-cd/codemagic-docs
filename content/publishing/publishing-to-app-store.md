@@ -16,13 +16,13 @@ Codemagic needs your **[App Store Connect API key](https://developer.apple.com/d
 
 In addition, the application must be **App Store ready** for build distribution, meaning that it must have all the correct icons and icon sizes. Otherwise, App Store Connect will tag the binary as invalid, and you will not be able to distribute it at all.
 
-It is also worth pointing out the necessity for each uploaded binary to have a **different version**, otherwise it will be refused by App Store Connect. See the [Build versioning](../building/build-versioning/) article for instructions on incrementing app version with Codemagic.
+It is also worth pointing out the necessity for each uploaded binary to have a **different version**; otherwise, it will be refused by App Store Connect. See the [Build versioning](../building/build-versioning/) article for instructions on incrementing app version with Codemagic.
 
 {{<notebox>}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. {{</notebox>}}
 
 ## Setting up publishing to App Store Connect on Codemagic
 
-In this section we give step-by-step instructions on how to configure publishing to App Store Connect using Flutter workflow editor.
+This section gives step-by-step instructions on how to configure publishing to App Store Connect using Flutter workflow editor.
 
 ### Step 1. Creating an App Store API key for Codemagic
     
@@ -34,12 +34,12 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 
 1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
 2. Click on the + sign to generate a new API key.
-3. Enter the name for the key and select an access level. For App Store Connect publishing the key needs to have `App Manager` permissions. Read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
+3. Enter the name for the key and select an access level. For App Store Connect publishing, the key needs to have `App Manager` permissions. Read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
 4. Click **Generate**.
-5. As soon as the key is generated, you can see it added in the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
+5. As soon as the key is generated, you can see it added to the active keys list. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
 {{<notebox >}} 
-Take note of the **Issuer ID** above the table of active keys as well as the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in Codemagic UI.
+Take note of the **Issuer ID** above the table of active keys and the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in Codemagic UI.
 {{</notebox>}}
 
 ### Step 2. Connecting the Apple Developer Portal integration for your team/account
@@ -62,7 +62,7 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 1. Navigate to the Publish section in app settings **App settings > Publish**.
 2. Click **App Store Connect**.
 3. If you have several keys available, select the right key in the **App Store Connect API key** field.
-4. Mark the **Submit to TestFlight** checkbox to automatically enroll your build to beta testers.  
+4. Mark the **Submit to TestFlight** checkbox to enrol your build to beta testers automatically.  
 5. Select **Enable App Store Connect publishing** at the top of the section to enable publishing.
 
 Once you have successfully set up publishing to App Store Connect, Codemagic will automatically distribute the app to App Store Connect every time you build the workflow. Note that you must manually submit the app to App Store in App Store Connect.
@@ -78,4 +78,4 @@ To make your iOS app available to the public, it must be submitted for review in
 1. Log in to [App Store Connect](https://appstoreconnect.apple.com/).
 2. Navigate to **My Apps** and identify the app you would like to publish to App Store.
 3. To start the submission process, click **Prepare for Submission**.
-4. Check that you app metadata is up to date, and once everything is ready, click the **Submit for Review** button.
+4. Check that your app metadata is up to date, and once everything is ready, click the **Submit for Review** button.

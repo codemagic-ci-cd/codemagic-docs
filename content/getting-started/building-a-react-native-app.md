@@ -54,7 +54,7 @@ workflows:
         instance_type: mac_mini
         environment:
             vars:
-                GCLOUD_SERVICE_ACCOUNT_CREDENTIALS: Encrypted(...) # <-- Put encrypted CONTENTS of your Gloud crendentials file here
+                GCLOUD_SERVICE_ACCOUNT_CREDENTIALS: Encrypted(...) # <-- Put encrypted CONTENTS of your Gloud credentials file here
                 PACKAGE_NAME: "YOUR_PACKAGE_NAME" # <-- Put your package name here e.g. com.domain.myapp
                 CM_KEYSTORE: Encrypted(...) # <-- Put your encrypted keystore file here
                 CM_KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore password here
@@ -123,7 +123,7 @@ workflows:
 You can find an up-to-date codemagic.yaml React Native iOS workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/codemagic.yaml#L72).
 {{</notebox>}}
 
-Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for build.
+Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for the build.
 
 Script for building an iOS application:
 
@@ -230,7 +230,7 @@ workflows:
 
 To test and publish a React Native app:
 
-* The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Naive app can be found [here](../testing-yaml/testing/#react-native-unit-test).
+* The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-test).
 * All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
 * All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../publishing-yaml/distribution/#publishing).
 

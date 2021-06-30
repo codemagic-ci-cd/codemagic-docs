@@ -35,7 +35,7 @@ When you're building for release, you will need to build the app in Release mode
 
 ### Building Android app bundles
 
-You can build your app in [Android App Bundle](https://developer.android.com/guide/app-bundle) (`.aab`) format for publishing to Google Play. When you upload your app in `.aab` format, app  .apk(s) will be dynamically created and optimized for user's device configuration when the app is installed from Google Play Store.
+You can build your app in [Android App Bundle](https://developer.android.com/guide/app-bundle) (`.aab`) format for publishing to Google Play. When you upload your app in `.aab` format, app  .apk(s) will be dynamically created and optimized for the user's device configuration when the app is installed from Google Play Store.
 
 In order to upload your Android App Bundle to Google Play, you will need to:
 
@@ -44,7 +44,7 @@ In order to upload your Android App Bundle to Google Play, you will need to:
 3. Set up [publishing to Google Play](../publishing/publishing-to-google-play/) in Codemagic to upload your app bundle to one of Google Play tracks.
 4. [Enroll your app into app signing by Google Play](https://support.google.com/googleplay/android-developer/answer/7384423) to have Google sign the .apk(s) that are generated from the app bundle during installation.
 
-When you enroll an app into app signing by Google Play, Google will manage your app's signing key for you and use it to sign the .apk for distribution. Note that the app must be signed with the same key throughout its lifecycle, so if the app has already been uploaded to Google Play, make sure to export and upload your original key to Google Play for app signing. It is then recommended to create a new key ("upload key") for signing your app updates and uploading them to Google Play.
+When you enrol an app into app signing by Google Play, Google will manage your app's signing key for you and use it to sign the .apk for distribution. Note that the app must be signed with the same key throughout its lifecycle, so if the app has already been uploaded to Google Play, make sure to export and upload your original key to Google Play for app signing. It is then recommended to create a new key ("upload key") for signing your app updates and uploading them to Google Play.
 
 ## Building iOS apps
 
@@ -77,7 +77,7 @@ In your app settings, select **macOS** under **Build for platforms** and an avai
 
 Then scroll down to the **Build** section to specify the **Flutter**, **Xcode** and **CocoaPods** version, select the build **Mode** (**Debug**, **Release** or **Profile**) or add additional build arguments, e.g. for [build versioning](../building/build-versioning) or verbose logging. 
 
-At the end of a successful build, Codemagic outputs a downloadable `.zip` file containing an `.app` archive. If you build for releasing to the App Store, you need to also set up [code signing](../code-signing/macos-code-signing/) to receive a `.pkg` file.
+At the end of a successful build, Codemagic outputs a downloadable `.zip` file containing an `.app` archive. If you build for release to the App Store, you need to also set up [code signing](../code-signing/macos-code-signing/) to receive a `.pkg` file.
 
 ## Building Linux apps
 
@@ -101,7 +101,7 @@ Additionally, you may want to install the generated `.snap` package onto your ma
 
 ## Running tests only
 
-In some cases you may want to run only tests and not build the entire project, e.g. when you're triggering a build on pull request update. To do so, [enable testing](../testing/running-automated-tests), and then in **App settings > Build > Build for platforms**, select **Run tests only**. Codemagic will then build the workflow until the testing step and skip building the app.
+In some cases, you may want to run only tests and not build the entire project, e.g. when you're triggering a build on pull request update. To do so, [enable testing](../testing/running-automated-tests), and then in **App settings > Build > Build for platforms**, select **Run tests only**. Codemagic will then build the workflow until the testing step and skip building the app.
 
 If tests fail, the status of the build will be “failed” and you'll receive an email about failing tests. If you have publishing to Slack configured, you'll receive notifications on build status updates.
 
@@ -115,7 +115,7 @@ For information about using API calls to trigger builds, look [here](../rest-api
 
 ## Multiple Flutter projects in one repository
 
-Codemagic supports monorepos and is able to detect multiple Flutter projects in a repository or projects not in the repository root provided that each project has its `pubspec.yaml` file with `flutter` dependency.
+Codemagic supports monorepos and can detect multiple Flutter projects in a repository or projects not in the repository root provided that each project has its `pubspec.yaml` file with `flutter` dependency.
 
 Initially, the only project path for every application is `.` — the root of the repository. The repository is scanned for Flutter projects during the first build, and if multiple projects are found, the first build is run for the project with the highest number of platforms available (presence of `android`, `ios` etc. directories). 
 

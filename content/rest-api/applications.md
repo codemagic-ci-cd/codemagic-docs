@@ -9,7 +9,7 @@ APIs for managing applications are currently available for developers to preview
 
 `GET /apps/:id`
 
-Returns an application information based upon the application id supplied.
+Based on the application id provided, returns the applications information.
 
 ### Curl request
 

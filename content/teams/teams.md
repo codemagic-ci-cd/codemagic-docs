@@ -3,14 +3,14 @@ title: Creating and managing teams
 weight: 1
 ---
 
-If more than one developer is contributing to a project, it is wiser to set up a team so that everyone could work on the project together. Working in teams comes with some advantages:
+If more than one developer is contributing to a project, it is wiser to set up a team to work on the project together. Working in teams comes with some advantages:
 
 * One account is used to access the app repository
 * Team members can jointly configure app settings
 * Team members have access to build logs, build history and artifacts
 * Consistent build versioning
 
-{{<notebox>}}Note that Teams is a paid feature on Codemagic, see our [pricing page](https://codemagic.io/pricing/). We don't charge for UI access but count and bill for the users that contribute to team applications by triggering builds. Read more about how we count users [here](./users/).{{</notebox>}}
+{{<notebox>}}Note that Teams is a paid feature on Codemagic; see our [pricing page](https://codemagic.io/pricing/). We don't charge for UI access but count and bill for users who contribute to team applications by triggering builds. Read more about how we count users [here](./users/).{{</notebox>}}
 
 ## Creating a new team
 
@@ -22,7 +22,7 @@ To create a new team:
 4. Click **Proceed**. You will be then asked to add your credit card details and company information (if relevant) to enable billing for the team.
 5. Then click **Confirm and enable** to enable billing and continue setting up the team.
 
-Once the team has been created, team owners can change the name of the team, add or remove shared applications, add or remove users, change user roles and manage billing.
+Once the team has been created, team owners can change the team's name, add or remove shared applications, add or remove users, change user roles and manage billing.
 
 {{<notebox>}}Keep in mind to review the filter settings on the Applications page to see your newly created team and shared team apps.{{</notebox>}}
 
@@ -34,7 +34,7 @@ To add or remove shared applications, click on **Shared applications** to see th
 
 ## Inviting team members
 
-You can invite users to team by clicking on **Invite team member**. An email invitation will be sent to the user to join the team. If they don't yet have a Codemagic account, they will be asked to register one before they can join the team. 
+You can invite users to the team by clicking on **Invite team member**. An email invitation will be sent to the user to join the team. If they don't yet have a Codemagic account, they will be asked to register before joining the team. 
 
 If there are users that have triggered builds but are not yet part of the team in Codemagic, you can click **Add to team** on their email address to send them an invitation.
 
@@ -42,11 +42,11 @@ To remove any team members, click on the three dots next to their name and selec
 
 ## Managing user roles
 
-Users in Codemagic teams can have one of the 3 roles.
+Users in Codemagic teams can have one of the three roles.
 
-* **Owner**. The user creating a team will become a team owner by default and has full access to all team, app and repository settings. Other members of the team can be upgraded to owners as well. Owners can select the repositories to be shared with the team, invite new team members, change their roles or remove existing members, including other team owners, manage team integrations and billing.
+* **Owner**. The user creating a team will become a team owner by default and has full access to all team, app, and repository settings. Other members of the team can be upgraded to owners as well. Owners can select the repositories to be shared with the team, invite new team members, change their roles or remove existing members, including other team owners, manage team integrations and billing.
 
-* **Member**. A user with this role has access to the Codemagic UI and can view team settings, configure app settings and trigger new builds. Members cannot modify any team settings, billing details or repository settings other than app name.
+* **Member**. A user with this role has access to the Codemagic UI and can view team settings, configure app settings and trigger new builds. Members cannot modify any team settings, billing details, or repository settings other than the app name.
 
 * **User**. Any user that triggers builds from a webhook but does not have access to the team in Codemagic UI.
 
@@ -56,7 +56,7 @@ Users that have triggered builds can be invited to the team by clicking **Add to
 
 ## Public dashboards
 
-The public dashboards feature makes it possible to share team's builds and build artifacts via a public link. Read more about this feature [here](../publishing-yaml/public-dashboards).
+The public dashboards feature makes it possible to share the team's builds and build artifacts via a public link. Read more about this feature [here](../publishing-yaml/public-dashboards).
 
 ## Managing team integrations
 

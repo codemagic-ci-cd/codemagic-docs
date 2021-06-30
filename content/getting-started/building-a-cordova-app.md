@@ -38,7 +38,7 @@ To build, code sign, and publish Cordova Android and iOS apps:
 You can find an up-to-date codemagic.yaml Cordova iOS workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/cordova/cordova-demo-project/codemagic.yaml#L2).
 {{</notebox>}}
 
-The following example workflow shows how to build your **Cordova** iOS app and publish to App Store Connect.
+The following example workflow shows how to build your **Cordova** iOS app and publish it to App Store Connect.
 
 ```yaml
 workflows:
@@ -130,7 +130,7 @@ workflows:
 ```
 
 {{<notebox>}}
-Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) CLI command to prepare iOS application code signing properties for build.
+Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) CLI command to prepare iOS application code signing properties for the build.
 {{</notebox>}}
 
 ## Android Cordova workflow example
@@ -139,7 +139,7 @@ Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/
 You can find an up-to-date codemagic.yaml Cordova Android workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/cordova/cordova-demo-project/codemagic.yaml#L87).
 {{</notebox>}}
 
-The following example workflow shows how to build your **Cordova** Android app and publish to a Google Play alpha track.
+The following example workflow shows how to build your **Cordova** Android app and publish it to a Google Play alpha track.
 
 ```yaml
 workflows:

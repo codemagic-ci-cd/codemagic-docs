@@ -13,9 +13,9 @@ aliases:
 
 In order to use `codemagic.yaml` for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
 
-When detected in repository, `codemagic.yaml` is automatically used for configuring builds that are triggered in response to the events defined in the file, provided that a [webhook](../building/webhooks) is set up. 
+When detected in the repository, `codemagic.yaml` is automatically used for configuring builds triggered in response to the events defined in the file, provided that a [webhook](../building/webhooks) is set up. 
 
-Builds can be also started manually by clicking **Start new build** in Codemagic and selecting the branch and workflow to build in the **Specify build configuration** popup.
+Builds can also be started manually by clicking **Start new build** in Codemagic and selecting the branch and workflow to build in the **Specify build configuration** popup.
 
 ## Syntax
 
@@ -49,7 +49,7 @@ scripts:
 
 ### Reusing sections
 
-If a particular section would be reused multiple times in the file, e.g. in each workflow, you can avoid repetitions by using **anchors**. This is also convenient when you need to make changes to the code as you would have to edit it in just one place. 
+If a particular section would be reused multiple times in the file, e.g. in each workflow, you can avoid repetitions by using **anchors**. This is also convenient when you need to make changes to the code, as you would have to edit it in just one place. 
 
 Define the section to be reused by adding `&` in front of it.
 
@@ -71,7 +71,7 @@ scripts:
 
 ## Template
 
-This is the skeleton structure of `codemagic.yaml`. Each section along with the configuration options is described in more detail below.
+This is the skeleton structure of `codemagic.yaml`. Each section, along with the configuration options, is described in more detail below.
 
 ```yaml
 workflows:
@@ -109,7 +109,7 @@ workflows:
 
 ### Workflows
 
-You can use `codemagic.yaml` to define several workflows for building a project. Each workflow describes the entire build pipeline from triggers to publishing. For example, you may want to have separate workflows for developing, testing and publishing the app.
+You can use `codemagic.yaml` to define several workflows for building a project. Each workflow describes the entire build pipeline from triggers to publishing. For example, you may want to have separate workflows for developing, testing, and publishing the app.
 
 ```yaml
 workflows:
@@ -143,7 +143,7 @@ Note that `mac_pro`, `linux`, and `linux_x2` are only available for teams and us
 
 ### Environment
 
-`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node and npm used for building. This is also where you can add credentials and API keys required for [code signing](../code-signing-yaml/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
+`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node, and npm used for building. This is also where you can add credentials and API keys required for [code signing](../code-signing-yaml/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
 
 ```yaml
 environment:
@@ -207,7 +207,7 @@ See the default software versions on Codemagic build machines:
 
 {{<notebox>}}
 
-Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up iOS builds with Xcode 10.2 or later.
+Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help speed up iOS builds with Xcode 10.2 or later.
 
 {{</notebox>}}
 
@@ -347,7 +347,7 @@ publishing:
 
 ## Conditional build triggers
 
-You can skip building particular commits or watch for changes in specific files to trigger builds. It's possible to define build conditions per workflow or specific build steps.
+You can skip building particular commits or watch for changes in specific files to trigger builds. In addition, it's possible to define build conditions per workflow or specific build steps.
 ### Skip building a commit
 
 If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
@@ -373,11 +373,11 @@ workflows:
           - '**/*.md'
 ```
 
-In this case, build would be skipped if there were changes only to Markdown files `.md`.
+In this case, the build would be skipped if there were changes only to Markdown files `.md`.
 
 Note that `codemagic.yaml` is always included in the changeset by default.
 
-Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value would default to `'.'`. The `excludes` key defaults to no exclusions.
+Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value will default to `'.'`. The `excludes` key defaults to no exclusions.
 
 If you use a monorepo, each workflow could be responsible for building a part of your application. Use conditional workflow triggering and specify the path to the application in the changeset as in the example below.
 
@@ -398,7 +398,7 @@ As a result, commits with changes outside of the android folder will not trigger
 
 ## Conditional build step execution
 
-You may also want to skip some specific steps when building your application. Use the same approach with scripts
+You may also want to skip some specific steps when building your application. Use the same approach with scripts.
 
 ```yaml
 workflows:
@@ -417,7 +417,7 @@ workflows:
 
 ## Working directory
 
-You may select a working directory globally for the entire workflow or for individual scripts only. If not specified, the global working directory defaults to the directory where the repository is cloned (`/Users/builder/clone`). You can override the global working directory by specifying the working directory in the individual steps. Consider the example below:
+You may select a working directory globally for the entire workflow or individual scripts only. If not specified, the global working directory defaults to the directory where the repository is cloned (`/Users/builder/clone`). You can override the global working directory by specifying the working directory in the individual steps. Consider the example below:
 
 ```yaml
 workflows:

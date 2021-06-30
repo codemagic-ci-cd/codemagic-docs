@@ -7,9 +7,9 @@ You can invite your team members to join the team in Codemagic free of charge. W
 
 ## Active users
 
-An active user is anyone who triggers a build manually from the Codemagic UI or via the API, or automaticlly from a webhook in response to events in the repository. Active users are marked with a green badge with the build count on it. The number of active users for the ongoing subscription period is shown on the right sidebar in team settings.
+An active user is anyone who triggers a build manually from the Codemagic UI, via the API, or automatically from a webhook in response to events in the repository. Active users are marked with a green badge with the build count on it. The number of active users for the ongoing subscription period is shown on the right sidebar in team settings.
 
-The active users count is reset at the beginning of every month. To see the active users of previous subscription periods, check the Billing history on the [Billing](../billing/billing) page.
+The active users count is reset at the beginning of every month. Check the Billing history on the [Billing](../billing/billing) page to see the active users of previous subscription periods.
 
 ## Identifying users
 
@@ -22,7 +22,7 @@ git config --global user.email johndoe@example.com
 
 ## User limit
 
-To avoid unexpected costs, team owners can set a limit to the maximum number of users allowed to run builds. Any number of users within the limit will be allowed to run builds. If the number of active users for the current subscription period is equal to the limit, builds from other users will be blocked. You can see the blocked build attempts in team settings. 
+To avoid unexpected costs, team owners can limit the maximum number of users allowed to run builds. Any number of users within the limit will be allowed to run builds. If the number of active users for the current subscription period is equal to the limit, builds from other users will be blocked. You can see the blocked build attempts in team settings. 
 
 To allow builds from additional users, team owners can increase the user limit by clicking **Manage billing** in team settings or selecting the team on the Billing page and then clicking **Update user limit** in Billing overview. Note that when decreasing the current limit, the new limit will apply starting from the next subscription period.
 
