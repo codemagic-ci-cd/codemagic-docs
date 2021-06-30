@@ -79,3 +79,22 @@ To make your iOS app available to the public, it must be submitted for review in
 2. Navigate to **My Apps** and identify the app you would like to publish to App Store.
 3. To start the submission process, click **Prepare for Submission**.
 4. Check that you app metadata is up to date, and once everything is ready, click the **Submit for Review** button.
+
+## Sumitting release notes
+
+To add localized release notes that will appear in Test Details (What to test?) section, include `release_notes.json` with the following content
+
+```json
+[
+    {
+        "language": "en-GB",
+        "text": "British English release notes text"
+    },
+    {
+        "language": "en-US",
+        "text": "The US Engish release notes text"
+    }
+]
+```
+
+Supported languages could be found [here](https://developer.apple.com/documentation/appstoreconnectapi/betabuildlocalizationcreaterequest/data/attributes).
