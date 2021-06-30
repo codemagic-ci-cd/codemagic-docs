@@ -62,7 +62,7 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 1. Navigate to the Publish section in app settings **App settings > Publish**.
 2. Click **App Store Connect**.
 3. If you have several keys available, select the right key in the **App Store Connect API key** field.
-4. Mark the **Submit to TestFlight** checkbox to enrol your build to beta testers automatically.  
+4. Mark the **Submit to TestFlight** checkbox to enroll your build to beta testers automatically.  
 5. Select **Enable App Store Connect publishing** at the top of the section to enable publishing.
 
 Once you have successfully set up publishing to App Store Connect, Codemagic will automatically distribute the app to App Store Connect every time you build the workflow. Note that you must manually submit the app to App Store in App Store Connect.
