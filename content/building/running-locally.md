@@ -12,7 +12,7 @@ aliases:
 Requires: Python ≥ 3.7
 {{</notebox>}}
 
-## Build and codesign an Xcode project
+## Build and code sign an Xcode project
 
 To fetch (or create and download) the provisioning profile(s) and certificate for `MY_BUNDLE_ID` app, use the [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md#app-store-connect) tool.
 
