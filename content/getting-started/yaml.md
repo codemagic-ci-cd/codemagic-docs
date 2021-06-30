@@ -24,9 +24,9 @@ You can readily commit `codemagic.yaml` with the following content to test it ou
 ```yaml
 workflows:
   hello-world:
-    name: Hello world worklfow
+    name: Hello world workflow
     scripts:
-        - echo "Hello world!"
+        - echo "Hello World!"
 ```
 
 The scripts in the `scripts` section will be run right after the repository is cloned.
