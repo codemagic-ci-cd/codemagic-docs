@@ -27,7 +27,7 @@ For App Store Connect supported languages and codes are listed [here](https://de
 
 2. Create a `release_notes_<language_localization_code>.txt` file for every language used, e.g. `release_notes_en-GB.txt`, `release_notes_it.txt`, and add them to the root of your project.
     * Release notes with `en-US` language code will be published to email and Slack in case file with `en-US` language code exists. If not, the first found release notes will be published.
-    * For App Store Connect and Google Play, all the release notes will be published with corresponding language codes, ommiting language codes that are not supported.
+   * For both App Store Connect and Google Play, only the release notes with the supported language codes will be published, omitting language codes that are not supported.
 
 3. Create a `release_notes.json` file with the following content:
 
