@@ -41,7 +41,7 @@ This is the list of the most common issues that may cause iOS code signing error
 **Description**:
 Builds succeed locally but not on Codemagic and throw vague errors, such as `Gradle task bundleRelease failed with exit code 1`, or the build is successful, but some functions aren't working. 
 
-**Cause**: These issues are likely caused because plugin and gradle versions used locally are different from the versions used on Codemagic. If you are using a gradle version that is different from Codemagic, you have to define it in `gradle wrapper`. Otherwise, Codemagic ignores your `build.gradle` file, and your build won't work properly. See which [software versions Codemagic uses](../releases-and-versions/versions/)
+**Cause**: These issues are likely caused because plugin and gradle versions used locally are different from the versions used on Codemagic. If you are using a gradle version that is different from Codemagic, you have to define it in `gradle wrapper`. Otherwise, Codemagic ignores your `build.gradle` file, and your build won't work properly. See which [software versions Codemagic uses](../releases-and-versions/versions/).
 
 **Solution**: First, you need to make sure that the `gradlew` file isn't in `.gitignore`. Look for `**/android/gradlew`, and if it's in `.gitignore`, delete it from there. Then add `!gradle-wrapper.jar` to a new line in `.gitignore` to create an exception so that `gradle-wrapper.jar` would also be excluded from `.gitignore`.
 
