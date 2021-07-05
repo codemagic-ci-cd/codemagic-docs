@@ -18,12 +18,16 @@ Premium VMs use more powerful hardware will run builds faster than standard VMs.
 The instance types and hardware specifications can be found below.
 
 
-| **Instance Type**        | **Specification**                                                                                                                                                       |
+| **Item**        | **Specification**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | macOS premium VM         | 3.7GHz Quad Core / 32GB                                                                                                                                                 |
 | macOS standard VM        | 2.3GHz Quad Core / 8GB                                                                                                                                                 |
 | Linux premium VM         | 8 vCPUs, 32 GB memory                                                                                                                                                 |
 | Linux standard VM        | 4 vCPUs, 16 GB memory  
+
+If you are planning to run instrumentation tests with Android emulators it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs.
+
+If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/contact/).
 
 For Linux instances, details of the hardware specification, system information and pre-installed can be found [here](https://docs.codemagic.io/specs/versions-linux/)
 
@@ -31,13 +35,13 @@ For macOS instances, details of the hardware specification, system information a
 
 ### Pricing for Personal Accounts
 
-When billing is enabled on personal accounts you still have 500 free builds minutes on macOS standard VM. 
+When billing is enabled on personal accounts you have 500 free builds minutes on macOS standard VM. 
 
 Usage on macOS standard VM that exceeds 500 minutes is charged at rate shown below.
 
-Builds on macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes and charged at the rates shown below. 
+Builds on macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes and are charged at the rates shown below. 
 
-| **Instance Type/Seats**  | **Price**                                                                                                                                                       |
+| **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | macOS premium VM         | $0.095 / minute                                                                                                                                                 |
 | macOS standard VM        | $0.038 / minute                                                                                                                                                 |
@@ -48,15 +52,15 @@ Builds on macOS premium VM, Linux standard VM, and Linux premium VM do not have 
 
 For teams, all build minutes using macOS standard VM, macOS premium VM, Linux standard VM, and Linux premium VM are charged at the rates shown below. 
 
-Team seats for active users are $10/month. To see how users are counted please see [here](https://docs.codemagic.io/teams/users/)
+Team users that were active in the current billing period are charged $10/month. To see how users are counted please see [here](https://docs.codemagic.io/teams/users/)
 
-| **Instance Type/Seats**  | **Price**                                                                                                                                                       |
+| **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | macOS premium VM         | $0.095 / minute                                                                                                                                                 |
 | macOS standard VM        | $0.038 / minute                                                                                                                                                 |
 | Linux premium VM         | $0.045 / minute                                                                                                                                                 |
 | Linux standard VM        | $0.015 / minute                                                                                                                                                 |
-| Team Seat                | $10 / month                                                                                                                                                     |                                                                                                                                                 |
+| Team user                | $10 / month                                                                                                                                                     |                                                                                                                                                 |
 
 ## Business Plan
 
@@ -66,15 +70,14 @@ The Codemagic business plan gives you a fixed price plan with the following bene
 * Unlimited build minutes
 * Unlmited team seats
 * In-app chat support
-* Account manager
 
-The **monthly** subscription is **$299/month** payable by credit card. Additional concurrencies are **$100/month**
+The **monthly** subscription is **$299/month** payable by credit card. Additional concurrencies are **$100/month**.
 
 An **annual** subscription with **20% discount** is **$2,870/year**. Additional concurrencies are **$960/year**. 
 
 Annual plans can be paid for with credit card and invoicing with bank transfer is available.
 
-If you would like to upgrade to a business plan, please contact us [here](https://codemagic.io/contact/)
+If you would like to upgrade to a business plan, please contact us [here](https://codemagic.io/contact/).
 
 
 ## Enterprise Plan
@@ -83,7 +86,7 @@ Enterprise plans are available from **$6,000/year**.
 
 This plan is recommended if you need to go through a **procurement process** or have special requirements such as an **SLA**, **NDA**, **dedicated hosts**, or **custom base images**.
 
-If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/enterprise/) 
+If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/enterprise/). 
 
 ## Dedicated Hosts
 
@@ -93,10 +96,10 @@ Dedicated hosts are available for $449/month, paid annually with **20% discount*
 
 Annual plans can be paid for with credit card and invoicing with bank transfer is available.
 
-For more information contact us [here](https://codemagic.io/contact/)
+For more information contact us [here](https://codemagic.io/contact/).
 
 ### Unity Framework
 
-If you are building Unity apps for iOS or Android we can provide dedicated macOS hosts with Unity 2020.3 LTS Unity 2019.4.15 (Android build support and iOS build support components) and Xcode 12.4.
+If you are building Unity apps for iOS or Android we can provide dedicated macOS hosts with Unity 2020.3 LTS Unity 2019.4.15 (Android build support and iOS build support components).
 
-If you would like more information about dedicated hosts, please contact us [here](https://codemagic.io/contact/)
+If you would like more information about dedicated hosts, please contact us [here](https://codemagic.io/contact/).
