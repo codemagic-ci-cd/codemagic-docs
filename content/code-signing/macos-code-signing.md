@@ -82,7 +82,7 @@ If you work with multiple Apple Developer teams, you can add additional keys by 
 
 Once the Apple Developer Portal has been enabled for the account or team the app belongs to, you can easily enable automatic code signing per workflow.
 
-1. Go to **App settings > Publish > macOS code signing**.
+1. Go to **App settings > Distribution > macOS code signing**.
 2. Select **Automatic** as the code signing method. If you haven't enabled the Apple Developer Portal integration yet, you will be asked to enable it before you can continue configuration.
 3. If you have several keys available, select the right key in the **App Store Connect API key** field.
 4. Mark the checkbox **Project type setting > is Mac Catalyst** if you need a Mac Catalyst profile.
@@ -97,7 +97,7 @@ With the manual code signing method, you are required to upload the `Mac App Dis
 
 ### Setting up manual code signing
 
-1. Go to **App settings > Publish > iOS code signing**.
+1. Go to **App settings > Distribution > iOS code signing**.
 2. Select **Manual** as the code signing method.
 3. Upload your `Mac App Distribution` signing certificate (in `.p12` format). If your certificate is password-protected, enter the **Certificate password**.
 3. Upload your `Mac Installer Distribution` signing certificate (in `.p12` format). If your certificate is password-protected, enter the **Certificate password**.

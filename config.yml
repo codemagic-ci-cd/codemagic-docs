@@ -72,7 +72,7 @@ menu:
       weight: 3
       parent: setup-flutter
     - identifier: publishing
-      name: Publishing
+      name: Distribution and notifications
       weight: 4
       parent: setup-flutter
     - identifier: teams

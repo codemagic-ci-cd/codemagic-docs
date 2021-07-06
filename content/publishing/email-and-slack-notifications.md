@@ -6,7 +6,7 @@ weight: 8
 
 ## Email
 
-Email publishing settings can be found in **App settings > Publish > Email**.
+Email publishing settings can be found in **App settings > Notifications > Email**.
 
 Email publishing is the only publishing option that is enabled by default. Codemagic uses the email specified as the default one in the service you used to log in (Github, Bitbucket, Gitlab). You can add multiple email addresses.
 
@@ -24,7 +24,7 @@ Use only the part in angle brackets from the whole address line (e.g. `My awesom
 
 In order to set up publishing to Slack, you first need to connect the Slack workspace in **User settings > Integrations > Slack** for your personal apps and in **Teams > Your_team > Team integrations > Slack** for the team apps. 
 
-Once your Slack workspace is connected, you can enable Slack publishing and select a channel for publishing in **App settings > Publish > Slack** when using the workflow editor.
+Once your Slack workspace is connected, you can enable Slack publishing and select a channel for publishing in **App settings > Notifications > Slack** when using the workflow editor.
 
 In order to publish to **private channels**, you need to invite Codemagic app to the channels, otherwise the app does not have access to private channels. To invite Codemagic app to private channels, write `@codemagic` in the channel. If you are in the Codemagic web app, refresh the page and the new channel will become available in the dropdown menu.
 
