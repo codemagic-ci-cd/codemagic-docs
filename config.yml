@@ -78,7 +78,7 @@ menu:
     - identifier: teams
       name: Teams
       weight: 7
-    - identifier: billing-pricing
+    - identifier: billing
       name: Billing & Pricing
       weight: 8  
     - identifier: knowledge-base
