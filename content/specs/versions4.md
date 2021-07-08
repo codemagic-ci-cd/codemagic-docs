@@ -1,9 +1,9 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
-title: macOS build machine specification (Xcode 12.5)
+title: macOS build machine specification (Xcode 13.0+)
 aliases:
-  - '../releases-and-versions/versions3'
-weight: 3
+  - '../releases-and-versions/versions4'
+weight: 2
 ---
 
 ## Hardware
@@ -13,9 +13,9 @@ weight: 3
 
 ## System
 
-- System version `macOS 11.2 (20D64)`
-- Kernel version `Darwin 20.3.0`
-- Disk `322GB (Free Space: 71GB)`
+- System version `macOS 11.4 (20F71)`
+- Kernel version `Darwin 20.5.0`
+- Disk `322GB (Free Space: 190GB)`
 
 ## Pre-installed tools
 
@@ -67,37 +67,26 @@ weight: 3
 ## Java versions
 
 - **16.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-16.jdk/Contents/Home`
-- **15.0.3** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-15.jdk/Contents/Home`
 - **11.0.11** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_292** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
-## Xcode 12.5.1 (12E507)
+## Xcode 13.0 (13A5155e)
 
-This is the Xcode version used by default when you select `12.5.1` or `latest` in build settings in the workflow
-editor for Flutter apps or set Xcode version to `12.5.1` or `latest` in your codemagic.yaml file.
-Other available versions are listed [here](#other-xcode-versions).
+This is the Xcode version used by default when you select `13.0` or `edge` in build settings in the workflow
+editor for Flutter apps or set Xcode version to `13.0` or `edge` in your codemagic.yaml file.
 
-Xcode path: `/Applications/Xcode-12.5.1.app`
+Xcode path: `/Applications/Xcode-13.0.app`
 
-With Xcode `12.5.1` build version `12E507` the following runtimes and devices are installed:
+With Xcode `13.0` build version `13A5155e` the following runtimes and devices are installed:
 
 ### Runtimes
 
-- iOS 14.0
-- iOS 14.1
-- iOS 14.2
-- iOS 14.3
-- iOS 14.4
 - iOS 14.5
-- tvOS 14.0
-- tvOS 14.2
-- tvOS 14.3
-- tvOS 14.4
+- iOS 15.0
 - tvOS 14.5
-- watchOS 7.0
-- watchOS 7.1
-- watchOS 7.2
+- tvOS 15.0
 - watchOS 7.4
+- watchOS 8.0
 
 ### Devices
 
@@ -128,9 +117,3 @@ With Xcode `12.5.1` build version `12E507` the following runtimes and devices ar
 - iPhone 8 Plus
 - iPhone SE (2nd generation)
 - iPod touch (7th generation)
-
-## Other Xcode versions
-
-- 12.5 (12E262) `/Applications/Xcode-12.5.app`
-- 12.4 (12D4e) `/Applications/Xcode-12.4.app`
-
