@@ -92,7 +92,7 @@ To add localized release notes that will appear in the Test Details (What to tes
     },
     {
         "language": "en-US",
-        "text": "The US Engish release notes text"
+        "text": "The US English release notes text"
     }
 ]
 ```
