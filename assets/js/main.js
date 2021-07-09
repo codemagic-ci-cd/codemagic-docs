@@ -170,11 +170,10 @@ $(document).ready(function () {
         await sendEvent('page_viewed')
 
         $(document).bind('copy', async function () {
-            const selectedText = document.getSelection()?.toString()
-            if (selectedText) await sendEvent('text_copied', selectedText)
+            await sendEvent('text_copied')
         })
 
-        async function sendEvent(eventName, eventValue) {
+        async function sendEvent(eventName) {
             try {
                 await fetch('{{ site.Param "backendURL" }}/analytics', {
                     mode: 'cors',
@@ -185,9 +184,8 @@ $(document).ready(function () {
                     credentials: 'include',
                     body: JSON.stringify({
                         site: window.location.host,
-                        page_url: window.location.href,
+                        page_url: window.location.pathname,
                         event_name: eventName,
-                        event_value: eventValue,
                     }),
                 })
             } catch (error) {
