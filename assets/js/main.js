@@ -151,6 +151,7 @@ $(document).ready(function () {
                 window.auth._id = json.user._id
                 $('[data-js-header-auth-user]').addClass('transition-in')
                 $('[data-js-header-user-avatar]').html('<img src="' + auth.avatarUrl + '" alt=""/>')
+                setAnalyticsEvents()
             } else {
                 window.loggedIn = false
                 $('[data-js-header-auth-visitor]').addClass('transition-in')
@@ -163,6 +164,34 @@ $(document).ready(function () {
         setTimeout(function () {
             $('[data-js-header-auth-loading-grey-line]').hide()
         }, 1000)
+    }
+
+    async function setAnalyticsEvents() {
+        await sendEvent('page_viewed')
+
+        $(document).bind('copy', async function () {
+            await sendEvent('text_copied')
+        })
+
+        async function sendEvent(eventName) {
+            try {
+                await fetch('{{ site.Param "backendURL" }}/analytics', {
+                    mode: 'cors',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        site: window.location.host,
+                        page_url: window.location.pathname,
+                        event_name: eventName,
+                    }),
+                })
+            } catch (error) {
+                console.error(error)
+            }
+        }
     }
 
     $('[data-js-header-auth-logout]').on('click', userLogout)
