@@ -187,7 +187,7 @@ $(document).ready(function () {
                         site: window.location.host,
                         page_url: window.location.href,
                         event_name: eventName,
-                        eventValue: eventValue,
+                        event_value: eventValue,
                     }),
                 })
             } catch (error) {
