@@ -39,7 +39,7 @@ For App Store Connect supported languages and codes are listed [here](https://de
         },
         {
             "language": "en-US",
-            "text": "The US Engish release notes text"
+            "text": "The US English release notes text"
         }
     ]
     ```
