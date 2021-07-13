@@ -47,7 +47,7 @@ This example shows how to set up code signing using Gradle.
   }
   ...
 ```
-2. Add your keystore and keystore details in the [`environment`](../getting-started/yaml#environment) section of the configuration file. [Encrypt](../building/encrypting/#encrypting-sensitive-data) your keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) and set the encrypted values to the following environment variables. Note that when encrypting files via the UI, they will be base64 encoded and would have to be decoded during the build.
+2. Add your keystore and keystore details in the [`environment`](../getting-started/yaml#environment) section of the configuration file. [Encrypt](../building/encrypting/#encrypting-sensitive-data) your keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) and set the encrypted values to the following environment variables. Note that encrypting files requires you to base64 encode them locally and decode them during the build.
 
 ```yaml
 environment:

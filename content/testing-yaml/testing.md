@@ -1,5 +1,5 @@
 ---
-title: Testing
+title: Running tests
 description: How to run tests with codemagic.yaml
 weight: 1
 aliases:
@@ -8,8 +8,76 @@ aliases:
 
 Test scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
 
-You can display test results visually in the build overview if you use expanded form of the script in `codemagic.yaml`.
-Just include the `test_report` field with a glob pattern matching the test result file location. Supported test report formats are [Junit XML](https://llg.cubic.org/docs/junit/) `.JSON` for Flutter's `--machine` report.
+You can display test results visually in the build overview if you use an expanded form of the script in `codemagic.yaml`. Just include the `test_report` field with a glob pattern matching the test result file location. Supported test report formats are [Junit XML](https://llg.cubic.org/docs/junit/) and `.JSON` for Flutter's `--machine` report.
+
+For instructions on testing your app on real devices in Firebase Test Lab, refer [here](./firebase-test-lab).
+
+## Flutter unit tests
+
+    flutter test
+
+**Tip:** you can display Flutter test results visually in the build overview if you use expanded form of the script in codemagic.yaml.
+Just include the `test_report` field with a glob pattern matching the test result file location:
+
+```yaml
+scripts:
+  - echo 'previous step'
+  - name: Unit tests
+    script: |
+      mkdir -p test-results
+      flutter test --machine > test-results/flutter.json
+    test_report: test-results/flutter.json
+```
+
+## Flutter integration tests
+
+The `integration_test` dependency allows you to run integration tests on a real device or emulator. Android application tests can be run on an Android emulator, iOS application tests can be run on an iOS simulator, and web application tests can be run on a web browser driver.
+
+**Tip:** It is also possible to use `flutter test` to run integration tests using the `integration_test` dependency. When using `flutter test` instead of `flutter drive` it is possible to generate machine readable output using the `--machine` flag, hence the results can be displayed in the UI. Just include the `test_report` field with a glob pattern matching the test result file location:
+
+```yaml
+scripts:
+  - echo 'previous step'
+  - name: Integration tests
+    script: |
+      mkdir -p test-results
+      flutter -d emulator-5554 test --machine > test-results/flutter.json integration_test # for iOS use: -d iPhone
+    test_report: test-results/flutter.json
+```
+
+### Running iOS/Android application tests on a mobile simulator/emulator
+
+```bash
+flutter emulators --launch apple_ios_simulator             # for android use: flutter emulators --launch emulator
+flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d iPhone  # for android use: -d emulator-5554 
+```
+
+### Running web application tests on a web browser driver
+
+Chrome
+
+```yaml
+scripts:
+  - echo 'previous step'
+  - name: 'Flutter integration test for web'
+    script: |
+      chromedriver --port=4444 &
+      flutter config --enable-web
+      flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d web-server --release --browser-name chrome
+```
+
+Safari
+
+```yaml
+scripts:
+  - echo 'previous step'
+  - name: 'Flutter integration test for web'
+    script: |
+      sudo safaridriver --enable
+      safaridriver --port 4444 &
+      flutter config --enable-web
+      flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d web-server --release --browser-name safari
+```
 
 ## React Native Unit Tests using Jest
 
@@ -51,7 +119,7 @@ yarn test
 
 In React Native, 3rd party modules are oftentimes published as **untranspiled**. Since all files inside `node_modules` are not transformed by default, Jest will not understand the code in these modules, resulting in syntax errors. To overcome this, you need to use `transformIgnorePatterns` to allow transpiling such modules.
 
-Below is a configuration for the same which needs to be specficied in `package.json`:
+Below is a configuration for the same which needs to be specified in `package.json`:
 
 ```json
 "jest": {
@@ -178,6 +246,20 @@ workflows:
   ...
 ```
 
+## Native iOS
+
+```bash
+- name: iOS test
+  script: |
+    xcode-project run-tests \
+        --workspace MyAwesomeApp.xcworkspace \
+        --scheme MyAwesomeApp \
+        --device "iPhone 11"
+  test_report: build/ios/test/*.xml
+```
+
+Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
+
 ## Native Android
 
 For non-UI tests or unit tests:
@@ -204,77 +286,4 @@ For UI tests (also known as instrumented tests):
   test_report: app/build/outputs/androidTest-results/connected/*.xml
 ```
 
-**Tip**: you can save the emulator log with the `adb logcat -d > emulator.log` command.
-
-## Native iOS
-
-```bash
-- name: iOS test
-    script: |
-    xcode-project run-tests \
-        --workspace MyAwesomeApp.xcworkspace \
-        --scheme MyAwesomeApp \
-        --device "iPhone 11"
-    test_report: build/ios/test/*.xml
-```
-
-Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
-
-## Flutter unit tests
-
-    flutter test
-
-**Tip:** you can display Flutter test results visually in the build overview if you use expanded form of the script in codemagic.yaml.
-Just include the `test_report` field with a glob pattern matching the test result file location:
-
-```yaml
-scripts:
-  - echo 'previous step'
-  - name: Unit tests
-    script: |
-      mkdir -p test-results
-      flutter test --machine > test-results/flutter.json
-    test_report: test-results/flutter.json
-```
-
-## Flutter integration tests
-
-The `flutter_driver` dependency allows you to run integration tests on a real device or emulator. Android application tests can be run on an Android emulator, iOS application tests can be run on an iOS simulator, and web application tests can be run on a web browser driver.
-
-### Running iOS/Android application tests on a mobile simulator/emulator
-
-```bash
-flutter emulators --launch apple_ios_simulator             # for android use: flutter emulators --launch emulator
-flutter drive --target=test_driver/my_drive_target.dart
-```
-
-### Running web application tests on a web browser driver
-
-Chrome
-
-```yaml
-scripts:
-  - echo 'previous step'
-  - name: 'Flutter drive web test'
-    script: |
-      chromedriver --port=4444 &
-      flutter config --enable-web
-      flutter drive --target=test_driver/button_pressing.dart -d chrome --browser-name chrome --release
-```
-
-Safari
-
-```yaml
-scripts:
-  - echo 'previous step'
-  - name: 'Flutter drive web test'
-    script: |
-      sudo safaridriver --enable
-      safaridriver --port 4444 &
-      flutter config --enable-web
-      flutter drive --target=test_driver/button_pressing.dart --browser-name safari --release
-```
-
-{{<notebox>}}
-Flutter for web is available in Flutter version **2.0.0** or higher on the **stable** channel.
-{{</notebox>}}
+**Tip**: you can save the emulator log with the `adb logcat -d > emulator.log` command

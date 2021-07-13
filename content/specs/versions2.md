@@ -3,7 +3,7 @@ description: A list of tools available out-of-the-box on Codemagic build machine
 title: macOS build machine specification (Xcode 12.0 - 12.4)
 aliases:
   - '../releases-and-versions/versions2'
-weight: 3
+weight: 4
 ---
 
 ## Hardware
@@ -15,7 +15,7 @@ weight: 3
 
 - System version `macOS 10.15.5 (19F101)`
 - Kernel version `Darwin 19.5.0`
-- Disk `322GB (Free Space: 29GB)`
+- Disk `322GB (Free Space: 28GB)`
 
 ## Pre-installed tools
 
@@ -28,11 +28,13 @@ weight: 3
 - docker `20.10.2`
 - fastlane `2.172.0`
 - firebase `8.10.0`
-- flutter `2.2.0 ($HOME/programs/flutter)`
+- flutter `2.2.3 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.30.0`
-- gradle `6.1.1`
+- Google Cloud SDK `310.0.0`
+- gradle `6.7.1`
+- gsutil `4.53`
 - homebrew `3.1.0`
 - ionic `5.4.16`
 - jq
@@ -64,10 +66,10 @@ weight: 3
 
 ## Java versions
 
-- **15**: version `15.0.1`, JVM `Zulu 15.28.51`
-- **11**: version `11.0.9.1`, JVM `Zulu 11.43.55`
-- **1.8**: version `1.8.0_275`, JVM `Zulu 8.50.0.51`
-- **1.7**: version `1.7.0_285`, JVM `Zulu 7.42.0.51`
+- **15.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-15.jdk/Contents/Home`
+- **11.0.9.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_275** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **1.7.0_285** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
 ## Xcode 12.4 (12D4e)
 

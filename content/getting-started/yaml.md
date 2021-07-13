@@ -26,7 +26,7 @@ workflows:
   hello-world:
     name: Hello world workflow
     scripts:
-        - echo "Hello world!"
+        - echo "Hello World!"
 ```
 
 The scripts in the `scripts` section will be run right after the repository is cloned.
@@ -186,7 +186,7 @@ environment:
   node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
   npm: 6.13.7       # Define default, latest, next, lts or version
   ndk: r21d         # Define default or revision (e.g. r19c)
-  java: 1.8         # Define default, or platform version (e.g. 11). The default platform version is 1.8
+  java: 1.8         # Define default, or platform version (e.g. 11)
   ruby: 2.7.2       # Define default or version
 ```
 
@@ -254,7 +254,7 @@ triggering:
   tag_patterns:                 # Include or exlude watched tag labels
     - pattern: '*'
       include: true
-    - pattern: exluded-tag
+    - pattern: excluded-tag
       include: false
     - pattern: included-tag
       include: true
@@ -317,6 +317,7 @@ publishing:
     recipients:
       - name@example.com
   scripts:
+    name: Check for apk
     script: |
       apkPath=$(find build -name "*.apk" | head -1)
       if [[ -z ${apkPath} ]]
@@ -381,7 +382,7 @@ In this case, build would be skipped if there were changes only to Markdown file
 
 Note that `codemagic.yaml` is always included in the changeset by default.
 
-Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value would defalut to `'.'`. The `excludes` key defaults to no exlusions.
+Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value would default to `'.'`. The `excludes` key defaults to no exclusions.
 
 If you use a monorepo, each workflow could be responsible for building a part of your application. Use conditional workflow triggering and specify the path to the application in the changeset as in the example below.
 

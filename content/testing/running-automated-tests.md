@@ -30,7 +30,6 @@ There are several options for running integration tests during the build. You ca
 
 * iOS simulator (selected by default)
 * Android emulator
-* [AWS Device Farm](./aws) --- enables to run tests on physical Android and iOS devices. Requires an AWS account and additional setup.
 
 Devices available on the machine are:
 
@@ -57,6 +56,12 @@ flutter emulators --launch emulator
 
 {{</notebox>}}
 
+It is also possible to use `flutter test` to run integration tests using the `integration_test` dependency. When using `flutter test integration_test` instead of `flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart`, it is possible to generate machine-readable output, and the results will be displayed in the UI once the tests have been completed. To do so, add `test integration_test` under `Flutter drive arguments` in the **Flutter workflow editor**.
+
 ### Stop build if tests fail
 
 Selecting the **Stop build if tests fail** option will stop the build after finishing all the enabled tests when any of the tests fail. Such builds will have the status "failed".
+
+### Running tests in Firebase Test Lab
+
+Integration tests can also be run on real devices in Firebase Test Lab when using the [integration_test](https://github.com/flutter/flutter/tree/master/packages/integration_test) package and custom scripts in Codemagic. See a detailed guide on how to set up testing in Firebase Test Lab [here](https://blog.codemagic.io/codemagic-flutter-integration-tests-firebase-test-lab/).

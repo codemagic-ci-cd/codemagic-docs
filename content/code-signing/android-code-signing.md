@@ -34,7 +34,7 @@ As a keystore can hold multiple keys, each key in it must have an **alias**. Bot
 You can create a keystore for signing your release builds with the Java Keytool utility by running the following command:
 
 ```bash
-keytool -genkey -v -keystore keystore_name.jks -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+keytool -genkey -v -keystore keystore_name.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias alias_name
 ```
 
 Keytool then prompts you to enter your personal details for creating the certificate, as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **keystore_name.jks** in the directory you're in. The key is valid for 10,000 days.
@@ -91,7 +91,7 @@ android {
 
 You are required to upload your keystore file and provide details about your key in order to receive signed builds on Codemagic.
 
-1. Navigate to the **Publish** section in app settings.
+1. Navigate to the **Distribution** section in app settings.
 2. Click **Android code signing**.
 3. Upload your release keystore file.
 4. Enter the **keystore password**, **key alias** and **key password**.

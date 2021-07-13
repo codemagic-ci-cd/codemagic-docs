@@ -8,6 +8,10 @@ weight: 1
 
 ## May 2021
 
+### Webhooks monitor
+
+We added a Webhooks tab to the application settings page. Here you can view a list of all webhooks received for your application, the webhook request and response,  a description of which workflows were built or skipped because of the processed webhook, and a button for automatically creating a webhook in your application's Git provider (if added via GitHub, Bitbucket, GitLab).
+
 ### Working directory in codemagic.yaml
 
 You can specify a working directory for an entire workflow or for an individual build step script in codemagic.yaml. This can either be an absolute path or relative to the clone directory. Refer to the [docs](../getting-started/yaml/#working-directory) for example usage.
