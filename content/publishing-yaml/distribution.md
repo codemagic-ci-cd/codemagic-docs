@@ -206,9 +206,9 @@ Android
 ```yaml
 publishing:
   firebase:
-    firebase_token: Encrypted(...) # add your encrypted firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
     android:
-      groups: # add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
+      groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
         - androidTesters
         - ...
 ```
@@ -218,9 +218,9 @@ iOS
 ```yaml
 publishing:
   firebase:
-    firebase_token: Encrypted(...) # add your encrypted firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
     ios:
-      groups: # add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
+      groups: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
         - iosTesters
         - ...
 ```
@@ -230,12 +230,12 @@ Android and iOS
 ```yaml
 publishing:
   firebase:
-    firebase_token: Encrypted(...) # add your encrypted firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
     android:
-      groups: # add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
+      groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
         - androidTesters
         - ...
-    ios: # add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
+    ios: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
       groups:
         - iosTesters
         - ...
