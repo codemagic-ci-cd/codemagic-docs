@@ -199,7 +199,7 @@ echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleSe
 
 ### Publishing an app to Firebase App Distribution
 
-Codemagic enables you to automatically publish your iOS or Android app to [Firebase Console](https://console.firebase.google.com/). Codemagic uses your **Firebase token** for authentication with Firebase App Distribution. To retrieve the token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
+Codemagic enables you to automatically publish your iOS or Android app to [Firebase Console](https://console.firebase.google.com/). Codemagic uses your **Firebase token** for authentication with Firebase App Distribution. To retrieve the token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems). For distributing an iOS application to Firebase App Distribution, your application must use a development, Ad Hoc or Enterprise distribution profile.
 
 Make sure to [encrypt](https://docs.codemagic.io/building/encrypting/) your Firebase token. It is possible to add the encrypted token directly under publishing or save it to the `FIREBASE_TOKEN` environment variable and reference it under publishing.
 
