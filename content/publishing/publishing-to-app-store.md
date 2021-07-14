@@ -59,7 +59,7 @@ If you work with multiple Apple Developer teams, you can add additional keys by 
 
 Once the Apple Developer Portal has been enabled for the account or team the app belongs to, you can easily enable App Store Connect publishing per workflow.
 
-1. Navigate to the Publish section in app settings **App settings > Distribution**.
+1. Navigate to **App settings > Distribution**.
 2. Click **App Store Connect**.
 3. If you have several keys available, select the right key in the **App Store Connect API key** field.
 4. Mark the **Submit to TestFlight** checkbox to automatically enroll your build to beta testers.  
