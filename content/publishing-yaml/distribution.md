@@ -197,39 +197,53 @@ echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/goo
 echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
 ```
 
-### Publishing an app using Firebase CLI
+### Publishing an app to Firebase App Distribution
 
-Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
+Codemagic enables you to automatically publish your iOS or Android app to [Firebase Console](https://console.firebase.google.com/). Codemagic uses your **Firebase token** for authentication with Firebase App Distribution. To retrieve the token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
+
+Make sure to [encrypt](https://docs.codemagic.io/building/encrypting/) your Firebase token. It is possible to add the encrypted token directly under publishing or save it to the `FIREBASE_TOKEN` environment variable and reference it under publishing.
 
 Android
 
 ```yaml
-- name: Publish the app to Firebase App Distribution
-  script: |
-    apkPath=$(find build -name "*.apk" | head -1)
-    if [[ -z ${apkPath} ]]
-    then
-      echo "No apks were found, skip publishing to Firebase App Distribution"
-    else
-      echo "Publishing $apkPath to Firebase App Distribution"
-      firebase appdistribution:distribute --app <your_android_application_firebase_id> --groups <your_android_testers_group> $apkPath
-    fi
+publishing:
+  firebase:
+    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    android:
+      groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
+        - androidTesters
+        - ...
 ```
 
 iOS
 
 ```yaml
-- name: Publish the app to Firebase App Distribution
-  script: |
-    ipaPath=$(find build -name "*.ipa" | head -1)
-    if [[ -z ${ipaPath} ]]
-    then
-      echo "No ipas were found, skip publishing to Firebase App Distribution"
-    else
-      echo "Publishing $ipaPath to Firebase App Distribution"
-      firebase appdistribution:distribute --app <your_ios_application_firebase_id> --groups <your_ios_testers_group> $ipaPath
-    fi
+publishing:
+  firebase:
+    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    ios:
+      groups: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
+        - iosTesters
+        - ...
 ```
+
+Android and iOS
+
+```yaml
+publishing:
+  firebase:
+    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    android:
+      groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
+        - androidTesters
+        - ...
+    ios: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
+      groups:
+        - iosTesters
+        - ...
+```
+
+If you wish to pass release notes with your build, create a `release_notes.txt` file and add it to the project working directory, which is either the repository root directory or the Project path specified in the Build section in your workflow settings. Codemagic will fetch the content of that file and publish it with the build.
 
 ### Publishing an app with Fastlane
 
