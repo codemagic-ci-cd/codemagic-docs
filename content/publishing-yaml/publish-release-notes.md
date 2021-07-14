@@ -12,13 +12,14 @@ Release notes can be published to:
 * **Slack**. The release notes will be included in the Slack notification of a successful build if you have publishing to Slack configured in the `publishing` section of your workflow.
 * **App Store Connect**. The release notes will be published to the What to Test field in TestFlight if you have publishing to App Store Connect configured in the `publishing` section of your workflow.
 * **Google Play**. The release notes will be published to Google Play Console if you have publishing to Google Play configured in the `publishing` section of your workflow.
+* **Firebase App Distribution**. The release notes will be published to Firebase console if you have publishing to Firebase App Distribution configured in the `publishing` section of your workflow.
 
 ## Setting up release notes
 
 There are three supported options to set up release notes:
 
 1. Create a `release_notes.txt` file and add it to your project working directory, which is either the repository root directory or the `working_directory` specified in the root of your workflow configuration. Codemagic will fetch the content of that file and publish it with the build.
-    * For email and Slack it will be published as is.
+    * For email, Slack and Firebase it will be published as is.
     * For Google Play it will be published under `en-US` language localization code.
 
 {{<notebox>}}
@@ -46,5 +47,5 @@ For App Store Connect supported languages and codes are listed [here](https://de
 
    Add this file to your project working directory, which is either the repository root directory or the `working_directory` specified in the root of your workflow configuration. Notes with missing `language` or `text` fields will not be taken into account.
 
-    * Release notes with `en-US` language code will be published to email and Slack, given that a file with `en-US` language code exists. If not, the first release notes will be published.
+    * Release notes with `en-US` language code will be published to email, Slack and Firebase, given that a file with `en-US` language code exists. If not, the first release notes will be published.
     * For both App Store Connect and Google Play, only the release notes with the supported language codes will be published, omitting language codes that are not supported.
