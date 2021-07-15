@@ -98,7 +98,7 @@ workflows:
     scripts:
       - ...
     artifacts:
-      - build/**/outputs/**/*.aab
+      - build/**/outputs/bundle/**/*.aab
     publishing:
       email:
         recipients:
@@ -290,8 +290,8 @@ Configure the paths and names of the artifacts you would like to use in the foll
 
 ```yaml
 artifacts:
-  - build/**/outputs/**/*.apk                   # relative path for a project in root directory
-  - subfolder_name/build/**/outputs/**/*.apk    # relative path for a project in subfolder
+  - build/**/outputs/apk/**/*.apk                   # relative path for a project in root directory
+  - subfolder_name/build/**/outputs/apk/**/*.apk    # relative path for a project in subfolder
   - build/**/outputs/**/*.aab
   - build/**/outputs/**/mapping.txt
   - build/ios/ipa/*.ipa
