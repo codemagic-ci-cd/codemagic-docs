@@ -30,5 +30,6 @@ Note that:
 
 * if your app uses Firebase services, you need to upload the Firebase configuration files to Codemagic, see the instructions [here](../knowledge-base/load-firebase-configuration/); 
 * if no suitable artifacts are found, publishing to Firebase App Distribution is skipped.
+* release notes can be published with the build if you have added them to your repository, read more [here](./publish-release-notes).
 
 {{</notebox>}}
