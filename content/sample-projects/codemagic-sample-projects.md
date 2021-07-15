@@ -34,6 +34,9 @@ For further information on how configure the **codemagic.yaml** for your project
 ### Integrations 
 * [Jira integation sample](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/jira_integration_demo_project)
 
+### Publishing and Distribution
+* [Firebase App Distribution](https://github.com/icarusdust/codemagic_firebase_app_distribution_yaml)
+
 ### YAML Samples
 * [YAML anchors and aliases sample](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/yaml/yaml_anchors_aliases_sample)
 
