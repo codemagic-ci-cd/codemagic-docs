@@ -12,9 +12,9 @@ This guide only applies to workflows configured with the **Flutter workflow edit
 
 ## Requirements
 
-* [Add Firebase to your Flutter project](https://firebase.google.com/docs/flutter/setup?platform=ios)
+* [Add Firebase to your Flutter project](https://firebase.google.com/docs/flutter/setup)
 * Generate a [Firebase token](https://firebase.google.com/docs/cli#cli-ci-systems) locally
-* Set up [iOS code signing](../code-signing/ios-code-signing). An Ad Hoc or Enterprise distribution profile is required to distribute the app outside your development team.
+* Set up [iOS code signing](../code-signing/ios-code-signing). Note that an Ad Hoc or Enterprise distribution profile is required to distribute the app outside your development team.
 * Set up [Android code signing](../code-signing/android-code-signing). If you do not set up code signing, the artifact will be signed with a debug keystore from Codemagic build machine.
 
 ## Enabling publishing to Firebase App Distribution
@@ -22,14 +22,16 @@ This guide only applies to workflows configured with the **Flutter workflow edit
 1. Navigate to **App settings > Distribution > Firebase App Distribution**.
 2. Enter your **Firebase token**.
 3. Provide the **Firebase app ID** for Android and/or iOS. Note that the fields for Android or iOS configuration are displayed conditionally based on the selected build platforms at the top of the page.
-4. Enter the name(s) of the **tester groups** to whom you want to distribute your Android or iOS app. The field is case-sensitive. To enter multiple groups, separate them with a comma.
-5. Select **Enable publishing to Firebase App Distribution** at the top of the section to enable publishing.
+4. Enter the name(s) of the **tester groups** to whom you want to distribute your Android or iOS app. The field is case-sensitive. To enter multiple groups, separate them with a comma or a space, or press Enter after each value.
+5. Select **Publish even if tests fail** to upload the artifacts even when one or more tests have failed.
+6. Finally, select **Enable publishing to Firebase App Distribution** at the top of the section to enable publishing.
 
 {{<notebox>}}
 Note that:
 
 * if your app uses Firebase services, you need to upload the Firebase configuration files to Codemagic, see the instructions [here](../knowledge-base/load-firebase-configuration/); 
-* if no suitable artifacts are found, publishing to Firebase App Distribution is skipped.
+* if no suitable artifacts are found, publishing to Firebase App Distribution is skipped;
+* each uploaded binary must have a different version to appear in the Firebase console, see how to [increment build version](../building/build-versioning/);
 * release notes can be published with the build if you have added them to your repository, read more [here](./publish-release-notes).
 
 {{</notebox>}}
