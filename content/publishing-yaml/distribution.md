@@ -240,9 +240,9 @@ publishing:
       groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
         - androidTesters
         - ...
-    ios: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
+    ios:
       app_id: x:xxxxxxxxxxxx:ios:xxxxxxxxxxxxxxxxxxxxxx # Add your iOS app id retrieved from Firebase console
-      groups:
+      groups: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
         - iosTesters
         - ...
 ```
