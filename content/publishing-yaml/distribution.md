@@ -210,6 +210,7 @@ publishing:
   firebase:
     firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
     android:
+      app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx # Add your Android app id retrieved from Firebase console
       groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
         - androidTesters
         - ...
@@ -222,6 +223,7 @@ publishing:
   firebase:
     firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
     ios:
+      app_id: x:xxxxxxxxxxxx:ios:xxxxxxxxxxxxxxxxxxxxxx # Add your iOS app id retrieved from Firebase console
       groups: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
         - iosTesters
         - ...
@@ -234,10 +236,12 @@ publishing:
   firebase:
     firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
     android:
+      app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx # Add your Android app id retrieved from Firebase console
       groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
         - androidTesters
         - ...
     ios: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
+      app_id: x:xxxxxxxxxxxx:ios:xxxxxxxxxxxxxxxxxxxxxx # Add your iOS app id retrieved from Firebase console
       groups:
         - iosTesters
         - ...
