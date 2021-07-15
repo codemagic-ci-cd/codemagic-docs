@@ -36,6 +36,8 @@ For further information on how configure the **codemagic.yaml** for your project
 
 ### Publishing and Distribution
 * [Firebase App Distribution](https://github.com/icarusdust/codemagic_firebase_app_distribution_yaml)
+* [App Store Connect](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ios/ios-automatic-code-signing-demo-project)
+* [Google Play](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/android/android-espresso-demo-project)
 
 ### YAML Samples
 * [YAML anchors and aliases sample](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/yaml/yaml_anchors_aliases_sample)
