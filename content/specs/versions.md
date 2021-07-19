@@ -27,7 +27,7 @@ weight: 5
 - curl
 - docker `19.03.8`
 - fastlane `2.157.3`
-- firebase `7.6.2`
+- firebase `9.3.0`
 - flutter `2.2.3 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - gh `1.8.1`
