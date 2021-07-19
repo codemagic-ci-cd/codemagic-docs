@@ -2,7 +2,7 @@
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: Linux build machine specification
 aliases:
-  - '../releases-and-versions/versions-linux'
+  - "../releases-and-versions/versions-linux"
 weight: 6
 ---
 
@@ -53,13 +53,13 @@ weight: 6
 
 - **emulator**
 
-    - Device: `pixel_4 (Google)`
-    - Path: `/home/builder/.android/avd/emulator.avd`
-    - Target: `Google Play (Google Inc.)`
-    - Based on: `Android 10.0 (Q)`
-    - Tag/API: `google_apis_playstore/x86`
-    - Skin: `pixel_4`
-    - Sdcard: `512M`
+  - Device: `pixel_4 (Google)`
+  - Path: `/home/builder/.android/avd/emulator.avd`
+  - Target: `Google Play (Google Inc.)`
+  - Based on: `Android 10.0 (Q)`
+  - Tag/API: `google_apis_playstore/x86`
+  - Skin: `pixel_4`
+  - Sdcard: `512M`
 
 ## Java versions
 
