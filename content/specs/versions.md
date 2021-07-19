@@ -2,7 +2,7 @@
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 11.x)
 aliases:
-  - '../releases-and-versions/versions'
+  - "../releases-and-versions/versions"
 weight: 5
 ---
 
@@ -27,7 +27,7 @@ weight: 5
 - curl
 - docker `19.03.8`
 - fastlane `2.157.3`
-- firebase `9.3.0`
+- firebase `7.6.2`
 - flutter `2.2.3 ($HOME/programs/flutter)`
 - gem `3.0.3`
 - gh `1.8.1`
@@ -56,13 +56,13 @@ weight: 5
 
 - **emulator**
 
-    - Device: `pixel_2 (Google)`
-    - Path: `/Users/builder/.android/avd/emulator.avd`
-    - Target: `Google APIs (Google Inc.)`
-    - Based on: `Android 9.0 (Pie)`
-    - Tag/API: `google_apis/x86`
-    - Skin: `pixel_2`
-    - Sdcard: `512M`
+  - Device: `pixel_2 (Google)`
+  - Path: `/Users/builder/.android/avd/emulator.avd`
+  - Target: `Google APIs (Google Inc.)`
+  - Based on: `Android 9.0 (Pie)`
+  - Tag/API: `google_apis/x86`
+  - Skin: `pixel_2`
+  - Sdcard: `512M`
 
 ## Java versions
 
@@ -73,8 +73,8 @@ weight: 5
 
 ## Xcode 11.7 (11E801a)
 
-This is the Xcode version used by default when you select `11.7` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `11.7` in your codemagic.yaml file. 
+This is the Xcode version used by default when you select `11.7` in build settings in the workflow
+editor for Flutter apps or set Xcode version to `11.7` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-11.7.app`
@@ -161,4 +161,3 @@ With Xcode `11.7` build version `11E801a` the following runtimes and devices are
 - 11.2.1 (11B500) `/Applications/Xcode-11.2.1.app`
 - 11.1 (11A1027) `/Applications/Xcode-11.1.app`
 - 11.0 (11A420a) `/Applications/Xcode-11.app`
-
