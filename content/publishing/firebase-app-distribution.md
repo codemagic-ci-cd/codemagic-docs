@@ -22,7 +22,7 @@ This guide only applies to workflows configured with the **Flutter workflow edit
 1. Navigate to **App settings > Distribution > Firebase App Distribution**.
 2. Enter your **Firebase token**.
 3. Provide the **Firebase app ID** for Android and/or iOS. Note that the fields for Android or iOS configuration are displayed conditionally based on the selected build platforms at the top of the page.
-4. Enter the name(s) of the **tester groups** to whom you want to distribute your Android or iOS app. The field is case-sensitive. To enter multiple groups, separate them with a comma or a space, or press Enter after each value.
+4. Enter the alias(es) of the **tester groups** to whom you want to distribute your Android or iOS app. To enter multiple groups, separate them with a comma or a space, or press Enter after each value.
 5. Select **Publish even if tests fail** to upload the artifacts even when one or more tests have failed.
 6. Finally, select **Enable publishing to Firebase App Distribution** at the top of the section to enable publishing.
 
