@@ -21,4 +21,4 @@ Here is how you can upload Xcode debugging symbols file to Firebase Crashlytics
   fi
   ```
 
-Add this script to either your configuration file or in your post-publish script in the Flutter workflow editor to locate and upload dsym files to Firebase Crashlytics.
+Add this script either to your configuration file or in your post-publish script in the Flutter workflow editor to locate and upload dSYM files to Firebase Crashlytics.

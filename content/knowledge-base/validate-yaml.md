@@ -6,9 +6,9 @@ weight: 7
 
 Using the Codemagic JSON schema, you can validate your `codemagic.yaml` for structure and syntax errors right in your IDE. The same level of validation is carried out on the frontend in the YAML editor in your project settings. 
 
-The JSON schema does not validate the maximum build duration value, software version values, credentials, environment variable values or whether you have access to any paid features.
+The JSON schema does not validate the maximum build duration value, software version values, credentials, environment variable values, or whether you have access to any paid features.
 
-Codemagic JSON schema is available out of the box in the IDEs that are integrated with [schemastore.org](http://schemastore.org/), e.g. Android Studio and Visual Studio Code.
+Codemagic JSON schema is available out of the box in the IDEs integrated with [schemastore.org](http://schemastore.org/), e.g. Android Studio and Visual Studio Code.
 
 If your IDE does not have the Codemagic JSON schema available by default, you can set up validation manually. To do so:
 

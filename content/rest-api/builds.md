@@ -10,7 +10,7 @@ APIs for managing builds are currently available for developers to preview. Duri
 `POST /builds`
 
 {{<notebox>}}
-Note that when starting builds from an API request, the workflow and branch information is passed with the curl request and any configuration related to triggers or branches in Flutter workflow editor or in codemagic.yaml is ignored.
+Note that the workflow and branch information is passed with the curl request when starting builds from an API request. Any configuration related to triggers or branches in Flutter workflow editor or codemagic.yaml is ignored.
 {{</notebox>}}
 
 ### Parameters

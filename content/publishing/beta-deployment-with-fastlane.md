@@ -12,7 +12,7 @@ If your Flutter app has an existing *fastlane* setup for beta deployment, you ca
 ```bash
 #!/usr/bin/env bash
 
-set -e # exit on first failed command
+set -e # exit on the first failed command
 set -x # print all executed commands to the log
 
 if [ "$FCI_BUILD_STEP_STATUS" = "success" ]
@@ -23,4 +23,4 @@ then
         bundle exec fastlane beta
 fi
 ```
-Now, whenever your workflow is built successfully, your app is published to the beta testing services specified in your *beta* lane.
+Now, your app is published to the beta testing services specified in your *beta* lane whenever your workflow is built successfully.

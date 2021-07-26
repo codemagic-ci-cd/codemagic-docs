@@ -18,8 +18,8 @@ Release notes can be published to:
 
 There are three supported options to set up release notes:
 
-1. Create a `release_notes.txt` file and add it to the project working directory, which is either the repository root directory or the **Project path** specified in the **Build** section in your workflow settings. Codemagic will fetch the contents of that file and publish it with the build.
-    * For email, Slack and Firebase App Distribution, the releaser notes will be published as is.
+1. Create a `release_notes.txt` file and add it to the project working directory, which is either the repository root directory or the **Project path** specified in the **Build** section in your workflow settings. Codemagic will fetch the content of that file and publish it with the build when it's present.
+    * For email, Slack and Firebase App Distribution, the release notes will be published as is.
     * For Google Play, the release notes will be published under the `en-US` language localization code.
 
 {{<notebox>}}
@@ -27,7 +27,8 @@ For App Store Connect, supported languages and codes are listed [here](https://d
 {{</notebox>}}
 
 2. Create a `release_notes_<language_localization_code>.txt` file for every language used, e.g. `release_notes_en-GB.txt`, `release_notes_it.txt`, and add them to the project working directory, which is either the repository root directory or the **Project path** specified in the **Build** section in your workflow settings.
-    * Release notes with the `en-US` language code will be published to email, Slack and Firebase App Distribution in the case a file with the `en-US` language code exists. If not, the first found release notes will be published.
+    * Release notes with the `en-US` language code will be published to email, Slack and Firebase App Distribution in case a file with the `en-US` language code exists. If not, the first found release notes will be published.
+    * For Google Play, all the release notes will be published with corresponding language codes.
     * For both App Store Connect and Google Play, only the release notes with the supported language codes will be published, omitting language codes that are not supported.
 
 3. Create a `release_notes.json` file with the following content:

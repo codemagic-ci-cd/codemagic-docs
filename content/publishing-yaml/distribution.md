@@ -6,15 +6,15 @@ aliases:
     - '../yaml/distribution'
 ---
 
-All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with custom scripts, see the examples below.
+All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play, and App Store Connect. It is also possible to publish elsewhere with custom scripts; see the examples below.
 
 ## Integrations for publishing and notifications
 
-Codemagic has out-of-the-box support for publishing to the services listed below. Read more about each individual integration and see the configuration examples below.
+Codemagic has out-of-the-box support for publishing to the services listed below. Read more about each integration and see the configuration examples below.
 
 ### Email
 
-If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the provided email address(es). If the build fails, an email with a link to build logs will be sent.
+If the build finishes successfully, release notes (if passed), and the generated artifacts will be published to the provided email address(es). If the build fails, an email with a link to build logs will be sent.
 
 If you don't want to receive an email notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
 
@@ -38,7 +38,7 @@ To set up publishing to Slack, you first need to connect your Slack workspace in
 
 ![List of integrations](../uploads/slack_connect.png)
 
-Click **Connect** next to the Slack integration. You will be then redirected to an authorization page. Review the requested permissions and click **Allow** to give Codemagic Slack app access to your Slack workspace and allow it post build status updates and build artifacts (see also our [privacy policy](https://codemagic.io/privacy-policy/)).
+Click **Connect** next to the Slack integration. You will then be redirected to an authorization page. Review the requested permissions and click **Allow** to give Codemagic Slack app access to your Slack workspace and allow it to post build status updates and build artifacts (see also our [privacy policy](https://codemagic.io/privacy-policy/)).
 
 ![Authorization page](../uploads/slack_allow.png)
 
@@ -51,10 +51,10 @@ After you have successfully authorized Codemagic and connected your workspace, y
 The Slack channel for publishing is configured separately for each workflow in the `publishing` section of `codemagic.yaml` (refer [here](../publishing/email-and-slack-notifications/#slack) if you're configuring app settings in the Flutter workflow editor).
 
 {{<notebox>}}
-In order to publish to **private channels**, you need to invite Codemagic app to the channels, otherwise the app does not have access to private channels. To invite Codemagic app to private channels, write `@codemagic` in the channel. If the private channel access is restricted by Slack admin rights, it will have to be changed manually, otherwise publishing to that channel will not be possible.
+In order to publish to **private channels**, you need to invite the Codemagic app to the channels; otherwise, the app does not have access to private channels. To invite Codemagic app to private channels, write `@codemagic` in the channel. If the private channel access is restricted by Slack admin rights, it will have to be changed manually, otherwise publishing to that channel will not be possible.
 {{</notebox>}}
 
-If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the specified channel. If the build fails, a link to the build logs is published. When you set `notify_on_build_start` to `true`, the channel will be notified when a build starts.
+If the build finishes successfully, release notes (if passed), and the generated artifacts will be published to the specified channel. If the build fails, a link to the build logs is published. When you set `notify_on_build_start` to `true`, the channel will be notified when a build starts.
 
 If you don't want to receive a Slack notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
 
@@ -70,9 +70,9 @@ publishing:
 
 ### Google Play
 
-Codemagic enables you to automatically publish your app either to one of the predefined tracks (`internal`, `alpha`, `beta` and `production`) on Google Play, or to your custom closed testing tracks. In order to do so, you will need to set up a service account in Google Play Console and add the `JSON` key file to your Codemagic configuration file, see how to [set up a service account](../knowledge-base/google-play-api/). The proper way to add your keys to `codemagic.yaml` is to [encrypt](../building/encrypting) the contents of the key file and add the encrypted value into the configuration file.
+Codemagic enables you to automatically publish your app either to one of the predefined tracks (`internal`, `alpha`, `beta` and `production`) on Google Play or to your custom closed testing tracks. In order to do so, you will need to set up a service account in Google Play Console and add the `JSON` key file to your Codemagic configuration file; see how to [set up a service account](../knowledge-base/google-play-api/). The proper way to add your keys to `codemagic.yaml` is to [encrypt](../building/encrypting) the key file contents and add the encrypted value into the configuration file.
 
-If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates) Codemagic allows setting the update priority. Otherwise, `in_app_update_priority` can be omitted or set to `0`.
+If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates), Codemagic allows setting the update priority. Otherwise, `in_app_update_priority` can be omitted or set to `0`.
 
 In addition, Codemagic supports [staged releases](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en), allowing users to choose which fraction of the testers or users get access to the application. To release to everyone, omit `rollout_fraction` from codemagic.yaml. 
 
@@ -96,9 +96,9 @@ If your changes are sent to review automatically, but the field is still set to 
 `Changes are sent for review automatically. The query parameter changesNotSentForReview must not be set.`
 {{</notebox>}}
 
-If you are getting a 400 error related to app being in draft status it means you need to promote your draft build to the next level up of testing tracks. Play Console will show you how to do this. You'll need to go through the steps, fill out questionnaires, upload various screen shots and then after approval you can move to the Alpha testing track and Codemagic will publish (publishing builds on Draft status is not supported).
+If you are getting a 400 error related to the app being in draft status, you need to promote your draft build to the next level up of testing tracks. Play Console will show you how to do this. You'll need to go through the steps, fill out questionnaires, upload various screenshots, and then after approval, you can move to the Alpha testing track, and Codemagic will successfully publish (publishing builds on Draft status is not supported).
 
-If you are getting an error related to permissions then it is likely an issue related to the service account that has been created. Go through the steps of creating a service account once more carefully see how to [set up a service account](../knowledge-base/google-play-api/).
+If you are getting an error related to permissions, then it is likely an issue related to the service account that has been created. Go through the steps of creating a service account once more carefully see how to [set up a service account](../knowledge-base/google-play-api/).
 
 {{<notebox>}}
 You can override the publishing track specified in the configuration file using the environment variable `GOOGLE_PLAY_TRACK`. This is useful if you're starting your builds via [Codemagic API](../rest-api/overview/) and want to build different configurations without editing the configuration file.
@@ -150,7 +150,7 @@ Publishing happens only for successful builds triggered on tag creation and is u
       - tag
   ```
 
-4. Add the following script after the build or to publishing scripts that publishes the artifacts with tag builds. Edit the placeholders like your application name and the path to build artifacts to match your setup.
+4. Add the following script after the build or publishing scripts that publish the artifacts with tag builds. Edit the placeholders like your application name and the path to build artifacts to match your setup.
 
     ```bash
     #!/usr/bin/env zsh
@@ -176,8 +176,8 @@ Publishing happens only for successful builds triggered on tag creation and is u
 
 ## Publishing a Flutter package to pub.dev
 
-In order to get publishing permissions, first you will need to log in to pub.dev locally. It can be done with running `pub publish --dry-run`.
-After that `credentials.json` will be generated which you can use to log in without the need of Google confirmation through browser.
+In order to get publishing permissions, first, you will need to log in to pub.dev locally. It can be done by running `pub publish --dry-run`.
+After that, `credentials.json` will be generated, which you can use to log in without the need for Google confirmation through the browser.
 
 `credentials.json` can be found in the pub cache directory (`~/.pub-cache/credentials.json` on MacOS and Linux, `%APPDATA%\Pub\Cache\credentials.json` on Windows)
 
@@ -253,7 +253,7 @@ If you wish to pass release notes with your build, create a `release_notes.txt` 
 
 Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
 
-Before running a lane, you should install Fastlane Firebase app distribution plugin
+Before running a lane, you should install Fastlane Firebase app distribution plugin.
 
 ```yaml
 - name: Install fastlane-plugin-firebase_app_distribution
@@ -326,13 +326,13 @@ Call the `gradlew` task for distribution
 
 {{<notebox>}}
 
-If you didn't specify `serviceCredentialsFile`, you may export it to random location like `/tmp/google-application-credentials.json`
+If you didn't specify `serviceCredentialsFile`, you may export it to a random location like `/tmp/google-application-credentials.json`
 
 ```bash
 echo $GOOGLE_APP_CREDENTIALS | base64 --decode > /tmp/google-application-credentials.json
 ```
 
-And then export the filepath on the gradlew task
+And then export the file path on the gradlew task
 
 ```yaml
 - name: Distribute app to firebase with gradle plugin
@@ -345,7 +345,7 @@ And then export the filepath on the gradlew task
 
 ## Publishing web applications to Firebase Hosting
 
-Publishing web applications to Firebase Hosting With Codemagic publishing to Firebase Hosting is a straight-forward process as the Firebase CLI is already pre-installed on our virtual machines. Please note that before trying to publish to Firebase Hosting, you will have to set it up for your project locally. You can find more information in the official [documentation](https://firebase.google.com/docs/hosting/quickstart) for Firebase.
+Publishing web applications to Firebase Hosting With Codemagic publishing to Firebase Hosting is a straightforward process as the Firebase CLI is already pre-installed on our virtual machines. Please note that you will have to set it up for your project locally before publishing it to Firebase Hosting. You can find more information in the official [documentation](https://firebase.google.com/docs/hosting/quickstart) for Firebase.
 
 1. To get started with adding Firebase Hosting to Codemagic, you will need to obtain your Firebase token. In order to do that, run `firebase login:ci` in your local terminal. 
 2. After running the command, your default browser should prompt for authorization to your Firebase project - when access is granted, the necessary token will appear in your terminal.

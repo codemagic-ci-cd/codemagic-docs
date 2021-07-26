@@ -7,7 +7,7 @@ If your project requires accessing any private Git submodules or dependencies, y
 
 1. [Create an SSH key pair](../knowledge-base/generating-an-ssh-key) for use with Codemagic. Note that the SSH key **cannot** be password-protected.
 2. Add the **public key** to your repository settings. See how to do that on [GitHub](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account), [Bitbucket](https://confluence.atlassian.com/bitbucket/use-access-keys-294486051.html), [GitLab](https://docs.gitlab.com/ee/ssh/README.html#adding-an-ssh-key-to-your-gitlab-account).
-3. Encrypt the contents of the **private key** file and add it as an environment variable in your Codemagic configuration configuration file. . (../building/environment-variables/). Make sure to check **Secure**. For example:
+3. Encrypt the contents of the **private key** file and add it as an [environment variable](../building/environment-variables/) in your Codemagic configuration file. Make sure to check **Secure**. For example:
 
     ```
     SSH_KEY = -----BEGIN OPENSSH PRIVATE KEY-----
@@ -23,7 +23,7 @@ Do not add an environment variable with the `_SSH_KEY` suffix if your repository
 
 ### Using multiple SSH keys
 
-When you add multiple SSH keys, or need to use a different key for private dependencies apart of the one used to clone your repository, git will by default attempt to use the first key available. This may cause problems when installing private dependencies.
+When you add multiple SSH keys or need to use a different key for private dependencies apart from the one used to clone your repository, git will by default attempt to use the first key available. This may cause problems when installing private dependencies.
 
 If you use yaml configuration, explicitly add the key to the SSH agent before invoking a command which requires it, as in the example below.
 
@@ -36,4 +36,4 @@ ssh-add /tmp/ssh_key
 ... # enter the commands that require the key
 ```
 
-But if you added a repository with an SSH key and want to use a different key to fetch dependencies, it's not possible to do in Workflow editor. Scripts are executed in independent shells, so the key explicitly added in a post-clone script will be lost as soon as the script finishes. The best thing to do in such case would be to use the same key for both your repository and your private dependency. You may need to add the key to your account, not to the specific repository.
+But if you added a repository with an SSH key and want to use a different key to fetch dependencies, it's not possible to do in Workflow editor. Scripts are executed in independent shells, so the key explicitly added in a post-clone script will be lost as soon as the script finishes. The best thing to do in such a case would be to use the same key for both your repository and your private dependency. You may need to add the key to your account, not to the specific repository.

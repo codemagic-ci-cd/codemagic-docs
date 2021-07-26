@@ -9,7 +9,7 @@ You can use Codemagic to create a Git tag and push it to your repository.
 
 {{<notebox>}}
 
-Pushing Git tags from Codemagic to repository requires **write access** to the repository. Depending on the Git service and authentication method, Codemagic may not have write access to your repository and you may need to grant it separately in your Git service settings. We recommend that you create a dedicated app password / personal access token for Codemagic.
+Pushing Git tags from Codemagic to your repository requires **write access** to the repository. Depending on the Git service and authentication method, Codemagic may not have write access to your repository, and you may need to grant it separately in your Git service settings. We recommend that you create a dedicated app password / personal access token for Codemagic.
 
 * For repositories hosted on Bitbucket, create an [app password](https://confluence.atlassian.com/bitbucket/app-passwords-828781300.html) with **write** permission for repositories.
 * For repositories hosted on GitHub, create a [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) with **repo** scope.
@@ -24,7 +24,7 @@ Pushing Git tags from Codemagic to repository requires **write access** to the r
   ```bash
   #!/usr/bin/env bash
 
-  set -e # exit on first failed commandset
+  set -e # exit on first failed command
   set -x # print all executed commands to the log
 
   if [ "$FCI_BUILD_STEP_STATUS" = "success" ]
@@ -40,7 +40,7 @@ Pushing Git tags from Codemagic to repository requires **write access** to the r
   * `BUILD_NUMBER` is the read-only environment variable that holds the total count of builds for this project in Codemagic.
   * `your-username` is your Git service username
   * `APP_PASSWORD_ENV_VARIABLE` is the name of the environment variable that holds your app password / personal access token.
-  * `your-git-service.com` is the name of your Git service, e.g. github.com, bitbucket.com or gitlab.com.
+  * `your-git-service.com` is the name of your Git service, e.g. github.com, bitbucket.com, or gitlab.com.
   * `your-repo` is the name of your repository
 
   Before creating the tag, the script will check if the build was successful.
