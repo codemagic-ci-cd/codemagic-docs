@@ -67,10 +67,6 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 
 Once you have successfully set up publishing to App Store Connect, Codemagic will automatically distribute the app to App Store Connect every time you build the workflow. Note that you must manually submit the app to App Store in App Store Connect.
 
-{{<notebox>}}
-Submitting a build for TestFlight beta review depends on Apple's build processing time. By default, Codemagic will repeat submission attempts for 20 minutes. You can change how long the submission attempts should be tried by setting the `APP_STORE_CONNECT_MAX_BUILD_PROCESSING_WAIT` [environment variable](../building/environment-variables/ 'Environment variables') in minutes.
-{{</notebox>}}
-
 ## Submitting an app to App Store
 
 To make your iOS app available to the public, it must be submitted for review in App Store Connect.
