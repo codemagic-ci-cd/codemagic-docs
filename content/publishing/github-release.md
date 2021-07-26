@@ -1,7 +1,7 @@
 ---
 description: How to create a GitHub release with artifacts using the Flutter workflow editor
 title: GitHub releases
-weight: 10
+weight: 11
 ---
 
 Codemagic enables you to create a GitHub release automatically, and upload generated artifacts when your build is triggered on tag creation. Read more about GitHub releases in [GitHub's documentation](https://docs.github.com/en/github/administering-a-repository/about-releases).

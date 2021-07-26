@@ -98,7 +98,7 @@ workflows:
     scripts:
       - ...
     artifacts:
-      - build/**/outputs/**/*.aab
+      - build/**/outputs/bundle/**/*.aab
     publishing:
       email:
         recipients:
@@ -143,7 +143,11 @@ Note that `mac_pro`, `linux`, and `linux_x2` are only available for teams and us
 
 ### Environment
 
-`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node, and npm used for building. This is also where you can add credentials and API keys required for [code signing](../code-signing-yaml/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
+`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node, npm and Ruby used for building. This is also where you can add credentials and API keys required for [code signing](../code-signing-yaml/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
+
+{{<notebox>}}
+Using a non-default version of Ruby for macOS builds will increase the time of your `Preparing build machine` step significantly. 
+{{</notebox>}}
 
 ```yaml
 environment:
@@ -182,7 +186,8 @@ environment:
   node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
   npm: 6.13.7       # Define default, latest, next, lts or version
   ndk: r21d         # Define default or revision (e.g. r19c)
-  java: 1.8         # Define platform version (e.g. 11)
+  java: 1.8         # Define default, or platform version (e.g. 11)
+  ruby: 2.7.2       # Define default or version
 ```
 
 {{<notebox>}}
@@ -285,8 +290,8 @@ Configure the paths and names of the artifacts you would like to use in the foll
 
 ```yaml
 artifacts:
-  - build/**/outputs/**/*.apk                   # relative path for a project in root directory
-  - subfolder_name/build/**/outputs/**/*.apk    # relative path for a project in subfolder
+  - build/**/outputs/apk/**/*.apk                   # relative path for a project in root directory
+  - subfolder_name/build/**/outputs/apk/**/*.apk    # relative path for a project in subfolder
   - build/**/outputs/**/*.aab
   - build/**/outputs/**/mapping.txt
   - build/ios/ipa/*.ipa

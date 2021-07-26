@@ -2,8 +2,8 @@
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 12.0 - 12.4)
 aliases:
-  - '../releases-and-versions/versions2'
-weight: 3
+  - "../releases-and-versions/versions2"
+weight: 4
 ---
 
 ## Hardware
@@ -27,8 +27,8 @@ weight: 3
 - curl
 - docker `20.10.2`
 - fastlane `2.172.0`
-- firebase `8.10.0`
-- flutter `2.2.2 ($HOME/programs/flutter)`
+- firebase `9.3.0`
+- flutter `2.2.3 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.30.0`
@@ -56,13 +56,13 @@ weight: 3
 
 - **emulator**
 
-    - Device: `pixel_2 (Google)`
-    - Path: `/Users/builder/.android/avd/emulator.avd`
-    - Target: `Google APIs (Google Inc.)`
-    - Based on: `Android 10.0 (Q)`
-    - Tag/API: `google_apis/x86`
-    - Skin: `pixel_2`
-    - Sdcard: `512M`
+  - Device: `pixel_2 (Google)`
+  - Path: `/Users/builder/.android/avd/emulator.avd`
+  - Target: `Google APIs (Google Inc.)`
+  - Based on: `Android 10.0 (Q)`
+  - Tag/API: `google_apis/x86`
+  - Skin: `pixel_2`
+  - Sdcard: `512M`
 
 ## Java versions
 
@@ -73,8 +73,8 @@ weight: 3
 
 ## Xcode 12.4 (12D4e)
 
-This is the Xcode version used by default when you select `12.4` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `12.4` in your codemagic.yaml file. 
+This is the Xcode version used by default when you select `12.4` in build settings in the workflow
+editor for Flutter apps or set Xcode version to `12.4` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-12.4.app`
@@ -163,4 +163,3 @@ With Xcode `12.4` build version `12D4e` the following runtimes and devices are i
 - 12.2 (12B45b) `/Applications/Xcode-12.2.app`
 - 12.1.1 (12A7605b) `/Applications/Xcode-12.1.1.app`
 - 12.0.1 (12A7300) `/Applications/Xcode-12.app`
-

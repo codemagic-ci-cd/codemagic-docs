@@ -26,8 +26,8 @@ Once you configure publishing to Google Play, Codemagic will automatically distr
 The very first version of the app must be added to Google Play manually. You can download the **app_release.apk** from the build artifacts.
 {{</notebox>}}
 
-1. Navigate to the Publish section in app settings.
-2. Click **Google Play** to expand the options.
+1. Navigate to the Distribution section in app settings.
+2. Click **Google Play** to expand the option.
 3. Upload your credentials JSON file.
 4. Select a **track** for publishing.
    - Internal --- publish for internal testing and QA

@@ -286,4 +286,4 @@ For UI tests (also known as instrumented tests):
   test_report: app/build/outputs/androidTest-results/connected/*.xml
 ```
 
-**Tip**: you can save the emulator log with the `adb logcat -d > emulator.log` command.
+**Tip**: you can save the emulator log with the `adb logcat -d > emulator.log` command

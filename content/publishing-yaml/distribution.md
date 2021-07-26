@@ -51,7 +51,7 @@ After you have successfully authorized Codemagic and connected your workspace, y
 The Slack channel for publishing is configured separately for each workflow in the `publishing` section of `codemagic.yaml` (refer [here](../publishing/email-and-slack-notifications/#slack) if you're configuring app settings in the Flutter workflow editor).
 
 {{<notebox>}}
-In order to publish to **private channels**, you need to invite the Codemagic app to the channels; otherwise, the app does not have access to private channels. To invite the Codemagic app to private channels, write `@codemagic` in the channel.
+In order to publish to **private channels**, you need to invite the Codemagic app to the channels; otherwise, the app does not have access to private channels. To invite Codemagic app to private channels, write `@codemagic` in the channel. If the private channel access is restricted by Slack admin rights, it will have to be changed manually, otherwise publishing to that channel will not be possible.
 {{</notebox>}}
 
 If the build finishes successfully, release notes (if passed), and the generated artifacts will be published to the specified channel. If the build fails, a link to the build logs is published. When you set `notify_on_build_start` to `true`, the channel will be notified when a build starts.
@@ -197,39 +197,57 @@ echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/goo
 echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
 ```
 
-### Publishing an app using Firebase CLI
+### Publishing an app to Firebase App Distribution
 
-Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
+Codemagic enables you to automatically publish your iOS or Android app to [Firebase Console](https://console.firebase.google.com/). Codemagic uses your **Firebase token** for authentication with Firebase App Distribution. To retrieve the token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems). For distributing an iOS application to Firebase App Distribution, your application must use a development, Ad Hoc or Enterprise distribution profile.
+
+Make sure to [encrypt](https://docs.codemagic.io/building/encrypting/) your Firebase token. It is possible to add the encrypted token directly under publishing or save it to the `FIREBASE_TOKEN` environment variable and reference it under publishing.
 
 Android
 
 ```yaml
-- name: Publish the app to Firebase App Distribution
-  script: |
-    apkPath=$(find build -name "*.apk" | head -1)
-    if [[ -z ${apkPath} ]]
-    then
-      echo "No apks were found, skip publishing to Firebase App Distribution"
-    else
-      echo "Publishing $apkPath to Firebase App Distribution"
-      firebase appdistribution:distribute --app <your_android_application_firebase_id> --groups <your_android_testers_group> $apkPath
-    fi
+publishing:
+  firebase:
+    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    android:
+      app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx # Add your Android app id retrieved from Firebase console
+      groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
+        - androidTesters
+        - ...
 ```
 
 iOS
 
 ```yaml
-- name: Publish the app to Firebase App Distribution
-  script: |
-    ipaPath=$(find build -name "*.ipa" | head -1)
-    if [[ -z ${ipaPath} ]]
-    then
-      echo "No ipas were found, skip publishing to Firebase App Distribution"
-    else
-      echo "Publishing $ipaPath to Firebase App Distribution"
-      firebase appdistribution:distribute --app <your_ios_application_firebase_id> --groups <your_ios_testers_group> $ipaPath
-    fi
+publishing:
+  firebase:
+    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    ios:
+      app_id: x:xxxxxxxxxxxx:ios:xxxxxxxxxxxxxxxxxxxxxx # Add your iOS app id retrieved from Firebase console
+      groups: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
+        - iosTesters
+        - ...
 ```
+
+Android and iOS
+
+```yaml
+publishing:
+  firebase:
+    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    android:
+      app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx # Add your Android app id retrieved from Firebase console
+      groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
+        - androidTesters
+        - ...
+    ios:
+      app_id: x:xxxxxxxxxxxx:ios:xxxxxxxxxxxxxxxxxxxxxx # Add your iOS app id retrieved from Firebase console
+      groups: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
+        - iosTesters
+        - ...
+```
+
+If you wish to pass release notes with your build, create a `release_notes.txt` file and add it to the project working directory, which is either the repository root directory or the Project path specified in the Build section in your workflow settings. Codemagic will fetch the content of that file and publish it with the build.
 
 ### Publishing an app with Fastlane
 
