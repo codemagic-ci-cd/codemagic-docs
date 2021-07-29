@@ -207,6 +207,7 @@ See the default software versions on Codemagic build machines:
 | `$FLUTTER_ROOT/.pub-cache`                  | Dart cache                                       |
 | `$HOME/.gradle/caches`                      | Gradle cache. Note: do not cache `$HOME/.gradle` |
 | `$HOME/Library/Caches/CocoaPods`            | CocoaPods cache                                  |
+| `$FCI_BUILD_DIR`/node_modules               | Node cache                                       |
 
 <br>
 
