@@ -1,0 +1,9 @@
+<div js-notifications-wrap>
+    <h3 js-notes-loading>Loading release notes...</h3>
+</div>
+
+{{ $mdScript := resources.Get "js/markdown-it.js" | resources.ExecuteAsTemplate "" . | minify | fingerprint }}
+<script src="{{ $mdScript.RelPermalink }}" integrity="{{ $mdScript.Data.Integrity }}"></script>
+
+{{ $notesScript := resources.Get "js/notes.js" | resources.ExecuteAsTemplate "" . | minify | fingerprint }}
+<script src="{{ $notesScript.RelPermalink }}" integrity="{{ $notesScript.Data.Integrity }}"></script>

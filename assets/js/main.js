@@ -68,18 +68,22 @@ $(document).on('click', 'a[href^="#"]', function (event) {
 })
 
 // Copy section link to clipboard
-$('h1, h2, h3, h4, h5, h6').on('click', 'i.ctc', function () {
-    var link = $(this).attr('data-target-link')
-    var $temp = $('<input>')
-    $('body').append($temp)
-    $temp.val(link).select()
-    document.execCommand('copy')
-    $temp.remove()
-    alert('Copied to clipboard')
-})
+const copyLinkFromTitles = () => {
+    $('h1, h2, h3, h4, h5, h6').on('click', 'i.ctc', function () {
+        console.warn('clicked fo sho')
+        var link = $(this).attr('data-target-link')
+        var $temp = $('<input>')
+        $('body').append($temp)
+        $temp.val(link).select()
+        document.execCommand('copy')
+        $temp.remove()
+        alert('Copied to clipboard')
+    })
+}
 
 $(document).ready(function () {
     createTableOfContents()
+    copyLinkFromTitles()
     // Wrap tables for responsiveness
     var contentTable = $('#main-content main table')
     contentTable.each(function () {
