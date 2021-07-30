@@ -27,11 +27,15 @@ const fetchNotifications = async () => {
 }
 fetchNotifications()
 
-const notificationTemplate = ({ description, reference, title }) => {
+const notificationTemplate = ({ description, reference, start, title }) => {
     const el = document.createElement('div')
     el.classList.add('note')
+    const date = new Date(start)
     el.innerHTML = `
             <h2 id="${idFormat(reference)}" class="note__title">${title}</h2>
+            <div class="note__timestamp">${months[date.getMonth()]} ${getOrdinalNum(
+        date.getDate(),
+    )} ${date.getFullYear()}</div>
             <div class="note__description">${md.render(description.replace('</intro>', ''))}</div>
         `
     return el
@@ -46,10 +50,12 @@ const renderNotifications = (notifications, toc) => {
     toc.innerHTML = '<ul></ul>'
     const wrap = document.querySelector('[js-notifications-wrap]')
     const tocWrap = toc.querySelector('ul')
-    notifications.forEach((item) => {
-        wrap.appendChild(notificationTemplate(item))
-        tocWrap.appendChild(tocItemtemplate(item))
-    })
+    notifications
+        .sort((a, b) => new Date(b.start) - new Date(a.start))
+        .forEach((item) => {
+            wrap.appendChild(notificationTemplate(item))
+            tocWrap.appendChild(tocItemtemplate(item))
+        })
     createTableOfContents()
     copyLinkFromTitles()
 }
@@ -65,4 +71,21 @@ const idFormat = (text) => {
         .replace(/-+/g, '-') // Remove duplicate dashes
         .replace(/^-*/, '') // Remove starting dashes
         .replace(/-*$/, '') // Remove trailing dashes
+}
+const getOrdinalNum = (d) => {
+    return d + (31 == d || 21 == d || 1 == d ? 'st' : 22 == d || 2 == d ? 'nd' : 23 == d || 3 == d ? 'rd' : 'th')
+}
+const months = {
+    0: 'January',
+    1: 'February',
+    2: 'March',
+    3: 'April',
+    4: 'May',
+    5: 'June',
+    6: 'July',
+    7: 'August',
+    8: 'September',
+    9: 'October',
+    10: 'November',
+    11: 'December',
 }

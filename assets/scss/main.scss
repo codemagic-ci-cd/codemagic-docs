@@ -504,6 +504,12 @@ body {
                     padding-left: 5px;
                 }
             }
+            .note {
+                &__timestamp {
+                    font-size: 16px;
+                    opacity: 0.5;
+                }
+            }
         }
         #toc {
             width: 230px;
