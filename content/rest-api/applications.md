@@ -80,7 +80,7 @@ Creates an application from a private repository with SSH key
 | --------------- | -------- | --------------- |
 | `repositoryUrl` | `string` | **Required.** SSH or HTTPS URL for cloning the repository. |
 | `sshKey` | `JSON` | **Required.** |
-| `projectType` | `string | `flutter-app` when adding Flutter application. | 
+| `projectType` | `string` | `flutter-app` when adding Flutter application. | 
 
 #### `sshKey` parameter
 
