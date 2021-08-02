@@ -1,7 +1,7 @@
 ---
 title: Encrypting sensitive data
 description: Encrypt your credentials and key files
-weight: 3
+weight: 4
 ---
 
 If you wish to store sensitive information, such as login details or API keys, in environment variables or your configuration file, it is important to encrypt the data to not expose it. You can easily encrypt values and files using the encryption interface in Codemagic.

@@ -1,7 +1,7 @@
 ---
 title: GitHub Checks
 description: How to report PR build statuses to GitHub as checks
-weight: 9
+weight: 10
 startLineBreak: true
 ---
 
