@@ -194,7 +194,7 @@ environment:
 
 ##### Build machine and software versions
 
-The snippet belowe shows how specify the versions of Flutter, Xcode, CocoaPods, Node, npm, ndk, Java and Ruby used in the build.
+The snippet below shows how specify the versions of Flutter, Xcode, CocoaPods, Node, npm, ndk, Java and Ruby used in the build.
 
 ```yaml
 environment:
@@ -209,10 +209,11 @@ environment:
 ```
 
 {{<notebox>}}
-The version Xcode defines which build machine will be used (even if you're building Android). See the default software versions on Codemagic build machines:
+The Xcode version defines type of macOS build machine used for the build (even if you're building Android). See the default software versions on Codemagic build machines:
 - [macOS build machine specification (Xcode 11.x)](../releases-and-versions/versions/)
 - [macOS build machine specification (Xcode 12.0-12.4)](../releases-and-versions/versions2/)
 - [macOS build machine specification (Xcode 12.5+)](../releases-and-versions/versions3/)
+- [macOS build machine specification (Xcode 13.0+)](../specs/versions4/)
 - [Linux build machine specification](../releases-and-versions/versions-linux/)
 
 Using a non-default version of Ruby for macOS builds will increase the time of your `Preparing build machine` step significantly.

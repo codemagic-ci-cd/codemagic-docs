@@ -4,7 +4,7 @@ title: Environment variable groups
 weight: 3
 ---
 
-Environment variable groups allow you to define and store related set of variables that are reusable in your [codemagic.yaml](../getting-started/yaml/) workflows. A variable *group* tags a set variables that can be imported together in a codemagic.yaml file. For example, you could define a `staging` group for variables related to your staging deployment and a `production` group for variables related to your production deployment. The variable names in staging and production groups can be identical, but the values will be set depending on which group is imported in the workflow. This allows you to reference variables in reusable scripts, but assign the actual values per workflow based on the imported group.
+Environment variable groups allow you to define and store related sets of variables that are reusable in your [codemagic.yaml](../getting-started/yaml/) workflows. A variable *group* tags a set of variables that can be imported together in a codemagic.yaml file. For example, you could define a `staging` group for variables related to your staging deployment and a `production` group for variables related to your production deployment. The variable names in staging and production groups can be identical, but the values will be set depending on which group is imported in the workflow. This allows you to reference variables in reusable scripts, but assign the actual values per workflow based on the imported group.
 
 One or more variable groups can be imported into codemagic.yaml [environment section](../getting-started/yaml/#environment). For example, variable groups named `magic_values` and `other_values` can be imported with the following syntax:
 ```yaml
@@ -20,7 +20,7 @@ Variables defined in environment variable groups work exactly as [Environment Va
 
 ## Global variables and secrets
 
-Global variable groups can be defined on the team settings page (see [Teams](https://codemagic.io/teams) to find your team and navigate to the settings). Variable groups defined here can be used in any codemagic.yaml workflow in any application of the team.
+Global variable groups can be defined on the team settings page (which you can navigate to for your team on the [Teams page](https://codemagic.io/teams)). Variable groups defined here can be used in any codemagic.yaml workflow in any application of the team.
 
 {{<notebox>}}
 Global variable groups are only available for Teams. You can read more about teams [here](https://docs.codemagic.io/teams/teams/).
