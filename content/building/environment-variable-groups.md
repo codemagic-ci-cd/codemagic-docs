@@ -28,7 +28,7 @@ Global variable groups are only available for Teams. You can read more about tea
 
 ## Application environment variables
 
-Application variable groups can be defined in the application setting **Environment Variables** tab and can be used in any codemagic.yaml workflow in the application.
+Application variable groups can be defined in the application settings **Environment Variables** tab and can be used in any codemagic.yaml workflow in the application.
 
 {{<notebox>}}
 Application variable groups are only available in applications with non-Flutter project type.

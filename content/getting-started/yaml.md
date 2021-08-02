@@ -145,7 +145,7 @@ Note that `mac_pro`, `linux`, and `linux_x2` are only available for teams and us
 
 `environment:` specifies the environment variables and build machine software versions.
 
-##### Workflow environment variables
+#### Workflow environment variables
 
 The snippet below shows how to define workflow specific environment variables, such as credentials and API keys required for [code signing](../code-signing-yaml/signing). See [encrypting sensitive data](../building/encrypting) for more details on environment variable encryption.
 
@@ -181,7 +181,7 @@ environment:
     APP_CENTER_TOKEN: Encrypted(...)   # publishing an application to App Center
 ```
 
-##### Environment variable groups
+#### Environment variable groups
 
 The snippet below shows how to import [environment variable groups](../building/environment-variable-groups/) defined in the team settings and application settings. 
 
@@ -192,7 +192,7 @@ environment:
     - env_var_group_2
 ```
 
-##### Build machine and software versions
+#### Build machine and software versions
 
 The snippet below shows how specify the versions of Flutter, Xcode, CocoaPods, Node, npm, ndk, Java and Ruby used in the build.
 
@@ -219,7 +219,7 @@ The Xcode version defines type of macOS build machine used for the build (even i
 Using a non-default version of Ruby for macOS builds will increase the time of your `Preparing build machine` step significantly.
 {{</notebox>}}
 
-##### Environment section example
+#### Environment section example
 
 You can freely use all of the above features of environment section in conjunction.
 
