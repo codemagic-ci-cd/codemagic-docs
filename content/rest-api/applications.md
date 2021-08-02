@@ -79,8 +79,8 @@ Creates an application from a private repository with SSH key
 | **Name**        | **Type** | **Description** |
 | --------------- | -------- | --------------- |
 | `repositoryUrl` | `string` | **Required.** SSH or HTTPS URL for cloning the repository. |
-| `projectType` | `string | `flutter-app` when adding Flutter application. | 
 | `sshKey` | `JSON` | **Required.** |
+| `projectType` | `string | `flutter-app` when adding Flutter application. | 
 
 #### `sshKey` parameter
 
@@ -88,6 +88,12 @@ Creates an application from a private repository with SSH key
 | --------------- | -------- | --------------- |
 | `data` | `string` | **Required.** `base64`-encoded private key file. |
 | `passphrase` | `string` | **Required.** SSH key passphrase or `null` if it SSH key is without passphrase. | 
+
+To encode private key file and paste result to clipboard
+
+```bash
+base64 id_rsa | pbcopy
+```
 
 ### Example
 
