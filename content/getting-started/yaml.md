@@ -218,6 +218,21 @@ The version Xcode defines which build machine will be used (even if you're build
 Using a non-default version of Ruby for macOS builds will increase the time of your `Preparing build machine` step significantly.
 {{</notebox>}}
 
+##### Environment section example
+
+You can freely use all of the above features of environment section in conjunction.
+
+```yaml
+environment:
+  vars: # Define your environment variables here
+    PUBLIC_ENV_VAR: 'value here'
+    PRIVATE_ENV_VAR: Encrypted(...)
+  groups: # Import UI defined environment variable groups here
+    - staging
+  xcode: latest # Define latest, edge or version (e.g. 11.2)
+  flutter: stable   # Define the channel name or version (e.g. v1.13.4)
+```
+
 ### Cache
 
 `cache:` defines the paths to be cached and stored on Codemagic. For example, you may consider caching the following paths:
