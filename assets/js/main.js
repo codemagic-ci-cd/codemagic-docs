@@ -70,7 +70,6 @@ $(document).on('click', 'a[href^="#"]', function (event) {
 // Copy section link to clipboard
 const copyLinkFromTitles = () => {
     $('h1, h2, h3, h4, h5, h6').on('click', 'i.ctc', function () {
-        console.warn('clicked fo sho')
         var link = $(this).attr('data-target-link')
         var $temp = $('<input>')
         $('body').append($temp)
