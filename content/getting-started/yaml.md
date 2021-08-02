@@ -152,7 +152,8 @@ Using a non-default version of Ruby for macOS builds will increase the time of y
 ```yaml
 environment:
   groups:           # Import UI defined environment variable groups here
-    - env_var_group
+    - env_var_group_1
+    - env_var_group_2
   vars:             # Define your environment variables here
     PUBLIC_ENV_VAR: "value here"
     SECRET_ENV_VAR: Encrypted(...)
