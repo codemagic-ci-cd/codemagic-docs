@@ -71,7 +71,7 @@ scripts:
 
 ## Template
 
-This is the skeleton structure of `codemagic.yaml`. Each section, along with the configuration options, is described in more detail below.
+This is the skeleton structure of `codemagic.yaml`. Each section, along with the configuration options, is described in more detail 
 
 ```yaml
 workflows:
@@ -143,11 +143,11 @@ Note that `mac_pro`, `linux`, and `linux_x2` are only available for teams and us
 
 ### Environment
 
-`environment:` contains all the environment variables and enables to specify the version of Flutter, Xcode, CocoaPods, Node, npm and Ruby used for building. This is also where you can add credentials and API keys required for [code signing](../code-signing-yaml/signing). Make sure to [encrypt the values](../building/encrypting) of variables that hold sensitive data. 
+`environment:` specifies the environment variables and build machine software versions.
 
-{{<notebox>}}
-Using a non-default version of Ruby for macOS builds will increase the time of your `Preparing build machine` step significantly. 
-{{</notebox>}}
+#### Workflow environment variables
+
+The snippet below shows how to define workflow specific environment variables, such as credentials and API keys required for [code signing](../code-signing-yaml/signing). See [encrypting sensitive data](../building/encrypting) for more details on environment variable encryption.
 
 ```yaml
 environment:
@@ -179,7 +179,25 @@ environment:
     SSH_KEY_GITHUB: Encrypted(...)     # defining an ssh key used to download private dependencies
     CREDENTIALS: Encrypted(...)        # publishing a package to pub.dev
     APP_CENTER_TOKEN: Encrypted(...)   # publishing an application to App Center
+```
 
+#### Environment variable groups
+
+The snippet below shows how to import [environment variable groups](../building/environment-variable-groups/) defined in the team settings and application settings. 
+
+```yaml
+environment:
+  groups:           # Import UI defined environment variable groups here
+    - env_var_group_1
+    - env_var_group_2
+```
+
+#### Build machine and software versions
+
+The snippet below shows how to specify the versions of Flutter, Xcode, CocoaPods, Node, npm, ndk, Java and Ruby used in the build.
+
+```yaml
+environment:
   flutter: stable   # Define the channel name or version (e.g. v1.13.4)
   xcode: latest     # Define latest, edge or version (e.g. 11.2)
   cocoapods: 1.9.1  # Define default or version
@@ -191,12 +209,30 @@ environment:
 ```
 
 {{<notebox>}}
-See the default software versions on Codemagic build machines:
+The Xcode version defines type of macOS build machine used for the build (even if you're building Android). See the default software versions on Codemagic build machines:
 - [macOS build machine specification (Xcode 11.x)](../releases-and-versions/versions/)
 - [macOS build machine specification (Xcode 12.0-12.4)](../releases-and-versions/versions2/)
 - [macOS build machine specification (Xcode 12.5+)](../releases-and-versions/versions3/)
+- [macOS build machine specification (Xcode 13.0+)](../specs/versions4/)
 - [Linux build machine specification](../releases-and-versions/versions-linux/)
+
+Using a non-default version of Ruby for macOS builds will increase the time of your `Preparing build machine` step significantly.
 {{</notebox>}}
+
+#### Environment section example
+
+You can freely use all of the above features of environment section in conjunction.
+
+```yaml
+environment:
+  vars: # Define your environment variables here
+    PUBLIC_ENV_VAR: 'value here'
+    PRIVATE_ENV_VAR: Encrypted(...)
+  groups: # Import UI defined environment variable groups here
+    - staging
+  xcode: latest # Define latest, edge or version (e.g. 11.2)
+  flutter: stable   # Define the channel name or version (e.g. v1.13.4)
+```
 
 ### Cache
 

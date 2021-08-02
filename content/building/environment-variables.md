@@ -7,9 +7,14 @@ weight: 2
 Environment variables are useful for storing information that you do not want to store in the repository, such as your credentials or workflow-specific data. In addition, you can make use of a number of read-only environment variables that Codemagic exports to customize your builds.
 
 {{<notebox>}}
-You can add environment variables in the [environment](../getting-started/yaml/#environment) section of the `codemagic.yaml` configuration file or in the [Environment variables](../flutter/env-variables/) section in the Flutter workflow editor.
+You can add environment variables in the following places:
 
-See how to [encrypt sensitive information](./encrypting) in Codemagic.
+* [Environment](../getting-started/yaml/#environment) section of a `codemagic.yaml` configuration file
+* [Environment variables](../flutter/env-variables/) section in a Flutter workflow editor
+* [Global variables and secrets](../building/environment-variable-groups/#global-variables-and-secrets) in Team settings
+* [Application environment variables](../building/environment-variable-groups/#application-environment-variables) in Application settings
+
+See how to [encrypt sensitive information](./encrypting) in Codemagic and explanation of [Environment variable groups](../building/environment-variable-groups/).
 {{</notebox>}}
 
 ## Codemagic read-only environment variables
