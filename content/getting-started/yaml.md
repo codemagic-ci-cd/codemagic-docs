@@ -71,7 +71,7 @@ scripts:
 
 ## Template
 
-This is the skeleton structure of `codemagic.yaml`. Each section, along with the configuration options, is described in more detail below.
+This is the skeleton structure of `codemagic.yaml`. Each section, along with the configuration options, is described in more detail 
 
 ```yaml
 workflows:
@@ -194,7 +194,7 @@ environment:
 
 #### Build machine and software versions
 
-The snippet below shows how specify the versions of Flutter, Xcode, CocoaPods, Node, npm, ndk, Java and Ruby used in the build.
+The snippet below shows how to specify the versions of Flutter, Xcode, CocoaPods, Node, npm, ndk, Java and Ruby used in the build.
 
 ```yaml
 environment:
