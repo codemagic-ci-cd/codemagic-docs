@@ -15,7 +15,7 @@ weight: 2
 
 - System version `macOS 11.4 (20F71)`
 - Kernel version `Darwin 20.5.0`
-- Disk `322GB (Free Space: 186GB)`
+- Disk `322GB (Free Space: 181GB)`
 
 ## Pre-installed tools
 
@@ -26,7 +26,7 @@ weight: 2
 - cordova `10.0.0`
 - curl
 - docker `20.10.2`
-- fastlane `2.187.0`
+- fastlane `2.189.0`
 - firebase `9.3.0`
 - flutter `2.2.3 ($HOME/programs/flutter)`
 - gem `3.1.4`
@@ -70,14 +70,15 @@ weight: 2
 - **11.0.11** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_292** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
-## Xcode 13.0 (13A5192j)
+## Xcode 13.0 (13A5201i)
 
 This is the Xcode version used by default when you select `13.0` or `edge` in build settings in the workflow 
 editor for Flutter apps or set Xcode version to `13.0` or `edge` in your codemagic.yaml file. 
+Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.0.app`
 
-With Xcode `13.0` build version `13A5192j` the following runtimes and devices are installed:
+With Xcode `13.0` build version `13A5201i` the following runtimes and devices are installed:
 
 ### Runtimes
 
