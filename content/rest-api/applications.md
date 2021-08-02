@@ -68,6 +68,44 @@ Adds a Git repository to the applications list.
 }
 ```
 
+## Add a new application from private repository
+
+`POST /apps/new`
+
+Creates an application from a private repository with SSH key
+
+### Parameters
+
+| **Name**        | **Type** | **Description** |
+| --------------- | -------- | --------------- |
+| `repositoryUrl` | `string` | **Required.** SSH or HTTPS URL for cloning the repository. |
+| `sshKey` | `JSON` | **Required.** |
+
+#### `sshKey` parameter
+
+| **Name**        | **Type** | **Description** |
+| --------------- | -------- | --------------- |
+| `data` | `string` | **Required.** `base64`-encoded private key file |
+| `passphrase` | `string` | **Required.** SSH key passphrase or `null` if it SSH key is without passphrase | 
+
+### Example
+
+```json
+{
+  "repositoryUrl": "git@github.com:my-organization/my-repo.git",
+  "sshKey": {"data": "St89hgb-BASE64-ENCODED-SSH-KEY-FILE-H4ga7jgf==", "passphrase": null}
+}
+```
+
+### Response
+
+```json
+{"application" : {
+  "_id": "5c9c064185dd2310123b8e96",
+  "appName": "my-repo"
+}}
+```
+
 ## Encrypt an environment variable
 
 `POST /apps/:id/encrypt-environment-variable`
