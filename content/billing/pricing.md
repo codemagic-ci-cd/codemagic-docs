@@ -7,7 +7,7 @@ weight: 2
 
 Pay as you go pricing allows you to pay for only what you use. 
 
-Extra build concurrencies allow Teams to run up to three paralel builds.
+Extra build concurrencies allow Teams to run up to three parallel builds.
 
 ### Instance Types
 
