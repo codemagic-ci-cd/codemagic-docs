@@ -54,7 +54,7 @@ For teams, all build minutes using macOS standard VM, macOS premium VM, Linux st
 
 Team users that were active in the current billing period are charged $10/month. To see how users are counted please see [here](https://docs.codemagic.io/teams/users/)
 
-Each extra build concurrency allows to run an additional build in paralel. For example, two extra build concurrencies allow to run three builds in paralel. Consider Business plan or Enterprise plan if more than three concurrent builds are required.
+Each extra build concurrency allows running an additional build in parallel. For example, two extra build concurrencies allow running three builds in parallel. Consider Business plan or Enterprise plan if more than three concurrent builds are required.
 
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
