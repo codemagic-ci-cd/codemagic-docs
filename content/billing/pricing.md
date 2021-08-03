@@ -7,7 +7,7 @@ weight: 2
 
 Pay as you go pricing allows you to pay for only what you use. 
 
-Currently it is only possible to run one build at a time with pay as you go.
+Extra build concurrencies allow Teams to run up to three parallel builds.
 
 ### Instance Types
 
@@ -54,6 +54,8 @@ For teams, all build minutes using macOS standard VM, macOS premium VM, Linux st
 
 Team users that were active in the current billing period are charged $10/month. To see how users are counted please see [here](https://docs.codemagic.io/teams/users/)
 
+Each extra build concurrency allows running an additional build in parallel. For example, two extra build concurrencies allow running three builds in parallel. Consider Business plan or Enterprise plan if more than three concurrent builds are required.
+
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | macOS premium VM         | $0.095 / minute                                                                                                                                                 |
@@ -61,6 +63,7 @@ Team users that were active in the current billing period are charged $10/month.
 | Linux premium VM         | $0.045 / minute                                                                                                                                                 |
 | Linux standard VM        | $0.015 / minute                                                                                                                                                 |
 | Team user                | $10 / month                                                                                                                                                     |                                                                                                                                                 |
+| Extra build concurrency  | $49 / month                                                                                                                                                     | 
 
 ## Business Plan
 
