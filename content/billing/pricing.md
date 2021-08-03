@@ -41,6 +41,8 @@ Usage on macOS standard VM that exceeds 500 minutes is charged at rate shown bel
 
 Builds on macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes and are charged at the rates shown below. 
 
+Each extra build concurrency allows to run an additional build in paralel. For example, two extra build concurrencies allow to run three builds in paralel. Consider Business plan or Enterprise plan if more than three concurrent builds are required.
+
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | macOS premium VM         | $0.095 / minute                                                                                                                                                 |
@@ -62,8 +64,6 @@ Team users that were active in the current billing period are charged $10/month.
 | Linux standard VM        | $0.015 / minute                                                                                                                                                 |
 | Team user                | $10 / month                                                                                                                                                     |                                                                                                                                                 |
 | Extra build concurrency  | $49 / month                                                                                                                                                     | 
-
-Each extra build concurrency allows to run an additional build in paralel. E.g. with 2 extra build concurrencies it's possible to run three builds in paralel. If your team requires more than two concurrencies, please consider Business plan or Enterprise plan.
 
 ## Business Plan
 
