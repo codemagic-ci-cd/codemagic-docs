@@ -7,7 +7,7 @@ weight: 2
 
 Pay as you go pricing allows you to pay for only what you use. 
 
-Currently it is only possible to run one build at a time with pay as you go.
+Extra build concurrencies allow Teams to run up to three paralel builds.
 
 ### Instance Types
 
@@ -41,8 +41,6 @@ Usage on macOS standard VM that exceeds 500 minutes is charged at rate shown bel
 
 Builds on macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes and are charged at the rates shown below. 
 
-Each extra build concurrency allows to run an additional build in paralel. For example, two extra build concurrencies allow to run three builds in paralel. Consider Business plan or Enterprise plan if more than three concurrent builds are required.
-
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | macOS premium VM         | $0.095 / minute                                                                                                                                                 |
@@ -55,6 +53,8 @@ Each extra build concurrency allows to run an additional build in paralel. For e
 For teams, all build minutes using macOS standard VM, macOS premium VM, Linux standard VM, and Linux premium VM are charged at the rates shown below. 
 
 Team users that were active in the current billing period are charged $10/month. To see how users are counted please see [here](https://docs.codemagic.io/teams/users/)
+
+Each extra build concurrency allows to run an additional build in paralel. For example, two extra build concurrencies allow to run three builds in paralel. Consider Business plan or Enterprise plan if more than three concurrent builds are required.
 
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
