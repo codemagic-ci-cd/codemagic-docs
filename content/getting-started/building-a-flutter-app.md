@@ -208,8 +208,6 @@ workflows:
         APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...) # <-- Put your encrypted App Store Connect Key Identifier here 
         APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...) # <-- Put your encrypted App Store Connect Private Key here 
         CERTIFICATE_PRIVATE_KEY: Encrypted(...) # <-- Put your encrypted Certificate Private Key here 
-        APPLE_ID: Encrypted(...) # <-- Put your encrypted Apple Id email address here
-        APPLE_APP_SPECIFIC_PASSWORD: Encrypted(...) # <-- Put your encrypted App Specific password here
         BUNDLE_ID: "io.codemagic.flutteryaml" # <-- Put your bundle id here
         APP_STORE_ID: 1111111111 # <-- Use the TestFlight Apple id number (An automatically generated ID assigned to your app) found under General > App Information > Apple ID. 
       flutter: stable
@@ -268,8 +266,11 @@ workflows:
           success: true               # To receive a notification when a build succeeds
           failure: false              # To not receive a notification when a build fails
       app_store_connect:   # https://docs.codemagic.io/publishing-yaml/distribution              
-        apple_id: $APPLE_ID    
-        password: $APPLE_APP_SPECIFIC_PASSWORD
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY   
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: 21d78e2f-b8ad-...  # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
+       
+     
 ```
 
 ## Web builds
