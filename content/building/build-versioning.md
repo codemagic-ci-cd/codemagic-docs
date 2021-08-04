@@ -4,25 +4,59 @@ description: How to set a new build number to push to app stores
 weight: 6
 ---
 
-If you are going to publish your app to App Store Connect or Google Play, each uploaded binary must have a new version. There are several approaches you can use for build versioning on Codemagic. One of the easiest ways to increment the application version with every build is by using the environment variables that Codemagic exports during the build. There are two environment variables that count the number of builds:
+If you are going to publish your app to App Store Connect or Google Play, each uploaded artifact must have a new version satisfying each app store's requirements. You'll need to devise a build versioning strategy that satisfies the App Store and/or Google Play Store versioning requirements and works for your team's development processes. On this page, we will explain the App Store and Google Play build versioning requirements, how the Flutter framework generalizes build versioning, and various strategies to set your build versions using Codemagic. See the [build versioning codemagic blog article](https://blog.codemagic.io/build-versioning-with-codemagic/) for a detailed overview.
+
+## Overview of Build Versioning Requirements
+
+### App Store Connect Requirements
+
+The main values for iOS & macOS versioning are `CFBundleShortVersionString` (Release Version Number) and `CFBundleVersion` (Build Version Number). The best explanation of these two values, despite being outdated, is Apple's technical note on [Version Numbers and Build Numbers](https://developer.apple.com/library/archive/technotes/tn2420/_index.html).
+
+[CFBundleShortVersionString](https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleshortversionstring), Release Version Number, is the external user facing release version of your app displayed in the App Store. It must follow the `{major}.{minor}.{patch}` version format of three period separated integers. This must be incremented every time you release a version to the App Store. It's advisable to commit this value to version control and update it for every new release of your app to the App Store.
+
+[CFBundleVersion](https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleversion), Build Version Number, is the internal build version number of your application used for testing and development. It appears in `{major}.{minor}.{patch}` format of one to three period separated integers. If {minor}.{patch} are not provided, then they will default to zero. Build version number must be incremented with every release candidate submitted to test flight for a particular release version number. For iOS, build version number can be reused across different release version numbers while for macOS, build version number must be unique across all release version numbers. This value is best incremented and set by your CI/CD pipeline for every build your submitting to TestFlight.
+
+### Google Play Requirements
+
+You can find the Google Play build versioning requirements in the [Android documentation](https://developer.android.com/studio/publish/versioning#appversioning). The important values defined in the build.gradle file are `versionName` and `versionCode`.
+
+`versionName` is a text based, external, version of your app that is displayed to users and visible in Google Play. There are no restrictions for `versionName`, so you should choose something that makes sense for you and your users, such as {major}.{minor}.{patch} versioning. It's advisable to commit this value to version control and update it for every new release of your app to the Play Store.
+
+`versionCode` is an internal version of your app that must be an integer value between `1` and `2100000000`. This must be incremented for every build you upload to Google Play. This value is best incremented and set by your CI/CD pipeline for every build.
+
+### Flutter Build Versioning
+
+Flutter generalizes iOS and Android build versioning with the [pubspec.yaml **version** property](https://github.com/flutter/flutter/blob/master/packages/flutter_tools/templates/app/pubspec.yaml.tmpl#L9-L19). This is a value in the form `{major}.{minor}.{patch}+{build_number}` (e.g. `1.2.3+45`). In Flutter builds, the value for build name, `{major}.{minor}.{patch}`, sets  `CFBundleShortVersionString` for iOS and `versionName` for Android. While the optional build number, `{build_number}`, sets `CFBundleVersion` for iOS and `versionCode` for Android. With `flutter build` commands these values can be overridden with the command line arguments `--build-name` and `--build-number` or by setting the environment variables `FLUTTER_BUILD_NAME` and `FLUTTER_BUILD_NUMBER`.
+
+It's advisable to set your build version (e.g. `1.2.3`) in the `pubspec.yaml` `version` property and commit this to version control, as this will only change on every app release. On the other hand, you should consider having your CI/CD pipeline increment and set build number automatically, as this should be updated for every build.
+
+## Build versioning from Codemagic environment variables 
+
+There are several approaches you can use for build versioning on Codemagic. One of the easiest ways to increment the application version with every build is by using the [environment variables](../building/environment-variables/#codemagic-read-only-environment-variables) that Codemagic exports during the build. There are two environment variables that count the number of builds:
 
 * `BUILD_NUMBER`. Holds the total count of builds (including the ongoing build) for a specific **workflow** in Codemagic. In other words, if you have triggered 10 builds for some workflow in Codemagic, the next time you build it, `BUILD_NUMBER` will be exported as `11`.
 
-* `PROJECT_BUILD_NUMBER`. Holds the total count of builds (including the ongoing build) for a **project** in Codemagic. In contrast with `BUILD_NUMBER`, `PROJECT_BUILD_NUMBER` will increase every time you build any of the workflows of the app.
+* `PROJECT_BUILD_NUMBER`. Holds the total count of builds (including the ongoing build) for a **project** (application) in Codemagic. In contrast with `BUILD_NUMBER`, `PROJECT_BUILD_NUMBER` will increase every time you build any of the workflows of the app.
 
-## Incrementing app version using environment variables
+### Increment app version using environment variables
 
-Here are some examples how you can increment the app version using Codemagic's read-only environment variables in build arguments:
+For Flutter, you can easily increment your build number and build name using the `PROJECT_BUILD_NUMBER` by passing the following to the build arguments:
 
 ```bash
---build-name=2.0.$BUILD_NUMBER --build-number=$(($BUILD_NUMBER + 100))
-
---build-name=1.0.0 --build-number=$BUILD_NUMBER
+--build-name=1.0.$PROJECT_BUILD_NUMBER --build-number=$PROJECT_BUILD_NUMBER
 ```
 
-## Set Xcode project build number via command line
+Note I've added `--build-name` as an example, if you've committed this to version control in `pubspec.yaml` version field, then don't pass in this argument to builds.
 
-Calling agvtool is another way of forcing Xcode to set the build version for your next build.
+If you've added an existing project to Codemagic and need to offset the build number by the current build number, i.e. 200, then you can pass the following argument to correctly increment your build number.
+
+```
+--build-number=$(($PROJECT_BUILD_NUMBER + 200))
+```
+
+### Set Xcode project build number via command line
+
+You can use the [Xcode command line agvtool](https://developer.apple.com/library/archive/qa/qa1827/_index.html) to set the next build version name for your build.
 
 ```bash
 #!/bin/sh
@@ -33,7 +67,7 @@ cd $FCI_BUILD_DIR/ios
 agvtool new-version -all $(($BUILD_NUMBER + 1))
 ```
 
-## App Store or TestFlight latest build number using Codemagic CLI Tools
+## Get App Store or TestFlight latest build number using Codemagic CLI Tools
 
 Use [get-latest-app-store-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-app-store-build-number.md#get-latest-app-store-build-number) or [get-latest-testflight-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/get-latest-testflight-build-number.md#get-latest-testflight-build-number) actions from [app-store-connect](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/app-store-connect#app-store-connect) Codemagic CLI Tool to get the latest build numbers.
 
@@ -125,7 +159,7 @@ Check the details for [get-latest-app-store-build-number](https://github.com/cod
 
 Alternatively, if you use `YAML` configuration, you may just export the value to an environment variable and use it under your `CFBundleVersion` in `Info.plist`.
 
-## Google Play latest build number using Codemagic CLI Tools 
+## Get Google Play latest build number using Codemagic CLI Tools 
 
 Use [get-latest-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#get-latest-build-number) action from [google-play](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/google-play#google-play) Codemagic CLI Tool to get the latest build number from Google Play.
 
