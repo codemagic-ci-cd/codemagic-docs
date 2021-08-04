@@ -341,3 +341,25 @@ $(window).ready(function () {
         observer.observe(header)
     })
 })
+
+function showConfigurationToc (type) {
+    const prevType = type === 'file' ? 'ui' : 'file'
+
+    const button = $('#configuration-toggle')
+    button.val(prevType)
+    button.html(`I am using ${prevType.toUpperCase()} workflow editor`)
+
+    const prevToc = $(`#${prevType}-configuration-loc`)
+    prevToc.hide()
+
+    const toc = $(`#${type}-configuration-loc`)
+    toc.show()
+}
+
+// Configuration toggle
+$(window).ready(function () {
+    showConfigurationToc('yaml')
+    $('#configuration-toggle').on('click', function (event) {
+        showConfigurationToc(event.target.value)
+    })
+})

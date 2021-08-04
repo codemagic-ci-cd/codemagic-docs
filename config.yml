@@ -31,79 +31,53 @@ buildDrafts: true
 defaultContentLanguage: en
 disable404: true
 enableGitInfo: true
-taxonomies:
-  configuration: configurations
 
 sectionPagesMenu: main
 menu:
-  main:  
+  general:
     - identifier: getting-started
       name: Getting started
-      weight: 1
-    - identifier: sample-projects
+  file:
+    - identifier: sample-projects-yaml
       name: Sample Projects
-      weight: 2
-    - identifier: building
+    - identifier: building-yaml
       name: Configuration
-      weight: 3
     - identifier: testing-yaml
       name: Testing
-      weight: 4
     - identifier: code-signing-yaml
       name: Code signing
-      weight: 5
     - identifier: publishing-yaml
       name: Publishing
-      weight: 6
-    - identifier: integrations
-      name: Integrations
-      weight: 7
+    - identifier: flutter-yaml
+      name: Flutter
+  ui:
     - identifier: setup-flutter
       name: Flutter workflow editor
-      weight: 8
     - identifier: flutter
-      name: Build configuration
-      weight: 1
-      parent: setup-flutter
+      name: Flutter build configuration
     - identifier: testing
       name: Testing
-      weight: 2
-      parent: setup-flutter
     - identifier: code-signing
       name: Code signing
-      weight: 3
-      parent: setup-flutter
     - identifier: publishing
       name: Distribution and notifications
-      weight: 4
-      parent: setup-flutter
+  other:
+    - identifier: building
+      name: Build
     - identifier: teams
       name: Teams
-      weight: 7
     - identifier: billing
       name: Billing & Pricing
-      weight: 8  
     - identifier: knowledge-base
       name: Knowledge base
-      weight: 9
     - identifier: rest-api
       name: Codemagic API
-      weight: 10 
     - identifier: troubleshooting
       name: Troubleshooting
-      weight: 11
     - identifier: specs
       name: Build machine specs
-      weight: 12
-  general:
-    - identifier: general/general-stuff
-      name: Universal config
-  file:
-    - identifier: file
-      name: Yaml config
-  ui:
-    - identifier: ui
-      name: Flutter config with UI
+    - identifier: integrations
+      name: Integrations
 
 mediaTypes:
   video/mp4:
