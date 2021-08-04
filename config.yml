@@ -31,6 +31,8 @@ buildDrafts: true
 defaultContentLanguage: en
 disable404: true
 enableGitInfo: true
+taxonomies:
+  configuration: configurations
 
 sectionPagesMenu: main
 menu:
@@ -94,7 +96,7 @@ menu:
       name: Build machine specs
       weight: 12
   general:
-    - identifier: general
+    - identifier: general/general-stuff
       name: Universal config
   file:
     - identifier: file

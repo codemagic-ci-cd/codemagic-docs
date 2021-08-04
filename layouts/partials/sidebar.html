@@ -18,8 +18,6 @@
 {{ end }}
 
 <nav id="docs-menu" data-js-docs-menu>
-	<!-- {{ template "content-menu" (dict "menuItems" .Site.Menus.main "currentPage" .)}} -->
-  <p>General info</p>
   {{ template "content-menu" (dict "menuItems" .Site.Menus.general "currentPage" .)}}
   <p>File config</p>
   {{ template "content-menu" (dict "menuItems" .Site.Menus.file "currentPage" .)}}
