@@ -343,23 +343,44 @@ $(window).ready(function () {
 })
 
 function showConfigurationToc (type) {
-    const prevType = type === 'file' ? 'ui' : 'file'
+    if (!type) {
+        window.localStorage.removeItem('preferred-configuration')
+        const buttons = $('.configuration-switch')
+        buttons.show()
+        const locs = $('.configuration-loc')
+        locs.show()
+        return
+    }
 
-    const button = $('#configuration-toggle')
-    button.val(prevType)
-    button.html(`I am using ${prevType.toUpperCase()} workflow editor`)
+    const otherType = type === 'file' ? 'ui' : 'file'
 
-    const prevToc = $(`#${prevType}-configuration-loc`)
-    prevToc.hide()
+    const button = $(`.configuration-switch[value='${type}']`)
+    button.hide()
 
     const toc = $(`#${type}-configuration-loc`)
     toc.show()
+
+    const otherButton = $(`.configuration-switch[value='${otherType}']`)
+    otherButton.show()
+
+    const otherToc = $(`#${otherType}-configuration-loc`)
+    otherToc.hide()
+
+    window.localStorage.setItem('preferred-configuration', type)
 }
 
 // Configuration toggle
 $(window).ready(function () {
-    showConfigurationToc('yaml')
-    $('#configuration-toggle').on('click', function (event) {
-        showConfigurationToc(event.target.value)
+    const configuration = window.localStorage.getItem('preferred-configuration')
+    showConfigurationToc(configuration)
+    $('.configuration-switch').on('click', function (event) {
+        const type = event.target.value
+
+        showConfigurationToc(type)
+        if (type === 'file') {
+            window.location.href = '/getting-started/yaml/'
+        } else if (type === 'ui') {
+            window.location.href = '/getting-started/building-a-flutter-app/'
+        }
     })
 })
