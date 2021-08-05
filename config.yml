@@ -32,52 +32,62 @@ defaultContentLanguage: en
 disable404: true
 enableGitInfo: true
 
-sectionPagesMenu: main
+# sectionPagesMenu: main
+pluralizeListTitles: false
 menu:
-  general:
+  main:
     - identifier: getting-started
       name: Getting started
-  file:
-    - identifier: sample-projects-yaml
-      name: Sample Projects
-    - identifier: building-yaml
-      name: Configuration
-    - identifier: testing-yaml
-      name: Testing
-    - identifier: code-signing-yaml
-      name: Code signing
-    - identifier: publishing-yaml
-      name: Publishing
-    - identifier: flutter-yaml
-      name: Flutter
-  ui:
-    - identifier: setup-flutter
-      name: Flutter workflow editor
-    - identifier: flutter
-      name: Flutter build configuration
-    - identifier: testing
-      name: Testing
-    - identifier: code-signing
-      name: Code signing
-    - identifier: publishing
-      name: Distribution and notifications
-  other:
-    - identifier: building
-      name: Build
-    - identifier: teams
-      name: Teams
-    - identifier: billing
-      name: Billing & Pricing
-    - identifier: knowledge-base
-      name: Knowledge base
-    - identifier: rest-api
-      name: Codemagic API
-    - identifier: troubleshooting
-      name: Troubleshooting
-    - identifier: specs
-      name: Build machine specs
-    - identifier: integrations
-      name: Integrations
+    - identifier: yaml
+      name: YAML
+    # - identifier: code-signing
+    #   name: code signing
+    #   parent: yaml
+
+  # general:
+  #   - identifier: getting-started
+  #     name: Getting started
+  # file:
+  #   - identifier: sample-projects-yaml
+  #     name: Sample Projects
+  #   - identifier: building-yaml
+  #     name: Configuration
+  #   - identifier: testing-yaml
+  #     name: Testing
+  #   - identifier: code-signing-yaml
+  #     name: Code signing
+  #   - identifier: publishing-yaml
+  #     name: Publishing
+  #   - identifier: flutter-yaml
+  #     name: Flutter
+  # ui:
+  #   - identifier: setup-flutter
+  #     name: Flutter workflow editor
+  #   - identifier: flutter
+  #     name: Flutter build configuration
+  #   - identifier: testing
+  #     name: Testing
+  #   - identifier: code-signing
+  #     name: Code signing
+  #   - identifier: publishing
+  #     name: Distribution and notifications
+  # other:
+  #   - identifier: building
+  #     name: Build
+  #   - identifier: teams
+  #     name: Teams
+  #   - identifier: billing
+  #     name: Billing & Pricing
+  #   - identifier: knowledge-base
+  #     name: Knowledge base
+  #   - identifier: rest-api
+  #     name: Codemagic API
+  #   - identifier: troubleshooting
+  #     name: Troubleshooting
+  #   - identifier: specs
+  #     name: Build machine specs
+  #   - identifier: integrations
+  #     name: Integrations
 
 mediaTypes:
   video/mp4:

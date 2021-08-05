@@ -5,7 +5,13 @@
       <li class="{{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }}" data-js-docs-menu-item>
         <div class="category-name" data-js-category-name>{{ .Name }}</div>
         <div class="category-posts" data-js-category-posts>
+          {{/*  <pre>
+            {{ printf "%#v" .HasChildren }}
+          </pre>  */}}
           {{- if .HasChildren }}
+            {{/*  <pre>
+              {{ printf "%#v" .Children }}
+            </pre>  */}}
             {{ template "content-menu" (dict "menuItems" .Children "currentPage" $currentPage)}}
           {{- end }}
           {{ range where site.Pages "Section" .Identifier -}}
@@ -18,18 +24,7 @@
 {{ end }}
 
 <nav id="docs-menu" data-js-docs-menu>
-  <button class='configuration-switch' value='file'>Switch to YAML configuration</button>
-  <button class='configuration-switch' value='ui'>Switch to Flutter UI configuration</button>
-  {{ template "content-menu" (dict "menuItems" .Site.Menus.general "currentPage" .)}}
-  <div id='file-configuration-loc' class='configuration-loc'>
-    <p>File configuration</p>
-    {{ template "content-menu" (dict "menuItems" .Site.Menus.file "currentPage" .)}}
-  </div>
-  <div id='ui-configuration-loc' class='configuration-loc'>
-    <p>UI configuration</p>
-    {{ template "content-menu" (dict "menuItems" .Site.Menus.ui "currentPage" .)}}
-  </div>
-  {{ template "content-menu" (dict "menuItems" .Site.Menus.other "currentPage" .)}}
+  {{ template "content-menu" (dict "menuItems" .Site.Menus.main "currentPage" .)}}
   <div class="external-links">
     <a id="codemagic-landing-link" onclick="sendGtag('Codemagic_clicked', 'DocumentationMenu')" href="https://codemagic.io/start" target="_blank">Codemagic</a>
     <a id="codemagic-blog-link" onclick="sendGtag('Blog_clicked', 'DocumentationMenu')" href="https://blog.codemagic.io" target="_blank">Codemagic Blog</a>

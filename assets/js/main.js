@@ -380,7 +380,7 @@ $(window).ready(function () {
         if (type === 'file') {
             window.location.href = '/getting-started/yaml/'
         } else if (type === 'ui') {
-            window.location.href = '/getting-started/building-a-flutter-app/'
+            window.location.href = '/flutter-yaml/flutter-projects/'
         }
     })
 })

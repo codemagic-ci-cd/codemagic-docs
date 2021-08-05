@@ -691,3 +691,17 @@ body {
         display: inline-block;
     }
 }
+
+pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    max-width: 100%;
+    overflow: auto;
+    display: block;
+    word-wrap: break-word;
+}
