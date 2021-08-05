@@ -23,7 +23,7 @@ Variables defined in environment variable groups work exactly as [Environment Va
 
 Global variable groups can be defined on the team settings page (which you can navigate to for your team on the [Teams page](https://codemagic.io/teams)).
 
-By default, variable groups defined here can be used in any codemagic.yaml workflow in any application of the team. It is possible to limit the variable groups access to specific applications by clicking the edit icon next to the group you wish to manage under **Application access**.
+By default, variable groups defined here can be used in any codemagic.yaml workflow in any application of the team. It is possible to limit variable groups to specific applications by clicking the edit icon next to the group you wish to manage under **Application access**.
 
 {{<notebox>}}
 Global variable groups are only available for Teams. You can read more about teams [here](https://docs.codemagic.io/teams/teams/).
