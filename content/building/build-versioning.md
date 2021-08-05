@@ -20,7 +20,7 @@ The main values for iOS & macOS versioning are `CFBundleShortVersionString` (Rel
 
 You can find the Google Play build versioning requirements in the [Android documentation](https://developer.android.com/studio/publish/versioning#appversioning). The important values defined in the build.gradle file are `versionName` and `versionCode`.
 
-`versionName` is a text based, external, version of your app that is displayed to users and visible in Google Play. There are no restrictions for `versionName`, so you should choose something that makes sense for you and your users, such as {major}.{minor}.{patch} versioning. It's advisable to commit this value to version control and update it for every new release of your app to the Play Store.
+`versionName` is a text based, external, version of your app that is displayed to users and visible in Google Play. There are no restrictions for `versionName`, so you should choose something that makes sense for you and your users, such as `{major}.{minor}.{patch}` versioning. It's advisable to commit this value to version control and update it for every new release of your app to the Play Store.
 
 `versionCode` is an internal version of your app that must be an integer value between `1` and `2100000000`. This must be incremented for every build you upload to Google Play. This value is best incremented and set by your CI/CD pipeline for every build.
 
