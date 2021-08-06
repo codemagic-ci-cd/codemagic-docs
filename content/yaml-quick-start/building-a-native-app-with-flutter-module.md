@@ -4,6 +4,7 @@ description: How to build a native iOS or Android app with a Flutter module usin
 weight: 10
 aliases:
   - '../yaml/building_a_native_app_with_flutter_module'
+  - '../yaml-quick-start/building_a_native_app_with_flutter_module'
 ---
 
 ## Add-to-app
