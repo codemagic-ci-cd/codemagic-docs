@@ -41,10 +41,10 @@ menu:
       weight: 1
 
     - identifier: yaml
-      name: YAML
+      name: Codemagic.yaml
       weight: 2
     - identifier: yaml-quick-start
-      name: Quick start
+      name: Quick start guides
       parent: yaml
       weight: 1
     - identifier: yaml-testing
@@ -61,7 +61,7 @@ menu:
       weight: 4
 
     - identifier: flutter
-      name: Flutter
+      name: Flutter workflow editor
       weight: 3
     - identifier: flutter-configuration
       name: Configuration
