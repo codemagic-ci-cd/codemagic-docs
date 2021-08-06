@@ -59,12 +59,16 @@ menu:
       name: Publishing
       parent: yaml
       weight: 4
+    - identifier: integrations
+      name: Integrations
+      parent: yaml
+      weight: 5
 
     - identifier: flutter
       name: Flutter workflow editor
       weight: 3
     - identifier: flutter-configuration
-      name: Configuration
+      name: Build configuration
       parent: flutter
       weight: 1
     - identifier: flutter-testing
@@ -81,7 +85,7 @@ menu:
       weight: 4
     
     - identifier: configuration
-      name: Configuration
+      name: Advanced configuration
       weight: 4
     - identifier: integrations
       name: Integrations
@@ -104,6 +108,13 @@ menu:
 
     - identifier: running-locally
       name: Codemagic CLI tools
+      weight: 10
+    - identifier: notes
+      name: Codemagic release log
+      weight: 11
+    - identifier: troubleshooting
+      name: Troubleshooting
+      weight: 12
 
 mediaTypes:
   video/mp4:
