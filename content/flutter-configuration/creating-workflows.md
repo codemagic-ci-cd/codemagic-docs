@@ -4,6 +4,7 @@ title: Workflows
 weight: 2
 aliases:
     - '../getting-started/creating-workflows'
+    - /flutter/creating-workflows
 ---
 
 Have full control over your CI/CD pipeline with workflows. A workflow is a set of settings that determines how your app is to be built, tested and published. 

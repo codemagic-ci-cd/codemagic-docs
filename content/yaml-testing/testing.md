@@ -4,6 +4,7 @@ description: How to run tests with codemagic.yaml
 weight: 1
 aliases:
   - '../yaml/testing'
+  - /testing-yaml/testing/
 ---
 
 Test scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.

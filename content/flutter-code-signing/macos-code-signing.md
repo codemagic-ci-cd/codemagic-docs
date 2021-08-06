@@ -2,6 +2,7 @@
 description: How to set up macOS code signing in the Flutter workflow editor
 title: macOS code signing
 weight: 2
+aliases: /code-signing/macos-code-signing
 ---
 
 Code signing is required by Apple for integrating app services, installing your macOS app on another machine or uploading it to distribute it through the Mac App Store or outside of Mac App Store. It enables to identify who developed the app and ensure that all the changes to the app come from you or your team.

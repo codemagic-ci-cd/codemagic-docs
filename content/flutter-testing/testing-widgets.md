@@ -2,6 +2,7 @@
 description: How to configure running only widget tests
 title: Testing widgets
 weight: 3
+aliases: /testing/testing-widgets
 ---
 
 Instead of building the entire app, you can separately run tests on your widgets.

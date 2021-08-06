@@ -2,6 +2,7 @@
 description: How to work with environment variables in Codemagic builds
 title: Environment variables
 weight: 2
+aliases: /building/environment-variables
 ---
 
 Environment variables are useful for storing information that you do not want to store in the repository, such as your credentials or workflow-specific data. In addition, you can make use of a number of read-only environment variables that Codemagic exports to customize your builds.

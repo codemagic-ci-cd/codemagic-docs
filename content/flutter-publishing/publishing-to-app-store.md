@@ -2,6 +2,7 @@
 description: How to deploy a Flutter app to App Store and TestFlight using the Flutter workflow editor
 title: App Store Connect
 weight: 1
+aliases: /publishing/publishing-to-app-store
 ---
 
 Codemagic enables you to automatically publish your app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. To do so, you must first set up [iOS code signing](../code-signing/ios-code-signing/) using a distribution code signing [certificate](https://developer.apple.com/support/certificates/) and then configure publishing to App Store Connect.

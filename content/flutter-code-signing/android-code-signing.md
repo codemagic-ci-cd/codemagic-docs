@@ -2,6 +2,7 @@
 description: How to set up Android code signing in the Flutter workflow editor
 title: Android code signing
 weight: 3
+aliases: /code-signing/android-code-signing
 ---
 
 Code signing is required for distributing your Android app to the Google Play store. It enables to identify who developed the app and ensure that all updates to the app come from you.

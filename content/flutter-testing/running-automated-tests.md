@@ -2,6 +2,7 @@
 description: How to run automated tests in builds configured with the Flutter workflow editor
 title: Running automated tests
 weight: 1
+aliases: /testing/running-automated-tests
 ---
 
 Codemagic supports running **unit**, **integration** and **widget** tests as well as static code analysis with [**flutter analyze**](./static-code-analysis). When testing is enabled, tests are run automatically every time your project is built. You can configure the test settings in **App settings > Test**.

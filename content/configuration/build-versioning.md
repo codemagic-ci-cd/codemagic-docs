@@ -2,6 +2,7 @@
 title: Build versioning
 description: How to set a new build number to push to app stores
 weight: 6
+aliases: /building/build-versioning
 ---
 
 If you are going to publish your app to App Store Connect or Google Play, each uploaded binary must have a new version. There are several approaches you can use for build versioning on Codemagic. One of the easiest ways to increment the application version with every build is by using the environment variables that Codemagic exports during the build. There are two environment variables that count the number of builds:

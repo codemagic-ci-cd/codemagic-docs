@@ -4,6 +4,7 @@ description: How to set up publishing and build status notifications in codemagi
 weight: 1
 aliases:
     - '../yaml/distribution'
+    - /publishing-yaml/distribution
 ---
 
 All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play, and App Store Connect. It is also possible to publish elsewhere with custom scripts; see the examples below.

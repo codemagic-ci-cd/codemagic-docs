@@ -2,6 +2,7 @@
 title: Validating codemagic.yaml locally
 description:
 weight: 7
+aliases: /knowledge-base/validate-yaml
 ---
 
 Using the Codemagic JSON schema, you can validate your `codemagic.yaml` for structure and syntax errors right in your IDE. The same level of validation is carried out on the frontend in the YAML editor in your project settings. 

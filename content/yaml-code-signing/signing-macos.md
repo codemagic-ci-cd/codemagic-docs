@@ -2,6 +2,7 @@
 title: Signing macOS apps
 description: How to set up macOS code signing in codemagic.yaml
 weight: 2
+aliases: /code-signing-yaml/signing-macos
 ---
 
 All macOS applications have to be digitally signed before they can be installed on devices or made available to the public via the Mac App Store or outside of the Mac App Store.

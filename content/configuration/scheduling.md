@@ -3,6 +3,7 @@ title: Scheduling builds
 description: Create schedules to run builds at regular intervals
 weight: 9
 startLineBreak: true
+aliases: /building/scheduling
 ---
 
 {{<notebox>}}

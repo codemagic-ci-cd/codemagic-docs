@@ -2,6 +2,7 @@
 title: Webhooks
 description: Set up webhooks for automatic builds
 weight: 5
+aliases: /building/webhooks
 ---
 
 Webhooks are necessary in order to be able to trigger builds automatically in response to events in the repository.

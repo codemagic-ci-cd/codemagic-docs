@@ -2,7 +2,7 @@
 title: Public dashboards
 description: Use public links to distribute builds and artifacts in codemagic.yaml
 weight: 2
-aliases:
+aliases: /publishing-yaml/public-dashboards
 ---
 
 Public dashboards make it possible for teams to share the list of team's builds, release notes (if passed) and build artifacts with people outside Codemagic using a public link (build logs will not be exposed). This is a convenient option for distributing builds to testers or sharing build artifacts with stakeholders. 

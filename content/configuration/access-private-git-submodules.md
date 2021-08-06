@@ -1,6 +1,7 @@
 ---
 title: Accessing private dependencies and Git submodules
 weight: 1
+aliases: /building/access-private-git-submodules
 ---
 
 If your project requires accessing any private Git submodules or dependencies, you'll need to grant Codemagic access to them in order to build successfully.

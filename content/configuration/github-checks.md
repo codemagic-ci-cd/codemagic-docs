@@ -3,6 +3,7 @@ title: GitHub Checks
 description: How to report PR build statuses to GitHub as checks
 weight: 10
 startLineBreak: true
+aliases: /building/github-checks
 ---
 
 {{<notebox>}}

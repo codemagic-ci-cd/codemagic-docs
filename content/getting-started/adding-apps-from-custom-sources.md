@@ -2,6 +2,7 @@
 description: How to add an app to Codemagic from any private or public repository
 title: Adding repositories
 weight: 2
+aliases: /yaml-quick-start/adding-apps-from-custom-sources
 ---
 
 Add applications from any self-hosted or cloud-based Git repository. For the best integration with the Git provider, it's recommended to connect your GitHub, Bitbucket or GitLab repositories using the repository integration. However, you can also add repositories by entering the clone URL of the repository. 

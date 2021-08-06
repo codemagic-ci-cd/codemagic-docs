@@ -5,6 +5,8 @@ weight: 3
 aliases:
   - '../building/yaml'
   - '../yaml/yaml'
+  - /getting-started/yaml
+  - /yaml-quick-start/yaml
 ---
 
 `codemagic.yaml` is a highly customizable configuration file for setting up your CI/CD pipeline with Codemagic. Configure all your workflows in a single file and commit the file to version control.

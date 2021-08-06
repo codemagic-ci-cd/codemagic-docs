@@ -2,6 +2,7 @@
 description: How to set up iOS code signing in the Flutter workflow editor
 title: iOS code signing
 weight: 1
+aliases: /code-signing/ios-code-signing
 ---
 
 Code signing is required by Apple for integrating app services, installing your iOS app on real devices, and for uploading it to App Store Connect so that it can be distributed through TestFlight or App Store. It enables to identify who developed the app and ensure that all the changes to the app come from you or your team.

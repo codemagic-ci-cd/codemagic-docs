@@ -2,7 +2,7 @@
 title: Signing iOS apps
 description: How to set up iOS code signing in codemagic.yaml
 weight: 1
-aliases: '../code-signing-yaml/signing'
+aliases: [../code-signing-yaml/signing, /code-signing-yaml/signing-ios]
 ---
 
 All iOS applications have to be digitally signed before they can be installed on real devices or made available to the public.
