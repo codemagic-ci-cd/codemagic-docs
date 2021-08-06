@@ -31,63 +31,79 @@ buildDrafts: true
 defaultContentLanguage: en
 disable404: true
 enableGitInfo: true
-
-# sectionPagesMenu: main
+sectionPagesMenu: main
 pluralizeListTitles: false
+
 menu:
   main:
     - identifier: getting-started
       name: Getting started
+      weight: 1
+
     - identifier: yaml
       name: YAML
-    # - identifier: code-signing
-    #   name: code signing
-    #   parent: yaml
+      weight: 2
+    - identifier: yaml-quick-start
+      name: Quick start
+      parent: yaml
+      weight: 1
+    - identifier: yaml-testing
+      name: Testing
+      parent: yaml
+      weight: 2
+    - identifier: yaml-code-signing
+      name: Code signing
+      parent: yaml
+      weight: 3
+    - identifier: yaml-publishing
+      name: Publishing
+      parent: yaml
+      weight: 4
 
-  # general:
-  #   - identifier: getting-started
-  #     name: Getting started
-  # file:
-  #   - identifier: sample-projects-yaml
-  #     name: Sample Projects
-  #   - identifier: building-yaml
-  #     name: Configuration
-  #   - identifier: testing-yaml
-  #     name: Testing
-  #   - identifier: code-signing-yaml
-  #     name: Code signing
-  #   - identifier: publishing-yaml
-  #     name: Publishing
-  #   - identifier: flutter-yaml
-  #     name: Flutter
-  # ui:
-  #   - identifier: setup-flutter
-  #     name: Flutter workflow editor
-  #   - identifier: flutter
-  #     name: Flutter build configuration
-  #   - identifier: testing
-  #     name: Testing
-  #   - identifier: code-signing
-  #     name: Code signing
-  #   - identifier: publishing
-  #     name: Distribution and notifications
-  # other:
-  #   - identifier: building
-  #     name: Build
-  #   - identifier: teams
-  #     name: Teams
-  #   - identifier: billing
-  #     name: Billing & Pricing
-  #   - identifier: knowledge-base
-  #     name: Knowledge base
-  #   - identifier: rest-api
-  #     name: Codemagic API
-  #   - identifier: troubleshooting
-  #     name: Troubleshooting
-  #   - identifier: specs
-  #     name: Build machine specs
-  #   - identifier: integrations
-  #     name: Integrations
+    - identifier: flutter
+      name: Flutter
+      weight: 3
+    - identifier: flutter-configuration
+      name: Configuration
+      parent: flutter
+      weight: 1
+    - identifier: flutter-testing
+      name: Testing
+      parent: flutter
+      weight: 2
+    - identifier: flutter-code-signing
+      name: Code signing
+      parent: flutter
+      weight: 3
+    - identifier: flutter-publishing
+      name: Publishing
+      parent: flutter
+      weight: 4
+    
+    - identifier: configuration
+      name: Configuration
+      weight: 4
+    - identifier: integrations
+      name: Integrations
+      weight: 5
+    - identifier: knowledge-base
+      name: Knowledge base
+      weight: 6
+    - identifier: teams
+      name: Teams
+      weight: 7
+
+    - identifier: rest-api
+      name: Codemagic API
+      weight: 8
+    - identifier: billing
+      name: Billing & Pricing
+      weight: 9
+    - identifier: specs
+      name: Build machine specs
+
+    - identifier: running-locally
+      name: Codemagic CLI tools
 
 mediaTypes:
   video/mp4:

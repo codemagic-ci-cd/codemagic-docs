@@ -5,16 +5,10 @@
       <li class="{{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }}" data-js-docs-menu-item>
         <div class="category-name" data-js-category-name>{{ .Name }}</div>
         <div class="category-posts" data-js-category-posts>
-          {{/*  <pre>
-            {{ printf "%#v" .HasChildren }}
-          </pre>  */}}
           {{- if .HasChildren }}
-            {{/*  <pre>
-              {{ printf "%#v" .Children }}
-            </pre>  */}}
             {{ template "content-menu" (dict "menuItems" .Children "currentPage" $currentPage)}}
           {{- end }}
-          {{ range where site.Pages "Section" .Identifier -}}
+          {{ range where site.RegularPages "Section" .Identifier -}}
             <a class="{{ if eq $currentPage .}}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
           {{- end }}
         </div>
@@ -29,5 +23,4 @@
     <a id="codemagic-landing-link" onclick="sendGtag('Codemagic_clicked', 'DocumentationMenu')" href="https://codemagic.io/start" target="_blank">Codemagic</a>
     <a id="codemagic-blog-link" onclick="sendGtag('Blog_clicked', 'DocumentationMenu')" href="https://blog.codemagic.io" target="_blank">Codemagic Blog</a>
   </div>
-  <button class='configuration-switch'>Reset configuration switch</button>
 </nav>
