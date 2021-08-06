@@ -87,34 +87,31 @@ menu:
     - identifier: configuration
       name: Advanced configuration
       weight: 4
-    - identifier: integrations
-      name: Integrations
-      weight: 5
     - identifier: knowledge-base
       name: Knowledge base
-      weight: 6
+      weight: 5
     - identifier: teams
       name: Teams
-      weight: 7
+      weight: 6
 
     - identifier: rest-api
       name: Codemagic API
-      weight: 8
+      weight: 7
     - identifier: billing
       name: Billing & Pricing
-      weight: 9
+      weight: 8
     - identifier: specs
       name: Build machine specs
 
     - identifier: running-locally
       name: Codemagic CLI tools
-      weight: 10
+      weight: 9
     - identifier: notes
       name: Codemagic release log
-      weight: 11
+      weight: 10
     - identifier: troubleshooting
       name: Troubleshooting
-      weight: 12
+      weight: 11
 
 mediaTypes:
   video/mp4:
