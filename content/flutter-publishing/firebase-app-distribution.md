@@ -2,6 +2,7 @@
 description: Deploy a Flutter app to Firebase App Distribution using the Flutter workflow editor
 title: Firebase App Distribution
 weight: 3
+aliases: /publishing/firebase-app-distribution
 ---
 
 Set up publishing to [Firebase App Distribution](https://firebase.google.com/docs/app-distribution) to distribute your Android and iOS apps to testers.

@@ -4,6 +4,7 @@ description: How to build and release a snap package with codemagic.yaml
 weight: 11
 aliases:
   - '../yaml/building-a-snap-package'
+  - /getting-started/building-a-snap-package
 ---
 
 ## Setting up snap packaging

@@ -4,6 +4,7 @@ title: Dependency caching
 weight: 6
 aliases: 
     - '../building/dependency-caching'
+    - /flutter/dependency-caching
 ---
 
 You can speed up your builds by storing dependencies on Codemagic. To use caching, you must **enable dependency caching** in app settings. Note that caching is workflow-specific.

@@ -4,6 +4,7 @@ description: How to build an Android app with codemagic.yaml
 weight: 7
 aliases:
   - '../yaml/building-a-native-android-app'
+  - /getting-started/building-a-native-android-app
 ---
 
 ## Setting up an Android project

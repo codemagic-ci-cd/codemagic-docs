@@ -2,6 +2,7 @@
 description: How to run Flutter analyze in Flutter workflow editor configured builds
 title: Static code analysis
 weight: 2
+aliases: /testing/static-code-analysis
 ---
 
 Test your code with `flutter analyze` to find possible mistakes. You can read more about this feature in [Dart documentation](https://dart.dev/guides/language/analysis-options). By default, static code analysis is disabled and has to be enabled in **App settings > Test** by checking the **Enable Flutter analyzer** option.

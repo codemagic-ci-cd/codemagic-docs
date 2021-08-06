@@ -4,6 +4,7 @@ description: How to enable automatic builds in the Flutter workflow editor
 weight: 3
 aliases:
     - '../building/automatic-build-triggering'
+    - /flutter/automatic-build-triggering
 ---
 
 In order to fully automate your CI/CD pipeline, you can set up automatic build triggering by configuring which branches to track and when to trigger builds.

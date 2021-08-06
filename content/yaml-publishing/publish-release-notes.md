@@ -2,6 +2,7 @@
 description: How to pass release notes with successful builds
 title: Passing release notes
 weight: 2
+aliases: /publishing-yaml/publish-release-notes
 ---
 
 Create custom release notes file(s) to notify users of the changes as you publish a new version of your app.

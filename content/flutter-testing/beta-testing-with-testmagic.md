@@ -3,6 +3,7 @@ description: How to configure Testmagic distribution in the Flutter workflow edi
 title: Beta testing with Testmagic
 weight: 6
 draft: true
+aliases: /testing/beta-testing-with-testmagic
 ---
 
 Codemagic is seamlessly integrated with [Testmagic](https://testmagic.io/), a simple mobile app for viewing, testing and distributing your Codemagic builds. You can download it from [Google Play](https://play.google.com/store/apps/details?id=io.nevercode.testmagic&hl=en) for Android or join the TestFlight group for iOS - [link](https://testflight.apple.com/join/lEQLSjoe).

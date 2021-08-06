@@ -4,6 +4,7 @@ description: How to execute custom scripts in builds configured with the Flutter
 weight: 5
 aliases: 
   - '../building/custom-scripts'
+  - /flutter/custom-scripts
 ---
 
 You can customize the Codemagic workflow by running custom scripts before and after the default build steps.

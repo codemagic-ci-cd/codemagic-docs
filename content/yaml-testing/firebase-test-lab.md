@@ -2,6 +2,7 @@
 title: Testing on Firebase Test Lab
 description: How to run tests on Firebase Test Lab
 weight: 2
+aliases: /testing-yaml/firebase-test-lab
 ---
 
 Firebase Test Lab provides a cloud-based infrastructure for testing Android and iOS apps on various devices and configurations. You can test your apps on Firebase Test Lab as part of the Codemagic build workflow provided you have set up a Firebase project.
