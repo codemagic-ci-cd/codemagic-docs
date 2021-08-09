@@ -8,7 +8,7 @@
           {{- if .HasChildren }}
             {{ template "content-menu" (dict "menuItems" .Children "currentPage" $currentPage)}}
           {{- end }}
-          {{ range where site.RegularPages "Section" .Identifier -}}
+          {{ range where site.Pages "Section" .Identifier -}}
             <a class="{{ if eq $currentPage .}}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
           {{- end }}
         </div>
