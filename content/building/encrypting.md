@@ -32,9 +32,9 @@ On macOS, in order to base64 encode a file and copy the contents to your clipboa
   
 On Windows, in order to base64 encode a file and copy the contents to your clipboard, you can run the following command in the Powershell:
   ```bash
-  [Convert]::ToBase64String([IO.File]::ReadAllBytes("dummy_data.p8")) | Set-Clipboard
+  [Convert]::ToBase64String([IO.File]::ReadAllBytes("your_file_name.extension")) | Set-Clipboard
   ```
-For Linux, you can install xclip:
+For Linux, in order to encode to base64 run the command below and you can install xclip as it lets you to put the output of a command directly into the clipboard so that you don't have to copy&paste from the terminal manually:
    ```bash
   sudo apt-get install xclip
   cat dummy_data.p8 | base64 | xclip -selection clipboard 
