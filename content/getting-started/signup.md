@@ -2,8 +2,6 @@
 title: Signup
 weight: 1
 aliases:
-  - '../getting-started/codemagic-github-app'
-  - '../getting-started/github-organization-accounts'
 ---
 
 You can sign up to Codemagic using a [GitHub](https://github.com/), [Bitbucket](https://bitbucket.org/) or [GitLab](https://about.gitlab.com/) account, or via email. SSO integrations for enterprises are available on request.
