@@ -30,6 +30,17 @@ On macOS, in order to base64 encode a file and copy the contents to your clipboa
   ```bash
   cat your_file_name.extension | base64 | pbcopy 
   ```
+  
+On Windows, in order to base64 encode a file and copy the contents to your clipboard, you can run the following command in the Powershell:
+  ```bash
+  [Convert]::ToBase64String([IO.File]::ReadAllBytes("your_file_name.extension")) | Set-Clipboard
+  ```
+For Linux, in order to encode to base64 run the command below and you can install xclip as it lets you to put the output of a command directly into the clipboard so that you don't have to copy&paste from the terminal manually:
+   ```bash
+  sudo apt-get install xclip
+  cat your_file_name.extension | base64 | xclip -selection clipboard 
+  ```
+
 After the command has been run, you can paste the string from your clipboard to our encryption tool in the Codemagic UI and then save the encrypted string to an environment variable.
 
 Finally, base64 decode it during build time in your scripts section using the following command:
