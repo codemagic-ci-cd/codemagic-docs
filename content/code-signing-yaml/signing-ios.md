@@ -153,7 +153,7 @@ environment:
     FCI_PROVISIONING_PROFILE_NOTIFICATIONSERVICE: Encrypted(...)
 ```
 
-and then set the profiles up in the build by using the following script in your YAML file:
+Then, set the profiles up in the build by using the following script in your YAML file:
 ```yaml
 scripts:
   - name: Set up Provisioning profiles from environment variables
@@ -165,4 +165,3 @@ scripts:
         echo ${!profile} | base64 --decode > "$PROFILE_PATH"
         echo "Saved provisioning profile $PROFILE_PATH"
       done
-
