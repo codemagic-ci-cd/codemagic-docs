@@ -142,3 +142,26 @@ scripts:
     script: xcode-project use-profiles
   ... your build commands
 ```
+
+### Using multiple provisioning profiles
+
+To set up multiple provisioning profiles, for example, to use app extensions such as [NotificationService](https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension), the easiest option is to add the provisioning profiles to your environment variables with a similar naming convention:
+```yaml
+environment:
+  vars:
+    FCI_PROVISIONING_PROFILE_BASE: Encrypted(...)
+    FCI_PROVISIONING_PROFILE_NOTIFICATIONSERVICE: Encrypted(...)
+```
+
+Then, set the profiles up in the build by using the following script in your YAML file:
+```yaml
+scripts:
+  - name: Set up Provisioning profiles from environment variables
+    script: |
+      PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+      mkdir -p "$PROFILES_HOME"
+      for profile in "${!FCI_PROVISIONING_PROFILE_@}"; do
+        PROFILE_PATH="$(mktemp "$HOME/Library/MobileDevice/Provisioning Profiles"/ios_$(uuidgen).mobileprovision)"
+        echo ${!profile} | base64 --decode > "$PROFILE_PATH"
+        echo "Saved provisioning profile $PROFILE_PATH"
+      done
