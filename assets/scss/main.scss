@@ -180,6 +180,19 @@ body {
                         }
                     }
                 }
+                &.extra-menu {
+                    & > .category-posts {
+                        &::before {
+                            border-right: none;
+                        }
+                        a {
+                            font-family: $font-family-bold;
+                            padding-left: 0;
+                            border-left: 0;
+                            font-size: 18px;
+                        }
+                    }
+                }
             }
             .external-links {
                 margin-top: 15px;

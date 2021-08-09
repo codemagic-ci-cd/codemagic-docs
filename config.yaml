@@ -31,9 +31,8 @@ buildDrafts: true
 defaultContentLanguage: en
 disable404: true
 enableGitInfo: true
-sectionPagesMenu: main
-pluralizeListTitles: false
 
+pluralizeListTitles: false
 menu:
   main:
     - identifier: getting-started
@@ -93,26 +92,25 @@ menu:
     - identifier: teams
       name: Teams
       weight: 6
-
     - identifier: rest-api
       name: Codemagic API
       weight: 7
     - identifier: billing
       name: Billing & Pricing
       weight: 8
-    - identifier: specs
-      name: Build machine specs
-
-    - identifier: running-locally
-      name: Codemagic CLI tools
-      weight: 9
-    - identifier: notes
-      name: Codemagic release log
-      weight: 10
     - identifier: troubleshooting
       name: Troubleshooting
+      weight: 9
+    - identifier: specs
+      name: Build machine specs
+  extra:
+    - identifier: running-locally
+      name: Codemagic CLI tools
+      weight: 10
+    - identifier: notes
+      name: Codemagic release log
       weight: 11
-
+ 
 mediaTypes:
   video/mp4:
     suffixes:

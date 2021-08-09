@@ -1,4 +1,4 @@
-{{ define "content-menu" }}
+{{ define "main-menu" }}
   {{ $currentPage := .currentPage}}
   <ul>
     {{ range .menuItems }}
@@ -6,7 +6,7 @@
         <div class="category-name" data-js-category-name>{{ .Name }}</div>
         <div class="category-posts" data-js-category-posts>
           {{- if .HasChildren }}
-            {{ template "content-menu" (dict "menuItems" .Children "currentPage" $currentPage)}}
+            {{ template "main-menu" (dict "menuItems" .Children "currentPage" $currentPage)}}
           {{- end }}
           {{ range where site.Pages "Section" .Identifier -}}
             <a class="{{ if eq $currentPage .}}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
@@ -17,10 +17,27 @@
   </ul>
 {{ end }}
 
+{{ define "extra-menu" }}
+  {{ $currentPage := .currentPage }}
+  <ul>
+    {{ range .menuItems }}
+      <li class="open extra-menu">
+        <div class="category-posts">
+          {{ range where site.Pages "Section" .Identifier }}
+            <a class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{ end }}
+        </div>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}
+
 <nav id="docs-menu" data-js-docs-menu>
-  {{ template "content-menu" (dict "menuItems" .Site.Menus.main "currentPage" .)}}
+  {{ template "main-menu" (dict "menuItems" .Site.Menus.main "currentPage" .)}}
+  {{ template "extra-menu" (dict "menuItems" .Site.Menus.extra "currentPage" .)}}
   <div class="external-links">
     <a id="codemagic-landing-link" onclick="sendGtag('Codemagic_clicked', 'DocumentationMenu')" href="https://codemagic.io/start" target="_blank">Codemagic</a>
-    <a id="codemagic-blog-link" onclick="sendGtag('Blog_clicked', 'DocumentationMenu')" href="https://blog.codemagic.io" target="_blank">Codemagic Blog</a>
+    <a id="codemagic-blog-link" onclick="sendGtag('Blog_clicked', 'DocumentationMenu')" href="https://blog.codemagic.io" target="_blank">Blog</a>
+    <a id="codemagic-youtube-link" onclick="sendGtag('YouTube_clicked', 'DocumentationMenu')" href="https://www.youtube.com/channel/UC6iPpISHwCnNreb53c0eYvg" target="_blank">YouTube Channel</a>
   </div>
 </nav>
