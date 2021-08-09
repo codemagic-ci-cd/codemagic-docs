@@ -37,7 +37,7 @@ On Windows, in order to base64 encode a file and copy the contents to your clipb
 For Linux, in order to encode to base64 run the command below and you can install xclip as it lets you to put the output of a command directly into the clipboard so that you don't have to copy&paste from the terminal manually:
    ```bash
   sudo apt-get install xclip
-  cat dummy_data.p8 | base64 | xclip -selection clipboard 
+  cat your_file_name.extension | base64 | xclip -selection clipboard 
   ```
 
 After the command has been run, you can paste the string from your clipboard to our encryption tool in the Codemagic UI and then save the encrypted string to an environment variable.
