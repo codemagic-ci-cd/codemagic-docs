@@ -91,6 +91,19 @@ const getResultHtml = (algoliaResultList, query) => {
         })
     }
 
+    const preferredConfiguration = localStorage.getItem('preferred-configuration') || defaultPreferredConfiguration
+    algoliaResultList = algoliaResultList.filter(function (result) {
+        let resultConfiguration = null
+        preferredConfigurations.some(function (configuration) {
+            if (result.uri.startsWith(`/${configuration}`)) {
+                resultConfiguration = configuration
+                return true
+            }
+        })
+
+        return !resultConfiguration || resultConfiguration === preferredConfiguration
+    })
+
     if (!algoliaResultList.length) {
         return $('<div>', {
             class: 'no-results-message',

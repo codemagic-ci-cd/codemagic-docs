@@ -1,5 +1,8 @@
 const desktopScreenWidth = 1001
 
+const preferredConfigurations = ['yaml', 'flutter']
+const defaultPreferredConfiguration = preferredConfigurations[0]
+
 $('[data-js-docs-menu-item].open').parents('[data-js-docs-menu-item]').addClass('open')
 
 // Open - open only current category
