@@ -2,15 +2,15 @@
   {{ $currentPage := .currentPage}}
   <ul>
     {{ range .menuItems }}
-      <li class="{{ if or ( $currentPage.IsMenuCurrent "main" . ) ( $currentPage.HasMenuCurrent "main" . ) }}open{{ end }}" data-js-docs-menu-item>
+      <li class="{{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }}" data-js-docs-menu-item>
         <div class="category-name" data-js-category-name>{{ .Name }}</div>
         <div class="category-posts" data-js-category-posts>
-          {{ if .HasChildren }}
-            {{ template "main-menu" ( dict "menuItems" .Children "currentPage" $currentPage ) }}
-          {{ end }}
-          {{ range where site.Pages "Section" .Identifier }}
-            <a class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
-          {{ end }}
+          {{- if .HasChildren }}
+            {{ template "main-menu" (dict "menuItems" .Children "currentPage" $currentPage)}}
+          {{- end }}
+          {{ range where site.Pages "Section" .Identifier -}}
+            <a class="{{ if eq $currentPage .}}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{- end }}
         </div>
       </li>
     {{ end }}
@@ -33,8 +33,8 @@
 {{ end }}
 
 <nav id="docs-menu" data-js-docs-menu>
-  {{ template "main-menu" ( dict "menuItems" .Site.Menus.main "currentPage" . ) }}
-  {{ template "extra-menu" ( dict "menuItems" .Site.Menus.extra "currentPage" . ) }}
+  {{ template "main-menu" (dict "menuItems" .Site.Menus.main "currentPage" .)}}
+  {{ template "extra-menu" (dict "menuItems" .Site.Menus.extra "currentPage" .)}}
   <div class="external-links">
     <a id="codemagic-landing-link" onclick="sendGtag('Codemagic_clicked', 'DocumentationMenu')" href="https://codemagic.io/start" target="_blank">Codemagic</a>
     <a id="codemagic-blog-link" onclick="sendGtag('Blog_clicked', 'DocumentationMenu')" href="https://blog.codemagic.io" target="_blank">Blog</a>

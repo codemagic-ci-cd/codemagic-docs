@@ -1,6 +1,6 @@
 ---
 title: Project types
-weight: 3
+weight: 2
 aliases:
 ---
 

@@ -108,7 +108,7 @@ menu:
       name: Codemagic CLI tools
       weight: 1
     - identifier: notes
-      name: Codemagic release log
+      name: Changelog
       weight: 2
 
 mediaTypes:
