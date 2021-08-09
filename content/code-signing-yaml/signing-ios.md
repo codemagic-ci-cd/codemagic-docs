@@ -145,7 +145,7 @@ scripts:
 
 ### Using multiple provisioning profiles
 
-To set up multiple provisioning profiles, for example, to use app extensions such as [`NotificationService`](https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension), the easiest option is to add the provisioning profiles to your environment variables with a similar naming convention:
+To set up multiple provisioning profiles, for example, to use app extensions such as [NotificationService](https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension), the easiest option is to add the provisioning profiles to your environment variables with a similar naming convention:
 ```yaml
 environment:
   vars:
