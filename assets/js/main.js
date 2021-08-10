@@ -344,3 +344,19 @@ $(window).ready(function () {
         observer.observe(header)
     })
 })
+
+$(window).ready(function () {
+    let currentPageConfiguration = ''
+
+    preferredConfigurations.some(function (configuration) {
+        if (window.location.pathname.startsWith(`/${configuration}`)) {
+            currentPageConfiguration = configuration
+            return true
+        }
+    }) 
+
+    const preferredConfiguration = localStorage.getItem('preferred-configuration')
+    if (currentPageConfiguration.length && currentPageConfiguration !== preferredConfiguration) {
+        $('#page-notification').removeClass('hidden')
+    }
+})

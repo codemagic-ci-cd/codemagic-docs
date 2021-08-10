@@ -702,3 +702,16 @@ body {
         display: inline-block;
     }
 }
+
+#configuration-info {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    &.hidden {
+        display: none;
+    }
+}

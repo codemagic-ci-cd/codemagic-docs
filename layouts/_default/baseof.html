@@ -33,6 +33,7 @@
                 <main>{{ block "main" . }}{{ end }}</main>
             </div>
         </div>
+        {{ partial "page-notification" . }}
         <footer id="footer">{{ partial "footer" . }}</footer>
         {{ partial "analytics" . }} {{ partial "site-footer" . }}
     </body>
