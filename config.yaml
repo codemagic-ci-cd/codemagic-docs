@@ -32,7 +32,7 @@ defaultContentLanguage: en
 disable404: true
 enableGitInfo: true
 
-pluralizeListTitles: false
+sectionPagesMenu: 'main'
 menu:
   main:
     - identifier: getting-started
@@ -82,7 +82,7 @@ menu:
       name: Publishing
       parent: flutter
       weight: 4
-    
+ 
     - identifier: configuration
       name: Advanced configuration
       weight: 4
@@ -103,12 +103,18 @@ menu:
       weight: 9
     - identifier: specs
       name: Build machine specs
+
+    - identifier: running-locally
+      params:
+        visibility: 'none'
+    - identifier: notes
+      params:
+        visibility: 'none'
+
   extra:
     - identifier: running-locally
-      name: Codemagic CLI tools
       weight: 1
     - identifier: notes
-      name: Changelog
       weight: 2
 
 mediaTypes:
