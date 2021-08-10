@@ -1,5 +1,4 @@
 {{ $currentPageConfiguration := "" }}
-    <script>console.log('{{ printf "%#v" $currentPageConfiguration }}')</script>
 {{ if hasPrefix .URL "/yaml" }}
     {{ $currentPageConfiguration = "codemagic.yaml" }}
 {{ end }}
