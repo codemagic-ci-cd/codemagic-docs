@@ -704,10 +704,13 @@ body {
 }
 
 #configuration-info {
+    display: grid;
+    grid-template-columns: 1fr 2em;
     position: fixed;
-    left: 0;
     bottom: 0;
+    z-index: 15;
     width: 100%;
+    align-self: center;
     background-color: red;
     color: white;
     text-align: center;

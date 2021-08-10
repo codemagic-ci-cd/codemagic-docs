@@ -345,8 +345,39 @@ $(window).ready(function () {
     })
 })
 
+function updateConfigurationButtons (type) {
+    const otherType = type === 'file' ? 'ui' : 'file'
+
+    const button = $(`.configuration-switch[value='${type}']`)
+    button.hide()
+
+    const otherButton = $(`.configuration-switch[value='${otherType}']`)
+    otherButton.show()
+
+    window.localStorage.setItem('preferred-configuration', type)
+}
+
+// Configuration toggle
 $(window).ready(function () {
-    let currentPageConfiguration = ''
+    const configuration = window.localStorage.getItem('preferred-configuration')
+    updateConfigurationButtons(configuration)
+
+    $('.configuration-switch').on('click', function (event) {
+        const type = event.target.value
+
+        updateConfigurationButtons(type)
+        if (type === 'yaml') {
+            window.location.href = '/yaml-quick-start/codemagic-sample-projects/'
+        } else if (type === 'flutter') {
+            window.location.href = '/flutter-configuration/flutter-projects/'
+        } else {
+            window.location.href = '/'
+        }
+    })
+})
+
+$(window).ready(function () {
+    let currentPageConfiguration = null
 
     preferredConfigurations.some(function (configuration) {
         if (window.location.pathname.startsWith(`/${configuration}`)) {
@@ -356,7 +387,11 @@ $(window).ready(function () {
     }) 
 
     const preferredConfiguration = localStorage.getItem('preferred-configuration')
-    if (currentPageConfiguration.length && currentPageConfiguration !== preferredConfiguration) {
-        $('#page-notification').removeClass('hidden')
+    if (currentPageConfiguration && currentPageConfiguration !== preferredConfiguration) {
+        $('#configuration-info').removeClass('hidden')
     }
+
+    ($('#configuration-info-close')).on('click', function (event) {
+        $('#configuration-info').addClass('hidden')
+    })
 })

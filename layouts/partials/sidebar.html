@@ -35,6 +35,9 @@
 {{ end }}
 
 <nav id="docs-menu" data-js-docs-menu>
+  <button class='configuration-switch' value='yaml'>Switch to YAML configuration</button>
+  <button class='configuration-switch' value='flutter'>Switch to Flutter UI configuration</button>
+  <button class='configuration-switch'>Reset configuration switch</button>
   {{ template "main-menu" ( dict "menuItems" .Site.Menus.main "currentPage" . ) }}
   {{ template "extra-menu" ( dict "menuItems" .Site.Menus.extra "currentPage" . ) }}
   <div class="external-links">

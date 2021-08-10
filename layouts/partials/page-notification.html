@@ -1,15 +1,14 @@
-<div id="page-notification">
-    {{ $currentPageConfiguration := "" }}
-        <script>console.log('{{ printf "%#v" $currentPageConfiguration }}')</script>
-    {{ if hasPrefix .URL "/yaml" }}
-        {{ $currentPageConfiguration = "codemagic.yaml" }}
-    {{ end }}
-    {{ if hasPrefix .URL "/flutter" }}
-        {{ $currentPageConfiguration = "Flutter workflow editor" }}
-    {{ end }}
-    {{ if ne $currentPageConfiguration "" }}
-        <div id="configuration-info hidden">
-            You are currently viewing article for {{ $currentPageConfiguration }} configuration.
-        </div>
-    {{ end }}
-</div>
+{{ $currentPageConfiguration := "" }}
+    <script>console.log('{{ printf "%#v" $currentPageConfiguration }}')</script>
+{{ if hasPrefix .URL "/yaml" }}
+    {{ $currentPageConfiguration = "codemagic.yaml" }}
+{{ end }}
+{{ if hasPrefix .URL "/flutter" }}
+    {{ $currentPageConfiguration = "Flutter workflow editor" }}
+{{ end }}
+{{ if ne $currentPageConfiguration "" }}
+    <div id="configuration-info" class="hidden">
+        You are currently viewing article for {{ $currentPageConfiguration }} configuration.
+        <span id="configuration-info-close">x</span>
+    </div>
+{{ end }}
