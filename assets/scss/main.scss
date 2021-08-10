@@ -134,6 +134,13 @@ body {
                         right: 0;
                     }
                 }
+
+                .dropdown-always-open {
+                    &::after {
+                        display: none;
+                    }
+                }
+
                 .category-posts {
                     display: none;
                     padding-left: 20px;

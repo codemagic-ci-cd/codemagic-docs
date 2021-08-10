@@ -38,10 +38,14 @@ menu:
     - identifier: getting-started
       name: Getting started
       weight: 1
+      params:
+        dropdown: always-open
 
     - identifier: yaml
       name: Codemagic.yaml
       weight: 2
+      params:
+        dropdown: always-open
     - identifier: yaml-quick-start
       name: Quick start guides
       parent: yaml
@@ -66,6 +70,8 @@ menu:
     - identifier: flutter
       name: Flutter workflow editor
       weight: 3
+      params:
+        dropdown: always-open
     - identifier: flutter-configuration
       name: Build configuration
       parent: flutter
@@ -86,30 +92,44 @@ menu:
     - identifier: configuration
       name: Advanced configuration
       weight: 4
+      params:
+        dropdown: always-open
     - identifier: knowledge-base
       name: Knowledge base
       weight: 5
+      params:
+        dropdown: always-open
     - identifier: teams
       name: Teams
       weight: 6
+      params:
+        dropdown: always-open
     - identifier: rest-api
       name: Codemagic API
       weight: 7
+      params:
+        dropdown: always-open
     - identifier: billing
       name: Billing & Pricing
       weight: 8
+      params:
+        dropdown: always-open
     - identifier: troubleshooting
       name: Troubleshooting
       weight: 9
+      params:
+        dropdown: always-open
     - identifier: specs
       name: Build machine specs
+      params:
+        dropdown: always-open
 
     - identifier: running-locally
       params:
-        visibility: 'none'
+        visibility: none
     - identifier: notes
       params:
-        visibility: 'none'
+        visibility: none
 
   extra:
     - identifier: running-locally

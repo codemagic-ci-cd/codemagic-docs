@@ -3,8 +3,9 @@
     <ul>
         {{ range .menuItems }}
             {{ if not ( eq ( echoParam .Params "visibility" ) "none" ) }}
-                <li class="{{ if or ( $currentPage.IsMenuCurrent "main" . ) ( $currentPage.HasMenuCurrent "main" . ) }}open{{ end }}" data-js-docs-menu-item>
-                    <div class="category-name" data-js-category-name>{{ .Name }}</div>
+                {{ $isDropdownAlwaysOpen := eq ( echoParam .Params "dropdown" ) "always-open" }}
+                <li class="{{ if or $isDropdownAlwaysOpen ( $currentPage.HasMenuCurrent "main" . ) }}open{{ end }}" data-js-docs-menu-item>
+                    <div class="category-name {{ if $isDropdownAlwaysOpen }}dropdown-always-open{{ end }}" data-js-category-name>{{ .Name }}</div>
                     <div class="category-posts" data-js-category-posts>
                         {{ if .HasChildren }}
                             {{ template "main-menu" ( dict "menuItems" .Children "currentPage" $currentPage ) }}

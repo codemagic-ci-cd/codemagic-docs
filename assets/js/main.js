@@ -8,6 +8,10 @@ $('[data-js-docs-menu-item].open').parents('[data-js-docs-menu-item]').addClass(
 // Open - open only current category
 // Close - close current and all descendant categories
 $('[data-js-category-name]').on('click', function () {
+    if ($(this).hasClass('dropdown-always-open')) {
+        return
+    }
+
     const parent = $(this).parent()
     if (parent.hasClass('open')) {
         parent.find('[data-js-category-posts]').each(function (_, item) {
