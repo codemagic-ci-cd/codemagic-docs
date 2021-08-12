@@ -89,34 +89,39 @@ menu:
       parent: flutter
       weight: 4
  
+    - identifier: variables
+      name: Environment variables
+      weight: 4
+      params:
+        dropdown: always-open
     - identifier: configuration
       name: Advanced configuration
-      weight: 4
+      weight: 5
       params:
         dropdown: always-open
     - identifier: knowledge-base
       name: Knowledge base
-      weight: 5
+      weight: 6
       params:
         dropdown: always-open
     - identifier: teams
       name: Teams
-      weight: 6
+      weight: 7
       params:
         dropdown: always-open
     - identifier: rest-api
       name: Codemagic API
-      weight: 7
+      weight: 8
       params:
         dropdown: always-open
     - identifier: billing
       name: Billing & Pricing
-      weight: 8
+      weight: 9
       params:
         dropdown: always-open
     - identifier: troubleshooting
       name: Troubleshooting
-      weight: 9
+      weight: 10
       params:
         dropdown: always-open
     - identifier: specs
