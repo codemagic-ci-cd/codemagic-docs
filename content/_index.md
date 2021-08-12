@@ -1,13 +1,43 @@
 ---
-description:
-  Browse the Codemagic documentation for a quick overview of how to configure
+description: Browse the Codemagic documentation for a quick overview of how to configure
   Codemagic to get the most out of it.
 title: Codemagic Documentation
 ---
 
-Welcome to Codemagic documentation!
+<div class="links-group-wrap">
 
-Here you'll find some essential information for setting up continuous integration and continuous delivery for your mobile apps with [Codemagic](https://codemagic.io/). 
+{{<links-group title="Getting started">}}
+
+- [Signup](https://codemagic.io/)
+- [Adding repositories](https://codemagic.io/)
+- [Project types](https://codemagic.io/)
+  {{</links-group>}}
+
+{{<links-group title="Codemagic.yaml">}}
+
+- [Signup](https://codemagic.io/)
+- [Adding repositories](https://codemagic.io/)
+- [Project types](https://codemagic.io/)
+  {{</links-group>}}
+
+{{<links-group title="Flutter Workflow Editor">}}
+
+- [Signup](https://codemagic.io/)
+- [Adding repositories](https://codemagic.io/)
+- [Project types](https://codemagic.io/)
+  {{</links-group>}}
+
+{{<links-group title="Popular articles">}}
+
+- [Signup](https://codemagic.io/)
+- [Adding repositories](https://codemagic.io/)
+- [Project types](https://codemagic.io/)
+{{</links-group>}}
+</div>
+
+<!-- Welcome to Codemagic documentation!
+
+Here you'll find some essential information for setting up continuous integration and continuous delivery for your mobile apps with [Codemagic](https://codemagic.io/).
 
 There are also step-by-step guides on various topics available on our [blog](https://blog.codemagic.io/categories/product/ 'Codemagic blog - Tutorials').
 
@@ -19,8 +49,8 @@ To contribute, fork the repository, make your changes and start a pull request. 
 
 ## Codemagic Slack workspace
 
-If you have problems with setting up Codemagic CI/CD or want to talk to fellow mobile app developers, you are welcome to join our [Slack workspace](https://slack.codemagic.io 'Slack community for CI/CD and Flutter'). 
+If you have problems with setting up Codemagic CI/CD or want to talk to fellow mobile app developers, you are welcome to join our [Slack workspace](https://slack.codemagic.io 'Slack community for CI/CD and Flutter').
 
 ## Codemagic status page
 
-We post information about maintenances and issues with the service on our [status page](https://twitter.com/CodemagicStatus).
+We post information about maintenances and issues with the service on our [status page](https://twitter.com/CodemagicStatus). -->

@@ -1,0 +1,18 @@
+.page--home {
+    #hero {
+        padding: 150px 0;
+        background-color: #f5f8ff;
+
+        .inner {
+            max-width: 800px;
+        }
+        h1 {
+            color: $black-l;
+            font-size: 48px;
+            text-align: center;
+        }
+    }
+    #links {
+        padding: 100px 0;
+    }
+}

@@ -1,0 +1,21 @@
+.links-group-wrap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    // grid-template-columns: repeat(auto-fit, minmax(200px 1fr));
+}
+.links-group {
+    h3 {
+        font-size: 24px;
+    }
+    li {
+        margin: 15px 0;
+    }
+    a {
+        color: $black;
+
+        &:hover {
+            color: $blue;
+        }
+    }
+}

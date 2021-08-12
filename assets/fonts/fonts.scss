@@ -1,0 +1,129 @@
+@function getAssetUrl($url) {
+    @return '{{(resources.Get "#{$url}" | fingerprint).RelPermalink }}';
+}
+// Metropolis Extralight
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-ExtraLight.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-ExtraLight.ttf')) format('truetype');
+    font-weight: 100;
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-ExtraLightItalic.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-ExtraLightItalic.ttf')) format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+// Metropolis Light
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-Light.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-Light.ttf')) format('truetype');
+    font-weight: 200;
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-LightItalic.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-LightItalic.ttf')) format('truetype');
+    font-weight: 200;
+    font-style: italic;
+}
+// Metropolis Thin
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-Thin.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-Thin.ttf')) format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-ThinItalic.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-ThinItalic.ttf')) format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+// Metropolis Regular
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-Regular.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-Regular.ttf')) format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-RegularItalic.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-RegularItalic.ttf')) format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+// Metropolis Medium
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-Medium.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-Medium.ttf')) format('truetype');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-MediumItalic.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-MediumItalic.ttf')) format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+// Metropolis Semibold
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-SemiBold.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-SemiBold.ttf')) format('truetype');
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-SemiBoldItalic.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-SemiBoldItalic.ttf')) format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+// Metropolis Bold
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-Bold.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-Bold.ttf')) format('truetype');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-BoldItalic.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-BoldItalic.ttf')) format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+// Metropolis Extrabold
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-ExtraBold.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-ExtraBold.ttf')) format('truetype');
+    font-weight: 800;
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-ExtraBoldItalic.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-ExtraBoldItalic.ttf')) format('truetype');
+    font-weight: 800;
+    font-style: italic;
+}
+// Metropolis Black
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-Black.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-Black.ttf')) format('truetype');
+    font-weight: 900;
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(getAssetUrl('fonts/WOFF2/Metropolis-BlackItalic.woff2')) format('woff2'),
+        url(getAssetUrl('fonts/TrueType/Metropolis-BlackItalic.ttf')) format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}

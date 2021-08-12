@@ -3,7 +3,7 @@
 {{ $scssOptions := (dict "outputStyle" "compressed" "enableSourceMap" true) }}
 {{ $mainStyles := resources.Get "scss/main.scss" | toCSS $scssOptions | resources.ExecuteAsTemplate "" . | fingerprint }}
 <link rel="stylesheet" href="{{ $mainStyles.RelPermalink }}" integrity="{{ $mainStyles.Data.Integrity }}" />
-{{ $fontStyles := resources.Get "fonts/proximanova/proximanova.scss" | toCSS $scssOptions | resources.ExecuteAsTemplate "" . | fingerprint }}
+{{ $fontStyles := resources.Get "fonts/fonts.scss" | toCSS $scssOptions | resources.ExecuteAsTemplate "" . | fingerprint }}
 <link rel="stylesheet" href="{{ $fontStyles.RelPermalink }}" integrity="{{ $fontStyles.Data.Integrity }}" />
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />

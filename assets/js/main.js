@@ -265,22 +265,22 @@ $(window).on('load scroll resize', function () {
             sidebar.css('top', 0)
             header.css('top', -headerHeight)
             docsMenu.css('top', sidebarHeight)
-            searchResults.css('margin-top', sidebarHeight)
+            // searchResults.css('margin-top', sidebarHeight)
             contentWrap.css('paddingTop', 0)
         } else {
             header.css('top', 0)
             sidebar.css('top', headerHeight)
             docsMenu.css('top', headerHeight + sidebarHeight)
-            searchResults.css('margin-top', headerHeight + sidebarHeight)
+            // searchResults.css('margin-top', headerHeight + sidebarHeight)
             contentWrap.css('paddingTop', headerHeight)
         }
     } else {
         sidebar.css('top', 0)
-        searchResults.css('margin-top', 76)
+        // searchResults.css('margin-top', 76)
         sidebar.css('top', 0)
         header.css('top', 0)
         docsMenu.css('top', 78)
-        searchResults.css('margin-top', headerHeight)
+        // searchResults.css('margin-top', headerHeight)
         contentWrap.css('paddingTop', headerHeight)
     }
     elementsTopPosition() // TOC
@@ -349,7 +349,7 @@ $(window).ready(function () {
     })
 })
 
-function updateConfigurationButtons (type) {
+function updateConfigurationButtons(type) {
     const otherType = type === 'flutter' ? 'yaml' : 'flutter'
 
     const button = $(`.configuration-switch[value='${type}']`)
@@ -395,14 +395,14 @@ $(window).ready(function () {
             currentPageConfiguration = configuration
             return true
         }
-    }) 
+    })
 
     const preferredConfiguration = localStorage.getItem('preferred-configuration')
     if (currentPageConfiguration && preferredConfiguration && currentPageConfiguration !== preferredConfiguration) {
         $('#configuration-info').removeClass('hidden')
     }
 
-    ($('#configuration-info-close')).on('click', function (event) {
+    $('#configuration-info-close').on('click', function (event) {
         $('#configuration-info').addClass('hidden')
     })
 })
