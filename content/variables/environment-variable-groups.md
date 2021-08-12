@@ -5,6 +5,17 @@ weight: 3
 aliases: /building/environment-variable-groups
 ---
 
+You can add environment variables in the following places:
+
+* [Environment](../getting-started/yaml/#environment) section of a `codemagic.yaml` configuration file
+* [Environment variables](../flutter/env-variables/) section in a Flutter workflow editor
+* [Global variables and secrets](../building/environment-variable-groups/#global-variables-and-secrets) in Team settings
+* [Application environment variables](../building/environment-variable-groups/#application-environment-variables) in Application settings
+
+See how to [encrypt sensitive information](./encrypting) in Codemagic and explanation of [Environment variable groups](../building/environment-variable-groups/).
+
+## Variable groups
+
 Environment variable groups allow you to define and store related sets of variables that are reusable in your [codemagic.yaml](../getting-started/yaml/) workflows. A variable _group_ tags a set of variables that can be imported together in a codemagic.yaml file. For example, you could define a `staging` group for variables related to your staging deployment and a `production` group for variables related to your production deployment. The variable names in staging and production groups can be identical, but the values will be set depending on which group is imported in the workflow. This allows you to reference variables in reusable scripts, but assign the actual values per workflow based on the imported group.
 
 One or more variable groups can be imported into codemagic.yaml [environment section](../getting-started/yaml/#environment). For example, variable groups named `magic_values` and `other_values` can be imported with the following syntax:
