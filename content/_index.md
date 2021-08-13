@@ -6,12 +6,12 @@ title: Codemagic Documentation
 
 <div class="links-group-wrap">
 
-{{<links-group title="Adding repositories">}}
+{{<links-group title="Sample projects">}}
 
-- [GitHub](../getting-started/github)
-- [Bitbucket](../getting-started/bitbucket)
-- [GitLab](../getting-started/gitlab)
-- [Other](../getting-started/other)
+- [React Native](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/react-native)
+- [iOS code signing](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ios/ios-automatic-code-signing-demo-project)
+- [SonarCloud](https://github.com/codemagic-ci-cd/sonarcloud-sample-project)
+- [AWS Device Farm](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/android/android-espresso-demo-project)
   {{</links-group>}}
 
 {{<links-group title="Codemagic.yaml">}}
