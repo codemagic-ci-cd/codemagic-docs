@@ -129,7 +129,7 @@ menu:
       params:
         dropdown: always-open
 
-    - identifier: running-locally
+    - identifier: cli
       params:
         visibility: none
     - identifier: notes
@@ -137,7 +137,7 @@ menu:
         visibility: none
 
   extra:
-    - identifier: running-locally
+    - identifier: cli
       weight: 1
     - identifier: notes
       weight: 2

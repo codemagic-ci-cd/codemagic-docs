@@ -6,32 +6,38 @@ title: Codemagic Documentation
 
 <div class="links-group-wrap">
 
-{{<links-group title="Getting started">}}
+{{<links-group title="Adding repositories">}}
 
-- [Signup](https://codemagic.io/)
-- [Adding repositories](https://codemagic.io/)
-- [Project types](https://codemagic.io/)
+- [GitHub](../getting-started/github)
+- [Bitbucket](../getting-started/bitbucket)
+- [GitLab](../getting-started/gitlab)
+- [Other](../getting-started/other)
   {{</links-group>}}
 
 {{<links-group title="Codemagic.yaml">}}
 
-- [Signup](https://codemagic.io/)
-- [Adding repositories](https://codemagic.io/)
-- [Project types](https://codemagic.io/)
+- [Quick start guides](../yaml-quick-start/codemagic-sample-projects)
+- [Code signing](../yaml-code-signing/signing-ios/)
+- [Publishing and deployment](../yaml-publishing/distribution/)
+- [codemagic.yaml syntax](../yaml/yaml-getting-started)
+
   {{</links-group>}}
 
 {{<links-group title="Flutter Workflow Editor">}}
 
-- [Signup](https://codemagic.io/)
-- [Adding repositories](https://codemagic.io/)
-- [Project types](https://codemagic.io/)
+- [Building Flutter apps](../flutter-configuration/flutter-projects/)
+- [Code signing](../flutter-code-signing/signing-ios/)
+- [Publishing to App Store Connect](../flutter-publishing/publishing-to-app-store/)
+- [Publishing to Google Play](../flutter-publishing/publishing-to-google-play/)
+
   {{</links-group>}}
 
 {{<links-group title="Popular articles">}}
 
-- [Signup](https://codemagic.io/)
-- [Adding repositories](https://codemagic.io/)
-- [Project types](https://codemagic.io/)
+- [Environment variables](../variables/environment-variables)
+- [Build versioning](../configuration/build-versioning)
+- [Build machine specs](../specs/machine-type/)
+- [Codemagic CLI tools](../cli/codemagic-cli-tools/)
 {{</links-group>}}
 </div>
 
