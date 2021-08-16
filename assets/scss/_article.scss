@@ -1,6 +1,7 @@
 .page--article {
     #content-wrap {
         display: grid;
+        min-height: 100vh;
         grid-template-columns: 300px 1fr;
         grid-template-columns: 300px minmax(0, 1fr);
     }

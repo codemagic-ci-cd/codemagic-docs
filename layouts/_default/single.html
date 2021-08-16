@@ -12,7 +12,6 @@
 {{ end }} {{ end }}
 
 <!DOCTYPE html>
-
 <html>
     <head>
         {{ .Render "head" }}
@@ -27,7 +26,7 @@
                 {{ partial "sidebar" . }}
             </aside>
             <div id="main-content">
-                <main js-article>{{ partial "page-notification" . }} {{ block "main" . }}{{ end }}</main>
+                <main js-article>{{ partial "page-notification" . }}{{ block "main" . }}{{ end }}</main>
                 <footer id="footer">{{ partial "footer" . }}</footer>
             </div>
         </div>

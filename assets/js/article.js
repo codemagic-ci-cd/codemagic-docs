@@ -262,6 +262,7 @@ const setInitialPreference = () => {
 // Handle preference change
 const changePreference = (target) => {
     let currentPageConfiguration = null
+    const info = document.querySelector('[js-configuration-info]')
     if (target.hasAttribute('data-js-preference-option') && !target.classList.contains('active')) {
         const bg = document.querySelector('[js-preference-bg]')
         const active = document.querySelector('[data-js-preference-option].active')
@@ -281,11 +282,12 @@ const changePreference = (target) => {
         if (
             currentPageConfiguration &&
             target.dataset.jsPreferenceOption &&
-            currentPageConfiguration !== target.dataset.jsPreferenceOption
+            currentPageConfiguration !== target.dataset.jsPreferenceOption &&
+            info
         ) {
-            document.querySelector('[js-configuration-info]').classList.add('visible')
+            info.classList.add('visible')
         } else {
-            document.querySelector('[js-configuration-info]').classList.remove('visible')
+            if (info) info.classList.remove('visible')
         }
         if (target.dataset.jsPreferenceOption === 'flutter') {
             yamlLinks.style.display = 'none'
