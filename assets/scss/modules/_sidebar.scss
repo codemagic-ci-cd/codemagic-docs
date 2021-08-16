@@ -1,7 +1,16 @@
-#sidebar {
+#sidebar-positioner {
     position: relative;
+    width: 300px;
+
+    @media (max-width: 1000px) {
+        display: none;
+    }
+}
+#sidebar {
+    position: fixed;
     background-color: $blue-xl;
     width: 300px;
+    z-index: 2;
 
     &::before {
         content: '';
@@ -20,149 +29,16 @@
     .configuration-switch {
         display: none !important;
     }
-}
-#docs-menu {
-    overflow: auto;
-    position: absolute;
-    top: 0 !important;
-    bottom: 0;
-    right: 0;
-    padding: 10px 0 0;
-    width: 100%;
-    box-sizing: border-box;
+    @media (max-width: 1000px) {
+        top: 73px;
+        bottom: 0;
+        background-color: white;
+        box-shadow: 0 0 30px transparentize($black-l, 0.9);
 
-    &::after {
-        content: '';
-        display: block;
-        padding-bottom: 50px;
-    }
-
-    & > ul > li {
-        & > .category-name {
-            border-bottom: 2px solid transparentize($black-l, 0.9);
-            padding-left: 0;
-            font-size: 16px;
-        }
-        &.open > .category-posts::before {
-            left: 0;
-        }
-        & > .category-posts {
-            padding-left: 0;
-            & > ul > li {
-                & > .category-name {
-                    font-size: 14px;
-                }
-                & > .category-posts > ul > li > .category-name {
-                    font-size: 14px;
-                }
-            }
-        }
-    }
-
-    li {
-        list-style: none;
-
-        .category-name {
-            font-weight: 600;
-            color: $black-l;
-            padding: 10px 20px;
-            position: relative;
-            cursor: pointer;
-            line-height: 1.2;
-
-            &::after {
-                @include fontAwesome('\f0d7');
-                position: absolute;
-                top: 10px;
-                right: 0;
-            }
-        }
-
-        .dropdown-always-open {
-            &::after {
-                display: none;
-            }
-        }
-
-        .category-posts {
-            display: none;
-            padding: 10px 0 10px 20px;
-            position: relative;
-
-            a {
-                display: block;
-                color: $black;
-                padding: 5px 5px 5px 18px;
-                margin: 5px 0;
-                position: relative;
-                font-size: 14px;
-                opacity: 0;
-                transition: all 300ms ease-in-out;
-                border-left: 2px solid transparent;
-                margin-bottom: 5px;
-
-                &:hover {
-                    color: $blue;
-                }
-                &.active {
-                    color: $blue;
-                    font-weight: 600;
-                    border-color: $blue;
-                }
-            }
-        }
-        &.open {
-            & > .category-name {
-                &::after {
-                    transform: rotate(180deg);
-                }
-            }
-            & > .category-posts {
-                display: block;
-                a {
-                    opacity: 1;
-                }
-            }
-        }
-        &.extra-menu {
-            & > .category-posts {
-                &::before {
-                    border-right: none;
-                }
-                a {
-                    font-weight: 600;
-                    line-height: 1.2em;
-                    padding-left: 0;
-                    border-left: 0;
-                    font-size: 18px;
-                }
-            }
-        }
-    }
-    .external-links {
-        margin-top: 15px;
-        padding-top: 20px;
-        border-top: 1px solid $grey-bg;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        a {
-            font-size: 18px;
-            font-weight: 600;
-            color: $black;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            &::after {
-                @include fontAwesome('\f35d');
-                font-size: 10px;
-                margin-left: 5px;
-            }
-            &:hover {
-                color: $blue;
-            }
+        &::before {
+            background-color: white;
         }
     }
 }
+
+@import './menu';

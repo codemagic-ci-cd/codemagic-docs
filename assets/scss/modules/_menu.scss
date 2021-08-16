@@ -1,0 +1,75 @@
+#docs-menu {
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+
+    & > .collection {
+        padding-bottom: 50px;
+    }
+    .collection {
+        .item {
+            &__category {
+                &__name {
+                    position: relative;
+                    padding: 15px 20px 15px 0;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $black-l;
+                    border-bottom: 1px solid $blue-xl-border;
+                    cursor: pointer;
+                    transition: all 200ms ease-in-out;
+
+                    &::after {
+                        display: none;
+                        @include fontAwesome('\f0d7');
+                        position: absolute;
+                        top: 0;
+                        right: 15px;
+                        height: 100%;
+                        align-items: center;
+                        font-size: 10px;
+                    }
+                }
+                &__posts {
+                    margin-top: 10px;
+                }
+                .item__category {
+                    padding-left: 10px;
+                    border: none;
+
+                    .item__category__name {
+                        padding: 7px 0;
+                        color: $black;
+                        font-size: 14px;
+                        border: none;
+
+                        &::after {
+                            display: flex;
+                        }
+
+                        &:hover {
+                            color: $blue-hover;
+                        }
+                    }
+                }
+            }
+            a {
+                display: block;
+                padding: 7px 10px;
+                font-weight: 600;
+                color: $black;
+
+                &:hover {
+                    color: $blue;
+                }
+                &.active {
+                    color: $blue-hover;
+                    cursor: default;
+                }
+            }
+        }
+    }
+}

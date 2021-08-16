@@ -8,9 +8,9 @@
         position: relative;
         width: 100%;
         height: 48px;
+        padding: 0 45px;
         box-sizing: border-box;
         line-height: 48px;
-        padding: 0 45px;
         font-family: inherit;
         border: 2px solid $grey-l;
         border-radius: 10px;
@@ -19,9 +19,9 @@
 
         @at-root .page--home & {
             height: 80px;
-            border-radius: 20px;
-            font-size: 16px;
             padding: 0 75px;
+            font-size: 16px;
+            border-radius: 20px;
         }
         &:focus {
             border-color: transparent;
@@ -43,11 +43,11 @@
         align-items: center;
         justify-content: center;
         color: $grey-text-light;
+        cursor: pointer;
         z-index: 3;
 
         &--search {
             left: 15px;
-            cursor: pointer;
 
             @at-root .page--home & {
                 left: 30px;
@@ -55,21 +55,18 @@
         }
         &--clear {
             right: 15px;
-            cursor: pointer;
 
             @at-root .page--home & {
                 right: 30px;
             }
         }
     }
-
     &:not(.search--active) .search__icon--clear {
         display: none;
     }
+
     #search-results {
         max-height: calc(100vh - 200px);
-        overflow: auto;
-        background-color: white;
         position: absolute;
         left: 0;
         right: 0;
@@ -77,14 +74,15 @@
         padding: 20px;
         box-sizing: border-box;
         border-radius: 10px;
+        background-color: white;
         box-shadow: 0 0 30px transparentize($black-l, 0.9);
+        overflow: auto;
         transition: all 200ms ease-in-out;
         z-index: 1;
 
         @at-root .page--home & {
             top: 90px;
         }
-
         &:empty {
             pointer-events: none;
             opacity: 0;
@@ -104,12 +102,15 @@
             &:last-child {
                 border-bottom: none;
             }
-            mark {
-                background: transparent;
-                font-weight: 600;
-                color: $black;
-                text-decoration: underline;
-            }
+        }
+        p {
+            word-break: break-all;
+        }
+        mark {
+            background: transparent;
+            font-weight: 600;
+            color: $black;
+            text-decoration: underline;
         }
         a {
             color: $blue;
@@ -125,92 +126,3 @@
         }
     }
 }
-
-// #search-results {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//     z-index: 1;
-//     background: rgb(248, 248, 248);
-//     overflow: auto;
-//     margin-top: 70px;
-
-//     &:not(:empty) ~ #main-content {
-//         position: fixed;
-//         overflow: hidden;
-//         height: 100%;
-//     }
-
-//     @media (min-width: 1001px) {
-//         margin-left: 360px;
-//         margin-top: 76;
-//     }
-
-//     @media (max-width: 1000px) {
-//         margin-top: 140px;
-//     }
-
-//     &:empty {
-//         display: none;
-//     }
-
-//     ul {
-//         padding: 30px;
-//     }
-
-//     li {
-//         padding: 12px 0;
-//     }
-
-//     a {
-//         font-size: 18px;
-//         color: $blue;
-//         &:hover {
-//             color: $blue-hover;
-//         }
-//     }
-
-//     p {
-//         font-size: 14px;
-//         line-height: 16px;
-//         margin-top: 5px;
-//         color: #666;
-//     }
-
-//     span {
-//         &:not(.start):before,
-//         &:last-child:not(.end):after {
-//             content: '\00A0...\00A0';
-//         }
-//     }
-
-//     a mark {
-//         color: $blue;
-//     }
-
-//     p mark {
-//         color: black;
-//     }
-
-//     mark {
-//         background: transparent;
-//         font-weight: 600;
-//     }
-
-//     .no-results-message {
-//         font-size: 28px;
-//         text-align: center;
-//         display: flex;
-//         top: 0;
-//         right: 0;
-//         bottom: 0;
-//         left: 0;
-//         position: absolute;
-//         align-items: center;
-//         justify-content: center;
-//         padding: 30px;
-//         box-sizing: border-box;
-//     }
-// }

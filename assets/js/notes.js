@@ -12,7 +12,7 @@ const fetchNotifications = async () => {
         .then((res) => {
             res.json()
                 .then((data) => {
-                    const toc = document.querySelector('[data-js-toc] #TableOfContents')
+                    const toc = document.querySelector('[js-toc] #TableOfContents')
                     renderNotifications(data, toc)
                 })
                 .catch((err) => {

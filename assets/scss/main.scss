@@ -18,7 +18,6 @@ Version: 0.0.1
 
 // Import partials
 @import './modules/links-group';
-@import './modules/sidebar';
 
 body {
     margin: 0;
@@ -32,6 +31,13 @@ body {
     max-width: 1400px;
     box-sizing: border-box;
     margin: auto;
+
+    @media (max-width: 480px) {
+        width: calc(100% - 50px);
+    }
+}
+.page {
+    padding-top: 76px;
 }
 
 h1,
