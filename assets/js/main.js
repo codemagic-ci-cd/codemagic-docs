@@ -1,6 +1,6 @@
 window.desktopScreenWidth = 1001
-const preferredConfigurations = ['yaml', 'flutter']
-const defaultPreferredConfiguration = preferredConfigurations[0]
+window.preferredConfigurations = ['yaml', 'flutter']
+window.defaultPreferredConfiguration = preferredConfigurations[0]
 
 // Fetch user
 const fetchUser = async () => {

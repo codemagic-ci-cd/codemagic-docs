@@ -27,11 +27,9 @@
                 {{ partial "sidebar" . }}
             </aside>
             <div id="main-content">
-                <main js-article>{{ block "main" . }}{{ end }}</main>
+                <main js-article>{{ partial "page-notification" . }} {{ block "main" . }}{{ end }}</main>
             </div>
         </div>
-        <div style="height: 500px"></div>
-        {{ partial "page-notification" . }}
         <footer id="footer">{{ partial "footer" . }}</footer>
         {{ partial "analytics" . }} {{ partial "site-footer" . }}
     </body>

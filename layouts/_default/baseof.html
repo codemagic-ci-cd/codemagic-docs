@@ -4,8 +4,7 @@
         {{ .Render "head" }}
     </head>
     <body class="page page--home">
-        {{ partial "header" . }} {{ block "main" . }}{{ end }} {{ partial "page-notification" . }}
-        <footer id="footer">{{ partial "footer" . }}</footer>
-        {{ partial "analytics" . }} {{ partial "site-footer" . }}
+        {{ partial "header" . }} {{ block "main" . }}{{ end }} {{ partial "page-notification" . }} {{ partial
+        "analytics" . }} {{ partial "site-footer" . }}
     </body>
 </html>

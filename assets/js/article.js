@@ -255,18 +255,50 @@ const observeHeaders = () => {
 const setInitialPreference = () => {
     let configuration = window.localStorage.getItem('preferred-configuration')
     if (!configuration) configuration = 'yaml'
+
     const option = document.querySelector(`[data-js-preference-option="${configuration}"]`)
     changePreference(option)
 }
 // Handle preference change
 const changePreference = (target) => {
+    let currentPageConfiguration = null
     if (target.hasAttribute('data-js-preference-option') && !target.classList.contains('active')) {
         const bg = document.querySelector('[js-preference-bg]')
         const active = document.querySelector('[data-js-preference-option].active')
+        const yamlLinks = document.querySelector('[data-js-configuration-category="Codemagic.yaml"]')
+        const flutterLinks = document.querySelector('[data-js-configuration-category="Flutter workflow editor"]')
         active.classList.remove('active')
         target.classList.add('active')
         bg.style.left = target.offsetLeft + 'px'
         window.localStorage.setItem('preferred-configuration', target.dataset.jsPreferenceOption)
+
+        window.preferredConfigurations.some((configuration) => {
+            if (window.location.pathname.startsWith(`/${configuration}`)) {
+                currentPageConfiguration = configuration
+                return true
+            }
+        })
+        if (
+            currentPageConfiguration &&
+            target.dataset.jsPreferenceOption &&
+            currentPageConfiguration !== target.dataset.jsPreferenceOption
+        ) {
+            document.querySelector('[js-configuration-info]').classList.add('visible')
+        }
+        if (target.dataset.jsPreferenceOption === 'flutter') {
+            yamlLinks.style.display = 'none'
+            flutterLinks.style.display = 'block'
+        } else {
+            yamlLinks.style.display = 'block'
+            flutterLinks.style.display = 'none'
+        }
+    }
+}
+
+// Handle closing configuration info
+const closeConfigurationInfo = ({ target }) => {
+    if (target.hasAttribute('js-close-configuration-info')) {
+        document.querySelector('[js-configuration-info]').classList.remove('visible')
     }
 }
 
@@ -289,6 +321,7 @@ document.addEventListener('click', (e) => {
     hashLinkClick(e)
     handleDocsToggle(e)
     changePreference(e.target)
+    closeConfigurationInfo(e)
 
     if (showToc) {
         copyLinkFromTitles(e)

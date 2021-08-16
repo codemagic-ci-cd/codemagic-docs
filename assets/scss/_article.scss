@@ -259,7 +259,7 @@
             display: block;
         }
         main {
-            padding: 0;
+            padding: 70px 0 0;
 
             .description {
                 font-size: 20px;
@@ -298,7 +298,36 @@
     }
 
     #configuration-info {
-        display: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $black-l;
+        color: white;
+        padding: 20px;
+        margin: -50px -50px 50px;
+        pointer-events: none;
+        opacity: 0;
+        transition: all 200ms ease-in-out;
+        z-index: 4;
+
+        &.visible {
+            opacity: 1;
+            pointer-events: initial;
+        }
+    }
+    #configuration-info-close {
+        padding: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+        flex-shrink: 0;
+
+        &:hover {
+            color: $blue;
+        }
+        i {
+            pointer-events: none;
+        }
     }
 }
 

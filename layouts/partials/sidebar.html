@@ -3,8 +3,10 @@
     <section class="collection">
         {{ range .menuItems }}
             {{ if not ( eq ( echoParam .Params "visibility" ) "none" ) }}
-                <div class="item item__category {{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }}" js-docs-menu-item>
-                    <div class="item__category__name" js-category-name>{{ .Name }}</div>
+                <div class="item item__category {{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }}" js-docs-menu-item {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}data-js-configuration-category="{{.Name}}"{{end}}>
+                    <div class="item__category__name" js-category-name>
+                        {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}Configuration{{else}}{{.Name}}{{end}}
+                    </div>
                     <div class="item__category__posts {{ if .HasChildren }}item__category__posts--expandable{{end}}" js-category-posts>
                         {{ if .HasChildren }}
                             {{ template "main-menu" ( dict "menuItems" .Children "currentPage" $currentPage ) }}
