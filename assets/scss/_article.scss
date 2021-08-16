@@ -305,7 +305,7 @@
         background-color: $black-l;
         color: white;
         padding: 20px;
-        margin: -50px -50px 50px;
+        margin: -50px 0 50px -50px;
         pointer-events: none;
         opacity: 0;
         transition: all 200ms ease-in-out;
@@ -314,6 +314,13 @@
         &.visible {
             opacity: 1;
             pointer-events: initial;
+        }
+        @media (max-width: 1000px) {
+            position: fixed;
+            left: 50px;
+            right: 50px;
+            bottom: 30px;
+            margin: 0;
         }
     }
     #configuration-info-close {

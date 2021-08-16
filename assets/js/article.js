@@ -284,6 +284,8 @@ const changePreference = (target) => {
             currentPageConfiguration !== target.dataset.jsPreferenceOption
         ) {
             document.querySelector('[js-configuration-info]').classList.add('visible')
+        } else {
+            document.querySelector('[js-configuration-info]').classList.remove('visible')
         }
         if (target.dataset.jsPreferenceOption === 'flutter') {
             yamlLinks.style.display = 'none'

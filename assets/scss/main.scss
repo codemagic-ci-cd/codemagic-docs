@@ -10,6 +10,7 @@ Version: 0.0.1
 @import './reset';
 @import './search';
 @import './header';
+@import './footer';
 @import './animations';
 
 // Import views
@@ -47,9 +48,6 @@ h4,
 h5,
 h6 {
     color: $black-l;
-}
-#footer {
-    display: none;
 }
 // .article-page {
 //     font-family: inherit;
@@ -711,33 +709,6 @@ h6 {
 //                 }
 //             }
 //         }
-//     }
-// }
-// #footer {
-//     box-sizing: border-box;
-//     margin-left: 390px;
-//     margin-right: 32px;
-//     padding: 32px 40px;
-
-//     border-top: 1px solid #eee;
-//     font-size: 18px;
-
-//     @media (max-width: 1000px) {
-//         margin: 100px 50px 0;
-//     }
-
-//     a {
-//         color: #0957ff;
-//     }
-
-//     .page-metadata {
-//         font-size: 0.9em;
-//         line-height: 1.5;
-//     }
-
-//     .edit-link {
-//         font-weight: bold;
-//         display: inline-block;
 //     }
 // }
 

@@ -28,9 +28,9 @@
             </aside>
             <div id="main-content">
                 <main js-article>{{ partial "page-notification" . }} {{ block "main" . }}{{ end }}</main>
+                <footer id="footer">{{ partial "footer" . }}</footer>
             </div>
         </div>
-        <footer id="footer">{{ partial "footer" . }}</footer>
         {{ partial "analytics" . }} {{ partial "site-footer" . }}
     </body>
 </html>
