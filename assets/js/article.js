@@ -251,10 +251,30 @@ const observeHeaders = () => {
     headersSelector.forEach((header) => observer.observe(header))
 }
 
+// Handle default preference
+const setInitialPreference = () => {
+    let configuration = window.localStorage.getItem('preferred-configuration')
+    if (!configuration) configuration = 'yaml'
+    const option = document.querySelector(`[data-js-preference-option="${configuration}"]`)
+    changePreference(option)
+}
+// Handle preference change
+const changePreference = (target) => {
+    if (target.hasAttribute('data-js-preference-option') && !target.classList.contains('active')) {
+        const bg = document.querySelector('[js-preference-bg]')
+        const active = document.querySelector('[data-js-preference-option].active')
+        active.classList.remove('active')
+        target.classList.add('active')
+        bg.style.left = target.offsetLeft + 'px'
+        window.localStorage.setItem('preferred-configuration', target.dataset.jsPreferenceOption)
+    }
+}
+
 // On ready
 handleSidebarPosition()
 scrollMenuToActive('[js-docs-menu]')
 positionHeaderContents()
+setInitialPreference()
 
 if (showToc) {
     createTableOfContents()
@@ -268,6 +288,7 @@ if (showToc) {
 document.addEventListener('click', (e) => {
     hashLinkClick(e)
     handleDocsToggle(e)
+    changePreference(e.target)
 
     if (showToc) {
         copyLinkFromTitles(e)

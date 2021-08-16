@@ -20,6 +20,11 @@
 {{ end }}
 
 <nav id="docs-menu" js-docs-menu>
+    <section id="preference-switch" js-preference-switch>
+        <div id="preference-bg" js-preference-bg></div>
+        <div class="option active" data-js-preference-option="flutter">Workflow Editor</div>
+        <div class="option" data-js-preference-option="yaml">.YAML</div>
+    </section>
     {{ template "main-menu" ( dict "menuItems" .Site.Menus.main "currentPage" . ) }}
     <section class="collection collection--external">
         <a id="codemagic-landing-link" onclick="sendGtag('Codemagic_clicked', 'DocumentationMenu')" href="https://codemagic.io/start" target="_blank">Codemagic</a>
