@@ -1,7 +1,7 @@
 ---
 description: Limit the maximum duration of builds
 title: Build timeout settings
-weight: 8
+weight: 5
 aliases: /building/timeout
 ---
 
