@@ -69,7 +69,6 @@
         a {
             display: block;
             padding: 7px 10px;
-            font-weight: 600;
             color: $black;
 
             &:hover {
@@ -84,8 +83,10 @@
         &--external {
             border-top: 1px solid $blue-xl-border;
             padding-top: 20px;
+
             a {
                 padding-left: 0;
+                font-weight: 600;
             }
         }
         &--external a {
