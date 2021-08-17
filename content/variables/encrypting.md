@@ -2,17 +2,18 @@
 title: Encrypting sensitive data
 description: Encrypt your credentials and key files
 weight: 4
-aliases: [/building/encrypting, /configuration/encrypting]
+aliases: [/building/encrypting]
+platform: yaml
 ---
 
-If you wish to store sensitive information, such as login details or API keys, in environment variables or your configuration file, it is important to encrypt the data to not expose it. You can easily encrypt values and files using the encryption interface in Codemagic.
+If you wish to store sensitive information, such as login details or API keys, in environment variables in your configuration file, it is important to encrypt the data to not expose it. You can easily encrypt values and files using the encryption interface in Codemagic.
 
 {{<notebox>}}
 For security reasons, encrypted environment variables work only in the team where they were created. When moving an app from your personal account to a team or from one team to another, you should re-encrypt the variables.
 {{</notebox>}}
 
 1. Click open your app in Codemagic.
-2. Click **Encrypt variables** on the YAML editor window (or click **Encrypt environment variables** on the right sidebar in the **Configuration as code** section if you are using the Flutter workflow editor).
+2. Click **Encrypt variables** on the YAML editor window.
 3. A popup window appears. Paste the value of the variable in the field or upload it as a file.
 4. Click **Encrypt**. 
 5. Copy the encrypted value and paste it as the value of the variable.

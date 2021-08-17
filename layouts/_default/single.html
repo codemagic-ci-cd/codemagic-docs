@@ -1,16 +1,35 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ with .Description }}
-    <p class="description">{{.}}</p>
-  {{ end }}
-  {{ with .Params.StartLineBreak }}
-    <br/>
-  {{ end }}
-  {{ partial "content" . }}
-  {{ with .TableOfContents }}
-    <aside id="toc" data-js-toc>
-      <div class="heading">Table of contents</div>
-      {{ . }}
-    </aside>
-  {{ end }}
-{{ end }}
+<h1>{{ .Title }}</h1>
+{{ with .Description }}
+<p class="description">{{.}}</p>
+{{ end }} {{ with .Params.StartLineBreak }}
+<br />
+{{ end }} {{ partial "content" . }} {{ with .TableOfContents }}
+<aside id="toc" js-toc>
+    <div class="heading">Table of contents</div>
+    {{ . }}
+</aside>
+{{ end }} {{ end }}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {{ .Render "head" }}
+    </head>
+    <body class="page page--article">
+        {{ partial "header" . }}
+        <div id="content-wrap" js-content-wrap class="inner">
+            <aside id="sidebar-positioner" js-sidebar-positioner></aside>
+            <aside id="sidebar" js-sidebar>
+                <div class="overlay"></div>
+                <div id="sidebar__header" js-docs-menu-toggle></div>
+                {{ partial "sidebar" . }}
+            </aside>
+            <div id="main-content">
+                <main js-article>{{ partial "page-notification" . }}{{ block "main" . }}{{ end }}</main>
+                <footer id="footer">{{ partial "footer" . }}</footer>
+            </div>
+        </div>
+        {{ partial "analytics" . }} {{ partial "site-footer" . }}
+    </body>
+</html>

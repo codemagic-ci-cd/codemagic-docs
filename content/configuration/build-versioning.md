@@ -1,7 +1,7 @@
 ---
 title: Build versioning
 description: How to set a new build number to push to app stores
-weight: 6
+weight: 3
 aliases: /building/build-versioning
 ---
 
@@ -33,7 +33,7 @@ It's advisable to set your build version (e.g. `1.2.3`) in the `pubspec.yaml` `v
 
 ## Build versioning from Codemagic environment variables 
 
-There are several approaches you can use for build versioning on Codemagic. One of the easiest ways to increment the application version with every build is by using the [environment variables](../building/environment-variables/#codemagic-read-only-environment-variables) that Codemagic exports during the build. There are two environment variables that count the number of builds:
+There are several approaches you can use for build versioning on Codemagic. One of the easiest ways to increment the application version with every build is by using the [environment variables](/variables/environment-variables) that Codemagic exports during the build. There are two environment variables that count the number of builds:
 
 * `BUILD_NUMBER`. Holds the total count of builds (including the ongoing build) for a specific **workflow** in Codemagic. In other words, if you have triggered 10 builds for some workflow in Codemagic, the next time you build it, `BUILD_NUMBER` will be exported as `11`.
 
@@ -78,7 +78,7 @@ Additionally, you will need to provide the Application Apple ID (an automaticall
 It can be found under **General > App Information > Apple ID** under your application in App Store Connect.
 
 {{<notebox>}}
-If you use `codemagic.yaml` config and you have [Automatic code signing](https://docs.codemagic.io/code-signing-yaml/signing-ios/#automatic-code-signing) setup, you are good to go directly to [Set the build number with `agvtool`](#set-the-build-number-with-agvtool)
+If you use `codemagic.yaml` config and you have [Automatic code signing](/yaml-code-signing/signing-ios/#automatic-code-signing) setup, you are good to go directly to [Set the build number with `agvtool`](#set-the-build-number-with-agvtool)
 {{</notebox>}}
 
 ### Creating the App Store Connect API key
@@ -107,7 +107,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 
 #### Saving to `codemagic.yaml` config
 
-Save the API key and the related information as [environment](../getting-started/yaml#environment) variables. Make sure to [encrypt](./encrypting/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
+Save the API key and the related information as [environment](/yaml/yaml-getting-started/#environment) variables. Make sure to [encrypt](/variables/encrypting/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
 
 ```yaml
 environment:
@@ -123,7 +123,7 @@ Alternatively, each property can be specified in the `scripts` section of the YA
 
 #### Saving to environment variables in the Flutter workflow editor
 
-Add the following environment variables to your Flutter project in **App settings > Environment variables** (See the details [here](https://docs.codemagic.io/flutter/env-variables/)):
+Add the following environment variables to your Flutter project in **App settings > Environment variables** (See the details [here](/flutter-configuration/env-variables)):
 
 - `APP_STORE_CONNECT_ISSUER_ID`
 - `APP_STORE_CONNECT_KEY_IDENTIFIER`
@@ -133,7 +133,7 @@ Add the following environment variables to your Flutter project in **App setting
 
 Once you have the App Store Connect API access set with mentioned above environment variables, you can get the build number using the tool and set your incremented project version.
 
-Add the following script under your `scripts` field for `codemagic.yaml`, or as a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) in the Flutter workflow editor:
+Add the following script under your `scripts` field for `codemagic.yaml`, or as a custom [Pre-build script](/flutter-configuration/custom-scripts) in the Flutter workflow editor:
 
 ```bash
 LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number '1234567890') # The argument is your application's Apple ID
@@ -169,7 +169,7 @@ In order to do that, you need to provide API access to Google Play Developer API
 Additionally, you will need to provide the package name of the app in Google Play Console (Ex. `com.google.example`).
 
 {{<notebox>}}
-If you use `codemagic.yaml` config and you have [Google Play publishing](https://docs.codemagic.io/publishing-yaml/distribution/#google-play) setup, you can reuse the existing service account credentials and go directly to [Get the build number](#get-the-build-number). Only make sure they are specified under the`GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable.
+If you use `codemagic.yaml` config and you have [Google Play publishing](/yaml-publishing/distribution/#google-play) setup, you can reuse the existing service account credentials and go directly to [Get the build number](#get-the-build-number). Only make sure they are specified under the`GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable.
 {{</notebox>}}
 
 ### Creating Google service account credentials
@@ -178,7 +178,7 @@ You will need to set up a service account in Google Play Console and create a JS
 
 ### Saving the API access argument to environment variables in `codemagic.yaml` config
 
-Save the API key as an [environment](../getting-started/yaml#environment) variable. Make sure to [encrypt](./encrypting/#encrypting-sensitive-data) the values of the variable before adding it to the configuration file.
+Save the API key as an [environment](/yaml/yaml-getting-started/#environment) variable. Make sure to [encrypt](/variables/encrypting/) the values of the variable before adding it to the configuration file.
 
 ```yaml
 environment:
@@ -192,7 +192,7 @@ Alternatively, credentials can be specified as a command argument with the dedic
 
 ### Saving the API access argument to environment variables in the Flutter workflow editor
 
-Add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutter project in **App settings > Environment variables** (See the details [here](https://docs.codemagic.io/flutter/env-variables/)).
+Add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutter project in **App settings > Environment variables** (See the details [here](/flutter-configuration/env-variables)).
 
 ### Get the build number
 
@@ -217,4 +217,4 @@ If you encrypted the content (not the file) of your gcloud service account crede
 --build-number=$(($(google-play get-latest-build-number --package-name 'com.google.example') + 1))  # use your own package name
 ```
 
-Alternatively, you can add a custom [Pre-build script](https://docs.codemagic.io/flutter/custom-scripts/) and write the build number to a file, which will be read from your `android/app/build.gradle` during the build (See details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file)).
+Alternatively, you can add a custom [Pre-build script](/flutter-configuration/custom-scripts) and write the build number to a file, which will be read from your `android/app/build.gradle` during the build (See details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file)).

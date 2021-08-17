@@ -1,49 +1,67 @@
 {{ define "main-menu" }}
     {{ $currentPage := .currentPage}}
-    <ul>
+    {{ $collapsible := .collapsible}}
+    <section class="collection">
         {{ range .menuItems }}
-            {{ if not ( eq ( echoParam .Params "visibility" ) "none" ) }}
-                {{ $isDropdownAlwaysOpen := eq ( echoParam .Params "dropdown" ) "always-open" }}
-                <li class="{{ if or $isDropdownAlwaysOpen ( $currentPage.HasMenuCurrent "main" . ) }}open{{ end }}" data-js-docs-menu-item>
-                    <div class="category-name {{ if $isDropdownAlwaysOpen }}dropdown-always-open{{ end }}" data-js-category-name>{{ .Name }}</div>
-                    <div class="category-posts" data-js-category-posts>
+            {{ if not .Params.hide }}
+                <div class="item item__category {{if $collapsible}}item__category--collapsible{{end}}"
+                    js-docs-menu-item
+                    {{if .Params.preference }}data-js-configuration-category="{{.Params.preference}}"{{end}}
+                >
+                    <div
+                        class="item__category__name"
+                        js-category-name
+                        {{if $collapsible}}js-category-toggle{{end}}
+                        {{ if $currentPage.HasMenuCurrent "main" . }}js-open{{ end }}
+                    >
+                        {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}Configuration{{else}}{{.Name}}{{end}}
+                    </div>
+                    <div class="item__category__posts {{ if .HasChildren }}item__category__posts--expandable{{end}}" js-category-posts>
                         {{ if .HasChildren }}
-                            {{ template "main-menu" ( dict "menuItems" .Children "currentPage" $currentPage ) }}
+                            {{ template "main-menu" ( dict "menuItems" .Children "currentPage" $currentPage "collapsible" true ) }}
                         {{ end }}
                         {{ range where site.Pages "Section" .Identifier }}
-                            <a class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                            <a
+                                js-docs-link
+                                class="{{ if eq $currentPage . }}active{{ end }}"
+                                href="{{ .RelPermalink }}"
+                                {{if .Page.Params.platform}}data-js-platform-specific="{{.Page.Params.platform}}"{{end}}>
+                                {{ .Title }}
+                            </a>
                         {{ end }}
                     </div>
-                </li>
+                </div>
             {{ end }}
         {{ end }}
-    </ul>
+    </section>
 {{ end }}
 
 {{ define "extra-menu" }}
-    {{ $currentPage := .currentPage }}
-    <ul>
+    {{ $currentPage := .currentPage}}
+    {{ $collapsible := .collapsible}}
+    <section class="collection collection--extra">
         {{ range .menuItems }}
-        <li class="open extra-menu">
-            <div class="category-posts">
-                {{ range where site.Pages "Section" .Identifier }}
-                    <a class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
-                {{ end }}
-            </div>
-        </li>
+            {{ range where site.Pages "Section" .Identifier }}
+                <a js-docs-link class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ end }}
         {{ end }}
-    </ul>
-{{ end }}
+    </section>
+{{end}}
 
-<nav id="docs-menu" data-js-docs-menu>
-    <button class='configuration-switch' value='yaml'>Switch to YAML configuration</button>
-    <button class='configuration-switch' value='flutter'>Switch to Flutter UI configuration</button>
-    <button class='configuration-switch'>Reset configuration switch</button>
-    {{ template "main-menu" ( dict "menuItems" .Site.Menus.main "currentPage" . ) }}
+<nav id="docs-menu" js-docs-menu>
+    <section id="preference-switch" js-preference-switch>
+        <div id="preference-bg" js-preference-bg></div>
+        <div class="option active" data-js-preference-option="flutter">Workflow Editor</div>
+        <div class="option" data-js-preference-option="yaml">.YAML</div>
+    </section>
+    {{ template "main-menu" ( dict "menuItems" .Site.Menus.main "currentLevel" "testing" "currentPage" . ) }}
     {{ template "extra-menu" ( dict "menuItems" .Site.Menus.extra "currentPage" . ) }}
-    <div class="external-links">
+    <section class="collection collection--external">
         <a id="codemagic-landing-link" onclick="sendGtag('Codemagic_clicked', 'DocumentationMenu')" href="https://codemagic.io/start" target="_blank">Codemagic</a>
         <a id="codemagic-blog-link" onclick="sendGtag('Blog_clicked', 'DocumentationMenu')" href="https://blog.codemagic.io" target="_blank">Blog</a>
-        <a id="codemagic-youtube-link" onclick="sendGtag('YouTube_clicked', 'DocumentationMenu')" href="https://www.youtube.com/channel/UC6iPpISHwCnNreb53c0eYvg" target="_blank">YouTube Channel</a>
-    </div>
+        <a id="codemagic-youtube-link" onclick="sendGtag('YouTube_clicked', 'DocumentationMenu')" href="https://www.youtube.com/channel/UC6iPpISHwCnNreb53c0eYvg" target="_blank">YouTube</a>
+        <a id="codemagic-slack-link" onclick="sendGtag('Slack_clicked', 'DocumentationMenu')" href="https://slack.codemagic.io/" target="_blank">Community Slack</a>
+    </section>
 </nav>
+
+

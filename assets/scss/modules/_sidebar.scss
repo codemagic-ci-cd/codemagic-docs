@@ -1,0 +1,45 @@
+#sidebar-positioner {
+    position: relative;
+    width: 300px;
+
+    @media (max-width: 1000px) {
+        display: none;
+    }
+}
+#sidebar {
+    position: fixed;
+    background-color: $blue-xl;
+    width: 300px;
+    z-index: 2;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100vw;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: $blue-xl;
+        z-index: 1;
+    }
+    & > * {
+        position: relative;
+        z-index: 2;
+    }
+    .configuration-switch {
+        display: none !important;
+    }
+    @media (max-width: 1000px) {
+        top: 73px;
+        bottom: 0;
+        background-color: white;
+        box-shadow: 0 0 30px transparentize($black-l, 0.9);
+
+        &::before {
+            background-color: white;
+        }
+    }
+}
+
+@import './menu';
+@import './preference-switch';
