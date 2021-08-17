@@ -1,6 +1,6 @@
 .page--home {
     #hero {
-        padding: 50px 0;
+        padding: 70px 0;
         background-color: #f5f8ff;
 
         .inner {
@@ -10,6 +10,10 @@
             color: $black-l;
             font-size: 40px;
             text-align: center;
+
+            @media (max-width: 1000px) {
+                font-size: 30px;
+            }
         }
     }
     #links {
