@@ -306,6 +306,17 @@ const closeConfigurationInfo = ({ target }) => {
     }
 }
 
+// Handle category toggle
+const toggleCategory = ({ target }) => {
+    if (target.hasAttribute('js-category-toggle')) {
+        const parent = target.parentNode
+        const category = parent.querySelector('[js-category-posts]')
+        target.classList.toggle('open')
+        category.classList.toggle('open')
+        window.slideToggle(category, 200)
+    }
+}
+
 // On ready
 handleSidebarPosition()
 scrollMenuToActive('[js-docs-menu]')
@@ -326,6 +337,7 @@ document.addEventListener('click', (e) => {
     handleDocsToggle(e)
     changePreference(e.target)
     closeConfigurationInfo(e)
+    toggleCategory(e)
 
     if (showToc) {
         copyLinkFromTitles(e)

@@ -1,15 +1,16 @@
 {{ define "main-menu" }}
     {{ $currentPage := .currentPage}}
+    {{ $collapsible := .collapsible}}
     <section class="collection">
         {{ range .menuItems }}
             {{ if not ( eq ( echoParam .Params "visibility" ) "none" ) }}
-                <div class="item item__category {{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }}" js-docs-menu-item {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}data-js-configuration-category="{{.Name}}"{{end}}>
-                    <div class="item__category__name" js-category-name>
+                <div class="item item__category {{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }} {{if $collapsible}}item__category--collapsible{{end}}" js-docs-menu-item {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}data-js-configuration-category="{{.Name}}"{{end}}>
+                    <div class="item__category__name" js-category-name {{if $collapsible}}js-category-toggle{{end}}>
                         {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}Configuration{{else}}{{.Name}}{{end}}
                     </div>
                     <div class="item__category__posts {{ if .HasChildren }}item__category__posts--expandable{{end}}" js-category-posts>
                         {{ if .HasChildren }}
-                            {{ template "main-menu" ( dict "menuItems" .Children "currentPage" $currentPage ) }}
+                            {{ template "main-menu" ( dict "menuItems" .Children "currentPage" $currentPage "collapsible" true ) }}
                         {{ end }}
                         {{ range where site.Pages "Section" .Identifier }}
                             <a class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
@@ -27,7 +28,7 @@
         <div class="option active" data-js-preference-option="flutter">Workflow Editor</div>
         <div class="option" data-js-preference-option="yaml">.YAML</div>
     </section>
-    {{ template "main-menu" ( dict "menuItems" .Site.Menus.main "currentPage" . ) }}
+    {{ template "main-menu" ( dict "menuItems" .Site.Menus.main "currentLevel" "testing" "currentPage" . ) }}
     <section class="collection collection--external">
         <a id="codemagic-landing-link" onclick="sendGtag('Codemagic_clicked', 'DocumentationMenu')" href="https://codemagic.io/start" target="_blank">Codemagic</a>
         <a id="codemagic-blog-link" onclick="sendGtag('Blog_clicked', 'DocumentationMenu')" href="https://blog.codemagic.io" target="_blank">Blog</a>

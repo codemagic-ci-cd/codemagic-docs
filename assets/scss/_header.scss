@@ -28,7 +28,7 @@
     }
 
     .btn {
-        display: inline-block;
+        display: block;
         background-color: $grey-xl;
         color: $black;
         height: 48px;
@@ -41,6 +41,10 @@
 
         & > * {
             cursor: pointer;
+        }
+        &#signup-btn {
+            background-color: $blue;
+            color: white;
         }
     }
     button:not(:disabled),

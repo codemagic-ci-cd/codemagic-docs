@@ -18,7 +18,7 @@
         z-index: 2;
 
         @at-root .page--home & {
-            height: 80px;
+            height: 60px;
             padding: 0 75px;
             font-size: 16px;
             border-radius: 20px;
@@ -81,7 +81,7 @@
         z-index: 1;
 
         @at-root .page--home & {
-            top: 90px;
+            top: 70px;
         }
         &:empty {
             pointer-events: none;

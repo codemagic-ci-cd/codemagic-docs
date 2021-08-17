@@ -2,11 +2,21 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
-    // grid-template-columns: repeat(auto-fit, minmax(200px 1fr));
+
+    @media (max-width: 1000px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
 }
 .links-group {
     h3 {
         font-size: 24px;
+        @media (max-width: 1400px) {
+            font-size: 20px;
+        }
     }
     li {
         margin: 15px 0;

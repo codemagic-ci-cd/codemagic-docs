@@ -19,7 +19,6 @@
                     font-weight: 600;
                     color: $black-l;
                     border-bottom: 1px solid $blue-xl-border;
-                    cursor: pointer;
                     transition: all 200ms ease-in-out;
 
                     &::after {
@@ -45,6 +44,7 @@
                         color: $black;
                         font-size: 14px;
                         border: none;
+                        cursor: pointer;
 
                         &::after {
                             display: flex;
@@ -53,6 +53,15 @@
                         &:hover {
                             color: $blue-hover;
                         }
+                    }
+                    .item__category_posts {
+                        height: 0;
+                        overflow: hidden;
+                    }
+                }
+                &--collapsible {
+                    .item__category__posts {
+                        display: none;
                     }
                 }
             }
