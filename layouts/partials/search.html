@@ -1,3 +1,15 @@
+<div class="search search--header" js-search>
+    <input
+        class="search__input"
+        type="text"
+        placeholder="Search for guides, terms, commands and more..."
+        js-search-input
+    />
+    <div class="search__icon search__icon--search" js-search-icon>{{ partial "search-icon" }}</div>
+    <div class="search__icon search__icon--clear fas fa-times" js-search-clear-icon></div>
+    <div id="search-results" js-search-results></div>
+</div>
+
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"
     integrity="sha384-iqnguDoMujGknA4B5Jk7pbSn7sb7M8Tc0zVsTNQXm629Xx00jGEpD9TsZXbfNjKO"

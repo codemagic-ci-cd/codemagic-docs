@@ -1,0 +1,105 @@
+#docs-menu {
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+
+    & > .collection {
+        padding-bottom: 20px;
+    }
+    .collection {
+        .item {
+            &__category {
+                &__name {
+                    position: relative;
+                    padding: 15px 20px 15px 0;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $black-l;
+                    border-bottom: 1px solid $blue-xl-border;
+                    transition: all 200ms ease-in-out;
+
+                    &::after {
+                        display: none;
+                        @include fontAwesome('\f0d7');
+                        position: absolute;
+                        top: 0;
+                        right: 15px;
+                        height: 100%;
+                        align-items: center;
+                        font-size: 10px;
+                    }
+                }
+                &__posts {
+                    margin-top: 10px;
+                }
+                .item__category {
+                    padding-left: 10px;
+                    border: none;
+
+                    .item__category__name {
+                        padding: 7px 0;
+                        color: $black;
+                        font-size: 14px;
+                        border: none;
+                        cursor: pointer;
+
+                        &::after {
+                            display: flex;
+                        }
+
+                        &:hover {
+                            color: $blue-hover;
+                        }
+                    }
+                    .item__category_posts {
+                        height: 0;
+                        overflow: hidden;
+                    }
+                }
+                &--collapsible {
+                    .item__category__posts {
+                        display: none;
+                    }
+                }
+            }
+        }
+        a {
+            display: block;
+            padding: 7px 10px;
+            color: $black;
+
+            &:hover {
+                color: $blue;
+            }
+            &.active {
+                color: $blue-hover;
+                cursor: default;
+            }
+        }
+        &--extra,
+        &--external {
+            border-top: 1px solid $blue-xl-border;
+            padding-top: 20px;
+
+            a {
+                padding-left: 0;
+                font-weight: 600;
+            }
+        }
+        &--external a {
+            padding-right: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &::after {
+                @include fontAwesome('\f35d');
+                font-size: 0.7em;
+            }
+        }
+    }
+}

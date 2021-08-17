@@ -1,0 +1,23 @@
+#footer {
+    box-sizing: border-box;
+    padding: 40px 0;
+    border-top: 1px solid $grey-l;
+
+    @media (max-width: 1000px) {
+        margin: 100px 50px 0;
+    }
+
+    a {
+        color: #0957ff;
+    }
+
+    .page-metadata {
+        font-size: 0.9em;
+        line-height: 1.5;
+    }
+
+    .edit-link {
+        font-weight: bold;
+        display: inline-block;
+    }
+}

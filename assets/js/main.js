@@ -1,343 +1,233 @@
-const desktopScreenWidth = 1001
+window.desktopScreenWidth = 1001
+window.preferredConfigurations = ['yaml', 'flutter']
+window.defaultPreferredConfiguration = preferredConfigurations[0]
 
-$('[data-js-docs-menu-item].open').parents('[data-js-docs-menu-item]').addClass('open')
+// UI animation functions
+window.slideUp = (target, duration = 500) => {
+    target.style.transitionProperty = 'height, margin, padding'
+    target.style.transitionDuration = duration + 'ms'
+    target.style.boxSizing = 'border-box'
+    target.style.height = target.offsetHeight + 'px'
+    target.offsetHeight
+    target.style.overflow = 'hidden'
+    target.style.height = 0
+    target.style.paddingTop = 0
+    target.style.paddingBottom = 0
+    target.style.marginTop = 0
+    target.style.marginBottom = 0
 
-// Open - open only current category
-// Close - close current and all descendant categories
-$('[data-js-category-name]').on('click', function () {
-    const parent = $(this).parent()
-    if (parent.hasClass('open')) {
-        parent.find('[data-js-category-posts]').each(function (_, item) {
-            $(item).slideUp(150, function complete() {
-                $(item).parent().removeClass('open')
-            })
-        })
+    window.setTimeout(() => {
+        target.style.display = 'none'
+        target.style.removeProperty('height')
+        target.style.removeProperty('padding-top')
+        target.style.removeProperty('padding-bottom')
+        target.style.removeProperty('margin-top')
+        target.style.removeProperty('margin-bottom')
+        target.style.removeProperty('overflow')
+        target.style.removeProperty('transition-duration')
+        target.style.removeProperty('transition-property')
+    }, duration)
+}
+window.slideDown = (target, duration = 500) => {
+    target.style.removeProperty('display')
+    let display = window.getComputedStyle(target).display
+
+    if (display === 'none') display = 'block'
+
+    target.style.display = display
+    let height = target.offsetHeight
+    target.style.overflow = 'hidden'
+    target.style.height = 0
+    target.style.paddingTop = 0
+    target.style.paddingBottom = 0
+    target.style.marginTop = 0
+    target.style.marginBottom = 0
+    target.offsetHeight
+    target.style.boxSizing = 'border-box'
+    target.style.transitionProperty = 'height, margin, padding'
+    target.style.transitionDuration = duration + 'ms'
+    target.style.height = height + 'px'
+    target.style.removeProperty('padding-top')
+    target.style.removeProperty('padding-bottom')
+    target.style.removeProperty('margin-top')
+    target.style.removeProperty('margin-bottom')
+
+    window.setTimeout(() => {
+        target.style.removeProperty('height')
+        target.style.removeProperty('overflow')
+        target.style.removeProperty('transition-duration')
+        target.style.removeProperty('transition-property')
+    }, duration)
+}
+window.slideToggle = (target, duration = 500) => {
+    if (window.getComputedStyle(target).display === 'none') {
+        return slideDown(target, duration)
     } else {
-        $(this)
-            .siblings('[data-js-category-posts]')
-            .slideDown(150, function complete() {
-                parent.addClass('open')
-            })
-    }
-})
-
-// Menu toggle
-$('[data-js-docs-menu-toggle]').on('click', function () {
-    $('[data-js-docs-menu-toggle]').toggleClass('open')
-    $('[data-js-docs-menu]').toggleClass('open')
-})
-
-// Create permalinks
-function createTableOfContents() {
-    var tocLinks = $('#TableOfContents a')
-    tocLinks.each(function () {
-        var $link = $(this)
-        var hrefAttr = $link.attr('href')
-        var $heading = $(hrefAttr)
-        var href = $link.prop('href')
-        $heading.append(
-            '<i class="ctc fas fa-link" data-target-link="' + href + '" title="Copy link to section to clipboard"></i>',
-        )
-    })
-    hashScroll()
-}
-
-function scrollToAnchor(target) {
-    const headerHeight = $('[data-js-header]').innerHeight()
-    const targetMarginTop = 40
-    let offset = headerHeight + targetMarginTop
-    if (window.innerWidth < desktopScreenWidth) {
-        offset += $('[data-js-sidebar]').innerHeight()
-    }
-    $('html, body').animate({ scrollTop: target.offset().top - offset }, 300)
-}
-
-// Scroll to heading from url
-function hashScroll() {
-    if (window.location.hash) {
-        const target = $(window.location.hash)
-        scrollToAnchor(target)
-        history.pushState('', document.title, window.location.pathname + window.location.search)
+        return slideUp(target, duration)
     }
 }
-// Scroll to selected heading on click
-$(document).on('click', 'a[href^="#"]', function (event) {
-    event.preventDefault()
-    const target = $($.attr(this, 'href'))
-    scrollToAnchor(target)
-})
 
-// Copy section link to clipboard
-const copyLinkFromTitles = () => {
-    $('h1, h2, h3, h4, h5, h6').on('click', 'i.ctc', function () {
-        var link = $(this).attr('data-target-link')
-        var $temp = $('<input>')
-        $('body').append($temp)
-        $temp.val(link).select()
-        document.execCommand('copy')
-        $temp.remove()
-        alert('Copied to clipboard')
-    })
-}
+// Fetch user
+const fetchUser = async () => {
+    const url = '{{ site.Param "backendURL" }}/user'
+    const timeout = 3000
 
-$(document).ready(function () {
-    createTableOfContents()
-    copyLinkFromTitles()
-    // Wrap tables for responsiveness
-    var contentTable = $('#main-content main table')
-    contentTable.each(function () {
-        $(this).wrap('<div class="table-wrap"></div>')
-    })
-    elementsTopPosition()
-})
+    const controller = new AbortController()
+    const signal = controller.signal
 
-$(document).ready(function () {
-    window.userRequest = fetchUser()
+    setTimeout(() => controller.abort(), timeout)
 
-    // Fetch user
-    async function fetchUser() {
-        const url = '{{ site.Param "backendURL" }}/user'
-        const timeout = 3000
-
-        const controller = new AbortController()
-        const signal = controller.signal
-
-        setTimeout(() => controller.abort(), timeout)
-
-        try {
-            const response = await fetch(url, {
-                mode: 'cors',
-                credentials: 'include',
-                headers: { Accept: 'application/json' },
-                signal,
-            })
-            try {
-                return { response, json: await response.json() }
-            } catch (error) {
-                return { response, error }
-            }
-        } catch (error) {
-            return { error }
-        }
-    }
-
-    // Menu toggle
-    $('[data-js-header-menu-toggle]').on('click', function () {
-        $(this).toggleClass('open')
-        const visible = $('[data-js-header-menu-wrap]').is(':visible')
-        if (visible) {
-            $('[data-js-header-menu-wrap]').slideUp(200)
-        } else {
-            $('[data-js-header-menu-wrap]').slideDown(200)
-        }
-    })
-
-    // Open extenral links in new tab
-    $('a').each(function () {
-        var hostName = window.location.hostname
-        var href = $(this).attr('href')
-        if (href && !href.includes(hostName) && !href.startsWith('/') && !href.startsWith('#')) {
-            $(this).attr('target', '_blank')
-        }
-    })
-
-    authenticateUser()
-
-    async function authenticateUser() {
-        const { response, json } = await window.userRequest
-        window.auth = { loaded: true }
-
-        if (response && response.ok && json && json.user) {
-            Object.assign(window.auth, json.user.user)
-            if (json.user.ok) {
-                window.loggedIn = true
-                window.auth._id = json.user._id
-                $('[data-js-header-auth-user]').addClass('transition-in')
-                $('[data-js-header-user-avatar]').html('<img src="' + auth.avatarUrl + '" alt=""/>')
-                setAnalyticsEvents()
-            } else {
-                window.loggedIn = false
-                $('[data-js-header-auth-visitor]').addClass('transition-in')
-            }
-        } else {
-            window.loggedIn = false
-            $('[data-js-header-auth-visitor]').addClass('transition-in')
-        }
-        $('[data-js-header-auth-loading]').addClass('transition-out')
-        setTimeout(function () {
-            $('[data-js-header-auth-loading-grey-line]').hide()
-        }, 1000)
-    }
-
-    async function setAnalyticsEvents() {
-        await sendEvent('page_viewed')
-
-        $(document).bind('copy', async function () {
-            await sendEvent('text_copied')
-        })
-
-        async function sendEvent(eventName) {
-            try {
-                await fetch('{{ site.Param "backendURL" }}/analytics', {
-                    mode: 'cors',
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    credentials: 'include',
-                    body: JSON.stringify({
-                        site: window.location.host,
-                        page_url: window.location.pathname,
-                        event_name: eventName,
-                    }),
-                })
-            } catch (error) {
-                console.error(error)
-            }
-        }
-    }
-
-    $('[data-js-header-auth-logout]').on('click', userLogout)
-
-    async function userLogout() {
-        $('[data-js-header-authentication]').addClass('loading')
-        $('[data-js-header-auth-loading]').removeClass('transition-out').addClass('transition-in')
-        $('[data-js-header-auth-loading-grey-line]').show()
-        if ($(window).innerWidth() < 841) {
-            $('[data-js-header-menu-toggle]').removeClass('open')
-            $('[data-js-header-menu-wrap]').slideUp(200)
-        }
-        $('[data-js-header-menu-wrap]').slideUp(200)
-
-        const url = '{{ site.Param "backendURL" }}/logout'
-        const options = {
-            method: 'GET',
+    try {
+        const response = await fetch(url, {
             mode: 'cors',
             credentials: 'include',
             headers: { Accept: 'application/json' },
-        }
+            signal,
+        })
         try {
-            await fetch(url, options)
-            $('[data-js-header-auth-user]').removeClass('transition-in').addClass('transition-out')
-            setTimeout(function () {
-                $('[data-js-header-auth-loading-grey-line]').hide()
-                $('[data-js-header-auth-visitor]').removeClass('transition-out').addClass('transition-in')
-            }, 1000)
+            return { response, json: await response.json() }
         } catch (error) {
-            location.reload()
-        } finally {
-            auth = { loaded: true }
-            window.loggedIn = false
-            $('[data-js-header-authentication]').removeClass('loading')
-            $('[data-js-header-auth-loading]').removeClass('transition-in').addClass('transition-out')
+            return { response, error }
         }
+    } catch (error) {
+        return { error }
     }
-})
+}
 
-let lastScrollPosition = 0
-const sidebar = $('[data-js-sidebar]')
-const header = $('[data-js-header]')
-const docsMenu = $('[data-js-docs-menu]')
-const contentWrap = $('[data-js-content-wrap]')
-const searchResults = $('[data-js-search-results]')
+// Authenticate user
+const authenticateUser = async () => {
+    const { response, json } = await window.userRequest
+    window.auth = { loaded: true }
 
-$(window).on('scroll', function () {
-    const currentScrollPosition = $(window).scrollTop()
-    // do not consider scrolling bounce effect as scrolling
-    if (currentScrollPosition >= 0 && currentScrollPosition <= $('body').height() - $(window).height()) {
-        window.scrollingDown = currentScrollPosition > lastScrollPosition
-        lastScrollPosition = currentScrollPosition
-    }
-})
+    if (response && response.ok && json && json.user) {
+        Object.assign(window.auth, json.user.user)
 
-$(window).on('load scroll resize', function () {
-    const headerHeight = header.innerHeight()
-    const sidebarHeight = sidebar.innerHeight()
-    if (window.innerWidth < desktopScreenWidth) {
-        if (window.scrollingDown) {
-            sidebar.css('top', 0)
-            header.css('top', -headerHeight)
-            docsMenu.css('top', sidebarHeight)
-            searchResults.css('margin-top', sidebarHeight)
-            contentWrap.css('paddingTop', 0)
+        if (json.user.ok) {
+            window.loggedIn = true
+            window.auth._id = json.user._id
+            document.querySelector('[js-header-auth-user]').classList.add('transition-in')
+            document.querySelector('[js-header-user-avatar]').innerHTML = '<img src="' + auth.avatarUrl + '" alt=""/>'
+            setAnalyticsEvents()
         } else {
-            header.css('top', 0)
-            sidebar.css('top', headerHeight)
-            docsMenu.css('top', headerHeight + sidebarHeight)
-            searchResults.css('margin-top', headerHeight + sidebarHeight)
-            contentWrap.css('paddingTop', headerHeight)
+            window.loggedIn = false
+            document.querySelector('[js-header-auth-visitor]').classList.add('transition-in')
         }
     } else {
-        sidebar.css('top', 0)
-        searchResults.css('margin-top', 76)
-        sidebar.css('top', 0)
-        header.css('top', 0)
-        docsMenu.css('top', 78)
-        searchResults.css('margin-top', headerHeight)
-        contentWrap.css('paddingTop', headerHeight)
+        window.loggedIn = false
+        document.querySelector('[js-header-auth-visitor]').classList.add('transition-in')
     }
-    elementsTopPosition() // TOC
+    document.querySelector('[js-header-auth-loading]').classList.add('transition-out')
+    setTimeout(() => {
+        document.querySelector('[js-header-auth-loading-grey-line]').style.display = 'none'
+    }, 1000)
+}
+
+// Set up analytics
+const setAnalyticsEvents = async () => {
+    const sendEvent = async (eventName) => {
+        try {
+            await fetch('{{ site.Param "backendURL" }}/analytics', {
+                mode: 'cors',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    site: window.location.host,
+                    page_url: window.location.pathname,
+                    event_name: eventName,
+                }),
+            })
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    await sendEvent('page_viewed')
+    document.addEventListener('copy', async () => await sendEvent('text_copied'))
+}
+
+// Log user out
+async function userLogout() {
+    document.querySelector('[js-header-authentication]').classList.add('loading')
+    document.querySelector('[js-header-auth-loading]').classList.remove('transition-out')
+    document.querySelector('[js-header-auth-loading]').classList.add('transition-in')
+    document.querySelector('[js-header-auth-loading-grey-line]').style.display = 'block'
+    if (window.innerWidth < 841) {
+        document.querySelector('[js-header-menu-toggle]').classList.remove('open')
+        // $('[js-header-menu-wrap]').slideUp(200)
+    }
+    // $('[js-header-menu-wrap]').slideUp(200)
+
+    const url = '{{ site.Param "backendURL" }}/logout'
+    const options = {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'include',
+        headers: { Accept: 'application/json' },
+    }
+    try {
+        await fetch(url, options)
+        document.querySelector('[js-header-auth-user]').classList.remove('transition-in')
+        document.querySelector('[js-header-auth-user]').classList.add('transition-out')
+
+        setTimeout(() => {
+            document.querySelector('[js-header-auth-loading-grey-line]').style.display = 'none'
+            document.querySelector('[js-header-auth-visitor]').classList.remove('transition-out')
+            document.querySelector('[js-header-auth-visitor]').classList.add('transition-in')
+        }, 1000)
+    } catch (error) {
+        location.reload()
+    } finally {
+        auth = { loaded: true }
+        window.loggedIn = false
+        document.querySelector('[js-header-authentication]').classList.remove('loading')
+        document.querySelector('[js-header-auth-loading]').classList.remove('transition-in')
+        document.querySelector('[js-header-auth-loading]').classList.add('transition-out')
+    }
+}
+
+// Open external links in new tab
+const handleExternalLinks = (e) => {
+    const hostName = window.location.hostname
+    const href = e.target.href
+
+    if (href && !href.includes(hostName) && !href.startsWith('/') && !href.startsWith('#')) {
+        e.preventDefault()
+        window.open(href, '_blank').focus()
+    }
+}
+
+// Set show desktop elements
+const showDesktopElements = () => {
+    const windowWidth = window.innerWidth
+    window.showDesktop = windowWidth >= window.desktopScreenWidth
+}
+
+// Handle menu toggle
+const handleMenuToggle = ({ target }) => {
+    const menuWrap = document.querySelector('[js-header-menu-wrap]')
+    if (target.hasAttribute('js-header-menu-toggle')) {
+        target.classList.toggle('open')
+        menuWrap.classList.toggle('open')
+    }
+}
+
+// On ready
+window.userRequest = fetchUser()
+authenticateUser()
+showDesktopElements()
+
+// On click
+document.addEventListener('click', (e) => {
+    handleExternalLinks(e)
+    handleMenuToggle(e)
 })
 
-// Table of content
-
-// Adjust elements positions depending on content shown
-function elementsTopPosition() {
-    const windowHeight = $(window).height()
-    const topOfWindow = $(window).scrollTop()
-    const footerPosition = $('#footer').offset().top
-    const toc = $('[data-js-toc]')
-    const progress = (topOfWindow / (footerPosition - windowHeight)) * 100
-
-    if (toc.length) {
-        const tableOfContentHeight = $('#TableOfContents').height()
-        let contentTablePull = 0
-        if (tableOfContentHeight > windowHeight * 0.9) {
-            heightDifference = tableOfContentHeight - windowHeight * 0.8
-            contentTablePull = (heightDifference * progress) / 100
-        }
-        const tableOfContentTop = 70 - contentTablePull
-        toc.css('top', tableOfContentTop)
-    }
-}
-
-function isOnScreen(elem) {
-    if (elem.length === 0) {
-        return
-    }
-    const viewportTop = $(window).scrollTop()
-    const viewportHeight = $(window).height()
-    const viewportBottom = viewportTop + viewportHeight
-    const top = $(elem).offset().top
-    const height = $(elem).height()
-    const bottom = top + height
-
-    return (
-        (top >= viewportTop && top < viewportBottom) ||
-        (bottom > viewportTop && bottom <= viewportBottom) ||
-        (height > viewportHeight && top <= viewportTop && bottom >= viewportBottom)
-    )
-}
-
-function setContentTableHeaderActive(id) {
-    $('#TableOfContents ul li a').removeClass('active')
-    $(`#TableOfContents ul li a[href="#${id}"]`).addClass('active')
-}
-
-// Sidemenu scroll spy
-$(window).ready(function () {
-    const observer = new IntersectionObserver(function (entries) {
-        headers = Array.from($('#main-content h2, #main-content h3'))
-        headersOnScreen = headers.filter((h) => isOnScreen(h))
-        if (headersOnScreen.length) {
-            setContentTableHeaderActive(headersOnScreen[0].id)
-        } else if (entries[0].intersectionRatio == 0 && !window.scrollingDown) {
-            currentIndex = headers.findIndex((header) => header.id === entries[0].target.getAttribute('id'))
-            previousHeader = currentIndex ? currentIndex - 1 : 0
-            setContentTableHeaderActive(headers[previousHeader].id)
-        }
-    })
-    document.querySelectorAll('#main-content h2, #main-content h3').forEach(function (header) {
-        observer.observe(header)
-    })
+// On resize
+window.addEventListener('resize', () => {
+    showDesktopElements()
 })
+
+// Logout listner
+document.querySelector('[js-header-auth-logout]').addEventListener('click', userLogout)

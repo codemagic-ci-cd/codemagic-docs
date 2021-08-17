@@ -5,24 +5,24 @@ $(document).ready(() => {
 })
 
 const initSearchEvents = () => {
-    $('[data-js-search-icon]').on('click', () => {
-        $('[data-js-search-input]').trigger('focus')
+    $('[js-search-icon]').on('click', () => {
+        $('[js-search-input]').trigger('focus')
     })
-    $('[data-js-search-clear-icon]').on('mousedown', () => {
+    $('[js-search-clear-icon]').on('mousedown', () => {
         // mousedown is before blur, 'click' wouldn't work because after blur the icon disappears
         updateFromInput(null)
     })
 
-    $('[data-js-search-input]')
+    $('[js-search-input]')
         .bind('change keyup input', (event) => {
-            if (event.target.value.trim().length) $('[data-js-search]').addClass('search--active')
-            else $('[data-js-search]').removeClass('search--active')
+            if (event.target.value.trim().length) $('[js-search]').addClass('search--active')
+            else $('[js-search]').removeClass('search--active')
         })
         .bind('blur focusout', (event) => {
             if (event.target.value) {
                 return
             }
-            $('[data-js-search]').removeClass('search--active')
+            $('[js-search]').removeClass('search--active')
         })
         .on('keyup', (event) => {
             if (event.keyCode === 27) {
@@ -76,9 +76,9 @@ const updateResults = async (query) => {
 }
 
 const updateInputs = (query) => {
-    var $inputs = $('[data-js-search-input]')
+    var $inputs = $('[js-search-input]')
     $inputs.val(query)
-    query === null ? $inputs.trigger('blur') : query && $('[data-js-search]').addClass('search--active')
+    query === null ? $inputs.trigger('blur') : query && $('[js-search]').addClass('search--active')
 }
 
 const getResultHtml = (algoliaResultList, query) => {
@@ -90,6 +90,19 @@ const getResultHtml = (algoliaResultList, query) => {
             text: 'Invalid search query: ' + algoliaResultList.message,
         })
     }
+
+    const preferredConfiguration = localStorage.getItem('preferred-configuration') || defaultPreferredConfiguration
+    algoliaResultList = algoliaResultList.filter(function (result) {
+        let resultConfiguration = null
+        preferredConfigurations.some(function (configuration) {
+            if (result.uri.startsWith(`/${configuration}`)) {
+                resultConfiguration = configuration
+                return true
+            }
+        })
+
+        return !resultConfiguration || resultConfiguration === preferredConfiguration
+    })
 
     if (!algoliaResultList.length) {
         return $('<div>', {

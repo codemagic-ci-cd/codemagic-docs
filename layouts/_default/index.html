@@ -1,4 +1,11 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
+<section id="hero">
+    <div class="inner">
+        <h1>Search the documentation</h1>
+        {{ partial "search" (dict "context" . "layout" "large") }}
+    </div>
+</section>
+<section id="links">
+    <div class="inner">{{ .Content }}</div>
+</section>
 {{ end }}
