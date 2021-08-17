@@ -261,6 +261,7 @@ const setInitialPreference = () => {
 }
 // Handle preference change
 const changePreference = (target) => {
+    openActiveCategory()
     let currentPageConfiguration = null
     const info = document.querySelector('[js-configuration-info]')
 
@@ -322,11 +323,26 @@ const toggleCategory = ({ target }) => {
     }
 }
 
+// Make sure category with active item is open
+const openActiveCategory = () => {
+    const activeLink = document.querySelector('[js-docs-link].active')
+    const parent = activeLink.closest('[js-docs-menu-item]')
+    if (parent) {
+        const name = parent.querySelector('[js-category-name]')
+        const posts = parent.querySelector('[js-category-posts]')
+        parent.classList.add('open')
+        name.classList.add('open')
+        posts.classList.add('open')
+        posts.style.display = 'block'
+    }
+}
+
 // On ready
 handleSidebarPosition()
 scrollMenuToActive('[js-docs-menu]')
 positionHeaderContents()
 setInitialPreference()
+openActiveCategory()
 
 if (showToc) {
     createTableOfContents()

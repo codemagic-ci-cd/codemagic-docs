@@ -4,11 +4,16 @@
     <section class="collection">
         {{ range .menuItems }}
             {{ if not .Params.hide }}
-                <div class="item item__category {{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }} {{if $collapsible}}item__category--collapsible{{end}}"
+                <div class="item item__category {{if $collapsible}}item__category--collapsible{{end}}"
                     js-docs-menu-item
                     {{if .Params.preference }}data-js-configuration-category="{{.Params.preference}}"{{end}}
                 >
-                    <div class="item__category__name" js-category-name {{if $collapsible}}js-category-toggle{{end}}>
+                    <div
+                        class="item__category__name"
+                        js-category-name
+                        {{if $collapsible}}js-category-toggle{{end}}
+                        {{ if $currentPage.HasMenuCurrent "main" . }}js-open{{ end }}
+                    >
                         {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}Configuration{{else}}{{.Name}}{{end}}
                     </div>
                     <div class="item__category__posts {{ if .HasChildren }}item__category__posts--expandable{{end}}" js-category-posts>
@@ -17,6 +22,7 @@
                         {{ end }}
                         {{ range where site.Pages "Section" .Identifier }}
                             <a
+                                js-docs-link
                                 class="{{ if eq $currentPage . }}active{{ end }}"
                                 href="{{ .RelPermalink }}"
                                 {{if .Page.Params.platform}}data-js-platform-specific="{{.Page.Params.platform}}"{{end}}>
@@ -36,7 +42,7 @@
     <section class="collection collection--extra">
         {{ range .menuItems }}
             {{ range where site.Pages "Section" .Identifier }}
-                <a class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <a js-docs-link class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
             {{ end }}
         {{ end }}
     </section>
