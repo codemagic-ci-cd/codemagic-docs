@@ -305,18 +305,12 @@
         color: white;
         padding: 20px;
         margin: -50px 0 50px -50px;
-        pointer-events: none;
         z-index: 4;
 
         .wrap {
             display: flex;
             align-items: center;
             justify-content: space-between;
-        }
-
-        &.visible {
-            opacity: 1;
-            pointer-events: initial;
         }
         @media (max-width: 1000px) {
             position: fixed;
