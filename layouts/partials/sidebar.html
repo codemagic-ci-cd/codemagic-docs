@@ -3,8 +3,11 @@
     {{ $collapsible := .collapsible}}
     <section class="collection">
         {{ range .menuItems }}
-            {{ if not ( eq ( echoParam .Params "visibility" ) "none" ) }}
-                <div class="item item__category {{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }} {{if $collapsible}}item__category--collapsible{{end}}" js-docs-menu-item {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}data-js-configuration-category="{{.Name}}"{{end}}>
+            {{ if not .Params.hide }}
+                <div class="item item__category {{ if $currentPage.HasMenuCurrent "main" . }}open{{ end }} {{if $collapsible}}item__category--collapsible{{end}}"
+                    js-docs-menu-item
+                    {{if .Params.preference }}data-js-configuration-category="{{.Params.preference}}"{{end}}
+                >
                     <div class="item__category__name" js-category-name {{if $collapsible}}js-category-toggle{{end}}>
                         {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}Configuration{{else}}{{.Name}}{{end}}
                     </div>
@@ -13,7 +16,12 @@
                             {{ template "main-menu" ( dict "menuItems" .Children "currentPage" $currentPage "collapsible" true ) }}
                         {{ end }}
                         {{ range where site.Pages "Section" .Identifier }}
-                            <a class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                            <a
+                                class="{{ if eq $currentPage . }}active{{ end }}"
+                                href="{{ .RelPermalink }}"
+                                {{if .Page.Params.platform}}data-js-platform-specific="{{.Page.Params.platform}}"{{end}}>
+                                {{ .Title }}
+                            </a>
                         {{ end }}
                     </div>
                 </div>

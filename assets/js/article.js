@@ -267,8 +267,12 @@ const changePreference = (target) => {
     if (target.hasAttribute('data-js-preference-option')) {
         const bg = document.querySelector('[js-preference-bg]')
         const active = document.querySelector('[data-js-preference-option].active')
-        const yamlLinks = document.querySelector('[data-js-configuration-category="Codemagic.yaml"]')
-        const flutterLinks = document.querySelector('[data-js-configuration-category="Flutter workflow editor"]')
+        const yamlLinks = document.querySelectorAll(
+            '[data-js-configuration-category="yaml"], [data-js-platform-specific="yaml"]',
+        )
+        const flutterLinks = document.querySelectorAll(
+            '[data-js-configuration-category="flutter"], [data-js-platform-specific="flutter"',
+        )
         active.classList.remove('active')
         target.classList.add('active')
         bg.style.left = target.offsetLeft + 'px'
@@ -291,11 +295,11 @@ const changePreference = (target) => {
             window.slideUp(info)
         }
         if (target.dataset.jsPreferenceOption === 'flutter') {
-            yamlLinks.style.display = 'none'
-            flutterLinks.style.display = 'block'
+            yamlLinks.forEach((link) => (link.style.display = 'none'))
+            flutterLinks.forEach((link) => (link.style.display = 'block'))
         } else {
-            yamlLinks.style.display = 'block'
-            flutterLinks.style.display = 'none'
+            yamlLinks.forEach((link) => (link.style.display = 'block'))
+            flutterLinks.forEach((link) => (link.style.display = 'none'))
         }
     }
 }
