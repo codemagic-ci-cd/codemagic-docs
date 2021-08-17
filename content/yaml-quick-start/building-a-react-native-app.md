@@ -11,7 +11,7 @@ React Native is a cross-platform solution that allows you to build apps for both
 
 ## Setting up a React Native project
 
-The apps you have available on Codemagic are listed on the Applications page. See how to add additional apps [here](./adding-apps-from-custom-sources).
+The apps you have available on Codemagic are listed on the Applications page. Click **Add application** to add a new app.
 
 1. On the Applications page, click **Set up build** next to the app you want to start building. 
 2. On the popup, select **React Native App** as the project type and click **Continue**.

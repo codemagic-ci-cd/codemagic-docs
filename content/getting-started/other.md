@@ -19,7 +19,7 @@ Apps that cannot be added via a repository integration can be cloned from a URL.
 
 5. Finish setting up the application by selecting the project type and clicking **Finish: Add application**. You will be then redirected to the app settings.
 
->See the getting started guides and [sample projects](../sample-projects/codemagic-sample-projects/) configured with [codemagic.yaml](../getting-started/yaml/) to set up your project. Alternatively, Flutter apps can be also configured using the [Flutter workflow editor](../flutter/flutter-projects/).
+>See the getting started guides and [sample projects](../sample-projects/codemagic-sample-projects/) configured with [codemagic.yaml](../getting-started/yaml/) to set up your project. Alternatively, Flutter apps can be also configured using the [Flutter workflow editor](../flutter-configuration/flutter-projects/).
 
 ### Generating a key pair in Codemagic
 
@@ -40,4 +40,4 @@ After you have added the public key to your repository settings, finish adding t
 4. If your repository is private, then enter your **Username** and **Password**. In the case of a public repository, check **Public repository**.
 5. Finish setting up the application by selecting the project type and clicking **Finish: Add application**. You will be then redirected to the app settings.
 
->See the getting started guides and [sample projects](../sample-projects/codemagic-sample-projects/) configured with [codemagic.yaml](../getting-started/yaml/) to set up your project. Alternatively, Flutter apps can be also configured using the [Flutter workflow editor](../flutter/flutter-projects/).
+>See the getting started guides and [sample projects](../sample-projects/codemagic-sample-projects/) configured with [codemagic.yaml](../getting-started/yaml/) to set up your project. Alternatively, Flutter apps can be also configured using the [Flutter workflow editor](../flutter-configuration/flutter-projects/).

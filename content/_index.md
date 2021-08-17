@@ -26,7 +26,7 @@ title: Codemagic Documentation
 {{<links-group title="Flutter Workflow Editor">}}
 
 - [Building Flutter apps](../flutter-configuration/flutter-projects/)
-- [Code signing](../flutter-code-signing/signing-ios/)
+- [Code signing](/flutter-code-signing/ios-code-signing/)
 - [Publishing to App Store Connect](../flutter-publishing/publishing-to-app-store/)
 - [Publishing to Google Play](../flutter-publishing/publishing-to-google-play/)
 

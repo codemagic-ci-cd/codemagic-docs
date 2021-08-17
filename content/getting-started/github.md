@@ -16,7 +16,7 @@ Adding apps from GitHub requires authorizing Codemagic and installing the Codema
 3. In the next step, click **Install GitHub App** to set up the integration. A GitHub page opens in a new window. Select the account or an organization where to install the app and choose whether to give Codemagic access to all the repositories from this account or only selected ones. Finish the installation by clicking **Install & Authorize**.
 4. Finally, set up the application by selecting the repository from the dropdown menu and specifying the project type. Click **Finish: Add application**. You will be then redirected to the app settings.
 
->See the getting started guides and [sample projects](../sample-projects/codemagic-sample-projects/) configured with [codemagic.yaml](../getting-started/yaml/) to set up your project. Alternatively, Flutter apps can be also configured using the [Flutter workflow editor](../flutter/flutter-projects/).
+>See the getting started guides and [sample projects](../sample-projects/codemagic-sample-projects/) configured with [codemagic.yaml](../getting-started/yaml/) to set up your project. Alternatively, Flutter apps can be also configured using the [Flutter workflow editor](../flutter-configuration/flutter-projects/).
 
 ## Configuring the GitHub App integration
 

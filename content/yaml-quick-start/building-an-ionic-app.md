@@ -9,7 +9,7 @@ aliases:
 
 ## Setting up an Ionic project
 
-The apps you have available on Codemagic are listed on the Applications page. See how to add additional apps [here](./adding-apps-from-custom-sources).
+The apps you have available on Codemagic are listed on the Applications page. Click **Add application** to add a new app.
 
 1. On the [Applications page](https://codemagic.io/apps), click **Set up build** next to the app you want to start building. 
 2. On the popup, select **Ionic App** as the project type and click **Continue**.

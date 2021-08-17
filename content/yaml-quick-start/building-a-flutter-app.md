@@ -10,7 +10,7 @@ startLineBreak: true
 
 ## Setting up a Flutter project
 
-The apps you have available in Codemagic are listed on the Applications page. See how to add additional apps [here](./adding-apps-from-custom-sources).
+The apps you have available in Codemagic are listed on the Applications page. Click **Add application** to add a new app.
 
 1. On the Applications page, click **Set up build** next to the app you want to start building. 
 2. On the popup, select **Flutter App** as the project type and click **Continue**.
@@ -21,7 +21,7 @@ The apps you have available in Codemagic are listed on the Applications page. Se
 You can simultaneously set up workflows both in `codemagic.yaml` and the Workflow Editor. However, when a `codemagic.yaml` is detected in the repository, it is automatically used for configuring builds that are triggered in response to the events defined in the file and any configuration in the Flutter workflow editor is ignored.
 
 {{<notebox>}}
-For documentation on building Flutter projects using the workflow editor, please refer to [**Building Flutter apps via the workflow editor**](../flutter/flutter-projects).
+For documentation on building Flutter projects using the workflow editor, please refer to [**Building Flutter apps via the workflow editor**](../flutter-configuration/flutter-projects).
 {{</notebox>}}
 
 ## Exporting configuration from the Flutter workflow editor
