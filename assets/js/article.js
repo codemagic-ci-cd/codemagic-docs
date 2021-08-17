@@ -263,7 +263,8 @@ const setInitialPreference = () => {
 const changePreference = (target) => {
     let currentPageConfiguration = null
     const info = document.querySelector('[js-configuration-info]')
-    if (target.hasAttribute('data-js-preference-option') && !target.classList.contains('active')) {
+
+    if (target.hasAttribute('data-js-preference-option')) {
         const bg = document.querySelector('[js-preference-bg]')
         const active = document.querySelector('[data-js-preference-option].active')
         const yamlLinks = document.querySelector('[data-js-configuration-category="Codemagic.yaml"]')
@@ -285,9 +286,9 @@ const changePreference = (target) => {
             currentPageConfiguration !== target.dataset.jsPreferenceOption &&
             info
         ) {
-            info.classList.add('visible')
-        } else {
-            if (info) info.classList.remove('visible')
+            window.slideDown(info)
+        } else if (info) {
+            window.slideUp(info)
         }
         if (target.dataset.jsPreferenceOption === 'flutter') {
             yamlLinks.style.display = 'none'
@@ -302,7 +303,7 @@ const changePreference = (target) => {
 // Handle closing configuration info
 const closeConfigurationInfo = ({ target }) => {
     if (target.hasAttribute('js-close-configuration-info')) {
-        document.querySelector('[js-configuration-info]').classList.remove('visible')
+        window.slideToggle(document.querySelector('[js-configuration-info]'))
     }
 }
 

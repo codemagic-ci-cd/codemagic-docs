@@ -7,7 +7,7 @@
     overflow: auto;
 
     & > .collection {
-        padding-bottom: 50px;
+        padding-bottom: 20px;
     }
     .collection {
         .item {
@@ -65,19 +65,39 @@
                     }
                 }
             }
-            a {
-                display: block;
-                padding: 7px 10px;
-                font-weight: 600;
-                color: $black;
+        }
+        a {
+            display: block;
+            padding: 7px 10px;
+            font-weight: 600;
+            color: $black;
 
-                &:hover {
-                    color: $blue;
-                }
-                &.active {
-                    color: $blue-hover;
-                    cursor: default;
-                }
+            &:hover {
+                color: $blue;
+            }
+            &.active {
+                color: $blue-hover;
+                cursor: default;
+            }
+        }
+        &--extra,
+        &--external {
+            border-top: 1px solid $blue-xl-border;
+            padding-top: 20px;
+            a {
+                padding-left: 0;
+            }
+        }
+        &--external a {
+            padding-right: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &::after {
+                @include fontAwesome('\f35d');
+                font-size: 0.7em;
             }
         }
     }

@@ -22,6 +22,18 @@
     </section>
 {{ end }}
 
+{{ define "extra-menu" }}
+    {{ $currentPage := .currentPage}}
+    {{ $collapsible := .collapsible}}
+    <section class="collection collection--extra">
+        {{ range .menuItems }}
+            {{ range where site.Pages "Section" .Identifier }}
+                <a class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{ end }}
+        {{ end }}
+    </section>
+{{end}}
+
 <nav id="docs-menu" js-docs-menu>
     <section id="preference-switch" js-preference-switch>
         <div id="preference-bg" js-preference-bg></div>
@@ -29,6 +41,7 @@
         <div class="option" data-js-preference-option="yaml">.YAML</div>
     </section>
     {{ template "main-menu" ( dict "menuItems" .Site.Menus.main "currentLevel" "testing" "currentPage" . ) }}
+    {{ template "extra-menu" ( dict "menuItems" .Site.Menus.extra "currentPage" . ) }}
     <section class="collection collection--external">
         <a id="codemagic-landing-link" onclick="sendGtag('Codemagic_clicked', 'DocumentationMenu')" href="https://codemagic.io/start" target="_blank">Codemagic</a>
         <a id="codemagic-blog-link" onclick="sendGtag('Blog_clicked', 'DocumentationMenu')" href="https://blog.codemagic.io" target="_blank">Blog</a>

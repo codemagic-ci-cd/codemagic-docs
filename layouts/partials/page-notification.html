@@ -2,9 +2,11 @@
 {{ end }} {{ if hasPrefix .URL "/flutter" }} {{ $currentPageConfiguration = "Flutter workflow editor" }} {{ end }} {{ if
 ne $currentPageConfiguration "" }}
 <div id="configuration-info" js-configuration-info>
-    You are currently viewing article for {{ $currentPageConfiguration }} configuration.
-    <span id="configuration-info-close" js-close-configuration-info>
-        <i class="fas fa-times"></i>
-    </span>
+    <div class="wrap">
+        You are currently viewing article for {{ $currentPageConfiguration }} configuration.
+        <span id="configuration-info-close" js-close-configuration-info>
+            <i class="fas fa-times"></i>
+        </span>
+    </div>
 </div>
 {{ end }}
