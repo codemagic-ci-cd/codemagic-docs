@@ -50,6 +50,7 @@ Adds a Git repository to the applications list.
 | **Name**        | **Type** | **Description** |
 | --------------- | -------- | --------------- |
 | `repositoryUrl` | `string` | **Required.** SSH or HTTPS URL for cloning the repository. |
+| `teamId` | `string` | **Optional.** ID of a team if you wish to add an app directly to one of your teams. You must be an owner of the team specified. |
 
 ### Example
 
@@ -81,6 +82,7 @@ Creates an application from a private repository with SSH key
 | `repositoryUrl` | `string` | **Required.** SSH or HTTPS URL for cloning the repository. |
 | `sshKey` | `JSON` | **Required.** |
 | `projectType` | `string` | `flutter-app` when adding Flutter application. | 
+| `teamId` | `string` | **Optional.** ID of a team if you wish to add an app directly to one of your teams. You must be an owner of the team specified. |
 
 #### `sshKey` parameter
 
