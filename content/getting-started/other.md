@@ -37,7 +37,7 @@ After you have added the public key to your repository settings, finish adding t
 1. Click **Add application** in the top right corner of the Applications page.
 2. Select **Other** and click **Next: Select repository**.
 3. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository by clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `https://example.com/path/to/repository.git`.
-4. If your repository is private, then enter your **Username** and **Password**. In the case of a public repository, check **Public repository**.
+4. If the repository is private, then enter your **Username** and **Password**, or **Username** and [**Personal access token**](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) if it's a GitHub repository. In the case of a public repository, select **Public repository**.
 5. Finish setting up the application by selecting the project type and clicking **Finish: Add application**. You will be then redirected to the app settings.
 
 >See the getting started guides and [sample projects](../sample-projects/codemagic-sample-projects/) configured with [codemagic.yaml](../getting-started/yaml/) to set up your project. Alternatively, Flutter apps can be also configured using the [Flutter workflow editor](../flutter-configuration/flutter-projects/).
