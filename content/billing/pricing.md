@@ -3,6 +3,9 @@ title: Pricing
 weight: 2
 ---
 
+## Free plan
+
+The free plan allows you to use 500 minutes per month on macOS standard machines on a personal account. Your 500 free minutes will be reset on the 1st of each month. Free minutes are not available if you are using a Team.
 ## Pay as you go pricing
 
 Pay as you go pricing allows you to pay for only what you use. 
@@ -54,7 +57,11 @@ For teams, all build minutes using macOS standard VM, macOS premium VM, Linux st
 
 Team users that were active in the current billing period are charged $10/month. To see how users are counted please see [here](https://docs.codemagic.io/teams/users/)
 
-Each extra build concurrency allows running an additional build in parallel. For example, two extra build concurrencies allow running three builds in parallel. Consider Business plan or Enterprise plan if more than three concurrent builds are required.
+Each extra build concurrency allows running an additional build in parallel. For example, two extra build concurrencies allow running three builds in parallel. 
+
+You can add addtional cocurrencies in the Codemagic web app by clicking 'Billing' in the left hand menu and then clicking on your Team name. In the 'Billing Overview' you should click 'update' in the Build concurrency section and select the number of concurrencies you wish to add to your Team. 
+
+Each addtional concurrency is $49/month and you will be billed for each concurrency on the last day of each month.
 
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -64,6 +71,8 @@ Each extra build concurrency allows running an additional build in parallel. For
 | Linux standard VM        | $0.015 / minute                                                                                                                                                 |
 | Team user                | $10 / month                                                                                                                                                     |                                                                                                                                                 |
 | Extra build concurrency  | $49 / month                                                                                                                                                     | 
+
+Consider Business plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on premium macOS and Linux instances, as well as unlimited team seats. For more information contact us [here](https://codemagic.io/contact/).
 
 ## Business Plan
 
