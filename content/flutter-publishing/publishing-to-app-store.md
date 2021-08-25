@@ -63,8 +63,10 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 1. Navigate to **App settings > Distribution**.
 2. Click **App Store Connect**.
 3. If you have several keys available, select the right key in the **App Store Connect API key** field.
-4. Mark the **Submit to TestFlight** checkbox to enroll your build to beta testers automatically.  
-5. Select **Enable App Store Connect publishing** at the top of the section to enable publishing.
+4. Mark the **Publish even if tests fail** checkbox to continue uploading the app artifact even when the tests failed.
+4. Mark the **Submit to TestFlight beta review** checkbox to submit the build for beta review and prepare it for distributing to beta testers. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution).
+5. Mark the **Distribute to beta groups** checkbox and enter the names of the beta groups to automatically distribute the build to the testers in those groups once the build has passed beta review. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution).
+6. Select **Enable App Store Connect publishing** at the top of the section to enable publishing.
 
 Once you have successfully set up publishing to App Store Connect, Codemagic will automatically distribute the app to App Store Connect every time you build the workflow. Note that you must manually submit the app to App Store in App Store Connect.
 
@@ -95,3 +97,15 @@ To add localized release notes that will appear in the Test Details (What to tes
 ```
 
 Supported languages could be found [here](https://developer.apple.com/documentation/appstoreconnectapi/betabuildlocalizationcreaterequest/data/attributes).
+
+Note: Uploading release notes takes place in the [post-processing](#post-processing-of-app-store-connect-distribution) step.
+
+## Post-processing of App Store Connect distribution
+
+Some App Store Connect actions, like submitting the build to TestFlight beta review, disrtributing the build to beta groups and uploading release notes take place asynchronously in the post-processing step after the app artifact has been successfully published to App Store Connect and the main workflow has completed running in Codemagic. This avoids using the macOS build machine while we are waiting for Apple to complete processing the build and it becomes available for further actions. 
+
+Post-processing has a two-step timeout. If the uploaded build cannot be found in App Store Connect in 15 minutes, the step times out. This may happen if there are issues with the uploaded artifact, in which case the build does not become available in App Store Connect at all and you'll receive an email from App Store Connect. The overall timeout for post-processing is 120 minutes. If the uploaded build has not exited the processing status by then, post-processing in cancelled. You will be still able to manually submit the build to beta review, upload release notes and distribute the app to beta groups once the build becomes available in App Store Connect.
+
+Note that Codemagic does not send status updates on the post-processing step. You can check the build log for the status of post-processing or check your email for updates from App Store Connect.
+
+Post-processing does not consume any build minutes.

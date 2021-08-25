@@ -11,7 +11,7 @@ Release notes can be published to:
 
 * **email**. The release notes will be included in the publishing email of a successful build if you have publishing to email configured in the `publishing` section of your workflow.
 * **Slack**. The release notes will be included in the Slack notification of a successful build if you have publishing to Slack configured in the `publishing` section of your workflow.
-* **App Store Connect**. The release notes will be published to the What to Test field in TestFlight if you have publishing to App Store Connect configured in the `publishing` section of your workflow.
+* **App Store Connect**. The release notes will be published to the What to Test field in TestFlight if you have publishing to App Store Connect configured in the `publishing` section of your workflow. Note that release notes are uploaded in the [post-processing step](/yaml-publishing/distribution#post-processing-of-app-store-connect-distribution).
 * **Google Play**. The release notes will be published to Google Play Console if you have publishing to Google Play configured in the `publishing` section of your workflow.
 * **Firebase App Distribution**. The release notes will be published to Firebase console if you have publishing to Firebase App Distribution configured in the `publishing` section of your workflow.
 
