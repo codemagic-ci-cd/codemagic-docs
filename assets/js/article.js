@@ -86,17 +86,19 @@ const hashLinkClick = (e) => {
 
 // Copy section link to clipboard
 const copyLinkFromTitles = (e) => {
-    const copyIcons = document.querySelectorAll('i.ctc')
-    const inList = Array.from(copyIcons).find((node) => node === e.target)
+    if (e) {
+        const copyIcons = document.querySelectorAll('i.ctc')
+        const inList = Array.from(copyIcons).find((node) => node === e.target)
 
-    if (inList) {
-        const textarea = document.createElement('textarea')
-        textarea.value = e.target.dataset.targetLink
-        document.body.appendChild(textarea)
-        textarea.select()
-        document.execCommand('copy')
-        document.body.removeChild(textarea)
-        alert('Copied to clipboard')
+        if (inList) {
+            const textarea = document.createElement('textarea')
+            textarea.value = e.target.dataset.targetLink
+            document.body.appendChild(textarea)
+            textarea.select()
+            document.execCommand('copy')
+            document.body.removeChild(textarea)
+            alert('Copied to clipboard')
+        }
     }
 }
 
@@ -360,9 +362,7 @@ document.addEventListener('click', (e) => {
     closeConfigurationInfo(e)
     toggleCategory(e)
 
-    if (showToc) {
-        copyLinkFromTitles(e)
-    }
+    copyLinkFromTitles(e)
 })
 
 // On scroll
