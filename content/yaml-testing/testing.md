@@ -50,7 +50,7 @@ scripts:
 
 ```bash
 flutter emulators --launch apple_ios_simulator             # for android use: flutter emulators --launch emulator
-flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d iPhone  # for android use: -d emulator-5554 
+flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d iPhone  # for android use: -d emulator-5554
 ```
 
 ### Running web application tests on a web browser driver
@@ -101,7 +101,7 @@ In the root directory of the project, add a new file and name it `jest.config.js
 module.exports = {
   preset: 'react-native',
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
-};
+}
 ```
 
 `preset` is a preset that is used as a base for Jest’s configuration. A preset should point to an npm module that has a `jest-preset.json` or `jest-preset.js` file at the root.
@@ -135,7 +135,7 @@ Once the project setup is done on Codemagic, you need to add the testing configu
 
 ```yaml
 workflows:
-  
+
   my-workflow:
     name: <your workflow name>
       instance_type: linux                # specify linux or linux_2 for Linux instances; mac_mini or mac_pro for macOS instances
@@ -145,7 +145,7 @@ workflows:
     scripts:
       - name: Install npm dependencies
         script: npm install
-        
+
         ...
 
       - name: Tests                       # Insert before the build command
@@ -155,10 +155,10 @@ workflows:
 
       - name: Build ipa for distribution
         script: xcode-project build-ipa --workspace "$FCI_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme $XCODE_SCHEME
-      
+
       - name: Build Android app
         script: cd android && ./gradlew assembleRelease
-    
+
   ...
 ```
 
@@ -171,6 +171,7 @@ You need to install and setup WebDriverIO in your project root directory before 
 ```bash
 npx wdio config
 ```
+
 Once it's done, `wdio.conf` file will be generated inside the `tests` directory.
 
 Perform the following changes to configure WebDriverIO to work with Appium and run tests on Android Emulator:
@@ -193,7 +194,7 @@ exports.config = {
      app: '<path to APK>',
      automationName: 'UiAutomator2'
   }],
-  
+
   logLevel: 'trace',
   bail: 0,
   waitforTimeout: 10000,
@@ -212,7 +213,7 @@ Once the project setup is done on Codemagic, you need to add the testing configu
 
 ```yaml
 workflows:
-  
+
   my-workflow:
     name: <your workflow name>
       instance_type: linux                # specify linux or linux_2 for Linux instances; mac_mini or mac_pro for macOS instances
@@ -222,14 +223,14 @@ workflows:
     scripts:
       - name: Install npm dependencies    # Add Appium and WebDriverIO dependencies
         script: npm install && npm install -g appium && npm install --save webdriverio @wdio/cli
-        
+
         ...
 
       - name: Launch emulator             # Insert before the build command
-        script: |                         
+        script: |
         react-native run-android  &
-        adb wait-for-device               
-      
+        adb wait-for-device
+
       - name: Launch Appium
         script: appium
 
@@ -240,10 +241,10 @@ workflows:
 
       - name: Build ipa for distribution
         script: xcode-project build-ipa --workspace "$FCI_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme $XCODE_SCHEME
-      
+
       - name: Build Android app
         script: cd android && ./gradlew assembleRelease
-    
+
   ...
 ```
 
@@ -260,6 +261,34 @@ workflows:
 ```
 
 Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
+
+## Native Android
+
+For non-UI tests or unit tests:
+
+```bash
+- name: Test
+  script: ./gradlew test
+  test_report: app/build/test-results/**/*.xml
+```
+
+For UI tests (also known as instrumented tests):
+
+```bash
+- name: Launch emulator
+  script: |
+    cd $ANDROID_HOME/tools
+    emulator -avd emulator &
+    adb wait-for-device
+- name: Test
+  script: |
+    set -e
+    ./gradlew connectedAndroidTest
+    adb logcat -d > emulator.log
+  test_report: app/build/outputs/androidTest-results/connected/*.xml
+```
+
+**Tip**: you can save the emulator log with the `adb logcat -d > emulator.log` command
 
 ## Native Android
 
