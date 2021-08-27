@@ -228,12 +228,10 @@ workflows:
 
       - name: Launch emulator             # Insert before the build command
         script: |
-        react-native run-android  &
-        adb wait-for-device
-
+          react-native run-android  &
+          adb wait-for-device
       - name: Launch Appium
         script: appium
-
       - name: Run WebDriver test suite
         script: npx wdio ./wdio.conf.js
 
@@ -241,7 +239,6 @@ workflows:
 
       - name: Build ipa for distribution
         script: xcode-project build-ipa --workspace "$FCI_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme $XCODE_SCHEME
-
       - name: Build Android app
         script: cd android && ./gradlew assembleRelease
 
@@ -261,34 +258,6 @@ workflows:
 ```
 
 Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
-
-## Native Android
-
-For non-UI tests or unit tests:
-
-```bash
-- name: Test
-  script: ./gradlew test
-  test_report: app/build/test-results/**/*.xml
-```
-
-For UI tests (also known as instrumented tests):
-
-```bash
-- name: Launch emulator
-  script: |
-    cd $ANDROID_HOME/tools
-    emulator -avd emulator &
-    adb wait-for-device
-- name: Test
-  script: |
-    set -e
-    ./gradlew connectedAndroidTest
-    adb logcat -d > emulator.log
-  test_report: app/build/outputs/androidTest-results/connected/*.xml
-```
-
-**Tip**: you can save the emulator log with the `adb logcat -d > emulator.log` command
 
 ## Native Android
 
