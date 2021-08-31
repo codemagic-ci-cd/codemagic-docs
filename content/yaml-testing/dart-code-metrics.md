@@ -1,6 +1,6 @@
 ---
 title: Dart Code Metrics
-description: How to run Dart Code Metrics
+description: How to run static code analysis with Dart Code Metrics
 weight: 3
 ---
 
