@@ -3,7 +3,7 @@ title: SonarCloud integration
 description: How to integrate your workflows with SonarCloud using codemagic.yaml
 weight: 2
 ---
-**SonarCloud** is a cloud-based code quality and code security service for projects hosted in cloud based Git repositories such as GitHub, Bitbucket, GitLab and Azure DevOps. It can be used as part of your CI/CD workflow to analyse your code each time you commit new code. 
+**SonarCloud** is a cloud-based code quality and code security service for projects hosted in cloud-based Git repositories such as GitHub, Bitbucket, GitLab and Azure DevOps. It can be used as part of your CI/CD workflow to analyse your code each time you commit new code.
 
 ## Create a SonarCloud account
 
@@ -26,9 +26,9 @@ You can now upload code analysis reports to SonarCloud from your CI/CD pipeline.
 
 ## Configuring access to SonarCloud in Codemagic
 
-There are three **environment variables** that need to be added to your workflow for the SonarCloud integration: `SONAR_TOKEN`, `SONAR_PROJECT_KEY`, and `SONAR_ORG_KEY`. In the following sample projects these values have been added to the codemagic.yaml as encrypted values. These values are available in your SonarCloud account. T
+There are three **environment variables** that need to be added to your workflow for the SonarCloud integration: `SONAR_TOKEN`, `SONAR_PROJECT_KEY`, and `SONAR_ORG_KEY`. In the following sample projects these values have been added to the codemagic.yaml as encrypted values. These values are available in your SonarCloud account.
 
-The `SONAR_TOKEN` is the token you created when setting up your account. The `SONAR_PROJECT_KEY`, and `SONAR_ORG_KEY` can be obtained from your project settings once it has been added to SonarCloud.
+The `SONAR_TOKEN` is the token you created when setting up your account. The `SONAR_PROJECT_KEY` and `SONAR_ORG_KEY` can be obtained from your project settings once it has been added to SonarCloud.
 
 
 Please note that you can also add encrypted values using the 'Environment variables' tab in the UI and then importing variables groups. For further information about using variable groups please click [here](https://docs.codemagic.io/variables/environment-variable-groups/).
