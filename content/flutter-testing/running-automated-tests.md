@@ -5,7 +5,7 @@ weight: 1
 aliases: /testing/running-automated-tests
 ---
 
-Codemagic supports running **unit**, **integration** and **widget** tests as well as static code analysis with [**flutter analyze**](./static-code-analysis). When testing is enabled, tests are run automatically every time your project is built. You can configure the test settings in **App settings > Test**.
+Codemagic supports running **unit**, **integration** and **widget** tests as well as static code analysis with [**flutter analyze**](./static-code-analysis). When testing is enabled, tests are run automatically every time your project is built. You can configure the test settings in **App settings > Tests**.
 
 ### Detecting tests
 
@@ -23,7 +23,7 @@ If your Flutter project is in a subdirectory of the repository, Codemagic cannot
 
 ### Specifying the test target
 
-In **App settings > Tests > Driver and unit tests**, you will see the **Flutter test target** and **Flutter drive target** fields displayed if the respective tests are detected. You can specify the exact target to run a specific test.
+In **App settings > Tests > Integration and unit tests**, you will see the **Flutter test target** and **Flutter drive target** fields displayed if the respective tests are detected. You can specify the exact target to run a specific test.
 
 ### Running Flutter Driver tests
 
