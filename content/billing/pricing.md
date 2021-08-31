@@ -118,10 +118,10 @@ If you would like more information about dedicated hosts, please contact us [her
 
 ## Build history and artifact storage
 
-### Personal accounts
+### Personal account storage
 
-Build history and artifacts of apps on the personal account are stored in Codemagic for 30 days after which they are deleted. If you rely on build artifacts to support older versions of your app, we recommend that you back them up. For example, you can upload the artifacts to an [Amazon S3 bucket](/knowledge-base/publish-build-artifacts-to-amazon-s3.md).
+Build history and artifacts of apps on the personal account are stored in Codemagic for 30 days after which they are deleted. If you rely on build artifacts to support older versions of your app, we recommend that you back them up. For example, you can upload the artifacts to an [Amazon S3 bucket](/knowledge-base/publish-build-artifacts-to-amazon-s3).
 
-### Teams
+### Team account storage
 
 Builds and artifacts of apps that are part of a team in Codemagic do not expire and are available in Codemagic until the app is deleted.
