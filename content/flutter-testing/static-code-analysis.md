@@ -15,7 +15,7 @@ When enabled, `flutter analyze` will be run with each build. You can see the res
 
 ### Dart Code Metrics
 
-Codemagic is integrated with [Dart Code Metrics](https://pub.dev/packages/dart_code_metrics), helping to improve code quality. With Dart Code Metrics it is possible to report code metrics, define additional rules for your dart analyzer and to check for anti-patterns.
+Codemagic is integrated with [Dart Code Metrics](https://pub.dev/packages/dart_code_metrics), helping to improve code quality. With Dart Code Metrics it is possible to report code metrics, define additional rules for your dart analyzer and check for anti-patterns.
 
 By default, Dart Code Metrics is disabled and has to be enabled in **App settings > Tests > Static code analysis** by checking the **Enable Dart Code Metrics** option.
 
