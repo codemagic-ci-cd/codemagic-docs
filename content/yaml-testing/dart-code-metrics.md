@@ -1,10 +1,7 @@
 ---
-title: Running dart code metrics
-description: How to run dart code metrics with codemagic.yaml
+title: Dart Code Metrics
+description: How to run Dart Code Metrics
 weight: 3
-aliases:
-  - '../yaml/dart-code-metrics'
-  - /testing-yaml/dart-code-metrics/
 ---
 
 Static code analysis scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
