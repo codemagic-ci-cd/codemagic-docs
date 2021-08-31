@@ -318,10 +318,12 @@ const closeConfigurationInfo = ({ target }) => {
 const toggleCategory = ({ target }) => {
     if (target.hasAttribute('js-category-toggle')) {
         const parent = target.parentNode
-        const category = parent.querySelector('[js-category-posts]')
-        target.classList.toggle('open')
-        category.classList.toggle('open')
-        window.slideToggle(category, 200)
+        if (!parent.querySelector('[js-docs-link].active')) {
+            const category = parent.querySelector('[js-category-posts]')
+            target.classList.toggle('open')
+            category.classList.toggle('open')
+            window.slideToggle(category, 200)
+        }
     }
 }
 

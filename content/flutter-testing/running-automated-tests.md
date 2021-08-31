@@ -5,7 +5,7 @@ weight: 1
 aliases: /testing/running-automated-tests
 ---
 
-Codemagic supports running **unit**, **integration** and **widget** tests as well as static code analysis with [**flutter analyze**](./static-code-analysis). When testing is enabled, tests are run automatically every time your project is built. You can configure the test settings in **App settings > Test**.
+Codemagic supports running **unit**, **integration** and **widget** tests as well as static code analysis with [**flutter analyze**](./static-code-analysis) and [**Dart Code Metrics**](./static-code-analysis). When testing is enabled, tests are run automatically every time your project is built. You can configure the test settings in **App settings > Tests**.
 
 ### Detecting tests
 
@@ -23,14 +23,14 @@ If your Flutter project is in a subdirectory of the repository, Codemagic cannot
 
 ### Specifying the test target
 
-In **App settings > Test**, you will see the **Flutter test target** and **Flutter drive target** fields displayed if the respective tests are detected. You can specify the exact target to run a specific test.
+In **App settings > Tests > Integration and unit tests**, you will see the **Flutter test target** and **Flutter drive target** fields displayed if the respective tests are detected. You can specify the exact target to run a specific test.
 
 ### Running Flutter Driver tests
 
 There are several options for running integration tests during the build. You can select one option per workflow:
 
-* iOS simulator (selected by default)
-* Android emulator
+- iOS simulator (selected by default)
+- Android emulator
 
 Devices available on the machine are:
 
@@ -59,9 +59,9 @@ flutter emulators --launch emulator
 
 It is also possible to use `flutter test` to run integration tests using the `integration_test` dependency. When using `flutter test integration_test` instead of `flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart`, it is possible to generate machine-readable output, and the results will be displayed in the UI once the tests have been completed. To do so, add `test integration_test` under `Flutter drive arguments` in the **Flutter workflow editor**.
 
-### Stop build if tests fail
+### Stop build if tests or analysis fail
 
-Selecting the **Stop build if tests fail** option will stop the build after finishing all the enabled tests when any of the tests fail. Such builds will have the status "failed".
+If you check **Stop build if tests or analysis fail**, the build will stop after finishing all the enabled tests or analysis runs when any of them fail. Such builds will have the status "failed".
 
 ### Running tests in Firebase Test Lab
 
