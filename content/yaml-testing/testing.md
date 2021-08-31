@@ -46,6 +46,15 @@ scripts:
     test_report: test-results/flutter.json
 ```
 
+If running Flutter integration tests from yaml fails because the build doesn't wait for the emulator to be launched, then adding **adb wait-for-device** command could fix the issue:
+
+```yaml
+- name: Launch emulator
+  script: |
+    flutter emulators --launch emulator
+    adb wait-for-device 
+```
+
 ### Running iOS/Android application tests on a mobile simulator/emulator
 
 ```bash
