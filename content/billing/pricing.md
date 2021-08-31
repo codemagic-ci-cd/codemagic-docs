@@ -115,3 +115,13 @@ For more information contact us [here](https://codemagic.io/contact/).
 If you are building Unity apps for iOS or Android we can provide dedicated macOS hosts with Unity 2020.3 LTS Unity 2019.4.15 (Android build support and iOS build support components).
 
 If you would like more information about dedicated hosts, please contact us [here](https://codemagic.io/contact/).
+
+## Build history and artifact storage
+
+### Personal accounts
+
+Build history and artifacts of apps on the personal account are stored in Codemagic for 30 days after which they are deleted. If you rely on build artifacts to support older versions of your app, we recommend that you back them up. For example, you can upload the artifacts to an [Amazon S3 bucket](/knowledge-base/publish-build-artifacts-to-amazon-s3.md).
+
+### Teams
+
+Builds and artifacts of apps that are part of a team in Codemagic do not expire and are available in Codemagic until the app is deleted.
