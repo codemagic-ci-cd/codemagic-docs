@@ -21,8 +21,8 @@ By default, Dart Code Metrics is disabled and has to be enabled in **App setting
 
 When enabled, `flutter pub run dart_code_metrics:metrics lib` will be run with each build. You can see the results and the logs of the analysis under the **Running tests** step in build overview.
 
-### Stop builds if tests or analysis fail
+### Stop build if tests or analysis fail
 
-If you check **Stop builds if tests or analysis fail**, the build will stop after finishing all the enabled tests or analysis runs when any of them fail. Such builds will have the status "failed".
+If you check **Stop build if tests or analysis fail**, the build will stop after finishing all the enabled tests or analysis runs when any of them fail. Such builds will have the status "failed".
 
 For Dart Code Metrics, if selected, Codemagic will fail the build if any issues, anti-pattern cases or metrics return the statuses "alarm" or "error".
