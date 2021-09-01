@@ -3,7 +3,8 @@ title: SonarCloud integration
 description: How to integrate your workflows with SonarCloud using codemagic.yaml
 weight: 2
 ---
-**SonarCloud** is a cloud-based code quality and code security service for projects hosted in cloud-based Git repositories such as GitHub, Bitbucket, GitLab and Azure DevOps. It can be used as part of your CI/CD workflow to analyse your code each time you commit new code.
+
+**SonarCloud** is SonarQube's cloud-based code quality and code security service for projects hosted in cloud-based Git repositories such as GitHub, Bitbucket, GitLab and Azure DevOps. It can be used as part of your CI/CD workflow to analyse your code each time you commit new code.
 
 ## Create a SonarCloud account
 
