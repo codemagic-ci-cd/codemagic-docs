@@ -22,7 +22,7 @@ scripts:
   - name: Dart Code Metrics
     script: |
       mkdir -p metrics-results
-      flutter pub run dart_code_metrics:metrics lib --reporter=json > metrics-results/dart_code_metrics.json
+      dart pub run dart_code_metrics:metrics lib --reporter=json > metrics-results/dart_code_metrics.json
     test_report: metrics_results/dart_code_metrics.json
 ```
 
@@ -33,10 +33,12 @@ scripts:
   - echo 'previous step'
   - name: Dart Code Metrics
     script: |
-      flutter pub global activate dart_code_metrics
+      dart pub global activate dart_code_metrics
       mkdir -p metrics-results
-      pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
+      dart pub global run dart_code_metrics:metrics lib --reporter=json > metrics-results/dart_code_metrics.json
     test_report: metrics_results/dart_code_metrics.json
 ```
+
+For Flutter projects it is recommended to replace the dart commands with flutter commands.
 
 If you wish to configure Dart Code Metrics, add an `analysis_options.yaml` file to your project as per the [official documentation](https://dartcodemetrics.dev/docs/getting-started/configuration).
