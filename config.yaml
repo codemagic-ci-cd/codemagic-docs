@@ -44,7 +44,7 @@ menu:
           params:
               preference: 'yaml'
 
-        - identifier: yaml-quick-start-guides
+        - identifier: yaml-quick-start
           name: Quick start guides
           parent: yaml
           weight: 1
@@ -88,21 +88,21 @@ menu:
           parent: flutter
           weight: 4
 
-        - identifier: environment-variables
+        - identifier: variables
           name: Environment variables
           weight: 4
         - identifier: encrypting
           name: Encrypting sensitive data
-          parent: environment-variables
+          parent: variables
           params:
               hide: true
         - identifier: environment-variable-groups
           name: Environment variable groups
-          parent: environment-variables
+          parent: variables
           params:
               hide: true
 
-        - identifier: advanced-configuration
+        - identifier: configuration
           name: Advanced configuration
           weight: 5
 
@@ -114,11 +114,11 @@ menu:
           name: Teams
           weight: 7
 
-        - identifier: codemagic-api
+        - identifier: rest-api
           name: Codemagic API
           weight: 8
 
-        - identifier: billing-and-pricing
+        - identifier: billing
           name: Billing & Pricing
           weight: 9
 
@@ -126,7 +126,7 @@ menu:
           name: Troubleshooting
           weight: 10
 
-        - identifier: build-machine-specs
+        - identifier: specs
           name: Build machine specs
 
         - identifier: cli
