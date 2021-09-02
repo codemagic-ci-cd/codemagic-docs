@@ -1,4 +1,14 @@
-<!-- prettier-ignore -->
+{{ define "getCategoryName" }}
+  {{ $target := .target}}
+  {{ range .menuItems }}
+    {{ if eq .Identifier $target }}
+      <span>{{ .Name }}</span>
+    {{ else if .HasChildren}}
+      {{ template "getCategoryName" ( dict "menuItems" .Children "target" $target ) }}
+    {{ end }}
+  {{ end }} 
+{{ end }}
+
 <div id="breadcrumbs">
   <a href="/" title="home"><i class="fas fa-home"></i></a>
   {{ $title := .Title}}
@@ -6,20 +16,13 @@
   {{ $linkParts := (split (substr .RelPermalink 1 -1) "/") }}
   {{ range $index, $part := $linkParts }}
     {{ if lt $index (sub (len $linkParts) 1) }}
-      {{ $.Scratch.Set "partName" $part }}
       {{ if hasPrefix $part "flutter" }}
         <span>Workflow Editor</span>
       {{ else if hasPrefix $part "yaml" }}
         <span>.YAML</span>
       {{ end }}
       {{ if and (ne $part "yaml") (ne $part "flutter") }}
-        {{ range $menuItems }}
-          {{ if eq .Identifier $part }}{{ $.Scratch.Set "partName" .Name }}{{ end }}
-          {{ range .Children }}
-            {{ if eq .Identifier $part }}{{ $.Scratch.Set "partName" .Name }}{{ end }}
-          {{ end }}
-        {{ end }}
-        <span>{{ $.Scratch.Get "partName" }}</span>
+        {{ template "getCategoryName" ( dict "menuItems" $menuItems "target" $part ) }}
       {{ end }}
     {{ else }}
       <span>{{ $title }}</span>
