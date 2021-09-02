@@ -7,10 +7,14 @@
     {{ if lt $index (sub (len $linkParts) 1) }}
       {{ if hasPrefix $part "flutter" }}
         <span>Workflow Editor</span>
-        <span>{{ humanize (replace $part "flutter-" "") }}</span>
+        {{ if ne $part "flutter" }}
+          <span>{{ humanize (replace $part "flutter-" "") }}</span>
+        {{ end }}
       {{ else if hasPrefix $part "yaml" }}
         <span>.YAML</span>
-        <span>{{ humanize (replace $part "yaml-" "") }}</span>
+        {{ if ne $part "yaml" }}
+          <span>{{ humanize (replace $part "yaml-" "") }}</span>
+        {{ end }}
       {{ else }}
         <span>{{ humanize $part }}</span>
       {{ end }}
