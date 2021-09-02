@@ -1,58 +1,49 @@
 const algolia = algoliasearch('27CIRMYZIB', '7e88305c04e90188508daa6c89e5f4df').initIndex('codemagic_docs')
 
-$(document).ready(() => {
-    initSearchEvents()
-})
-
 const initSearchEvents = () => {
-    $('[js-search-icon]').on('click', () => {
-        $('[js-search-input]').trigger('focus')
-    })
-    $('[js-search-clear-icon]').on('mousedown', () => {
+    const search = document.querySelector('[js-search')
+    const searchInput = document.querySelector('[js-search-input')
+
+    document.querySelector('[js-search-icon]').addEventListener('click', searchInput.focus)
+    document.querySelector('[js-search-clear-icon]').addEventListener('mousedown', () => {
         // mousedown is before blur, 'click' wouldn't work because after blur the icon disappears
         updateFromInput(null)
     })
 
-    $('[js-search-input]')
-        .bind('change keyup input', (event) => {
-            if (event.target.value.trim().length) $('[js-search]').addClass('search--active')
-            else $('[js-search]').removeClass('search--active')
-        })
-        .bind('blur focusout', (event) => {
-            if (event.target.value) {
-                return
-            }
-            $('[js-search]').removeClass('search--active')
-        })
-        .on('keyup', (event) => {
-            if (event.keyCode === 27) {
-                // ESC
-                updateFromInput(null)
-                event.stopImmediatePropagation()
-            }
-        })
-        .on(
-            'keyup',
-            debounce((event) => {
-                updateFromInput(event.target.value)
-            }, 250),
-        )
+    searchInput.addEventListener('change keyup input', (event) => {
+        if (event.target.value.trim().length) search.classList.add('search--active')
+        else search.classList.remove('search--active')
+    })
+    searchInput.addEventListener('focusin', () => search.classList.add('search--active'))
+    searchInput.addEventListener('focusout', (event) => {
+        if (!event.target.value) search.classList.remove('search--active')
+    })
+    searchInput.addEventListener('keyup', (event) => {
+        if (event.keyCode === 27) {
+            // ESC
+            updateFromInput(null)
+            event.stopImmediatePropagation()
+        }
+    })
+    searchInput.addEventListener(
+        'keyup',
+        debounce((event) => updateFromInput(event.target.value), 250),
+    )
 
     updateFromUrl()
-
-    window.addEventListener('popstate', () => updateFromUrl())
+    window.addEventListener('popstate', updateFromUrl)
 }
 
 const updateFromInput = (query) => {
     updateUrl(query)
-    updateInputs(query)
+    updateInput(query)
     window.setTimeout(() => updateResults(query))
 }
 
 const updateFromUrl = () => {
     const query = decodeURIComponent((window.location.search || '').slice(3)) || null
     if (window.location.search.indexOf('utm_') < 0) {
-        updateInputs(query)
+        updateInput(query)
         window.setTimeout(() => updateResults(query))
     }
 }
@@ -72,56 +63,65 @@ const updateResults = async (query) => {
     } catch (error) {
         result = error
     }
-    $('#search-results').html(getResultHtml(result, query))
+    const searchResultsElement = document.getElementById('search-results')
+    searchResultsElement.innerHTML = ''
+    if (result) searchResultsElement.append(getResultHtml(result, query))
 }
 
-const updateInputs = (query) => {
-    var $inputs = $('[js-search-input]')
-    $inputs.val(query)
-    query === null ? $inputs.trigger('blur') : query && $('[js-search]').addClass('search--active')
+const updateInput = (query) => {
+    const searchInput = document.querySelector('[js-search-input]')
+    searchInput.value = query
+    if (query === null) searchInput.blur()
+    else if (query) document.querySelector('[js-search]').classList.add('search--active')
+}
+
+const createHtmlElement = (tag, props, children) => {
+    const element = document.createElement(tag)
+    if (props)
+        Object.entries(props).forEach(([key, value]) => {
+            element[key] = value
+        })
+    if (children) children.forEach((child) => element.appendChild(child))
+    return element
 }
 
 const getResultHtml = (algoliaResultList, query) => {
     if (!algoliaResultList) return null
 
-    if (algoliaResultList instanceof Error) {
-        return $('<div>', {
-            class: 'no-results-message',
-            text: 'Invalid search query: ' + algoliaResultList.message,
+    if (algoliaResultList instanceof Error)
+        return createHtmlElement('div', {
+            className: 'no-results-message',
+            innerText: 'Invalid search query: ' + algoliaResultList.message,
         })
-    }
 
     const preferredConfiguration = localStorage.getItem('preferred-configuration') || defaultPreferredConfiguration
-    algoliaResultList = algoliaResultList.filter(function (result) {
+
+    algoliaResultList = algoliaResultList.filter((result) => {
         let resultConfiguration = null
-        preferredConfigurations.some(function (configuration) {
+        preferredConfigurations.some((configuration) => {
             if (result.uri.startsWith(`/${configuration}`)) {
                 resultConfiguration = configuration
                 return true
             }
         })
-
         return !resultConfiguration || resultConfiguration === preferredConfiguration
     })
 
-    if (!algoliaResultList.length) {
-        return $('<div>', {
-            class: 'no-results-message',
-            text: 'No results matching "' + query + '"',
+    if (!algoliaResultList.length)
+        return createHtmlElement('div', {
+            className: 'no-results-message',
+            innerText: `No results matching "${query}"`,
         })
-    }
 
-    return $('<ul>', {
-        html: algoliaResultList.map((result) => {
-            return $('<li>', {
-                html: [
-                    $('<a>', { html: result._highlightResult.title.value, href: result.uri }),
-                    $('<p>', { html: result._highlightResult.subtitle.value }),
-                    $('<p>', { html: result._snippetResult.content.value }),
-                ],
-            })
-        }),
-    })
+    const results = algoliaResultList.map((result) =>
+        createHtmlElement('li', null, [
+            createHtmlElement('a', { innerHTML: result._highlightResult.title.value, href: result.uri }),
+            createHtmlElement('p', { innerHTML: result._highlightResult.subtitle.value }),
+            createHtmlElement('p', { innerHTML: result._snippetResult.content.value }),
+        ]),
+    )
+
+    return createHtmlElement('ul', null, results)
 }
 
 const getResults = (query) =>
@@ -131,9 +131,7 @@ const getResults = (query) =>
                   highlightPreTag: '<mark data-markjs="true">',
                   highlightPostTag: '</mark>',
               })
-              .then((result) => {
-                  return result.hits
-              })
+              .then((result) => result.hits)
         : null
 
 const debounce = (func, wait, immediate) => {
@@ -148,11 +146,11 @@ const debounce = (func, wait, immediate) => {
 
         timeout = setTimeout(() => {
             timeout = null
-            if (!immediate) {
-                func.apply(context, args)
-            }
+            if (!immediate) func.apply(context, args)
         }, wait)
 
         if (callNow) func.apply(context, args)
     }
 }
+
+document.addEventListener('DOMContentLoaded', initSearchEvents, false)
