@@ -1,0 +1,21 @@
+<!-- prettier-ignore -->
+<div id="breadcrumbs">
+  <a href="/" title="home"><i class="fas fa-home"></i></a>
+  {{ $title := .Title}}
+  {{ $linkParts := (split (substr .RelPermalink 1 -1) "/") }}
+  {{ range $index, $part := $linkParts }}
+    {{ if lt $index (sub (len $linkParts) 1) }}
+      {{ if hasPrefix $part "flutter" }}
+        <span>Workflow Editor</span>
+        <span>{{ humanize (replace $part "flutter-" "") }}</span>
+      {{ else if hasPrefix $part "yaml" }}
+        <span>.YAML</span>
+        <span>{{ humanize (replace $part "yaml-" "") }}</span>
+      {{ else }}
+        <span>{{ humanize $part }}</span>
+      {{ end }}
+    {{ else }}
+      <span>{{ $title }}</span>
+    {{ end }}
+  {{ end }}
+</div>
