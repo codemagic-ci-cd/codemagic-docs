@@ -2,21 +2,24 @@
 <div id="breadcrumbs">
   <a href="/" title="home"><i class="fas fa-home"></i></a>
   {{ $title := .Title}}
+  {{ $menuItems := .Site.Menus.main }}
   {{ $linkParts := (split (substr .RelPermalink 1 -1) "/") }}
   {{ range $index, $part := $linkParts }}
     {{ if lt $index (sub (len $linkParts) 1) }}
+      {{ $.Scratch.Set "partName" $part }}
       {{ if hasPrefix $part "flutter" }}
         <span>Workflow Editor</span>
-        {{ if ne $part "flutter" }}
-          <span>{{ humanize (replace $part "flutter-" "") }}</span>
-        {{ end }}
       {{ else if hasPrefix $part "yaml" }}
         <span>.YAML</span>
-        {{ if ne $part "yaml" }}
-          <span>{{ humanize (replace $part "yaml-" "") }}</span>
+      {{ end }}
+      {{ if and (ne $part "yaml") (ne $part "flutter") }}
+        {{ range $menuItems }}
+          {{ if eq .Identifier $part }}{{ $.Scratch.Set "partName" .Name }}{{ end }}
+          {{ range .Children }}
+            {{ if eq .Identifier $part }}{{ $.Scratch.Set "partName" .Name }}{{ end }}
+          {{ end }}
         {{ end }}
-      {{ else }}
-        <span>{{ humanize $part }}</span>
+        <span>{{ $.Scratch.Get "partName" }}</span>
       {{ end }}
     {{ else }}
       <span>{{ $title }}</span>
