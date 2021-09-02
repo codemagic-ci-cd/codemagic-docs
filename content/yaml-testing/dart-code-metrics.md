@@ -19,7 +19,7 @@ scripts:
     script: |
       mkdir -p metrics-results
       flutter pub run dart_code_metrics:metrics lib --reporter=json > metrics-results/dart_code_metrics.json
-    test_report: metrics_results/dart_code_metrics.json
+    test_report: metrics-results/dart_code_metrics.json
 ```
 
 In case you do not have Dart Code Metrics as a dependency, you can enable it globally first, by running the following script:
@@ -32,7 +32,7 @@ scripts:
       flutter pub global activate dart_code_metrics
       mkdir -p metrics-results
       pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
-    test_report: metrics_results/dart_code_metrics.json
+    test_report: metrics-results/dart_code_metrics.json
 ```
 
 If you wish to configure Dart Code Metrics, add an `analysis_options.yaml` file to your project as per the [official documentation](https://dartcodemetrics.dev/docs/getting-started/configuration).
