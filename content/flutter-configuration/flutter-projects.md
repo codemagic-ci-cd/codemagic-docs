@@ -7,6 +7,7 @@ aliases:
     - '../building/building-for-the-web'
     - '../building/building-for-desktop'
     - '/flutter/configuration/flutter-projects'
+    - '/flutter/flutter-projects'
 ---
 
 With Codemagic, you can build and test Flutter apps for Android, iOS, web, macOS and Linux as well as [test widgets](../testing/testing-widgets). It is also possible to set up a [workflow](../flutter/creating-workflows) that runs tests only.
