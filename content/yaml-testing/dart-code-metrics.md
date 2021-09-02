@@ -4,6 +4,10 @@ description: How to run static code analysis with Dart Code Metrics
 weight: 3
 ---
 
+{{<notebox>}}
+For the following instructions to work with Codemagic, Dart version 2.12.0 or higher is required.
+{{</notebox>}}
+
 Static code analysis scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
 
 Codemagic is integrated with [Dart Code Metrics](https://pub.dev/packages/dart_code_metrics), helping to improve code quality for projects utilizing dart files. With Dart Code Metrics, it is possible to report code metrics, define additional rules for your dart analyzer, and check for anti-patterns.
