@@ -297,42 +297,6 @@
             }
         }
     }
-
-    #configuration-info {
-        position: relative;
-        display: none;
-        background-color: $black-l;
-        color: white;
-        padding: 20px;
-        margin: -50px 0 50px -50px;
-        z-index: 4;
-
-        .wrap {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        @media (max-width: 1000px) {
-            position: fixed;
-            left: 50px;
-            right: 50px;
-            bottom: 30px;
-            margin: 0;
-        }
-    }
-    #configuration-info-close {
-        padding: 5px;
-        cursor: pointer;
-        margin-left: 10px;
-        flex-shrink: 0;
-
-        &:hover {
-            color: $blue;
-        }
-        i {
-            pointer-events: none;
-        }
-    }
 }
 
 @import './modules/breadcrumbs';

@@ -255,8 +255,12 @@ const observeHeaders = () => {
 
 // Handle default preference
 const setInitialPreference = () => {
-    let configuration = window.localStorage.getItem('preferred-configuration')
-    if (!configuration) configuration = 'yaml'
+    const { pathname } = document.location
+    const configuration = pathname.startsWith('/yaml')
+        ? 'yaml'
+        : pathname.startsWith('/flutter')
+        ? 'flutter'
+        : window.localStorage.getItem('preferred-configuration') ?? 'yaml'
 
     const option = document.querySelector(`[data-js-preference-option="${configuration}"]`)
     changePreference(option)
@@ -265,7 +269,6 @@ const setInitialPreference = () => {
 const changePreference = (target) => {
     openActiveCategory()
     let currentPageConfiguration = null
-    const info = document.querySelector('[js-configuration-info]')
 
     if (target.hasAttribute('data-js-preference-option')) {
         const bg = document.querySelector('[js-preference-bg]')
@@ -287,16 +290,6 @@ const changePreference = (target) => {
                 return true
             }
         })
-        if (
-            currentPageConfiguration &&
-            target.dataset.jsPreferenceOption &&
-            currentPageConfiguration !== target.dataset.jsPreferenceOption &&
-            info
-        ) {
-            window.slideDown(info)
-        } else if (info) {
-            window.slideUp(info)
-        }
         if (target.dataset.jsPreferenceOption === 'flutter') {
             yamlLinks.forEach((link) => (link.style.display = 'none'))
             flutterLinks.forEach((link) => (link.style.display = 'block'))
@@ -304,13 +297,6 @@ const changePreference = (target) => {
             yamlLinks.forEach((link) => (link.style.display = 'block'))
             flutterLinks.forEach((link) => (link.style.display = 'none'))
         }
-    }
-}
-
-// Handle closing configuration info
-const closeConfigurationInfo = ({ target }) => {
-    if (target.hasAttribute('js-close-configuration-info')) {
-        window.slideToggle(document.querySelector('[js-configuration-info]'))
     }
 }
 
@@ -361,7 +347,6 @@ document.addEventListener('click', (e) => {
     hashLinkClick(e)
     handleDocsToggle(e)
     changePreference(e.target)
-    closeConfigurationInfo(e)
     toggleCategory(e)
 
     copyLinkFromTitles(e)
