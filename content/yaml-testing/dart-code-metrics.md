@@ -5,7 +5,7 @@ weight: 3
 ---
 
 {{<notebox>}}
-For the following instructions to work with Codemagic, Dart version 2.12.0 or higher is required.
+For the following instructions to work with Codemagic, Dart version 2.12.0 (Flutter 1.27.0-1.0.pre) or higher is required.
 {{</notebox>}}
 
 Static code analysis scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
