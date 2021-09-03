@@ -2,18 +2,14 @@
 description: How to define and use environment variable groups
 title: Environment variable groups
 weight: 3
-aliases: /building/environment-variable-groups
+aliases: [/building/environment-variable-groups, /variables/encrypting, /building/encrypting]
 platform: yaml
 ---
 
 You can add environment variables in the following places:
 
-* [Environment](../getting-started/yaml/#environment) section of a `codemagic.yaml` configuration file
-* [Environment variables](../flutter/env-variables/) section in a Flutter workflow editor
-* [Global variables and secrets](../building/environment-variable-groups/#global-variables-and-secrets) in Team settings
 * [Application environment variables](../building/environment-variable-groups/#application-environment-variables) in Application settings
-
-See how to [encrypt sensitive information](./encrypting) in Codemagic and explanation of [Environment variable groups](../building/environment-variable-groups/).
+* [Global variables and secrets](../building/environment-variable-groups/#global-variables-and-secrets) in Team settings
 
 ## Variable groups
 
@@ -51,7 +47,6 @@ Application variable groups can be defined in the application settings **Environ
 Environment variables with the same name and group from different sources will have the following precedence:
 
 1. API variables
-1. Workflow variables
 1. Application variables
 1. Global variables
 

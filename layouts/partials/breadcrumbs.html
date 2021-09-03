@@ -1,0 +1,31 @@
+{{ define "getCategoryName" }}
+  {{ $target := .target}}
+  {{ range .menuItems }}
+    {{ if eq .Identifier $target }}
+      <span>{{ .Name }}</span>
+    {{ else if .HasChildren}}
+      {{ template "getCategoryName" ( dict "menuItems" .Children "target" $target ) }}
+    {{ end }}
+  {{ end }} 
+{{ end }}
+
+<div id="breadcrumbs">
+  <a href="/" title="home"><i class="fas fa-home"></i></a>
+  {{ $title := .Title}}
+  {{ $menuItems := .Site.Menus.main }}
+  {{ $linkParts := (split (substr .RelPermalink 1 -1) "/") }}
+  {{ range $index, $part := $linkParts }}
+    {{ if lt $index (sub (len $linkParts) 1) }}
+      {{ if hasPrefix $part "flutter" }}
+        <span>Workflow Editor</span>
+      {{ else if hasPrefix $part "yaml" }}
+        <span>.YAML</span>
+      {{ end }}
+      {{ if and (ne $part "yaml") (ne $part "flutter") }}
+        {{ template "getCategoryName" ( dict "menuItems" $menuItems "target" $part ) }}
+      {{ end }}
+    {{ else }}
+      <span>{{ $title }}</span>
+    {{ end }}
+  {{ end }}
+</div>

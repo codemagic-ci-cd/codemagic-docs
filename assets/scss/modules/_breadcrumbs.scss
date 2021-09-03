@@ -1,0 +1,39 @@
+#breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: $blue-xl;
+    color: #97a5c5;
+    margin: 10px 0 20px;
+
+    span {
+        display: flex;
+        align-items: center;
+
+        &::before {
+            @include fontAwesome('\f054');
+            color: $grey-bg;
+            font-size: 10px;
+            margin-right: 15px;
+        }
+    }
+
+    @media (max-width: 768px), (min-width: 1001px) and (max-width: 1160px) {
+        flex-direction: column;
+        align-items: baseline;
+        gap: 10px;
+
+        span {
+            @for $i from 1 through 10 {
+                &:nth-of-type(#{$i}) {
+                    margin-left: #{$i * 10}px;
+                }
+            }
+            &::before {
+                margin-right: 5px;
+            }
+        }
+    }
+}

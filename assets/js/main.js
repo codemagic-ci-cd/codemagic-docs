@@ -155,9 +155,7 @@ async function userLogout() {
     document.querySelector('[js-header-auth-loading-grey-line]').style.display = 'block'
     if (window.innerWidth < 841) {
         document.querySelector('[js-header-menu-toggle]').classList.remove('open')
-        // $('[js-header-menu-wrap]').slideUp(200)
     }
-    // $('[js-header-menu-wrap]').slideUp(200)
 
     const url = '{{ site.Param "backendURL" }}/logout'
     const options = {

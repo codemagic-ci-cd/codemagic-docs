@@ -23,7 +23,7 @@ scripts:
     script: |
       mkdir -p metrics-results
       dart pub run dart_code_metrics:metrics lib --reporter=json > metrics-results/dart_code_metrics.json
-    test_report: metrics_results/dart_code_metrics.json
+    test_report: metrics-results/dart_code_metrics.json
 ```
 
 In case you do not have Dart Code Metrics as a dependency, you can enable it globally first, by running the following script:
@@ -36,7 +36,7 @@ scripts:
       dart pub global activate dart_code_metrics
       mkdir -p metrics-results
       dart pub global run dart_code_metrics:metrics lib --reporter=json > metrics-results/dart_code_metrics.json
-    test_report: metrics_results/dart_code_metrics.json
+    test_report: metrics-results/dart_code_metrics.json
 ```
 
 For Flutter projects it is recommended to replace the dart commands with flutter commands.
