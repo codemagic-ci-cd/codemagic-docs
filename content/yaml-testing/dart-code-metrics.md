@@ -4,6 +4,10 @@ description: How to run static code analysis with Dart Code Metrics
 weight: 3
 ---
 
+{{<notebox>}}
+For the following instructions to work with Codemagic, Dart version 2.12.0 (Flutter 1.27.0-1.0.pre) or higher is required.
+{{</notebox>}}
+
 Static code analysis scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
 
 Codemagic is integrated with [Dart Code Metrics](https://pub.dev/packages/dart_code_metrics), helping to improve code quality for projects utilizing dart files. With Dart Code Metrics, it is possible to report code metrics, define additional rules for your dart analyzer, and check for anti-patterns.
@@ -18,7 +22,7 @@ scripts:
   - name: Dart Code Metrics
     script: |
       mkdir -p metrics-results
-      flutter pub run dart_code_metrics:metrics lib --reporter=json > metrics-results/dart_code_metrics.json
+      dart pub run dart_code_metrics:metrics lib --reporter=json > metrics-results/dart_code_metrics.json
     test_report: metrics-results/dart_code_metrics.json
 ```
 
@@ -29,10 +33,12 @@ scripts:
   - echo 'previous step'
   - name: Dart Code Metrics
     script: |
-      flutter pub global activate dart_code_metrics
+      dart pub global activate dart_code_metrics
       mkdir -p metrics-results
-      pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
+      dart pub global run dart_code_metrics:metrics lib --reporter=json > metrics-results/dart_code_metrics.json
     test_report: metrics-results/dart_code_metrics.json
 ```
+
+For Flutter projects it is recommended to replace the dart commands with flutter commands.
 
 If you wish to configure Dart Code Metrics, add an `analysis_options.yaml` file to your project as per the [official documentation](https://dartcodemetrics.dev/docs/getting-started/configuration).
