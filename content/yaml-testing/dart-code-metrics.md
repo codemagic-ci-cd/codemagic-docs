@@ -22,7 +22,7 @@ scripts:
   - name: Dart Code Metrics
     script: |
       mkdir -p metrics-results
-      dart pub run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
+      flutter pub run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
     test_report: metrics-results/dart_code_metrics.json
 ```
 
@@ -33,9 +33,9 @@ scripts:
   - echo 'previous step'
   - name: Dart Code Metrics
     script: |
-      dart pub global activate dart_code_metrics
+      flutter pub global activate dart_code_metrics
       mkdir -p metrics-results
-      dart pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
+      flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
     test_report: metrics-results/dart_code_metrics.json
 ```
 
