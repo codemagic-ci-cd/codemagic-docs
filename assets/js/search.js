@@ -111,7 +111,7 @@ const createHtmlElement = (tag, props, children) => {
         Object.entries(props).forEach(([key, value]) => {
             element[key] = value
         })
-    if (children) children.forEach((child) => element.appendChild(child))
+    if (children) children.forEach((child) => child && element.appendChild(child))
     return element
 }
 
@@ -143,19 +143,20 @@ const getResultHtml = (algoliaResultList, query) => {
             innerText: `No results matching "${query}"`,
         })
 
-    const results = algoliaResultList.map((result) =>
-        createHtmlElement('li', null, [
+    const results = algoliaResultList.map((result) => {
+        const subtitle = result._highlightResult.subtitle.value
+        return createHtmlElement('li', null, [
             createHtmlElement('a', { href: result.uri }, [
                 createHtmlElement('p', { innerHTML: result._highlightResult.title.value, className: 'title' }),
-                createHtmlElement('p', { innerHTML: result._highlightResult.subtitle.value, className: 'subtitle' }),
+                subtitle ? createHtmlElement('p', { innerHTML: subtitle, className: 'subtitle' }) : null,
                 createHtmlElement('p', {
                     innerHTML: getBreadcrumbsHtml(result.uri, result.title),
                     className: 'breadcrumbs',
                 }),
                 createHtmlElement('p', { innerHTML: result._snippetResult.content.value }),
             ]),
-        ]),
-    )
+        ])
+    })
 
     return createHtmlElement('ul', null, results)
 }
