@@ -123,3 +123,28 @@ In such cases, you will often see an error message similar to this one:
 **Solution**:
 * Confirm that you have set the correct bundle identifiers for all targets in Xcode.
 * Verify that the bundle identifier set in Xcode matches the bundle identifier set in the Flutter workflow editor under code signing.
+
+
+### Common Podfile issue
+The following issue is usually occurs when it comes to podfile issues:
+```
+The iOS deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 8.0, but the range of supported deployment target versions is 9.0 to 14.4.99
+```
+
+**Solution**:
+* Confirm if Podfile exists in repo if not, then create Podfile in `ios` directory and insert the following manually in there:
+
+```
+# Uncomment the next line to define a global platform for your project
+platform :ios, ’10.0’
+target 'Runner' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+ # Pods for Runner
+end
+```
+
+* Check Podfile, if `platform :ios, ’10.0’` is set to `10.0` or above as required by dependencies 
+* Confirm if `IPHONEOS_DEPLOYMENT_TARGET` is set to 9.0 or above
+
+
