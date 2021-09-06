@@ -30,7 +30,7 @@ Variables defined in environment variable groups work exactly as [Environment Va
 
 ## Encrypting values
 
-Putting values in the value input and marking "Secure" checkbox will automatically encode those values. However, encrypting files requires an additional step and the process is done with the help of different machine specific command lines.
+Putting values in the Variable value input and marking "Secure" checkbox will automatically encode those values. However, encrypting files requires an additional step and the process is done with the help of different machine specific command lines.
 
 On macOS, running the following command line copies the result to clipboard:
 
@@ -51,7 +51,7 @@ sudo apt-get install xclip
 cat your_file_name.extension | base64 | xclip -selection clipboard
 {{</notebox>}}
 
-After running these command lines, pasting what is automatically copied into the value input and checking the "Secure" checkbox completes the encryption process.
+After running these command lines, pasting what is automatically copied into the Variable value input and checking the "Secure" checkbox completes the encryption process.
 
 
 ## Global variables and secrets
