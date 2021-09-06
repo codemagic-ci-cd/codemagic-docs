@@ -78,6 +78,8 @@ If your app settings in Codemagic have building Android App Bundles enabled, we 
 
 Please make sure to wrap the `--bundle` pattern in single quotes. If `--bundle` option is not specified, default glob pattern `**/*.aab` will be used.
 
+Generally, in order to build `.aab`, command `./gradlew bundleRelease` is used and for `.apk` creation `./gradlew assembleRelease` is used. However, according to the recent updates by Google Play, only Android App Bundles are required and it replaces `.apk` as the standard publishing format.
+
 More information about Android code signing can be found [here](../code-signing-yaml/signing-android).
 
 {{<notebox>}}
