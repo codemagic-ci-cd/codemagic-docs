@@ -1,5 +1,31 @@
 const algolia = algoliasearch('27CIRMYZIB', '7e88305c04e90188508daa6c89e5f4df').initIndex('codemagic_docs')
 
+const getBreadcrumbsHtml = (path) => {
+    const parts = path.slice(1, -1).split('/')
+    const breadcrumbs = []
+
+    const humanizeStr = (str) => {
+        const result = str.toLowerCase().replace(/[_-]+/g, ' ').trim()
+        return result.charAt(0).toUpperCase() + result.slice(1)
+    }
+
+    parts.forEach((part, i) => {
+        if (i < parts.length - 1) {
+            if (part.includes('flutter')) breadcrumbs.push('Workflow Editor')
+            else if (part.includes('yaml')) breadcrumbs.push('.YAML')
+            if (part !== 'flutter' && part !== 'yaml') {
+                const categoryName = document.querySelector(`[data-category-id="${part}"]`)?.innerText
+                breadcrumbs.push(categoryName ?? humanizeStr(part))
+            }
+        } else {
+            const title = document.querySelector('h1')?.innerText
+            breadcrumbs.push(title ?? humanizeStr(part))
+        }
+    })
+
+    return breadcrumbs.reduce((acc, cur) => `${acc}<span>${cur}</span>`, '')
+}
+
 const initSearchEvents = () => {
     const search = document.querySelector('[js-search')
     const searchInput = document.querySelector('[js-search-input')
@@ -113,13 +139,16 @@ const getResultHtml = (algoliaResultList, query) => {
             innerText: `No results matching "${query}"`,
         })
 
-    const results = algoliaResultList.map((result) =>
-        createHtmlElement('li', null, [
-            createHtmlElement('a', { innerHTML: result._highlightResult.title.value, href: result.uri }),
-            createHtmlElement('p', { innerHTML: result._highlightResult.subtitle.value }),
-            createHtmlElement('p', { innerHTML: result._snippetResult.content.value }),
-        ]),
-    )
+    const results = algoliaResultList.map((result) => {
+        return createHtmlElement('li', null, [
+            createHtmlElement('a', { href: result.uri }, [
+                createHtmlElement('p', { innerHTML: result._highlightResult.title.value, className: 'title' }),
+                createHtmlElement('p', { innerHTML: result._highlightResult.subtitle.value, className: 'subtitle' }),
+                createHtmlElement('p', { innerHTML: getBreadcrumbsHtml(result.uri), className: 'breadcrumbs' }),
+                createHtmlElement('p', { innerHTML: result._snippetResult.content.value }),
+            ]),
+        ])
+    })
 
     return createHtmlElement('ul', null, results)
 }

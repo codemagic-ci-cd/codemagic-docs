@@ -82,6 +82,8 @@
 
         @at-root .page--home & {
             top: 70px;
+            max-height: calc(100vh - 310px);
+            min-height: 230px;
         }
         &:empty {
             pointer-events: none;
@@ -90,16 +92,24 @@
         }
         li {
             font-size: 14px;
+            font-weight: normal;
             line-height: 1.4em;
-            padding: 20px;
+            padding: 20px 20px 0 20px;
             border-radius: 10px;
             transition: all 200ms ease-in-out;
 
+            &::after {
+                content: '';
+                width: 100%;
+                padding-top: 20px;
+                margin: auto;
+                display: block;
+                border-bottom: 1px solid $blue-xl-border;
+            }
             &:hover {
                 background-color: $blue-xl;
-                border-color: transparent;
             }
-            &:last-child {
+            &:last-child::after {
                 border-bottom: none;
             }
         }
@@ -113,6 +123,9 @@
             text-decoration: underline;
         }
         a {
+            color: inherit;
+        }
+        .title {
             color: $blue;
             font-weight: 600;
             font-size: 16px;
@@ -122,6 +135,21 @@
             mark {
                 color: $blue;
                 font-weight: bold;
+            }
+        }
+        .breadcrumbs {
+            padding: 0;
+            font-size: 12px;
+            background-color: transparent;
+            gap: 10px;
+
+            span {
+                &:first-child::before {
+                    display: none;
+                }
+                &::before {
+                    margin-right: 10px;
+                }
             }
         }
     }
