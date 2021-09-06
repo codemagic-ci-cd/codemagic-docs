@@ -28,6 +28,32 @@ workflows:
 
 Variables defined in environment variable groups work exactly as [Environment Variables](../building/environment-variables/#using-environment-variables). The value of a variable named `API_TOKEN` can be referenced in a workflow as `$API_TOKEN`. Variables defined with the **_secure_** option will have values obfuscated in the Codemagic UI.
 
+## Encrypting values
+
+Putting values in the value input and marking "Secure" checkbox will automatically encode those values. However, encrypting files requires an additional step and the process is done with the help of different machine specific command lines.
+
+On macOS, running the following command line copies the result to clipboard:
+
+{{<notebox>}}
+cat dummy_data.p8 | base64 | pbcopy
+{{</notebox>}}
+
+For Windows, PowerShell command is:
+
+{{<notebox>}}
+[Convert]::ToBase64String([IO.File]::ReadAllBytes("your_file_name_.extension")) | Set-Clipboard
+{{</notebox>}}
+
+And for Linux machines xclip could be installed:
+
+{{<notebox>}}
+sudo apt-get install xclip
+cat your_file_name.extension | base64 | xclip -selection clipboard
+{{</notebox>}}
+
+After running these command lines, pasting what is automatically copied into the value input and checking the "Secure" checkbox completes the encryption process.
+
+
 ## Global variables and secrets
 
 Global variable groups can be defined on the team settings page (which you can navigate to for your team on the [Teams page](https://codemagic.io/teams)).
