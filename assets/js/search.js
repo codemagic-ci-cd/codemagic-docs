@@ -30,11 +30,16 @@ const initSearchEvents = () => {
     const search = document.querySelector('[js-search')
     const searchInput = document.querySelector('[js-search-input')
 
-    document.querySelector('[js-search-icon]').addEventListener('click', searchInput.focus)
-    document.querySelector('[js-search-clear-icon]').addEventListener('mousedown', () => {
+    const closeSearch = () => {
         // mousedown is before blur, 'click' wouldn't work because after blur the icon disappears
         updateFromInput(null)
-    })
+    }
+
+    document.querySelector('[js-search-icon]').addEventListener('click', searchInput.focus)
+    document.querySelector('[js-search-clear-icon]').addEventListener('mousedown', closeSearch)
+
+    window.addEventListener('click', closeSearch)
+    search.addEventListener('click', (e) => e.stopPropagation())
 
     searchInput.addEventListener('change keyup input', (event) => {
         if (event.target.value.trim().length) search.classList.add('search--active')
