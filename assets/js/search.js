@@ -1,6 +1,6 @@
 const algolia = algoliasearch('27CIRMYZIB', '7e88305c04e90188508daa6c89e5f4df').initIndex('codemagic_docs')
 
-const getBreadcrumbsHtml = (path) => {
+const getBreadcrumbsHtml = (path, title) => {
     const parts = path.slice(1, -1).split('/')
     const breadcrumbs = []
 
@@ -18,7 +18,6 @@ const getBreadcrumbsHtml = (path) => {
                 breadcrumbs.push(categoryName ?? humanizeStr(part))
             }
         } else {
-            const title = document.querySelector('h1')?.innerText
             breadcrumbs.push(title ?? humanizeStr(part))
         }
     })
@@ -144,16 +143,19 @@ const getResultHtml = (algoliaResultList, query) => {
             innerText: `No results matching "${query}"`,
         })
 
-    const results = algoliaResultList.map((result) => {
-        return createHtmlElement('li', null, [
+    const results = algoliaResultList.map((result) =>
+        createHtmlElement('li', null, [
             createHtmlElement('a', { href: result.uri }, [
                 createHtmlElement('p', { innerHTML: result._highlightResult.title.value, className: 'title' }),
                 createHtmlElement('p', { innerHTML: result._highlightResult.subtitle.value, className: 'subtitle' }),
-                createHtmlElement('p', { innerHTML: getBreadcrumbsHtml(result.uri), className: 'breadcrumbs' }),
+                createHtmlElement('p', {
+                    innerHTML: getBreadcrumbsHtml(result.uri, result.title),
+                    className: 'breadcrumbs',
+                }),
                 createHtmlElement('p', { innerHTML: result._snippetResult.content.value }),
             ]),
-        ])
-    })
+        ]),
+    )
 
     return createHtmlElement('ul', null, results)
 }
