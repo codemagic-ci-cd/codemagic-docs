@@ -16,7 +16,7 @@ popular: true
 
 In order to use `codemagic.yaml` for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
 
-When detected in the repository, `codemagic.yaml` is automatically used for configuring builds triggered in response to the events defined in the file, provided that a [webhook](../building/webhooks) is set up.
+When detected in the repository, `codemagic.yaml` is automatically used for configuring builds triggered in response to the events defined in the file, provided that a [webhook](../building/webhooks) is set up. 
 
 Builds can also be started manually by clicking **Start new build** in Codemagic and selecting the branch and workflow to build in the **Specify build configuration** popup.
 
@@ -29,7 +29,7 @@ workflows:
   hello-world:
     name: Hello world workflow
     scripts:
-      - echo "Hello World!"
+        - echo "Hello World!"
 ```
 
 The scripts in the `scripts` section will be run right after the repository is cloned.
@@ -46,19 +46,19 @@ For easier reading of the configuration file and build logs, you can divide the 
 
 ```yaml
 scripts:
-  - name: Build for iOS # Name of the section
-    script: flutter build ios # The script(s) to be run in that section
+  - name: Build for iOS         # Name of the section
+    script: flutter build ios   # The script(s) to be run in that section
 ```
 
 ### Reusing sections
 
-If a particular section would be reused multiple times in the file, e.g. in each workflow, you can avoid repetitions by using **anchors**. This is also convenient when you need to make changes to the code, as you would have to edit it in just one place.
+If a particular section would be reused multiple times in the file, e.g. in each workflow, you can avoid repetitions by using **anchors**. This is also convenient when you need to make changes to the code, as you would have to edit it in just one place. 
 
 Define the section to be reused by adding `&` in front of it.
 
 ```yaml
 scripts:
-  - &increment_build_number # Defined section
+  - &increment_build_number       # Defined section
     name: Increment build number
     script: agvtool new-version -all $(($PROJECT_BUILD_NUMBER +1))
 ```
@@ -74,7 +74,7 @@ scripts:
 
 ## Template
 
-This is the skeleton structure of `codemagic.yaml`. Each section, along with the configuration options, is described in more detail
+This is the skeleton structure of `codemagic.yaml`. Each section, along with the configuration options, is described in more detail 
 
 ```yaml
 workflows:
@@ -84,7 +84,7 @@ workflows:
     max_build_duration: 60
     environment:
       vars:
-        PUBLIC_ENV_VAR: 'value here'
+        PUBLIC_ENV_VAR: "value here"
       flutter: stable
       xcode: latest
     cache:
@@ -116,10 +116,10 @@ You can use `codemagic.yaml` to define several workflows for building a project.
 
 ```yaml
 workflows:
-  my-workflow: # workflow ID
-    name: My workflow name # workflow name displayed in Codemagic UI
-    instance_type: mac_mini # machine instance type
-    max_build_duration: 60 # build duration in minutes (min 1, max 120)
+  my-workflow:                # workflow ID
+    name: My workflow name    # workflow name displayed in Codemagic UI
+    instance_type: mac_mini   # machine instance type
+    max_build_duration: 60    # build duration in minutes (min 1, max 120)
     environment:
     cache:
     triggering:
@@ -135,10 +135,10 @@ The main sections in each workflow are described below.
 `instance_type:` specifies the [build machine type](../specs/machine-type) to use for the build. The supported build machines are:
 | **Instance Type** | **Build Machine** |
 | ------------- | ----------------- |
-| `mac_mini` | macOS standard VM |
-| `mac_pro` | macOS premium VM |
-| `linux` | Linux standard VM |
-| `linux_x2` | Linux premium VM |
+| `mac_mini`    | macOS standard VM |
+| `mac_pro`     | macOS premium VM  |
+| `linux`       | Linux standard VM |
+| `linux_x2`    | Linux premium VM  |
 
 {{<notebox>}}
 Note that `mac_pro`, `linux`, and `linux_x2` are only available for teams and users with [billing enabled](../billing/billing/).
@@ -154,8 +154,8 @@ The snippet below shows how to define workflow specific environment variables, s
 
 ```yaml
 environment:
-  vars: # Define your environment variables here
-    PUBLIC_ENV_VAR: 'value here'
+  vars:             # Define your environment variables here
+    PUBLIC_ENV_VAR: "value here"
     SECRET_ENV_VAR: Encrypted(...)
 
     # Android code signing
@@ -179,18 +179,18 @@ environment:
     ANDROID_FIREBASE_SECRET: Encrypted(...)
     IOS_FIREBASE_SECRET: Encrypted(...)
 
-    SSH_KEY_GITHUB: Encrypted(...) # defining an ssh key used to download private dependencies
-    CREDENTIALS: Encrypted(...) # publishing a package to pub.dev
-    APP_CENTER_TOKEN: Encrypted(...) # publishing an application to App Center
+    SSH_KEY_GITHUB: Encrypted(...)     # defining an ssh key used to download private dependencies
+    CREDENTIALS: Encrypted(...)        # publishing a package to pub.dev
+    APP_CENTER_TOKEN: Encrypted(...)   # publishing an application to App Center
 ```
 
 #### Environment variable groups
 
-The snippet below shows how to import [environment variable groups](../building/environment-variable-groups/) defined in the team settings and application settings.
+The snippet below shows how to import [environment variable groups](../building/environment-variable-groups/) defined in the team settings and application settings. 
 
 ```yaml
 environment:
-  groups: # Import UI defined environment variable groups here
+  groups:           # Import UI defined environment variable groups here
     - env_var_group_1
     - env_var_group_2
 ```
@@ -201,19 +201,18 @@ The snippet below shows how to specify the versions of Flutter, Xcode, CocoaPods
 
 ```yaml
 environment:
-  flutter: stable # Define the channel name or version (e.g. v1.13.4)
-  xcode: latest # Define latest, edge or version (e.g. 11.2)
-  cocoapods: 1.9.1 # Define default or version
-  node: 12.14.0 # Define default, latest, current, lts, carbon (or another stream), nightly or version
-  npm: 6.13.7 # Define default, latest, next, lts or version
-  ndk: r21d # Define default or revision (e.g. r19c)
-  java: 1.8 # Define default, or platform version (e.g. 11)
-  ruby: 2.7.2 # Define default or version
+  flutter: stable   # Define the channel name or version (e.g. v1.13.4)
+  xcode: latest     # Define latest, edge or version (e.g. 11.2)
+  cocoapods: 1.9.1  # Define default or version
+  node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
+  npm: 6.13.7       # Define default, latest, next, lts or version
+  ndk: r21d         # Define default or revision (e.g. r19c)
+  java: 1.8         # Define default, or platform version (e.g. 11)
+  ruby: 2.7.2       # Define default or version
 ```
 
 {{<notebox>}}
 The Xcode version defines type of macOS build machine used for the build (even if you're building Android). See the default software versions on Codemagic build machines:
-
 - [macOS build machine specification (Xcode 11.x)](../releases-and-versions/versions/)
 - [macOS build machine specification (Xcode 12.0-12.4)](../releases-and-versions/versions2/)
 - [macOS build machine specification (Xcode 12.5+)](../releases-and-versions/versions3/)
@@ -235,19 +234,19 @@ environment:
   groups: # Import UI defined environment variable groups here
     - staging
   xcode: latest # Define latest, edge or version (e.g. 11.2)
-  flutter: stable # Define the channel name or version (e.g. v1.13.4)
+  flutter: stable   # Define the channel name or version (e.g. v1.13.4)
 ```
 
 ### Cache
 
 `cache:` defines the paths to be cached and stored on Codemagic. For example, you may consider caching the following paths:
 
-| **Path**                         | **Description**                                  |
-| -------------------------------- | ------------------------------------------------ |
-| `$FLUTTER_ROOT/.pub-cache`       | Dart cache                                       |
-| `$HOME/.gradle/caches`           | Gradle cache. Note: do not cache `$HOME/.gradle` |
-| `$HOME/Library/Caches/CocoaPods` | CocoaPods cache                                  |
-| `$FCI_BUILD_DIR`/node_modules    | Node cache                                       |
+| **Path**                                    | **Description**                                  |
+| ------------------------------------------- | ------------------------------------------------ |
+| `$FLUTTER_ROOT/.pub-cache`                  | Dart cache                                       |
+| `$HOME/.gradle/caches`                      | Gradle cache. Note: do not cache `$HOME/.gradle` |
+| `$HOME/Library/Caches/CocoaPods`            | CocoaPods cache                                  |
+| `$FCI_BUILD_DIR`/node_modules               | Node cache                                       |
 
 <br>
 
@@ -278,11 +277,11 @@ To avoid running builds on outdated commits, you can set `cancel_previous_builds
 
 ```yaml
 triggering:
-  events: # List the events that trigger builds
+  events:                       # List the events that trigger builds
     - push
     - pull_request
     - tag
-  branch_patterns: # Include or exclude watched branches
+  branch_patterns:              # Include or exclude watched branches
     - pattern: '*'
       include: true
       source: true
@@ -292,18 +291,17 @@ triggering:
     - pattern: included-source
       include: true
       source: true
-  tag_patterns: # Include or exlude watched tag labels
+  tag_patterns:                 # Include or exlude watched tag labels
     - pattern: '*'
       include: true
     - pattern: excluded-tag
       include: false
     - pattern: included-tag
       include: true
-  cancel_previous_builds: false # Set to `true` to automatically cancel outdated webhook builds
+  cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
 ```
 
 {{<notebox>}}For information about using API calls to trigger builds, look [here](../rest-api/overview/).{{</notebox>}}
-
 ### Scripts
 
 Scripts specify what kind of application is built. This is where you can specify the commands to [test](../testing-yaml/testing/), build and code sign your project (see our documentation for [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android)). You can also run shell (`sh`) scripts directly in your `.yaml` file, or run scripts in other languages by defining the language with a shebang line or by launching a script file present in your repository.
@@ -332,8 +330,8 @@ Configure the paths and names of the artifacts you would like to use in the foll
 
 ```yaml
 artifacts:
-  - build/**/outputs/apk/**/*.apk # relative path for a project in root directory
-  - subfolder_name/build/**/outputs/apk/**/*.apk # relative path for a project in subfolder
+  - build/**/outputs/apk/**/*.apk                   # relative path for a project in root directory
+  - subfolder_name/build/**/outputs/apk/**/*.apk    # relative path for a project in subfolder
   - build/**/outputs/**/*.aab
   - build/**/outputs/**/mapping.txt
   - build/ios/ipa/*.ipa
@@ -343,10 +341,9 @@ artifacts:
 ```
 
 There are several things to keep in mind about patterns:
-
-- The pattern can match several files or folders. If it picks up files or folders with the same name, the top level file or folder name will be suffixed with `_{number}`.
-- If one of the patterns includes another pattern, duplicate artifacts are not created.
-- `apk`, `aab`, `aar`, `ipa`, `app`, `pkg`, proguard mapping (`mapping.txt`), `flutter_drive.log`, `jar`, `zip`, `xarchive` and `dSYM.zip` files will be available as separate items in the Artifacts section on the build page. The rest of the artifacts will be included in an archive with the following name pattern: `{project-name}_{version}_artifacts.zip`.
+* The pattern can match several files or folders. If it picks up files or folders with the same name, the top level file or folder name will be suffixed with `_{number}`.
+* If one of the patterns includes another pattern, duplicate artifacts are not created.
+* `apk`, `aab`, `aar`, `ipa`, `app`, `pkg`, proguard mapping (`mapping.txt`), `flutter_drive.log`, `jar`, `zip`, `xarchive` and `dSYM.zip` files will be available as separate items in the Artifacts section on the build page. The rest of the artifacts will be included in an archive with the following name pattern: `{project-name}_{version}_artifacts.zip`.
 
 ### Publishing
 
@@ -396,7 +393,6 @@ publishing:
 ## Conditional build triggers
 
 You can skip building particular commits or watch for changes in specific files to trigger builds. In addition, it's possible to define build conditions per workflow or specific build steps.
-
 ### Skip building a commit
 
 If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
@@ -426,7 +422,7 @@ In this case, the build would be skipped if there were changes only to Markdown 
 
 Note that `codemagic.yaml` is always included in the changeset by default.
 
-Both keys `includes` and `excludes` in `changeset` are _optional_. If the `includes` key is not specified, its value will default to `'.'`. The `excludes` key defaults to no exclusions.
+Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value will default to `'.'`. The `excludes` key defaults to no exclusions.
 
 If you use a monorepo, each workflow could be responsible for building a part of your application. Use conditional workflow triggering and specify the path to the application in the changeset as in the example below.
 
