@@ -57,10 +57,18 @@ Set up local properties
 ```yaml
 - echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
 ```
-### Building .apk
+### Building an app bundle
 
 ```yaml
-- flutter build apk --release
+- flutter build appbundle --release
+```
+
+In order to build an Android App Bundle (`.aab`), the command `./gradlew bundleRelease` is used, while for `.apk` creation `the command ./gradlew assembleRelease` is used. Note that Google Play requires new apps to be published as an Android App Bundle which replaces `.apk` as the standard publishing format. 
+
+### Building .apk for debug builds
+
+```yaml
+- flutter build apk --debug
 ```
 
 ### Building universal .apk(s) from existing app bundle(s) with user-specified keys
@@ -78,7 +86,6 @@ If your app settings in Codemagic have building Android App Bundles enabled, we 
 
 Please make sure to wrap the `--bundle` pattern in single quotes. If the `--bundle` option is not specified, default glob pattern `**/*.aab` will be used.
 
-Generally, in order to build an Android App Bundle (`.aab`), the command `./gradlew bundleRelease` is used, while for `.apk` creation `the command ./gradlew assembleRelease` is used. Note that Google Play requires new apps to be published as an Android App Bundle which replaces `.apk` as the standard publishing format.
 
 More information about Android code signing can be found [here](../code-signing-yaml/signing-android).
 
