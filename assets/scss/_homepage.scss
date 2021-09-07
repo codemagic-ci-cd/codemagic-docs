@@ -1,3 +1,19 @@
+@mixin arrowRight($marginLeft, $color) {
+    .arrow-right {
+        position: relative;
+        margin-left: $marginLeft;
+        transition: all 160ms ease-in-out;
+        left: 0;
+
+        path {
+            fill: $color;
+        }
+    }
+    &:hover .arrow-right {
+        left: 2px;
+    }
+}
+
 .page--home {
     #hero {
         h1 {
@@ -117,24 +133,15 @@
             text-align: center;
             margin-bottom: 80px;
         }
-
         a.view-all {
             color: $blue;
-
-            svg {
-                margin-left: 20px;
-
-                path {
-                    fill: $blue;
-                }
-            }
+            @include arrowRight(20px, $blue);
         }
     }
 
-    #footer {
+    .footer {
         background: #f0f4ff;
         padding: 85px 0;
-        margin: 0;
 
         .inner {
             display: flex;
@@ -142,51 +149,39 @@
             align-items: center;
             gap: 30px;
         }
-
-        .footer {
-            &__title {
-                color: $black-l;
-                font-weight: 600;
-                font-size: 30px;
-                margin-bottom: 15px;
-            }
-            &__subtitle {
-                line-height: 1.4;
-            }
-            &__button {
-                padding-right: 60px;
-                background: $blue;
-                color: white;
-                padding: 15px 30px;
-                border-radius: 10px;
-                font-weight: 600;
-                font-size: 14px;
-                position: relative;
-                height: fit-content;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-
-                .arrow-right {
-                    position: relative;
-                    left: 0;
-                    margin-left: 40px;
-                    transition: all 160ms ease-in-out;
-                }
-                &:hover .arrow-right {
-                    left: 2px;
-                }
-            }
+        &__title {
+            color: $black-l;
+            font-weight: 600;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+        &__subtitle {
+            line-height: 1.4;
+        }
+        &__button {
+            padding-right: 60px;
+            background: $blue;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            position: relative;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @include arrowRight(40px, white);
         }
 
         @media (max-width: 480px) {
             .inner {
                 display: block;
             }
-            .footer__content {
+            &__content {
                 margin-bottom: 30px;
             }
-            .footer__button {
+            &__button {
                 justify-content: center;
             }
         }
