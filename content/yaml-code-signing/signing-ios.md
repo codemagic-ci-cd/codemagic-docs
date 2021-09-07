@@ -3,6 +3,7 @@ title: Signing iOS apps
 description: How to set up iOS code signing in codemagic.yaml
 weight: 1
 aliases: [../code-signing-yaml/signing, /code-signing-yaml/signing-ios]
+popular: true
 ---
 
 All iOS applications have to be digitally signed before they can be installed on real devices or made available to the public.
@@ -35,7 +36,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 4. Click **Generate**.
 5. As soon as the key is generated, you can see it added to the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
-{{<notebox >}} 
+{{<notebox >}}
 Take note of the **Issuer ID** above the table of active keys as well as the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in the Codemagic UI.
 {{</notebox>}}
 
@@ -66,7 +67,7 @@ environment:
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Running the command line will create private and public keys. Note that you should encrypt the **contents** of the private file and save the encrypted value to the environment variable. 
+  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Running the command line will create private and public keys. Note that you should encrypt the **contents** of the private file and save the encrypted value to the environment variable.
 
 ```bash
 ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
@@ -78,7 +79,7 @@ Alternatively, each property can be specified in the `scripts` section of the YA
 
 ### Specifying code signing configuration
 
-To code sign the app, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands. 
+To code sign the app, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands.
 
 ```yaml
 scripts:
@@ -146,6 +147,7 @@ scripts:
 ### Using multiple provisioning profiles
 
 To set up multiple provisioning profiles, for example, to use app extensions such as [NotificationService](https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension), the easiest option is to add the provisioning profiles to your environment variables with a similar naming convention:
+
 ```yaml
 environment:
   vars:
@@ -154,6 +156,7 @@ environment:
 ```
 
 Then, set the profiles up in the build by using the following script in your YAML file:
+
 ```yaml
 scripts:
   - name: Set up Provisioning profiles from environment variables
@@ -165,3 +168,4 @@ scripts:
         echo ${!profile} | base64 --decode > "$PROFILE_PATH"
         echo "Saved provisioning profile $PROFILE_PATH"
       done
+```
