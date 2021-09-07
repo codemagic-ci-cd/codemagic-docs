@@ -24,20 +24,6 @@ You can simultaneously set up workflows both in `codemagic.yaml` and the Workflo
 For documentation on building Flutter projects using the workflow editor, please refer to [**Building Flutter apps via the workflow editor**](../flutter-configuration/flutter-projects).
 {{</notebox>}}
 
-## Exporting configuration from the Flutter workflow editor
-
-You can get started with YAML easily if you have an existing project set up in Codemagic UI. 
-
-1. Navigate to your app workflow settings.
-2. In the **Configuration as code** section on the right sidebar, click **Download configuration**.
-
-{{<notebox>}}
-The YAML feature currently has the following **limitations**:
-
-* Exporting configuration from the workflow editor is supported for Flutter-based Android, iOS and web apps.
-* The exported configuration is not identical to the settings in the workflow editor and lacks the configuration for some features.
-{{</notebox>}}
-
 ## Building with YAML
 
 1. In order to use `codemagic.yaml` for build configuration in Codemagic, commit the file to the root directory of your repository.
