@@ -35,7 +35,7 @@ You can get started with YAML easily if you have an existing project set up in C
 The YAML feature currently has the following **limitations**:
 
 * Exporting configuration from the workflow editor is supported for Flutter-based Android, iOS and web apps.
-* The exported configuration is not identical to the settings in the workflow editor and lacks the configuration for some features, such as **Stop build if tests fail** and publishing to Codemagic Static Pages.
+* The exported configuration is not identical to the settings in the workflow editor and lacks the configuration for some features.
 {{</notebox>}}
 
 ## Building with YAML
