@@ -14,7 +14,7 @@ The apps you have available in Codemagic are listed on the Applications page. Cl
 
 1. On the Applications page, click **Set up build** next to the app you want to start building. 
 2. On the popup, select **Flutter App** as the project type and click **Continue**.
-3. Then you can choose to either set up your builds in the **codemagic.yaml** file or select the **Workflow Editor** tab to configure the builds in the UI.
+3. Then you can choose to either set up your builds in the **codemagic.yaml** file or select the **Workflow Editor** tab to configure the builds in the UI. New Flutter apps come with the **Workflow Editor** by default and it can be switched to **codemagic.yaml** in app settings by clicking the **Switch to YAML configuration** button. Exporting current configuration as **codemagic.yaml** is possible if the checkbox is marked in the pop-up page.
 
 `codemagic.yaml` is a highly customizable configuration file that you can use to build, test and publish Flutter apps, widgets, and Flutter or Dart packages. The Workflow Editor is a quick way to get started building standard Flutter applications.
 
