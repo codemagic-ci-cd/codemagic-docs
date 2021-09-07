@@ -153,7 +153,13 @@ const getResultHtml = (algoliaResultList, query) => {
                     innerHTML: getBreadcrumbsHtml(result.uri, result.title),
                     className: 'breadcrumbs',
                 }),
-                createHtmlElement('p', { innerHTML: result._snippetResult.content.value }),
+                createHtmlElement(
+                    'div',
+                    { className: 'content' },
+                    result._snippetResult.content.value
+                        .split('\n')
+                        .map((p) => createHtmlElement('p', { innerHTML: p })),
+                ),
             ]),
         ])
     })
