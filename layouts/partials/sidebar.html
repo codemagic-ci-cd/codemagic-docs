@@ -11,6 +11,7 @@
                     <div
                         class="item__category__name"
                         js-category-name
+                        data-category-id="{{ .Identifier }}"
                         {{if $collapsible}}js-category-toggle{{end}}
                         {{ if $currentPage.HasMenuCurrent "main" . }}js-open{{ end }}
                     >
