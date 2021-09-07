@@ -1,6 +1,6 @@
 .links-group-wrap {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
 
     @media (max-width: 1000px) {
@@ -13,19 +13,28 @@
 }
 .links-group {
     h3 {
-        font-size: 24px;
+        font-size: 20px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #cdddff;
+
         @media (max-width: 1400px) {
             font-size: 20px;
         }
     }
     li {
-        margin: 15px 0;
+        margin: 25px 0;
     }
     a {
-        color: $black;
+        color: $black-l;
+        font-weight: 600;
 
         &:hover {
             color: $blue;
+        }
+    }
+    @media (max-width: 560px) {
+        li {
+            margin: 15px 0;
         }
     }
 }
