@@ -21,7 +21,7 @@
       {{ else if hasPrefix $part "yaml" }}
         <span>.YAML</span>
       {{ end }}
-      {{ if and (ne $part "yaml") (ne $part "flutter") }}
+      {{ if and (ne $part "yaml") (ne $part "flutter") (ne $part "notes") (ne $part "cli") }}
         {{ template "getCategoryName" ( dict "menuItems" $menuItems "target" $part ) }}
       {{ end }}
     {{ else }}
