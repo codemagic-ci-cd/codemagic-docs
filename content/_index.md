@@ -54,9 +54,10 @@ title: Codemagic Documentation
 
 {{<links-group title="Account management">}}
 
+- [Creating and managing teams](/teams/teams/)
+- [Counting users in teams](/teams/users/)
 - [Billing](/billing/billing/)
 - [Pricing](/billing/pricing/)
-- [Teams](/teams/teams/)
 
 {{</links-group>}}
 
