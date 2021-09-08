@@ -198,17 +198,14 @@ const handleDocsToggle = ({ target }) => {
 }
 
 // Scroll docs & toc menu to active item
-const scrollMenuToActive = (selector, smooth) => {
+const scrollMenuToActive = (selector, center) => {
     const menu = document.querySelector(selector)
     const activeItem = menu.querySelector('a.active')
 
     if (activeItem) {
-        if (smooth) {
-            menu.scrollTo({
-                top: activeItem.offsetTop - 10,
-                behaviour: 'smooth',
-            })
-        } else menu.scrollTop = activeItem.offsetTop - 10
+        const visibleHeight = window.innerHeight - document.querySelector('[js-header]').clientHeight
+        const offset = center ? visibleHeight / 2 - activeItem.clientHeight : 10
+        menu.scrollTo({ top: activeItem.offsetTop - offset, behaviour: 'smooth' })
     }
 }
 
@@ -242,12 +239,12 @@ const observeHeaders = () => {
 
         if (headersOnScreen.length > 0) {
             setTocItemActive(headersOnScreen[0].id)
-            scrollMenuToActive('[js-toc]', true)
+            scrollMenuToActive('[js-toc]')
         } else if (entries[0].intersectionRatio === 0 && !window.scrollingDown) {
             currentIndex = headers.findIndex((header) => header.id === entries[0].target.getAttribute('id'))
             previousHeader = currentIndex ? currentIndex - 1 : 0
             setTocItemActive(headers[previousHeader].id)
-            scrollMenuToActive('[js-toc]', true)
+            scrollMenuToActive('[js-toc]')
         }
     })
     headersSelector.forEach((header) => observer.observe(header))
@@ -268,7 +265,6 @@ const setInitialPreference = () => {
 // Handle preference change
 const changePreference = (target) => {
     openActiveCategory()
-    let currentPageConfiguration = null
 
     if (target.hasAttribute('data-js-preference-option')) {
         const bg = document.querySelector('[js-preference-bg]')
@@ -285,10 +281,7 @@ const changePreference = (target) => {
         window.localStorage.setItem('preferred-configuration', target.dataset.jsPreferenceOption)
 
         window.preferredConfigurations.some((configuration) => {
-            if (window.location.pathname.startsWith(`/${configuration}`)) {
-                currentPageConfiguration = configuration
-                return true
-            }
+            if (window.location.pathname.startsWith(`/${configuration}`)) return true
         })
         if (target.dataset.jsPreferenceOption === 'flutter') {
             yamlLinks.forEach((link) => (link.style.display = 'none'))
@@ -329,7 +322,7 @@ const openActiveCategory = () => {
 
 // On ready
 handleSidebarPosition()
-scrollMenuToActive('[js-docs-menu]')
+scrollMenuToActive('[js-docs-menu]', true)
 positionHeaderContents()
 setInitialPreference()
 openActiveCategory()

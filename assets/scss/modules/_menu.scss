@@ -76,7 +76,19 @@
             }
             &.active {
                 color: $blue-hover;
+                font-weight: 600;
                 cursor: default;
+                position: relative;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 7px;
+                    height: calc(100% - 14px);
+                    display: block;
+                    border-left: 2px solid $blue-hover;
+                }
             }
         }
         &--extra,
