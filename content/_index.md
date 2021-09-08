@@ -52,10 +52,11 @@ title: Codemagic Documentation
 
 {{</links-group>}}
 
-{{<links-group title="Billing & Pricing">}}
+{{<links-group title="Account management">}}
 
 - [Billing](/billing/billing/)
 - [Pricing](/billing/pricing/)
+- [Teams](/teams/teams/)
 
 {{</links-group>}}
 
