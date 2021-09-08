@@ -21,8 +21,7 @@ title: Codemagic Documentation
 - [Quick start guides](/yaml-quick-start/codemagic-sample-projects/)
 - [Testing](/yaml-testing/testing/)
 - [Code signing](/yaml-code-signing/signing-ios/)
-- [Publishing](/yaml-publishing/distribution/)
-- [Integrations](/integrations/jira-integration/)
+- {{<link-with-arrow text="View all" href="/yaml/yaml-getting-started/">}}
 
 {{</links-group>}}
 
@@ -31,7 +30,7 @@ title: Codemagic Documentation
 - [Build configurations](/flutter-configuration/flutter-projects/)
 - [Testing](/flutter-testing/running-automated-tests/)
 - [Code signing](/flutter-code-signing/ios-code-signing/)
-- [Publishing](flutter-publishing/publishing-to-app-store/)
+- {{<link-with-arrow text="View all" href="/flutter-configuration/flutter-projects/">}}
 
 {{</links-group>}}
 
@@ -44,11 +43,12 @@ title: Codemagic Documentation
 
 {{</links-group>}}
 
-{{<links-group title="Codemagic API">}}
+{{<links-group title="Codemagic API & CLI tools">}}
 
 - [Overview](/rest-api/overview/)
-- [Applications](/rest-api/applications/ios-automatic-code-signing-demo-project)
+- [Applications](/rest-api/applications/)
 - [Builds](/rest-api/builds/)
+- [CLI tools](/cli/codemagic-cli-tools/)
 
 {{</links-group>}}
 
