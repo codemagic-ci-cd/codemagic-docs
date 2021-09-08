@@ -1,13 +1,23 @@
+@mixin arrowRight($marginLeft, $color) {
+    .arrow-right {
+        position: relative;
+        margin-left: $marginLeft;
+        transition: all 160ms ease-in-out;
+        left: 0;
+
+        path {
+            fill: $color;
+        }
+    }
+    &:hover .arrow-right {
+        left: 2px;
+    }
+}
+
 .page--home {
     #hero {
-        padding: 70px 0;
-        background-color: #f5f8ff;
-
-        .inner {
-            max-width: 800px;
-        }
         h1 {
-            color: $black-l;
+            color: white;
             font-size: 40px;
             text-align: center;
 
@@ -15,8 +25,165 @@
                 font-size: 30px;
             }
         }
+        .popular-topics {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.4;
+
+            a {
+                color: white !important;
+                font-weight: 600;
+            }
+        }
     }
+    .hero__top {
+        padding: 70px 0;
+        background-color: $blue;
+    }
+    .hero__bottom {
+        padding-top: 130px;
+        background: url(https://static.codemagic.io/media/docs/hero-bg.svg);
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .inner--search {
+        max-width: 800px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 100px;
+
+        @media (max-width: 1200px) {
+            gap: 30px;
+        }
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr;
+        }
+    }
+    .card {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        background-color: white;
+        box-shadow: 0px 4px 30px $shadow-blue;
+        border-radius: 20px;
+        padding: 30px;
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        &__title {
+            font-weight: 600;
+            font-size: 24px;
+        }
+        &__description {
+            font-size: 14px;
+            line-height: 2;
+        }
+        &__button {
+            border-radius: 10px;
+            padding: 15px 40px;
+            width: fit-content;
+            background-color: $blue-xl;
+            color: $black-l;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                background-color: $blue-xl-border;
+            }
+        }
+        @media (max-width: 1024px) {
+            &__content {
+                gap: 10px;
+            }
+        }
+        @media (max-width: 768px) {
+            &__image {
+                width: 40%;
+
+                svg {
+                    width: 100%;
+                }
+            }
+        }
+        @media (max-width: 560px) {
+            flex-direction: column;
+
+            &__button {
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+            }
+        }
+    }
+
     #links {
         padding: 100px 0;
+
+        h2 {
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        a.view-all {
+            color: $blue;
+            @include arrowRight(20px, $blue);
+        }
+    }
+
+    .footer {
+        background: #f0f4ff;
+        padding: 85px 0;
+
+        .inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+        &__title {
+            color: $black-l;
+            font-weight: 600;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+        &__subtitle {
+            line-height: 1.4;
+        }
+        &__button {
+            padding-right: 60px;
+            background: $blue;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            position: relative;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @include arrowRight(40px, white);
+        }
+
+        @media (max-width: 480px) {
+            .inner {
+                display: block;
+            }
+            &__content {
+                margin-bottom: 30px;
+            }
+            &__button {
+                justify-content: center;
+            }
+        }
     }
 }

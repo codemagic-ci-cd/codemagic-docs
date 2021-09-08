@@ -5,6 +5,7 @@ weight: 1
 aliases:
     - '../yaml/distribution'
     - /publishing-yaml/distribution
+popular: 2
 ---
 
 All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play, and App Store Connect. It is also possible to publish elsewhere with custom scripts; see the examples below.

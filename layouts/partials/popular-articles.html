@@ -1,0 +1,11 @@
+{{ $popularArticles := sort (where site.Pages "Params.popular" ">=" 0) "Params.popular" }}
+{{ $articlesLength := len $popularArticles }}
+
+{{ if gt $articlesLength 0 }}
+  <div class="popular-topics">
+    Popular topic{{ if gt $articlesLength 1 }}s{{ end }}:
+    {{ range $index, $article := $popularArticles }}
+      <a href="{{ .RelPermalink }}">{{ $article.Title }}</a>{{ if lt $index (sub $articlesLength 1) }}, {{ end }}
+    {{ end}}
+  </div>
+{{ end }}
