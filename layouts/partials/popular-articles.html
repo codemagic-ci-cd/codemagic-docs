@@ -1,4 +1,4 @@
-{{ $popularArticles := where site.Pages "Params.popular" true }}
+{{ $popularArticles := sort (where site.Pages "Params.popular" ">=" 0) "Params.popular" }}
 {{ $articlesLength := len $popularArticles }}
 
 {{ if gt $articlesLength 0 }}

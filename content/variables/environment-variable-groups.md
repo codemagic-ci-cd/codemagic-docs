@@ -4,6 +4,7 @@ title: Environment variable groups
 weight: 3
 aliases: [/building/environment-variable-groups, /variables/encrypting, /building/encrypting]
 platform: yaml
+popular: 3
 ---
 
 You can add environment variables in the following places:
