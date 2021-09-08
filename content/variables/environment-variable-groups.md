@@ -8,8 +8,8 @@ platform: yaml
 
 You can add environment variables in the following places:
 
-* [Application environment variables](../building/environment-variable-groups/#application-environment-variables) in Application settings
-* [Global variables and secrets](../building/environment-variable-groups/#global-variables-and-secrets) in Team settings
+* [Application environment variables](../variables/environment-variable-groups/#application-environment-variables) in Application settings
+* [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in Team settings
 
 ## Variable groups
 
@@ -26,7 +26,7 @@ workflows:
         - other_values
 ```
 
-Variables defined in environment variable groups work exactly as [Environment Variables](../building/environment-variables/#using-environment-variables). The value of a variable named `API_TOKEN` can be referenced in a workflow as `$API_TOKEN`. Variables defined with the **_secure_** option will have values obfuscated in the Codemagic UI.
+Variables defined in environment variable groups work exactly as [Environment Variables](../variables/environment-variables/#using-environment-variables). The value of a variable named `API_TOKEN` can be referenced in a workflow as `$API_TOKEN`. Variables defined with the **_secure_** option will have values obfuscated in the Codemagic UI.
 
 ## Global variables and secrets
 
