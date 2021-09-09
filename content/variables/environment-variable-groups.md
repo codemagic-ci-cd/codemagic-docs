@@ -30,7 +30,7 @@ Variables defined in environment variable groups work exactly as [Environment Va
 
 ## Encrypting values
 
-Putting values in the Variable value input and marking "Secure" checkbox will automatically encode those values. However, encrypting files requires an additional step and the process is done with the help of different machine specific command lines.
+Putting values in the Variable value input and marking "Secure" checkbox will automatically encrypt those values. However, file encryption requires an additional base64 file encoding step and the process is done with the help of different machine specific command lines.
 
 On macOS, running the following command line copies the result to clipboard:
 
