@@ -18,6 +18,8 @@ Adding apps from GitHub requires authorizing Codemagic and installing the Codema
 
 >See the getting started guides and [sample projects](../sample-projects/codemagic-sample-projects/) configured with [codemagic.yaml](../getting-started/yaml/) to set up your project. Alternatively, Flutter apps can be also configured using the [Flutter workflow editor](../flutter-configuration/flutter-projects/).
 
+> In order to access an open source Git extension for for versioning large files (Git LFS) during a build, `git lfs install --skip-smudge` needs to be put in a post-clone script.
+
 ## Configuring the GitHub App integration
 
 Codemagic uses the [Codemagic CI/CD GitHub App](https://github.com/apps/codemagic-ci-cd) to integrate with GitHub. To share your GitHub repositories with Codemagic, Codemagic GitHub App will have to be installed on the account or organization in GitHub from which you would like to build applications.
