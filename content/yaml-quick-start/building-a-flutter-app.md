@@ -63,8 +63,6 @@ Set up local properties
 - flutter build appbundle --release
 ```
 
-In order to build an Android App Bundle (`.aab`), the command `./gradlew bundleRelease` is used, while for `.apk` creation `the command ./gradlew assembleRelease` is used. Note that Google Play requires new apps to be published as an Android App Bundle which replaces `.apk` as the standard publishing format. 
-
 ### Building .apk for debug builds
 
 ```yaml
