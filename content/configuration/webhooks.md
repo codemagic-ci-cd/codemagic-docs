@@ -2,7 +2,7 @@
 title: Webhooks
 description: Set up webhooks for automatic builds
 weight: 6
-aliases: /building/webhooks
+aliases: [/building/webhooks, /flutter-configuration/webhooks]
 ---
 
 Webhooks are necessary in order to be able to trigger builds automatically in response to events in the repository.
