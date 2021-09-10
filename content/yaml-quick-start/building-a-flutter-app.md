@@ -78,15 +78,10 @@ workflows:
     name: Android Workflow
     max_build_duration: 120
     environment:
-      vars:
-        GCLOUD_SERVICE_ACCOUNT_CREDENTIALS: Encrypted(...) # <-- Put your encrypted Google Play service account credentials here.
-        FCI_KEYSTORE_PATH: /tmp/keystore.keystore
-        FCI_KEYSTORE: Encrypted(...) # <-- Put your encrypted keystore here
-        FCI_KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore password here
-        FCI_KEY_PASSWORD: Encrypted(...) # <-- Put your encrypted key alias password here
-        FCI_KEY_ALIAS: Encrypted(...) # <-- Put your encrypted key alias here
-        PACKAGE_NAME: "io.codemagic.flutteryaml" # <-- Put your package name here
-        GOOGLE_PLAY_TRACK: "alpha" # <-- This must be "alpha" or above.  
+      groups:
+        - keystore_credentials  # <-- (Includes: FCI_KEYSTORE_PATH, FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
+        - google_play_credentials # <-- (GCLOUD_SERVICE_ACCOUNT_CREDENTIALS, GOOGLE_PLAY_TRACK)
+        - other # <-- (PACKAGE_NAME, etc)  
       flutter: stable
       xcode: latest
       cocoapods: default
@@ -187,16 +182,15 @@ workflows:
     # instance_type: mac_mini
     max_build_duration: 120
     environment:
+      groups:
+        - appstore_credentials  # <-- (Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY, APP_STORE_ID)
+        - certificate_credentials # <-- (CERTIFICATE_PRIVATE_KEY)
+        - other (BUNDLE_ID, XCODE_WORKSPACE, XCODE_SCHEME)
       vars:
-        XCODE_WORKSPACE: "Runner.xcworkspace"
-        XCODE_SCHEME: "Runner"                
+        # XCODE_WORKSPACE: "Runner.xcworkspace"
+        # XCODE_SCHEME: "Runner"                
         # https://docs.codemagic.io/code-signing-yaml/signing-ios/
-        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...) # <-- Put your encrypted App Store Connect Issuer Id here 
-        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...) # <-- Put your encrypted App Store Connect Key Identifier here 
-        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...) # <-- Put your encrypted App Store Connect Private Key here 
-        CERTIFICATE_PRIVATE_KEY: Encrypted(...) # <-- Put your encrypted Certificate Private Key here 
-        BUNDLE_ID: "io.codemagic.flutteryaml" # <-- Put your bundle id here
-        APP_STORE_ID: 1111111111 # <-- Use the TestFlight Apple id number (An automatically generated ID assigned to your app) found under General > App Information > Apple ID. 
+        # APP_STORE_ID: # <-- Use the TestFlight Apple id number (An automatically generated ID assigned to your app) found under General > App Information > Apple ID. 
       flutter: stable
       xcode: latest
       cocoapods: default
