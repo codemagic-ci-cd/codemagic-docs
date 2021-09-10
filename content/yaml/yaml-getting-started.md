@@ -252,7 +252,7 @@ environment:
 
 {{<notebox>}}
 
-Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help speed up iOS builds with Xcode 10.2 or later.
+Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help speed up iOS builds with Xcode 10.2 or later. Codemagic doesn't support caching symlinks.
 
 {{</notebox>}}
 
