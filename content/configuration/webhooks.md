@@ -45,6 +45,6 @@ In order to start using webhooks with **AWS CodeCommit**, it is first necessary 
 
 Open your application repository and navigate to **Notify** > **Create notification rule** and enter a name for your Notification rule.
 
-Under **Events that trigger notifications**, select **Source updated** and **Created** events in the **Pull request** section and select the **Created** and **Updated** events in the **Branches and tags** section.
+Under **Events that trigger notifications**, select the **Source updated** and **Created** events in the **Pull request** section, and select the **Created** and **Updated** events in the **Branches and tags** section.
 
 Set the target type to **SNS topic**, select a configured target and click on **Submit**.
