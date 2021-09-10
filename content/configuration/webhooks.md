@@ -29,7 +29,7 @@ Open your application repository, go to **Settings** > **Webhooks** (in **Workfl
 
 ## Setting up webhooks for AWS CodeCommit
 
-In order to start using webhooks with **AWS CodeCommit**, it is first necessary to create a subscription with the **AWS Simple Notification Service**.
+To start using webhooks with **AWS CodeCommit**, it is first necessary to create a subscription with the **AWS Simple Notification Service**.
 
 ### Configuring the subscription
 
@@ -39,12 +39,12 @@ In order to start using webhooks with **AWS CodeCommit**, it is first necessary 
 4. Navigate to **Subscriptions** > **Create subscription**.
 5. Select the previously configured topic, set the protocol to **HTTPS**, and set the Codemagic **payload URL** as the endpoint. Proceed by clicking **Create subscription**.
 6. In the Codemagic UI, navigate to your application and select the **Webhooks** tab.
-7. Under **Recent deliveries** select the most recent webhook, and copy the subscription link from under the **Results** tab to your browser.
+7. Under **Recent deliveries**, choose the most recent webhook, and copy the subscription link under the **Results** tab to your browser.
 
 ### Configuring webhook events
 
 Open your application repository and navigate to **Notify** > **Create notification rule** and enter a name for your Notification rule.
 
-Under **Events that trigger notifications**, select the **Source updated** and **Created** events in the **Pull request** section, and select the **Created** and **Updated** events in the **Branches and tags** section.
+Under **Events that trigger notifications**, select the **Source updated** and **Created** events in the **Pull request** section and the **Created** and **Updated** events in the **Branches and tags** section.
 
 Set the target type to **SNS topic**, select a configured target and click on **Submit**.
