@@ -30,28 +30,28 @@ Variables defined in environment variable groups work exactly as [Environment Va
 
 ## Encrypting values
 
-Putting values in the Variable value input and marking "Secure" checkbox will automatically encrypt those values. However, file encryption requires an additional base64 file encoding step and the process is done with the help of different machine specific command lines.
+Entering values in the Variable value input and marking the **Secure** checkbox will automatically encrypt those values. However, note that in order to store files as secure environment variables, the file needs to be base64 encoded first. This can be done with the help of different OS-specific command lines.
 
-On macOS, running the following command line copies the result to clipboard:
+On macOS, running the following command base64 encodes the file and copies the result to the clipboard:
 
 {{<notebox>}}
 cat dummy_data.p8 | base64 | pbcopy
 {{</notebox>}}
 
-For Windows, PowerShell command is:
+For Windows, the PowerShell command to base64 encode a file and copy it to the clipboard is:
 
 {{<notebox>}}
 [Convert]::ToBase64String([IO.File]::ReadAllBytes("your_file_name_.extension")) | Set-Clipboard
 {{</notebox>}}
 
-And for Linux machines xclip could be installed:
+For Linux machines, we recommend installing xclip:
 
 {{<notebox>}}
 sudo apt-get install xclip
 cat your_file_name.extension | base64 | xclip -selection clipboard
 {{</notebox>}}
 
-After running these command lines, pasting what is automatically copied into the Variable value input and checking the "Secure" checkbox completes the encryption process.
+After running these command lines, you can paste the automatically copied string into the Variable value input and check the **Secure** checkbox to store the value in encrypted form in Codemagic.
 
 
 ## Global variables and secrets
