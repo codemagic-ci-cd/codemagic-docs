@@ -43,10 +43,16 @@ Set up local properties
 ```yaml
 - echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
 ```
-### Building .apk
+### Building an app bundle
 
 ```yaml
-- flutter build apk --release
+- flutter build appbundle --release
+```
+
+### Building .apk for debug builds
+
+```yaml
+- flutter build apk --debug
 ```
 
 ### Building universal .apk(s) from existing app bundle(s) with user-specified keys
@@ -62,7 +68,8 @@ If your app settings in Codemagic have building Android App Bundles enabled, we 
   --key-pass $FCI_KEY_PASSWORD
 ```
 
-Please make sure to wrap the `--bundle` pattern in single quotes. If `--bundle` option is not specified, default glob pattern `**/*.aab` will be used.
+Please make sure to wrap the `--bundle` pattern in single quotes. If the `--bundle` option is not specified, default glob pattern `**/*.aab` will be used.
+
 
 More information about Android code signing can be found [here](../code-signing-yaml/signing-android).
 
@@ -120,8 +127,8 @@ workflows:
         script: |
           cd . && flutter build apk --release --build-name=1.0.0 --build-number=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks="$GOOGLE_PLAY_TRACK") + 1))
     artifacts:
-      - build/**/outputs/apk/**/*.apk
       - build/**/outputs/bundle/**/*.aab
+      - build/**/outputs/apk/**/*.apk
       - build/**/outputs/**/mapping.txt
       - flutter_drive.log
     publishing:
