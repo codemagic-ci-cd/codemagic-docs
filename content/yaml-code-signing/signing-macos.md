@@ -49,15 +49,18 @@ Take note of the **Issuer ID** above the table of active keys as well as the **K
 
 ### Saving the API key to environment variables
 
-Save the API key and the related information as [environment](../getting-started/yaml#environment) variables. Make sure to [encrypt](../building/encrypting/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
+Save the API key and the related information in the `Environment variables` section of the Codemagic UI.
 
 ```yaml
 environment:
-  vars:
-    APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
-    APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
-    APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
-    CERTIFICATE_PRIVATE_KEY: Encrypted(...)
+  groups:
+    - appstore_key_properties
+    
+  #Following variables need to be added in Environment Variables: 
+    # APP_STORE_CONNECT_ISSUER_ID
+    # APP_STORE_CONNECT_KEY_IDENTIFIER
+    # APP_STORE_CONNECT_PRIVATE_KEY
+    # CERTIFICATE_PRIVATE_KEY
 ```
 
 - `APP_STORE_CONNECT_KEY_IDENTIFIER`
@@ -70,11 +73,11 @@ environment:
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. You'll need to [encrypt](../building/encrypting/) the **contents** of the file in the codemagic.yaml editor UI (and not the file itself). On macOS, you can use `pbcopy < AuthKey_XXXXXX.p8` to copy the contents of the private key and paste this into the UI encryption tool.
+  This is the private API key downloaded from App Store Connect. You'll need to `Secure` the **contents** of the file in the Environment Variables section of Codemagic UI (and not the file itself). On macOS, you can use `pbcopy < AuthKey_XXXXXX.p8` to copy and paste the contents of the private key and secure.
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic fetches or creates. You'll need to either create a new certificate and private key or find an existing one. You'll need to [encrypt](../building/encrypting/) the **contents** of the private key in the codemagic.yaml editor UI (and not the file itself). On macOS, you can use `pbcopy < private_key` to copy the contents of the private key and paste this into the UI encryption tool.
+  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic fetches or creates. You'll need to either create a new certificate and private key or find an existing one. You'll need to `Secure` the **contents** of the private key in the Environment Variables section of Codemagic UI (and not the file itself). On macOS, you can use `pbcopy < private_key` to copy the contents of the private key and paste this and click secure.
 
   App Developer Portal has a limitation of maximum of 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` or `Developer ID Application` certificates, you won't be able to create new ones. If any of those are not used, you may revoke them in the [Apple Developer Portal](https://developer.apple.com/account/resources/certificates/list), which will make it possible to create new certificates with the specified new certificate private key. You can create a new 2048 bit RSA key by running the following command in your terminal:
 
@@ -127,16 +130,18 @@ Instead of specifying the exact bundle-id, you can use `"$(xcode-project detect-
 
 ## Provide signing files manually
 
-In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that to encrypt files, they will have to be base64 encoded and will have to be decoded during the build.
+In order to use manual code signing, `Secure` your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that to encrypt files, they will have to be [base64 encoded](https://docs.codemagic.io/variables/environment-variable-groups/#global-variables-and-secrets) and will have to be decoded during the build.
 
 ```yaml
 environment:
-  vars:
-    APP_CERTIFICATE: Encrypted(...)
-    APP_CERTIFICATE_PASSWORD: Encrypted(...)
-    INSTALLER_CERTIFICATE: Encrypted(...)
-    INSTALLER_CERTIFICATE_PASSWORD: Encrypted(...)
-    PROVISIONING_PROFILE: Encrypted(...)
+  groups:
+    - appstore_credentials
+  #Variables used in the above group will be the following secured in Environment Variables Section:
+    # APP_CERTIFICATE
+    # APP_CERTIFICATE_PASSWORD
+    # INSTALLER_CERTIFICATE
+    # INSTALLER_CERTIFICATE_PASSWORD
+    # PROVISIONING_PROFILE
 ```
 
 Then add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
