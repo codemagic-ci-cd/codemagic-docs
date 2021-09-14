@@ -34,22 +34,22 @@ Entering values in the Variable value input and marking the **Secure** checkbox 
 
 On macOS, running the following command base64 encodes the file and copies the result to the clipboard:
 
-{{<notebox>}}
+```
 cat dummy_data.p8 | base64 | pbcopy
-{{</notebox>}}
+```
 
 For Windows, the PowerShell command to base64 encode a file and copy it to the clipboard is:
 
-{{<notebox>}}
+```
 [Convert]::ToBase64String([IO.File]::ReadAllBytes("your_file_name_.extension")) | Set-Clipboard
-{{</notebox>}}
+```
 
 For Linux machines, we recommend installing xclip:
 
-{{<notebox>}}
+```
 sudo apt-get install xclip
 cat your_file_name.extension | base64 | xclip -selection clipboard
-{{</notebox>}}
+```
 
 After running these command lines, you can paste the automatically copied string into the Variable value input and check the **Secure** checkbox to store the value in encrypted form in Codemagic.
 
