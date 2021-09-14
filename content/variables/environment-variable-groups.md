@@ -28,14 +28,16 @@ workflows:
 
 Variables defined in environment variable groups work exactly as [Environment Variables](../building/environment-variables/#using-environment-variables). The value of a variable named `API_TOKEN` can be referenced in a workflow as `$API_TOKEN`. Variables defined with the **_secure_** option will have values obfuscated in the Codemagic UI.
 
-## Encrypting values
+## Storing sensitive values/files
 
-Entering values in the Variable value input and marking the **Secure** checkbox will automatically encrypt those values. However, note that in order to store files as secure environment variables, the file needs to be base64 encoded first. This can be done with the help of different OS-specific command lines.
+Entering values in the Variable value input and marking the **Secure** checkbox will automatically encrypt those values. However, note that in order to store files as secure environment variables, the file needs to be base64 encoded first. This can be done with the help of different OS-specific command lines. To use the file, you will have to decode it during the build. 
+
+Files like keystore, provisioning profiles require to be encoded in base64.
 
 On macOS, running the following command base64 encodes the file and copies the result to the clipboard:
 
 ```
-cat dummy_data.p8 | base64 | pbcopy
+cat your_file_name.extension | base64 | pbcopy
 ```
 
 For Windows, the PowerShell command to base64 encode a file and copy it to the clipboard is:
@@ -53,6 +55,9 @@ cat your_file_name.extension | base64 | xclip -selection clipboard
 
 After running these command lines, you can paste the automatically copied string into the Variable value input and check the **Secure** checkbox to store the value in encrypted form in Codemagic.
 
+Finally, base64 decode it during build time in your scripts section using the following command:
+
+`echo $YOUR_ENVIRONMENT_VARIABLE | base64 --decode > /path/to/decode/to/your_file_name.extension`
 
 ## Global variables and secrets
 
