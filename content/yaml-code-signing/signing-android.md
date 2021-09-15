@@ -48,7 +48,7 @@ This example shows how to set up code signing using Gradle.
   }
   ...
 ```
-2. Add your keystore and keystore details in the **Environment Variables** section of the Codemagic UI. **Secure** your keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) and set the values to the following environment variables. Note that securing binary files requires you to [`base64 encode`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) them locally and decode them during the build.
+2. Save the keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) to the respective environment variables in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files i.e. keystore file requires you to [`base64 encode`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) them locally, before they can be saved to environment variables and decode them during the build.
 
 ```yaml
  environment:
@@ -64,7 +64,7 @@ This example shows how to set up code signing using Gradle.
 {{<notebox>}}
 Tip: Store all the keystore variables in the same group so they can be imported to codemagic.yaml workflow at once. 
   
-  If the group of variables are reusuable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
+If the group of variables are reusuable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
 {{</notebox>}}
 
 3. In the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, you will need to decode the keystore file and add it before the build command. You can choose any path to your keystore file. For example:
@@ -98,7 +98,7 @@ The following templates show code signing using `key.properties`.
 ```
 ### Set up code signing with user-specified keys
 
-In order to do code signing **Secure** your keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) and set the values to the following environment variables in the **Environment Variables** section of the Codemagic UI. Note that securing keystore file requires you to [`base64 encode`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) them locally and decode them during the build:
+In order to do code signing Save the keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) to the respective environment variables in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files i.e. keystore file requires you to [`base64 encode`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) them locally, before they can be saved to environment variables and decode them during the build:
 
 ```
 FCI_KEYSTORE_PATH: /tmp/keystore.keystore
