@@ -262,6 +262,10 @@ cache:
     - ~/.gradle/caches
     - ...
 ```
+{{<notebox>}}
+Note: Codemagic doesn't support caching symlinks.
+{{</notebox>}}
+
 
 ### Triggering
 
