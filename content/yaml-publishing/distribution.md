@@ -81,7 +81,7 @@ In addition, Codemagic supports [staged releases](https://support.google.com/goo
 ```yaml
 publishing:
   google_play:                                             # For Android app
-    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS       # JSON key file for Google Play service account secured in Environment Variables
+    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS       # Contents of the JSON key file for Google Play service account saved as a secure environment variable
     track: alpha                                           # Name of the track: internal, alpha, beta, production, internal app sharing, or your custom track name
     in_app_update_priority: 3                              # Priority of the release (only set if in-app updates are supported): integer in range [0, 5]
     rollout_fraction: 0.25                                 # Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
@@ -117,7 +117,7 @@ Please note that
 ```yaml
 publishing:
   app_store_connect:                  # For iOS or macOS app
-    api_key: $APP_STORE_CONNECT_PRIVATE_KEY          # Contents of the API key secured in Environment Variables
+    api_key: $APP_STORE_CONNECT_PRIVATE_KEY          # Contents of the API key saved as a secure environment variable
     key_id: 3MD9688D9K                # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
     issuer_id: 21d78e2f-b8ad-...      # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
     submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight beta review. Required for distributing to beta groups. Note: This action is performed during post-processing.
