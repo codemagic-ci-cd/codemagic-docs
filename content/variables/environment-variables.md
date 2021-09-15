@@ -37,7 +37,7 @@ Here you'll find some of the read-only environment variables explained.
 | FCI_BUILD_ID             | UUID of the build                                                                                                                                               |
 | FCI_TEST_STEP_STATUS     | Test step status, success or failure                                                                                                                            |
 | FCI_BUILD_STEP_STATUS    | Build step status, success, failure or skipped. Only available when using Workflow Editor, unavailable with codemagic.yaml                                                                                                                |
-| FCI_BUILD_DIR            | Absolute path to the cloned repository in Codemagic builders                                                                                                    |
+| FCI_BUILD_DIR            | Absolute path to the root directory of the cloned repository in Codemagic builders                                                                                                    |
 | FCI_BUILD_OUTPUT_DIR     | Contains the artifact files generated during the build                                                                                                          |
 | FCI_EXPORT_DIR           | The files added to this directory will be added to a zip file and made available as build artifacts                                                             |
 | FCI_FLUTTER_SCHEME       | Name of the iOS scheme to be used                                                                                                                               |
