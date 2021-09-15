@@ -44,7 +44,7 @@ Save the API key and the related information as [environment](../getting-started
 ```yaml
 environment:
   groups:
-    -appstore_credentials
+    - appstore_credentials
   #Following Variables will be used in the above group, variables will be secured in the Environment Variables Section of the Codemagic UI
     # APP_STORE_CONNECT_ISSUER_ID
     # APP_STORE_CONNECT_KEY_IDENTIFIER
@@ -104,14 +104,16 @@ Based on the specified bundle ID and [provisioning profile type](https://github.
 
 ## Manual code signing
 
-In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when securing files value, you will have to locally [`base64 encode`](https://docs.codemagic.io/variables/environment-variable-groups/#storing-sensitive-valuesfiles) them and then decode during the build.
+In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and `Secure` the values to the following environment variables. Note that when securing files value, you will have to locally [`base64 encode`](https://docs.codemagic.io/variables/environment-variable-groups/#storing-sensitive-valuesfiles) them and then decode during the build.
 
 ```yaml
 environment:
-  vars:
-    FCI_CERTIFICATE: Encrypted(...)
-    FCI_CERTIFICATE_PASSWORD: Encrypted(...)
-    FCI_PROVISIONING_PROFILE: Encrypted(...)
+  groups:
+    - certificate_credentials
+  #Following Variables will be used in the above group, variables will be secured in the Environment Variables Section of the Codemagic UI
+    # FCI_CERTIFICATE
+    # FCI_CERTIFICATE_PASSWORD
+    # FCI_PROVISIONING_PROFILE
 ```
 
 Then add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
@@ -148,9 +150,11 @@ scripts:
 To set up multiple provisioning profiles, for example, to use app extensions such as [NotificationService](https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension), the easiest option is to add the provisioning profiles to your environment variables with a similar naming convention:
 ```yaml
 environment:
-  vars:
-    FCI_PROVISIONING_PROFILE_BASE: Encrypted(...)
-    FCI_PROVISIONING_PROFILE_NOTIFICATIONSERVICE: Encrypted(...)
+  groups:
+    - provisional_profile
+   #Following Variables will be used in the above group, variables will be secured in the Environment Variables Section of the Codemagic UI
+    # FCI_PROVISIONING_PROFILE_BASE
+    # FCI_PROVISIONING_PROFILE_NOTIFICATIONSERVICE
 ```
 
 Then, set the profiles up in the build by using the following script in your YAML file:
