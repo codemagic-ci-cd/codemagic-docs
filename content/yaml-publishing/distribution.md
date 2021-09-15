@@ -214,7 +214,7 @@ To authenticate with Firebase, Codemagic requires either a **Firebase token** or
 
 To retrieve your Firebase token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
 
-Note that using a service account is a more secure option due to granular permission settings.
+Note that using a service account is a more secure option due to granular permission settings. Follow [this](/knowledge-base/google-services-authentication/#configuring-service-account-for-firebase-distribution) guide to set up service account for Firebase distribution.
 
 Save the Firebase token or the contents of the service account JSON file to your environment variables in the application or team settings. Click **Secure** to encrypt the value. Then, reference it in `codemagic.yaml` as `$FIREBASE_TOKEN` or `$FIREBASE_SERVICE_ACCOUNT` respectively.
 

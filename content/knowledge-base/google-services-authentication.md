@@ -28,6 +28,15 @@ In order to allow Codemagic to publish applications to Google Play, it is necess
 
 7. Finally, click **Invite user** to finish setting up the service account on Google Play.
 
+## Configuring service account for Firebase distribution
+
+1. On Firebase project page, navigate to **Project settings** by clicking on the cog button. Select **Service accounts** tab. Click on the "X service accounts" button as shown on screenshot. 
+![Firebase service accounts](../uploads/firebase_service_accounts_button.png)
+
+2. This will lead you to the Google Cloud Platform. Follow [this](/knowledge-base/google-services-authentication/#creating-a-service-account-with-the-desired-role) guide to create service account with **Firebase App Distribution Admin** role on the Google Cloud Platform side.
+
+3. Copy the content of the downloaded file and add it as environment variable in either the application or team settings.
+
 ## Using the service account with codemagic.yaml
 
 In order to set up publishing to Google Play, you need to encrypt the contents of the service account `JSON` key file and add the encrypted value to the Codemagic configuration file.
