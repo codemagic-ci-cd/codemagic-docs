@@ -216,7 +216,7 @@ To retrieve your Firebase token, follow the instructions in [Firebase documentat
 
 Note that using a service account is a more secure option due to granular permission settings.
 
-Whether you use Firebase token or service account, add it to your environment variables in application or team settings. Reference it in `codemagic.yaml` as `$FIREBASE_TOKEN` or `$FIREBASE_SERVICE_ACCOUNT` respectively.
+Save the Firebase token or the contents of the service account JSON file to your environment variables in the application or team settings. Click **Secure** to encrypt the value. Then, reference it in `codemagic.yaml` as `$FIREBASE_TOKEN` or `$FIREBASE_SERVICE_ACCOUNT` respectively.
 
 Example configuration for publishing Android and iOS artifacts to Firebase:
 
