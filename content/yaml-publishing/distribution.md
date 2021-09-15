@@ -206,42 +206,25 @@ echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleSe
 
 ### Publishing an app to Firebase App Distribution
 
-Codemagic enables you to automatically publish your iOS or Android app to [Firebase Console](https://console.firebase.google.com/). Codemagic uses your **Firebase token** for authentication with Firebase App Distribution. To retrieve the token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems). For distributing an iOS application to Firebase App Distribution, your application must use a development, Ad Hoc or Enterprise distribution profile.
+Codemagic enables you to automatically publish your iOS or Android app to [Firebase Console](https://console.firebase.google.com/).
 
-Make sure to `Secure` your Firebase token. It is possible to add the encrypted token directly under publishing or save it to the `FIREBASE_TOKEN` environment variable and reference it under publishing.
+For distributing an iOS application to Firebase App Distribution, your application must use a development, Ad Hoc or Enterprise distribution profile.
 
-Android
+To authenticate with Firebase, Codemagic requires either a **Firebase token** or a service account with **Firebase App Distribution Admin** role. 
 
-```yaml
-publishing:
-  firebase:
-    firebase_token: $FIREBASE_TOKEN # Add your Firebase token to your environment variables and reference as $FIREBASE_TOKEN
-    android:
-      app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx # Add your Android app id retrieved from Firebase console
-      groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
-        - androidTesters
-        - ...
-```
+To retrieve your Firebase token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
 
-iOS
+Note that using a service account is a more secure option due to granular permission settings.
+
+Save the Firebase token or the contents of the service account JSON file to your environment variables in the application or team settings. Click **Secure** to encrypt the value. Then, reference it in `codemagic.yaml` as `$FIREBASE_TOKEN` or `$FIREBASE_SERVICE_ACCOUNT` respectively.
+
+Example configuration for publishing Android and iOS artifacts to Firebase:
 
 ```yaml
 publishing:
   firebase:
-    firebase_token: $FIREBASE_TOKEN # Add your Firebase token to your environment variables and reference as $FIREBASE_TOKEN
-    ios:
-      app_id: x:xxxxxxxxxxxx:ios:xxxxxxxxxxxxxxxxxxxxxx # Add your iOS app id retrieved from Firebase console
-      groups: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
-        - iosTesters
-        - ...
-```
-
-Android and iOS
-
-```yaml
-publishing:
-  firebase:
-    firebase_token: $FIREBASE_TOKEN # Add your Firebase token to your environment variables and reference as $FIREBASE_TOKEN
+    firebase_token: $FIREBASE_TOKEN
+    # OR: firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
     android:
       app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx # Add your Android app id retrieved from Firebase console
       groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
