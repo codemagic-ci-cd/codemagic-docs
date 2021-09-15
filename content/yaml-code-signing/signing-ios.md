@@ -21,8 +21,6 @@ Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/
 
 ## Automatic code signing
 
-{{< youtube 2kLi7Fe7q-0 >}}
-
 In order to use automatic code signing and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect.
 
 ### Creating the App Store Connect API key
@@ -41,15 +39,17 @@ Take note of the **Issuer ID** above the table of active keys as well as the **K
 
 ### Saving the API key to environment variables
 
-Save the API key and the related information as [environment](../getting-started/yaml#environment) variables. Make sure to [encrypt](../building/encrypting/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
+Save the API key and the related information as [environment](../getting-started/yaml#environment) variables. Make sure to `Secure` the values of the variables before adding them to the configuration file.
 
 ```yaml
 environment:
-  vars:
-    APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
-    APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
-    APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
-    CERTIFICATE_PRIVATE_KEY: Encrypted(...)
+  groups:
+    -appstore_credentials
+  #Following Variables will be used in the above group, variables will be secured in the Environment Variables Section of the Codemagic UI
+    # APP_STORE_CONNECT_ISSUER_ID
+    # APP_STORE_CONNECT_KEY_IDENTIFIER
+    # APP_STORE_CONNECT_PRIVATE_KEY 
+    # CERTIFICATE_PRIVATE_KEY
 ```
 
 - `APP_STORE_CONNECT_KEY_IDENTIFIER`
@@ -62,11 +62,11 @@ environment:
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. Encrypt the **contents** of the file and save the encrypted value to the environment variable.
+  This is the private API key downloaded from App Store Connect. Encrypt the **contents** of the file and secure value to the environment variable.
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Running the command line will create private and public keys. Note that you should encrypt the **contents** of the private file and save the encrypted value to the environment variable. 
+  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Running the command line will create private and public keys. Note that you should secure the **contents** of the private file and save the values in Environment Variables Section. 
 
 ```bash
 ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
@@ -104,7 +104,7 @@ Based on the specified bundle ID and [provisioning profile type](https://github.
 
 ## Manual code signing
 
-In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when encrypting files, you will have to locally base64 encode them and then decode during the build.
+In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and set the encrypted values to the following environment variables. Note that when securing files value, you will have to locally [`base64 encode`](https://docs.codemagic.io/variables/environment-variable-groups/#storing-sensitive-valuesfiles) them and then decode during the build.
 
 ```yaml
 environment:
