@@ -48,7 +48,7 @@ This example shows how to set up code signing using Gradle.
   }
   ...
 ```
-2. Save the keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) to the respective environment variables in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files i.e. keystore file requires you to [`base64 encode`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) them locally, before they can be saved to environment variables and decode them during the build.
+2. Save the keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) to the respective environment variables in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files (i.e. keystore) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build.
 
 ```yaml
  environment:
