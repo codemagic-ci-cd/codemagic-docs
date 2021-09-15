@@ -72,7 +72,7 @@ publishing:
 
 ### Google Play
 
-Codemagic enables you to automatically publish your app either to one of the predefined tracks (`internal`- publish for internal testing and QA, `alpha`- publish for testing with a small group of trusted users, `beta`- publish for testing to a wider set of users and `production`- release the app to production) on Google Play or to your custom closed testing tracks. In order to do so, you will need to set up a service account in Google Play Console and add the `JSON` key file to your Codemagic configuration file; see how to [set up a service account](../knowledge-base/google-play-api/). The proper way to add your keys to `codemagic.yaml` is to [encrypt](../building/encrypting) the key file contents and add the encrypted value into the configuration file.
+Codemagic enables you to automatically publish your app either to one of the predefined tracks (`internal`- publish for internal testing and QA, `alpha`- publish for testing with a small group of trusted users, `beta`- publish for testing to a wider set of users and `production`- release the app to production) on Google Play or to your custom closed testing tracks. In order to do so, you will need to [set up a service account in Google Play Console](../knowledge-base/google-play-api/) and save the contents of the `JSON` key file as a [secure environment variable](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) in application or team settings.
 
 If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates), Codemagic allows setting the update priority. Otherwise, `in_app_update_priority` can be omitted or set to `0`.
 
@@ -80,12 +80,12 @@ In addition, Codemagic supports [staged releases](https://support.google.com/goo
 
 ```yaml
 publishing:
-  google_play:                        # For Android app
-    credentials: Encrypted(...)       # JSON key file for Google Play service account
-    track: alpha                      # Name of the track: internal, alpha, beta, production, internal app sharing, or your custom track name
-    in_app_update_priority: 3         # Priority of the release (only set if in-app updates are supported): integer in range [0, 5]
-    rollout_fraction: 0.25            # Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
-    changes_not_sent_for_review: true # To be used ONLY if your app cannot be sent for review automatically *
+  google_play:                                             # For Android app
+    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS       # JSON key file for Google Play service account secured in Environment Variables
+    track: alpha                                           # Name of the track: internal, alpha, beta, production, internal app sharing, or your custom track name
+    in_app_update_priority: 3                              # Priority of the release (only set if in-app updates are supported): integer in range [0, 5]
+    rollout_fraction: 0.25                                 # Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
+    changes_not_sent_for_review: true                      # To be used ONLY if your app cannot be sent for review automatically *
 ```
 
 {{<notebox>}}
@@ -117,7 +117,7 @@ Please note that
 ```yaml
 publishing:
   app_store_connect:                  # For iOS or macOS app
-    api_key: Encrypted(...)           # Contents of the API key, can also reference environment variable such as $APP_STORE_CONNECT_PRIVATE_KEY
+    api_key: $APP_STORE_CONNECT_PRIVATE_KEY          # Contents of the API key secured in Environment Variables
     key_id: 3MD9688D9K                # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
     issuer_id: 21d78e2f-b8ad-...      # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
     submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight beta review. Required for distributing to beta groups. Note: This action is performed during post-processing.
@@ -196,7 +196,7 @@ After that, `credentials.json` will be generated, which you can use to log in wi
 
 ## Publishing an app to Firebase App Distribution
 
-If you use a Firebase service, encrypt `google-services.json` as `ANDROID_FIREBASE_SECRET` environment variable for Android
+If you use a Firebase service, secure `google-services.json` as `ANDROID_FIREBASE_SECRET` environment variable for Android
 or `GoogleService-Info.plist` as `IOS_FIREBASE_SECRET` for iOS.
 
 ```bash
@@ -208,14 +208,14 @@ echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleSe
 
 Codemagic enables you to automatically publish your iOS or Android app to [Firebase Console](https://console.firebase.google.com/). Codemagic uses your **Firebase token** for authentication with Firebase App Distribution. To retrieve the token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems). For distributing an iOS application to Firebase App Distribution, your application must use a development, Ad Hoc or Enterprise distribution profile.
 
-Make sure to [encrypt](https://docs.codemagic.io/building/encrypting/) your Firebase token. It is possible to add the encrypted token directly under publishing or save it to the `FIREBASE_TOKEN` environment variable and reference it under publishing.
+Make sure to `Secure` your Firebase token. It is possible to add the encrypted token directly under publishing or save it to the `FIREBASE_TOKEN` environment variable and reference it under publishing.
 
 Android
 
 ```yaml
 publishing:
   firebase:
-    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    firebase_token: $FIREBASE_TOKEN # Add your Firebase token to your environment variables and reference as $FIREBASE_TOKEN
     android:
       app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx # Add your Android app id retrieved from Firebase console
       groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
@@ -228,7 +228,7 @@ iOS
 ```yaml
 publishing:
   firebase:
-    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    firebase_token: $FIREBASE_TOKEN # Add your Firebase token to your environment variables and reference as $FIREBASE_TOKEN
     ios:
       app_id: x:xxxxxxxxxxxx:ios:xxxxxxxxxxxxxxxxxxxxxx # Add your iOS app id retrieved from Firebase console
       groups: # Add one or more groups that you wish to distribute your iOS application to, you can create groups in the Firebase console
@@ -241,7 +241,7 @@ Android and iOS
 ```yaml
 publishing:
   firebase:
-    firebase_token: Encrypted(...) # Add your encrypted Firebase token, or add it to your environment variables and reference as $FIREBASE_TOKEN
+    firebase_token: $FIREBASE_TOKEN # Add your Firebase token to your environment variables and reference as $FIREBASE_TOKEN
     android:
       app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx # Add your Android app id retrieved from Firebase console
       groups: # Add one or more groups that you wish to distribute your Android application to, you can create groups in the Firebase console
