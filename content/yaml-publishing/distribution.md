@@ -210,7 +210,7 @@ Codemagic enables you to automatically publish your iOS or Android app to [Fireb
 
 For distributing an iOS application to Firebase App Distribution, your application must use a development, Ad Hoc or Enterprise distribution profile.
 
-To distribute your application Codemagic requires either **Firegase token** or service account with **Firebase App Distribution Admin** role. 
+To authenticate with Firebase, Codemagic requires either a **Firebase token** or a service account with **Firebase App Distribution Admin** role. 
 
 To retrieve your Firebase token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
 
