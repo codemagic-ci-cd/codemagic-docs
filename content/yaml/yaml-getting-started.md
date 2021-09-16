@@ -83,6 +83,8 @@ workflows:
     instance_type: mac_mini
     max_build_duration: 60
     environment:
+      groups:
+        - group_name
       vars:
         PUBLIC_ENV_VAR: "value here"
       flutter: stable
@@ -146,53 +148,61 @@ Note that `mac_pro`, `linux`, and `linux_x2` are only available for teams and us
 
 ### Environment
 
-`environment:` specifies the environment variables and build machine software versions.
+`environment:` specifies the environment variables, variable groups and build machine software versions.
+
+#### Environment variable groups
+
+The snippet below shows how to import [environment variable groups](../building/environment-variable-groups/) defined in the team settings and application settings and also how to define them in the cofiguration file, such as credentials and API keys required for [code signing](../code-signing-yaml/signing). Click **Secure** to encrypt the values. Note that binary files have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build.
+
+```yaml
+environment:
+  groups:             # Define your environment variables groups here
+    - keystore_credentials
+    - app_store_credentials
+    - manual_cert_credentials
+    - firebase_credentials
+    - other
+    
+    # Android code signing - Add the keystore_credentials group environment variables in Codemagic UI (either in Application/Team variables)
+    # FCI_KEYSTORE
+    # FCI_KEYSTORE_PASSWORD
+    # FCI_KEY_PASSWORD
+    # FCI_KEY_ALIAS
+
+    # iOS automatic code signing - Add the app_store_credentials group environment variables in Codemagic UI (either in Application/Team variables)
+    # APP_STORE_CONNECT_ISSUER_ID
+    # APP_STORE_CONNECT_KEY_IDENTIFIER
+    # APP_STORE_CONNECT_PRIVATE_KEY
+    # CERTIFICATE_PRIVATE_KEY
+
+    # iOS manual code signing - Add the manual_cert_credentials group environment variables in Codemagic UI (either in Application/Team variables)
+    # FCI_CERTIFICATE
+    # FCI_CERTIFICATE_PASSWORD
+    # FCI_PROVISIONING_PROFILE
+
+    # Firebase secrets - Add the firebase_credentials group environment variables in Codemagic UI (either in Application/Team variables
+    # ANDROID_FIREBASE_SECRET
+    # IOS_FIREBASE_SECRET
+    
+    # Add the other group environment variables in Codemagic UI (either in Application/Team variables
+    # SSH_KEY_GITHUB     # defining an ssh key used to download private dependencies
+    # CREDENTIALS        # publishing a package to pub.dev
+    # APP_CENTER_TOKEN   # publishing an application to App Center
+```
+{{<notebox>}}
+Tip: Store all the keystore variables in the same group so they can be imported to codemagic.yaml workflow at once. 
+  
+If the group of variables is reusable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
+{{</notebox>}}
 
 #### Workflow environment variables
 
-The snippet below shows how to define workflow specific environment variables, such as credentials and API keys required for [code signing](../code-signing-yaml/signing). See [encrypting sensitive data](../building/encrypting) for more details on environment variable encryption.
+The snippet below shows how to define workflow specific public environment variables. 
 
 ```yaml
 environment:
   vars:             # Define your environment variables here
     PUBLIC_ENV_VAR: "value here"
-    SECRET_ENV_VAR: Encrypted(...)
-
-    # Android code signing
-    FCI_KEYSTORE: Encrypted(...)
-    FCI_KEYSTORE_PASSWORD: Encrypted(...)
-    FCI_KEY_PASSWORD: Encrypted(...)
-    FCI_KEY_ALIAS: Encrypted(...)
-
-    # iOS automatic code signing
-    APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
-    APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
-    APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
-    CERTIFICATE_PRIVATE_KEY: Encrypted(...)
-
-    # iOS manual code signing
-    FCI_CERTIFICATE: Encrypted(...)
-    FCI_CERTIFICATE_PASSWORD: Encrypted(...)
-    FCI_PROVISIONING_PROFILE: Encrypted(...)
-
-    # Firebase secrets
-    ANDROID_FIREBASE_SECRET: Encrypted(...)
-    IOS_FIREBASE_SECRET: Encrypted(...)
-
-    SSH_KEY_GITHUB: Encrypted(...)     # defining an ssh key used to download private dependencies
-    CREDENTIALS: Encrypted(...)        # publishing a package to pub.dev
-    APP_CENTER_TOKEN: Encrypted(...)   # publishing an application to App Center
-```
-
-#### Environment variable groups
-
-The snippet below shows how to import [environment variable groups](../building/environment-variable-groups/) defined in the team settings and application settings. 
-
-```yaml
-environment:
-  groups:           # Import UI defined environment variable groups here
-    - env_var_group_1
-    - env_var_group_2
 ```
 
 #### Build machine and software versions
@@ -228,10 +238,9 @@ You can freely use all of the above features of environment section in conjuncti
 
 ```yaml
 environment:
-  vars: # Define your environment variables here
+  vars: # Define your public environment variables here
     PUBLIC_ENV_VAR: 'value here'
-    PRIVATE_ENV_VAR: Encrypted(...)
-  groups: # Import UI defined environment variable groups here
+  groups: # Import UI defined environment variable groups(either in Application/Team variables) here
     - staging
   xcode: latest # Define latest, edge or version (e.g. 11.2)
   flutter: stable   # Define the channel name or version (e.g. v1.13.4)
@@ -265,7 +274,6 @@ cache:
 {{<notebox>}}
 Note: Codemagic doesn't support caching symlinks.
 {{</notebox>}}
-
 
 ### Triggering
 
