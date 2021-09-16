@@ -66,7 +66,7 @@ environment:
 {{<notebox>}}
 Tip: Store all the Apple store variables in the same group so they can be imported to codemagic.yaml workflow at once. 
   
-If the group of variables are reusuable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
+If the group of variables is reusable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
 {{</notebox>}}
 
 - `APP_STORE_CONNECT_KEY_IDENTIFIER`
