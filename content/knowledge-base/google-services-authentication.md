@@ -1,5 +1,5 @@
 ---
-title: Authentication with Google Services
+title: Authenticating with Google Services
 description: How to set up a Google Play service account for Codemagic
 weight: 6
 aliases: /knowledge-base/google-play-api
