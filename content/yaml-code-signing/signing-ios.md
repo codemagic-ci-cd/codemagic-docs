@@ -39,18 +39,23 @@ Take note of the **Issuer ID** above the table of active keys as well as the **K
 
 ### Saving the API key to environment variables
 
-Save the API key and the related information as [environment](../getting-started/yaml#environment) variables. Make sure to `Secure` the values of the variables before adding them to the configuration file.
+Save the API key and the related information in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Add the group in the **codemagic.yaml** as follows:
 
 ```yaml
 environment:
   groups:
     - appstore_credentials
-  #Following Variables will be used in the above group, variables will be secured in the Environment Variables Section of the Codemagic UI
+  #Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables): 
     # APP_STORE_CONNECT_ISSUER_ID
     # APP_STORE_CONNECT_KEY_IDENTIFIER
     # APP_STORE_CONNECT_PRIVATE_KEY 
     # CERTIFICATE_PRIVATE_KEY
 ```
+{{<notebox>}}
+Tip: Store all the Apple store variables in the same group so they can be imported to codemagic.yaml workflow at once. 
+
+If the group of variables is reusable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
+{{</notebox>}}
 
 - `APP_STORE_CONNECT_KEY_IDENTIFIER`
 
@@ -62,11 +67,11 @@ environment:
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. Encrypt the **contents** of the file and secure value to the environment variable.
+  This is the private API key downloaded from App Store Connect. You'll need to click **Secure** to encrypt the **contents** of the file and save it to the environment variable.
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Running the command line will create private and public keys. Note that you should secure the **contents** of the private file and save the values in Environment Variables Section. 
+  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Running the command line will create private and public keys. Note that you should click **secure** the **contents** of the private file in the **Environment Variables** Section. 
 
 ```bash
 ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
@@ -104,13 +109,13 @@ Based on the specified bundle ID and [provisioning profile type](https://github.
 
 ## Manual code signing
 
-In order to use manual code signing, [encrypt](../building/encrypting/#encrypting-sensitive-data) your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile**, and `Secure` the values to the following environment variables. Note that when securing files value, you will have to locally [`base64 encode`](https://docs.codemagic.io/variables/environment-variable-groups/#storing-sensitive-valuesfiles) them and then decode during the build.
+In order to use manual code signing, Save your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile** in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build.
 
 ```yaml
 environment:
   groups:
     - certificate_credentials
-  #Following Variables will be used in the above group, variables will be secured in the Environment Variables Section of the Codemagic UI
+  #Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables): 
     # FCI_CERTIFICATE
     # FCI_CERTIFICATE_PASSWORD
     # FCI_PROVISIONING_PROFILE
@@ -152,7 +157,7 @@ To set up multiple provisioning profiles, for example, to use app extensions suc
 environment:
   groups:
     - provisional_profile
-   #Following Variables will be used in the above group, variables will be secured in the Environment Variables Section of the Codemagic UI
+   #Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables): 
     # FCI_PROVISIONING_PROFILE_BASE
     # FCI_PROVISIONING_PROFILE_NOTIFICATIONSERVICE
 ```
