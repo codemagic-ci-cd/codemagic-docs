@@ -61,7 +61,7 @@ Save the API key and the related information in the **Environment variables** se
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. On macOS, you can use `pbcopy < AuthKey_XXXXXX.p8` to copy and paste the contents of the private key and secure.
+  This is the private API key downloaded from App Store Connect. On macOS, you can use `pbcopy < AuthKey_XXXXXX.p8` to copy.
 
 - `CERTIFICATE_PRIVATE_KEY`
 
