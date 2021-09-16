@@ -49,25 +49,7 @@ Take note of the **Issuer ID** above the table of active keys as well as the **K
 
 ### Saving the API key to environment variables
 
-Save the API key and the related information in the **Environment variables** section of the Codemagic UI and click **Secure**. Add the group in the **codemagic.yaml** as follows:
-
-```yaml
-environment:
-  groups:
-    - appstore_key_properties
-    
-  #Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables): 
-    # APP_STORE_CONNECT_ISSUER_ID
-    # APP_STORE_CONNECT_KEY_IDENTIFIER
-    # APP_STORE_CONNECT_PRIVATE_KEY
-    # CERTIFICATE_PRIVATE_KEY
-```
-
-{{<notebox>}}
-Tip: Store all the Apple store variables in the same group so they can be imported to codemagic.yaml workflow at once. 
-  
-If the group of variables is reusable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
-{{</notebox>}}
+Save the API key and the related information in the **Environment variables** section of the Codemagic UI and click **Secure**. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build. Below are the following enviornment variables:
 
 - `APP_STORE_CONNECT_KEY_IDENTIFIER`
 
@@ -83,7 +65,7 @@ If the group of variables is reusable for various applications, they can be defi
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic fetches or creates. You'll need to either create a new certificate and private key or find an existing one. You'll need to click **Secure** to encrypt the **contents** of the private key in the Environment Variables section of Codemagic UI (and not the file itself). On macOS, you can use `pbcopy < private_key` to copy the contents of the private key and paste this and click secure.
+  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic fetches or creates. You'll need to either create a new certificate and private key or find an existing one. You'll need to click **Secure** to encrypt the **contents** of the private key in the Environment Variables section of Codemagic UI (and not the file itself). On macOS, you can use `pbcopy < private_key` to copy the contents of the private key.
 
   App Developer Portal has a limitation of maximum of 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` or `Developer ID Application` certificates, you won't be able to create new ones. If any of those are not used, you may revoke them in the [Apple Developer Portal](https://developer.apple.com/account/resources/certificates/list), which will make it possible to create new certificates with the specified new certificate private key. You can create a new 2048 bit RSA key by running the following command in your terminal:
 
@@ -96,6 +78,26 @@ If the group of variables is reusable for various applications, they can be defi
     ```bash
     openssl pkcs12 -in <your_certificate_name>.p12 -nodes -nocerts | openssl rsa -out <your_private_key_name>.key
     ```
+
+{{<notebox>}}
+Tip: Store all the Apple store variables in the same group so they can be imported to codemagic.yaml workflow at once. 
+  
+If the group of variables is reusable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
+{{</notebox>}}
+
+Add the group in the **codemagic.yaml** as follows:
+
+```yaml
+environment:
+  groups:
+    - appstore_key_properties
+    
+  # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables): 
+    # APP_STORE_CONNECT_ISSUER_ID
+    # APP_STORE_CONNECT_KEY_IDENTIFIER
+    # APP_STORE_CONNECT_PRIVATE_KEY
+    # CERTIFICATE_PRIVATE_KEY
+```
 
 {{<notebox>}}
 Alternatively, each property can be specified in the `scripts` section of the YAML file as a command argument to programs with dedicated flags. See the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id). In that case, the environment variables will be fallbacks for missing values in scripts.
@@ -142,7 +144,8 @@ In order to use manual code signing, Save your **signing certificate**, the **ce
 environment:
   groups:
     - appstore_credentials
-  #Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables):
+    
+  # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables):
     # APP_CERTIFICATE
     # APP_CERTIFICATE_PASSWORD
     # INSTALLER_CERTIFICATE
