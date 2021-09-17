@@ -125,8 +125,8 @@ APP_STORE_CONNECT_ISSUER_ID | Put your App Store Connect Issuer Id here  | appst
 APP_STORE_CONNECT_KEY_IDENTIFIER | Put your App Store Connect Key Identifier here | appstore_credentials
 APP_STORE_CONNECT_PRIVATE_KEY | Put your App Store Connect Private Key here | appstore_credentials
 CERTIFICATE_PRIVATE_KEY | Put your Certificate Private Key here | certificate_credentials
-BUNDLE_ID | Put your key alias here | other
-APP_STORE_ID | Put your TestFlight Apple id number (General > App Information > Apple ID) | appstore_credentials
+BUNDLE_ID | Put your bundle id here | other
+APP_STORE_ID | Put your TestFlight Apple id number (General > App Information > Apple ID) | other
 XCODE_WORKSPACE | Put the name of your workspace here | other
 XCODE_SCHEME | Put the name of your scheme here | other
 
