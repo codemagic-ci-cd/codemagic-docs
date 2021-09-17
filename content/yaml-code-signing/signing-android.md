@@ -64,7 +64,7 @@ This example shows how to set up code signing using Gradle.
 {{<notebox>}}
 Tip: Store all the keystore variables in the same group so they can be imported to codemagic.yaml workflow at once. 
   
-If the group of variables are reusuable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
+If the group of variables is reusable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
 {{</notebox>}}
 
 3. In the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, you will need to decode the keystore file and add it before the build command. You can choose any path to your keystore file. For example:
