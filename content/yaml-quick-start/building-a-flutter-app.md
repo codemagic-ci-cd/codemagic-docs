@@ -86,7 +86,7 @@ workflows:
     max_build_duration: 120
     environment:
       group:
-        - keystore_credentials # <-- (Includes: FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
+        - keystore_credentials # <-- (Includes: FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
         - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
         - other
         # Add the above group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
