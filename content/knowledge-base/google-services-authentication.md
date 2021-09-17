@@ -38,7 +38,7 @@ A service account can be used to authenticate with various Firebase services, su
 
 2. This will lead you to the Google Cloud Platform. Please follow the steps in [this](/knowledge-base/google-services-authentication/#creating-a-service-account-with-the-desired-role) guide to create a service account with the required role in Google Cloud Platform. Note that **Editor** role is required for Firebase Test Lab and **Firebase App Distribution Admin** for Firebase App Distribution.
 
-## Creating a service account with the desired role
+## Creating a service account
 
 1. Start creating your service account by clicking **+ Create service account** at the top of the page.<br><br>
 ![Google cloud platform](../uploads/google_cloud_start.png)

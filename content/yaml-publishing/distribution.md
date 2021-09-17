@@ -127,7 +127,7 @@ publishing:
 
 ```
 
-### Post-processing of App Store Connect distribution
+#### Post-processing of App Store Connect distribution
 
 Some App Store Connect actions, like `submit_to_testflight`, `beta_groups` and uploading release notes take place asynchronously in the post-processing step after the app artifact has been successfully published to App Store Connect and the main workflow has completed running in Codemagic. This avoids using the macOS build machine while we are waiting for Apple to complete processing the build and it becomes available for further actions. 
 
@@ -137,74 +137,11 @@ Note that Codemagic does not send status updates on the post-processing step. Yo
 
 Post-processing does not consume any build minutes.
 
-## GitHub releases
-
-Publishing GitHub releases is available for GitHub repositories only.
+### Firebase App Distribution
 
 {{<notebox>}}
-As of deprecating the GitHub OAuth integration, Codemagic no longer has write access to the repositories. Setting up a personal access token is needed to publish releases to GitHub. Please follow the instructions below.
+If you use Firebase services, load the Firebase configuration files to Codemagic by saving them to [environment variables](../variables/environment-variable-groups/#storing-sensitive-valuesfiles). Copy/paste the contents of `google-services.json` and `GoogleService-Info.plist` and save them to the environment variables named `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` respectively. Click **Secure** to encrypt the values.
 {{</notebox>}}
-
-Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
-
-1. Create a personal access token in GitHub as described [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
-2. Add the personal access token as an environment variable with the name `GITHUB_TOKEN` in the `environment` section.
-3. In the `triggering` section, configure triggering on tag creation. Don't forget to add a branch pattern and ensure the webhook exists.
-
-  ```yaml
-  triggering:
-    events:
-      - tag
-  ```
-
-4. Add the following script after the build or publishing scripts that publish the artifacts with tag builds. Edit the placeholders like your application name and the path to build artifacts to match your setup.
-
-    ```bash
-    #!/usr/bin/env zsh
-
-    # Publish only for tag builds
-    if [ -z ${FCI_TAG} ]; then
-    echo "Not a tag build will not publish GitHub release"
-    exit 0
-    fi
-
-    # See more options about `gh release create` usage from GitHub CLI
-    # official docs at https://cli.github.com/manual/gh_release_create
-
-    gh release create "${FCI_TAG}" \
-        --title "<Your Application Name> ${FCI_TAG}" \
-        --notes-file changelog.md \
-        path/to/build-artifact.ipa \
-        path/to/build-artifact.apk
-
-    # Note that you don't need to include title and changelog if you do not want to.
-    # Any number of artifacts can be included with the release.
-    ```
-
-## Publishing a Flutter package to pub.dev
-
-In order to get publishing permissions, first, you will need to log in to pub.dev locally. It can be done by running `pub publish --dry-run`.
-After that, `credentials.json` will be generated, which you can use to log in without the need for Google confirmation through the browser.
-
-`credentials.json` can be found in the pub cache directory (`~/.pub-cache/credentials.json` on MacOS and Linux, `%APPDATA%\Pub\Cache\credentials.json` on Windows)
-
-```yaml
-- echo $CREDENTIALS | base64 --decode > "$FLUTTER_ROOT/.pub-cache/credentials.json"
-- flutter pub publish --dry-run
-- flutter pub publish -f
-```
-
-## Publishing an app to Firebase App Distribution
-
-If you use a Firebase service, secure `google-services.json` as `ANDROID_FIREBASE_SECRET` environment variable for Android
-or `GoogleService-Info.plist` as `IOS_FIREBASE_SECRET` for iOS.
-
-```bash
-echo $ANDROID_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/android/app/google-services.json
-echo $IOS_FIREBASE_SECRET | base64 --decode > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
-```
-
-### Publishing an app to Firebase App Distribution
 
 Codemagic enables you to automatically publish your iOS or Android app to [Firebase Console](https://console.firebase.google.com/).
 
@@ -214,7 +151,7 @@ To authenticate with Firebase, Codemagic requires either a **Firebase token** or
 
 To retrieve your Firebase token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
 
-Note that using a service account is a more secure option due to granular permission settings. Follow [this](/knowledge-base/google-services-authentication/#configuring-service-account-for-firebase-distribution) guide to set up service account for Firebase distribution.
+Note that using a service account is a more secure option due to granular permission settings. Follow [this](/knowledge-base/google-services-authentication/#firebase) guide to set up service account for Firebase distribution.
 
 Save the Firebase token or the contents of the service account JSON file to your environment variables in the application or team settings. Click **Secure** to encrypt the value. Then, reference it in `codemagic.yaml` as `$FIREBASE_TOKEN` or `$FIREBASE_SERVICE_ACCOUNT` respectively.
 
@@ -239,7 +176,11 @@ publishing:
 
 If you wish to pass release notes with your build, create a `release_notes.txt` file and add it to the project working directory, which is either the repository root directory or the Project path specified in the Build section in your workflow settings. Codemagic will fetch the content of that file and publish it with the build.
 
-### Publishing an app with Fastlane
+## Publishing to Firebase App Distribution with Fastlane
+
+{{<notebox>}}
+If you use Firebase services, load the Firebase configuration files to Codemagic by saving them to [environment variables](../variables/environment-variable-groups/#storing-sensitive-valuesfiles). Copy/paste the contents of `google-services.json` and `GoogleService-Info.plist` and save them to the environment variables named `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` respectively. Click **Secure** to encrypt the values.
+{{</notebox>}}
 
 Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
 
@@ -274,7 +215,11 @@ iOS
     bundle exec fastlane <your_ios_lane>
 ```
 
-### Publishing an Android app with Gradle
+## Publishing an Android app to Firebase App Distribution with Gradle
+
+{{<notebox>}}
+If you use Firebase services, load the Firebase configuration files to Codemagic by saving them to [environment variables](../variables/environment-variable-groups/#storing-sensitive-valuesfiles). Copy/paste the contents of `google-services.json` and `GoogleService-Info.plist` and save them to the environment variables named `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` respectively. Click **Secure** to encrypt the values.
+{{</notebox>}}
 
 To authorize an application for Firebase App Distribution, use [Google service account](https://firebase.google.com/docs/app-distribution/android/distribute-gradle#authenticate_using_a_service_account).
 Encrypt and add to environment variables these credentials (the file is named something like `yourappname-6e632def9ad4.json`) as `GOOGLE_APP_CREDENTIALS`. Specify the filepath in your `build.gradle` in `firebaseAppDistribution` as `serviceCredentialsFile="your/file/path.json"`.
@@ -332,6 +277,62 @@ And then export the file path on the gradlew task
 ```
 
 {{</notebox>}}
+## GitHub releases
+
+Publishing GitHub releases is available for GitHub repositories only.
+
+{{<notebox>}}
+As of deprecating the GitHub OAuth integration, Codemagic no longer has write access to the repositories. Setting up a personal access token is needed to publish releases to GitHub. Please follow the instructions below.
+{{</notebox>}}
+
+Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
+
+1. Create a personal access token in GitHub as described [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+2. Add the personal access token as an environment variable with the name `GITHUB_TOKEN` in the `environment` section.
+3. In the `triggering` section, configure triggering on tag creation. Don't forget to add a branch pattern and ensure the webhook exists.
+
+  ```yaml
+  triggering:
+    events:
+      - tag
+  ```
+
+4. Add the following script after the build or publishing scripts that publish the artifacts with tag builds. Edit the placeholders like your application name and the path to build artifacts to match your setup.
+
+    ```bash
+    #!/usr/bin/env zsh
+
+    # Publish only for tag builds
+    if [ -z ${FCI_TAG} ]; then
+    echo "Not a tag build will not publish GitHub release"
+    exit 0
+    fi
+
+    # See more options about `gh release create` usage from GitHub CLI
+    # official docs at https://cli.github.com/manual/gh_release_create
+
+    gh release create "${FCI_TAG}" \
+        --title "<Your Application Name> ${FCI_TAG}" \
+        --notes-file changelog.md \
+        path/to/build-artifact.ipa \
+        path/to/build-artifact.apk
+
+    # Note that you don't need to include title and changelog if you do not want to.
+    # Any number of artifacts can be included with the release.
+    ```
+
+## Publishing a Flutter package to pub.dev
+
+In order to get publishing permissions, first, you will need to log in to pub.dev locally. It can be done by running `pub publish --dry-run`.
+After that, `credentials.json` will be generated, which you can use to log in without the need for Google confirmation through the browser.
+
+`credentials.json` can be found in the pub cache directory (`~/.pub-cache/credentials.json` on MacOS and Linux, `%APPDATA%\Pub\Cache\credentials.json` on Windows)
+
+```yaml
+- echo $CREDENTIALS | base64 --decode > "$FLUTTER_ROOT/.pub-cache/credentials.json"
+- flutter pub publish --dry-run
+- flutter pub publish -f
+```
 
 ## Publishing web applications to Firebase Hosting
 
