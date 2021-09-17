@@ -239,7 +239,7 @@ You can freely use all of the above features of environment section in conjuncti
 ```yaml
 environment:
   vars: # Define your public environment variables here
-    PUBLIC_ENV_VAR: 'value here'
+    PUBLIC_ENV_VAR: "value here"
   groups: # Import UI defined environment variable groups(either in Application/Team variables) here
     - staging
   xcode: latest # Define latest, edge or version (e.g. 11.2)
