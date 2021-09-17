@@ -140,7 +140,7 @@ Post-processing does not consume any build minutes.
 ### Firebase App Distribution
 
 {{<notebox>}}
-If you use Firebase services, load the Firebase configuration files to Codemagic by saving them to [environment variables](../variables/environment-variable-groups/#storing-sensitive-valuesfiles). Copy/paste the contents of `google-services.json` and `GoogleService-Info.plist` and save them to the environment variables named `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` respectively. Click **Secure** to encrypt the values.
+If you use Firebase services, load the Firebase configuration files to Codemagic by saving them to [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles). Copy/paste the contents of `google-services.json` and `GoogleService-Info.plist` and save them to the environment variables named `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` respectively. Click **Secure** to encrypt the values.
 {{</notebox>}}
 
 Codemagic enables you to automatically publish your iOS or Android app to [Firebase Console](https://console.firebase.google.com/).
@@ -179,7 +179,7 @@ If you wish to pass release notes with your build, create a `release_notes.txt` 
 ## Publishing to Firebase App Distribution with Fastlane
 
 {{<notebox>}}
-If you use Firebase services, load the Firebase configuration files to Codemagic by saving them to [environment variables](../variables/environment-variable-groups/#storing-sensitive-valuesfiles). Copy/paste the contents of `google-services.json` and `GoogleService-Info.plist` and save them to the environment variables named `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` respectively. Click **Secure** to encrypt the values.
+If you use Firebase services, load the Firebase configuration files to Codemagic by saving them to [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles). Copy/paste the contents of `google-services.json` and `GoogleService-Info.plist` and save them to the environment variables named `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` respectively. Click **Secure** to encrypt the values.
 {{</notebox>}}
 
 Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
@@ -218,7 +218,7 @@ iOS
 ## Publishing an Android app to Firebase App Distribution with Gradle
 
 {{<notebox>}}
-If you use Firebase services, load the Firebase configuration files to Codemagic by saving them to [environment variables](../variables/environment-variable-groups/#storing-sensitive-valuesfiles). Copy/paste the contents of `google-services.json` and `GoogleService-Info.plist` and save them to the environment variables named `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` respectively. Click **Secure** to encrypt the values.
+If you use Firebase services, load the Firebase configuration files to Codemagic by saving them to [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles). Copy/paste the contents of `google-services.json` and `GoogleService-Info.plist` and save them to the environment variables named `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` respectively. Click **Secure** to encrypt the values.
 {{</notebox>}}
 
 To authorize an application for Firebase App Distribution, use [Google service account](https://firebase.google.com/docs/app-distribution/android/distribute-gradle#authenticate_using_a_service_account).
