@@ -69,7 +69,7 @@ Finally, base64 decode it during build time in your scripts section using the fo
 `echo $YOUR_ENVIRONMENT_VARIABLE | base64 --decode > /path/to/decode/to/your_file_name.extension`
 
 {{<notebox>}}
-**Additional Tip**: When copying file contents always include any tags. e.g. Don't forget to copy `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` too.
+**Tip**: When copying file contents always include any tags. e.g. Don't forget to copy `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` too.
 {{</notebox>}}
 
 ## Global variables and secrets
@@ -106,7 +106,7 @@ FCI_KEYSTORE_PASSWORD | Put your keystore password here | keystore_credentials
 FCI_KEY_PASSWORD | Put your key alias password here | keystore_credentials
 FCI_KEY_ALIAS | Put your key alias here | keystore_credentials
 GCLOUD_SERVICE_ACCOUNT_CREDENTIALS | Put your Google Play service account credentials here | google_play_credentials
-GOOGLE_PLAY_TRACK | This must be "alpha" or above | google_play_credentials
+GOOGLE_PLAY_TRACK | Any default or custom track that is not in ‘draft’ status | google_play_credentials
 PACKAGE_NAME | Put your package name here | other
 
 ## Example for iOS builds
