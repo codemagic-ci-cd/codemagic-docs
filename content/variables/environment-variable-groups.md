@@ -59,7 +59,7 @@ sudo apt-get install xclip
 cat your_file_name.extension | base64 | xclip -selection clipboard
 ```
 {{<notebox>}}
-**Tip**: A convenient way to find a binary file is to try to peek into the file using less `filename. extension`. You'll be asked "**_filename maybe is a binary file.  See it anyway?_**"
+**Tip**: A convenient way to find a binary file is to try to peek into the file using less `filename.extension`. You'll be asked "**_filename maybe is a binary file.  See it anyway?_**"
 {{</notebox>}}
 
 After running these command lines, you can paste the automatically copied string into the Variable value input and check the **Secure** checkbox to store the value in encrypted form in Codemagic.
