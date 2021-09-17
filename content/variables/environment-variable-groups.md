@@ -117,7 +117,7 @@ PACKAGE_NAME | Put your package name here | other
         - certificate_credentials
         - other
 
-Add the above-mentioned group environment variables in Codemagic UI (either in Application/Team variables), don't forget to click **Secure** to make it encrypted: 
+Add the above-mentioned group environment variables in Codemagic UI (either in Application/Team variables), don't forget to click **Secure** to make sensitive data encrypted:
 
 **Variable name** | **Variable value** | **Group**
 --- | --- | ---
