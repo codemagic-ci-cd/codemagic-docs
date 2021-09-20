@@ -112,7 +112,7 @@ Based on the specified bundle ID and [provisioning profile type](https://github.
 
 ## Manual code signing
 
-In order to use manual code signing, Save your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile** in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build.
+In order to use manual code signing, save your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile** in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build.
 
 ```yaml
 environment:
