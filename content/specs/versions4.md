@@ -15,31 +15,31 @@ weight: 2
 
 - System version `macOS 11.4 (20F71)`
 - Kernel version `Darwin 20.5.0`
-- Disk `322GB (Free Space: 175GB)`
+- Disk `322GB (Free Space: 169GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `22.1.7171670`
-- aws `2.2.28`
-- cocoapods `1.10.1`
+- aws `2.2.38`
+- cocoapods `1.11.2`
 - cordova `10.0.0`
 - curl
 - docker `20.10.2`
-- fastlane `2.191.0`
+- fastlane `2.193.1`
 - firebase `9.3.0`
-- flutter `2.2.3 ($HOME/programs/flutter)`
-- gem `3.2.25`
-- gh `1.14.0`
-- git `2.32.0`
+- flutter `2.5.1 ($HOME/programs/flutter)`
+- gem `3.2.27`
+- gh `2.0.0`
+- git `2.33.0`
 - Google Cloud SDK `327.0.0`
 - gradle `6.7.1`
 - gsutil `4.58`
-- homebrew `3.2.6`
+- homebrew `3.2.12`
 - ionic `6.12.4`
 - jq
 - node `14.15.5`
-- npm `7.20.3`
+- npm `7.21.1`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
@@ -70,14 +70,14 @@ weight: 2
 - **11.0.12** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_302** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
-## Xcode 13.0 (13A5212g)
+## Xcode 13.0 (13A233)
 
 This is the Xcode version used by default when you select `13.0` or `edge` in build settings in the workflow 
 editor for Flutter apps or set Xcode version to `13.0` or `edge` in your codemagic.yaml file. 
 
 Xcode path: `/Applications/Xcode-13.0.app`
 
-With Xcode `13.0` build version `13A5212g` the following runtimes and devices are installed:
+With Xcode `13.0` build version `13A233` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -99,13 +99,17 @@ With Xcode `13.0` build version `13A5212g` the following runtimes and devices ar
 - Apple Watch Series 5 - 44mm
 - Apple Watch Series 6 - 40mm
 - Apple Watch Series 6 - 44mm
+- Apple Watch Series 7 - 41mm
+- Apple Watch Series 7 - 45mm
 - iPad (8th generation)
+- iPad (9th generation)
 - iPad Air (4th generation)
 - iPad Pro (11-inch) (2nd generation)
 - iPad Pro (11-inch) (3rd generation)
 - iPad Pro (12.9-inch) (4th generation)
 - iPad Pro (12.9-inch) (5th generation)
 - iPad Pro (9.7-inch)
+- iPad mini (6th generation)
 - iPhone 11
 - iPhone 11 Pro
 - iPhone 11 Pro Max
@@ -113,7 +117,12 @@ With Xcode `13.0` build version `13A5212g` the following runtimes and devices ar
 - iPhone 12 Pro
 - iPhone 12 Pro Max
 - iPhone 12 mini
+- iPhone 13
+- iPhone 13 Pro
+- iPhone 13 Pro Max
+- iPhone 13 mini
 - iPhone 8
 - iPhone 8 Plus
 - iPhone SE (2nd generation)
 - iPod touch (7th generation)
+
