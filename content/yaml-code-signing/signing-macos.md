@@ -65,7 +65,7 @@ Save the API key and the related information in the **Environment variables** se
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic fetches or creates. You'll need to either create a new certificate and private key or find an existing one. You'll need to click **Secure** to encrypt the **contents** of the private key in the Environment Variables section of Codemagic UI (and not the file itself). On macOS, you can use `pbcopy < private_key` to copy the contents of the private key.
+  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic fetches or creates. You'll need to either create a new certificate and private key or find an existing one. You'll need to select **Secure** to encrypt the **contents** of the private key in the Environment Variables section of Codemagic UI (and not the file itself). On macOS, you can use `pbcopy < private_key` to copy the contents of the private key.
 
   App Developer Portal has a limitation of maximum of 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` or `Developer ID Application` certificates, you won't be able to create new ones. If any of those are not used, you may revoke them in the [Apple Developer Portal](https://developer.apple.com/account/resources/certificates/list), which will make it possible to create new certificates with the specified new certificate private key. You can create a new 2048 bit RSA key by running the following command in your terminal:
 
@@ -80,7 +80,7 @@ Save the API key and the related information in the **Environment variables** se
     ```
 
 {{<notebox>}}
-Tip: Store all the Apple store variables in the same group so they can be imported to codemagic.yaml workflow at once. 
+Tip: Store all the App Store Connect variables in the same group so they can be imported to codemagic.yaml workflow at once. 
   
 If the group of variables is reusable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
 {{</notebox>}}
@@ -91,6 +91,7 @@ Add the group in the **codemagic.yaml** as follows:
 environment:
   groups:
     - appstore_key_properties
+    - certificate
     
   # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables): 
     # APP_STORE_CONNECT_ISSUER_ID
@@ -138,12 +139,13 @@ Instead of specifying the exact bundle-id, you can use `"$(xcode-project detect-
 
 ## Provide signing files manually
 
-In order to use manual code signing, Save your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile** in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build.
+In order to use manual code signing, Save your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile** in the **Environment variables** section in Codemagic UI. Select **Secure** to encrypt the values. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build.
 
 ```yaml
 environment:
   groups:
     - appstore_credentials
+    - provisioning_profile
     
   # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables):
     # APP_CERTIFICATE
