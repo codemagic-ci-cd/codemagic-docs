@@ -178,8 +178,6 @@ If you wish to pass release notes with your build, create a `release_notes.txt` 
 
 In order to distribute an `.aab` to testers via Firebase App Distribution, your Firebase project must be linked to your Google Play account. More information is available [here](https://firebase.google.com/docs/app-distribution/android/distribute-console?apptype=aab#before_you_begin)
 
-### Publishing an app with Fastlane
-
 ## Publishing to Firebase App Distribution with Fastlane
 
 {{<notebox>}}
