@@ -159,7 +159,7 @@ To set up multiple provisioning profiles, for example, to use app extensions suc
 ```yaml
 environment:
   groups:
-    - provisional_profile
+    - provisioning_profile
    # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables): 
     # FCI_PROVISIONING_PROFILE_BASE
     # FCI_PROVISIONING_PROFILE_NOTIFICATIONSERVICE
