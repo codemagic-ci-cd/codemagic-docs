@@ -103,18 +103,22 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 
 - `APP_STORE_CONNECT_PRIVATE_KEY`
 
-  This is the private API key downloaded from App Store Connect. Encrypt the **contents** of the file and save the encrypted value to the environment variable.
+  This is the private API key downloaded from App Store Connect. Select **secure** to encrypt the **contents** of the file and save it in the **Environment variables** section of the Codemagic UI.
 
 #### Saving to `codemagic.yaml` config
 
-Save the API key and the related information as [environment](/yaml/yaml-getting-started/#environment) variables. Make sure to [encrypt](/variables/encrypting/#encrypting-sensitive-data) the values of the variables before adding them to the configuration file.
+Save the API key and the related information in the **Environment variables** section of the Codemagic UI and select **Secure**. Note that binary files have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build. 
+
+Below are the environment variables you need to set:
 
 ```yaml
 environment:
-  vars:
-    APP_STORE_CONNECT_ISSUER_ID: Encrypted(...)
-    APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...)
-    APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...)
+  groups:
+    - app_store_credentials
+  # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables):
+    # APP_STORE_CONNECT_ISSUER_ID
+    # APP_STORE_CONNECT_KEY_IDENTIFIER
+    # APP_STORE_CONNECT_PRIVATE_KEY
 ```
 
 {{<notebox>}}
@@ -178,12 +182,12 @@ You will need to set up a service account in Google Play Console and create a JS
 
 ### Saving the API access argument to environment variables in `codemagic.yaml` config
 
-Save the API key as an [environment](/yaml/yaml-getting-started/#environment) variable. Make sure to [encrypt](/variables/encrypting/) the values of the variable before adding it to the configuration file.
+Save the API key as an [environment](/yaml/yaml-getting-started/#environment) variable group. Make sure to select **secure** the values of the variable before adding it to the configuration file.
 
 ```yaml
 environment:
-  vars:
-    GCLOUD_SERVICE_ACCOUNT_CREDENTIALS: Encrypted(...)
+  groups:
+    - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
 ```
 
 {{<notebox>}}
