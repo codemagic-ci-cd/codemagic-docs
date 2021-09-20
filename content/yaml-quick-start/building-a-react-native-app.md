@@ -115,7 +115,7 @@ workflows:
             google_play:
               # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
               credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-              track: alpha
+              track: alpha # <-- Any default or custom track that is not in ‘draft’ status
 ```
 
 ## iOS
