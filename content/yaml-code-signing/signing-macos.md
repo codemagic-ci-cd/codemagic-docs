@@ -49,7 +49,7 @@ Take note of the **Issuer ID** above the table of active keys as well as the **K
 
 ### Saving the API key to environment variables
 
-Save the API key and the related information in the **Environment variables** section of the Codemagic UI and click **Secure**. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build. Below are the following environment variables:
+Save the API key and the related information in the **Environment variables** section of the Codemagic UI and select **Secure**. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build. Below are the following environment variables:
 
 - `APP_STORE_CONNECT_KEY_IDENTIFIER`
 
@@ -90,7 +90,7 @@ Add the group in the **codemagic.yaml** as follows:
 ```yaml
 environment:
   groups:
-    - appstore_key_properties
+    - app_store_key_properties
     - certificate
     
   # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables): 
@@ -144,7 +144,7 @@ In order to use manual code signing, Save your **signing certificate**, the **ce
 ```yaml
 environment:
   groups:
-    - appstore_credentials
+    - app_store_credentials
     - provisioning_profile
     
   # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables):
