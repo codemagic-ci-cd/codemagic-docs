@@ -92,8 +92,8 @@ workflows:
         # Add the above group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         FCI_KEYSTORE_PATH: /tmp/keystore.keystore
-        PACKAGE_NAME: "io.codemagic.flutteryaml" # <-- Put your package name here
-        GOOGLE_PLAY_TRACK: "alpha" # <-- This must be "alpha" or above.  
+        PACKAGE_NAME: "YOUR PACKAGE NAME" # <-- Put your package name here e.g. "io.codemagic.flutteryaml"
+        GOOGLE_PLAY_TRACK: "alpha" # <-- Any default or custom track that is not in ‘draft’ status  
       flutter: stable
       xcode: latest
       cocoapods: default
