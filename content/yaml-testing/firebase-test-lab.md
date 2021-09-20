@@ -21,12 +21,15 @@ Please follow the guides in the [Firebase Test Lab documentation](https://fireba
 
 ## Configure testing in Firebase Test Lab in codemagic.yaml
 
-To access the Firebase project from Codemagic, add the service account JSON key file to your `codemagic.yaml` and the Firebase project name as environment variables. See how to [encrypt environment variables](../building/encrypting).
+To access the Firebase project from Codemagic, add the service account JSON key file and the Firebase project name as environment variables in the **Environment variables** section in Codemagic UI (either in Application/Team variables). Select **secure** to encrypt the values. 
+
+Add the group for the environment variable to `codemagic.yaml` as belows:
 
 ```yaml
 environment:
+  groups:
+    - firebase_credentials # <-- (Includes: GCLOUD_KEY_FILE - service account JSON key file)
   vars:
-    GCLOUD_KEY_FILE: Encrypted(...) # <-- Put your encrypted service account JSON key file here
     FIREBASE_PROJECT: "YOUR_FIREBASE_PROJECT_NAME" # <-- Put your Firebase Project Name here
 ```
 Then, add the scripts to run tests on the preferred platform and device. The testing step should come after build scripts.
@@ -37,7 +40,7 @@ Note that Codemagic machines come with installed gcloud CLI tools. Refer [CLI do
  - name: Run Firebase Test Lab tests
    script: |
      set -ex
-     echo $GCLOUD_KEY_FILE | base64 --decode > ./gcloud_key_file.json
+     echo $GCLOUD_KEY_FILE > ./gcloud_key_file.json
      gcloud auth activate-service-account --key-file=gcloud_key_file.json
 
      gcloud --quiet config set project $FIREBASE_PROJECT
