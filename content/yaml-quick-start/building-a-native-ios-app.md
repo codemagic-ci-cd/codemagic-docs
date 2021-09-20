@@ -101,7 +101,7 @@ workflows:
     environment:
       groups:
         - certificate_credentials # <-- (Includes: FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
-        - appstore_credentials # <-- (Includes: app_store_password - PUT YOUR APP-SPECIFIC-PASSWORD HERE https://support.apple.com/en-us/HT204397)
+        - app_store_credentials # <-- (Includes: APPLE_ID, APPLE_APP_SPECIFIC_PASSWORD)
         - other
        # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
@@ -142,6 +142,6 @@ workflows:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
     publishing:
       app_store_connect:
-        apple_id: your_apple_id@example.com  # PUT YOUR APPLE ID HERE
-        password: $app_store_password
+        apple_id: $APPLE_ID
+        password: $APP_SPECIFIC_PASSWORD
 ```
