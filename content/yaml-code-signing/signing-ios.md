@@ -55,7 +55,7 @@ Save the API key and the related information in the **Environment variables** se
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Running the command line will create private and public keys. Note that you should click **secure** to encrypt the **contents** of the private file in the **Environment Variables** Section. 
+  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Running the command line will create private and public keys. Note that you should select **Secure** to encrypt the **contents** of the private file in the **Environment Variables** Section. 
 
 ```bash
 ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
