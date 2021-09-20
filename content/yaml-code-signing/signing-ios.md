@@ -62,7 +62,7 @@ ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
 ```
 
 {{<notebox>}}
-Tip: Store all the Apple store variables in the same group so they can be imported to codemagic.yaml workflow at once. 
+Tip: Store all the App Store Connect variables in the same group so they can be imported to a codemagic.yaml workflow at once. 
 
 If the group of variables is reusable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
 {{</notebox>}}
