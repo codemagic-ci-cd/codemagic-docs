@@ -85,7 +85,7 @@ workflows:
     name: Android Workflow
     max_build_duration: 120
     environment:
-      group:
+      groups:
         - keystore_credentials # <-- (Includes: FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
         - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
         - other
@@ -195,14 +195,14 @@ workflows:
     max_build_duration: 120
     environment:
       groups:
-        - app_store_credentials # <-- (APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY, CERTIFICATE_PRIVATE_KEY) - https://docs.codemagic.io/code-signing-yaml/signing-ios/
-        - other
+        - app_store_credentials # <-- (APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY) - https://docs.codemagic.io/code-signing-yaml/signing-ios/
+        - certificate_credentials # <-- (Includes: CERTIFICATE_PRIVATE_KEY)
+        - other # <-- (APP_STORE_ID)
         # Add the above group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         XCODE_WORKSPACE: "Runner.xcworkspace"
         XCODE_SCHEME: "Runner"                
-        BUNDLE_ID: "io.codemagic.flutteryaml" # <-- Put your bundle id here
-        APP_STORE_ID: 1111111111 # <-- Use the TestFlight Apple id number (An automatically generated ID assigned to your app) found under General > App Information > Apple ID. 
+        BUNDLE_ID: "YOUR_BUNDLE_ID_HERE"
       flutter: stable
       xcode: latest
       cocoapods: default
