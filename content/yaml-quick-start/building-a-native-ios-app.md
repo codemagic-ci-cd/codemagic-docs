@@ -101,7 +101,7 @@ workflows:
     environment:
       groups:
         - certificate_credentials # <-- (Includes: FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
-        - app_store_credentials # <-- (Includes: APPLE_ID, APPLE_APP_SPECIFIC_PASSWORD)
+        - app_store_credentials # <-- (Includes: APPLE_ID, APP_SPECIFIC_PASSWORD)
         - other
        # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
