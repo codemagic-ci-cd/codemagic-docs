@@ -176,11 +176,16 @@ publishing:
 
 If you wish to pass release notes with your build, create a `release_notes.txt` file and add it to the project working directory, which is either the repository root directory or the Project path specified in the Build section in your workflow settings. Codemagic will fetch the content of that file and publish it with the build.
 
+In order to distribute an `.aab` to testers via Firebase App Distribution, your Firebase project must be linked to your Google Play account. More information is available [here](https://firebase.google.com/docs/app-distribution/android/distribute-console?apptype=aab#before_you_begin)
+
+### Publishing an app with Fastlane
+
 ## Publishing to Firebase App Distribution with Fastlane
 
 {{<notebox>}}
 If you use Firebase services, load the Firebase configuration files to Codemagic by saving them to [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles). Copy/paste the contents of `google-services.json` and `GoogleService-Info.plist` and save them to the environment variables named `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` respectively. Click **Secure** to encrypt the values.
 {{</notebox>}}
+
 
 Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
 
