@@ -22,7 +22,7 @@ weight: 4
 - Android tools `$HOME/programs/android-sdk-macosx`
 - Android NDK `22.0.7026061`
 - aws `2.0.50`
-- cocoapods `1.10.1`
+- cocoapods `1.11.2`
 - cordova `10.0.0`
 - curl
 - docker `20.10.2`

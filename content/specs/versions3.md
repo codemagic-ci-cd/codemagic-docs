@@ -22,7 +22,7 @@ weight: 3
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `22.1.7171670`
 - aws `2.2.14`
-- cocoapods `1.10.1`
+- cocoapods `1.11.2`
 - cordova `10.0.0`
 - curl
 - docker `20.10.2`
