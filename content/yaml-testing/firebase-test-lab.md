@@ -21,23 +21,24 @@ Please follow the guides in the [Firebase Test Lab documentation](https://fireba
 
 ## Configure testing in Firebase Test Lab in codemagic.yaml
 
-To access the Firebase project from Codemagic, add the service account JSON key file to your `codemagic.yaml` and the Firebase project name as environment variables. See how to [encrypt environment variables](../building/encrypting).
+To access the Firebase project from Codemagic, add the service account JSON key file and the Firebase project name as environment variables in the **Environment variables** section in Codemagic UI (either in Application or Team variables). Note that you should copy-paste the contents of the JSON key file. Save the variables to the same group. Select **secure** to encrypt the values. 
+
+Then import the group to `codemagic.yaml` this way:
 
 ```yaml
 environment:
-  vars:
-    GCLOUD_KEY_FILE: Encrypted(...) # <-- Put your encrypted service account JSON key file here
-    FIREBASE_PROJECT: "YOUR_FIREBASE_PROJECT_NAME" # <-- Put your Firebase Project Name here
+  groups:
+    - firebase_credentials # <-- (Includes: GCLOUD_KEY_FILE - service account JSON key file, FIREBASE_PROJECT - your Firebase Project Name)
 ```
 Then, add the scripts to run tests on the preferred platform and device. The testing step should come after build scripts.
 
-Note that Codemagic machines come with installed gcloud CLI tools. Refer [CLI documentation for Android](https://firebase.google.com/docs/test-lab/android/command-line) and [CLI documentation for iOS](https://firebase.google.com/docs/test-lab/ios/command-line) for the detailed description.
+Note that Codemagic machines come with gcloud CLI tools preinstalled. Refer to [CLI documentation for Android](https://firebase.google.com/docs/test-lab/android/command-line) and [CLI documentation for iOS](https://firebase.google.com/docs/test-lab/ios/command-line) for more details.
 
 ```yaml
  - name: Run Firebase Test Lab tests
    script: |
      set -ex
-     echo $GCLOUD_KEY_FILE | base64 --decode > ./gcloud_key_file.json
+     echo $GCLOUD_KEY_FILE > ./gcloud_key_file.json
      gcloud auth activate-service-account --key-file=gcloud_key_file.json
 
      gcloud --quiet config set project $FIREBASE_PROJECT
