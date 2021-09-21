@@ -28,9 +28,7 @@ Then import the group to `codemagic.yaml` this way:
 ```yaml
 environment:
   groups:
-    - firebase_credentials # <-- (Includes: GCLOUD_KEY_FILE - service account JSON key file)
-  vars:
-    FIREBASE_PROJECT: "YOUR_FIREBASE_PROJECT_NAME" # <-- Put your Firebase Project Name here
+    - firebase_credentials # <-- (Includes: GCLOUD_KEY_FILE - service account JSON key file, FIREBASE_PROJECT - your Firebase Project Name)
 ```
 Then, add the scripts to run tests on the preferred platform and device. The testing step should come after build scripts.
 
