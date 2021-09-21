@@ -34,7 +34,7 @@ environment:
 ```
 Then, add the scripts to run tests on the preferred platform and device. The testing step should come after build scripts.
 
-Note that Codemagic machines come with installed gcloud CLI tools. Refer [CLI documentation for Android](https://firebase.google.com/docs/test-lab/android/command-line) and [CLI documentation for iOS](https://firebase.google.com/docs/test-lab/ios/command-line) for the detailed description.
+Note that Codemagic machines come with gcloud CLI tools preinstalled. Refer to [CLI documentation for Android](https://firebase.google.com/docs/test-lab/android/command-line) and [CLI documentation for iOS](https://firebase.google.com/docs/test-lab/ios/command-line) for more details.
 
 ```yaml
  - name: Run Firebase Test Lab tests
