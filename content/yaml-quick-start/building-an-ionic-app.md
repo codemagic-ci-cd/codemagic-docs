@@ -51,7 +51,7 @@ workflows:
     environment:
       groups:
         - keystore_credentials # <-- (Includes: FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
-        - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS - JSON key file for Google Play service account)
+        - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       node: latest
@@ -132,8 +132,9 @@ workflows:
     environment:
       groups:
         - keystore_credentials # <-- (Includes: FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
-        - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS - JSON key file for Google Play service account)
+        - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
         - other
+      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         FCI_KEYSTORE_PATH: /tmp/keystore.keystore
       node: latest
@@ -203,7 +204,7 @@ workflows:
         # - manual_code_signing # <-- (Includes: FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
         # Automatic Code Signing
         # https://appstoreconnect.apple.com/access/api
-        - app_store_credentials # <-- (Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY, APP_SPECIFIC_PASSWORD)
+        - app_store_credentials # <-- (Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
         - certificate_credentials # <-- (Includes: CERTIFICATE_PRIVATE_KEY)
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
@@ -269,8 +270,10 @@ workflows:
         - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
     publishing:
       app_store_connect:
-        apple_id: yourAppleId@example.com
-        password: $APP_SPECIFIC_PASSWORD # <-- For more information visit: https://support.apple.com/en-us/HT204397
+          api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key
+          key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key
+          issuer_id: $APP_STORE_CONNECT_ISSUER_ID      # Alphanumeric value that identifies who created the API key
+          submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.  
       email:
         recipients:
           - user_one@example.com
@@ -299,9 +302,9 @@ workflows:
         # - manual_code_signing # <-- (Includes: FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
         # Automatic Code Signing
         # https://appstoreconnect.apple.com/access/api
-        - app_store_credentials # <-- (Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY, APP_SPECIFIC_PASSWORD)
+        - app_store_credentials # <-- (Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
         - certificate_credentials # <-- (Includes: CERTIFICATE_PRIVATE_KEY)
-        - other # <-- (Includes: APP_STORE_APP_ID - Put the app id number here. This is found in App Store Connect > App > General > App Information)
+        - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace" # <-- Put the name of your Xcode workspace here
@@ -367,8 +370,10 @@ workflows:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
     publishing:
       app_store_connect:
-        apple_id: yourAppleId@example.com # <-- Put your Apple Id here
-        password: $APP_SPECIFIC_PASSWORD # <-- For more information visit: https://support.apple.com/en-us/HT204397
+          api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key
+          key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key
+          issuer_id: $APP_STORE_CONNECT_ISSUER_ID      # Alphanumeric value that identifies who created the API key
+          submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers. 
       email:
         recipients:
           - user_one@example.com
