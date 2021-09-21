@@ -120,9 +120,6 @@ workflows:
         script: |
           cd . && flutter test
         ignore_failure: true          
-      - name: Install pods
-        script: |
-          find . -name "Podfile" -execdir pod install \;
       - name: Build APK with Flutter  
         script: |
           cd . && flutter build apk --release --build-name=1.0.0 --build-number=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks="$GOOGLE_PLAY_TRACK") + 1))
@@ -195,7 +192,7 @@ workflows:
     max_build_duration: 120
     environment:
       groups:
-        - app_store_credentials # <-- (APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY) - https://docs.codemagic.io/code-signing-yaml/signing-ios/
+        - app_store_credentials # <-- (APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY) - https://docs.codemagic.io/code-signing-yaml/signing-ios/
         - certificate_credentials # <-- (Includes: CERTIFICATE_PRIVATE_KEY)
         - other # <-- (APP_STORE_ID)
         # Add the above group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
@@ -261,7 +258,7 @@ workflows:
       app_store_connect:   # https://docs.codemagic.io/publishing-yaml/distribution              
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY   
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: 21d78e2f-b8ad-...  # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
        
      
 ```
