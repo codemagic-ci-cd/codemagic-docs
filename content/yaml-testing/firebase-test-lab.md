@@ -23,7 +23,7 @@ Please follow the guides in the [Firebase Test Lab documentation](https://fireba
 
 To access the Firebase project from Codemagic, add the service account JSON key file and the Firebase project name as environment variables in the **Environment variables** section in Codemagic UI (either in Application or Team variables). Note that you should copy-paste the contents of the JSON key file. Save the variables to the same group. Select **secure** to encrypt the values. 
 
-Add the group for the environment variable to `codemagic.yaml` as belows:
+Then import the group to `codemagic.yaml` this way:
 
 ```yaml
 environment:
