@@ -2,7 +2,7 @@
 title: Fastlane integration
 description: How to use Fastlane in codemagic.yaml
 weight: 4
-  aliases:
+aliases:
   - '../knowledge-base/beta-deployment-with-fastlane'
 ---
 
