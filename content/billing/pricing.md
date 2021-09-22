@@ -38,7 +38,7 @@ For macOS instances, details of the hardware specification, system information a
 
 ### Pricing for Personal Accounts
 
-When billing is enabled on personal accounts you have 500 free builds minutes on macOS standard VM. 
+When billing is enabled on personal accounts you will still have **500 free build minutes** on macOS standard VM. 
 
 Usage on macOS standard VM that exceeds 500 minutes is charged at rate shown below.
 
