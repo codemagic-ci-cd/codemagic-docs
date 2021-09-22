@@ -49,12 +49,11 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini
     environment:
-      vars:
-        # Android Keystore environment variables
-        FCI_KEYSTORE: Encrypted(...) # <-- Put your encrypted keystore file here
-        FCI_KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore password here
-        FCI_KEY_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore alias password here
-        FCI_KEY_ALIAS: Encrypted(...) # <-- Put your encrypted keystore alias username here
+      groups:
+        - keystore_credentials # <-- (Includes: FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
+        - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
+        - other
+      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       node: latest
     triggering:
       events:
@@ -93,8 +92,8 @@ workflows:
       - android/app/build/outputs/**/*.apk
     publishing:
       google_play:
-        credentials: Encrypted(...) # <- Put your encrypted JSON key file for Google Play service account
-        track: internal
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal # <-- Any default or custom track that is not in ‘draft’ status
       email:
         recipients:
           - user_one@example.com
@@ -131,12 +130,12 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini
     environment:
+      groups:
+        - keystore_credentials # <-- (Includes: FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
+        - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
+        - other
+      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
-        # Android Keystore environment variables
-        FCI_KEYSTORE: Encrypted(...) # <-- Put your encrypted keystore file here
-        FCI_KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore password here
-        FCI_KEY_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore alias password here
-        FCI_KEY_ALIAS: Encrypted(...) # <-- Put your encrypted keystore alias username here
         FCI_KEYSTORE_PATH: /tmp/keystore.keystore
       node: latest
     triggering:
@@ -175,8 +174,8 @@ workflows:
       - platforms/android/app/build/outputs/**/*.apk
     publishing:
       google_play:
-        credentials: Encrypted(...) # <- Put your encrypted JSON key file for Google Play service account
-        track: internal
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal # <-- Any default or custom track that is not in ‘draft’ status
       email:
         recipients:
           - user_one@example.com
@@ -201,22 +200,18 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini
     environment:
+      groups:
+        # - manual_code_signing # <-- (Includes: FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
+        # Automatic Code Signing
+        # https://appstoreconnect.apple.com/access/api
+        - app_store_credentials # <-- (Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
+        - certificate_credentials # <-- (Includes: CERTIFICATE_PRIVATE_KEY)
+        - other
+      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         # Ionic Capacitor Xcode worskspace and scheme
-        XCODE_WORKSPACE: "ios/App/App.xcworkspace"
-        XCODE_SCHEME: "App"
-        # Manual Code Signing
-        # FCI_CERTIFICATE: Encrypted(...) # <-- Put your encrypted certificate file here
-        # FCI_CERTIFICATE_PASSWORD: Encrypted(...) # <-- Put your encrypted certificate password here
-        # FCI_PROVISIONING_PROFILE: Encrypted(...) # <-- Put your encrypted provisioning profile here
-        #
-        # Automatic Code Signing 
-        # https://docs.codemagic.io/yaml/distribution/
-        # https://appstoreconnect.apple.com/access/api
-        APP_STORE_CONNECT_ISSUER_ID: 5a451239-51eb-10b6-bfcc-60e61ddab13c # <-- Put your App Store Connect Issuer Id here
-        APP_STORE_CONNECT_KEY_IDENTIFIER: LY55E1G322 # <-- Put your App Store Connect Key Identifier here
-        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...) # <-- Put your App Store Connect Private Key here
-        CERTIFICATE_PRIVATE_KEY: Encrypted(...) # <-- Put your Certificate Private key here
+        XCODE_WORKSPACE: "platforms/ios/YOUR_APP.xcworkspace" # <- Update with your workspace name
+        XCODE_SCHEME: "YOUR_SCHEME" # <- Update with your workspace scheme
       node: latest
       xcode: latest
       cocoapods: default
@@ -275,8 +270,10 @@ workflows:
         - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
     publishing:
       app_store_connect:
-        apple_id: yourAppleId@example.com # <- put your Apple Id here
-        password: Encrypted(...) # <-- Put your App Specific Password. For more information visit: https://support.apple.com/en-us/HT204397
+          api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key
+          key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key
+          issuer_id: $APP_STORE_CONNECT_ISSUER_ID      # Alphanumeric value that identifies who created the API key
+          submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.  
       email:
         recipients:
           - user_one@example.com
@@ -301,22 +298,18 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini
     environment:
-      vars:
-        # Ionic Xcode worskspace and scheme
-        XCODE_WORKSPACE: "platforms/ios/YOUR_APP.xcworkspace" # <- Update with your workspace name
-        XCODE_SCHEME: "YOUR_SCHEME" # <- Update with your workspace scheme
-        # Manual Code Signing
-        # FCI_CERTIFICATE: Encrypted(...) # <-- Put your encrypted certificate file here
-        # FCI_CERTIFICATE_PASSWORD: Encrypted(...) # <-- Put your encrypted certificate password here
-        # FCI_PROVISIONING_PROFILE: Encrypted(...) # <-- Put your encrypted provisioning profile here
-        #
-        # Automatic Code Signing 
-        # https://docs.codemagic.io/yaml/distribution/
+      groups:
+        # - manual_code_signing # <-- (Includes: FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
+        # Automatic Code Signing
         # https://appstoreconnect.apple.com/access/api
-        APP_STORE_CONNECT_ISSUER_ID: 5a451239-51eb-10b6-bfcc-60e61ddab13c # <-- Put your App Store Connect Issuer Id here
-        APP_STORE_CONNECT_KEY_IDENTIFIER: LY55E1G322 # <-- Put your App Store Connect Key Identifier here
-        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...) # <-- Put your App Store Connect Private Key here
-        CERTIFICATE_PRIVATE_KEY: Encrypted(...) # <-- Put your Certificate Private key here
+        - app_store_credentials # <-- (Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
+        - certificate_credentials # <-- (Includes: CERTIFICATE_PRIVATE_KEY)
+        - other
+      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+      vars:
+        XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace" # <-- Put the name of your Xcode workspace here
+        XCODE_SCHEME: "YOUR_SCHEME_NAME" # <-- Put the name of your Xcode scheme here        
+        BUNDLE_ID: "YOUR_BUNDLE_ID_HERE" # <-- Put your Bundle Id here
       node: latest
       xcode: latest
       cocoapods: default
@@ -377,8 +370,10 @@ workflows:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
     publishing:
       app_store_connect:
-        apple_id: yourAppleId@example.com # <- put your Apple Id here
-        password: Encrypted(...) # <-- Put your App Specific Password. For more information visit: https://support.apple.com/en-us/HT204397
+          api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key
+          key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key
+          issuer_id: $APP_STORE_CONNECT_ISSUER_ID      # Alphanumeric value that identifies who created the API key
+          submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers. 
       email:
         recipients:
           - user_one@example.com

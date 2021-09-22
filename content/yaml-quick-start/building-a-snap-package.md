@@ -58,12 +58,14 @@ snapcraft export-login snapcraft-login-credentials
 ```
 
   You will be asked to enter your Snapcraft account username and password.
-
-2. Base64 encode and encrypt the credentials file. Read more about encrypting sensitive info in Codemagic [here](../building/encrypting/). 
-3. Add the encrypted value to `codemagic.yaml` as an environment variable with the name `SNAPCRAFT_LOGIN_CREDENTIALS`.
+  
+2. The Snapcraft credentials file has to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before it can be saved to environment variables and decoded during the build.
+3. Save the environment variable with the name `SNAPCRAFT_LOGIN_CREDENTIALS` in Codemagic UI (either in Application/Team variables) value and select **secure**. Add the group for the environment variable to `codemagic.yaml`. 
 
 ```yaml
-SNAPCRAFT_LOGIN_CREDENTIALS: Encrypted(...)
+environment:
+      groups:
+        - snapcraft_credentials # <-- Include - SNAPCRAFT_LOGIN_CREDENTIALS
 ```
 4. In the `scripts` section, add steps to base64 decode the credentials file, log in to Snapcraft via CLI, build the snap package and release it to the desired channel.
 
