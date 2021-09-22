@@ -141,7 +141,7 @@ workflows:
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID      # Alphanumeric value that identifies who created the API key
-        submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.
+        submit_to_testflight: false        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.
       # beta_groups:                                  # Specify the names of beta tester groups that will get access to the build once it has passed beta review. 
       #     - group name 1
       #     - group name 2
