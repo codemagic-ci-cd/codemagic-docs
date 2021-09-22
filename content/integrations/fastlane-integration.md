@@ -32,7 +32,6 @@ For further information about using variable groups, please click [here](https:/
 If you are using dependencies from Cocoapods, it might be necessary to include the "cocoapods" gem in your Gemfile to prevent scope conflict issues. 
 
 ```
-gem "fastlane"
 gem "cocoapods"
 ```
 
