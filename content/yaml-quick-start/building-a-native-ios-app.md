@@ -100,8 +100,8 @@ workflows:
     name: ios_workflow
     environment:
       groups:
-        - certificate_credentials # <-- (Includes: FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
-        - app_store_credentials # <-- (Includes: APPLE_ID, APP_SPECIFIC_PASSWORD)
+        - app_store_credentials # <-- Include - APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY
+        - certificate_credentials # <-- Include - CERTIFICATE_PRIVATE_KEY
         - other
        # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
@@ -118,18 +118,14 @@ workflows:
           source: true
     scripts:
       - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
-        script: keychain initialize
-      - name: Set up Provisioning profiles from environment variables
         script: |
-          PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
-          mkdir -p "$PROFILES_HOME"
-          PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-          echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
-          echo "Saved provisioning profile $PROFILE_PATH"
-      - name: Set up signing certificate
+          keychain initialize
+      - name: Fetch signing files
         script: |
-          echo $FCI_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-          keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $FCI_CERTIFICATE_PASSWORD
+          app-store-connect fetch-signing-files $(xcode-project detect-bundle-id) --type IOS_APP_STORE --create
+      - name: Add certificates to keychain
+        script: |
+          keychain add-certificates 
       - name: Increment build number
         script: agvtool new-version -all $(($BUILD_NUMBER +1))
       - name: Set up code signing settings on Xcode project
@@ -142,6 +138,12 @@ workflows:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
     publishing:
       app_store_connect:
-        apple_id: $APPLE_ID
-        password: $APP_SPECIFIC_PASSWORD
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID      # Alphanumeric value that identifies who created the API key
+        submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.
+      # beta_groups:                                  # Specify the names of beta tester groups that will get access to the build once it has passed beta review. 
+      #     - group name 1
+      #     - group name 2
+ 
 ```
