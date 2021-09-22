@@ -46,16 +46,15 @@ workflows:
   ios-workflow:
     name: iOS workflow
     environment:
+      groups:
+        - app_store_credentials # <-- Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY
+        - certificate_credentials # <-- Includes: CERTIFICATE_PRIVATE_KEY
+        - other
+      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
-        XCODE_WORKSPACE: "platforms/ios/HelloCordova.xcworkspace" # <-- Put the name of your workspace here.
-        XCODE_SCHEME: "HelloCordova" # <-- Put the name of your scheme here.
-        APP_STORE_CONNECT_ISSUER_ID: Encrypted(...) # <-- Put your encrypted App Store Connect Issuer Id here 
-        APP_STORE_CONNECT_KEY_IDENTIFIER: Encrypted(...) # <-- Put your encrypted App Store Connect Key Identifier here 
-        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(...) # <-- Put your encrypted App Store Connect Private Key here 
-        CERTIFICATE_PRIVATE_KEY: Encrypted(...) # <-- Put your encrypted Certificate Private Key here         
-        APPLE_ID: Encrypted(...) # <-- Put your encrypted Apple Id Email here 
-        APPLE_APP_SPECIFIC_PASSWORD: Encrypted(...) # <-- Put your encrypted App Specific Password Key here 
-        BUNDLE_ID: "io.codemagic.cordova" # <-- Put your Bundle Id here.
+        XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace" # <-- Put the name of your Xcode workspace here e.g. "platforms/ios/HelloCordova.xcworkspace"
+        XCODE_SCHEME: "YOUR_SCHEME_NAME" # <-- Put the name of your Xcode scheme here e.g. "HelloCordova"       
+        BUNDLE_ID: "YOUR_BUNDLE_ID_HERE" # <-- Put your Bundle Id here e.g. "io.codemagic.cordova"
       xcode: 12.4
       node: 12
       npm: 6
@@ -126,8 +125,10 @@ workflows:
           success: true               # To receive a notification when a build succeeds
           failure: false              # To not receive a notification when a build fails
       app_store_connect:
-        apple_id: $APPLE_ID
-        password: $APP_SPECIFIC_PASSWORD     
+          api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key
+          key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key
+          issuer_id: $APP_STORE_CONNECT_ISSUER_ID      # Alphanumeric value that identifies who created the API key
+          submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.   
 ```
 
 {{<notebox>}}
@@ -147,12 +148,13 @@ workflows:
   android-workflow:
     name: Android Cordova workflow
     environment:
+      groups:
+        - keystore_credentials # <-- Includes: KEYSTORE, KEYSTORE_PASSWORD, KEY_ALIAS_PASSWORD, KEY_ALIAS
+        - google_play # <-- Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS - Store your google-services.json
+        - other
+      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
-        KEYSTORE: Encrypted(...) # <-- Put your encrypted keystore file here
         KEYSTORE_PATH: '/tmp/keystore.keystore'
-        KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore password here
-        KEY_ALIAS_PASSWORD: Encrypted(...) # <-- Put your encrypted keystore alias password here
-        KEY_ALIAS: Encrypted(...) # <-- Put your encrypted alias password here
       xcode: 12.4
       node: 12
       npm: 6
@@ -201,7 +203,7 @@ workflows:
           failure: false              # To not receive a notification when a build fails
       google_play:
         # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
-        credentials: Encrypted(...) # <-- Put your encrypted google-services.json here
-        track: alpha
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: alpha # <-- Any default or custom track that is not in ‘draft’ status
 ```
 
