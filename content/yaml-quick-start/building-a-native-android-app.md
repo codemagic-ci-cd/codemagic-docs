@@ -57,12 +57,13 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini
     environment:
+      groups:
+        - keystore_credentials # <-- Includes: FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS
+        - google_play # <-- Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        - other
+      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         FCI_KEYSTORE_PATH: /tmp/keystore.keystore
-        FCI_KEYSTORE: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE FILE HERE
-        FCI_KEYSTORE_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED PASSWORD FOR THE KEYSTORE FILE HERE
-        FCI_KEY_PASSWORD: Encrypted(...) # PUT THE ENCRYPTED KEYSTORE ALIAS PASSWORD HERE
-        FCI_KEY_ALIAS: Encrypted(...) #PUT THE ENCRYPTED KEYSTORE USERNAME HERE
       node: latest
     triggering:
       events:
@@ -91,7 +92,7 @@ workflows:
       - app/build/outputs/**/**/*.apk
     publishing:
       google_play:
-        credentials: Encrypted(...) # PUT YOUR ENCRYPTED GOOGLE PLAY JSON CREDENTIALS FILE HERE
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         track: internal
 ```
 
