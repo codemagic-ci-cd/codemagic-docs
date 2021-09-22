@@ -3,7 +3,7 @@ description: How to use Fastlane in codemagic.yaml
 weight: 4
 ---
 
-**Fastlane** is an open source platform aimed at simplifying Android and iOS deployment. If your development team uses Fastlane, it can be used as part of your CI/CD pipeline to build and deploy your applications.
+**Fastlane** is an open source platform aimed at simplifying Android and iOS deployment. If your development team uses Fastlane, it can be used as part of your CI/CD pipeline to build and deploy your applications. Fastlane is preinstalled on the Codemagic build servers.
 
 ## Configuring Fastlane in Codemagic
 
