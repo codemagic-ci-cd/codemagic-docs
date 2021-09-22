@@ -36,6 +36,25 @@ gem "fastlane"
 gem "cocoapods"
 ```
 
+## Running your Fastlane lane
+
+In the codemagic.yaml you should install your depenpendencies with `bundle install` and then execute the Fastlane lane with `bundle exec fastlane <lane_name>` as follows:
+
+```
+      scripts:
+        - bundle install
+        - bundle exec fastlane beta
+```
+
+If you need to use a specific version of bundler as defined in the Gemfile.lock file, you should install it with `gem install bundler:<version>` as follows:
+
+```
+      scripts:
+        - gem install bundler:2.2.27
+        - bundle install
+        - bundle exec fastlane beta
+       
+```
 ## Sample project
 
 A sample project that shows how to configure Fastlane is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/fastlane-integration-demo-project).
