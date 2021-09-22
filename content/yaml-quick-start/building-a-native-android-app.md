@@ -58,8 +58,8 @@ workflows:
     instance_type: mac_mini
     environment:
       groups:
-        - keystore_credentials # <-- (Includes: FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
-        - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS - PUT YOUR GOOGLE PLAY JSON CREDENTIALS FILE HERE)
+        - keystore_credentials # <-- Includes - FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS
+        - google_play # <-- Includes- GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
