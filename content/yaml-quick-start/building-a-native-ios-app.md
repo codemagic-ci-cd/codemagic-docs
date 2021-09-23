@@ -101,7 +101,7 @@ workflows:
     environment:
       groups:
         - app_store_credentials # <-- Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY
-        - certificate_credentials # <-- Include - CERTIFICATE_PRIVATE_KEY
+        - certificate_credentials # <-- Includes: CERTIFICATE_PRIVATE_KEY
         - other
        # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
