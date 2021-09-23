@@ -18,6 +18,8 @@ params:
     googleOptimizeId: 'GTM-M67KWVX'
     pageRepoCommitPrefix: 'https://github.com/codemagic-ci-cd/codemagic-docs/commit/'
     pageRepoEditPrefix: 'https://github.com/codemagic-ci-cd/codemagic-docs/edit/master/content/'
+    ignorefiles:
+        - /content/partials/*
 imaging:
     resampleFilter: linear
     quality: 90
