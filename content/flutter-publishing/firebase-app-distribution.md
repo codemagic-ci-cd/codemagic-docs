@@ -14,7 +14,7 @@ This guide only applies to workflows configured with the **Flutter workflow edit
 ## Requirements
 
 * [Add Firebase to your Flutter project](https://firebase.google.com/docs/flutter/setup)
-* Generate a [Firebase token](https://firebase.google.com/docs/cli#cli-ci-systems) locally or set up a [service account](/knowledge-base/google-services-authentication/#firebase) to authenticate with Firebase App Distribution.
+* Generate a [Firebase token](https://firebase.google.com/docs/cli#cli-ci-systems) locally or set up a [service account](/knowledge-base/google-services-authentication/#firebase) with **Firebase App Distribution Admin** role to authenticate with Firebase App Distribution.
 * If your app uses Firebase services, you need to upload the Firebase configuration files to Codemagic, see the instructions [here](/knowledge-base/load-firebase-configuration/).
 * Set up [iOS code signing](../code-signing/ios-code-signing). Note that an Ad Hoc or Enterprise distribution profile is required to distribute the app outside your development team.
 * Set up [Android code signing](../code-signing/android-code-signing). If you do not set up code signing, the artifact will be signed with a debug keystore from Codemagic build machine.
