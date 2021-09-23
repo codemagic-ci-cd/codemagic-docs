@@ -78,7 +78,7 @@ Consider Business plan or Enterprise plan if more than three concurrent builds a
 
 The Codemagic business plan gives you a fixed price plan with the following benefits:
 
-* 3 concurrencies
+* 3 concurrencies (premium macOS and Linux instances)
 * Unlimited build minutes
 * Unlmited team seats
 * In-app chat support
@@ -87,7 +87,9 @@ The **monthly** subscription is **$299/month** payable by credit card. Additiona
 
 An **annual** subscription with **20% discount** is **$2,870/year**. Additional concurrencies are **$960/year**. 
 
-Annual plans can be paid for with credit card and invoicing with bank transfer is available.
+**SSO** is availble as a Business plan add-on for **$50/month** or **$480/year** 
+
+The Business plan can only be paid for with credit card. If you require annual invoicing please refer to the Enterprise plan below.
 
 If you would like to upgrade to a business plan, please contact us [here](https://codemagic.io/contact/).
 
@@ -96,7 +98,11 @@ If you would like to upgrade to a business plan, please contact us [here](https:
 
 Enterprise plans are available from **$6,000/year**.
 
-This plan is recommended if you need to go through a **procurement process** or have special requirements such as an **SLA**, **NDA**, **dedicated hosts**, or **custom base images**.
+This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **dedicated hosts**, or **custom base images**.
+
+Enterprise plans with a **Service Level Agreement** are available from **$12,000/year**
+
+Annual invoicing with bank transfer is available for Enterprise plans.
 
 If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/enterprise/). 
 
