@@ -47,8 +47,8 @@ workflows:
     name: iOS workflow
     environment:
       groups:
-        - app_store_credentials # <-- Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY
-        - certificate_credentials # <-- Includes: CERTIFICATE_PRIVATE_KEY
+        - app_store_credentials # <-- Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY
+        - certificate_credentials # <-- Includes CERTIFICATE_PRIVATE_KEY
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
@@ -149,8 +149,8 @@ workflows:
     name: Android Cordova workflow
     environment:
       groups:
-        - keystore_credentials # <-- Includes: KEYSTORE, KEYSTORE_PASSWORD, KEY_ALIAS_PASSWORD, KEY_ALIAS
-        - google_play # <-- Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS - Store your google-services.json
+        - keystore_credentials # <-- Includes KEYSTORE, KEYSTORE_PASSWORD, KEY_ALIAS_PASSWORD, KEY_ALIAS
+        - google_play # <-- Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS - Store your google-services.json
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
