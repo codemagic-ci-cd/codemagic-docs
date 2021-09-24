@@ -42,6 +42,6 @@ To delete devices from a tester group, click the pencil icon next to the group t
 
 To delete a tester group, click the bin icon next to the tester group. Deleting the group will also delete all registered devices in the group from Codemagic.
 
-Note that deleting a device or a tester group from Codemagic does not remove the devices from Apple Developer Portal and testers can register new devices until the expiration of the invitation link.
+Note that deleting a device or a tester group from Codemagic does not remove the devices from Apple Developer Portal.
 
 To remove devices from [Apple Developer Portal](https://developer.apple.com/), navigate to **Certificates, Identifiers & Profiles > Devices**, select a device and click **Disable**.
