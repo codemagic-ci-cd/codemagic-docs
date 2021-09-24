@@ -1,3 +1,15 @@
+{{ define "page-link"}}
+    {{ $activePage := .activePage}}
+    {{ $page := .page}}
+    <a
+        js-docs-link
+        class="{{ if eq $activePage $page }}active{{ end }}"
+        href="{{ $page.RelPermalink }}"
+        {{if $page.Params.platform}}data-js-platform-specific="{{$page.Params.platform}}"{{end}}>
+        {{ $page.Title }}
+    </a>
+{{ end }}
+
 {{ define "main-menu" }}
     {{ $currentPage := .currentPage}}
     {{ $collapsible := .collapsible}}
@@ -13,7 +25,7 @@
                         js-category-name
                         data-category-id="{{ .Identifier }}"
                         {{if $collapsible}}js-category-toggle{{end}}
-                        {{ if $currentPage.HasMenuCurrent "main" . }}js-open{{ end }}
+                        {{ if or ($currentPage.HasMenuCurrent "main" .) (in $currentPage.Params.menuCategories .Identifier) }}js-open{{ end }}
                     >
                         {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}Configuration{{else}}{{.Name}}{{end}}
                     </div>
@@ -22,13 +34,16 @@
                             {{ template "main-menu" ( dict "menuItems" .Children "currentPage" $currentPage "collapsible" true ) }}
                         {{ end }}
                         {{ range where site.Pages "Section" .Identifier }}
-                            <a
-                                js-docs-link
-                                class="{{ if eq $currentPage . }}active{{ end }}"
-                                href="{{ .RelPermalink }}"
-                                {{if .Page.Params.platform}}data-js-platform-specific="{{.Page.Params.platform}}"{{end}}>
-                                {{ .Title }}
-                            </a>
+                            {{ template "page-link" (dict "page" . "activePage" $currentPage ) }}
+                        {{ end }}
+                        {{ range where site.Pages "Section" "in" .Params.menuCategories }}
+                            {{ template "page-link" (dict "page" . "activePage" $currentPage ) }}
+                        {{ end }}
+                        {{ $identifier := .Identifier}}
+                        {{ range where site.Pages "Section" "custom-menu-position" }}
+                            {{ if in .Params.menuCategories $identifier }}
+                                {{ template "page-link" (dict "page" . "activePage" $currentPage ) }}
+                            {{ end }}
                         {{ end }}
                     </div>
                 </div>
