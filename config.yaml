@@ -137,6 +137,9 @@ menu:
         - identifier: notes
           params:
               hide: true
+        - identifier: custom-menu-position
+          params:
+              hide: true
 
     extra:
         - identifier: cli

@@ -14,6 +14,7 @@
   {{ $title := .Title}}
   {{ $menuItems := .Site.Menus.main }}
   {{ $linkParts := (split (substr .RelPermalink 1 -1) "/") }}
+  {{ $params := .Params}}
   {{ range $index, $part := $linkParts }}
     {{ if lt $index (sub (len $linkParts) 1) }}
       {{ if hasPrefix $part "flutter" }}
@@ -22,6 +23,9 @@
         <span>.YAML</span>
       {{ end }}
       {{ if and (ne $part "yaml") (ne $part "flutter") (ne $part "notes") (ne $part "cli") }}
+        {{ if $params.menuCategories }}
+          <span>{{ humanize $part }}</span>
+        {{ end }}
         {{ template "getCategoryName" ( dict "menuItems" $menuItems "target" $part ) }}
       {{ end }}
     {{ else }}
