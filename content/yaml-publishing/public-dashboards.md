@@ -21,7 +21,9 @@ Public dashboards can be disabled anytime by clicking **Disable sharing**.
 
 ## Creating and sharing a build dashboard
 
-Open the **Builds** page via the navigation bar and use the **team**, **application**, **workflow**, **branch** and **status** filters on the left sidebar to create a build dashboard. Then click **Share dashboard** at the top of the page to generate a public link. A popup with the generated link will appear, and you can copy the link to the clipboard. The generated link will be also saved to the **Public dashboards** section in team settings.
+1. Open the **Builds** page via the left navigation bar.
+2. Click the **Filters** button at the top right of the page and use the **team**, **application**, **workflow**, **branch**, **tag** and **status** filters to create a build dashboard. 
+3. Then click **Share dashboard** at the top of the page to generate a public link. A popup with the generated link will appear, and you can copy the link to the clipboard. The generated link will be also saved to the **Public dashboards** section in team settings.
 
 {{<notebox>}}
 Please note that anyone with the public link can access the build dashboard and download build artifacts.
