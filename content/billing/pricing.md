@@ -80,7 +80,7 @@ The Codemagic business plan gives you a fixed price plan with the following bene
 
 * 3 concurrencies (premium macOS and Linux instances)
 * Unlimited build minutes
-* Unlmited team seats
+* Unlimited team seats
 * In-app chat support
 
 The **monthly** subscription is **$299/month** payable by credit card. Additional concurrencies are **$100/month**.
