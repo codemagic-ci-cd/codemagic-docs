@@ -50,8 +50,8 @@ workflows:
     instance_type: mac_mini
     environment:
       groups:
-        - keystore_credentials # <-- (Includes: FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
-        - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
+        - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
+        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       node: latest
@@ -131,8 +131,8 @@ workflows:
     instance_type: mac_mini
     environment:
       groups:
-        - keystore_credentials # <-- (Includes: FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
-        - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
+        - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
+        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
@@ -201,11 +201,11 @@ workflows:
     instance_type: mac_mini
     environment:
       groups:
-        # - manual_code_signing # <-- (Includes: FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
+        # - manual_code_signing # <-- (Includes FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
         # Automatic Code Signing
         # https://appstoreconnect.apple.com/access/api
-        - app_store_credentials # <-- (Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
-        - certificate_credentials # <-- (Includes: CERTIFICATE_PRIVATE_KEY)
+        - app_store_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
+        - certificate_credentials # <-- (Includes CERTIFICATE_PRIVATE_KEY)
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
@@ -299,11 +299,11 @@ workflows:
     instance_type: mac_mini
     environment:
       groups:
-        # - manual_code_signing # <-- (Includes: FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
+        # - manual_code_signing # <-- (Includes FCI_CERTIFICATE, FCI_CERTIFICATE_PASSWORD, FCI_PROVISIONING_PROFILE)
         # Automatic Code Signing
         # https://appstoreconnect.apple.com/access/api
-        - app_store_credentials # <-- (Includes: APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
-        - certificate_credentials # <-- (Includes: CERTIFICATE_PRIVATE_KEY)
+        - app_store_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
+        - certificate_credentials # <-- (Includes CERTIFICATE_PRIVATE_KEY)
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
