@@ -127,7 +127,7 @@ publishing:
 
 ```
 
-#### Post-processing of App Store Connect distribution
+### Post-processing of App Store Connect distribution
 
 Some App Store Connect actions, like `submit_to_testflight`, `beta_groups` and uploading release notes take place asynchronously in the post-processing step after the app artifact has been successfully published to App Store Connect and the main workflow has completed running in Codemagic. This avoids using the macOS build machine while we are waiting for Apple to complete processing the build and it becomes available for further actions. 
 
