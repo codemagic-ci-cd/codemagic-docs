@@ -73,8 +73,8 @@ weight: 3
 
 ## Xcode 12.5.1 (12E507)
 
-This is the Xcode version used by default when you select `12.5.1` or `latest` in build settings in the workflow
-editor for Flutter apps or set Xcode version to `12.5.1` or `latest` in your codemagic.yaml file.
+This is the Xcode version used by default when you select `12.5.1` in build settings in the workflow
+editor for Flutter apps or set Xcode version to `12.5.1` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-12.5.1.app`
