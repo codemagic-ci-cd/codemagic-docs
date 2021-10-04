@@ -72,8 +72,8 @@ weight: 2
 
 ## Xcode 13.0 (13A233)
 
-This is the Xcode version used by default when you select `13.0` or `edge` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `13.0` or `edge` in your codemagic.yaml file. 
+This is the Xcode version used by default when you select `13.0`, `latest` or `edge` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `13.0`, `latest` or `edge` in your codemagic.yaml file. 
 
 Xcode path: `/Applications/Xcode-13.0.app`
 
