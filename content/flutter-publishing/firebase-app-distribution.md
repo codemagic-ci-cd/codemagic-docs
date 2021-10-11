@@ -26,7 +26,7 @@ This guide only applies to workflows configured with the **Flutter workflow edit
 3. Enter the Firebase token or upload the service account JSON key respectively.
 4. Provide the **Firebase app ID** for Android and/or iOS. Note that the fields for Android or iOS configuration are displayed conditionally based on the selected build platforms at the top of the page.
 5. Enter the alias(es) of the **tester groups** to whom you want to distribute your Android or iOS app. To enter multiple groups, separate them with a comma or a space, or press Enter after each value.
-6. For Android, select whether you wish to publish the Android app bundle, Android APK artifact, or let Codemagic decide using the **Automatic** option. If not specified, Codemagic will look for any Android app bundles, and if not found, for any APK artifacts to publish.
+6. For Android, select whether you wish to publish the Android app bundle, the Android APK artifact, or select **Automatic** to publish either the Android app bundle (preferred) or the APK artifact (when no AAB is available).
 7. Select **Publish even if tests fail** to upload the artifacts even when one or more tests have failed.
 8. Finally, select **Enable publishing to Firebase App Distribution** at the top of the section to enable publishing.
 
