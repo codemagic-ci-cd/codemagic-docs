@@ -51,6 +51,10 @@ Invoices that have not been paid on the due date are shown as "Overdue" or "Fail
 
 As soon as there is a failed invoice payment, your subscription will be put on hold and running builds will be disabled. In order to continue building all invoices should be paid.
 
-Team or account owners can manually retry the payment by clicking on the overdue/pending invoice in **Billing history** and clicking the blue **$** icon in the **Invoice** column. It will redirect you to the Stripe-based payment site where you are required to add your credit card details and click **Make Payment**. 
+Team or account owners can manually retry the payment by clicking on the overdue/pending invoice in **Billing history** and clicking the blue **$** icon in the **Invoice** column. It will redirect you to the Stripe-based payment website where you are required to add your credit card details and click **Make Payment**.
+
+{{<notebox>}}
+**Pending invoices**: You may experience failed payments, due to the disabled international payments on your credit cards or automatic payments not allowed in which case the first payment has to be made manually, to comply with new RBI regulations for Indian card holders.
+{{</notebox>}}
 
 Note that overdue invoices should be paid before the subscription can be disabled. Please refer to the [Disable billing](/billing/billing/#disabling-billing) section for further info.
