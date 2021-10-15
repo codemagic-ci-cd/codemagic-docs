@@ -17,7 +17,7 @@ Here is how you can upload Xcode debugging symbols file to Firebase Crashlytics
   else
     echo "Publishing debug symbols from $dsymPath to Firebase Crashlytics"
     ls -d -- ios/Pods/*
-    $FCI_BUILD_DIR/ios/Pods/Crashlytics/iOS/Crashlytics.framework/upload-symbols -gsp ios/Runner/GoogleService-Info.plist -p ios $dsymPath
+    $FCI_BUILD_DIR/ios/Pods/FirebaseCrashlytics/iOS/Crashlytics.framework/upload-symbols -gsp ios/Runner/GoogleService-Info.plist -p ios $dsymPath
   fi
   ```
 
