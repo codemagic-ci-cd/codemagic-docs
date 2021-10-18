@@ -25,7 +25,7 @@ Before releasing the app to Google Play, ensure that it meets [Google Play's bes
 Once you make all the preparations as described [above](../publishing/publishing-to-google-play/#requirements) and configure publishing to Google Play, Codemagic will automatically distribute the app to Google Play every time you build the workflow.
 
 {{<notebox>}}
-The very first version of the app must be added to Google Play manually. You can download the **app_release.apk** from the build artifacts. In addition, each uploaded binary must have a different version; see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic.
+The very first version of the app must be added to Google Play manually. You can download the **app_release.aab** from the build artifacts. In addition, each uploaded binary must have a different version; see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic.
 {{</notebox>}}
 
 1. Navigate to the Distribution section in app settings.
