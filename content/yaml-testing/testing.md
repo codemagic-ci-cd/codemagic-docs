@@ -49,8 +49,8 @@ scripts:
 ### Running iOS/Android application tests on a mobile simulator/emulator
 
 ```bash
-flutter emulators --launch apple_ios_simulator &                    # for android use: flutter emulators --launch emulator
-adb wait-for-device 
+flutter emulators --launch apple_ios_simulator &            # for android use: flutter emulators --launch emulator
+adb wait-for-device                                         # adb wait-for-device is for android use only
 flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d iPhone  # for android use: -d emulator-5554
 ```
 
