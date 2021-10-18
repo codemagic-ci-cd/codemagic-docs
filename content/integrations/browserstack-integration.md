@@ -11,7 +11,7 @@ weight: 5
 
 Signing up with BrowserStack is required in order to be able to get the username and access token. You can sign up for free [here](https://www.browserstack.com/).
 
-## Configuring **App Live** and **App Automat** with Codemagic
+## Configuring **App Live** and **App Automate** with Codemagic
 
 BrowserStack offers two testing environments, **App Live** and **App Automate**. You can submit your applications to both testing environments via Codemagic using cURL requests. In order to configure them correctly, you will need two environment variables: **username** and **access token**. They can be found in the BrowserStack UI with your account. Environment variables can be added in the Codemagic web app using the ‘Environment variables’ tab. You can then and import your variable groups into your codemagic.yaml. For example, if you named your variable group ‘browserstack_credentials’, you would import it as follows:
 
