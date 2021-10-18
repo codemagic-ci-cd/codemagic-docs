@@ -60,7 +60,7 @@ If you are building your app in release mode, then you also need to build your t
     testBuildType "release"
 ```
 
-## Sample projects
+## Sample projects
 
 A sample project that shows how to configure BrowserStack integration for **App Live** is available [here](https://github.com/icarusdust/app_live_browserstack_integration)
 
