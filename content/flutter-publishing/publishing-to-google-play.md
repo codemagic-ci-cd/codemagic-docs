@@ -13,18 +13,19 @@ This guide only applies to workflows configured with the **Flutter workflow edit
 
 ## Requirements
 
-You will need a **service account in Google Play Console** to obtain the **JSON credentials file**. See how to do that [here](../knowledge-base/google-play-api/). In addition, you must build the app in **release mode** and set up **Android code signing**.
+1. Setting up access using [Google Play API](../knowledge-base/google-play-api/).
+2. A [**service account in Google Play Console**](../knowledge-base/google-services-authentication/#creating-a-service-account) to obtain the **JSON credentials file**
+3. Granting the necessary App permissions and access permissions to the service account.
+4. You must build the app in **release mode** and set up [**Android code signing**](../code-signing/android-code-signing).
 
 Before releasing the app to Google Play, ensure that it meets [Google Play's best practices guidelines](https://developer.android.com/distribute/best-practices/launch/).
 
-{{<notebox>}} Note that if you haven't published your app to Google Play yet, you must create an entry for your app in Google Play Console and manually upload the very first version of the app before you can automate publishing using Codemagic. In addition, each uploaded binary must have a different version; see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic. {{</notebox>}}
-
 ## Setting up publishing to Google Play on Codemagic
 
-Once you configure publishing to Google Play, Codemagic will automatically distribute the app to Google Play every time you build the workflow.
+Once you configure publishing to Google Play as stated [above](../publishing/publishing-to-google-play/#requirements), Codemagic will automatically distribute the app to Google Play every time you build the workflow.
 
 {{<notebox>}}
-The very first version of the app must be added to Google Play manually. You can download the **app_release.apk** from the build artifacts.
+The very first version of the app must be added to Google Play manually. You can download the **app_release.apk** from the build artifacts. In addition, each uploaded binary must have a different version; see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic.
 {{</notebox>}}
 
 1. Navigate to the Distribution section in app settings.
