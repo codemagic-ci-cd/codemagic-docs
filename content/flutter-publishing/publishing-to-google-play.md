@@ -16,7 +16,7 @@ This guide only applies to workflows configured with the **Flutter workflow edit
 1. Setting up access using [Google Play API](../knowledge-base/google-services-authentication/#google-play).
 2. A [**service account in Google Play Console**](../knowledge-base/google-services-authentication/#creating-a-service-account) to obtain the **JSON credentials file**
 3. Granting the necessary App permissions and access permissions to the service account.
-4. You must build the app in **release mode** and set up [**Android code signing**](../code-signing/android-code-signing).
+4. You must build the app in **release mode** and set up **Android code signing**. You can check it [here](../flutter/flutter-projects/#building-android-app-bundles).
 
 Before releasing the app to Google Play, ensure that it meets [Google Play's best practices guidelines](https://developer.android.com/distribute/best-practices/launch/).
 
