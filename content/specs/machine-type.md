@@ -27,3 +27,17 @@ Codemagic offers two types of Linux machines for running builds: Linux standard 
 {{<notebox>}}
 Linux Standard and Premium machines are only available for teams and users that have [enabled billing](../billing/billing) for builds configured with [codemagic.yaml](../getting-started/yaml/). See the [pricing page](https://codemagic.io/pricing/) for the per minute rate.
 {{</notebox>}}
+
+## Xcode version update policy
+
+Codemagic macOS build machines come with a range of Xcode versions and runtimes preinstalled. In general, we will always support 3 latest major Xcode versions:
+
+* The latest major Xcode version and all of its minor versions
+* The latest minor version of two previous major Xcode versions
+
+The currently available Xcode versions are as follows:
+
+* [Xcode 13.0+ base image](../specs/versions4/): `13.0`
+* [Xcode 12.5 base image](../specs/versions3/): `12.5.1`, `12.5`, `12.4`
+* [Xcode 12.0 - 12.4 base image](../specs/versions2/): `12.4`, `12.3`, `12.2`, `12.1.1`, `12.0.1`
+* [Xcode 11.x base image](../specs/versions/): `11.7`, `11.6`,  `11.5`. `11.4.1`,  `11.3.1`. `11.2.1`, `11.1`. `11.0` 
