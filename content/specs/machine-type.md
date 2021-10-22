@@ -30,9 +30,12 @@ Linux Standard and Premium machines are only available for teams and users that 
 
 ## Xcode version update policy
 
-Codemagic macOS build machines come with different base images and preinstalled software. We are committed to always supporting the latest Xcode versions as well as the latest builds of previous major versions. We also regularly update other preinstalled software, such as Flutter and CocoaPods.
+Codemagic macOS build machines come with a range of Xcode versions and runtimes preinstalled. In general, we will always support 3 latest major Xcode versions:
 
-The available Xcode versions are the following:
+* The latest major Xcode version and all of its minor versions
+* The latest minor version of two previous major Xcode versions
+
+The currently available Xcode versions are as follows:
 
 * [Xcode 13.0+ base image](../specs/versions4/): `13.0`
 * [Xcode 12.5 base image](../specs/versions3/): `12.5.1`, `12.5`, `12.4`
