@@ -56,7 +56,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 
 1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
 2. Click on the + sign to generate a new API key.
-3. Enter the name for the key and select an access level. We recommend choosing `App Manager` since `Developer` does not have the required permissions to upload to the store, read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
+3. Enter the name for the key and select an access level. We recommend choosing `App Manager`, considering that `Developer` does not have the required permissions to upload to the store. Read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
 4. Click **Generate**.
 5. As soon as the key is generated, you can see it added to the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
