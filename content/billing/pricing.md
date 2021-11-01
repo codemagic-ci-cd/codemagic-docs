@@ -6,11 +6,15 @@ weight: 2
 ## Free plan
 
 The free plan allows you to use 500 minutes per month on macOS standard machines on a personal account. Your 500 free minutes will be reset on the 1st of each month. Free minutes are not available if you are using a Team.
+
+To start using Codemagic for free, [sign up here](https://codemagic.io/signup). 
 ## Pay as you go pricing
 
 Pay as you go pricing allows you to pay for only what you use. 
 
 Extra build concurrencies allow Teams to run up to three parallel builds.
+
+To sign up for the pay as you go plan, [visit this page](https://codemagic.io/signup). To enable billing after you are already signed in, proceed to [the billing section](https://codemagic.io/billing).
 
 ### Instance Types
 
@@ -38,7 +42,7 @@ For macOS instances, details of the hardware specification, system information a
 
 ### Pricing for Personal Accounts
 
-When billing is enabled on personal accounts you will still have **500 free build minutes** on macOS standard VM. 
+When billing is enabled on personal accounts you will still have **500 free build minutes** on macOS standard VM. To enable billing, proceed [here](https://codemagic.io/billing).
 
 Usage on macOS standard VM that exceeds 500 minutes is charged at rate shown below.
 
