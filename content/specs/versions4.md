@@ -13,33 +13,33 @@ weight: 2
 
 ## System
 
-- System version `macOS 11.6 (20G165)`
+- System version `macOS 11.6.1 (20G224)`
 - Kernel version `Darwin 20.6.0`
-- Disk `322GB (Free Space: 166GB)`
+- Disk `322GB (Free Space: 143GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `23.1.7779620`
-- aws `2.2.46`
+- aws `2.3.2`
 - cocoapods `1.11.2`
 - cordova `10.0.0`
 - curl
 - docker `20.10.2`
-- fastlane `2.196.0`
+- fastlane `2.197.0`
 - firebase `9.3.0`
 - flutter `2.5.3 ($HOME/programs/flutter)`
 - gem `3.2.29`
-- gh `2.1.0`
+- gh `2.2.0`
 - git `2.33.1`
 - Google Cloud SDK `327.0.0`
 - gradle `6.7.1`
 - gsutil `4.58`
-- homebrew `3.2.17`
+- homebrew `3.3.1`
 - ionic `6.12.4`
 - jq
 - node `14.15.5`
-- npm `8.0.0`
+- npm `8.1.0`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
@@ -66,14 +66,14 @@ weight: 2
 
 ## Java versions
 
-- **17** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
+- **17.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
 - **16.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-16.jdk/Contents/Home`
-- **11.0.12** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_302** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **11.0.13** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_312** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
 ## Xcode 13.1 (13A1030d)
 
-This is the Xcode version used by default when you select `13.1` or `edge` in build settings in the workflow editor for Flutter apps or set Xcode version to `13.1` or `edge` in your codemagic.yaml file. 
+This is the Xcode version used by default when you select `13.1` or `latest` in build settings in the workflow editor for Flutter apps or set Xcode version to `13.1` or `latest` in your codemagic.yaml file. 
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.1.app`
@@ -84,8 +84,10 @@ With Xcode `13.1` build version `13A1030d` the following runtimes and devices ar
 
 - iOS 14.5
 - iOS 15.0
+- iOS 15.2
 - tvOS 14.5
 - tvOS 15.0
+- tvOS 15.2
 - watchOS 7.4
 - watchOS 8.0
 
@@ -129,5 +131,6 @@ With Xcode `13.1` build version `13A1030d` the following runtimes and devices ar
 
 ## Other Xcode versions
 
+- 13.2 (13C5066c) `/Applications/Xcode-13.2.app`
 - 13.0 (13A233) `/Applications/Xcode-13.0.app`
 
