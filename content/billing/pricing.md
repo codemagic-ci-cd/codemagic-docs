@@ -76,11 +76,11 @@ Each addtional concurrency is $49/month and you will be billed for each concurre
 | Team user                | $10 / month                                                                                                                                                     |                                                                                                                                                 |
 | Extra build concurrency  | $49 / month                                                                                                                                                     | 
 
-Consider Business plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on premium macOS and Linux instances, as well as unlimited team seats. For more information contact us [here](https://codemagic.io/contact/).
+Consider Professional plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on premium macOS and Linux instances, as well as unlimited team seats. For more information contact us [here](https://codemagic.io/contact/).
 
-## Business Plan
+## Professional Plan
 
-The Codemagic business plan gives you a fixed price plan with the following benefits:
+The Codemagic Professional plan gives you a fixed price plan with the following benefits:
 
 * 3 concurrencies (premium macOS and Linux instances)
 * Unlimited build minutes
@@ -91,11 +91,11 @@ The **monthly** subscription is **$299/month** payable by credit card. Additiona
 
 An **annual** subscription with **20% discount** is **$2,870/year**. Additional concurrencies are **$960/year**. 
 
-**SSO** is availble as a Business plan add-on for **$50/month** or **$480/year** 
+**SSO** is availble as a Professional plan add-on for **$50/month** or **$480/year** 
 
-The Business plan can only be paid for with credit card. If you require annual invoicing please refer to the Enterprise plan below.
+The Professional plan can only be paid for with credit card. If you require annual invoicing please refer to the Enterprise plan below.
 
-If you would like to upgrade to a business plan, please contact us [here](https://codemagic.io/contact/).
+If you would like to upgrade to a Professional plan, please contact us [here](https://codemagic.io/contact/).
 
 
 ## Enterprise Plan
