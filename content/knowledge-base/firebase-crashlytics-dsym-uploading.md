@@ -10,7 +10,7 @@ Here is how you can upload Xcode debugging symbols file to Firebase Crashlytics
 
   ```bash
   echo "Find build artifacts"
-  dsymPath=$(find ~/build.xcarchive -name "*.dSYM.zip" | head -1)
+  dsymPath=$(find $FCI_BUILD_DIR/build/ios/archive/Runner.xcarchive $FCI_BUILD_DIR/build/ios/xcarchive/Runner.xcarchive -name "*.dSYM.zip" | head -1)
   if [[ -z ${dsymPath} ]]
   then
     echo "No debug symbols were found, skip publishing to Firebase Crashlytics"
