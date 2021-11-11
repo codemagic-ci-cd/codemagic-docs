@@ -136,6 +136,31 @@ Note that Codemagic does not send status updates on the post-processing step. Yo
 
 Post-processing does not consume any build minutes.
 
+### Microsoft Partner Center
+
+{{<notebox>}}
+DISCLAIMER: Building Windows applications with Codemagic is in beta stages and will be free to all users with billing enabled until the end of 2021. Any feedback is well received in our [Slack channel](https://slack.codemagic.io).
+{{</notebox>}}
+
+Codemagic enables you to automatically publish your desktop app to the Microsoft Store. Note that a prior successful submission has to have been made through the Partner Center in order for Codemagic to publish your application.
+
+For publishing, Codemagic makes use of the [Microsoft Store submission API](https://docs.microsoft.com/en-us/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services). Thus it is also necessary to link your Partner Center account to an Azure AD application and providing Codemagic with information that can be used to generate temporary Azure AD access tokens for managing submissions.
+
+To get the necessary details (`tenant_id`, `client_id`, `client_secret`), follow the instructions [here](../knowledge-base/partner-center-authentication).
+
+It is also necessary for you to provide your `store_id`, which can be found in the [Partner Center apps dashboard URL](https://partner.microsoft.com/en-us/dashboard/apps), when looking at the details for your applications.
+
+To safely store and use the `client_secret`, configure it as an [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles) in Codemagic. Click **Secure** to encrypt the value.
+
+```yaml
+publishing:
+  partner_center:
+    store_id: 1D4VKTPG38SA
+    tenant_id: ab80a389-41e3-55a8-ae12-bb7430667e04
+    client_id: 52da6186-abce-14f4-b2e1-00018c16f3d1
+    client_secret: $CLIENT_SECRET
+```
+
 ### Firebase App Distribution
 
 {{<notebox>}}
