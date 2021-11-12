@@ -23,6 +23,7 @@ At the beginning of the workflow, first select the platforms to build and then s
 - iOS and macOS builds can be run on macOS build machines
 - Android and Web builds can be run on macOS or Linux build machines
 - Linux builds can be run on Linux build machines
+- Windows builds can be run on Windows build machines
 - a Run tests only workflow can be run on macOS or Linux build machines
 
 ## Building Android apps
