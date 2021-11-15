@@ -313,7 +313,7 @@ artifacts:
   - build/windows/**/*.msix
 ```
 
-For all the possible flags for the `msix:create` command, check the [pub documentation](https://pub.dev/packages/msix#clipboard-available-configuration-fields), as mentioned prior, these parameters can also be configured in the `pubspec.yaml` file, if the package has been added to the project prior. Take note that when configuring them both inside `codemagic.yaml` and `pubspec.yaml`, the ones inside codemagic.yaml will be prioritized.
+For all the possible flags for the `msix:create` command, check the [pub documentation](https://pub.dev/packages/msix#clipboard-available-configuration-fields). Note that when configuring the flags both in `codemagic.yaml` and `pubspec.yaml`, the ones configured in `codemagic.yaml` take precedence.
 
 ## Testing, code signing and publishing a Flutter app
 
