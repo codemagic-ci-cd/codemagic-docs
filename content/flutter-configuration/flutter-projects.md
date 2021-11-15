@@ -21,7 +21,7 @@ If you're interested in building Flutter/Dart packages and publishing them to [p
 At the beginning of the workflow, first select the platforms to build and then specify a build machine type to run the build on. While Android, iOS and web builds can be run in the same workflow, macOS and Linux platforms are each built in a separate workflow and on different build instances. Note that the availability of build machine instances depends on the selected build platforms and whether you have billing enabled or not.
 
 - iOS and macOS builds can be run on macOS build machines
-- Android and Web builds can be run on macOS or Linux build machines
+- Android and Web builds can be run on macOS, Linux or Windows build machines
 - Linux builds can be run on Linux build machines
 - Windows builds can be run on Windows build machines
 - a Run tests only workflow can be run on macOS or Linux build machines
