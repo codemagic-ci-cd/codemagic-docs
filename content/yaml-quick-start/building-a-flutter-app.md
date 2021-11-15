@@ -290,7 +290,7 @@ artifacts:
 
 ### Creating an MSIX package for publishing to Microsoft Store
 
-Codemagic recommends using the [Flutter msix package](https://pub.dev/packages/msix) for packaging the application. In order for the package to be suitable for publishing to Microsoft Store it is necessary to define certain arguments during packaging.
+Codemagic uses the [Flutter msix package](https://pub.dev/packages/msix) for packaging the application. For publishing to the Microsoft Store, it is necessary to define certain arguments during packaging.
 
 To pass these arguments to the packaging tool, it is necessary to either add the parameters to the packaging command in `codemagic.yaml` or to add the package to your project prior to using Codemagic and [configure](https://pub.dev/packages/msix#gear-configuration-optional) the arguments inside the `pubspec.yaml` file.
 
