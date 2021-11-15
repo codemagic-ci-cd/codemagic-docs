@@ -360,6 +360,7 @@ then
 fi
 
 if [ $APP_TYPE = "android" ]
+then
   echo "UNITY BUILD ANDROID START"
   $UNITY_BIN -quit -batchmode -projectPath $UNITY_PROJECT_PATH -executeMethod BuildScript.BuildAndroid -nographics -logfile $UNITY_LOG_FILE_ANDROID
   "UNITY BUILD ANDROID END"
