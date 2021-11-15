@@ -55,7 +55,7 @@ The very first version of the app must be submitted in the Partner Center manual
 3. Choose the **tenant** you have configured in your team/user settings.
 4. Provide the **Store ID** of the application that has been set up in the Partner Center.
 5. Provide the necessary package arguments for publishing (**Package name**, **Publisher ID**, **Publisher name**)
-   These values can be found in [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/home), navigating to **Apps and games > [Your application] > Product Identity**.
+   These values can be found in [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/home) when navigating to **Apps and games > [Your application] > Product Identity**.
 6. Set a version for your package by configuring the **Package version** field, to see how to increment this number automatically check the **Version your package** section below.
 7. If you want to publish the .msix even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
 8. Select **Enable publishing to Microsoft Store** at the top of the section to enable publishing.
