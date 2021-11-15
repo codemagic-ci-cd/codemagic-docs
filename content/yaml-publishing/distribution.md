@@ -138,19 +138,19 @@ Post-processing does not consume any build minutes.
 
 ### Microsoft Partner Center
 
+Codemagic enables you to automatically publish your Windows desktop app to the Microsoft Store.
+
 {{<notebox>}}
-DISCLAIMER: Building Windows applications with Codemagic is in beta stages and will be free to all users with billing enabled until the end of 2021. Any feedback is well received in our [Slack channel](https://slack.codemagic.io).
+The very first version of the app must be submitted in the Partner Center manually. You can download the **MSIX** package from the build artifacts.
 {{</notebox>}}
 
-Codemagic enables you to automatically publish your desktop app to the Microsoft Store. Note that a prior successful submission has to have been made through the Partner Center in order for Codemagic to publish your application.
+For publishing, Codemagic makes use of the [Microsoft Store submission API](https://docs.microsoft.com/en-us/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services). This requires linking your Partner Center account to the Azure AD application and providing Codemagic with information that can be used to generate temporary Azure AD access tokens for managing submissions.
 
-For publishing, Codemagic makes use of the [Microsoft Store submission API](https://docs.microsoft.com/en-us/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services). Thus it is also necessary to link your Partner Center account to an Azure AD application and providing Codemagic with information that can be used to generate temporary Azure AD access tokens for managing submissions.
+To link your Microsoft Partner Center account with the Azure AD application and get the necessary details (`tenant_id`, `client_id`, `client_secret`), follow the instructions [here](../knowledge-base/partner-center-authentication).
 
-To get the necessary details (`tenant_id`, `client_id`, `client_secret`), follow the instructions [here](../knowledge-base/partner-center-authentication).
+It is also necessary for you to provide your `store_id`, which can be found when you open the application in the [Partner Center apps dashboard](https://partner.microsoft.com/en-us/dashboard/apps).
 
-It is also necessary for you to provide your `store_id`, which can be found in the [Partner Center apps dashboard URL](https://partner.microsoft.com/en-us/dashboard/apps), when looking at the details for your applications.
-
-To safely store and use the `client_secret`, configure it as an [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles) in Codemagic. Click **Secure** to encrypt the value.
+To safely store and use the `client_secret`, save it as an [environment variable](/variables/environment-variable-groups/#storing-sensitive-valuesfiles) in the Codemagic UI. Click **Secure** to encrypt the value.
 
 ```yaml
 publishing:

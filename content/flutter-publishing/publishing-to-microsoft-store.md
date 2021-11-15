@@ -5,10 +5,6 @@ weight: 3
 aliases: /publishing/publishing-to-microsoft-store
 ---
 
-{{<notebox>}}
-DISCLAIMER: Building Windows applications with Codemagic is in beta stages and will be free to all users with billing enabled until the end of 2021. Any feedback is well received in our [Slack channel](https://slack.codemagic.io).
-{{</notebox>}}
-
 Codemagic enables you to automatically publish your desktop app to the Microsoft Store.
 
 {{<notebox>}}
@@ -21,9 +17,9 @@ To publish your Windows desktop app to Microsoft Store, you will have to have th
 
 It is also essential that your application is packaged as a [MSIX package](../building/building-for-desktop/#building-msix-packages).
 
-Codemagic uses the [Microsoft Store submission API](https://docs.microsoft.com/en-us/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services) to handle publishing to Microsoft Store. Thus details for generating temporary Azure AD access tokens on the users behalf are required.
+Codemagic uses the [Microsoft Store submission API](https://docs.microsoft.com/en-us/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services) to handle publishing to the Microsoft Store. Thus details for generating temporary Azure AD access tokens on the user's behalf are required.
 
-To fetch these details, the application has to be set up in Azure AD and linked to the users Partner Center account.
+To fetch these details, the application has to be set up in Azure AD and linked to the users' Partner Center account.
 
 ## Setting up publishing to Microsoft Store on Codemagic
 
@@ -31,7 +27,7 @@ This section gives step-by-step instructions on how to configure publishing to M
 
 ### Step 1. Setting up Azure AD with your Partner Center account
 
-Follow the instructions [here](../knowledge-base/partner-center-authentication) to get your tenant ID, client ID and client secret which are required to generate temporary access tokens to manage submissions in the Partner Center.
+Follow the instructions [here](../knowledge-base/partner-center-authentication) to get your tenant ID, client ID, and client secret which are required for generating temporary access tokens to manage submissions in the Partner Center.
 
 ### Step 2. Connecting the Microsoft Partner Center integration for your team/account
 
@@ -56,15 +52,16 @@ The very first version of the app must be submitted in the Partner Center manual
 
 1. Navigate to the Distribution section in app settings.
 2. Click **Microsoft Partner Center** to expand the option.
-3. Choose the tenant you have configured in your team/user settings.
-4. Provide the Store ID of the application that has been set up in the Partner Center.
-5. Provide the necessary package arguments for publishing (`Package name`, `Publisher ID`, `Publisher name`, `Package version`).
-   These values can be found in [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/home), navigating to **Apps and games > [Your application] > Product Identity**, with the exemption of `Package version` which has to be configured by the user.
-6. If you want to publish the .msix even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
-7. Select **Enable publishing to Microsoft Store** at the top of the section to enable publishing.
+3. Choose the **tenant** you have configured in your team/user settings.
+4. Provide the **Store ID** of the application that has been set up in the Partner Center.
+5. Provide the necessary package arguments for publishing (**Package name**, **Publisher ID**, **Publisher name**)
+   These values can be found in [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/home), navigating to **Apps and games > [Your application] > Product Identity**.
+6. Set a version for your package by configuring the **Package version** field, to see how to increment this number automatically check the **Version your package** section below.
+7. If you want to publish the .msix even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
+8. Select **Enable publishing to Microsoft Store** at the top of the section to enable publishing.
 
 #### Version your package
 
-To version your `MSIX package` for Microsoft Store Submission, you can either set the value as a string, such as `1.0.0.0`, or use Codemagic built-in environment variables (`$PROJECT_BUILD_NUMBER`, `$BUILD_NUMBER`) to automatically increment versions on every release.
+To version your `MSIX package` for Microsoft Store Submission, you can either set the value as a string, such as `1.0.0.0`, or use Codemagic's read-only environment variables (`$PROJECT_BUILD_NUMBER`, `$BUILD_NUMBER`) to automatically increment versions on every release.
 
-In order to do so, you can simply set the `Package version` field for example as `1.$BUILD_NUMBER.0.0` which will use the Codemagic build number for the given workflow to set the package version.
+In order to do so, you can simply set the `Package version` field as `1.$BUILD_NUMBER.0.0`, for example, which will use the Codemagic build number for the given workflow to set the package version.

@@ -274,10 +274,6 @@ workflows:
 
 ## Windows desktop builds
 
-{{<notebox>}}
-DISCLAIMER: Building Windows applications with Codemagic is in beta stages and will be free to all users with billing enabled until the end of 2021. Any feedback is well received in our [Slack channel](https://slack.codemagic.io).
-{{</notebox>}}
-
 ### Building an unpackaged Windows executable
 
 ```yaml
@@ -296,13 +292,13 @@ artifacts:
 
 Codemagic recommends using the [Flutter msix package](https://pub.dev/packages/msix) for packaging the application. In order for the package to be suitable for publishing to Microsoft Store it is necessary to define certain arguments during packaging.
 
-The necessary configuration fields to add are `--store`, `--display-name`, `--publisher-display-name`, `--publisher` and `--version`.
+To pass these arguments to the packaging tool, it is necessary to either add the parameters to the packaging command in `codemagic.yaml` or to add the package to your project prior to using Codemagic and [configure](https://pub.dev/packages/msix#gear-configuration-optional) the arguments inside the `pubspec.yaml` file.
 
-The values for `--display-name`, `--publisher-display-name` and `--publisher` can be configured most easily when logging into [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/home), navigating to **Apps and games > Your application > Product Identity** and using the values visible.
+When defining the arguments inside codemagic.yaml, the necessary flags to add to the `msix:create` command are `--store`, `--display-name`, `--publisher-display-name`, `--publisher` and `--version`.
+
+The values for `--display-name`, `--publisher-display-name` and `--publisher` can be found when when logging into [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/home) and navigating to **Apps and games > Your application > Product Identity**.
 
 The argument `--display-name` should be set to match the value of `Package/Identity/Name`, the argument `--publisher` should be set to match the value of `Package/Identity/Publisher` and the argument `--publisher-display-name` should be set to match the value of `Package/Properties/PublisherDisplayName`.
-
-For all the possible parameters check the [pub documentation](https://pub.dev/packages/msix#clipboard-available-configuration-fields), alternatively, these attributes can also be configured in the `pubspec.yaml` file, if the package has been added to the project prior.
 
 ```yaml
 scripts:
@@ -316,6 +312,8 @@ scripts:
 artifacts:
   - build/windows/**/*.msix
 ```
+
+For all the possible flags for the `msix:create` command, check the [pub documentation](https://pub.dev/packages/msix#clipboard-available-configuration-fields), as mentioned prior, these parameters can also be configured in the `pubspec.yaml` file, if the package has been added to the project prior. Take note that when configuring them both inside `codemagic.yaml` and `pubspec.yaml`, the ones inside codemagic.yaml will be prioritized.
 
 ## Testing, code signing and publishing a Flutter app
 

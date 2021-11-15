@@ -104,10 +104,6 @@ Additionally, you may want to install the generated `.snap` package onto your ma
 
 ## Building Windows apps
 
-{{<notebox>}}
-DISCLAIMER: Building Windows applications with Codemagic is in beta stages and will be free to all users with billing enabled until the end of 2021. Any feedback is well received in our [Slack channel](https://slack.codemagic.io).
-{{</notebox>}}
-
 Codemagic can detect your Flutter Windows project if it contains a `windows` folder for the Windows application.
 
 In your app settings, select **Windows** under **Build for platforms** and an available build machine type.
@@ -122,9 +118,9 @@ MSIX is a Windows app package format that provides a modern packaging experience
 
 To build a MSIX package, select the **Create a Windows MSIX package** checkbox in the **Build** section of your Windows workflow. Codemagic uses the [Flutter msix package](https://pub.dev/packages/msix) for packaging the application.
 
-In order to configure your package attributes, install the package to your project and add a [msix_config](https://pub.dev/packages/msix#gear-configuration-optional) to your `pubspec.yaml`.
+Note that when packaging the application for release to Microsoft Store and publishing through Codemagic, you will be asked to provide the necessary `msix` configuration fields (`publisher_display_name`, `identity_name`, `msix_version`, `publisher`) under publishing settings.
 
-Note that when packaging the application for release to Microsoft Store and publishing through Codemagic, you will be asked to provide the necessary `msix` configuration fields (`publisher_display_name`, `identity_name`, `msix_version`, `publisher`) under build settings and they do not have to be configured separately in the `pubspec.yaml` file.
+However, in order to configure any other package attributes, install the package to your project and add a [msix_config](https://pub.dev/packages/msix#gear-configuration-optional) to your `pubspec.yaml`. The aforementioned attributes to not have to be separately configured in the `pubspec.yaml`
 
 ## Running tests only
 
