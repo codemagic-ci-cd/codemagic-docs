@@ -25,7 +25,15 @@ Mac Pro machines are only available for teams and users that have [billing enabl
 Codemagic offers two types of Linux machines for running builds: Linux standard VM and Linux premium VM. Linux machines support nested virtualisation, including Android emulator support with hardware acceleration. Linux machines do not support macOS specific software, such as brew and Xcode, and cannot be used to build iOS artifacts. Specifications for these machines are available [here](../specs/versions-linux/#hardware).
 
 {{<notebox>}}
-Linux Standard and Premium machines are only available for teams and users that have [enabled billing](../billing/billing) for builds configured with [codemagic.yaml](../getting-started/yaml/). See the [pricing page](https://codemagic.io/pricing/) for the per minute rate.
+Linux Standard and Premium machines are only available for teams and users that have [enabled billing](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for the per minute rate.
+{{</notebox>}}
+
+## Windows Premium
+
+Codemagic offers only premium Windows VMs. Unfortunately, the Windows VMs do not support nested virtualization which is required for the Android emulator. Windows machines do not support macOS specific software, such as brew and Xcode, and cannot be used to build iOS artifacts. Specifications for these machines are available [here](../specs/versions-windows/).
+
+{{<notebox>}}
+Windows Premium machines are only available for teams and users that have [enabled billing](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for the per minute rate.
 {{</notebox>}}
 
 ## Xcode version update policy
