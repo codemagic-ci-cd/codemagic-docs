@@ -28,17 +28,21 @@ const createTableOfContents = () => {
             )
         }
     })
-    hashScroll()
 }
 
-// Scroll to heading from url
 const hashScroll = () => {
-    const { hash, pathname, search } = window.location
+    const { hash } = window.location
     if (hash) {
         const target = document.querySelector(hash)
-        scrollToAnchor(target)
-        history.pushState('', document.title, pathname + search)
+        scrollToAnchor(target, 30)
     }
+}
+
+const adjustScrollPotion = () => {
+    const headerHeight = document.querySelector('[js-header]').offsetHeight
+    const targetMarginTop = 30
+    const offset = headerHeight + targetMarginTop
+    window.scrollBy(0, -offset)
 }
 
 // Smooth scroll
@@ -64,13 +68,13 @@ const scrollToY = (target, duration) => {
 }
 
 // Create anchor scroller
-const scrollToAnchor = (target) => {
+const scrollToAnchor = (target, duration) => {
     const headerHeight = document.querySelector('[js-header]').offsetHeight
     const targetMarginTop = 30
     const offsetTop = window.scrollY + target.getBoundingClientRect().top
     let offset = headerHeight + targetMarginTop
 
-    scrollToY(offsetTop - offset, 100)
+    scrollToY(offsetTop - offset, duration ?? 100)
 }
 
 // Scroll to target on hash links
@@ -328,6 +332,13 @@ scrollMenuToActive('[js-docs-menu]', true)
 positionHeaderContents()
 setInitialPreference()
 openActiveCategory()
+
+// fix scroll position of default scroll to hash
+// timeout to run when page is already scrolled to the header
+if (window.location.hash) setTimeout(adjustScrollPotion)
+
+// fix position if after full load targed changed position
+window.addEventListener('load', hashScroll)
 
 if (showToc) {
     createTableOfContents()
