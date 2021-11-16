@@ -30,7 +30,7 @@ Linux Standard and Premium machines are only available for teams and users that 
 
 ## Windows Premium
 
-Codemagic offers only premium Windows VMs. Unfortunately, the Windows VMs do not support nested virtualization which is required for the Android emulator. Windows machines do not support macOS specific software, such as brew and Xcode, and cannot be used to build iOS artifacts. Specifications for these machines are available [here](../specs/versions-windows/).
+Codemagic offers only premium Windows VMs. Windows VMs do not support nested virtualization which is required for the use of Android emulator. Additionally, Windows machines do not support macOS specific software, such as brew and Xcode, and cannot be used to build iOS artifacts. Specifications for these machines are available [here](../specs/versions-windows/).
 
 {{<notebox>}}
 Windows Premium machines are only available for teams and users that have [enabled billing](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for the per minute rate.
