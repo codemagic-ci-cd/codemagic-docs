@@ -123,7 +123,7 @@ public static class BuildScript
 }
 ```
 
-## Add a post-processing script to Unity {#post-processecing-script}
+## Add a post-processing script to Unity {#post-processing-script}
 
 When publishing your app to TestFlight or the App Store you will be asked if your app uses encryption. 
 
