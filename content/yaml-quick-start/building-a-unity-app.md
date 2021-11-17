@@ -17,30 +17,44 @@ This guide will show you how to configure a workflow that builds and publishes y
 
 ## Adding your Unity project to Codemagic
 
-The apps you have available on Codemagic are listed on the Applications page. Click **Add application** to add a new app.
+It is possible to add repositories from Github, Gitlab, Bitbucket or any Git based repository. Please refer to the following documentation about adding apps from these sources.
 
-1. On the Applications page, click **Set up build** next to the app you want to start building. 
-2. On the popup, select **Other** as the project type and click **Continue**.
-3. In your IDE, create a [`codemagic.yaml`](./yaml). This will be used to create our workflow.
-4. Commit the configuration file to the root of your repository.
-5. Back in app settings in Codemagic, scan for the `codemagic.yaml` file by selecting a **branch** to scan and clicking the **Check for configuration file** button at the top of the page. Note that you can have different configuration files in different branches.
+- [Adding apps from GitHub](../getting-started/github/).
+- [Adding apps from GitLab](../getting-started/gitlab/).
+- [Adding apps from Bitbucket](../getting-started/bitbucket/).
+- [Adding apps from other repositories](../getting-started/other/).
 
-## Environment variables for Unity
+## Setting up your workflow
+
+These are the key steps in setting up your workflow for building Unity mobile apps: 
+
+1. On the Applications page in Codemagic click the 'Add application' button and follow the on-screen instructions to add your Unity project.
+2. Add environment variables for Unity as described [here]({{< ref "#unity-variables" >}}).
+3. Add environment variables for iOS code signing as described [here]({{< ref "#ios-variables" >}}).
+4. Add environment variables for Android code signing as described [here]({{< ref "#android-variables" >}}).
+5. Add a build script to Unity as explained [here]({{< ref "#unity-build-script" >}}).
+6. Add a post-processing script to Unity for iOS builds as described [here]({{< ref "#post-processing-script" >}}).
+7. Set the iOS bundle identifier in Unity as described [here]({{< ref "#bundle-identifier" >}}).
+8. Configure Custom Gradle templates as described [here]({{< ref "#custom-gradle-templates" >}}).
+9. Add a script for license activation, mobile app export and license return [here]({{< ref "#license-activation" >}}).
+10. Create a codemagic.yaml workflow configuration using the Unity template and configure with your details as shown [here]({{< ref "#workflow-configuration" >}}).
+
+## Environment variables for Unity {#unity-variables}
 
 You will need to set the following environment variables for Unity specific values in Codemagic: 
 
 `UNITY_HOME`, `UNITY_SERIAL`, `UNITY_USERNAME` and `UNITY_PASSWORD`.
 
-You can add these as global environment variables for your team as follows (make sure the secure option is checked for any sensitive values):
+If you are using a Team in Codemagic, you can add these as global environment variables for your team by clicking on Teams > your Team name and then clicking on Global variables and secrets. Otherwise you can add the environment variables at application level by clicking the Environment variables tab.
 
-1. In the Codemagic web app click on Teams > your Team name.
-2. Click on Global variables and secrets.
-3. Create a variable called `UNITY_HOME` and set the value to `/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app` and click the 'Add' button.
-4. Create a variable called `UNITY_SERIAL` and set the value to your Unity serial number. In the 'Select group' dropdown type `unity` and click on the 'Create "unity" group' button. Mark the variable as **secure** to encrypt the value and click the 'Add' button.
-5. Create a variable called `UNITY_USERNAME` and set the value to your Unity ID **username**, add to the "unity' group,  mark this as **secure** to encrypt the value and click the 'Add' button.
-6. Create a variable called `UNITY_PASSWORD` and set the value to your Unity ID **password**, add to the "unity' group, mark this as **secure** to encrypt the value and click the 'Add' button.
+Add the environment variables as follows (make sure the secure option is checked for any sensitive values):
 
-## Environment variables for iOS code signing
+1. Create a variable called `UNITY_HOME` and set the value to `/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app` and click the 'Add' button.
+2. Create a variable called `UNITY_SERIAL` and set the value to your Unity serial number. In the 'Select group' dropdown type `unity` and click on the 'Create "unity" group' button. Mark the variable as **secure** to encrypt the value and click the 'Add' button.
+3. Create a variable called `UNITY_USERNAME` and set the value to your Unity ID **username**, add to the "unity' group,  mark this as **secure** to encrypt the value and click the 'Add' button.
+4. Create a variable called `UNITY_PASSWORD` and set the value to your Unity ID **password**, add to the "unity' group, mark this as **secure** to encrypt the value and click the 'Add' button.
+
+## Environment variables for iOS code signing {#ios-variables}
 
 You will need to create the following environment variables in a group called `ios_credentials` for iOS code signing:
 
@@ -48,7 +62,7 @@ You will need to create the following environment variables in a group called `i
 
 Please refer to the documentation about signing iOS apps [here](../yaml-code-signing/signing-ios/) for further details.
 
-## Environment variables for Android code signing
+## Environment variables for Android code signing {#android-variables}
 
 You will need to set the following environment variables in a group called variable group called `keystore_credentials` for Android code signing:
 
@@ -57,7 +71,7 @@ You will need to set the following environment variables in a group called varia
 
 Please refer to the documentation about signing Android apps [here](../yaml-code-signing/signing-android/) for further details.
 
-## Add a build script to Unity
+## Add a build script to Unity {#unity-build-script}
 
 A Unity build script is required to build the Xcode project in headless mode. 
 
@@ -109,7 +123,7 @@ public static class BuildScript
 }
 ```
 
-## Add a post-processing script to Unity
+## Add a post-processing script to Unity {#post-processecing-script}
 
 When publishing your app to TestFlight or the App Store you will be asked if your app uses encryption. 
 
@@ -152,7 +166,7 @@ public class IosBuildPostprocessor
 }
 ```
 
-## Set the iOS bundle identifier in Unity
+## Set the iOS bundle identifier in Unity {#bundle-identifier}
 
 You should set the bundle id of your iOS application before building the Xcode project. 
 
@@ -166,7 +180,7 @@ You can do this as follows:
 6. Set the Bundle Identifier to match the identifier name you have used in your Apple Developer Program account.
 
 
-## Custom Gradle templates
+## Custom Gradle templates {#custom-gradle-templates}
 
 
 You will need to add custom gradle templates so your Android builds work with Codemagic.  
@@ -292,7 +306,7 @@ android {
 
 ```
 
-## License activation and return
+## License activation and return {#license-activation}
 
 Your Unity license needs to be activated on the Codemagic build server so the XCode project can be created. 
 
@@ -386,7 +400,9 @@ exit 0
 
 
 
-## Workflow configuration
+## Workflow configuration with codemagic.yaml{#workflow-configuration}
+
+Your workflow should be configured using the **codemagic.yaml** configuration file and checked into the root of the branches you wish to build using Codemagic.
 
 Add the following to your **codemagic.yaml** configuration file:
 
