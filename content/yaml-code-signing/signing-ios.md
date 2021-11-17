@@ -55,11 +55,42 @@ Save the API key and the related information in the **Environment variables** se
 
 - `CERTIFICATE_PRIVATE_KEY`
 
-  An RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d) that Codemagic creates. You can use an existing key or create a new 2048 bit RSA key by running the command below in your terminal. Running the command line will create private and public keys. Note that you should select **Secure** to encrypt the **contents** of the private file in the **Environment Variables** Section. 
+  This is an RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d). 
+  
+  You can use the private key of an iOS Distribution that has already been created in your Apple Developer Program account. 
+  
+  Alternatively, you can create a new private key on your Mac and the Codemagic CLI will create a new iOS Distribution certificate in your Apple Developer Program account for you.
 
-```bash
-ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
-```
+  **Creating a new private key**
+  
+  You can create a new 2048 bit RSA key by running the command below in your terminal. 
+
+  ```bash
+    ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
+  ```
+  
+  Running the command line will create private and public keys. Open the **codemagic_private_key** and copy the **entire contents** of the file including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags. 
+  
+  Paste this into the value field of the `CERTIFICATE_PRIVATE_KEY` environment variable and mark it as 'Secure' so the value is encrypted.
+
+  This new private key will be used to create a new iOS Distribution certificate in your Apple Developer Program account if there isn't one that already matches this private key. 
+
+  **Using an existing private key** 
+
+  To use an existing iOS Distribution certificate private key please do the following:
+
+  1. On the Mac which created the iOS distribution certificate, launch Keychain Access, select the certificate entry which should be listed as iPhone Distribution: company_name (team_id), and right-click on it to select "Export."
+  2. In the export prompt window that appears, make sure the file format is set to "Personal Information Exchange (.p12)", give the file a name such as "IOS_DISTRIBUTION", choose a location to save to and click on "Save" to save it to your machine.
+  3. On the next prompt for the password to protect the export file, leave the password empty click OK.
+  4. Open Terminal and change to the directory where you saved the IOS_DISTRIBUTION.p12
+  5. Use the following `openssl` command to export the private key:
+
+     `openssl pkcs12 -in IOS_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out ios_distribution_private_key`
+
+  6. When prompted for the import password just press enter. The private key key will be written to a file called ios_distribution_private_key in the directory where you ran the command.
+  7. Open the file ios_distribution_private_key with a text editor.
+  8. Copy the **entire contents** of the file including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags.
+  9. Paste the key into the value field of the `CERTIFICATE_PRIVATE_KEY` environment variable and mark it as 'Secure' so the value is encrypted.
 
 {{<notebox>}}
 Tip: Store all the App Store Connect variables in the same group so they can be imported to a codemagic.yaml workflow at once. 
