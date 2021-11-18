@@ -484,11 +484,11 @@ workflows:
                 echo "sdk.dir=$ANDROID_SDK_ROOT" > "$FCI_BUILD_DIR/android/local.properties"
             - name: Set up keystore
               script: |
-                    echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+                    echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
                     cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
-                    storePassword=$CM_KEYSTORE_PASSWORD
-                    keyPassword=$CM_KEY_ALIAS_PASSWORD
-                    keyAlias=$CM_KEY_ALIAS_USERNAME
+                    storePassword=$FCI_KEYSTORE_PASSWORD
+                    keyPassword=$FCI_KEY_ALIAS_PASSWORD
+                    keyAlias=$FCI_KEY_ALIAS_USERNAME
                     storeFile=/tmp/keystore.keystore
                     EOF               
             - name: Build Android release
