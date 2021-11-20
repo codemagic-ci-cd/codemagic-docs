@@ -5,7 +5,7 @@ weight: 3
 aliases: /publishing/publishing-to-microsoft-store
 ---
 
-Codemagic enables you to automatically publish your desktop app to the Microsoft Store.
+Codemagic enables you to automatically publish your desktop app to the Microsoft Store. The application submission is automatically submitted to the review/certification process in the Partner Center.
 
 {{<notebox>}}
 This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Publishing to Microsoft Store using codemagic.yaml](../publishing-yaml/distribution/#microsoft-partner-center).
@@ -62,6 +62,9 @@ The very first version of the app must be submitted in the Partner Center manual
 
 #### Version your package
 
-To version your `MSIX package` for Microsoft Store Submission, you can either set the value as a string, such as `1.0.0.0`, or use Codemagic's read-only environment variables (`$PROJECT_BUILD_NUMBER`, `$BUILD_NUMBER`) to automatically increment versions on every release.
+Check out how to version your package in the [Microsoft documentation](https://docs.microsoft.com/en-
+us/windows/uwp/publish/package-version-numbering). Note that per Microsoft Store requirements applications are not allowed to have a version with a revision number (last digit of the version) other than zero.
 
-In order to do so, you can simply set the `Package version` field as `1.$BUILD_NUMBER.0.0`, for example, which will use the Codemagic build number for the given workflow to set the package version.
+To version your `MSIX package` for Microsoft Store Submission with Codemagic, you can either set the value as a string, such as `1.0.0.0`, or use Codemagic's read-only environment variables (`$PROJECT_BUILD_NUMBER`, `$BUILD_NUMBER`) to automatically increment versions on every release.
+
+In order to do so, you can simply set the `Package version` field as `1.0.$BUILD_NUMBER.0`, for example, which will use the Codemagic build number for the given workflow to set the package version.

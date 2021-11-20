@@ -300,6 +300,9 @@ The values for `--display-name`, `--publisher-display-name` and `--publisher` ca
 
 The argument `--display-name` should be set to match the value of `Package/Identity/Name`, the argument `--publisher` should be set to match the value of `Package/Identity/Publisher` and the argument `--publisher-display-name` should be set to match the value of `Package/Properties/PublisherDisplayName`.
 
+Check out how to version your package in the [Microsoft documentation](https://docs.microsoft.com/en-
+us/windows/uwp/publish/package-version-numbering). Note that per Microsoft Store requirements applications are not allowed to have a version with a revision number (last digit of the version) other than zero.
+
 ```yaml
 scripts:
   - name: Build windows
@@ -308,7 +311,7 @@ scripts:
   - name: Package windows
     script: |
       flutter pub add msix  # this command is reduntant if you have got the msix pub package added to your project already
-      flutter pub run msix:create --store --publisher-display-name=MyName --display-name=MyAppName --publisher=CN=xx-yy-zz --identity-name=com.flutter.MyApp --version=1.0.0.1
+      flutter pub run msix:create --store --publisher-display-name=MyName --display-name=MyAppName --publisher=CN=xx-yy-zz --identity-name=com.flutter.MyApp --version=1.0.2.0
 artifacts:
   - build/windows/**/*.msix
 ```
