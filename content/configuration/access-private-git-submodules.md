@@ -8,13 +8,7 @@ If your project requires accessing any private Git submodules or dependencies, y
 
 1. [Create an SSH key pair](../knowledge-base/generating-an-ssh-key) for use with Codemagic. Note that the SSH key **cannot** be password-protected.
 2. Add the **public key** to your repository settings. See how to do that on [GitHub](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account), [Bitbucket](https://confluence.atlassian.com/bitbucket/use-access-keys-294486051.html), [GitLab](https://docs.gitlab.com/ee/ssh/README.html#adding-an-ssh-key-to-your-gitlab-account).
-3. Encrypt the contents of the **private key** file and add it as an [environment variable](../building/environment-variables/) in your Codemagic configuration file. Make sure to check **Secure**. For example:
-
-    ```
-    SSH_KEY = -----BEGIN OPENSSH PRIVATE KEY-----
-    ...
-    -----END OPENSSH PRIVATE KEY-----
-    ```
+3. Copy the contents of the **private key** file add it as an [environment variable](../building/environment-variables/) in your Codemagic configuration file. Make sure to mark the Secure checkbox which will encrypt the contents of the private key file.
 
 All environment variables whose name has the suffix `_SSH_KEY` will be automatically added to the SSH agent and will be ready for use during the whole build process. Check the `Fetching app sources` step in build logs to verify that the key has been successfully added to the SSH agent.
 
