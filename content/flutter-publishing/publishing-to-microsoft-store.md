@@ -67,4 +67,4 @@ us/windows/uwp/publish/package-version-numbering). Note that per Microsoft Store
 
 To version your `MSIX package` for Microsoft Store Submission with Codemagic, you can either set the value as a string, such as `1.0.0.0`, or use Codemagic's read-only environment variables (`$PROJECT_BUILD_NUMBER`, `$BUILD_NUMBER`) to automatically increment versions on every release.
 
-In order to do so, you can simply set the `Package version` field as `1.0.$BUILD_NUMBER.0`, for example, which will use the Codemagic build number for the given workflow to set the package version.
+In order to do so, you can simply set the `Package version` field as `1.0.$BUILD_NUMBER.0`, for example, which will use the Codemagic build number for the given workflow to set the package version. Note that this is one of many possible approaches to versioning your application and is used only as an example.
