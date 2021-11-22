@@ -153,7 +153,7 @@ curl -XGET -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'h
           "key": "your variable name",
           "value": "your variable value",
           "group": "your variable group",
-          "secure": false,
+          "secure": false
       },
   ]
 }
@@ -241,7 +241,7 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
           "key": "your variable name",
           "value": "your new variable value",
           "group": "your variable group",
-          "secure": false,
+          "secure": false
       },
   ]
 }
