@@ -493,9 +493,9 @@ workflows:
                 # Note that tracks can be specified when retrieving latest build number from Google Play, for example:
                 # export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
                 export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME") + 1))
-                cd android && ./gradlew assembleRelease
+                cd android && ./gradlew bundleRelease
         artifacts:
-            - android/app/build/outputs/**/*.apk
+            - android/launcher/build/outputs/**/*.aab
         publishing:
             google_play:
               # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
