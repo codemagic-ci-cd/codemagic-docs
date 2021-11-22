@@ -115,7 +115,7 @@ Note that the variables will need to be re-generated when moving the app to a di
 
 ### CURL example
 
-```
+```bash
 curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
  -H 'X-Auth-Token: <API Token>' \
  -H 'Content-Type: application/json;charset=utf-8' \
@@ -140,7 +140,7 @@ Codemagic allows you to fetch and modify application variables and secrets using
 
 #### Curl request
 
-```
+```bash
 curl -XGET -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'https://api.codemagic.io/apps/<app_id>/variables'
 ```
 
@@ -155,7 +155,7 @@ curl -XGET -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'h
           "group": "your variable group",
           "secure": false,
       },
-  ],
+  ]
 }
 ```
 
@@ -165,7 +165,7 @@ curl -XGET -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'h
 
 #### Payload
 
-To successfully add a new variable, it is necessary to provide the values for `key`, `value`, `group` and `secure` as JSON data. An example payload:
+To successfully add a new variable, it is necessary to provide the values for `key`, `value` and `group` as JSON data. By default the variable is encrypted. Set the value of `secure` to `false` in order to not encrypt the newly added variable. An example payload:
 
 ```json
 {
@@ -176,13 +176,11 @@ To successfully add a new variable, it is necessary to provide the values for `k
 }
 ```
 
-Note that the `key` and `group` values have to be strings with a length greater than zero. Furthermore, all added variables are encrypted by default. Set the value of `secure` to `false` in order to not encrypt the newly added variable.
-
-If the group does not exist, it will be created.
+Note that the `key` and `group` values have to be strings with a length greater than zero. Furthermore, if the group does not exist, it will be created.
 
 #### Curl request
 
-```
+```bash
 curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -d '{
     "key": "your variable name",
     "value": "your variable value",
@@ -200,9 +198,9 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
           "key": "your variable name",
           "value": "Encrypted(...)",
           "group": "your variable group",
-          "secure": true,
+          "secure": true
       },
-  ],
+  ]
 }
 ```
 
@@ -212,7 +210,9 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
 
 #### Payload
 
-To successfully update a variable, it is necessary to provide the values for `value` and `secure` as JSON data. It is not possible to update the value of the `secure` key on its own.
+To successfully update a variable, it is necessary to provide the value for `value` as JSON data. It is not possible to update the value of the `secure` key on its own.
+
+Note that by default all updated values are encrypted. In order to not encrypt the updated variable, set the value of `secure` to `false`.
 
 An example payload:
 
@@ -223,11 +223,9 @@ An example payload:
 }
 ```
 
-Note that the default value for `secure` is `true`. In order to not encrypt the updated variable, set the value to `false`.
-
 #### Curl request
 
-```
+```bash
 curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -d '{
     "value": "your new variable value",
     "secure": false
@@ -245,7 +243,7 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
           "group": "your variable group",
           "secure": false,
       },
-  ],
+  ]
 }
 ```
 
@@ -255,7 +253,7 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
 
 #### Curl request
 
-```
+```bash
 curl -XDELETE -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'https://api.codemagic.io/apps/<app_id>/variables/<variable_id>'
 ```
 
