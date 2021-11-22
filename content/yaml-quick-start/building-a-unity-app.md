@@ -305,6 +305,13 @@ android {
 **EXTERNAL_SOURCES**
 
 ```
+## Add Gradle build files
+
+When exporting the Android project to disk, Unity does not add the required gradle files which allow the project to be built from the command line. Therefore, you should add them mananually as follows:
+
+Add a folder called **Gradle** to the root of your project. 
+
+Add the files `gradlew`, `gradle.bat` and the `gradle/wrapper` directory which contains `gradle-wrapper.jar` and `gradle-wrapper.properties`. If you do not have access to these files from another project then they are available in the Unity sample project [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity/unity-demo-project).
 
 ## License activation and return {#license-activation}
 
@@ -491,6 +498,7 @@ workflows:
               script: |
                 # Set environment variable so it can be used to increment build number in android/launcher/build.gradle
                 export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
+                cp -vr ./Gradle/* ./android
                 cd android && ./gradlew bundleRelease
         artifacts:
             - android/launcher/build/outputs/**/*.aab
