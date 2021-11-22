@@ -15,27 +15,27 @@ weight: 2
 
 - System version `macOS 11.6.1 (20G224)`
 - Kernel version `Darwin 20.6.0`
-- Disk `322GB (Free Space: 143GB)`
+- Disk `322GB (Free Space: 140GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `23.1.7779620`
-- aws `2.3.2`
+- aws `2.4.0`
 - cocoapods `1.11.2`
 - cordova `10.0.0`
 - curl
 - docker `20.10.2`
-- fastlane `2.197.0`
+- fastlane `2.198.1`
 - firebase `9.3.0`
 - flutter `2.5.3 ($HOME/programs/flutter)`
-- gem `3.2.29`
+- gem `3.2.31`
 - gh `2.2.0`
-- git `2.33.1`
+- git `2.34.0`
 - Google Cloud SDK `327.0.0`
 - gradle `6.7.1`
 - gsutil `4.58`
-- homebrew `3.3.1`
+- homebrew `3.3.4`
 - ionic `6.12.4`
 - jq
 - node `14.15.5`
@@ -131,6 +131,6 @@ With Xcode `13.1` build version `13A1030d` the following runtimes and devices ar
 
 ## Other Xcode versions
 
-- 13.2 (13C5066c) `/Applications/Xcode-13.2.app`
+- 13.2 (13C5081f) `/Applications/Xcode-13.2.app`
 - 13.0 (13A233) `/Applications/Xcode-13.0.app`
 
