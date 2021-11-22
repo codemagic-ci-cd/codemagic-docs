@@ -489,10 +489,8 @@ workflows:
                     EOF               
             - name: Build Android release
               script: |
-                # Set environment variable so it can be used to increment build number in android/app/build.gradle
-                # Note that tracks can be specified when retrieving latest build number from Google Play, for example:
-                # export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
-                export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME") + 1))
+                # Set environment variable so it can be used to increment build number in android/launcher/build.gradle
+                export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
                 cd android && ./gradlew bundleRelease
         artifacts:
             - android/launcher/build/outputs/**/*.aab
