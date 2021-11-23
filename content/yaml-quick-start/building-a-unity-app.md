@@ -135,7 +135,7 @@ When publishing your app to TestFlight or the App Store, you will be asked if yo
 
 You can automate your answer to this question by setting the key `ITSAppUsesNonExemptEncryption` in your app's `Info.plist` file and set the value to `NO` if the app doesn't use encryption. 
 
-For more details about complying with encryption export regulations please see [here](https://developer.apple.com/documentation/security/complying_with_encryption_export_regulations).
+For more details about complying with encryption export regulations, please see [here](https://developer.apple.com/documentation/security/complying_with_encryption_export_regulations).
 
 A Unity post-processing script can be used to set values in the `Info.plist` of the Xcode project.
 
