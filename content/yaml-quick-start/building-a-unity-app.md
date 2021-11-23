@@ -323,7 +323,7 @@ Add the files `gradlew`, `gradle.bat` and the `gradle/wrapper` directory which c
 
 Your Unity license needs to be activated on the Codemagic build server so the XCode project can be created. 
 
-Once this is done the license can be returned and Codemagic can continue with building and publishing your iOS app. 
+Once this is done, the license can be returned and Codemagic can continue with building and publishing your iOS app. 
 
 The best way to perform this step is to run an external shell script, which means that even if the workflow itself fails your license will be returned. 
 
