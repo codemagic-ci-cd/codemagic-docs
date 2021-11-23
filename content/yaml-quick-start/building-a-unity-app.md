@@ -131,7 +131,7 @@ public static class BuildScript
 
 ## Add a post-processing script to Unity {#post-processing-script}
 
-When publishing your app to TestFlight or the App Store you will be asked if your app uses encryption. 
+When publishing your app to TestFlight or the App Store, you will be asked if your app uses encryption. 
 
 You can automate your answer to this question by setting the key `ITSAppUsesNonExemptEncryption` in your app's `Info.plist` file and set the value to `NO` if the app doesn't use encryption. 
 
