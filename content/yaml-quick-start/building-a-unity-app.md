@@ -53,7 +53,7 @@ You will need to set the following environment variables for Unity specific valu
 
 If you are using a Team in Codemagic, you can add these as global environment variables for your team by clicking on **Teams > your Team name** and then clicking on **Global variables and secrets**. Otherwise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
-Add the environment variables as follows (make sure the secure option is checked for any sensitive values):
+Add the environment variables as follows (make sure the **Secure** option is checked for any sensitive values):
 
 1. Create a variable called `UNITY_HOME` and set the value to `/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app` and click the 'Add' button.
 2. Create a variable called `UNITY_SERIAL` and set the value to your Unity serial number. In the 'Select group' dropdown type `unity` and click on the 'Create "unity" group' button. Mark the variable as **secure** to encrypt the value and click the 'Add' button.
