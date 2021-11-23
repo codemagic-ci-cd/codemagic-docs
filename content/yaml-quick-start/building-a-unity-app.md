@@ -330,7 +330,7 @@ The best way to perform this step is to run an external shell script, which mean
 Create the script as follows:
 
 1. Open Terminal and run `touch export_unity.sh` to create a new shell script file. 
-2. Before checking this file into source control run `chmod +x export_unity.sh` so the script can be executed.
+2. Before checking this file into source control, run `chmod +x export_unity.sh` so the script can be executed.
 3. Open the file in your preferred editor.
 4. Add the script below to `export_unity.sh` and check the file into the root of your repository.
 
