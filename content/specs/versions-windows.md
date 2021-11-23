@@ -1,7 +1,7 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: Windows build machine specification
-weight: 7
+weight: 8
 ---
 
 ## Hardware
