@@ -34,7 +34,7 @@ It is possible to add repositories from Github, Gitlab, Bitbucket or any Git bas
 
 These are the key steps in setting up your workflow for building Unity mobile apps: 
 
-1. On the Applications page in Codemagic click the 'Add application' button and follow the on-screen instructions to add your Unity project.
+1. On the Applications page in Codemagic, click the **Add application** button and follow the on-screen instructions to add your Unity project.
 2. Add environment variables for Unity as described [here]({{< ref "#unity-variables" >}}).
 3. Add environment variables for iOS code signing as described [here]({{< ref "#ios-variables" >}}).
 4. Add environment variables for Android code signing as described [here]({{< ref "#android-variables" >}}).
