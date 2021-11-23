@@ -11,8 +11,14 @@ Codemagic's Unity premium macOS base image has the Unity SDK, iOS and Android mo
 
 This guide will show you how to configure a workflow that builds and publishes your app to TestFlight and Google Play using a **codemagic.yaml** configuration file. 
 
+## Prerequisites
+
+- A Unity **Plus** or **Pro** license. Your license is used to activate Unity on the Codemagic build server so the iOS and Android projects can be exported. The license is then returned before the workflow builds and publishes your apps to the App Store and Google Play.
+- If you are publishing to the Apple App Store you will need an active membership for the Apple Developer Program.
+- For publishing to Google Play you will require an active Google Play Developer account.
+
 {{<notebox>}}
-**Important!** Building Unity apps on Codemagic is currently in closed beta release. If you are interested in taking part in the beta, please contact us [here](https://codemagic.io/contact/)
+**Important!** The Unity SDK is not included in our standard base images. Please contact us [here](https://codemagic.io/contact/) to request access to the Unity SDK base image.
 {{</notebox>}}
 
 ## Adding your Unity project to Codemagic
