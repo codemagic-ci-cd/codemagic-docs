@@ -427,7 +427,7 @@ workflows:
     max_build_duration: 120
     environment:
       groups:
-      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+      # Add the group environment variables in Codemagic UI (either in Application or Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
         - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
         - ios_credentials # <-- (Includes  APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY, CERTIFICATE_PRIVATE_KEY)
       vars:
