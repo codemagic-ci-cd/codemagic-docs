@@ -58,7 +58,7 @@ Add the environment variables as follows (make sure the **Secure** option is che
 1. Create a variable called `UNITY_HOME` and set the value to `/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app` and click the **Add** button.
 2. Create a variable called `UNITY_SERIAL` and set the value to your Unity serial number. In the **Select group** dropdown type `unity` and click on the **Create "unity" group** button. Mark the variable as **secure** to encrypt the value and click the **Add** button.
 3. Create a variable called `UNITY_USERNAME` and set the value to **email address** used with your Unity ID , add to the "unity" group,  mark this as **secure** to encrypt the value and click the **Add** button.
-4. Create a variable called `UNITY_PASSWORD` and set the value to your Unity ID **password**, add to the "unity' group, mark this as **secure** to encrypt the value and click the 'Add' button.
+4. Create a variable called `UNITY_PASSWORD` and set the value to your Unity ID **password**, add to the "unity" group, mark this as **secure** to encrypt the value and click the **Add** button.
 
 ## Environment variables for iOS code signing {#ios-variables}
 
