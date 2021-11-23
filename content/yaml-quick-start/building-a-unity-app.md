@@ -51,7 +51,7 @@ You will need to set the following environment variables for Unity specific valu
 
 `UNITY_HOME`, `UNITY_SERIAL`, `UNITY_USERNAME` and `UNITY_PASSWORD`.
 
-If you are using a Team in Codemagic, you can add these as global environment variables for your team by clicking on Teams > your Team name and then clicking on Global variables and secrets. Otherwise you can add the environment variables at application level by clicking the Environment variables tab.
+If you are using a Team in Codemagic, you can add these as global environment variables for your team by clicking on **Teams > your Team name** and then clicking on **Global variables and secrets**. Otherwise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
 Add the environment variables as follows (make sure the secure option is checked for any sensitive values):
 
