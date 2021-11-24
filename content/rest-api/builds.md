@@ -22,13 +22,13 @@ Note that the workflow and branch information is passed with the curl request wh
 | `branch`      | `string` | **Required.** The branch name. |
 | `environment` | `object` | Optional. Specify environment variables and software versions to override values defined in workflow settings. | 
 
-### Curl request
+### Example
 
 ```bash
 curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '{"appId": "<app_id>","workflowId": "<workflow_id>","branch": "<git_branch_name>"}' https://api.codemagic.io/builds
 ```
 
-### Example
+#### Full payload example
 
 ```yaml
 {
