@@ -81,7 +81,7 @@ Save the API key and the related information in the **Environment variables** se
 
   1. On the Mac which created the iOS distribution certificate, launch Keychain Access, select the certificate entry which should be listed as iPhone Distribution: company_name (team_id), and right-click on it to select "Export."
   2. In the export prompt window that appears, make sure the file format is set to "Personal Information Exchange (.p12)", give the file a name such as "IOS_DISTRIBUTION", choose a location to save to and click on "Save" to save it to your machine.
-  3. On the next prompt for the password to protect the export file, leave the password empty click OK.
+  3. On the next prompt for the password to protect the export file, leave the password empty and click OK.
   4. Open Terminal and change to the directory where you saved the IOS_DISTRIBUTION.p12
   5. Use the following `openssl` command to export the private key:
 
