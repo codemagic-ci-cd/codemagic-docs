@@ -177,15 +177,9 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
 | **Name**        | **Type** | **Description** |
 | --------------- | -------- | --------------- |
 | `key` | `string` | **Required.** Name of the variable. |
-| `value` | `string` | **Required.** Value of the variable. For files base64 encode the contents. |
+| `value` | `string` | **Required.** Value of the variable. For binary data use base64 to encode the contents. |
 | `group` | `string` | **Required.** Name of the `group` that the variable should be added to. If the group does not exist, it will be created. | 
 | `secure` | `boolean` | **Optional.** By default, the variable is encrypted. Set to `false` to not encrypt the newly added variable. |
-
-To encode file contents and paste result to clipboard
-
-```bash
-cat <filename> | base64 | pbcopy
-```
 
 #### Example
 
