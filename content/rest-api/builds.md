@@ -68,7 +68,7 @@ Returns information about builds from the Codemagic build history. Filters are a
 | `branch`      | `string` | **Optional.** The branch name. |
 | `tag`         | `string` | **Optional.** The tag name. |
 
-### Curl request
+### Example
 
 ```bash
 curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/builds?appId=<app_id>&workflowId=<workflow_id>&branch=<branch_name>&tag=<tag_name>
@@ -126,7 +126,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 
 Returns the build information of an already running build on Codemagic.
 
-### Curl request
+### Example
 
 ```bash
 curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/builds/<build_id>
@@ -153,7 +153,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 
 `POST /builds/:id/cancel`
 
-### Curl request
+### Example
 
 ```bash
 curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request POST https://api.codemagic.io/builds/<build_id>/cancel
