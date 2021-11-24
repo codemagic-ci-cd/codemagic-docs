@@ -77,7 +77,7 @@ Save the API key and the related information in the **Environment variables** se
 
   **Using an existing private key** 
 
-  To use an existing iOS Distribution certificate private key please do the following:
+  To use an existing iOS Distribution certificate private key, please do the following:
 
   1. On the Mac which created the iOS distribution certificate, launch Keychain Access, select the certificate entry which should be listed as iPhone Distribution: company_name (team_id), and right-click on it to select "Export."
   2. In the export prompt window that appears, make sure the file format is set to "Personal Information Exchange (.p12)", give the file a name such as "IOS_DISTRIBUTION", choose a location to save to and click on "Save" to save it to your machine.
