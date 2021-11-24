@@ -148,7 +148,7 @@ Codemagic allows you to fetch and modify application variables and secrets using
 
 Based on the application id provided, returns the configured variables.
 
-#### CURL request
+#### Example
 
 ```bash
 curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'https://api.codemagic.io/apps/<app_id>/variables'
@@ -157,17 +157,15 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
 #### Response
 
 ```json
-{
-  [
-      {
-          "key": "your variable name",
-          "value": "your variable value",
-          "group": "your variable group",
-          "secure": false,
-          "id": "your variable id"
-      },
-  ]
-}
+[
+  {
+    "group": "production",
+    "id": "619e329e0ca5fe19c3780c74",
+    "key": "FOO",
+    "secure": true,
+    "value": "[HIDDEN]"
+  }
+]
 ```
 
 ### Add new variable
@@ -176,24 +174,26 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
 
 #### Parameters
 
-To successfully add a new variable, it is necessary to provide the values for `key`, `value` and `group` as JSON data.
-
 | **Name**        | **Type** | **Description** |
 | --------------- | -------- | --------------- |
 | `key` | `string` | **Required.** Name of the variable. |
-| `value` | `string` | **Required.** Value of the variable. |
-| `group` | `string` | **Required.** Name of the `group` that the variable should be added to. | 
+| `value` | `string` | **Required.** Value of the variable. For files base64 encode the contents. |
+| `group` | `string` | **Required.** Name of the `group` that the variable should be added to. If the group does not exist, it will be created. | 
 | `secure` | `boolean` | **Optional.** By default, the variable is encrypted. Set to `false` to not encrypt the newly added variable. |
 
-Note that if the group does not exist, it will be created.
-
-#### CURL example
+To encode file contents and paste result to clipboard
 
 ```bash
-curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -d '{
-    "key": "your variable name",
-    "value": "your variable value",
-    "group": "your variable group",
+cat <filename> | base64 | pbcopy
+```
+
+#### Example
+
+```bash
+curl -XPOST -H 'x-auth-token: <API TOKEN>' -H "Content-type: application/json" -d '{
+    "key": "FOO",
+    "value": "foobar",
+    "group": "production",
     "secure": true
   }' 'https://api.codemagic.io/apps/<app_id>/variables'
 ```
@@ -202,11 +202,11 @@ curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -
 
 ```json
 {
-  "key": "your variable name",
-  "value": "[HIDDEN]",
-  "group": "your variable group",
+  "group": "production",
+  "id": "619e329e0ca5fe19c3780c74",
+  "key": "FOO",
   "secure": true,
-  "id": "your variable id"
+  "value": "[HIDDEN]"
 }
 ```
 
@@ -216,19 +216,17 @@ curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -
 
 #### Parameters
 
-To successfully update a variable, it is necessary to provide the value for `value` as JSON data. It is not possible to update the value of the `secure` key on its own.
-
 | **Name**        | **Type** | **Description** |
 | --------------- | -------- | --------------- |
 | `value` | `string` | **Required.** New value for the updated variable. |
 | `secure` | `boolean` | **Optional.** By default, the variable is encrypted. Set to `false` to not encrypt the newly added variable. |
 
 
-#### CURL example
+#### Example
 
 ```bash
-curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -d '{
-    "value": "your new variable value",
+curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -d '{
+    "value": "foobar2",
     "secure": false
   }' 'https://api.codemagic.io/apps/<app_id>/variables/<variable_id>'
 ```
@@ -237,11 +235,11 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
 
 ```json
 {
-  "key": "your variable name",
-  "value": "your new variable value",
-  "group": "your variable group",
+  "group": "production",
+  "id": "619e329e0ca5fe19c3780c74",
+  "key": "FOO",
   "secure": false,
-  "id": "your variable id"
+  "value": "foobar2"
 }
 ```
 
@@ -249,7 +247,7 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
 
 `DELETE /apps/:id/variables/:variable_id`
 
-#### CURL request
+#### Example
 
 ```bash
 curl -XDELETE -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'https://api.codemagic.io/apps/<app_id>/variables/<variable_id>'
