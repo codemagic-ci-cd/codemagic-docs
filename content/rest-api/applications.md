@@ -193,14 +193,10 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
 
 ```json
 {
-  [
-      {
-          "key": "your variable name",
-          "value": "[HIDDEN]",
-          "group": "your variable group",
-          "secure": true
-      },
-  ]
+  "key": "your variable name",
+  "value": "[HIDDEN]",
+  "group": "your variable group",
+  "secure": true
 }
 ```
 
@@ -236,14 +232,10 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
 
 ```json
 {
-  [
-      {
-          "key": "your variable name",
-          "value": "your new variable value",
-          "group": "your variable group",
-          "secure": false
-      },
-  ]
+  "key": "your variable name",
+  "value": "your new variable value",
+  "group": "your variable group",
+  "secure": false
 }
 ```
 
