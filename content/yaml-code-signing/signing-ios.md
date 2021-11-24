@@ -57,7 +57,7 @@ Save the API key and the related information in the **Environment variables** se
 
   This is an RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d). 
   
-  You can use the private key of an iOS Distribution that has already been created in your Apple Developer Program account. 
+  You can use the private key of an iOS Distribution certificate that has already been created in your Apple Developer Program account. 
   
   Alternatively, you can create a new private key on your Mac and the Codemagic CLI will create a new iOS Distribution certificate in your Apple Developer Program account for you.
 
