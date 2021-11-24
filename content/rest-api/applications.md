@@ -11,7 +11,7 @@ APIs for managing applications are currently available for developers to preview
 
 Based on the application id provided, returns the applications information.
 
-### Curl request
+### CURL request
 
 ```bash
 curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/apps/<app_id>
@@ -134,7 +134,6 @@ curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
 
 Codemagic allows you to fetch and modify application variables and secrets using the REST API. Note that these variables are available only for the applications that are configured using the `codemagic.yaml` file. For such applications, variables and secrets are manually configured on the **Environment variables** tab in your application settings.
 
-
 ### Fetch variables
 
 `GET /apps/:id/variables`
@@ -168,7 +167,6 @@ curl -XGET -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'h
 
 To successfully add a new variable, it is necessary to provide the values for `key`, `value` and `group` as JSON data. By default, the variable is encrypted. Set the value of `secure` to `false` to not encrypt the newly added variable. An example payload:
 
-
 ```json
 {
   "key": "your variable name",
@@ -180,7 +178,7 @@ To successfully add a new variable, it is necessary to provide the values for `k
 
 Note that the `key` and `group` values have to be strings with a length greater than zero. Furthermore, if the group does not exist, it will be created.
 
-#### CURL request
+#### CURL example
 
 ```bash
 curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -d '{
@@ -225,7 +223,7 @@ An example payload:
 }
 ```
 
-#### CURL request
+#### CURL example
 
 ```bash
 curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -d '{
