@@ -11,7 +11,6 @@ APIs for managing applications are currently available for developers to preview
 
 ### Example
 
-
 ```bash
 curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/apps
 ```
