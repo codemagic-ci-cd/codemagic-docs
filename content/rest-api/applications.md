@@ -165,7 +165,8 @@ curl -XGET -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'h
 
 #### Payload
 
-To successfully add a new variable, it is necessary to provide the values for `key`, `value` and `group` as JSON data. By default the variable is encrypted. Set the value of `secure` to `false` in order to not encrypt the newly added variable. An example payload:
+To successfully add a new variable, it is necessary to provide the values for `key`, `value` and `group` as JSON data. By default, the variable is encrypted. Set the value of `secure` to `false` to not encrypt the newly added variable. An example payload:
+
 
 ```json
 {
