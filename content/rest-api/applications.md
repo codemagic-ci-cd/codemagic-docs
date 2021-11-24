@@ -11,7 +11,7 @@ APIs for managing applications are currently available for developers to preview
 
 Based on the application id provided, returns the applications information.
 
-### CURL request
+### Curl request
 
 ```bash
 curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/apps/<app_id>
@@ -36,6 +36,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
       }
     }
   }
+}
 ```
 
 ## Add a new application
