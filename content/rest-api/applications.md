@@ -196,7 +196,7 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
   [
       {
           "key": "your variable name",
-          "value": "Encrypted(...)",
+          "value": "[HIDDEN]",
           "group": "your variable group",
           "secure": true
       },
