@@ -87,7 +87,7 @@ Save the API key and the related information in the **Environment variables** se
 
      `openssl pkcs12 -in IOS_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out ios_distribution_private_key`
 
-  6. When prompted for the import password just press enter. The private key key will be written to a file called ios_distribution_private_key in the directory where you ran the command.
+  6. When prompted for the import password, just press enter. The private key will be written to a file called ios_distribution_private_key in the directory where you ran the command.
   7. Open the file ios_distribution_private_key with a text editor.
   8. Copy the **entire contents** of the file including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags.
   9. Paste the key into the value field of the `CERTIFICATE_PRIVATE_KEY` environment variable and mark it as 'Secure' so the value is encrypted.
