@@ -71,7 +71,7 @@ Save the API key and the related information in the **Environment variables** se
   
   Running the command line will create private and public keys. Open the **codemagic_private_key** and copy the **entire contents** of the file including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags. 
   
-  Paste this into the value field of the `CERTIFICATE_PRIVATE_KEY` environment variable and mark it as 'Secure' so the value is encrypted.
+  Paste this into the value field of the `CERTIFICATE_PRIVATE_KEY` environment variable and mark it as **Secure** so the value is encrypted.
 
   This new private key will be used to create a new iOS Distribution certificate in your Apple Developer Program account if there isn't one that already matches this private key. 
 
