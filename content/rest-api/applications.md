@@ -132,7 +132,7 @@ curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
 
 ## Modify application variables and secrets
 
-Codemagic allows you to fetch and modify application variables and secrets using the REST API. Note that these variables are available only for the applications that are configured using the `codemagic.yaml` file. For such applications, variables and secrets are manually configured on the **Environment variables** tab in your application settings.
+Codemagic allows you to fetch and modify application variables and secrets using the REST API. Note that these variables are available only for the applications that are configured using the `codemagic.yaml` file. For such applications, variables and secrets are manually configured on the **Environment variables** tab in your application settings. These variables and secrets can be accessed in your configuration file with the use of [groups](../building/environment-variable-groups).
 
 ### Fetch variables
 
