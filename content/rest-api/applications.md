@@ -5,6 +5,17 @@ weight: 2
 
 APIs for managing applications are currently available for developers to preview. During the preview period, the API may change without advance notice.
 
+## Retrieve all applications
+
+`GET /apps`
+
+### Example
+
+
+```bash
+curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/apps
+```
+
 ## Retrieve an application
 
 `GET /apps/:id`
