@@ -146,6 +146,8 @@ Codemagic allows you to fetch and modify application variables and secrets using
 
 `GET /apps/:id/variables`
 
+Based on the application id provided, returns the configured variables.
+
 #### CURL request
 
 ```bash
@@ -161,7 +163,8 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
           "key": "your variable name",
           "value": "your variable value",
           "group": "your variable group",
-          "secure": false
+          "secure": false,
+          "id": "your variable id"
       },
   ]
 }
@@ -202,7 +205,8 @@ curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -
   "key": "your variable name",
   "value": "[HIDDEN]",
   "group": "your variable group",
-  "secure": true
+  "secure": true,
+  "id": "your variable id"
 }
 ```
 
@@ -236,7 +240,8 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
   "key": "your variable name",
   "value": "your new variable value",
   "group": "your variable group",
-  "secure": false
+  "secure": false,
+  "id": "your variable id"
 }
 ```
 
