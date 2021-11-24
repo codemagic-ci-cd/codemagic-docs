@@ -138,7 +138,7 @@ Codemagic allows you to fetch and modify application variables and secrets using
 
 `GET /apps/:id/variables`
 
-#### Curl request
+#### CURL request
 
 ```bash
 curl -XGET -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'https://api.codemagic.io/apps/<app_id>/variables'
@@ -178,7 +178,7 @@ To successfully add a new variable, it is necessary to provide the values for `k
 
 Note that the `key` and `group` values have to be strings with a length greater than zero. Furthermore, if the group does not exist, it will be created.
 
-#### Curl request
+#### CURL request
 
 ```bash
 curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -d '{
@@ -223,7 +223,7 @@ An example payload:
 }
 ```
 
-#### Curl request
+#### CURL request
 
 ```bash
 curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -d '{
@@ -251,7 +251,7 @@ curl -XPOST -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" -
 
 `DELETE /apps/:id/variables/:variable_id`
 
-#### Curl request
+#### CURL request
 
 ```bash
 curl -XDELETE -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'https://api.codemagic.io/apps/<app_id>/variables/<variable_id>'
