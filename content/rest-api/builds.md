@@ -28,7 +28,7 @@ Note that the workflow and branch information is passed with the curl request wh
 curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '{"appId": "<app_id>","workflowId": "<workflow_id>","branch": "<git_branch_name>"}' https://api.codemagic.io/builds
 ```
 
-#### Full payload example
+#### Pass environment variables and software versions
 
 ```yaml
 {
