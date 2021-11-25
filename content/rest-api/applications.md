@@ -18,12 +18,12 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 ### Response
 
 ```json
-[
-    {
-       "_id": "6172cc7d57278d06d4e915f1", 
-       "appName": "Foobar-App"
-    }
-]
+{
+	"applications": [{
+		"_id": "6172cc7d57278d06d4e915f1",
+		"appName": "Foobar-App"
+	}]
+}
 ```
 
 ## Retrieve an application
