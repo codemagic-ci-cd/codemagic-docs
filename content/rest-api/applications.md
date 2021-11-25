@@ -11,7 +11,7 @@ APIs for managing applications are currently available for developers to preview
 
 Based on the application id provided, returns the applications information.
 
-### Curl request
+### Example
 
 ```bash
 curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/apps/<app_id>
@@ -69,11 +69,11 @@ Adds a Git repository to the applications list.
 }
 ```
 
-## Add a new application from private repository
+## Add a new application from a private repository
 
 `POST /apps/new`
 
-Creates an application from a private repository with SSH key
+Creates an application from a private repository with a SSH key
 
 ### Parameters
 
@@ -123,11 +123,11 @@ Generates an encrypted string that will be decrypted inside our machines when bu
 
 Note that the variables will need to be re-generated when moving the app to a different team.
 
-### CURL example
+### Example
 
 ```
 curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
- -H 'X-Auth-Token: your-token' \
+ -H 'X-Auth-Token: <API Token>' \
  -H 'Content-Type: application/json;charset=utf-8' \
  --data '{"value": "your value"}'
 ```
