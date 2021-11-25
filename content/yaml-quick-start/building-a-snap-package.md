@@ -29,6 +29,7 @@ workflows:
     name: Snapcraft Build
     instance_type: linux
     environment:
+      vars:
         SNAPCRAFT_BUILD_ENVIRONMENT: host
     scripts:
       - name: Create a snap
