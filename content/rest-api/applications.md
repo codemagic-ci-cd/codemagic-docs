@@ -22,10 +22,8 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
     [
         {
            "_id": "6172cc7d57278d06d4e915f1", 
-           "appName": "Foobar-App", 
-            ...
-        },
-        ...
+           "appName": "Foobar-App"
+        }
     ]
 }
 ```
