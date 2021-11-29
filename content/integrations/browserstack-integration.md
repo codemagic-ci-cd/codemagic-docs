@@ -46,7 +46,7 @@ You can test your native and hybrid apps on BrowserStack through Codemagic. For 
 2. Upload test suite
 3. Start testing
 
-In order to achive the above-mentioned steps, you need use the following curl commands after generating the respective artifacts:
+In order to achive the above-mentioned steps, you need use the following cURL commands after generating the respective artifacts:
 
 ```
  - name: BrowserStack upload
@@ -57,7 +57,7 @@ In order to achive the above-mentioned steps, you need use the following curl co
     
 ```
 
-**$BROWSERSTACK_USERNAME** and **$BROWSERSTACK_ACCESS_TOKEN** are generated to you automatically after signing up with **BrowserStack** and setting up the environment variables in the Codemagic UI will allow them to be used during a build.
+ **BROWSERSTACK_USERNAME** and **BROWSERSTACK_ACCESS_TOKEN** are generated for you automatically after signing up with **BrowserStack**. Adding these as environment variables in the Codemagic UI will allow them to be used during a build.
 
 
 In order to upload test suites for android apps, you need to run ./gradlew assembleAndroidTest. Make sure that your **app/build.gradle** file includes **Instrumentation Runner**:
