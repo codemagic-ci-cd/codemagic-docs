@@ -10,8 +10,8 @@ If your project requires accessing any private Git submodules or dependencies, y
 2. Add the **public key** to your repository settings. See how to do that on [GitHub](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account), [Bitbucket](https://confluence.atlassian.com/bitbucket/use-access-keys-294486051.html), [GitLab](https://docs.gitlab.com/ee/ssh/README.html#adding-an-ssh-key-to-your-gitlab-account).
 3.  Copy the contents of the **private key** file add it as an environment variable in the Codemagic UI and import it into your **codemagic.yaml** configuration file which can be done as follows:
 
-    * Create an environment variable that ends with _SSH_KEY e.g. MYKEY_SSH_KEY, and add to a group
-    * Import [environment variable group](https://docs.codemagic.io/variables/environment-variable-groups/)
+   * Create an environment variable that ends with __SSH_KEY_ e.g. MODULE_SSH_KEY, and add to a group. Make sure to mark the **Secure** checkbox which will encrypt the value of the environment variable.
+   * Import the environment variable group as described[here](../variables/environment-variable-groups/)
  
 Then, make sure to mark the Secure checkbox which will encrypt the contents of the private key file. In order to do that, 
 
