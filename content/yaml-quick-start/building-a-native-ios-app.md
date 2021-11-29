@@ -55,10 +55,6 @@ workflows:
         max_build_duration: 120
         instance_type: mac_mini
         environment:
-            vars:
-                XCODE_WORKSPACE: "your_workspace_name.xcworkspace" # <-- Put the name of your Xcode workspace here
-                XCODE_SCHEME: "your_workspace_name" # <-- Put the name of your Xcode scheme here
-            node: v16.11.1
             xcode: 13.0
             cocoapods: default
         scripts:
