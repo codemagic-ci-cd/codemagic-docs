@@ -139,7 +139,7 @@ publishing:
     submit_to_app_store: true # Optional boolean, defaults to false. Whether or not to submit the uploaded build to App Store review. Note: This action is performed during post-processing.
     release_type: SCHEDULED # Optional, defaults to MANUAL. Supported values: MANUAL, AFTER_APPROVAL or SCHEDULED
     earliest_release_date: 2021-12-01T14:00:00+00:00 # Optional. Timezone-aware ISO8601 timestamp with hour precision when scheduling the release.
-    copyright: 2021 Nevercode Ltd # Optional. The name of the person or entity that owns the exclusive rights to your app, preceded by the year the rights were obtained
+    copyright: 2021 Nevercode Ltd # Optional. The name of the person or entity that owns the exclusive rights to your app, preceded by the year the rights were obtained.
 ```
 
 
