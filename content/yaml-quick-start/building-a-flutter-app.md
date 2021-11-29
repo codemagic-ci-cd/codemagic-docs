@@ -2,7 +2,7 @@
 title: Building a Flutter app
 description: How to build a Flutter app with codemagic.yaml
 weight: 4
-aliases:	
+aliases:
   - '../yaml/building-a-flutter-app'
   - '/getting-started/building-a-flutter-app'
 startLineBreak: true
@@ -12,7 +12,7 @@ startLineBreak: true
 
 The apps you have available in Codemagic are listed on the Applications page. Click **Add application** to add a new app.
 
-1. On the Applications page, click **Set up build** next to the app you want to start building. 
+1. On the Applications page, click **Set up build** next to the app you want to start building.
 2. On the popup, select **Flutter App** as the project type and click **Continue**.
 3. Then you can choose to either set up your builds in the **codemagic.yaml** file or select the **Workflow Editor** tab to configure the builds in the UI. New Flutter apps come with the **Workflow Editor** by default and it can be switched to **codemagic.yaml** in app settings by clicking the **Switch to YAML configuration** button. Exporting current configuration as **codemagic.yaml** is possible if the checkbox is marked in the pop-up page.
 
@@ -43,6 +43,7 @@ Set up local properties
 ```yaml
 - echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
 ```
+
 ### Building an app bundle
 
 ```yaml
@@ -70,7 +71,6 @@ If your app settings in Codemagic have building Android App Bundles enabled, we 
 
 Please make sure to wrap the `--bundle` pattern in single quotes. If the `--bundle` option is not specified, default glob pattern `**/*.aab` will be used.
 
-
 More information about Android code signing can be found [here](../code-signing-yaml/signing-android).
 
 {{<notebox>}}
@@ -92,8 +92,8 @@ workflows:
         # Add the above group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         FCI_KEYSTORE_PATH: /tmp/keystore.keystore
-        PACKAGE_NAME: "YOUR PACKAGE NAME" # <-- Put your package name here e.g. "io.codemagic.flutteryaml"
-        GOOGLE_PLAY_TRACK: "alpha" # <-- Any default or custom track that is not in ‘draft’ status  
+        PACKAGE_NAME: 'YOUR PACKAGE NAME' # <-- Put your package name here e.g. "io.codemagic.flutteryaml"
+        GOOGLE_PLAY_TRACK: 'alpha' # <-- Any default or custom track that is not in ‘draft’ status
       flutter: stable
       xcode: latest
       cocoapods: default
@@ -119,8 +119,8 @@ workflows:
       - name: Flutter unit tests
         script: |
           cd . && flutter test
-        ignore_failure: true          
-      - name: Build APK with Flutter  
+        ignore_failure: true
+      - name: Build APK with Flutter
         script: |
           cd . && flutter build apk --release --build-name=1.0.0 --build-number=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks="$GOOGLE_PLAY_TRACK") + 1))
     artifacts:
@@ -135,15 +135,15 @@ workflows:
           - user_1@example.com
           - user_2@example.com
         notify:
-          success: true     # To receive a notification when a build succeeds
-          failure: false    # To not receive a notification when a build fails
-      slack: 
+          success: true # To receive a notification when a build succeeds
+          failure: false # To not receive a notification when a build fails
+      slack:
         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
         channel: '#builds'
-        notify_on_build_start: true   # To receive a notification when a build starts
+        notify_on_build_start: true # To receive a notification when a build starts
         notify:
-          success: true               # To receive a notification when a build succeeds
-          failure: false              # To not receive a notification when a build fails
+          success: true # To receive a notification when a build succeeds
+          failure: false # To not receive a notification when a build fails
       google_play:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         track: $GOOGLE_PLAY_TRACK
@@ -197,9 +197,9 @@ workflows:
         - other # <-- (Includes APP_STORE_ID)
         # Add the above group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
-        XCODE_WORKSPACE: "Runner.xcworkspace"
-        XCODE_SCHEME: "Runner"                
-        BUNDLE_ID: "YOUR_BUNDLE_ID_HERE"
+        XCODE_WORKSPACE: 'Runner.xcworkspace'
+        XCODE_SCHEME: 'Runner'
+        BUNDLE_ID: 'YOUR_BUNDLE_ID_HERE'
       flutter: stable
       xcode: latest
       cocoapods: default
@@ -225,7 +225,7 @@ workflows:
       - name: Flutter unit tests
         script: |
           cd . && flutter test
-        ignore_failure: true          
+        ignore_failure: true
       - name: Install pods
         script: |
           find . -name "Podfile" -execdir pod install \;
@@ -246,21 +246,19 @@ workflows:
           - user_1@example.com
           - user_2@example.com
         notify:
-          success: true     # To receive a notification when a build succeeds
-          failure: false    # To not receive a notification when a build fails
-      slack: 
+          success: true # To receive a notification when a build succeeds
+          failure: false # To not receive a notification when a build fails
+      slack:
         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
-        channel: "#builds"
-        notify_on_build_start: true   # To receive a notification when a build starts
+        channel: '#builds'
+        notify_on_build_start: true # To receive a notification when a build starts
         notify:
-          success: true               # To receive a notification when a build succeeds
-          failure: false              # To not receive a notification when a build fails
-      app_store_connect:   # https://docs.codemagic.io/publishing-yaml/distribution              
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY   
+          success: true # To receive a notification when a build succeeds
+          failure: false # To not receive a notification when a build fails
+      app_store_connect: # https://docs.codemagic.io/publishing-yaml/distribution
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID
-       
-     
 ```
 
 ## Web builds
@@ -274,10 +272,56 @@ workflows:
     7z a -r ../web.zip ./*
 ```
 
+## Windows desktop builds
+
+### Building an unpackaged Windows executable
+
+```yaml
+scripts:
+  - name: Build windows
+    script: |
+      flutter config --enable-windows-desktop
+      flutter build windows --release
+      cd build/web
+      7z a -r ../release.zip ./*
+artifacts:
+  - build/windows/runner/*.zip
+```
+
+### Creating an MSIX package for publishing to Microsoft Store
+
+Codemagic uses the [Flutter msix package](https://pub.dev/packages/msix) for packaging the application. For publishing to the Microsoft Store, it is necessary to define certain arguments during packaging.
+
+To pass these arguments to the packaging tool, either add the parameters to the packaging command in `codemagic.yaml` or add the package to your project and [configure](https://pub.dev/packages/msix#gear-configuration-optional) the arguments inside the `pubspec.yaml` file.
+
+When defining the arguments inside codemagic.yaml, the necessary flags to add to the `msix:create` command are `--store`, `--display-name`, `--publisher-display-name`, `--publisher` and `--version`.
+
+The values for `--display-name`, `--publisher-display-name` and `--publisher` can be found when when logging into [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/home) and navigating to **Apps and games > Your application > Product Identity**.
+
+The argument `--display-name` should be set to match the value of `Package/Identity/Name`, the argument `--publisher` should be set to match the value of `Package/Identity/Publisher` and the argument `--publisher-display-name` should be set to match the value of `Package/Properties/PublisherDisplayName`.
+
+Check out how to version your package in the [Microsoft documentation](https://docs.microsoft.com/en-
+us/windows/uwp/publish/package-version-numbering). Note that per Microsoft Store requirements applications are not allowed to have a version with a revision number (last digit of the version) other than zero.
+
+```yaml
+scripts:
+  - name: Build windows
+    script: |
+      ...
+  - name: Package windows
+    script: |
+      flutter pub add msix  # this command is reduntant if you have got the msix pub package added to your project already
+      flutter pub run msix:create --store --publisher-display-name=MyName --display-name=MyAppName --publisher=CN=xx-yy-zz --identity-name=com.flutter.MyApp --version=1.0.2.0
+artifacts:
+  - build/windows/**/*.msix
+```
+
+For all the possible flags for the `msix:create` command, check the [pub documentation](https://pub.dev/packages/msix#clipboard-available-configuration-fields). Note that when configuring the flags both in `codemagic.yaml` and `pubspec.yaml`, the ones configured in `codemagic.yaml` take precedence.
+
 ## Testing, code signing and publishing a Flutter app
 
 To test, code sign and publish a Flutter app:
 
-* Testing examples for a flutter app can be found [here](../testing-yaml/testing/#flutter-test).
-* All iOS and Android applications need to be signed before release. Different script examples are available [here](../publishing-yaml/distribution/).
-* All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with [custom scripts](../getting-started/yaml#scripts). Script examples for different options are available [here](../publishing-yaml/distribution/#publishing-a-flutter-package-to-pubdev).
+- Testing examples for a flutter app can be found [here](../testing-yaml/testing/#flutter-test).
+- All iOS and Android applications need to be signed before release. Different script examples are available [here](../publishing-yaml/distribution/).
+- All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with [custom scripts](../getting-started/yaml#scripts). Script examples for different options are available [here](../publishing-yaml/distribution/#publishing-a-flutter-package-to-pubdev).

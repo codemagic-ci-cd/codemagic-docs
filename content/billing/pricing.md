@@ -6,11 +6,15 @@ weight: 2
 ## Free plan
 
 The free plan allows you to use 500 minutes per month on macOS standard machines on a personal account. Your 500 free minutes will be reset on the 1st of each month. Free minutes are not available if you are using a Team.
+
+To start using Codemagic for free, [sign up here](https://codemagic.io/signup). 
 ## Pay as you go pricing
 
 Pay as you go pricing allows you to pay for only what you use. 
 
 Extra build concurrencies allow Teams to run up to three parallel builds.
+
+To sign up for the pay as you go plan, [visit this page](https://codemagic.io/signup). To enable billing after you are already signed in, proceed to [the billing section](https://codemagic.io/billing).
 
 ### Instance Types
 
@@ -38,7 +42,7 @@ For macOS instances, details of the hardware specification, system information a
 
 ### Pricing for Personal Accounts
 
-When billing is enabled on personal accounts you will still have **500 free build minutes** on macOS standard VM. 
+When billing is enabled on personal accounts you will still have **500 free build minutes** on macOS standard VM. To enable billing, proceed [here](https://codemagic.io/billing).
 
 Usage on macOS standard VM that exceeds 500 minutes is charged at rate shown below.
 
@@ -72,26 +76,26 @@ Each addtional concurrency is $49/month and you will be billed for each concurre
 | Team user                | $10 / month                                                                                                                                                     |                                                                                                                                                 |
 | Extra build concurrency  | $49 / month                                                                                                                                                     | 
 
-Consider Business plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on premium macOS and Linux instances, as well as unlimited team seats. For more information contact us [here](https://codemagic.io/contact/).
+Consider Professional plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on premium macOS and Linux instances, as well as unlimited team seats. For more information contact us [here](https://codemagic.io/contact/).
 
-## Business Plan
+## Professional Plan
 
-The Codemagic business plan gives you a fixed price plan with the following benefits:
+The Codemagic Professional plan gives you a fixed price plan with the following benefits:
 
 * 3 concurrencies (premium macOS and Linux instances)
 * Unlimited build minutes
-* Unlmited team seats
+* Unlimited team seats
 * In-app chat support
 
 The **monthly** subscription is **$299/month** payable by credit card. Additional concurrencies are **$100/month**.
 
 An **annual** subscription with **20% discount** is **$2,870/year**. Additional concurrencies are **$960/year**. 
 
-**SSO** is availble as a Business plan add-on for **$50/month** or **$480/year** 
+**SSO** is availble as a Professional plan add-on for **$50/month** or **$480/year** 
 
-The Business plan can only be paid for with credit card. If you require annual invoicing please refer to the Enterprise plan below.
+The Professional plan can only be paid for with credit card. If you require annual invoicing please refer to the Enterprise plan below.
 
-If you would like to upgrade to a business plan, please contact us [here](https://codemagic.io/contact/).
+If you would like to upgrade to a Professional plan, please contact us [here](https://codemagic.io/contact/).
 
 
 ## Enterprise Plan

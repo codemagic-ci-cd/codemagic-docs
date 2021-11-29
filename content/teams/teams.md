@@ -18,9 +18,9 @@ To create a new team:
 
 1. Navigate to the [Teams](https://codemagic.io/teams) page and click **Create new team**. 
 2. Enter a suitable name for your team.
-3. Set a [user limit](./users#user-limit) for the team. You can later adjust the limit any time. 
-4. Click **Proceed**. You will be then asked to add your credit card details and company information (if relevant) to enable billing for the team.
-5. Then click **Confirm and enable** to enable billing and continue setting up the team.
+3. Select applications from your personal account to be managed in this team. You can add more applications later.
+4. Click **Next: Add payment details**. You will be then asked to add your credit card details and company information (if relevant) to enable billing for the team.
+5. Then click **Finish: Create team** to enable billing and continue setting up the team.
 
 Once the team has been created, team owners can change the team's name, add or remove shared applications, add or remove users, change user roles and manage billing.
 
@@ -54,9 +54,9 @@ Owners can upgrade members to owners by clicking on the three dots next to their
 
 Users that have triggered builds can be invited to the team by clicking **Add to team** on the email address in the list of users.
 
-## Public dashboards
+## Shared dashboards
 
-The public dashboards feature makes it possible to share the team's builds and build artifacts via a public link. Read more about this feature [here](../publishing-yaml/public-dashboards).
+The shared dashboards feature makes it possible to share the team's builds and build artifacts via a public link. Read more about this feature [here](/publishing-yaml/shared-dashboards).
 
 ## Managing team integrations
 

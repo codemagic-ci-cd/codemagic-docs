@@ -3,8 +3,8 @@ title: Publishing and deployment
 description: How to set up publishing and build status notifications in codemagic.yaml
 weight: 1
 aliases:
-    - '../yaml/distribution'
-    - /publishing-yaml/distribution
+  - '../yaml/distribution'
+  - /publishing-yaml/distribution
 popular: 2
 ---
 
@@ -26,8 +26,8 @@ publishing:
     recipients:
       - name@example.com
     notify:
-      success: false     # To not receive a notification when a build succeeds
-      failure: false     # To not receive a notification when a build fails
+      success: false # To not receive a notification when a build succeeds
+      failure: false # To not receive a notification when a build fails
 ```
 
 ### Slack
@@ -36,7 +36,7 @@ Integrate Slack publishing into your Codemagic build pipeline to get notified wh
 
 #### Connecting your Slack workspace
 
-To set up publishing to Slack, you first need to connect your Slack workspace in **User settings > Integrations > Slack** for personal apps and in **Teams > Your_team > Team integrations > Slack** for team apps. 
+To set up publishing to Slack, you first need to connect your Slack workspace in **User settings > Integrations > Slack** for personal apps and in **Teams > Your_team > Team integrations > Slack** for team apps.
 
 ![List of integrations](../uploads/slack_connect.png)
 
@@ -64,10 +64,10 @@ If you don't want to receive a Slack notification on build success or failure, y
 publishing:
   slack:
     channel: '#channel-name'
-    notify_on_build_start: true    # To receive a notification when a build starts
+    notify_on_build_start: true # To receive a notification when a build starts
     notify:
-      success: false               # To not receive a notification when a build succeeds
-      failure: false               # To not receive a notification when a build fails
+      success: false # To not receive a notification when a build succeeds
+      failure: false # To not receive a notification when a build fails
 ```
 
 ### Google Play
@@ -76,20 +76,19 @@ Codemagic enables you to automatically publish your app either to one of the pre
 
 If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates), Codemagic allows setting the update priority. Otherwise, `in_app_update_priority` can be omitted or set to `0`.
 
-In addition, Codemagic supports [staged releases](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en), allowing users to choose which fraction of the testers or users get access to the application. To release to everyone, omit `rollout_fraction` from codemagic.yaml. 
+In addition, Codemagic supports [staged releases](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en), allowing users to choose which fraction of the testers or users get access to the application. To release to everyone, omit `rollout_fraction` from codemagic.yaml.
 
 ```yaml
 publishing:
-  google_play:                                             # For Android app
-    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS       # Contents of the JSON key file for Google Play service account saved as a secure environment variable
-    track: alpha                                           # Name of the track: internal, alpha, beta, production, internal app sharing, or your custom track name
-    in_app_update_priority: 3                              # Priority of the release (only set if in-app updates are supported): integer in range [0, 5]
-    rollout_fraction: 0.25                                 # Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
-    changes_not_sent_for_review: true                      # To be used ONLY if your app cannot be sent for review automatically *
+  google_play: # For Android app
+    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS # Contents of the JSON key file for Google Play service account saved as a secure environment variable
+    track: alpha # Name of the track: internal, alpha, beta, production, internal app sharing, or your custom track name
+    in_app_update_priority: 3 # Priority of the release (only set if in-app updates are supported): integer in range [0, 5]
+    rollout_fraction: 0.25 # Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
+    changes_not_sent_for_review: true # To be used ONLY if your app cannot be sent for review automatically *
 ```
 
-{{<notebox>}}
-\* The field `changes_not_sent_for_review` is required if you are getting the next error:
+{{<notebox>}} \* The field `changes_not_sent_for_review` is required if you are getting the next error:
 
 `Changes cannot be sent for review automatically. Please set the query parameter changesNotSentForReview to true. Once committed, the changes in this edit can be sent for review from the Google Play Console UI.`
 
@@ -112,24 +111,25 @@ To use different Google Play Console accounts for publishing your Android apps, 
 
 ### App Store Connect
 
-Codemagic enables you to automatically publish your iOS or macOS app to [App Store Connect](https://appstoreconnect.apple.com/) for beta testing with [TestFlight](https://developer.apple.com/testflight/) or distributing the app to users via App Store. Codemagic uses the **App Store Connect API key** for authenticating communication with Apple's services. You can read more about generating an API key from Apple's [documentation page](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api). 
+Codemagic enables you to automatically publish your iOS or macOS app to [App Store Connect](https://appstoreconnect.apple.com/) for beta testing with [TestFlight](https://developer.apple.com/testflight/) or distributing the app to users via App Store. Codemagic uses the **App Store Connect API key** for authenticating communication with Apple's services. You can read more about generating an API key from Apple's [documentation page](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api).
 
 Please note that
+
 1. for App Store Connect publishing, the provided key needs to have [App Manager permission](https://help.apple.com/app-store-connect/#/deve5f9a89d7),
-2. and in order to submit your iOS application to App Store Connect, it must be code signed with a distribution [certificate](https://developer.apple.com/support/certificates/).  
+2. and in order to submit your iOS application to App Store Connect, it must be code signed with a distribution [certificate](https://developer.apple.com/support/certificates/).
 
 ```yaml
 publishing:
-  app_store_connect:                  # For iOS or macOS app
-    api_key: $APP_STORE_CONNECT_PRIVATE_KEY          # Contents of the API key saved as a secure environment variable
-    key_id: 3MD9688D9K                # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
-    issuer_id: 21d78e2f-b8ad-...      # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
-    submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight beta review. Required for distributing to beta groups. Note: This action is performed during post-processing.
-    beta_groups:                      # Specify the names of beta tester groups that will get access to the build once it has passed beta review. 
-          - group name 1
-          - group name 2
-
+  app_store_connect: # For iOS or macOS app
+    api_key: $APP_STORE_CONNECT_PRIVATE_KEY # Contents of the API key saved as a secure environment variable
+    key_id: 3MD9688D9K # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
+    issuer_id: 21d78e2f-b8ad-... # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
+    submit_to_testflight: true # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight beta review. Required for distributing to beta groups. Note: This action is performed during post-processing.
+    beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+      - group name 1
+      - group name 2
 ```
+
 
 {{<notebox>}}
 To use different Apple Developer Portal accounts for publishing your iOS apps, set up separate workflows.
@@ -137,13 +137,38 @@ To use different Apple Developer Portal accounts for publishing your iOS apps, s
 
 #### Post-processing of App Store Connect distribution (Magic Actions)
 
-Some App Store Connect actions, like `submit_to_testflight`, `beta_groups` and uploading release notes take place asynchronously in the post-processing step after the app artifact has been successfully published to App Store Connect and the main workflow has completed running in Codemagic. This avoids using the macOS build machine while we are waiting for Apple to complete processing the build and it becomes available for further actions. 
+Some App Store Connect actions, like `submit_to_testflight`, `beta_groups` and uploading release notes take place asynchronously in the post-processing step after the app artifact has been successfully published to App Store Connect and the main workflow has completed running in Codemagic. This avoids using the macOS build machine while we are waiting for Apple to complete processing the build and it becomes available for further actions.
 
 Post-processing of App Store Distribution jobs, or Magic Actions in short, has a two-step timeout. If the uploaded build cannot be found in App Store Connect in 15 minutes, the step times out. This may happen if there are issues with the uploaded artifact, in which case the build does not become available in App Store Connect at all and you'll receive an email from App Store Connect. The overall timeout for post-processing is 120 minutes. If the uploaded build has not exited the processing status by then, post-processing is cancelled. You will still be able to manually submit the build to beta review, upload release notes and distribute the app to beta groups once the build becomes available in App Store Connect.
 
 Note that Codemagic does not send status updates on the post-processing step. You can check the build log for the status of post-processing or check your email for updates from App Store Connect.
 
 Post-processing does not consume any build minutes.
+
+### Microsoft Partner Center
+
+Codemagic enables you to automatically publish your Windows desktop app to the Microsoft Store.
+
+{{<notebox>}}
+The very first version of the app must be submitted in the Partner Center manually. You can download the **MSIX** package from the build artifacts.
+{{</notebox>}}
+
+For publishing, Codemagic makes use of the [Microsoft Store submission API](https://docs.microsoft.com/en-us/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services). This requires linking your Partner Center account to the Azure AD application and providing Codemagic with information that can be used to generate temporary Azure AD access tokens for managing submissions.
+
+To link your Microsoft Partner Center account with the Azure AD application and get the necessary details (`tenant_id`, `client_id`, `client_secret`), follow the instructions [here](../knowledge-base/partner-center-authentication).
+
+It is also necessary for you to provide your `store_id`, which can be found when you open the application in the [Partner Center apps dashboard](https://partner.microsoft.com/en-us/dashboard/apps).
+
+To safely store and use the `client_secret`, save it as an [environment variable](/variables/environment-variable-groups/#storing-sensitive-valuesfiles) in the Codemagic UI. Click **Secure** to encrypt the value.
+
+```yaml
+publishing:
+  partner_center:
+    store_id: 1D4VKTPG38SA
+    tenant_id: ab80a389-41e3-55a8-ae12-bb7430667e04
+    client_id: 52da6186-abce-14f4-b2e1-00018c16f3d1
+    client_secret: $CLIENT_SECRET
+```
 
 ### Firebase App Distribution
 
@@ -155,7 +180,7 @@ Codemagic enables you to automatically publish your iOS or Android app to [Fireb
 
 For distributing an iOS application to Firebase App Distribution, your application must use a development, Ad Hoc or Enterprise distribution profile.
 
-To authenticate with Firebase, Codemagic requires either a **Firebase token** or a service account with **Firebase App Distribution Admin** role. 
+To authenticate with Firebase, Codemagic requires either a **Firebase token** or a service account with **Firebase App Distribution Admin** role.
 
 To retrieve your Firebase token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
 
@@ -186,12 +211,27 @@ If you wish to pass release notes with your build, create a `release_notes.txt` 
 
 In order to distribute an `.aab` to testers via Firebase App Distribution, your Firebase project must be linked to your Google Play account. More information is available [here](https://firebase.google.com/docs/app-distribution/android/distribute-console?apptype=aab#before_you_begin)
 
+#### Publishing only the Android app bundle or APK artifact to Firebase App Distribution
+
+If you are building both an Android app bundle and an APK in your workflow, Codemagic will by default try to publish both artifacts to Firebase App Distribution. If you wish to only publish one of these artifacts, specify the artifact type using the `artifact_type` field:
+
+```yaml
+publishing:
+  firebase:
+    firebase_token: $FIREBASE_TOKEN
+    android:
+      app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx
+      groups:
+        - androidTesters
+        - ...
+      artifact_type: 'apk' # Replace with 'aab' to only publish the Android app bundle
+```
+
 ## Publishing to Firebase App Distribution with Fastlane
 
 {{<notebox>}}
 If you use Firebase services, load the Firebase configuration files to Codemagic by saving them to [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles). Copy/paste the contents of `google-services.json` and `GoogleService-Info.plist` and save them to the environment variables named `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` respectively. Click **Secure** to encrypt the values.
 {{</notebox>}}
-
 
 Make sure to encrypt `FIREBASE_TOKEN` as an environment variable. Check [documentation](https://firebase.google.com/docs/cli#cli-ci-systems) for details.
 
@@ -288,6 +328,7 @@ And then export the file path on the gradlew task
 ```
 
 {{</notebox>}}
+
 ## GitHub releases
 
 Publishing GitHub releases is available for GitHub repositories only.
@@ -302,35 +343,35 @@ Publishing happens only for successful builds triggered on tag creation and is u
 2. Add the personal access token as an environment variable with the name `GITHUB_TOKEN` in the `environment` section.
 3. In the `triggering` section, configure triggering on tag creation. Don't forget to add a branch pattern and ensure the webhook exists.
 
-  ```yaml
-  triggering:
-    events:
-      - tag
-  ```
+```yaml
+triggering:
+  events:
+    - tag
+```
 
 4. Add the following script after the build or publishing scripts that publish the artifacts with tag builds. Edit the placeholders like your application name and the path to build artifacts to match your setup.
 
-    ```bash
-    #!/usr/bin/env zsh
+   ```bash
+   #!/usr/bin/env zsh
 
-    # Publish only for tag builds
-    if [ -z ${FCI_TAG} ]; then
-    echo "Not a tag build will not publish GitHub release"
-    exit 0
-    fi
+   # Publish only for tag builds
+   if [ -z ${FCI_TAG} ]; then
+   echo "Not a tag build will not publish GitHub release"
+   exit 0
+   fi
 
-    # See more options about `gh release create` usage from GitHub CLI
-    # official docs at https://cli.github.com/manual/gh_release_create
+   # See more options about `gh release create` usage from GitHub CLI
+   # official docs at https://cli.github.com/manual/gh_release_create
 
-    gh release create "${FCI_TAG}" \
-        --title "<Your Application Name> ${FCI_TAG}" \
-        --notes-file changelog.md \
-        path/to/build-artifact.ipa \
-        path/to/build-artifact.apk
+   gh release create "${FCI_TAG}" \
+       --title "<Your Application Name> ${FCI_TAG}" \
+       --notes-file changelog.md \
+       path/to/build-artifact.ipa \
+       path/to/build-artifact.apk
 
-    # Note that you don't need to include title and changelog if you do not want to.
-    # Any number of artifacts can be included with the release.
-    ```
+   # Note that you don't need to include title and changelog if you do not want to.
+   # Any number of artifacts can be included with the release.
+   ```
 
 ## Publishing a Flutter package to pub.dev
 
@@ -349,7 +390,7 @@ After that, `credentials.json` will be generated, which you can use to log in wi
 
 With Codemagic, publishing to Firebase Hosting is a straightforward process as the Firebase CLI is already pre-installed on our virtual machines. Please note that you will have to set it up for your project locally before publishing it to Firebase Hosting. You can find more information in the official [documentation](https://firebase.google.com/docs/hosting/quickstart) for Firebase.
 
-1. To get started with adding Firebase Hosting to Codemagic, you will need to obtain your Firebase token. In order to do that, run `firebase login:ci` in your local terminal. 
+1. To get started with adding Firebase Hosting to Codemagic, you will need to obtain your Firebase token. In order to do that, run `firebase login:ci` in your local terminal.
 2. After running the command, your default browser should prompt for authorization to your Firebase project - when access is granted, the necessary token will appear in your terminal.
 3. Copy and [encrypt](../building/encrypting/) the token using the Codemagic UI.
 4. Add your encrypted token to your .yaml file by setting it under your environment variables with the name `FIREBASE_TOKEN`.
@@ -360,6 +401,7 @@ With Codemagic, publishing to Firebase Hosting is a straightforward process as t
   script: |
     firebase deploy --token "$FIREBASE_TOKEN"
 ```
+
 When the build is successful, you can see your application published to Firebase Hosting. You can find the direct URL to the deployed build also from the log output in Codemagic UI:
 
 ```

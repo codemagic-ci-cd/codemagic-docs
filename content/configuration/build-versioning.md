@@ -141,14 +141,11 @@ Add the following script under your `scripts` field for `codemagic.yaml`, or as 
 
 ```bash
 LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number '1234567890') # The argument is your application's Apple ID
-cd ./ios # Set working directory to iOS project directory as agvtool should run in directory with .xcodeproj file
-agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 ```
 
 To use the latest build number from Testflight use a similar script:
 
 ```bash
-LATEST_BUILD_NUMBER=$(app-store-connect get-latest-testflight-build-number '1234567890') # The argument is your application's Apple ID
 cd ./ios # Set working directory to iOS project directory as agvtool should run in directory with .xcodeproj file
 agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 ```

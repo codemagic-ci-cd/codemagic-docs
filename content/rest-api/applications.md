@@ -5,13 +5,34 @@ weight: 2
 
 APIs for managing applications are currently available for developers to preview. During the preview period, the API may change without advance notice.
 
+## Retrieve all applications
+
+`GET /apps`
+
+### Example
+
+```bash
+curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/apps
+```
+
+### Response
+
+```json
+{
+  "applications": [{
+    "_id": "6172cc7d57278d06d4e915f1",
+    "appName": "Foobar-App"
+   }]
+}
+```
+
 ## Retrieve an application
 
 `GET /apps/:id`
 
 Based on the application id provided, returns the applications information.
 
-### Curl request
+### Example
 
 ```bash
 curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/apps/<app_id>
@@ -69,11 +90,11 @@ Adds a Git repository to the applications list.
 }
 ```
 
-## Add a new application from private repository
+## Add a new application from a private repository
 
 `POST /apps/new`
 
-Creates an application from a private repository with SSH key
+Creates an application from a private repository with a SSH key
 
 ### Parameters
 
@@ -123,11 +144,11 @@ Generates an encrypted string that will be decrypted inside our machines when bu
 
 Note that the variables will need to be re-generated when moving the app to a different team.
 
-### CURL example
+### Example
 
 ```
 curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
- -H 'X-Auth-Token: your-token' \
+ -H 'X-Auth-Token: <API Token>' \
  -H 'Content-Type: application/json;charset=utf-8' \
  --data '{"value": "your value"}'
 ```
@@ -137,3 +158,116 @@ curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
 ```yaml
 {"encrypted": "Encrypted(Z0FBQUFBQmZMVkhwb3Q3QlJtRlVOeVFJcEJvTTRtWnZablpqMS0xN2V6dllTell1ODZSd2FUcnNqMUlZT09QY1paV0pjbVRfUlVJeDUxRWIzX1paOEZlc1dSdi1XMXlkUFVIdjNIZ2VqcE5Ja0tpMjlPWjhlSTQ9)"}
 ```
+
+## Modify application variables and secrets
+
+Codemagic allows you to fetch and modify application variables and secrets using the REST API. Note that these variables are available only for the applications that are configured using the `codemagic.yaml` file. For such applications, variables and secrets are manually configured on the **Environment variables** tab in your application settings. These variables and secrets can be accessed in your configuration file with the use of [groups](../building/environment-variable-groups).
+
+### Fetch variables
+
+`GET /apps/:id/variables`
+
+Based on the application id provided, returns the configured variables.
+
+#### Example
+
+```bash
+curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'https://api.codemagic.io/apps/<app_id>/variables'
+```
+
+#### Response
+
+```json
+[
+  {
+    "group": "production",
+    "id": "619e329e0ca5fe19c3780c74",
+    "key": "FOO",
+    "secure": true,
+    "value": "[HIDDEN]"
+  }
+]
+```
+
+### Add new variable
+
+`POST /apps/:id/variables/`
+
+#### Parameters
+
+| **Name**        | **Type** | **Description** |
+| --------------- | -------- | --------------- |
+| `key` | `string` | **Required.** Name of the variable. |
+| `value` | `string` | **Required.** Value of the variable. For binary data use base64 to encode the contents. |
+| `group` | `string` | **Required.** Name of the `group` that the variable should be added to. If the group does not exist, it will be created. | 
+| `secure` | `boolean` | **Optional.** By default, the variable is encrypted. Set to `false` to not encrypt the newly added variable. |
+
+#### Example
+
+```bash
+curl -XPOST -H 'x-auth-token: <API TOKEN>' -H "Content-type: application/json" -d '{
+    "key": "FOO",
+    "value": "foobar",
+    "group": "production",
+    "secure": true
+  }' 'https://api.codemagic.io/apps/<app_id>/variables'
+```
+
+#### Response
+
+```json
+{
+  "group": "production",
+  "id": "619e329e0ca5fe19c3780c74",
+  "key": "FOO",
+  "secure": true,
+  "value": "[HIDDEN]"
+}
+```
+
+### Update existing variable
+
+`POST /apps/:id/variables/:variable_id`
+
+#### Parameters
+
+| **Name**        | **Type** | **Description** |
+| --------------- | -------- | --------------- |
+| `value` | `string` | **Required.** New value for the updated variable. |
+| `secure` | `boolean` | **Optional.** By default, the variable is encrypted. Set to `false` to not encrypt the newly added variable. |
+
+
+#### Example
+
+```bash
+curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -d '{
+    "value": "foobar2",
+    "secure": false
+  }' 'https://api.codemagic.io/apps/<app_id>/variables/<variable_id>'
+```
+
+#### Response
+
+```json
+{
+  "group": "production",
+  "id": "619e329e0ca5fe19c3780c74",
+  "key": "FOO",
+  "secure": false,
+  "value": "foobar2"
+}
+```
+
+### Remove variable
+
+`DELETE /apps/:id/variables/:variable_id`
+
+#### Example
+
+```bash
+curl -XDELETE -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'https://api.codemagic.io/apps/<app_id>/variables/<variable_id>'
+```
+
+#### Response
+
+The response status code of a successful deletion is `204`.

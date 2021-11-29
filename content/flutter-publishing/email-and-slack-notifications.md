@@ -1,7 +1,7 @@
 ---
 description: How to configure build status updates with links to artifacts in the Flutter workflow editor
 title: Email and Slack notifications
-weight: 9
+weight: 10
 aliases: /publishing/email-and-slack-notifications
 ---
 
@@ -23,7 +23,7 @@ Use only the part in angle brackets from the whole address line (e.g. `My awesom
 
 ## Slack
 
-In order to set up publishing to Slack, you first need to connect the Slack workspace in **User settings > Integrations > Slack** for your personal apps and in **Teams > Your_team > Team integrations > Slack** for the team apps. 
+In order to set up publishing to Slack, you first need to connect the Slack workspace in **User settings > Integrations > Slack** for your personal apps and in **Teams > Your_team > Team integrations > Slack** for the team apps.
 
 Once your Slack workspace is connected, you can enable Slack publishing and select a channel for publishing in **App settings > Notifications > Slack** when using the workflow editor.
 
@@ -39,4 +39,4 @@ To receive a notification when a build starts, check the checkbox **Notify when 
 
 When you set up email or Slack publishing, Codemagic publishes the following artifacts:
 
-* `app`, `ipa`, `apk`, the archive with Flutter web build directory, Linux application bundle files
+- `app`, `ipa`, `apk`, the archive with Flutter web build directory, Linux application bundle files, Windows MSIX packages

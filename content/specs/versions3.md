@@ -3,7 +3,7 @@ description: A list of tools available out-of-the-box on Codemagic build machine
 title: macOS build machine specification (Xcode 12.5)
 aliases:
   - '../releases-and-versions/versions3'
-weight: 3
+weight: 4
 ---
 
 ## Hardware
@@ -28,7 +28,7 @@ weight: 3
 - docker `20.10.2`
 - fastlane `2.186.0`
 - firebase `9.3.0`
-- flutter `2.5.1 ($HOME/programs/flutter)`
+- flutter `2.5.3 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.11.0`
 - git `2.32.0`
@@ -73,8 +73,8 @@ weight: 3
 
 ## Xcode 12.5.1 (12E507)
 
-This is the Xcode version used by default when you select `12.5.1` or `latest` in build settings in the workflow
-editor for Flutter apps or set Xcode version to `12.5.1` or `latest` in your codemagic.yaml file.
+This is the Xcode version used by default when you select `12.5.1` in build settings in the workflow
+editor for Flutter apps or set Xcode version to `12.5.1` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-12.5.1.app`

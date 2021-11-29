@@ -11,13 +11,14 @@ Apps that cannot be added via a repository integration can be cloned from a URL.
 ## Connecting repository via SSH
 
 1. Click **Add application** in the top right corner of the Applications page.
-2. Select **Other** and click **Next: Select repository**.
-3. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository by clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `git@example.com:username/repo.git`.
-4. Upload the **SSH private key** file. If your key is password-protected, enter the **Private key passphrase**.
+2. If you are an owner of a team in Codemagic, you'll be asked to **Select a team**. You can only add the application to a team that has billing enabled. If you don't own any teams, this step is skipped and the application will be added to your personal account.
+3. Select **Other** and click **Next: Select repository**.
+4. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository by clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `git@example.com:username/repo.git`.
+5. Upload the **SSH private key** file. If your key is password-protected, enter the **Private key passphrase**.
 
    **Alternatively**, you can click **Generate key pair** and have Codemagic create an SSH key pair for you, read more about it [below](#generating-a-key-pair-in-codemagic).
 
-5. Finish setting up the application by selecting the project type and clicking **Finish: Add application**. You will be then redirected to the app settings.
+6. Finish setting up the application by selecting the project type and clicking **Finish: Add application**. You will be then redirected to the app settings.
 
 >See the getting started guides and [sample projects](../sample-projects/codemagic-sample-projects/) configured with [codemagic.yaml](../getting-started/yaml/) to set up your project. Alternatively, Flutter apps can be also configured using the [Flutter workflow editor](../flutter-configuration/flutter-projects/).
 

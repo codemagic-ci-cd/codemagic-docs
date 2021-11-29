@@ -3,7 +3,7 @@ description: A list of tools available out-of-the-box on Codemagic build machine
 title: Linux build machine specification
 aliases:
   - "../releases-and-versions/versions-linux"
-weight: 6
+weight: 7
 ---
 
 ## Hardware
@@ -25,7 +25,7 @@ weight: 6
 - curl `7.68.0`
 - docker `20.10.2`
 - firebase `9.3.0`
-- flutter `2.5.1 ($HOME/programs/flutter)`
+- flutter `2.5.3 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
