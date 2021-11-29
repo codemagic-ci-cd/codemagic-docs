@@ -107,7 +107,7 @@ You can override the publishing track specified in the configuration file using 
 {{</notebox>}}
 
 {{<notebox>}}
-Multiple Google Play Console accounts accounts are allowed to be connected for publishing other android apps with different workflows.
+To use different Google Play Console accounts for publishing your Android apps, set up separate workflows. 
 {{</notebox>}}
 
 ### App Store Connect
@@ -132,10 +132,10 @@ publishing:
 ```
 
 {{<notebox>}}
-Multiple Apple Developer Portal accounts can be connected for publishing other iOS apps with different workflows
+To use different Apple Developer Portal accounts for publishing your iOS apps, set up separate workflows.
 {{</notebox>}}
 
-#### Post-processing of App Store Connect distribution or Magic Actions
+#### Post-processing of App Store Connect distribution (Magic Actions)
 
 Some App Store Connect actions, like `submit_to_testflight`, `beta_groups` and uploading release notes take place asynchronously in the post-processing step after the app artifact has been successfully published to App Store Connect and the main workflow has completed running in Codemagic. This avoids using the macOS build machine while we are waiting for Apple to complete processing the build and it becomes available for further actions. 
 
