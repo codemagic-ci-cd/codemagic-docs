@@ -50,7 +50,7 @@ Configuring the yaml file like the following creates a zip file and **.app** ins
 
 ```yaml
 workflows:
-    react-native-ios:
+    simulator-native-ios:
         name: iOS simulator build
         max_build_duration: 120
         instance_type: mac_mini
@@ -62,12 +62,9 @@ workflows:
             xcode: 13.0
             cocoapods: default
         scripts:
-            - name: Install npm dependencies
-              script: |
-                npm install
             - name: Install CocoaPods dependencies
               script: |
-                cd ios && pod install
+                pod install
             - name: Build ipa for distribution
               script: |
                 xcodebuild build -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=14.5' -configuration Debug CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO 
