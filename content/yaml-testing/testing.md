@@ -48,10 +48,19 @@ scripts:
 
 ### Running iOS/Android application tests on a mobile simulator/emulator
 
-```bash
-flutter emulators --launch apple_ios_simulator &            # for android use: flutter emulators --launch emulator
-adb wait-for-device                                         # adb wait-for-device is for android use only
-flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d iPhone  # for android use: -d emulator-5554
+You can launch the iOS simulator and run tests on the simulator as follows:
+
+```yaml
+flutter emulators --launch apple_ios_simulator
+flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d iPhone 
+```
+
+For the Android emulator you can launch and run your tests as follows:
+
+```yaml 
+flutter emulators --launch emulator &                       # The ampersand is used to run the emulator in the background without blocking the next command
+adb wait-for-device                                         # adb wait-for-device is used to wait for the emulator to finish loading
+flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d emulator-5554
 ```
 
 ### Running web application tests on a web browser driver
