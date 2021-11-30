@@ -346,17 +346,18 @@ if [ ! -d "$UNITY_HOME" ]; then
   exit 1;
 fi
 
-UNITY_BIN=./Unity
-
 if [ "$(uname)" == "Darwin" ]; then
   echo "Runing under Mac OS X platform";
   UNITY_BIN="$UNITY_HOME/Contents/MacOS/Unity";
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   echo "Runing under GNU/Linux platform";
+  UNITY_BIN="$UNITY_HOME/Unity"
 elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
   echo "Runing under 32 bits Windows NT platform";
+  UNITY_BIN="$UNITY_HOME\Unity.exe"
 elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
   echo "Runing under 64 bits Windows NT platform";
+  UNITY_BIN="$UNITY_HOME\Unity.exe"
 fi
 
 if [ -f "$UNITY_BIN" ]; then
