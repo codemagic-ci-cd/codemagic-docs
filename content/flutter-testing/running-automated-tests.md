@@ -40,7 +40,7 @@ apple_ios_simulator • iOS Simulator • Apple          • ios
 Chrome (web)        • chrome        • web-javascript • Google Chrome
 ```
 
-For iOS and Android it's recommended to launch the desired emulator before the tests start:
+For iOS and Android, it's recommended to launch the desired emulator before the tests start:
 
 ```sh
 flutter emulators --launch ios
