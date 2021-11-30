@@ -252,7 +252,7 @@ You can do this as follows:
 
 Google recommends that Android applications be published to Google Play using the application bundle (.aab). You should configure the following settings in Unity before building the application bundle:
 
-1. Open Unity and File > Build Settings.
+1. Open Unity and click File > Build Settings.
 2. Make sure Android is selected in the Platform section.
 3. Check the Build App Bundle (Google Play) checkbox.
 4. Make sure that Export Project is **not** checked.
