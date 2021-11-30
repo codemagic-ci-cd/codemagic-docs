@@ -35,11 +35,12 @@ There are several options for running integration tests during the build. You ca
 Devices available on the machine are:
 
 ```
-emulator            • emulator      • Google • android
-apple_ios_simulator • iOS Simulator • Apple  • ios
+emulator            • emulator      • Google         • android
+apple_ios_simulator • iOS Simulator • Apple          • ios
+Chrome (web)        • chrome        • web-javascript • Google Chrome
 ```
 
-It's recommended to launch the desired emulator before the tests start:
+For iOS and Android it's recommended to launch the desired emulator before the tests start:
 
 ```sh
 flutter emulators --launch ios
@@ -58,6 +59,8 @@ flutter emulators --launch emulator
 {{</notebox>}}
 
 It is also possible to use `flutter test` to run integration tests using the `integration_test` dependency. When using `flutter test integration_test` instead of `flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart`, it is possible to generate machine-readable output, and the results will be displayed in the UI once the tests have been completed. To do so, add `test integration_test` under `Flutter drive arguments` in the **Flutter workflow editor**.
+
+However, this approach is not possible for integration tests for web using the `chromedriver`.
 
 ### Stop build if tests or analysis fail
 

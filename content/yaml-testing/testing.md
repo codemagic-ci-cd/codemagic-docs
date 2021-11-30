@@ -46,6 +46,18 @@ scripts:
     test_report: test-results/flutter.json
 ```
 
+In order to run integration tests for web, it is possible to use `chromedriver`. Take note that for running tests on web, it is necessary to provide the `--driver` and `--target` arguments.
+
+```yaml
+scripts:
+  - echo 'previous step'
+  - name: Integration tests
+    script: |
+      flutter config --enable-web
+      chromedriver --port=4444 &
+      flutter -d chrome drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart
+```
+
 ### Running iOS/Android application tests on a mobile simulator/emulator
 
 You can launch the iOS simulator and run tests on the simulator as follows:
