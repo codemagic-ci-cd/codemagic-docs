@@ -250,7 +250,7 @@ You can do this as follows:
 
 ## Configure Android build settings in Unity {#android-build-settings}
 
-Google recommends that Android applications are published to Google Play using the an application bundle (.aab). You should set the package name of your Android application before building the application bundle.
+Google recommends that Android applications are published to Google Play using the an application bundle (.aab). You should configure the following settings in Unity before building the application bundle:
 
 1. Open Unity and File > Build Settings.
 2. Make sure Android is selected in the Platform section.
