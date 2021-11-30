@@ -1,0 +1,38 @@
+#help-footer {
+    margin: 50px 0 0;
+    border-top: 1px solid $grey-l;
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    align-items: center;
+    gap: 50px;
+
+    h2 {
+        font-size: 20px;
+        margin: 0 0 1em;
+    }
+    p {
+        margin: 1em 0;
+    }
+    .content {
+        padding: 50px 0;
+    }
+    .illustration {
+        text-align: right;
+    }
+
+    @media (max-width: 560px) {
+        grid-template-columns: 1fr;
+
+        .illustration {
+            grid-row: 1;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .content {
+            padding-top: 0;
+        }
+        svg {
+            max-width: 80%;
+        }
+    }
+}
