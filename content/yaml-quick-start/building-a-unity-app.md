@@ -42,7 +42,7 @@ These are the key steps in setting up your workflow for building Unity mobile ap
 6. Add a post-processing script to Unity for iOS builds as described [here]({{< ref "#post-processing-script" >}}).
 7. Set the iOS bundle identifier in Unity as described [here]({{< ref "#bundle-identifier" >}}).
 8. Configure the Android build settings in Unity as described [here]({{< ref "#android-build-settings" >}}).
-9. Configure Custom Gradle templates as described  [here]({{< ref "#custom-gradle-template" >}}).
+9. Configure Custom Gradle templates as described [here]({{< ref "#custom-gradle-template" >}}).
 10. Add a script for license activation, mobile app export and license return [here]({{< ref "#license-activation" >}}).
 11. Create a codemagic.yaml workflow configuration using the Unity template and configure with your details as shown [here]({{< ref "#workflow-configuration" >}}).
 
