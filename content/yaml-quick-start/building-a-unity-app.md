@@ -42,7 +42,7 @@ These are the key steps in setting up your workflow for building Unity mobile ap
 6. Add a post-processing script to Unity for iOS builds as described [here]({{< ref "#post-processing-script" >}}).
 7. Set the iOS bundle identifier in Unity as described [here]({{< ref "#bundle-identifier" >}}).
 8. Configure the Android build settings in Unity as described [here]({{< ref "#android-build-settings" >}}).
-9. Configure Custom Gradle templates as described  [here]({{< ref "#custom-gradle-template" >}}).
+9. Configure Custom Gradle templates as described [here]({{< ref "#custom-gradle-template" >}}).
 10. Add a script for license activation, mobile app export and license return [here]({{< ref "#license-activation" >}}).
 11. Create a codemagic.yaml workflow configuration using the Unity template and configure with your details as shown [here]({{< ref "#workflow-configuration" >}}).
 
@@ -250,9 +250,9 @@ You can do this as follows:
 
 ## Configure Android build settings in Unity {#android-build-settings}
 
-Google recommends that Android applications are published to Google Play using the an application bundle (.aab). You should configure the following settings in Unity before building the application bundle:
+Google recommends that Android applications be published to Google Play using the application bundle (.aab). You should configure the following settings in Unity before building the application bundle:
 
-1. Open Unity and File > Build Settings.
+1. Open Unity and click File > Build Settings.
 2. Make sure Android is selected in the Platform section.
 3. Check the 'Build App Bundle (Google Play)' checkbox.
 4. Make sure that 'Export Project' is **not** checked.
