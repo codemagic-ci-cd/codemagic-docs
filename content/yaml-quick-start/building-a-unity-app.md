@@ -72,7 +72,7 @@ Please refer to the documentation about signing iOS apps [here](../yaml-code-sig
 
 You will need to set the following environment variables in a variable group called `keystore_credentials` for Android code signing:
 
-`CM_KEYSTORE_PATH`, `CM_KEYSTORE`, `CM_KEYSTORE_PASSWORD`, `CM_KEY_PASSWORD` and `CM_KEY_ALIAS`
+`FCI_KEYSTORE_PATH`, `FCI_KEYSTORE`, `FCI_KEYSTORE_PASSWORD`, `FCI_KEY_PASSWORD` and `FCI_KEY_ALIAS`
 
 
 Please refer to the documentation about signing Android apps [here](../yaml-code-signing/signing-android/) for further details.
