@@ -91,8 +91,6 @@ The **monthly** subscription is **$299/month** payable by credit card. Additiona
 
 An **annual** subscription with **20% discount** is **$2,870/year**. Additional concurrencies are **$960/year**. 
 
-**SSO** is availble as a Professional plan add-on for **$50/month** or **$480/year** 
-
 The Professional plan can only be paid for with credit card. If you require annual invoicing please refer to the Enterprise plan below.
 
 If you would like to upgrade to a Professional plan, please contact us [here](https://codemagic.io/contact/).
