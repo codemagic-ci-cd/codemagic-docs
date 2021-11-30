@@ -254,16 +254,16 @@ Google recommends that Android applications are published to Google Play using t
 
 1. Open Unity and File > Build Settings.
 2. Make sure Android is selected in the Platform section.
-3. Check the Build App Bundle (Google Play) checkbox.
-4. Make sure that Export Project is **not** checked.
+3. Check the 'Build App Bundle (Google Play)' checkbox.
+4. Make sure that 'Export Project' is **not** checked.
 5. Click on the Player Settings button.
 6. Expand 'Other Settings' and check the 'Override Default Package Name' checkbox.
 7. Enter the package name for your app e.g. com.domain.yourappname.
 8. Set the Version number
-9. Put any integer value in the Bundle Version Code. This will be overriden with the build script.
-10. Set the Minimum API Level and Target API Level to **Android 11.0 (API level 30)** which is required for publishing application bundles.
-11. In the Configuration section set 'Scripting Backend' to **IL2CPP**.
-12. In the Target Architectures section check **ARMv7** and **ARM64** to support 64-bit architectures so the app is compliant with the Google Play 64-bit requirement.
+9. Put any integer value in the 'Bundle Version Code'. This will be overriden with the build script.
+10. Set the 'Minimum API Level' and 'Target API Level' to **Android 11.0 (API level 30)** which is required for publishing application bundles.
+11. In the 'Configuration' section set 'Scripting Backend' to **IL2CPP**.
+12. In the 'Target Architectures' section check **ARMv7** and **ARM64** to support 64-bit architectures so the app is compliant with the Google Play 64-bit requirement.
 
 ## Add a custom base Gradle template {#custom-gradle-template}
 
