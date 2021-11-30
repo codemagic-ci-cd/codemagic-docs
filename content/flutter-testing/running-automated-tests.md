@@ -31,6 +31,7 @@ There are several options for running integration tests during the build. You ca
 
 - iOS simulator (selected by default)
 - Android emulator
+- Chrome
 
 Devices available on the machine are:
 
