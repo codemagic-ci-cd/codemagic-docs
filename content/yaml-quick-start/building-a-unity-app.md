@@ -258,7 +258,7 @@ Google recommends that Android applications be published to Google Play using th
 4. Make sure that 'Export Project' is **not** checked.
 5. Click on the Player Settings button.
 6. Expand 'Other Settings' and check the 'Override Default Package Name' checkbox.
-7. Enter the package name for your app e.g. com.domain.yourappname.
+7. Enter the package name for your app, e.g. com.domain.yourappname.
 8. Set the Version number
 9. Put any integer value in the 'Bundle Version Code'. This will be overriden with the build script.
 10. Set the 'Minimum API Level' and 'Target API Level' to **Android 11.0 (API level 30)** which is required for publishing application bundles.
