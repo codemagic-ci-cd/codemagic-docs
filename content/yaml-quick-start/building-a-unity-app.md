@@ -41,9 +41,10 @@ These are the key steps in setting up your workflow for building Unity mobile ap
 5. Add a build script to Unity as explained [here]({{< ref "#unity-build-script" >}}).
 6. Add a post-processing script to Unity for iOS builds as described [here]({{< ref "#post-processing-script" >}}).
 7. Set the iOS bundle identifier in Unity as described [here]({{< ref "#bundle-identifier" >}}).
-8. Configure Custom Gradle templates as described [here]({{< ref "#custom-gradle-templates" >}}).
-9. Add a script for license activation, mobile app export and license return [here]({{< ref "#license-activation" >}}).
-10. Create a codemagic.yaml workflow configuration using the Unity template and configure with your details as shown [here]({{< ref "#workflow-configuration" >}}).
+8. Configure the Android build settings in Unity as described [here]({{< ref "#android-build-settings" >}}).
+9. Configure Custom Gradle templates as described [here]({{< ref "#custom-gradle-template" >}}).
+10. Add a script for license activation, mobile app export and license return [here]({{< ref "#license-activation" >}}).
+11. Create a codemagic.yaml workflow configuration using the Unity template and configure with your details as shown [here]({{< ref "#workflow-configuration" >}}).
 
 ## Environment variables for Unity {#unity-variables}
 
@@ -72,7 +73,7 @@ Please refer to the documentation about signing iOS apps [here](../yaml-code-sig
 
 You will need to set the following environment variables in a variable group called `keystore_credentials` for Android code signing:
 
-`CM_KEYSTORE_PATH`, `CM_KEYSTORE`, `CM_KEYSTORE_PASSWORD`, `CM_KEY_PASSWORD` and `CM_KEY_ALIAS`
+`FCI_KEYSTORE_PATH`, `FCI_KEYSTORE`, `FCI_KEYSTORE_PASSWORD`, `FCI_KEY_PASSWORD` and `FCI_KEY_ALIAS`
 
 
 Please refer to the documentation about signing Android apps [here](../yaml-code-signing/signing-android/) for further details.
@@ -96,8 +97,70 @@ public static class BuildScript
     [MenuItem("Build/Build Android")]
     public static void BuildAndroid()
     {
+
+        PlayerSettings.Android.useCustomKeystore = true;
+
+        // Set bundle version. NEW_BUILD_NUMBER environment variable is set in the codemagic.yaml 
+        var versionIsSet = int.TryParse(Environment.GetEnvironmentVariable("NEW_BUILD_NUMBER"), out int version);
+        if (versionIsSet)
+        {
+            Debug.Log($"Bundle version code set to {version}");
+            PlayerSettings.Android.bundleVersionCode = version;
+        }
+        else
+        {
+            Debug.Log("Bundle version not provided");
+        }
+
+        // Set keystore name
+        string keystoreName = Environment.GetEnvironmentVariable("FCI_KEYSTORE_PATH");
+        if (!String.IsNullOrEmpty(keystoreName))
+        {
+            Debug.Log($"Setting path to keystore: {keystoreName}");
+            PlayerSettings.Android.keystoreName = keystoreName;
+        }
+        else
+        {
+            Debug.Log("Keystore name not provided");
+        }
+
+        // Set keystore password
+        string keystorePass = Environment.GetEnvironmentVariable("FCI_KEYSTORE_PASSWORD");
+        if (!String.IsNullOrEmpty(keystorePass))
+        {
+            Debug.Log("Setting keystore password");
+            PlayerSettings.Android.keystorePass = keystorePass;
+        }
+        else
+        {
+            Debug.Log("Keystore password not provided");
+        }
+
+        // Set keystore alias name
+        string keyaliasName = Environment.GetEnvironmentVariable("FCI_KEY_ALIAS_USERNAME");
+        if (!String.IsNullOrEmpty(keyaliasName))
+        {
+            Debug.Log("Setting keystore alias");
+            PlayerSettings.Android.keyaliasName = keyaliasName;
+        }
+        else
+        {
+            Debug.Log("Keystore alias not provided");
+        }
+
+        // Set keystore password
+        string keyaliasPass = Environment.GetEnvironmentVariable("FCI_KEY_ALIAS_PASSWORD");
+        if (!String.IsNullOrEmpty(keyaliasPass))
+        {
+            Debug.Log("Setting keystore alias password");
+            PlayerSettings.Android.keyaliasPass = keyaliasPass;
+        }
+        else
+        {
+            Debug.Log("Keystore alias password not provided");
+        }
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
-        buildPlayerOptions.locationPathName = "android";
+        buildPlayerOptions.locationPathName = "android/android.aab";
         buildPlayerOptions.target = BuildTarget.Android;
         buildPlayerOptions.options = BuildOptions.None;
         buildPlayerOptions.scenes = GetScenes();
@@ -185,9 +248,24 @@ You can do this as follows:
 5. In the Indetification section check the 'Override Default Bundle Identifier' option.
 6. Set the Bundle Identifier to match the identifier name you have used in your Apple Developer Program account.
 
+## Configure Android build settings in Unity {#android-build-settings}
 
-## Custom Gradle templates {#custom-gradle-templates}
+Google recommends that Android applications be published to Google Play using the application bundle (.aab). You should configure the following settings in Unity before building the application bundle:
 
+1. Open Unity and click File > Build Settings.
+2. Make sure Android is selected in the Platform section.
+3. Check the 'Build App Bundle (Google Play)' checkbox.
+4. Make sure that 'Export Project' is **not** checked.
+5. Click on the Player Settings button.
+6. Expand 'Other Settings' and check the 'Override Default Package Name' checkbox.
+7. Enter the package name for your app, e.g. com.domain.yourappname.
+8. Set the 'Version number'.
+9. Put any integer value in the 'Bundle Version Code'. This will be overriden with the build script.
+10. Set the 'Minimum API Level' and 'Target API Level' to **Android 11.0 (API level 30)** which is required for publishing application bundles.
+11. In the 'Configuration' section set 'Scripting Backend' to **IL2CPP**.
+12. In the 'Target Architectures' section check **ARMv7** and **ARM64** to support 64-bit architectures so the app is compliant with the Google Play 64-bit requirement.
+
+## Add a custom base Gradle template {#custom-gradle-template}
 
 You will need to add custom gradle templates so your Android builds work with Codemagic.  
 
@@ -196,11 +274,10 @@ You will need to add custom gradle templates so your Android builds work with Co
 3. Click on the Player Settings.
 4. Expand the Publishing Settings .
 5. Check the 'Custom Base Gradle Template'.
-6. Check the 'Custom Main Gradle Template' .
-7. Close the project settings and build settings.
+6. Close the project settings and build settings.
 
 
-### Custom base Gradle template
+### Modify the custom base Gradle template
 
 Modify the base Gradle template as follows:
 
@@ -241,84 +318,6 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 ```
-
-### Custom main Gradle template
-
-Modify the Main Gradle template as follows:
-
-1. In the project explorer expand Assets > Plugins > Android. 
-2. Double click on mainTemplate.gradle. 
-3. Replace the entire file contents with the following:
-
-```groovy
-// GENERATED BY UNITY. REMOVE THIS COMMENT TO PREVENT OVERWRITING WHEN EXPORTING AGAIN
-
-apply plugin: 'com.android.library'
-**APPLY_PLUGINS**
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-**DEPS**}
-
-android {
-    compileSdkVersion **APIVERSION**
-    buildToolsVersion '**BUILDTOOLS**'
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    defaultConfig {
-        minSdkVersion **MINSDKVERSION**
-        targetSdkVersion **TARGETSDKVERSION**
-        ndk {
-            abiFilters **ABIFILTERS**
-        }
-        versionCode versionCode Integer.valueOf(System.env("NEW_BUILD_NUMBER"))
-        versionName '**VERSIONNAME**'
-        consumerProguardFiles 'proguard-unity.txt'**USER_PROGUARD**
-    }
-
-        signingConfigs {
-        debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-        }
-        release {
-                if (System.getenv()["CI"]) {
-                    storeFile file('/tmp/keystore.keystore')
-                    storePassword System.getenv()['FCI_KEYSTORE_PASSWORD']
-                    keyAlias System.getenv()['FCI_KEY_ALIAS']
-                    keyPassword System.getenv()['FCI_KEY_PASSWORD']
-                } 
-        }
-    }
-
-    lintOptions {
-        abortOnError false
-    }
-
-    aaptOptions {
-        noCompress = ['.ress', '.resource', '.obb'] + unityStreamingAssets.tokenize(', ')
-        ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~"
-    }**PACKAGING_OPTIONS**
-}**REPOSITORIES**
-**IL_CPP_BUILD_SETUP**
-**SOURCE_BUILD_SETUP**
-**EXTERNAL_SOURCES**
-
-```
-## Add Gradle build files
-
-When exporting the Android project to disk, Unity does not add the required gradle files which allow the project to be built from the command line. Therefore, you should add them mananually as follows:
-
-Add a folder called **Gradle** to the root of your project. 
-
-Add the files `gradlew`, `gradle.bat` and the `gradle/wrapper` directory which contains `gradle-wrapper.jar` and `gradle-wrapper.properties`. If you do not have access to these files from another project then they are available in the Unity sample project [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity/unity-demo-project).
-
 ## License activation and return {#license-activation}
 
 Your Unity license needs to be activated on the Codemagic build server so the XCode project can be created. 
@@ -410,9 +409,6 @@ echo "Done everything"
 
 exit 0
 ```
-
-
-
 ## Workflow configuration with codemagic.yaml{#workflow-configuration}
 
 Your workflow should be configured using the **codemagic.yaml** configuration file and checked into the root of the branches you wish to build using Codemagic.
@@ -434,7 +430,7 @@ workflows:
         UNITY_IOS_DIR: ios
         XCODE_PROJECT: "Unity-iPhone.xcodeproj"
         XCODE_SCHEME: "Unity-iPhone"
-        BUNDLE_ID: "com.your.bundleid" # <-- Put your Bundle Id here.
+        BUNDLE_ID: "com.domain.yourappname" # <-- Put your Bundle Id here.
         APP_STORE_APP_ID: 1555555551 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
         cocoapods: default
     scripts:
@@ -470,47 +466,36 @@ workflows:
     unity-android-workflow:
         name: Unity Android Workflow
         max_build_duration: 120
-        environment:
-            groups:
-            # Add the group environment variables in Codemagic UI (either in Application or Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-                - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
-                - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_ALIAS_PASSWORD, FCI_KEY_ALIAS_USERNAME)
-                - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
-            vars:
-                PACKAGE_NAME: "YOUR_PACKAGE_NAME" # <-- Put your package name here e.g. com.domain.myapp
-        triggering:
-            events:
-                - push
-                - tag
-                - pull_request
-            branch_patterns:
-                - pattern: develop
-                  include: true
-                  source: true
-        scripts:
-            - name: Export Unity
-              script: |
-                ./export_unity.sh android
-            - name: Set up keystore
-              script: |
-                    echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-                    cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
-                    storePassword=$FCI_KEYSTORE_PASSWORD
-                    keyPassword=$FCI_KEY_ALIAS_PASSWORD
-                    keyAlias=$FCI_KEY_ALIAS_USERNAME
-                    storeFile=/tmp/keystore.keystore
-                    EOF               
-            - name: Build Android release
-              script: |
-                # Set environment variable so it can be used to increment build number in android/launcher/build.gradle
-                export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
-                cp -vr ./Gradle/* ./android
-                cd android && ./gradlew bundleRelease
-        artifacts:
-            - android/launcher/build/outputs/**/*.aab
-        publishing:
-            google_play:
-              # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
-              credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-              track: alpha   # Any default or custom track that is not in ‘draft’ status
+      environment:
+          groups:
+          # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+              - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
+              - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_ALIAS_PASSWORD, FCI_KEY_ALIAS_USERNAME)
+              - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
+          vars:
+              PACKAGE_NAME: "com.domain.yourappname" # <-- Put your package name here e.g. com.domain.myapp
+      triggering:
+          events:
+              - push
+              - tag
+              - pull_request
+          branch_patterns:
+              - pattern: develop
+                include: true
+                source: true
+      scripts:
+          - name: Set up keystore
+            script: |
+              echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore            
+          - name: Set build number and export Unity
+            script: |
+              export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
+              ./export_unity.sh android        
+      artifacts:
+          - android/*.aab
+      publishing:
+          google_play:
+            # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
+            credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+            track: alpha   # Any default or custom track that is not in ‘draft’ status    
 ```
