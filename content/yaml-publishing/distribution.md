@@ -135,7 +135,7 @@ publishing:
       - group name 1
       - group name 2
     
-    # Configuration related App Store (optional)
+    # Configuration related to App Store (optional)
     submit_to_app_store: true # Optional boolean, defaults to false. Whether or not to submit the uploaded build to App Store review. Note: This action is performed during post-processing.
     release_type: SCHEDULED # Optional, defaults to MANUAL. Supported values: MANUAL, AFTER_APPROVAL or SCHEDULED
     earliest_release_date: 2021-12-01T14:00:00+00:00 # Optional. Timezone-aware ISO8601 timestamp with hour precision when scheduling the release. This can be only used when release type is set to SCHEDULED. It cannot be set to a date in the past.
