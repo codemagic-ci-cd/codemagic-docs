@@ -15,6 +15,8 @@ You can find your app ID in the browser URL after `app/` when you open the app o
 
 All received webhooks are visible in the Codemagic UI when navigating to your application and selecting the **Webhooks** tab.
 
+After configuring **Webhooks**, automatic build triggering can be set up as explained [here](https://docs.codemagic.io/yaml/yaml-getting-started/#triggering)
+
 ## Setting up webhooks for Github
 
 Open your project and navigate to **Settings** > **Webhooks** > **Add webhook**, paste the **payload URL** from above (both `application/json` or `application/x-www-form-urlencoded` are supported as the **Content type**), and select the following events: **Branch or tag creation**, **Pull requests**, **Pushes**.
