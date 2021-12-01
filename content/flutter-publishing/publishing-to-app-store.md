@@ -21,6 +21,8 @@ It is also worth pointing out the necessity for each uploaded binary to have a *
 
 {{<notebox>}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. {{</notebox>}}
 
+In order to be able to test iOS apps on Apple devices, manual device UDID registration in the Apple Developer account is required or manual registration can be replaced by Codemagic automatic device registration. More information can be found [here](https://docs.codemagic.io/testing/ios-provisioning/). 
+
 ## Setting up publishing to App Store Connect on Codemagic
 
 This section gives step-by-step instructions on how to configure publishing to App Store Connect using Flutter workflow editor.
