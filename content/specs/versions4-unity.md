@@ -69,7 +69,7 @@ weight: 3
 
 ## Unity 2020.3.20f1
 
-UNITY_PATH: `/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app`
+UNITY_HOME: `/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app`
 
 ## Xcode 13.1 (13A1030d)
 
