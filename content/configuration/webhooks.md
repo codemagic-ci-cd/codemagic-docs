@@ -15,7 +15,7 @@ You can find your app ID in the browser URL after `app/` when you open the app o
 
 All received webhooks are visible in the Codemagic UI when navigating to your application and selecting the **Webhooks** tab.
 
-After configuring **Webhooks**, automatic build triggering can be set up as explained [here](https://docs.codemagic.io/yaml/yaml-getting-started/#triggering)
+After configuring **Webhooks**, automatic build triggering can be set up as explained [here](https://docs.codemagic.io/flutter-configuration/automatic-build-triggering/). More information about how to set up automatic build triggering in the **yaml** file can be found [here](https://docs.codemagic.io/yaml/yaml-getting-started/#triggering)
 
 ## Setting up webhooks for Github
 
