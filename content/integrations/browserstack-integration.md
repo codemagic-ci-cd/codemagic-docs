@@ -76,8 +76,8 @@ If you are building your app in release mode, then you also need to build your t
 
 ## Sample projects
 
-A sample project that shows how to configure BrowserStack integration for **App Live** is available [here](https://github.com/icarusdust/app_live_browserstack_integration)
+A sample project that shows how to configure BrowserStack integration for **App Live** is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/browserstack_app_live_demo_project)
 
-A sample project that shows how to configure BrowserStack integration for **App Automate** is available [here](https://github.com/icarusdust/app_automate_browserstack_integration)
+A sample project that shows how to configure BrowserStack integration for **App Automate** is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/browserstack_app_automate_demo_project)
 
 
