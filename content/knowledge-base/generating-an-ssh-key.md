@@ -4,7 +4,7 @@ title: Generating an SSH key
 weight: 2
 ---
 
-Different repository hosting services have different minimum requirements for their SSH keys. We recommend using a widely supported and secure algorithm such as `ECDSA` or `ED25519` when generating your key pair.
+Different repository hosting services have different minimum requirements for their SSH keys. We recommend using a widely supported and secure algorithm such as `ECDSA` or `Ed25519` when generating your key pair.
 
 ```bash
 ssh-keygen -t ed25519 -f ~/Desktop/codemagic_ssh_key -q -N ""
