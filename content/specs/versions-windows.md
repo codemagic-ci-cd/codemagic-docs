@@ -50,6 +50,6 @@ weight: 8
 
 Android Studio path: `C:\Program Files\Android\Android Studio\`
 
- ## Unity 2020.3.23f1
+## Unity 2020.3.23f1
 
- `UNITY_PATH` is set to `C:\Program Files\Unity\Hub\Editor\2020.3.23f1\Editor`
+`UNITY_PATH` is set to `C:\Program Files\Unity\Hub\Editor\2020.3.23f1\Editor`
