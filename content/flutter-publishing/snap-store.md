@@ -2,7 +2,7 @@
 description: How to publish a snap to the Snap Store using the Flutter workflow editor
 title: Snapcraft Snap Store
 weight: 5
-aliases: /publishing/publishing-to-snapscraft
+aliases: /publishing/publishing-to-snapcraft
 ---
 
 The [snap packages](../flutter-configuration/flutter-projects/#building-snap-packages) you build in Codemagic can be published straight to the [Snapcraft Snap Store](https://snapcraft.io/) as part of the build workflow.
