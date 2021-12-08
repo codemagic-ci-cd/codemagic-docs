@@ -1,14 +1,13 @@
 ---
-title: Skip builds and build steps conditionally
+title: Run builds and builds steps conditionally
 description: Configure conditions when build or build step should be run
-weight: 3
 ---
 
 ## Skip building a specific commit
 
 Include `[skip ci]` or `[ci skip]` in your commit message, if you do not wish Codemagic to build a particular commit.
 
-## Using `when` to skip builds
+## Using `when` to run or skip builds
 
 Add `when` key to a workflow root to either skip it or run it, depending on the specified `changeset` and `condition`.
 
@@ -19,9 +18,8 @@ when:
   changeset:
     includes:
       - '**/*.md'
-  condition: event.pull_request.draft == true
+  condition: event.pull_request.draft == false
 ```
-
 
 ### Using `changeset` inside `when`
 
@@ -74,12 +72,14 @@ The `condition` you specify will be evaluated during the build. The build will b
 
 The current environment is accessible under the `env` variable.
 
-Examples
+Example, build will not run if the current branch is not master:
 
-```python
-env.ENV == 'debug'  # build will run if ENV is equal to `debug`
-env.PLATFORM == 'windows'  # build will run if PLATFORM is equal to `windows`
-env.FCI_BRANCH != 'master' # build will be skipped if the current branch is not master
+```yaml
+workflows:
+  build-master:
+    name: Build master branch
+    when:
+      condition: env.FCI_BRANCH != 'master'
 ```
 
 Webhook payload is accessible under the `event` variable. Note that `event` is not available if the build is started manually from the UI or by a schedule.
@@ -97,21 +97,23 @@ For the purpose of giving an example, let's assume that webhook body is equal to
 }
 ```
 
+You can then specify the following conditions based on the information in the webhook payload.
 
-```python
-event.pull_request.draft == true  # build will run only for draft pull requests
-event.repository.open_issues_count > 1  # build will run if issues count is greater than 1
+In the following example build will run if issues count is greater than 1 and the current PR is draft.
+
+```yaml
+workflows:
+  build-master:
+    name: Build master branch
+    when:
+      condition: event.pull_request.draft == true and event.repository.open_issues_count > 1
 ```
 
-It's possible to use logical operators in conditions, e.g. `not`, `and`, `or`.
+Note that in addition to `and` it is possible to use other logical operators in conditions, e.g. `not`, `or`.
 
-```python
-event.pull_request.draft == false and event.repository.open_issues_count
-```
+## Using `when` to run or skip build steps
 
-## Using `when` to skip build steps
-
-You may also want to skip some specific steps when building your application. Use the same approach with scripts.
+You may want to either run or skip some specific build steps in your workflow when building your application.
 
 Both `changeset` and `condition` are supported for build steps.
 
