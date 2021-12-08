@@ -40,6 +40,18 @@ gem "fastlane"
 gem "cocoapods"
 ```
 
+## Fastlane plugins
+
+If you are using any Fastlane plugins, you should create a script to install them as follows:
+
+```
+      - name: Install Fastlane plugins
+        script: |
+          cd ios     # change to ios/android folder as required
+          bundle add fastlane-plugin-s3
+          bundle add fasllane-plugin-dropbox
+```
+
 ## Running your Fastlane lane
 
 In the codemagic.yaml you should install your depenpendencies with `bundle install` and then execute the Fastlane lane with `bundle exec fastlane <lane_name>` as follows:
