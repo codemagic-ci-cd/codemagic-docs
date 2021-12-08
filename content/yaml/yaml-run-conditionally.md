@@ -68,7 +68,7 @@ As a result, commits with changes outside of the `android` folder will not trigg
 
 ### Using `condition` inside `when`
 
-Use condition for checking values of environment variables or webhook payload values to either run or skip build.
+Use `condition` for checking values of environment variables or webhook payload values to either run or skip build.
 
 The `condition` you specify will be evaluated during the build. The build will be skipped if the condition evaluates to `false`.
 
