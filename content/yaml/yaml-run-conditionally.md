@@ -9,9 +9,9 @@ Include `[skip ci]` or `[ci skip]` in your commit message, if you do not wish Co
 
 ## Using `when` to run or skip builds
 
-Add `when` key to a workflow root to either skip it or run it, depending on the specified `changeset` and `condition`.
+Add the `when` key to the workflow root to either skip or run it depending on the specified `changeset` and `condition`.
 
-For example, a workflow or script step will run if recent changes include changes to Markdown files (`.md`) *and* the current build is triggered by a PR update webhook and the PR is not draft PR.
+For example, a workflow or script step will run if recent changes include changes to Markdown files (`.md`) *and* the current build is triggered by a PR update webhook and the PR is not a draft PR.
 
 ```yaml
 when:
@@ -74,7 +74,7 @@ The `condition` you specify will be evaluated during the build. The build will b
 
 The current environment is accessible under the `env` variable.
 
-Example, build will not run if the current branch is not master:
+For example, the build will not run if the current branch is not master:
 
 ```yaml
 workflows:
