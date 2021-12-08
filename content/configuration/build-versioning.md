@@ -81,15 +81,7 @@ It can be found under **General > App Information > Apple ID** under your applic
 If you use `codemagic.yaml` config and you have [Automatic code signing](/yaml-code-signing/signing-ios/#automatic-code-signing) setup, you are good to go directly to [Set the build number with `agvtool`](#set-the-build-number-with-agvtool)
 {{</notebox>}}
 
-### Creating the App Store Connect API key
-
-It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
-
-1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
-2. Click on the + sign to generate a new API key.
-3. Enter the name for the key and select an access level. We recommend choosing either `Developer` or `App Manager`, read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
-4. Click **Generate**.
-5. As soon as the key is generated, you can see it added to the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
+{{< include "/partials/app-store-connect-api-key.md">}}
 
 ### Saving the API access arguments to environment variables
 
