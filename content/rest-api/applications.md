@@ -19,10 +19,18 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 
 ```json
 {
-  "applications": [{
-    "_id": "6172cc7d57278d06d4e915f1",
-    "appName": "Foobar-App"
-   }]
+	"applications": [{
+		"_id": "6172cc7d57278d06d4e915f1",
+		"appName": "Foobar-App",
+		"workflowIds": [
+			"5d85f242e941e00019e81bd2"
+		],
+		"workflows": {
+			"5d85f242e941e00019e81bd2": {
+				"name": "Android Workflow"
+			}
+		}
+	}]
 }
 ```
 
@@ -161,7 +169,9 @@ curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
 
 ## Modify application variables and secrets
 
-Codemagic allows you to fetch and modify application variables and secrets using the REST API. Note that these variables are available only for the applications that are configured using the `codemagic.yaml` file. For such applications, variables and secrets are manually configured on the **Environment variables** tab in your application settings. These variables and secrets can be accessed in your configuration file with the use of [groups](../building/environment-variable-groups).
+Codemagic allows you to fetch and modify application variables and secrets using the REST API. Note that the API works slightly differently depending on whether your application is configured to use the `Workflow Editor` or `YAML configuration`.
+
+For the latter, variables and secrets are manually configured on the **Environment variables** tab in your application settings. These variables and secrets can be accessed in your configuration file across all workflows with the use of [groups](../building/environment-variable-groups). Variables configured for the `Workflow Editor` are specific to one workflow.
 
 ### Fetch variables
 
@@ -177,6 +187,7 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
 
 #### Response
 
+##### Response for applications using codemagic.yaml
 ```json
 [
   {
@@ -185,6 +196,20 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
     "key": "FOO",
     "secure": true,
     "value": "[HIDDEN]"
+  }
+]
+```
+
+##### Response for applications using Workflow Editor
+```json
+[
+  {
+    "id": "61b06dbe72d7ad0017679014", 
+    "key": "FOO", 
+    "secure": true, 
+    "value": "[HIDDEN]", 
+    "workflow_id": "60f0520c4c8734015080d401", 
+    "workflow_name": "Default Workflow"
   }
 ]
 ```
@@ -199,7 +224,8 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
 | --------------- | -------- | --------------- |
 | `key` | `string` | **Required.** Name of the variable. |
 | `value` | `string` | **Required.** Value of the variable. For binary data use base64 to encode the contents. |
-| `group` | `string` | **Required.** Name of the `group` that the variable should be added to. If the group does not exist, it will be created. | 
+| `group` | `string` | **Optional.** Required for applications using yaml configuration. Name of the `group` that the variable should be added to. If the group does not exist, it will be created. | 
+| `workflow_id` | `string` | **Optional.** Required for applications using Workflow Editor. ID of the `workflow` that the variable should be added to. | 
 | `secure` | `boolean` | **Optional.** By default, the variable is encrypted. Set to `false` to not encrypt the newly added variable. |
 
 #### Example
@@ -215,6 +241,7 @@ curl -XPOST -H 'x-auth-token: <API TOKEN>' -H "Content-type: application/json" -
 
 #### Response
 
+##### Response for applications using codemagic.yaml
 ```json
 {
   "group": "production",
@@ -222,6 +249,18 @@ curl -XPOST -H 'x-auth-token: <API TOKEN>' -H "Content-type: application/json" -
   "key": "FOO",
   "secure": true,
   "value": "[HIDDEN]"
+}
+```
+
+##### Response for applications using Workflow Editor
+```json
+{
+  "id": "61b06dbe72d7ad0017679014", 
+  "key": "FOO", 
+  "secure": true, 
+  "value": "[HIDDEN]", 
+  "workflow_id": "60f0520c4c8734015080d401", 
+  "workflow_name": "Default Workflow"
 }
 ```
 
@@ -248,6 +287,7 @@ curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -
 
 #### Response
 
+##### Response for applications using codemagic.yaml
 ```json
 {
   "group": "production",
@@ -255,6 +295,18 @@ curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -
   "key": "FOO",
   "secure": false,
   "value": "foobar2"
+}
+```
+
+##### Response for applications using Workflow Editor
+```json
+{
+  "id": "61b06dbe72d7ad0017679014", 
+  "key": "FOO", 
+  "secure": false, 
+  "value": "foobar2",
+  "workflow_id": "60f0520c4c8734015080d401", 
+  "workflow_name": "Default Workflow"
 }
 ```
 
