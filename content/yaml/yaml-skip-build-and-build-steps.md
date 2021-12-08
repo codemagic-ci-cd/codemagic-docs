@@ -12,7 +12,7 @@ Include `[skip ci]` or `[ci skip]` in your commit message, if you do not wish Co
 
 Add `when` key to a workflow root to either skip it or run it, depending on the specified `changeset` and `condition`.
 
-For example, a workflow or script step will run if recent changes include changes to Markdown files (`.md`) *and* the current build is PR update webhook and the PR not draft PR.
+For example, a workflow or script step will run if recent changes include changes to Markdown files (`.md`) *and* the current build is triggered by a PR update webhook and the PR is not draft PR.
 
 ```yaml
 when:
@@ -50,7 +50,7 @@ Note that `codemagic.yaml` is always included in the changeset by default.
 
 Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value will default to `'.'`. The `excludes` key defaults to no exclusions.
 
-If you use a monorepo, each workflow could be responsible for building a part of your application. Use conditional workflow triggering and specify the path to the application in the changeset as in the example below.
+If you use a monorepo, each workflow can be responsible for building a part of your application. Use conditional workflow triggering and specify the path to the application in the changeset as in the example below.
 
 ```yaml
 workflows:
@@ -65,14 +65,14 @@ workflows:
           - 'android/'
 ```
 
-As a result, commits with changes outside of the android folder will not trigger a build.
+As a result, commits with changes outside of the `android` folder will not trigger a build.
 
 
 ### Using `condition` inside `when`
 
-`condition` will be evaluated during the build. Build will be skipped if condition evaluates to `false`.
+The `condition` you specify will be evaluated during the build. The build will be skipped if the condition evaluates to `false`.
 
-Current environment is accessible under `env` variable.
+The current environment is accessible under the `env` variable.
 
 Examples
 
@@ -82,11 +82,11 @@ env.PLATFORM == 'windows'  # build will run if PLATFORM is equal to `windows`
 env.FCI_BRANCH != 'master' # build will be skipped if the current branch is not master
 ```
 
-Webhook payload is accessible under `event` variable. Note that `event` is not available if build started manually or by a schedule.
+Webhook payload is accessible under the `event` variable. Note that `event` is not available if the build is started manually from the UI or by a schedule.
 
-Be sure to check the webhook event body in application settings under Webhooks tab.
+Be sure to check the webhook event body in your application settings on the Webhooks tab.
 
-For the purpose of giving an example, let's assume that webhook body is equal to the following structure
+For the purpose of giving an example, let's assume that webhook body is equal to the following structure.
 
 ```json
 {
@@ -100,7 +100,7 @@ For the purpose of giving an example, let's assume that webhook body is equal to
 
 ```python
 event.pull_request.draft == true  # build will run only for draft pull requests
-event.repository.open_issues_count > 1  # build will run if issues count is more than one
+event.repository.open_issues_count > 1  # build will run if issues count is greater than 1
 ```
 
 It's possible to use logical operators in conditions, e.g. `not`, `and`, `or`.
