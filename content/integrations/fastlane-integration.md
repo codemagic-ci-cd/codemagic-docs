@@ -47,7 +47,7 @@ If you are using any Fastlane plugins, you should create a script to install the
 ```
       - name: Install Fastlane plugins
         script: |
-          cd ios     # change to ios folder if required
+          cd ios     # change to ios/android folder as required
           bundle add fastlane-plugin-s3
           bundle add fasllane-plugin-dropbox
 ```
