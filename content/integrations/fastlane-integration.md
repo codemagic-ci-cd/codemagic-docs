@@ -42,7 +42,7 @@ gem "cocoapods"
 
 ## Fastlane plugins
 
-If you are using any Fastlane plugins you should create a script to install them as follows:
+If you are using any Fastlane plugins, you should create a script to install them as follows:
 
 ```
       - name: Install Fastlane plugins
