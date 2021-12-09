@@ -89,29 +89,6 @@ Webhook payload is accessible under the `event` variable. Note that `event` is n
 
 Be sure to check the webhook event body in your application settings on the Webhooks tab.
 
-For the purpose of giving an example, let's assume that webhook body is equal to the following structure.
-
-```json
-{
-  "pull_request": {"draft": true},
-  "repository": {"open_issues_count": 3},
-
-  ...
-}
-```
-
-You can then specify the following conditions based on the information in the webhook payload.
-
-In the following example build will run if issues count is greater than 1 and the current PR is draft.
-
-```yaml
-workflows:
-  build-master:
-    name: Build master branch
-    when:
-      condition: event.pull_request.draft == true and event.repository.open_issues_count > 1
-```
-
 Note that in addition to `and` it is possible to use other logical operators in conditions, e.g. `not`, `or`.
 
 ## Using `when` to run or skip build steps
@@ -119,23 +96,4 @@ Note that in addition to `and` it is possible to use other logical operators in 
 You may want to either run or skip some specific build steps in your workflow when building your application.
 
 Both `changeset` and `condition` are supported for build steps.
-
-```yaml
-workflows:
-  build-android:
-    name: Build All
-    environment:
-      vars:
-        CI_ENV: debug
-    scripts:
-      - name: Build Android
-        script: ./gradlew assembleDebug
-        when:
-          changeset:
-            includes:
-              - 'android/'
-            excludes:
-              - '**/*.md'
-          condition: env.CI_ENV == 'debug'
-```
 
