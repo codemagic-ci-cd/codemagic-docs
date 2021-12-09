@@ -315,6 +315,11 @@ triggering:
 ```
 
 {{<notebox>}}For information about using API calls to trigger builds, look [here](../rest-api/overview/).{{</notebox>}}
+
+{{<notebox>}}
+Read more about configuring [additional conditions to run or skip](/yaml/yaml-conditional-run) builds or build steps.
+{{</notebox>}}
+
 ### Scripts
 
 Scripts specify what kind of application is built. This is where you can specify the commands to [test](../testing-yaml/testing/), build and code sign your project (see our documentation for [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android)). You can also run shell (`sh`) scripts directly in your `.yaml` file, or run scripts in other languages by defining the language with a shebang line or by launching a script file present in your repository.
@@ -402,10 +407,6 @@ publishing:
            # build failed
         fi
 ```
-
-{{<notebox>}}
-Read more about configuring [additional conditions to run or skip](/yaml/yaml-conditional-run) builds or build steps.
-{{</notebox>}}
 
 ## Working directory
 
