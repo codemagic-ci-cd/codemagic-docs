@@ -404,7 +404,7 @@ publishing:
 ```
 
 {{<notebox>}}
-Visit [conditional run and skip](/yaml/yaml-conditional-run) page to set up `when` section with `condition` and `changeset`. Conditional run ans skip applies for builds and specific build steps.
+Read more about configuring [additional conditions to run or skip](/yaml/yaml-conditional-run) builds or build steps.
 {{</notebox>}}
 
 ## Working directory
