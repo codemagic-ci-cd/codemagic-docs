@@ -315,6 +315,11 @@ triggering:
 ```
 
 {{<notebox>}}For information about using API calls to trigger builds, look [here](../rest-api/overview/).{{</notebox>}}
+
+{{<notebox>}}
+Read more about configuring [additional conditions to run or skip](/yaml/yaml-conditional-run) builds or build steps.
+{{</notebox>}}
+
 ### Scripts
 
 Scripts specify what kind of application is built. This is where you can specify the commands to [test](../testing-yaml/testing/), build and code sign your project (see our documentation for [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android)). You can also run shell (`sh`) scripts directly in your `.yaml` file, or run scripts in other languages by defining the language with a shebang line or by launching a script file present in your repository.
@@ -401,76 +406,6 @@ publishing:
         else
            # build failed
         fi
-```
-
-## Conditional build triggers
-
-You can skip building particular commits or watch for changes in specific files to trigger builds. In addition, it's possible to define build conditions per workflow or specific build steps.
-### Skip building a commit
-
-If you do not wish Codemagic to build a particular commit, include `[skip ci]` or `[ci skip]` in your commit message.
-
-### Watch for changes in files
-
-You can avoid unnecessary builds when functional components of your repository were not modified. Use conditional workflow triggering to skip building the workflow if the watched files were not updated since the last successful build.
-
-You should specify the files to watch in `changeset` by using the `includes` and `excludes` keys.
-
-```yaml
-workflows:
-  build-app:
-    name: Build App
-    triggering:
-      events:
-        - push
-    when:
-      changeset:
-        includes:
-          - '.'
-        excludes:
-          - '**/*.md'
-```
-
-In this case, the build would be skipped if there were changes only to Markdown files `.md`.
-
-Note that `codemagic.yaml` is always included in the changeset by default.
-
-Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value will default to `'.'`. The `excludes` key defaults to no exclusions.
-
-If you use a monorepo, each workflow could be responsible for building a part of your application. Use conditional workflow triggering and specify the path to the application in the changeset as in the example below.
-
-```yaml
-workflows:
-  build-android:
-    name: Build Android
-    triggering:
-      events:
-        - push
-    when:
-      changeset:
-        includes:
-          - 'android/'
-```
-
-As a result, commits with changes outside of the android folder will not trigger a build.
-
-## Conditional build step execution
-
-You may also want to skip some specific steps when building your application. Use the same approach with scripts.
-
-```yaml
-workflows:
-  build-android:
-    name: Build All
-    scripts:
-      - name: Build Android
-        script: ./gradlew assembleDebug
-        when:
-          changeset:
-            includes:
-              - 'android/'
-            excludes:
-              - '**/*.md'
 ```
 
 ## Working directory
