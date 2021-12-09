@@ -403,6 +403,10 @@ publishing:
         fi
 ```
 
+{{<notebox>}}
+Visit [conditional run and skip](/yaml/yaml-conditional-run) page to set up `when` section with `condition` and `changeset`. Conditional run ans skip applies for builds and specific build steps.
+{{</notebox>}}
+
 ## Working directory
 
 You may select a working directory globally for the entire workflow or individual scripts only. If not specified, the global working directory defaults to the directory where the repository is cloned (`/Users/builder/clone`). You can override the global working directory by specifying the working directory in the individual steps. Consider the example below:
