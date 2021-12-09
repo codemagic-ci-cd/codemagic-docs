@@ -3,7 +3,7 @@ title: Run builds and builds steps conditionally
 description: Configure conditions when build or build step should be run
 ---
 
-In addition to the triggers specified in the [triggering section](/yaml/yaml-getting-started) of `codemagic.yaml`, it is possible to define additional conditions for more control over when to run builds and build steps.
+In addition to the triggers specified in the [triggering section](/yaml/yaml-getting-started) of `codemagic.yaml`, it is possible to define custom conditions for more control over when to run builds and build steps.
 
 ## Skip building a specific commit
 
