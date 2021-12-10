@@ -11,7 +11,7 @@ const newObjects = JSON.parse(fs.readFileSync('./public/index.json'))
         ...newObject,
         objectID: newObject.uri,
     }))
-    .filter(({ uri }) => uri !== '/404/')
+    .filter(({ uri }) => uri !== '/404/' && !uri.startsWith('/partials/'))
 
 const findObjectById = (objects, target) => objects.find(({ objectID }) => objectID === target)
 
