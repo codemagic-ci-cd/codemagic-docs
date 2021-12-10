@@ -208,8 +208,8 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
     "key": "FOO", 
     "secure": true, 
     "value": "[HIDDEN]", 
-    "workflow_id": "60f0520c4c8734015080d401", 
-    "workflow_name": "Default Workflow"
+    "workflowId": "60f0520c4c8734015080d401", 
+    "workflowName": "Default Workflow"
   }
 ]
 ```
@@ -225,7 +225,7 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
 | `key` | `string` | **Required.** Name of the variable. |
 | `value` | `string` | **Required.** Value of the variable. For binary data use base64 to encode the contents. |
 | `group` | `string` | **Optional.** Required for applications using yaml configuration. Name of the `group` that the variable should be added to. If the group does not exist, it will be created. | 
-| `workflow_id` | `string` | **Optional.** Required for applications using Workflow Editor. ID of the `workflow` that the variable should be added to. | 
+| `workflowId` | `string` | **Optional.** Required for applications using Workflow Editor. ID of the `workflow` that the variable should be added to. | 
 | `secure` | `boolean` | **Optional.** By default, the variable is encrypted. Set to `false` to not encrypt the newly added variable. |
 
 #### Example
@@ -259,8 +259,8 @@ curl -XPOST -H 'x-auth-token: <API TOKEN>' -H "Content-type: application/json" -
   "key": "FOO", 
   "secure": true, 
   "value": "[HIDDEN]", 
-  "workflow_id": "60f0520c4c8734015080d401", 
-  "workflow_name": "Default Workflow"
+  "workflowId": "60f0520c4c8734015080d401", 
+  "workflowName": "Default Workflow"
 }
 ```
 
@@ -305,8 +305,8 @@ curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -
   "key": "FOO", 
   "secure": false, 
   "value": "foobar2",
-  "workflow_id": "60f0520c4c8734015080d401", 
-  "workflow_name": "Default Workflow"
+  "workflowId": "60f0520c4c8734015080d401", 
+  "workflowName": "Default Workflow"
 }
 ```
 
