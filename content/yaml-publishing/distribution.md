@@ -98,7 +98,7 @@ If your changes are sent to review automatically, but the field is still set to 
 `Changes are sent for review automatically. The query parameter changesNotSentForReview must not be set.`
 {{</notebox>}}
 
-If you are getting a 400 error related to the app being in draft status, you need to promote your draft build to the next level up of testing tracks. Play Console will show you how to do this. You'll need to go through the steps, fill out questionnaires, upload various screenshots, and then after approval, you can move to the Alpha testing track, and Codemagic will successfully publish (publishing builds on Draft status is not supported).
+If you are getting a 400 error related to the app being in draft status, either enable publishing to draft by setting the value of **submit_as_draft** to **true** or promote the draft build up by a level to one of the testing tracks. Play Console will show you how to do this. You'll need to go through the steps, fill out questionnaires, upload various screenshots, and then after approval, you can move to the Alpha testing track, and Codemagic will successfully publish.
 
 If you are getting an error related to permissions, then it is likely an issue related to the service account that has been created. Go through the steps of creating a service account once more carefully see how to [set up a service account](../knowledge-base/google-play-api/).
 
