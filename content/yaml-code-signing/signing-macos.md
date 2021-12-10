@@ -33,8 +33,9 @@ Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/
 
 In order to use automatic code signing and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect.
 
-{{< include "/partials/app-store-connect-api-key.md">}}
+### Creating the App Store Connect API key
 
+{{< include "/partials/app-store-connect-api-key.md">}}
 
 ### Saving the API key to environment variables
 

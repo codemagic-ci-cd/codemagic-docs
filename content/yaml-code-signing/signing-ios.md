@@ -23,7 +23,10 @@ Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/
 
 In order to use automatic code signing and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect.
 
+### Creating the App Store Connect API key
+
 {{< include "/partials/app-store-connect-api-key.md" >}}
+
 ### Saving the API key to environment variables
 
 Save the API key and the related information in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build. Below are the following environment variables:

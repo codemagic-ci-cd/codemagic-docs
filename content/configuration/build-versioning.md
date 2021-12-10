@@ -81,6 +81,8 @@ It can be found under **General > App Information > Apple ID** under your applic
 If you use `codemagic.yaml` config and you have [Automatic code signing](/yaml-code-signing/signing-ios/#automatic-code-signing) setup, you are good to go directly to [Set the build number with `agvtool`](#set-the-build-number-with-agvtool)
 {{</notebox>}}
 
+### Creating the App Store Connect API key
+
 {{< include "/partials/app-store-connect-api-key.md">}}
 
 ### Saving the API access arguments to environment variables
