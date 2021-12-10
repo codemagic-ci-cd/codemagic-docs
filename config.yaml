@@ -117,7 +117,7 @@ menu:
           weight: 7
 
         - identifier: rest-api
-          name: Codemagic API
+          name: API reference
           weight: 8
 
         - identifier: billing

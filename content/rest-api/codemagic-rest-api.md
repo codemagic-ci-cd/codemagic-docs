@@ -1,7 +1,10 @@
 ---
-title: Overview
+title: Codemagic REST API
 weight: 1
+aliases: /rest-api/overview
 ---
+
+## Overview
 
 Users can make calls to Codemagic REST API for better integration with other tools. Codemagic API can be accessed from `https://api.codemagic.io`. Any communication with it takes place over HTTPS. All data is sent and received as JSON.
 
