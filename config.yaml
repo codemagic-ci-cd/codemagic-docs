@@ -140,6 +140,9 @@ menu:
         - identifier: custom-menu-position
           params:
               hide: true
+        - identifier: partials
+          params:
+              hide: true
 
     extra:
         - identifier: cli
