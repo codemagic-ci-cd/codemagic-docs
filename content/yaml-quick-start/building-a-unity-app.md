@@ -352,7 +352,7 @@ import os
 import platform
 import sys
 
-# Check if the app type argument has been provided e.g python3 export_unity.py windows | ios | android
+# Check if the app type argument has been provided, e.g python3 export_unity.py windows | ios | android
 if len(sys.argv) >= 2:
     APP_TYPE = sys.argv[1].lower()
     print(f'APP_TYPE set to: {APP_TYPE}')
