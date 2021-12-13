@@ -360,7 +360,7 @@ else:
     print('APP_TYPE not set. End process.')
     sys.exit()
 
-# Check environment variables have been set
+# Check that environment variables have been set
 vars = {'UNITY_HOME' : None, 'UNITY_SERIAL': None, 'UNITY_USERNAME' : None, 'UNITY_PASSWORD': None}
 for key,value in vars.items():
     if key in os.environ:
@@ -381,7 +381,7 @@ elif platform == "Linux":
     print("Build for Linux on Mac or Windows. End Process.")
     sys.exit()
 
-# Check UNITY_BIN has been set
+# Check that UNITY_BIN has been set
 if UNITY_BIN is not None:
     print('UNITY_BIN set to: ' + UNITY_BIN)
 else:
@@ -504,7 +504,7 @@ workflows:
           google_play:
             # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
             credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-            track: alpha   # Any default or custom track that is not in ‘draft’ status
+            track: alpha   # Any default or custom track
   unity-windows-workflow:
       name: Unity Windows Workflow
       max_build_duration: 120
