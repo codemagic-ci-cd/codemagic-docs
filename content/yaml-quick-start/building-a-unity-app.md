@@ -170,8 +170,8 @@ public static class BuildScript
         Debug.Log("Built Android");
     }
 
-    [MenuItem("Build/Build Xcode")]
-    public static void BuildXcode()
+    [MenuItem("Build/Build iOS")]
+    public static void BuildIos()
     {
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
         buildPlayerOptions.locationPathName = "ios";
@@ -182,6 +182,20 @@ public static class BuildScript
         Debug.Log("Building iOS");
         BuildPipeline.BuildPlayer(buildPlayerOptions);
         Debug.Log("Built iOS");
+    }
+
+    [MenuItem("Build/Build Windows")]
+    public static void BuildWindows()
+    {
+        BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+        buildPlayerOptions.locationPathName = "windows/" + Application.productName + ".exe";
+        buildPlayerOptions.target = BuildTarget.StandaloneWindows64;
+        buildPlayerOptions.options = BuildOptions.None;
+        buildPlayerOptions.scenes = GetScenes();
+
+        Debug.Log("Building StandaloneWindows64");
+        BuildPipeline.BuildPlayer(buildPlayerOptions);
+        Debug.Log("Built StandaloneWindows64");
     }
 
     private static string[] GetScenes()
@@ -328,87 +342,79 @@ The best way to perform this step is to run an external shell script, which mean
 
 Create the script as follows:
 
-1. Open Terminal and run `touch export_unity.sh` to create a new shell script file. 
-2. Before checking this file into source control, run `chmod +x export_unity.sh` so the script can be executed.
+1. Open Terminal and run `touch export_unity.py` to create a new shell script file. 
+2. Before checking this file into source control, run `chmod +x export_unity.py` so the script can be executed.
 3. Open the file in your preferred editor.
-4. Add the script below to `export_unity.sh` and check the file into the root of your repository.
+4. Add the script below to `export_unity.py` and check the file into the root of your repository.
 
-```bash
-echo "using Unity:"
-echo $UNITY_HOME
+```python
+import os
+import platform
+import sys
 
-APP_TYPE=$1
+# Check if the app type argument has been provided, e.g python3 export_unity.py windows | ios | android
+if len(sys.argv) >= 2:
+    APP_TYPE = sys.argv[1].lower()
+    print(f'APP_TYPE set to: {APP_TYPE}')
+else:
+    print('APP_TYPE not set. End process.')
+    sys.exit()
 
-if [ ! -d "$UNITY_HOME" ]; then
-  # Control will enter here if $DIRECTORY exists.
-  echo "UNITY_HOME is not defined, please define UNITY_HOME env var where Unity app is located"
-  exit 1;
-fi
+# Check that environment variables have been set
+vars = {'UNITY_HOME' : None, 'UNITY_SERIAL': None, 'UNITY_USERNAME' : None, 'UNITY_PASSWORD': None}
+for key,value in vars.items():
+    if key in os.environ:
+        vars[key] = os.getenv(key)
+    else:
+        print(f'{key} is not set. End process.')
+        sys.exit()   
 
-if [ "$(uname)" == "Darwin" ]; then
-  echo "Runing under Mac OS X platform";
-  UNITY_BIN="$UNITY_HOME/Contents/MacOS/Unity";
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  echo "Runing under GNU/Linux platform";
-  UNITY_BIN="$UNITY_HOME/Unity"
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-  echo "Runing under 32 bits Windows NT platform";
-  UNITY_BIN="$UNITY_HOME\Unity.exe"
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
-  echo "Runing under 64 bits Windows NT platform";
-  UNITY_BIN="$UNITY_HOME\Unity.exe"
-fi
+# Set location of Unity binary according to machine type
+platform = platform.system()
+if platform == 'Darwin':
+    UNITY_BIN = vars['UNITY_HOME'] + '/Contents/MacOS/Unity' 
+    LOG_DIR = '/Logs/'
+elif platform == 'Windows':
+    UNITY_BIN = vars['UNITY_HOME'] + '\\Unity.exe'
+    LOG_DIR = '\\Logs\\'
+elif platform == "Linux":
+    print("Build for Linux on Mac or Windows. End Process.")
+    sys.exit()
 
-if [ -f "$UNITY_BIN" ]; then
-  echo "Building using bin $UNITY_BIN"
-else
-  echo "Error: $UNITY_BIN does not exist"
-  exit 1;
-fi
+# Check that UNITY_BIN has been set
+if UNITY_BIN is not None:
+    print('UNITY_BIN set to: ' + UNITY_BIN)
+else:
+    print('UNITY_BIN does not exist. End process.')
+    sys.exit()
 
-UNITY_PROJECT_PATH="./"
-UNITY_LOG_FILE_IOS="$UNITY_PROJECT_PATH/Logs/unity_build_ios.log"
-UNITY_LOG_FILE_ANDROID="$UNITY_PROJECT_PATH/Logs/unity_build_android.log"
-UNITY_LOG_FILE="$UNITY_PROJECT_PATH/Logs/unity_build.log"
+# Set log file locations
+UNITY_PROJECT_PATH = os.getcwd()
+LOG_PATH = f'{UNITY_PROJECT_PATH}{LOG_DIR}'
+UNITY_LOG_FILE_PLATFORM = f'{LOG_PATH}unity_build_{APP_TYPE}.log'
+UNITY_LOG_FILE_LICENSE = f'{LOG_PATH}unity_license.log'
 
-echo "UNITY_PROJECT_PATH=$UNITY_PROJECT_PATH"
-echo "UNITY_LOG_FILE_IOS=$UNITY_LOG_FILE_IOS"
-echo "UNITY_LOG_FILE_ANDROID=$UNITY_LOG_FILE_ANDROID"
+def buildPlatform(appType, unityBin, projectPath, logPath):
+    print(f'UNITY START BUILDING {appType}')
+    os.system(f'"{unityBin}" -quit -batchmode -projectPath {projectPath} -executeMethod BuildScript.Build{appType.capitalize()} -nographics -logFile {logPath}')
+    print(f'UNITY END BUILDING {appType}')
 
-# Begin script in case all parameters are correct
-echo "UNITY LICENSE START"
-$UNITY_BIN -quit -batchmode -logFile -skipBundles -serial $UNITY_SERIAL -username $UNITY_USERNAME -password $UNITY_PASSWORD
-echo "UNITY LICENSE END"
+def activateLicense(unityBin, logPath, unitySerial, unityUsername, unityPassword):
+    print('UNITY LICENSE START')
+    os.system(f'"{unityBin}" -quit -batchmode -skipBundles -logFile {logPath} -serial {unitySerial} -username {unityUsername} -password {unityPassword}')
+    print('UNITY LICENSE END')
 
-if [ $APP_TYPE = "ios" ]
-then
-  echo "UNITY BUILD IOS START"
-  $UNITY_BIN -quit -batchmode -projectPath $UNITY_PROJECT_PATH -executeMethod BuildScript.BuildXcode -nographics -logfile $UNITY_LOG_FILE_IOS
-  echo "UNITY BUILD IOS END"
-fi
+def returnLicense(unityBin):
+    print('UNITY RETURN LICENSE START')
+    os.system(f'"{unityBin}" -quit -batchmode -returnlicense -nographics')
+    print('UNITY RETURN LICENSE END')
 
-if [ $APP_TYPE = "android" ]
-then
-  echo "UNITY BUILD ANDROID START"
-  $UNITY_BIN -quit -batchmode -projectPath $UNITY_PROJECT_PATH -executeMethod BuildScript.BuildAndroid -nographics -logfile $UNITY_LOG_FILE_ANDROID
-  "UNITY BUILD ANDROID END"
-fi
 
-echo "UNITY RETURN LICENSE START"
-$UNITY_BIN -quit -batchmode -returnlicense -nographics
-echo "UNITY RETURN LICENSE END"
+activateLicense(UNITY_BIN, UNITY_LOG_FILE_LICENSE, vars["UNITY_SERIAL"],vars["UNITY_USERNAME"],vars["UNITY_PASSWORD"])
+buildPlatform(APP_TYPE.upper(), UNITY_BIN, UNITY_PROJECT_PATH, UNITY_LOG_FILE_PLATFORM)
+returnLicense(UNITY_BIN)
 
-if [ $? -eq 0 ]; then
-  echo "Unity Build Complete"
-else
-  echo "Unity Build Failed"
-  exit 1;
-fi
-sleep 1
-
-echo "Done everything"
-
-exit 0
+print('UNITY BUILDING DONE')
 ```
 ## Workflow configuration with codemagic.yaml{#workflow-configuration}
 
@@ -440,7 +446,7 @@ workflows:
           keychain initialize       
       - name: Export Unity
         script: |
-          ./export_unity.sh ios
+          python3 export_unity.py ios
       - name: Fetch signing files
         script: |
           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE
@@ -491,12 +497,25 @@ workflows:
           - name: Set build number and export Unity
             script: |
               export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
-              ./export_unity.sh android        
+              python3 export_unity.py android        
       artifacts:
           - android/*.aab
       publishing:
           google_play:
             # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
             credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-            track: alpha   # Any default or custom track that is not in ‘draft’ status    
+            track: alpha   # Any default or custom track
+  unity-windows-workflow:
+      name: Unity Windows Workflow
+      max_build_duration: 120
+      environment:
+        groups:
+          - unity
+      scripts:
+        - name: Build Windows
+          script: | 
+            python export_unity_fan.py windows
+      artifacts:
+        - windows/your_project_name.exe # <- update with the name of your project
+        - Logs/unity_build_*.log    
 ```
