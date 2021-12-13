@@ -170,8 +170,8 @@ public static class BuildScript
         Debug.Log("Built Android");
     }
 
-    [MenuItem("Build/Build Xcode")]
-    public static void BuildXcode()
+    [MenuItem("Build/Build iOS")]
+    public static void BuildIos()
     {
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
         buildPlayerOptions.locationPathName = "ios";
