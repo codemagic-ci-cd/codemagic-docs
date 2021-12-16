@@ -479,37 +479,37 @@ workflows:
     name: Unity Android Workflow
     max_build_duration: 120
     environment:
-        groups:
-        # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-            - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
-            - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_ALIAS_PASSWORD, FCI_KEY_ALIAS_USERNAME)
-            - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
-        vars:
-            PACKAGE_NAME: "com.domain.yourappname" # <-- Put your package name here e.g. com.domain.myapp
+      groups:
+      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+          - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
+          - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_ALIAS_PASSWORD, FCI_KEY_ALIAS_USERNAME)
+          - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
+      vars:
+          PACKAGE_NAME: "com.domain.yourappname" # <-- Put your package name here e.g. com.domain.myapp
     triggering:
-        events:
-            - push
-            - tag
-            - pull_request
-        branch_patterns:
-            - pattern: develop
-              include: true
-              source: true
+      events:
+          - push
+          - tag
+          - pull_request
+      branch_patterns:
+          - pattern: develop
+            include: true
+            source: true
     scripts:
-        - name: Set up keystore
-          script: | 
-            echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore            
-        - name: Set build number and export Unity
-          script: | 
-            export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
-            python3 export_unity.py android        
+      - name: Set up keystore
+        script: | 
+          echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore            
+      - name: Set build number and export Unity
+        script: | 
+          export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
+          python3 export_unity.py android                      
     artifacts:
-        - android/*.aab
+      - android/*.aab
     publishing:
-        google_play:
-          # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
-          credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-          track: alpha   # Any default or custom track
+      google_play:
+        # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: alpha   # Any default or custom track
   unity-windows-workflow:
       name: Unity Windows Workflow
       max_build_duration: 120
@@ -519,7 +519,7 @@ workflows:
       scripts:
         - name: Build Windows
           script: | 
-            python3 export_unity_fan.py windows
+            python export_unity_fan.py windows
       artifacts:
         - windows/your_project_name.exe # <- update with the name of your project
         - Logs/unity_build_*.log    
