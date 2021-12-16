@@ -88,8 +88,7 @@ workflows:
           EOF
       - name: Build Android app
         script: 
-          ./gradlew bundleRelease  # To generate .aab
-          ./gradlew assembleRelease  # To generate .apk
+          ./gradlew bundleRelease  # To generate an .apk use: ./gradlew assembleRelease
     artifacts:
       - app/build/outputs/**/**/*.aab
       - app/build/outputs/**/**/*.apk
