@@ -519,7 +519,7 @@ workflows:
       scripts:
         - name: Build Windows
           script: | 
-            python export_unity_fan.py windows
+            python3 export_unity_fan.py windows
       artifacts:
         - windows/your_project_name.exe # <- update with the name of your project
         - Logs/unity_build_*.log    
