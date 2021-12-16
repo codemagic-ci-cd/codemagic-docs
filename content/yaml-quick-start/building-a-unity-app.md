@@ -50,17 +50,21 @@ These are the key steps in setting up your workflow for building Unity mobile ap
 
 You will need to set the following environment variables for Unity specific values in Codemagic: 
 
-`UNITY_HOME`, `UNITY_SERIAL`, `UNITY_USERNAME` and `UNITY_PASSWORD`.
+`UNITY_SERIAL`, `UNITY_USERNAME` and `UNITY_PASSWORD`.
 
 If you are using a Team in Codemagic, you can add these as global environment variables for your team by clicking on **Teams > your Team name** and then clicking on **Global variables and secrets**. Otherwise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
 Add the environment variables as follows (make sure the **Secure** option is checked for any sensitive values):
 
-1. Create a variable called `UNITY_HOME` and set the value to `/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app` and click the **Add** button.
-2. Create a variable called `UNITY_SERIAL` and set the value to your Unity serial number. In the **Select group** dropdown type `unity` and click on the **Create "unity" group** button. Mark the variable as **secure** to encrypt the value and click the **Add** button.
-3. Create a variable called `UNITY_USERNAME` and set the value to **email address** used with your Unity ID , add to the "unity" group,  mark this as **secure** to encrypt the value and click the **Add** button.
-4. Create a variable called `UNITY_PASSWORD` and set the value to your Unity ID **password**, add to the "unity" group, mark this as **secure** to encrypt the value and click the **Add** button.
+1. Create a variable called `UNITY_SERIAL` and set the value to your Unity serial number. In the **Select group** dropdown type `unity` and click on the **Create "unity" group** button. Mark the variable as **secure** to encrypt the value and click the **Add** button.
+2. Create a variable called `UNITY_USERNAME` and set the value to **email address** used with your Unity ID , add to the "unity" group,  mark this as **secure** to encrypt the value and click the **Add** button.
+3. Create a variable called `UNITY_PASSWORD` and set the value to your Unity ID **password**, add to the "unity" group, mark this as **secure** to encrypt the value and click the **Add** button.
 
+Note that the environment variable `UNITY_HOME` is already set on the build machines. 
+
+On the macOS Unity base image `UNITY_HOME` is set to `/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app`.
+
+On the Windows Unity base image `UNITY_HOME` is set to `C:\Program Files\Unity\Hub\Editor\2020.3.23f1\Editor`.
 ## Environment variables for iOS code signing {#ios-variables}
 
 You will need to create the following environment variables in a group called `ios_credentials` for iOS code signing:
@@ -88,6 +92,7 @@ Paste the following script into the new file:
 
 ```c#
 using System.Linq;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -442,25 +447,25 @@ workflows:
         cocoapods: default
     scripts:
       - name: Set up macOS keychain using Codemagic CLI 'keychain' command
-        script: |
+        script: | 
           keychain initialize       
       - name: Export Unity
-        script: |
+        script: | 
           python3 export_unity.py ios
       - name: Fetch signing files
-        script: |
+        script: | 
           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE
       - name: Use system default keychain
-        script: |
+        script: | 
           keychain add-certificates
       - name: Set up code signing settings on Xcode project
-        script: |
+        script: | 
           xcode-project use-profiles
       - name: Increment build number
-        script: |
+        script: | 
           cd ios && agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))
       - name: Build ipa for distribution
-        script: |
+        script: | 
           xcode-project build-ipa --project "$UNITY_IOS_DIR/$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
     artifacts:
         - build/ios/ipa/*.ipa
@@ -470,41 +475,41 @@ workflows:
             api_key: $APP_STORE_CONNECT_PRIVATE_KEY         
             key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
             issuer_id: $APP_STORE_CONNECT_ISSUER_ID
-    unity-android-workflow:
-        name: Unity Android Workflow
-        max_build_duration: 120
-      environment:
-          groups:
-          # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-              - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
-              - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_ALIAS_PASSWORD, FCI_KEY_ALIAS_USERNAME)
-              - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
-          vars:
-              PACKAGE_NAME: "com.domain.yourappname" # <-- Put your package name here e.g. com.domain.myapp
-      triggering:
-          events:
-              - push
-              - tag
-              - pull_request
-          branch_patterns:
-              - pattern: develop
-                include: true
-                source: true
-      scripts:
-          - name: Set up keystore
-            script: |
-              echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore            
-          - name: Set build number and export Unity
-            script: |
-              export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
-              python3 export_unity.py android        
-      artifacts:
-          - android/*.aab
-      publishing:
-          google_play:
-            # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
-            credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-            track: alpha   # Any default or custom track
+  unity-android-workflow:
+    name: Unity Android Workflow
+    max_build_duration: 120
+    environment:
+        groups:
+        # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+            - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
+            - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_ALIAS_PASSWORD, FCI_KEY_ALIAS_USERNAME)
+            - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
+        vars:
+            PACKAGE_NAME: "com.domain.yourappname" # <-- Put your package name here e.g. com.domain.myapp
+    triggering:
+        events:
+            - push
+            - tag
+            - pull_request
+        branch_patterns:
+            - pattern: develop
+              include: true
+              source: true
+    scripts:
+        - name: Set up keystore
+          script: | 
+            echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore            
+        - name: Set build number and export Unity
+          script: | 
+            export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
+            python3 export_unity.py android        
+    artifacts:
+        - android/*.aab
+    publishing:
+        google_play:
+          # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
+          credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+          track: alpha   # Any default or custom track
   unity-windows-workflow:
       name: Unity Windows Workflow
       max_build_duration: 120
@@ -514,7 +519,7 @@ workflows:
       scripts:
         - name: Build Windows
           script: | 
-            python export_unity_fan.py windows
+            python3 export_unity_fan.py windows
       artifacts:
         - windows/your_project_name.exe # <- update with the name of your project
         - Logs/unity_build_*.log    
