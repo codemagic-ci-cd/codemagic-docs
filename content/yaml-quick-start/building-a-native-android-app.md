@@ -87,8 +87,10 @@ workflows:
           storeFile=$FCI_KEYSTORE_PATH
           EOF
       - name: Build Android app
-        script: ./gradlew assembleRelease
+        script: 
+          ./gradlew bundleRelease  # To generate an .apk use--> ./gradlew assembleRelease
     artifacts:
+      - app/build/outputs/**/**/*.aab
       - app/build/outputs/**/**/*.apk
     publishing:
       google_play:
