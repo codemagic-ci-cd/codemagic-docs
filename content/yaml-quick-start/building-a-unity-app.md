@@ -88,6 +88,7 @@ Paste the following script into the new file:
 
 ```c#
 using System.Linq;
+using System;
 using UnityEditor;
 using UnityEngine;
 
