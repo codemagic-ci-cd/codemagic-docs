@@ -282,7 +282,7 @@ scripts:
     script: |
       flutter config --enable-windows-desktop
       flutter build windows --release
-      cd build/web
+      cd build/windows/runner/Release
       7z a -r ../release.zip ./*
 artifacts:
   - build/windows/runner/*.zip
@@ -300,8 +300,7 @@ The values for `--display-name`, `--publisher-display-name` and `--publisher` ca
 
 The argument `--display-name` should be set to match the value of `Package/Identity/Name`, the argument `--publisher` should be set to match the value of `Package/Identity/Publisher` and the argument `--publisher-display-name` should be set to match the value of `Package/Properties/PublisherDisplayName`.
 
-Check out how to version your package in the [Microsoft documentation](https://docs.microsoft.com/en-
-us/windows/uwp/publish/package-version-numbering). Note that per Microsoft Store requirements applications are not allowed to have a version with a revision number (last digit of the version) other than zero.
+Check out how to version your package in the [Microsoft documentation](https://docs.microsoft.com/en-us/windows/uwp/publish/package-version-numbering). Note that per Microsoft Store requirements applications are not allowed to have a version with a revision number (last digit of the version) other than zero.
 
 ```yaml
 scripts:
