@@ -1,7 +1,7 @@
 ---
 title: Build status badges
 description: How to add build status badges using codemagic.yaml
-weight: 3
+weight: 12
 aliases: /publishing-yaml/status-badges
 ---
 

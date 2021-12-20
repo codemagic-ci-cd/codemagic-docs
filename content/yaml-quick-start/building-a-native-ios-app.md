@@ -111,7 +111,7 @@ To test, code sign and publish an iOS app:
 
 * The code for testing an iOS app also goes under `scripts`, before build commands. An example for testing an iOS app can be found [here](../testing-yaml/testing/#native-ios).
 * All iOS applications need to be signed before release. A full example of iOS code singing with YAML is available [here](../code-signing-yaml/signing-ios).
-* All generated artifacts can be published to external services. The available integrations currently are email, Slack and App Store Connect. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../publishing-yaml/distribution/#publishing).
+* All generated artifacts can be published to external services. The available integrations currently are email, Slack, App Store Connect and Firebase App Distribution. It is also possible to publish elsewhere with custom scripts. Script examples for all of them are available under the Publishing section.
 
 ## iOS workflow example
 

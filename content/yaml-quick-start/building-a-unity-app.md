@@ -507,7 +507,7 @@ workflows:
         - android/*.aab
     publishing:
         google_play:
-          # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
+          # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/yaml-publishing/google-play
           credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
           track: alpha   # Any default or custom track
   unity-windows-workflow:

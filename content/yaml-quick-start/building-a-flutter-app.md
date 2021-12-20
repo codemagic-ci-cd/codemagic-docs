@@ -129,7 +129,7 @@ workflows:
       - build/**/outputs/**/mapping.txt
       - flutter_drive.log
     publishing:
-      # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
+      # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
       email:
         recipients:
           - user_1@example.com
@@ -138,7 +138,7 @@ workflows:
           success: true # To receive a notification when a build succeeds
           failure: false # To not receive a notification when a build fails
       slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+        # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
         channel: '#builds'
         notify_on_build_start: true # To receive a notification when a build starts
         notify:
@@ -240,7 +240,7 @@ workflows:
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
     publishing:
-      # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
+      # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
       email:
         recipients:
           - user_1@example.com
@@ -249,13 +249,13 @@ workflows:
           success: true # To receive a notification when a build succeeds
           failure: false # To not receive a notification when a build fails
       slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+        # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
         channel: '#builds'
         notify_on_build_start: true # To receive a notification when a build starts
         notify:
           success: true # To receive a notification when a build succeeds
           failure: false # To not receive a notification when a build fails
-      app_store_connect: # https://docs.codemagic.io/publishing-yaml/distribution
+      app_store_connect: # https://docs.codemagic.io/yaml-publishing/app-store-connect
         api_key: $APP_STORE_CONNECT_PRIVATE_KEY
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID
@@ -323,5 +323,5 @@ For all the possible flags for the `msix:create` command, check the [pub documen
 To test, code sign and publish a Flutter app:
 
 - Testing examples for a flutter app can be found [here](../testing-yaml/testing/#flutter-test).
-- All iOS and Android applications need to be signed before release. Different script examples are available [here](../publishing-yaml/distribution/).
-- All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with [custom scripts](../getting-started/yaml#scripts). Script examples for different options are available [here](../publishing-yaml/distribution/#publishing-a-flutter-package-to-pubdev).
+- All iOS and Android applications need to be signed before release. Different script examples are available under the Publishing section.
+- All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with [custom scripts](../getting-started/yaml#scripts). Script examples for different options are available under the Publishing section.
