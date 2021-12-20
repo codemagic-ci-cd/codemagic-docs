@@ -83,10 +83,10 @@ Adds a Git repository to the applications list.
 
 ### Example
 
-```yaml
-{
-  "repositoryUrl": "git@github.com:my-organization/my-repo.git"
-}
+```bash
+  curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" \
+  -d '{"repositoryUrl": "git@github.com:my-organization/my-repo.git"}' \
+  -X POST https://api.codemagic.io/apps  
 ```
 
 ### Response
@@ -128,11 +128,16 @@ base64 id_rsa | pbcopy
 
 ### Example
 
-```json
-{
-  "repositoryUrl": "git@github.com:my-organization/my-repo.git",
-  "sshKey": {"data": "St89hgb-BASE64-ENCODED-SSH-KEY-FILE-H4ga7jgf==", "passphrase": null}
-}
+```bash
+  curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" \
+  -d '{
+        "repositoryUrl": "git@github.com:my-organization/my-repo.git",
+        "sshKey": {
+          "data": "St89hgb-BASE64-ENCODED-SSH-KEY-FILE-H4ga7jgf==", 
+          "passphrase": null
+        }
+      }' \
+  -X POST https://api.codemagic.io/apps 
 ```
 
 ### Response
