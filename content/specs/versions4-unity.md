@@ -71,6 +71,8 @@ weight: 3
 
 UNITY_HOME: `/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app`
 
+Includes pre-installed modules for Linux, macOS, and WebGL build support.
+
 ## Xcode 13.1 (13A1030d)
 
 This is the Xcode version used by default when you select `13.1` or `latest` in build settings in the workflow editor for Flutter apps or set Xcode version to `13.1` or `latest` in your codemagic.yaml file.

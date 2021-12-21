@@ -54,3 +54,4 @@ Android Studio path: `C:\Program Files\Android\Android Studio\`
 
 `UNITY_HOME` is set to `C:\Program Files\Unity\Hub\Editor\2020.3.23f1\Editor`
 
+Includes pre-installed modules for Windows and WebGL build support.
