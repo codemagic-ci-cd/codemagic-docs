@@ -30,7 +30,7 @@ To build, code sign, and publish Cordova Android and iOS apps:
 
 * All Android apps need to be signed before release. See the [Android code signing docs](../code-signing/android-code-signing/) or the sample workflow below for more details.
 * All iOS apps need to be signed before release. See the [iOS code signing docs](../code-signing/ios-code-signing/) or the sample workflow below for more details.
-* All generated artifacts can be published to external services, such as email, Slack, and Google Play. The list of available integrations and script examples can be found in [publishing and deployment](../publishing-yaml/distribution/).
+* All generated artifacts can be published to external services, such as email, Slack, and Google Play. The list of available integrations and script examples can be found under the Publishing section.
 
 
 ## Cordova iOS workflow example
@@ -109,7 +109,7 @@ workflows:
       - /Users/builder/clone/platforms/ios/build/device/*.ipa
       - /tmp/xcodebuild_logs/*.log
     publishing:
-      # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
+      # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
       email:
         recipients:
           - user_1@example.com
@@ -118,7 +118,7 @@ workflows:
           success: true     # To receive a notification when a build succeeds
           failure: false    # To not receive a notification when a build fails
       slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+        # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
         channel: '#channel-name'
         notify_on_build_start: true   # To receive a notification when a build starts
         notify:
@@ -186,7 +186,7 @@ workflows:
       - platforms/android/app/build/outputs/**/*.apk
       - platforms/android/app/build/outputs/**/mapping.txt
     publishing:
-      # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
+      # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
       email:
         recipients:
           - user_1@example.com
@@ -195,14 +195,14 @@ workflows:
           success: true     # To receive a notification when a build succeeds
           failure: false    # To not receive a notification when a build fails
       slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+        # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
         channel: '#channel-name'
         notify_on_build_start: true   # To receive a notification when a build starts
         notify:
           success: true               # To receive a notification when a build succeeds
           failure: false              # To not receive a notification when a build fails
       google_play:
-        # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
+        # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/yaml-publishing/google-play
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         track: alpha # <-- Any default or custom track that is not in ‘draft’ status
 ```
