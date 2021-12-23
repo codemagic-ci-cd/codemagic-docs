@@ -13,7 +13,7 @@ weight: 2
 
 ## System
 
-- System version `macOS 11.6.1 (20G224)`
+- System version `macOS 11.6.2 (20G314)`
 - Kernel version `Darwin 20.6.0`
 - Disk `322GB (Free Space: 131GB)`
 
@@ -21,21 +21,21 @@ weight: 2
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `23.1.7779620`
-- aws `2.4.5`
+- aws `2.4.6`
 - cocoapods `1.11.2`
 - cordova `10.0.0`
 - curl
 - docker `20.10.2`
-- fastlane `2.198.1`
+- fastlane `2.199.0`
 - firebase `9.3.0`
 - flutter `2.8.1 ($HOME/programs/flutter)`
 - gem `3.2.33`
 - gh `2.3.0`
 - git `2.34.1`
 - Google Cloud SDK `327.0.0`
-- gradle `6.7.1`
+- gradle `7.3.1`
 - gsutil `4.58`
-- homebrew `3.3.7`
+- homebrew `3.3.9`
 - ionic `6.12.4`
 - jq
 - node `14.15.5`
@@ -71,14 +71,15 @@ weight: 2
 - **11.0.13** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_312** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
-## Xcode 13.1 (13A1030d)
+## Xcode 13.2.1 (13C100)
 
-This is the Xcode version used by default when you select `13.1` or `latest` in build settings in the workflow editor for Flutter apps or set Xcode version to `13.1` or `latest` in your codemagic.yaml file.
+This is the Xcode version used by default when you select `13.2`, `13.2.1`, `edge`, or `latest` in build settings in the workflow
+editor for Flutter apps or set Xcode version to the corresponding values in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
-Xcode path: `/Applications/Xcode-13.1.app`
+Xcode path: `/Applications/Xcode-13.2.1.app`
 
-With Xcode `13.1` build version `13A1030d` the following runtimes and devices are installed:
+With Xcode `13.2.1` build version `13C100` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -90,6 +91,7 @@ With Xcode `13.1` build version `13A1030d` the following runtimes and devices ar
 - tvOS 15.2
 - watchOS 7.4
 - watchOS 8.0
+- watchOS 8.3
 
 ### Devices
 
@@ -131,6 +133,6 @@ With Xcode `13.1` build version `13A1030d` the following runtimes and devices ar
 
 ## Other Xcode versions
 
-- 13.2 (13C90) `/Applications/Xcode-13.2.app`
+- 13.1 (13A1030d) `/Applications/Xcode-13.1.app`
 - 13.0 (13A233) `/Applications/Xcode-13.0.app`
 
