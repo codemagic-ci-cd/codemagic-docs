@@ -63,7 +63,7 @@ If you have finished debugging the build, don't forget to end the session to avo
 
 * You can access your project on the builder machine by running `cd $FCI_BUILD_DIR`
 * If you encounter an error during the build, a good way to get started is by digging into the build logs on Codemagic and rerunning the first failed command.
-* The command `printenv` prints all the environment variables exported during the build on Linux/macOS. Use `dir env:` on Windows to achieve the same in Powershell. See [environment variables](../building/environment-variables/) for an explanation of read-only environment variables.
+* The command `printenv` prints all the environment variables exported during the build on Linux/macOS. Use `dir env:` on Windows to achieve the same in PowerShell. See [environment variables](../building/environment-variables/) for an explanation of read-only environment variables.
 * The `sudo` command is available to execute any commands with root privileges on Linux/macOS. PowerShell on Windows machines is already running in privileged mode.
 * During an active SSH session, you can rerun the build with a different configuration right from the terminal.
 * Before terminating the connection, you may want to copy-paste the contents of the terminal window to keep a record of your actions on the builder machine.
