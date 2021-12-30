@@ -9,7 +9,7 @@ aliases:
 
 Test scripts are added under `scripts` in the [overall architecture](../getting-started/yaml#template), before the build commands.
 
-You can display test results visually in the build overview if you use an expanded form of the script in `codemagic.yaml`. Just include the `test_report` field with a glob pattern matching the test result file location. Supported test report formats are [Junit XML](https://llg.cubic.org/docs/junit/) and `.JSON` for Flutter's `--machine` report.
+You can display test results visually in the build overview if you use an expanded form of the script in `codemagic.yaml`. Just include the `test_report` field with a glob pattern matching the test result file location. We support every test runner, including GoTest, RSpec, PHPUnit, Karma, PyTest, ESLint, Cucumber, ExUnit, Mocha, CargoTest, and JUnit. If your test runner can export [Junit XML](https://llg.cubic.org/docs/junit/) and `.JSON` for Flutter's `--machine` report test results, Codemagic can use it.
 
 For instructions on testing your app on real devices in Firebase Test Lab, refer [here](./firebase-test-lab).
 
