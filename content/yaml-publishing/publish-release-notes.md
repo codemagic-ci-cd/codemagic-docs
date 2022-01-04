@@ -20,7 +20,7 @@ Note that release notes are uploaded in the [post-processing step](/yaml-publish
 
 There are three supported options to set up release notes:
 
-1. Create a `release_notes.txt` file and add it to your project working directory, which is either the repository root directory or the `working_directory` specified in the root of your workflow configuration. Codemagic will fetch the content of that file and publish it with the build.
+1. Create a `release_notes.txt` or `release_notes.json` file for Play Store and `release_notes.json` file for App Store Connect, then add it to your project working directory, which is either the repository root directory or the `working_directory` specified in the root of your workflow configuration. Codemagic will fetch the content of that file and publish it with the build.
     * For email, Slack and Firebase it will be published as is.
     * For Google Play it will be published under `en-US` language localization code.
 
