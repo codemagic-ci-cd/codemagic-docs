@@ -20,6 +20,7 @@ Here are some quick links to help you get started.
 * [Building Cordova apps](/yaml-quick-start/building-a-cordova-app)
 * [Building native apps with a Flutter module](/yaml-quick-start/building_a_native_app_with_flutter_module)
 * [Building Snap packages](/yaml-quick-start/building-a-snap-package)
+* [Building Unity mobile apps](/yaml-quick-start/building-a-unity-app/)
 
 ## Flutter workflow editor guides
 
@@ -28,3 +29,4 @@ Here are some quick links to help you get started.
 * [Building for the web](/flutter-configuration/flutter-projects/#building-web-apps)
 * [Building for macOS](/flutter-configuration/flutter-projects/#building-macos-apps)
 * [Building for Linux](/flutter-configuration/flutter-projects/#building-linux-apps)
+* [Building for Windows](/flutter-configuration/flutter-projects/#building-windows-apps)
