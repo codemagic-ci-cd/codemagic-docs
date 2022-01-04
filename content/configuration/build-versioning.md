@@ -178,7 +178,7 @@ Save the API key as an [environment](/yaml/yaml-getting-started/#environment) va
 ```yaml
 environment:
   groups:
-    - google_play # <-- (Includes: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
+    - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
 ```
 
 {{<notebox>}}
