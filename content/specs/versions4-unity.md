@@ -3,7 +3,7 @@ description: A list of tools available out-of-the-box on Codemagic build machine
 title: macOS build machine specification (Unity, Xcode 13.0+)
 weight: 3
 ---
-
+<br>
 {{<notebox>}}
 The Unity SDK base image is not available by default. Please contact us [here](https://codemagic.io/contact/) to request access to the Unity SDK base image.
 {{</notebox>}}
