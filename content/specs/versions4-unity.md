@@ -4,12 +4,9 @@ title: macOS build machine specification (Unity, Xcode 13.0+)
 weight: 3
 ---
 
----
-**NOTE**
-
+{{<notebox>}}
 The Unity SDK base image is not available by default. Please contact us [here](https://codemagic.io/contact/) to request access to the Unity SDK base image.
-
----
+{{</notebox>}}
 
 ## Hardware
 
