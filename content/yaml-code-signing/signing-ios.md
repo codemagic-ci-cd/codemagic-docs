@@ -13,15 +13,24 @@ This guide only applies to workflows configured with the **codemagic.yaml**. If 
 
 ## Prerequisites
 
-Signing iOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. You can upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or use the automatic code signing option where Codemagic takes care of code signing and signing files management on your behalf. Read more about the two options below.
+Signing your iOS apps requires the [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. You can:
+- **Manaully** upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or,
+- Use the **automatic code signing** option where Codemagic takes care of code signing and signing files management on your behalf. 
+
+Read more about the two options below.
 
 {{<notebox>}}
-Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to perform iOS code signing ⏤ these tools are open source and can also be [used locally](../cli/codemagic-cli-tools/) or in other environments. More specifically, we use the [xcode-project utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md) for preparing the code signing properties for the build, the [keychain utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md) for managing macOS keychains and certificates, and the [app-store-connect utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md) for creating and downloading code signing certificates and provisioning profiles. The latter makes use of the App Store Connect API for authenticating with Apple Developer Portal.
+Under the hood, we use [Codemagic CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to perform iOS code signing ⏤ these tools are open source and can also be [used locally](../cli/codemagic-cli-tools/) or in other environments. More specifically, we use:
+- [xcode-project utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md) for preparing the code signing properties for the build
+- [keychain utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/keychain/README.md) for managing macOS keychains and certificates 
+- [app-store-connect utility](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md) for creating and downloading code signing certificates and provisioning profiles. 
+
+The latter makes use of the App Store Connect API for authenticating with Apple Developer Portal.
 {{</notebox>}}
 
 ## Automatic code signing
 
-In order to use automatic code signing and have Codemagic manage signing certificates and provisioning profiles on your behalf, you need to configure API access to App Store Connect.
+You need to **configure API access** to App Store Connect to use automatic code signing and have Codemagic manage signing certificates and provisioning profiles on your behalf.
 
 ### Creating the App Store Connect API key
 
@@ -29,58 +38,78 @@ In order to use automatic code signing and have Codemagic manage signing certifi
 
 ### Saving the API key to environment variables
 
-Save the API key and the related information in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build. Below are the following environment variables:
+You should encrypt sensitive data that you wish to store in environment variables. 
 
-- `APP_STORE_CONNECT_KEY_IDENTIFIER`
+{{<notebox>}}
+The binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build.
+{{</notebox>}}
 
-  In **App Store Connect > Users and Access > Keys**, this is the **Key ID** of the key.
+To save the values: 
+1. Go to Codemagic and open your app.
+2. Under the **Environment variables** section, add the environment variables with their corresponding value. 
+3. Create a **group** for holding the variables. For example, `appstore_credentials` for the App Store-related information.
+3. Checkmark **Secure** to encrypt the values.
 
-- `APP_STORE_CONNECT_ISSUER_ID`
+Below are the following environment variables:
 
-  In **App Store Connect > Users and Access > Keys**, this is the **Issuer ID** displayed above the table of active keys.
+- `APP_STORE_CONNECT_KEY_IDENTIFIER`: In **App Store Connect > Users and Access > Keys**, this is the **Key ID** of the key.
 
-- `APP_STORE_CONNECT_PRIVATE_KEY`
+- `APP_STORE_CONNECT_ISSUER_ID`: In **App Store Connect > Users and Access > Keys**, this is the **Issuer ID** displayed above the table of active keys.
 
-  This is the private API key downloaded from App Store Connect.
+- `APP_STORE_CONNECT_PRIVATE_KEY`: This is the **private API key** downloaded from App Store Connect.
 
-- `CERTIFICATE_PRIVATE_KEY`
+- `CERTIFICATE_PRIVATE_KEY`: This is an RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d).
 
-  This is an RSA 2048 bit private key to be included in the [signing certificate](https://help.apple.com/xcode/mac/current/#/dev1c7c2c67d). 
+Here's an example of all the keys and the respective groups that you can create and put the respective values in:
+
+**Variable name** | **Variable value** | **Group**
+--- | --- | ---
+APP_STORE_CONNECT_KEY_IDENTIFIER | Put your App Store Connect Key Identifier here | appstore_credentials
+APP_STORE_CONNECT_ISSUER_ID | Put your App Store Connect Issuer Id here  | appstore_credentials
+APP_STORE_CONNECT_PRIVATE_KEY | Put your App Store Connect Private Key here | appstore_credentials
+CERTIFICATE_PRIVATE_KEY | Put your Certificate Private Key here | certificate_credentials
   
-  You can use the private key of an iOS Distribution certificate that has already been created in your Apple Developer Program account. 
+ You can use the private key of an iOS Distribution certificate that has already been created in your Apple Developer Program account. 
   
-  Alternatively, you can create a new private key on your Mac and the Codemagic CLI will create a new iOS Distribution certificate in your Apple Developer Program account for you.
+Alternatively, you can create a new private key on your Mac and the Codemagic CLI will create a new iOS Distribution certificate in your Apple Developer Program account for you.
 
-  **Creating a new private key**
+**Creating a new private key**
   
-  You can create a new 2048 bit RSA key by running the command below in your terminal. 
+To create a new 2048 bit RSA key, run the command below in your terminal. 
 
-  ```bash
-    ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
-  ```
+```bash
+ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/codemagic_private_key -q -N ""
+```
   
-  Running the command line will create private and public keys. Open the **codemagic_private_key** and copy the **entire contents** of the file including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags. 
-  
-  Paste this into the value field of the `CERTIFICATE_PRIVATE_KEY` environment variable and mark it as **Secure** so the value is encrypted.
+1. Running the command line will create private and public keys. 
+2. Open the **codemagic_private_key**.
+3. Copy the _entire contents_ of the file including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags. 
+4. Paste this into the value field of the `CERTIFICATE_PRIVATE_KEY` environment variable on Codemagic.
+5. Mark it as **Secure** so the value is encrypted.
 
-  This new private key will be used to create a new iOS Distribution certificate in your Apple Developer Program account if there isn't one that already matches this private key. 
+This new private key will be used to create a new iOS Distribution certificate in your Apple Developer Program account if there isn't one that already matches this private key. 
 
-  **Using an existing private key** 
+**Using an existing private key** 
 
-  To use an existing iOS Distribution certificate private key, please do the following:
+To use an existing iOS Distribution certificate private key:
+1. On the Mac which created the iOS distribution certificate, launch **Keychain Access**.
+2. Select the certificate entry which should be listed as iPhone Distribution: company_name (team_id).
+3. Right-click on it to select "Export."
+4. In the export prompt window that appears, make sure the file format is set to "Personal Information Exchange (.p12)".
+5. Give the file a name such as "IOS_DISTRIBUTION".
+6. Choose a location to save to and click on "Save" to save it to your machine.
+7. On the next prompt for the password to protect the export file, leave the password empty and click OK.
+8. Open Terminal and change to the directory where you saved the IOS_DISTRIBUTION.p12
+9. Use the following `openssl` command to export the private key:
 
-  1. On the Mac which created the iOS distribution certificate, launch Keychain Access, select the certificate entry which should be listed as iPhone Distribution: company_name (team_id), and right-click on it to select "Export."
-  2. In the export prompt window that appears, make sure the file format is set to "Personal Information Exchange (.p12)", give the file a name such as "IOS_DISTRIBUTION", choose a location to save to and click on "Save" to save it to your machine.
-  3. On the next prompt for the password to protect the export file, leave the password empty and click OK.
-  4. Open Terminal and change to the directory where you saved the IOS_DISTRIBUTION.p12
-  5. Use the following `openssl` command to export the private key:
+```
+openssl pkcs12 -in IOS_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out ios_distribution_private_key
+```
 
-     `openssl pkcs12 -in IOS_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out ios_distribution_private_key`
-
-  6. When prompted for the import password, just press enter. The private key will be written to a file called ios_distribution_private_key in the directory where you ran the command.
-  7. Open the file ios_distribution_private_key with a text editor.
-  8. Copy the **entire contents** of the file, including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags.
-  9. Paste the key into the value field of the `CERTIFICATE_PRIVATE_KEY` environment variable and mark it as **Secure** so the value is encrypted.
+8. When prompted for the import password, just press enter. The private key will be written to a file called **ios_distribution_private_key** in the directory where you ran the command.
+8. Open the file ios_distribution_private_key with a text editor.
+9. Copy the **entire contents** of the file, including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags.
+10. Paste the key into the value field of the `CERTIFICATE_PRIVATE_KEY` environment variable and mark it as **Secure** so the value is encrypted.
 
 {{<notebox>}}
 Tip: Store all the App Store Connect variables in the same group so they can be imported to a codemagic.yaml workflow at once. 
@@ -137,7 +166,26 @@ When using a **third party app distribution service** such as Firebase App Distr
 
 ## Manual code signing
 
-In order to use manual code signing, save your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile** in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build.
+In order to use manual code signing, save the following in **Environment variables** section in Codemagic UI:
+- **Signing certificate**: Your development or distribution certificate in .P12 format. Get it from **Certificates, Identifiers & Profiles > Certificates** in the Apple Developer Portal.
+- **Certificate password**: The certificate password if the certificate is password-protected.
+- **Provisioning profile**: You can get it from **Certificates, Identifiers & Profiles > Profiles** and select the provisioning profile you would like to export and click Download.
+
+Checkmark **Secure** to encrypt the values.
+
+{{<notebox>}} 
+The binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build.
+{{</notebox>}}
+
+You can put the variables into a group for accessing them in the workflow configuration. Here's an example:
+
+**Variable name** | **Variable value** | **Group**
+--- | --- | ---
+FCI_CERTIFICATE | Put your signing certificate here  | certificate_credentials
+FCI_CERTIFICATE_PASSWORD | Put the certificate password here if it is password-protected | certificate_credentials
+FCI_PROVISIONING_PROFILE | Put your provisioning profile here | appstore_credentials
+
+Add the group in your `codemagic.yaml` to access the variables:
 
 ```yaml
 environment:
@@ -149,7 +197,7 @@ environment:
     # FCI_PROVISIONING_PROFILE
 ```
 
-Then add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
+Then, add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
 
 ```yaml
 scripts:
