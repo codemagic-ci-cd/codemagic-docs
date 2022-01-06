@@ -64,7 +64,7 @@ This could be due to an invalid JSON file or permission issues with the service 
 - `Only releases with status draft may be created on draft app` 
    - `400` error related to the app being in draft status.
    - The very first version of the app must be added to Google Play manually. 
-   - In case you want to upload the artifacts generated in the build to Google Play as a draft release, select Submit release as draft in workflow editor or `submit_as_draft: true` in yaml configuration.
+   - In case you want to upload the artifacts generated in the build to Google Play as a draft release, select **Submit release as draft** in the workflow editor or `submit_as_draft: true` in your yaml configuration.
 
 - `changesNotSentForReview` Errors
   - changesNotSentForReview means (from Google Play API docs): Indicates that the changes in this edit will not be reviewed until they are explicitly sent for review from the Google Play Console UI. These changes will be added to any other changes that are not yet sent for review.
