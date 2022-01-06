@@ -49,7 +49,7 @@ This could be due to an invalid JSON file or permission issues with the service 
 ##### APK has not been signed with the upload certificate
   - Check code signing. Use the same keystore while uploading your artifacts.
 
-- `For uploading an AppBundle you must be enrolled in Play Signing`
+##### For uploading an AppBundle you must be enrolled in Play Signing`
   - As per the error, You need to upload your keystore to [Play App Signing](https://support.google.com/googleplay/android-developer/answer/9842756?visit_id=637769761748201384-2647523405&rd=1)
   - Enroll your app into app signing by Google Play to have Google sign the .aab that are generated from the app bundle during installation.
 
