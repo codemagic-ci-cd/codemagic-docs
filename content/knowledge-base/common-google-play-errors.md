@@ -8,7 +8,7 @@ weight: 2
 
 Codemagic enables you to automatically publish your app to the internal, alpha, beta, production or custom tracks on Google Play. While publishing to Google play you may encounter errors if the application does not meet the release criteria. You can see the explanations of some of the common errors:
 
-##### Invalid JSON content from response: "code": 403, "message": "The caller does not have permission", "status": "PERMISSION_DENIED"
+##### Code: 403, "The caller does not have permission", "status": "PERMISSION_DENIED"
 This could be due to an invalid JSON file or permission issues with the service account. Please make sure you have done the following:
    1. Created a service account in the Google Play console
    2. Set the service account access to "Editor"
