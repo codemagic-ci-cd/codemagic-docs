@@ -46,7 +46,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - The error Package not found means that an application with the package name from the artifact generated during the builds doesn't exist in your Google Play account.
    - This happens when either, you haven't uploaded the first artifact to your Google Play application manually, or the generated artifact package name has some suffixes or changes and doesn't correspond to the one in Google Play.
 
-- `APK has not been signed with the upload certificate`
+##### APK has not been signed with the upload certificate
   - Check code signing. Use the same keystore while uploading your artifacts.
 
 - `For uploading an AppBundle you must be enrolled in Play Signing`
