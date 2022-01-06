@@ -42,7 +42,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - It looks like Google has made updates that required you to declare your [storage permissions](https://developer.android.com/about/versions/11/privacy/storagehttps://www.xda-developers.com/android-11-all-files-access-permission-form/)
    - You will have to update your app accordingly to be able to publish to Google Play Store.
 
-- `Package not found: com.xxxxx.app.`
+##### Package not found: com.xxxxx.app
    - The error Package not found means that an application with the package name from the artifact generated during the builds doesn't exist in your Google Play account.
    - This happens when either, you haven't uploaded the first artifact to your Google Play application manually, or the generated artifact package name has some suffixes or changes and doesn't correspond to the one in Google Play.
 
