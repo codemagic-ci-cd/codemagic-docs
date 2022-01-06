@@ -76,7 +76,6 @@ This could be due to an invalid JSON file or permission issues with the service 
   - Check [this](https://docs.codemagic.io/yaml-publishing/distribution/#google-play) out.
 
 - `Error 502 (Server Error)`
-  - Well `5xx` errors are server errors that Codemagic/or the user don’t really have control over in most cases.
-  - This error seems to be an issue on Google Play side. 
-  - Here the solution is to try again after sometime.
+  - `5xx` errors are from the Google Play servers. 
+  - The solution is to try again after some time.
 
