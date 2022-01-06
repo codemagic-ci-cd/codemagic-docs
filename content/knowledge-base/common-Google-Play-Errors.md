@@ -43,7 +43,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - You will have to update your app accordingly to be able to publish to Google Play Store.
 
 ##### Package not found: com.xxxxx.app
-   - The error Package not found means that an application with the package name from the artifact generated during the builds doesn't exist in your Google Play account.
+   - The error 'Package not found' means that an application with the package name from the artifact generated during the builds doesn't exist in your Google Play account.
    - This happens when either, you haven't uploaded the first artifact to your Google Play application manually, or the generated artifact package name has some suffixes or changes and doesn't correspond to the one in Google Play.
 
 ##### APK has not been signed with the upload certificate
