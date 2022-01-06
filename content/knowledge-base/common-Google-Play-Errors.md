@@ -34,7 +34,7 @@ This could be due to an invalid JSON file or permission issues with the service 
 ##### APK specifies a version code that has already been used
    - Check version and version code. This error is possible when your version code is the same as the apk/aab already uploaded on google play.
 
-- `Cannot update a published APK`
+##### Cannot update a published APK
    - If an app has already been sent to a specific track, you cannot re-upload it. - You can change its track or increment the version code.
    - This error is possible when your version or version code is the same as the apk/aab already uploaded on google play.
 
