@@ -23,7 +23,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - This error may have caused due to Account permission issues. Try setting admin access for Account permissions on google play console. 
    - After granting access, Google may take 24-48 hours to propagate all access rights for all APIs or new users.
 
-- `Google Play failed to upload artefacts. This Edit has been deleted.`
+##### Google Play failed to upload artefacts. This Edit has been deleted.
    - This error usually occurs when there are parallel builds running, as in 2 builds triggered at the same time. 
    - Solution is to use set `cancel_previous_builds: true` in your triggers, but it doesn't work when builds are triggered using API.
 
