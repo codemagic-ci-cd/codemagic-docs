@@ -55,7 +55,7 @@ This could be due to an invalid JSON file or permission issues with the service 
 
 - `You uploaded an APK or Android App Bundle that was signed in debug mode`
   - You need to sign your APK or Android App Bundle in release mode instead of debug mode.
-  - Set your signing configuration in `build.gradle` in release mode. Refer [this](../code-signing/android-code-signing/#option-2-configure-signing-using-environment-variables) for more information.
+  - Set your signing configuration in `build.gradle` in release mode. Refer to [this](../code-signing/android-code-signing/#option-2-configure-signing-using-environment-variables) for more information.
 
 - `APKs are not allowed for this application`
    - APK is not allowed by Google anymore. Instead generate Android App Bundles(.aab). Check [this](https://android-developers.googleblog.com/2021/06/the-future-of-android-app-bundles-is.html) out.
