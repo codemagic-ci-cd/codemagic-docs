@@ -38,7 +38,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - If an app has already been sent to a specific track, you cannot re-upload it. - You can change its track or increment the version code.
    - This error is possible when your version or version code is the same as the apk/aab already uploaded on google play.
 
-- `Your scoped storage permission declaration needs to be updated`
+##### Your scoped storage permission declaration needs to be updated
    - It looks like Google has made updates that required you to declare your [storage permissions](https://developer.android.com/about/versions/11/privacy/storagehttps://www.xda-developers.com/android-11-all-files-access-permission-form/)
    - You will have to update your app accordingly to be able to publish to Google Play Store.
 
