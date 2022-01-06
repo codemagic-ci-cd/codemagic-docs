@@ -75,7 +75,7 @@ This could be due to an invalid JSON file or permission issues with the service 
   - Also, it might be that the actual cause of the error is getting swallowed and is surfaced by changesNotSentForReview error. In that case, try to re-run it by adding `--stacktrace` that will print out a full stack trace.
   - Check [this](https://docs.codemagic.io/yaml-publishing/distribution/#google-play) out.
 
-- `Error 502 (Server Error)`
+##### Error 502 (Server Error)
   - `5xx` errors are from the Google Play servers. 
   - The solution is to try again after some time.
 
