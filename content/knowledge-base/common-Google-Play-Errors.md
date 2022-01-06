@@ -61,7 +61,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - It is no longer possible to submit new apps to Google Play using the APK format. Instead, generate Android App Bundles(.aab). Check [this](https://android-developers.googleblog.com/2021/06/the-future-of-android-app-bundles-is.html) out.
    - You should use `./gradlew bundleRelease` to generate .aab file. And don't forget to mention the artifact path `app/build/outputs/bundle/**/*.aab` in the `artifacts:` section in your codemagic.yaml.
 
-- `Only releases with status draft may be created on draft app` 
+##### Only releases with status draft may be created on draft app
    - `400` error related to the app being in draft status.
    - The very first version of the app must be added to Google Play manually. 
    - In case you want to upload the artifacts generated in the build to Google Play as a draft release, select **Submit release as draft** in the workflow editor or `submit_as_draft: true` in your yaml configuration.
