@@ -19,7 +19,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    7. Invited users to the service account
    Checkout [this guide](../knowledge-base/google-services-authentication/#google-play) for detailed explanation.
 
-- `The current user has insufficient permissions to perform the requested operation. "status": "PERMISSION_DENIED"`
+##### The current user has insufficient permissions to perform the requested operation. "status": "PERMISSION_DENIED"
    - This error may have caused due to Account permission issues. Try setting admin access for Account permissions on google play console. 
    - After granting access, Google may take 24-48 hours to propagate all access rights for all APIs or new users.
 
