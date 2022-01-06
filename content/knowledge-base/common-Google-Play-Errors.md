@@ -59,7 +59,7 @@ This could be due to an invalid JSON file or permission issues with the service 
 
 - `APKs are not allowed for this application`
    - APK is not allowed by Google anymore. Instead generate Android App Bundles(.aab). Check [this](https://android-developers.googleblog.com/2021/06/the-future-of-android-app-bundles-is.html) out.
-   - You should use `./gradlew bundleRelease` to generate .aab file. And don't forget to mention the artifact path `app/build/outputs/bundle/**/*.aab` in the `artifacts:` sention in your yaml.
+   - You should use `./gradlew bundleRelease` to generate .aab file. And don't forget to mention the artifact path `app/build/outputs/bundle/**/*.aab` in the `artifacts:` section in your codemagic.yaml.
 
 - `Only releases with status draft may be created on draft app` 
    - `400` error related to the app being in draft status.
