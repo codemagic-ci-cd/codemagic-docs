@@ -58,7 +58,7 @@ This could be due to an invalid JSON file or permission issues with the service 
   - Set your signing configuration in `build.gradle` in release mode. Refer to [this](../code-signing/android-code-signing/#option-2-configure-signing-using-environment-variables) for more information.
 
 - `APKs are not allowed for this application`
-   - APK is not allowed by Google anymore. Instead generate Android App Bundles(.aab). Check [this](https://android-developers.googleblog.com/2021/06/the-future-of-android-app-bundles-is.html) out.
+   - It is no longer possible to submit new apps to Google Play using the APK format. Instead, generate Android App Bundles(.aab). Check [this](https://android-developers.googleblog.com/2021/06/the-future-of-android-app-bundles-is.html) out.
    - You should use `./gradlew bundleRelease` to generate .aab file. And don't forget to mention the artifact path `app/build/outputs/bundle/**/*.aab` in the `artifacts:` section in your codemagic.yaml.
 
 - `Only releases with status draft may be created on draft app` 
