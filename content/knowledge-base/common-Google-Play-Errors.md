@@ -31,7 +31,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - Probably it means that you have already published an aab with version code X, and now you are trying to publish an apk artifact with the same version code.
    - Try to upload .aab by incrementing the version code.
 
-- `APK specifies a version code that has already been used`
+##### APK specifies a version code that has already been used
    - Check version and version code. This error is possible when your version code is the same as the apk/aab already uploaded on google play.
 
 - `Cannot update a published APK`
