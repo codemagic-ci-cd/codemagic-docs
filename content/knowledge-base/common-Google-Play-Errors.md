@@ -10,13 +10,13 @@ Codemagic enables you to automatically publish your app to the internal, alpha, 
 
 ##### Invalid JSON content from response: "code": 403, "message": "The caller does not have permission", "status": "PERMISSION_DENIED"
 This could be due to an invalid JSON file or permission issues with the service account. Please make sure you have done the following:
-   1. Create Service Account
-   2. Set access to the editor
-   3. Create JSON key
-   4. Add the JSON key to Codemagic
-   5. Navigate to your Google Play Console API access and grant access to the service account
-   6. Give the service account access to your application
-   7. Invite users to the Service account
+   1. Created a service account in the Google Play console
+   2. Set the service account access to "Editor"
+   3. Created a JSON private key
+   4. Added the JSON key to Codemagic
+   5. Navigated to your Google Play Console API access and granted access to the service account
+   6. Given the service account access to your application
+   7. Invited users to the service account
    Checkout [this guide](../knowledge-base/google-services-authentication/#google-play) for detailed explanation.
 
 - `The current user has insufficient permissions to perform the requested operation. "status": "PERMISSION_DENIED"`
