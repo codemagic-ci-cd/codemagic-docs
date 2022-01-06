@@ -53,7 +53,7 @@ This could be due to an invalid JSON file or permission issues with the service 
   - As per the error, You need to upload your keystore to [Play App Signing](https://support.google.com/googleplay/android-developer/answer/9842756?visit_id=637769761748201384-2647523405&rd=1)
   - Enroll your app into app signing by Google Play to have Google sign the .aab that are generated from the app bundle during installation.
 
-- `You uploaded an APK or Android App Bundle that was signed in debug mode`
+##### You uploaded an APK or Android App Bundle that was signed in debug mode`
   - You need to sign your APK or Android App Bundle in release mode instead of debug mode.
   - Set your signing configuration in `build.gradle` in release mode. Refer to [this](../code-signing/android-code-signing/#option-2-configure-signing-using-environment-variables) for more information.
 
