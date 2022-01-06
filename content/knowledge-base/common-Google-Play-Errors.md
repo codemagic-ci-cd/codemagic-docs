@@ -27,7 +27,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - This error usually occurs when there are parallel builds running, as in 2 builds triggered at the same time. 
    - Solution is to use set `cancel_previous_builds: true` in your triggers, but it doesn't work when builds are triggered using API.
 
-- `Cannot replace a bundle of version code X with an APK.`
+##### Cannot replace a bundle of version code X with an APK.
    - Probably it means that you have already published an aab with version code X, and now you are trying to publish an apk artifact with the same version code.
    - Try to upload .aab by incrementing the version code.
 
