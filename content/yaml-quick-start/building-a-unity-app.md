@@ -420,8 +420,8 @@ workflows:
       scripts:
         - name: Deactivate Unity License
           script: $UNITY_BIN -batchmode -quit -returnlicense -nographics
-        google_play:
-          # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
-          credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-          track: alpha   # Any default or custom track    
+      google_play:
+        # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: alpha   # Any default or custom track    
 ```
