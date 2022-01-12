@@ -281,7 +281,7 @@ const changePreference = (target) => {
         )
         active.classList.remove('active')
         target.classList.add('active')
-        bg.style.left = target.offsetLeft + 'px'
+        bg.classList.toggle('right', target.dataset.jsPreferenceOption === 'yaml')
         window.localStorage.setItem('preferred-configuration', target.dataset.jsPreferenceOption)
 
         window.preferredConfigurations.some((configuration) => {
