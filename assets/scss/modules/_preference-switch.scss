@@ -42,4 +42,8 @@
     position: absolute;
     transition: all 200ms ease-in-out;
     z-index: 1;
+
+    &.right {
+        left: 50%;
+    }
 }

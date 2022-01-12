@@ -41,5 +41,12 @@
     }
 }
 
+@media (max-width: 1160px) and (min-width: 1001px) {
+    #sidebar-positioner,
+    #sidebar {
+        width: 250px;
+    }
+}
+
 @import './menu';
 @import './preference-switch';

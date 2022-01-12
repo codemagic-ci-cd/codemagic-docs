@@ -4,6 +4,11 @@
         min-height: 100vh;
         grid-template-columns: 300px 1fr;
         grid-template-columns: 300px minmax(0, 1fr);
+
+        @media (max-width: 1160px) and (min-width: 1001px) {
+            grid-template-columns: 250px 1fr;
+            grid-template-columns: 250px minmax(0, 1fr);
+        }
     }
     main {
         min-width: 0;
@@ -220,7 +225,6 @@
             thead tr {
                 td,
                 th {
-                    min-width: 150px;
                     padding: 15px;
                     border: 2px solid $grey-bg;
                     text-align: left;
@@ -229,6 +233,7 @@
 
             code {
                 padding: 2px 5px;
+                white-space: nowrap;
             }
         }
 
