@@ -17,6 +17,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    5. Navigated to your Google Play Console API access and granted access to the service account
    6. Given the service account access to your application
    7. Invited users to the service account
+   
    Checkout [this guide](../knowledge-base/google-services-authentication/#google-play) for detailed explanation.
 
 ##### The current user has insufficient permissions to perform the requested operation. "status": "PERMISSION_DENIED"
@@ -49,15 +50,15 @@ This could be due to an invalid JSON file or permission issues with the service 
 ##### APK has not been signed with the upload certificate
   - Check code signing. Use the same keystore while uploading your artifacts.
 
-##### For uploading an AppBundle you must be enrolled in Play Signing`
+##### For uploading an AppBundle you must be enrolled in Play Signing
   - As per the error, You need to upload your keystore to [Play App Signing](https://support.google.com/googleplay/android-developer/answer/9842756?visit_id=637769761748201384-2647523405&rd=1)
   - Enroll your app into app signing by Google Play to have Google sign the .aab that are generated from the app bundle during installation.
 
-##### You uploaded an APK or Android App Bundle that was signed in debug mode`
+##### You uploaded an APK or Android App Bundle that was signed in debug mode
   - You need to sign your APK or Android App Bundle in **release mode** instead of debug mode.
   - Set your signing configuration in `build.gradle` in release mode. Refer to [this](../code-signing/android-code-signing/#option-2-configure-signing-using-environment-variables) for more information.
 
-##### APKs are not allowed for this application`
+##### APKs are not allowed for this application
    - It is no longer possible to submit new apps to Google Play using the APK format. Instead, generate Android App Bundles(.aab). Check [this](https://android-developers.googleblog.com/2021/06/the-future-of-android-app-bundles-is.html) out.
    - You should use `./gradlew bundleRelease` to generate .aab file. And don't forget to mention the artifact path `app/build/outputs/bundle/**/*.aab` in the `artifacts:` section in your codemagic.yaml.
 
@@ -69,7 +70,7 @@ This could be due to an invalid JSON file or permission issues with the service 
 ##### changesNotSentForReview Errors
   - changesNotSentForReview means (from Google Play API docs): Indicates that the changes in this edit will not be reviewed until they are explicitly sent for review from the Google Play Console UI. These changes will be added to any other changes that are not yet sent for review.
   - Beware, this parameter should not always be true.
-  - If an app/track is in a "rejected" state, then you need to submit the app with changesNotSentForReview: true, otherwise, you should send without specifying changesNotSentForReview(or setting it to false)Changes are sent for review automatically. 
+  - If an app/track is in a "rejected" state, then you need to submit the app with changesNotSentForReview: true, otherwise, you should send without specifying changesNotSentForReview(or setting it to false). 
   - Usually, If you are getting a 400 error related to the app being in draft status, either enable publishing to draft by setting the value of `submit_as_draft` to true or promote the draft build up by a level to one of the testing tracks.
   - Depending on your app's update status, it may not be sent for review automatically. 
   - Also, it might be that the actual cause of the error is getting swallowed and is surfaced by changesNotSentForReview error. In that case, try to re-run it by adding `--stacktrace` that will print out a full stack trace.
