@@ -72,6 +72,27 @@ scripts:
   - script3
 ```
 
+You can also define the reusable section under `definitions` by adding `&` in front of the section name.
+
+```yaml
+definitions: 
+  env_versions: &env_versions
+    xcode: latest 
+    cocoapods: default
+```
+
+Expand the defined section elsewhere by using aliased mapping (`<<`) and adding a `*` in front of the section name.
+
+```yaml
+workflows: 
+  ios-release: 
+    name: iOS release 
+    environment: 
+      << : *env_versions
+```
+
+Here's a [sample](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/yaml/yaml_anchors_aliases_sample/codemagic.yaml) `codemagic.yaml` that extensively uses anchors, aliases, and aliased mappings to reuse the sections in different workflows.
+
 ## Template
 
 This is the skeleton structure of `codemagic.yaml`. Each section, along with the configuration options, is described in more detail 

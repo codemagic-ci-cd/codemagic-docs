@@ -20,7 +20,7 @@
         text-align: right;
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 1200px) and (min-width: 1001px), (max-width: 560px) {
         grid-template-columns: 1fr;
 
         .illustration {
