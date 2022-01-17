@@ -10,13 +10,11 @@ Codemagic enables you to automatically publish your Windows desktop app to the M
 This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Publishing to Microsoft Store using Flutter workflow editor](../publishing/publishing-to-microsoft-store).
 {{</notebox>}}
 
-### Distribution to Microsoft Partner Center
+For publishing, Codemagic makes use of the [Microsoft Store submission API](https://docs.microsoft.com/en-us/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services). This requires linking your Partner Center account to the Azure AD application and providing Codemagic with information that can be used to generate temporary Azure AD access tokens for managing submissions.
 
 {{<notebox>}}
 The very first version of the app must be submitted in the Partner Center manually. You can download the **MSIX** package from the build artifacts.
 {{</notebox>}}
-
-For publishing, Codemagic makes use of the [Microsoft Store submission API](https://docs.microsoft.com/en-us/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services). This requires linking your Partner Center account to the Azure AD application and providing Codemagic with information that can be used to generate temporary Azure AD access tokens for managing submissions.
 
 To link your Microsoft Partner Center account with the Azure AD application and get the necessary details (`tenant_id`, `client_id`, `client_secret`), follow the instructions [here](../knowledge-base/partner-center-authentication).
 

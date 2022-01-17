@@ -231,7 +231,7 @@ To test and publish a React Native app:
 
 * The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-test).
 * All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
-* All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play, App Store Connect and Firebase App Distribution. It is also possible to publish elsewhere with custom scripts. Script examples for all of them are available under the Publishing section.
+* All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
 
 ## Build versioning your React Native app
 

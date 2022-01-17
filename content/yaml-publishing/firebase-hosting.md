@@ -10,8 +10,6 @@ Codemagic allows you to deploy your web application to Firebase Hosting.
 This guide only applies to workflows configured with the **codemagic.yaml**.
 {{</notebox>}}
 
-## Distribution to Firebase Hosting
-
 With Codemagic, publishing to Firebase Hosting is a straightforward process as the Firebase CLI is already pre-installed on our virtual machines. Please note that you will have to set it up for your project locally before publishing it to Firebase Hosting. You can find more information in the official [documentation](https://firebase.google.com/docs/hosting/quickstart) for Firebase.
 
 1. To get started with adding Firebase Hosting to Codemagic, you will need to obtain your Firebase token. In order to do that, run `firebase login:ci` in your local terminal.

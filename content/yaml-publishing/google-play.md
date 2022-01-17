@@ -4,12 +4,11 @@ description: How to deploy an app to Google Play using codemagic.yaml
 weight: 2
 ---
 
+Codemagic enables you to automatically publish your android application to Google Play.
 
 {{<notebox>}}
 This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Publishing to Google Play using Flutter workflow editor](../publishing/publishing-to-google-play).
 {{</notebox>}}
-
-### Distribution to Google Play
 
 Codemagic enables you to automatically publish your app either to one of the predefined tracks (`internal`- publish for internal testing and QA, `alpha`- publish for testing with a small group of trusted users, `beta`- publish for testing to a wider set of users and `production`- release the app to production) on Google Play or to your custom closed testing tracks. In order to do so, you will need to [set up a service account in Google Play Console](../knowledge-base/google-play-api/) and save the contents of the `JSON` key file as a [secure environment variable](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) in application or team settings.
 

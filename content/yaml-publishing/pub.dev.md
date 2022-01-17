@@ -4,10 +4,6 @@ description: How to deploy a package to pub.dev using codemagic.yaml
 weight: 7
 ---
 
-Codemagic allows you to deploy Flutter packages to pub.dev.
-
-## Publishing a Flutter package to pub.dev
-
 In order to get publishing permissions, first, you will need to log in to pub.dev locally. It can be done by running `pub publish --dry-run`.
 After that, `credentials.json` will be generated, which you can use to log in without the need for Google confirmation through the browser.
 

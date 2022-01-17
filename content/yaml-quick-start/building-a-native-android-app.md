@@ -40,7 +40,7 @@ To test, code sign and publish an Android app:
 
 * The code for testing an Android app also goes under `scripts`. A few examples of testing can be found [here](../testing-yaml/testing).
 * All Android applications need to be signed before release, see how to do that [here](../code-signing-yaml/signing-android).
-* All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and Firebase App Distribution. It is also possible to publish elsewhere with custom scripts. Script examples for all of them are available under the Publishing section.
+* All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
 
 ## Android workflow example
 

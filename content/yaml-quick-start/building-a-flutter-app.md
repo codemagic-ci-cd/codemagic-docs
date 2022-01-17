@@ -322,5 +322,5 @@ For all the possible flags for the `msix:create` command, check the [pub documen
 To test, code sign and publish a Flutter app:
 
 - Testing examples for a flutter app can be found [here](../testing-yaml/testing/#flutter-test).
-- All iOS and Android applications need to be signed before release. Different script examples are available under the Publishing section.
-- All generated artifacts can be published to external services. The available integrations currently are email, Slack, Google Play and App Store Connect. It is also possible to publish elsewhere with [custom scripts](../getting-started/yaml#scripts). Script examples for different options are available under the Publishing section.
+- All iOS and Android applications need to be [signed](/code-signing-yaml/signing) before release. Different script examples are available under the Publishing section.
+- All generated artifacts can be published to external services. Script examples for different options are available under the [Publishing section](../publishing-yaml/distribution/).

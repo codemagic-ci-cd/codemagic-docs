@@ -365,7 +365,7 @@ There are several things to keep in mind about patterns:
 
 ### Publishing
 
-Codemagic has a number of integrations (e.g. email, Slack, Google Play, App Store Connect) for publishing but you can also publish elsewhere with custom scripts. See the options under the Publishing section.
+Codemagic has a number of integrations for publishing but you can also publish elsewhere with custom scripts. See the options under the [Publishing section](../publishing-yaml/distribution/).
 
 Note that by default the publishing scripts are run regardless of the build status. You can specify additional conditions with if statements.
 
