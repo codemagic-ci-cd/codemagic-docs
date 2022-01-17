@@ -226,7 +226,7 @@ In order to distribute an `.aab` to testers via Firebase App Distribution, your 
 
 #### Publishing only the Android app bundle or APK artifact to Firebase App Distribution
 
-If you are building both an Android app bundle and an APK in your workflow, Codemagic will by default try to publish both artifacts to Firebase App Distribution. If you wish to only publish one of these artifacts, specify the artifact type using the `artifact_type` field:
+If you are building both an Android app bundle and an APK in your workflow, Codemagic will, by default, try to publish the bundle to Firebase App Distribution. If you wish to publish the APK, specify the artifact type as `apk` using the `artifact_type` field. For more clarity, this can also be set to `aab` for the bundle:
 
 ```yaml
 publishing:
