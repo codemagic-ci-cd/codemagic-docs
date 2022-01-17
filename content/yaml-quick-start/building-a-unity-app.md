@@ -139,7 +139,7 @@ public static class BuildScript
         }
 
         // Set keystore alias name
-        string keyaliasName = Environment.GetEnvironmentVariable("FCI_KEY_ALIAS_USERNAME");
+        string keyaliasName = Environment.GetEnvironmentVariable("FCI_KEY_ALIAS");
         if (!String.IsNullOrEmpty(keyaliasName))
         {
             Debug.Log("Setting keystore alias");
@@ -151,7 +151,7 @@ public static class BuildScript
         }
 
         // Set keystore password
-        string keyaliasPass = Environment.GetEnvironmentVariable("FCI_KEY_ALIAS_PASSWORD");
+        string keyaliasPass = Environment.GetEnvironmentVariable("FCI_KEY_PASSWORD");
         if (!String.IsNullOrEmpty(keyaliasPass))
         {
             Debug.Log("Setting keystore alias password");
