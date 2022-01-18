@@ -129,17 +129,17 @@ Returns the build information of an already running build on Codemagic.
 | **Status**  |
 | ------------- | 
 | `building`    | 
-| `canceled`    | 
-| `finished`    | 
+| `canceled`    |
 | `finishing`   | 
+| `finished`    | 
 | `failed`      | 
 | `fetching`    |
 | `preparing`   |
 | `publishing`  |
 | `queued`      | 
-| `skipped`     |    
-| `timeout`     |
+| `skipped`     |   
 | `testing`     |
+| `timeout`     |
 | `warning`     |
 
 ### Example
