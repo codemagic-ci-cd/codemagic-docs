@@ -126,7 +126,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 
 Returns the build information of an already running build on Codemagic.
 
-| **Statuses**  |
+| **Status**  |
 | ------------- | 
 | `building`    | 
 | `finished`    | 
