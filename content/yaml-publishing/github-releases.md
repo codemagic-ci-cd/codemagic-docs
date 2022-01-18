@@ -10,13 +10,11 @@ Publishing GitHub releases is available for GitHub repositories only.
 This guide only applies to workflows configured with the **codemagic.yaml**.
 {{</notebox>}}
 
-## Publishing to GitHub releases
+Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
 
 {{<notebox>}}
 As of deprecating the GitHub OAuth integration, Codemagic no longer has write access to the repositories. Setting up a personal access token is needed to publish releases to GitHub. Please follow the instructions below.
 {{</notebox>}}
-
-Publishing happens only for successful builds triggered on tag creation and is unavailable for manual builds.
 
 1. Create a personal access token in GitHub as described [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 2. Add the personal access token as an environment variable with the name `GITHUB_TOKEN` in the `environment` section.
