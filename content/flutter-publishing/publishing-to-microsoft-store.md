@@ -8,7 +8,7 @@ aliases: /publishing/publishing-to-microsoft-store
 Codemagic enables you to automatically publish your desktop app to the Microsoft Store. The application submission is automatically submitted to the review/certification process in the Partner Center.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Publishing to Microsoft Store using codemagic.yaml](../publishing-yaml/distribution/#microsoft-partner-center).
+This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Publishing to Microsoft Store using codemagic.yaml](../yaml-publishing/microsoft-store).
 {{</notebox>}}
 
 ## Requirements

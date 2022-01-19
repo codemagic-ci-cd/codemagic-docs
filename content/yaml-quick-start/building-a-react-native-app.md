@@ -98,7 +98,7 @@ workflows:
             - android/app/build/outputs/**/*.aab
             - android/app/build/outputs/**/*.apk
         publishing:
-            # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
+            # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
             email:
                 recipients:
                     - user_1@example.com
@@ -107,14 +107,14 @@ workflows:
                   success: true     # To not receive a notification when a build succeeds
                   failure: false    # To not receive a notification when a build fails
             slack: 
-              # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+              # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
               channel: '#channel-name'
               notify_on_build_start: true   # To receive a notification when a build starts
               notify:
                 success: true               # To receive a notification when a build succeeds
                 failure: false              # To not receive a notification when a build fails
             google_play:
-              # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/publishing-yaml/distribution/#google-play
+              # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/yaml-publishing/google-play
               credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
               track: alpha # <-- Any default or custom track that is not in ‘draft’ status
 ```
@@ -203,7 +203,7 @@ workflows:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
     publishing:
-      # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
+      # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
       email:
         recipients:
           - user_1@example.com
@@ -212,7 +212,7 @@ workflows:
           success: true     # To not receive a notification when a build succeeds
           failure: false    # To not receive a notification when a build fails
       slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+        # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
         channel: '#channel-name'
         notify_on_build_start: true   # To receive a notification when a build starts
         notify:
@@ -231,7 +231,7 @@ To test and publish a React Native app:
 
 * The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-test).
 * All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
-* All generated artifacts can be published to external services. The available integrations currently are email, Slack and Google Play. It is also possible to publish elsewhere with custom scripts (e.g. Firebase App Distribution). Script examples for all of them are available [here](../publishing-yaml/distribution/#publishing).
+* All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
 
 ## Build versioning your React Native app
 
