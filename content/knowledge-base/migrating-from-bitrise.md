@@ -131,6 +131,7 @@ Once you have connected the account, navigate to **Distribution** > **App Store 
 ### Android workflow
 
 To build your Flutter Android project with Flutter workflow editor, navigate to your workflow, and under `Build for platforms` select `Android`. Additional arguments can be defined under the `Build` section.
+
 #### Code signing
 
 If you have already set up Android code signing on Bitrise, you can download your keystore under your workflows `Code Signing` tab. Setting up the code signing in the Codemagic Flutter workflow editor works similarly to Bitrise.
