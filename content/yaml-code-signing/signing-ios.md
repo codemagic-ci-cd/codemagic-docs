@@ -14,7 +14,7 @@ This guide only applies to workflows configured with the **codemagic.yaml**. If 
 ## Prerequisites
 
 Signing iOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. You can:
-- **Manaully** upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or,
+- **Manually** upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or,
 - Use the **automatic code signing** option where Codemagic takes care of code signing and signing files management on your behalf. 
 
 Read more about the two options below.
