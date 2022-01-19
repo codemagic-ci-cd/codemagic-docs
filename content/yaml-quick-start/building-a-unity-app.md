@@ -101,6 +101,7 @@ public static class BuildScript
     {
 
         PlayerSettings.Android.useCustomKeystore = true;
+        EditorUserBuildSettings.buildAppBundle = true;
 
         // Set bundle version. NEW_BUILD_NUMBER environment variable is set in the codemagic.yaml 
         var versionIsSet = int.TryParse(Environment.GetEnvironmentVariable("NEW_BUILD_NUMBER"), out int version);
