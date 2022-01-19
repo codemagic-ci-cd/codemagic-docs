@@ -8,7 +8,7 @@ aliases: /publishing/firebase-app-distribution
 Set up publishing to [Firebase App Distribution](https://firebase.google.com/docs/app-distribution) to distribute your Android and iOS apps to testers.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml**, please go to [Publishing an app to Firebase App Distribution](../publishing-yaml/distribution/#publishing-an-app-to-firebase-app-distribution).
+This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml**, please go to [Publishing an app to Firebase App Distribution](../yaml-publishing/firebase-app-distribution).
 {{</notebox>}}
 
 ## Requirements

@@ -19,7 +19,8 @@ Note that the workflow and branch information is passed with the curl request wh
 | ------------- | -------- | --------------- |
 | `appId`       | `string` | **Required.** The application identifier. |
 | `workflowId`  | `string` | **Required.** The workflow identifier as specified in YAML file. |
-| `branch`      | `string` | **Required.** The branch name. |
+| `branch`      | `string` | Optional. The branch name. Either `branch` or `tag` is **required**. |
+| `tag`         | `string` | Optional. The tag name. Either `branch` or `tag` is **required**. |
 | `environment` | `object` | Optional. Specify environment variables and software versions to override values defined in workflow settings. | 
 
 ### Example
@@ -125,6 +126,22 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 `GET /builds/:id`
 
 Returns the build information of an already running build on Codemagic.
+
+| **Status**  |
+| ------------- | 
+| `building`    | 
+| `canceled`    |
+| `finishing`   | 
+| `finished`    | 
+| `failed`      | 
+| `fetching`    |
+| `preparing`   |
+| `publishing`  |
+| `queued`      | 
+| `skipped`     |   
+| `testing`     |
+| `timeout`     |
+| `warning`     |
 
 ### Example
 

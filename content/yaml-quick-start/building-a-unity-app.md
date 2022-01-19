@@ -101,6 +101,7 @@ public static class BuildScript
     {
 
         PlayerSettings.Android.useCustomKeystore = true;
+        EditorUserBuildSettings.buildAppBundle = true;
 
         // Set bundle version. NEW_BUILD_NUMBER environment variable is set in the codemagic.yaml 
         var versionIsSet = int.TryParse(Environment.GetEnvironmentVariable("NEW_BUILD_NUMBER"), out int version);
@@ -139,7 +140,7 @@ public static class BuildScript
         }
 
         // Set keystore alias name
-        string keyaliasName = Environment.GetEnvironmentVariable("FCI_KEY_ALIAS_USERNAME");
+        string keyaliasName = Environment.GetEnvironmentVariable("FCI_KEY_ALIAS");
         if (!String.IsNullOrEmpty(keyaliasName))
         {
             Debug.Log("Setting keystore alias");
@@ -151,7 +152,7 @@ public static class BuildScript
         }
 
         // Set keystore password
-        string keyaliasPass = Environment.GetEnvironmentVariable("FCI_KEY_ALIAS_PASSWORD");
+        string keyaliasPass = Environment.GetEnvironmentVariable("FCI_KEY_PASSWORD");
         if (!String.IsNullOrEmpty(keyaliasPass))
         {
             Debug.Log("Setting keystore alias password");
@@ -388,7 +389,7 @@ workflows:
         groups:
         # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
             - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
-            - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_ALIAS_PASSWORD, FCI_KEY_ALIAS_USERNAME)
+            - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
             - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
         vars:
           UNITY_BIN: /Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/MacOS/Unity

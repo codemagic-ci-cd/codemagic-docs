@@ -32,7 +32,7 @@ To test, code sign, and publish Ionic Android and iOS apps:
 * The code for testing an Ionic Android app also goes under `scripts`. A few examples of testing can be found [here](../testing-yaml/testing).
 * All Android apps need to be signed before release. See the [Android code signing docs](../code-signing/android-code-signing/) or the sample workflow below for more details.
 * All iOS apps need to be signed before release. See the [iOS code signing docs](../code-signing/ios-code-signing/) or the sample workflow below for more details.
-* All generated artifacts can be published to external services, such as email, Slack, and Google Play. The list of available integrations and script examples can be found in [publishing and deployment](../publishing-yaml/distribution/).
+* All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
 
 ## Android Ionic Capacitor workflow example
 
