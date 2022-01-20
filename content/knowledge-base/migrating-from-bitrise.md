@@ -110,7 +110,7 @@ Like Bitrise's `Google Play Deploy` step, Codemagic allows you to modify the tra
 
 Follow the example [here](../yaml-publishing/google-play/) to configure publishing to Google Play it in your `codemagic.yaml`.
 
-The `Google Play Deploy` step in `bitrise.yml` and the publishing in `codemagic.yaml` are relatively similar. However, Bitrise requires you to add the package name of the application. Codemagic publishes the relevant artefacts generated during the build with their respective names.
+The `Google Play Deploy` step in `bitrise.yml` and the publishing in `codemagic.yaml` are relatively similar. However, Bitrise requires you to add the package name of the application. Codemagic publishes the relevant artifacts generated during the build with their respective names.
 
 **bitrise.yml**
 
