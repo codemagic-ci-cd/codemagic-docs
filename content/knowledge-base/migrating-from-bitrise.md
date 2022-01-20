@@ -4,7 +4,7 @@ title: Migrating from Bitrise
 weight: 13
 ---
 
-Codemagic makes use of `codemagic.yaml` for configuring your workflow. There is also a Flutter workflow editor for Flutter applications, which simplifies the setup but removes some flexibility.
+Codemagic makes use of [`codemagic.yaml`](../yaml/yaml-getting-started/) for configuring your workflow. Codemagic supports any Git-based cloud or self-hosted repository. Thus, there is no need to migrate your code; simply add a `codemagic.yaml` file to the repo. In Codemagic, there is also a [Flutter workflow editor](../flutter-configuration/flutter-projects/) for Flutter applications, which simplifies the setup but removes some flexibility.
 
 ## Migrating iOS builds with codemagic.yaml
 
@@ -47,6 +47,28 @@ Suppose you have set up automatic code signing with Codemagic. In that case, it 
 
 The details for setting up deployment and extra parameters can be found [here](../yaml-publishing/app-store-connect/#distribution-to-app-store-connect).
 
+The `Deploy to App Store Connect` step in `bitrise.yml` and the publishing in `codemagic.yaml` are relatively similar. However, Codemagic asks you to provide your key id along with your issuer id.
+
+**bitrise.yml**
+
+```yaml
+- deploy-to-itunesconnect-application-loader@1:
+    inputs:
+    - api_issuer: 21d78e2f-b8ad-...
+    - api_key_path: "$BITRISEIO_API_KEY_URL"
+    - connection: api_key
+```
+
+**codemagic.yaml**
+
+```yaml
+publishing:
+  app_store_connect:
+    api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+    key_id: 3MD9688D9K
+    issuer_id: 21d78e2f-b8ad-...
+```
+
 ## Migrating Android builds with codemagic.yaml
 
 If you have already set up your Android application on Bitrise, migrating to Codemagic is straightforward.
@@ -87,6 +109,35 @@ To add your service account to your configuration file, add it as an environment
 Like Bitrise's `Google Play Deploy` step, Codemagic allows you to modify the track, rollout fraction, and update priority. In addition, you can conveniently configure to submit the build as a draft or choose not the send the changes directly to review.
 
 Follow the example [here](../yaml-publishing/google-play/) to configure publishing to Google Play it in your `codemagic.yaml`.
+
+The `Google Play Deploy` step in `bitrise.yml` and the publishing in `codemagic.yaml` are relatively similar. However, Bitrise requires you to add the package name of the application. Codemagic publishes the relevant artefacts generated during the build with their respective names.
+
+**bitrise.yml**
+
+```yaml
+- google-play-deploy@3:
+    inputs:
+    - package_name: android_application.apk
+    - user_fraction: '0.25'
+    - update_priority: '3'
+    - track: alpha
+    - status: draft
+    - retry_without_sending_to_review: 'true'
+    - service_account_json_key_path: "$BITRISEIO_SERVICE_ACCOUNT_URL"
+```
+
+**codemagic.yaml**
+
+```yaml
+publishing:
+  google_play:
+    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS 
+    track: alpha 
+    in_app_update_priority: 3
+    rollout_fraction: 0.25
+    changes_not_sent_for_review: true 
+    submit_as_draft: true 
+```
 
 ## Migrating Flutter builds with Flutter workflow editor
 
