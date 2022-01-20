@@ -176,8 +176,7 @@ An example build script for building a Native Android application:
 ```yaml
 scripts:
   - name: Build Android
-    script: |
-      ./gradlew assembleRelease     
+    script: ./gradlew assembleRelease     
 ```
 
 With Codemagic, you can configure which artifacts to receive at the end of the build under the [artifacts section](../yaml/yaml-getting-started/#artifacts). This provides relatively more flexibility in comparison to Bitrise's `Deploy to Bitrise.io` step. For teams, the build artifacts do not expire.
