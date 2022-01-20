@@ -34,6 +34,7 @@ weight: 7
 - gsutil `4.58`
 - ionic `5.4.16`
 - jq `jq-1.6`
+- ktlint
 - node `14.15.3`
 - npm `6.14.9`
 - python2 `2.7.18`
