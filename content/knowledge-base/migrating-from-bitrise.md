@@ -18,9 +18,43 @@ Like Bitrise, Codemagic lets users configure either a manual or an automatic opt
 
 Codemagic requires you to add all of your signing files (profiles, certificates, etc.) as environment variables with the manual option. These are the same files uploaded on Bitrise under the applications `Code Signing` tab.
 
-If you have already set up manual code signing on Bitrise, setting it up with Codemagic is relatively simple. You can download the necessary provisioning profiles and certificates from Bitrise's `Code Signing` tab. To add them as environment variables in Codemagic, navigate to your application and click the `Environment variables` tab. Encode the contents of your files with base64 and paste the values into Codemagic; make sure to check `Secure` when providing sensitive information. Along with creating these variables, create a new variable group, e.g., `ios_code_signing`, which you can later reference in your `codemagic.yaml`. For convenience, we recommend naming your variables as `FCI_CERTIFICATE`, `FCI_CERTIFICATE_PASSWORD`, and `FCI_PROVISIONING_PROFILE`. However, you can call the variables differently if you reference them correctly in the scripts section. In the case of multiple provisioning profiles, the recommended naming convention is `FCI_PROVISIONING_PROFILE_1`, `FCI_PROVISIONING_PROFILE_2` etc.
+If you have already set up manual code signing on Bitrise, setting it up with Codemagic is relatively simple. You can download the necessary provisioning profiles and certificates from Bitrise's `Code Signing` tab. To add them as environment variables in Codemagic, navigate to your application and click the `Environment variables` tab. Encode the contents of your files with base64 and paste the values into Codemagic; make sure to check `Secure` when providing sensitive information. Along with creating these variables, create a new variable group, e.g., `ios_code_signing`, which you can later reference in your `codemagic.yaml`. 
 
-As mentioned above, unlike with the Bitrise `Certificate and profile installer` step, you must reference the added files in your scripts section. Follow the detailed documentation [here](../yaml-code-signing/signing-ios/#manual-code-signing).
+For consistency, we recommend setting up the following environment variables:
+```
+FCI_CERTIFICATE
+FCI_CERTIFICATE_PASSWORD
+FCI_PROVISIONING_PROFILE
+```
+
+However, you can call the variables differently if you reference them correctly in the scripts section. In the case of multiple provisioning profiles, the recommended naming convention is `FCI_PROVISIONING_PROFILE_1`, `FCI_PROVISIONING_PROFILE_2` etc.
+
+As mentioned above, unlike with the Bitrise `Certificate and profile installer` step, you must reference the added files in your scripts section. Follow the detailed documentation [here](../yaml-code-signing/signing-ios/#manual-code-signing) or check out the example below.
+
+```yaml
+scripts:
+  - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
+    script: keychain initialize
+  - name: Set up Provisioning profiles from environment variables
+    script: |
+      PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+      mkdir -p "$PROFILES_HOME"
+      PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
+      echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
+      echo "Saved provisioning profile $PROFILE_PATH"      
+  - name: Set up signing certificate
+    script: |
+      echo $FCI_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+      if [ -z ${FCI_CERTIFICATE_PASSWORD+x} ]; then
+        # when using a certificate that is not password-protected
+        keychain add-certificates --certificate /tmp/certificate.p12
+      else
+        # when using a password-protected certificate
+        keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $FCI_CERTIFICATE_PASSWORD
+      fi      
+  - name: Set up code signing settings on Xcode project
+    script: xcode-project use-profiles
+```
 
 #### Automatic
 
@@ -30,7 +64,23 @@ Thus, Codemagic requires the same values as Bitrise for handling automatic code 
 
 Then, using the defined variables in your scripts section to automate creating and fetching profiles and certificates is possible.
 
-Follow the steps defined in our [documentation](../yaml-code-signing/signing-ios/#automatic-code-signing) to find information on how to generate the necessary details and use them in your configuration.
+Follow the steps defined in our [documentation](../yaml-code-signing/signing-ios/#automatic-code-signing) to find information on how to generate the necessary details and use them in your configuration. An example of using scripts to manage automatic code signing is found below:
+
+```yaml
+scripts:
+  - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
+    script: keychain initialize
+  - name: Fetch signing files
+    script: |
+      # You can allow creating resources if existing are not found with `--create` flag
+      app-store-connect fetch-signing-files "$(xcode-project detect-bundle-id)" \
+        --type IOS_APP_DEVELOPMENT \
+        --create
+  - name: Set up signing certificate
+    script: keychain add-certificates
+  - name: Set up code signing settings on Xcode project
+    script: xcode-project use-profiles
+```
 
 ### Building
 
@@ -38,7 +88,26 @@ In Bitrise, the archiving to create the IPA for distribution is done in the `Xco
 
 Suppose you have followed the above instructions on setting up code signing with the `codemagic.yaml` configuration. In that case, to continue with Codemagic, add a script to your scripts sections to build the application. You can find various build scripts for different types of applications under our [Quick start guides](../yaml-quick-start/codemagic-sample-projects/).
 
-Likewise, unlike Bitrise's `Deploy to Bitrise.io` step, with Codemagic, you have to configure all the wanted artifacts under the [artifacts section](../yaml/yaml-getting-started/#artifacts) in your `codemagic.yaml` configuration.
+An example build script for building a Native iOS application:
+
+```yaml
+scripts:
+    - name: Build ipa for distribution
+      script: xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+```
+
+With Codemagic, you can configure which artifacts to receive at the end of the build under the [artifacts section](../yaml/yaml-getting-started/#artifacts). This provides relatively more flexibility in comparison to Bitrise's `Deploy to Bitrise.io` step. For teams, the build artifacts do not expire.
+
+The artifacts section can for example be configured in the `codemagic.yaml` as follows:
+
+```yaml
+artifacts:
+  - build/ios/ipa/*.ipa
+  - /tmp/xcodebuild_logs/*.log
+  - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+  - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+```
+
 ### Deployment
 
 Like with Bitrise's `Deploy to App Store Connect`, the use of [App Store Connect API](../yaml-code-signing/signing-ios/#creating-the-app-store-connect-api-key) is required for deploying and publishing.
@@ -98,6 +167,29 @@ scripts:
     script: echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
 ``` 
 
+### Building
+
+Suppose you have followed the above instructions on setting up code signing with the `codemagic.yaml` configuration. In that case, to continue with Codemagic, add a script to your scripts sections to build the application. You can find various build scripts for different types of applications under our [Quick start guides](../yaml-quick-start/codemagic-sample-projects/).
+
+An example build script for building a Native Android application:
+
+```yaml
+scripts:
+  - name: Build Android
+    script: |
+      ./gradlew assembleRelease     
+```
+
+With Codemagic, you can configure which artifacts to receive at the end of the build under the [artifacts section](../yaml/yaml-getting-started/#artifacts). This provides relatively more flexibility in comparison to Bitrise's `Deploy to Bitrise.io` step. For teams, the build artifacts do not expire.
+
+The artifacts section can for example be configured in the `codemagic.yaml` as follows:
+
+```yaml
+artifacts:
+    - app/build/outputs/**/**/*.aab
+    - app/build/outputs/**/**/*.apk
+```
+
 ### Deployment
 
 To deploy to Google Play, a service account is required. Creating a service account is the same process in Codemagic and Bitrise. In theory, both platforms could use the same service account.
@@ -141,7 +233,7 @@ publishing:
 
 ## Migrating Flutter builds with Flutter workflow editor
 
-Besides using the `codemagic.yaml` file for configuration; it is also possible to use the Flutter workflow editor for Flutter applications. Note that you can either create separate workflows for `iOS` and `Android` or build them in the same workflow.
+Besides using the `codemagic.yaml` file for configuration; it is also possible to use the Flutter workflow editor for Flutter applications. Note that you can either create separate workflows for `iOS` and `Android` or build them in the same workflow. Flutter becomes preinstalled on all Codemagic's build machines.
 
 ### iOS workflow
 
