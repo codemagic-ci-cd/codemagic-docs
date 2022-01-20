@@ -38,6 +38,7 @@ weight: 2
 - homebrew `3.3.9`
 - ionic `6.12.4`
 - jq
+- ktlint `0.43.2`
 - node `14.15.5`
 - npm `8.1.4`
 - python `3.8.7`
