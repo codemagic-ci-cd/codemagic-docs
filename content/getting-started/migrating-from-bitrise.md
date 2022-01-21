@@ -1,7 +1,7 @@
 ---
 description: How to migrate from Bitrise to Codemagic
 title: Migrating from Bitrise
-weight: 13
+weight: 9
 ---
 
 Codemagic makes use of [`codemagic.yaml`](../yaml/yaml-getting-started/) for configuring your workflow. Codemagic supports any Git-based cloud or self-hosted repository. Thus, there is no need to migrate your code; simply add a `codemagic.yaml` file to the repository. In Codemagic, there is also a [Flutter workflow editor](../flutter-configuration/flutter-projects/) for Flutter applications, which simplifies the setup but removes some flexibility.
@@ -10,11 +10,39 @@ Codemagic makes use of [`codemagic.yaml`](../yaml/yaml-getting-started/) for con
 
 If you have already set up your iOS application on Bitrise, migrating to Codemagic is straightforward.
 
-### Code signing
+### iOS code signing
 
 Like Bitrise, Codemagic lets users configure either a manual or an automatic option for handling iOS code signing profiles and certificates.
 
-#### Manual
+#### Automatic iOS code signing
+
+Codemagic uses the [App Store Connect API](../yaml-code-signing/signing-ios/#creating-the-app-store-connect-api-key) for managing signing profiles and certificates. Bitrise uses the same API in the `Manage iOS Code Signing` step.
+
+Thus, Codemagic requires the same values as Bitrise for handling automatic code signing. With the `codemagic.yaml` configuration, the values have to be provided as [environment variables](../yaml-code-signing/signing-ios/#saving-the-api-key-to-environment-variables). In addition, Codemagic requires you to create an RSA 2048 bit private key to be included in the signing certificate. 
+
+Then, using the defined variables in your scripts section to automate creating and fetching profiles and certificates is possible.
+
+Follow the steps defined in our [documentation](../yaml-code-signing/signing-ios/#automatic-code-signing) to find information on how to generate the necessary details and use them in your configuration. An example of using scripts to manage automatic code signing is found below:
+
+```yaml
+scripts:
+  - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
+    script: keychain initialize
+  - name: Fetch signing files
+    script: |
+      # You can allow creating resources if existing are not found with `--create` flag
+      app-store-connect fetch-signing-files "$(xcode-project detect-bundle-id)" \
+        --type IOS_APP_DEVELOPMENT \
+        --create
+  - name: Set up signing certificate
+    script: keychain add-certificates
+  - name: Set up code signing settings on Xcode project
+    script: xcode-project use-profiles
+```
+
+As you can use Codemagic's automatic code signing to create new profiles and certificates, the process is very easily manageable. 
+
+#### Manual iOS code signing
 
 Codemagic requires you to add all of your signing files (profiles, certificates, etc.) as environment variables with the manual option. These are the same files uploaded on Bitrise under the applications `Code Signing` tab.
 
@@ -57,34 +85,6 @@ scripts:
 ```
 
 Thus, all of your important data is stored in the same place and you are provided with a lot of flexibility on where and how to use it.
-
-#### Automatic
-
-Codemagic uses the [App Store Connect API](../yaml-code-signing/signing-ios/#creating-the-app-store-connect-api-key) for managing signing profiles and certificates. Bitrise uses the same API in the `Manage iOS Code Signing` step.
-
-Thus, Codemagic requires the same values as Bitrise for handling automatic code signing. With the `codemagic.yaml` configuration, the values have to be provided as [environment variables](../yaml-code-signing/signing-ios/#saving-the-api-key-to-environment-variables). In addition, Codemagic requires you to create an RSA 2048 bit private key to be included in the signing certificate. 
-
-Then, using the defined variables in your scripts section to automate creating and fetching profiles and certificates is possible.
-
-Follow the steps defined in our [documentation](../yaml-code-signing/signing-ios/#automatic-code-signing) to find information on how to generate the necessary details and use them in your configuration. An example of using scripts to manage automatic code signing is found below:
-
-```yaml
-scripts:
-  - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
-    script: keychain initialize
-  - name: Fetch signing files
-    script: |
-      # You can allow creating resources if existing are not found with `--create` flag
-      app-store-connect fetch-signing-files "$(xcode-project detect-bundle-id)" \
-        --type IOS_APP_DEVELOPMENT \
-        --create
-  - name: Set up signing certificate
-    script: keychain add-certificates
-  - name: Set up code signing settings on Xcode project
-    script: xcode-project use-profiles
-```
-
-As you can use Codemagic's automatic code signing to create new profiles and certificates, the process is very easily manageable. 
 
 ### Building
 
@@ -146,7 +146,7 @@ publishing:
 
 If you have already set up your Android application on Bitrise, migrating to Codemagic is straightforward.
 
-### Code signing
+### Android code signing
 
 To set up code signing with `codemagic.yaml`, you must add your keystore and related information (passwords, alias, etc.) as environment variables.
 
@@ -242,17 +242,11 @@ Besides using the `codemagic.yaml` file for configuration; it is also possible t
 
 To build your Flutter iOS project with Flutter workflow editor, navigate to your workflow, and under `Build for platforms`, select `iOS`. Additional arguments can be defined under the `Build` section.
 
-#### Code signing
+#### iOS code signing
 
 Like Bitrise, Codemagic allows you to configure manual or automatic code signing. To configure code signing, navigate to **Distribution** > **iOS code signing**.
 
-##### Manual
-
-If you have already set up manual code signing on Bitrise, it is easy to set it up on Codemagic. You can download the files you have uploaded on Bitrise under the applications `Code Signing` tab. After that, navigate to your workflow in Codemagic and upload these under `iOS code signing` once the code signing method is set to `manual`.
-
-Like Bitrise, you can upload multiple provisioning profiles, for example, to handle application extensions. However, unlike Bitrise's `Certificate and profile installer` step, no extra step is required with Codemagic.
-
-##### Automatic
+##### Automatic iOS code signing
 
 As with manual code signing, setting up automatic code signing once you have already done it on Bitrise is relatively simple. An App Store Connect API key is required to manage your certificates and provisioning profiles. The API key allows the service to connect to your developer account.
 
@@ -263,6 +257,12 @@ Codemagic Flutter workflow editor works almost the same. You can find the option
 Then, choose the correct API key in your workflow settings under iOS code signing. Check `Automatic` under `Select code signing method` and select the provisioning profile type under `Provisioning profile type`. If the certificates and profiles do not exist, Codemagic will attempt to generate them. Take note that Apple only allows three distribution certificates per account. 
 
 Unlike Bitrise's `Manage iOS Code Signing` step, there is no need to add further steps to code sign the application.
+
+##### Manual iOS code signing
+
+If you have already set up manual code signing on Bitrise, it is easy to set it up on Codemagic. You can download the files you have uploaded on Bitrise under the applications `Code Signing` tab. After that, navigate to your workflow in Codemagic and upload these under `iOS code signing` once the code signing method is set to `manual`.
+
+Like Bitrise, you can upload multiple provisioning profiles, for example, to handle application extensions. However, unlike Bitrise's `Certificate and profile installer` step, no extra step is required with Codemagic.
 
 #### Deployment
 
@@ -278,7 +278,7 @@ Once you have connected the account, navigate to **Distribution** > **App Store 
 
 To build your Flutter Android project with Flutter workflow editor, navigate to your workflow, and under `Build for platforms` select `Android`. Additional arguments can be defined under the `Build` section.
 
-#### Code signing
+#### Android code signing
 
 If you have already set up Android code signing on Bitrise, you can download your keystore under your workflows `Code Signing` tab. Setting up the code signing in the Codemagic Flutter workflow editor works similarly to Bitrise.
 
