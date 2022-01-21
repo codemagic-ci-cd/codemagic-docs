@@ -37,7 +37,7 @@ Pushing Git tags from Codemagic to your repository requires **write access** to 
 
   Where:
 
-  * `BUILD_NUMBER` is the read-only environment variable that holds the total count of builds for this project in Codemagic.
+  * `BUILD_NUMBER` is the built-in environment variable that holds the total count of builds for this project in Codemagic.
   * `your-username` is your Git service username
   * `APP_PASSWORD_ENV_VARIABLE` is the name of the environment variable that holds your app password / personal access token.
   * `your-git-service.com` is the name of your Git service, e.g. github.com, bitbucket.com, or gitlab.com.

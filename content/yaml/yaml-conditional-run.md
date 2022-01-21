@@ -65,7 +65,7 @@ The `condition` you specify will be evaluated during the build. The build will b
 
 You can use logical operators in condition, e.g. `==`, `not`, `and`, `or`.
 
-Environment variables are available under the `env` variable. You can check [read-only](https://docs.codemagic.io/variables/environment-variables/) or other environment variables.
+Environment variables are available under the `env` variable. You can check [built-in](https://docs.codemagic.io/variables/environment-variables/) or other environment variables.
 
 Webhook payload is available under the `event` variable. You can check the structure of the webhook payloads that your git provider sends on the **Webhooks** tab in application settings. Note that `event` is not available if the build is started manually from the UI or by a schedule.
 
