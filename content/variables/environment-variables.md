@@ -1,11 +1,11 @@
 ---
 description: Useful variables exported during builds
-title: Codemagic read-only environment variables
+title: Codemagic built-in environment variables
 weight: 1
 aliases: /building/environment-variables
 ---
 
-Codemagic exports several read-only environment variables during the build that you can use in scripts to customize the build process. Environment variables added by user will override Codemagic defaults. You can check which environment variables are exported by inserting the following script before or after any of the default build steps:
+Codemagic exports several built-in environment variables during the build that you can use in scripts to customize the build process. Environment variables added by user will override Codemagic defaults. You can check which environment variables are exported by inserting the following script before or after any of the default build steps:
 
 ```bash
 #!/bin/sh
@@ -13,7 +13,7 @@ set -ex
 printenv
 ```
 
-Here you'll find some of the read-only environment variables explained.
+Here you'll find some of the built-in environment variables explained.
 
 | **Environment variable** | **Value**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
