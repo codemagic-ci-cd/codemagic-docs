@@ -63,7 +63,11 @@ Use `condition` for checking values of environment variables or webhook payload 
 
 The `condition` you specify will be evaluated during the build. The build will be skipped if the condition evaluates to `false`.
 
-Information about the current environment is accessible under the `env` variable.
+You can use logical operators in condition, e.g. `==`, `not`, `and`, `or`.
+
+Environment variables are available under the `env` variable.
+
+Webhook payload is available under the `event` variable. You can check the structure of the webhook payloads that your git provider sends on the **Webhooks** tab in application settings. Note that `event` is not available if the build is started manually from the UI or by a schedule.
 
 For example, the build will continue if the triggering event was *not* a draft pull request update:
 
@@ -77,12 +81,6 @@ workflows:
     when:
       condition: not event.pull_request.draft
 ```
-
-Webhook payload is accessible under the `event` variable. Note that `event` is not available if the build is started manually from the UI or by a schedule.
-
-You can check the structure of the webhook payloads that your git provider sends on the **Webhooks** tab in application settings.
-
-Note that in addition to `not` it is possible to use other logical operators in conditions, e.g. `and`, `==`.
 
 ## Using `when` to run or skip build steps
 
