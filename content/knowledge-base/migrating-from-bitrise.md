@@ -4,7 +4,7 @@ title: Migrating from Bitrise
 weight: 13
 ---
 
-Codemagic makes use of [`codemagic.yaml`](../yaml/yaml-getting-started/) for configuring your workflow. Codemagic supports any Git-based cloud or self-hosted repository. Thus, there is no need to migrate your code; simply add a `codemagic.yaml` file to the repo. In Codemagic, there is also a [Flutter workflow editor](../flutter-configuration/flutter-projects/) for Flutter applications, which simplifies the setup but removes some flexibility.
+Codemagic makes use of [`codemagic.yaml`](../yaml/yaml-getting-started/) for configuring your workflow. Codemagic supports any Git-based cloud or self-hosted repository. Thus, there is no need to migrate your code; simply add a `codemagic.yaml` file to the repository. In Codemagic, there is also a [Flutter workflow editor](../flutter-configuration/flutter-projects/) for Flutter applications, which simplifies the setup but removes some flexibility.
 
 ## Migrating iOS builds with codemagic.yaml
 
@@ -56,6 +56,8 @@ scripts:
     script: xcode-project use-profiles
 ```
 
+Thus, all of your important data is stored in the same place and you are provided with a lot of flexibility on where and how to use it.
+
 #### Automatic
 
 Codemagic uses the [App Store Connect API](../yaml-code-signing/signing-ios/#creating-the-app-store-connect-api-key) for managing signing profiles and certificates. Bitrise uses the same API in the `Manage iOS Code Signing` step.
@@ -81,6 +83,8 @@ scripts:
   - name: Set up code signing settings on Xcode project
     script: xcode-project use-profiles
 ```
+
+As you can use Codemagic's automatic code signing to create new profiles and certificates, the process is very easily manageable. 
 
 ### Building
 
