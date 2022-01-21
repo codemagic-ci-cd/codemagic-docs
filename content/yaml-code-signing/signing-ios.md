@@ -8,7 +8,7 @@ aliases: [../code-signing-yaml/signing, /code-signing-yaml/signing-ios]
 All iOS applications have to be digitally signed before they can be installed on real devices or made available to the public.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Signing iOS apps using the Flutter workflow editor](../code-signing/ios-code-signing).
+This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** and signing options are needed out of the box, please go to [Signing iOS apps using the Flutter workflow editor](../code-signing/ios-code-signing).
 {{</notebox>}}
 
 ## Prerequisites
