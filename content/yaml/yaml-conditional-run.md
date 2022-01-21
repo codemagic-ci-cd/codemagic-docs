@@ -63,7 +63,7 @@ Use `condition` for checking values of environment variables or webhook payload 
 
 The `condition` you specify will be evaluated during the build. The build will be skipped if the condition evaluates to `false`.
 
-The current environment is accessible under the `env` variable.
+Information about the current environment is accessible under the `env` variable.
 
 For example, the build will continue if the triggering event was *not* a draft pull request update:
 
