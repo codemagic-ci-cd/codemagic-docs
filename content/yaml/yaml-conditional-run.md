@@ -13,16 +13,6 @@ Include `[skip ci]` or `[ci skip]` in your commit message, if you do not wish Co
 
 Add the `when` key to the workflow root to either skip or run it depending on the specified `changeset` and `condition`.
 
-For example, a workflow or script step will run if recent changes include changes to Markdown files (`.md`) *and* the current build is triggered by a PR update webhook and the PR is not a draft PR.
-
-```yaml
-when:
-  changeset:
-    includes:
-      - '**/*.md'
-  condition: event.pull_request.draft == false
-```
-
 ### Using `changeset` inside `when`
 
 You can avoid unnecessary builds when functional components of your repository were not modified. Use conditional workflow triggering to skip building the workflow if the watched files were not updated since the last successful build.
@@ -73,23 +63,24 @@ Use `condition` for checking values of environment variables or webhook payload 
 
 The `condition` you specify will be evaluated during the build. The build will be skipped if the condition evaluates to `false`.
 
-The current environment is accessible under the `env` variable.
+You can use logical operators in condition, e.g. `==`, `not`, `and`, `or`.
 
-For example, the build will not run if the current branch is not master:
+Environment variables are available under the `env` variable. You can check [read-only](https://docs.codemagic.io/variables/environment-variables/) or other environment variables.
+
+Webhook payload is available under the `event` variable. You can check the structure of the webhook payloads that your git provider sends on the **Webhooks** tab in application settings. Note that `event` is not available if the build is started manually from the UI or by a schedule.
+
+For example, the build will continue if the triggering event was *not* a draft pull request update:
 
 ```yaml
 workflows:
-  build-master:
-    name: Build master branch
+  build:
+    name: Build on PR update
+    triggering:
+      events:
+        - pull_request
     when:
-      condition: env.FCI_BRANCH != 'master'
+      condition: not event.pull_request.draft
 ```
-
-Webhook payload is accessible under the `event` variable. Note that `event` is not available if the build is started manually from the UI or by a schedule.
-
-Be sure to check the webhook event body in your application settings on the Webhooks tab.
-
-Note that in addition to `and` it is possible to use other logical operators in conditions, e.g. `not`, `or`.
 
 ## Using `when` to run or skip build steps
 
