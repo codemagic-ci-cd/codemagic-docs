@@ -65,7 +65,7 @@ The `condition` you specify will be evaluated during the build. The build will b
 
 The current environment is accessible under the `env` variable.
 
-For example, the build will continue if it was not triggered by a draft pull request update:
+For example, the build will continue if the triggering event was *not* a draft pull request update:
 
 ```yaml
 workflows:
