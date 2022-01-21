@@ -80,7 +80,7 @@ workflows:
 
 Webhook payload is accessible under the `event` variable. Note that `event` is not available if the build is started manually from the UI or by a schedule.
 
-Please check the structure of the webhook payloads that your git provider sends. **Webhooks** tab in application settings contains recently received webhooks.
+You can check the structure of the webhook payloads that your git provider sends on the **Webhooks** tab in application settings.
 
 Note that in addition to `not` it is possible to use other logical operators in conditions, e.g. `and`, `==`.
 
