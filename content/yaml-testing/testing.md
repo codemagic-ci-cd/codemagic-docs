@@ -298,7 +298,7 @@ macOS UI Testing is only supported on Xcode 13 images and above as it requires S
 test_report: build/macos/test/*.xml
 ```
 
-For macOS tests, no destination is specified. Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
+For macOS tests, no destination is specified. Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about optional arguments to `xcode-project run-tests`.
 
 ## Native Android
 
