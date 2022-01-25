@@ -281,6 +281,25 @@ workflows:
 
 Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
 
+## Native macOS 
+
+{{<notebox>}}
+macOS UI Testing is only supported on Xcode 13 images and above as it requires System Integrity Protection (SIP) to be disabled for accessing the accessibility permissions. Older images with Xcode 12 and below do not have SIP disabled and are unsuitable for UI testing macOS apps.
+{{</notebox>}}
+
+```bash
+- name: macOS test
+  script: |
+    xcode-project run-tests \
+        --project MyAwesomeApp.xcodeproj \
+        --scheme MyAwesomeApp \
+        --sdk macosx \
+        --output-dir build/macos/test
+test_report: build/macos/test/*.xml
+```
+
+For macOS tests, no destination is specified. Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
+
 ## Native Android
 
 For non-UI tests or unit tests:
