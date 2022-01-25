@@ -294,6 +294,7 @@ macOS UI Testing is only supported on Xcode 13 images and above as it requires S
         --project MyAwesomeApp.xcodeproj \
         --scheme MyAwesomeApp \
         --sdk macosx \
+        --test-xcargs "CODE_SIGNING_ALLOWED='no'" \
         --output-dir build/macos/test
   test_report: build/macos/test/*.xml
 ```
