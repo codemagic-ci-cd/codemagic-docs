@@ -7,7 +7,7 @@ aliases:
 
 To access a variable, add the `$` symbol in front of its name. For example, access `API_TOKEN` by using `$API_TOKEN`. Note that it is required to use quotation marks with multi-line variables when you are referencing them in custom scripts.
 
-## Accessing self-defined variables across scripts
+## Accessing self-defined variables across the workflow
 
 By default, if you define an environment variable inside your script, you can only use it within the script itself. However, it is possible to modify your script to use the variables in other parts of the workflow.
 
