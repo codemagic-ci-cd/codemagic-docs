@@ -7,6 +7,24 @@ aliases:
 
 To access a variable, add the `$` symbol in front of its name. For example, access `API_TOKEN` by using `$API_TOKEN`. Note that it is required to use quotation marks with multi-line variables when you are referencing them in custom scripts.
 
+## Accessing self-defined variables across scripts
+
+By default, if you define an environment variable inside your script, you can only use it within the script itself. However, it is possible to modify your script to use the variables in other parts of the workflow.
+
+You can do this by writing a `"KEY=value"` pair to the `$CM_ENV` environment variable.
+
+### Creating a cross-script variable on UNIX (macOS and Linux)
+
+```yaml
+echo "KEY=value" >> $CM_ENV
+```
+
+### Creating a cross-script variable on Windows
+
+```yaml
+Add-Content -Path $env:CM_ENV -Value "KEY=value"
+```
+
 ## Accessing environment variables from your application
 
 The following examples show how to place your Google Maps API key into an Android or iOS application from an environment variable. With this approach you will not have to store your secret key in the repository.
