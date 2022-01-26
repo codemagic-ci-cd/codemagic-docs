@@ -7,13 +7,13 @@ aliases:
 
 To access a variable, add the `$` symbol in front of its name. For example, access `API_TOKEN` by using `$API_TOKEN`. Note that it is required to use quotation marks with multi-line variables when you are referencing them in custom scripts.
 
-## Setting variables during the build
+## Setting environment variables during the build
 
 By default, if you define an environment variable inside your script, you can only use it within the script itself. However, you can make an environment variable available to any subsequent parts of your workflow by defining or updating the environment variable and writing it to the `CM_ENV` environment file.
 
 Specifically, you can do this by writing a `"KEY=value"` pair to the `CM_ENV` environment file. `CM_ENV` can contain multiple environment variables separated by newlines. Instructions on how to write variables to the file can be found below.
 
-### Writing to an environment file on UNIX (macOS and Linux)
+### Setting an environment variable on macOS and Linux
 
 ```yaml
 echo "KEY=value" >> $CM_ENV
@@ -21,7 +21,7 @@ echo "KEY=value" >> $CM_ENV
 
 You can then reference the variable in subsequent parts of your workflow by using `$KEY`.
 
-### Writing to an environment file on Windows
+### Setting an environment variable on Windows
 
 ```yaml
 Add-Content -Path $env:CM_ENV -Value "KEY=value"
