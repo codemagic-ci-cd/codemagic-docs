@@ -19,11 +19,15 @@ Specifically, you can do this by writing a `"KEY=value"` pair to the `CM_ENV` en
 echo "KEY=value" >> $CM_ENV
 ```
 
+You can then reference the variable in subsequent parts of your workflow by using `$KEY`.
+
 ### Writing to an environment file on Windows
 
 ```yaml
 Add-Content -Path $env:CM_ENV -Value "KEY=value"
 ```
+
+You can then reference the variable in subsequent parts of your workflow by using `$env:KEY`.
 
 ## Accessing environment variables from your application
 
