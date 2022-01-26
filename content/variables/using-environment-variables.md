@@ -9,9 +9,9 @@ To access a variable, add the `$` symbol in front of its name. For example, acce
 
 ## Accessing self-defined variables across the workflow
 
-By default, if you define an environment variable inside your script, you can only use it within the script itself. However, it is possible to modify your script to use the variables in other parts of the workflow.
+By default, if you define an environment variable inside your script, you can only use it within the script itself. However, it is possible to modify your script to use the variables in subsequent parts of your workflow.
 
-You can do this by writing a `"KEY=value"` pair to the `$CM_ENV` environment variable.
+You can do this by writing a `"KEY=value"` pair to the `CM_ENV` environment file. `CM_ENV` can contain multiple environment variables separated by newlines. Instructions on how to write variables to the file can be found below.
 
 ### Creating a cross-script variable on UNIX (macOS and Linux)
 
