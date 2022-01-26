@@ -7,6 +7,28 @@ aliases:
 
 To access a variable, add the `$` symbol in front of its name. For example, access `API_TOKEN` by using `$API_TOKEN`. Note that it is required to use quotation marks with multi-line variables when you are referencing them in custom scripts.
 
+## Setting environment variables during the build
+
+By default, if you define an environment variable inside your script, you can only use it within the script itself. However, you can make an environment variable available to any subsequent step of your workflow by defining or updating the environment variable and writing it to the `CM_ENV` environment file.
+
+Specifically, you can do this by writing a `"KEY=value"` pair to the `CM_ENV` environment file. `CM_ENV` can contain multiple environment variables separated by newlines. Instructions on how to write variables to the file can be found below.
+
+### Setting an environment variable on macOS and Linux
+
+```yaml
+echo "KEY=value" >> $CM_ENV
+```
+
+You can then reference the variable in subsequent parts of your workflow by using `$KEY`.
+
+### Setting an environment variable on Windows
+
+```yaml
+Add-Content -Path $env:CM_ENV -Value "KEY=value"
+```
+
+You can then reference the variable in subsequent parts of your workflow by using `$env:KEY`.
+
 ## Accessing environment variables from your application
 
 The following examples show how to place your Google Maps API key into an Android or iOS application from an environment variable. With this approach you will not have to store your secret key in the repository.
