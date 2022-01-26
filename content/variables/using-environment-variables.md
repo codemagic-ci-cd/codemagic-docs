@@ -29,6 +29,28 @@ Add-Content -Path $env:CM_ENV -Value "KEY=value"
 
 You can then reference the variable in subsequent parts of your workflow by using `$env:KEY`.
 
+### Example usage
+
+The variables that you write to the `CM_ENV` environment file work with both `codemagic.yaml` and `Flutter Workflow Editor` configurations. Note that the examples below are specific to Linux and macOS build machines. On Windows machines, the correct way to reference an environment variable is using `$env:KEY`.
+
+#### codemagic.yaml
+
+```yaml
+scripts:
+  - name: Set the value
+    script: |
+      echo "KEY=value" >> $CM_ENV
+  - name: Use the value
+    script: |
+      echo $CM_ENV # This will output 'value'
+```
+
+#### Workflow Editor
+
+In the `Flutter Workflow Editor` you can set the variable in any of the custom scripts (e.g. `Post-clone script`) by adding `echo "KEY=value" >> $CM_ENV`.
+
+The set variable can then be used in any other subsequent custom script step or for example as an argument in any other subsequent part of the workflow. For example under iOS build arguments as `--flavor=$KEY`.
+
 ## Accessing environment variables from your application
 
 The following examples show how to place your Google Maps API key into an Android or iOS application from an environment variable. With this approach you will not have to store your secret key in the repository.
