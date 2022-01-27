@@ -6,12 +6,12 @@ weight: 2
 
 ## Troubleshooting Gradle Plugin Errors
 
-Android users experiencing issues resolving plugins because of the outage of JCenter or Bintray.
+Android users experiencing issues resolving plugins because of the sunset of JCenter or Bintray.
 
-On February 3 2021, [JFrog announced that they will be shutting down Bintray and JCenter](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/). 
+On February 3 2021, JFrog, the company that maintains the JCenter, [announced that they will be shutting down Bintray and JCenter](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/). 
 
-To avoid disruptions to your build pipelines avoid using JCenter or Bintray and should start migrating to a new hosting solution.
-Existing packages can still be downloaded until February 1st 2022. After that, projects that have dependencies hosted in JCenter will fail fetching packages and stop compiling.
+To avoid disruptions to your build pipelines start migrating to a new hosting solution, rather than using JCenter or Bintray.
+There is no guarantee that old packages will be available for downloading after February 1st 2022. Thereafter, projects that have dependencies hosted in JCenter will fail fetching packages and stop compiling.
 
 ### Steps to prepare your build for the JCenter shutdown:
 
@@ -28,9 +28,9 @@ Existing packages can still be downloaded until February 1st 2022. After that, p
 - Run your build pipeline to see if everything works still.
   - If your build is successful, you’re done.
   - If your build fails, you’ll need to troubleshoot which dependencies still require JCenter. 
-  The errors in the failed build step will point out the dependecies requiring JCenter.
+  The errors in the failed build step will point out the dependecies requiring JCenter. Also, disable or delete cache.
   
-  #### Important Resources to look at:
+  #### Important resources to look at:
   - https://blog.gradle.org/plugins-jcenter
   - https://stackoverflow.com/questions/70687342/jcenter-bintray-com-is-down-error-502-bad-gateway
 
