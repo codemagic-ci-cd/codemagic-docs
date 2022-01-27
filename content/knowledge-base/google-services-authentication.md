@@ -1,7 +1,7 @@
 ---
 title: Authenticating with Google services using a service account
 description: How to set up a service account for authentication with Google Play and Firebase
-weight: 6
+weight: 7
 aliases: /knowledge-base/google-play-api
 ---
 
