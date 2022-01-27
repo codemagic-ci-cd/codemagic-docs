@@ -6,7 +6,7 @@ weight: 2
 
 ## Troubleshooting Gradle Plugin Errors
 
-Android users experiencing issues resolving plugins because of the sunset of JCenter or Bintray.
+Android users experiencing issues resolving plugins because of the sunset of JCenter.
 
 On February 3 2021, JFrog, the company that maintains the JCenter, [announced that they will be shutting down Bintray and JCenter](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/). 
 
@@ -25,10 +25,11 @@ There is no guarantee that old packages will be available for downloading after 
         //other repos
     }
 ```
+- Disable or delete cache.
 - Run your build pipeline to see if everything works still.
   - If your build is successful, you’re done.
   - If your build fails, you’ll need to troubleshoot which dependencies still require JCenter. 
-  The errors in the failed build step will point out the dependecies requiring JCenter. Also, disable or delete cache.
+  The errors in the failed build step will point out the dependecies requiring JCenter.
   
   #### Important resources to look at:
   - https://blog.gradle.org/plugins-jcenter
