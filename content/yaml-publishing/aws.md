@@ -5,7 +5,7 @@ weight: 7
 aliases: [/publishing/publish-build-artifacts-to-amazon-s3, /flutter-publishing/publish-build-artifacts-to-amazon-s3, /knowledge-base/publish-build-artifacts-to-amazon-s3]
 ---
 
-You can use custom scripts to publish your app artifacts to external sources. Here's an example for publishing to [Amazon S3](https://aws.amazon.com/s3/).
+In order to publish your web application to AWS S3:
 
 1.  You will first need to provide Codemagic access to your Amazon S3 account for publishing. Add your credentials as [environment variables](..variables/environment-variable-groups) named `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` respectively to a group in the Codemagic UI which you can reference in your `codemagic.yaml` file. In the below example, we have created a group called `aws_credentials`. Make sure to select **Secure** when adding them.
 
@@ -17,14 +17,11 @@ You can follow the [instructions](https://aws.amazon.com/getting-started/hands-o
 environment:
     groups:
       - aws_credentials
-  ... your other build steps
 scripts:
-  ... your dependencies installation
   - name: Update S3 bucket
     script: |
         sudo pip3 install awscli --upgrade
         aws s3 sync <FOLDER OR FILE> s3://<BUCKET_NAME>
-  ... your build commands
 ```
 
 Now, each time you build the workflow, the app artifact will be published to your Amazon S3 bucket.

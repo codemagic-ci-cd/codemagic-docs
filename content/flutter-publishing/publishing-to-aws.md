@@ -4,9 +4,11 @@ title: Amazon S3
 weight: 7
 ---
 
-You can use custom scripts to publish your app artifacts to external sources. Here's an example for publishing to [Amazon S3](https://aws.amazon.com/s3/).
+In order to publish your web application to AWS S3:
 
-In order to publish your web application to AWS S3, you simply need to navigate to your workflows **Distribution** section and provide the values for `AWS access key ID`, `AWS secret access Key` and `Bucket name`. In addition, make sure to select `Enable AWS S3 bucket publishing`.
+1. Navigate to your workflows **Distribution** section
+2. Select `Enable AWS S3 bucket publishing`.
+3. Provide the values for `AWS access key ID`, `AWS secret access Key` and `Bucket name`.
 
 You can follow the [instructions](https://aws.amazon.com/getting-started/hands-on/backup-to-s3-cli/) provided by Amazon to create your account and get the necessary details.
 
