@@ -39,7 +39,7 @@ echo 'line_one\nline_two' >> $CM_ENV
 echo 'DELIMITER' >> $CM_ENV
 ```
 
-Note that the example is specific to Linux and MacOS machines, but works similarly on Windows instances.
+Note that the example is specific to Linux and macOS machines but the same principles apply when building on Windows.
 
 The `DELIMITER` keyword can be replaced by any word of your choice, however, make sure that the delimiter in the end and start match.
 
