@@ -29,6 +29,20 @@ Add-Content -Path $env:CM_ENV -Value "KEY=value"
 
 You can then reference the variable in subsequent parts of your workflow by using `$env:KEY`.
 
+### Setting a multiline environment variable
+
+To add a multiline environment variable, you need to use `<<` instead of an `=` to mark the end of the key in the key-value pair. In addition, set a delimiter to mark the start and the end of the variable. 
+
+In the following example, the `DELIMITER` keyword can be replaced by any word of your choice, however, make sure that the delimiter at the beginning and at the end match.
+
+```yaml
+echo 'MULTILINE_VAR<<DELIMITER' >> $CM_ENV
+echo 'line_one\nline_two' >> $CM_ENV
+echo 'DELIMITER' >> $CM_ENV
+```
+
+Note that the example is specific to Linux and macOS machines but the same principles apply when building on Windows.
+
 ## Accessing environment variables from your application
 
 The following examples show how to place your Google Maps API key into an Android or iOS application from an environment variable. With this approach you will not have to store your secret key in the repository.
