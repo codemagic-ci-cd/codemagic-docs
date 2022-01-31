@@ -7,7 +7,7 @@ aliases: [/publishing/publish-build-artifacts-to-amazon-s3, /flutter-publishing/
 
 In order to publish your web application to AWS S3:
 
-1.  You will first need to provide Codemagic access to your Amazon S3 account for publishing. Add your credentials as [environment variables](..variables/environment-variable-groups) named `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` respectively to a group in the Codemagic UI which you can reference in your `codemagic.yaml` file. In the below example, we have created a group called `aws_credentials`. Make sure to select **Secure** when adding them.
+1.  You will first need to provide Codemagic access to your Amazon S3 account for publishing. In the Codemagic UI, add your credentials as [environment variables](..variables/environment-variable-groups) named `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` respectively (make sure to select **Secure** when adding them) and save them to a group that you can reference in your `codemagic.yaml` file. In the below example, we have created a group called `aws_credentials`.
 
 You can follow the [instructions](https://aws.amazon.com/getting-started/hands-on/backup-to-s3-cli/) provided by Amazon to create your account and get the necessary details.
 
