@@ -33,7 +33,7 @@ You can then reference the variable in subsequent parts of your workflow by usin
 
 To add a multiline environment variable, you need to use `<<` instead of an `=` to mark the end of the key in the key-value pair. In addition, set a delimiter to mark the start and the end of the variable. 
 
-In the following example, the `DELIMITER` keyword can be replaced by any word of your choice, however, make sure that the delimiter in the end and start match.
+In the following example, the `DELIMITER` keyword can be replaced by any word of your choice, however, make sure that the delimiter at the beginning and at the end match.
 
 ```yaml
 echo 'MULTILINE_VAR<<DELIMITER' >> $CM_ENV
