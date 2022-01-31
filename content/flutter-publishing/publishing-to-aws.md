@@ -6,7 +6,7 @@ weight: 7
 
 In order to publish your web application to AWS S3:
 
-1. Navigate to your workflows **Distribution** section
+1. Navigate to your workflow's **Distribution** section.
 2. Select `Enable AWS S3 bucket publishing`.
 3. Provide the values for `AWS access key ID`, `AWS secret access Key` and `Bucket name`.
 
