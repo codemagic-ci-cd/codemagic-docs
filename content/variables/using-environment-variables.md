@@ -31,17 +31,17 @@ You can then reference the variable in subsequent parts of your workflow by usin
 
 ### Setting a multiline environment variable
 
-To add a multiline environment variable, you need to use `<<` instead of an `=` to mark the end of the key in the key-value pair. In addition, set a delimiter to mark the start and the end of the variable.
+To add a multiline environment variable, you need to use `<<` instead of an `=` to mark the end of the key in the key-value pair. In addition, set a delimiter to mark the start and the end of the variable. 
+
+In the following example, the `DELIMITER` keyword can be replaced by any word of your choice, however, make sure that the delimiter in the end and start match.
 
 ```yaml
-echo 'JSON_RESPONSE<<DELIMITER' >> $CM_ENV
+echo 'MULTILINE_VAR<<DELIMITER' >> $CM_ENV
 echo 'line_one\nline_two' >> $CM_ENV
 echo 'DELIMITER' >> $CM_ENV
 ```
 
 Note that the example is specific to Linux and macOS machines but the same principles apply when building on Windows.
-
-The `DELIMITER` keyword can be replaced by any word of your choice, however, make sure that the delimiter in the end and start match.
 
 ## Accessing environment variables from your application
 
