@@ -1,7 +1,7 @@
 ---
 description: How to upload an apk or ipa file to App Center in a Flutter workflow editor post-build script
 title: Publish app artifacts to App Center
-weight: 7
+weight: 6
 aliases: [/publishing/publish-app-artifacts-to-app-center, /flutter-publishing/publish-app-artifacts-to-app-center]
 ---
 

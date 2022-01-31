@@ -1,7 +1,7 @@
 ---
 description: How to use Github packages for private dependencies 
 title: Using private packages / dependencies
-weight: 12
+weight: 11
 ---
 
 Accessing GitHub pasckages for private dependencies requires the following steps:

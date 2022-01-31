@@ -1,7 +1,7 @@
 ---
 title: Shared dashboards
 description: Use public links to distribute builds and artifacts in codemagic.yaml
-weight: 11
+weight: 12
 aliases: /publishing-yaml/public-dashboards, /yaml-publishing/public-dashboards
 ---
 

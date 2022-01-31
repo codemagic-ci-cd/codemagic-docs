@@ -1,7 +1,7 @@
 ---
 description: How to publish build release notes using the Flutter workflow editor
 title: Passing release notes
-weight: 11
+weight: 12
 aliases: /publishing/publish-release-notes
 ---
 

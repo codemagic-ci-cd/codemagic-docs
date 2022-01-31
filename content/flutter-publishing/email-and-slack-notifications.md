@@ -1,7 +1,7 @@
 ---
 description: How to configure build status updates with links to artifacts in the Flutter workflow editor
 title: Email and Slack notifications
-weight: 10
+weight: 11
 aliases: /publishing/email-and-slack-notifications
 ---
 

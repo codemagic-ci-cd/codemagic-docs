@@ -1,7 +1,7 @@
 ---
 description: How to configure build status updates to Slack with links to artifacts in codemagic.yaml
 title: Slack
-weight: 8
+weight: 9
 ---
 
 Integrate Slack publishing into your Codemagic build pipeline to get notified when a build starts and receive build artifacts or logs when the build finishes.

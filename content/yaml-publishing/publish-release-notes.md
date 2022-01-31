@@ -1,7 +1,7 @@
 ---
 description: How to pass release notes with successful builds
 title: Passing release notes
-weight: 10
+weight: 11
 aliases: /publishing-yaml/publish-release-notes
 ---
 
