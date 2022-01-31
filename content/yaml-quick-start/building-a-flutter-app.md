@@ -35,7 +35,7 @@ For documentation on building Flutter projects using the workflow editor, please
 ## Android builds
 
 {{<notebox>}}
-You can find an up-to-date codemagic.yaml Flutter Android workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/flutter/flutter-yaml-demo-project/codemagic.yaml#L2).
+You can find an up-to-date codemagic.yaml Flutter Android workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/flutter/flutter-android-and-ios-yaml-demo-project/codemagic.yaml#L2).
 {{</notebox>}}
 
 Set up local properties
@@ -153,7 +153,7 @@ workflows:
 ## iOS builds
 
 {{<notebox>}}
-You can find an up-to-date codemagic.yaml Flutter iOS workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/flutter/flutter-yaml-demo-project/codemagic.yaml#L72).
+You can find an up-to-date codemagic.yaml Flutter iOS workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/flutter/flutter-android-and-ios-yaml-demo-project/codemagic.yaml#L72).
 {{</notebox>}}
 
 ### Building an unsigned application .app
