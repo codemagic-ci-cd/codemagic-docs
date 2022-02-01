@@ -63,7 +63,7 @@ Here's an example of all the keys and the respective groups that you can create 
 APP_STORE_CONNECT_KEY_IDENTIFIER | Put your App Store Connect Key Identifier here | appstore_credentials
 APP_STORE_CONNECT_ISSUER_ID | Put your App Store Connect Issuer Id here  | appstore_credentials
 APP_STORE_CONNECT_PRIVATE_KEY | Put your App Store Connect Private Key here | appstore_credentials
-CERTIFICATE_PRIVATE_KEY | Put your Certificate Private Key here | certificate_credentials
+CERTIFICATE_PRIVATE_KEY | Put your Certificate Private Key here | appstore_credentials
  
 You can use the private key of an iOS Distribution certificate that has already been created in your Apple Developer Program account. 
 
@@ -186,7 +186,7 @@ You can put the variables into a group for accessing them in the workflow config
 --- | --- | ---
 FCI_CERTIFICATE | Put your signing certificate here  | certificate_credentials
 FCI_CERTIFICATE_PASSWORD | Put the certificate password here if it is password-protected | certificate_credentials
-FCI_PROVISIONING_PROFILE | Put your provisioning profile here | appstore_credentials
+FCI_PROVISIONING_PROFILE | Put your provisioning profile here | certificate_credentials
 
 Add the group in your `codemagic.yaml` to access the variables:
 
