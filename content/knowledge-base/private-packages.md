@@ -4,7 +4,7 @@ title: Using private packages / dependencies
 weight: 11
 ---
 
-Accessing GitHub pasckages for private dependencies requires the following steps:
+Accessing GitHub packages for private dependencies requires the following steps:
 
 1. Create a personal access token in [GitHub](https://github.com/settings/tokens)
 2. Encrypt the Personal access token in Codemagic by creating an envioronment variable group and marking the "Secure" checkbox. More information [here](https://docs.codemagic.io/variables/environment-variable-groups/)
