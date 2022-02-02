@@ -1,9 +1,10 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
-title: macOS build machine specification (Xcode 13.0+)
+title: macOS build machine specification (Xcode 13.3+)
 aliases:
-  - '../releases-and-versions/versions4'
-weight: 2
+  - '../releases-and-versions/versions5'
+  - '../specs/versions5'
+weight: 9
 ---
 
 ## Hardware
@@ -13,34 +14,34 @@ weight: 2
 
 ## System
 
-- System version `macOS 11.6.2 (20G314)`
-- Kernel version `Darwin 20.6.0`
-- Disk `322GB (Free Space: 131GB)`
+- System version `macOS 12.2 (21D49)`
+- Kernel version `Darwin 21.3.0`
+- Disk `322GB (Free Space: 149GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `23.1.7779620`
-- aws `2.4.6`
+- aws `2.4.15`
 - cocoapods `1.11.2`
-- cordova `10.0.0`
+- cordova `11.0.0`
 - curl
 - docker `20.10.2`
-- fastlane `2.199.0`
+- fastlane `2.203.0`
 - firebase `9.3.0`
 - flutter `2.8.1 ($HOME/programs/flutter)`
-- gem `3.2.33`
-- gh `2.3.0`
-- git `2.34.1`
+- gem `3.3.6`
+- gh `2.4.0`
+- git `2.35.1`
 - Google Cloud SDK `327.0.0`
 - gradle `7.3.1`
 - gsutil `4.58`
-- homebrew `3.3.9`
+- homebrew `3.3.13`
 - ionic `6.12.4`
 - jq
 - ktlint `0.43.2`
 - node `14.15.5`
-- npm `8.1.4`
+- npm `8.3.1`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
@@ -67,32 +68,31 @@ weight: 2
 
 ## Java versions
 
-- **17.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
+- **17.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
 - **16.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-16.jdk/Contents/Home`
-- **11.0.13** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_312** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **11.0.14** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_322** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
-## Xcode 13.2.1 (13C100)
+## Xcode 13.3 (13E5086k)
 
-This is the Xcode version used by default when you select `13.2`, `13.2.1`, `edge`, or `latest` in build settings in the workflow
-editor for Flutter apps or set Xcode version to the corresponding values in your codemagic.yaml file.
-Other available versions are listed [here](#other-xcode-versions).
+This is the Xcode version used by default when you select `13.3` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `13.3` in your codemagic.yaml file. 
 
-Xcode path: `/Applications/Xcode-13.2.1.app`
+Xcode path: `/Applications/Xcode-13.3.app`
 
-With Xcode `13.2.1` build version `13C100` the following runtimes and devices are installed:
+With Xcode `13.3` build version `13E5086k` the following runtimes and devices are installed:
 
 ### Runtimes
 
 - iOS 14.5
 - iOS 15.0
-- iOS 15.2
+- iOS 15.4
 - tvOS 14.5
 - tvOS 15.0
-- tvOS 15.2
+- tvOS 15.4
 - watchOS 7.4
 - watchOS 8.0
-- watchOS 8.3
+- watchOS 8.5
 
 ### Devices
 
@@ -131,9 +131,4 @@ With Xcode `13.2.1` build version `13C100` the following runtimes and devices ar
 - iPhone 8 Plus
 - iPhone SE (2nd generation)
 - iPod touch (7th generation)
-
-## Other Xcode versions
-
-- 13.1 (13A1030d) `/Applications/Xcode-13.1.app`
-- 13.0 (13A233) `/Applications/Xcode-13.0.app`
 
