@@ -17,3 +17,8 @@ publishing:
       success: false # To not receive a notification when a build succeeds
       failure: false # To not receive a notification when a build fails
 ```
+
+
+When you set up email or Slack publishing, Codemagic publishes the following artifacts:
+
+- `app`, `ipa`, `apk`, the archive with Flutter web build directory, Linux application bundle files, Windows MSIX packages
