@@ -45,7 +45,8 @@ Codemagic macOS build machines come with a range of Xcode versions and runtimes 
 
 The currently available Xcode versions are as follows:
 
-* [Xcode 13.0+ base image](../specs/versions4/): `13.0`, `13.1`, `13.2.1`
-* [Xcode 12.5 base image](../specs/versions3/): `12.5.1`, `12.5`, `12.4`
-* [Xcode 12.0 - 12.4 base image](../specs/versions2/): `12.4`, `12.3`, `12.2`, `12.1.1`, `12.0.1`
-* [Xcode 11.x base image](../specs/versions/): `11.7`, `11.6`,  `11.5`. `11.4.1`,  `11.3.1`. `11.2.1`, `11.1`. `11.0` 
+* [Xcode 13.3+ base image](../specs/versions-macos-xcode-13-3/): `13.3`
+* [Xcode 13.0 - 13.2 base image](../specs/versions-macos-xcode-13-0/): `13.0`, `13.1`, `13.2.1`
+* [Xcode 12.5 base image](../specs/versions-macos-xcode-12-5/): `12.5.1`, `12.5`, `12.4`
+* [Xcode 12.0 - 12.4 base image](../specs/versions-macos-xcode-12-0/): `12.4`, `12.3`, `12.2`, `12.1.1`, `12.0.1`
+* [Xcode 11.x base image](../specs/versions-macos-xcode-11/): `11.7`, `11.6`,  `11.5`. `11.4.1`,  `11.3.1`. `11.2.1`, `11.1`. `11.0` 

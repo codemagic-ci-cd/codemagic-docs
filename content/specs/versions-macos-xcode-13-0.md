@@ -75,7 +75,7 @@ weight: 7
 
 ## Xcode 13.2.1 (13C100)
 
-This is the Xcode version used by default when you select `13.2`, `13.2.1`, `edge`, or `latest` in build settings in the workflow
+This is the Xcode version used by default when you select `13.2`, `13.2.1` or `latest` in build settings in the workflow
 editor for Flutter apps or set Xcode version to the corresponding values in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
