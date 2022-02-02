@@ -19,6 +19,6 @@ publishing:
 ```
 
 
-When you set up email or Slack publishing, Codemagic publishes the following artifacts:
+When you set up email publishing, Codemagic publishes the following artifacts:
 
 - `app`, `ipa`, `apk`, the archive with Flutter web build directory, Linux application bundle files, Windows MSIX packages
