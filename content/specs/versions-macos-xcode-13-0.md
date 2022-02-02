@@ -1,28 +1,28 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
-title: macOS build machine specification (Unity, Xcode 13.0+)
-weight: 3
+title: macOS build machine specification (Xcode 13.0 - 13.2)
+aliases:
+  - '../releases-and-versions/versions4'
+  - '../specs/versions4'
+weight: 7
 ---
-<br>
-{{<notebox>}}
-The Unity SDK base image is not available by default. Please contact us [here](https://codemagic.io/contact/) to request access to the Unity SDK base image.
-{{</notebox>}}
 
 ## Hardware
 
+- Standard VM on Mac mini `2.3GHz Quad Core / 8GB`
 - Premium VM on Mac Pro `3.7GHz Quad Core / 32GB`
 
 ## System
 
 - System version `macOS 11.6.2 (20G314)`
 - Kernel version `Darwin 20.6.0`
-- Disk `322GB (Free Space: 136GB)`
+- Disk `322GB (Free Space: 137GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
-- Android NDK `22.1.7171670`
-- aws `2.4.7`
+- Android NDK `23.1.7779620`
+- aws `2.4.6`
 - cocoapods `1.11.2`
 - cordova `10.0.0`
 - curl
@@ -30,8 +30,8 @@ The Unity SDK base image is not available by default. Please contact us [here](h
 - fastlane `2.199.0`
 - firebase `9.3.0`
 - flutter `2.8.1 ($HOME/programs/flutter)`
-- gem `3.1.4`
-- gh `2.4.0`
+- gem `3.2.33`
+- gh `2.3.0`
 - git `2.34.1`
 - Google Cloud SDK `327.0.0`
 - gradle `7.3.1`
@@ -39,8 +39,9 @@ The Unity SDK base image is not available by default. Please contact us [here](h
 - homebrew `3.3.9`
 - ionic `6.12.4`
 - jq
+- ktlint `0.43.2`
 - node `14.15.5`
-- npm `8.3.0`
+- npm `8.1.4`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
@@ -72,12 +73,6 @@ The Unity SDK base image is not available by default. Please contact us [here](h
 - **11.0.13** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_312** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
-## Unity 2020.3.20f1
-
-UNITY_HOME: `/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app`
-
-Includes pre-installed modules for Linux, macOS, and WebGL build support.
-
 ## Xcode 13.2.1 (13C100)
 
 This is the Xcode version used by default when you select `13.2`, `13.2.1`, `edge`, or `latest` in build settings in the workflow
@@ -91,10 +86,13 @@ With Xcode `13.2.1` build version `13C100` the following runtimes and devices ar
 ### Runtimes
 
 - iOS 14.5
+- iOS 15.0
 - iOS 15.2
 - tvOS 14.5
+- tvOS 15.0
 - tvOS 15.2
 - watchOS 7.4
+- watchOS 8.0
 - watchOS 8.3
 
 ### Devices
@@ -138,4 +136,5 @@ With Xcode `13.2.1` build version `13C100` the following runtimes and devices ar
 ## Other Xcode versions
 
 - 13.1 (13A1030d) `/Applications/Xcode-13.1.app`
+- 13.0 (13A233) `/Applications/Xcode-13.0.app`
 

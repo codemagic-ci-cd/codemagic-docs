@@ -3,7 +3,8 @@ description: A list of tools available out-of-the-box on Codemagic build machine
 title: macOS build machine specification (Xcode 12.5)
 aliases:
   - '../releases-and-versions/versions3'
-weight: 4
+  - '../specs/versions3'
+weight: 6
 ---
 
 ## Hardware
