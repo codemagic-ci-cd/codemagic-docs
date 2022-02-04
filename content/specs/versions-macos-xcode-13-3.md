@@ -29,7 +29,7 @@ weight: 9
 - docker `20.10.2`
 - fastlane `2.203.0`
 - firebase `9.3.0`
-- flutter `2.8.1 ($HOME/programs/flutter)`
+- flutter `2.10.0 ($HOME/programs/flutter)`
 - gem `3.3.6`
 - gh `2.4.0`
 - git `2.35.1`
@@ -75,8 +75,8 @@ weight: 9
 
 ## Xcode 13.3 (13E5086k)
 
-This is the Xcode version used by default when you select `13.3` or `edge` in build settings in the workflow
-editor for Flutter apps or set Xcode version to the corresponding values in your codemagic.yaml file.
+This is the Xcode version used by default when you select `13.3` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `13.3` in your codemagic.yaml file. 
 
 Xcode path: `/Applications/Xcode-13.3.app`
 
