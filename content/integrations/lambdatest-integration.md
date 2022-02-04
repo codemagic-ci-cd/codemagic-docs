@@ -12,7 +12,7 @@ Registering with LambdaTest is required in order to be able to get the username 
 
 ## Configuring Real Time and App Automation with Codemagic
 
-**LambdaTest** offers two testing environments, **Real Time** and **App Automation**. Applications can be submitted to both testing environments through Codemagic using a cURL request. In order to configure them correctly, you will need two environment variables: **username** and **access token**. They can be found in the **LambdaTest UI** with your account. 
+**LambdaTest** offers two testing environments, **Real Time** and **App Automation**. Applications can be submitted to both testing environments through Codemagic using a cURL request. In order to configure them correctly, you will need two pieces of data: **username** and **access token**. They can be found in the **LambdaTest UI** with your account. 
 
 ## Real Time and App Automation
 
@@ -25,7 +25,7 @@ You can test your **.ipa** and **.apk** directly on real devices by submitting t
         curl --location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' --header 'Authorization: Basic $LAMBDATEST' --form 'name="lambda1"' --form 'appFile=@"app/build/outputs/apk/release/app-release.apk"'
 ```
 
-**$LAMBDATEST** environment variable is a custom name and can be named to anything preferred. More info can ber found [here](https://docs.codemagic.io/variables/environment-variable-groups/) about how to set up variable groups with Codemagic. The environment variable is the base64 encoded form of your username and access token. They need to be encoded with the following format [here](https://mixedanalytics.com/knowledge-base/api-connector-encode-credentials-to-base-64/):
+**$LAMBDATEST** environment variable is a custom name and can be named to anything preferred. More info can be found [here](https://docs.codemagic.io/variables/environment-variable-groups/) about how to set up variable groups with Codemagic. The environment variable is the base64 encoded form of your username and access token. They need to be encoded with the following format [here](https://mixedanalytics.com/knowledge-base/api-connector-encode-credentials-to-base-64/):
 
 ```
 username:accesstoken
