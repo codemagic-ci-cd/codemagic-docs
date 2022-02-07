@@ -45,7 +45,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - You will have to update your app accordingly to be able to publish to Google Play Store.
 
 ### You cannot rollout this release because it does not allow any existing users to upgrade to the newly added APKs
-   - The error message is because your new APK has a lower version code than the previous APK. Newer APKs must always have a higher version code than the previous version. Check your version code and upgrade it automatically.
+   - The error message is because your new APK has a lower version code than the previous APK. Newer APKs must always have a higher version code than the previous version. Check your version code and upgrade it to a higher version code.
 
 ### Package not found: com.xxxxx.app
    - The error 'Package not found' means that an application with the package name from the artifact generated during the builds doesn't exist in your Google Play account.
