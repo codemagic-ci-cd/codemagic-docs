@@ -38,7 +38,7 @@ chmod +x gradlew
 
 Android users experiencing issues resolving plugins because of the sunset of JCenter.
 
-On February 3 2021, JFrog, the company that maintains the JCenter, [announced that they will be shutting down Bintray and JCenter](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/). 
+On February 3, 2021, JFrog, the company that maintains JCenter, [announced that they will be shutting down Bintray and JCenter](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/). 
 
 To avoid disruptions to your build pipelines start migrating to a new hosting solution, rather than using JCenter or Bintray.
 There is no guarantee that old packages will be available for downloading after February 1st 2022. Thereafter, projects that have dependencies hosted in JCenter will fail fetching packages and stop compiling.
