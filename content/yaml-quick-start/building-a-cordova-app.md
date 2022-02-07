@@ -47,9 +47,7 @@ workflows:
     name: iOS workflow
     environment:
       groups:
-        - app_store_credentials # <-- Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY
-        - certificate_credentials # <-- Includes CERTIFICATE_PRIVATE_KEY
-        - other
+        - app_store_credentials # <-- Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY, CERTIFICATE_PRIVATE_KEY
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace" # <-- Put the name of your Xcode workspace here e.g. "platforms/ios/HelloCordova.xcworkspace"
