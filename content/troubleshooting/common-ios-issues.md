@@ -1,6 +1,6 @@
 ---
 description: How to overcome common issues building mobile apps on Codemagic 
-title: Common issues
+title: Common iOS issues
 weight: 4
 ---
 
@@ -35,37 +35,6 @@ This is the list of the most common issues that may cause iOS code signing error
 * **You haven't specified the iOS scheme to be used for the `archive` action of Xcode build.**  This applies when your app has custom iOS schemes. By default, Codemagic builds the `Runner` scheme, but you can use the `FCI_FLUTTER_SCHEME` [environment variable](../building/environment-variables) to specify another scheme.
 
 * **The bundle ID you have entered in automatic code signing setup on Codemagic does not match the bundle ID in the build configuration that is used for archiving the app with Xcode.** Codemagic assigns provisioning profiles to the build targets and configurations before building the iOS app. That assignment is based on the bundle ID match in both provisioning profile and the build configuration. In the case signing configuration is not assigned to the build target/configuration that is used for archiving, the build will fail.
-
-## Version inconsistency between local and Codemagic
-
-**Description**:
-Builds succeed locally but not on Codemagic and throw vague errors, such as `Gradle task bundleRelease failed with exit code 1`, or the build is successful, but some functions aren't working. 
-
-**Cause**: These issues are likely caused because plugin and gradle versions used locally are different from the versions used on Codemagic. If you are using a gradle version that is different from Codemagic, you have to define it in `gradle wrapper`. Otherwise, Codemagic ignores your `build.gradle` file, and your build won't work properly. See which [software versions Codemagic uses](../releases-and-versions/versions/).
-
-**Solution**: First, you need to make sure that the `gradlew` file isn't in `.gitignore`. Look for `**/android/gradlew`, and if it's in `.gitignore`, delete it from there. Then add `!gradle-wrapper.jar` to a new line in `.gitignore` to create an exception so that `gradle-wrapper.jar` would also be excluded from `.gitignore`.
-
-Run `./gradlew wrapper --gradle-version [your gradle version]` locally to create `gradlew` and `gradle-wrapper.properties` files in your repository. Commit the changes and rerun your Codemagic build. 
-
-**Additional steps**: Additional steps are required if you see the following error during the build process:
-
-`Error! Failed to check gradle version. Malformed executable tmpABCDEF/gradlew`
-
-Codemagic runs `./gradlew --version` on the builder side to check if it's suitable for execution. If you see the error message shown above, there is something wrong with checking the gradle version.
-
-**To investigate and fix the issues**:
-
-* Make a clean clone of the repository and execute the following commands:
-
-```bash
-cd <project_root>
-chmod +x gradlew
-./gradlew --version
-```
-
-* Make a fix for the issue found.
-* Commit changes to the repo.
-* Run the build again in Codemagic.
 
 ## iOS build hangs at `Xcode build done`
 
