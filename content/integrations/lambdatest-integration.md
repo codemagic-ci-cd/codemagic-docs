@@ -35,13 +35,40 @@ Base64 encoding the username and token [here](https://mixedanalytics.com/knowled
 
 As soon as your **.ipa** and **.apk** are successfully built, they will appear in the **LambdatTest UI** under **Real Device => Real Time**. Any preferred devices can be selected for testing with **Real Time**. 
 
-In order to see your tests being uploaded to the **App Automation**, tests need to be included in your project. As soon as tests are detected, they will be automatically uploaded to the **App Automation** section and all the results can be viewed there. However, in order to enable it, some capabilities must be injected into your project's test files:
+In order to see your tests being uploaded to the **App Automation**, tests need to be included in your project. As soon as tests are detected, they will be automatically uploaded to the **App Automation** section and all the results can be viewed there. However, in order to enable it, some capabilities must be injected into your project's test scripts:
+
+**For Android**:
+
+```    
+    DesiredCapabilities capabilities = new DesiredCapabilities();
+    capabilities.setCapability("platformName", "Android");
+    capabilities.setCapability("deviceName", "Google Pixel 3");
+    capabilities.setCapability("isRealMobile", true);
+    capabilities.setCapability("platformVersion","10");
+    capabilities.setCapability("app","lt://APP100202151634649275590734");
+    capabilities.setCapability("deviceOrientation", "PORTRAIT");
+    capabilities.setCapability("console",true);
+    capabilities.setCapability("network",true);
+    capabilities.setCapability("visual",true);
+```
+
+**For iOS**:
 
 ```
-DesiredCapabilities capabilities = new DesiredCapabilities(); capabilities.setCapability("platformName", "Android"); capabilities.setCapability("deviceName", "Google Pixel 3"); capabilities.setCapability("isRealMobile", true); capabilities.setCapability("platformVersion","10"); capabilities.setCapability("app","lt://APP100202151634649275590734"); capabilities.setCapability("deviceOrientation", "PORTRAIT"); capabilities.setCapability("console",true); capabilities.setCapability("network",true); capabilities.setCapability("visual",true);
+    DesiredCapabilities capabilities = new DesiredCapabilities();
+    capabilities.setCapability("platformName", "iOS");
+    capabilities.setCapability("deviceName", "iPhone 10");
+    capabilities.setCapability("isRealMobile", true);
+    capabilities.setCapability("platformVersion","10");
+    capabilities.setCapability("app","lt://APP100202151634649275590734");
+    capabilities.setCapability("deviceOrientation", "PORTRAIT");
+    capabilities.setCapability("console",true);
+    capabilities.setCapability("network",true);
+    capabilities.setCapability("visual",true);
+
 ```
 
-In these capabilities, the main part is **app URL** which is generated in the response of the cURL request:
+These capabitlies will allow **LambdaTest** to detect which platform you want to you execute your test scripts with. In these capabilities, the main part is **app URL** which is generated in the response of the cURL request:
 
 ```
 {"app_id":"APP10020171164383758036593","name":"lambda1","type":"android","app_url":"lt://APP10020171444643838005433352"}
