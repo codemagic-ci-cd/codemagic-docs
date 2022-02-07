@@ -192,9 +192,8 @@ workflows:
     max_build_duration: 120
     environment:
       groups:
-        - app_store_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY) - https://docs.codemagic.io/code-signing-yaml/signing-ios/
-        - certificate_credentials # <-- (Includes CERTIFICATE_PRIVATE_KEY)
-        - other # <-- (Includes APP_STORE_ID)
+        - app_store_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY, CERTIFICATE_PRIVATE_KEY) - https://docs.codemagic.io/code-signing-yaml/signing-ios/
+        - ios_config # <-- (Includes APP_STORE_ID)
         # Add the above group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         XCODE_WORKSPACE: 'Runner.xcworkspace'
