@@ -25,11 +25,13 @@ You can test your **.ipa** and **.apk** directly on real devices by submitting t
         curl --location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' --header 'Authorization: Basic $LAMBDATEST' --form 'name="lambda1"' --form 'appFile=@"app/build/outputs/apk/release/app-release.apk"'
 ```
 
-**$LAMBDATEST** environment variable is a custom name and can be named to anything preferred. More info can be found [here](https://docs.codemagic.io/variables/environment-variable-groups/) about how to set up variable groups with Codemagic. The environment variable is the base64 encoded form of your username and access token. They need to be encoded with the following format [here](https://mixedanalytics.com/knowledge-base/api-connector-encode-credentials-to-base-64/):
 
-```
-username:accesstoken
-```
+Base64 encoding the username and token [here](https://mixedanalytics.com/knowledge-base/api-connector-encode-credentials-to-base-64/) with the **username:accessToken** format is needed, then save the encoded string to Codemagic as an environment variable. So the steps would be as follow:
+
+1.Encode and save the username and access token into an env var.
+2.Run the scripts in yaml referencing that env var.
+
+**$LAMBDATEST** environment variable is a custom name and can be named to anything preferred. More info can be found [here](https://docs.codemagic.io/variables/environment-variable-groups/) about how to set up variable groups with Codemagic.
 
 As soon as your **.ipa** and **.apk** are successfully built, they will appear in the **LambdatTest UI** under **Real Device => Real Time**. Any preferred devices can be selected for testing with **Real Time**. 
 
