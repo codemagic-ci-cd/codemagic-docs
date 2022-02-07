@@ -28,14 +28,14 @@ You can test your **.ipa** and **.apk** directly on real devices by submitting t
 
 Base64 encoding the username and token [here](https://mixedanalytics.com/knowledge-base/api-connector-encode-credentials-to-base-64/) with the **username:accessToken** format is needed, then save the encoded string to Codemagic as an environment variable. So the steps would be as follow:
 
-1.Encode and save the username and access token into an env var.
-2.Run the scripts in yaml referencing that env var.
+1. Encode and save the username and access token into an environment variable.
+2. Run the scripts in YAML referencing that environment variable.
 
-**$LAMBDATEST** environment variable is a custom name and can be named to anything preferred. More info can be found [here](https://docs.codemagic.io/variables/environment-variable-groups/) about how to set up variable groups with Codemagic.
+**$LAMBDATEST** environment variable is a custom name and can be named to anything preferred. More info can be found [here](https://docs.codemagic.io/variables/environment-variable-groups/) about how to set up environment variable groups with Codemagic.
 
 As soon as your **.ipa** and **.apk** are successfully built, they will appear in the **LambdatTest UI** under **Real Device => Real Time**. Any preferred devices can be selected for testing with **Real Time**. 
 
-In order to see your tests being uploaded to the **App Automation**, tests need to be included in your project. As soon as tests are detected, they will be automatically uploaded to the **App Automation** section and all the results can be viewed there. However, in order to enable it, some capabilities must be injected into your project tests:
+In order to see your tests being uploaded to the **App Automation**, tests need to be included in your project. As soon as tests are detected, they will be automatically uploaded to the **App Automation** section and all the results can be viewed there. However, in order to enable it, some capabilities must be injected into your project's test files:
 
 ```
 DesiredCapabilities capabilities = new DesiredCapabilities(); capabilities.setCapability("platformName", "Android"); capabilities.setCapability("deviceName", "Google Pixel 3"); capabilities.setCapability("isRealMobile", true); capabilities.setCapability("platformVersion","10"); capabilities.setCapability("app","lt://APP100202151634649275590734"); capabilities.setCapability("deviceOrientation", "PORTRAIT"); capabilities.setCapability("console",true); capabilities.setCapability("network",true); capabilities.setCapability("visual",true);
