@@ -8,7 +8,7 @@ weight: 2
 
 Codemagic enables you to automatically publish your app to the internal, alpha, beta, production or custom tracks on Google Play. While publishing to Google play you may encounter errors if the application does not meet the release criteria. You can see the explanations of some of the common errors:
 
-### Code: 403, "The caller does not have permission", "status": "PERMISSION_DENIED"
+### Code: 403, The caller does not have permission. status: PERMISSION_DENIED
 This could be due to an invalid JSON file or permission issues with the service account. Please make sure you have done the following:
    1. Created a service account in the Google Play console
    2. Set the service account access to "Editor"
@@ -20,7 +20,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    
    Checkout [this guide](../knowledge-base/google-services-authentication/#google-play) for detailed explanation.
 
-### The current user has insufficient permissions to perform the requested operation. "status": "PERMISSION_DENIED"
+### The current user has insufficient permissions to perform the requested operation. status: PERMISSION_DENIED
    - This error may have caused due to Account permission issues. Try setting admin access for Account permissions on google play console. 
    - After granting access, Google may take 24-48 hours to propagate all access rights for all APIs or new users.
 
@@ -36,12 +36,16 @@ This could be due to an invalid JSON file or permission issues with the service 
    - Check version and version code. This error is possible when your version code is the same as the apk/aab already uploaded on google play.
 
 ### Cannot update a published APK
-   - If an app has already been sent to a specific track, you cannot re-upload it. - You can change its track or increment the version code.
+   - If an app has already been sent to a specific track, you cannot re-upload it. 
+   - You can change its track or increment the version code.
    - This error is possible when your version or version code is the same as the apk/aab already uploaded on google play.
 
 ### Your scoped storage permission declaration needs to be updated
    - Google requires you to declare your [storage permissions](https://developer.android.com/about/versions/11/privacy/storagehttps://www.xda-developers.com/android-11-all-files-access-permission-form/)
    - You will have to update your app accordingly to be able to publish to Google Play Store.
+
+### You cannot rollout this release because it does not allow any existing users to upgrade to the newly added APKs
+   - The error message is because your new APK has a lower version code than the previous APK. Newer APKs must always have a higher version code than the previous version. Check your version code and upgrade it automatically.
 
 ### Package not found: com.xxxxx.app
    - The error 'Package not found' means that an application with the package name from the artifact generated during the builds doesn't exist in your Google Play account.
