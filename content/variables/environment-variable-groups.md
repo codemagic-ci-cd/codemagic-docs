@@ -114,8 +114,7 @@ PACKAGE_NAME | Put your package name here | other
     environment:
       groups:
         - appstore_credentials
-        - certificate_credentials
-        - other
+        - ios_config
 
 Add the above-mentioned group environment variables in Codemagic UI (either in Application/Team variables), don't forget to click **Secure** to make sensitive data encrypted:
 
@@ -124,11 +123,11 @@ Add the above-mentioned group environment variables in Codemagic UI (either in A
 APP_STORE_CONNECT_ISSUER_ID | Put your App Store Connect Issuer Id here  | appstore_credentials
 APP_STORE_CONNECT_KEY_IDENTIFIER | Put your App Store Connect Key Identifier here | appstore_credentials
 APP_STORE_CONNECT_PRIVATE_KEY | Put your App Store Connect Private Key here | appstore_credentials
-CERTIFICATE_PRIVATE_KEY | Put your Certificate Private Key here | certificate_credentials
-BUNDLE_ID | Put your bundle id here | other
-APP_STORE_ID | Put your TestFlight Apple id number (General > App Information > Apple ID) | other
-XCODE_WORKSPACE | Put the name of your workspace here | other
-XCODE_SCHEME | Put the name of your scheme here | other
+CERTIFICATE_PRIVATE_KEY | Put your Certificate Private Key here | appstore_credentials
+BUNDLE_ID | Put your bundle id here | ios_config
+APP_STORE_ID | Put your TestFlight Apple id number (General > App Information > Apple ID) | ios_config
+XCODE_WORKSPACE | Put the name of your workspace here | ios_config
+XCODE_SCHEME | Put the name of your scheme here | ios_config
 
 For more information on iOS codesigning check [here](../code-signing-yaml/signing)
 
