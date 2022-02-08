@@ -13,7 +13,7 @@ To allow Codemagic to publish applications to Google Play, it is necessary to se
 1. In Google Play Console, navigate to **Settings > API access** and click **Create new service account**.<br><br>
 ![Google play start](../uploads/google_play_start.png)
 
-2. This will lead you to the Google Cloud Platform. Please follow the steps in [this](/knowledge-base/google-services-authentication/#creating-a-service-account) guide to create a service account with the required role in Google Cloud Platform. Note that **Editor** role is required for Google Play.
+2. This will lead you to the Google Cloud Platform. Please follow the steps in [this](/knowledge-base/google-services-authentication/#creating-a-service-account) guide to create a service account with the required role in Google Cloud Platform. Note that a role is required, which gives access to upload artifacts on your behalf to Google Play (e.g., **Editor**, **Browser** or **Storage Object Creator**).
 
 3. Back in **Google Play Console**, navigate to **Settings > API access** and click **Grant access** next to the created account.<br><br>
 ![Google play grant](../uploads/google_play_two.png)
