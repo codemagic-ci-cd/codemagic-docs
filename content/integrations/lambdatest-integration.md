@@ -76,6 +76,6 @@ These capabitlies will allow **LambdaTest** to detect which platform you want to
 
 ## Sample project
 
-A sample project that shows how to configure LambdaTes integration is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/lambdatest_integration_demo_project/lambdatest_integration_demo_project).
+A sample project that shows how to configure LambdaTest integration is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/lambdatest_integration_demo_project/lambdatest_integration_demo_project).
 
 
