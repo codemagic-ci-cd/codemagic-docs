@@ -45,7 +45,7 @@ A service account can be used to authenticate with various Firebase services, su
 
 2. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
 
-3. In step 2, click the **Select a role** dropdown menu and choose the role. In this example we will use **Editor** as the desired role. Start typing the name of the role that you wish to add.<br><br>
+3. In step 2, click the **Select a role** dropdown menu and choose the role. In this example we will use **Service Account User** as the desired role. Start typing the name of the role that you wish to add.<br><br>
 ![Google cloud editor](../uploads/google_cloud_two.png)
 
 4. In step 3, you can leave the fields blank and click **Done**.
