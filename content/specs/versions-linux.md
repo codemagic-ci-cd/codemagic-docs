@@ -71,3 +71,9 @@ weight: 2
 ## Android Studio 4.1.2 (201.8743.12.41.7042882)
 
 Android Studio path: `~/programs/android-studio`
+
+## Unity 2020.3.27f1
+
+`UNITY_HOME` is set to `/home/builder/Unity/Hub/Editor/2020.3.27f1/Editor`
+
+Includes pre-installed modules for Android, Linux, and WebGL build support.
