@@ -13,7 +13,7 @@ To allow Codemagic to publish applications to Google Play, it is necessary to se
 1. In Google Play Console, navigate to **Settings > API access** and click **Create new service account**.<br><br>
 ![Google play start](../uploads/google_play_start.png)
 
-2. This will lead you to the Google Cloud Platform. Please follow the steps in [this](/knowledge-base/google-services-authentication/#creating-a-service-account) guide to create a service account with the required role in Google Cloud Platform. Note that **Editor** role is required for Google Play.
+2. This will lead you to the Google Cloud Platform. Please follow the steps in [this](/knowledge-base/google-services-authentication/#creating-a-service-account) guide to create a service account in Google Cloud Platform. Set the role to **Service Account User**.
 
 3. Back in **Google Play Console**, navigate to **Settings > API access** and click **Grant access** next to the created account.<br><br>
 ![Google play grant](../uploads/google_play_two.png)
@@ -45,7 +45,7 @@ A service account can be used to authenticate with various Firebase services, su
 
 2. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
 
-3. In step 2, click the **Select a role** dropdown menu and choose the role. In this example we will use **Editor** as the desired role. Start typing the name of the role that you wish to add.<br><br>
+3. In step 2, click the **Select a role** dropdown menu and choose the role. In this example we will use **Service Account User** as the desired role. Start typing the name of the role that you wish to add.<br><br>
 ![Google cloud editor](../uploads/google_cloud_two.png)
 
 4. In step 3, you can leave the fields blank and click **Done**.
