@@ -43,10 +43,6 @@ To start using webhooks with **AWS CodeCommit**, it is first necessary to create
 6. In the Codemagic UI, navigate to your application and select the **Webhooks** tab.
 7. Under **Recent deliveries**, choose the most recent webhook, and copy the subscription link under the **Results** tab to your browser.
 
-## Setting up webhooks for Azure DevOps
-
-Open your application repository, go to **Project Settings** > **Service Hooks**, click on **Create a new subscription...** and select **Web Hooks**. Under **Trigger on this type of event**, choose the event you wish to trigger builds for. Codemagic supports **Code pushed**, **Pull request created**, and **Pull request updated** events. In Azure, each of the events requires its own webhook. Once the event has been selected, choose your repository under filters and configure any additional settings.
-
 ### Configuring webhook events
 
 Open your application repository and navigate to **Notify** > **Create notification rule** and enter a name for your Notification rule.
@@ -54,3 +50,7 @@ Open your application repository and navigate to **Notify** > **Create notificat
 Under **Events that trigger notifications**, select the **Source updated** and **Created** events in the **Pull request** section and the **Created** and **Updated** events in the **Branches and tags** section.
 
 Set the target type to **SNS topic**, select a configured target and click on **Submit**.
+
+## Setting up webhooks for Azure DevOps
+
+Open your application repository, go to **Project Settings** > **Service Hooks**, click on **Create a new subscription...** and select **Web Hooks**. Under **Trigger on this type of event**, choose the event you wish to trigger builds for. Codemagic supports **Code pushed**, **Pull request created**, and **Pull request updated** events. In Azure, each of the events requires its own webhook. Once the event has been selected, choose your repository under filters and configure any additional settings.
