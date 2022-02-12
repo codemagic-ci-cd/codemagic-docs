@@ -32,7 +32,7 @@ The Unity SDK base image is not available by default. Please contact us [here](h
 - docker `20.10.2`
 - fastlane `2.199.0`
 - firebase `9.3.0`
-- flutter `2.10.0 ($HOME/programs/flutter)`
+- flutter `2.10.1 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `2.4.0`
 - git `2.34.1`
