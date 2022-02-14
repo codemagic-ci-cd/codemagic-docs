@@ -78,7 +78,7 @@ This could be due to an invalid JSON file or permission issues with the service 
   - Usually, If you are getting a 400 error related to the app being in draft status, either enable publishing to draft by setting the value of `submit_as_draft` to true or promote the draft build up by a level to one of the testing tracks.
   - Depending on your app's update status, it may not be sent for review automatically. 
   - Also, it might be that the actual cause of the error is getting swallowed and is surfaced by changesNotSentForReview error. In that case, try to re-run it by adding `--stacktrace` that will print out a full stack trace.
-  - Check [this](https://docs.codemagic.io/yaml-publishing/distribution/#google-play) out.
+  - Check [this](https://docs.codemagic.io/yaml-publishing/google-play/) out.
 
 ### Error 502 (Server Error)
   - `5xx` errors are from the Google Play servers. 
