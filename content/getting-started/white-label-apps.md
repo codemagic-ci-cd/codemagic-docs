@@ -12,7 +12,7 @@ The documentation is open-sourced and we encourage you to provide feedback and c
 
 ## How to set up Codemagic with ~10 different versions
 
-If you have around 10 different versions of your application that you are trying to set up CI/CD for then consider separating each version into a unique workflow. 
+If you have around 10 different versions of your application that you are trying to set up CI/CD for, consider separating each version into a unique workflow. 
 
 For example, for each version of your app you could create a workflow for it in the codemagic.yaml configuration file. 
 
