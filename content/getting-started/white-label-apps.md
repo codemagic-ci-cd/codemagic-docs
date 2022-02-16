@@ -56,7 +56,7 @@ We would recommend getting familiar with setting up a single version of your app
 
 Users can start new builds using [Codemagic REST API](../rest-api/codemagic-rest-api.md). All data is sent and received as JSON. The REST API supports an optional parameter for environment variables. 
 
-If your application has a content management system for your customers you can leverage the API to trigger your builds and pass the client ID as an environment variable. 
+If your application has a content management system for your customers, you can leverage the API to trigger your builds and pass the client ID as an environment variable. 
 
 An example of calling the Codemagic REST API might look something like this where you pass the `CLIENT_ID` variable to run a build for a specific client version. 
 
