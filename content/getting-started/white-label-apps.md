@@ -10,6 +10,10 @@ This documentation page should be considered as a minimum viable page to help an
 
 The documentation is open-sourced and we encourage you to provide feedback and contributions in the documentation GitHub repository [here](https://github.com/codemagic-ci-cd/codemagic-docs). If you are looking for general documentation about Codemagic, please use the search function or browse other parts of the documentation. 
 
+## How to get started with Codemagic when white labeling ~10 different versions
+
+We would recommend getting familiar with setting up a single version of your app to begin with. Set up your workflow using a codemagic.yaml configuration file and consult the documentation to understand core concepts such as using environment variables, build triggers, script steps, code signing and publishing. Once you have successfully built and published a version of you app to the stores, continue by adding addtional versions to your configuration file. 
+
 ## How to set up Codemagic with ~10 different versions
 
 If you have around 10 different versions of your application that you are trying to set up CI/CD for, consider separating each version into a unique workflow. 
@@ -47,11 +51,6 @@ workflows:
     publishing:
       ...
 ```
-
-## How to get started with Codemagic when white labeling ~10 different versions
-
-We would recommend getting familiar with setting up a single version of your app to begin with. Set up your workflow using a codemagic.yaml configuration file and consult the documentation to understand core concepts such as using environment variables, build triggers, script steps, code signing and publishing. Once you have successfully built and published a version of you app to the stores, continue by adding addtional versions to your configuration file. 
-
 ## How to set up Codemagic with tens or hundreds of different versions
 
 Users can start new builds using [Codemagic REST API](../rest-api/codemagic-rest-api.md). All data is sent and received as JSON. The REST API supports an optional parameter for environment variables. 
