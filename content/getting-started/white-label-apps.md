@@ -12,7 +12,7 @@ The documentation is open-sourced and we encourage you to provide feedback and c
 
 ## How to get started with Codemagic when white labeling ~10 different versions
 
-We would recommend getting familiar with setting up a single version of your app to begin with. Set up your workflow using a codemagic.yaml configuration file and consult the documentation to understand core concepts, such as using environment variables, build triggers, script steps, code signing and publishing. Once you have successfully built and published a version of your app to the stores, continue by adding additional versions to your configuration file. 
+We would recommend getting familiar with setting up a single version of your app to begin with. Set up your workflow using a codemagic.yaml configuration file and consult the documentation to understand core concepts, such as using environment variables, build triggers, script steps, code signing and publishing. Once you have successfully built and published a version of your app to the stores, continue by adding additional versions to your configuration file. For more information about getting started with the codemagic.yaml please refer to the documentation [here](../yaml/yaml-getting-started/).
 
 ## How to set up Codemagic with ~10 different versions
 
