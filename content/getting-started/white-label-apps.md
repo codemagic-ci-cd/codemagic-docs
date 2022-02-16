@@ -8,7 +8,7 @@ White labeling is the practice of building multiple versions of the same applica
 
 This documentation page should be considered as a minimum viable page to help answer most common questions developers have specifically about setting up CI/CD for their white label product in order to understand if they can achieve their desired use case with Codemagic.
 
-The documentation is open-sourced and we encourage you to provide feedback and contributions in the documentation GitHub repository [here](https://github.com/codemagic-ci-cd/codemagic-docs). If you are looking for general documentation about Codemagic please use the search function or browse other parts of the documentation. 
+The documentation is open-sourced and we encourage you to provide feedback and contributions in the documentation GitHub repository [here](https://github.com/codemagic-ci-cd/codemagic-docs). If you are looking for general documentation about Codemagic, please use the search function or browse other parts of the documentation. 
 
 ## How to setup Codemagic with ~10 different versions
 
