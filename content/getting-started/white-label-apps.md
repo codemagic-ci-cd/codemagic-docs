@@ -18,7 +18,7 @@ We would recommend getting familiar with setting up a single version of your app
 
 If you have around 10 different versions of your application that you are trying to set up CI/CD for, consider separating each version into a unique workflow. 
 
-For example, for each version of your app you could create a workflow for it in the codemagic.yaml configuration file. 
+For example, for each version of your app, you could create a workflow for it in the codemagic.yaml configuration file.
 
 ```yaml
 workflows:
