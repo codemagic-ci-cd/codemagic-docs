@@ -55,7 +55,8 @@ workflows:
 ## How to get started with Codemagic when white labeling tens or hundreds of different versions
 
 You should try any scripts on your local machine to test things like authenticating with your own CMS system, or running scripts that change application assets, such as icons or images. You can even use Codemagic's open-source [CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to test features such as code signing and publishing. Once you are confident that your scripts work as expected, you can then set up your workflow on Codemagic.
-## How to set up Codemagic with tens or hundreds of different versions
+
+If you are building many different versions, then instead of creating a long codemagic.yaml file with tens of workflows, you can have a single workflow and use the Codemagic API to pass environment variables to change build parameters.
 
 Users can start new builds using [Codemagic REST API](../rest-api/codemagic-rest-api.md). All data is sent and received as JSON. The REST API supports an optional parameter for environment variables. 
 
