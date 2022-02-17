@@ -18,7 +18,7 @@ We would recommend getting familiar with setting up a single version of your app
 
 If you have around 10 different versions of your application that you are trying to set up CI/CD for, consider separating each version into a unique workflow. Separating the versions into different workflows allows using different build schemas, code signing settings and publishing destinations. Builds can be triggered on events such as new commits to your source code repository, pull requests or adding a specific tag. It is also possible to trigger workflows based on changes in certain files. See [here](https://docs.codemagic.io/yaml/yaml-conditional-run/) for further details.
 
-For example, for each version of your app, you could create a workflow for it in the codemagic.yaml configuration file.
+For example, for each version of your app, you could create a workflow in the codemagic.yaml configuration file.
 
 ```yaml
 workflows:
