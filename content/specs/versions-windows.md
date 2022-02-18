@@ -28,6 +28,8 @@ weight: 3
 - gsutil 4.67- git `2.33.1`
 - grep `2.1032`
 - less `590.0`
+- node `16.14.0`
+- npm `8.3.1`
 - openssl `1.1.1.1100`
 - powershell-core `7.1.5`
 - pyenv-win `2.64.11`
@@ -39,6 +41,7 @@ weight: 3
 - vim `8.2.3459`
 - visualcpp-build-tools `15.0.26228.20170424`
 - wget `1.21.2`
+- yarn `1.22.17`
 - zip `3.0`
 
 ## Java versions
