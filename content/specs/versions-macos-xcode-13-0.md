@@ -1,6 +1,6 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
-title: macOS build machine specification (Xcode 13.0 - 13.2)
+title: macOS build machine specification (Xcode 13.0 - 13.2 / Unity)
 aliases:
   - '../releases-and-versions/versions4'
   - '../specs/versions4'
@@ -16,7 +16,7 @@ weight: 7
 
 - System version `macOS 11.6.2 (20G314)`
 - Kernel version `Darwin 20.6.0`
-- Disk `322GB (Free Space: 137GB)`
+- Disk `322GB (Free Space: 116GB)`
 
 ## Pre-installed tools
 
@@ -73,10 +73,16 @@ weight: 7
 - **11.0.13** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_312** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
+## Unity 2020.3.28f1
+
+UNITY_HOME: `/Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app`
+
+Includes pre-installed modules for iOS, Android, macOS, Linux, Windows and WebGL build support.
+
 ## Xcode 13.2.1 (13C100)
 
-This is the Xcode version used by default when you select `13.2`, `13.2.1` or `latest` in build settings in the workflow
-editor for Flutter apps or set Xcode version to the corresponding values in your codemagic.yaml file.
+This is the Xcode version used by default when you select `13.2`, `13.2.1` or `latest` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `13.2`, `13.2.1` or `latest` in your codemagic.yaml file. 
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.2.1.app`

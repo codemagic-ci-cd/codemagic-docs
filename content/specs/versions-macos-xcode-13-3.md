@@ -4,7 +4,7 @@ title: macOS build machine specification (Xcode 13.3+)
 aliases:
   - '../releases-and-versions/versions5'
   - '../specs/versions5'
-weight: 9
+weight: 8
 ---
 
 ## Hardware
