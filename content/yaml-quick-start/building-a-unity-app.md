@@ -17,10 +17,6 @@ This guide will show you how to configure a workflow that builds and publishes y
 - If you are publishing to the Apple App Store, you will need an active membership for the Apple Developer Program.
 - For publishing to Google Play, you will require an active Google Play Developer account.
 
-{{<notebox>}}
-**Important!** The Unity SDK is not included in our standard base images. Please contact us [here](https://codemagic.io/contact/) to request access to the Unity SDK base image.
-{{</notebox>}}
-
 ## Adding your Unity project to Codemagic
 
 It is possible to add repositories from Github, Gitlab, Bitbucket or any Git based repository. Please refer to the following documentation about adding apps from these sources.
