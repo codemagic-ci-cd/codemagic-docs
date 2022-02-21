@@ -51,29 +51,16 @@
     button:not(:disabled) * {
         cursor: pointer;
     }
-
-    .cm-logo {
-        .letter {
-            fill: $blue;
-            transition: fill 300ms ease-in-out;
-        }
-        &__star {
-            .base {
-                fill: $red;
-                transition: fill 300ms ease-in-out;
-            }
-            .gradient {
-                fill: url(#cm_logo_star);
-                transition: opacity 300ms ease-in-out;
-            }
-        }
-    }
     #login-link {
         color: $black;
     }
 }
 #header-logo {
     width: 140px;
+
+    svg {
+        vertical-align: middle;
+    }
 }
 #header-content {
     flex: 1;
