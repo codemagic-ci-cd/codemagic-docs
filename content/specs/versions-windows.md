@@ -23,7 +23,7 @@ weight: 3
 - chocolatey-windowsupdate.extension `1.0.4`
 - curl `7.79.1`
 - DotNet4.5.2 `4.5.2.20140902`
-- flutter `2.10.1 (C:\Users\builder\programs\flutter)`
+- flutter `2.10.2 (C:\Users\builder\programs\flutter)`
 - Google Cloud SDK `357.0.0`
 - gsutil 4.67- git `2.33.1`
 - grep `2.1032`
