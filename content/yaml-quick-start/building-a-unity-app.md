@@ -57,7 +57,7 @@ Add the environment variables as follows (make sure the **Secure** option is che
 
 Note that the environment variable `UNITY_HOME` is already set on the build machines. 
 
-On the macOS Unity base image `UNITY_HOME` is set to `/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app`.
+On the macOS Unity base image `UNITY_HOME` is set to `/Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app`.
 ## Environment variables for iOS code signing {#ios-variables}
 
 You will need to create the following environment variables in a group called `ios_credentials` for iOS code signing:
@@ -334,7 +334,7 @@ workflows:
         - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
         - ios_credentials # <-- (Includes  APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY, CERTIFICATE_PRIVATE_KEY)
       vars:
-        UNITY_BIN: /Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/MacOS/Unity
+        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
         BUILD_SCRIPT: BuildIos
         UNITY_IOS_DIR: ios
         XCODE_PROJECT: "Unity-iPhone.xcodeproj"
@@ -388,7 +388,7 @@ workflows:
             - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
             - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
         vars:
-          UNITY_BIN: /Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/MacOS/Unity
+          UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
           BUILD_SCRIPT: BuildAndroid
           PACKAGE_NAME: "com.domain.yourappname" # <-- Put your package name here e.g. com.domain.myapp
     triggering:
@@ -406,7 +406,7 @@ workflows:
           $UNITY_BIN -batchmode -quit -logFile -serial ${UNITY_SERIAL?} -username ${UNITY_USERNAME?} -password ${UNITY_PASSWORD?}      
       - name: Set up keystore
         script: | 
-          echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore            
+          echo $FCI_KEYSTORE | base64 --decode > $FCI_BUILD_DIR/keystore.keystore            
       - name: Set build number and export Unity
         script: | 
           export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
