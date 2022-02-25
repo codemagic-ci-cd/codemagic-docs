@@ -14,34 +14,34 @@ weight: 8
 
 ## System
 
-- System version `macOS 12.2 (21D49)`
+- System version `macOS 12.2.1 (21D62)`
 - Kernel version `Darwin 21.3.0`
-- Disk `322GB (Free Space: 141GB)`
+- Disk `322GB (Free Space: 145GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `23.1.7779620`
-- aws `2.4.17`
+- aws `2.4.20`
 - cocoapods `1.11.2`
 - cordova `11.0.0`
 - curl
 - docker `20.10.2`
-- fastlane `2.204.2`
+- fastlane `2.204.3`
 - firebase `9.3.0`
 - flutter `2.10.2 ($HOME/programs/flutter)`
-- gem `3.3.6`
-- gh `2.5.0`
+- gem `3.3.8`
+- gh `2.5.1`
 - git `2.35.1`
 - Google Cloud SDK `327.0.0`
 - gradle `7.3.1`
 - gsutil `4.58`
-- homebrew `3.3.14`
+- homebrew `3.3.16`
 - ionic `6.12.4`
 - jq
-- ktlint `0.43.2`
+- ktlint `0.44.0`
 - node `14.15.5`
-- npm `8.3.1`
+- npm `8.5.1`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
@@ -70,17 +70,18 @@ weight: 8
 
 - **17.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
 - **16.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-16.jdk/Contents/Home`
-- **11.0.14** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **11.0.14.1** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_322** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
-## Xcode 13.3 (13E5095k)
+## Xcode 13.3 (13E5104i)
 
-This is the Xcode version used by default when you select `13.3` or `edge` in build settings in the workflow
-editor for Flutter apps or set Xcode version to the corresponding values in your codemagic.yaml file.
+This is the Xcode version used by default when you select `13.3` or `edge` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `13.3` or `edge` in your codemagic.yaml file. 
+Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.3.app`
 
-With Xcode `13.3` build version `13E5095k` the following runtimes and devices are installed:
+With Xcode `13.3` build version `13E5104i` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -131,4 +132,3 @@ With Xcode `13.3` build version `13E5095k` the following runtimes and devices ar
 - iPhone 8 Plus
 - iPhone SE (2nd generation)
 - iPod touch (7th generation)
-
