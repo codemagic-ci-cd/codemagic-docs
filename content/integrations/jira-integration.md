@@ -70,11 +70,11 @@ The Atlassian Document Format (ADF) is used to format the comment layout and sty
 
 The script section for publishing to Jira contains several actions which set environment variables, update the comment template, and then use cURL requests to add a comment and upload files to a specific Jira issue.
 
-### Using jq to parse $FCI_ARTIFACT_LINKS
+### Using jq to parse $CM_ARTIFACT_LINKS
 
-First, it uses **jq** (a command-line tool for parsing JSON) to parse the contents of the Codemagic environment variable `$FCI_ARTIFACT_LINKS` to find information such as the articact URL, filename, bundle id, and version name and store the values in environment variables.
+First, it uses **jq** (a command-line tool for parsing JSON) to parse the contents of the Codemagic environment variable `$CM_ARTIFACT_LINKS` to find information such as the articact URL, filename, bundle id, and version name and store the values in environment variables.
 
-See this link about the JSON data that [$FCI_ARTIFACT_LINKS](../building/environment-variables/#codemagic-read-only-environment-variables) contains.
+See this link about the JSON data that [$CM_ARTIFACT_LINKS](../building/environment-variables/#codemagic-read-only-environment-variables) contains.
 
 ### Setting additional environment variables
 

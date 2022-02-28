@@ -70,7 +70,7 @@ Codemagic can detect your Flutter web project if it contains a `web` folder.
 
 Then scroll down to the **Build** section to specify the **Flutter** version, select the build **Mode** (**Debug**, **Release** or **Profile**) or add additional build arguments, e.g. for [build versioning](../building/build-versioning) or verbose logging.
 
-At the end of a successful build, Codemagic outputs a `.zip` file of the contents of `$FCI_BUILD_DIR/build` and exports this as an artifact. You can either download it or set up publishing to [Codemagic Static Pages](../publishing/publishing-to-codemagic-static-pages/). You can also use custom scripts to publish to third-party hosting sites.
+At the end of a successful build, Codemagic outputs a `.zip` file of the contents of `$CM_BUILD_DIR/build` and exports this as an artifact. You can either download it or set up publishing to [Codemagic Static Pages](../publishing/publishing-to-codemagic-static-pages/). You can also use custom scripts to publish to third-party hosting sites.
 
 ## Building macOS apps
 

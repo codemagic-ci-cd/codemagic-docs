@@ -64,7 +64,7 @@ You can use the [Xcode command line agvtool](https://developer.apple.com/library
 set -e
 set -x
 
-cd $FCI_BUILD_DIR/ios
+cd $CM_BUILD_DIR/ios
 agvtool new-version -all $(($BUILD_NUMBER + 1))
 ```
 

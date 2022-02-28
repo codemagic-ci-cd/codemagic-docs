@@ -24,7 +24,7 @@ The UI section for setting up publishing GitHub releases is deprecated in Flutte
    #!/usr/bin/env zsh
 
    # Publish only for tag builds
-   if [ -z ${FCI_TAG} ]; then
+   if [ -z ${CM_TAG} ]; then
    echo "Not a tag build will not publish GitHub release"
    exit 0
    fi
@@ -32,8 +32,8 @@ The UI section for setting up publishing GitHub releases is deprecated in Flutte
    # See more options about `gh release create` usage from GitHub CLI
    # official docs at https://cli.github.com/manual/gh_release_create
 
-   gh release create "${FCI_TAG}" \
-       --title "<Your Application Name> ${FCI_TAG}" \
+   gh release create "${CM_TAG}" \
+       --title "<Your Application Name> ${CM_TAG}" \
        --notes-file changelog.md \
        path/to/build-artifact.ipa \
        path/to/build-artifact.apk
