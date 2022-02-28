@@ -186,10 +186,10 @@ environment:
     - other
     
     # Android code signing - Add the keystore_credentials group environment variables in Codemagic UI (either in Application/Team variables)
-    # FCI_KEYSTORE
-    # FCI_KEYSTORE_PASSWORD
-    # FCI_KEY_PASSWORD
-    # FCI_KEY_ALIAS
+    # CM_KEYSTORE
+    # CM_KEYSTORE_PASSWORD
+    # CM_KEY_PASSWORD
+    # CM_KEY_ALIAS
 
     # iOS automatic code signing - Add the app_store_credentials group environment variables in Codemagic UI (either in Application/Team variables)
     # APP_STORE_CONNECT_ISSUER_ID
@@ -198,9 +198,9 @@ environment:
     # CERTIFICATE_PRIVATE_KEY
 
     # iOS manual code signing - Add the manual_cert_credentials group environment variables in Codemagic UI (either in Application/Team variables)
-    # FCI_CERTIFICATE
-    # FCI_CERTIFICATE_PASSWORD
-    # FCI_PROVISIONING_PROFILE
+    # CM_CERTIFICATE
+    # CM_CERTIFICATE_PASSWORD
+    # CM_PROVISIONING_PROFILE
 
     # Firebase secrets - Add the firebase_credentials group environment variables in Codemagic UI (either in Application/Team variables
     # ANDROID_FIREBASE_SECRET
@@ -277,7 +277,7 @@ environment:
 | `$FLUTTER_ROOT/.pub-cache`                  | Dart cache                                       |
 | `$HOME/.gradle/caches`                      | Gradle cache. Note: do not cache `$HOME/.gradle` |
 | `$HOME/Library/Caches/CocoaPods`            | CocoaPods cache                                  |
-| `$FCI_BUILD_DIR`/node_modules               | Node cache                                       |
+| `$CM_BUILD_DIR`/node_modules                | Node cache                                       |
 
 <br>
 

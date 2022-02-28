@@ -50,12 +50,12 @@ If you have already set up manual code signing on Bitrise, setting it up with Co
 
 For consistency, we recommend setting up the following environment variables:
 ```
-FCI_CERTIFICATE
-FCI_CERTIFICATE_PASSWORD
-FCI_PROVISIONING_PROFILE
+CM_CERTIFICATE
+CM_CERTIFICATE_PASSWORD
+CM_PROVISIONING_PROFILE
 ```
 
-However, you can call the variables differently if you reference them correctly in the scripts section. In the case of multiple provisioning profiles, the recommended naming convention is `FCI_PROVISIONING_PROFILE_1`, `FCI_PROVISIONING_PROFILE_2` etc.
+However, you can call the variables differently if you reference them correctly in the scripts section. In the case of multiple provisioning profiles, the recommended naming convention is `CM_PROVISIONING_PROFILE_1`, `CM_PROVISIONING_PROFILE_2` etc.
 
 As mentioned above, unlike with the Bitrise `Certificate and profile installer` step, you must reference the added files in your scripts section. Follow the detailed documentation [here](../yaml-code-signing/signing-ios/#manual-code-signing) or check out the example below.
 
@@ -68,17 +68,17 @@ scripts:
       PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
       mkdir -p "$PROFILES_HOME"
       PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-      echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
+      echo ${CM_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
       echo "Saved provisioning profile $PROFILE_PATH"      
   - name: Set up signing certificate
     script: |
-      echo $FCI_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-      if [ -z ${FCI_CERTIFICATE_PASSWORD+x} ]; then
+      echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+      if [ -z ${CM_CERTIFICATE_PASSWORD+x} ]; then
         # when using a certificate that is not password-protected
         keychain add-certificates --certificate /tmp/certificate.p12
       else
         # when using a password-protected certificate
-        keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $FCI_CERTIFICATE_PASSWORD
+        keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
       fi      
   - name: Set up code signing settings on Xcode project
     script: xcode-project use-profiles
@@ -152,11 +152,11 @@ To set up code signing with `codemagic.yaml`, you must add your keystore and rel
 
 For consistency, we recommend setting up the following environment variables:
 ```
-FCI_KEYSTORE_PATH: /tmp/keystore.keystore
-FCI_KEYSTORE
-FCI_KEYSTORE_PASSWORD
-FCI_KEY_ALIAS
-FCI_KEY_PASSWORD
+CM_KEYSTORE_PATH: /tmp/keystore.keystore
+CM_KEYSTORE
+CM_KEYSTORE_PASSWORD
+CM_KEY_ALIAS
+CM_KEY_PASSWORD
 ```
 
 Navigate to your application and click the `Environment variables` tab to add environment variables. To add the keystore file, encode its contents with base64 and paste the value into Codemagic; make sure to check `Secure` when providing sensitive information. Along with creating these variables, create a new variable group, e.g., `android_code_signing`, which you can later reference in your `codemagic.yaml`.
@@ -168,7 +168,7 @@ Instead of the `Android sign` step on Bitrise, define a script in the `codemagic
 ```yaml
 scripts:
   - name: Decode Keystore
-    script: echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
+    script: echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
 ``` 
 
 ### Building

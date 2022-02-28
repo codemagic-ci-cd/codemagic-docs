@@ -26,10 +26,10 @@ This example shows how to set up code signing using Gradle.
       signingConfigs {
           release {
               if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
-                  storeFile file(System.getenv()["FCI_KEYSTORE_PATH"])
-                  storePassword System.getenv()["FCI_KEYSTORE_PASSWORD"]
-                  keyAlias System.getenv()["FCI_KEY_ALIAS"]
-                  keyPassword System.getenv()["FCI_KEY_PASSWORD"]
+                  storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
+                  storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
+                  keyAlias System.getenv()["CM_KEY_ALIAS"]
+                  keyPassword System.getenv()["CM_KEY_PASSWORD"]
               } else {
                   storeFile file("/path/to/local/myreleasekey.keystore")
                   storePassword "password"
@@ -55,11 +55,11 @@ This example shows how to set up code signing using Gradle.
       groups:
         - keystore_credentials
       # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables)
-        # FCI_KEYSTORE_PATH 
-        # FCI_KEYSTORE
-        # FCI_KEYSTORE_PASSWORD
-        # FCI_KEY_PASSWORD
-        # FCI_KEY_ALIAS
+        # CM_KEYSTORE_PATH 
+        # CM_KEYSTORE
+        # CM_KEYSTORE_PASSWORD
+        # CM_KEY_PASSWORD
+        # CM_KEY_ALIAS
 ```
 {{<notebox>}}
 Tip: Store all the keystore variables in the same group so they can be imported to codemagic.yaml workflow at once. 
@@ -73,7 +73,7 @@ If the group of variables is reusable for various applications, they can be defi
 scripts:
   - name: Build Android
     script: |
-      echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
+      echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
       cd android && ./gradlew assembleRelease
 ```
 

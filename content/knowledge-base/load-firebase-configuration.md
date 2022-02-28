@@ -15,8 +15,8 @@ Instead of committing the Firebase configuration files to your repository, you c
   #!/usr/bin/env sh
   set -e # exit on first failed command
 
-  echo $ANDROID_FIREBASE_SECRET > $FCI_BUILD_DIR/android/app/google-services.json
-  echo $IOS_FIREBASE_SECRET > $FCI_BUILD_DIR/ios/Runner/GoogleService-Info.plist
+  echo $ANDROID_FIREBASE_SECRET > $CM_BUILD_DIR/android/app/google-services.json
+  echo $IOS_FIREBASE_SECRET > $CM_BUILD_DIR/ios/Runner/GoogleService-Info.plist
   ```
 
   In case your project is in a nested folder structure, it has to be reflected, and the script should be as follows: 
@@ -25,7 +25,7 @@ Instead of committing the Firebase configuration files to your repository, you c
   #!/usr/bin/env sh
   set -e # exit on first failed command
 
-  PROJECT_ROOT=$FCI_BUILD_DIR/myproject/path      # ADD YOUR PROJECT FOLDER PATH HERE
+  PROJECT_ROOT=$CM_BUILD_DIR/myproject/path      # ADD YOUR PROJECT FOLDER PATH HERE
 
   echo $ANDROID_FIREBASE_SECRET > $PROJECT_ROOT/android/app/google-services.json
   echo $IOS_FIREBASE_SECRET > $PROJECT_ROOT/ios/Runner/GoogleService-Info.plist

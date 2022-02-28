@@ -45,7 +45,7 @@ New credentials will be generated every time you run the build, so previous cred
 
 You can use the remote session to reproduce all commands run during the build, rerun the build with a different configuration, or set up platform-specific files, e.g. CocoaPods.
 
-* To access the clone of your project on the VM, run `cd $FCI_BUILD_DIR` in the terminal. 
+* To access the clone of your project on the VM, run `cd $CM_BUILD_DIR` in the terminal. 
 
 * The command `printenv` prints all the environment variables exported during the build on Linux/macOS. Use `dir env:` on Windows to achieve the same in PowerShell. You can see some of Codemagic built-in environment variables explained [here](../building/environment-variables/#codemagic-read-only-environment-variables).
 
@@ -61,7 +61,7 @@ If you have finished debugging the build, don't forget to end the session to avo
 
 ## Useful tips for debugging
 
-* You can access your project on the builder machine by running `cd $FCI_BUILD_DIR`
+* You can access your project on the builder machine by running `cd $CM_BUILD_DIR`
 * If you encounter an error during the build, a good way to get started is by digging into the build logs on Codemagic and rerunning the first failed command.
 * The command `printenv` prints all the environment variables exported during the build on Linux/macOS. Use `dir env:` on Windows to achieve the same in PowerShell. See [environment variables](../building/environment-variables/) for an explanation of built-in environment variables.
 * The `sudo` command is available to execute any commands with root privileges on Linux/macOS. PowerShell on Windows machines is already running in privileged mode.
