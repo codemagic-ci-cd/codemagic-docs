@@ -53,4 +53,4 @@ Codecov centrally ingests **.xml** **.json** and **.txt** type coverage rep
 
 ## Sample Projects
 
-A sample project that shows how to configure LambdaTest integration is available [here]().
+A sample project that shows how to configure LambdaTest integration is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/codecov-integration-demo-project).
