@@ -118,12 +118,6 @@ Annual plans can be paid for with credit card and invoicing with bank transfer i
 
 For more information contact us [here](https://codemagic.io/contact/).
 
-### Unity Framework
-
-If you are building Unity apps for iOS or Android we can provide dedicated macOS hosts with Unity 2020.3 LTS Unity 2019.4.15 (Android build support and iOS build support components).
-
-If you would like more information about dedicated hosts, please contact us [here](https://codemagic.io/contact/).
-
 ## Build history and artifact storage
 
 ### Personal account storage
