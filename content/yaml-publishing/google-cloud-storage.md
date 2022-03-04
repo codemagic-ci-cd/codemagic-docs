@@ -6,7 +6,7 @@ weight: 14
 
 In order to publish your generated artifacts to Google Cloud Storage:
 
-1. Get an authorization access token from the [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/).Configure the playground to use your own OAuth credentials and choose Cloud Storage API. 
+1. Get an authorization access token from the [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/). Configure the playground to use your own OAuth credentials and choose Cloud Storage API at step . 
 
 2. After getting your Autherization Code, click the "Exchange authorization code for access token" button and it will generate an Access Token and save it as an enviornment variable More information can be found [here](https://docs.codemagic.io/variables/environment-variable-groups/) about how to set up environment variable groups with Codemagic.
 
