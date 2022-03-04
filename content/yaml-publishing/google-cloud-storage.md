@@ -14,8 +14,8 @@ In order to publish your generated artifacts to Google Cloud Storage:
 
 ```
 curl -X POST --data-binary @YOUR_ARTIFACT_PATH \
-    -H "Authorization: Bearer ACCESS_TOKEN" \
-    "https://storage.googleapis.com/upload/storage/v1/b/YOUR_BUCKET_NAME/o?uploadType=media&name=DESIRED_OBJECT_NAME"
+     -H "Authorization: Bearer ACCESS_TOKEN" \
+     "https://storage.googleapis.com/upload/storage/v1/b/YOUR_BUCKET_NAME/o?uploadType=media&name=DESIRED_OBJECT_NAME"
 ```
 
 4. Go to your Google Cloud Platfrom console and open Cloud Storage, create a new bucket and use the exact same name in the above-mentioned cURL request as a query parameter.
