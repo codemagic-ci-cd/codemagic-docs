@@ -22,3 +22,22 @@ Here is how you can upload Xcode debugging symbols file to Firebase Crashlytics
   ```
 
 Add this script either to your configuration file or in your post-publish script in the Flutter workflow editor to locate and upload dSYM files to Firebase Crashlytics.
+
+For Native iOS apps, in case of using SwiftPackageManager(SPM) instead of Cocoapods, the following script needs to be added in a post-publishing script:
+
+```bash
+echo "Find build artifacts"
+dsymPath=$(find build/ios/xcarchive/* | head -1)
+echo "dsyms expected in:"
+ls -d -- $dsymPath/dSYMs/*
+dsymFile=$(find $dsymPath/dSYMs -name "*.dSYM" | head -1) 
+if [[ -z ${dsymFile} ]]
+then
+  echo "No debug symbols were found, skip publishing to Firebase Crashlytics"
+else
+  echo "Publishing debug symbols in $dsymFile to Firebase Crashlytics"
+  echo $dsymFile
+  ls -d -- $CM_BUILD_DIR/*
+  $HOME/Library/Developer/Xcode/DerivedData/**/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CM_BUILD_DIR/<PATH_TO_YOUR_GoogleService-Info.plist> -p ios $dsymFile
+fi
+```
