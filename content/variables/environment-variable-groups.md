@@ -100,7 +100,7 @@ Add the above-mentioned group environment variables in Codemagic UI (either in A
 
 **Variable name** | **Variable value** | **Group**
 --- | --- | ---
-CM_KEY_ALIAS | /tmp/keystore.keystore | keystore_credentials
+CM_KEYSTORE_PATH | /tmp/keystore.keystore | keystore_credentials
 CM_KEYSTORE | contents of keystore - [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) | keystore_credentials
 CM_KEYSTORE_PASSWORD | Put your keystore password here | keystore_credentials
 CM_KEY_PASSWORD | Put your key alias password here | keystore_credentials
