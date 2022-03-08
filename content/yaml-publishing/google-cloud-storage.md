@@ -6,21 +6,16 @@ weight: 14
 
 In order to publish your generated artifacts to Google Cloud Storage:
 
-1. Get an authorization access token from the [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/). Configure the playground to use your own OAuth credentials and choose Cloud Storage API at step . 
+1. Create a new Service Account and generate a JSON file with **Storage Object Creator** role. Save your JSON file to [environment variable](https://docs.codemagic.io/variables/environment-variable-groups/). 
 
-2. After getting your Autherization Code, click the "Exchange authorization code for access token" button and it will generate an Access Token and save it as an enviornment variable More information can be found [here](https://docs.codemagic.io/variables/environment-variable-groups/) about how to set up environment variable groups with Codemagic.
+2. Go to your Google Cloud Platfrom console and open Cloud Storage, create a new bucket and use the exact same bucket name in the following request.
 
-3. Use the following cURL request in your post-publishing script:
+3. Use the following request in your post-publishing script:
 
 ```
-curl -X POST --data-binary @YOUR_ARTIFACT_PATH \
-     -H "Authorization: Bearer ACCESS_TOKEN" \
-     "https://storage.googleapis.com/upload/storage/v1/b/YOUR_BUCKET_NAME/o?uploadType=media&name=DESIRED_OBJECT_NAME"
+echo $GCLOUD_STORAGE_KEY > $FCI_BUILD_DIR/gcloud.json
+gcloud auth activate-service-account --key-file $FCI_BUILD_DIR/gcloud.json
+gsutil cp $FCI_BUILD_DIR/app/build/outputs/**/*.apk gs://YOUR_BUCKET_NAME
 ```
 
-4. Go to your Google Cloud Platfrom console and open Cloud Storage, create a new bucket and use the exact same name in the above-mentioned cURL request as a query parameter.
-
-P.S If you get the following error message, it means that you need to link a billing address to that exact project in the Google Cloud Platform console:
-
-```The billing account for the owning project is disabled in state absent```
-
+After completing steps above, you can go to your Cloud Storage account and check if the object is uploaded. 
