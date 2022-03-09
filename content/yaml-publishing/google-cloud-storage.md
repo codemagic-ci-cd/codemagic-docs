@@ -16,7 +16,7 @@ In order to publish your generated artifacts to Google Cloud Storage:
 
 5. Go to your Google Cloud Platform console and open Cloud Storage. Make a note of the name of the bucket you want to upload to or create a new bucket.
 
-6. Use the following script in your post-publishing script or create a new script step if you are using codemagic.yaml:
+6. Replace `gs://YOUR_BUCKET_NAME` with your own bucket name in the following script and add it as a post-publishing script or create a new script step if you are using codemagic.yaml:
 
 ```
 echo $GCLOUD_STORAGE_KEY > $FCI_BUILD_DIR/gcloud_storage_key.json
