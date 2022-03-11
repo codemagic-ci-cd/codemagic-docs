@@ -16,13 +16,13 @@ weight: 8
 
 - System version `macOS 12.2.1 (21D62)`
 - Kernel version `Darwin 21.3.0`
-- Disk `322GB (Free Space: 145GB)`
+- Disk `322GB (Free Space: 113GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `23.1.7779620`
-- aws `2.4.20`
+- aws `2.4.24`
 - cocoapods `1.11.2`
 - cordova `11.0.0`
 - curl
@@ -30,13 +30,13 @@ weight: 8
 - fastlane `2.204.3`
 - firebase `9.3.0`
 - flutter `2.10.3 ($HOME/programs/flutter)`
-- gem `3.3.8`
-- gh `2.5.1`
+- gem `3.3.9`
+- gh `2.5.2`
 - git `2.35.1`
 - Google Cloud SDK `327.0.0`
 - gradle `7.3.1`
 - gsutil `4.58`
-- homebrew `3.3.16`
+- homebrew `3.4.1`
 - ionic `6.12.4`
 - jq
 - ktlint `0.44.0`
@@ -73,7 +73,7 @@ weight: 8
 - **11.0.14.1** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_322** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
-## Xcode 13.3 (13E5104i)
+## Xcode 13.3 (13E113)
 
 This is the Xcode version used by default when you select `13.3` or `edge` in build settings in the workflow 
 editor for Flutter apps or set Xcode version to `13.3` or `edge` in your codemagic.yaml file. 
@@ -81,7 +81,7 @@ Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.3.app`
 
-With Xcode `13.3` build version `13E5104i` the following runtimes and devices are installed:
+With Xcode `13.3` build version `13E113` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -111,6 +111,7 @@ With Xcode `13.3` build version `13E5104i` the following runtimes and devices ar
 - iPad (8th generation)
 - iPad (9th generation)
 - iPad Air (4th generation)
+- iPad Air (5th generation)
 - iPad Pro (11-inch) (2nd generation)
 - iPad Pro (11-inch) (3rd generation)
 - iPad Pro (12.9-inch) (4th generation)
@@ -131,4 +132,5 @@ With Xcode `13.3` build version `13E5104i` the following runtimes and devices ar
 - iPhone 8
 - iPhone 8 Plus
 - iPhone SE (2nd generation)
+- iPhone SE (3rd generation)
 - iPod touch (7th generation)
