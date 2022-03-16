@@ -36,7 +36,7 @@ You can find an up-to-date codemagic.yaml React Native Android workflow in [Code
 Set up local properties
 
 ```yaml
-- echo "sdk.dir=$ANDROID_SDK_ROOT" > "$FCI_BUILD_DIR/android/local.properties"
+- echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
 ```
 
 Building an Android application:
@@ -77,11 +77,11 @@ workflows:
                 npm install
             - name: Set Android SDK location
               script: |
-                echo "sdk.dir=$ANDROID_SDK_ROOT" > "$FCI_BUILD_DIR/android/local.properties"
+                echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
             - name: Set up keystore
               script: |
                     echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-                    cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
+                    cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
                     storePassword=$CM_KEYSTORE_PASSWORD
                     keyPassword=$CM_KEY_ALIAS_PASSWORD
                     keyAlias=$CM_KEY_ALIAS_USERNAME
@@ -187,7 +187,7 @@ workflows:
           #!/bin/sh
           set -e
           set -x
-          cd $FCI_BUILD_DIR/ios
+          cd $CM_BUILD_DIR/ios
           # agvtool new-version -all $(($BUILD_NUMBER + 1))
           agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))
       - name: Set up code signing settings on Xcode project
@@ -195,7 +195,7 @@ workflows:
           xcode-project use-profiles --warn-only
       - name: Build ipa for distribution
         script: |
-          xcode-project build-ipa --workspace "$FCI_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" 
+          xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" 
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log

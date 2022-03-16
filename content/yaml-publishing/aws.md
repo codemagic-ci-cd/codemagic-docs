@@ -11,7 +11,7 @@ In order to publish your web application to AWS S3:
 
 You can follow the [instructions](https://aws.amazon.com/getting-started/hands-on/backup-to-s3-cli/) provided by Amazon to create your account and get the necessary details.
 
-2.  Add the script below to your `scripts` section before your build script to update the S3 bucket. `<FOLDER OR FILE>` refers to a specific folder or file to be synced. Replace `<BUCKET_NAME>` with your actual bucket name. Note that all the artifact files that Codemagic generates during the build are located in `FCI_BUILD_OUTPUT_DIR`.
+2.  Add the script below to your `scripts` section before your build script to update the S3 bucket. `<FOLDER OR FILE>` refers to a specific folder or file to be synced. Replace `<BUCKET_NAME>` with your actual bucket name. Note that all the artifact files that Codemagic generates during the build are located in `CM_BUILD_OUTPUT_DIR`.
 
 ```yaml
 environment:

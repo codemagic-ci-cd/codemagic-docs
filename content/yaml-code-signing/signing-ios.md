@@ -184,9 +184,9 @@ You can put the variables into a group for accessing them in the workflow config
 
 **Variable name** | **Variable value** | **Group**
 --- | --- | ---
-FCI_CERTIFICATE | Put your signing certificate here  | certificate_credentials
-FCI_CERTIFICATE_PASSWORD | Put the certificate password here if it is password-protected | certificate_credentials
-FCI_PROVISIONING_PROFILE | Put your provisioning profile here | certificate_credentials
+CM_CERTIFICATE | Put your signing certificate here  | certificate_credentials
+CM_CERTIFICATE_PASSWORD | Put the certificate password here if it is password-protected | certificate_credentials
+CM_PROVISIONING_PROFILE | Put your provisioning profile here | certificate_credentials
 
 Add the group in your `codemagic.yaml` to access the variables:
 
@@ -195,9 +195,9 @@ environment:
   groups:
     - certificate_credentials
   # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables): 
-    # FCI_CERTIFICATE
-    # FCI_CERTIFICATE_PASSWORD
-    # FCI_PROVISIONING_PROFILE
+    # CM_CERTIFICATE
+    # CM_CERTIFICATE_PASSWORD
+    # CM_PROVISIONING_PROFILE
 ```
 
 Then, add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
@@ -212,17 +212,17 @@ scripts:
       PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
       mkdir -p "$PROFILES_HOME"
       PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-      echo ${FCI_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
+      echo ${CM_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
       echo "Saved provisioning profile $PROFILE_PATH"
   - name: Set up signing certificate
     script: |
-      echo $FCI_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-      if [ -z ${FCI_CERTIFICATE_PASSWORD+x} ]; then
+      echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+      if [ -z ${CM_CERTIFICATE_PASSWORD+x} ]; then
         # when using a certificate that is not password-protected
         keychain add-certificates --certificate /tmp/certificate.p12
       else
         # when using a password-protected certificate
-        keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $FCI_CERTIFICATE_PASSWORD
+        keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
       fi
   - name: Set up code signing settings on Xcode project
     script: xcode-project use-profiles
@@ -237,8 +237,8 @@ environment:
   groups:
     - provisioning_profile
    # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables): 
-    # FCI_PROVISIONING_PROFILE_BASE
-    # FCI_PROVISIONING_PROFILE_NOTIFICATIONSERVICE
+    # CM_PROVISIONING_PROFILE_BASE
+    # CM_PROVISIONING_PROFILE_NOTIFICATIONSERVICE
 ```
 
 Then, set the profiles up in the build by using the following script in your YAML file:
@@ -248,7 +248,7 @@ scripts:
     script: |
       PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
       mkdir -p "$PROFILES_HOME"
-      for profile in "${!FCI_PROVISIONING_PROFILE_@}"; do
+      for profile in "${!CM_PROVISIONING_PROFILE_@}"; do
         PROFILE_PATH="$(mktemp "$HOME/Library/MobileDevice/Provisioning Profiles"/ios_$(uuidgen).mobileprovision)"
         echo ${!profile} | base64 --decode > "$PROFILE_PATH"
         echo "Saved provisioning profile $PROFILE_PATH"

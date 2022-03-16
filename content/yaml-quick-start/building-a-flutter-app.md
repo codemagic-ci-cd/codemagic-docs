@@ -41,7 +41,7 @@ You can find an up-to-date codemagic.yaml Flutter Android workflow in [Codemagic
 Set up local properties
 
 ```yaml
-- echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+- echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
 ```
 
 ### Building an app bundle
@@ -64,9 +64,9 @@ If your app settings in Codemagic have building Android App Bundles enabled, we 
 - android-app-bundle build-universal-apk \
   --bundle 'project_directory/build/**/outputs/**/*.aab' \
   --ks /tmp/keystore.keystore \
-  --ks-pass $FCI_KEYSTORE_PASSWORD \
-  --ks-key-alias $FCI_KEY_ALIAS \
-  --key-pass $FCI_KEY_PASSWORD
+  --ks-pass $CM_KEYSTORE_PASSWORD \
+  --ks-key-alias $CM_KEY_ALIAS \
+  --key-pass $CM_KEY_PASSWORD
 ```
 
 Please make sure to wrap the `--bundle` pattern in single quotes. If the `--bundle` option is not specified, default glob pattern `**/*.aab` will be used.
@@ -86,12 +86,12 @@ workflows:
     max_build_duration: 120
     environment:
       groups:
-        - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
+        - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS)
         - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
         - other
         # Add the above group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
-        FCI_KEYSTORE_PATH: /tmp/keystore.keystore
+        CM_KEYSTORE_PATH: /tmp/keystore.keystore
         PACKAGE_NAME: 'YOUR PACKAGE NAME' # <-- Put your package name here e.g. "io.codemagic.flutteryaml"
         GOOGLE_PLAY_TRACK: 'alpha' # <-- Any default or custom track that is not in ‘draft’ status
       flutter: stable
@@ -100,16 +100,16 @@ workflows:
     scripts:
       - name: Set up key properties
         script: |
-          echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-          cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
-          storePassword=$FCI_KEYSTORE_PASSWORD
-          keyPassword=$FCI_KEY_PASSWORD
-          keyAlias=$FCI_KEY_ALIAS
+          echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+          cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
+          storePassword=$CM_KEYSTORE_PASSWORD
+          keyPassword=$CM_KEY_PASSWORD
+          keyAlias=$CM_KEY_ALIAS
           storeFile=/tmp/keystore.keystore
           EOF
       - name: Set up local.properties
         script: |
-          echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+          echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
       - name: Get Flutter packages
         script: |
           cd . && flutter packages pub get

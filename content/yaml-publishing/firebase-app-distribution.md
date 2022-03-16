@@ -130,13 +130,13 @@ Note that in case the credentials file is not specified in `firebaseAppDistribut
 Decode application credentials for Firebase authorization:
 
 ```bash
-echo $GOOGLE_APP_CREDENTIALS | base64 --decode > $FCI_BUILD_DIR/your/file/path.json
+echo $GOOGLE_APP_CREDENTIALS | base64 --decode > $CM_BUILD_DIR/your/file/path.json
 ```
 
 Build the application:
 
 ```yaml
-- echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+- echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
 - flutter packages pub get
 - flutter build apk --release
 ```
