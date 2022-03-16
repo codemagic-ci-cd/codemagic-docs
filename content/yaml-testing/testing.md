@@ -176,7 +176,7 @@ workflows:
         ...
 
       - name: Build ipa for distribution
-        script: xcode-project build-ipa --workspace "$FCI_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme $XCODE_SCHEME
+        script: xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme $XCODE_SCHEME
 
       - name: Build Android app
         script: cd android && ./gradlew assembleRelease
@@ -260,7 +260,7 @@ workflows:
         ...
 
       - name: Build ipa for distribution
-        script: xcode-project build-ipa --workspace "$FCI_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme $XCODE_SCHEME
+        script: xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme $XCODE_SCHEME
       - name: Build Android app
         script: cd android && ./gradlew assembleRelease
 

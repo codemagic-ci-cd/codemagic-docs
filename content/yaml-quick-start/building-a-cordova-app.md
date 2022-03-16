@@ -58,7 +58,7 @@ workflows:
       npm: 6
     cache:
       cache_paths:
-        - $FCI_BUILD_DIR/node_modules
+        - $CM_BUILD_DIR/node_modules
     scripts:
       - name: Install dependencies
         script: |
@@ -158,7 +158,7 @@ workflows:
       npm: 6
     cache:
       cache_paths:
-        - $FCI_BUILD_DIR/node_modules
+        - $CM_BUILD_DIR/node_modules
     scripts:
       - name: Install dependencies
         script: |

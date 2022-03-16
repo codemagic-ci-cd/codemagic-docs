@@ -19,9 +19,9 @@ In order to publish your generated artifacts to Google Cloud Storage:
 6. Replace `gs://YOUR_BUCKET_NAME` with your own bucket name in the following script and add it as a post-publishing script or create a new script step if you are using codemagic.yaml:
 
 ```
-echo $GCLOUD_STORAGE_KEY > $FCI_BUILD_DIR/gcloud_storage_key.json
-gcloud auth activate-service-account --key-file $FCI_BUILD_DIR/gcloud_storage_key.json
-gsutil cp $FCI_BUILD_DIR/app/build/outputs/**/*.apk gs://YOUR_BUCKET_NAME
+echo $GCLOUD_STORAGE_KEY > $CM_BUILD_DIR/gcloud_storage_key.json
+gcloud auth activate-service-account --key-file $CM_BUILD_DIR/gcloud_storage_key.json
+gsutil cp $CM_BUILD_DIR/app/build/outputs/**/*.apk gs://YOUR_BUCKET_NAME
 ```
 
 After completing steps above, you can go to your Cloud Storage account and check if the object is uploaded. 

@@ -70,7 +70,7 @@ Please refer to the documentation about signing iOS apps [here](../yaml-code-sig
 
 You will need to set the following environment variables in a variable group called `keystore_credentials` for Android code signing:
 
-`FCI_KEYSTORE_PATH`, `FCI_KEYSTORE`, `FCI_KEYSTORE_PASSWORD`, `FCI_KEY_PASSWORD` and `FCI_KEY_ALIAS`
+`CM_KEYSTORE_PATH`, `CM_KEYSTORE`, `CM_KEYSTORE_PASSWORD`, `CM_KEY_PASSWORD` and `CM_KEY_ALIAS`
 
 
 Please refer to the documentation about signing Android apps [here](../yaml-code-signing/signing-android/) for further details.
@@ -112,7 +112,7 @@ public static class BuildScript
         }
 
         // Set keystore name
-        string keystoreName = Environment.GetEnvironmentVariable("FCI_KEYSTORE_PATH");
+        string keystoreName = Environment.GetEnvironmentVariable("CM_KEYSTORE_PATH");
         if (!String.IsNullOrEmpty(keystoreName))
         {
             Debug.Log($"Setting path to keystore: {keystoreName}");
@@ -124,7 +124,7 @@ public static class BuildScript
         }
 
         // Set keystore password
-        string keystorePass = Environment.GetEnvironmentVariable("FCI_KEYSTORE_PASSWORD");
+        string keystorePass = Environment.GetEnvironmentVariable("CM_KEYSTORE_PASSWORD");
         if (!String.IsNullOrEmpty(keystorePass))
         {
             Debug.Log("Setting keystore password");
@@ -136,7 +136,7 @@ public static class BuildScript
         }
 
         // Set keystore alias name
-        string keyaliasName = Environment.GetEnvironmentVariable("FCI_KEY_ALIAS");
+        string keyaliasName = Environment.GetEnvironmentVariable("CM_KEY_ALIAS");
         if (!String.IsNullOrEmpty(keyaliasName))
         {
             Debug.Log("Setting keystore alias");
@@ -148,7 +148,7 @@ public static class BuildScript
         }
 
         // Set keystore password
-        string keyaliasPass = Environment.GetEnvironmentVariable("FCI_KEY_PASSWORD");
+        string keyaliasPass = Environment.GetEnvironmentVariable("CM_KEY_PASSWORD");
         if (!String.IsNullOrEmpty(keyaliasPass))
         {
             Debug.Log("Setting keystore alias password");
@@ -385,7 +385,7 @@ workflows:
         groups:
         # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
             - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
-            - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_PASSWORD, FCI_KEY_ALIAS)
+            - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS)
             - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
         vars:
           UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
@@ -406,7 +406,7 @@ workflows:
           $UNITY_BIN -batchmode -quit -logFile -serial ${UNITY_SERIAL?} -username ${UNITY_USERNAME?} -password ${UNITY_PASSWORD?}      
       - name: Set up keystore
         script: | 
-          echo $FCI_KEYSTORE | base64 --decode > $FCI_BUILD_DIR/keystore.keystore            
+          echo $CM_KEYSTORE | base64 --decode > $CM_BUILD_DIR/keystore.keystore            
       - name: Set build number and export Unity
         script: | 
           export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))

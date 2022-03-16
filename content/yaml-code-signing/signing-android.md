@@ -101,11 +101,11 @@ The following templates show code signing using `key.properties`.
 In order to code sign the build, save the keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) to the respective environment variables in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files (i.e. keystore) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build:
 
 ```
-FCI_KEYSTORE_PATH: /tmp/keystore.keystore
-FCI_KEYSTORE
-FCI_KEYSTORE_PASSWORD
-FCI_KEY_ALIAS
-FCI_KEY_PASSWORD
+CM_KEYSTORE_PATH: /tmp/keystore.keystore
+CM_KEYSTORE
+CM_KEYSTORE_PASSWORD
+CM_KEY_ALIAS
+CM_KEY_PASSWORD
 ```
 ```yaml
  environment:
@@ -118,11 +118,11 @@ Use the following script:
 ```yaml
 - name: Set up key.properties
   script: |
-    echo $FCI_KEYSTORE | base64 --decode > $FCI_KEYSTORE_PATH
-    cat >> "$FCI_BUILD_DIR/project_directory/android/key.properties" <<EOF
-    storePassword=$FCI_KEYSTORE_PASSWORD
-    keyPassword=$FCI_KEY_PASSWORD
-    keyAlias=$FCI_KEY_ALIAS
-    storeFile=$FCI_KEYSTORE_PATH
+    echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+    cat >> "$CM_BUILD_DIR/project_directory/android/key.properties" <<EOF
+    storePassword=$CM_KEYSTORE_PASSWORD
+    keyPassword=$CM_KEY_PASSWORD
+    keyAlias=$CM_KEY_ALIAS
+    storeFile=$CM_KEYSTORE_PATH
     EOF
 ```
