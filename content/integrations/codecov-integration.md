@@ -8,7 +8,7 @@ weight: 7
 
 ## Collecting test results
 
-After writing tests with your test suite you can generate a coverage report using **lcov** and upload that coverage report to **Codecov** directly via **codemagic.yaml**. Refer to the sample script below:
+After writing tests with your test suite you can generate a coverage report using **lcov** and upload that coverage report to **Codecov** directly via **codemagic.yaml**. It is also possible to exit the script if code coverage is less or more than expected rates. Refer to the sample script below:
 
 ```
 - name: Coverage report
@@ -22,7 +22,7 @@ After writing tests with your test suite you can generate a coverage report usin
   test_report: test-results/flutter.json
 ```
 
-It is possible to store test results in a location and in order to achieve it, just include the **test_report** field with a glob pattern matching the test result file location.
+In order to store test results in a location after collecting them, just include the **test_report** field with a glob pattern matching the test result file location.
 
 
 ## Create a Codecov account
