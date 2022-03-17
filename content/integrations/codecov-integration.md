@@ -69,6 +69,8 @@ chmod +x codecov
 
 Codecov centrally ingests **.xml** **.json** and **.txt** type coverage report formats. You can display test results visually in the build overview by adding them to a path. Just include the **test_report** field with a glob pattern matching the test result file location. More information can be found [here](https://docs.codemagic.io/yaml-testing/testing/) along with its samples.
 
+After successfully uploading code coverage to **Codecov**, line-by-line coverage on your GitHub pull requests via GitHub Checks. More information cab ne found [here](https://about.codecov.io/blog/announcing-line-by-line-coverage-via-github-checks/#:~:text=On%20a%20pull%20request%2C%20simply,right%20side%20of%20the%20annotation)
+
 
 ## Sample Projects
 
