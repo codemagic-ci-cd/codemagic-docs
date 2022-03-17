@@ -6,7 +6,7 @@ aliases:
   - '../custom-scripts/firebase-crashlytics-dsym-uploading'
 ---
 
-Here is how you can upload Xcode debugging symbols file to Firebase Crashlytics
+Here is how you can upload Xcode debugging symbols file to Firebase Crashlytics. 
 
   ```bash
   echo "Find build artifacts"
@@ -21,7 +21,11 @@ Here is how you can upload Xcode debugging symbols file to Firebase Crashlytics
   fi
   ```
 
-Add this script either to your configuration file or in your post-publish script in the Flutter workflow editor to locate and upload dSYM files to Firebase Crashlytics.
+Add this script either to your configuration file or in your post-publish script in the Flutter workflow editor to locate and upload dSYM files to Firebase Crashlytics. dSYM files store the debug symbols for your app. It consists of mapping information to decode a stack-trace into readable format. The reason of dSYM is to take the place of symbols in the crash logs with the specific method names so it will be readable and helpful for debugging the crash. In order to generate them, the following path needs to exist under the artifacts section:
+
+   ```
+   - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+   ```
 
 For Native iOS apps, in the case of using SwiftPackageManager (SPM) instead of CocoaPods, the following script needs to be added in a post-publishing script:
 
