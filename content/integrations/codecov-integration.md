@@ -6,6 +6,25 @@ weight: 7
 
 **Codecov** is a dedicated code analysis tool and one of the leading code coverage solutions for mobile applications. **Codecov** can be used as part of the Codemagic CI/CD pipeline for code coverage. 
 
+## Collecting test results
+
+After writing tests with your test suite you can generate a coverage report using **lcov** and upload that coverage report to **Codecov** directly via **codemagic.yaml**. Refer to the sample script below:
+
+```
+- name: Coverage report
+  script: |
+     HOMEBREW_NO_AUTO_UPDATE=1 brew install lcov
+     mkdir -p test-results 
+     flutter test --coverage --machine > test-results/flutter.json  
+     code_coverage=$(lcov --list $FCI_BUILD_DIR/coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
+     echo "Code Coverage: ${code_coverage}% "
+     if (( $(echo "$code_coverage < $CODE_COVERAGE_TARGET" | bc) )); { then echo "Having trouble" && exit 1; }; fi  
+  test_report: test-results/flutter.json
+```
+
+It is possible to store test results in a location and in order to achieve it, just include the **test_report** field with a glob pattern matching the test result file location.
+
+
 ## Create a Codecov account
 
 In order to get a dedicate Codecov token, signing up is required. You can sign up for free [here](https://about.codecov.io/): 
