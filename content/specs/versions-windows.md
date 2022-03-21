@@ -24,6 +24,7 @@ weight: 3
 - curl `7.79.1`
 - DotNet4.5.2 `4.5.2.20140902`
 - flutter `2.10.3 (C:\Users\builder\programs\flutter)`
+- gh `2.6.0`
 - Google Cloud SDK `357.0.0`
 - gsutil 4.67- git `2.33.1`
 - grep `2.1032`
