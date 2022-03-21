@@ -1,6 +1,6 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic build machines.
-title: macOS build machine specification (Xcode 13.3+)
+title: macOS build machine specification (Xcode 13.3+ / Unity)
 aliases:
   - '../releases-and-versions/versions5'
   - '../specs/versions5'
@@ -16,7 +16,7 @@ weight: 8
 
 - System version `macOS 12.2.1 (21D62)`
 - Kernel version `Darwin 21.3.0`
-- Disk `322GB (Free Space: 113GB)`
+- Disk `322GB (Free Space: 92GB)`
 
 ## Pre-installed tools
 
@@ -36,7 +36,7 @@ weight: 8
 - Google Cloud SDK `327.0.0`
 - gradle `7.3.1`
 - gsutil `4.58`
-- homebrew `3.4.1`
+- homebrew `3.4.2`
 - ionic `6.12.4`
 - jq
 - ktlint `0.44.0`
@@ -72,6 +72,10 @@ weight: 8
 - **16.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-16.jdk/Contents/Home`
 - **11.0.14.1** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_322** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+
+## Unity 2020.3.31f1
+
+UNITY_HOME: `/Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app`
 
 ## Xcode 13.3 (13E113)
 
