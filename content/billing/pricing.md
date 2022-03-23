@@ -18,7 +18,7 @@ To sign up for the pay as you go plan, [visit this page](https://codemagic.io/si
 
 ### Instance Types
 
-Codemagic provides macOS and Linux instance types.
+Codemagic provides macOS, Windows and Linux instance types.
 
 Premium VMs use more powerful hardware will run builds faster than standard VMs. 
 
@@ -31,6 +31,8 @@ The instance types and hardware specifications can be found below.
 | macOS standard VM        | 2.3GHz Quad Core / 8GB                                                                                                                                                 |
 | Linux premium VM         | 8 vCPUs, 32 GB memory                                                                                                                                                 |
 | Linux standard VM        | 4 vCPUs, 16 GB memory  
+                          |
+| Windows premium VM       | 8 vCPUs, 32 GB memory  
 
 If you are planning to run instrumentation tests with Android emulators it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs.
 
@@ -39,6 +41,8 @@ If you need more powerful Linux or macOS machines, please contact us [here](http
 For Linux instances, details of the hardware specification, system information and pre-installed can be found [here](https://docs.codemagic.io/specs/versions-linux/)
 
 For macOS instances, details of the hardware specification, system information and pre-installed can be found [here](https://docs.codemagic.io/specs/versions3/)  
+
+For Windows instances, details of the hardware specification, system information and pre-installed can be found [here](https://docs.codemagic.io/specs/versions-windows/)  
 
 ### Pricing for Personal Accounts
 
@@ -54,6 +58,7 @@ Builds on macOS premium VM, Linux standard VM, and Linux premium VM do not have 
 | macOS standard VM        | $0.038 / minute                                                                                                                                                 |
 | Linux premium VM         | $0.045 / minute                                                                                                                                                 |
 | Linux standard VM        | $0.015 / minute                                                                                                                                                 |
+| Windows VM               | $0.045 / minute                                                                                                                                                 |
 
 ### Pricing for Teams
 
@@ -73,6 +78,7 @@ Each addtional concurrency is $49/month and you will be billed for each concurre
 | macOS standard VM        | $0.038 / minute                                                                                                                                                 |
 | Linux premium VM         | $0.045 / minute                                                                                                                                                 |
 | Linux standard VM        | $0.015 / minute                                                                                                                                                 |
+| Windows VM               | $0.045 / minute                                                                                                                                                 |
 | Team user                | $10 / month                                                                                                                                                     |                                                                                                                                                 |
 | Extra build concurrency  | $49 / month                                                                                                                                                     | 
 
