@@ -223,7 +223,7 @@ public static class BuildScript
     }
     ```
 
-<h2 id="unity-build-settings">Configure Android and VR build settings in Unity</h2>
+## Configure Android and VR build settings in Unity {#unity-build-settings}
 
 To begin with, make sure that when you first create your project, you start from the **official Unity VR project template**. This will automatically add various sample assets and global settings to your project.
 
