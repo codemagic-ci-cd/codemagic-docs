@@ -95,6 +95,19 @@ public static class BuildScript
         PlayerSettings.Android.useCustomKeystore = true;
         EditorUserBuildSettings.buildAppBundle = false;
 
+        // Auto-set the version code using Codemagic's
+        // current workflow index
+        var versionIsSet = int.TryParse(Environment.GetEnvironmentVariable("BUILD_NUMBER"), out int version);
+        if (versionIsSet)
+        {
+            Debug.Log($"Bundle version code set to {version}");
+            PlayerSettings.Android.bundleVersionCode = version;
+        }
+        else
+        {
+            Debug.Log("Bundle version not provided");
+        }
+
         // Set keystore name
         string keystoreName = Environment.GetEnvironmentVariable("CM_KEYSTORE_PATH");
         if (!String.IsNullOrEmpty(keystoreName))
@@ -161,68 +174,6 @@ public static class BuildScript
 }
 ```
 
-**Warning:** this script does not auto-increment the bundle version of your Android app so you will need to:
-
-- either update it by hand along with the rest of your modifications in your commit(s)
-- or use a specific Unity C# script that handles version number auto-increment like this one inspired by the [Version Incrementor from Francesco Forno](http://forum.unity3d.com/threads/automatic-version-increment-script.144917/):
-  
-    ```cs
-    // Adapted from the Version Incrementor Script for Unity by Francesco Forno (Fornetto Games)
-    
-    using UnityEditor;
-    using UnityEngine;
-    
-    public static class VersionIncrementor
-    {
-        public static void IncreaseBuild()
-        {
-            _IncrementVersion(0, 0, 1);
-        }
-
-        private static void _IncrementVersion(int majorIncr, int minorIncr, int buildIncr)
-        {
-            string[] lines = PlayerSettings.bundleVersion.Split('.');
-    
-            int MajorVersion = int.Parse(lines[0]) + majorIncr;
-            int MinorVersion = int.Parse(lines[1]) + minorIncr;
-            int Build = int.Parse(lines[2]) + buildIncr;
-    
-            PlayerSettings.bundleVersion =
-                MajorVersion.ToString("0") + "." +
-                MinorVersion.ToString("0") + "." +
-                Build.ToString("0");
-            PlayerSettings.Android.bundleVersionCode =
-                MajorVersion * 10000 + MinorVersion * 1000 + Build;
-        }
-    }
-    ```
-
-    And call it in your **Builds** script:
-
-    ```cs
-    public static class BuildScript
-    {
-
-        [MenuItem("Build/Build Android")]
-        public static void BuildAndroid()
-        {
-            // auto-increment the bundle build version
-            VersionIncrementor.IncreaseBuild();
-
-            PlayerSettings.Android.useCustomKeystore = true;
-            EditorUserBuildSettings.buildAppBundle = false;
-
-            // (same code as before)
-        }
-
-        private static string[] GetScenes()
-        {
-            return (from scene in EditorBuildSettings.scenes where scene.enabled select scene.path).ToArray();
-        }
-
-    }
-    ```
-
 ## Configure Android and VR build settings in Unity {#unity-build-settings}
 
 To begin with, make sure that when you first create your project, you start from the **official Unity VR project template**. This will automatically add various sample assets and global settings to your project.
@@ -236,8 +187,9 @@ Then, click Edit > Project Settings and:
 3. Expand 'Other Settings' and check the 'Override Default Package Name' checkbox.
 4. Enter the package name for your app, e.g. com.domain.yourappname.
 5. Set the 'Version number'.
-6. Set the 'Minimum API Level' and 'Target API Level' to **Android 10.0 (API Level 29)** (be careful, higher versions are not supported by Oculus at the moment).
-7. In the 'Configuration' section set 'Scripting Backend' to **IL2CPP**.
+6. Put any integer value in the 'Bundle Version Code'. This will be overriden with the build script.
+7. Set the 'Minimum API Level' and 'Target API Level' to **Android 10.0 (API Level 29)** (be careful, higher versions are not supported by Oculus at the moment).
+8. In the 'Configuration' section set 'Scripting Backend' to **IL2CPP**.
 
 ## Add a custom base Gradle template {#custom-gradle-template}
 
