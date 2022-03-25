@@ -52,7 +52,7 @@ Note that the environment variable `UNITY_HOME` is already set on the build mach
 
 On the macOS Unity base image `UNITY_HOME` is set to `/Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app`.
 
-<h2 id="android-variables">Environment variables for Android code signing</h2>
+## Environment variables for Android code signing {#android-variables}
 
 You will need to set the following environment variables in a variable group called `keystore_credentials` for Android code signing:
 
