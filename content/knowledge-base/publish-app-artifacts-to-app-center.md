@@ -19,24 +19,16 @@ When creating an app in App Center, its name must match your app's bundle identi
 
 echo 'Installing App Center CLI tools'
 npm install -g appcenter-cli
+echo "Publishing $ipaPath to App Center"
+appcenter distribute release \
+    --group Collaborators \
+    --file YOUR_APK_PATH \
+    --release-notes 'App submission via Codemagic' \
+    --app APP_CENTER_USERNAME OR ORGANIZATION_NAME/YOUR_PACKAGE_NAME \
+    --token df84dfdec4301fc5feccdc7a9c6545a93db24d93 \
+    --quiet
+```
 
-echo "Find build artifacts"
-apkPath=$(find build -name "*.apk" | head -1)
-echo "Found apk at $apkPath"
-
-if [[ -z ${apkPath} ]]
-then
-    echo "No apks were found, skip publishing to App Center"
-else
-    echo "Publishing $apkPath to App Center"
-    appcenter distribute release \
-        --group Collaborators \
-        --file "${apkPath}" \
-        --release-notes 'App submission via Codemagic' \
-        --app <username_or_organization>/<application_identifier> \
-        --token "${APP_CENTER_TOKEN}" \
-        --quiet
-fi
 ```
 
 **Example script for publishing ipa**
@@ -46,24 +38,14 @@ fi
 
 echo 'Installing App Center CLI tools'
 npm install -g appcenter-cli
-
-echo "Find build artifacts"
-ipaPath=$(find ~/ipas -name "*.ipa" | head -1)
-echo "Found ipa at $ipaPath"
-
-if [[ -z ${ipaPath} ]]
-then
-    echo "No ipas were found, skip publishing to App Center"
-else
-    echo "Publishing $ipaPath to App Center"
-    appcenter distribute release \
-        --group Collaborators \
-        --file "${ipaPath}" \
-        --release-notes 'App submission via Codemagic' \
-        --app <username_or_organization>/<application_identifier> \
-        --token "${APP_CENTER_TOKEN}" \
-        --quiet
-fi
+echo "Publishing $ipaPath to App Center"
+appcenter distribute release \
+    --group Collaborators \
+    --file YOUR_IPA_PATH \
+    --release-notes 'App submission via Codemagic' \
+    --app APP_CENTER_USERNAME OR ORGANIZATION_NAME/YOUR_BUNDLE_IDENTIFER \
+    --token df84dfdec4301fc5feccdc7a9c6545a93db24d93 \
+    --quiet
 ```
 
 
