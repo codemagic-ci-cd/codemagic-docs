@@ -34,7 +34,7 @@ These are the key steps in setting up your workflow for building a Unity VR app 
 7. Configure Custom Gradle templates as described [here](#custom-gradle-template).
 8. Create a codemagic.yaml workflow configuration using the Unity template and configure with your details as shown [here](#workflow-configuration).
 
-<h2 id="unity-variables">Environment variables for Unity</h2>
+## Environment variables for Unity {#unity-variables}
 
 You will need to set the following environment variables for Unity specific values in Codemagic:
 
