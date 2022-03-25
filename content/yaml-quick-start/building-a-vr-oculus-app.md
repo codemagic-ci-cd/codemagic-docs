@@ -60,7 +60,7 @@ You will need to set the following environment variables in a variable group cal
 
 Please refer to the documentation about signing Android apps [here](https://docs.codemagic.io/yaml-code-signing/signing-android/) for further details.
 
-<h2 id="oculus-variables">Environment variables for Oculus app signing</h2>
+## Environment variables for Oculus app signing {#oculus-variables}
 
 You will need to set the following environment variables in a variable group called `oculus` for Oculus app signing:
 
