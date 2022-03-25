@@ -71,7 +71,7 @@ You can find this info in your Oculus app dashboard, in the API section:
 - The `OCULUS_APP_ID` is the **App ID** field of your app.
 - If you own the application, then you'll be able to get the **App secret** field of your app and use it to fill the `OCULUS_APP_SECRET` Codemagic environment variable. Else, you will need to generate a user token and add it to your Codemagic environment variable as `OCULUS_USER_TOKEN`.
 
-<h2 id="unity-build-script">Add a build script to Unity</h2>
+## Add a build script to Unity {#unity-build-script}
 
 A Unity build script is required to build the project in headless mode.
 
