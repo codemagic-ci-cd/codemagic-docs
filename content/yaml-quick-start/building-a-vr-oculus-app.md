@@ -239,7 +239,7 @@ Then, click Edit > Project Settings and:
 6. Set the 'Minimum API Level' and 'Target API Level' to **Android 10.0 (API Level 29)** (be careful, higher versions are not supported by Oculus at the moment).
 7. In the 'Configuration' section set 'Scripting Backend' to **IL2CPP**.
 
-<h2 id="custom-gradle-template">Add a custom base Gradle template</h2>
+## Add a custom base Gradle template {#custom-gradle-template}
 
 You will need to add custom gradle templates so your Android builds work with Codemagic.
 
