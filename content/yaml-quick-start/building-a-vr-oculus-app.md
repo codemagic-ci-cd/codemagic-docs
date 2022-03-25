@@ -290,7 +290,7 @@ task clean(type: Delete) {
 }
 ```
 
-<h2 id="workflow-configuration">Workflow configuration with codemagic.yaml</h2>
+## Workflow configuration with codemagic.yaml {#workflow-configuration}
 
 Your workflow should be configured using the **codemagic.yaml** configuration file and checked into the root of the branches you wish to build using Codemagic.
 
