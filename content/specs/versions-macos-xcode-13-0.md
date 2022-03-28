@@ -84,8 +84,8 @@ Includes pre-installed modules for iOS, Android, macOS, Linux, Windows and WebGL
 
 ## Xcode 13.2.1 (13C100)
 
-This is the Xcode version used by default when you select `13.2`, `13.2.1` or `latest` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `13.2`, `13.2.1` or `latest` in your codemagic.yaml file. 
+This is the Xcode version used by default when you select `13.2` or `13.2.1` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `13.2` or `13.2.1` in your codemagic.yaml file. 
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.2.1.app`
