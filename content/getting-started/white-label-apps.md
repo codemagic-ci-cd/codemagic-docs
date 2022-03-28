@@ -58,7 +58,7 @@ You should try any scripts on your local machine to test things like authenticat
 
 If you are building many different versions, then instead of creating a long codemagic.yaml file with tens of workflows, you can have a single workflow and use the Codemagic API to pass environment variables to change build parameters.
 
-Users can start new builds using [Codemagic REST API](../rest-api/codemagic-rest-api.md). All data is sent and received as JSON. The REST API supports an optional parameter for environment variables. 
+Users can start new builds using [Codemagic REST API](../rest-api/codemagic-rest-api/). All data is sent and received as JSON. The REST API supports an optional parameter for environment variables. 
 
 If your application has a content management system for your customers, you can leverage the API to trigger your builds and pass the client ID as an environment variable. 
 
