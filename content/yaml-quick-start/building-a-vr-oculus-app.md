@@ -4,7 +4,6 @@ description: How to build a Unity Oculus VR app with codemagic.yaml
 weight: 13
 
 ---
-# How to build an Oculus VR app with Unity and Codemagic
 
 Unity is a cross-platform game engine developed by Unity Technologies. It allows us to quickly create various types of applications and games and, in particular, it lets us design XR (AR or VR) experiences.
 
