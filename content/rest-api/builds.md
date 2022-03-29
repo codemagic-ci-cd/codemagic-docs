@@ -21,7 +21,7 @@ Note that the workflow and branch information is passed with the curl request wh
 | `workflowId`  | `string` | **Required.** The workflow identifier as specified in YAML file. |
 | `branch`      | `string` | Optional. The branch name. Either `branch` or `tag` is **required**. |
 | `tag`         | `string` | Optional. The tag name. Either `branch` or `tag` is **required**. |
-| `environment` | `object` | Optional. Specify environment variables and software versions to override values defined in workflow settings. | 
+| `environment` | `object` | Optional. Specify environment variables, variable groups and software versions to override or expand values defined in workflow settings. | 
 
 ### Example
 
@@ -41,6 +41,10 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '
       "ENVIRONMENT_VARIABLE_1": "...",
       "ENVIRONMENT_VARIABLE_2": "..."
     },
+    "groups": [
+      "variable_group_1",
+      "variable_group_2"
+    ],
     "softwareVersions": {
       "xcode": "11.4.1",
       "flutter": "v1.12.13+hotfix.9"
