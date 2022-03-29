@@ -21,7 +21,7 @@ Note that the workflow and branch information is passed with the curl request wh
 | `workflowId`  | `string` | **Required.** The workflow identifier as specified in YAML file. |
 | `branch`      | `string` | Optional. The branch name. Either `branch` or `tag` is **required**. |
 | `tag`         | `string` | Optional. The tag name. Either `branch` or `tag` is **required**. |
-| `environment` | `object` | Optional. Specify environment variables, variable groups and software versions to override or expand values defined in workflow settings. | 
+| `environment` | `object` | Optional. Specify environment variables, variable groups, and software versions to override or expand values defined in workflow settings. | 
 
 ### Example
 
