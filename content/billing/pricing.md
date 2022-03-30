@@ -117,7 +117,7 @@ The **monthly** subscription is **$599/month** payable by credit card. Additiona
 
 An **annual** subscription with **20% discount** is **$5,750/year**. Additional concurrencies are **$1,920/year**. 
 
-The Professional Plus plan can only be paid for with credit card. If you require annual invoicing please refer to the Enterprise plan below.
+The Professional Plus plan can only be paid for with credit card. If you require annual invoicing, please refer to the Enterprise plan below.
 
 If you would like to upgrade to a Professional Plus plan, please contact us [here](https://codemagic.io/contact/).
 
