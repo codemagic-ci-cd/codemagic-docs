@@ -25,11 +25,10 @@ appcenter distribute release \
     --file YOUR_APK_PATH \
     --release-notes 'App submission via Codemagic' \
     --app APP_CENTER_USERNAME OR ORGANIZATION_NAME/YOUR_PACKAGE_NAME \
-    --token df84dfdec4301fc5feccdc7a9c6545a93db24d93 \
+    --token $APP_CENTER_TOKEN \
     --quiet
 ```
 
-```
 
 **Example script for publishing ipa**
 
@@ -44,7 +43,7 @@ appcenter distribute release \
     --file YOUR_IPA_PATH \
     --release-notes 'App submission via Codemagic' \
     --app APP_CENTER_USERNAME OR ORGANIZATION_NAME/YOUR_BUNDLE_IDENTIFER \
-    --token df84dfdec4301fc5feccdc7a9c6545a93db24d93 \
+    --token $APP_CENTER_TOKEN \
     --quiet
 ```
 
