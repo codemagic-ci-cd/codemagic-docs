@@ -27,6 +27,7 @@ The instance types and hardware specifications can be found below.
 
 | **Item**        | **Specification**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| macOS M1 standard VM         | 3.2GHz Quad Core / 8GB                                                                                                                                                 |
 | macOS premium VM         | 3.7GHz Quad Core / 32GB                                                                                                                                                 |
 | macOS standard VM        | 2.3GHz Quad Core / 8GB                                                                                                                                                 |
 | Linux premium VM         | 8 vCPUs, 32 GB memory                                                                                                                                                 |
@@ -38,11 +39,11 @@ If you are planning to run instrumentation tests with Android emulators it is ad
 
 If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/contact/).
 
-For Linux instances, details of the hardware specification, system information and pre-installed can be found [here](https://docs.codemagic.io/specs/versions-linux/)
+For Linux instances, details of the hardware specification, system information and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-linux/)
 
-For macOS instances, details of the hardware specification, system information and pre-installed can be found [here](https://docs.codemagic.io/specs/versions3/)  
+For macOS instances, details of the hardware specification, system information and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions3/)  
 
-For Windows instances, details of the hardware specification, system information and pre-installed can be found [here](https://docs.codemagic.io/specs/versions-windows/)  
+For Windows instances, details of the hardware specification, system information and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-windows/)  
 
 ### Pricing for Personal Accounts
 
@@ -50,10 +51,11 @@ When billing is enabled on personal accounts you will still have **500 free buil
 
 Usage on macOS standard VM that exceeds 500 minutes is charged at rate shown below.
 
-Builds on macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes and are charged at the rates shown below. 
+Builds on macOS M1 standard VM, macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes and are charged at the rates shown below. 
 
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| macOS M1 standard VM         | $0.190 / minute                                                                                                                                                 |
 | macOS premium VM         | $0.095 / minute                                                                                                                                                 |
 | macOS standard VM        | $0.038 / minute                                                                                                                                                 |
 | Linux premium VM         | $0.045 / minute                                                                                                                                                 |
@@ -62,7 +64,7 @@ Builds on macOS premium VM, Linux standard VM, and Linux premium VM do not have 
 
 ### Pricing for Teams
 
-For teams, all build minutes using macOS standard VM, macOS premium VM, Linux standard VM, and Linux premium VM are charged at the rates shown below. 
+For teams, all build minutes using macOS M1 standard VM, macOS standard VM, macOS premium VM, Linux standard VM, and Linux premium VM are charged at the rates shown below. 
 
 Team users that were active in the current billing period are charged $10/month. To see how users are counted please see [here](https://docs.codemagic.io/teams/users/)
 
@@ -74,6 +76,7 @@ Each addtional concurrency is $49/month and you will be billed for each concurre
 
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| macOS M1 standard VM         | $0.190 / minute                                                                                                                                                 |
 | macOS premium VM         | $0.095 / minute                                                                                                                                                 |
 | macOS standard VM        | $0.038 / minute                                                                                                                                                 |
 | Linux premium VM         | $0.045 / minute                                                                                                                                                 |
@@ -88,7 +91,7 @@ Consider Professional plan or Enterprise plan if more than three concurrent buil
 
 The Codemagic Professional plan gives you a fixed price plan with the following benefits:
 
-* 3 concurrencies (premium macOS and Linux instances)
+* 3 concurrencies (premium macOS, Linux, and Windows instances)
 * Unlimited build minutes
 * Unlimited team seats
 * In-app chat support
@@ -101,10 +104,28 @@ The Professional plan can only be paid for with credit card. If you require annu
 
 If you would like to upgrade to a Professional plan, please contact us [here](https://codemagic.io/contact/).
 
+## Professional Plus Plan
+
+The Codemagic Professional Plus plan gives you a fixed price plan with the following benefits:
+
+* 3 concurrencies (macOS M1 standard, premium Linux and Windows instances)
+* Unlimited build minutes
+* Unlimited team seats
+* In-app chat support
+
+The **monthly** subscription is **$599/month** payable by credit card. Additional concurrencies are **$200/month**.
+
+An **annual** subscription with **20% discount** is **$5,750/year**. Additional concurrencies are **$1,920/year**. 
+
+The Professional Plus plan can only be paid for with credit card. If you require annual invoicing, please refer to the Enterprise plan below.
+
+If you would like to upgrade to a Professional Plus plan, please contact us [here](https://codemagic.io/contact/).
 
 ## Enterprise Plan
 
 Enterprise plans are available from **$6,000/year**.
+
+Enterprise plans which include `macOS M1 standard` instances are available from **$9,000/year**.
 
 This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **dedicated hosts**, or **custom base images**.
 
@@ -114,11 +135,17 @@ Annual invoicing with bank transfer is available for Enterprise plans.
 
 If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/enterprise/). 
 
+## Resellers
+
+It's possible to resell the Codemagic Enterprise plan. Contact us [here](https://codemagic.io/enterprise/) for further details. 
+
 ## Dedicated Hosts
 
 If you need specific software and tools available on a builder machine we can provide dedicated macOS host machines which give you 2 VMs. 
 
-Dedicated hosts are available for $449/month, paid annually with **20% discount** comes to **$4,310/year**. 
+Dedicated macOS premium hosts are available for $449/month, paid annually with **20% discount** comes to **$4,310/year**. 
+
+Dedicated macOS M1 standard hosts are available for $898/month, paid annually with **20% discount** comes to **$8,620/year**. 
 
 Annual plans can be paid for with credit card and invoicing with bank transfer is available.
 
