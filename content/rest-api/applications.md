@@ -229,10 +229,8 @@ curl -XPOST -H 'x-auth-token: <API TOKEN>' -H "Content-type: application/json" -
 
 #### Example of adding file variables
 
-It is possible to pass text-based files to the `cURL` command with the help of CLI tools, such as `sed` or `awk` (which is
-
-used in the example below). These tools provide options to properly retain newlines, which are essential for some files
-(e.g. private keys) to function correctly.
+It is possible to pass text-based files to the `cURL` command with the help of CLI tools, such as `sed` or `awk` (which is used in the example below).
+These tools provide options to properly retain newlines, which are essential for some files (e.g. private keys) to function correctly.
 
 
 ```bash
