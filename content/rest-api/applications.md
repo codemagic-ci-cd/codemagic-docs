@@ -227,7 +227,8 @@ curl -XPOST -H 'x-auth-token: <API TOKEN>' -H "Content-type: application/json" -
   }' 'https://api.codemagic.io/apps/<app_id>/variables'
 ```
 
-#### Example adding file variables
+#### Example of adding file variables
+
 
 Things are a bit more complicated when adding files to variables due to how `JSON` handles newlines and environment variables.
 
