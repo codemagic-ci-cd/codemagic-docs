@@ -234,7 +234,8 @@ Things are a bit more complicated when adding files to variables due to how `JSO
 It is possible to pass text-based files to the `cURL` command with the help of CLI tools, such as `sed` or `awk` (which is
 
 used in the example below). These tools provide options to properly retain newlines, which are essential for some files
-(e.g., private keys) to function correctly.
+(e.g. private keys) to function correctly.
+
 
 ```bash
 FILE=$(awk 1 ORS='\\n' file_path)
