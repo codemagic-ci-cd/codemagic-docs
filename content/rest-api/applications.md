@@ -149,23 +149,6 @@ base64 id_rsa | pbcopy
 }}
 ```
 
-## Encrypt an environment variable
-
-`POST /apps/:id/encrypt-environment-variable`
-
-Generates an encrypted string that will be decrypted inside our machines when building the app. It can be used in YAML environment variables without exposing the plain text content in version control.
-
-Note that the variables will need to be re-generated when moving the app to a different team.
-
-### Example
-
-```
-curl 'https://api.codemagic.io/apps/your-app-id/encrypt-environment-variable' \
- -H 'X-Auth-Token: <API Token>' \
- -H 'Content-Type: application/json;charset=utf-8' \
- --data '{"value": "your value"}'
-```
-
 ### Response
 
 ```yaml
@@ -243,6 +226,25 @@ curl -XPOST -H 'x-auth-token: <API TOKEN>' -H "Content-type: application/json" -
     "secure": true
   }' 'https://api.codemagic.io/apps/<app_id>/variables'
 ```
+
+#### Example of adding file variables
+
+It is possible to pass text-based files to the `cURL` command with the help of CLI tools, such as `sed` or `awk` (which is used in the example below).
+These tools provide options to properly retain newlines, which are essential for some files (e.g. private keys) to function correctly.
+
+
+```bash
+FILE=$(awk 1 ORS='\\n' file_path)
+curl -XPOST -H 'x-auth-token: <API TOKEN>' -H 'Content-Type: application/json;charset=utf-8' -d "{
+    \"key\":\"FOO\",
+    \"value\":\"$FILE\", 
+    \"group\":\"production\", 
+    \"secure\": true
+    }" 'https://api.codemagic.io/apps/<app_id>/variables'
+```
+
+To add binary-based files (e.g. images), they need to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) first before passing them to the value parameter as strings. Note that the values will have to be `base64 decoded` during the build so as to use them.
+
 
 #### Response
 
