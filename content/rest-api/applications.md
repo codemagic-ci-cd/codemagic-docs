@@ -243,10 +243,7 @@ curl -XPOST -H 'x-auth-token: <API TOKEN>' -H 'Content-Type: application/json;ch
     }" 'https://api.codemagic.io/apps/<app_id>/variables'
 ```
 
-To add binary-based files (e.g. images), they need to be 
-
-[`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) first before passing them
-to the value parameter as strings. Note that the values will have to be `base64 decoded` during the build so as to use them.
+To add binary-based files (e.g. images), they need to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) first before passing them to the value parameter as strings. Note that the values will have to be `base64 decoded` during the build so as to use them.
 
 
 #### Response
