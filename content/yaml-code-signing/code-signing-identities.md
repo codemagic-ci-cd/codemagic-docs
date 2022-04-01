@@ -13,18 +13,24 @@ Team owner permissions are required to upload and edit uploaded files under the 
 
 ### iOS certificates
 
-It is possible to upload certificates with the `.p12` or `.pem` extension. When uploading, Codemagic will ask you to provide the certificate password as long as with a **Reference name** which can then be used in the `codemagic.yaml` configuration to fetch the specific file.
+It is possible to upload certificates with the `.p12` or `.pem` extension. When uploading, Codemagic will ask you to provide the certificate password as long as with a **Reference name**, which can then be used in the `codemagic.yaml` configuration to fetch the specific file.
 
-For each uploaded certificate, the reference name along with certificate type, team and expiration date are displayed.
+The reference name and certificate type, team, and expiration date are displayed for each uploaded certificate.
 
-In addition, Codemagic provides the option to generate a new `iOS Development` or `iOS Distribution` certificate, to do so, click on **Generate certificate** and provide a reference name along with choosing the certificate type and matching bundle identifier. Note that Apple limits the number of `iOS Distribution` certificates to 3. If you already have reached the maximum number of certificates, the following error will be displayed:
+In addition, Codemagic provides the option to generate a new `iOS Development` or `iOS Distribution` certificate. To do so, click on **Generate certificate** and provide a reference name and choose the certificate type and matching bundle identifier. Once the certificate has been created, Codemagic will allow you to download the certificate and provides the password for it. The download is available only once.
+
+Note that Apple limits the number of `iOS Distribution` certificates to 3. If you already have reached the maximum number of certificates, the following error will be displayed:
 
 ```
 You already have a current iOS Distribution certificate or a pending certificate request.
 ```
 
-In case of existing certificates, it is possible to fetch them from the Apple Developer Portal based on the bundle identifier.
+In the case of existing certificates, it is possible to fetch them from the Apple Developer Portal based on the bundle identifier.
 
+### iOS profiles
+
+
+### Android keystores
 
 ## Referencing files in codemagic.yaml
 
