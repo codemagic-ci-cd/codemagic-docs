@@ -11,7 +11,7 @@ If your project requires accessing any private Git submodules or dependencies, y
 3.  Copy the contents of the **private key** file add it as an environment variable in the Codemagic UI and import it into your **codemagic.yaml** configuration file which can be done as follows:
 
    * Create an environment variable that ends with __SSH_KEY_ e.g. MODULE_SSH_KEY, and add to a group. Make sure to mark the **Secure** checkbox which will encrypt the value of the environment variable.
-   * Import the environment variable group as described[here](../variables/environment-variable-groups/)
+   * Import the environment variable group as described [here](../variables/environment-variable-groups/).
  
 All environment variables whose name has the suffix `_SSH_KEY` will be automatically added to the SSH agent and will be ready for use during the whole build process. Check the `Fetching app sources` step in build logs to verify that the key has been successfully added to the SSH agent.
 
