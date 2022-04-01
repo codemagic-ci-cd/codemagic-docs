@@ -21,13 +21,13 @@ dependencies:
   firebase_crashlytics: ^2.5.2
 ```
 
-Installing is successfully will generate debug symbols as a zip file but they will not be displayed unless the following path is configured in **codemagic.yaml** under the artifacts section:
+As soon as your build finishes successfully, debug symbols are generated. However, if you want them to be displayed in the Codemagic UI on the build page, then the following path needs to be configured in codemagic.yaml under the artifacts section:
 
 ```
  - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
  ```
 
-Afterwards, the following script either to your configuration file or in your post-publish script in the Flutter workflow editor will upload dSYM files to Firebase Crashlytics:
+In order to upload the dSYM files to Firebase Crashlytics, add the following script to your codemagic.yaml configuration file or to your post-publish script in the Flutter workflow editor: 
 
   ```bash
   echo "Find build artifacts"
@@ -63,4 +63,4 @@ fi
 
 ## Sample Project
 
-A sample project for uploading **dSYM** to Firebase Crashlytics can be found [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/firebase_crashlytics_demo_project)
+A sample project for uploading **dSYM** files to Firebase Crashlytics can be found [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/firebase_crashlytics_demo_project)
