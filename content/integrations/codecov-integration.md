@@ -74,4 +74,4 @@ After successfully uploading code coverage to **Codecov**, line-by-line coverage
 
 ## Sample Projects
 
-A sample project that shows how to configure Codecov integration is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/codecov-integration-demo-project).
+A sample project that shows how to configure Codecov integration is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/codecov_integration_demo_project).
