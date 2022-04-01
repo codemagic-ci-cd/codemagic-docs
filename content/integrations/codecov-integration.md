@@ -1,6 +1,6 @@
 ---
 title: Codecov integration
-description: How to integrate your workflows with BrowserStack using codemagic.yaml
+description: How to integrate your workflows with Codecov using codemagic.yaml
 weight: 7
 ---
 
@@ -27,11 +27,11 @@ In order to store test results in a location after collecting them, just include
 
 ## Create a Codecov account
 
-In order to get a dedicate Codecov token, signing up is required. You can sign up for free [here](https://about.codecov.io/): 
+In order to get a dedicated Codecov token, signing up is required. You can sign up for free [here](https://about.codecov.io/): 
 
 ## Configuring Codecov Code Coverage Upload:
 
-Code coverages can be submitted to the Codecov environment through Codemagic using a **cURL** request. In order to configure it correctly, codecov token is required and it can be found under the Codecov account after signing up. After getting the necessary token, it can be assigned to an enviornment variable. Environment variables can be added in the Codemagic web app using the ‘Environment variables’ tab. You can then and import your variable groups into your codemagic.yaml. For example, if you named your variable group ‘browserstack_credentials’, you would import it as follows:
+Code coverages can be submitted to the Codecov environment through Codemagic using a **cURL** request. In order to configure it correctly, a codecov token is required which can be found in your Codecov account after signing up. After getting the necessary token, it can be assigned to an environment variable. Environment variables can be added in the Codemagic web app using the ‘Environment variables’ tab. You can then and import your variable groups into your codemagic.yaml. For example, if you named your variable group ‘codecov_credentials’, you would import it as follows:
 
 ```
 workflows:
@@ -67,11 +67,11 @@ chmod +x codecov
 ./codecov -t ${CODECOV_TOKEN}
 ```
 
-Codecov centrally ingests **.xml** **.json** and **.txt** type coverage report formats. You can display test results visually in the build overview by adding them to a path. Just include the **test_report** field with a glob pattern matching the test result file location. More information can be found [here](https://docs.codemagic.io/yaml-testing/testing/) along with its samples.
+Codecov accepts **.xml** **.json** and **.txt** coverage report formats. You can display test results visually in the build overview by adding them to a path. Just include the **test_report** field with a glob pattern matching the test result file location. More information can be found [here](https://docs.codemagic.io/yaml-testing/testing/) along with its samples.
 
-After successfully uploading code coverage to **Codecov**, line-by-line coverage on your GitHub pull requests via GitHub Checks. More information cab ne found [here](https://about.codecov.io/blog/announcing-line-by-line-coverage-via-github-checks/#:~:text=On%20a%20pull%20request%2C%20simply,right%20side%20of%20the%20annotation)
+After successfully uploading code coverage to **Codecov**, line-by-line coverage will be displayed on your GitHub pull requests via GitHub Checks. More information can be found [here](https://about.codecov.io/blog/announcing-line-by-line-coverage-via-github-checks/#:~:text=On%20a%20pull%20request%2C%20simply,right%20side%20of%20the%20annotation)
 
 
 ## Sample Projects
 
-A sample project that shows how to configure LambdaTest integration is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/codecov-integration-demo-project).
+A sample project that shows how to configure Codecov integration is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/codecov-integration-demo-project).
