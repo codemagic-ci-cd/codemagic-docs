@@ -74,5 +74,5 @@ Please refer to the [documentation](https://github.com/codemagic-ci-cd/cli-tools
 To generate a changelog text from Git history, use the [git-changelog](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/git-changelog#git-changelog) tool. For example, to generate a changelog to `CHANGELOG` file starting from the previous tag, use:
 
 ```bash
-git-changelog generate --previous-commit PREVIOUS_COMMIT_ID `git rev-list --tags --skip=1  --max-count=1` > CHANGELOG
+git-changelog generate --previous-commit ${CM_PREVIOUS_COMMIT} `git rev-list --tags --skip=1  --max-count=1` > CHANGELOG
 ```
