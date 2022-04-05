@@ -42,7 +42,21 @@ In order to upload the dSYM files to Firebase Crashlytics, add the following scr
   fi
   ```
  
-The above-mentioned **dsymPath** is Flutter specific and it could change depending on what platform the app is built. Remote access to the build machine is suggested to find a correct path. More information can be found [here](https://docs.codemagic.io/troubleshooting/accessing-builder-machine-via-ssh/)
+The above-mentioned **dsymPath** is Flutter specific and it could change depending on what platform the app is built. 
+
+With React Native applications:
+
+```
+dsymPath=$(find $CM_BUILD_DIR/build/ios/xcarchive/codemagic_react_native_*.xcarchive -name "*.dSYM" | head -1)
+```
+
+With Native iOS applications:
+
+```
+dsymPath=$(find $CM_BUILD_DIR/build/ios/xcarchive/swiftly_*.xcarchive -name "*.dSYM" | head -1)
+```
+
+In general, remote access to the build machine is a better practice to find a correct path. More information can be found [here](https://docs.codemagic.io/troubleshooting/accessing-builder-machine-via-ssh/)
 
 For Native iOS apps, in the case of using SwiftPackageManager (SPM) instead of CocoaPods, the following script needs to be added in a post-publishing script:
 
