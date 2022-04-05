@@ -44,13 +44,7 @@ In order to upload the dSYM files to Firebase Crashlytics, add the following scr
  
 The above-mentioned **dsymPath** is Flutter specific and it could change depending on what platform the app is built. 
 
-With React Native applications:
-
-```
-dsymPath=$(find $CM_BUILD_DIR/build/ios/xcarchive/*.xcarchive -name "*.dSYM" | head -1)
-```
-
-With Native iOS applications:
+With React Native or Native iOS applications:
 
 ```
 dsymPath=$(find $CM_BUILD_DIR/build/ios/xcarchive/*.xcarchive -name "*.dSYM" | head -1)
