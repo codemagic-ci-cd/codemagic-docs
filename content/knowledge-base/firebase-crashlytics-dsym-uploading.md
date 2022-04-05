@@ -47,13 +47,13 @@ The above-mentioned **dsymPath** is Flutter specific and it could change dependi
 With React Native applications:
 
 ```
-dsymPath=$(find $CM_BUILD_DIR/build/ios/xcarchive/codemagic_react_native_*.xcarchive -name "*.dSYM" | head -1)
+dsymPath=$(find $CM_BUILD_DIR/build/ios/xcarchive/*.xcarchive -name "*.dSYM" | head -1)
 ```
 
 With Native iOS applications:
 
 ```
-dsymPath=$(find $CM_BUILD_DIR/build/ios/xcarchive/swiftly_*.xcarchive -name "*.dSYM" | head -1)
+dsymPath=$(find $CM_BUILD_DIR/build/ios/xcarchive/*.xcarchive -name "*.dSYM" | head -1)
 ```
 
 In general, remote access to the build machine is a better practice to find a correct path. More information can be found [here](https://docs.codemagic.io/troubleshooting/accessing-builder-machine-via-ssh/)
