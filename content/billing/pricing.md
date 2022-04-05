@@ -31,8 +31,7 @@ The instance types and hardware specifications can be found below.
 | macOS premium VM         | 3.7GHz Quad Core / 32GB                                                                                                                                                 |
 | macOS standard VM        | 2.3GHz Quad Core / 8GB                                                                                                                                                 |
 | Linux premium VM         | 8 vCPUs, 32 GB memory                                                                                                                                                 |
-| Linux standard VM        | 4 vCPUs, 16 GB memory  
-                          |
+| Linux standard VM        | 4 vCPUs, 16 GB memory                                                 |
 | Windows premium VM       | 8 vCPUs, 32 GB memory  
 
 If you are planning to run instrumentation tests with Android emulators it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs.
