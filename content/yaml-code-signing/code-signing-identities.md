@@ -122,7 +122,7 @@ Default environment variables are assigned by Codemagic for the values on the bu
 
 #### Fetching multiple keystore files
 
-When fetching multiple keystores during a build, it is necessary to include names for environment variables that will point to the file paths on the builder machine.
+When fetching multiple keystores during a build, it is necessary to include names for environment variables that will point to the file paths on the build machine.
 
 ```yaml
 environment:
