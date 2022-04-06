@@ -165,6 +165,7 @@ The main sections in each workflow are described below.
 | `linux_x2`    | Linux premium VM            |
 | `windows_x2`  | Windows premium VM          |
 
+<br>
 {{<notebox>}}
 Note that `mac_pro`, `linux`, `linux_x2` and `windows_x2` are only available for teams and users with [billing enabled](../billing/billing/). The `mac_mini_m1` instance type is only available for teams and users on the Pay as you go and Professional Plus plans. 
 {{</notebox>}}
