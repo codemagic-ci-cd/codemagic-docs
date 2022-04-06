@@ -114,7 +114,7 @@ environment:
         - keystore_reference
 ```
 
-Default environment variables are assigned by Codemagic for the values on the builder machine:
+Default environment variables are assigned by Codemagic for the values on the build machine:
 - Keystore path: `CM_KEYSTORE_PATH`
 - Keystore password: `CM_KEYSTORE_PASSWORD`
 - Key alias: `CM_KEY_ALIAS`
