@@ -51,8 +51,7 @@ weight: 8
 
 ## Android emulators
 
-- **None**
-
+Android emulators are not available on Mac mini M1 machines. Please use a Mac Pro or a Linux machine.
 
 ## Java versions
 
