@@ -35,7 +35,7 @@ The **Reference name**, certificate type, team, and expiration date are displaye
 
 ### iOS profiles
 
-Codemagic also lets you upload provisioning profiles with the `.mobileprovision` extension. 
+You can upload provisioning profiles with the `.mobileprovision` extension. 
 
 Alternatively, you can automatically fetch the provisioning profiles from the Apple Developer Portal based on your team's Apple Developer Portal connection and bundle identifier. When fetching, profiles are displayed by category: `Development profiles`, `Ad Hoc profiles`, `App Store profiles`, and `Enterprise profiles`. For each selected profile, it is necessary to provide a unique **Reference name**, which can be later used in `codemagic.yaml` to fetch the profile.
 
