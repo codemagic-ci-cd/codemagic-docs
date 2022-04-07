@@ -107,6 +107,18 @@ environment:
             - ...
 ```
 
+#### Using profiles
+
+To apply the profiles to your project during the build, add the following script before your build scripts:
+
+```yaml
+scripts:
+    ... your dependencies installation
+    - name: Set up code signing settings on Xcode project
+        script: xcode-project use-profiles
+    ... your build commands
+```
+
 ### Android keystores
 
 To tell Codemagic to fetch the uploaded keystores from the **Code signing identities** section during the build, list the reference of the uploaded keystore under the `android_signing` field.
