@@ -64,6 +64,8 @@ Codemagic provides two means of fetching the required certificates and provision
 
 To fetch all uploaded signing files matching a specific distribution type and bundle identifier during the build, define the `distribution_type` and `bundle_identifier` fields in your `codemagic.yaml` configuration. Note that it is necessary to configure both of the fields.
 
+Note that when using the fields `distribution_type` and `bundle_identifier`, it is not allowed to configure `provisioning_profiles` and `certificates` fields.
+
 ```yaml
 environment:
     ios_signing:
@@ -75,7 +77,7 @@ When defining the bundle identifier `com.example.id`, Codemagic will fetch any u
 
 #### Fetching specific files by reference names
 
-For a more advanced configuration, it is possible to pick out specific uploaded profiles and certificates for Codemagic to fetch during the build. To do so, list the references of the uploaded files under the `provisioning_profiles` and `certificates` fields, respectively.
+For a more advanced configuration, it is possible to pick out specific uploaded profiles and certificates for Codemagic to fetch during the build. To do so, list the references of the uploaded files under the `provisioning_profiles` and `certificates` fields, respectively. Note than when fetching individual files, the fields `distribution_type` and `bundle_identifier` are not allowed.
 
 ```yaml
 environment:
@@ -89,8 +91,8 @@ environment:
 ```
 
 By default, Codemagic saves the files to the following locations on the build machine:
-- Profiles: `"~/Library/MobileDevice/Provisioning Profiles"`
-- Certificates: `"~/Library/MobileDevice/Certificates"`
+- Profiles: `~/Library/MobileDevice/Provisioning Profiles`
+- Certificates: `~/Library/MobileDevice/Certificates`
 
 It is additionally possible to include names for environment variables that will point to the file paths on the build machine.
 
