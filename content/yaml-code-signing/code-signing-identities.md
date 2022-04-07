@@ -125,7 +125,7 @@ Default environment variables are assigned by Codemagic for the values on the bu
 - Key alias: `CM_KEY_ALIAS`
 - Key alias password: `CM_KEY_PASSWORD`
 
-It is necessary to either set up a `key.properties` file in a separate script with these values or reference them in your `build.gradle` depending on how your Android [code signing](/code-signing-yaml/signing-android) is configured.
+It is necessary to either set up a `key.properties` file in a separate script with these values or reference them in your `build.gradle` depending on how your [Android code signing](/code-signing-yaml/signing-android) is configured.
 
 #### Fetching multiple keystore files
 
