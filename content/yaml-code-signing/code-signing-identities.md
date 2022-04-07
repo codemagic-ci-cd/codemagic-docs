@@ -37,7 +37,7 @@ The **Reference name**, certificate type, team, and expiration date are displaye
 
 You can upload provisioning profiles with the `.mobileprovision` extension. 
 
-Alternatively, you can automatically fetch the provisioning profiles from the Apple Developer Portal based on your team's Apple Developer Portal connection and bundle identifier. When fetching, profiles are displayed by category: `Development profiles`, `Ad Hoc profiles`, `App Store profiles`, and `Enterprise profiles`. For each selected profile, it is necessary to provide a unique **Reference name**, which can be later used in `codemagic.yaml` to fetch the profile.
+Alternatively, you can automatically fetch the provisioning profiles from the Apple Developer Portal based on your team's App Store Connect API key. The bundle identifier is listed for every available profile along with it's name. The profiles are displayed by category: `Development profiles`, `Ad Hoc profiles`, `App Store profiles`, and `Enterprise profiles`. For each selected profile, it is necessary to provide a unique **Reference name**, which can be later used in `codemagic.yaml` to fetch the profile.
 
 The profile's type, team, bundle id, and expiration date are displayed for each profile added to Code signing identities. Furthermore, Codemagic will let you know whether a matching certificate exists under Code signing identities certificates in the `Certificate` field.
 
@@ -47,9 +47,10 @@ Codemagic lets you upload your Android keystores. When uploading a keystore, it 
 
 Furthermore, it is required that a unique **Reference name** is assigned to each uploaded keystore, which can be used to fetch the keystore during the build using the `codemagic.yaml` configuration file. 
 
-For each keystore the common name, issuer, and expiration are displayed.
+For each keystore, its common name, issuer, and expiration date are displayed.
 
-Note that you can not download the keystore from the Code signing identities settings at a later point. It is crucial to keep in mind as all subsequent builds released to Google Play should be signed with the same keystore. 
+
+Note that the uploaded keystore cannot be downloaded from Codemagic. It is crucial that you store a copy of the keystore file used in Codemagic as all subsequent builds released to Google Play should be signed with the same keystore.  
 
 ## Referencing files in codemagic.yaml
 
@@ -87,7 +88,7 @@ environment:
             - ...
 ```
 
-By default, Codemagic saves the files to the following locations on the builder machine:
+By default, Codemagic saves the files to the following locations on the build machine:
 - Profiles: `"~/Library/MobileDevice/Provisioning Profiles"`
 - Certificates: `"~/Library/MobileDevice/Certificates"`
 
