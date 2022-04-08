@@ -166,7 +166,7 @@ When using a **third party app distribution service** such as Firebase App Distr
 ## Manual code signing
 
 {{<notebox>}}
-If you are using [Codemagic Teams](../teams/teams), then signing files, such as Apple certificates and profiles, can be managed under the [Code signing identities](./code-signing-identities) section in the team settings and do not have to be uploaded as environment variables as in the below instructions.
+If you are using [Codemagic Teams](../teams/teams), then signing files, such as code signing certificates and profiles, can be managed under the [Code signing identities](./code-signing-identities) section in the team settings and do not have to be uploaded as environment variables as in the below instructions.
 {{</notebox>}}
 
 In order to use manual code signing, you need the following values: 
