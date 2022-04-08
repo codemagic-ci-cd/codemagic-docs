@@ -112,7 +112,7 @@ If you have already created a Team in the Codemagic web app, you can upgrade to 
 
 If you require additional concurrencies or have any other questions about the Professional plan, please contact us [here](https://codemagic.io/contact/).
 
-If you require annual invoicing please refer to the Professional Plus and Enterprise plans below.
+If you require annual invoicing, please refer to the Professional Plus and Enterprise plans below.
 
 ## Professional Plus Plan
 
