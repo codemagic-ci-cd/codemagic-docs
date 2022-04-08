@@ -5,7 +5,7 @@ weight: 4
 aliases: /code-signing-yaml/code-signing-identities
 ---
 
-Teams can use code signing identities to manage their code signing files in **Team settings > codemagic.yaml settings > Code signing identities** and reference them from their `codemagic.yaml` configuration. This makes managing code signing files easier and reduces the number of extra scripts required in your configuration file.
+Teams can use code signing identities to manage their code signing files in **Team settings > codemagic.yaml settings > Code signing identities** and reference them from their `codemagic.yaml` configuration. This makes managing code signing files easier and reduces the number of scripts required in your configuration file.
 
 ## Managing and uploading files
 
