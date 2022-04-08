@@ -13,7 +13,7 @@ Team owner permissions are required to upload and edit files under the **Code si
 
 ### iOS certificates
 
-Codemagic lets you upload code signing certificates as PKCS#12 archives containing both the certificate and private key which is needed to use it. When uploading, Codemagic will ask you to provide the certificate password (only enforced for password-protected certificates) along with a unique **Reference name**, which can then be used in the `codemagic.yaml` configuration to fetch the specific file.
+Codemagic lets you upload code signing certificates as PKCS#12 archives containing both the certificate and the private key which is needed to use it. When uploading, Codemagic will ask you to provide the certificate password (if the certificate is password-protected) along with a unique **Reference name**, which can then be used in the `codemagic.yaml` configuration to fetch the specific file.
 
 In addition, Codemagic provides the option to generate a new `Apple Development` or `Apple Distribution` certificate. Click on **Generate certificate**, provide a **Reference name** and choose the certificate type and a API key. Once the certificate has been created, Codemagic will allow you to download the certificate and provides the password for it. Note that the certificate can be downloaded just once right after creating it.
 
