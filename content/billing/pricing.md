@@ -103,7 +103,7 @@ The Professional plan can only be paid for with credit card.
 
 If you have already created a Team in the Codemagic web app, you can upgrade to the Professional plan as follows:
 
-1. Log into Codemagic.
+1. Log in to Codemagic.
 2. Click **Billing** in the left-hand menu.
 3. Click on your Team account.
 4. Click on the **Enable billing** button.
