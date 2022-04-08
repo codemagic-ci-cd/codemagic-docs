@@ -95,13 +95,24 @@ The Codemagic Professional plan gives you a fixed price plan with the following 
 * Unlimited team seats
 * In-app chat support
 
-The **monthly** subscription is **$299/month** payable by credit card. Additional concurrencies are **$100/month**.
+The **monthly** subscription is **$299/month** payable by credit card. Additional concurrencies are **$100/month**. If you would like to set up a monthly subscription, please contact us [here](https://codemagic.io/contact/).
 
 An **annual** subscription with **20% discount** is **$2,870/year**. Additional concurrencies are **$960/year**. 
 
-The Professional plan can only be paid for with credit card. If you require annual invoicing please refer to the Enterprise plan below.
+The Professional plan can only be paid for with credit card.
 
-If you would like to upgrade to a Professional plan, please contact us [here](https://codemagic.io/contact/).
+If you have already created a Team in the Codemagic web app, you can upgrade to the Professional plan as follows:
+
+1. Log in to Codemagic.
+2. Click **Billing** in the left-hand menu.
+3. Click on your Team account.
+4. Click on the **Enable billing** button.
+5. Enter your **credit card** details and **company information**.
+6. Once you have entered your details, the pay-as-you-go billing will be enabled. To upgrade to the annual Professional plan, click on the **Upgrade** button and follow the instructions to subscribe to the Professional plan.
+
+If you require additional concurrencies or have any other questions about the Professional plan, please contact us [here](https://codemagic.io/contact/).
+
+If you require annual invoicing, please refer to the Professional Plus and Enterprise plans below.
 
 ## Professional Plus Plan
 
@@ -116,9 +127,9 @@ The **monthly** subscription is **$599/month** payable by credit card. Additiona
 
 An **annual** subscription with **20% discount** is **$5,750/year**. Additional concurrencies are **$1,920/year**. 
 
-The Professional Plus plan can only be paid for with credit card. If you require annual invoicing, please refer to the Enterprise plan below.
+The Professional Plus plan can be paid for with credit card or by annual invoice.
 
-If you would like to upgrade to a Professional Plus plan, please contact us [here](https://codemagic.io/contact/).
+It is not currently possible to subscribe to the Professional Plus plan in the Codemagic web app. If you would like to upgrade to a Professional Plus plan, please contact us [here](https://codemagic.io/contact/).
 
 ## Enterprise Plan
 
