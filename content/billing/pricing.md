@@ -106,7 +106,7 @@ If you have already created a Team in the Codemagic web app, you can upgrade to 
 1. Log into Codemagic.
 2. Click **Billing** in the left-hand menu.
 3. Click on your Team account.
-4. Click on the 'Enable Billing' button.
+4. Click on the **Enable billing** button.
 5. Enter your **credit card** details and **company information**.
 6. Once you have entered your details, the pay-as-you-go billing will be enabled. To upgrade to the annual Professional plan, click on the **Upgrade** button and follow the instructions to subscribe to the Professional plan.
 
