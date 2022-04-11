@@ -9,7 +9,10 @@ All Android applications have to be digitally signed before they are made availa
 
 {{<notebox>}}
 This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Signing Android apps using the Flutter workflow editor](../code-signing/android-code-signing).
+
+If you are using [Codemagic Teams](../teams/teams), then signing files, such as Android keystores, can be managed under the [Code signing identities](./code-signing-identities) section in the team settings and do not have to be uploaded as environment variables as in the below instructions.
 {{</notebox>}}
+
 
 ## Signing Android apps using Gradle
 

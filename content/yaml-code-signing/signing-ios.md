@@ -165,6 +165,10 @@ When using a **third party app distribution service** such as Firebase App Distr
 
 ## Manual code signing
 
+{{<notebox>}}
+If you are using [Codemagic Teams](../teams/teams), then signing files, such as code signing certificates and profiles, can be managed under the [Code signing identities](./code-signing-identities) section in the team settings and do not have to be uploaded as environment variables as in the below instructions.
+{{</notebox>}}
+
 In order to use manual code signing, you need the following values: 
 - **Signing certificate**: Your development or distribution certificate in .P12 format.
 - **Certificate password**: The certificate password if the certificate is password-protected.

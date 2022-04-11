@@ -131,6 +131,10 @@ Instead of specifying the exact bundle-id, you can use `"$(xcode-project detect-
 
 ## Provide signing files manually
 
+{{<notebox>}}
+If you are using [Codemagic Teams](../teams/teams), then signing files, such as certificates and provisioning profiles, can be managed under the [Code signing identities](./code-signing-identities) section in the team settings and do not have to be uploaded as environment variables as in the below instructions. However, note that some functionality may be limited.
+{{</notebox>}}
+
 In order to use manual code signing, save your **signing certificate**, the **certificate password** (if the certificate is password-protected) and the **provisioning profile** in the **Environment variables** section in Codemagic UI. Select **Secure** to encrypt the values. Note that binary files (i.e. provisioning profiles & .p12 certificate) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to **Environment variables** and decoded during the build.
 
 ```yaml
