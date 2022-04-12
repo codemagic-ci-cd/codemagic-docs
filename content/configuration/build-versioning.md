@@ -169,7 +169,7 @@ If you use `codemagic.yaml` config and you have [Google Play publishing](/yaml-p
 
 ### Creating Google service account credentials
 
-You will need to set up a service account in Google Play Developer Console and create a JSON key with credentials. See how to [set up a service account and create a key](../knowledge-base/google-play-api/#setting-up-the-service-account-on-google-play-and-google-cloud-platform).
+You will need to set up a service account in Google Play Console and create a JSON key with credentials. See how to [set up a service account and create a key](../knowledge-base/google-play-api/#setting-up-the-service-account-on-google-play-and-google-cloud-platform).
 
 ### Saving the API access argument to environment variables in `codemagic.yaml` config
 
