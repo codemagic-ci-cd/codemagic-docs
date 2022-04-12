@@ -182,7 +182,7 @@ environment:
 ```
 
 {{<notebox>}}
-Alternatively, credentials can be specified as a command argument with the dedicated flag, see the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--credentialsgcloud_service_account_credentials). But anyway you should have them in environment variables so that they can be accessed during a build and that they are not stored under version control. In that case, the environment variable will be a fallback for the missing value in the script.
+Alternatively, credentials can be specified as a command argument with the dedicated flag, see the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--credentialsgcloud_service_account_credentials). In any case, it is advisable to save the service account credentials file to an environment variable so that it can be accessed during a build without committing it to version control. The environment variable will be a fallback for the missing value in the script.
 {{</notebox>}}
 
 ### Saving the API access argument to environment variables in the Flutter workflow editor
@@ -198,14 +198,14 @@ LATEST_BUILD_NUMBER=$(google-play get-latest-build-number --package-name 'com.ex
 ```
 
 {{<notebox>}}
-By default, the action will try to get the latest build number as the maximum build number across all tracks (`internal`, `alpha`, `beta`, `production` and custom tracks if available). If you want to limit the search, you can specify a particular track(s) with the optional argument `--tracks` described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--tracksinternal--alpha--beta--production).
+By default, the action will try to get the latest build number as the maximum build number across all tracks (`internal`, `alpha`, `beta`, `production`, and custom tracks, if available). If you want to limit the search, you can specify particular tracks with the optional argument `--tracks` described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--tracksinternal--alpha--beta--production).
 {{</notebox>}}
 
 There are a number of ways how you can pass the obtained build number to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Check the [android-versioning-example repository](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for more details.
 
 #### Get the build number in the Flutter workflow editor
 
-Provided you have exported your Google Play Console service account credentials as environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immediately as a build argument to your android build command to increment the build number:
+Provided you have exported your Google Play Console service account credentials as an environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immediately as a build argument to your Android build command to increment the build number:
 
 ```bash
 --build-number=$(($(google-play get-latest-build-number --package-name 'com.example.app') + 1))  # use your own package name
