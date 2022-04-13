@@ -122,7 +122,7 @@ workflows:
         ignore_failure: true
       - name: Build APK with Flutter
         script: |
-          cd . && flutter build apk --release --build-name=1.0.0 --build-number=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks="$GOOGLE_PLAY_TRACK") + 1))
+          cd . && flutter build apk --release --build-name=1.0.0 --build-number=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks "$GOOGLE_PLAY_TRACK") + 1))
     artifacts:
       - build/**/outputs/bundle/**/*.aab
       - build/**/outputs/apk/**/*.apk

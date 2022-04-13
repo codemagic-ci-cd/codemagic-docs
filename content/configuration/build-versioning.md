@@ -157,11 +157,11 @@ Alternatively, if you use `YAML` configuration, you may just export the value to
 
 ## Get Google Play latest build number using Codemagic CLI Tools 
 
-Use [get-latest-build-number](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#get-latest-build-number) action from [google-play](https://github.com/codemagic-ci-cd/cli-tools/tree/master/docs/google-play#google-play) Codemagic CLI Tool to get the latest build number from Google Play.
+Use [`google-play get-latest-build-number`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#get-latest-build-number) action from Codemagic CLI tools to get the latest build number from Google Play Console.
 
-In order to do that, you need to provide API access to Google Play Developer API by providing `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` as arguments to the action, as defined below.
+In order to do that, you need to provide Google Play API access credentials by providing `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` as arguments to the action, as defined below.
 
-Additionally, you will need to provide the package name of the app in Google Play Console (Ex. `com.google.example`).
+Additionally, you will need to provide the package name of the app in Google Play Console (Ex. `com.example.app`).
 
 {{<notebox>}}
 If you use `codemagic.yaml` config and you have [Google Play publishing](/yaml-publishing/distribution/#google-play) setup, you can reuse the existing service account credentials and go directly to [Get the build number](#get-the-build-number). Only make sure they are specified under the`GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable.
@@ -182,7 +182,7 @@ environment:
 ```
 
 {{<notebox>}}
-Alternatively, credentials can be specified as a command argument with the dedicated flag, see the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--credentialsgcloud_service_account_credentials). But anyway you should have them in environment variables so that they can be decrypted. In that case, the environment variable will be a fallback for the missing value in the script.
+Alternatively, credentials can be specified as a command argument with the dedicated flag, see the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--credentialsgcloud_service_account_credentials). In any case, it is advisable to save the service account credentials file to an environment variable so that it can be accessed during a build without committing it to version control. The environment variable will be a fallback for the missing value in the script.
 {{</notebox>}}
 
 ### Saving the API access argument to environment variables in the Flutter workflow editor
@@ -194,22 +194,21 @@ Add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutte
 Once you have the Google Play Developer API access set with the mentioned above environment variable, you can get the build number using the tool:
 
 ```bash
-export GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=$(echo $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS | base64 --decode) # if you encrypted the file itself, not its content
-LATEST_BUILD_NUMBER=$(google-play get-latest-build-number --package-name 'com.google.example') # use your own package name
+LATEST_BUILD_NUMBER=$(google-play get-latest-build-number --package-name 'com.example.app') # use your own package name
 ```
 
 {{<notebox>}}
-By default, the action will try to get the latest build number as the maximum build number across all tracks (`internal`, `alpha`, `beta`, `production`). If you want to limit the search, you can specify a particular track(s) with the optional argument `--tracks` described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--tracksinternal--alpha--beta--production).
+By default, the action will try to get the latest build number as the maximum build number across all tracks (`internal`, `alpha`, `beta`, `production`, and custom tracks, if available). If you want to limit the search, you can specify particular tracks with the optional argument `--tracks` described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--tracksinternal--alpha--beta--production).
 {{</notebox>}}
 
 There are a number of ways how you can pass the obtained build number to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Check the [android-versioning-example repository](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for more details.
 
 #### Get the build number in the Flutter workflow editor
 
-If you encrypted the content (not the file) of your gcloud service account credentials and added it as the environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immediately as a build argument to your android build command to increment the build number:
+Provided you have exported your Google Play Console service account credentials as an environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immediately as a build argument to your Android build command to increment the build number:
 
 ```bash
---build-number=$(($(google-play get-latest-build-number --package-name 'com.google.example') + 1))  # use your own package name
+--build-number=$(($(google-play get-latest-build-number --package-name 'com.example.app') + 1))  # use your own package name
 ```
 
 Alternatively, you can add a custom [Pre-build script](/flutter-configuration/custom-scripts) and write the build number to a file, which will be read from your `android/app/build.gradle` during the build (See details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file)).

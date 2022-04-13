@@ -409,7 +409,7 @@ workflows:
           echo $CM_KEYSTORE | base64 --decode > $CM_BUILD_DIR/keystore.keystore            
       - name: Set build number and export Unity
         script: | 
-          export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
+          export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks alpha) + 1))
           $UNITY_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$BUILD_SCRIPT -nographics        
     artifacts:
         - android/*.aab
