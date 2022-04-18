@@ -27,7 +27,7 @@ weight: 8
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `20.10.2`
-- ew-cli `0.0.43`
+- ew-cli `0.0.44`
 - fastlane `2.205.1`
 - firebase `9.23.3`
 - flutter `2.10.4 ($HOME/programs/flutter)`
@@ -78,15 +78,15 @@ weight: 8
 
 UNITY_HOME: `/Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app`
 
-## Xcode 13.3 (13E113)
+## Xcode 13.3.1 (13E500a)
 
-This is the Xcode version used by default when you select `13.3`, `edge` or `latest` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `13.3`, `edge` or `latest` in your codemagic.yaml file. 
+This is the Xcode version used by default when you select `13.3`, `13.3.1`, `edge` or `latest` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `13.3.1`, `13.3`, `edge` or `latest` in your codemagic.yaml file. 
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.3.app`
 
-With Xcode `13.3` build version `13E113` the following runtimes and devices are installed:
+With Xcode `13.3.1` build version `13E500a` the following runtimes and devices are installed:
 
 ### Runtimes
 
