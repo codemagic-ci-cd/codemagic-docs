@@ -13,9 +13,9 @@ weight: 2
 
 ## System
 
-- System version `Ubuntu 20.04.1 LTS`
-- Kernel version `5.4.0-1036-gcp`
-- Disk `97GB (Free Space: 62GB)`
+- System version `Ubuntu 20.04.2 LTS`
+- Kernel version `5.11.0-1029-gcp`
+- Disk `97GB (Free Space: 50GB)`
 
 ## Pre-installed tools
 
@@ -23,31 +23,32 @@ weight: 2
 - Android NDK `22.0.7026061`
 - aws `1.18.69`
 - curl `7.68.0`
-- docker `20.10.2`
-- firebase `9.3.0`
+- docker `20.10.7`
+- ew-cli `0.0.44`
+- firebase `9.23.3`
 - flutter `2.10.5 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
-- Google Cloud SDK `325.0.0`
+- Google Cloud SDK `348.0.0`
 - gradle `6.7.1`
-- gsutil `4.58`
+- gsutil `4.65`
 - ionic `5.4.16`
 - jq `jq-1.6`
 - ktlint `0.43.2`
 - node `14.15.3`
 - npm `6.14.9`
 - python2 `2.7.18`
-- python `3.8.5`
+- python `3.8.10`
 - ruby `2.7.2p137`
 - ssh
-- snapcraft `4.6.2`
+- snapcraft `6.1`
 - sudo
 - tar / bsdtar
 - unzip
 - wget
 - yarn `1.22.5`
-- yq `4.6.1`
+- yq `4.24.2`
 - zip
 
 ## Android emulators
