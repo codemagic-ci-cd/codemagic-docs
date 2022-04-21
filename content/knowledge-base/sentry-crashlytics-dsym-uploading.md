@@ -65,4 +65,4 @@ In general, remote access to the build machine is a better practice to find a co
 
 ## Sample Project
 
-A sample project for uploading **dSYM** files to Sentry can be found [here]()
+A sample project for uploading **dSYM** files to Sentry can be found [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/sentry_integration_demo_project)
