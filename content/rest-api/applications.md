@@ -158,10 +158,10 @@ base64 id_rsa | pbcopy
 
 curl -H "Content-Type: application/json" -H "x-auth-token: $CM_API_TOKEN" \
   -d '{
-        "appId": "625beccddfd8ade9df248265", 
+        "appId": "YOUR_APP_ID", 
         "value": "BASE64_ENCODED_VALUE"
       }' \
-  -X POST https://api.codemagic.io/apps/625beccddfd8ade9df248265/encrypt-environment-variable
+  -X POST https://api.codemagic.io/apps/YOUR_APP_ID/encrypt-environment-variable
 ```
 
 ### Response
