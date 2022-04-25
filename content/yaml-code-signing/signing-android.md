@@ -50,7 +50,7 @@ This example shows how to set up code signing using Gradle.
               } else {
                   keyAlias keystoreProperties['keyAlias']
                   keyPassword keystoreProperties['keyPassword']
-                  storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+                  storeFile keystoreProperties['storeFile']
                   storePassword keystoreProperties['storePassword']
               }
           }
@@ -90,7 +90,7 @@ If the group of variables is reusable for various applications, they can be defi
 
 - In the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, you will need to decode the keystore file and add it before the build command. You can choose any path to your keystore file. For example:
 
-```yaml
+```
 scripts:
   - name: Build Android
     script: |
@@ -136,7 +136,7 @@ CM_KEY_PASSWORD
  
 Use the following script:
 
-```yaml
+```
 - name: Set up key.properties
   script: |
     echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH  # Not required if using team code signing identities
