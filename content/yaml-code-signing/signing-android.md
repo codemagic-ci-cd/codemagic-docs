@@ -50,7 +50,7 @@ This example shows how to set up code signing using Gradle.
               } else {
                   keyAlias keystoreProperties['keyAlias']
                   keyPassword keystoreProperties['keyPassword']
-                  storeFile keystoreProperties['storeFile']
+                  storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
                   storePassword keystoreProperties['storePassword']
               }
           }
