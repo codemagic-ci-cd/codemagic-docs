@@ -70,10 +70,10 @@ android {
                 keyAlias System.getenv()["CM_KEY_ALIAS"]
                 keyPassword System.getenv()["CM_KEY_PASSWORD"]
             } else {
-                storeFile file("/path/to/local/myreleasekey.keystore")
-                storePassword "password"
-                keyAlias "MyReleaseKey"
-                keyPassword "password"
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+                storePassword keystoreProperties['storePassword']
             }
         }
     }
@@ -87,6 +87,9 @@ android {
 }
 ...
 ```
+{{<notebox>}}
+Warning: Keep the key.properties file private; don’t check it into public source control.
+{{</notebox>}}
 
 ## Setting up Android code signing on Codemagic
 
