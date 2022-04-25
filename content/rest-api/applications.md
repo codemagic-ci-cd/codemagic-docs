@@ -149,6 +149,21 @@ base64 id_rsa | pbcopy
 }}
 ```
 
+
+## Encrypting base64 encoded values
+
+#### Example
+
+```yaml
+
+curl -H "Content-Type: application/json" -H "x-auth-token: $CM_API_TOKEN" \
+  -d '{
+        "appId": "YOUR_APP_ID", 
+        "value": "BASE64_ENCODED_VALUE"
+      }' \
+  -X POST https://api.codemagic.io/apps/YOUR_APP_ID/encrypt-environment-variable
+```
+
 ### Response
 
 ```yaml
