@@ -65,6 +65,7 @@ This example shows how to set up code signing using Gradle.
   }
   ...
 ```
+
 {{<notebox>}}
 Warning: Keep the key.properties file private; don’t check it into public source control.
 {{</notebox>}}
@@ -90,17 +91,17 @@ If the group of variables is reusable for various applications, they can be defi
 
 - In the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, you will need to decode the keystore file and add it before the build command. You can choose any path to your keystore file. For example:
 
-```
+```yaml
 scripts:
   - name: Build Android
     script: |
-      echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH  # Not required if using team code signing identities
+      echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH   # Not required if using team code signing identities
       cd android && ./gradlew assembleRelease
 ```
 
 ## Signing Android apps using key.properties
 
-The following templates show code signing using `key.properties`:
+The following templates show code signing using `key.properties`.
 
 ### Set up default debug key.properties
 
@@ -136,10 +137,10 @@ CM_KEY_PASSWORD
  
 Use the following script:
 
-```
+```yaml
 - name: Set up key.properties
   script: |
-    echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH  # Not required if using team code signing identities
+    echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH   # Not required if using team code signing identities
     cat >> "$CM_BUILD_DIR/project_directory/android/key.properties" <<EOF
     storePassword=$CM_KEYSTORE_PASSWORD
     keyPassword=$CM_KEY_PASSWORD
