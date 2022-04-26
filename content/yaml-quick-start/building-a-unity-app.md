@@ -351,7 +351,7 @@ workflows:
           $UNITY_BIN -batchmode -quit -logFile -serial ${UNITY_SERIAL?} -username ${UNITY_USERNAME?} -password ${UNITY_PASSWORD?}
       - name: Build the Xcode project
         script: | 
-          $UNITY_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$BUILD_SCRIPT -nographics          
+          $UNITY_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$BUILD_SCRIPT -nographics -buildTarget iOS          
       - name: Fetch signing files
         script: | 
           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE
@@ -410,7 +410,7 @@ workflows:
       - name: Set build number and export Unity
         script: | 
           export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks alpha) + 1))
-          $UNITY_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$BUILD_SCRIPT -nographics        
+          $UNITY_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$BUILD_SCRIPT -nographics -buildTarget Android     
     artifacts:
         - android/*.aab
     publishing:
