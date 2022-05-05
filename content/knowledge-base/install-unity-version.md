@@ -25,7 +25,7 @@ You should set the value of `UNITY_VERSION` to the full version number as displa
 
 `UNITY_VERSION: 2019.4.38f1`
 
-The value of `UNITY_VERSION_CHANGESET` should be set using the **changeset** id that you obtained from the release notes page on the Unity Hub download archive. For example, if the changeset id is fdbb7325fa47 then set the variable as follows:
+The value of `UNITY_VERSION_CHANGESET` should be set using the **changeset** id that you obtained from the release notes page on the Unity Hub download archive. For example, if the changeset id is `fdbb7325fa47`, then set the variable as follows:
 
 `UNITY_VERSION_CHANGESET: fdbb7325fa47`
 
