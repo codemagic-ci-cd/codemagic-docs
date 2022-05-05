@@ -4,7 +4,7 @@ title: Installing a different Unity version
 weight: 13
 ---
 
-# Installing different Unity versions
+## Installing different Unity versions
 Each build machine image has a specific version of Unity installed. You can find out the specific Unity version by consulting the build machine specification in the documentation. For example, the [macOS build machine specification (Xcode 13.3+ / Unity)](https://docs.codemagic.io/specs/versions-macos-xcode-13-3/#unity-2020331f1) has Unity version version 2020.3.31f1.
 
 If you need to use a different Unity version then it is possible to use the Unity Hub CLI to download and install a different Unity Editor version and target support files for that version. 
