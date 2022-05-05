@@ -1,10 +1,9 @@
 ---
-description: How to install a different Unity
+description: How to install a different Unity version
 title: Installing a different Unity version
 weight: 13
 ---
 
-## Installing different Unity versions
 Each build machine image has a specific version of Unity installed. You can find out the specific Unity version by consulting the build machine specification in the documentation.
 
 If you need to use a different Unity version, then it is possible to use the Unity Hub CLI to download and install a different Unity Editor version and target support files for that version. 
