@@ -13,12 +13,10 @@ License activation and return takes place with the Unity version already install
 
 
 ## Getting the Unity version number and changeset id
-
 In order to install a different version, you will need to know the full Unity version number and its **changeset** id. These details can be found in the Unity download archive [here](https://unity3d.com/get-unity/download/archive). To get the changeset id, first select the version you intend to use and then click on the ‘Release Notes’ button. Scroll to the bottom of the release notes and you will see the changeset id which you should make a note of. 
 
 
 ## Environment variables
-
 You will need three environment variables in your codemagic.yaml called `UNITY_VERSION`, `UNITY_VERSION_CHANGESET`, and `UNITY_VERSION_BIN`. 
 
 You should set the value of `UNITY_VERSION` to the full version number as displayed on the Unity Hub download archive page. For example, if the version is `2019.4.38f1`, set the variable as follows:
@@ -35,12 +33,10 @@ The `UNITY_VERSION_BIN` should be set as follows so the Unity binary path is dec
 
 
 ## Activating Unity
-
-Unity Hub CLI commands do not work correctly if a license is not already active on the machine.
+Even though you are installing a different version of Unity to build your apps with, you should activate your license using the default Unity version already installed on the machine. Unity Hub CLI commands do not work correctly if a license is not already active on the machine.
 
 
 ## Unity installation script
-
 After activating the Unity license as usual, add the following script to install the desired version and modules you wish to use. The example below uses Unity Hub CLI commands to install the specified Unity version as well as the Android and iOS Build Support modules.
 
 ```yaml
@@ -52,7 +48,6 @@ After activating the Unity license as usual, add the following script to install
 
 
 ## Building with the newly installed Unity version
-
 Use the Unity version you installed on the machine:
 
 ```yaml
