@@ -39,7 +39,7 @@ The `UNITY_VERSION_BIN` should be set as follows so the Unity binary path is dec
 Unity Hub CLI commands do not work correctly if a license is not already active on the machine.
 
 
-## Install Unity script
+## Unity installation script
 
 After activating the Unity license as usual, add the following script to install the desired version and modules you wish to use. The example below uses Unity Hub CLI commands to install the specified Unity version as well as the Android and iOS Build Support modules.
 
