@@ -7,7 +7,7 @@ weight: 13
 ## Installing different Unity versions
 Each build machine image has a specific version of Unity installed. You can find out the specific Unity version by consulting the build machine specification in the documentation.
 
-If you need to use a different Unity version then it is possible to use the Unity Hub CLI to download and install a different Unity Editor version and target support files for that version. 
+If you need to use a different Unity version, then it is possible to use the Unity Hub CLI to download and install a different Unity Editor version and target support files for that version. 
 
 License activation and return takes place with the Unity version already installed on the machine, but building of the Xcode project or Android binary will use the version of Unity you install. 
 
