@@ -36,7 +36,7 @@ The `UNITY_VERSION_BIN` should be set as follows so the Unity binary path is dec
 
 ## Activating Unity
 
-Even though you are installing a different version of Unity to build your apps with, you should use the default Unity version that is already installed on the machine. Unity Hub CLI commands not work correctly if a license is not already active on the machine.
+Unity Hub CLI commands do not work correctly if a license is not already active on the machine.
 
 
 ## Install Unity script
