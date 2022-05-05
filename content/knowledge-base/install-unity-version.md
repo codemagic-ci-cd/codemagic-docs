@@ -21,7 +21,7 @@ In order to install a different version you will need to know the full Unity ver
 
 You will need three environment variables in your codemagic.yaml called `UNITY_VERSION`, `UNITY_VERSION_CHANGESET`, and `UNITY_VERSION_BIN`. 
 
-You should set the value of `UNITY_VERSION` to the full version number as display on the Unity Hub download archive page. For example, if the version is 2019.4.38f1, set the variable as follows:
+You should set the value of `UNITY_VERSION` to the full version number as displayed on the Unity Hub download archive page. For example, if the version is `2019.4.38f1`, set the variable as follows:
 
 `UNITY_VERSION: 2019.4.38f1`
 
