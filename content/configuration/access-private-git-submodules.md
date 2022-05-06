@@ -35,3 +35,18 @@ ssh-add /tmp/ssh_key
 ```
 
 But if you added a repository with an SSH key and want to use a different key to fetch dependencies, it's not possible to do in Workflow editor. Scripts are executed in independent shells, so the key explicitly added in a post-clone script will be lost as soon as the script finishes. The best thing to do in such a case would be to use the same key for both your repository and your private dependency. You may need to add the key to your account, not to the specific repository.
+
+One option if you have mulitple private repositories that cannot share the same key is using https links instead of ssh and replacing them during the build. An idea how you can achieve that:
+
+replace ssh links with the https links in pubspec.yaml with sed
+
+```bash
+      - &get_packages
+        name: Get packages
+        script: |
+          SSH="git@github.com:org/repo.git"
+          HTTPS="https://github.com/org/repo.git"
+          # using hash as delimiter for sed
+          sed -i '' 's#'"$SSH"'#'"$HTTPS"'#' pubspec.yaml
+          flutter packages get
+```
