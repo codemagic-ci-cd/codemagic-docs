@@ -1,7 +1,7 @@
 ---
 description: How to overcome common issues building mobile apps on Codemagic 
 title: Common iOS issues
-weight: 4
+weight: 3
 ---
 
 ## iOS errors regarding creating authentication sessions
