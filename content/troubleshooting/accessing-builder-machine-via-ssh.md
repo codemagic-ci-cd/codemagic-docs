@@ -1,7 +1,7 @@
 ---
 description: How to connect to the build machine with SSH or VNC/RDP
 title: Remote access to the build machine
-weight: 2
+weight: 1
 ---
 
 You can establish remote access to the virtual build machine running your build via SSH or a VNC/RDP client. 

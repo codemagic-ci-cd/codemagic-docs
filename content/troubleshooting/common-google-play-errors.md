@@ -1,10 +1,10 @@
 ---
-title: Common Google Play Errors
-weight: 2
+title: Common Google Play errors
+weight: 4
 ---
 
 
-## Troubleshooting Common Google Play Errors
+## Troubleshooting common Google Play errors
 
 Codemagic enables you to automatically publish your app to the internal, alpha, beta, production or custom tracks on Google Play. While publishing to Google play you may encounter errors if the application does not meet the release criteria. You can see the explanations of some of the common errors:
 
