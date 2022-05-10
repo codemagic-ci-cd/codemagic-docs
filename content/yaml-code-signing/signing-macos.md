@@ -216,7 +216,7 @@ To package your application into an `.pkg` Installer package and sign it with th
 
 Don't forget to specify the path to your generated package in the [artifacts section](../getting-started/yaml/#artifacts).
 
-### Notarizing macOS application
+### Notarizing macOS applications
 
 Notarization is a process where Apple verifies your application to make sure it has a Developer ID code signature and does not consist of malicious content. Notarizing an app in the Codemagic build process via **altool** is possible:
 
