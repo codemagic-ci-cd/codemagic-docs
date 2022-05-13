@@ -40,7 +40,7 @@ Android users experiencing issues resolving plugins because of the sunset of JCe
 
 On February 3, 2021, JFrog, the company that maintains JCenter, [announced that they will be shutting down Bintray and JCenter](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/). 
 
-To avoid disruptions to your build pipelines, start migrating to a new hosting solution, rather than using JCenter or Bintray. 
+To avoid disruptions to your build pipelines, start migrating to a new hosting solution like `mavenCentral()`, rather than using JCenter or Bintray. 
 
 ### Steps to prepare your build for the JCenter shutdown
 
