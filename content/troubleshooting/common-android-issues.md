@@ -61,6 +61,6 @@ To avoid disruptions to your build pipelines, start migrating to a new hosting s
   - If your build still fails, you’ll need to troubleshoot which dependencies still require JCenter. The errors in the failed build step will point out the dependecies using JCenter. 
  
 {{<notebox>}} 
-Note: You'll have to completely upgrade all dependencies that requires JCenter to avoid failed builds.
+Note: You'll have to completely upgrade all dependencies that require JCenter to avoid failed builds.
 {{</notebox>}}
 
