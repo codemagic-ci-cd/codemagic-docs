@@ -33,8 +33,8 @@ You can test your **.ipa**, **.apk** or **.aab** directly on real devices rather
 ```
  - name: pCloudy upload
    script: |      
-    APP_URL=$(curl -u "$PCLOUDY_USERNAME:$PCLOUDY_API_TOKEN" https://device.pcloudy.com/api/access | jq -r '.[].token')             
-    curl -X POST -F "file=@android/app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=$APP_URL" -F "filter=all" https://device.pcloudy.com/api/upload_file
+    APP_TOKEN=$(curl -u "$PCLOUDY_USERNAME:$PCLOUDY_API_TOKEN" https://device.pcloudy.com/api/access | jq -r '.[].token')             
+    curl -X POST -F "file=@android/app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=$APP_TOKEN" -F "filter=all" https://device.pcloudy.com/api/upload_file
 ```
 
 Make sure that you add this cURL request after building the **.ipa**, **.apk** and **.aab**, otherwise you cannot attach their paths to the cURL request.
@@ -47,9 +47,9 @@ In order to upload test suites for android apps, you need to run ./gradlew assem
 ```
  - name: pCloudy upload
    script: |      
-    APP_URL=$(curl -u "$PCLOUDY_USERNAME:$PCLOUDY_API_TOKEN" https://device.pcloudy.com/api/access | jq -r '.[].token')             
-    curl -X POST -F "file=@android/app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=$APP_URL" -F "filter=all" https://device.pcloudy.com/api/upload_file
-    curl -X POST -F "file=@android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk" -F "source_type=raw" -F "token=$APP_URL" -F "filter=all" https://device.pcloudy.com/api/upload_file
+    APP_TOKEN=$(curl -u "$PCLOUDY_USERNAME:$PCLOUDY_API_TOKEN" https://device.pcloudy.com/api/access | jq -r '.[].token')             
+    curl -X POST -F "file=@android/app/build/outputs/apk/release/app-release.apk" -F "source_type=raw" -F "token=$APP_TOKEN" -F "filter=all" https://device.pcloudy.com/api/upload_file
+    curl -X POST -F "file=@android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk" -F "source_type=raw" -F "token=$APP_TOKEN" -F "filter=all" https://device.pcloudy.com/api/upload_file
 ```
 
 ## Sample projects
