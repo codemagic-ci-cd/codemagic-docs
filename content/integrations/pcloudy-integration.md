@@ -4,7 +4,7 @@ description: How to integrate your workflows with pCloudy using codemagic.yaml
 weight: 9
 ---
 
-**pCloudy** is a cloud-based mobile testing platform that provides the ability test your apps on a wide-ranging list of real iOS and Android mobile devices and tablets
+**pCloudy** is a cloud-based mobile testing platform that provides the ability to test your apps on a wide-ranging list of real iOS and Android mobile devices and tablets.
 
 
 ## Create a pCloudy account
