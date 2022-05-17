@@ -14,35 +14,35 @@ weight: 8
 
 ## System
 
-- System version `macOS 12.3 (21E230)`
+- System version `macOS 12.3.1 (21E258)`
 - Kernel version `Darwin 21.4.0`
-- Disk `322GB (Free Space: 94GB)`
+- Disk `322GB (Free Space: 76GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `23.1.7779620`
-- aws `2.4.28`
+- aws `2.7.0`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `20.10.2`
-- ew-cli `0.0.44`
-- fastlane `2.205.1`
+- ew-cli `0.0.45`
+- fastlane `2.205.2`
 - firebase `9.23.3`
 - flutter `3.0.0 ($HOME/programs/flutter)`
-- gem `3.3.10`
-- gh `2.6.0`
-- git `2.35.1`
+- gem `3.3.13`
+- gh `2.10.1`
+- git `2.36.1`
 - Google Cloud SDK `327.0.0`
 - gradle `7.3.1`
 - gsutil `4.58`
-- homebrew `3.4.3`
+- homebrew `3.4.11`
 - ionic `6.12.4`
 - jq `1.6`
-- ktlint `0.45.1`
+- ktlint `0.45.2`
 - node `14.15.5`
-- npm `8.5.5`
+- npm `8.6.0`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
@@ -52,7 +52,7 @@ weight: 8
 - unzip `6.00`
 - wget `1.21.3`
 - yarn `1.22.18`
-- yq `4.23.1`
+- yq `4.25.1`
 - zip `3.0`
 
 ## Android emulators
@@ -69,19 +69,19 @@ weight: 8
 
 ## Java versions
 
-- **18** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
+- **18.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
 - **16.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-16.jdk/Contents/Home`
-- **11.0.14.1** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_322** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **11.0.15** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_332** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
 ## Unity 2020.3.31f1
 
-UNITY_HOME: `/Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app`
+UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app
 
 ## Xcode 13.3.1 (13E500a)
 
-This is the Xcode version used by default when you select `13.3`, `13.3.1`, `edge` or `latest` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `13.3.1`, `13.3`, `edge` or `latest` in your codemagic.yaml file. 
+This is the Xcode version used by default when you select `13.3`, `13.3.1` or `latest` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `13.3`, `13.3.1` or `latest` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.3.app`
@@ -139,3 +139,7 @@ With Xcode `13.3.1` build version `13E500a` the following runtimes and devices a
 - iPhone SE (2nd generation)
 - iPhone SE (3rd generation)
 - iPod touch (7th generation)
+
+## Other Xcode versions
+
+- 13.4 (13F17a) `/Applications/Xcode-13.4.app`
