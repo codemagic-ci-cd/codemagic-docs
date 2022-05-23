@@ -38,13 +38,6 @@ To upload the build use:
 Set up STEAM_USERNAME and STEAM_PASSWORD as secure environment variables for your Codemagic application.
 {{</notebox>}}
 
-To configure the upload to Steam, edit the following two files in the demo project:
-```
-   steam/app_build.vdf
-   steam/depot_build.vdf
-```
-
-These are standard VDF files required for uploading a build to Steam and require your application's AppID, DepotID and branch name for deployment.
 
 ### Steam Guard
 
