@@ -218,7 +218,7 @@ Don't forget to specify the path to your generated package in the [artifacts sec
 
 ### Notarizing macOS applications
 
-Notarization is a process where Apple verifies your application to make sure it has a Developer ID code signature and does not consist of malicious content. Notarizing an app in the Codemagic build process via **altool** is possible:
+Notarization is a process where Apple verifies your application to make sure it has a Developer ID code signature and does not consist of malicious content. Notarizing an app during the Codemagic build process is possible using  **altool** as follows:
 
 ```
 xcrun altool --notarize-app -f <file> --primary-bundle-id <bundle_id>
