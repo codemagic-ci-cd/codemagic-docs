@@ -58,3 +58,11 @@ Team or account owners can manually retry the payment by clicking the **Pay invo
 {{</notebox>}}
 
 Note that overdue invoices should be paid before the subscription can be disabled. Please refer to the [Disable billing](/billing/billing/#disabling-billing) section for further info.
+
+## Tax certificates
+
+The following certificates are available for download:
+
+- [Tax residency certificate](https://drive.google.com/file/d/1yvNVEEFT03A--_E36Y-ZcOzih88C_0wY/view?usp=sharing)
+- [W-8BEN-E certificate](https://drive.google.com/file/d/1xvdjxjIUc9EuYOtFZRrqyDfdAMCxs37p/view?usp=sharing)
+
