@@ -12,25 +12,25 @@ weight: 9
 
 ## System
 
-- System version `macOS 12.3.1 (21E258)`
-- Kernel version `Darwin 21.4.0`
-- Disk `209GB (Free Space: 63GB)`
+- System version `macOS 12.4 (21F79)`
+- Kernel version `Darwin 21.5.0`
+- Disk `209GB (Free Space: 65GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `24.0.8215888`
-- aws `2.7.0`
+- aws `2.7.2`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `N/A`
-- ew-cli `0.0.45`
+- ew-cli `0.0.47`
 - fastlane `2.205.2`
 - firebase `9.23.3`
 - flutter `3.0.1 ($HOME/programs/flutter)`
 - gem `3.3.13`
-- gh `2.10.1`
+- gh `2.11.3`
 - git `2.36.1`
 - Google Cloud SDK `381.0.0`
 - gradle `7.3.1`
@@ -39,8 +39,8 @@ weight: 9
 - ionic `5.4.16`
 - jq `1.6`
 - ktlint `0.45.2`
-- node `18.0.0`
-- npm `8.6.0`
+- node `18.2.0`
+- npm `8.9.0`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `2.7.6p219`
@@ -49,7 +49,7 @@ weight: 9
 - tar `3.5.1`
 - unzip `6.00`
 - wget `1.21.3`
-- yarn `1.22.18`
+- yarn `1.22.19`
 - yq `4.25.1`
 - zip `3.0`
 
