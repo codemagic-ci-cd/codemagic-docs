@@ -16,9 +16,9 @@ For Flutter projects configured via the Flutter workflow editor, the build machi
 
 Codemagic offers three types of macOS machines for running builds:
 
-* Mac minis (macOS standard VM, default)
-* Mac Pros (macOS premium VM)
-* Mac minis with Apple M1 chip (macOS M1 Standard VM)
+* Mac minis (macOS standard VM, default, instance type `mac_mini`)
+* Mac Pros (macOS premium VM, instance type `mac_pro`)
+* Mac minis with Apple M1 chip (macOS M1 Standard VM, instance type `mac_mini_m1`)
 
 Check the specific macOS build machine image for machine specifications.
 
@@ -32,7 +32,7 @@ Mac Pro machines and Mac minis with Apple M1 chip are only available for teams a
 
 ## Linux Standard and Linux Premium
 
-Codemagic offers two types of Linux machines for running builds: Linux standard VM and Linux premium VM. Linux machines support nested virtualisation, including Android emulator support with hardware acceleration. Linux machines do not support macOS specific software, such as brew and Xcode, and cannot be used to build iOS artifacts. Specifications for these machines are available [here](../specs/versions-linux/#hardware).
+Codemagic offers two types of Linux machines for running builds: Linux standard VM (instance type `linux`) and Linux premium VM (instance type `linux_x2`). Linux machines support nested virtualisation, including Android emulator support with hardware acceleration. Linux machines do not support macOS specific software, such as brew and Xcode, and cannot be used to build iOS artifacts. Specifications for these machines are available [here](../specs/versions-linux/#hardware).
 
 {{<notebox>}}
 Linux Standard and Premium machines are only available for teams and users that have [enabled billing](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for the per minute rate.
@@ -40,7 +40,7 @@ Linux Standard and Premium machines are only available for teams and users that 
 
 ## Windows Premium
 
-Codemagic offers only premium Windows VMs. Windows VMs do not support nested virtualization which is required for the use of Android emulator. Additionally, Windows machines do not support macOS specific software, such as brew and Xcode, and cannot be used to build iOS artifacts. Specifications for these machines are available [here](../specs/versions-windows/).
+Codemagic offers only premium Windows VMs (instance type `windows_x2`). Windows VMs do not support nested virtualization which is required for the use of Android emulator. Additionally, Windows machines do not support macOS specific software, such as brew and Xcode, and cannot be used to build iOS artifacts. Specifications for these machines are available [here](../specs/versions-windows/).
 
 {{<notebox>}}
 Windows Premium machines are only available for teams and users that have [enabled billing](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for the per minute rate.
