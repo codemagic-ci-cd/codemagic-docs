@@ -16,7 +16,7 @@ weight: 8
 
 - System version `macOS 12.3.1 (21E258)`
 - Kernel version `Darwin 21.4.0`
-- Disk `322GB (Free Space: 76GB)`
+- Disk `322GB (Free Space: 77GB)`
 
 ## Pre-installed tools
 
@@ -27,7 +27,7 @@ weight: 8
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `20.10.2`
-- ew-cli `0.0.45`
+- ew-cli `0.0.47`
 - fastlane `2.205.2`
 - firebase `9.23.3`
 - flutter `3.0.1 ($HOME/programs/flutter)`
@@ -78,21 +78,22 @@ weight: 8
 
 UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app
 
-## Xcode 13.3.1 (13E500a)
+## Xcode 13.4 (13F17a)
 
-This is the Xcode version used by default when you select `13.3`, `13.3.1` or `latest` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `13.3`, `13.3.1` or `latest` in your codemagic.yaml file.
+This is the Xcode version used by default when you select `13.4`, `edge` or `latest` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `13.4`, `edge` or `latest` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
-Xcode path: `/Applications/Xcode-13.3.app`
+Xcode path: `/Applications/Xcode-13.4.app`
 
-With Xcode `13.3.1` build version `13E500a` the following runtimes and devices are installed:
+With Xcode `13.4` build version `13F17a` the following runtimes and devices are installed:
 
 ### Runtimes
 
 - iOS 14.5
 - iOS 15.0
 - iOS 15.4
+- iOS 15.5
 - tvOS 14.5
 - tvOS 15.0
 - tvOS 15.4
@@ -142,4 +143,4 @@ With Xcode `13.3.1` build version `13E500a` the following runtimes and devices a
 
 ## Other Xcode versions
 
-- 13.4 (13F17a) `/Applications/Xcode-13.4.app`
+- 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`
