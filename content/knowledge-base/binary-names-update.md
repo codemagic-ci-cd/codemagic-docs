@@ -5,3 +5,17 @@ weight: 10
 ---
 
 In order to change generated the **.ipa** file name, **CFBundleDisplayName** string value in **Info.plist** needs to be renamed.If the app is configured with flavors, then **CFBundleName** string value is required to be renamed with a custom name.
+
+For Android binary names, configuring **app/build.gradle** needs to be done accordingly:
+
+```
+defaultConfig {
+   setProperty("archivesBaseName", applicationId + "-v" + versionCode + "(" + versionName + ")")
+  }
+```
+
+The above-mentioned line will generate a binary name with your app package name and its version. In order to have custom names, then the following lne achieves it:
+
+```
+setProperty("archivesBaseName", "YOUR_CUSTOM_NAME")
+```
