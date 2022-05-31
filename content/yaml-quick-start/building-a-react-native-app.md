@@ -246,4 +246,4 @@ Additionally, pay attention to how `signingConfigs{}` and `buildTypes{}` are con
 
 {{<notebox>}}Build versioning for iOS projects is performed as a script step in the codemagic.yaml{{</notebox>}}
  
-See the **Increment build number** script in the [codemagic.yaml](https://github.com/codemagic-ci-cd/react-native-demo-project/blob/master/codemagic.yaml) in the React Native demo project on GitHub.
+See the **Increment build number** script in the [codemagic.yaml](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/codemagic.yaml) in the React Native demo project on GitHub.
