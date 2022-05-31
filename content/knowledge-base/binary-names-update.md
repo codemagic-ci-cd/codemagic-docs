@@ -14,7 +14,9 @@ defaultConfig {
   }
 ```
 
-The example above generates a binary name with your app package name and its version. In order to have custom names, then the following line achieves it:
+The example above generates a binary name with your app package name and its version. 
+
+In order to give your binary a custom name, this can be done as follows:
 
 ```
 setProperty("archivesBaseName", "YOUR_CUSTOM_NAME")
