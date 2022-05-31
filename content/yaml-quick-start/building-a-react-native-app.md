@@ -228,7 +228,7 @@ workflows:
 
 To test and publish a React Native app:
 
-* The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-test).
+* The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-tests-using-jest).
 * All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
 * All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
 
@@ -238,7 +238,7 @@ To test and publish a React Native app:
 
 {{<notebox>}}When using automatic build versioning in **codemagic.yaml** please note that configuration changes still need to be made in `android/app/build.gradle` {{</notebox>}}
 
-In the [build.gradle](https://github.com/codemagic-ci-cd/react-native-demo-project/blob/master/android/app/build.gradle) note how the versionCode is set in the `defaultConfig{}`.
+In the [build.gradle](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/android/app/build.gradle#L132) note how the versionCode is set in the `defaultConfig{}`.
 
 Additionally, pay attention to how `signingConfigs{}` and `buildTypes{}` are configured for debug and release.
 
