@@ -8,7 +8,7 @@ menuCategories:
   - yaml-testing
 ---
 
-To be able to test iOS builds on physical devices outside TestFlight, e.g. by downloading the app artifact from Slack or a [public link](/yaml-publishing/shared-dashboards), the test devices have to be registered in Apple Developer Portal and included in the provisioning profile used for code signing the app. Codemagic enables you to send your trusted testers a device registration link to obtain their device UDIDs and automatically add them to the list of devices in Apple Developer Portal.
+To be able to test iOS builds on physical devices outside TestFlight, e.g. by downloading the app artifact from Slack or a [public link](/yaml-publishing/build-dashboards), the test devices have to be registered in Apple Developer Portal and included in the provisioning profile used for code signing the app. Codemagic enables you to send your trusted testers a device registration link to obtain their device UDIDs and automatically add them to the list of devices in Apple Developer Portal.
 
 {{<notebox>}}
 This feature is available for [teams](../teams/teams) only. But if you are not using teams this has to be done manually by [Registering your devices using your Developer Account](https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices#Register-Devices-in-Your-Developer-Account).
