@@ -14,25 +14,25 @@ weight: 8
 
 ## System
 
-- System version `macOS 12.3.1 (21E258)`
-- Kernel version `Darwin 21.4.0`
-- Disk `322GB (Free Space: 77GB)`
+- System version `macOS 12.4 (21F79)`
+- Kernel version `Darwin 21.5.0`
+- Disk `322GB (Free Space: 89GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `23.1.7779620`
-- aws `2.7.0`
+- aws `2.7.5`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `20.10.2`
 - ew-cli `0.0.47`
-- fastlane `2.205.2`
+- fastlane `2.206.2`
 - firebase `9.23.3`
 - flutter `3.0.1 ($HOME/programs/flutter)`
-- gem `3.3.13`
-- gh `2.10.1`
+- gem `3.3.15`
+- gh `2.11.3`
 - git `2.36.1`
 - Google Cloud SDK `327.0.0`
 - gradle `7.3.1`
@@ -41,8 +41,8 @@ weight: 8
 - ionic `6.12.4`
 - jq `1.6`
 - ktlint `0.45.2`
-- node `14.15.5`
-- npm `8.6.0`
+- node `18.3.0`
+- npm `8.11.0`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
@@ -51,8 +51,8 @@ weight: 8
 - tar `3.5.1`
 - unzip `6.00`
 - wget `1.21.3`
-- yarn `1.22.18`
-- yq `4.25.1`
+- yarn `1.22.19`
+- yq `4.25.2`
 - zip `3.0`
 
 ## Android emulators
@@ -78,15 +78,15 @@ weight: 8
 
 UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app
 
-## Xcode 13.4 (13F17a)
+## Xcode 13.4.1 (13F100)
 
-This is the Xcode version used by default when you select `13.4`, `edge` or `latest` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `13.4`, `edge` or `latest` in your codemagic.yaml file.
+This is the Xcode version used by default when you select `13.4`, `13.4.1`, `edge` or `latest` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `13.4`, `13.4.1`, `edge` or `latest` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.4.app`
 
-With Xcode `13.4` build version `13F17a` the following runtimes and devices are installed:
+With Xcode `13.4.1` build version `13F100` the following runtimes and devices are installed:
 
 ### Runtimes
 
