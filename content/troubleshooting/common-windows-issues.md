@@ -50,6 +50,13 @@ If you want to run an exe file in `PowerShell` with parameters with spaces and q
 Start-Process -NoNewWindow -FilePath "path-to-your-exe-file" -ArgumentList 'your-arguments-are-here' -Wait
 ```
 
+## Decode a base64 encoded environment variable
+ You can decode the `$VAR1` variable into the path `$PATH` using the following script:
+
+```
+[Text.Encoding]::UTF8.GetString([Convert]::FromBase64String("$env:VAR1")) | Out-File -FilePath $env:PATH
+```
+
 ## Accessing the build machine with SSH or VNC/RDP
 
 You can always access any build machine using the SSH or VNC.
