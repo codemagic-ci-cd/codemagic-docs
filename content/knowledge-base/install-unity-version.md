@@ -56,10 +56,10 @@ Windows:
       script: | 
         New-Item ".\install-unity.bat" #create an empty batch file
 
-          Set-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install -v $env:UNITY_VERSION --changeset $env:UNITY_VERSION_CHANGESET"
-          Add-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install-modules --version $env:UNITY_VERSION -m ios android"
+        Set-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install -v $env:UNITY_VERSION --changeset $env:UNITY_VERSION_CHANGESET"
+        Add-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install-modules --version $env:UNITY_VERSION -m ios android"
 
-          Start-Process -FilePath ".\install-unity.bat" -Wait -NoNewWindow #start executing the batch file
+        Start-Process -FilePath ".\install-unity.bat" -Wait -NoNewWindow #start executing the batch file
 ```
 
 
