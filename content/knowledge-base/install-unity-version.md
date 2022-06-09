@@ -28,7 +28,9 @@ The value of `UNITY_VERSION_CHANGESET` should be set using the **changeset** id 
 
 The `UNITY_VERSION_BIN` should be set as follows so the Unity binary path is declared for the version you want to build with:
 
-`UNITY_VERSION_BIN: /Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app/Contents/MacOS/Unity`
+Mac: `UNITY_VERSION_BIN: /Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app/Contents/MacOS/Unity`
+
+Windows: `UNITY_VERSION_BIN: C:\Program Files\Unity\Hub\Editor\$UNITY_VERSION\Editor\Unity.exe`
 
 
 ## Activating Unity
@@ -38,11 +40,26 @@ Even though you are installing a different version of Unity to build your apps w
 ## Unity installation script
 After activating the Unity license as usual, add the following script to install the desired version and modules you wish to use. The example below uses Unity Hub CLI commands to install the specified Unity version as well as the Android and iOS Build Support modules.
 
+Mac:
+
 ```yaml
     - name: Install Unity version
       script: | 
         /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version $UNITY_VERSION --changeset $UNITY_VERSION_CHANGESET 
         /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version $UNITY_VERSION -m ios android 
+```
+
+Windows:
+
+```yaml
+    - name: Install Unity version
+      script: | 
+        New-Item ".\install-unity.bat" #create an empty batch file
+
+        Set-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install -v $env:UNITY_VERSION --changeset $env:UNITY_VERSION_CHANGESET"
+        Add-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install-modules --version $env:UNITY_VERSION -m ios android"
+
+        Start-Process -FilePath ".\install-unity.bat" -Wait -NoNewWindow #start executing the batch file
 ```
 
 
@@ -57,6 +74,8 @@ Use the Unity version you installed on the machine:
 
 ## Android Workflow configuration sample
 
+Mac:
+
 ```yaml
 workflows:
   unity-android-workflow:
@@ -67,7 +86,6 @@ workflows:
         groups:
           # Add the group environment variables in Codemagic UI (in Application or Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
           - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
-          - keystore_credentials # <-- (Includes FCI_KEYSTORE, FCI_KEYSTORE_PASSWORD, FCI_KEY_ALIAS_PASSWORD, FCI_KEY_ALIAS_USERNAME)
           - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
         vars:
           UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
@@ -76,6 +94,8 @@ workflows:
           UNITY_VERSION_BIN: /Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app/Contents/MacOS/Unity
           BUILD_SCRIPT: BuildAndroid
           PACKAGE_NAME: "io.codemagic.unity" # <-- Put your package name here e.g. com.domain.myapp
+        android_signing:
+        - unity_test
         xcode: latest
       triggering:
         events:
@@ -93,10 +113,7 @@ workflows:
         - name: Install Unity version, buld support modules, ndk and jdk
           script: | 
             /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version ${UNITY_VERSION} --changeset ${UNITY_VERSION_CHANGESET}
-            /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version ${UNITY_VERSION} -m android android-sdk-ndk-tools android-open-jdk
-        - name: Set up keystore
-          script: |
-            echo $FCI_KEYSTORE | base64 --decode > $CM_BUILD_DIR/keystore.keystore            
+            /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version ${UNITY_VERSION} -m android android-sdk-ndk-tools android-open-jdk          
         - name: Set build number and export Unity
           script: |
             export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
@@ -108,4 +125,56 @@ workflows:
         scripts:
           - name: Deactivate Unity License
             script: $UNITY_BIN -batchmode -quit -returnlicense -nographics
+```
+Windows:
+```yaml
+ unity-android-workflow:
+    name: Unity Install Older Version Workflow
+    max_build_duration: 120
+    instance_type: windows_x2
+    environment:
+      groups:
+        # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+        - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
+      vars:
+        UNITY_BIN: $UNITY_HOME/Unity.exe
+        UNITY_VERSION: 2021.3.3f1
+        UNITY_VERSION_CHANGESET: af2e63e8f9bd
+        UNITY_VERSION_BIN: C:\Program Files\Unity\Hub\Editor\$UNITY_VERSION\Editor\Unity.exe
+        UNITY_HUB: C:\Program Files\Unity Hub\Unity Hub.exe
+        BUILD_SCRIPT: BuildAndroid
+        PACKAGE_NAME: "io.codemagic.unity" # <-- Put your package name here e.g. com.domain.myapp
+      android_signing:
+        - unity_test
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: "*"
+          include: true
+      cancel_previous_builds: false
+    scripts:
+      - name: Activate Unity License (installed version)
+        script: |
+          cmd.exe /c "$env:UNITY_BIN" -batchmode -serial $env:UNITY_SERIAL -username $env:UNITY_USERNAME -password $env:UNITY_PASSWORD -quit -nographics
+      - name: Install Unity version
+        script: |
+          New-Item ".\install-unity.bat" #create an empty batch file
+
+          Add-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install -v $env:UNITY_VERSION --changeset $env:UNITY_VERSION_CHANGESET"
+          Add-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install-modules --version $env:UNITY_VERSION -m android android-sdk-ndk-tools android-open-jdk"
+
+          Start-Process -FilePath ".\install-unity.bat" -Wait -NoNewWindow #start executing the batch file
+      - name: Build Unity Using (installed version)
+        script: |
+          cmd.exe /c "$env:UNITY_VERSION_BIN" -batchmode -quit -logFile "$env:CM_BUILD_DIR\\android\\log.txt" -projectPath . -executeMethod BuildScript.$env:BUILD_SCRIPT -nographics
+    artifacts:
+      - android/*.aab
+      - android/*.apk
+      - android/*.txt
+    publishing:
+      scripts:
+        - name: Deactivate new Unity License using a Command Prompt
+          script: |
+            cmd.exe /c "$env:UNITY_BIN" -batchmode -quit -returnlicense -nographics 
 ```
