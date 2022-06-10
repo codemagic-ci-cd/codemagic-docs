@@ -80,7 +80,7 @@ workflows:
       - name: Set up key.properties file for code signing
         script: |
           echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
-          cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
+          cat >> "$CM_BUILD_DIR/key.properties" <<EOF
           storePassword=$CM_KEYSTORE_PASSWORD
           keyPassword=$CM_KEY_PASSWORD
           keyAlias=$CM_KEY_ALIAS
