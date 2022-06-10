@@ -13,7 +13,7 @@ However, it is possible to use third party secret managers in your pipelines. In
 The following documentation shows how to do this using AWS Secrets Manager.
 
 ### Add AWS Environment variables in Codemagic
-You will need to configure the environment variables `AWS_DEFAULT_REGION`, `AWS_SECRET_ACCESS_KEY`, and `AWS_ACCESS_KEY_ID` in the Codemagic UI.
+You will need to configure the environment variables `AWS_DEFAULT_REGION` , `AWS_SECRET_ACCESS_KEY` , and `AWS_ACCESS_KEY_ID` in the Codemagic UI.
 
 Environment variables can be added at application level, or if you are using a Team, they can be added in the **Global variables and secrets** section of you Team settings.
 
@@ -223,3 +223,173 @@ If you want to retrieve a secret with multiline variable, like the `GCLOUD_SERVI
 ```
 
 Notice that if you add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` make sure you choose **No** when it asks you to replace `\n` with new lines.
+
+
+
+## Hashicorp Vault
+
+
+The following documentation shows how to do this using Hashicorp Vault.
+
+
+### Add Hashicorp Vault Environment variables in Codemagic
+In this example, we will use token authentication. To authenticate with other methods provided by Hashicorp Vault, please consult their documentation.
+
+You will need to configure the environment variables `VAULT_NAMESPACE` , `VAULT_ADDR` , and `VAULT_TOKEN` in the Codemagic UI.
+
+Environment variables can be added at application level, or if you are using a Team, they can be added in the **Global variables and secrets** section of you Team settings.
+
+Add these variables to a group called `vault_credentials`.
+
+### Storing a secret in Hashicorp Vault
+Install the Hashicorp Vault CLI on your local machine:
+
+```
+brew tap hashicorp/tap
+brew install hashicorp/tap/vault
+```
+
+To set a simple string value, you can add a single secret to a group as follows:
+
+```
+vault kv put secret/greetings message=hello
+```
+
+Retrieve the secret as follows:
+
+```
+vault kv get -field=message secret/greetings
+```
+
+To add a secret from file such as an RSA key or JSON key, you can add the contents of a file as follows:
+
+```
+vault kv put secret/gcloud GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=@gcloud.json
+```
+
+To retrieve the secret you would do the following:
+
+```
+vault kv get -field=GCLOUD_SERVICE_ACCOUNT_CREDENTIALS secret/gcloud
+```
+
+### Retrieving secrets using the Hashicorp Vault CLI
+Secrets can be retrieved using the Hashicorp Vault CLI.
+
+Secrets stored as plain text values on specified paths in the vault
+
+The following example shows how to retrieve a secret called ‘message’ that was stored in the vault path secret/greetings.
+
+```
+vault kv get -field=message secret/greetings
+```
+
+### Configure Hashicorp Vault authentication
+In your codemagic.yaml import your `vault_credentials` group:
+
+```
+environment:
+  groups:
+    ...
+    - vault_credentials
+    ...
+```
+
+### Configuring an iOS build using Hashicorp Vault
+Add your App Store credentials as follows:
+
+```
+vault kv put secret/appstore \\
+APP_STORE_CONNECT_PRIVATE_KEY=@/path/to/app_store_connect_api_key_file
+APP_STORE_CONNECT_KEY_IDENTIFIER=XXXXXXXXXX
+APP_STORE_CONNECT_ISSUER_ID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+CERTIFICATE_PRIVATE_KEY=@/path/to/ios_distribution_cert_private_key_file
+```
+
+Add the following variables in the codemagic.yaml
+
+```
+environment:
+  groups:
+    ...
+  vars:
+    APP_STORE_CONNECT_PRIVATE_KEY: $APP_STORE_CONNECT_PRIVATE_KEY
+    APP_STORE_CONNECT_KEY_IDENTIFIER: $APP_STORE_CONNECT_KEY_IDENTIFIER
+    APP_STORE_CONNECT_ISSUER_ID: $APP_STORE_CONNECT_ISSUER_ID
+    CERTIFICATE_PRIVATE_KEY: $CERTIFICATE_PRIVATE_KEY
+```
+
+In your first script step, retrieve the secrets from Hashicorp Vault and add them to *CM_ENV* as follows:
+
+```
+scripts:
+  - name: Set iOS credentials from AWS secrets
+    script: |
+      echo "APP_STORE_CONNECT_PRIVATE_KEY<<DELIMITER" >> $CM_ENV
+      echo "$(vault kv get -field=APP_STORE_CONNECT_PRIVATE_KEY secret/appstore)" >> $CM_ENV
+      echo "DELIMITER" >> $CM_ENV
+
+      echo "CERTIFICATE_PRIVATE_KEY<<DELIMITER" >> $CM_ENV
+      echo "$(vault kv get -field=CERTIFICATE_PRIVATE_KEY secret/appstore)" >> $CM_ENV
+      echo "DELIMITER" >> $CM_ENV
+        
+      echo "APP_STORE_CONNECT_KEY_IDENTIFIER=$(vault kv get -field=APP_STORE_CONNECT_KEY_IDENTIFIER secret/appstore)" >> $CM_ENV
+
+      echo "APP_STORE_CONNECT_ISSUER_ID=$(vault kv get -field=APP_STORE_CONNECT_ISSUER_ID secret/appstore)" >> $CM_ENV
+```
+
+Reference the variables for iOS publishing as usual:
+
+```
+publishing:
+  app_store_connect:              
+  api_key: $APP_STORE_CONNECT_PRIVATE_KEY      
+  key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER     
+  issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+```
+
+### Configuring an Android build using Hashicorp Vault
+The environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` must be provided with a valid Service Account JSON key, even if you will overwrite it with a different key later. Add this variable to a group called `service_account` and then import it into you workflow as follows:
+
+```
+environment:
+  groups:
+    ...
+    - service_account
+    ...
+```
+
+Add the secret for your Google Console Service Account to Hashicorp Vault as follows:
+
+```
+vault kv put secret/google \\
+GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=@/path/to/service_account.json
+```
+
+Add the following environment variable in your codemagic.yaml:
+
+```
+environment:
+  groups:
+    ...
+  vars:
+    GCLOUD_SERVICE_ACCOUNT_CREDENTIALS_HOLDER: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+```
+
+In your first script step, retrieve the Service Account JSON from Hashicorp Vault and add it to *CM_ENV* as follows:
+
+```
+- name: Set Service Account JSON from Hashicorp Vault
+  script: |
+    echo "GCLOUD_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
+    echo "$(vault kv get -field=GCLOUD_SERVICE_ACCOUNT_CREDENTIALS secret/google)" >> $CM_ENV
+          echo "DELIMITER" >> $CM_ENV
+```
+
+Reference the variable for publishing to Google Play as follows:
+
+```
+google_play:
+  credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS_HOLDER
+  track: $GOOGLE_PLAY_TRACK
+```
