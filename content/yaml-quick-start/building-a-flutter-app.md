@@ -85,9 +85,12 @@ workflows:
     name: Android Workflow
     max_build_duration: 120
     environment:
+      # See the following link about Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/
+      android_signing: 
+        - your_keystore_reference
       groups:
-        - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS)
-        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
+        # - keystore_credentials # <-- Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS
+        - google_play # <-- Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         - other
         # Add the above group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
@@ -98,15 +101,16 @@ workflows:
       xcode: latest
       cocoapods: default
     scripts:
-      - name: Set up key properties
-        script: |
-          echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-          cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
-          storePassword=$CM_KEYSTORE_PASSWORD
-          keyPassword=$CM_KEY_PASSWORD
-          keyAlias=$CM_KEY_ALIAS
-          storeFile=/tmp/keystore.keystore
-          EOF
+      # You can skip Set up key properties script if using Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1
+      # - name: Set up key properties
+        # script: |
+          # echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+          # cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
+          # storePassword=$CM_KEYSTORE_PASSWORD
+          # keyPassword=$CM_KEY_PASSWORD
+          # keyAlias=$CM_KEY_ALIAS
+          # storeFile=/tmp/keystore.keystore
+          # EOF          
       - name: Set up local.properties
         script: |
           echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
