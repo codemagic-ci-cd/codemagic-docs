@@ -25,3 +25,8 @@ All API requests are limited to `5,000 requests per hour and per authenticated u
 ## Checking your rate limit status
 
 The response’s HTTP headers are authoritative sources for the current number of API calls available to you or your app at any given time.
+
+`X-RateLimit-Limit:` The total number of requests allowed for the active window.  
+`X-RateLimit-Remaining:` The number of requests remaining in the active window.  
+`X-RateLimit-Reset:` UTC seconds since epoch when the window will be reset.  
+`Retry-After:` Seconds to retry after or the http date when the Rate Limit will be reset. The way the value is presented depends on the configuration value set in RATELIMIT_HEADER_RETRY_AFTER_VALUE and defaults to delta-seconds.
