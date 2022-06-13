@@ -20,4 +20,8 @@ The access token is available via the Codemagic UI in **User settings > Integrat
 
 ## Rate Limiting
 
-Authenticated user will be able to make a max in total of 5000 requests in total per hour. After the quota exceeded the users will see 429 errors and "Unathorized" message if the page refresh.
+All API requests are limited to `5,000 requests per hour and per authenticated user`.
+
+## Checking your rate limit status
+
+The response’s HTTP headers are authoritative sources for the current number of API calls available to you or your app at any given time.
