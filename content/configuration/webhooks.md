@@ -39,9 +39,11 @@ To start using webhooks with **AWS CodeCommit**, it is first necessary to create
 2. Navigate to **Topics** > **Create topic**.
 3. Set the type to **Standard**, give the topic a name and click on **Create topic**.
 4. Navigate to **Subscriptions** > **Create subscription**.
-5. Select the previously configured topic, set the protocol to **HTTPS**, and set the Codemagic **payload URL** as the endpoint. Proceed by clicking **Create subscription**.
-6. In the Codemagic UI, navigate to your application and select the **Webhooks** tab.
-7. Under **Recent deliveries**, choose the most recent webhook, and copy the subscription link under the **Results** tab to your browser.
+5. Select the previously configured topic, set the protocol to **HTTPS**, and set the Codemagic **payload URL** as the endpoint. 
+6. Confirm that **Enable raw message delivery** is unticked.
+7. Proceed by clicking **Create subscription**.
+8. In the Codemagic UI, navigate to your application and select the **Webhooks** tab.
+9. Under **Recent deliveries**, choose the most recent webhook, and copy the subscription link under the **Results** tab to your browser.
 
 ### Configuring webhook events
 
@@ -50,6 +52,27 @@ Open your application repository and navigate to **Notify** > **Create notificat
 Under **Events that trigger notifications**, select the **Source updated** and **Created** events in the **Pull request** section and the **Created** and **Updated** events in the **Branches and tags** section.
 
 Set the target type to **SNS topic**, select a configured target and click on **Submit**.
+
+If, after triggering a build, the SNS Notification target status shows as **Unreachable**, navigate to the topic settings and modify the access policy to match the following structure:
+
+```json
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "CodeNotification_publish",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "codestar-notifications.amazonaws.com"
+      },
+      "Action": "SNS:Publish",
+      "Resource": "arn:aws:sns:REGION:ACCOUNT_ID:REPOSITORY"
+    }
+  ]
+}
+```
+
+The **Resource** field should match the ARN of the topic.
 
 ## Setting up webhooks for Azure DevOps
 
