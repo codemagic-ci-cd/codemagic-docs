@@ -3,13 +3,11 @@ title: Import Variables from a Secret Manager
 weight: 2
 ---
 
-Codemagic allows you to add encrypted secrets and variables in the UI which can be used during your workflow. You can find our more about storing sensitive values in Codemagic here.
+Codemagic allows you to add encrypted secrets and variables in the UI which can be used during your workflow. You can find out more about storing sensitive values in Codemagic [here](https://docs.codemagic.io/variables/environment-variable-groups/#storing-sensitive-valuesfiles)
 
-However, it is possible to use third party secret managers in your pipelines. In order to do this, you will need to override environment variables defined in your codemagic.yaml configuration file during the build as explained here.
+However, it is possible to use third-party secret managers in your pipelines. In order to do this, you will need to override environment variables defined in your codemagic.yaml configuration file during the build as explained [here](https://docs.codemagic.io/variables/using-environment-variables/#setting-environment-variables-during-the-build)
 
 ## AWS Secrets Manager
-
-
 The following documentation shows how to do this using AWS Secrets Manager.
 
 ### Add AWS Environment variables in Codemagic
@@ -148,13 +146,10 @@ google_play:
 
 
 
-## Doppler Secrets Manager
-
-
-The following documentation shows how to do this using AWS Secrets Manager.
+## Doppler
+The following documentation shows how to do this using Doppler.
 
 ### Add Doppler token to the Environment variables in Codemagic
-
 You will need to configure the environment variables `DOPPLER_TOKEN` in the Codemagic UI.
 
 Environment variables can be added at application level, or if you are using a Team, they can be added in the **Global variables and secrets** section of you Team settings.
@@ -162,7 +157,8 @@ Environment variables can be added at application level, or if you are using a T
 
 Add these variables to a group called `doopler_credentials`.
 
-### Storing a secret in Doppler Secrets 
+### Storing a secret in Doppler 
+To store a secret in Doppler, do the following:
 
 1. Log into your Doppler account and go to your workspace then your project.
 2. Navigate to the **SECRETS** tab,
@@ -173,17 +169,16 @@ Add these variables to a group called `doopler_credentials`.
 
 
 ### Generating a new Doppler Service Token 
+You can create a new Doppler service token as follows:
 
-
-1. After logging in navigate to the **ACCESS** tab in you project and tab on Generate.
+1. After logging in navigate to the **ACCESS** tab in your project and tab on Generate.
 2. Enter a token name and give it the *read access* and click **Generate Service Token**.
 3. Copy the generated token.
 4. Add the token to your Codemagic environment variable under the name `DOPPLER_TOKEN` in the Codemagic UI.
 
 
 ### Install the Doppler CLI
-
-The Codemagic base build image doesn't has the Doppler CLI by default, so we need to install it first.
+The Codemagic base build image doesn't have the Doppler CLI by default, so we need to install it first.
 
 The following example shows how to install the Doppler CLI using brew.
 
@@ -203,8 +198,7 @@ After installing the CLI, you should export the `DOPPLER_TOKEN` so the other dop
 ```
 
 ### Retrieving secrets using the Doppler CLI
-
-Secrets can be retrieved using the Doppler CLI.
+Secrets can be retrieved from Doppler using the Doppler CLI.
 
 The following example shows how to retrieve a secret called `APP_STORE_CONNECT_ISSUER_ID` as plain text.
 
@@ -227,9 +221,7 @@ Notice that if you add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` make sure you ch
 
 
 ## Hashicorp Vault
-
-
-The following documentation shows how to do this using Hashicorp Vault.
+The following documentation shows how to use secrets stored in Hashicorp Vault.
 
 
 ### Add Hashicorp Vault Environment variables in Codemagic
