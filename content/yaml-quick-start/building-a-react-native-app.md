@@ -54,6 +54,10 @@ workflows:
         max_build_duration: 120
         instance_type: mac_mini
         environment:
+            # See the following link about Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/
+      android_signing: 
+            android_signing: 
+                - your_keystore_reference
             groups:
                 - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
                 - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
@@ -78,15 +82,16 @@ workflows:
             - name: Set Android SDK location
               script: |
                 echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
-            - name: Set up keystore
-              script: |
-                    echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-                    cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
-                    storePassword=$CM_KEYSTORE_PASSWORD
-                    keyPassword=$CM_KEY_ALIAS_PASSWORD
-                    keyAlias=$CM_KEY_ALIAS_USERNAME
-                    storeFile=/tmp/keystore.keystore
-                    EOF               
+            # - name: Set up keystore
+              # You can skip Set up key properties script if using Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1
+              # script: |
+                    # echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+                    # cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
+                    # storePassword=$CM_KEYSTORE_PASSWORD
+                    # keyPassword=$CM_KEY_ALIAS_PASSWORD
+                    # keyAlias=$CM_KEY_ALIAS_USERNAME
+                    # storeFile=/tmp/keystore.keystore
+                    # EOF               
             - name: Build Android release
               script: |
                 # Set environment variable so it can be used to increment build number in android/app/build.gradle
