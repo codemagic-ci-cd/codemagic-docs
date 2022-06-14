@@ -61,7 +61,7 @@ workflows:
       android_signing: 
         - your_keystore_reference
       groups:
-        - keystore_credentials # <-- Includes - CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS
+        # - keystore_credentials # Uncomment this if you're not using code-signing-identities <-- Includes - CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS
         - google_play # <-- Includes - GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
