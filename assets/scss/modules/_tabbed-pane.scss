@@ -1,0 +1,301 @@
+.td-content {
+    .highlight {
+      margin: 0rem 0 2rem 0;
+    }
+  }
+  .tab-content {
+    .tab-pane {
+      .highlight {
+        border: none;
+        max-width: 100%;
+      }
+      pre {
+        border-left: 1px solid rgba(0, 0, 0, 0.125);
+        border-right: 1px solid rgba(0, 0, 0, 0.125);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+      }
+      margin: 0rem;
+      max-width: 80%;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+    }
+  }
+  
+  .tab-body {
+    font-weight: 600;
+    background: grey;
+    color: inherit;
+    border-radius: 0;
+    padding: 1.5rem;
+  }
+  .nav-tabs { 
+      display: flex;
+    border-bottom: 1px solid #ddd;
+}
+.nav-tabs > li
+{
+    float: left;
+
+    margin-bottom: -1px;
+}
+.nav-tabs > li > a
+{
+    line-height: 1.42857;
+
+    margin-right: 2px;
+
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+.nav-tabs > li > a:hover
+{
+    border-color: #eee #eee #ddd;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus
+{
+    cursor: default;
+
+    color: #555;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    background-color: #fff;
+}
+.nav-item {
+    position: relative;
+    height: 10%;
+
+    .active::after {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      content: "";
+      bottom: -4px;
+      left: 0;
+      background: #fff;
+    }
+}
+
+
+  pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+  }
+  pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border-radius: 0;
+  }
+  .pre-scrollable {
+    max-height: 340px;
+    overflow-y: scroll;
+  }
+  .nav-tabs {
+    padding-left: 0!important;
+    margin-bottom: 0!important;
+    list-style: none;
+  }
+  .nav > li {
+    position: relative;
+    display: block;
+  }
+  .nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+  }
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #eeeeee;
+  }
+  .nav-item > .disabled {
+    color: #777777;
+    padding-left: 0;
+  }
+  .nav-item > .disabled:hover,
+  .nav-item > .disabled:focus {
+    color: #777777;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: default;
+    border: none;
+  }
+  .nav .open > a,
+  .nav .open > a:hover,
+  .nav .open > a:focus {
+    background-color: #eeeeee;
+    border-color: #337ab7;
+  }
+  .nav .nav-divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+  }
+  .nav > li > a > img {
+    max-width: none;
+  }
+  .nav-tabs {
+    border-bottom: 1px solid #dddddd;
+  }
+  .nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+  }
+  .nav-tabs > li > a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+  }
+  .nav-tabs > li > a:hover {
+    border-color: #eeeeee #eeeeee #dddddd;
+  }
+  .nav-tabs > li.active > a,
+  .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-bottom-color: transparent;
+  }
+  .nav-tabs.nav-justified {
+    width: 100%;
+    border-bottom: 0;
+  }
+  .nav-tabs.nav-justified > li {
+    float: none;
+  }
+  .nav-tabs.nav-justified > li > a {
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  .nav-tabs.nav-justified > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto;
+  }
+  @media (min-width: 768px) {
+    .nav-tabs.nav-justified > li {
+      display: table-cell;
+      width: 1%;
+    }
+    .nav-tabs.nav-justified > li > a {
+      margin-bottom: 0;
+    }
+  }
+  .nav-tabs.nav-justified > li > a {
+    margin-right: 0;
+    border-radius: 4px;
+  }
+  .nav-tabs.nav-justified > .active > a,
+  .nav-tabs.nav-justified > .active > a:hover,
+  .nav-tabs.nav-justified > .active > a:focus {
+    border: 1px solid #dddddd;
+  }
+  @media (min-width: 768px) {
+    .nav-tabs.nav-justified > li > a {
+      border-bottom: 1px solid #dddddd;
+      border-radius: 4px 4px 0 0;
+    }
+    .nav-tabs.nav-justified > .active > a,
+    .nav-tabs.nav-justified > .active > a:hover,
+    .nav-tabs.nav-justified > .active > a:focus {
+      border-bottom-color: #ffffff;
+    }
+  }
+  .nav-pills > li {
+    float: left;
+  }
+  .nav-pills > li > a {
+    border-radius: 4px;
+  }
+  .nav-pills > li + li {
+    margin-left: 2px;
+  }
+  .nav-pills > li.active > a,
+  .nav-pills > li.active > a:hover,
+  .nav-pills > li.active > a:focus {
+    color: #ffffff;
+    background-color: #337ab7;
+  }
+  .nav-stacked > li {
+    float: none;
+  }
+  .nav-stacked > li + li {
+    margin-top: 2px;
+    margin-left: 0;
+  }
+  .nav-justified {
+    width: 100%;
+  }
+  .nav-justified > li {
+    float: none;
+  }
+  .nav-justified > li > a {
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  .nav-justified > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto;
+  }
+  @media (min-width: 768px) {
+    .nav-justified > li {
+      display: table-cell;
+      width: 1%;
+    }
+    .nav-justified > li > a {
+      margin-bottom: 0;
+    }
+  }
+  .nav-tabs-justified {
+    border-bottom: 0;
+  }
+  .nav-tabs-justified > li > a {
+    margin-right: 0;
+    border-radius: 4px;
+  }
+  .nav-tabs-justified > .active > a,
+  .nav-tabs-justified > .active > a:hover,
+  .nav-tabs-justified > .active > a:focus {
+    border: 1px solid #dddddd;
+  }
+  @media (min-width: 768px) {
+    .nav-tabs-justified > li > a {
+      border-bottom: 1px solid #dddddd;
+      border-radius: 4px 4px 0 0;
+    }
+    .nav-tabs-justified > .active > a,
+    .nav-tabs-justified > .active > a:hover,
+    .nav-tabs-justified > .active > a:focus {
+      border-bottom-color: #ffffff;
+    }
+  }
+  .tab-content > .tab-pane {
+    display: none;
+  }
+  .tab-content > .active {
+    display: block!important;
+  }
+  .nav-tabs .dropdown-menu {
+    margin-top: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  

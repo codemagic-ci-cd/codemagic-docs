@@ -2,18 +2,32 @@
 title: Building a React Native app
 description: How to build a React Native app with codemagic.yaml
 weight: 5
-aliases: 
+aliases:
   - '../yaml/building-a-react-native-app'
   - /getting-started/building-a-react-native-app
 ---
 
 React Native is a cross-platform solution that allows you to build apps for both iOS and Android faster using a single language. When working with YAML, the basics are still the same, the build scripts are added to the `scripts` section in the [overall architecture](../getting-started/yaml#template).
 
+{{< tabpane  >}}
+
+{{% tab header="Tab 1" %}}
+**Hello world**
+{{% /tab %}}
+{{< tab header="Tab 2" >}}
+<b>Nothing</b>
+{{< /tab >}}
+{{% tab header="Tab 3" %}}
+
+**Something!**
+{{% /tab %}}
+{{% /tabpane %}}
+
 ## Setting up a React Native project
 
 The apps you have available on Codemagic are listed on the Applications page. Click **Add application** to add a new app.
 
-1. On the Applications page, click **Set up build** next to the app you want to start building. 
+1. On the Applications page, click **Set up build** next to the app you want to start building.
 2. On the popup, select **React Native App** as the project type and click **Continue**.
 3. Create a [`codemagic.yaml`](./yaml) file and add in it the commands to build, test and publish your project. See the full Android and iOS workflow examples below.
 4. Commit the configuration file to the root of your repository.
@@ -49,74 +63,74 @@ Here is a sample codemagic.yaml workflow for building Android and publishing to 
 
 ```yaml
 workflows:
-    react-native-android:
-        name: React Native Android
-        max_build_duration: 120
-        instance_type: mac_mini
-        environment:
-            groups:
-                - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
-                - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
-                - other
-            # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-            vars:
-                PACKAGE_NAME: "YOUR_PACKAGE_NAME" # <-- Put your package name here e.g. com.domain.myapp
-            node: latest
-        triggering:
-            events:
-                - push
-                - tag
-                - pull_request
-            branch_patterns:
-                - pattern: develop
-                  include: true
-                  source: true
-        scripts:
-            - name: Install npm dependencies
-              script: |
-                npm install
-            - name: Set Android SDK location
-              script: |
-                echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
-            - name: Set up keystore
-              script: |
-                    echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-                    cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
-                    storePassword=$CM_KEYSTORE_PASSWORD
-                    keyPassword=$CM_KEY_ALIAS_PASSWORD
-                    keyAlias=$CM_KEY_ALIAS_USERNAME
-                    storeFile=/tmp/keystore.keystore
-                    EOF               
-            - name: Build Android release
-              script: |
-                # Set environment variable so it can be used to increment build number in android/app/build.gradle
-                # Note that tracks can be specified when retrieving latest build number from Google Play, for example:
-                # export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks alpha) + 1))
-                export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME") + 1))
-                cd android && ./gradlew bundleRelease  # To generate an .apk use--> ./gradlew assembleRelease
-        artifacts:
-            - android/app/build/outputs/**/*.aab
-            - android/app/build/outputs/**/*.apk
-        publishing:
-            # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
-            email:
-                recipients:
-                    - user_1@example.com
-                    - user_2@example.com
-                notify:
-                  success: true     # To not receive a notification when a build succeeds
-                  failure: false    # To not receive a notification when a build fails
-            slack: 
-              # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
-              channel: '#channel-name'
-              notify_on_build_start: true   # To receive a notification when a build starts
-              notify:
-                success: true               # To receive a notification when a build succeeds
-                failure: false              # To not receive a notification when a build fails
-            google_play:
-              # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/yaml-publishing/google-play
-              credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-              track: alpha # <-- Any default or custom track that is not in ‘draft’ status
+  react-native-android:
+    name: React Native Android
+    max_build_duration: 120
+    instance_type: mac_mini
+    environment:
+      groups:
+        - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
+        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
+        - other
+      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+      vars:
+        PACKAGE_NAME: 'YOUR_PACKAGE_NAME' # <-- Put your package name here e.g. com.domain.myapp
+      node: latest
+    triggering:
+      events:
+        - push
+        - tag
+        - pull_request
+      branch_patterns:
+        - pattern: develop
+          include: true
+          source: true
+    scripts:
+      - name: Install npm dependencies
+        script: |
+          npm install
+      - name: Set Android SDK location
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Set up keystore
+        script: |
+          echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+          cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
+          storePassword=$CM_KEYSTORE_PASSWORD
+          keyPassword=$CM_KEY_ALIAS_PASSWORD
+          keyAlias=$CM_KEY_ALIAS_USERNAME
+          storeFile=/tmp/keystore.keystore
+          EOF
+      - name: Build Android release
+        script: |
+          # Set environment variable so it can be used to increment build number in android/app/build.gradle
+          # Note that tracks can be specified when retrieving latest build number from Google Play, for example:
+          # export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks alpha) + 1))
+          export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME") + 1))
+          cd android && ./gradlew bundleRelease  # To generate an .apk use--> ./gradlew assembleRelease
+    artifacts:
+      - android/app/build/outputs/**/*.aab
+      - android/app/build/outputs/**/*.apk
+    publishing:
+      # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
+      email:
+        recipients:
+          - user_1@example.com
+          - user_2@example.com
+        notify:
+          success: true # To not receive a notification when a build succeeds
+          failure: false # To not receive a notification when a build fails
+      slack:
+        # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
+        channel: '#channel-name'
+        notify_on_build_start: true # To receive a notification when a build starts
+        notify:
+          success: true # To receive a notification when a build succeeds
+          failure: false # To not receive a notification when a build fails
+      google_play:
+        # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/yaml-publishing/google-play
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: alpha # <-- Any default or custom track that is not in ‘draft’ status
 ```
 
 ## iOS
@@ -133,7 +147,7 @@ Script for building an iOS application:
 - xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
 ```
 
-Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46). 
+Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).
 
 Here is a sample codemagic.yaml workflow for building iOS and publishing to App Store Connect:
 
@@ -150,7 +164,7 @@ workflows:
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace" # <-- Put the name of your Xcode workspace here
-        XCODE_SCHEME: "YOUR_SCHEME_NAME" # <-- Put the name of your Xcode scheme here        
+        XCODE_SCHEME: "YOUR_SCHEME_NAME" # <-- Put the name of your Xcode scheme here
         BUNDLE_ID: "YOUR_BUNDLE_ID_HERE" # <-- Put your Bundle Id here e.g com.domain.myapp
       node: latest
       xcode: latest
@@ -195,7 +209,7 @@ workflows:
           xcode-project use-profiles --warn-only
       - name: Build ipa for distribution
         script: |
-          xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" 
+          xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
@@ -221,16 +235,16 @@ workflows:
           api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key, can also reference environment variable such as $APP_STORE_CONNECT_PRIVATE_KEY
           key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
           issuer_id:$APP_STORE_CONNECT_ISSUER_ID       # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
-          submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.  
+          submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.
 ```
 
 ## Testing, code signing and publishing
 
 To test and publish a React Native app:
 
-* The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-test).
-* All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
-* All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
+- The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-test).
+- All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
+- All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
 
 ## Build versioning your React Native app
 
@@ -245,5 +259,5 @@ Additionally, pay attention to how `signingConfigs{}` and `buildTypes{}` are con
 ### iOS versioning
 
 {{<notebox>}}Build versioning for iOS projects is performed as a script step in the codemagic.yaml{{</notebox>}}
- 
+
 See the **Increment build number** script in the [codemagic.yaml](https://github.com/codemagic-ci-cd/react-native-demo-project/blob/master/codemagic.yaml) in the React Native demo project on GitHub.

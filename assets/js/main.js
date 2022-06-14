@@ -229,3 +229,44 @@ window.addEventListener('resize', () => {
 
 // Logout listner
 document.querySelector('[js-header-auth-logout]').addEventListener('click', userLogout)
+
+window.addEventListener('load', function () {
+    // store tabs variable
+    var myTabs = document.querySelectorAll('ul.nav-tabs > li')
+    function myTabClicks(tabClickEvent) {
+        for (var i = 0; i < myTabs.length; i++) {
+            myTabs[i].classList.remove('active')
+        }
+        var clickedTab = tabClickEvent.currentTarget
+        clickedTab.classList.add('active')
+        tabClickEvent.preventDefault()
+        var myContentPanes = document.querySelectorAll('.tab-pane')
+        for (i = 0; i < myContentPanes.length; i++) {
+            myContentPanes[i].classList.remove('active')
+        }
+        var anchorReference = tabClickEvent.target
+        var activePaneId = anchorReference.getAttribute('href')
+        var activePane = document.querySelector(`#${activePaneId}`)
+        activePane.classList.add('active')
+    }
+    for (i = 0; i < myTabs.length; i++) {
+        myTabs[i].addEventListener('click', myTabClicks)
+    }
+})
+
+if (typeof Storage !== 'undefined') {
+    const activeLanguage = localStorage.getItem('active_language')
+    if (activeLanguage) {
+        document.querySelectorAll('.persistLang-' + activeLanguage).forEach((element) => {
+            $('#' + element.id).tab('show')
+        })
+    }
+}
+function persistLang(language) {
+    if (typeof Storage !== 'undefined') {
+        localStorage.setItem('active_language', language)
+        document.querySelectorAll('.persistLang-' + language).forEach((element) => {
+            $('#' + element.id).tab('show')
+        })
+    }
+}
