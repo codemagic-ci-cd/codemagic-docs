@@ -67,6 +67,14 @@ flutter emulators --launch apple_ios_simulator
 flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d iPhone 
 ```
 
+You can launch a specific iOS simulator and run tests on the simulator using ‘simctl’ which is a binary to interact with iOS simulators from the command line, as follows:
+
+```yaml
+xcrun simctl list # This command will give list available simulators on the machine along with UDIDs, you can find list of Devices depending upon type of machine you are running, here https://docs.codemagic.io/specs/versions-macos-xcode-12-5/#devices
+xcrun simctl boot 99B14BF4-7966-4427-ACD1-34BFE4D26A01 # Specify the UDID to boot the simulator
+flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d 99B14BF4-7966-4427-ACD1-34BFE4D26A01 # Specify the UDID to the integration tests command
+```
+
 For the Android emulator you can launch and run your tests as follows:
 
 ```yaml 
