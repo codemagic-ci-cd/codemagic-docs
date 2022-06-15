@@ -1,5 +1,5 @@
 ---
-title: Import Variables from a Secret Manager
+title: Importing variables from a secret manager
 weight: 2
 ---
 
