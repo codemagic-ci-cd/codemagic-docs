@@ -21,3 +21,17 @@ In order to give your binary a custom name, this can be done as follows:
 ```
 setProperty("archivesBaseName", "YOUR_CUSTOM_NAME")
 ```
+
+As Flutter does not allow to change binary names in **build.gradle**, a temporary solution is adding the following line after executing the build command:
+
+```
+name: Renaming binary
+script: |
+     mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/my_custom_binary_name.apk
+```
+
+Then, the same name must be included in tha path under the artefacts section:
+
+```
+- build/app/outputs/flutter-apk/my_custom_binary_name.apk
+```
