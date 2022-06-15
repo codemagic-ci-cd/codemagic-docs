@@ -18,4 +18,22 @@ The above mentioned-steps will build an **.ipa** file successfully. If you need 
 
 1. Under the publishing section of **codemagic.yaml** add **app_store_connect** which needs to hold your **APP_STORE_CONNECT_PRIVATE_KEY**, **APP_STORE_CONNECT_PRIVATE_KEY** and **APP_STORE_CONNECT_ISSUER_ID** and their values would have already been set by following the steps above. 
 2. Set **submit_to_testflight** to **true** if you need to submit your app to internal tester groups 
-3. Set **submit_to_app_store** to **true** if you need to submit your app to external tester groups and it will also submit your app for review by Apple. 
+3. Set **submit_to_app_store** to **true** if you need to submit your app to external tester groups and it will also submit your app for review by Apple. For example:
+
+```
+publishing:
+ app_store_connect:              
+    api_key: $APP_STORE_CONNECT_PRIVATE_KEY         
+    key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER       
+    issuer_id: $APP_STORE_CONNECT_ISSUER_ID         
+    submit_to_testflight: true                     
+    beta_groups:  
+      - group name 1
+      - group name 2
+
+    submit_to_app_store: true # Optional boolean, defaults to false. Whether or not to submit the uploaded build to App Store review. Note: This action is performed during post-processing.
+    release_type: SCHEDULED # Optional, defaults to MANUAL. Supported values: MANUAL, AFTER_APPROVAL or SCHEDULED
+    earliest_release_date: 2021-12-01T14:00:00+00:00 # Optional. Timezone-aware ISO8601 timestamp with hour precision when scheduling the release. This can be only used when release type is set to SCHEDULED. It cannot be set to a date in the past.
+    copyright: 2021 Nevercode Ltd # Optional. The name of the person or entity that owns the exclusive rights to your app, preceded by the year the rights were obtained.
+
+```
