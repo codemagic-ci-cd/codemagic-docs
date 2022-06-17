@@ -18,6 +18,7 @@
 {{ end }}
 
 <!-- Set values given defined within tabpane -->
+{{- $uniqueid := delimit (shuffle (seq 1 9)) "" -}}
 {{- $langPane := default "" ($.Get "lang") -}}
 {{- $hloptionsPane := default "" ($.Get "highlight") -}}
 {{- $codePane := default true ($.Get "code") -}}
@@ -29,7 +30,7 @@
 <!-- Scratchpad gets populated through call to .Inner -->
 {{- .Inner -}}
 
-<ul class="nav nav-tabs" id="tabs-{{- $.Ordinal -}}" role="tablist">
+<ul class="nav nav-tabs" id="tabs-{{- $uniqueid -}}" role="tablist">
   {{- range $index, $element := $.Scratch.Get "tabs" -}}
 
     {{- $lang := $langPane -}}
@@ -50,14 +51,14 @@
 
     <!-- Replace space and +, not valid for css selectors -->
     {{- $lang := replaceRE "[\\s+]" "-" $lang -}}
+    {{- $tabid := printf "tabs-%v-%v-tab" $.Ordinal $index | anchorize -}}
 
-    <li class="nav-item">
+    <li class="nav-item" id="{{- $tabid -}}">
       <!-- Generate the IDs for the <a> and the <div> elements -->
-      {{- $tabid := printf "tabs-%v-%v-tab" $.Ordinal $index | anchorize -}}
       {{- $entryid := printf "tabs-%v-%v" $.Ordinal $index | anchorize -}}
 
-      <a class="nav-link{{ if and ( not $activeSet ) ( not $disabled ) }} active{{ end }}{{ if eq $disabled true }} disabled{{ end }}{{ if ne $lang "" }}{{ if $persistLang }} persistLang-{{- $lang -}}{{ end }}{{ end }}" 
-          id="{{- $tabid -}}" data-toggle="tab" href="{{ $entryid }}" role="tab"
+      <a class="nav-link{{ if eq $disabled true }} disabled{{ end }}{{ if ne $lang "" }}{{ if $persistLang }} persistLang-{{- $lang -}}{{ end }}{{ end }}" 
+          data-toggle="tab" href="{{ $entryid }}" role="tab"
           {{ if ne $lang "" }}{{- if $persistLang -}}onclick="persistLang({{- $lang -}});"{{end}}{{end}}
         aria-controls="{{- $entryid -}}" aria-selected="{{- and ( not $activeSet ) ( not $disabled ) "true" "false" -}}">
         {{- index . "header" | markdownify -}}
@@ -74,7 +75,7 @@
 {{ $activeSet = false }}
 
 <!-- Inner content -->
-<div class="tab-content" id="tabs-{{- $.Ordinal -}}-content">
+<div class="tab-content" id="tabs-{{- $uniqueid -}}-content">
   {{- range $index, $element := $.Scratch.Get "tabs" -}}
 
     {{- $lang := $langPane -}}

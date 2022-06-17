@@ -9,13 +9,27 @@ aliases:
 
 React Native is a cross-platform solution that allows you to build apps for both iOS and Android faster using a single language. When working with YAML, the basics are still the same, the build scripts are added to the `scripts` section in the [overall architecture](../getting-started/yaml#template).
 
-{{< tabpane  >}}
+{{< tabpane code=false >}}
 
-{{% tab header="Tab 1" %}}
+{{% tab header="Tab 1"  active=true %}}
 **Hello world**
 {{% /tab %}}
+
 {{< tab header="Tab 2" >}}
-<b>Nothing</b>
+
+<div>
+  <p>The apps you have available on Codemagic are listed on the Applications page.</p>
+
+{{< tabpane >}}
+{{% tab header="Tab 1.2"  %}}
+**Hello world 1**
+{{% /tab %}}
+{{% tab header="Tab 1.2" %}}
+**Hello world 2**
+{{% /tab %}}
+{{< /tabpane >}}
+
+</div>
 {{< /tab >}}
 {{% tab header="Tab 3" %}}
 
@@ -34,6 +48,15 @@ The apps you have available on Codemagic are listed on the Applications page. Cl
 5. Back in app settings in Codemagic, scan for the `codemagic.yaml` file by selecting a **branch** to scan and clicking the **Check for configuration file** button at the top of the page. Note that you can have different configuration files in different branches.
 6. If a `codemagic.yaml` file is found in that branch, you can click **Start your first build** and select the **branch** and **workflow** to build.
 7. Finally, click **Start new build** to build the app.
+
+{{< tabpane >}}
+{{% tab header="Tab 1.2" %}}
+**Hello world 1**
+{{% /tab %}}
+{{% tab header="Tab 1.2" %}}
+**Hello world 2**
+{{% /tab %}}
+{{< /tabpane >}}
 
 {{<notebox>}}
 **Tip**

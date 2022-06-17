@@ -227,31 +227,44 @@ window.addEventListener('resize', () => {
     showDesktopElements()
 })
 
-// Logout listner
-document.querySelector('[js-header-auth-logout]').addEventListener('click', userLogout)
-
 window.addEventListener('load', function () {
     // store tabs variable
-    var myTabs = document.querySelectorAll('ul.nav-tabs > li')
-    function myTabClicks(tabClickEvent) {
-        for (var i = 0; i < myTabs.length; i++) {
-            myTabs[i].classList.remove('active')
+
+    const onTabClick = (event, pane, tabId) => {
+        event.preventDefault()
+
+        for (let i = 0; i < pane.children.length; i++) {
+            const tab = pane.children[i]
+            const active = tab.id == tabId
+
+            if (active) {
+                tab.classList.add('active')
+            } else {
+                tab.classList.remove('active')
+            }
         }
-        var clickedTab = tabClickEvent.currentTarget
-        clickedTab.classList.add('active')
-        tabClickEvent.preventDefault()
-        var myContentPanes = document.querySelectorAll('.tab-pane')
-        for (i = 0; i < myContentPanes.length; i++) {
-            myContentPanes[i].classList.remove('active')
+
+        const content = document.querySelector('#' + pane.id + '-content')
+        for (let i = 0; i < content.children.length; i++) {
+            const tabContent = content.children[i]
+            const active = tabContent.id + '-tab' == tabId
+
+            if (active) {
+                tabContent.classList.add('active')
+            } else {
+                tabContent.classList.remove('active')
+            }
         }
-        var anchorReference = tabClickEvent.target
-        var activePaneId = anchorReference.getAttribute('href')
-        var activePane = document.querySelector(`#${activePaneId}`)
-        activePane.classList.add('active')
     }
-    for (i = 0; i < myTabs.length; i++) {
-        myTabs[i].addEventListener('click', myTabClicks)
-    }
+
+    const tabPanes = document.querySelectorAll('ul.nav-tabs')
+    tabPanes.forEach((pane) => {
+        pane.children[0].classList.add('active')
+        for (let i = 0; i < pane.children.length; i++) {
+            const tab = pane.children[i]
+            tab.addEventListener('click', (event) => onTabClick(event, pane, tab.id))
+        }
+    })
 })
 
 if (typeof Storage !== 'undefined') {
