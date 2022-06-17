@@ -60,7 +60,7 @@ capabilities.setCapability("captureScreenshots", true);
 
 These capabitlies will allow Kobiton to detect which platform you want to you execute your test scripts with. Each device specific capabilities for Java can be found in the Kobiton devices list by clicking device settings and then Automation Settings.
 
-## How to upload apps to the Kobiton environment ? 
+## How to upload apps to the Kobiton environment? 
 
 **Step 1: **url** and **appPath** need to created to upload binaries to AWS S3 bucket by running the following cURL script:
 
@@ -109,7 +109,7 @@ The response message should be like the following for the above-mentioned cURL:
 {"testRunId":123168,"testRunDetailLink":"https://portal.kobiton.com/plans/123168/executions"}
 ```
 
-Base64 encoding the username and token [here](https://mixedanalytics.com/knowledge-base/api-connector-encode-credentials-to-base-64/) with the **username:accessToken** format is needed, then save the encoded string to Codemagic as an environment variable. So the steps would be as follow:
+Base64 encode the username and token [here](https://mixedanalytics.com/knowledge-base/api-connector-encode-credentials-to-base-64/) with the **username:accessToken** format is needed, then save the encoded string to Codemagic as an environment variable. So the steps would be as follow:
 
 1. Encode and save the username and access token into an environment variable.
 2. Run the scripts in YAML referencing that environment variable.
