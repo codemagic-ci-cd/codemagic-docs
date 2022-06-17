@@ -17,3 +17,17 @@ x-auth-token: <API Token>
 ```
 
 The access token is available via the Codemagic UI in **User settings > Integrations > Codemagic API > Show**.
+
+## Rate Limiting
+
+All API requests are limited to 5,000 requests per hour and per authenticated user.
+
+## Checking your rate limit status
+
+The response’s HTTP headers are authoritative sources for the current number of API calls available to you or your app at any given time.
+
+| Header | Description |
+| ---    | ---         |
+| X-RateLimit-Limit | The maximum number of requests you're permitted to make per hour. |
+| X-RateLimit-Remaining | The number of requests remaining in the current rate limit window. |
+| X-RateLimit-Reset | The time at which the current rate limit window resets in UTC epoch seconds. |

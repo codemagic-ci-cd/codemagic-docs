@@ -68,3 +68,18 @@ If you have finished debugging the build, don't forget to end the session to avo
 * During an active SSH session, you can rerun the build with a different configuration right from the terminal.
 * Before terminating the connection, you may want to copy-paste the contents of the terminal window to keep a record of your actions on the builder machine.
 
+### Making Configuration Changes
+
+* It is very easy to save any configuration changes that you make on Codemgaic VM. The repository is cloned from your GitHub/GitLab/Bitbucket account, so you can directly commit the changes using git and push them to your account.
+* In order to push the changes to your repo, you need to authenticate yourself in your git provider. This is necessary because Codemagic VM only has read access to the GitHub repo. 
+* Example, in order to authenticate with GitHub, you need to use your GitHub personal access token. See how to generate the token from [here](https://github.com/settings/tokens). You can run these commands from the terminal: 
+  
+```
+cd folder_name
+....
+....
+gh auth login --with-token YOUR_GITHUB_PAT_TOKEN
+git add .
+git commit -m "Added configuration changes"
+git push
+```

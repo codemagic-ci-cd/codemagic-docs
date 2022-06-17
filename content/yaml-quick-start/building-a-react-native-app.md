@@ -54,8 +54,12 @@ workflows:
         max_build_duration: 120
         instance_type: mac_mini
         environment:
+            # See the following link about Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/
+      android_signing: 
+            android_signing: 
+                - your_keystore_reference
             groups:
-                - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
+                # - keystore_credentials #  # Uncomment this if you're not using code-signing-identities <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
                 - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
                 - other
             # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
@@ -78,15 +82,16 @@ workflows:
             - name: Set Android SDK location
               script: |
                 echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
-            - name: Set up keystore
-              script: |
-                    echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-                    cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
-                    storePassword=$CM_KEYSTORE_PASSWORD
-                    keyPassword=$CM_KEY_ALIAS_PASSWORD
-                    keyAlias=$CM_KEY_ALIAS_USERNAME
-                    storeFile=/tmp/keystore.keystore
-                    EOF               
+            # - name: Set up keystore
+              # You can skip Set up key properties script if using Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1
+              # script: |
+                    # echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+                    # cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
+                    # storePassword=$CM_KEYSTORE_PASSWORD
+                    # keyPassword=$CM_KEY_ALIAS_PASSWORD
+                    # keyAlias=$CM_KEY_ALIAS_USERNAME
+                    # storeFile=/tmp/keystore.keystore
+                    # EOF               
             - name: Build Android release
               script: |
                 # Set environment variable so it can be used to increment build number in android/app/build.gradle
@@ -228,7 +233,7 @@ workflows:
 
 To test and publish a React Native app:
 
-* The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-test).
+* The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-tests-using-jest).
 * All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
 * All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
 
@@ -238,7 +243,7 @@ To test and publish a React Native app:
 
 {{<notebox>}}When using automatic build versioning in **codemagic.yaml** please note that configuration changes still need to be made in `android/app/build.gradle` {{</notebox>}}
 
-In the [build.gradle](https://github.com/codemagic-ci-cd/react-native-demo-project/blob/master/android/app/build.gradle) note how the versionCode is set in the `defaultConfig{}`.
+In the [build.gradle](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/android/app/build.gradle#L132) note how the versionCode is set in the `defaultConfig{}`.
 
 Additionally, pay attention to how `signingConfigs{}` and `buildTypes{}` are configured for debug and release.
 
@@ -246,4 +251,4 @@ Additionally, pay attention to how `signingConfigs{}` and `buildTypes{}` are con
 
 {{<notebox>}}Build versioning for iOS projects is performed as a script step in the codemagic.yaml{{</notebox>}}
  
-See the **Increment build number** script in the [codemagic.yaml](https://github.com/codemagic-ci-cd/react-native-demo-project/blob/master/codemagic.yaml) in the React Native demo project on GitHub.
+See the **Increment build number** script in the [codemagic.yaml](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/codemagic.yaml) in the React Native demo project on GitHub.
