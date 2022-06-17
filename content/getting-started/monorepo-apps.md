@@ -4,7 +4,7 @@ title: Monorepo apps
 weight: 11
 ---
 
-**Monorepo** is a version-controlled code repository that holds many projects in a single repository. Codemagic supports working with monorepo apps. The very first step is creating a Codemagic account and adding your monorepo app from its codebase such as GitHub, Gitlab, Bitbucket or self-hosted repositories. More information about how to sign up can be found here.
+A **Monorepo** is a version-controlled code repository that holds many projects in a single repository. Codemagic supports working with monorepo apps. The very first step is creating a Codemagic account and adding your monorepo app from its codebase such as GitHub, Gitlab, Bitbucket, or self-hosted repositories. More information about how to sign up can be found here.
 
 To begin with, **codemagic.yaml** file must be created in the root directory of the repository. By default, the working directory is the root of the repository. The basic structure looks like this:
 
@@ -55,4 +55,4 @@ workflows:
     working_directory: my_second_app
 ```
 
-Sample project can be found [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/codemagic.yaml).
+A sample project can be found [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/codemagic.yaml).
