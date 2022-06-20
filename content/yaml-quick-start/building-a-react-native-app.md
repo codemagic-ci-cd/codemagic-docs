@@ -156,74 +156,79 @@ Here is a sample codemagic.yaml workflow for building Android and publishing to 
 
 ```yaml
 workflows:
-  react-native-android:
-    name: React Native Android
-    max_build_duration: 120
-    instance_type: mac_mini
-    environment:
-      groups:
-        - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
-        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
-        - other
-      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-      vars:
-        PACKAGE_NAME: 'YOUR_PACKAGE_NAME' # <-- Put your package name here e.g. com.domain.myapp
-      node: latest
-    triggering:
-      events:
-        - push
-        - tag
-        - pull_request
-      branch_patterns:
-        - pattern: develop
-          include: true
-          source: true
-    scripts:
-      - name: Install npm dependencies
-        script: |
-          npm install
-      - name: Set Android SDK location
-        script: |
-          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
-      - name: Set up keystore
-        script: |
-          echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-          cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
-          storePassword=$CM_KEYSTORE_PASSWORD
-          keyPassword=$CM_KEY_ALIAS_PASSWORD
-          keyAlias=$CM_KEY_ALIAS_USERNAME
-          storeFile=/tmp/keystore.keystore
-          EOF
-      - name: Build Android release
-        script: |
-          # Set environment variable so it can be used to increment build number in android/app/build.gradle
-          # Note that tracks can be specified when retrieving latest build number from Google Play, for example:
-          # export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks alpha) + 1))
-          export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME") + 1))
-          cd android && ./gradlew bundleRelease  # To generate an .apk use--> ./gradlew assembleRelease
-    artifacts:
-      - android/app/build/outputs/**/*.aab
-      - android/app/build/outputs/**/*.apk
-    publishing:
-      # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
-      email:
-        recipients:
-          - user_1@example.com
-          - user_2@example.com
-        notify:
-          success: true # To not receive a notification when a build succeeds
-          failure: false # To not receive a notification when a build fails
-      slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
-        channel: '#channel-name'
-        notify_on_build_start: true # To receive a notification when a build starts
-        notify:
-          success: true # To receive a notification when a build succeeds
-          failure: false # To not receive a notification when a build fails
-      google_play:
-        # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/yaml-publishing/google-play
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: alpha # <-- Any default or custom track that is not in ‘draft’ status
+    react-native-android:
+        name: React Native Android
+        max_build_duration: 120
+        instance_type: mac_mini
+        environment:
+            # See the following link about Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/
+      android_signing: 
+            android_signing: 
+                - your_keystore_reference
+            groups:
+                # - keystore_credentials #  # Uncomment this if you're not using code-signing-identities <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
+                - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
+                - other
+            # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+            vars:
+                PACKAGE_NAME: "YOUR_PACKAGE_NAME" # <-- Put your package name here e.g. com.domain.myapp
+            node: latest
+        triggering:
+            events:
+                - push
+                - tag
+                - pull_request
+            branch_patterns:
+                - pattern: develop
+                  include: true
+                  source: true
+        scripts:
+            - name: Install npm dependencies
+              script: |
+                npm install
+            - name: Set Android SDK location
+              script: |
+                echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+            # - name: Set up keystore
+              # You can skip Set up key properties script if using Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1
+              # script: |
+                    # echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+                    # cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
+                    # storePassword=$CM_KEYSTORE_PASSWORD
+                    # keyPassword=$CM_KEY_ALIAS_PASSWORD
+                    # keyAlias=$CM_KEY_ALIAS_USERNAME
+                    # storeFile=/tmp/keystore.keystore
+                    # EOF               
+            - name: Build Android release
+              script: |
+                # Set environment variable so it can be used to increment build number in android/app/build.gradle
+                # Note that tracks can be specified when retrieving latest build number from Google Play, for example:
+                # export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks alpha) + 1))
+                export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME") + 1))
+                cd android && ./gradlew bundleRelease  # To generate an .apk use--> ./gradlew assembleRelease
+        artifacts:
+            - android/app/build/outputs/**/*.aab
+            - android/app/build/outputs/**/*.apk
+        publishing:
+            # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
+            email:
+                recipients:
+                    - user_1@example.com
+                    - user_2@example.com
+                notify:
+                  success: true     # To not receive a notification when a build succeeds
+                  failure: false    # To not receive a notification when a build fails
+            slack: 
+              # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
+              channel: '#channel-name'
+              notify_on_build_start: true   # To receive a notification when a build starts
+              notify:
+                success: true               # To receive a notification when a build succeeds
+                failure: false              # To not receive a notification when a build fails
+            google_play:
+              # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/yaml-publishing/google-play
+              credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+              track: alpha # <-- Any default or custom track that is not in ‘draft’ status
 ```
 
 ## iOS
@@ -335,9 +340,9 @@ workflows:
 
 To test and publish a React Native app:
 
-- The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-test).
-- All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
-- All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
+* The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-tests-using-jest).
+* All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
+* All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
 
 ## Build versioning your React Native app
 
@@ -345,12 +350,12 @@ To test and publish a React Native app:
 
 {{<notebox>}}When using automatic build versioning in **codemagic.yaml** please note that configuration changes still need to be made in `android/app/build.gradle` {{</notebox>}}
 
-In the [build.gradle](https://github.com/codemagic-ci-cd/react-native-demo-project/blob/master/android/app/build.gradle) note how the versionCode is set in the `defaultConfig{}`.
+In the [build.gradle](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/android/app/build.gradle#L132) note how the versionCode is set in the `defaultConfig{}`.
 
 Additionally, pay attention to how `signingConfigs{}` and `buildTypes{}` are configured for debug and release.
 
 ### iOS versioning
 
 {{<notebox>}}Build versioning for iOS projects is performed as a script step in the codemagic.yaml{{</notebox>}}
-
-See the **Increment build number** script in the [codemagic.yaml](https://github.com/codemagic-ci-cd/react-native-demo-project/blob/master/codemagic.yaml) in the React Native demo project on GitHub.
+ 
+See the **Increment build number** script in the [codemagic.yaml](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/codemagic.yaml) in the React Native demo project on GitHub.

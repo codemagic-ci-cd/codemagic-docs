@@ -42,15 +42,18 @@ You can find an up-to-date codemagic.yaml Ionic Android workflow in [Codemagic S
 
 The following example shows how to set up a workflow that builds your **Ionic Capacitor** Android app and publishes it to a Google Play internal track.
 
-```yaml
+```
 workflows:
   ionic-capacitor-android-workflow:
     name: Ionic Capacitor Android Workflow
     max_build_duration: 120
     instance_type: mac_mini
     environment:
+      # See the following link about Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/
+      android_signing: 
+        - your_keystore_reference
       groups:
-        - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS)
+        # - keystore_credentials # Uncomment this if you're not using code-signing-identities <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS)
         - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
@@ -71,15 +74,16 @@ workflows:
       - name: Set Android SDK location
         script: |
           echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
-      - name: Set up keystore
-        script: |
-          echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-          cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
-          storePassword=$CM_KEYSTORE_PASSWORD
-          keyPassword=$CM_KEY_PASSWORD
-          keyAlias=$CM_KEY_ALIAS
-          storeFile=/tmp/keystore.keystore
-          EOF
+      # - name: Set up keystore
+      # You can skip Set up key properties script if using Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1
+        # script: |
+          # echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+          # cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
+          # storePassword=$CM_KEYSTORE_PASSWORD
+          # keyPassword=$CM_KEY_PASSWORD
+          # keyAlias=$CM_KEY_ALIAS
+          # storeFile=/tmp/keystore.keystore
+          # EOF
       - name: Update dependencies and copy web assets to native project
         script: |
           # npx cap copy # <- use this is you don't need to update native dependencies
