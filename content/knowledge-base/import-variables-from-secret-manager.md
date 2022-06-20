@@ -155,7 +155,7 @@ You will need to configure the environment variables `DOPPLER_TOKEN` in the Code
 Environment variables can be added at application level, or if you are using a Team, they can be added in the **Global variables and secrets** section of you Team settings.
  
 
-Add these variables to a group called `doopler_credentials`.
+Add these variables to a group called `doppler_credentials`.
 
 ### Storing a secret in Doppler 
 To store a secret in Doppler, do the following:
@@ -180,30 +180,39 @@ You can create a new Doppler service token as follows:
 ### Install the Doppler CLI
 The Codemagic base build image doesn't have the Doppler CLI by default, so we need to install it first.
 
-The following example shows how to install the Doppler CLI using brew.
+The following example shows how to install the Doppler CLI:
 
+`MacOS`:
 ```
-- name: Install the Doppler CLI
+      - name: Install doppler on Mac
         script: |
           brew install gnupg
           brew install dopplerhq/cli/doppler
 ```
-
-After installing the CLI, you should export the `DOPPLER_TOKEN` so the other doppler commands will be authorized.
-
+`Linux`:
 ```
-- name: Add the Doppler token to CM_ENV
+      - name: Install doppler on Linux
         script: |
-          echo "DOPPLER_TOKEN=$DOPPLER_TOKEN" >> $CM_ENV
+          (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
 ```
+`Windows`:
+```
+      - name: Install doppler on Windows
+        script: |
+          Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+          iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
+          scoop bucket add doppler https://github.com/DopplerHQ/scoop-doppler.git
+          scoop install doppler
+```
+See the official docs in [here](https://docs.doppler.com/docs/cli#installation).
 
 ### Retrieving secrets using the Doppler CLI
 Secrets can be retrieved from Doppler using the Doppler CLI.
 
-The following example shows how to retrieve a secret called `APP_STORE_CONNECT_ISSUER_ID` as plain text.
+The following example shows how to retrieve a secret called `APP_STORE_CONNECT_ISSUER_ID` as plain text and add it to the System Environment directly.
 
 ```
-- name: Set vars from Doppler
+- name: Retrieve vars from Doppler
         script: |
           echo "APP_STORE_CONNECT_ISSUER_ID=$(doppler secrets get APP_STORE_CONNECT_ISSUER_ID --plain)" >> $CM_ENV
 ```
@@ -213,12 +222,32 @@ If you want to retrieve a secret with multiline variable, like the `GCLOUD_SERVI
 ```
     echo "GCLOUD_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
     echo "$(doppler secrets get GCLOUD_SERVICE_ACCOUNT_CREDENTIALS --plain)" >> $CM_ENV
-          echo "DELIMITER" >> $CM_ENV
+    echo "DELIMITER" >> $CM_ENV
+```
+{{</notebox>}}
+Notice that if you add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` make sure you choose **No** when it asks you to replace `\n` with new lines.
+{{</notebox>}}
+
+You can download all of your secrets and add them at once to your environment:
+```
+doppler secrets download --no-read-env --no-file --format env-no-quotes --config $DOPPLER_ENV --token $DOPPLER_TOKEN >> $CM_ENV
+```
+Make sure to set the `$DOPPLER_ENV` variable in the **vars** section.
+```
+environment:
+      groups:
+        - doppler_credentials # <-- (Includes the $DOPPLER_TOKEN)
+      vars:
+        DOPPLER_ENV: dev
 ```
 
-Notice that if you add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` make sure you choose **No** when it asks you to replace `\n` with new lines.
-
-
+{{</notebox>}}
+1. If you are using a `windows_x2` machine notice that you should add the doppler path to the system path at the beginning of each script like this:
+```
+$env:Path += ";C:\Users\builder\scoop\shims"
+```
+2. When accessing the environment variables on the windows you can do so like this: `$env:VAR_NAME`, see more [here](../troubleshooting/common-windows-issues/).
+{{</notebox>}}
 
 ## Hashicorp Vault
 The following documentation shows how to use secrets stored in Hashicorp Vault.
