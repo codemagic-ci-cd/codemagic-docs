@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        {{ .Render "head" }}
+        {{ .Render "head" }}       
     </head>
     <body class="page page--home">
         {{ partial "header" . }} {{ block "main" . }}{{ end }}{{ partial "analytics" . }} {{ partial "site-footer" . }}
+        
     </body>
 </html>

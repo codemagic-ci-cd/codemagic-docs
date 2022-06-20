@@ -1,0 +1,32 @@
+.clipboard-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 5px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    font-size: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: 0.1s;
+    border: none;
+    box-sizing: border-box;
+    & > svg {
+        fill: $black;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    &:focus {
+        outline: 0;
+    }
+  }
+  .clipboard-container {
+    position: relative;
+  }
+  .clipboard-container:hover > .clipboard-button {
+    opacity: 1;
+    transition: 0.2s;
+  }
+  

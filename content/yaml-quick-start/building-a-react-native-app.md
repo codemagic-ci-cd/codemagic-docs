@@ -9,33 +9,102 @@ aliases:
 
 React Native is a cross-platform solution that allows you to build apps for both iOS and Android faster using a single language. When working with YAML, the basics are still the same, the build scripts are added to the `scripts` section in the [overall architecture](../getting-started/yaml#template).
 
-{{< tabpane code=false >}}
+{{< tabpane >}}
 
-{{% tab header="Tab 1"  active=true %}}
-**Hello world**
-{{% /tab %}}
+{{< tab header="Example 1" >}}
 
-{{< tab header="Tab 2" >}}
+<div>
+  <p>The apps you have available on Codemagic are listed on the Applications page.</p>
+</div>
+
+<div>
+  {{< tabpane >}}
+  {{% tab header="Header 1" %}}
+  **text 1**
+  {{% /tab %}}
+  {{% tab header="Header 2" %}}
+  **text 2**
+  {{% /tab %}}
+  {{< /tabpane >}}
+</div>
+
+{{< /tab >}}
+
+{{< tab header="Example 2" >}}
 
 <div>
   <p>The apps you have available on Codemagic are listed on the Applications page.</p>
 
 {{< tabpane >}}
-{{% tab header="Tab 1.2"  %}}
-**Hello world 1**
+{{% tab header="json" %}}
+
+```json
+{
+  "doe": "a deer, a female deer",
+  "ray": "a drop of golden sun",
+  "pi": 3.14159,
+  "xmas": true,
+  "french-hens": 3,
+  "calling-birds": [
+     "huey",
+     "dewey",
+     "louie",
+     "fred"
+  ],
+  "xmas-fifth-day": {
+  "calling-birds": "four",
+  "french-hens": 3,
+  "golden-rings": 5,
+  "partridges": {
+    "count": 1,
+    "location": "a pear tree"
+  },
+  "turtle-doves": "two"
+  }
+}
+```
+
 {{% /tab %}}
-{{% tab header="Tab 1.2" %}}
-**Hello world 2**
+
+{{% tab header="yaml" %}}
+
+```yaml
+ doe: "a deer, a female deer"
+ ray: "a drop of golden sun"
+ pi: 3.14159
+ xmas: true
+ french-hens: 3
+ calling-birds:
+   - huey
+   - dewey
+   - louie
+   - fred
+ xmas-fifth-day:
+   calling-birds: four
+   french-hens: 3
+   golden-rings: 5
+   partridges:
+     count: 1
+     location: "a pear tree"
+   turtle-doves: two
+```
+
+{{< /tab >}}
+
+{{% tab header="sh" %}}
+
+```sh
+echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+```
+
 {{% /tab %}}
+
 {{< /tabpane >}}
 
 </div>
 {{< /tab >}}
-{{% tab header="Tab 3" %}}
 
-**Something!**
-{{% /tab %}}
-{{% /tabpane %}}
+{{< /tabpane >}}
 
 ## Setting up a React Native project
 
@@ -77,6 +146,7 @@ Set up local properties
 ```
 
 Building an Android application:
+§
 
 ```yaml
 - cd android && ./gradlew build

@@ -21,7 +21,7 @@
 {{- $uniqueid := delimit (shuffle (seq 1 9)) "" -}}
 {{- $langPane := default "" ($.Get "lang") -}}
 {{- $hloptionsPane := default "" ($.Get "highlight") -}}
-{{- $codePane := default true ($.Get "code") -}}
+{{- $codePane := default false ($.Get "code") -}}
 {{- $langEqualsHeader := default false ($.Get "langEqualsHeader") -}}
 {{- $persistLang := default true ($.Get "persistLang") -}}
 {{- $disabled := false -}}
