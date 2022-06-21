@@ -228,6 +228,9 @@ async function userLogout() {
         document.querySelector('[js-header-auth-loading]').classList.add('transition-out')
     }
 }
+// Logout listner
+document.querySelector('[js-header-auth-logout]').addEventListener('click', userLogout)
+
 
 // Open external links in new tab
 const handleExternalLinks = (e) => {
@@ -321,7 +324,7 @@ if (typeof Storage !== 'undefined') {
         })
     }
 }
-function persistLang(language) {
+const persistLang = (language) => {
     if (typeof Storage !== 'undefined') {
         localStorage.setItem('active_language', language)
         document.querySelectorAll('.persistLang-' + language).forEach((element) => {

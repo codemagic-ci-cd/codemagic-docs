@@ -30,7 +30,7 @@
 <!-- Scratchpad gets populated through call to .Inner -->
 {{- .Inner -}}
 
-<ul class="nav nav-tabs" id="tabs-{{- $uniqueid -}}" role="tablist">
+<ul class="docs nav nav-tabs" id="tabs-{{- $uniqueid -}}" role="tablist">
   {{- range $index, $element := $.Scratch.Get "tabs" -}}
 
     {{- $lang := $langPane -}}

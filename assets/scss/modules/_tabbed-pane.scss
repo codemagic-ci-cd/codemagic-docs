@@ -1,8 +1,6 @@
-.tab-content {
-  .highlight {
-      border: none;
-      max-width: 100%;
-    }
+.tab-content .highlight {
+  border: none;
+  max-width: 100%;
 }
 .tab-content > .tab-pane {
   display: none;
@@ -14,44 +12,45 @@
   font-weight: 400;
   border-radius: 0;
 }
-.nav > li {
+
+.docs.nav > li {
   position: relative;
   display: block;
 }
-.nav > li > a {
+.docs.nav > li > a {
   position: relative;
   display: block;
   padding: 10px 15px;
 }
-.nav > li > a:hover,
-.nav > li > a:focus {
+.docs.nav > li > a:hover,
+.docs.nav > li > a:focus {
   text-decoration: none;
   background-color: $grey-l;
 }
-ul.nav-tabs li.nav-item {
+.docs.nav-tabs li.nav-item {
   margin: 0;
   padding: 0;
 }
-.nav-tabs { 
+.docs.nav-tabs { 
   display: flex;
   border-bottom: 1px solid $grey-l;
   padding-left: 0!important;
   margin-bottom: 0!important;
   list-style: none;
 }
-.nav-tabs > li {
+.docs.nav-tabs > li {
   border: 1px solid transparent;
 }
-.nav-tabs > li > a {
+.docs.nav-tabs > li > a {
   font-weight: 600;
   border: 1px solid transparent;
 }
-.nav-tabs > li > a:hover {
+.docs.nav-tabs > li > a:hover {
   border-color: $grey-l;
 }
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
+.docs.nav-tabs > li.active > a,
+.docs.nav-tabs > li.active > a:hover,
+.docs.nav-tabs > li.active > a:focus {
   color: #555555;
   cursor: default;
   background-color: #ffffff;
