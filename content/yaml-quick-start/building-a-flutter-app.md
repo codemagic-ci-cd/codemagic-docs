@@ -150,7 +150,7 @@ workflows:
         in_app_update_priority: 0
 ```
 {{<notebox>}}
-Note: You can skip `Set up key properties` script if you are using [Code-signing Identities](https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1) and just add your keystore reference as follows in your yaml configuration.
+Note: You can skip `Set up key properties` script if you are using [Code-signing Identities](https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1). This feature is only available on **Teams**. You will need to add your keystore reference as follows in your yaml configuration.
   
   ```
   environment:
