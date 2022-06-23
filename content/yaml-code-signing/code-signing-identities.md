@@ -87,7 +87,7 @@ scripts:
 
 Note that when using the fields `distribution_type` and `bundle_identifier`, it is not allowed to configure `provisioning_profiles` and `certificates` fields.
 
-Additionally it is mandatory to specify `Setup Keychain` & `Add keychain` scripts as show above.
+Additionally, it is mandatory to specify `Initialize keychain` & `Add certificates to keychain` scripts as shown above.
 
 When defining the bundle identifier `com.example.id`, Codemagic will fetch any uploaded certificates and profiles matching the extensions as well (e.g. `com.example.id.NotificationService`).
 
