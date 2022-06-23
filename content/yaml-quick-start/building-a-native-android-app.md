@@ -57,11 +57,8 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini
     environment:
-      # See the following link about Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/
-      android_signing: 
-        - your_keystore_reference
       groups:
-        # - keystore_credentials # Uncomment this if you're not using code-signing-identities <-- Includes - CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS
+        - keystore_credentials # Uncomment this if you're not using code-signing-identities <-- Includes - CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS
         - google_play # <-- Includes - GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         - other
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
@@ -78,16 +75,15 @@ workflows:
     scripts:
       - name: Set up local properties
         script: echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
-      # - name: Set up key.properties file for code signing
-      # You can skip Set up key properties script if using Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1
-        # script: |
-          # echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
-          # cat >> "$CM_BUILD_DIR/key.properties" <<EOF
-          # storePassword=$CM_KEYSTORE_PASSWORD
-          # keyPassword=$CM_KEY_PASSWORD
-          # keyAlias=$CM_KEY_ALIAS
-          # storeFile=$CM_KEYSTORE_PATH
-          # EOF
+      - name: Set up key.properties file for code signing
+        script: |
+          echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+          cat >> "$CM_BUILD_DIR/key.properties" <<EOF
+          storePassword=$CM_KEYSTORE_PASSWORD
+          keyPassword=$CM_KEY_PASSWORD
+          keyAlias=$CM_KEY_ALIAS
+          storeFile=$CM_KEYSTORE_PATH
+          EOF
       - name: Build Android app
         script: 
           ./gradlew bundleRelease  # To generate an .apk use--> ./gradlew assembleRelease
@@ -99,6 +95,17 @@ workflows:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         track: internal
 ```
+
+{{<notebox>}}
+Note: You can skip `Set up key properties` script if you are using [Code-signing Identities](https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1). This feature is only available on **Teams**. You will need to add your keystore reference as follows in your yaml configuration.
+  
+  ```
+  environment:
+    android_signing:
+        - your_keystore_reference
+  ```
+{{</notebox>}}
+
 
 {{<notebox>}}Note that you should incremenet the versionCode in `android/app/build.gradle`. {{</notebox>}}
 
