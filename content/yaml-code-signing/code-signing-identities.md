@@ -95,7 +95,7 @@ When defining the bundle identifier `com.example.id`, Codemagic will fetch any u
 
 For a more advanced configuration, it is possible to pick out specific uploaded profiles and certificates for Codemagic to fetch during the build. To do so, list the references of the uploaded files under the `provisioning_profiles` and `certificates` fields, respectively. Note than when fetching individual files, the fields `distribution_type` and `bundle_identifier` are not allowed.
 
-Steps `Setup Keychain` & `Add keychain` scripts are not required as those are automatically fetched during the build process.
+Steps `Initialize keychain` & `Add certificates to keychain` scripts are not required as those are automatically fetched during the build process.
 
 ```yaml
 environment:
