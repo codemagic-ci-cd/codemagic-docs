@@ -91,7 +91,7 @@ Additionally it is mandatory to specify `Setup Keychain` & `Add keychain` script
 
 When defining the bundle identifier `com.example.id`, Codemagic will fetch any uploaded certificates and profiles matching the extensions as well (e.g. `com.example.id.NotificationService`).
 
-#### Options 2: Fetching specific files by reference names
+#### Option 2: Fetching specific files by reference names
 
 For a more advanced configuration, it is possible to pick out specific uploaded profiles and certificates for Codemagic to fetch during the build. To do so, list the references of the uploaded files under the `provisioning_profiles` and `certificates` fields, respectively. Note than when fetching individual files, the fields `distribution_type` and `bundle_identifier` are not allowed.
 
