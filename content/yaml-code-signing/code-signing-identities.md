@@ -15,7 +15,7 @@ Team owner permissions are required to upload and edit files under the **Code si
 
 Codemagic lets you upload code signing certificates as PKCS#12 archives containing both the certificate and the private key which is needed to use it. When uploading, Codemagic will ask you to provide the certificate password (if the certificate is password-protected) along with a unique **Reference name**, which can then be used in the `codemagic.yaml` configuration to fetch the specific file.
 
-In addition, if connection to the Apple Developer Portal is enabled in Team settings, Codemagic provides the option to generate a new `Apple Development` or `Apple Distribution` certificate. Click **Generate certificate**, provide a **Reference name**, select the type of certificate to create and the API key to use for that. Once the certificate has been created, Codemagic will allow you to download the certificate and provides the password for it. 
+In addition, if connection to the Apple Developer Portal is enabled in Team settings, Codemagic provides the option to generate a new `Apple Development` or `Apple Distribution` certificate. Click **Generate certificate**, provide a **Reference name**, select the type of certificate to create and the API key to use for that. Once the certificate has been created, Codemagic will allow you to download the certificate and provides the password for it.
 
 {{<notebox>}}
 The certificate can be downloaded just once right after creating it.
@@ -39,7 +39,7 @@ The **Reference name**, certificate type, team, and expiration date are displaye
 
 ### iOS profiles
 
-You can upload provisioning profiles with the `.mobileprovision` extension, providing a unique **Reference name** is required for each uploaded profile. 
+You can upload provisioning profiles with the `.mobileprovision` extension, providing a unique **Reference name** is required for each uploaded profile.
 
 Alternatively, you can automatically fetch the provisioning profiles from the Apple Developer Portal based on your team's App Store Connect API key. The bundle identifier is listed for every available profile along with it's name. The profiles are displayed by category: `Development profiles`, `Ad Hoc profiles`, `App Store profiles`, and `Enterprise profiles`. For each selected profile, it is necessary to provide a unique **Reference name**, which can be later used in `codemagic.yaml` to fetch the profile.
 
@@ -49,7 +49,7 @@ The profile's type, team, bundle id, and expiration date are displayed for each 
 
 Codemagic lets you upload your Android keystores. When uploading a keystore, it is required that the keystore password, key alias, and key password (if exists) are provided.
 
-Furthermore, it is required that a unique **Reference name** is assigned to each uploaded keystore, which can be used to fetch the keystore during the build using the `codemagic.yaml` configuration file. 
+Furthermore, it is required that a unique **Reference name** is assigned to each uploaded keystore, which can be used to fetch the keystore during the build using the `codemagic.yaml` configuration file.
 
 For each keystore, its common name, issuer, and expiration date are displayed.
 
@@ -65,37 +65,51 @@ After uploading code signing files to Codemagic, these files can be fetched and 
 
 Codemagic provides two means of fetching the required certificates and provisioning profiles during the build with the use of `codemagic.yaml`. Fetching can either be configured by specifying the distribution type and bundle identifier, or for more advanced use-cases, individual files can be fetched by their reference names.
 
-#### Fetching files by distribution type and bundle identifier
+#### Option 1: Fetching files by distribution type and bundle identifier
 
 To fetch all uploaded signing files matching a specific distribution type and bundle identifier during the build, define the `distribution_type` and `bundle_identifier` fields in your `codemagic.yaml` configuration. Note that it is necessary to configure both of the fields.
 
 ```yaml
 environment:
-    ios_signing:
-        distribution_type: ad_hoc  # app_store | development | enterprise
-        bundle_identifier: com.example.id
+  ios_signing:
+    distribution_type: ad_hoc # app_store | development | enterprise
+    bundle_identifier: com.example.id
+scripts:
+  ......
+  - name: Initialize keychain
+    script: |
+      keychain initialize
+  - name: Add certificates to keychain
+    script: |
+      keychain add-certificates
+  ......
 ```
 
 Note that when using the fields `distribution_type` and `bundle_identifier`, it is not allowed to configure `provisioning_profiles` and `certificates` fields.
 
+Additionally, it is mandatory to specify `Initialize keychain` & `Add certificates to keychain` scripts as shown above.
+
 When defining the bundle identifier `com.example.id`, Codemagic will fetch any uploaded certificates and profiles matching the extensions as well (e.g. `com.example.id.NotificationService`).
 
-#### Fetching specific files by reference names
+#### Option 2: Fetching specific files by reference names
 
 For a more advanced configuration, it is possible to pick out specific uploaded profiles and certificates for Codemagic to fetch during the build. To do so, list the references of the uploaded files under the `provisioning_profiles` and `certificates` fields, respectively. Note than when fetching individual files, the fields `distribution_type` and `bundle_identifier` are not allowed.
 
+Steps `Initialize keychain` & `Add certificates to keychain` scripts are not required as those are automatically fetched during the build process.
+
 ```yaml
 environment:
-    ios_signing:
-        provisioning_profiles:
-            - profile_reference
-            - ...
-        certificates:
-            - certificate_reference
-            - ...
+  ios_signing:
+    provisioning_profiles:
+      - profile_reference
+      - ...
+    certificates:
+      - certificate_reference
+      - ...
 ```
 
 Codemagic saves the files to the following locations on the build machine:
+
 - Profiles: `~/Library/MobileDevice/Provisioning Profiles`
 - Certificates: `~/Library/MobileDevice/Certificates`
 
@@ -103,15 +117,15 @@ It is additionally possible to include names for environment variables that will
 
 ```yaml
 environment:
-    ios_signing:
-        provisioning_profiles:
-            - profile: profile_reference
-              environment_variable: THIS_PROFILE_PATH_ON_DISK
-            - ...
-        certificates:
-            - certificate: certificate_reference
-              environment_variable: THIS_CERTIFICATE_PATH_ON_DISK
-            - ...
+  ios_signing:
+    provisioning_profiles:
+      - profile: profile_reference
+        environment_variable: THIS_PROFILE_PATH_ON_DISK
+      - ...
+    certificates:
+      - certificate: certificate_reference
+        environment_variable: THIS_CERTIFICATE_PATH_ON_DISK
+      - ...
 ```
 
 #### Using profiles
@@ -134,11 +148,12 @@ To tell Codemagic to fetch the uploaded keystores from the **Code signing identi
 
 ```yaml
 environment:
-    android_signing:
-        - keystore_reference
+  android_signing:
+    - keystore_reference
 ```
 
 Default environment variables are assigned by Codemagic for the values on the build machine:
+
 - Keystore path: `CM_KEYSTORE_PATH`
 - Keystore password: `CM_KEYSTORE_PASSWORD`
 - Key alias: `CM_KEY_ALIAS`
@@ -152,15 +167,15 @@ When fetching multiple keystores during a build, it is necessary to include name
 
 ```yaml
 environment:
-    android_signing:
-        - keystore: keystore_reference_1
-          keystore_environment_variable: THIS_KEYSTORE_PATH_ON_DISK_1
-          keystore_password_environment_variable: THIS_KEYSTORE_PASSWORD_1
-          key_alias_environment_variable: THIS_KEY_ALIAS_1
-          key_password_environment_variable: THIS_KEY_PASSWORD_1
-        - keystore: keystore_reference_2
-          keystore_environment_variable: THIS_KEYSTORE_PATH_ON_DISK_2
-          keystore_password_environment_variable: THIS_KEYSTORE_PASSWORD_2
-          key_alias_environment_variable: THIS_KEY_ALIAS_2
-          key_password_environment_variable: THIS_KEY_PASSWORD_2
+  android_signing:
+    - keystore: keystore_reference_1
+      keystore_environment_variable: THIS_KEYSTORE_PATH_ON_DISK_1
+      keystore_password_environment_variable: THIS_KEYSTORE_PASSWORD_1
+      key_alias_environment_variable: THIS_KEY_ALIAS_1
+      key_password_environment_variable: THIS_KEY_PASSWORD_1
+    - keystore: keystore_reference_2
+      keystore_environment_variable: THIS_KEYSTORE_PATH_ON_DISK_2
+      keystore_password_environment_variable: THIS_KEYSTORE_PASSWORD_2
+      key_alias_environment_variable: THIS_KEY_ALIAS_2
+      key_password_environment_variable: THIS_KEY_PASSWORD_2
 ```
