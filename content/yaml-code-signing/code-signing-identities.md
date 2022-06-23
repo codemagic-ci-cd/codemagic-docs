@@ -65,7 +65,7 @@ After uploading code signing files to Codemagic, these files can be fetched and 
 
 Codemagic provides two means of fetching the required certificates and provisioning profiles during the build with the use of `codemagic.yaml`. Fetching can either be configured by specifying the distribution type and bundle identifier, or for more advanced use-cases, individual files can be fetched by their reference names.
 
-#### Options 1: Fetching files by distribution type and bundle identifier
+#### Option 1: Fetching files by distribution type and bundle identifier
 
 To fetch all uploaded signing files matching a specific distribution type and bundle identifier during the build, define the `distribution_type` and `bundle_identifier` fields in your `codemagic.yaml` configuration. Note that it is necessary to configure both of the fields.
 
