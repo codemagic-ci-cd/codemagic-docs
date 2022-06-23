@@ -55,7 +55,7 @@ workflows:
         instance_type: mac_mini
         environment:
             groups:
-                - keystore_credentials #  # Uncomment this if you're not using code-signing-identities <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
+                - keystore_credentials # Comment this out if you are using code-signing-identities <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
                 - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
                 - other
             # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
