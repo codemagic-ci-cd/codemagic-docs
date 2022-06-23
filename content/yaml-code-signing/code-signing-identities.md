@@ -76,7 +76,7 @@ environment:
     bundle_identifier: com.example.id
 scripts:
   ......
-  - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+  - name: Initialize keychain
     script: |
       keychain initialize
   - name: Use system default keychain
