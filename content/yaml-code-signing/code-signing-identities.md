@@ -79,7 +79,7 @@ scripts:
   - name: Initialize keychain
     script: |
       keychain initialize
-  - name: Use system default keychain
+  - name: Add certificates to keychain
     script: |
       keychain add-certificates
   ......
