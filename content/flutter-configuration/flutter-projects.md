@@ -120,7 +120,11 @@ To build a MSIX package, select the **Create a Windows MSIX package** checkbox i
 
 Note that when packaging the application for release to Microsoft Store and publishing through Codemagic, you will be asked to provide the necessary `msix` configuration fields (`publisher_display_name`, `identity_name`, `msix_version`, `publisher`) under publishing settings.
 
-However, in order to configure any other package attributes, install the package to your project and add a [msix_config](https://pub.dev/packages/msix#gear-configuration-optional) to your `pubspec.yaml`. The aforementioned attributes to not have to be separately configured in the `pubspec.yaml`
+However, in order to configure any other package attributes, install the package to your project and add a [msix_config](https://pub.dev/packages/msix#gear-configuration-optional) to your `pubspec.yaml`. The aforementioned attributes to not have to be separately configured in the `pubspec.yaml`.
+
+{{<notebox>}}
+To use a specific [Flutter msix package](https://pub.dev/packages/msix) version, make sure to add it as a dev dependency. The newest version will be installed during build time if the package is added as a regular dependency.
+{{</notebox>}}
 
 ## Running tests only
 
