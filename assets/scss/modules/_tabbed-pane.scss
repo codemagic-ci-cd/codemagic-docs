@@ -1,60 +1,63 @@
-.tab-content .highlight {
-  border: none;
-  max-width: 100%;
-}
-.tab-content > .tab-pane {
-  display: none;
-}
-.tab-content > .active {
-  display: block!important;
+.tab-content {
+  & .highlight {
+    border: none;
+    max-width: 100%;
+  }
+  & > .tab-pane {
+    display: none;
+  }
+  & > .active {
+    display: block!important;
+  }
 }
 .tab-body {
   font-weight: 400;
   border-radius: 0;
 }
-
-.docs.nav > li {
-  position: relative;
-  display: block;
+.docs {
+  &.nav > li {
+    position: relative;
+    display: block;
+  }
+  &.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+  }
+  &.nav > li > a:hover,
+  &.nav > li > a:focus {
+    text-decoration: none;
+    background-color: $grey-l;
+  }
+  &.nav-tabs { 
+    display: flex;
+    border-bottom: 1px solid $grey-l;
+    padding-left: 0!important;
+    margin-bottom: 0!important;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  &.nav-tabs > li {
+    border: 1px solid transparent;
+  }
+  &.nav-tabs li.nav-item {
+    margin: 0;
+    padding: 0;
+  }
+  &.nav-tabs > li > a {
+    font-weight: 600;
+    border: 1px solid transparent;
+  }
+  &.nav-tabs > li > a:hover {
+    border-color: $grey-l;
+  }
+  &.nav-tabs > li.active > a,
+  &.nav-tabs > li.active > a:hover,
+  &.nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    background-color: #ffffff;
+    border: 1px solid $grey-l;
+    border-bottom-color: transparent;
+  }
 }
-.docs.nav > li > a {
-  position: relative;
-  display: block;
-  padding: 10px 15px;
-}
-.docs.nav > li > a:hover,
-.docs.nav > li > a:focus {
-  text-decoration: none;
-  background-color: $grey-l;
-}
-.docs.nav-tabs li.nav-item {
-  margin: 0;
-  padding: 0;
-}
-.docs.nav-tabs { 
-  display: flex;
-  border-bottom: 1px solid $grey-l;
-  padding-left: 0!important;
-  margin-bottom: 0!important;
-  list-style: none;
-}
-.docs.nav-tabs > li {
-  border: 1px solid transparent;
-}
-.docs.nav-tabs > li > a {
-  font-weight: 600;
-  border: 1px solid transparent;
-}
-.docs.nav-tabs > li > a:hover {
-  border-color: $grey-l;
-}
-.docs.nav-tabs > li.active > a,
-.docs.nav-tabs > li.active > a:hover,
-.docs.nav-tabs > li.active > a:focus {
-  color: #555555;
-  cursor: default;
-  background-color: #ffffff;
-  border: 1px solid $grey-l;
-  border-bottom-color: transparent;
-}
-
