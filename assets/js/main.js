@@ -231,7 +231,6 @@ async function userLogout() {
 // Logout listner
 document.querySelector('[js-header-auth-logout]').addEventListener('click', userLogout)
 
-
 // Open external links in new tab
 const handleExternalLinks = (e) => {
     const hostName = window.location.hostname
@@ -304,7 +303,7 @@ window.addEventListener('load', function () {
         }
     }
 
-    const tabPanes = document.querySelectorAll('ul.nav-tabs')
+    const tabPanes = document.querySelectorAll('[js-tabs-nav]')
     tabPanes.forEach((pane) => {
         pane.children[0].classList.add('active')
         for (let i = 0; i < pane.children.length; i++) {
