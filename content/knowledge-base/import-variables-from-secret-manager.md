@@ -184,20 +184,20 @@ The following example shows how to install the Doppler CLI:
 
 `MacOS`:
 ```
-      - name: Install doppler on Mac
+      - name: Install Doppler on Mac
         script: |
           brew install gnupg
           brew install dopplerhq/cli/doppler
 ```
 `Linux`:
 ```
-      - name: Install doppler on Linux
+      - name: Install Doppler on Linux
         script: |
           (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
 ```
 `Windows`:
 ```
-      - name: Install doppler on Windows
+      - name: Install Doppler on Windows
         script: |
           Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
           iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
