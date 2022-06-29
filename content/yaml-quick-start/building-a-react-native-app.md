@@ -2,7 +2,7 @@
 title: Building a React Native app
 description: How to build a React Native app with codemagic.yaml
 weight: 5
-aliases: 
+aliases:
   - '../yaml/building-a-react-native-app'
   - /getting-started/building-a-react-native-app
 ---
@@ -13,7 +13,7 @@ React Native is a cross-platform solution that allows you to build apps for both
 
 The apps you have available on Codemagic are listed on the Applications page. Click **Add application** to add a new app.
 
-1. On the Applications page, click **Set up build** next to the app you want to start building. 
+1. On the Applications page, click **Set up build** next to the app you want to start building.
 2. On the popup, select **React Native App** as the project type and click **Continue**.
 3. Create a [`codemagic.yaml`](./yaml) file and add in it the commands to build, test and publish your project. See the full Android and iOS workflow examples below.
 4. Commit the configuration file to the root of your repository.
@@ -143,7 +143,7 @@ Script for building an iOS application:
 - xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
 ```
 
-Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46). 
+Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).
 
 Here is a sample codemagic.yaml workflow for building iOS and publishing to App Store Connect:
 
@@ -160,7 +160,7 @@ workflows:
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace" # <-- Put the name of your Xcode workspace here
-        XCODE_SCHEME: "YOUR_SCHEME_NAME" # <-- Put the name of your Xcode scheme here        
+        XCODE_SCHEME: "YOUR_SCHEME_NAME" # <-- Put the name of your Xcode scheme here
         BUNDLE_ID: "YOUR_BUNDLE_ID_HERE" # <-- Put your Bundle Id here e.g com.domain.myapp
       node: latest
       xcode: latest
@@ -205,7 +205,7 @@ workflows:
           xcode-project use-profiles --warn-only
       - name: Build ipa for distribution
         script: |
-          xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" 
+          xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
