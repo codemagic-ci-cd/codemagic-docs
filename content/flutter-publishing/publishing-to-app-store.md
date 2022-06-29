@@ -59,7 +59,7 @@ The Apple Developer Portal integration can be enabled in **User settings > Integ
 
 If you work with multiple Apple Developer teams, you can add additional keys by clicking **Add another key** right after adding the first key and repeating the steps described above. You can delete existing keys or add new ones when you click **Manage keys** next to the Developer Portal integration in user or team settings.
 
-### 3. Enabling App Store Connect publishing for workflow
+### Step 3. Enabling App Store Connect publishing for workflow
 
 Once the Apple Developer Portal has been enabled for the account or team the app belongs to, you can easily enable App Store Connect publishing per workflow.
 
@@ -69,14 +69,12 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 4. Mark the **Publish even if tests fail** checkbox to continue uploading the app artifact even when the tests failed.
 5. Select **Enable App Store Connect publishing** at the top of the section to enable publishing.
 
-To continue, either configure the submission to TestFlight or App Store, or choose both options.
+These steps are enough to publish the build to App Store Connect. However, users can select additional options to submit the build to TestFlight beta review or App Store review. 
 
 #### Submitting an app to TestFlight
 
 1. Mark the **Submit to TestFlight beta review** checkbox to submit the build for beta review and prepare it for distributing to beta testers. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution).
 2. Mark the **Distribute to beta groups** checkbox and enter the names of the beta groups to automatically distribute the build to the testers in those groups once the build has passed beta review. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution).
-
-Once you have successfully set up publishing to App Store Connect, Codemagic will automatically distribute the app to App Store Connect every time you build the workflow. The application has to be manually submitted to App Store.
 
 #### Submitting an app to App Store review
 
