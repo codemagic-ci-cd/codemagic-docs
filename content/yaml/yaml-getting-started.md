@@ -299,6 +299,10 @@ cache:
 Note: Codemagic doesn't support caching symlinks.
 {{</notebox>}}
 
+{{<notebox>}}
+Note: Each workflow has its own caching setup and they are cached separately. It is possible to view them under the Caching tab in the Codemagic UI. 
+{{</notebox>}}
+
 ### Triggering
 
 {{<notebox>}}
