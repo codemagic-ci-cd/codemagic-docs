@@ -184,20 +184,20 @@ The following example shows how to install the Doppler CLI:
 
 `MacOS`:
 ```
-      - name: Install Doppler on Mac
+      - name: Install doppler on Mac
         script: |
           brew install gnupg
           brew install dopplerhq/cli/doppler
 ```
 `Linux`:
 ```
-      - name: Install Doppler on Linux
+      - name: Install doppler on Linux
         script: |
           (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
 ```
 `Windows`:
 ```
-      - name: Install Doppler on Windows
+      - name: Install doppler on Windows
         script: |
           Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
           iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
@@ -224,7 +224,7 @@ If you want to retrieve a secret with multiline variable, like the `GCLOUD_SERVI
     echo "$(doppler secrets get GCLOUD_SERVICE_ACCOUNT_CREDENTIALS --plain)" >> $CM_ENV
     echo "DELIMITER" >> $CM_ENV
 ```
-{{</notebox>}}
+{{<notebox>}}
 Notice that if you add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` make sure you choose **No** when it asks you to replace `\n` with new lines.
 {{</notebox>}}
 
@@ -241,7 +241,7 @@ environment:
         DOPPLER_ENV: dev
 ```
 
-{{</notebox>}}
+{{<notebox>}}
 1. If you are using a `windows_x2` machine notice that you should add the doppler path to the system path at the beginning of each script like this:
 ```
 $env:Path += ";C:\Users\builder\scoop\shims"
