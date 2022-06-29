@@ -19,7 +19,8 @@ In addition, the application must be **App Store ready** for build distribution,
 
 It is also worth pointing out the necessity for each uploaded binary to have a **different version**; otherwise, it will be refused by App Store Connect. See the [Build versioning](../building/build-versioning/) article for instructions on incrementing app version with Codemagic.
 
-{{<notebox>}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. Suppose you have set up an **app record** but have not manually uploaded the app's first version. In that case, manual configuration of the settings must be done on App Store Connect after the build is complete, such as uploading the required screenshots and providing the values for the privacy policy URL and application category. {{</notebox>}}
+{{<notebox>}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually.
+{{</notebox>}}
 
 In order to be able to test iOS apps on Apple devices, manual device UDID registration in the Apple Developer Program account is required. Alternatively, Codemagic's automatic device registration can be used to register devices as explained [here](https://docs.codemagic.io/testing/ios-provisioning/). 
 
