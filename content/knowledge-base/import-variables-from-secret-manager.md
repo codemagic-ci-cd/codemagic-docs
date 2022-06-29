@@ -224,7 +224,7 @@ If you want to retrieve a secret with multiline variable, like the `GCLOUD_SERVI
     echo "$(doppler secrets get GCLOUD_SERVICE_ACCOUNT_CREDENTIALS --plain)" >> $CM_ENV
     echo "DELIMITER" >> $CM_ENV
 ```
-{{</notebox>}}
+{{<notebox>}}
 Notice that if you add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` make sure you choose **No** when it asks you to replace `\n` with new lines.
 {{</notebox>}}
 
@@ -241,7 +241,7 @@ environment:
         DOPPLER_ENV: dev
 ```
 
-{{</notebox>}}
+{{<notebox>}}
 1. If you are using a `windows_x2` machine notice that you should add the doppler path to the system path at the beginning of each script like this:
 ```
 $env:Path += ";C:\Users\builder\scoop\shims"
