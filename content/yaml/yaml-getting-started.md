@@ -300,7 +300,7 @@ Note: Codemagic doesn't support caching symlinks.
 {{</notebox>}}
 
 {{<notebox>}}
-Note: Each workflow has its own caching setup and they are cached separately. It is possible to view them under the Caching tab in the Codemagic UI. 
+Note: Each workflow has its own cache. It is possible to view the cache for each workflow under the Caching tab in the Codemagic UI.
 {{</notebox>}}
 
 ### Triggering
