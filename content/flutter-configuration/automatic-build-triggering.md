@@ -72,4 +72,4 @@ else
   echo "Commit message includes 'buildcd', moving forward..."
 fi 
 ```
-
+The commit message needs to include **buildcd** to make the build progress in the above-mentioned example.
