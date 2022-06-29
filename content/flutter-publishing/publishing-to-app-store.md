@@ -69,7 +69,7 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 4. Mark the **Publish even if tests fail** checkbox to continue uploading the app artifact even when the tests failed.
 5. Select **Enable App Store Connect publishing** at the top of the section to enable publishing.
 
-These steps are enough to publish the build to App Store Connect. However, users can select additional options to submit the build to TestFlight beta review or App Store review. 
+Your app will be now published to App Store Connect. However, you can select additional options to submit the build to TestFlight beta review or App Store review. 
 
 #### Submitting an app to TestFlight
 
