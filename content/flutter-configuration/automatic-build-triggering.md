@@ -57,7 +57,7 @@ If you don't enable any automatic build triggers, you can start builds only manu
 
 You can **ignore building** by adding ```-skip ci``` to your commit message.
 
-If you want to exit build **when commit message does not include certain string**
+If you want to exit a build **when commit message does not include certain string**, then you can add the following script at the top of your scripts section (post-clone script) and it will take care of exiting the build or moving forward:
 then you can add the following post-clone script that will take care of exiting the build or moving forward, in this example the commit message needs to include **buildcd** to make the build progress.
 ```
 set -e
