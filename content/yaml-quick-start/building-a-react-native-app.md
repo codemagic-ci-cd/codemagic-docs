@@ -1,11 +1,11 @@
 ---
-title: React guide from zero to CI/CD hero
-description: A complete guide to React Native apps with Codemagic
+title: Building a React Native app
+description: How to build a React Native app with codemagic.yaml
 weight: 5
-aliases: 
-  - '../yaml/react-total-guide'
+aliases:
+  - '../yaml/building-a-react-native-app'
+  - /getting-started/building-a-react-native-app
 ---
-
 React Native is a cross-platform solution that allows you to build apps for both iOS and Android faster using a single language. Pairing it with Codemagic's CI/CD pipeline creates a powerful tool that automates all phases of mobile app development.
 
 
