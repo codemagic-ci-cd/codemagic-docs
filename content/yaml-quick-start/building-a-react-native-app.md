@@ -2,7 +2,7 @@
 title: Building a React Native app
 description: How to build a React Native app with codemagic.yaml
 weight: 5
-aliases: 
+aliases:
   - '../yaml/building-a-react-native-app'
   - /getting-started/building-a-react-native-app
 ---
@@ -13,7 +13,7 @@ React Native is a cross-platform solution that allows you to build apps for both
 
 The apps you have available on Codemagic are listed on the Applications page. Click **Add application** to add a new app.
 
-1. On the Applications page, click **Set up build** next to the app you want to start building. 
+1. On the Applications page, click **Set up build** next to the app you want to start building.
 2. On the popup, select **React Native App** as the project type and click **Continue**.
 3. Create a [`codemagic.yaml`](./yaml) file and add in it the commands to build, test and publish your project. See the full Android and iOS workflow examples below.
 4. Commit the configuration file to the root of your repository.
@@ -54,12 +54,8 @@ workflows:
         max_build_duration: 120
         instance_type: mac_mini
         environment:
-            # See the following link about Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/
-      android_signing: 
-            android_signing: 
-                - your_keystore_reference
             groups:
-                # - keystore_credentials #  # Uncomment this if you're not using code-signing-identities <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
+                - keystore_credentials # Comment this out if you are using code-signing-identities <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
                 - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
                 - other
             # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
@@ -82,16 +78,15 @@ workflows:
             - name: Set Android SDK location
               script: |
                 echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
-            # - name: Set up keystore
-              # You can skip Set up key properties script if using Code-signing Identities - https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1
-              # script: |
-                    # echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-                    # cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
-                    # storePassword=$CM_KEYSTORE_PASSWORD
-                    # keyPassword=$CM_KEY_ALIAS_PASSWORD
-                    # keyAlias=$CM_KEY_ALIAS_USERNAME
-                    # storeFile=/tmp/keystore.keystore
-                    # EOF               
+            - name: Set up keystore
+              script: |
+                echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+                cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
+                storePassword=$CM_KEYSTORE_PASSWORD
+                keyPassword=$CM_KEY_ALIAS_PASSWORD
+                keyAlias=$CM_KEY_ALIAS_USERNAME
+                storeFile=/tmp/keystore.keystore
+                EOF               
             - name: Build Android release
               script: |
                 # Set environment variable so it can be used to increment build number in android/app/build.gradle
@@ -123,6 +118,16 @@ workflows:
               credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
               track: alpha # <-- Any default or custom track that is not in ‘draft’ status
 ```
+{{<notebox>}}
+Note: You can skip `Set up key properties` script if you are using [Code-signing Identities](https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1). This feature is only available on **Teams**. You will need to add your keystore reference as follows in your yaml configuration.
+  
+  ```
+  environment:
+    android_signing:
+        - your_keystore_reference
+  ```
+{{</notebox>}}
+
 
 ## iOS
 
@@ -138,7 +143,7 @@ Script for building an iOS application:
 - xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
 ```
 
-Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46). 
+Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).
 
 Here is a sample codemagic.yaml workflow for building iOS and publishing to App Store Connect:
 
@@ -155,7 +160,7 @@ workflows:
       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
       vars:
         XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace" # <-- Put the name of your Xcode workspace here
-        XCODE_SCHEME: "YOUR_SCHEME_NAME" # <-- Put the name of your Xcode scheme here        
+        XCODE_SCHEME: "YOUR_SCHEME_NAME" # <-- Put the name of your Xcode scheme here
         BUNDLE_ID: "YOUR_BUNDLE_ID_HERE" # <-- Put your Bundle Id here e.g com.domain.myapp
       node: latest
       xcode: latest
@@ -200,7 +205,7 @@ workflows:
           xcode-project use-profiles --warn-only
       - name: Build ipa for distribution
         script: |
-          xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" 
+          xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
@@ -225,7 +230,7 @@ workflows:
       app_store_connect:
           api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key, can also reference environment variable such as $APP_STORE_CONNECT_PRIVATE_KEY
           key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
-          issuer_id:$APP_STORE_CONNECT_ISSUER_ID       # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
+          issuer_id: $APP_STORE_CONNECT_ISSUER_ID       # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
           submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.  
 ```
 

@@ -14,43 +14,44 @@ weight: 9
 
 - System version `macOS 12.4 (21F79)`
 - Kernel version `Darwin 21.5.0`
-- Disk `209GB (Free Space: 65GB)`
+- Disk `316GB (Free Space: 131GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `24.0.8215888`
-- aws `2.7.5`
+- aws `2.7.10`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `N/A`
 - ew-cli `0.0.47`
 - fastlane `2.206.2`
-- firebase `9.23.3`
-- flutter `3.0.2 ($HOME/programs/flutter)`
-- gem `3.3.15`
-- gh `2.11.3`
+- firebase `11.1.0`
+- flutter `3.0.3 ($HOME/programs/flutter)`
+- gem `3.3.16`
+- gh `2.13.0`
 - git `2.36.1`
-- Google Cloud SDK `381.0.0`
+- Google Cloud SDK `391.0.0`
 - gradle `7.3.1`
-- gsutil `5.9`
-- homebrew `3.4.11`
+- gsutil `5.10`
+- homebrew `3.5.2`
 - ionic `5.4.16`
 - jq `1.6`
-- ktlint `0.45.2`
-- node `18.3.0`
-- npm `8.11.0`
+- ktlint `0.46.1`
+- node `18.4.0`
+- npm `8.12.1`
 - python `3.8.13`
 - python3 `3.8.13`
-- ruby `2.7.6p219`
+- ruby `3.0.4p208`
 - ssh `8.6p1`
 - sudo `1.9.5p2`
 - tar `3.5.1`
+- ucd `0.11.10`
 - unzip `6.00`
 - wget `1.21.3`
 - yarn `1.22.19`
-- yq `4.25.2`
+- yq `4.25.3`
 - zip `3.0`
 
 ## Android emulators
@@ -64,14 +65,14 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - **1.8.0_332** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_342** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
-## Unity 2021.3.1f1
+## Unity 2021.3.5f1
 
-UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.1f1/Unity.app
+UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.5f1/Unity.app
 
 ## Xcode 13.4.1 (13F100)
 
-This is the Xcode version used by default when you select `13.4`, `13.4.1`, `edge` or `latest` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `13.4`, `13.4.1`, `edge` or `latest` in your codemagic.yaml file.
+This is the Xcode version used by default when you select `13.4`, `13.4.1` or `latest` in build settings in the workflow 
+editor for Flutter apps or set Xcode version to `13.4`, `13.4.1` or `latest` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.4.app`
@@ -82,7 +83,9 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 
 - iOS 15.5
 - tvOS 15.4
+- tvOS 16.0
 - watchOS 8.5
+- watchOS 9.0
 
 ### Devices
 
@@ -119,4 +122,5 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 
 ## Other Xcode versions
 
+- 14.0 (14A5229c) `/Applications/Xcode-14.app`
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`
