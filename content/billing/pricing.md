@@ -163,10 +163,25 @@ For more information contact us [here](https://codemagic.io/contact/).
 
 ## Build history and artifact storage
 
-### Personal account storage
+Build history and artifact retention time depends on your account type and pricing plan.
 
-Build history and artifacts of apps on the personal account are stored in Codemagic for 30 days after which they are deleted. If you rely on build artifacts to support older versions of your app, we recommend that you back them up. For example, you can upload the artifacts to an [Amazon S3 bucket](/knowledge-base/publish-build-artifacts-to-amazon-s3).
+{{<notebox>}}
+**Important**: We are changing our build history and artifact retention policy starting from August 1, 2022 and limiting the retention period for teams on the Pay as you go plan. See more details below.
+{{</notebox>}}
 
-### Team account storage
+<br>
 
-Builds and artifacts of apps that are part of a team in Codemagic do not expire and are available in Codemagic until the app is deleted.
+| **Account type**  |  **Retention period** |
+|---------------|-------------------|
+| Personal accounts | Build history and artifacts of apps on the personal account are stored in Codemagic for **30 days** after which they are deleted. | 
+| Teams on Pay as you go plan | Build history and artifacts of apps on the team account with Pay as you go pricing are stored in Codemagic for **60 days** after which they are deleted. (Unlimited until August 1, 2022)| 
+| Teams on Professional or Enterprise plan | Unlimited | 
+
+### Backing up build artifacts
+
+If you need to support older versions of your application and need access to old versions of your `ipa`, `apk`, `dSYM` and proguard mapping files to debug issues, then these should be downloaded and stored outside Codemagic. Once they have been deleted from Codemagic, they cannot be retrieved.
+
+You can download build artifacts via the Codemagic UI or using the [Codemagic REST API](../rest-api/builds/). 
+
+To keep copies of your future build artifacts, we advise you to set up publishing to an external storage, see an example [here](../yaml-publishing/aws/).
+
