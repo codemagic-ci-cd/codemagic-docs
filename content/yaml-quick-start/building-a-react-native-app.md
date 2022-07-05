@@ -419,7 +419,7 @@ When using a **third party app distribution service** such as Firebase App Distr
 
 ## Setting up the Android package name and iOS bundle identifier
 
-Configure Android package name and/or iOS bundle identifier by adding the corresponding variables in the `codemagic.yaml` and editing the `app.json` files.
+Configure Android package name and iOS bundle identifier by adding the corresponding variables in the `codemagic.yaml` and editing the `app.json` files.
 
 {{< tabpane >}}
 {{< tab header="Android" >}}
