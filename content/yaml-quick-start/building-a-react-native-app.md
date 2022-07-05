@@ -709,7 +709,7 @@ react-native-ios:
         failure: false
 {{< /highlight >}}
 
-#### Google Play / App Store
+#### Publishing to Google Play and App Store
 
 {{< tabpane >}}
 {{< tab header="Android" >}}
