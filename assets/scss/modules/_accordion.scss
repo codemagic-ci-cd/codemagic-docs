@@ -1,0 +1,69 @@
+.accordion {
+    border: 1px solid $grey-l;
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .collapsible {
+        border-radius: 0;
+        margin: 0 auto;
+        border: none;
+        border-top: 1px solid $grey-l;
+
+        &:first-child {
+            border-top: none;
+        }
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+.collapsible {
+    border-radius: 10px;
+    border: 1px solid $grey-l;
+    margin: 20px auto;
+    overflow: hidden;
+
+    .title {
+        display: grid;
+        grid-template-columns: 1fr 20px;
+        align-items: center;
+        padding: 16px 20px;
+        color: $black;
+        font-size: 16px;
+        font-weight: 600;
+        word-break: break-all;
+        line-height: 1.4em;
+        cursor: pointer;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+            background-color: $grey-xl;
+        }
+        &::after {
+            justify-self: right;
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: $black;
+            @include icon(getAssetUrl('media/icons/chevron-down.svg'));
+            transition: all 200ms ease-in-out;
+        }
+    }
+    .content {
+        overflow: auto;
+        display: none;
+        padding: 20px;
+        border-top: 1px solid $grey-l;
+    }
+    &.open {
+        .title {
+            background-color: $grey-xl;
+
+            &::after {
+                transform: rotate(-180deg);
+            }
+        }
+    }
+}

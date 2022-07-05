@@ -1,6 +1,3 @@
-@function getAssetUrl($url) {
-    @return '{{(resources.Get "#{$url}" | fingerprint).RelPermalink }}';
-}
 // Metropolis Extralight
 @font-face {
     font-family: 'Metropolis';
