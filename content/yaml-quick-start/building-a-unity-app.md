@@ -15,9 +15,9 @@ This guide will show you how to configure a workflow that builds and publishes y
 
 - A Unity **Plus** or **Pro** license. Your license is used to activate Unity on the Codemagic build server so the iOS and Android projects can be exported. 
 
-The license is returned during the publishing step of the workflow which is always run **except if the build is cancelled**. 
+- The license is returned during the publishing step of the workflow which is always run **except if the build is cancelled**. 
 
-To check if you have exceeded your license activations, or to return licenses this should be done in the Unity dashboard (here)[https://id.unity.com/en/serials}
+- To check if you have exceeded your license activations, or to return licenses this should be done in the Unity dashboard (here)[https://id.unity.com/en/serials]
 
 - If you are publishing to the Apple App Store, you will need an active membership for the Apple Developer Program.
 
