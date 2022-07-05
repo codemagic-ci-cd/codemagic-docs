@@ -61,7 +61,7 @@ If you are already familiar with mobile development, you may want to use React N
 
 ## Using Expo without ejecting
 
-To run a build on CI/CD we need to have the iOS and Android project folders. If you can't or don’t want to permanently eject Expo from your app, then you can do it on the build server each time you run a build. Follow the steps below to get started. You can check the finished sample app in our [samples repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/expo-react-native-not-ejected/codemagic.yaml).
+To run a build on CI/CD we need to have the `ios` and `android` project folders. If you can't or don’t want to permanently eject Expo from your app, then you can do it on the build server each time you run a build. Follow the steps below to get started. You can check the finished sample app in our [samples repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/expo-react-native-not-ejected/codemagic.yaml).
 
 1. Clone your repository to a temporary new location or create a new branch. in order to eject Expo once and get the `android/app/build.gradle` file.
 2. Eject Expo once by running the following command:
