@@ -514,7 +514,7 @@ scripts:
   # ...
   - name: Build ipa for distribution
     script: |
-   xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+   cd ios && xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
 artifacts:
   - build/ios/ipa/*.ipa
   - /tmp/xcodebuild_logs/*.log
