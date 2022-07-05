@@ -592,7 +592,7 @@ You can find the full sample project with the instructions on alternative ways t
 The prerequisite is a valid **Google Cloud Service Account**. Plese follow these steps:
 1. Go to [this guide](../knowledge-base/google-services-authentication.md) and complete the steps in the **Google Play** section.
 2. Skip to the **Creating a service account** section in the same guide and complete those steps also.
-3. You now have a `json` file with the credentials.
+3. You now have a `JSON` file with the credentials.
 4. Open Codemagic UI and create a new Environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`.
 5. Paste the content of the downloaded `JSON` file in the **_Value_** field, set the group name (e.g. **google_play**) and make sure the **Secure** option is checked.
 ---
