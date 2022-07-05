@@ -140,7 +140,7 @@ This issue can be caused by an earlier version of Xcode. Please use version `13.
 When building iOS apps with an adhoc profile you might get this error: 
 ```
 error: Provisioning profile "XXXX" doesn't include the currently selected
-device "builder's Virtual Machine" (identifier XXXXXXXX-3AE1FF0673C79946).
+device "builder's Virtual Machine" (identifier XXXXXXXX-XXXXXXXXXXXXXXXX).
 (in target 'XXXXXXX' from project 'App').
 ```
 
