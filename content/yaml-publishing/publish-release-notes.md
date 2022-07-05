@@ -68,5 +68,5 @@ For App Store Connect supported languages and codes are listed [here](https://de
     
     
 {{<notebox>}}
-**Warning**: Apple does not support `<` and `>` symbols in `release_notes` file. Uploading a file with such symbols will cause the AppStore Connect API to return `409` error and description that text contains invalid characters.
+**Warning**: Apple does not support `<` and `>` symbols in `release_notes` file. Uploading a file with such symbols will cause the App Store Connect API to return `409` error and description that text contains invalid characters.
 {{</notebox>}}
