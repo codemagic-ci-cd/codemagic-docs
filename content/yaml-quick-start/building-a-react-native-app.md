@@ -560,7 +560,7 @@ scripts:
       expo eject
   - name: Set Info.plist values
     script: | 
-      PLIST=$FCI_BUILD_DIR/$XCODE_SCHEME/Info.plist
+      PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
       PLIST_BUDDY=/usr/libexec/PlistBuddy
       $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
   - name: Install CocoaPods dependencies
