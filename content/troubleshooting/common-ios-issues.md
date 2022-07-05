@@ -117,4 +117,35 @@ end
 * Check the Podfile and make sure that `platform :ios, ’10.0’` is set to `10.0` or above as required by dependencies.
 * Confirm if `IPHONEOS_DEPLOYMENT_TARGET` is set to 9.0 or above
 
+## Common Mac M1 issues
 
+### Builds not starting
+
+Builds not starting at all even though the team has access to `mac_mini_m1` instance.
+
+**Solution**:
+This error occurs on M1 machines when the `xcode` property is not set to version 13.x. Please configure your workflow to use Xcode version 13 or above.
+
+
+### Builds failing intermittently
+
+Builds are intermittently failing without a clear reason.
+
+**Solution**:
+This issue can be caused by an earlier version of Xcode. Please use version `13.4.1` or newer, if possible.
+
+
+### Error when using an adhoc profile
+
+When building iOS apps with an adhoc profile you might get this error: 
+```
+error: Provisioning profile "XXXX" doesn't include the currently selected
+device "builder's Virtual Machine" (identifier XXXXXXXX-XXXXXXXXXXXXXXXX).
+(in target 'XXXXXXX' from project 'App').
+```
+
+**Solution**:
+Add the following to the end of your `xcode-project build-ipa` command:
+```
+--archive-flags="-destination 'generic/platform=iOS'"
+```
