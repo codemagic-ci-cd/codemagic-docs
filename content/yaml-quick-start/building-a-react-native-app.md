@@ -314,7 +314,7 @@ workflows:
 <p>The following steps describe one way of creating an iOS Distribution Certificate. This method requires a Mac computer and the certificate will be stored on it for easier retrieval in future. For a more detailed explanation and alternative certificate generation methods, please visit <a href="../yaml-code-signing/signing-ios.md">here.</a></p>
 
 <ol>
-<li> On your Mac, open the <b>Keychain Access</b>, located in the **Applications and Utilities** folder.</li>
+<li> On your Mac, open the <b>Keychain Access</b>, located in the <b>Applications and Utilities</b> folder.</li>
 <li>From the upper menu, open <b>Preferences</b></li>
 <li>Click on <b>Certificates</b> and turn off the <b>OCSP</b> and the <b>CRL</b>. Close the preferences window.</li>
 <li>From the upper menu, select <b>Certificate Assistant</b> and <b>Request a Certificate from a Certificate Authority</b>.</li>
