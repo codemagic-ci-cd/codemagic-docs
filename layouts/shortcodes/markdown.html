@@ -1,3 +1,12 @@
+<!-- Produces weird results when used on a single paragraph. -->
+<!-- Workaround is to add another dummy paragraph. E.g.: -->
+
+<!--  /{/{/< markdown />/}/}                    -->
+<!--  Some text in a single paragraph.          -->
+<!--                                            -->
+<!--  &nbsp;                                    -->
+<!--  /{/{/< //markdown />/}/}                  -->
+
 <div>
     {{ .Inner | markdownify }}
 </div>
