@@ -1,7 +1,7 @@
 ---
 ---
 
-In addition to the App Store credentials configured earlier, in order to get the latest build number from App Store or TestFlight, you will also need the **Application Apple ID**. This is an automatically generated ID assigned to your app and it can be found under **General > App Information > Apple ID** under your application in App Store Connect.
+In order to get the latest build number from App Store or TestFlight, you will need the App Store credentials as well as the **Application Apple ID**. This is an automatically generated ID assigned to your app and it can be found under **General > App Information > Apple ID** under your application in App Store Connect.
 
 1. Add the **Application Apple ID** to the `codemagic.yaml` as a variable
 2. Add the script to get the latest build number using `app-store-connect` and configure the new build number using `agvtool`.
