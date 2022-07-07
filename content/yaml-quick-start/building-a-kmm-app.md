@@ -24,7 +24,7 @@ Note that you need to set up a [webhook](../building/webhooks) for automatic bui
 
 ## Code signing, building, and publishing KMM Android and iOS apps
 
-To Code sign, build, and publish KMM Android and iOS apps:
+To code sign, build, and publish KMM Android and iOS apps:
 
 * All Android apps need to be signed before release. See the [Android code signing docs](../code-signing/android-code-signing/) or the sample workflow below for more details.
 * All iOS apps need to be signed before release. See the [iOS code signing docs](../code-signing/ios-code-signing/) or the sample workflow below for more details.
@@ -38,7 +38,7 @@ You can find an up-to-date codemagic.yaml KMM Android workflow in [Codemagic Sam
 
 The following example shows how to set up a workflow that builds your **KMM** Android app and publishes it to a Google Play internal track.
 
-```yaml
+{{< highlight yaml "style=paraiso-dark">}}
 workflows:
   android-kmm-workflow:
     name: Android KMM Workflow
@@ -81,13 +81,13 @@ workflows:
         # rollout_fraction: 0.25 # Optional. Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
         changes_not_sent_for_review: false # Optional boolean To be used ONLY if your app cannot be sent for review automatically *
         submit_as_draft: true # Optional boolean. Publish artifacts under a draft release. Can not be used together with rollout_fraction. Defaults to false
-```
+{{< /highlight >}}
 
 {{<notebox>}}Note that you should increment the versionCode in `androidApp/build.gradle.kts`. {{</notebox>}}
 
 Incrementing the version code can be done as follows:
 
-```gradle
+{{< highlight groovy "style=paraiso-dark">}}
 
 android {
     ...
@@ -98,7 +98,7 @@ android {
         ...
     }
 }
-```
+{{< /highlight >}}
 
 ## iOS KMM workflow example
 
@@ -112,7 +112,7 @@ Follow the [docs](https://kotlinlang.org/docs/multiplatform-mobile-integrate-in-
 
 The following example shows a workflow that can be used to publish your **KMM** iOS app to App Store Connect.
 
-```yaml
+{{< highlight yaml "style=paraiso-dark">}}
 workflows:
   ios-kmm-workflow:
     name: iOS Workflow
@@ -145,9 +145,6 @@ workflows:
           xcode-project use-profiles
       - name: Increment build number
         script: |
-          #!/bin/sh
-          set -e
-          set -x
           cd $CM_BUILD_DIR/iosApp
           agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1))
       - name: Build ipa for distribution
@@ -162,7 +159,7 @@ workflows:
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: false # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight beta review. Required for distributing to beta groups. Note: This action is performed during post-processing.
-```
+{{< /highlight >}}
 
 {{<notebox>}}
 Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) CLI command to prepare iOS application code signing properties for the build.
