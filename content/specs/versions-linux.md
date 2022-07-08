@@ -26,7 +26,7 @@ weight: 2
 - docker `20.10.7`
 - ew-cli `0.0.44`
 - firebase `9.23.3`
-- flutter `3.0.2 ($HOME/programs/flutter)`
+- flutter `3.0.4 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
