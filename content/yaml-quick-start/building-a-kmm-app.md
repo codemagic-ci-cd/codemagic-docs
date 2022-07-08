@@ -55,7 +55,7 @@ workflows:
         PACKAGE_NAME: "com.codemagickmm.android" # <-- Use your package name
     scripts:
       - name: Set up key.properties file for code signing
-        script: |
+        script: |  
           # You need to comment the following line if you're using the Code Signing Identities to sign your android app
           echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
           # The following script creates key.properties file and stores the credentials in it. As we configure code signing in androidApp/build.gradle.kts file, the following part is unnecessary unless code signing is configured differently as explained in the documentation: https://docs.codemagic.io/flutter-code-signing/android-code-signing/
@@ -66,7 +66,7 @@ workflows:
           # storeFile=$CM_KEYSTORE_PATH
           # EOF
       - name: Build aab Android app
-        script: |
+        script: |  
           chmod +x gradlew
           export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=internal) + 1))
           ./gradlew bundleRelease # To generate an .apk use--> ./gradlew assembleRelease
@@ -131,24 +131,24 @@ workflows:
       xcode: latest
     scripts:
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-        script: |
+        script: | 
           keychain initialize
       - name: Fetch signing files
-        script: |
+        script: | 
           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
       - name: Use system default keychain
-        script: |
+        script: | 
           keychain add-certificates
       - name: Set up code signing settings on Xcode project
-        script: |
+        script: | 
           cd $CM_BUILD_DIR/iosApp
           xcode-project use-profiles
       - name: Increment build number
-        script: |
+        script: | 
           cd $CM_BUILD_DIR/iosApp
           agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1))
       - name: Build ipa for distribution
-        script: |
+        script: | 
           cd $CM_BUILD_DIR/iosApp
           xcode-project build-ipa --project $XCODE_PROJECT --scheme $XCODE_SCHEME
     artifacts:
