@@ -12,12 +12,14 @@ Version: 0.0.1
 @import './header';
 @import './footer';
 @import './animations';
+@import '../fonts/fonts';
 
 // Import views
 @import './article';
 @import './homepage';
 
 // Import partials
+@import './modules/accordion';
 @import './modules/links-group';
 @import './modules/tabbed-pane';
 @import './modules/clipboard';
