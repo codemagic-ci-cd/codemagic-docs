@@ -63,7 +63,7 @@ openssl pkcs12 -in IOS_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out ios_d
 
 9. Run the following command on the **App Store Connect API key** file that you downloaded earlier (in our example saved as `codemagic_api_key.p8`) to copy its content to clipboard:
 {{< highlight Shell "style=rrt">}}
-cat codemagic_api_key.p8 | base64 | pbcopy
+cat codemagic_api_key.p8 | pbcopy
 {{< /highlight >}}
 
 10. Create a new Environment variable `APP_STORE_CONNECT_PRIVATE_KEY` and paste the value from clipboard.
