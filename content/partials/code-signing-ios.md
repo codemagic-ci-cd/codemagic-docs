@@ -9,7 +9,7 @@ Signing iOS applications requires [Apple Developer Program](https://developer.ap
 2. Use the **automatic code signing** option where Codemagic takes care of code signing and signing files management on your behalf.
 
 
-More details about iOS app codesigning can be found [here](../yaml-code-signing/signing-ios.md).
+More details about iOS app codesigning can be found [here](../yaml-code-signing/signing-ios).
 
 #### Creating the App Store Connect API key
 
@@ -17,7 +17,7 @@ More details about iOS app codesigning can be found [here](../yaml-code-signing/
 
 #### Creating the iOS Distribution Certificate
 
-The following steps describe one way of creating an iOS Distribution Certificate. This method requires a Mac computer and the certificate will be stored on it for easier retrieval in future. For a more detailed explanation and alternative certificate generation methods, please visit [here](../yaml-code-signing/signing-ios.md).
+The following steps describe one way of creating an iOS Distribution Certificate. This method requires a Mac computer and the certificate will be stored on it for easier retrieval in future. For a more detailed explanation and alternative certificate generation methods, please visit [here](../yaml-code-signing/signing-ios).
 
 1. On your Mac, open the **Keychain Access**, located in the **Applications and Utilities** folder.
 2. From the upper menu, open **Preferences**
