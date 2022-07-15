@@ -17,7 +17,7 @@ This guide only applies to workflows configured with the **codemagic.yaml**.
 
 ## Getting Started
 
-Steamcmd is the tool used to upload builds to Steam. Steamcmd requires logging into Steam and will normally require a Steam Guard code be entered.
+SteamCMD is the tool used to upload builds to Steam. SteamCMD requires logging into Steam and will normally require a Steam Guard code be entered.
 To solve this problem, there are two options.
 
 1. Disable Steam Guard for the account doing the Steam upload.  This is not recommended, as it makes the Steam account less secure.
@@ -26,7 +26,7 @@ To solve this problem, there are two options.
 So we are going to save the sentry files as secure environment variables and then place them at the correct path when the build starts.
 
 ### Obtain the sentry files:
-First you need to install the steamcmd.
+First you need to install the SteamCMD.
 {{< tabpane >}}
 {{% tab header="MacOS" %}}
 ```shell
@@ -59,10 +59,10 @@ Warning: Keep the sentry files private; don't check them into public source cont
 - Save the ssfn file name, ssfn file itself, and the config file to the respective environment variables in the **Environment variables** section in Codemagic UI, so they can be used in subsequent builds. Click **Secure** to encrypt the values. Note that binary files (i.e. ssfn, config.vdf) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build.
 
 {{<notebox>}}
-Warning: When you are base64 encoding the files, make sure to remove the new lines `\n` of the encoded value, before saving it to Codemagic. 
+Warning: When you are base64 encoding the files, make sure to remove the new lines `\n` of the encoded value before saving it to Codemagic. 
 {{</notebox>}}
 
-If you don't want to install the steamcmd on your local machine to obtain the sentry files, you can use Codemagic machines to do so and then copy them into your local machine using the secure copy command `scp`.
+If you don't want to install the SteamCMD on your local machine to obtain the sentry files, you can use Codemagic machines to do so and then copy them into your local machine using the secure copy command `scp`.
 ```shell
    scp -P <port> builder@X.X.X.X ~/Library/Application\ Support/ssfn******************* .
    scp -P <port> builder@X.X.X.X ~/Library/Application\ Support/config/config.vdf .
@@ -118,4 +118,4 @@ And then use the script to publish your app to steam:
           ~/Steam/steamcmd.sh +login $STEAM_USERNAME $STEAM_PASSWORD +run_app_build ~/clone/steam/app_build.vdf +quit
 ```
 
-See the sample project in [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity/unity-deploy-steam).
+See the sample project [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity/unity-deploy-steam).
