@@ -2,7 +2,7 @@
 ---
 
 Codemagic offers a wide array of options for app publishing and the list of partners and integrations is continuously growing. For the most up-to-date information, check the guides in the **Configuration > Publishing** section of these docs.
-To get more details on the publishing options presented in this guide, please check the [Email publishing](../yaml-publishing/email.md), the [Google Play Store](../yaml-publishing/google-play.md) publishing and the [App Store Connect](../yaml-publishing/app-store-connect.md).
+To get more details on the publishing options presented in this guide, please check the [Email publishing](../yaml-publishing/email), the [Google Play Store](../yaml-publishing/google-play) publishing and the [App Store Connect](../yaml-publishing/app-store-connect).
 
 #### Email publishing
 If the build finishes successfully, release notes (if passed), and the generated artifacts will be published to the provided email address(es). If the build fails, an email with a link to build logs will be sent.
