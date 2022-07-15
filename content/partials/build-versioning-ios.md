@@ -19,9 +19,7 @@ react-native-ios:
     - name: Increment build number
       script: | 
         #!/bin/sh
-        set -e
-        set -x
-        cd $CM_BUILD_DIR
+        cd $CM_BUILD_DIR/ios
         LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "APP_ID")
         agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
     - name: Build ipa for distribution
