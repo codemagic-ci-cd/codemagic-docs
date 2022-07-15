@@ -2,7 +2,7 @@
 ---
 
 ## Creating codemagic.yaml
-In order to use `codemagic.yaml` for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository. Detailed explanation can be found [here](../yaml/yaml-getting-started.md).
+In order to use `codemagic.yaml` for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository. Detailed explanation can be found [here](../yaml/yaml-getting-started).
 
 {{<notebox>}}
 **Tip**
