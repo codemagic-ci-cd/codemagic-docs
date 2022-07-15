@@ -50,7 +50,7 @@ Modify your **`android/app/build.gradle`** as follows:
 
 #### Configuring Environment variables
 
-The environment variables referenced by the `build.gradle` need to be stored in the Codemagic UI. A detailed explanation on how Environment variables and groups work can be found [here](../variables/environment-variable-groups.md).
+The environment variables referenced by the `build.gradle` need to be stored in the Codemagic UI. A detailed explanation on how Environment variables and groups work can be found [here](../variables/environment-variable-groups).
 
 The keystore file, like all binary files, has to be base64 encoded before storing its value.
 
