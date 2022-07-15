@@ -273,7 +273,7 @@ scripts:
 
 ## Build versioning
 
-If you are going to publish your app to App Store Connect or Google Play, each uploaded artifact must have a new version satisfying each app store’s requirements. Codemagic allows you to easily automate this process and increment the version numbers for each build. For more information and details, see [here](../configuration/build-versioning.md).
+If you are going to publish your app to App Store Connect or Google Play, each uploaded artifact must have a new version satisfying each app store’s requirements. Codemagic allows you to easily automate this process and increment the version numbers for each build. For more information and details, see [here](../configuration/build-versioning).
 
 
 {{< tabpane >}}
@@ -444,8 +444,8 @@ workflows:
 ## Next steps
 While this basic workflow configuration is incredibly useful, it is certainly not the end of the road and there are numerous advanced actions that Codemagic can help you with.
 
-We encourage you to investigate [Running tests with Codemagic](../yaml-testing/testing.md) to get you started with testing, as well as additional guides such as the one on running tests on [Firebase Test Lab](../yaml-testing/firebase-test-lab.md) or [Registering iOS test devices](../custom-menu-position/ios-provisioning.md).
+We encourage you to investigate [Running tests with Codemagic](../yaml-testing/testing) to get you started with testing, as well as additional guides such as the one on running tests on [Firebase Test Lab](../yaml-testing/firebase-test-lab) or [Registering iOS test devices](../custom-menu-position/ios-provisioning).
 
-Documentation on [Using codemagic.yaml](../yaml/yaml-getting-started.md) teaches you to configure additional options such as [changing the instance type](../yaml-getting-started/#instance-type) on which to build, speeding up builds by configuring [Caching options](../yaml-getting-started/#instance-type#cache), or configuring builds to be [automatically triggered](../yaml-getting-started/#triggering) on repository events.
+Documentation on [Using codemagic.yaml](../yaml/yaml-getting-started) teaches you to configure additional options such as [changing the instance type](../yaml-getting-started/#instance-type) on which to build, speeding up builds by configuring [Caching options](../yaml-getting-started/#instance-type#cache), or configuring builds to be [automatically triggered](../yaml-getting-started/#triggering) on repository events.
 
 ---
