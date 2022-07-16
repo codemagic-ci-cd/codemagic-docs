@@ -32,7 +32,7 @@ weight: 7
 - docker `20.10.2`
 - fastlane `2.199.0`
 - firebase `9.3.0`
-- flutter `3.0.4 ($HOME/programs/flutter)`
+- flutter `3.0.5 ($HOME/programs/flutter)`
 - gem `3.2.33`
 - gh `2.3.0`
 - git `2.34.1`
@@ -84,8 +84,8 @@ Includes pre-installed modules for iOS, Android, macOS, Linux, Windows and WebGL
 
 ## Xcode 13.2.1 (13C100)
 
-This is the Xcode version used by default when you select `13.2` or `13.2.1` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `13.2` or `13.2.1` in your codemagic.yaml file. 
+This is the Xcode version used by default when you select `13.2` or `13.2.1` in build settings in the workflow
+editor for Flutter apps or set Xcode version to `13.2` or `13.2.1` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.2.1.app`
@@ -146,4 +146,3 @@ With Xcode `13.2.1` build version `13C100` the following runtimes and devices ar
 
 - 13.1 (13A1030d) `/Applications/Xcode-13.1.app`
 - 13.0 (13A233) `/Applications/Xcode-13.0.app`
-
