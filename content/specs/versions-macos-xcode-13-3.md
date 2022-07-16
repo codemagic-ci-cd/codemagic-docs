@@ -16,33 +16,33 @@ weight: 8
 
 - System version `macOS 12.4 (21F79)`
 - Kernel version `Darwin 21.5.0`
-- Disk `322GB (Free Space: 44GB)`
+- Disk `322GB (Free Space: 62GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `23.1.7779620`
-- aws `2.7.7`
+- aws `2.7.15`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
 - curl `7.79.1`
-- docker `20.10.2`
+- docker `20.10.17`
 - ew-cli `0.0.47`
-- fastlane `2.206.2`
+- fastlane `2.207.0`
 - firebase `9.23.3`
-- flutter `3.0.4 ($HOME/programs/flutter)`
-- gem `3.3.16`
-- gh `2.12.1`
-- git `2.36.1`
+- flutter `3.0.5 ($HOME/programs/flutter)`
+- gem `3.3.18`
+- gh `2.14.2`
+- git `2.37.1`
 - Google Cloud SDK `327.0.0`
 - gradle `7.3.1`
 - gsutil `4.58`
-- homebrew `3.5.2`
+- homebrew `3.5.4`
 - ionic `6.12.4`
 - jq `1.6`
-- ktlint `0.45.2`
-- node `18.3.0`
-- npm `8.11.0`
+- ktlint `0.46.1`
+- node `18.6.0`
+- npm `8.13.2`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
@@ -53,7 +53,7 @@ weight: 8
 - unzip `6.00`
 - wget `1.21.3`
 - yarn `1.22.19`
-- yq `4.25.2`
+- yq `4.26.1`
 - zip `3.0`
 
 ## Android emulators
@@ -81,7 +81,7 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app
 
 ## Xcode 13.4.1 (13F100)
 
-This is the Xcode version used by default when you select `13.4`, `13.4.1` or `latest` in build settings in the workflow 
+This is the Xcode version used by default when you select `13.4`, `13.4.1` or `latest` in build settings in the workflow
 editor for Flutter apps or set Xcode version to `13.4`, `13.4.1` or `latest` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 

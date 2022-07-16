@@ -28,7 +28,7 @@ weight: 9
 - ew-cli `0.0.47`
 - fastlane `2.206.2`
 - firebase `11.1.0`
-- flutter `3.0.4 ($HOME/programs/flutter)`
+- flutter `3.0.5 ($HOME/programs/flutter)`
 - gem `3.3.16`
 - gh `2.13.0`
 - git `2.36.1`
@@ -71,7 +71,7 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.5f1/Unity.app
 
 ## Xcode 13.4.1 (13F100)
 
-This is the Xcode version used by default when you select `13.4`, `13.4.1` or `latest` in build settings in the workflow 
+This is the Xcode version used by default when you select `13.4`, `13.4.1` or `latest` in build settings in the workflow
 editor for Flutter apps or set Xcode version to `13.4`, `13.4.1` or `latest` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
