@@ -6,7 +6,7 @@ weight: 10
 
 **Katalon** is designed to create and reuse automated test scripts for UI without coding
 
-## Signing up with Kobiton
+## Signing up with Katalon
 
 In order to create a project and retrive API key that are used when uploading test to the Katalon testing environment, you need to sign up with Katalon. You can sign up free [here](https://katalon.com/).
 
@@ -93,4 +93,4 @@ In order to execute and collect Junit XML reports, then submit them to the **Kat
 
 ## Sample projects
 
-A sample project that shows how to configure Kobiton integration is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/katalon_integration_demo_project)
+A sample project that shows how to configure Katalon integration is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/katalon_integration_demo_project)
