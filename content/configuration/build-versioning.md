@@ -47,7 +47,7 @@ For Flutter, you can easily increment your build number and build name using the
 --build-name=1.0.$PROJECT_BUILD_NUMBER --build-number=$PROJECT_BUILD_NUMBER
 ```
 
-Note I've added `--build-name` as an example, if you've committed this to version control in `pubspec.yaml` version field, then don't pass in this argument to builds.
+Note that I’ve added `--build-name` & `--build-number` as an example. Don’t pass both arguments to the build command if you’ve committed this to version control in the `pubspec.yaml` version field.
 
 If you've added an existing project to Codemagic and need to offset the build number by the current build number, i.e. 200, then you can pass the following argument to correctly increment your build number.
 
