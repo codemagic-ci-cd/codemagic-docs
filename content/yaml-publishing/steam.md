@@ -17,8 +17,8 @@ This guide only applies to workflows configured with the **codemagic.yaml**.
 
 ## Getting Started
 
-SteamCMD is the tool used to upload builds to Steam. SteamCMD requires logging into Steam and will normally require a Steam Guard code be entered.
-To solve this problem, there are two options.
+SteamCMD is a tool used to upload builds to Steam. SteamCMD requires logging in to Steam and typically requires entering a Steam Guard code.
+There are two ways of solving this problem.
 
 1. Disable Steam Guard for the account doing the Steam upload.  This is not recommended, as it makes the Steam account less secure.
 
@@ -26,7 +26,7 @@ To solve this problem, there are two options.
 So we are going to save the sentry files as secure environment variables and then place them at the correct path when the build starts.
 
 ### Obtain the sentry files:
-First you need to install the SteamCMD.
+First, you need to install the SteamCMD.
 {{< tabpane >}}
 {{% tab header="MacOS" %}}
 ```shell
@@ -53,13 +53,13 @@ Then log into Steam with the following, which will prompt for the Steam Guard co
 You can now see the **ssfn** file in `~/Steam/ssfn*******************` and the **config.vdf** file at `~/Steam/config/config.vdf`.
 
 {{<notebox>}}
-Warning: Keep the sentry files private; don't check them into public source control.
+Warning: Keep the sentry files private; do not check them into public source control.
 {{</notebox>}}
 
 - Save the ssfn file name, ssfn file itself, and the config file to the respective environment variables in the **Environment variables** section in Codemagic UI, so they can be used in subsequent builds. Click **Secure** to encrypt the values. Note that binary files (i.e. ssfn, config.vdf) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build.
 
 {{<notebox>}}
-Warning: When you are base64 encoding the files, make sure to remove the new lines `\n` of the encoded value before saving it to Codemagic. 
+Warning: When base64 encoding the files, make sure to remove the new lines `\n` of the encoded value before saving it to Codemagic. 
 {{</notebox>}}
 
 If you don't want to install the SteamCMD on your local machine to obtain the sentry files, you can use Codemagic machines to do so and then copy them into your local machine using the secure copy command `scp`.
@@ -109,7 +109,7 @@ To configure the upload to Steam, edit the following two files in the demo proje
    steam/app_build.vdf
    steam/depot_build.vdf
 ```
-These are standard VDF files required for uploading a build to Steam and require your application's AppID, DepotID and branch name for deployment.
+These are standard VDF files required for uploading a build to Steam and require your application's AppID, DepotID, and branch name for deployment.
 
 And then use the script to publish your app to steam:
 ```yaml
