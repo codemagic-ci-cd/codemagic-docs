@@ -22,8 +22,8 @@ There are two ways of solving this problem.
 
 1. Disable Steam Guard for the account doing the Steam upload.  This is not recommended, as it makes the Steam account less secure.
 
-2. Use sentry files that are generated after logging in successfully to Steam on the build machine. When these sentry files are present on the build machine, a Steam Guard code is not required.
-So we are going to save the sentry files as secure environment variables and then place them at the correct path when the build starts.
+2. Use sentry files that are generated after logging in successfully to Steam. A Steam Guard code is not required when these sentry files are present on the build machine.
+Thus, we will save the sentry files as secure environment variables and place them at the correct path when the build starts.
 
 ### Obtain the sentry files:
 First, you need to install the SteamCMD.
