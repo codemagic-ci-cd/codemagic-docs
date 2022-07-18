@@ -395,7 +395,7 @@ workflows:
       - name: Fetch signing files
         script: | 
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_DEVELOPMENT \
+            --type IOS_APP_STORE \
             --create
       - name: Set up signing certificate
         script: keychain add-certificates
