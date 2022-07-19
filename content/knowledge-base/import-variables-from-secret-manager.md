@@ -40,31 +40,29 @@ Secrets stored as plain text values can be retrieved as follows, where the retri
 
 The following example shows how to retrieve a secret called `APP_STORE_CONNECT_ISSUER_ID` that was stored as plain text.
 
-```
+```bash
 aws secretsmanager get-secret-value --secret-id APP_STORE_CONNECT_ISSUER_ID | jq -r '.SecretString'
 ```
 
 If you have stored your secret using a *key/pair* value you can use the following syntax:
 
-```
+```bash
 aws secretsmanager get-secret-value --secret-id APP_STORE_CONNECT_ISSUER_ID | jq -r '.SecretString' | jq -r '.APP_STORE_CONNECT_ISSUER_ID'
 ```
 
 ### Configure AWS authentication
 In your codemagic.yaml import your `aws_credentials` group:
 
-```
+```yaml
 environment:
   groups:
-    ...
     - aws_credentials
-    ...
 ```
 
 ### Configuring an iOS build using AWS secrets
 Add the following variables in the codemagic.yaml
 
-```
+```yaml
 environment:
   groups:
     ...
@@ -78,7 +76,7 @@ environment:
 
 In your first script step, retrieve the secrets from AWS and add them to **CM_ENV** as follows:
 
-```
+```yaml
 scripts:
   - name: Set iOS credentials from AWS secrets
     script: |
@@ -97,7 +95,7 @@ scripts:
 
 Reference the variables for iOS publishing as usual:
 
-```
+```yaml
 publishing:
   app_store_connect:              
   api_key: $APP_STORE_CONNECT_PRIVATE_KEY      
@@ -108,17 +106,15 @@ publishing:
 ### Configuring an Android build using AWS secrets
 The environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` must be provided with a valid Service Account JSON key, even if you will overwrite it with a different key later. Add this variable to a group called `service_account` and then import it into you workflow as follows:
 
-```
+```yaml
 environment:
   groups:
-    ...
     - service_account
-    ...
 ```
 
 Add the following environment variable in your codemagic.yaml:
 
-```
+```yaml
 environment:
   groups:
     ...
@@ -128,17 +124,17 @@ environment:
 
 In your first script step, retrieve the Service Account JSON from AWS and add it to **CM_ENV** as follows:
 
-```
+```yaml
 - name: Set Service Account JSON from AWS
   script: |
     echo "GCLOUD_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
     echo "$(aws secretsmanager get-secret-value --secret-id GCLOUD_SERVICE_ACCOUNT_CREDENTIALS | jq -r '.SecretString')" >> $CM_ENV
-          echo "DELIMITER" >> $CM_ENV
+    echo "DELIMITER" >> $CM_ENV
 ```
 
 Reference the variable for publishing to Google Play as follows:
 
-```
+```yaml
 google_play:
   credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS_HOLDER
   track: $GOOGLE_PLAY_TRACK
@@ -182,28 +178,39 @@ The Codemagic base build image doesn't have the Doppler CLI by default, so we ne
 
 The following example shows how to install the Doppler CLI:
 
-`MacOS`:
+{{< tabpane >}}
+{{% tab header="MacOS" %}}
+```yaml
+- name: Install Doppler on MacOS
+  script: |
+    brew install gnupg
+    brew install dopplerhq/cli/doppler
 ```
-      - name: Install Doppler on Mac
-        script: |
-          brew install gnupg
-          brew install dopplerhq/cli/doppler
+
+{{% /tab %}}
+
+{{% tab header="Linux" %}}
+```yaml
+- name: Install Doppler on Linux
+  script: | 
+    (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
 ```
-`Linux`:
+
+{{% /tab %}}
+
+{{% tab header="Windows" %}}
+```yaml
+- name: Install Doppler on Windows
+  script: |
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+    iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
+    scoop bucket add doppler https://github.com/DopplerHQ/scoop-doppler.git
+    scoop install doppler
 ```
-      - name: Install Doppler on Linux
-        script: |
-          (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sudo sh
-```
-`Windows`:
-```
-      - name: Install Doppler on Windows
-        script: |
-          Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-          iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
-          scoop bucket add doppler https://github.com/DopplerHQ/scoop-doppler.git
-          scoop install doppler
-```
+{{< /tab >}}
+
+{{< /tabpane >}}
+
 See the official docs in [here](https://docs.doppler.com/docs/cli#installation).
 
 ### Retrieving secrets using the Doppler CLI
@@ -211,29 +218,27 @@ Secrets can be retrieved from Doppler using the Doppler CLI.
 
 The following example shows how to retrieve a secret called `APP_STORE_CONNECT_ISSUER_ID` as plain text and add it to the System Environment directly.
 
-```
-- name: Retrieve vars from Doppler
-        script: |
-          echo "APP_STORE_CONNECT_ISSUER_ID=$(doppler secrets get APP_STORE_CONNECT_ISSUER_ID --plain)" >> $CM_ENV
+```bash
+echo "APP_STORE_CONNECT_ISSUER_ID=$(doppler secrets get APP_STORE_CONNECT_ISSUER_ID --plain)" >> $CM_ENV
 ```
 
 If you want to retrieve a secret with multiline variable, like the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` you can do it like this:
 
-```
-    echo "GCLOUD_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
-    echo "$(doppler secrets get GCLOUD_SERVICE_ACCOUNT_CREDENTIALS --plain)" >> $CM_ENV
-    echo "DELIMITER" >> $CM_ENV
+```bash
+echo "GCLOUD_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV    
+echo "$(doppler secrets get GCLOUD_SERVICE_ACCOUNT_CREDENTIALS --plain)" >> $CM_ENV
+echo "DELIMITER" >> $CM_ENV
 ```
 {{<notebox>}}
 Notice that if you add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` make sure you choose **No** when it asks you to replace `\n` with new lines.
 {{</notebox>}}
 
 You can download all of your secrets and add them at once to your environment:
-```
+```bash
 doppler secrets download --no-read-env --no-file --format env-no-quotes --config $DOPPLER_ENV --token $DOPPLER_TOKEN >> $CM_ENV
 ```
 Make sure to set the `$DOPPLER_ENV` variable in the **vars** section.
-```
+```yaml
 environment:
       groups:
         - doppler_credentials # <-- (Includes the $DOPPLER_TOKEN)
@@ -241,13 +246,12 @@ environment:
         DOPPLER_ENV: dev
 ```
 
-{{<notebox>}}
-1. If you are using a `windows_x2` machine notice that you should add the doppler path to the system path at the beginning of each script like this:
-```
+### For Windows Users
+1. You should add the doppler path to the system path at the beginning of each script like this:
+```bash
 $env:Path += ";C:\Users\builder\scoop\shims"
 ```
 2. When accessing the environment variables on the windows you can do so like this: `$env:VAR_NAME`, see more [here](../troubleshooting/common-windows-issues/).
-{{</notebox>}}
 
 ## Hashicorp Vault
 The following documentation shows how to use secrets stored in Hashicorp Vault.
@@ -265,32 +269,32 @@ Add these variables to a group called `vault_credentials`.
 ### Storing a secret in Hashicorp Vault
 Install the Hashicorp Vault CLI on your local machine:
 
-```
+```bash
 brew tap hashicorp/tap
 brew install hashicorp/tap/vault
 ```
 
 To set a simple string value, you can add a single secret to a group as follows:
 
-```
+```bash
 vault kv put secret/greetings message=hello
 ```
 
 Retrieve the secret as follows:
 
-```
+```bash
 vault kv get -field=message secret/greetings
 ```
 
 To add a secret from file such as an RSA key or JSON key, you can add the contents of a file as follows:
 
-```
+```bash
 vault kv put secret/gcloud GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=@gcloud.json
 ```
 
 To retrieve the secret you would do the following:
 
-```
+```bash
 vault kv get -field=GCLOUD_SERVICE_ACCOUNT_CREDENTIALS secret/gcloud
 ```
 
@@ -301,25 +305,23 @@ Secrets stored as plain text values on specified paths in the vault
 
 The following example shows how to retrieve a secret called ‘message’ that was stored in the vault path secret/greetings.
 
-```
+```bash
 vault kv get -field=message secret/greetings
 ```
 
 ### Configure Hashicorp Vault authentication
 In your codemagic.yaml import your `vault_credentials` group:
 
-```
+```yaml
 environment:
   groups:
-    ...
     - vault_credentials
-    ...
 ```
 
 ### Configuring an iOS build using Hashicorp Vault
 Add your App Store credentials as follows:
 
-```
+```bash
 vault kv put secret/appstore \\
 APP_STORE_CONNECT_PRIVATE_KEY=@/path/to/app_store_connect_api_key_file
 APP_STORE_CONNECT_KEY_IDENTIFIER=XXXXXXXXXX
@@ -329,7 +331,7 @@ CERTIFICATE_PRIVATE_KEY=@/path/to/ios_distribution_cert_private_key_file
 
 Add the following variables in the codemagic.yaml
 
-```
+```yaml
 environment:
   groups:
     ...
@@ -342,7 +344,7 @@ environment:
 
 In your first script step, retrieve the secrets from Hashicorp Vault and add them to *CM_ENV* as follows:
 
-```
+```yaml
 scripts:
   - name: Set iOS credentials from AWS secrets
     script: |
@@ -361,7 +363,7 @@ scripts:
 
 Reference the variables for iOS publishing as usual:
 
-```
+```yaml
 publishing:
   app_store_connect:              
   api_key: $APP_STORE_CONNECT_PRIVATE_KEY      
@@ -372,24 +374,22 @@ publishing:
 ### Configuring an Android build using Hashicorp Vault
 The environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` must be provided with a valid Service Account JSON key, even if you will overwrite it with a different key later. Add this variable to a group called `service_account` and then import it into you workflow as follows:
 
-```
+```yaml
 environment:
   groups:
-    ...
     - service_account
-    ...
 ```
 
 Add the secret for your Google Console Service Account to Hashicorp Vault as follows:
 
-```
+```bash
 vault kv put secret/google \\
 GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=@/path/to/service_account.json
 ```
 
 Add the following environment variable in your codemagic.yaml:
 
-```
+```yaml
 environment:
   groups:
     ...
@@ -399,17 +399,17 @@ environment:
 
 In your first script step, retrieve the Service Account JSON from Hashicorp Vault and add it to *CM_ENV* as follows:
 
-```
+```yaml
 - name: Set Service Account JSON from Hashicorp Vault
   script: |
     echo "GCLOUD_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
     echo "$(vault kv get -field=GCLOUD_SERVICE_ACCOUNT_CREDENTIALS secret/google)" >> $CM_ENV
-          echo "DELIMITER" >> $CM_ENV
+    echo "DELIMITER" >> $CM_ENV
 ```
 
 Reference the variable for publishing to Google Play as follows:
 
-```
+```yaml
 google_play:
   credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS_HOLDER
   track: $GOOGLE_PLAY_TRACK
