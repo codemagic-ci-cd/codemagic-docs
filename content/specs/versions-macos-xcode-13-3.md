@@ -29,7 +29,7 @@ weight: 8
 - docker `20.10.17`
 - ew-cli `0.0.47`
 - fastlane `2.207.0`
-- firebase `9.23.3`
+- firebase `11.3.0`
 - flutter `3.0.5 ($HOME/programs/flutter)`
 - gem `3.3.18`
 - gh `2.14.2`
