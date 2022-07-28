@@ -56,10 +56,10 @@ publishing:
   
   ```yaml
   publishing:
-  scripts:
-    - name: To get artifact URL
-      script: |        
-        ARTIFACT_TYPE=".apk" 
-        ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .url')
+    scripts:
+      - name: To get artifact URL
+        script: |        
+          ARTIFACT_TYPE=".apk" 
+          ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .url')
 ```        
  
