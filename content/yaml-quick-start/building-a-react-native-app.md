@@ -187,7 +187,7 @@ scripts:
     npm install
   - name: Set Android SDK location
     script: |
-   echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+   echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
   - name: Build Android release
     script: |
    cd android && ./gradlew bundleRelease
