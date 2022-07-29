@@ -211,7 +211,7 @@ scripts:
   # ...
   - name: Build ipa for distribution
     script: |
-   cd ios && xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+   cd ios && xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
 artifacts:
   - build/ios/ipa/*.ipa
   - /tmp/xcodebuild_logs/*.log
@@ -395,7 +395,7 @@ workflows:
       - name: Fetch signing files
         script: | 
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_DEVELOPMENT \
+            --type IOS_APP_STORE \
             --create
       - name: Set up signing certificate
         script: keychain add-certificates
@@ -408,7 +408,7 @@ workflows:
           agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build ipa for distribution
         script: | 
-          cd ios && xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+          cd ios && xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log

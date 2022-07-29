@@ -55,4 +55,4 @@ workflows:
     working_directory: my_second_app
 ```
 
-A sample project can be found [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/codemagic.yaml).
+A sample project can be found [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/codemagic.yaml). You can also checkout the blog article [How to mange your Flutter monorepo](https://blog.codemagic.io/flutter-monorepos/).

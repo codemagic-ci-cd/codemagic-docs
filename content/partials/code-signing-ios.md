@@ -102,7 +102,7 @@ To code sign the app, add the following commands in the [`scripts`](../getting-s
       - name: Fetch signing files
         script: | 
           app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_DEVELOPMENT \
+            --type IOS_APP_STORE \
             --create
       - name: Set up signing certificate
         script: keychain add-certificates
