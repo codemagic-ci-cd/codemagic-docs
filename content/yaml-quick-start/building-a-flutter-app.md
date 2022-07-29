@@ -106,23 +106,23 @@ workflows:
           keyPassword=$CM_KEY_PASSWORD
           keyAlias=$CM_KEY_ALIAS
           storeFile=/tmp/keystore.keystore
-          EOF          
+          EOF
       - name: Set up local.properties
         script: |
           echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
       - name: Get Flutter packages
         script: |
-          cd . && flutter packages pub get
+          flutter packages pub get
       - name: Flutter analyze
         script: |
-          cd . && flutter analyze
+          flutter analyze
       - name: Flutter unit tests
         script: |
-          cd . && flutter test
+          flutter test
         ignore_failure: true
       - name: Build APK with Flutter
         script: |
-          cd . && flutter build apk --release --build-name=1.0.0 --build-number=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks "$GOOGLE_PLAY_TRACK") + 1))
+          flutter build apk --release --build-name=1.0.0 --build-number=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks "$GOOGLE_PLAY_TRACK") + 1))
     artifacts:
       - build/**/outputs/bundle/**/*.aab
       - build/**/outputs/apk/**/*.apk
@@ -149,14 +149,16 @@ workflows:
         track: $GOOGLE_PLAY_TRACK
         in_app_update_priority: 0
 ```
+
 {{<notebox>}}
 Note: You can skip `Set up key properties` script if you are using [Code-signing Identities](https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1). This feature is only available on **Teams**. You will need to add your keystore reference as follows in your yaml configuration.
-  
-  ```
-  environment:
-    android_signing:
-        - your_keystore_reference
-  ```
+
+```
+environment:
+  android_signing:
+      - your_keystore_reference
+```
+
 {{</notebox>}}
 
 ## iOS builds
@@ -226,13 +228,13 @@ workflows:
           xcode-project use-profiles
       - name: Get Flutter packages
         script: |
-          cd . && flutter packages pub get
+          flutter packages pub get
       - name: Flutter analyze
         script: |
-          cd . && flutter analyze
+          flutter analyze
       - name: Flutter unit tests
         script: |
-          cd . && flutter test
+          flutter test
         ignore_failure: true
       - name: Install pods
         script: |
