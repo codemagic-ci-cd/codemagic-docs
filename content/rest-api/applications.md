@@ -291,7 +291,7 @@ To add binary-based files (e.g. images), they need to be [`base64 encoded`](../v
 #### Example
 
 ```
-curl -XGET -H "X-Auth-Token: $CM_API_KEY" -H "Content-type: application/json" "https://api.codemagic.io/apps/$YOUR_APP_ID/variables"
+curl -XGET -H "X-Auth-Token: $CM_API_KEY" -H "Content-type: application/json" "https://api.codemagic.io/apps/YOUR_APP_ID/variables"
 ```
 
 #### Response
