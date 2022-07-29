@@ -18,20 +18,33 @@ In order to install a different version, you will need to know the full Unity ve
 ## Environment variables
 You will need three environment variables in your codemagic.yaml called `UNITY_VERSION`, `UNITY_VERSION_CHANGESET`, and `UNITY_VERSION_BIN`. 
 
-You should set the value of `UNITY_VERSION` to the full version number as displayed on the Unity Hub download archive page. For example, if the version is `2019.4.38f1`, set the variable as follows:
+- `UNITY_VERSION`: Full version number as displayed on the Unity Hub download archive page.
+- `UNITY_VERSION_CHANGESET`: The **changeset** id that you obtained from the release notes page on the Unity Hub download archive.
+- `UNITY_VERSION_BIN`: The Unity binary path for the version you want to build with.
 
-`UNITY_VERSION: 2019.4.38f1`
+{{< tabpane >}}
+{{% tab header="Mac" %}}
+{{< highlight yaml "style=paraiso-dark">}}
+    environment:
+      vars:
+        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
+        UNITY_VERSION: 2021.3.3f1
+        UNITY_VERSION_CHANGESET: af2e63e8f9bd
+        UNITY_VERSION_BIN: /Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app/Contents/MacOS/Unity
+{{< /highlight >}}
+{{< /tab >}}
+{{% tab header="Windows" %}}
+{{< highlight yaml "style=paraiso-dark">}}
+    environment:
+      vars:
+        UNITY_BIN: $UNITY_HOME/Unity.exe
+        UNITY_VERSION: 2021.3.3f1
+        UNITY_VERSION_CHANGESET: af2e63e8f9bd
+        UNITY_VERSION_BIN: C:\Program Files\Unity\Hub\Editor\$UNITY_VERSION\Editor\Unity.exe
+{{< /highlight >}}
+{{< /tab >}}
 
-The value of `UNITY_VERSION_CHANGESET` should be set using the **changeset** id that you obtained from the release notes page on the Unity Hub download archive. For example, if the changeset id is `fdbb7325fa47`, then set the variable as follows:
-
-`UNITY_VERSION_CHANGESET: fdbb7325fa47`
-
-The `UNITY_VERSION_BIN` should be set as follows so the Unity binary path is declared for the version you want to build with:
-
-Mac: `UNITY_VERSION_BIN: /Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app/Contents/MacOS/Unity`
-
-Windows: `UNITY_VERSION_BIN: C:\Program Files\Unity\Hub\Editor\$UNITY_VERSION\Editor\Unity.exe`
-
+{{< /tabpane >}}
 
 ## Activating Unity
 Even though you are installing a different version of Unity to build your apps with, you should activate your license using the default Unity version already installed on the machine. Unity Hub CLI commands do not work correctly if a license is not already active on the machine.
@@ -40,43 +53,74 @@ Even though you are installing a different version of Unity to build your apps w
 ## Unity installation script
 After activating the Unity license as usual, add the following script to install the desired version and modules you wish to use. The example below uses Unity Hub CLI commands to install the specified Unity version as well as the Android and iOS Build Support modules.
 
-Mac:
-
-```yaml
+{{< tabpane >}}
+{{% tab header="Mac" %}}
+{{< highlight yaml "style=paraiso-dark">}}
     - name: Install Unity version
-      script: | 
+      script: |  
         /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version $UNITY_VERSION --changeset $UNITY_VERSION_CHANGESET 
         /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version $UNITY_VERSION -m ios android 
-```
-
-Windows:
-
-```yaml
+{{< /highlight >}}
+{{< /tab >}}
+{{% tab header="Windows" %}}
+{{< highlight yaml "style=paraiso-dark">}}
     - name: Install Unity version
-      script: | 
+      script: |  
         New-Item ".\install-unity.bat" #create an empty batch file
-
         Set-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install -v $env:UNITY_VERSION --changeset $env:UNITY_VERSION_CHANGESET"
         Add-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install-modules --version $env:UNITY_VERSION -m ios android"
-
         Start-Process -FilePath ".\install-unity.bat" -Wait -NoNewWindow #start executing the batch file
-```
+{{< /highlight >}}
+{{< /tab >}}
 
-
+{{< /tabpane >}}
 ## Building with the newly installed Unity version
 Use the Unity version you installed on the machine:
 
-```yaml
-    - name: Build the Xcode project
-      script: | 
-        $UNITY_VERSION_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$BUILD_SCRIPT_IOS -nographics -buildTarget iOS
-```
+{{< tabpane >}}
+{{% tab header="Mac" %}}
+{{< highlight yaml "style=paraiso-dark">}}
+    - name: Build the Unity app
+      script: |  
+        $UNITY_VERSION_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$BUILD_SCRIPT -nographics
+{{< /highlight >}}
+
+{{< /tab >}}
+{{% tab header="Windows" %}}
+{{< highlight yaml "style=paraiso-dark">}}
+    - name: Build the Unity app
+      script: |  
+        cmd.exe /c "$env:UNITY_VERSION_BIN" -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$env:BUILD_SCRIPT -nographics
+{{< /highlight >}}
+{{< /tab >}}
+
+{{< /tabpane >}}
+
+## Caching
+You can cache the newly installed version on Unity to avoid installing it in every build, read more about caching [here](https://docs.codemagic.io/yaml/yaml-getting-started/#cache).
+
+{{< tabpane >}}
+{{% tab header="Mac" %}}
+{{< highlight yaml "style=paraiso-dark">}}
+    cache:
+      cache_paths:
+        - /Applications/Unity/Hub/Editor/${UNITY_VERSION}
+{{< /highlight >}}
+{{< /tab >}}
+{{% tab header="Windows" %}}
+{{< highlight yaml "style=paraiso-dark">}}
+    cache:
+      cache_paths:
+        - C:\Program Files\Unity\Hub\Editor\$UNITY_VERSION
+{{< /highlight >}}
+{{< /tab >}}
+
+{{< /tabpane >}}
 
 ## Android Workflow configuration sample
-
-Mac:
-
-```yaml
+{{< tabpane >}}
+{{% tab header="Mac" %}}
+{{< highlight yaml "style=paraiso-dark">}}
 workflows:
   unity-android-workflow:
       name: Unity Android Workflow
@@ -85,7 +129,7 @@ workflows:
       environment:
         groups:
           # Add the group environment variables in Codemagic UI (in Application or Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-          - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
+          - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_EMAIL and UNITY_PASSWORD)
           - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
         vars:
           UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
@@ -108,14 +152,14 @@ workflows:
             source: true
       scripts:
         - name: Activate Unity License
-          script: | 
-            $UNITY_BIN -batchmode -quit -logFile -serial ${UNITY_SERIAL?} -username ${UNITY_USERNAME?} -password ${UNITY_PASSWORD?}      
+          script: |  
+            $UNITY_BIN -batchmode -quit -logFile -serial ${UNITY_SERIAL?} -username ${UNITY_EMAIL?} -password ${UNITY_PASSWORD?}      
         - name: Install Unity version, buld support modules, ndk and jdk
-          script: | 
+          script: |  
             /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version ${UNITY_VERSION} --changeset ${UNITY_VERSION_CHANGESET}
             /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version ${UNITY_VERSION} -m android android-sdk-ndk-tools android-open-jdk          
         - name: Set build number and export Unity
-          script: |
+          script: | 
             export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
             $UNITY_BIN_VERSION -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$BUILD_SCRIPT -nographics -buildTarget Android      
       artifacts:
@@ -125,9 +169,10 @@ workflows:
         scripts:
           - name: Deactivate Unity License
             script: $UNITY_BIN -batchmode -quit -returnlicense -nographics
-```
-Windows:
-```yaml
+{{< /highlight >}}
+{{< /tab >}}
+{{% tab header="Windows" %}}
+{{< highlight yaml "style=paraiso-dark">}}
  unity-android-workflow:
     name: Unity Install Older Version Workflow
     max_build_duration: 120
@@ -135,7 +180,7 @@ Windows:
     environment:
       groups:
         # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-        - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
+        - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_EMAIL and UNITY_PASSWORD)
       vars:
         UNITY_BIN: $UNITY_HOME/Unity.exe
         UNITY_VERSION: 2021.3.3f1
@@ -155,18 +200,16 @@ Windows:
       cancel_previous_builds: false
     scripts:
       - name: Activate Unity License (installed version)
-        script: |
-          cmd.exe /c "$env:UNITY_BIN" -batchmode -serial $env:UNITY_SERIAL -username $env:UNITY_USERNAME -password $env:UNITY_PASSWORD -quit -nographics
+        script: | 
+          cmd.exe /c "$env:UNITY_BIN" -batchmode -serial $env:UNITY_SERIAL -username $env:UNITY_EMAIL -password $env:UNITY_PASSWORD -quit -nographics
       - name: Install Unity version
-        script: |
+        script: | 
           New-Item ".\install-unity.bat" #create an empty batch file
-
           Add-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install -v $env:UNITY_VERSION --changeset $env:UNITY_VERSION_CHANGESET"
           Add-Content install-unity.bat "`"$env:UNITY_HUB`" -- --headless install-modules --version $env:UNITY_VERSION -m android android-sdk-ndk-tools android-open-jdk"
-
           Start-Process -FilePath ".\install-unity.bat" -Wait -NoNewWindow #start executing the batch file
       - name: Build Unity Using (installed version)
-        script: |
+        script: | 
           cmd.exe /c "$env:UNITY_VERSION_BIN" -batchmode -quit -logFile "$env:CM_BUILD_DIR\\android\\log.txt" -projectPath . -executeMethod BuildScript.$env:BUILD_SCRIPT -nographics
     artifacts:
       - android/*.aab
@@ -175,6 +218,9 @@ Windows:
     publishing:
       scripts:
         - name: Deactivate new Unity License using a Command Prompt
-          script: |
+          script: | 
             cmd.exe /c "$env:UNITY_BIN" -batchmode -quit -returnlicense -nographics 
-```
+{{< /highlight >}}
+{{< /tab >}}
+
+{{< /tabpane >}}
