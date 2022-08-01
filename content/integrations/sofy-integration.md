@@ -65,4 +65,4 @@ As soon as your **.ipa** and **.apk** are successfully built, they will appear i
 
 ## Sample project
 
-A sample project that shows how to configure Sofy integration is available [here]().
+A sample project that shows how to configure Sofy integration is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/sofy_integration_demo_project).
