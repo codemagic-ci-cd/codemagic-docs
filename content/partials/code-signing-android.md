@@ -104,7 +104,7 @@ For Windows, the PowerShell command to base64 encode a file and copy it to the c
 5. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
 6. Click the **Add** button to add the variable.
 7. Continue by adding `CM_KEYSTORE_PASSWORD`, `CM_KEY_ALIAS` and `CM_KEY_PASSWORD`
-8. Add the `CM_KEYSTORE_PATH` variable with the value `CM_KEYSTORE_PATH = $CM_BUILD_DIR/codemagic.keystore`
+8. Add the `CM_KEYSTORE_PATH` variable with the value `$CM_BUILD_DIR/codemagic.keystore`
 
 
 {{<notebox>}}
