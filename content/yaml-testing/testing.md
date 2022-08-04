@@ -34,7 +34,7 @@ scripts:
 
 The `integration_test` dependency allows you to run integration tests on a real device or emulator. Android application tests can be run on an Android emulator, iOS application tests can be run on an iOS simulator, and web application tests can be run on a web browser driver.
 
-**Tip:** It is possible to generate machine readable output for integration tests using the `--machine` flag, hence the results can be displayed in the UI. Just include the `test_report` field with a glob pattern matching the test result file location:
+**Tip:** It is possible to generate machine readable output for integration tests using the `--machine` flag; hence the results can be displayed in the UI. Just include the `test_report` field with a glob pattern matching the test result file location:
 
 ```yaml
 scripts:
@@ -46,7 +46,7 @@ scripts:
     test_report: test-results/flutter.json
 ```
 
-In order to run integration tests for web, it is possible to use `chromedriver`. Take note that for running tests on web, it is necessary to provide the `--driver` and `--target` arguments, and machine readable output is not available.
+To run integration tests for web, it is possible to use `chromedriver`. Take note that for running tests on web, it is necessary to provide the `--driver` and `--target` arguments, and machine-readable output is unavailable.
 
 ```yaml
 scripts:

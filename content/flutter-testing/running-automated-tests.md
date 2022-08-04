@@ -63,7 +63,7 @@ The recommended approach to running integration tests is to use `flutter test` a
 test integration_test
 ```
 
-In order to run only a specific test, the path has to be specified:
+To run only a specific test, the path has to be specified:
 
 ```bash
 test integration_test/app_test.dart
