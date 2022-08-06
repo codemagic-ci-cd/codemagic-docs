@@ -14,35 +14,35 @@ weight: 8
 
 ## System
 
-- System version `macOS 12.4 (21F79)`
-- Kernel version `Darwin 21.5.0`
-- Disk `322GB (Free Space: 62GB)`
+- System version `macOS 12.5 (21G72)`
+- Kernel version `Darwin 21.6.0`
+- Disk `322GB (Free Space: 53GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `23.1.7779620`
-- aws `2.7.15`
+- aws `2.7.20`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `20.10.17`
 - ew-cli `0.0.47`
-- fastlane `2.207.0`
+- fastlane `2.208.0`
 - firebase `11.3.0`
 - flutter `3.0.5 ($HOME/programs/flutter)`
-- gem `3.3.18`
-- gh `2.14.2`
+- gem `3.3.19`
+- gh `2.14.3`
 - git `2.37.1`
 - Google Cloud SDK `327.0.0`
 - gradle `7.3.1`
 - gsutil `4.58`
-- homebrew `3.5.4`
+- homebrew `3.5.7`
 - ionic `6.12.4`
 - jq `1.6`
 - ktlint `0.46.1`
-- node `18.6.0`
-- npm `8.13.2`
+- node `18.7.0`
+- npm `8.15.0`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
@@ -53,7 +53,7 @@ weight: 8
 - unzip `6.00`
 - wget `1.21.3`
 - yarn `1.22.19`
-- yq `4.26.1`
+- yq `4.27.2`
 - zip `3.0`
 
 ## Android emulators
@@ -70,10 +70,10 @@ weight: 8
 
 ## Java versions
 
-- **18.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
+- **18.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
 - **16.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-16.jdk/Contents/Home`
-- **11.0.15** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_332** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **11.0.16** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_342** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
 ## Unity 2020.3.31f1
 
@@ -146,5 +146,5 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 
 ## Other Xcode versions
 
-- 14.0 (14A5229c) `/Applications/Xcode-14.0.app`
+- 14.0 (14A5284g) `/Applications/Xcode-14.0.app`
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`

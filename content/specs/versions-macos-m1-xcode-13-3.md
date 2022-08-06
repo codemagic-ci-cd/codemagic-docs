@@ -12,35 +12,35 @@ weight: 9
 
 ## System
 
-- System version `macOS 12.4 (21F79)`
-- Kernel version `Darwin 21.5.0`
-- Disk `316GB (Free Space: 131GB)`
+- System version `macOS 12.5 (21G72)`
+- Kernel version `Darwin 21.6.0`
+- Disk `316GB (Free Space: 55GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `24.0.8215888`
-- aws `2.7.10`
+- aws `2.7.20`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `N/A`
 - ew-cli `0.0.47`
-- fastlane `2.206.2`
+- fastlane `2.208.0`
 - firebase `11.1.0`
 - flutter `3.0.5 ($HOME/programs/flutter)`
-- gem `3.3.16`
-- gh `2.13.0`
-- git `2.36.1`
+- gem `3.3.19`
+- gh `2.14.3`
+- git `2.37.1`
 - Google Cloud SDK `391.0.0`
 - gradle `7.3.1`
 - gsutil `5.10`
-- homebrew `3.5.2`
+- homebrew `3.5.7`
 - ionic `5.4.16`
 - jq `1.6`
 - ktlint `0.46.1`
-- node `18.4.0`
-- npm `8.12.1`
+- node `16.15.1`
+- npm `8.15.0`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
@@ -51,7 +51,7 @@ weight: 9
 - unzip `6.00`
 - wget `1.21.3`
 - yarn `1.22.19`
-- yq `4.25.3`
+- yq `4.27.2`
 - zip `3.0`
 
 ## Android emulators
@@ -60,10 +60,10 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Java versions
 
-- **18.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
-- **11.0.15** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_332** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
-- **1.7.0_342** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
+- **18.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
+- **11.0.16** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_342** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
 ## Unity 2021.3.5f1
 
@@ -81,9 +81,16 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 
 ### Runtimes
 
+- iOS 14.5
+- iOS 15.0
+- iOS 15.4
 - iOS 15.5
+- tvOS 14.5
+- tvOS 15.0
 - tvOS 15.4
 - tvOS 16.0
+- watchOS 7.4
+- watchOS 8.0
 - watchOS 8.5
 - watchOS 9.0
 
@@ -98,7 +105,9 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 - Apple Watch Series 6 - 44mm
 - Apple Watch Series 7 - 41mm
 - Apple Watch Series 7 - 45mm
+- iPad (8th generation)
 - iPad (9th generation)
+- iPad Air (4th generation)
 - iPad Air (5th generation)
 - iPad Pro (11-inch) (3rd generation)
 - iPad Pro (12.9-inch) (5th generation)
@@ -117,10 +126,11 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 - iPhone 13 mini
 - iPhone 8
 - iPhone 8 Plus
+- iPhone SE (2nd generation)
 - iPhone SE (3rd generation)
 - iPod touch (7th generation)
 
 ## Other Xcode versions
 
-- 14.0 (14A5229c) `/Applications/Xcode-14.app`
+- 14.0 (14A5284g) `/Applications/Xcode-14.0.app`
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`
