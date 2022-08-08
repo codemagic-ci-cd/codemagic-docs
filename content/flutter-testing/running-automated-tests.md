@@ -71,7 +71,7 @@ test integration_test/app_test.dart
 
 #### Web
 
-However, the above approach is not suitable for integration tests for web using the `chromedriver`, and the following arguments are recommended instead:
+However, the above approach is not suitable for integration tests for web using `chromedriver`, and the following arguments are recommended instead:
 
 ```bash
 drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart
