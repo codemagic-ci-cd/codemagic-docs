@@ -57,7 +57,7 @@ flutter emulators --launch emulator
 
 #### Mobile
 
-The recommended approach to running integration tests is to use `flutter test` and the `integration_test` dependency. To do so, navigate to the **App settings > Tests > Integration and unit tests** and under **Flutter drive arguments** define the following:
+The recommended approach to running integration tests is to use `flutter test` and the `integration_test` dependency. To do so, navigate to **App settings > Tests > Integration and unit tests** and under **Flutter drive arguments** define the following:
 
 ```bash
 test integration_test
