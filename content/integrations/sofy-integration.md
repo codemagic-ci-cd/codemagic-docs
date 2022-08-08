@@ -21,7 +21,7 @@ The following **cURL** commands will help you achieveing the deployment process:
   script: |
     curl --location --request POST 'https://api.sofy.ai/api/AppTests/buildUpload' \
     --header "SubscriptionKey: $SOFY_SUBSCRIPTION_KEY" \
-    --form "applicationFile=@'$APK_PATH'"
+    --form "applicationFile=@/build/app/outputs/flutter-apk/app-release.apk"
 ```
 
 **Scheduling automation tests**
