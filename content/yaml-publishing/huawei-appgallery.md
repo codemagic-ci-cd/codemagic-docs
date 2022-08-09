@@ -24,7 +24,7 @@ NOTE: Set Project to N/A to define the API client as a team-level one. Otherwise
 3. Go to **App Information** and save the **App ID** to the environment variables as well in the **app_gallery** environment group.
 
 ## App Signing
-If you want to release your app in App Bundle format and use the dynamic delivery feature, this service is required.
+If you want to release your app in App Bundle format `.aab` and use the dynamic delivery feature, this service is required.
 
 First, you need to sign your android application and upload the key to the Codemagic environment variables so Codemagic can sign your app before publishing it, see the [docs](https://docs.codemagic.io/yaml-code-signing/signing-android/).
 
