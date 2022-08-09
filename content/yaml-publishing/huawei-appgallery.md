@@ -6,7 +6,7 @@ weight: 4
 
 Codemagic enables you to automatically publish your iOS or Android app to Huawei AppGallery.
 
-## Creating an API Client
+## Creating an API Client in Huawei AppGallery
 An API client is an identity credential used by AppGallery Connect to manage user access to AppGallery Connect APIs. Before accessing an API, you must create an API client with the permission for accessing the API. The procedure is as follows:
 
 1. Sign in to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html) and click **Users and permissions**.
@@ -26,10 +26,10 @@ NOTE: Set Project to N/A to define the API client as a team-level one. Otherwise
 ## App Signing
 If you want to release your app in App Bundle format and use the dynamic delivery feature, this service is required.
 
-First you need to sing you android application and upload the key to the Codemagic environment variables so Codemagic can sign you app before publishing it, see the [docs](https://docs.codemagic.io/yaml-code-signing/signing-android/).
+First, you need to sign your android application and upload the key to the Codemagic environment variables so Codemagic can sign your app before publishing it, see the [docs](https://docs.codemagic.io/yaml-code-signing/signing-android/).
 
 1. Go to your app page.
-2. Go to **App Signing** tab at the Services *section*.
+2. Go to **App Signing** tab in the *Services* section.
 3. Choose the first option *(Let AppGallery connect create and manage app signature for you)*.
 4. After you create your upload key, you need to export a PEM certificate for the new upload key.
 
@@ -39,8 +39,8 @@ $ keytool -export -rfc -keystore YOUR_KEYSTORE.jks -alias upload -file upload_ce
 
 5. Upload the **upload_certificate.pem** file and click **Submit**.
 
-## Adding the fastlane script to your code
-First you need to set up fastlane at your project by running `fastlane init` command, see the [docs](https://docs.fastlane.tools/getting-started/android/setup/).
+## Adding the Fastlane script to your code
+First, you need to set up Fastlane at your project by running `fastlane init` command, see the [docs](https://docs.fastlane.tools/getting-started/android/setup/).
 
 Now add this lane to your **Fastlane** file.
 {{< highlight shell "style=paraiso-dark">}}
