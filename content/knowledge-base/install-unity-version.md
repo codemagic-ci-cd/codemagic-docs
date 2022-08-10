@@ -12,11 +12,11 @@ License activation and return takes place with the Unity version already install
 
 
 ## Getting the Unity version number and changeset id
-In order to install a different version, you will need to know the full Unity version number and its **changeset** id. These details can be found in the Unity download archive [here](https://unity3d.com/get-unity/download/archive). To get the changeset id, first select the version you intend to use and then click on the ‘Release Notes’ button. Scroll to the bottom of the release notes and you will see the changeset id which you should make a note of. 
-
-
-## Environment variables
-You will need three environment variables in your codemagic.yaml called `UNITY_VERSION`, `UNITY_VERSION_CHANGESET`, and `UNITY_VERSION_BIN`. 
+In order to install a different version, you will need to know the full Unity version number and its **changeset** id. 
+You have tow options to get these details:
+### 1. Getting version from Unity download archive
+You can search for a specific unity version from the Unity download archive [here](https://unity3d.com/get-unity/download/archive). To get the changeset id, first select the version you intend to use and then click on the ‘Release Notes’ button. Scroll to the bottom of the release notes and you will see the changeset id which you should make a note of. 
+Then you will need three environment variables in your codemagic.yaml called `UNITY_VERSION`, `UNITY_VERSION_CHANGESET`, and `UNITY_VERSION_BIN`. 
 
 - `UNITY_VERSION`: Full version number as displayed on the Unity Hub download archive page.
 - `UNITY_VERSION_CHANGESET`: The **changeset** id that you obtained from the release notes page on the Unity Hub download archive.
@@ -43,6 +43,25 @@ You will need three environment variables in your codemagic.yaml called `UNITY_V
         UNITY_VERSION_BIN: C:\Program Files\Unity\Hub\Editor\$UNITY_VERSION\Editor\Unity.exe
 {{< /highlight >}}
 {{< /tab >}}
+
+{{< /tabpane >}}
+
+### 2. Auto detect project version
+You can use the info from the `ProjectSettings/ProjectVersion.txt` file which has the unity version and changeset that the project uses.
+You only need to add this script.
+{{< tabpane >}}
+{{% tab header="Mac" %}}
+{{< highlight yaml "style=paraiso-dark">}}
+      - name: Retrieve Used Unity Version
+        script: | 
+          export UNITY_VERSION=$(echo $(sed -n '1p' ProjectSettings/ProjectVersion.txt) | cut -c 18-)
+          export UNITY_VERSION_CHANGESET=$(echo $(sed -n '2p' ProjectSettings/ProjectVersion.txt) | cut -d "(" -f2 | cut -d ")" -f1 | xargs)
+          echo "UNITY_VERSION=$UNITY_VERSION" >> $CM_ENV
+          echo "UNITY_VERSION_CHANGESET=$UNITY_VERSION_CHANGESET" >> $CM_ENV
+          echo "UNITY_VERSION_BIN=/Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app/Contents/MacOS/Unity" >> $CM_ENV
+{{< /highlight >}}
+{{< /tab >}}
+
 
 {{< /tabpane >}}
 
