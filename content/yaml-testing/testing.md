@@ -34,7 +34,7 @@ scripts:
 
 The `integration_test` dependency allows you to run integration tests on a real device or emulator. Android application tests can be run on an Android emulator, iOS application tests can be run on an iOS simulator, and web application tests can be run on a web browser driver.
 
-**Tip:** It is also possible to use `flutter test` to run integration tests using the `integration_test` dependency. When using `flutter test` instead of `flutter drive` it is possible to generate machine readable output using the `--machine` flag, hence the results can be displayed in the UI. Just include the `test_report` field with a glob pattern matching the test result file location:
+**Tip:** It is possible to generate machine readable output for integration tests using the `--machine` flag; hence the results can be displayed in the UI. Just include the `test_report` field with a glob pattern matching the test result file location:
 
 ```yaml
 scripts:
@@ -46,7 +46,7 @@ scripts:
     test_report: test-results/flutter.json
 ```
 
-In order to run integration tests for web, it is possible to use `chromedriver`. Take note that for running tests on web, it is necessary to provide the `--driver` and `--target` arguments.
+To run integration tests for web, it is possible to use `chromedriver`. Take note that for running tests on web, it is necessary to provide the `--driver` and `--target` arguments, and machine-readable output is unavailable.
 
 ```yaml
 scripts:
@@ -64,7 +64,7 @@ You can launch the iOS simulator and run tests on the simulator as follows:
 
 ```yaml
 flutter emulators --launch apple_ios_simulator
-flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d iPhone 
+flutter -d iPhone test integration_test
 ```
 
 You can launch a specific iOS simulator and run tests on the simulator using ‘simctl’ which is a binary to interact with iOS simulators from the command line, as follows:
@@ -72,7 +72,7 @@ You can launch a specific iOS simulator and run tests on the simulator using ‘
 ```yaml
 xcrun simctl list # This command will give list available simulators on the machine along with UDIDs, you can find list of Devices depending upon type of machine you are running, here https://docs.codemagic.io/specs/versions-macos-xcode-12-5/#devices
 xcrun simctl boot 99B14BF4-7966-4427-ACD1-34BFE4D26A01 # Specify the UDID to boot the simulator
-flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d 99B14BF4-7966-4427-ACD1-34BFE4D26A01 # Specify the UDID to the integration tests command
+flutter -d 99B14BF4-7966-4427-ACD1-34BFE4D26A01 test integration_test # Specify the UDID to the integration tests command
 ```
 
 For the Android emulator you can launch and run your tests as follows:
@@ -80,7 +80,7 @@ For the Android emulator you can launch and run your tests as follows:
 ```yaml 
 flutter emulators --launch emulator &                       # The ampersand is used to run the emulator in the background without blocking the next command
 adb wait-for-device                                         # adb wait-for-device is used to wait for the emulator to finish loading
-flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d emulator-5554
+flutter -d emulator-5554 test integration_test 
 ```
 
 ### Running web application tests on a web browser driver
