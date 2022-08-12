@@ -14,32 +14,32 @@ weight: 9
 
 - System version `macOS 12.5 (21G72)`
 - Kernel version `Darwin 21.6.0`
-- Disk `316GB (Free Space: 55GB)`
+- Disk `294GB (Free Space: 43GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
-- Android NDK `24.0.8215888`
-- aws `2.7.20`
+- Android NDK `25.0.8775105`
+- aws `2.7.21`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `N/A`
 - ew-cli `0.0.47`
 - fastlane `2.208.0`
-- firebase `11.1.0`
+- firebase `11.4.2`
 - flutter `3.0.5 ($HOME/programs/flutter)`
-- gem `3.3.19`
+- gem `3.2.33`
 - gh `2.14.3`
 - git `2.37.1`
-- Google Cloud SDK `391.0.0`
+- Google Cloud SDK `396.0.0`
 - gradle `7.3.1`
-- gsutil `5.10`
-- homebrew `3.5.7`
+- gsutil `5.11`
+- homebrew `3.5.8`
 - ionic `5.4.16`
 - jq `1.6`
 - ktlint `0.46.1`
-- node `16.15.1`
+- node `16.16.0`
 - npm `8.15.0`
 - python `3.8.13`
 - python3 `3.8.13`
@@ -62,12 +62,12 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 - **18.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
 - **11.0.16** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_342** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **1.8.0_345** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
-## Unity 2021.3.5f1
+## Unity 2021.3.7f1
 
-UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.5f1/Unity.app
+UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.7f1/Unity.app
 
 ## Xcode 13.4.1 (13F100)
 
@@ -132,5 +132,5 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 
 ## Other Xcode versions
 
-- 14.0 (14A5284g) `/Applications/Xcode-14.0.app`
+- 14.0 (14A5294e) `/Applications/Xcode-14.0.app`
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`
