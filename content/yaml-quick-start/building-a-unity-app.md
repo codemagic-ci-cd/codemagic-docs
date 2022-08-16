@@ -189,6 +189,20 @@ public static class BuildScript
         Debug.Log("Built iOS");
     }
 
+    [MenuItem("Build/Build Windows")]
+    public static void BuildWindows()
+    {
+        BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+        buildPlayerOptions.locationPathName = "win/" + Application.productName + ".exe";
+        buildPlayerOptions.target = BuildTarget.StandaloneWindows;
+        buildPlayerOptions.options = BuildOptions.None;
+        buildPlayerOptions.scenes = GetScenes();
+
+        Debug.Log("Building Windows");
+        BuildPipeline.BuildPlayer(buildPlayerOptions);
+        Debug.Log("Built Windows");
+    }
+
     private static string[] GetScenes()
     {
         return (from scene in EditorBuildSettings.scenes where scene.enabled select scene.path).ToArray();
