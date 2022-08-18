@@ -12,37 +12,33 @@ License activation and return takes place with the Unity version already install
 
 
 ## Getting the Unity version number and changeset id
-In order to install a different version, you will need to know the full Unity version number and its **changeset** id. These details can be found in the Unity download archive [here](https://unity3d.com/get-unity/download/archive). To get the changeset id, first select the version you intend to use and then click on the ‘Release Notes’ button. Scroll to the bottom of the release notes and you will see the changeset id which you should make a note of. 
-
-
-## Environment variables
-You will need three environment variables in your codemagic.yaml called `UNITY_VERSION`, `UNITY_VERSION_CHANGESET`, and `UNITY_VERSION_BIN`. 
-
-- `UNITY_VERSION`: Full version number as displayed on the Unity Hub download archive page.
-- `UNITY_VERSION_CHANGESET`: The **changeset** id that you obtained from the release notes page on the Unity Hub download archive.
-- `UNITY_VERSION_BIN`: The Unity binary path for the version you want to build with.
-
+In order to install a different version, you can use the info from the `ProjectSettings/ProjectVersion.txt` file which has the unity version and changeset that the project uses.
+You only need to add this script.
 {{< tabpane >}}
 {{% tab header="Mac" %}}
 {{< highlight yaml "style=paraiso-dark">}}
-    environment:
-      vars:
-        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
-        UNITY_VERSION: 2021.3.3f1
-        UNITY_VERSION_CHANGESET: af2e63e8f9bd
-        UNITY_VERSION_BIN: /Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app/Contents/MacOS/Unity
+      - name: Retrieve Used Unity Version
+        script: | 
+          UNITY_VERSION=$(echo $(sed -n '1p' ProjectSettings/ProjectVersion.txt) | cut -c 18-)
+          UNITY_VERSION_CHANGESET=$(echo $(sed -n '2p' ProjectSettings/ProjectVersion.txt) | cut -d "(" -f2 | cut -d ")" -f1 | xargs)
+          echo "UNITY_VERSION=$UNITY_VERSION" >> $CM_ENV
+          echo "UNITY_VERSION_CHANGESET=$UNITY_VERSION_CHANGESET" >> $CM_ENV
+          echo "UNITY_VERSION_BIN=/Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app/Contents/MacOS/Unity" >> $CM_ENV
 {{< /highlight >}}
 {{< /tab >}}
 {{% tab header="Windows" %}}
 {{< highlight yaml "style=paraiso-dark">}}
-    environment:
-      vars:
-        UNITY_BIN: $UNITY_HOME/Unity.exe
-        UNITY_VERSION: 2021.3.3f1
-        UNITY_VERSION_CHANGESET: af2e63e8f9bd
-        UNITY_VERSION_BIN: C:\Program Files\Unity\Hub\Editor\$UNITY_VERSION\Editor\Unity.exe
+      - name: Retrieve Used Unity Version
+        script: | 
+          $env:UNITY_VERSION=(Get-Content ProjectSettings/ProjectVersion.txt -TotalCount 1).Substring(17)
+          $env:UNITY_VERSION_CHANGESET=([regex] "\((.*)\)").match((Get-Content ProjectSettings/ProjectVersion.txt -TotalCount 2)).groups[1].value
+          $env:UNITY_VERSION_BIN="/Applications/Unity/Hub/Editor/$env:UNITY_VERSION/Unity.app/Contents/MacOS/Unity"
+          Add-Content -Path $env:CM_ENV -Value "UNITY_VERSION=$UNITY_VERSION"
+          Add-Content -Path $env:CM_ENV -Value "UNITY_VERSION_CHANGESET=$UNITY_VERSION_CHANGESET"
+          Add-Content -Path $env:CM_ENV -Value "UNITY_VERSION_BIN=$UNITY_VERSION_BIN"
 {{< /highlight >}}
 {{< /tab >}}
+
 
 {{< /tabpane >}}
 
