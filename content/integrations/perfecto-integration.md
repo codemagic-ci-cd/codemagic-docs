@@ -29,7 +29,7 @@ For further information about using variable groups please click [here](.../vari
 
 ## Test Automation
 
-In order to automate tests, desired capabitlies can be set inside your custom made test scripts in your project. For example, if your application requires device sensors such as camera or fingerprint reader, then **sensorInstrument** needs to be set:
+In order to automate tests, desired capabilities can be set inside your custom made test scripts in your project. For example, if your application requires device sensors such as camera or fingerprint reader, then **sensorInstrument** needs to be set:
 
 ```
 capabilities.setCapability("sensorInstrument", true);
@@ -43,34 +43,54 @@ capabilities.setCapability("autoInstrument", true);
 
 ## Flutter apps integration
 
+**Android apps**
+
 In order to set up integration for Flutter specific apps the following steps must be followed:
 
 1. Generate a folder named **PerfectoRun** (can be named differently) in the root directory of your project.
 
-2. Move into that directory in your **codemagic.yaml** after a build script is complete and run **gradle init** and **./gradlew wrapper**. More information about **codemagic.yaml** can be found [here](.../yaml/yaml-getting-started/):
+2. Moving into PerfectoRun directory and initiate Gradle by executing the following commands in your local terminal:
+```
+cd PerfectoRun 
+gradle init 
+./gradlew wrapper
+```
+3. Running these commands will create the necessary gradle files along with an empty **build.gradle** and its content needs to be adjusted as follows:
 
 ```
-- name: Build APK with Flutter
-  script: |
-    flutter build apk
+buildscript {
+    repositories {
+        maven {
+            url "https://repo1.perfectomobile.com/public/repositories/maven/"      
+        }
+        google()
+        jcenter()
+        mavenCentral()
+        
+    }
+    dependencies {
+        classpath "com.perfectomobile.instrumentedtest.gradleplugin:plugin:+"
+           
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+// Apply the plugin 
+apply plugin: 'com.perfectomobile.instrumentedtest.gradleplugin'
+perfectoGradleSettings {
+    configFileLocation "ConfigFile.json"
+}
+    task clean(type: Delete) {
+        delete rootProject.buildDir
+}
+```
 
-- name: Moving into PerfectoRun directory and initiate Gradle
-  script: |
-     cd PerfectoRun \
-     gradle init \
-     ./gradlew wrapper
-```
-TIP: In order to avoid manual steps when exevuting **gradle init**, gradle optional flags need to be attached to the command:
-
-```
-gradle init --type java-library --dsl kotlin --incubating --test-framework junit-jupiter —project-name=PerfectoRun —package=PerfectoRun
-```
-3. Create a file called **config.json** and add the following Json content in there:
+3. Create a file called **ConfigFile.json** and add the following Json content in there:
 
 ```
 {
       "cloudURL": "web-fra.perfectomobile.com",
-      "securityToken": "",
+      "securityToken": "xxxxxxxxxxxx",
       "devices": [
        
             {
@@ -105,16 +125,12 @@ gradle init --type java-library --dsl kotlin --incubating --test-framework junit
 
 **"securityToken"** contains your Perfecto Token that can be fetched from your Perfecto account.
 
-In order to generate **testBuildType**, the following command needs to be run in a pre-build script (a script that is run after executing build commands):
+In order to generate **testBuildType** which refers to **testApkPath**, the following command needs to be run in a pre-build script (a script that is run after executing build commands) inside **codemagic.yaml**:
 
 ```
 - name: Build Android Test release
   script: |
       ./gradlew assembleAndroidTest
-```
-
-4. In the generated **build.gradle** file inside the PerfectRun directory, the following content must be added:
-```
 ```
 5. As a last step, to successfully upload files and enable test automation, the following commands needs to be executed:
 
@@ -123,6 +139,11 @@ In order to generate **testBuildType**, the following command needs to be run in
   script: |
       ./gradlew perfecto-android-inst
 ```
+
+**iOS apps**
+
+
+
 
 ## Sample projects
 
