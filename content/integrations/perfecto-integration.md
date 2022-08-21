@@ -47,7 +47,7 @@ capabilities.setCapability("autoInstrument", true);
 
 In order to set up integration for Flutter specific apps the following steps must be followed:
 
-1. Generate a folder named **PerfectoRun** (can be named differently) in the root directory of your project.
+1. Generate a folder named **PerfectoRunAndroid** (can be named differently) in the root directory of your project.
 
 2. Moving into PerfectoRun directory and initiate Gradle by executing the following commands in your local terminal:
 ```
@@ -142,11 +142,72 @@ In order to generate **testBuildType** which refers to **testApkPath**, the foll
 
 **iOS apps**
 
+Flutter iOS apps take almost the step steps as android builds:
 
+1. Create another folder in the root directory named **PerfectoRunAndroid** (can be named differently)
+2. Manually create **build.gradle** along with the following cconten:
+```
+buildscript {
+    repositories {
+        jcenter()
+            maven {
+                url "https://repo1.perfectomobile.com/public/repositories/maven"        
+            }
+    }
+    dependencies {
+        classpath "com.perfectomobile.instrumentedtest.gradleplugin:plugin:+"    
+    }
+}
+apply plugin: 'com.perfectomobile.instrumentedtest.gradleplugin'
+perfectoGradleSettings {
+    configFileLocation "configFile.json"}
+```
+3. Create **configFile.json** and add the following content in there:
+```
+{
+    "cloudURL": "beta.perfectomobile.com",
+    "securityToken":"xxxxxxxxxxxx",
+   
+	
+	"appPath":"repository:PATH_TO_IPA",
+	"hostedTestModuleName":"RunnerTests",
+	"isHostedTestModule":true,
+	
+	
+	"devices": [
+			{"deviceName":"00008020-000D2CC42ED8002E"},
+			{"deviceName":"00008101-000B05283081401E"}
+	],
+	"shard": false,
+	"jobName": "Flutter_iOS_Job",
+  	"jobNumber": 1,
+  	"branch": "Flutter_Branch",
+  	"projectName": "My_Flutter_iOS_Project",
+  	"projectVersion": "v1.0",
+  	"tags": [
+    "XCUI", "plugin"  ],
+	"takeScreenshotOnTestFailure": false,
+	"takeScreenshotOnTestEnd": false,
+	"takeScreenshotOnTestStep": false,
+	"runUITests":true,
+	"runUnitTests":false,
+	"installationDetails": {
+		"resign": true
+	  },
+	  
+  	"numOfDevices": 2
+  }
+```
+4. In order to successfully upload files and enable test automation, the following commands needs to be executed:
 
+```
+- name: Upload iOS files to Perfecto and run tests
+  script: |
+      gradle perfecto-xctest
+```
 
 ## Sample projects
 
 A sample project that shows how to configure Perfecto integration for real device testing is available [here]()
 
-A sample project that shows how to configure Perfecto integration for **App Automate**  for Flutter apps is available [here]()
+A sample project that shows how to configure Perfecto integration for **App Automate** for Flutter apps is available [here]()
