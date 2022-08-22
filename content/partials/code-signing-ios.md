@@ -1,98 +1,24 @@
 ---
 ---
-
-#### Prerequisites
-
-Signing iOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. You can:
-
-1. **Manually** upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or,
-2. Use the **automatic code signing** option where Codemagic takes care of code signing and signing files management on your behalf.
-
-
-More details about iOS app codesigning can be found [here](../yaml-code-signing/signing-ios).
-
+{{<markdown>}}
 #### Creating the App Store Connect API key
-
+Signing iOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership.
+{{</markdown>}}
 {{< include "/partials/app-store-connect-api-key.md" >}}
 
-#### Creating the iOS Distribution Certificate
+{{< include "/partials/code-signing-ios-obtain-certificate.md" >}}
 
-The following steps describe one way of creating an iOS Distribution Certificate. This method requires a Mac computer and the certificate will be stored on it for easier retrieval in future. For a more detailed explanation and alternative certificate generation methods, please visit [here](../yaml-code-signing/signing-ios).
+#### Automatic vs Manual code signing
 
-1. On your Mac, open the **Keychain Access**, located in the **Applications and Utilities** folder.
-2. From the upper menu, open **Preferences**
-3. Click on **Certificates** and turn off the **OCSP** and the **CRL**. Close the preferences window.
-4. From the upper menu, select **Certificate Assistant** and **Request a Certificate from a Certificate Authority**.
-5. Add the user email address and the common name. The email address has to be the same as this one you chose when you created your Apple Developer account. The CA email address is not obligatory. Click on **Saved to disk**.
----
+Signing iOS apps requires a `signing certificate` (App Store **development** or **distribution** certificate in `.p12` format) and a `provisioning profile`. In **manual code signing** you save these files as Codemagic `environment variables` and manually reference them in the appropriate build steps.
 
-6. Go to your [Apple Developer Account](https://developer.apple.com/account/)
-7. Go to **Certificates, IDs & Profiles**
-8. In **Certificates**, click on the "+" button
-9. In **Software** section, select **iOS Distribution (App Store and Ad Hoc)**
-10. Click **Continue** and upload the CSR file generated in step 5.
-11. Download the **iOS Distribution Certificate file**.
+In **Automatic code signing**, Codemagic takes care of Certificate and Provisioning profile management for you. Based on the `Certificate private key` that you provide, Codemagic will automatically fetch the correct certificate from the App Store or create a new one if necessary.
 
----
+{{< include "/partials/code-signing-ios-configure-environment-vars.md" >}}
 
-12. Open the certificate file by double clicking and add it to your Keychain
-13. Select the certificate in Keychain Access, right click on it and export as a **Personal Information Exchange (.p12)** file.
-14. Give the file a name such as "IOS_DISTRIBUTION", choose a location and click **Save**.
-15. On the next prompt, leave the password empty and click **OK**.
-16. Use the following `openssl` command to export the private key:
-
-{{< highlight Shell "style=rrt">}}
-openssl pkcs12 -in IOS_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out ios_distribution_private_key
-{{< /highlight >}}
-
-17. When prompted for the import password, just press enter. The private key will be written to a file called **ios_distribution_private_key** in the directory where you ran the command.
-
-
-#### Configuring Environment variables
-
-1. Open your Codemagic app settings, go to **Environment variables** tab.
-2. Enter `CERTIFICATE_PRIVATE_KEY` as the **_Variable name_**.
-3. Open the file `ios_distribution_private_key` with a text editor.
-4. Copy the **entire contents** of the file, including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags.
-5. Paste into the **_Variable value_** field.
-6. Enter a variable group name, e.g. **_appstore_credentials_**. Click the button to create the group.
-7. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
-8. Click the **Add** button to add the variable.
-
----
-
-9. Run the following command on the **App Store Connect API key** file that you downloaded earlier (in our example saved as `codemagic_api_key.p8`) to copy its content to clipboard:
-{{< highlight Shell "style=rrt">}}
-cat codemagic_api_key.p8 | pbcopy
-{{< /highlight >}}
-
-10. Create a new Environment variable `APP_STORE_CONNECT_PRIVATE_KEY` and paste the value from clipboard.
-
----
-
-11. Create variable `APP_STORE_CONNECT_KEY_IDENTIFIER`. The value is the **Key ID** field from **App Store Connect > Users and Access > Keys**.
-12.  Create variable `APP_STORE_CONNECT_ISSUER_ID`. The value is the **Issuer ID** field from **App Store Connect > Users and Access > Keys**.
-
-{{<notebox>}}
-Tip: Store all the keystore variables in the same group so they can be imported to codemagic.yaml workflow at once. 
-
-If the group of variables is reusable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
-{{</notebox>}}
-
-Environment variables have to be added to the workflow either individually or as a group. Modify your `codemagic.yaml` file by adding the following:
-{{< highlight yaml "style=paraiso-dark">}}
-workflows:
-  react-native-ios:
-    name: React Native iOS
-    # ....
-    environment:
-        groups:
-            - appstore_credentials
-{{< /highlight >}}
-
+#### Automatic code signing
 
 To code sign the app, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands. 
-
 
 
 {{< highlight yaml "style=paraiso-dark">}}
@@ -110,8 +36,91 @@ To code sign the app, add the following commands in the [`scripts`](../getting-s
         script: xcode-project use-profiles
 {{< /highlight >}}
 
+Instead of specifying the exact bundle-id, you can use `"$(xcode-project detect-bundle-id)"`.
+
 Based on the specified bundle ID and [provisioning profile type](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--mac_catalyst_app_development--mac_catalyst_app_direct--mac_catalyst_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store) set with the `--type` argument, Codemagic will fetch or create the relevant provisioning profile and certificate to code sign the build.
 
 If you are publishing to the **App Store** or you are using **TestFlight**  to distribute your app to test users, set the  `--type` argument to `IOS_APP_STORE`. 
 
 When using a **third party app distribution service** such as Firebase App Distribution, set the `--type` argument to `IOS_APP_ADHOC`
+
+
+#### Manual code signing
+
+In order to use manual code signing, you need the following: 
+- **Signing certificate**: Your development or distribution certificate in .P12 format.
+- **Certificate password**: The certificate password if the certificate is password-protected.
+- **Provisioning profile**: You can get it from **Apple Developer Center > Certificates, Identifiers & Profiles > Profiles** and select the provisioning profile you would like to export and download.
+
+
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
+2. Enter `CM_CERTIFICATE` as the **_Variable name_**.
+3. Run the following command on the certificate file to `base64` encode it and copy to clipboard:
+{{< highlight Shell "style=rrt">}}
+cat ios_distribution_certificate.p12 | base64 | pbcopy
+{{< /highlight >}}
+4. Paste into the **_Variable value_** field.
+5. Enter a variable group name, e.g. **_appstore_credentials_**.
+6. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
+7. Click the **Add** button to add the variable.
+8. Repeat steps 2 -7 to create the variable `CM_PROVISIONING_PROFILE` and paste the `base64` encoded value of the provisioning profile file.
+9. Add the `CM_CERTIFICATE_PASSWORD` variable, make it **Secure** and add it to the same variable group.
+
+
+Then, add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
+
+{{< highlight yaml "style=paraiso-dark">}}
+    scripts:
+      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
+        script: keychain initialize
+      - name: Set up provisioning profiles from environment variables
+        script: | 
+            PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+            mkdir -p "$PROFILES_HOME"
+            PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
+            echo ${CM_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
+            echo "Saved provisioning profile $PROFILE_PATH"
+      - name: Set up signing certificate
+        script: | 
+            echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
+            if [ -z ${CM_CERTIFICATE_PASSWORD+x} ]; then
+                # when using a certificate that is not password-protected
+                keychain add-certificates --certificate /tmp/certificate.p12
+            else
+                # when using a password-protected certificate
+                keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
+            fi
+      - name: Set up code signing settings on Xcode project
+        script: xcode-project use-profiles
+{{< /highlight >}}
+
+
+
+#### Using multiple provisioning profiles
+
+To set up multiple provisioning profiles, for example, to use app extensions such as [Notification Service](https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension), the easiest option is to add the provisioning profiles to your environment variables with a similar naming convention.
+
+For example, create a `provisioning_profiles` environment variable group and add variables such as:
+- CM_PROVISIONING_PROFILE_BASE
+- CM_PROVISIONING_PROFILE_NOTIFICATIONSERVICE
+
+Then, include this group in your workflow and set up provisioning profiles with a script:
+
+{{< highlight yaml "style=paraiso-dark">}}
+environment:
+  groups:
+    - provisioning_profiles
+
+# ...
+
+scripts:
+  - name: Set up Provisioning profiles from environment variables
+    script: | 
+      PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
+      mkdir -p "$PROFILES_HOME"
+      for profile in "${!CM_PROVISIONING_PROFILE_@}"; do
+        PROFILE_PATH="$(mktemp "$HOME/Library/MobileDevice/Provisioning Profiles"/ios_$(uuidgen).mobileprovision)"
+        echo ${!profile} | base64 --decode > "$PROFILE_PATH"
+        echo "Saved provisioning profile $PROFILE_PATH"
+      done
+{{< /highlight >}}
