@@ -118,7 +118,7 @@ Then, add the code signing configuration and the commands to code sign the build
     scripts:
       - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
         script: keychain initialize
-      - name: Set up Provisioning profiles from environment variables
+      - name: Set up provisioning profiles from environment variables
         script: | 
             PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
             mkdir -p "$PROFILES_HOME"
