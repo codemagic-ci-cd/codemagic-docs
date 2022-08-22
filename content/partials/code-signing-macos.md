@@ -99,7 +99,7 @@ In order to use manual code signing, you need the following:
 **Note**: With **Manual code signing**, you also have to manually **Package the application** into a `.pkg` container and **Notarize** it.
 {{</notebox>}}
 
-1. Open your Codemagic app settings, go to **Environment variables** tab.
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter `CM_CERTIFICATE` as the **_Variable name_**.
 3. Run the following command on the certificate file to `base64` encode it and copy to clipboard:
 {{< highlight Shell "style=rrt">}}
