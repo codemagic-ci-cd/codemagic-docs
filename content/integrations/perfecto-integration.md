@@ -208,6 +208,6 @@ perfectoGradleSettings {
 
 ## Sample projects
 
-A sample project that shows how to configure Perfecto integration for real device testing is available [here]()
+A sample project that shows how to configure Perfecto integration for real device testing is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/perfecto_sample_project)
 
 A sample project that shows how to configure Perfecto integration for **App Automate** for Flutter apps is available [here]()
