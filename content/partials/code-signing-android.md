@@ -108,16 +108,14 @@ For Windows, the PowerShell command to base64 encode a file and copy it to the c
 
 
 {{<notebox>}}
-**Tip:** Store all the keystore variables in the same group so they can be imported to codemagic.yaml workflow at once. 
-  
-If the group of variables is reusable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
+**Tip:** Store all the keystore variables in the same group so they can be imported to codemagic.yaml workflow at once.
 {{</notebox>}}
 
 Environment variables have to be added to the workflow either individually or as a group. Modify your `codemagic.yaml` file by adding the following:
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
-  react-native-android:
-    name: React Native Android
+  android-workflow:
+    name: Android Workflow
     # ....
     environment:
         groups:
@@ -130,7 +128,7 @@ The content of the `base64` encoded files needs to be decoded before it can be u
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
-  react-native-android:
+  android-workflow:
     # ....
     environment:
         # ....

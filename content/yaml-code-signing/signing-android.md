@@ -8,38 +8,95 @@ aliases: /code-signing-yaml/signing-android
 All Android applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. 
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Signing Android apps using the Flutter workflow editor](../code-signing/android-code-signing). There are several ways to set up code signing for Android apps.
+**Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user or if you want to use alternative Code signing methods, please chech the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
+{{</notebox>}}
 
-If you are using [Codemagic Teams](../teams/teams), then signing files, such as Android keystores, can be managed under the [Code signing identities](./code-signing-identities) section in the team settings and do not have to be uploaded as environment variables as in the below instructions.
+## Managing and uploading files
+
+Team owner permissions are required to upload and edit files under the **Code signing identities** section. However, all team members can view the file info for any of the uploaded files.
+
+### Generating a keystore
+
+If you need to create a new keystore file for signing your release builds, you can do so with the Java Keytool utility by running the following command:
+
+{{< highlight Shell "style=rrt">}}
+keytool -genkey -v -keystore codemagic.keystore -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias codemagic
+{{< /highlight >}}
+
+Keytool then prompts you to enter your personal details for creating the certificate, as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **codemagic.keystore** in the directory you're in. The key is valid for 10,000 days.
+
+### Uploading a keystore
+
+1. Open your Codemagic Team settings, and go to  **codemagic.yaml settings** > **Code signing identities**.
+2. Open **Android keystores** tab.
+3. Upload the keystore file by clicking on **Choose a file** or by dragging it into the indicated frame.
+4. Enter the **Keystore password**, **Key alias** and **Key password** values as indicated.
+5. Enter the keystore **Reference name**. This is a unique name used to reference the file in `codemagic.yaml`
+6. Click the **Add keystore** button to add the keystore.
+
+For each of the added keystore, its common name, issuer, and expiration date are displayed.
+
+{{<notebox>}}
+**Note**: The uploaded keystore cannot be downloaded from Codemagic. It is crucial that you independently store a copy of the keystore file as all subsequent builds released to Google Play should be signed with the same keystore.
+
+However, keep the keystore file private and do not check it into a public repository.
 {{</notebox>}}
 
 
-## Generating a keystore
+## Referencing keystores in codemagic.yaml
 
-You can create a keystore for signing your release builds with the Java Keytool utility by running the following command:
+To tell Codemagic to fetch the uploaded keystores from the **Code signing identities** section during the build, list the reference of the uploaded keystore under the `android_signing` field.
 
-```bash
-keytool -genkey -v -keystore keystore_name.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias alias_name
-```
+#### Fetching a single keystore file
 
-Keytool then prompts you to enter your personal details for creating the certificate, as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **keystore_name.jks** in the directory you're in. The key is valid for 10,000 days.
+Add the following code to the `environment` section of your `codemagic.yaml` file:
 
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  android-workflow:
+    name: Android Workflow
+    # ....
+    environment:
+      android_signing:
+        - keystore_reference
+{{< /highlight >}}
 
+Default environment variables are assigned by Codemagic for the values on the build machine:
 
-Let's have a look at the 2 ways to set up code signing for Android apps:
+- Keystore path: `CM_KEYSTORE_PATH`
+- Keystore password: `CM_KEYSTORE_PASSWORD`
+- Key alias: `CM_KEY_ALIAS`
+- Key alias password: `CM_KEY_PASSWORD`
+
+#### Fetching multiple keystore files
+
+When fetching multiple keystores during a build, it is necessary to explicitly set names for environment variables that will point to the file paths on the build machine.
+
+{{< highlight yaml "style=paraiso-dark">}}
+environment:
+  android_signing:
+    - keystore: keystore_reference_1
+      keystore_environment_variable: THIS_KEYSTORE_PATH_ON_DISK_1
+      keystore_password_environment_variable: THIS_KEYSTORE_PASSWORD_1
+      key_alias_environment_variable: THIS_KEY_ALIAS_1
+      key_password_environment_variable: THIS_KEY_PASSWORD_1
+    - keystore: keystore_reference_2
+      keystore_environment_variable: THIS_KEYSTORE_PATH_ON_DISK_2
+      keystore_password_environment_variable: THIS_KEYSTORE_PASSWORD_2
+      key_alias_environment_variable: THIS_KEY_ALIAS_2
+      key_password_environment_variable: THIS_KEY_PASSWORD_2
+{{< /highlight >}}
+
 
 ## Signing Android apps using Gradle
 
-This example shows how to set up code signing using Gradle.
+To sign your Android app, simply modify your **`android/app/build.gradle`** as follows:
 
-- Set your signing configuration in `build.gradle` as follows:
-
-```gradle
+{{< highlight kotlin "style=paraiso-dark">}}
 ...
   android {
       ...
       defaultConfig { ... }
-
       signingConfigs {
           release {
               if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
@@ -55,7 +112,6 @@ This example shows how to set up code signing using Gradle.
               }
           }
       }
-
       buildTypes {
           release {
               ...
@@ -64,87 +120,24 @@ This example shows how to set up code signing using Gradle.
       }
   }
   ...
-```
+{{< /highlight >}}
 
-{{<notebox>}}
-Warning: Keep the key.properties file private; don’t check it into public source control.
-{{</notebox>}}
 
-- Save the keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) to the respective environment variables in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files (i.e. keystore) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build.
+## Signing Android apps using user-specified keys
 
-```yaml
- environment:
-      groups:
-        - keystore_credentials
-      # Add the above mentioned group environment variables in Codemagic UI (either in Application/Team variables)
-        # CM_KEYSTORE_PATH 
-        # CM_KEYSTORE
-        # CM_KEYSTORE_PASSWORD
-        # CM_KEY_PASSWORD
-        # CM_KEY_ALIAS
-```
-{{<notebox>}}
-Tip: Store all the keystore variables in the same group so they can be imported to codemagic.yaml workflow at once. 
+Instead of modifying the `build.gradle` file, you can use a script to re-create a keystore file on the build machine and use default signing method via `key.properties` file:
+
+{{< highlight kotlin "style=paraiso-dark">}}
+scritpts:
   
-If the group of variables is reusable for various applications, they can be defined in [Global variables and secrets](../variables/environment-variable-groups/#global-variables-and-secrets) in **Team settings** for easier access.
-{{</notebox>}}
+  # ...
 
-- In the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, you will need to decode the keystore file and add it before the build command. You can choose any path to your keystore file. For example:
-
-```yaml
-scripts:
-  - name: Build Android
-    script: |
-      echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH   # Not required if using team code signing identities
-      cd android && ./gradlew assembleRelease
-```
-
-## Signing Android apps using key.properties
-
-The following templates show code signing using `key.properties`.
-
-### Set up default debug key.properties
-
-```yaml
-- name: Set up debug key.properties
-  script: |
-    keytool -genkeypair \
-      -alias androiddebugkey \
-      -keypass android \
-      -keystore ~/.android/debug.keystore \
-      -storepass android \
-      -dname 'CN=Android Debug,O=Android,C=US' \
-      -keyalg 'RSA' \
-      -keysize 2048 \
-      -validity 10000
-```
-### Set up code signing with user-specified keys
-
-In order to code sign the build, save the keystore file, keystore password (if keystore is password-protected), key alias and key alias password (if key alias is password-protected) to the respective environment variables in the **Environment variables** section in Codemagic UI. Click **Secure** to encrypt the values. Note that binary files (i.e. keystore) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build:
-
-```
-CM_KEYSTORE_PATH: /tmp/keystore.keystore
-CM_KEYSTORE
-CM_KEYSTORE_PASSWORD
-CM_KEY_ALIAS
-CM_KEY_PASSWORD
-```
-```yaml
- environment:
-      groups:
-        - keystore_credentials
- ```
- 
-Use the following script:
-
-```yaml
-- name: Set up key.properties
-  script: |
-    echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH   # Not required if using team code signing identities
-    cat >> "$CM_BUILD_DIR/project_directory/android/key.properties" <<EOF
-    storePassword=$CM_KEYSTORE_PASSWORD
-    keyPassword=$CM_KEY_PASSWORD
-    keyAlias=$CM_KEY_ALIAS
-    storeFile=$CM_KEYSTORE_PATH
-    EOF
-```
+  - name: Set up key.properties
+    script: | 
+      cat >> "$CM_BUILD_DIR/project_directory/android/key.properties" <<EOF
+      storePassword=$CM_KEYSTORE_PASSWORD
+      keyPassword=$CM_KEY_PASSWORD
+      keyAlias=$CM_KEY_ALIAS
+      storeFile=$CM_KEYSTORE_PATH
+      EOF    
+{{< /highlight >}}
