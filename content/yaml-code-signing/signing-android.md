@@ -27,7 +27,7 @@ Keytool then prompts you to enter your personal details for creating the certifi
 
 ### Uploading a keystore
 
-1. Open your Codemagic Team settings, go to  **codemagic.yaml settings** > **Code signing identities**.
+1. Open your Codemagic Team settings, and go to  **codemagic.yaml settings** > **Code signing identities**.
 2. Open **Android keystores** tab.
 3. Upload the keystore file by clicking on **Choose a file** or by dragging it into the indicated frame.
 4. Enter the **Keystore password**, **Key alias** and **Key password** values as indicated.
