@@ -6,14 +6,14 @@ weight: 11
 
 [**Appetize**](https://appetize.io/) enables you to run native iOS and Android mobile apps directly in your browser. No downloads, plugins, or extra permissions needed. 
 
-## Getting Started
-Before getting started you need to get some tokens and keys.
+## Getting started
+Before getting started you will need to generate an Appetize API token and a public key for your app.
 
-### Get Appetize Token
-All users with admin or developer roles may request an API token after logging in at [account](https://appetize.io/account) page.
+### Get Appetize token
+All users with admin or developer roles may request an API token after logging in to your [account](https://appetize.io/account) page.
 After getting your **API_TOKEN** you need to add it to your [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles) in a group named **appetize** for example.
 
-### Get Your App PublicKey
+### Get the public key for your app 
 You have at least to upload your app once to [Appetize](https://appetize.io/upload) manually and then you can get the app *publicKey*.
 in your *codemagic.yaml* file add the app key as a variable.
 
@@ -25,7 +25,7 @@ in your *codemagic.yaml* file add the app key as a variable.
         APP_PUBLIC_KEY: "YOUR_APP_PUBLIC_KEY"
 {{< /highlight >}}
 
-## Uploading Android App
+## Uploading an Android app
 The following script will help you achieving the deployment process:
 
 {{< highlight yaml "style=paraiso-dark">}}
@@ -36,16 +36,16 @@ The following script will help you achieving the deployment process:
 {{< /highlight >}}
 Change the value of the `apkPath` to your actual apk path.
 
-## Uploading iOS App
+## Uploading an iOS app
 For iOS, you need to upload a `.zip` or `.tar.gz` file containing your compressed `.app` bundle.
 
-### Xcode Build
+### Xcode build
 You can run one of these commands to get your `.app`:
 {{< highlight yaml "style=paraiso-dark">}}
 - name: Build unsigned .app
   script: | 
     xcodebuild -workspace "ios/Runner.xcworkspace" -scheme "$XCODE_SCHEME" -configuration "Debug" -sdk iphonesimulator -derivedDataPath ios/output
-    xcodebuild -project   "ios/Runner.xcodeproj"   -scheme "$XCODE_SCHEME" -configuration "Debug" -sdk iphonesimulator -derivedDataPath ios/output
+    # xcodebuild -project   "ios/Runner.xcodeproj" -scheme "$XCODE_SCHEME" -configuration "Debug" -sdk iphonesimulator -derivedDataPath ios/output
 {{< /highlight >}}
 
 Then you need to zip the generated `.app` folder:
@@ -58,7 +58,7 @@ Then you need to zip the generated `.app` folder:
 {{< /highlight >}}
 Don't forget to set the value of your `XCODE_SCHEME` variable.
 
-### Upload the .zip File
+### Upload the zip file
 The following script will help you achieving the deployment process:
 
 {{< highlight yaml "style=paraiso-dark">}}
