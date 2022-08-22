@@ -8,7 +8,7 @@ Signing macOS applications requires [Apple Developer Program](https://developer.
 
 {{< include "/partials/app-store-connect-api-key.md" >}}
 
-#### Obtaining the Certificate private key
+#### Obtaining the certificate private key
 
 To sign iOS apps, you can use the private key of an iOS Distribution certificate that has already been created in your Apple Developer Program account.
 
