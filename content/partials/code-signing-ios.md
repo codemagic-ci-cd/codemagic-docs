@@ -109,7 +109,7 @@ Then, include this group in your workflow and set up provisioning profiles with 
 {{< highlight yaml "style=paraiso-dark">}}
 environment:
   groups:
-    - provisioning_profile
+    - provisioning_profiles
 
 # ...
 
