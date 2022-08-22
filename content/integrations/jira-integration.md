@@ -35,9 +35,9 @@ The `JIRA_AUTH` environment variable is a base64 encoded string which consists o
 
 You can encode these credentials in the **macOS Terminal** using:
 
-```
+{{< highlight bash "style=paraiso-dark">}}
 echo -n 'email@example.com:<api_token>' | openssl base64
-```
+{{< /highlight >}}
 
 Alternatively, use an online tool to base64 encode this string. 
 
@@ -50,7 +50,7 @@ This is the subdomain you chose when you set up your Jira account e.g. "YOUR_SUB
 
 #### Specifying the JIRA_ISSUE environment variable
 
-Issues, epics, and stories have a unique id, usually in the format **'XXXX-N'**, and is visible on your issues either in the bottom right or top left when looking at an issue. Put this value in the `JIRA_ISSUE` environment variable. 
+Issues, epics, and stories have a unique id, usually in the format **'projectKey-id'**, and is visible on your issues either in the bottom right or top left when looking at an issue. Put this value in the `JIRA_ISSUE` environment variable. 
 
 #### Finding and updating the JIRA_TRANSITION_ID environment variable
 
