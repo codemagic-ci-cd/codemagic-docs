@@ -26,7 +26,7 @@ cat codemagic_api_key.p8 | pbcopy
 ---
 
 11. Create variable `APP_STORE_CONNECT_KEY_IDENTIFIER`. The value is the **Key ID** field from **App Store Connect > Users and Access > Keys**.
-12.  Create variable `APP_STORE_CONNECT_ISSUER_ID`. The value is the **Issuer ID** field from **App Store Connect > Users and Access > Keys**.
+12. Create variable `APP_STORE_CONNECT_ISSUER_ID`. The value is the **Issuer ID** field from **App Store Connect > Users and Access > Keys**.
 
 {{<notebox>}}
 **Tip**: Store all the keystore variables in the same group so they can be imported to codemagic.yaml workflow at once. 
