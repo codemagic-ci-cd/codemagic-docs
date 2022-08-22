@@ -3,7 +3,7 @@
 
 {{<markdown>}}
 #### Creating the App Store Connect API key
-Signing MacOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership.
+Signing macOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership.
 {{</markdown>}}
 
 {{< include "/partials/app-store-connect-api-key.md" >}}
