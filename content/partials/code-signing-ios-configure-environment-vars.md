@@ -3,7 +3,7 @@
 
 #### Configuring environment variables
 
-1. Open your Codemagic app settings, go to **Environment variables** tab.
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter `CERTIFICATE_PRIVATE_KEY` as the **_Variable name_**.
 3. Open the file `ios_distribution_private_key` with a text editor and copy the **entire contents** of the file, including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags. Alternatively, you can run the following command on the file:
 {{< highlight Shell "style=rrt">}}
