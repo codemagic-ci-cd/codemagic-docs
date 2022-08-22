@@ -63,7 +63,7 @@ cat ios_distribution_certificate.p12 | base64 | pbcopy
 5. Enter a variable group name, e.g. **_appstore_credentials_**.
 6. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
 7. Click the **Add** button to add the variable.
-8. Repeat the steps 2. - 7. to create variable `CM_PROVISIONING_PROFILE` and paste the `base64` encoded value of the provisioning profile file.
+8. Repeat steps 2 -7 to create the variable `CM_PROVISIONING_PROFILE` and paste the `base64` encoded value of the provisioning profile file.
 9. Add the `CM_CERTIFICATE_PASSWORD` variable, make it **Secure** and add it to the same variable group.
 
 
