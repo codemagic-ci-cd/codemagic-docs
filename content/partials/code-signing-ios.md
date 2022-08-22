@@ -98,7 +98,7 @@ Then, add the code signing configuration and the commands to code sign the build
 
 #### Using multiple provisioning profiles
 
-To set up multiple provisioning profiles, for example, to use app extensions such as [NotificationService](https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension), the easiest option is to add the provisioning profiles to your environment variables with a similar naming convention.
+To set up multiple provisioning profiles, for example, to use app extensions such as [Notification Service](https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension), the easiest option is to add the provisioning profiles to your environment variables with a similar naming convention.
 
 For example, create a `provisioning_profiles` Environment variable group and add variables such as:
 - CM_PROVISIONING_PROFILE_BASE
