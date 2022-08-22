@@ -109,7 +109,7 @@ cat ios_distribution_certificate.p12 | base64 | pbcopy
 5. Enter a variable group name, e.g. **_appstore_credentials_**.
 6. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
 7. Click the **Add** button to add the variable.
-8. Repeat the steps 2. - 7. to create variables `CM_PROVISIONING_PROFILE` and `INSTALLER_CERTIFICATE`. Paste the `base64` encoded values for both of these files.
+8. Repeat steps 2 - 7 to create variables `CM_PROVISIONING_PROFILE` and `INSTALLER_CERTIFICATE`. Paste the `base64` encoded values for both of these files.
 9. Add the `CM_CERTIFICATE_PASSWORD` and `INSTALLER_CERTIFICATE_PASSWORD` variables, make them **Secure** and add them to the same variable group.
 
 Then, add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
