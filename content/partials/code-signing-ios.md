@@ -53,7 +53,7 @@ In order to use manual code signing, you need the following:
 - **Provisioning profile**: You can get it from **Apple Developer Center > Certificates, Identifiers & Profiles > Profiles** and select the provisioning profile you would like to export and download.
 
 
-1. Open your Codemagic app settings, go to **Environment variables** tab.
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter `CM_CERTIFICATE` as the **_Variable name_**.
 3. Run the following command on the certificate file to `base64` encode it and copy to clipboard:
 {{< highlight Shell "style=rrt">}}
