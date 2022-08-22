@@ -1,7 +1,7 @@
 ---
 ---
 
-#### Configuring Environment variables
+#### Configuring environment variables
 
 1. Open your Codemagic app settings, go to **Environment variables** tab.
 2. Enter `CERTIFICATE_PRIVATE_KEY` as the **_Variable name_**.
