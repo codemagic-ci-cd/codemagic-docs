@@ -49,7 +49,7 @@ In order to set up integration for Flutter specific apps the following steps mus
 
 1. Generate a folder named **PerfectoRunAndroid** (can be named differently) in the root directory of your project.
 
-2. Moving into PerfectoRun directory and initiate Gradle by executing the following commands in your local terminal:
+2. Moving into **PerfectoRunAndroid** directory and initiate Gradle by executing the following commands in your local terminal:
 ```
 cd PerfectoRun 
 gradle init 
@@ -136,6 +136,7 @@ In order to generate **testBuildType** which refers to **testApkPath**, the foll
 ```
 - name: Upload files to Perfecto and run tests
   script: |
+      cd PerfectoRunAndroid
       ./gradlew perfecto-android-inst
 ```
 
@@ -143,7 +144,7 @@ In order to generate **testBuildType** which refers to **testApkPath**, the foll
 
 Flutter iOS apps take almost the step steps as android builds:
 
-1. Create another folder in the root directory named **PerfectoRunAndroid** (can be named differently)
+1. Create another folder in the root directory named **PerfectoRunIos** (can be named differently)
 2. Manually create **build.gradle** along with the following cconten:
 ```
 buildscript {
@@ -201,6 +202,7 @@ perfectoGradleSettings {
 ```
 - name: Upload iOS files to Perfecto and run tests
   script: |
+      cd PerfectoRunIos
       gradle perfecto-xctest
 ```
 
