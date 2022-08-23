@@ -96,7 +96,7 @@ At the end of a successful build, Codemagic outputs a downloadable `.zip` file.
 
 Snaps are packaged apps that can be published to and installed from the [Spancraft Snap Store](https://snapcraft.io/store). Building a snap package requires having a `snapcraft.yaml` configuration file in the root of the repository, read more about how to [create a `snapcraft.yaml` file for a Flutter app](https://snapcraft.io/docs/flutter-applications).
 
-To build a snap package, select the **Build Snap package** checkbox in the **Build** section of your Linux workflow. When building a snap, the build configuration comes from the `snapcraft.yaml` file and the Flutter version, build mode and build arguments selected in Codemagic have no effect. To publish the snap to the Snap Store, set up [publishing to the Snap Store](../publishing/snap-store).
+To build a snap package, select the **Build Snap package** checkbox in the **Build** section of your Linux workflow. When building a snap, the build configuration comes from the `snapcraft.yaml` file and the Flutter version, build mode and build arguments selected in Codemagic have no effect. To publish the snap to the Snap Store, set up [publishing to the Snap Store](../flutter-publishing/snap-store).
 
 Additionally, you may want to install the generated `.snap` package onto your machine. The package will not be code signed unless you publish it to Snapcraft. You would need to use the `--dangerous` flag to install the package without code signing:
 
