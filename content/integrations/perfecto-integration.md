@@ -1,7 +1,7 @@
 ---
 title: Perfecto integration
 description: How to integrate your workflows with Perfecto using codemagic.yaml
-weight: 11
+weight: 13
 ---
 
 **Perfecto** is a web-based Software as a Service (SaaS) platform that allows mobile application developers and QA Engineers to work with services such as advanced automation, monitoring and testing services. It is possible to integrate with Perfecto directly from your **codemagic.yaml**
@@ -21,7 +21,7 @@ workflows:
   workflow-name:
     environment:
       groups:
-        - browserstack_credentials
+        - perfecto_credentials
 ```
 
 For further information about using variable groups please click [here](.../variables/environment-variable-groups/).
