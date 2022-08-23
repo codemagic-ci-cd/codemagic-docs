@@ -64,7 +64,6 @@ buildscript {
             url "https://repo1.perfectomobile.com/public/repositories/maven/"      
         }
         google()
-        jcenter()
         mavenCentral()
         
     }
@@ -149,7 +148,6 @@ Flutter iOS apps take almost the step steps as android builds:
 ```
 buildscript {
     repositories {
-        jcenter()
             maven {
                 url "https://repo1.perfectomobile.com/public/repositories/maven"        
             }
