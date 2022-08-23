@@ -444,7 +444,7 @@ workflows:
 ## Next steps
 While this basic workflow configuration is incredibly useful, it is certainly not the end of the road and there are numerous advanced actions that Codemagic can help you with.
 
-We encourage you to investigate [Running tests with Codemagic](../yaml-testing/testing) to get you started with testing, as well as additional guides such as the one on running tests on [Firebase Test Lab](../yaml-testing/firebase-test-lab) or [Registering iOS test devices](../custom-menu-position/ios-provisioning).
+We encourage you to investigate [Running tests with Codemagic](../yaml-testing/testing) to get you started with testing, as well as additional guides such as the one on running tests on [Firebase Test Lab](../yaml-testing/firebase-test-lab) or [Registering iOS test devices](../testing/ios-provisioning).
 
 Documentation on [Using codemagic.yaml](../yaml/yaml-getting-started) teaches you to configure additional options such as [changing the instance type](../yaml-getting-started/#instance-type) on which to build, speeding up builds by configuring [Caching options](../yaml-getting-started/#instance-type#cache), or configuring builds to be [automatically triggered](../yaml-getting-started/#triggering) on repository events.
 
