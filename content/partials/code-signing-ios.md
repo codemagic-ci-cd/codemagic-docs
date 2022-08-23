@@ -8,13 +8,13 @@ Signing iOS applications requires [Apple Developer Program](https://developer.ap
 
 {{< include "/partials/code-signing-ios-obtain-certificate.md" >}}
 
+{{< include "/partials/code-signing-ios-configure-environment-vars.md" >}}
+
 #### Automatic vs Manual code signing
 
 Signing iOS apps requires a `signing certificate` (App Store **development** or **distribution** certificate in `.p12` format) and a `provisioning profile`. In **manual code signing** you save these files as Codemagic `environment variables` and manually reference them in the appropriate build steps.
 
 In **Automatic code signing**, Codemagic takes care of Certificate and Provisioning profile management for you. Based on the `Certificate private key` that you provide, Codemagic will automatically fetch the correct certificate from the App Store or create a new one if necessary.
-
-{{< include "/partials/code-signing-ios-configure-environment-vars.md" >}}
 
 #### Automatic code signing
 
