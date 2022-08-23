@@ -96,7 +96,7 @@ expo eject
 
 All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
 {{<notebox>}}
-**Tip** If you are using [Codemagic Teams](../teams/teams), then signing files, such as Android keystores, can be managed under the [Code signing identities](./code-signing-identities) section in the team settings and do not have to be uploaded as environment variables as in the below instructions.
+**Tip** If you are using [Codemagic Teams](../teams/teams), then signing files, such as Android keystores, can be managed under following the [Android code signing](../yaml-code-signing/signing-android) guide and you do not have to be uploaded as environment variables as in the below instructions.
 {{</notebox>}}
 
 {{< tabpane >}}
@@ -211,7 +211,7 @@ scripts:
   # ...
   - name: Build ipa for distribution
     script: |
-   cd ios && xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+      xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
 artifacts:
   - build/ios/ipa/*.ipa
   - /tmp/xcodebuild_logs/*.log
@@ -408,7 +408,7 @@ workflows:
           agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build ipa for distribution
         script: | 
-          cd ios && xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+          xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
@@ -444,8 +444,8 @@ workflows:
 ## Next steps
 While this basic workflow configuration is incredibly useful, it is certainly not the end of the road and there are numerous advanced actions that Codemagic can help you with.
 
-We encourage you to investigate [Running tests with Codemagic](../yaml-testing/testing) to get you started with testing, as well as additional guides such as the one on running tests on [Firebase Test Lab](../yaml-testing/firebase-test-lab) or [Registering iOS test devices](../custom-menu-position/ios-provisioning).
+We encourage you to investigate [Running tests with Codemagic](../yaml-testing/testing) to get you started with testing, as well as additional guides such as the one on running tests on [Firebase Test Lab](../yaml-testing/firebase-test-lab) or [Registering iOS test devices](../testing/ios-provisioning).
 
-Documentation on [Using codemagic.yaml](../yaml/yaml-getting-started) teaches you to configure additional options such as [changing the instance type](../yaml-getting-started/#instance-type) on which to build, speeding up builds by configuring [Caching options](../yaml-getting-started/#instance-type#cache), or configuring builds to be [automatically triggered](../yaml-getting-started/#triggering) on repository events.
+Documentation on [Using codemagic.yaml](../yaml/yaml-getting-started) teaches you to configure additional options such as [changing the instance type](../yaml/yaml-getting-started/#instance-type) on which to build, speeding up builds by configuring [Caching options](../yaml-getting-started/#instance-type#cache), or configuring builds to be [automatically triggered](../yaml-getting-started/#triggering) on repository events.
 
 ---
