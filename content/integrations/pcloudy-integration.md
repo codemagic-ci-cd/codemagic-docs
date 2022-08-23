@@ -54,4 +54,4 @@ In order to upload test suites for android apps, you need to run ./gradlew assem
 
 ## Sample projects
 
-A sample project that shows how to configure pCloudy integration is available [here]()
+A sample project that shows how to configure pCloudy integration is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/pcloudy_integration_demo_project)
