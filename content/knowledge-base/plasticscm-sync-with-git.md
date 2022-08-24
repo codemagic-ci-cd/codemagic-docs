@@ -1,6 +1,6 @@
 ---
-description: How to Sync PlasticSCM with Git 
-title: Sync PlasticSCM with Git
+description: How to Sync Plastic SCM with Git 
+title: Sync Plastic SCM with Git
 weight: 13
 ---
 
@@ -11,6 +11,6 @@ This feature immediately turns Plastic SCM into a DVCS fully compatible with Git
 
 To do so, you can right click on any branch in the `Branches` tab and **Sync with Git**.
 
-![How to sync PlasticSCM with Git](../uploads/plastic-sync-with-git.png)
+![How to sync Plastic SCM with Git](../uploads/plastic-sync-with-git.png)
 
 Then you need to add your `Git repository URL`, `User Name`, and `Password` to access that repository.
