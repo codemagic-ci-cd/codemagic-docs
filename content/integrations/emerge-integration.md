@@ -36,7 +36,7 @@ fastlane add_plugin emerge
 
 In the `Fastfile`, create a lane that utilizes the `emerge` plugin to upload the archive. You can refer to the complete example given below for uploading the build to Emerge:
 
-```
+{{< highlight ruby "style=paraiso-dark">}}
 fastlane_require 'git'
 
 default_platform(:ios)
