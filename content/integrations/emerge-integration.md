@@ -81,10 +81,10 @@ This script checks if the current build is building a pull request. If it is a p
 
 To use it in your `codemagic.yaml`, use the lane that you created: 
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 - name: Upload archive to Emerge Tools
-   script: bundle exec fastlane emerge_app_upload
-```
+  script: bundle exec fastlane emerge_app_upload
+{{< /highlight >}}
 
 > You must upload a base build so Emerge can compare the archive's size differences in subsequent pull requests.
 
