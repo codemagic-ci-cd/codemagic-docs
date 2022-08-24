@@ -32,7 +32,7 @@ Emerge has created a plugin for Fastlane that makes it easy to upload iOS builds
 
 {{< highlight yaml "style=paraiso-dark">}}
 fastlane add_plugin emerge
-```
+{{< /highlight >}}
 
 In the `Fastfile`, create a lane that utilizes the `emerge` plugin to upload the archive. You can refer to the complete example given below for uploading the build to Emerge:
 
