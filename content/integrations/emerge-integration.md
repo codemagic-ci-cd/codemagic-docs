@@ -25,7 +25,7 @@ workflows:
     environment:
       groups:
         - emerge_credentials
-```
+{{< /highlight >}}
 
 ## Fastlane plugin
 Emerge has created a plugin for Fastlane that makes it easy to upload iOS builds. You can add it to your project by running:
