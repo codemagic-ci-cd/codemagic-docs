@@ -75,7 +75,7 @@ platform :ios do
     end
   end
 end
-```
+{{< /highlight >}}
 
 This script checks if the current build is building a pull request. If it is a pull request, it takes the source commit of the build and compares it to the build of the base commit hash. Then, it uploads it to Emerge for processing for the size comparison. Otherwise, it uploads the build to Emerge with the type "main".
 
