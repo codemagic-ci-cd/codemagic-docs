@@ -16,20 +16,20 @@ cat ios_distribution_private_key | pbcopy
 
 ---
 
-9. Run the following command on the **App Store Connect API key** file that you downloaded earlier (in our example saved as `codemagic_api_key.p8`) to copy its content to clipboard:
+8. Run the following command on the **App Store Connect API key** file that you downloaded earlier (in our example saved as `codemagic_api_key.p8`) to copy its content to clipboard:
 {{< highlight Shell "style=rrt">}}
 cat codemagic_api_key.p8 | pbcopy
 {{< /highlight >}}
 
-10. Create a new Environment variable `APP_STORE_CONNECT_PRIVATE_KEY` and paste the value from clipboard.
+9. Create a new Environment variable `APP_STORE_CONNECT_PRIVATE_KEY` and paste the value from clipboard.
 
 ---
 
-11. Create variable `APP_STORE_CONNECT_KEY_IDENTIFIER`. The value is the **Key ID** field from **App Store Connect > Users and Access > Keys**.
-12. Create variable `APP_STORE_CONNECT_ISSUER_ID`. The value is the **Issuer ID** field from **App Store Connect > Users and Access > Keys**.
+10. Create variable `APP_STORE_CONNECT_KEY_IDENTIFIER`. The value is the **Key ID** field from **App Store Connect > Users and Access > Keys**.
+11. Create variable `APP_STORE_CONNECT_ISSUER_ID`. The value is the **Issuer ID** field from **App Store Connect > Users and Access > Keys**.
 
 {{<notebox>}}
-**Tip**: Store all the keystore variables in the same group so they can be imported to codemagic.yaml workflow at once. 
+**Tip**: Store all the of these variables in the same group so they can be imported to codemagic.yaml workflow at once. 
 {{</notebox>}}
 
 Environment variables have to be added to the workflow either individually or as a group. Modify your `codemagic.yaml` file by adding the following:
