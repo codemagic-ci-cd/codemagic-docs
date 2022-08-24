@@ -18,7 +18,7 @@ Custom integrations with Codemagic require an API Key. It can be obtained from y
 
 Add the API Key under the **environment variables** section in Codemagic. Name the variable as **EMERGE_API_TOKEN** and put it under the group **emerge_credentials**. Then, you can refer to the variable group in `codemagic.yaml` as: 
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 workflows:
   ios-workflow:
     name: iOS Workflow
