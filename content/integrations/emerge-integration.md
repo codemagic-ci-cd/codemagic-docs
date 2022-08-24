@@ -91,18 +91,18 @@ To use it in your `codemagic.yaml`, use the lane that you created:
 ## Codemagic.yaml
 You can upload the iOS build to Emerge Tool as a part of your Codemagic CI/CD workflow to automate the process. Here is an example of the scripts you can add to your `codemagic.yaml` for building the archive and uploading it to Emerge: 
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 scripts:
-      - name: Bundle install
-        script: | 
-          bundle install
-      - name: Install Emerge Fastlane plugin
-        script: |
-          fastlane add_plugin emerge
-      - name: Build ipa for distribution
-        script: | 
-          xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
-      - name: Upload archive to Emerge Tools
-        script: | 
-          bundle exec fastlane emerge_app_upload
-```
+  - name: Bundle install
+     script: | 
+       bundle install
+  - name: Install Emerge Fastlane plugin
+     script: |
+       fastlane add_plugin emerge
+  - name: Build ipa for distribution
+     script: | 
+       xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
+  - name: Upload archive to Emerge Tools
+     script: | 
+       bundle exec fastlane emerge_app_upload
+{{< /highlight >}}
