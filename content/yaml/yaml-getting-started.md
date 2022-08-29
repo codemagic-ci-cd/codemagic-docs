@@ -131,8 +131,9 @@ workflows:
           - name@example.com
       scripts:
         - echo 'Post-publish script'
-    labels:
-       - My first label name
+      labels:
+        - QA
+        - ${TENANT_NAME}
 ```
 
 ### Workflows
@@ -468,13 +469,13 @@ Note that you can specify an absolute path as a working directory as well.
 
 ### Labels
 
-You may use `codemagic.yaml` to define several labels for your builds. Labels also supports environment variables as shown in the snippet below.
+You may use `codemagic.yaml` to define several labels for your builds. Labels also support environment variables as shown in the snippet below.
 
 ```yaml
 workflows:
   sample_workflow:
-     name: My Workflow
-     labels:
-       - QA
-       - ${TENANT_NAME}
+    name: My Workflow
+      labels:
+        - QA
+        - ${TENANT_NAME}
 ```
