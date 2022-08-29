@@ -4,17 +4,17 @@ description: How to integrate your workflows with Perfecto using codemagic.yaml
 weight: 13
 ---
 
-**Perfecto** is a web-based Software as a Service (SaaS) platform that allows mobile application developers and QA Engineers to work with services such as advanced automation, monitoring and testing services. It is possible to integrate with Perfecto directly from your **codemagic.yaml**
+****Perfecto** is a web-based platform that allows mobile application developers and QA Engineers to work with services such as advanced automation, monitoring, and testing services. It is possible to integrate with Perfecto directly from your **codemagic.yaml**
 
 Signing up with [Perfecto](https://www.perfecto.io/) is required in order to get credentials that are needed during an upload process. 
 
-Usin the following cURL script in a pre-build script(a script that is run after executing build commands in yaml), **.apk**, **.aab** and **.ipa** binaries can be uploaded to the Perfecto platform:
+Using the following cURL script in a post-build script(a script that is run after executing build commands in yaml), **.apk**, **.aab** and **.ipa** binaries can be uploaded to the Perfecto platform:
 
 ```
 curl "https://web.app.perfectomobile.com/repository/api/v1/artifacts" -H "Perfecto-Authorization: $PERFECTO_TOKEN" -H "Content-Type: multipart/form-data" -F "requestPart={\"artifactLocator\":\"PRIVATE:app.aab\",\"artifactType\":\"ANDROID\",\"override\":true}" -F "inputStream=@/path/to/your_binary"
 ```
 
-**PERFECTO_TOKEN** can found in the Perfecto UI with your account. Environment variables can be added in the Codemagic web app using the ‘Environment variables’ tab. You can then and import your variable groups into your codemagic.yaml. For example, if you named your variable group ‘browserstack_credentials’, you would import it as follows:
+**PERFECTO_TOKEN** can be found in the Perfecto UI with your account. Environment variables can be added in the Codemagic web app using the ‘Environment variables tab. You can then import your variable groups into your codemagic.yaml. For example, if you named your variable group ‘perfecto_credentials’, you would import it as follows:
 
 ```
 workflows:
