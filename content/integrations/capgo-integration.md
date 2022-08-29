@@ -55,7 +55,8 @@ workflows:
         npx @capgo/cli upload
 ```
 When uploading app versions to **Capgo**, executing the following command will submit updates to all user (if production channel is set to public):
-```
+
+```bash
 npx @capgo/cli@latest upload -c production
 ```
 
