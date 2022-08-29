@@ -8,10 +8,10 @@ weight: 7
 
 [Capgo](https://capgo.app/) allows you to deploy live updates for Capacitor apps after they have been published to the App Store or Google Play.
 
-In order to get live updates in your Capgo account via Codemagic, you will need to follow the steps:
+In order to get live updates in your Capgo account via Codemagic, you will need to complete the following the steps:
 
 1. Sign up with Capgo to get your login token
-2. Add the foolowing part in your **capacitor.config.json**
+2. Add the following part in your **capacitor.config.json**
 ```
 "plugins": {
         "CapacitorUpdater": {
