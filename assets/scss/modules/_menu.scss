@@ -22,14 +22,21 @@
                     transition: all 200ms ease-in-out;
 
                     &::after {
-                        display: none;
-                        @include fontAwesome('\f0d7');
+                        content: '';
+                        @include icon(getAssetUrl('media/icons/caret-down.svg'));
                         position: absolute;
-                        top: 0;
-                        right: 15px;
-                        height: 100%;
-                        align-items: center;
-                        font-size: 10px;
+                        top: 50%;
+                        right: 10%;
+                        transform: translate(50%,-50%);
+                        background-color: $black;
+                        width: 9px;
+                        height: 9px;
+                        -webkit-mask-size: contain;
+                        mask-size: contain;
+                        display: none;
+                    }
+                    &:hover::after {
+                        background-color: $blue-hover;
                     }
                 }
                 &__posts {
@@ -47,7 +54,7 @@
                         cursor: pointer;
 
                         &::after {
-                            display: flex;
+                            display: inline-block;
                         }
 
                         &:hover {
@@ -109,8 +116,20 @@
             justify-content: space-between;
 
             &::after {
-                @include fontAwesome('\f35d');
-                font-size: 0.7em;
+                content: '';
+                @include icon(getAssetUrl('media/icons/up-right-from-square.svg'));
+                position: absolute;
+                top: 50%;
+                right: 10%;
+                transform: translate(50%,-50%);
+                background-color: $black;
+                width: 12px;
+                height: 12px;
+                -webkit-mask-size: contain;
+                mask-size: contain;
+            }
+            &:hover::after {
+                background-color: $blue-hover;
             }
         }
     }

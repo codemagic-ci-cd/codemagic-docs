@@ -8,15 +8,30 @@
     color: #97a5c5;
     margin: 10px 0 20px;
 
+    .fa-home {
+        @include icon(getAssetUrl('media/icons/home.svg'));
+        background-color: $blue;
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+    }
     span {
         display: flex;
         align-items: center;
+        position: relative;
 
         &::before {
-            @include fontAwesome('\f054');
-            color: $grey-bg;
-            font-size: 10px;
+            @include icon(getAssetUrl('media/icons/chevron-right.svg'));
+            background-color: $grey-bg;
             margin-right: 15px;
+            width: 12px;
+            height: 12px;
+            content: '';
+            display: inline-block;
+            -webkit-mask-size: contain;
+            mask-size: contain;
         }
     }
 

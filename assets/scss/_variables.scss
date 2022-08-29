@@ -32,21 +32,15 @@ $font-family-default: 'Metropolis', sans-serif;
 $font-family-serif: 'Noto Serif TC', serif;
 
 // Mixins
-@mixin fontAwesome($icon) {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    content: $icon;
+
+@function getAssetUrl($url) {
+    @return '{{(resources.Get "#{$url}" | fingerprint).RelPermalink }}';
 }
-@mixin fontAwesomeBrand($icon) {
-    font-family: 'Font Awesome 5 Brands';
-    content: $icon;
-}
+
 @mixin icon($url) {
     -webkit-mask: url($url) no-repeat 50% 50%;
     mask: url($url) no-repeat 50% 50%;
     -webkit-mask-size: cover;
     mask-size: cover;
 }
-@function getAssetUrl($url) {
-    @return '{{(resources.Get "#{$url}" | fingerprint).RelPermalink }}';
-}
+

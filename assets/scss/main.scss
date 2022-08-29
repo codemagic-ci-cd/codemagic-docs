@@ -53,3 +53,43 @@ h5,
 h6 {
     color: $black-l;
 }
+
+.icon {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-weight: 400;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: transparent;
+    vertical-align: middle;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    background-position: center center;
+
+    // &.fa-home {
+    //     @include icon(getAssetUrl('media/icons/home.svg'));
+    // }
+    // &.fa-link {
+    //     @include icon(getAssetUrl('media/icons/link.svg'));
+    // }
+    // &.fa-times {
+    //     @include icon(getAssetUrl('media/icons/times.svg'));
+    // }
+    // &.fa-arrow-right {
+    //     @include icon(getAssetUrl('media/icons/arrow-right.svg'));
+    // }
+    // &.fa-edit {
+    //     @include icon(getAssetUrl('media/icons/edit.svg'));
+    // }
+    // &.fa-caret-down {
+    //     @include icon(getAssetUrl('media/icons/caret-down.svg'));
+    // }
+    // &.fa-chevron-right {
+    //     @include icon(getAssetUrl('media/icons/chevron-right.svg'));
+    // }
+}
