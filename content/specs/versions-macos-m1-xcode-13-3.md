@@ -132,5 +132,5 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 
 ## Other Xcode versions
 
-- 14.0 (14A5294g) `/Applications/Xcode-14.app`
+- 14.0 (14A5294g) `/Applications/Xcode-14.0.app`
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`
