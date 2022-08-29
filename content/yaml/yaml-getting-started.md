@@ -475,7 +475,7 @@ You may use `codemagic.yaml` to define several labels for your builds. Labels al
 workflows:
   sample_workflow:
     name: My Workflow
-      labels:
-        - QA
-        - ${TENANT_NAME}
+    labels:
+      - QA
+      - ${TENANT_NAME}
 ```
