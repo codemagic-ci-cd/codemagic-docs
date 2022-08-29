@@ -6,7 +6,7 @@ weight: 7
 
 ## Getting Started
 
-[Capgo](https://capgo.app/) is an instant updater for Capacitor apps and allows you user to try beta version without the need of TestFlight, or Google beta process. It is possible to integrate the flow with **Codemagic**.
+[Capgo](https://capgo.app/) allows you to deploy live updates for Capacitor apps after they have been published to the App Store or Google Play.
 
 In order to get live updates in your Capgo account via Codemagic, you will need to follow the steps:
 
@@ -31,14 +31,14 @@ CapacitorUpdater.notifyAppReady()
         npm install @capgo/capacitor-updater
         npx @capgo/cli login $CAPGO_TOKEN
 ```
-**$CAPGO_TOKEN** is your login token and can be found under your Capgo account. Environment variables can be added in the Codemagic web app using the ‘Environment variables’ tab. You can then and import your variable groups into your codemagic.yaml. For example, if you named your variable group ‘browserstack_credentials’, you would import it as follows:
+**$CAPGO_TOKEN** is your login token and can be found under your Capgo account. Environment variables can be added in the Codemagic web app using the Environment variables tab. You can then import your variable groups into your codemagic.yaml. For example, if you named your variable group ‘capgo_credentials’, you would import it as follows:
 
 ```
 workflows:
   workflow-name:
     environment:
       groups:
-        - browserstack_credentials
+        - capgo_credentials
 
 5. Run **npx cap sync**:
 ```
@@ -59,7 +59,7 @@ When uploading app versions to **Capgo**, executing the following command will s
 npx @capgo/cli@latest upload -c production
 ```
 
-As soon as users start installing app versions on their devices, a device list will be visible in the Capgo UI and then any of them can be pivked in order to let specific groupd of users know about updates shipped with version uploads.
+As soon as users start installing app versions on their devices, a device list will be visible in the Capgo UI and then any of them can be picked in order to let specific groups of users know about updates shipped with version uploads.
 
 ## Sample projects
 
