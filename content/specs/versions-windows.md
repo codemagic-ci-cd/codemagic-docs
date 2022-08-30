@@ -6,7 +6,7 @@ weight: 3
 
 ## Hardware
 
-- Premium VM on Windows `8 vCPUs, 32 GB memory` (instance type `windows_x2`)
+- Premium VM on Windows `8 vCPUs, 32 GB memory`
 
 ## System
 

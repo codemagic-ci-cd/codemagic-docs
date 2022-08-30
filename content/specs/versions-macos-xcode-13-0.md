@@ -12,8 +12,8 @@ weight: 7
 
 ## Hardware
 
-- Standard VM on Mac mini `2.3GHz Quad Core / 8GB` (instance type `mac_mini`)
-- Premium VM on Mac Pro `3.7GHz Quad Core / 32GB` (instance type `mac_pro`)
+- Standard VM on Mac mini `2.3GHz Quad Core / 8GB`
+- Premium VM on Mac Pro `3.7GHz Quad Core / 32GB`
 
 ## System
 
