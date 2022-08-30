@@ -440,6 +440,19 @@ publishing:
         fi
 ```
 
+### Labels
+
+You may use `codemagic.yaml` to define several list of labels for your apps. This will allow you to white label your apps and is visible in `/builds` dashboard page and `/app/<app-id>/build/<build-id>` pages. As shown in the snippet below, labels also support environment variables as value and goes under a workflow.
+
+```yaml
+workflows:
+  sample_workflow:
+    name: My Workflow
+    labels:
+      - QA
+      - ${TENANT_NAME}
+```
+
 ## Working directory
 
 You may select a working directory globally for the entire workflow or individual scripts only. If not specified, the global working directory defaults to the directory where the repository is cloned (`/Users/builder/clone`). You can override the global working directory by specifying the working directory in the individual steps. Consider the example below:
@@ -466,16 +479,3 @@ workflows:
 Working directory paths are relative to the repository clone directory, e.g. if `mobile` is the working directory, then the script will be executed in `/Users/builder/clone/mobile`.
 
 Note that you can specify an absolute path as a working directory as well.
-
-### Labels
-
-You may use `codemagic.yaml` to define several labels for your builds. Labels also support environment variables as shown in the snippet below.
-
-```yaml
-workflows:
-  sample_workflow:
-    name: My Workflow
-    labels:
-      - QA
-      - ${TENANT_NAME}
-```
