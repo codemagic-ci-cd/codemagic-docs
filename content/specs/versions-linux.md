@@ -25,8 +25,8 @@ weight: 2
 - curl `7.68.0`
 - docker `20.10.7`
 - ew-cli `0.0.44`
-- firebase `9.23.3`
-- flutter `3.0.1 ($HOME/programs/flutter)`
+- firebase `11.3.0`
+- flutter `3.0.5 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
@@ -36,7 +36,7 @@ weight: 2
 - ionic `5.4.16`
 - jq `jq-1.6`
 - ktlint `0.43.2`
-- node `14.15.3`
+- node `16.16.0`
 - npm `6.14.9`
 - python2 `2.7.18`
 - python `3.8.10`

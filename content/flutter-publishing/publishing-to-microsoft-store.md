@@ -62,8 +62,7 @@ The very first version of the app must be submitted in the Partner Center manual
 
 #### Version your package
 
-Check out how to version your package in the [Microsoft documentation](https://docs.microsoft.com/en-
-us/windows/uwp/publish/package-version-numbering). Note that per Microsoft Store requirements applications are not allowed to have a version with a revision number (last digit of the version) other than zero.
+Check out how to version your package in the [Microsoft documentation](https://docs.microsoft.com/en-us/windows/uwp/publish/package-version-numbering). Note that per Microsoft Store requirements applications are not allowed to have a version with a revision number (last digit of the version) other than zero.
 
 To version your `MSIX package` for Microsoft Store Submission with Codemagic, you can either set the value as a string, such as `1.0.0.0`, or use Codemagic's read-only environment variables (`$PROJECT_BUILD_NUMBER`, `$BUILD_NUMBER`) to automatically increment versions on every release.
 

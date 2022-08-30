@@ -12,13 +12,17 @@ Version: 0.0.1
 @import './header';
 @import './footer';
 @import './animations';
+@import '../fonts/fonts';
 
 // Import views
 @import './article';
 @import './homepage';
 
 // Import partials
+@import './modules/accordion';
 @import './modules/links-group';
+@import './modules/tabbed-pane';
+@import './modules/clipboard';
 
 body {
     margin: 0;
@@ -48,4 +52,22 @@ h4,
 h5,
 h6 {
     color: $black-l;
+}
+
+.icon {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-weight: 400;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: transparent;
+    vertical-align: middle;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    background-position: center center;
 }

@@ -14,45 +14,46 @@ weight: 8
 
 ## System
 
-- System version `macOS 12.3.1 (21E258)`
-- Kernel version `Darwin 21.4.0`
-- Disk `322GB (Free Space: 76GB)`
+- System version `macOS 12.5.1 (21G83)`
+- Kernel version `Darwin 21.6.0`
+- Disk `322GB (Free Space: 56GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
-- Android NDK `23.1.7779620`
-- aws `2.7.0`
+- Android NDK `23.0.7123448`
+- aws `2.7.27`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
 - curl `7.79.1`
-- docker `20.10.2`
-- ew-cli `0.0.45`
-- fastlane `2.205.2`
-- firebase `9.23.3`
-- flutter `3.0.1 ($HOME/programs/flutter)`
-- gem `3.3.13`
-- gh `2.10.1`
-- git `2.36.1`
+- docker `20.10.17`
+- ew-cli `0.0.47`
+- fastlane `2.209.1`
+- firebase `11.3.0`
+- flutter `3.0.5 ($HOME/programs/flutter)`
+- gem `3.3.21`
+- gh `2.14.7`
+- git `2.37.2`
 - Google Cloud SDK `327.0.0`
 - gradle `7.3.1`
 - gsutil `4.58`
-- homebrew `3.4.11`
+- homebrew `3.5.10`
 - ionic `6.12.4`
 - jq `1.6`
-- ktlint `0.45.2`
-- node `14.15.5`
-- npm `8.6.0`
+- ktlint `0.47.0`
+- node `18.8.0`
+- npm `8.18.0`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
 - ssh `8.6p1`
 - sudo `1.9.5p2`
 - tar `3.5.1`
+- ucd `0.11.10`
 - unzip `6.00`
 - wget `1.21.3`
-- yarn `1.22.18`
-- yq `4.25.1`
+- yarn `1.22.19`
+- yq `4.27.2`
 - zip `3.0`
 
 ## Android emulators
@@ -69,36 +70,39 @@ weight: 8
 
 ## Java versions
 
-- **18.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
+- **18.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
 - **16.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-16.jdk/Contents/Home`
-- **11.0.15** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_332** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **11.0.16.1** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_345** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
 ## Unity 2020.3.31f1
 
 UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app
 
-## Xcode 13.3.1 (13E500a)
+## Xcode 13.4.1 (13F100)
 
-This is the Xcode version used by default when you select `13.3`, `13.3.1` or `latest` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `13.3`, `13.3.1` or `latest` in your codemagic.yaml file.
+This is the Xcode version used by default when you select `13.4`, `13.4.1` or `latest` in build settings in the workflow
+editor for Flutter apps or set Xcode version to `13.4`, `13.4.1` or `latest` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
-Xcode path: `/Applications/Xcode-13.3.app`
+Xcode path: `/Applications/Xcode-13.4.app`
 
-With Xcode `13.3.1` build version `13E500a` the following runtimes and devices are installed:
+With Xcode `13.4.1` build version `13F100` the following runtimes and devices are installed:
 
 ### Runtimes
 
 - iOS 14.5
 - iOS 15.0
 - iOS 15.4
+- iOS 15.5
 - tvOS 14.5
 - tvOS 15.0
 - tvOS 15.4
+- tvOS 16.0
 - watchOS 7.4
 - watchOS 8.0
 - watchOS 8.5
+- watchOS 9.0
 
 ### Devices
 
@@ -142,4 +146,5 @@ With Xcode `13.3.1` build version `13E500a` the following runtimes and devices a
 
 ## Other Xcode versions
 
-- 13.4 (13F17a) `/Applications/Xcode-13.4.app`
+- 14.0 (14A5294g) `/Applications/Xcode-14.0.app`
+- 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`

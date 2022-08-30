@@ -19,7 +19,7 @@ weight: 7
 
 - System version `macOS 11.6.2 (20G314)`
 - Kernel version `Darwin 20.6.0`
-- Disk `322GB (Free Space: 116GB)`
+- Disk `322GB (Free Space: 120GB)`
 
 ## Pre-installed tools
 
@@ -28,11 +28,12 @@ weight: 7
 - aws `2.4.6`
 - cocoapods `1.11.2`
 - cordova `10.0.0`
-- curl
+- curl `7.64.1`
 - docker `20.10.2`
+- ew-cli `N/A`
 - fastlane `2.199.0`
-- firebase `9.3.0`
-- flutter `3.0.1 ($HOME/programs/flutter)`
+- firebase `11.3.0`
+- flutter `3.0.5 ($HOME/programs/flutter)`
 - gem `3.2.33`
 - gh `2.3.0`
 - git `2.34.1`
@@ -41,21 +42,21 @@ weight: 7
 - gsutil `4.58`
 - homebrew `3.3.9`
 - ionic `6.12.4`
-- jq
+- jq `1.6`
 - ktlint `0.43.2`
-- node `14.15.5`
-- npm `8.1.4`
+- node `16.16.0`
+- npm `8.11.0`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
-- ssh
-- sudo
-- tar
-- unzip
-- wget
+- ssh `8.1p1`
+- sudo `1.9.5p2`
+- tar `3.3.2`
+- unzip `6.00`
+- wget `1.21.2`
 - yarn `1.22.17`
-- yq
-- zip
+- yq `4.16.1`
+- zip `3.0`
 
 ## Android emulators
 
@@ -84,8 +85,9 @@ Includes pre-installed modules for iOS, Android, macOS, Linux, Windows and WebGL
 
 ## Xcode 13.2.1 (13C100)
 
-This is the Xcode version used by default when you select `13.2` or `13.2.1` in build settings in the workflow 
-editor for Flutter apps or set Xcode version to `13.2` or `13.2.1` in your codemagic.yaml file. 
+This is the Xcode version used by default when you select `13.2` or `13.2.1`
+in build settings in the workflow editor for Flutter apps or set Xcode version to
+`13.2` or `13.2.1` in your codemagic.yaml file.
 Other available versions are listed [here](#other-xcode-versions).
 
 Xcode path: `/Applications/Xcode-13.2.1.app`
@@ -146,4 +148,3 @@ With Xcode `13.2.1` build version `13C100` the following runtimes and devices ar
 
 - 13.1 (13A1030d) `/Applications/Xcode-13.1.app`
 - 13.0 (13A233) `/Applications/Xcode-13.0.app`
-

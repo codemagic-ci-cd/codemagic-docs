@@ -54,7 +54,9 @@ You can follow the instructions in [Flutter's documentation](https://flutter.dev
 
 Alternatively, you can use [environment variables](../building/environment-variables/ 'Environment variables') to prepare your app for code signing.
 
-Set your signing configuration in `build.gradle` as follows:
+Set your signing configuration in `build.gradle` or `build.gradle.kts` as follows:
+{{< tabpane >}}
+{{% tab header="build.gradle" %}}
 
 ```gradle
 ...
@@ -87,6 +89,62 @@ android {
 }
 ...
 ```
+
+{{% /tab %}}
+
+{{% tab header="build.gradle.kts" %}}
+
+```gradle
+
+import java.io.File
+import java.util.*
+
+val keystoreProperties =
+        Properties().apply {
+            var file = File("key.properties")
+            if (file.exists()) load(file.reader())
+        }
+
+plugins { ... }
+
+android {
+    ...
+    val appVersionCode = (System.getenv()["NEW_BUILD_NUMBER"] ?: "1")?.toInt()
+    defaultConfig {
+        ...
+        versionCode = appVersionCode
+        ...
+    }
+    signingConfigs {
+        create("release") {
+            if (System.getenv()["CI"].toBoolean()) { // CI=true is exported by Codemagic
+                storeFile = file(System.getenv()["CM_KEYSTORE_PATH"])
+                storePassword = System.getenv()["CM_KEYSTORE_PASSWORD"]
+                keyAlias = System.getenv()["CM_KEY_ALIAS"]
+                keyPassword = System.getenv()["CM_KEY_PASSWORD"]
+            } else {
+                storeFile = file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+            }
+        }
+    }
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
+        }
+    }
+}
+
+dependencies { ... }
+```
+
+{{< /tab >}}
+
+{{< /tabpane >}}
+
 {{<notebox>}}
 Warning: Keep the key.properties file private; don’t check it into public source control.
 {{</notebox>}}

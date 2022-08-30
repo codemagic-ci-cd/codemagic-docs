@@ -14,4 +14,4 @@ This will create two new files on your desktop: `codemagic_ssh_key` (private key
 
 {{<notebox>}}
 Note that issues may arise when using the `RSA SHA-1` hash algorithm for generating the key pair as it is being quickly deprecated across operating systems and SSH clients due to various vulnerabilities.
-{{<notebox>}}
+{{</notebox>}}

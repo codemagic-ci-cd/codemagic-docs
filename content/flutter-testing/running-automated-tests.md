@@ -21,10 +21,6 @@ If your Flutter project is in a subdirectory of the repository, Codemagic cannot
 
 {{</notebox>}}
 
-### Specifying the test target
-
-In **App settings > Tests > Integration and unit tests**, you will see the **Flutter test target** and **Flutter drive target** fields displayed if the respective tests are detected. You can specify the exact target to run a specific test.
-
 ### Running Flutter Driver tests
 
 There are several options for running integration tests during the build. You can select one option per workflow:
@@ -59,9 +55,33 @@ flutter emulators --launch emulator
 
 {{</notebox>}}
 
-It is also possible to use `flutter test` to run integration tests using the `integration_test` dependency. When using `flutter test integration_test` instead of `flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart`, it is possible to generate machine-readable output, and the results will be displayed in the UI once the tests have been completed. To do so, add `test integration_test` under `Flutter drive arguments` in the **Flutter workflow editor**.
+#### Mobile
 
-However, this approach is not possible for integration tests for web using the `chromedriver`.
+The recommended approach to running integration tests is to use `flutter test` and the `integration_test` dependency. To do so, navigate to **App settings > Tests > Integration and unit tests** and under **Flutter drive arguments** define the following:
+
+```bash
+test integration_test
+```
+
+To run only a specific test, the path has to be specified:
+
+```bash
+test integration_test/app_test.dart
+```
+
+#### Web
+
+However, the above approach is not suitable for integration tests for web using `chromedriver`, and the following arguments are recommended instead:
+
+```bash
+drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart
+```
+
+{{<notebox>}}
+
+Note that for this approach, creating the `test_driver` folder with the `integration_test.dart` file beforehand is required, as per [Flutter documentation](https://docs.flutter.dev/cookbook/testing/integration/introduction#5b-web).
+
+{{</notebox>}}
 
 ### Stop build if tests or analysis fail
 

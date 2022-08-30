@@ -2,248 +2,450 @@
 title: Building a React Native app
 description: How to build a React Native app with codemagic.yaml
 weight: 5
-aliases: 
+aliases:
   - '../yaml/building-a-react-native-app'
   - /getting-started/building-a-react-native-app
 ---
+React Native is a cross-platform solution that allows you to build apps for both iOS and Android faster using a single language. Pairing it with Codemagic's CI/CD pipeline creates a powerful tool that automates all phases of mobile app development.
 
-React Native is a cross-platform solution that allows you to build apps for both iOS and Android faster using a single language. When working with YAML, the basics are still the same, the build scripts are added to the `scripts` section in the [overall architecture](../getting-started/yaml#template).
+
 
 ## Setting up a React Native project
 
-The apps you have available on Codemagic are listed on the Applications page. Click **Add application** to add a new app.
+If you do not have an existing React Native project or if you just want to quickly test Codemagic using a sample project, follow these steps to get started:
 
-1. On the Applications page, click **Set up build** next to the app you want to start building. 
-2. On the popup, select **React Native App** as the project type and click **Continue**.
-3. Create a [`codemagic.yaml`](./yaml) file and add in it the commands to build, test and publish your project. See the full Android and iOS workflow examples below.
-4. Commit the configuration file to the root of your repository.
-5. Back in app settings in Codemagic, scan for the `codemagic.yaml` file by selecting a **branch** to scan and clicking the **Check for configuration file** button at the top of the page. Note that you can have different configuration files in different branches.
-6. If a `codemagic.yaml` file is found in that branch, you can click **Start your first build** and select the **branch** and **workflow** to build.
-7. Finally, click **Start new build** to build the app.
 
+{{< tabpane >}}
+{{< tab header="Clone a sample" >}}
+
+{{<markdown>}}
+
+For a quick start, you can clone the appropriate project from our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/react-native) to a version control platform of your choice and proceed with the next steps.
+
+&nbsp;
+
+{{</markdown>}}
+
+{{< /tab >}}
+
+
+{{< tab header="New Expo project" >}}
+{{<markdown>}}
+If you are new to mobile development, the easiest way to get started is with Expo CLI. Expo is a set of tools built around React Native and, while it has many features, the most relevant feature for us right now is that it can get you writing a React Native app within minutes. You will only need a recent version of Node.js and a phone or emulator.
+
+1. If necessary, install [Node 14 LTS](https://nodejs.org/en/download/) or greater.
+
+2. Install Expo CLI:
+{{</markdown>}}
+{{< tabpane >}}
+{{% tab header="npm" %}}
+{{< highlight Shell "style=rrt">}}
+npm install -g expo-cli
+{{< /highlight >}}
+{{% /tab %}}
+
+{{% tab header="yarn" %}}
+{{< highlight Shell "style=rrt">}}
+yarn global add expo-cli
+{{< /highlight >}}
+{{% /tab %}}
+{{% /tabpane %}}
+{{<markdown>}}
+3. Create a new project
+{{< highlight Shell "style=rrt">}}
+expo init CodemagicSample
+cd CodemagicSample
+{{< /highlight >}}
+    
+4. Configure the Git repository for the app.
+{{</markdown>}}
+{{% /tab %}}
+
+{{% tab header="New React Native CLI project" lang="en" %}}
+If you are already familiar with mobile development, you may want to use React Native CLI. It requires Xcode or Android Studio to get started. The required steps are outlined at the [official React Native site](https://reactnative.dev/docs/environment-setup).
+{{% /tab %}}
+{{< /tabpane >}}
+
+
+---
+
+## Using Expo without ejecting
+
+To run a build on CI/CD we need to have the `ios` and `android` project folders. If you can't or don’t want to permanently eject Expo from your app, then you can do it on the build server each time you run a build. Follow the steps below to get started. You can check the finished sample app in our [samples repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/expo-react-native-not-ejected/codemagic.yaml).
+
+1. Clone your repository to a temporary new location or create a new branch. in order to eject Expo once and get the `android/app/build.gradle` file.
+2. Eject Expo once by running the following command:
+{{< highlight Shell "style=rrt">}}
+expo eject
+{{< /highlight >}}
+3. Copy the `android/app/build.gradle` file from the ejected project and add it to your main repository. In our example, we create a `support-files` folder and store the `build.gradle` inside.
+4. Whenever this guide calls for making changes to the `android/app/build.gradle`, apply these changes to the `support-files/build.gradle` file instead.
+5. Follow the steps in other **Expo without ejecting** sections in this guide to install the expo cli tools on the VM, run the scripts to copy the `build.gradle` file to the correct location and use other tools to adjust iOS settings in the `info.plist` file.
+
+---
+
+{{< include "/partials/add-app-to-codemagic.md" >}}
+
+---
+
+{{< include "/partials/create-yaml-intro.md" >}}
+
+---
+
+## Code signing
+
+All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
 {{<notebox>}}
-**Tip**
-
-Note that you need to set up a [webhook](../building/webhooks) for automatic build triggering. Click the **Create webhook** button on the right sidebar in app settings to add a webhook (not available for apps added via SSH/HTTP/HTTPS).
+**Tip** If you are using [Codemagic Teams](../teams/teams), then signing files, such as Android keystores, can be managed under following the [Android code signing](../yaml-code-signing/signing-android) guide and you do not have to be uploaded as environment variables as in the below instructions.
 {{</notebox>}}
 
-## Android
+{{< tabpane >}}
 
-{{<notebox>}}
-You can find an up-to-date codemagic.yaml React Native Android workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/codemagic.yaml#L5).
-{{</notebox>}}
+{{< tab header="Android" >}}
+{{< include "/partials/code-signing-android.md" >}}
+{{< /tab >}}
 
-Set up local properties
+{{< tab header="iOS" >}}
+{{< include "/partials/code-signing-ios.md" >}}
+{{< /tab >}}
 
-```yaml
-- echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
-```
+{{< /tabpane >}}
 
-Building an Android application:
 
-```yaml
-- cd android && ./gradlew build
-```
+---
 
-Here is a sample codemagic.yaml workflow for building Android and publishing to the Google Play alpha track:
+## Setting up the Android package name and iOS bundle identifier
 
-```yaml
+Configure Android package name and iOS bundle identifier by adding the corresponding variables in the `codemagic.yaml` and editing the `app.json` files.
+
+{{< tabpane >}}
+{{< tab header="Android" >}}
+
+{{< highlight yaml "style=paraiso-dark">}}
 workflows:
-    react-native-android:
-        name: React Native Android
-        max_build_duration: 120
-        instance_type: mac_mini
-        environment:
-            groups:
-                - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS_PASSWORD, CM_KEY_ALIAS_USERNAME)
-                - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS)
-                - other
-            # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-            vars:
-                PACKAGE_NAME: "YOUR_PACKAGE_NAME" # <-- Put your package name here e.g. com.domain.myapp
-            node: latest
-        triggering:
-            events:
-                - push
-                - tag
-                - pull_request
-            branch_patterns:
-                - pattern: develop
-                  include: true
-                  source: true
-        scripts:
-            - name: Install npm dependencies
-              script: |
-                npm install
-            - name: Set Android SDK location
-              script: |
-                echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
-            - name: Set up keystore
-              script: |
-                    echo $CM_KEYSTORE | base64 --decode > /tmp/keystore.keystore
-                    cat >> "$CM_BUILD_DIR/android/key.properties" <<EOF
-                    storePassword=$CM_KEYSTORE_PASSWORD
-                    keyPassword=$CM_KEY_ALIAS_PASSWORD
-                    keyAlias=$CM_KEY_ALIAS_USERNAME
-                    storeFile=/tmp/keystore.keystore
-                    EOF               
-            - name: Build Android release
-              script: |
-                # Set environment variable so it can be used to increment build number in android/app/build.gradle
-                # Note that tracks can be specified when retrieving latest build number from Google Play, for example:
-                # export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks alpha) + 1))
-                export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME") + 1))
-                cd android && ./gradlew bundleRelease  # To generate an .apk use--> ./gradlew assembleRelease
-        artifacts:
-            - android/app/build/outputs/**/*.aab
-            - android/app/build/outputs/**/*.apk
-        publishing:
-            # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
-            email:
-                recipients:
-                    - user_1@example.com
-                    - user_2@example.com
-                notify:
-                  success: true     # To not receive a notification when a build succeeds
-                  failure: false    # To not receive a notification when a build fails
-            slack: 
-              # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
-              channel: '#channel-name'
-              notify_on_build_start: true   # To receive a notification when a build starts
-              notify:
-                success: true               # To receive a notification when a build succeeds
-                failure: false              # To not receive a notification when a build fails
-            google_play:
-              # See the following link for information regarding publishing to Google Play - https://docs.codemagic.io/yaml-publishing/google-play
-              credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-              track: alpha # <-- Any default or custom track that is not in ‘draft’ status
-```
+  react-native-android:
+    # ....
+    environment:
+      groups:
+        # ...
+      vars:
+        PACKAGE_NAME: "io.codemagic.sample.reactnative"
+{{< /highlight >}}
+{{< /tab >}}
 
-## iOS
+{{< tab header="iOS" >}}
 
-{{<notebox>}}
-You can find an up-to-date codemagic.yaml React Native iOS workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/codemagic.yaml#L72).
-{{</notebox>}}
-
-Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for the build.
-
-Script for building an iOS application:
-
-```yaml
-- xcode-project build-ipa --workspace "ios/MyReact.xcworkspace" --scheme "MyReact"
-```
-
-Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46). 
-
-Here is a sample codemagic.yaml workflow for building iOS and publishing to App Store Connect:
-
-```yaml
+{{< highlight yaml "style=paraiso-dark">}}
 workflows:
+  react-native-ios:
+    # ....
+    environment:
+      groups:
+        # ...
+      vars:
+        BUNDLE_ID: "io.codemagic.sample.reactnative"
+{{< /highlight >}}
+
+{{< /tab >}}
+{{< /tabpane >}}
+
+
+Example of minimal `app.json` file. Add the `android` and/or `ios` keys:
+{{< highlight json "style=paraiso-dark">}}
+{
+  "expo": {
+    "name": "codemagicSample",
+    "slug": "codemagicSample",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "io.codemagic.sample.reactnative"
+    },
+    "android": {
+      "package": "io.codemagic.sample.reactnative"
+    }
+  }
+}
+{{< /highlight >}}
+
+---
+
+## Configure scripts to build and sign the app
+Add the following scripts to your `codemagic.yaml` file in order to prepare the build environment and start the actual build process.
+In this step you can also define the build artifacts you are interested in. These files will be available for download when the build finishes. For more information about artifacts, see [here](../yaml/yaml-getting-started/#artifacts).
+
+
+{{< tabpane >}}
+{{< tab header="Android" >}}
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+    # ....
+  - name: Install npm dependencies
+    script: |
+    npm install
+  - name: Set Android SDK location
+    script: |
+   echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+  - name: Build Android release
+    script: |
+   cd android && ./gradlew bundleRelease
+
+artifacts:
+  - android/app/build/outputs/**/*.aab
+{{< /highlight >}}
+{{< /tab >}}
+
+{{< tab header="iOS" >}}
+{{< highlight yaml "style=paraiso-dark">}}
+react-native-ios:
+  environment:
+    groups:
+      # ...
+    vars:
+      BUNDLE_ID: "io.codemagic.sample.reactnative"
+      XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
+      XCODE_SCHEME: "CodemagicSample" # <-- Put the name of your Xcode scheme here
+scripts:
+  # ...
+  - name: Build ipa for distribution
+    script: |
+      xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+artifacts:
+  - build/ios/ipa/*.ipa
+  - /tmp/xcodebuild_logs/*.log
+  - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+  - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+{{< /highlight >}}
+{{< /tab >}}
+{{< /tabpane >}}
+
+
+#### Using Expo without ejecting
+{{< tabpane >}}
+
+{{< tab header="Android" >}}
+{{<markdown>}}
+
+Add the following scripts just after the **Install npm dependencies**
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Install Expo CLI and eject
+    script: | 
+      npm install -g expo-cli
+      expo eject
+  - name: Set up app/build.gradle
+    script: |
+   mv ./support-files/build.gradle android/app
+{{< /highlight >}}
+{{</markdown>}}
+{{< /tab >}}
+
+{{< tab header="iOS" >}}
+{{<markdown>}}
+Add the following scripts at the start of the scripts section
+
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Install Expo CLI and eject
+    script: | 
+      yarn install
+      yarn global add expo-cli
+      expo eject
+  - name: Set Info.plist values
+    script: | 
+      PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
+      PLIST_BUDDY=/usr/libexec/PlistBuddy
+      $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
+  - name: Install CocoaPods dependencies
+    script: |
+    cd ios && pod install
+{{< /highlight >}}
+{{</markdown>}}
+{{< /tab >}}
+
+{{< /tabpane >}}
+
+---
+
+## Build versioning
+
+If you are going to publish your app to App Store Connect or Google Play, each uploaded artifact must have a new version satisfying each app store’s requirements. Codemagic allows you to easily automate this process and increment the version numbers for each build. For more information and details, see [here](../configuration/build-versioning).
+
+
+{{< tabpane >}}
+
+{{< tab header="Android" >}}
+{{< include "/partials/build-versioning-android.md" >}}
+{{< /tab >}}
+
+{{< tab header="iOS" >}}
+{{< include "/partials/build-versioning-ios.md" >}}
+{{< /tab >}}
+
+{{< /tabpane >}}
+
+---
+
+## Publishing
+
+{{< include "/partials/publishing-android-ios.md" >}}
+
+---
+
+## Conclusion
+Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to build, code sign, automatically version and publish your project using Codemagic CI/CD.
+Save your work, commit the changes to the repository, open the App in Codemagic UI and start the build to see it in action.
+
+
+Your final `codemagic.yaml` file should look something like this:
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  react-native-android:
+    name: React Native Android
+    max_build_duration: 120
+    instance_type: mac_mini
+    environment:
+      groups:
+        - keystore_credentials
+        - google_play
+      vars:
+        PACKAGE_NAME: "io.codemagic.sample.reactnative"
+    scripts:
+      - name: Set up keystore
+        script: | 
+          echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+      - name: Install npm dependencies
+        script: | 
+          npm install
+      - name: Set Android SDK location
+        script: | 
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Install npm dependencies
+        script: | 
+          npm install
+      - name: Install Expo CLI and eject
+        script: | 
+          npm install -g expo-cli
+          expo eject
+      - name: Set up app/build.gradle
+        script: | 
+          mv ./support-files/build.gradle android/app
+      - name: Set Android SDK location
+        script: | 
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Build Android release
+        script: | 
+          LATEST_GOOGLE_PLAY_BUILD_NUMBER=$(google-play get-latest-build-number --package-name '$PACKAGE_NAME')
+          if [ -z LATEST_BUILD_NUMBER ]; then
+              # fallback in case no build number was found from google play. Alternatively, you can `exit 1` to fail the build
+              UPDATED_BUILD_NUMBER=$BUILD_NUMBER
+          else
+              UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
+          fi
+          cd android && ./gradlew bundleRelease -PversionCode=$UPDATED_BUILD_NUMBER -PversionName=1.0.$UPDATED_BUILD_NUMBER
+    artifacts:
+      - android/app/build/outputs/**/*.aab
+    publishing:
+      email:
+        recipients:
+          - user_1@example.com
+          - user_2@example.com
+        notify:
+          success: true
+          failure: false
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal
+        submit_as_draft: true
+
+
   react-native-ios:
     name: React Native iOS
     max_build_duration: 120
     instance_type: mac_mini
     environment:
       groups:
-        - appstore_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY, CERTIFICATE_PRIVATE_KEY) - https://docs.codemagic.io/code-signing-yaml/signing-ios/
-        - ios_config # <-- (Includes APP_STORE_APP_ID - Put the app id number here. This is found in App Store Connect > App > General > App Information)
-      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+        - appstore_credentials
       vars:
-        XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace" # <-- Put the name of your Xcode workspace here
-        XCODE_SCHEME: "YOUR_SCHEME_NAME" # <-- Put the name of your Xcode scheme here        
-        BUNDLE_ID: "YOUR_BUNDLE_ID_HERE" # <-- Put your Bundle Id here e.g com.domain.myapp
-      node: latest
-      xcode: latest
-      cocoapods: default
-    triggering:
-      events:
-        - push
-        - tag
-        - pull_request
-      branch_patterns:
-        - pattern: develop
-          include: true
-          source: true
+        BUNDLE_ID: "io.codemagic.sample.reactnative"
+        XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
+        XCODE_SCHEME: "CodemagicSample" # <-- Put the name of your Xcode scheme here
+        APP_ID: 1555555551
     scripts:
-      - name: Install npm dependencies
-        script: |
-          npm install
+      - name: Install Expo CLI and eject
+        script: | 
+          yarn install
+          yarn global add expo-cli
+          expo eject
+      - name: Set Info.plist values
+        script: | 
+          PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
+          PLIST_BUDDY=/usr/libexec/PlistBuddy
+          $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
       - name: Install CocoaPods dependencies
-        script: |
+        script: | 
           cd ios && pod install
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-        script: |
-          keychain initialize
-      - name:
-        script: |
-          # For information about Codemagic CLI commands visit: https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/README.md
-          # For details about the --type paramater below - https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--mac_catalyst_app_development--mac_catalyst_app_direct--mac_catalyst_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store
-          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
-      - name: Use system default keychain
-        script: |
-          keychain add-certificates
-      - name: Increment build number
-        script: |
-          #!/bin/sh
-          set -e
-          set -x
-          cd $CM_BUILD_DIR/ios
-          # agvtool new-version -all $(($BUILD_NUMBER + 1))
-          agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1))
+      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
+        script: keychain initialize
+      - name: Fetch signing files
+        script: | 
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+      - name: Set up signing certificate
+        script: keychain add-certificates
       - name: Set up code signing settings on Xcode project
-        script: |
-          xcode-project use-profiles --warn-only
+        script: xcode-project use-profiles
+      - name: Increment build number
+        script: | 
+          cd $CM_BUILD_DIR/ios
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "APP_ID")
+          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build ipa for distribution
-        script: |
-          xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME" 
+        script: | 
+          xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
     publishing:
-      # See the following link for details about email publishing - https://docs.codemagic.io/yaml-publishing/email
       email:
         recipients:
           - user_1@example.com
           - user_2@example.com
         notify:
-          success: true     # To not receive a notification when a build succeeds
-          failure: false    # To not receive a notification when a build fails
-      slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/yaml-publishing/slack
-        channel: '#channel-name'
-        notify_on_build_start: true   # To receive a notification when a build starts
-        notify:
-          success: true               # To receive a notification when a build succeeds
-          failure: false              # To not receive a notification when a build fails
+          success: true
+          failure: false
       app_store_connect:
-          api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key, can also reference environment variable such as $APP_STORE_CONNECT_PRIVATE_KEY
-          key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
-          issuer_id:$APP_STORE_CONNECT_ISSUER_ID       # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
-          submit_to_testflight: true        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.  
-```
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
 
-## Testing, code signing and publishing
+        # Configuration related to TestFlight (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_testflight: true
+        beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+          - group name 1
+          - group name 2
 
-To test and publish a React Native app:
+        # Configuration related to App Store (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_app_store: false
+{{< /highlight >}}
 
-* The code for testing a React Native app also goes under `scripts`, before build commands. An example for testing a React Native app can be found [here](../testing-yaml/testing/#react-native-unit-test).
-* All iOS and Android applications need to be signed before release. See how to set up [iOS code signing](../code-signing-yaml/signing-ios) and [Android code signing](../code-signing-yaml/signing-android).
-* All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
+---
 
-## Build versioning your React Native app
+## Next steps
+While this basic workflow configuration is incredibly useful, it is certainly not the end of the road and there are numerous advanced actions that Codemagic can help you with.
 
-### Android versioning
+We encourage you to investigate [Running tests with Codemagic](../yaml-testing/testing) to get you started with testing, as well as additional guides such as the one on running tests on [Firebase Test Lab](../yaml-testing/firebase-test-lab) or [Registering iOS test devices](../testing/ios-provisioning).
 
-{{<notebox>}}When using automatic build versioning in **codemagic.yaml** please note that configuration changes still need to be made in `android/app/build.gradle` {{</notebox>}}
+Documentation on [Using codemagic.yaml](../yaml/yaml-getting-started) teaches you to configure additional options such as [changing the instance type](../yaml/yaml-getting-started/#instance-type) on which to build, speeding up builds by configuring [Caching options](https://docs.codemagic.io/yaml/yaml-getting-started/#cache), or configuring builds to be [automatically triggered](https://docs.codemagic.io/yaml/yaml-getting-started/#triggering) on repository events.
 
-In the [build.gradle](https://github.com/codemagic-ci-cd/react-native-demo-project/blob/master/android/app/build.gradle) note how the versionCode is set in the `defaultConfig{}`.
-
-Additionally, pay attention to how `signingConfigs{}` and `buildTypes{}` are configured for debug and release.
-
-### iOS versioning
-
-{{<notebox>}}Build versioning for iOS projects is performed as a script step in the codemagic.yaml{{</notebox>}}
- 
-See the **Increment build number** script in the [codemagic.yaml](https://github.com/codemagic-ci-cd/react-native-demo-project/blob/master/codemagic.yaml) in the React Native demo project on GitHub.
+---

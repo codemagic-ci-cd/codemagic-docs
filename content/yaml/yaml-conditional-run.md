@@ -36,8 +36,6 @@ workflows:
 
 In this case, the build would be skipped if there were changes only to Markdown files `.md`.
 
-Note that `codemagic.yaml` is always included in the changeset by default.
-
 Both keys `includes` and `excludes` in `changeset` are *optional*. If the `includes` key is not specified, its value will default to `'.'`. The `excludes` key defaults to no exclusions.
 
 If you use a monorepo, each workflow can be responsible for building a part of your application. Use conditional workflow triggering and specify the path to the application in the changeset as in the example below.
@@ -56,6 +54,10 @@ workflows:
 ```
 
 As a result, commits with changes outside of the `android` folder will not trigger a build.
+
+{{<notebox>}}
+Note that **`codemagic.yaml`** is always included in the changeset by default.
+{{</notebox>}}
 
 ### Using `condition` inside `when`
 

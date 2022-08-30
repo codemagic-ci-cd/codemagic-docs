@@ -245,6 +245,8 @@ environment:
   ruby: 2.7.2       # Define default or version
 ```
 
+Currently, only the above-mentioned software versions can be customized via the environment section in the yaml file. If a different software version needs to be customized, then it may require a different approach depending upon use cases.
+
 {{<notebox>}}
 The Xcode version defines type of macOS build machine used for the build (even if you're building Android). See the default software versions on Codemagic build machines:
 - [macOS build machine specification (Xcode 11.x)](../releases-and-versions/versions/)
@@ -297,6 +299,10 @@ cache:
 ```
 {{<notebox>}}
 Note: Codemagic doesn't support caching symlinks.
+{{</notebox>}}
+
+{{<notebox>}}
+Note: Each workflow has its own cache. It is possible to view the cache for each workflow under the Caching tab in the Codemagic UI.
 {{</notebox>}}
 
 ### Triggering

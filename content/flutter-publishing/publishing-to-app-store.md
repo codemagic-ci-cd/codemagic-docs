@@ -19,7 +19,8 @@ In addition, the application must be **App Store ready** for build distribution,
 
 It is also worth pointing out the necessity for each uploaded binary to have a **different version**; otherwise, it will be refused by App Store Connect. See the [Build versioning](../building/build-versioning/) article for instructions on incrementing app version with Codemagic.
 
-{{<notebox>}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. {{</notebox>}}
+{{<notebox>}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually.
+{{</notebox>}}
 
 In order to be able to test iOS apps on Apple devices, manual device UDID registration in the Apple Developer Program account is required. Alternatively, Codemagic's automatic device registration can be used to register devices as explained [here](https://docs.codemagic.io/testing/ios-provisioning/). 
 
@@ -58,7 +59,7 @@ The Apple Developer Portal integration can be enabled in **User settings > Integ
 
 If you work with multiple Apple Developer teams, you can add additional keys by clicking **Add another key** right after adding the first key and repeating the steps described above. You can delete existing keys or add new ones when you click **Manage keys** next to the Developer Portal integration in user or team settings.
 
-### 3. Enabling App Store Connect publishing for workflow
+### Step 3. Enabling App Store Connect publishing for workflow
 
 Once the Apple Developer Portal has been enabled for the account or team the app belongs to, you can easily enable App Store Connect publishing per workflow.
 
@@ -66,20 +67,27 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 2. Click **App Store Connect**.
 3. If you have several keys available, select the right key in the **App Store Connect API key** field.
 4. Mark the **Publish even if tests fail** checkbox to continue uploading the app artifact even when the tests failed.
-4. Mark the **Submit to TestFlight beta review** checkbox to submit the build for beta review and prepare it for distributing to beta testers. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution).
-5. Mark the **Distribute to beta groups** checkbox and enter the names of the beta groups to automatically distribute the build to the testers in those groups once the build has passed beta review. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution).
-6. Select **Enable App Store Connect publishing** at the top of the section to enable publishing.
+5. Select **Enable App Store Connect publishing** at the top of the section to enable publishing.
 
-Once you have successfully set up publishing to App Store Connect, Codemagic will automatically distribute the app to App Store Connect every time you build the workflow. Note that you must manually submit the app to App Store in App Store Connect.
+Your app will be now published to App Store Connect. However, you can select additional options to submit the build to TestFlight beta review or App Store review. 
 
-## Submitting an app to App Store
+#### Submitting an app to TestFlight
 
-To make your iOS app available to the public, it must be submitted for review in App Store Connect.
+1. Mark the **Submit to TestFlight beta review** checkbox to submit the build for beta review and prepare it for distributing to beta testers. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution).
+2. Mark the **Distribute to beta groups** checkbox and enter the names of the beta groups to automatically distribute the build to the testers in those groups once the build has passed beta review. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution).
+
+#### Submitting an app to App Store review
+
+In order to submit your application to App Store review, mark the **Submit to App Store review** checkbox. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution). 
+
+Alternatively, if you wish to submit an already uploaded build for review in App Store Connect, follow the steps below:
 
 1. Log in to [App Store Connect](https://appstoreconnect.apple.com/).
 2. Navigate to **My Apps** and identify the app you would like to publish to App Store.
 3. To start the submission process, click **Prepare for Submission**.
 4. Check that your app metadata is up to date, and once everything is ready, click the **Submit for Review** button.
+
+Note that the application must be manually released to the App Store once Apple approves the release.
 
 ## Submitting release notes
 

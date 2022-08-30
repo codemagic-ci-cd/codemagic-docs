@@ -141,14 +141,14 @@
             }
         }
         .ctc {
-            display: inline;
-            font-size: 0.75em;
+            display: inline-block;
             margin-left: 0.5em;
             vertical-align: middle;
             opacity: 0;
             cursor: pointer;
-            color: $blue;
             transition: all 300ms ease-in-out;
+            @include icon(getAssetUrl('media/icons/link.svg'));
+            background-color: $blue;
         }
         .notebox {
             background: $grey-xl;

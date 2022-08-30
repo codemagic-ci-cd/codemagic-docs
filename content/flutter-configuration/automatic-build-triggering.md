@@ -52,3 +52,23 @@ If enabled, you would be able to specify tag patterns to trigger builds. Similar
 **Cancel outdated webhook builds**. When checked, Codemagic will automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch. We recommend enabling this feature when you're making several commits, each of which triggers a build.
 
 If you don't enable any automatic build triggers, you can start builds only manually for this workflow.
+
+## Exit or ignore build on certain commit message
+
+You can **ignore building** by adding ```-skip ci``` to your commit message.
+
+If you want to exit a build **when commit message does not include certain string**, then you can add the following script at the top of your scripts section (post-clone script) and it will take care of exiting the build or moving forward:
+```
+set -e
+set -x
+export COMMIT_MSG=$(git log -1 --pretty=%B)
+echo COMMIT_MSG
+if [[ $COMMIT_MSG != *"buildcd"* ]]
+then
+  echo "Commit needs to include 'buildcd' in it's message."
+  exit 1
+else 
+  echo "Commit message includes 'buildcd', moving forward..."
+fi 
+```
+The commit message needs to include **buildcd** to make the build progress in the above-mentioned example.

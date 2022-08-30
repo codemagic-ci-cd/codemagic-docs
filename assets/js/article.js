@@ -24,7 +24,7 @@ const createTableOfContents = () => {
         if (heading) {
             heading.insertAdjacentHTML(
                 'beforeend',
-                `<i class="ctc fas fa-link" data-target-link="${link.href}" title="Copy link to section to clipboard"></i>`,
+                `<i class="ctc icon fa-link" data-target-link="${link.href}" title="Copy link to section to clipboard"></i>`,
             )
         }
     })
@@ -326,12 +326,37 @@ const openActiveCategory = () => {
     })
 }
 
+// Toggle collapsible content
+const collapsibleListener = () => {
+    const collapsibleElements = document.querySelectorAll('[js-collapsible]')
+    collapsibleElements.forEach((el) => {
+        const title = el.querySelector('[js-collapsible-title]')
+        const content = el.querySelector('[js-collapsible-content]')
+        const parent = el.parentElement
+
+        title.addEventListener('click', () => {
+            // Allow only singluar item to be open
+            if (parent.classList.contains('singular')) {
+                const openItem = parent.querySelector('[js-collapsible].open')
+                if (openItem && openItem !== el) {
+                    openItem.classList.remove('open')
+                    window.slideUp(openItem.querySelector('[js-collapsible-content]'), 200)
+                }
+            }
+            // Toggle selected item
+            el.classList.toggle('open')
+            window.slideToggle(content, 200)
+        })
+    })
+}
+
 // On ready
 handleSidebarPosition()
 scrollMenuToActive('[js-docs-menu]', true)
 positionHeaderContents()
 setInitialPreference()
 openActiveCategory()
+collapsibleListener()
 
 // fix scroll position of default scroll to hash
 // timeout to run when page is already scrolled to the header
