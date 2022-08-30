@@ -12,7 +12,7 @@ Steps to build with Flutter shader compilation.
 
 1. Build the app in `profile` mode in your local machine with **actual device connected**. Play around with the app to trigger as many animations as you need, especially ones with compilation jank.
 
-```bash
+{{< highlight bash "style=paraiso-dark">}}
 flutter run --profile --cache-sksl --purge-persistent-cache
 ```
 
