@@ -14,8 +14,6 @@
         width: 15px;
         height: 15px;
         display: inline-block;
-        -webkit-mask-size: contain;
-        mask-size: contain;
     }
     span {
         display: flex;
@@ -30,8 +28,6 @@
             height: 12px;
             content: '';
             display: inline-block;
-            -webkit-mask-size: contain;
-            mask-size: contain;
         }
     }
 

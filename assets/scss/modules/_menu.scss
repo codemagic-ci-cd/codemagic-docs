@@ -31,8 +31,6 @@
                         background-color: $black;
                         width: 9px;
                         height: 9px;
-                        -webkit-mask-size: contain;
-                        mask-size: contain;
                         display: none;
                     }
                     &:hover::after {
@@ -125,8 +123,6 @@
                 background-color: $black;
                 width: 12px;
                 height: 12px;
-                -webkit-mask-size: contain;
-                mask-size: contain;
             }
             &:hover::after {
                 background-color: $blue-hover;

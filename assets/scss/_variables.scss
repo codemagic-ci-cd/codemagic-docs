@@ -40,7 +40,7 @@ $font-family-serif: 'Noto Serif TC', serif;
 @mixin icon($url) {
     -webkit-mask: url($url) no-repeat 50% 50%;
     mask: url($url) no-repeat 50% 50%;
-    -webkit-mask-size: cover;
-    mask-size: cover;
+    -webkit-mask-size: contain;
+    mask-size: contain;
 }
 
