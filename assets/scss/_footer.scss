@@ -20,4 +20,12 @@
         font-weight: bold;
         display: inline-block;
     }
+    .fa-edit {
+        @include icon(getAssetUrl('media/icons/edit.svg'));
+        background-color: $blue;
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+        vertical-align: middle;
+    }
 }

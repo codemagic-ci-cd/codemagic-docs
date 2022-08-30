@@ -33,7 +33,7 @@
     }
 
     &__icon,
-    &__icon.fas {
+    &__icon.icon {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -63,6 +63,17 @@
     }
     &:not(.search--active) .search__icon--clear {
         display: none;
+    }
+
+    .fa-times {
+        @include icon(getAssetUrl('media/icons/times.svg'));
+        background-color: $grey-text-light;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 50%;
+        right: 3%;
+        transform: translate(50%,-50%);
     }
 
     #search-results {
