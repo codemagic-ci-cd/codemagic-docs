@@ -45,7 +45,7 @@ To avoid disruptions to your build pipelines, start migrating to a new hosting s
 ### Java heap space out of memory error for M1 builds
 
 **Description**:
-Builds succeed on Mac pro machines but fail on M1 machines with the below error.
+Builds succeed on Mac Pro machines but fail on M1 machines with the below error.
 
 ```bash
 ERROR:: R8: java.lang.OutOfMemoryError: Java heap space
