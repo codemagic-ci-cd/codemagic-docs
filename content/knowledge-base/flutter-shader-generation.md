@@ -6,7 +6,7 @@ weight: 14
 
 Flutter provides command line tools for app developers to collect shaders in the SkSL (Skia Shader Language) format that end users may require. The SkSL shaders can then be bundled into the app and pre-compiled when an end-user first launches the app, reducing compilation jank in subsequent animations.
 
-You can check the Official Flutter Documentation for more details [here](https://docs.flutter.dev/perf/shader).
+You can check the official Flutter documentation for more details [here](https://docs.flutter.dev/perf/shader).
 
 Steps to build with Flutter shader compilation.
 
