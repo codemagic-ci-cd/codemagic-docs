@@ -29,5 +29,5 @@ flutter build ipa --bundle-sksl-path flutter_01.sksl.json
 {{<notebox>}}
 
 1. Please note that the flutter profile mode is only on actual iOS/Android Devices. It might not run properly on the simulator/emulator. You can check the official Flutter documentation for the flutter profile mode [here](https://github.com/flutter/flutter/wiki/Flutter%27s-modes).
-2. You can refer to the FAQ's related to Flutter shader compilation [here](https://docs.flutter.dev/perf/shader#frequently-asked-questions).
+2. You can refer to the FAQs related to Flutter shader compilation [here](https://docs.flutter.dev/perf/shader#frequently-asked-questions).
    {{</notebox>}}
