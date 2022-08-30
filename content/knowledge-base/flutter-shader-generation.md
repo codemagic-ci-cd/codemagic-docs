@@ -22,7 +22,7 @@ flutter run --profile --cache-sksl --purge-persistent-cache
 
 4. Build the app with SkSL warm-up with your Codemagic Workflow by passing the additional argument `--bundle-sksl-path flutter_01.sksl.json` to your build command. For e.g
 
-```bash
+{{< highlight bash "style=paraiso-dark">}}
 flutter build ipa --bundle-sksl-path flutter_01.sksl.json
 ```
 
