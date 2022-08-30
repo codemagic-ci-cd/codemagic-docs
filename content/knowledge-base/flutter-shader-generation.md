@@ -14,7 +14,7 @@ Steps to build with Flutter shader compilation.
 
 {{< highlight bash "style=paraiso-dark">}}
 flutter run --profile --cache-sksl --purge-persistent-cache
-```
+{{< /highlight >}}
 
 2. Press M at the flutter run command line to save the captured SkSL shaders to a file called `flutter_01.sksl.json` in your root directory.
 
