@@ -24,7 +24,7 @@ flutter run --profile --cache-sksl --purge-persistent-cache
 
 {{< highlight bash "style=paraiso-dark">}}
 flutter build ipa --bundle-sksl-path flutter_01.sksl.json
-```
+{{< /highlight >}}
 
 {{<notebox>}}
 
