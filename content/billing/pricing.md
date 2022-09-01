@@ -32,7 +32,7 @@ The instance types and hardware specifications can be found below.
 | Linux standard VM        | 4 vCPUs, 16 GB memory                                                 |
 | Windows premium VM       | 8 vCPUs, 32 GB memory  
 
-If you are planning to run instrumentation tests with Android emulators it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs. Also, please note that Android emulators are not available on macOS M1 standard VMs.
+If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs. Also, please note that Android emulators are not available on macOS M1 standard VMs.
 
 If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/contact/).
 
