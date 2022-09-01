@@ -5,12 +5,12 @@ weight: 2
 
 ## Free plan
 
-The free plan allows you to use 500 minutes per month on macOS standard machines on a personal account. Your 500 free minutes will be reset on the 1st of each month. Free minutes are not available if you are using a Team.
+The free plan allows you to use 500 minutes per month on macOS M1 standard machines on a personal account. Your 500 free minutes will be reset on the 1st of each month. Free minutes are not available if you are using a Team.
 
 To start using Codemagic for free, [sign up here](https://codemagic.io/signup). 
 ## Pay as you go pricing
 
-Pay as you go pricing allows you to pay for only what you use. 
+Pay as you go pricing allows you to pay for only what you use. You will never be charged more than $299/month on Codemagic's pay as you go plan and can continue to build as much as you want using any of our available instance types.
 
 Extra build concurrencies allow Teams to run up to three parallel builds.
 
@@ -19,8 +19,6 @@ To sign up for the pay as you go plan, [visit this page](https://codemagic.io/si
 ### Instance Types
 
 Codemagic provides macOS, Windows and Linux instance types.
-
-Premium VMs use more powerful hardware will run builds faster than standard VMs. 
 
 The instance types and hardware specifications can be found below.
 
@@ -34,7 +32,7 @@ The instance types and hardware specifications can be found below.
 | Linux standard VM        | 4 vCPUs, 16 GB memory                                                 |
 | Windows premium VM       | 8 vCPUs, 32 GB memory  
 
-If you are planning to run instrumentation tests with Android emulators it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs.
+If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs. Also, please note that Android emulators are not available on macOS M1 standard VMs.
 
 If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/contact/).
 
@@ -46,15 +44,17 @@ For Windows instances, details of the hardware specification, system information
 
 ### Pricing for Personal Accounts
 
-When billing is enabled on personal accounts you will still have **500 free build minutes** on macOS standard VM. To enable billing, proceed [here](https://codemagic.io/billing).
+When billing is enabled on personal accounts, you will still have **500 free build minutes** on macOS M1 standard VM. To enable billing, proceed [here](https://codemagic.io/billing).
 
-Usage on macOS standard VM that exceeds 500 minutes is charged at rate shown below.
+Usage on macOS M1 standard VM that exceeds 500 minutes is charged at rate shown below.
 
-Builds on macOS M1 standard VM, macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes and are charged at the rates shown below. 
+Builds on macOS standard VM, macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes. The per minute pricing for each instance type are shown below.
+
+You will never be charged more than $299/month on this plan.
 
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| macOS M1 standard VM         | $0.190 / minute                                                                                                                                                 |
+| macOS M1 standard VM         | $0.095 / minute                                                                                                                                                 |
 | macOS premium VM         | $0.095 / minute                                                                                                                                                 |
 | macOS standard VM        | $0.038 / minute                                                                                                                                                 |
 | Linux premium VM         | $0.045 / minute                                                                                                                                                 |
@@ -65,43 +65,44 @@ Builds on macOS M1 standard VM, macOS premium VM, Linux standard VM, and Linux p
 
 For teams, all build minutes using macOS M1 standard VM, macOS standard VM, macOS premium VM, Linux standard VM, and Linux premium VM are charged at the rates shown below. 
 
-Team users that were active in the current billing period are charged $10/month. To see how users are counted please see [here](https://docs.codemagic.io/teams/users/)
-
 Each extra build concurrency allows running an additional build in parallel. For example, two extra build concurrencies allow running three builds in parallel. 
 
 You can add addtional cocurrencies in the Codemagic web app by clicking 'Billing' in the left hand menu and then clicking on your Team name. In the 'Billing Overview' you should click 'update' in the Build concurrency section and select the number of concurrencies you wish to add to your Team. 
 
 Each addtional concurrency is $49/month and you will be billed for each concurrency on the last day of each month.
 
+You will never be charged more than $299/month on this plan.
+
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| macOS M1 standard VM         | $0.190 / minute                                                                                                                                                 |
+| macOS M1 standard VM         | $0.095 / minute                                                                                                                                                 |
 | macOS premium VM         | $0.095 / minute                                                                                                                                                 |
 | macOS standard VM        | $0.038 / minute                                                                                                                                                 |
 | Linux premium VM         | $0.045 / minute                                                                                                                                                 |
 | Linux standard VM        | $0.015 / minute                                                                                                                                                 |
-| Windows VM               | $0.045 / minute                                                                                                                                                 |
-| Team user                | $10 / month                                                                                                                                                     |                                                                                                                                                 |
+| Windows VM               | $0.045 / minute                                                                                                                                                 |                                                                                                              |
 | Extra build concurrency  | $49 / month                                                                                                                                                     | 
 
 Consider Professional plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on premium macOS and Linux instances, as well as unlimited team seats. For more information contact us [here](https://codemagic.io/contact/).
 
-## Professional Plan
+## Monthly Plan with 4 or more concurrencies
 
-The Codemagic Professional plan gives you a fixed price plan with the following benefits:
+If you need 4 or more concurrencies, paid on a monthly basis, a fixed price **monthly** subscription is available for **$399/month** payable by credit card. Additional concurrencies are **$100/month**. If you would like to set up a monthly subscription, please contact us [here](https://codemagic.io/contact/).
 
-* 3 concurrencies (premium macOS, Linux, and Windows instances)
+## Annual Plan with 20% discount
+
+The Codemagic annual plan gives you a fixed price plan with the following benefits:
+
+* 3 concurrencies (premium macOS, Mac mini M1, Linux, and Windows instances)
 * Unlimited build minutes
 * Unlimited team seats
 * In-app chat support
 
-The **monthly** subscription is **$299/month** payable by credit card. Additional concurrencies are **$100/month**. If you would like to set up a monthly subscription, please contact us [here](https://codemagic.io/contact/).
-
 An **annual** subscription with **20% discount** is **$2,870/year**. Additional concurrencies are **$960/year**. 
 
-The Professional plan can only be paid for with credit card.
+The annual plan can only be paid for with credit card.
 
-If you have already created a Team in the Codemagic web app, you can upgrade to the Professional plan as follows:
+If you have already created a Team in the Codemagic web app, you can upgrade to the annual plan as follows:
 
 1. Log in to Codemagic.
 2. Click **Billing** in the left-hand menu.
@@ -110,38 +111,18 @@ If you have already created a Team in the Codemagic web app, you can upgrade to 
 5. Enter your **credit card** details and **company information**.
 6. Once you have entered your details, the pay-as-you-go billing will be enabled. To upgrade to the annual Professional plan, click on the **Upgrade** button and follow the instructions to subscribe to the Professional plan.
 
-If you require additional concurrencies or have any other questions about the Professional plan, please contact us [here](https://codemagic.io/contact/).
+If you require additional concurrencies or have any other questions about the annual plan, please contact us [here](https://codemagic.io/contact/).
 
-If you require annual invoicing, please refer to the Professional Plus and Enterprise plans below.
-
-## Professional Plus Plan
-
-The Codemagic Professional Plus plan gives you a fixed price plan with the following benefits:
-
-* 3 concurrencies (macOS M1 standard, premium Linux and Windows instances)
-* Unlimited build minutes
-* Unlimited team seats
-* In-app chat support
-
-The **monthly** subscription is **$599/month** payable by credit card. Additional concurrencies are **$200/month**.
-
-An **annual** subscription with **20% discount** is **$5,750/year**. Additional concurrencies are **$1,920/year**. 
-
-The Professional Plus plan can be paid for with credit card or by annual invoice.
-
-It is not currently possible to subscribe to the Professional Plus plan in the Codemagic web app. If you would like to upgrade to a Professional Plus plan, please contact us [here](https://codemagic.io/contact/).
-
+If you require annual invoicing, please refer to the Enterprise plans below.
 ## Enterprise Plan
 
-Enterprise plans are available from **$6,000/year**.
+Enterprise plans are available from **$500/month** (billed annually).
 
-Enterprise plans which include `macOS M1 standard` instances are available from **$9,000/year**.
+This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, or **custom base images** or other account management services.
 
-This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **dedicated hosts**, or **custom base images**.
+Enterprise plans with a **Service Level Agreement** are available from **$1,000/month** (billed annually).
 
-Enterprise plans with a **Service Level Agreement** are available from **$12,000/year**
-
-Annual invoicing with bank transfer is available for Enterprise plans.
+Annual invoicing with bank transfer is available for Enterprise plans. 
 
 If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/enterprise/). 
 
@@ -153,11 +134,9 @@ It's possible to resell the Codemagic Enterprise plan. Contact us [here](https:/
 
 If you need specific software and tools available on a builder machine we can provide dedicated macOS host machines which give you 2 VMs. 
 
-Dedicated macOS premium hosts are available for $449/month, paid annually with **20% discount** comes to **$4,310/year**. 
+Dedicated macOS M1 standard and macOS premium hosts are available for $449/month, paid annually with **20% discount** comes to **$4,310/year**. 
 
-Dedicated macOS M1 standard hosts are available for $898/month, paid annually with **20% discount** comes to **$8,620/year**. 
-
-Annual plans can be paid for with credit card and invoicing with bank transfer is available.
+Annual dedicated host plans can be paid for with credit card and invoicing with bank transfer is available.
 
 For more information contact us [here](https://codemagic.io/contact/).
 
