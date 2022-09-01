@@ -48,7 +48,7 @@ When billing is enabled on personal accounts, you will still have **500 free bui
 
 Usage on macOS M1 standard VM that exceeds 500 minutes is charged at rate shown below.
 
-Builds on macOS standard VM, macOS M1 standard VM macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes. The per minute pricing for each instance type are shown below.
+Builds on macOS standard VM, macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes. The per minute pricing for each instance type are shown below.
 
 You will never be charged more than $299/month on this plan.
 
