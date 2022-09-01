@@ -101,6 +101,9 @@ This is the skeleton structure of `codemagic.yaml`. Each section, along with the
 workflows:
   my-workflow:
     name: My workflow name
+    labels:
+      - QA
+      - ${TENANT_NAME}
     instance_type: mac_mini
     max_build_duration: 60
     environment:
@@ -131,9 +134,6 @@ workflows:
           - name@example.com
       scripts:
         - echo 'Post-publish script'
-    labels:
-      - QA
-      - ${TENANT_NAME}
 ```
 
 ### Workflows
