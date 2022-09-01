@@ -10,7 +10,7 @@ The free plan allows you to use 500 minutes per month on macOS M1 standard machi
 To start using Codemagic for free, [sign up here](https://codemagic.io/signup). 
 ## Pay as you go pricing
 
-Pay as you go pricing allows you to pay for only what you use. You will never be charged more than $299/month on Codemagic's pay as you go plan.
+Pay as you go pricing allows you to pay for only what you use. You will never be charged more than $299/month on Codemagic's pay as you go plan and can continue to build as much as you want using any of our available instance types.
 
 Extra build concurrencies allow Teams to run up to three parallel builds.
 
