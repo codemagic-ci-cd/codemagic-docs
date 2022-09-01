@@ -44,7 +44,7 @@ For Windows instances, details of the hardware specification, system information
 
 ### Pricing for Personal Accounts
 
-When billing is enabled on personal accounts you will still have **500 free build minutes** on macOS M1 standard VM. To enable billing, proceed [here](https://codemagic.io/billing).
+When billing is enabled on personal accounts, you will still have **500 free build minutes** on macOS M1 standard VM. To enable billing, proceed [here](https://codemagic.io/billing).
 
 Usage on macOS M1 standard VM that exceeds 500 minutes is charged at rate shown below.
 
