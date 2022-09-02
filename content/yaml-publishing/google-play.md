@@ -21,9 +21,9 @@ publishing:
   google_play: # For Android app
     credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS # Contents of the JSON key file for Google Play service account saved as a secure environment variable
     track: alpha # Name of the track internal, alpha, beta, production, internal app sharing, or your custom track name
-    in_app_update_priority: 3 # Optional Priority of the release (only set if in-app updates are supported): integer in range [0, 5]
+    in_app_update_priority: 3 # Optional. Priority of the release (only set if in-app updates are supported): integer in range [0, 5]
     rollout_fraction: 0.25 # Optional. Rollout fraction (set only if releasing to a fraction of users): value between (0, 1)
-    changes_not_sent_for_review: true # Optional boolean To be used ONLY if your app cannot be sent for review automatically *
+    changes_not_sent_for_review: true # Optional boolean. To be used ONLY if your app cannot be sent for review automatically *
     submit_as_draft: true # Optional boolean. Publish artifacts under a draft release. Can not be used together with rollout_fraction. Defaults to false
 ```
 
