@@ -34,7 +34,7 @@ Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up iOS b
 
 ## Cache usage limits
 
-Currently, there is no caching limit in size, however exceeding 1GB cache size might cause performance issues. It means that installing dependencies with no caches could be faster than recovering or updating cached data. 
+Currently, there is no caching limit in size, however, exceeding 1GB cache size might cause performance issues. It means that installing dependencies with no caches could be faster than recovering or updating cached data. 
 
 ## Removing cached dependencies
 
