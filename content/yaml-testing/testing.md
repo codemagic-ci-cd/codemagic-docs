@@ -70,17 +70,18 @@ flutter -d iPhone test integration_test
 You can launch a specific iOS simulator and run tests on the simulator using ‘simctl’ which is a binary to interact with iOS simulators from the command line, as follows:
 
 ```yaml
-xcrun simctl list # This command will give list available simulators on the machine along with UDIDs, you can find list of Devices depending upon type of machine you are running, here https://docs.codemagic.io/specs/versions-macos-xcode-12-5/#devices
-xcrun simctl boot 99B14BF4-7966-4427-ACD1-34BFE4D26A01 # Specify the UDID to boot the simulator
-flutter -d 99B14BF4-7966-4427-ACD1-34BFE4D26A01 test integration_test # Specify the UDID to the integration tests command
+xcrun simctl shutdown all # This command will will shutdown the existing simulators to save on resources.
+TEST_DEVICE=$(xcrun simctl create test-device com.apple.CoreSimulator.SimDeviceType.iPhone-11 com.apple.CoreSimulator.SimRuntime.iOS-15-0) # create new simulator with specified configuration, you can run xcrun simctl list - to check the list of available simulator configurations
+xcrun simctl boot $TEST_DEVICE # boot the newly created simulator
+flutter -d $TEST_DEVICE test integration_test # run the actual test command.
 ```
 
 For the Android emulator you can launch and run your tests as follows:
 
-```yaml 
+```yaml
 flutter emulators --launch emulator &                       # The ampersand is used to run the emulator in the background without blocking the next command
 adb wait-for-device                                         # adb wait-for-device is used to wait for the emulator to finish loading
-flutter -d emulator-5554 test integration_test 
+flutter -d emulator-5554 test integration_test
 ```
 
 ### Running web application tests on a web browser driver
@@ -289,7 +290,7 @@ workflows:
 
 Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
 
-## Native macOS 
+## Native macOS
 
 {{<notebox>}}
 macOS UI Testing is only supported on Xcode 13 images and above as it requires System Integrity Protection (SIP) to be disabled for accessing the accessibility permissions. Older images with Xcode 12 and below do not have SIP disabled and are unsuitable for UI testing macOS apps.
