@@ -16,7 +16,7 @@ weight: 8
 
 - System version `macOS 12.5.1 (21G83)`
 - Kernel version `Darwin 21.6.0`
-- Disk `322GB (Free Space: 56GB)`
+- Disk `322GB (Free Space: 58GB)`
 
 ## Pre-installed tools
 
@@ -30,7 +30,7 @@ weight: 8
 - ew-cli `0.0.47`
 - fastlane `2.209.1`
 - firebase `11.3.0`
-- flutter `3.0.5 ($HOME/programs/flutter)`
+- flutter `3.3.0 ($HOME/programs/flutter)`
 - gem `3.3.21`
 - gh `2.14.7`
 - git `2.37.2`
@@ -48,6 +48,7 @@ weight: 8
 - ruby `2.7.2p137`
 - ssh `8.6p1`
 - sudo `1.9.5p2`
+- swiftgen `6.6.2`
 - tar `3.5.1`
 - ucd `0.11.10`
 - unzip `6.00`
