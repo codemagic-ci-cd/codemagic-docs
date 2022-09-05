@@ -19,7 +19,7 @@ weight: 7
 
 - System version `macOS 11.6.2 (20G314)`
 - Kernel version `Darwin 20.6.0`
-- Disk `322GB (Free Space: 120GB)`
+- Disk `322GB (Free Space: 122GB)`
 
 ## Pre-installed tools
 
@@ -33,7 +33,7 @@ weight: 7
 - ew-cli `N/A`
 - fastlane `2.199.0`
 - firebase `11.3.0`
-- flutter `3.0.5 ($HOME/programs/flutter)`
+- flutter `3.3.0 ($HOME/programs/flutter)`
 - gem `3.2.33`
 - gh `2.3.0`
 - git `2.34.1`
@@ -79,9 +79,7 @@ weight: 7
 
 ## Unity 2020.3.28f1
 
-UNITY_HOME: `/Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app`
-
-Includes pre-installed modules for iOS, Android, macOS, Linux, Windows and WebGL build support.
+UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app
 
 ## Xcode 13.2.1 (13C100)
 
