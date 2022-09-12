@@ -35,7 +35,7 @@ Navigate to **Incoming Webhooks > Add new webhook to the workspace**. This will 
 
 Codemagic exports several built-in environment variables during the build that you can use in scripts to customize the build process. You can refer to the documentation [here](../variables/environment-variables/)
 
-For our Example, we will be passing below variables for our custom slack integration.
+For our example, we will be passing the below variables for our custom slack integration.
 
 1. $CM_BUILD_ID - UUID of the build
 2. $CM_BRANCH - The current branch being built, for pull requests it is the source branch
