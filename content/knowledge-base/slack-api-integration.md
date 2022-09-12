@@ -44,7 +44,7 @@ For our example, we will be passing the below variables for our custom slack int
 5. $ARTIFACT_URL - Android Artifact Link
 6. $CM_PROJECT_ID - UUID of the project that is being built
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".apk"'")) | .url')
 ```
 
