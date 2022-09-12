@@ -89,7 +89,7 @@ Navigate to Slack Block Kit builder [here](https://app.slack.com/block-kit-build
     }
   ]
 }
-```
+{{< /highlight >}}
 
 ### Step 5: Making the curl Request
 
