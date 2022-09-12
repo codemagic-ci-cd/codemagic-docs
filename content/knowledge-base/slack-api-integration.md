@@ -95,7 +95,7 @@ Navigate to Slack Block Kit builder [here](https://app.slack.com/block-kit-build
 
 You can specify the JSON Payload in your post processing script, if you are using the workflow editor or add it as script step in your workflow if you are using yaml.
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 curl -X POST -H 'Content-type: application/json' --data '{"text":"payload"}' $SLACK_WEBHOOK_URL
 {{< /highlight >}}
 
