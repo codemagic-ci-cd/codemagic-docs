@@ -46,7 +46,7 @@ For our example, we will be passing the below variables for our custom slack int
 
 {{< highlight yaml "style=paraiso-dark">}}
 ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".apk"'")) | .url')
-```
+{{< /highlight >}}
 
 ### Step 4: Create the JSON Payload
 
