@@ -39,7 +39,7 @@ For our example, we will be passing the below variables for our custom slack int
 
 1. $CM_BUILD_ID - UUID of the build
 2. $CM_BRANCH - The current branch being built, for pull requests it is the source branch
-3. $CM_REPO_SLUG - The slug of the repository that is currently being built in the form owner_name/repository_name. Unset for repositories added from custom source
+3. $CM_REPO_SLUG - The slug of the repository that is currently being built in the form `owner_name/repository_name`. Unset for repositories added from custom source
 4. $CM_COMMIT - Commit hash that is currently being built by Codemagic, for pull request builds it is the hash of the source commit.
 5. $ARTIFACT_URL - Android Artifact Link
 6. $CM_PROJECT_ID - UUID of the project that is being built
