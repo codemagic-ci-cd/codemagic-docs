@@ -52,7 +52,7 @@ ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'
 
 Navigate to Slack Block Kit builder [here](https://app.slack.com/block-kit-builder) to create a template or you can use the below reference template. You need to substitute the variables in the JSON Payload as shown below.
 
-```
+{{< highlight json "style=paraiso-dark">}}
 {
   "attachments": [
     {
