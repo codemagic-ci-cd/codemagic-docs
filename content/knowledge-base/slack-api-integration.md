@@ -97,6 +97,6 @@ You can specify the JSON Payload in your post processing script, if you are usin
 
 ```
 curl -X POST -H 'Content-type: application/json' --data '{"text":"payload"}' $SLACK_WEBHOOK_URL
-```
+{{< /highlight >}}
 
 payload refers to the the JSON Payload, which you can save as a variable
