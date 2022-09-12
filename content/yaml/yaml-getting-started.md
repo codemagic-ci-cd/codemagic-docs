@@ -101,6 +101,9 @@ This is the skeleton structure of `codemagic.yaml`. Each section, along with the
 workflows:
   my-workflow:
     name: My workflow name
+    labels:
+      - QA
+      - ${TENANT_NAME}
     instance_type: mac_mini
     max_build_duration: 60
     environment:
@@ -435,6 +438,19 @@ publishing:
         else
            # build failed
         fi
+```
+
+### Labels
+
+You may use `codemagic.yaml` to define labels for your apps. Labels serve as additional information about the workflow you are building and are helpful when you have multiple versions of a workflow, e.g. when you build white label apps. The labels are visible on the `/builds` and `/app/<app-id>/build/<build-id>` pages. As shown in the snippet below, labels also support environment variables.
+
+```yaml
+workflows:
+  sample_workflow:
+    name: My Workflow
+    labels:
+      - QA
+      - ${TENANT_NAME}
 ```
 
 ## Working directory
