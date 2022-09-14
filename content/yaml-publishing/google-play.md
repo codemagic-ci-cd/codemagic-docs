@@ -12,7 +12,7 @@ This guide only applies to workflows configured with the **codemagic.yaml**. If 
 
 Codemagic enables you to automatically publish your app either to one of the predefined tracks on Google Play or to your custom closed testing tracks. 
 
-In order to do so,a service account is required when setting up publishing to Google Play. The service account JSON key file must be added to Codemagic to authenticate with these services.
+In order to do so, a service account is required when setting up publishing to Google Play. The service account JSON key file must be added to Codemagic to authenticate with these services.
 
 ## Setting up Google Play API access
 
