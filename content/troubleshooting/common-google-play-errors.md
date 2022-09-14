@@ -11,7 +11,7 @@ Codemagic enables you to automatically publish your app to the internal, alpha, 
 ### Code: 403, The caller does not have permission. status: PERMISSION_DENIED
 This could be due to an invalid JSON file or permission issues with the service account. Please make sure you have done the following:
    1. Created a service account in the Google Play console
-   2. Set the service account access to "Editor"
+   2. Set the service account access to **Service Account User**
    3. Created a JSON private key
    4. Added the JSON key to Codemagic
    5. Navigated to your Google Play Console API access and granted access to the service account
@@ -33,7 +33,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - Try to upload .aab by incrementing the version code.
 
 ### APK specifies a version code that has already been used
-   - Check version and version code. This error is possible when your version code is the same as the apk/aab already uploaded on google play.
+   - Check version and version code. This error is possible when your version code is the same as the .aab already uploaded on google play.
 
 ### Cannot update a published APK
    - If an app has already been sent to a specific track, you cannot re-upload it. 
