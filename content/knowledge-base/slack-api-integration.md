@@ -103,4 +103,4 @@ publishing:
       curl -X POST -H 'Content-type: application/json' --data '{"text":"payload"}' $SLACK_WEBHOOK_URL
 {{< /highlight >}}
 
-payload refers to the the JSON Payload, which you can save as a variable
+The "payload" value in the example above refers to the JSON Payload, which you can save as an environment variable.
