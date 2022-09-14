@@ -19,7 +19,7 @@ In order to do so,a service account is required when setting up publishing to Go
 1. To allow Codemagic to publish applications to Google Play, it is necessary to set up access using Google Play API. 
 
 2. In Google Play Console, navigate to **Setup > API access** and click **Learn how to create service accounts**.<br><br>
-![Google play start](https://s3.amazonaws.com/blog.codemagic.io/uploads/2022/09/s1.png). This will lead you to the Google Cloud Platform. 
+![Google play start](../uploads/s1.png). This will lead you to the Google Cloud Platform. 
 
 3. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
 
@@ -38,15 +38,15 @@ In order to do so,a service account is required when setting up publishing to Go
 ![Google play grant](https://s3.amazonaws.com/blog.codemagic.io/uploads/2022/09/s2.png)
 
 9. On the **App permissions** tab, add the applications you wish to grant access to.<br><br>
-![Google play selected](https://s3.amazonaws.com/blog.codemagic.io/uploads/2022/09/s3.png)
+![Google play selected](../uploads/s3.png)
 
 10. Go with the default settings for app permissions and click **Apply** (financial data permissions can be left blank).<br><br> 
-![Google play apply](https://s3.amazonaws.com/blog.codemagic.io/uploads/2022/09/s4.png)
+![Google play apply](../uploads/s4.png)
 
 11. On the **Account permissions** tab, leave everything as it is. (There is NO need to grant the service account **Admin** access).
 
 12. Finally, click **Invite user** to finish setting up the service account on Google Play. In the Invite user window, the Email address field is pre-filled. Under Permissions, the default ones are already selected. You can go with these. Click Invite user at the bottom of the page.<br><br>
-![Google play all](https://s3.amazonaws.com/blog.codemagic.io/uploads/2022/09/s5.png)
+![Google play all](../uploads/s5.png)
 
 
 ## Setting up publishing to Google Play on codemagic.yaml
