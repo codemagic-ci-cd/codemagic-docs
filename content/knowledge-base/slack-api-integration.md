@@ -4,7 +4,7 @@ title: Custom Slack Integration with Codemagic
 weight: 15
 ---
 
-Customize Slack notifications for publishing into your Codemagic build pipeline by building a slack app from scratch via webhooks.
+Customize Slack notifications for publishing into your Codemagic build pipeline by building a Slack app from scratch via webhooks.
 
 ### Step 1: Create a new Slack App
 
