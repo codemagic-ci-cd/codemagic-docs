@@ -8,7 +8,7 @@ Customize Slack notifications for publishing into your Codemagic build pipeline 
 
 ### Step 1: Create a new Slack App
 
-To create a new Slack App, go to Slack App settings page [here](https://api.slack.com/apps). **Create new App > From scratch**
+To create a new Slack app, go to the Slack app settings page [here](https://api.slack.com/apps). **Create new App > From scratch**
 
 ![Start from scratch](../uploads/choose-scratch-option.png)
 
