@@ -41,8 +41,8 @@ For our example, we will be passing the below variables for our custom slack int
 2. $CM_BRANCH - The current branch being built, for pull requests it is the source branch
 3. $CM_REPO_SLUG - The slug of the repository that is currently being built in the form `owner_name/repository_name`. Unset for repositories added from custom source
 4. $CM_COMMIT - Commit hash that is currently being built by Codemagic, for pull request builds it is the hash of the source commit.
-5. $ARTIFACT_URL - Android Artifact Link
-6. $CM_PROJECT_ID - UUID of the project that is being built
+5. $CM_PROJECT_ID - UUID of the project that is being built
+6. $ARTIFACT_URL - Android Artifact Link
 
 {{< highlight yaml "style=paraiso-dark">}}
 ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".apk"'")) | .url')
@@ -61,7 +61,7 @@ Navigate to Slack Block Kit builder [here](https://app.slack.com/block-kit-build
           "type": "section",
           "text": {
             "type": "mrkdwn",
-            "text": "Build with build id <https://codemagic.io/app/$CM_PROJECT_ID/build/$CM_BUILD_ID|$CM_BUILD_ID>
+            "text": "Build with build id <https://codemagic.io/app/'"$CM_PROJECT_ID"'/build/'"$CM_BUILD_ID"'>
           }
         },
         {
@@ -72,7 +72,7 @@ Navigate to Slack Block Kit builder [here](https://app.slack.com/block-kit-build
           "block_id": "section567",
           "text": {
             "type": "mrkdwn",
-            "text": "<https://github.com/himesh-cm/$CM_REPO_SLUG> Merge pull request"
+            "text": "<https://github.com/'"$CM_REPO_SLUG"'> Merge pull request"
           }
         },
         {
@@ -82,7 +82,7 @@ Navigate to Slack Block Kit builder [here](https://app.slack.com/block-kit-build
           "type": "section",
           "text": {
             "type": "mrkdwn",
-            "text": "*Android Artifact Link* <$ARTIFACT_URL|Download>"
+            "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
           }
         },
       ]
@@ -93,10 +93,14 @@ Navigate to Slack Block Kit builder [here](https://app.slack.com/block-kit-build
 
 ### Step 5: Making the cURL Request
 
-You can specify the JSON Payload in your post processing script, if you are using the workflow editor or add it as script step in your workflow if you are using yaml.
+You can specify the JSON Payload in your post processing script, if you are using the workflow editor or add it as script step in the `publishing` section in your workflow if you are using yaml.
 
 {{< highlight yaml "style=paraiso-dark">}}
-curl -X POST -H 'Content-type: application/json' --data '{"text":"payload"}' $SLACK_WEBHOOK_URL
+publishing:
+  scripts: 
+    - name: Publish to Slack
+      script: |
+      curl -X POST -H 'Content-type: application/json' --data '{"text":"payload"}' $SLACK_WEBHOOK_URL
 {{< /highlight >}}
 
 payload refers to the the JSON Payload, which you can save as a variable
