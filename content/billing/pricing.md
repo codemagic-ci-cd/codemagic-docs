@@ -18,7 +18,7 @@ To sign up for the pay as you go plan, [visit this page](https://codemagic.io/si
 
 ### Instance Types
 
-Codemagic provides macOS, Windows and Linux instance types.
+Codemagic provides macOS, Windows, and Linux instance types.
 
 The instance types and hardware specifications can be found below.
 
@@ -48,7 +48,7 @@ When billing is enabled on personal accounts, you will still have **500 free bui
 
 Usage on macOS M1 standard VM that exceeds 500 minutes is charged at rate shown below.
 
-Builds on macOS standard VM, macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes. The per minute pricing for each instance type are shown below.
+Builds on macOS standard VM, macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes. The per minute pricing for each instance type is shown below.
 
 You will never be charged more than $299/month on this plan.
 
@@ -67,9 +67,9 @@ For teams, all build minutes using macOS M1 standard VM, macOS standard VM, macO
 
 Each extra build concurrency allows running an additional build in parallel. For example, two extra build concurrencies allow running three builds in parallel. 
 
-You can add addtional cocurrencies in the Codemagic web app by clicking 'Billing' in the left hand menu and then clicking on your Team name. In the 'Billing Overview' you should click 'update' in the Build concurrency section and select the number of concurrencies you wish to add to your Team. 
+You can **add additional concurrencies** in the Codemagic web app by clicking 'Billing' in the left hand menu and then clicking on your Team name. In the 'Billing Overview' you should click 'update' in the Build concurrency section and select the number of concurrencies you wish to add to your Team. 
 
-Each addtional concurrency is $49/month and you will be billed for each concurrency on the last day of each month.
+Each additional concurrency is $49/month and you will be billed for each concurrency on the last day of each month.
 
 You will never be charged more than $299/month on this plan.
 
@@ -83,7 +83,7 @@ You will never be charged more than $299/month on this plan.
 | Windows VM               | $0.045 / minute                                                                                                                                                 |                                                                                                              |
 | Extra build concurrency  | $49 / month                                                                                                                                                     | 
 
-Consider Professional plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on premium macOS and Linux instances, as well as unlimited team seats. For more information contact us [here](https://codemagic.io/contact/).
+Consider an annual plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on premium macOS, Linux, and Windows instances. For more information contact us [here](https://codemagic.io/contact/).
 
 ## Monthly Plan with 4 or more concurrencies
 
