@@ -1,5 +1,3 @@
----
----
 
 #### Generating a keystore
 You can create a keystore for signing your release builds with the Java Keytool utility by running the following command:

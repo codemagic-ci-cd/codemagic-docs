@@ -1,7 +1,7 @@
 ---
-title: Building a native Android app
+title: Android native apps
 description: How to build an Android app with codemagic.yaml
-weight: 7
+weight: 2
 aliases:
   - '../yaml/building-a-native-android-app'
   - /getting-started/building-a-native-android-app

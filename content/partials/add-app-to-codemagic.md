@@ -1,5 +1,3 @@
----
----
 
 ## Adding the app to Codemagic
 

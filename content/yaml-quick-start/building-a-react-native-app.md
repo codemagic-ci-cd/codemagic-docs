@@ -1,5 +1,5 @@
 ---
-title: Building a React Native app
+title: React Native apps
 description: How to build a React Native app with codemagic.yaml
 weight: 5
 aliases:
@@ -86,11 +86,8 @@ expo eject
 
 {{< include "/partials/add-app-to-codemagic.md" >}}
 
----
 
 {{< include "/partials/create-yaml-intro.md" >}}
-
----
 
 ## Code signing
 

@@ -1,5 +1,5 @@
 ---
-title: Applications
+title: Applications API
 weight: 2
 ---
 

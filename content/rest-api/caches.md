@@ -1,5 +1,5 @@
 ---
-title: Caches
+title: Caches API
 weight: 4
 ---
 

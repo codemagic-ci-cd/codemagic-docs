@@ -1,5 +1,5 @@
 ---
-title: Builds
+title: Builds API
 weight: 3
 ---
 

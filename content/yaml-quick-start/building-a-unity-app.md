@@ -1,5 +1,5 @@
 ---
-title: Building Unity mobile apps
+title: Unity mobile apps
 description: How to build Unity mobile apps with codemagic.yaml
 weight: 12
 

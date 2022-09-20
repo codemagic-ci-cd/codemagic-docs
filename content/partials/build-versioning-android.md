@@ -1,5 +1,3 @@
----
----
 
 One very useful method of calculating the code version is to use Codemagic command line tools to get the latest build number from Google Play and increment it by one.
 

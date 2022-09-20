@@ -1,5 +1,5 @@
 ---
-title: Codemagic REST API
+title: API Overview
 weight: 1
 aliases: /rest-api/overview
 ---

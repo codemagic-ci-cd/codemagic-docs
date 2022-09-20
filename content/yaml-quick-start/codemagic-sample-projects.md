@@ -2,7 +2,9 @@
 title: Codemagic sample projects
 description: Sample projects using codemagic.yaml
 weight: 1
-aliases: /sample-projects/codemagic-sample-projects
+aliases: 
+  - /sample-projects/codemagic-sample-projects
+  - ../getting-started/projects
 ---
 
 The [codemagic-sample-projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects) repository on the Codemagic GitHub page contains a collection of sample projects which show how to configure your workflows using the **codemagic.yaml** configuration file. 

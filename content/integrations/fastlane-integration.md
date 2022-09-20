@@ -10,7 +10,7 @@ aliases:
 
 ## Configuring Fastlane in Codemagic
 
-Six **environment variables**  need to be added to your workflow for Fastlane integration: 
+In order to use Fastlane with Codemagic, you need to configure the following environment variables: 
 
 - `MATCH_PASSWORD` - the password used to encrypt/decrypt the repository used to store your distrbution certificates and provisioning profiles.
 - `MATCH_KEYCHAIN` - an arbitrary name to use for the keychain on the build server, e.g "codemagic_keychain"
@@ -19,70 +19,90 @@ Six **environment variables**  need to be added to your workflow for Fastlane in
 - `APP_STORE_CONNECT_KEY_IDENTIFIER` - the key identifier of your App Store Connect API key.
 - `APP_STORE_CONNECT_ISSUER_ID` - the issuer of your App Store Connect API key.
 
-Environment variables can be added in the Codemagic web app using the 'Environment variables' tab. You can then import your variable groups into your codemagic.yaml. For example, if you named your variable group 'fastlane', you would import it as follows:
+<br>
 
-```
-workflows:
-  workflow-name:
-    environment:
-      groups:
-        - fastlane
-```
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
+2. Enter the desired **_Variable name_**, e.g. `MATCH_PASSWORD`.
+3. Enter the required value as **_Variable value_**.
+4. Enter the variable group name, e.g. **_fastlane_**. Click the button to create the group.
+5. Make sure the **Secure** option is selected.
+6. Click the **Add** button to add the variable.
+7. Repeat the steps to add other required variables
+
+8. Add the variable group to your `codemagic.yaml` file
+{{< highlight yaml "style=paraiso-dark">}}
+  environment:
+    groups:
+      - fastlane
+      - app_store_connect_credentials
+{{< /highlight >}}
+
 
 For further information about using variable groups, please click [here](https://docs.codemagic.io/variables/environment-variable-groups/).
+
 
 ## Cocoapods
 
 If you are using dependencies from Cocoapods, it might be necessary to include the "cocoapods" gem in your Gemfile to prevent scope conflict issues. 
 
-```
-gem "fastlane"
-gem "cocoapods"
-```
+{{< highlight ruby "style=paraiso-dark">}}
+  gem "fastlane"
+  gem "cocoapods"
+{{< /highlight >}}
+
 
 ## Fastlane plugins
 
-If you are using any Fastlane plugins, you should create a script to install them as follows:
+If you are using any Fastlane plugins, you should create a script in your `codemagic.yaml` to install them as follows:
 
-```
-      - name: Install Fastlane plugins
-        script: |
-          cd ios     # change to ios/android folder as required
-          bundle add fastlane-plugin-s3
-          bundle add fasllane-plugin-dropbox
-```
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Install Fastlane plugins
+      script: | 
+        cd ios     # change to ios/android folder as required
+        bundle add fastlane-plugin-s3
+        bundle add fasllane-plugin-dropbox
+{{< /highlight >}}
+
 
 ## Running your Fastlane lane
 
-In the codemagic.yaml you should install your depenpendencies with `bundle install` and then execute the Fastlane lane with `bundle exec fastlane <lane_name>` as follows:
+In the `codemagic.yaml`, you should install your depenpendencies with `bundle install` and then execute the Fastlane lane with `bundle exec fastlane <lane_name>` as follows:
 
-```
-      scripts:
-        - bundle install
-        - bundle exec fastlane beta
-```
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Run fastlane
+      script: | 
+        bundle instal
+        bundle exec fastlane beta
+{{< /highlight >}}
 
-If you need to use a specific version of bundler as defined in the Gemfile.lock file, you should install it with `gem install bundler:<version>` as follows:
 
-```
-      scripts:
-        - gem install bundler:2.2.27
-        - bundle install
-        - bundle exec fastlane beta
-       
-```
+If you need to use a specific version of bundler as defined in the `Gemfile.lock` file, you should install it with `gem install bundler:<version>` as follows:
+
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Run fastlane
+      script: | 
+        gem install bundler:2.2.27
+        bundle install
+        bundle exec fastlane beta
+{{< /highlight >}}
+
 
 ## Artifacts
 
-To gather the .ipa and debug symbols from your build, add an the **artifacts** section to your codemagic.yaml as follows:
+To gather the .ipa and debug symbols from your build, add the **artifacts** section to your codemagic.yaml as follows:
 
-```
-      artifacts:
-        - ./*.ipa
-        - ./*.dSYM.zip      
-```
+{{< highlight yaml "style=paraiso-dark">}}
+    artifacts:
+      - ./*.ipa
+      - ./*.dSYM.zip      
+{{< /highlight >}}
 
-You can find more information about configuring artifacts [here](../yaml/yaml-getting-started/#artifacts)
+
+You can find more information about configuring artifacts [here](../yaml-basic-configuration/yaml-getting-started#artifacts)
+
 
 ## Sample project
 

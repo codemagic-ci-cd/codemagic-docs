@@ -1,5 +1,5 @@
 ---
-title: Building a Flutter app
+title: Flutter apps
 description: How to build a Flutter app with codemagic.yaml
 weight: 4
 aliases:

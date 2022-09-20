@@ -1,5 +1,5 @@
 ---
-title: Building Oculus VR apps with Unity
+title: Oculus VR apps with Unity
 description: How to build a Unity Oculus VR app with codemagic.yaml
 weight: 13
 

@@ -1,5 +1,5 @@
 ---
-title: Building an Ionic app 
+title: Ionic apps 
 description: How to build an Ionic Capacitor or Ionic Cordova app with codemagic.yaml
 weight: 8
 aliases:
