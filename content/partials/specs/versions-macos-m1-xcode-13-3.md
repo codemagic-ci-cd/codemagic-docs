@@ -14,13 +14,14 @@ weight: 9
 
 - System version `macOS 12.5.1 (21G83)`
 - Kernel version `Darwin 21.6.0`
-- Disk `294GB (Free Space: 60GB)`
+- Disk `294GB (Free Space: 48GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
-- aws `2.7.27`
+- aws `2.7.31`
+- carthage `0.38.0`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
 - curl `7.79.1`
@@ -28,30 +29,31 @@ weight: 9
 - ew-cli `0.0.47`
 - fastlane `2.209.1`
 - firebase `11.4.2`
-- flutter `3.0.5 ($HOME/programs/flutter)`
-- gem `3.3.21`
-- gh `2.14.7`
-- git `2.37.2`
+- flutter `3.3.2 ($HOME/programs/flutter)`
+- gem `3.3.22`
+- gh `2.15.0`
+- git `2.37.3`
 - Google Cloud SDK `396.0.0`
 - gradle `7.3.1`
 - gsutil `5.11`
-- homebrew `3.5.10`
+- homebrew `3.6.1`
 - ionic `5.4.16`
 - jq `1.6`
-- ktlint `0.47.0`
-- node `18.8.0`
-- npm `8.18.0`
+- ktlint `0.47.1`
+- node `18.9.0`
+- npm `8.19.1`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
 - ssh `8.6p1`
 - sudo `1.9.5p2`
+- swiftgen `6.6.2`
 - tar `3.5.1`
 - ucd `0.11.10`
 - unzip `6.00`
 - wget `1.21.3`
 - yarn `1.22.19`
-- yq `4.27.2`
+- yq `4.27.5`
 - zip `3.0`
 
 ## Android emulators
@@ -60,7 +62,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Java versions
 
-- **18.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
+- **18.0.2.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
 - **11.0.16.1** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_345** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
@@ -89,22 +91,24 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 - tvOS 15.0
 - tvOS 15.4
 - tvOS 16.0
+- tvOS 16.1
 - watchOS 7.4
 - watchOS 8.0
 - watchOS 8.5
 - watchOS 9.0
+- watchOS 9.1
 
 ### Devices
 
 - Apple TV
 - Apple TV 4K (2nd generation)
 - Apple TV 4K (at 1080p) (2nd generation)
-- Apple Watch Series 5 - 40mm
-- Apple Watch Series 5 - 44mm
-- Apple Watch Series 6 - 40mm
-- Apple Watch Series 6 - 44mm
-- Apple Watch Series 7 - 41mm
-- Apple Watch Series 7 - 45mm
+- Apple Watch Series 5 (40mm)
+- Apple Watch Series 5 (44mm)
+- Apple Watch Series 6 (40mm)
+- Apple Watch Series 6 (44mm)
+- Apple Watch Series 7 (41mm)
+- Apple Watch Series 7 (45mm)
 - iPad (8th generation)
 - iPad (9th generation)
 - iPad Air (4th generation)
@@ -132,5 +136,6 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 
 ## Other Xcode versions
 
-- 14.0 (14A5294g) `/Applications/Xcode-14.0.app`
+- 14.1 (14B5024h) `/Applications/Xcode-14.1.app`
+- 14.0 (14A309) `/Applications/Xcode-14.0.app`
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`

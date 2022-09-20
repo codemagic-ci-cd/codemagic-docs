@@ -18,12 +18,14 @@ weight: 3
 - Android tools `C:\Users\builder\programs\android-sdk`
 - Android NDK `23.1.7779620`
 - 7zip `19.0`
-- chocolatey `0.11.2`
-- chocolatey-core.extension `1.3.5.1`
+- chocolatey `1.1.0`
+- chocolatey-core.extension `1.4.0`
 - chocolatey-windowsupdate.extension `1.0.4`
 - curl `7.79.1`
 - DotNet4.5.2 `4.5.2.20140902`
-- flutter `3.0.5 (C:\Users\builder\programs\flutter)`
+- fastlane `2.209.1`
+- flutter `3.3.2 (C:\Users\builder\programs\flutter)`
+- gem `3.3.7`
 - gh `2.6.0`
 - Google Cloud SDK `357.0.0`
 - gsutil 4.67- git `2.33.1`
@@ -35,6 +37,7 @@ weight: 3
 - powershell-core `7.1.5`
 - pyenv-win `2.64.11`
 - python `3.9.6`
+- ruby `3.1.2p20`
 - ssh
 - unzip `6.0`
 - vcredist140 `14.29.30135`

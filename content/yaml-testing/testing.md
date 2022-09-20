@@ -104,21 +104,23 @@ You can launch a specific iOS simulator and run tests on the simulator using ‘
 scripts:
   - name: Emulator tests
     script: | 
-      # This command will give list available simulators on the machine along with UDIDs,
-      # you can find list of Devices depending upon type of machine you are running here:
-      # https://docs.codemagic.io/specs/versions-macos-xcode-12-5/#devices
-      xcrun simctl list 
-      # Specify the UDID to boot the simulator:
-      xcrun simctl boot 99B14BF4-7966-4427-ACD1-34BFE4D26A01
-      # Specify the UDID to the integration tests command:
-      flutter -d 99B14BF4-7966-4427-ACD1-34BFE4D26A01 test integration_test
+      # this command will will shutdown the existing simulators to save on resources.
+      xcrun simctl shutdown all
+      #  
+      # create new simulator with specified configuration, you can run 
+      # 'xcrun simctl list' - to check the list of available simulator configurations
+      TEST_DEVICE=$(xcrun simctl create test-device com.apple.CoreSimulator.SimDeviceType.iPhone-11 com.apple.CoreSimulator.SimRuntime.iOS-15-0)
+      #
+      # boot the newly created simulator
+      xcrun simctl boot $TEST_DEVICE
+      #
+      # run the actual test command
+      flutter -d $TEST_DEVICE test integration_test
 {{< /highlight >}}
 {{</markdown>}}
 {{< /tab >}}
 
 {{< /tabpane >}}
-
-
 
 
 ### Running web application tests on a web browser driver
