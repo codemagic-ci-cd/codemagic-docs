@@ -56,26 +56,27 @@ menu:
           name: Basic configuration
           parent: yaml
           weight: 1
-        - identifier: yaml-testing
-          name: Testing
-          parent: yaml
-          weight: 2
-        - identifier: yaml-code-signing
-          name: Code signing
-          parent: yaml
-          weight: 3
-        - identifier: yaml-publishing
-          name: Publishing
-          parent: yaml
-          weight: 4
-        - identifier: yaml-notification
-          name: Notification
-          parent: yaml
-          weight: 5
         - identifier: yaml-running-builds
           name: Running builds
           parent: yaml
+          weight: 2
+        - identifier: yaml-testing
+          name: Testing
+          parent: yaml
+          weight: 3
+        - identifier: yaml-code-signing
+          name: Code signing
+          parent: yaml
+          weight: 4
+        - identifier: yaml-publishing
+          name: Publishing
+          parent: yaml
+          weight: 5
+        - identifier: yaml-notification
+          name: Notifications
+          parent: yaml
           weight: 6
+
         - identifier: integrations
           name: Integrations
           parent: yaml
@@ -104,6 +105,8 @@ menu:
           weight: 5
           parent: knowledge-base
 
+
+
         - identifier: flutter
           name: Flutter workflow editor
           weight: 3
@@ -114,26 +117,27 @@ menu:
           name: Basic configuration
           parent: flutter
           weight: 1
-        - identifier: flutter-testing
-          name: Testing
-          parent: flutter
-          weight: 2
-        - identifier: flutter-code-signing
-          name: Code signing
-          parent: flutter
-          weight: 3
-        - identifier: flutter-publishing
-          name: Publishing
-          parent: flutter
-          weight: 4
-        - identifier: flutter-notification
-          name: Notification
-          parent: flutter
-          weight: 5
         - identifier: flutter-running-builds
           name: Running builds
           parent: flutter
+          weight: 2
+        - identifier: flutter-testing
+          name: Testing
+          parent: flutter
+          weight: 3
+        - identifier: flutter-code-signing
+          name: Code signing
+          parent: flutter
+          weight: 4
+        - identifier: flutter-publishing
+          name: Publishing
+          parent: flutter
+          weight: 5
+        - identifier: flutter-notification
+          name: Notifications
+          parent: flutter
           weight: 6
+        
  
 
         - identifier: variables

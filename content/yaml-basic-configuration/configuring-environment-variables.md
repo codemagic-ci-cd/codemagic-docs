@@ -1,5 +1,5 @@
 ---
-title: Configuring environment variables
+title: Adding environment variables
 description: How to configure environment variables and groups
 weight: 2
 aliases:
@@ -11,7 +11,7 @@ aliases:
 
 ## Configuring Environment variables
 
-Environment variables are useful for storign various pieces of data and making it available during build time. Typical use cases include credentials, configuration files or API keys that are required for successful building or integration with external services. Besides user defined environment variables, Codemagic also provides numerous useful variables already built-in. You can check the full list [here.](../yaml-basic-configuration/environment-variables)
+Environment variables are useful for storign various pieces of data and making it available during build time. Typical use cases include credentials, configuration files or API keys that are required for successful building or integration with external services. Besides user defined environment variables, Codemagic also provides numerous useful variables already built-in. You can check the full list [here.](../yaml-basic-configuration/environment-variables).
 
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the desired **_Variable name_**.
