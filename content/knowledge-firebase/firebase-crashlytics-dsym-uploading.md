@@ -1,6 +1,6 @@
 ---
-description: How to upload dsym artifacts to Firebase Crashlytics
-title: Firebase Crashlytics dsym uploading
+description: How to upload dSYM artifacts to Firebase Crashlytics
+title: Firebase Crashlytics dSYM uploading
 weight: 13
 aliases:
   - '../custom-scripts/firebase-crashlytics-dsym-uploading'
