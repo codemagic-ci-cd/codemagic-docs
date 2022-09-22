@@ -6,7 +6,7 @@ aliases:
  - /knowledge-base/install-unity-version
 ---
 
-Each build machine image has a specific version of Unity installed. You can find out the specific Unity version by consulting the build machine specification in the documentation.
+Each build machine image has a specific version of Unity installed. You can find out the specific Unity version by consulting the build machine specification for [MacOS](../specs/versions-macos) and for [Windows](../specs/versions-windows) instances.
 
 If you need to use a different Unity version, then it is possible to use the Unity Hub CLI to download and install a different Unity Editor version and target support files for that version. 
 
@@ -14,11 +14,14 @@ License activation and return takes place with the Unity version already install
 
 
 ## Getting the Unity version number and changeset id
+
 In order to install a different version, you can use the info from the `ProjectSettings/ProjectVersion.txt` file which has the unity version and changeset that the project uses.
 You only need to add this script.
+
 {{< tabpane >}}
 {{% tab header="Mac" %}}
 {{< highlight yaml "style=paraiso-dark">}}
+    scripts:  
       - name: Retrieve Used Unity Version
         script: | 
           UNITY_VERSION=$(echo $(sed -n '1p' ProjectSettings/ProjectVersion.txt) | cut -c 18-)
@@ -30,6 +33,7 @@ You only need to add this script.
 {{< /tab >}}
 {{% tab header="Windows" %}}
 {{< highlight yaml "style=paraiso-dark">}}
+    scripts: 
       - name: Retrieve Used Unity Version
         script: | 
           $env:UNITY_VERSION=(Get-Content ProjectSettings/ProjectVersion.txt -TotalCount 1).Substring(17)
@@ -54,6 +58,7 @@ After activating the Unity license as usual, add the following script to install
 {{< tabpane >}}
 {{% tab header="Mac" %}}
 {{< highlight yaml "style=paraiso-dark">}}
+  scripts: 
     - name: Install Unity version
       script: |  
         /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version $UNITY_VERSION --changeset $UNITY_VERSION_CHANGESET 
@@ -62,6 +67,7 @@ After activating the Unity license as usual, add the following script to install
 {{< /tab >}}
 {{% tab header="Windows" %}}
 {{< highlight yaml "style=paraiso-dark">}}
+  scripts: 
     - name: Install Unity version
       script: |  
         New-Item ".\install-unity.bat" #create an empty batch file
@@ -72,12 +78,16 @@ After activating the Unity license as usual, add the following script to install
 {{< /tab >}}
 
 {{< /tabpane >}}
+
+
 ## Building with the newly installed Unity version
+
 Use the Unity version you installed on the machine:
 
 {{< tabpane >}}
 {{% tab header="Mac" %}}
 {{< highlight yaml "style=paraiso-dark">}}
+  scripts:
     - name: Build the Unity app
       script: |  
         $UNITY_VERSION_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$BUILD_SCRIPT -nographics
@@ -86,6 +96,7 @@ Use the Unity version you installed on the machine:
 {{< /tab >}}
 {{% tab header="Windows" %}}
 {{< highlight yaml "style=paraiso-dark">}}
+  scripts:
     - name: Build the Unity app
       script: |  
         cmd.exe /c "$env:UNITY_VERSION_BIN" -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$env:BUILD_SCRIPT -nographics

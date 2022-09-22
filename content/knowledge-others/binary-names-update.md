@@ -6,32 +6,45 @@ aliases:
  - /knowledge-base/binary-name-updates
 ---
 
-In order to change generated the **.ipa** file name, **CFBundleDisplayName** string value in **Info.plist** needs to be renamed.If the app is configured with flavors, then **CFBundleName** string value is required to be renamed with a custom name.
+## iOS
 
-For Android binary names, configuring **app/build.gradle** can be done as follows to update the `archiveBaseName`:
+In order to change the file name for the generated **.ipa** artifact, edit the **CFBundleDisplayName** key in the `Info.plist` file.
 
-```
+If the app is configured with **flavors**, the **CFBundleName** key needs to be configured with a custom name.
+
+
+## Android
+
+In order to change the artifact file name for Android apps, edit the **archiveBaseName** property in the `app/build.gradle` file.
+
+For example, to generate a binary name using your app package name and version:
+
+{{< highlight Groovy "style=paraiso-dark">}}
 defaultConfig {
    setProperty("archivesBaseName", applicationId + "-v" + versionCode + "(" + versionName + ")")
   }
-```
+{{< /highlight >}}
 
-The example above generates a binary name with your app package name and its version. 
 
-In order to give your binary a custom name, this can be done as follows:
+To use some arbitrary custom name, set the property as follows:
 
-```
-setProperty("archivesBaseName", "YOUR_CUSTOM_NAME")
-```
+{{< highlight Groovy "style=paraiso-dark">}}
+  setProperty("archivesBaseName", "YOUR_CUSTOM_NAME")
+{{< /highlight >}}
 
-As Flutter does not allow binary names to be changed in **build.gradle**, a temporary solution until it is solved by Flutter can be using **mv**:
 
-```
-mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/my_renamed_binary_name-release.apk
-```
+#### Flutter
 
-Then, the same name must be defined under the artefacts section:
+As Flutter does not allow binary names to be changed in `build.gradle`, a temporary workaround is to use the `mv` command. Make sure to reference the new .apk file in the `artifacts` section:
 
-```
-- build/app/outputs/flutter-apk/my_renamed_binary_name-release.apk
-```
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Rename the apk file
+      script: | 
+        mv build/app/outputs/flutter-apk/app-release.apk \
+          build/app/outputs/flutter-apk/my_renamed_binary_name-release.apk
+  artifacts:
+    - build/app/outputs/flutter-apk/my_renamed_binary_name-release.apk
+{{< /highlight >}}
+
+

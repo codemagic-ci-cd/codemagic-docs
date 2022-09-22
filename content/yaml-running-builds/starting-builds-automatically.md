@@ -129,6 +129,10 @@ In this case, the build would be skipped if there were changes only to Markdown 
 
 Both the `includes` and `excludes` keys in `changeset` are *optional*. If the `includes` key is not specified, its value will default to `'.'` (track everything). The `excludes` key defaults to no exclusions.
 
+{{<notebox>}}
+**Note:** Adding one or more `includes` keys will disable the default "include all" behavior. Remember to add the `'.'` pattern if needed.
+{{</notebox>}}
+
 If you use a monorepo, each workflow can be responsible for building a part of your application. Use conditional workflow triggering and specify the path to the application in the changeset as in the example below.
 
 {{< highlight yaml "style=paraiso-dark">}}

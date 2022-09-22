@@ -4,19 +4,23 @@ weight: 1
 aliases: /rest-api/overview
 ---
 
-## Overview
+Codemagic REST API gives you numerous possibilities for integrating your CI/CD builds with other tools or for managing advanced workflow chains. 
 
-Users can make calls to Codemagic REST API for better integration with other tools. Codemagic API can be accessed from `https://api.codemagic.io`. Any communication with it takes place over HTTPS. All data is sent and received as JSON.
+Codemagic API can be accessed at `https://api.codemagic.io`.
+
+API uses the HTTPS protocol and all data is sent and received in JSON format.
+
 
 ## Authentication
 
-When making calls to REST API methods, an access token must be included as an HTTP header in every call for the call to be successful.
+All API methods require that access token be included in HTTP headers in every call.
 
-```
+{{< highlight bash "style=paraiso-dark">}}
 x-auth-token: <API Token>
-```
+{{< /highlight >}}
 
-The access token is available via the Codemagic UI in **User settings > Integrations > Codemagic API > Show**.
+The access token is available in the Codemagic UI under **User settings > Integrations > Codemagic API > Show**.
+
 
 ## Rate Limiting
 
@@ -26,7 +30,7 @@ All API requests are limited to 5,000 requests per hour and per authenticated us
 
 The response’s HTTP headers are authoritative sources for the current number of API calls available to you or your app at any given time.
 
-| Header | Description |
+| **Header** | **Description** |
 | ---    | ---         |
 | X-RateLimit-Limit | The maximum number of requests you're permitted to make per hour. |
 | X-RateLimit-Remaining | The number of requests remaining in the current rate limit window. |
