@@ -53,3 +53,21 @@ h5,
 h6 {
     color: $black-l;
 }
+
+.icon {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-weight: 400;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: transparent;
+    vertical-align: middle;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    background-position: center center;
+}

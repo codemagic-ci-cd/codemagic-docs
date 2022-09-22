@@ -24,7 +24,7 @@ const createTableOfContents = () => {
         if (heading) {
             heading.insertAdjacentHTML(
                 'beforeend',
-                `<i class="ctc fas fa-link" data-target-link="${link.href}" title="Copy link to section to clipboard"></i>`,
+                `<i class="ctc icon fa-link" data-target-link="${link.href}" title="Copy link to section to clipboard"></i>`,
             )
         }
     })
