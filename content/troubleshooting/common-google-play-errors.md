@@ -18,7 +18,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    6. Given the service account access to your application
    7. Invited users to the service account
    
-   Checkout [this](../yaml-publishing/google-play) guide for codemagic.yaml or this guide for Workflow editor(../publishing/publishing-to-google-play).
+   Checkout [this](../yaml-publishing/google-play) guide for codemagic.yaml or this guide for [Workflow editor](../publishing/publishing-to-google-play).
 
 ### The current user has insufficient permissions to perform the requested operation. status: PERMISSION_DENIED
    - This error may have caused due to Account permission issues. Try setting admin access for Account permissions on google play console. 
