@@ -4,9 +4,9 @@ weight: 2
 aliases:
 ---
 
-With Codemagic, you can set up CI/CD for native Android or iOS, Flutter, React Native, Cordova and Ionic apps. 
+With Codemagic, you can set up CI/CD for native Android or iOS, Flutter, React Native, Cordova, Ionic, and Unity mobile apps. 
 
-The projects are configured using a highly customizable [codemagic.yaml](/yaml/yaml) configuration file which is stored in the repository. Alternativey, you can set up your Flutter projects in our intuitive [Flutter workflow editor](/flutter/configuration/flutter-projects).
+The projects are configured using a highly customizable [codemagic.yaml](/yaml/yaml) configuration file which is stored in the repository. Alternatively, you can set up your Flutter projects in our intuitive [Flutter workflow editor](/flutter/configuration/flutter-projects).
 
 Here are some quick links to help you get started.
 
