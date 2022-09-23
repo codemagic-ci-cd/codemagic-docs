@@ -392,7 +392,7 @@ Note that when the build is manually cancelled before the publishing section the
 
 ## Caching
 You can speed up your build by caching the Library folder, read more about caching [here](https://docs.codemagic.io/yaml/yaml-getting-started/#cache).
-{{< highlight shell "style=paraiso-dark">}}
+{{< highlight bash "style=paraiso-dark">}}
     cache:
       cache_paths:
         - $CM_BUILD_DIR/Library

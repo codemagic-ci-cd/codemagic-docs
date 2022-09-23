@@ -8,7 +8,7 @@ aliases: /publishing/publishing-to-app-store
 Codemagic enables you to automatically publish your app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. To do so, you must first set up [iOS code signing](../code-signing/ios-code-signing/) using a distribution code signing [certificate](https://developer.apple.com/support/certificates/) and then configure publishing to App Store Connect.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Publishing to App Store Connect using codemagic.yaml](../yaml-publishing/app-store-connect).
+**Note:** This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Publishing to App Store Connect using codemagic.yaml](../yaml-publishing/app-store-connect).
 {{</notebox>}}
 
 ## Requirements
@@ -19,7 +19,7 @@ In addition, the application must be **App Store ready** for build distribution,
 
 It is also worth pointing out the necessity for each uploaded binary to have a **different version**; otherwise, it will be refused by App Store Connect. See the [Build versioning](../building/build-versioning/) article for instructions on incrementing app version with Codemagic.
 
-{{<notebox>}}Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually.
+{{<notebox>}}**Note:** You will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually.
 {{</notebox>}}
 
 In order to be able to test iOS apps on Apple devices, manual device UDID registration in the Apple Developer Program account is required. Alternatively, Codemagic's automatic device registration can be used to register devices as explained [here](https://docs.codemagic.io/testing/ios-provisioning/). 
@@ -31,7 +31,7 @@ This section gives step-by-step instructions on how to configure publishing to A
 ### Step 1. Creating an App Store API key for Codemagic
     
 {{<notebox>}}
-You may also reuse any of the keys you've already set up for automatic [iOS](../code-signing/ios-code-signing/#automatic-code-signing) or [macOS](../code-signing/macos-code-signing/#automatic-code-signing) code signing.
+**Tip:** You may also reuse any of the keys you've already set up for automatic [iOS](../code-signing/ios-code-signing/#automatic-code-signing) or [macOS](../code-signing/macos-code-signing/#automatic-code-signing) code signing.
 {{</notebox>}}
 
 It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
@@ -43,7 +43,7 @@ It is recommended to create a dedicated App Store Connect API key for Codemagic 
 5. As soon as the key is generated, you can see it added to the active keys list. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
 {{<notebox >}} 
-Take note of the **Issuer ID** above the table of active keys and the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in Codemagic UI.
+**Note:** Take note of the **Issuer ID** above the table of active keys and the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in Codemagic UI.
 {{</notebox>}}
 
 ### Step 2. Connecting the Apple Developer Portal integration for your team/account
@@ -93,7 +93,7 @@ Note that the application must be manually released to the App Store once Apple 
 
 To add localized release notes that will appear in the Test Details (What to test?) section, include a `release_notes.json` with the following content:
 
-```json
+{{< highlight json "style=paraiso-dark">}}
 [
     {
         "language": "en-GB",
@@ -104,11 +104,14 @@ To add localized release notes that will appear in the Test Details (What to tes
         "text": "The US English release notes text"
     }
 ]
-```
+{{< /highlight >}}
 
 Supported languages could be found [here](https://developer.apple.com/documentation/appstoreconnectapi/betabuildlocalizationcreaterequest/data/attributes).
 
-Note: Uploading release notes takes place in the [post-processing](#post-processing-of-app-store-connect-distribution) step.
+{{<notebox>}}
+**Note:** Uploading release notes takes place in the [post-processing](#post-processing-of-app-store-connect-distribution) step.
+{{</notebox>}}
+
 
 ## Post-processing of App Store Connect distribution
 

@@ -96,13 +96,9 @@ menu:
           name: Firebase
           weight: 3
           parent: knowledge-base
-        - identifier: knowledge-publishing
-          name: Publishing
-          weight: 4
-          parent: knowledge-base
         - identifier: knowledge-others
           name: Various
-          weight: 5
+          weight: 4
           parent: knowledge-base
 
 
