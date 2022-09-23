@@ -30,14 +30,14 @@ Note that the workflow and branch information is passed with the curl request wh
 curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '{"appId": "<app_id>","workflowId": "<workflow_id>","branch": "<git_branch_name>"}' https://api.codemagic.io/builds
 ```
 
-#### Pass environment variables, software versions and labels
+#### Pass custom build parameters
 
 ```yaml
 {
   "appId": "5c9c064185dd2310123b8e96",
   "workflowId": "release",
   "branch": "master",
-  "labels": ["label_one", "label_two"],
+  "labels": ["foo", "bar"],
   "environment": {
     "variables": {
       "ENVIRONMENT_VARIABLE_1": "...",
