@@ -4,11 +4,16 @@ description: How to integrate your workflows with Perfecto using codemagic.yaml
 weight: 13
 ---
 
-****Perfecto** is a web-based platform that allows mobile application developers and QA Engineers to work with services such as advanced automation, monitoring, and testing services. It is possible to integrate with Perfecto directly from your **codemagic.yaml**
+**Perfect** is a cloud-based test automation platform for web and mobile that allows application developers and QA engineers to create and execute tests across devices and browsers at scale. Being a market leader in its area, Perfecto offers many ways to integrate with different stages of the software development and testing lifecycle. In this article, we will cover two of them:
+1. How to integrate with Perfecto using codemagic.yaml
+2. How to integrate your Flutter project with Perfecto 
 
-Signing up with [Perfecto](https://www.perfecto.io/) is required in order to get credentials that are needed during an upload process. 
+## Integrate with Perfecto
+###### How to integrate your workflows with Perfecto using codemagic.yaml
 
-Using the following cURL script in a post-build script(a script that is run after executing build commands in yaml), **.apk**, **.aab** and **.ipa** binaries can be uploaded to the Perfecto platform:
+You need a Perfecto account in order to get credentials for the upload process. If you are not already a Perfecto user, you can [sign up for their free trial](https://www.perfecto.io/)
+
+Using the following cURL script in a post-build script(a script that is run after executing build commands in yaml), **Release APK** and **Release IPA** binaries can be uploaded to the Perfecto platform:
 
 ```
 curl "https://web.app.perfectomobile.com/repository/api/v1/artifacts" -H "Perfecto-Authorization: $PERFECTO_TOKEN" -H "Content-Type: multipart/form-data" -F "requestPart={\"artifactLocator\":\"PRIVATE:app.aab\",\"artifactType\":\"ANDROID\",\"override\":true}" -F "inputStream=@/path/to/your_binary"
@@ -26,24 +31,17 @@ workflows:
 
 For further information about using variable groups please click [here](.../variables/environment-variable-groups/).
 
-
-## Test Automation
-
-In order to automate tests, desired capabilities can be set inside your custom made test scripts in your project. For example, if your application requires device sensors such as camera or fingerprint reader, then **sensorInstrument** needs to be set:
-
-```
-capabilities.setCapability("sensorInstrument", true);
-```
-
-With Appium tests **autoInstrument** capability automatically instrument the application and it needs to be set to true:
-
-```
-capabilities.setCapability("autoInstrument", true);
-```
+{{<notebox>}}
+Note: The uploaded files can be directly used to start your automation testing. To do this, desired capabilities can be set inside your custom-made test scripts in your project. For example, if your testing includes camera usage(QR code, Barcode) or biometric scanning (FaceID/Fingerprint), then **sensorInstrument** needs to be set as follows:
+	
+**capabilities.setCapability("sensorInstrument", true);**
+{{</notebox>}}
+	
 
 ## Flutter apps integration
 
-**Android apps**
+######Set up the Flutter integration for Android apps
+
 
 In order to set up integration for Flutter specific apps the following steps must be followed:
 
@@ -140,7 +138,9 @@ In order to generate **testBuildType** which refers to **testApkPath**, the foll
       ./gradlew perfecto-android-inst
 ```
 
-**iOS apps**
+######Set up the Flutter integration for iOS apps
+
+Set up the Flutter integration for iOS apps
 
 Flutter iOS apps take almost the step steps as android builds:
 
@@ -210,4 +210,4 @@ perfectoGradleSettings {
 
 A sample project that shows how to configure Perfecto integration for real device testing is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/perfecto_sample_project)
 
-A sample project that shows how to configure Perfecto integration for **App Automate** for Flutter apps is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/perfecto_flutter_sample_project)
+Additionally, to see a sample project that shows how to configure the Perfecto integration for App Automate for Flutter apps is available [here (https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/perfecto_flutter_sample_project)
