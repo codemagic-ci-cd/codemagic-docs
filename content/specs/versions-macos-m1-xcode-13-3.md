@@ -12,9 +12,9 @@ weight: 9
 
 ## System
 
-- System version `macOS 12.5.1 (21G83)`
+- System version `macOS 12.6 (21G115)`
 - Kernel version `Darwin 21.6.0`
-- Disk `294GB (Free Space: 48GB)`
+- Disk `294GB (Free Space: 31GB)`
 
 ## Pre-installed tools
 
@@ -26,17 +26,17 @@ weight: 9
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `N/A`
-- ew-cli `0.0.47`
+- ew-cli `0.0.48`
 - fastlane `2.209.1`
 - firebase `11.4.2`
 - flutter `3.3.2 ($HOME/programs/flutter)`
 - gem `3.3.22`
-- gh `2.15.0`
+- gh `2.16.0`
 - git `2.37.3`
 - Google Cloud SDK `396.0.0`
 - gradle `7.3.1`
 - gsutil `5.11`
-- homebrew `3.6.1`
+- homebrew `3.6.2`
 - ionic `5.4.16`
 - jq `1.6`
 - ktlint `0.47.1`
@@ -62,7 +62,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Java versions
 
-- **18.0.2.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home`
+- **19** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-19.jdk/Contents/Home`
 - **11.0.16.1** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_345** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
@@ -142,6 +142,6 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 
 ## Other Xcode versions
 
-- 14.1 (14B5024h) `/Applications/Xcode-14.1.app`
-- 14.0 (14A309) `/Applications/Xcode-14.0.app`
+- 14.1 (14B5024i) `/Applications/Xcode-14.1.app`
+- 14.0.1 (14A400) `/Applications/Xcode-14.0.app`
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`
