@@ -14,7 +14,7 @@ The prerequisite is a valid **Google Cloud Service Account**. Plese follow these
 6. Add the **google_play** variable group to the `codemagic.yaml`
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
-  react-native-ios:
+  android-workflow-id:
     # ....
     environment:
       groups:
@@ -31,12 +31,16 @@ scripts:
       if [ -z LATEST_BUILD_NUMBER ]; then
         # fallback in case no build number was found from Google Play.
         # Alternatively, you can `exit 1` to fail the build
-        # BUILD_NUMBER is a Codemagic built-in variable tracking the number of times this workflow has been built
+        # BUILD_NUMBER is a Codemagic built-in variable tracking the number
+        # of times this workflow has been built
           UPDATED_BUILD_NUMBER=$BUILD_NUMBER
       else
           UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
       fi
-      cd android && ./gradlew bundleRelease -PversionCode=$UPDATED_BUILD_NUMBER -PversionName=1.0.$UPDATED_BUILD_NUMBER
+      cd android
+      ./gradlew bundleRelease \
+          -PversionCode=$UPDATED_BUILD_NUMBER \
+          -PversionName=1.0.$UPDATED_BUILD_NUMBER
 {{< /highlight >}}
 8. Modify the `android/app/build.gradle` file to get the build number values and apply them:
 {{< highlight kotlin "style=paraiso-dark">}}

@@ -1,4 +1,5 @@
 ---
+title: Basic Android & iOS publishing
 ---
 
 Codemagic offers a wide array of options for app publishing and the list of partners and integrations is continuously growing. For the most up-to-date information, check the guides in the **Configuration > Publishing** section of these docs.
@@ -9,20 +10,20 @@ If the build finishes successfully, release notes (if passed), and the generated
 
 If you don’t want to receive an email notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
 {{< highlight yaml "style=paraiso-dark">}}
-react-native-ios:
-  # ...
-  environment:
-  # ...
-  scripts:
-  # ... 
-  publishing:
-    email:
-      recipients:
-        - user_1@example.com
-        - user_2@example.com
-      notify:
-        success: true
-        failure: false
+workflows:
+  sample-workflow-id:
+    environment: 
+      # ...
+    scripts: 
+      # ...
+    publishing: 
+      email:
+        recipients:
+          - user_1@example.com
+          - user_2@example.com
+        notify:
+          success: true
+          failure: false
 {{< /highlight >}}
 
 #### Publishing to Google Play and App Store
@@ -57,7 +58,7 @@ Please note that
 The following snippet demonstrates how to authenticate with and upload the IPA to App Store Connect, submit the build to beta tester groups in TestFlight and configure releasing the app to App Store. See additional configuration options for App Store Connect publishing [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/publish.md).
 
 {{< highlight yaml "style=paraiso-dark">}}
-react-native-ios:
+sample-workflow-ios:
   # ... 
   publishing:
     # ...

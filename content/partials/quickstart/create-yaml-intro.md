@@ -1,12 +1,13 @@
 ---
+title: Creating codemagic.yaml
 ---
 
-## Creating codemagic.yaml
+
 In order to use `codemagic.yaml` for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository. Detailed explanation can be found [here](../yaml/yaml-getting-started).
 
 {{<notebox>}}
 **Tip**
-You can find the complete codemagic.yaml example in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/react-native-demo-project/codemagic.yaml#L5).
+You can find codemagic.yaml examples in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/) repository.
 {{</notebox>}}
 
 If you prefer to write your `codemagic.yaml` file from scratch, you can start with this minimal configuration.
@@ -16,10 +17,10 @@ If you prefer to write your `codemagic.yaml` file from scratch, you can start wi
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
-    react-native-android:
-        name: React Native Android
+    android-workflow-id:
+        name: Android Sample Workflow
         max_build_duration: 120
-        instance_type: mac_mini
+        instance_type: mac_mini_m1
 {{< /highlight >}}
 
 {{% /tab %}}
@@ -28,10 +29,10 @@ workflows:
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
-    react-native-ios:
-        name: React Native iOS
+    ios-workflow-id:
+        name: iOS Sample Workflow
         max_build_duration: 120
-        instance_type: mac_mini
+        instance_type: mac_mini_m1
 {{< /highlight >}}
 {{< /tab >}}
 
@@ -44,13 +45,13 @@ You can have more than one workflow in the same `codemagic.yaml` file. If you ar
 {{</notebox>}}
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
-    react-native-android:
-        name: React Native Android
+    android-workflow-id:
+        name: Android Sample Workflow
         # .......    
         # .......
         # .......  
-    react-native-ios:
-        name: React Native iOS
+    ios-workflow-id:
+        name: iOS Sample Workflow
         # ......
 {{< /highlight >}}
 

@@ -1,23 +1,6 @@
----
-title: Signing Android apps
-description: How to set up Android code signing in codemagic.yaml
-weight: 3
-aliases: /code-signing-yaml/signing-android
----
 
-All Android applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. 
-
-{{<notebox>}}
-**Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user or if you want to use alternative Code signing methods, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
-{{</notebox>}}
-
-## Managing and uploading files
-
-Team owner permissions are required to upload and edit files under the **Code signing identities** section. However, all team members can view the file info for any of the uploaded files.
-
-### Generating a keystore
-
-If you need to create a new keystore file for signing your release builds, you can do so with the Java Keytool utility by running the following command:
+#### Generating a keystore
+You can create a keystore for signing your release builds with the Java Keytool utility by running the following command:
 
 {{< highlight Shell "style=paraiso-dark">}}
 keytool -genkey -v -keystore codemagic.keystore -storetype JKS \
@@ -26,7 +9,7 @@ keytool -genkey -v -keystore codemagic.keystore -storetype JKS \
 
 Keytool then prompts you to enter your personal details for creating the certificate, as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **codemagic.keystore** in the directory you're in. The key is valid for 10,000 days.
 
-### Uploading a keystore
+#### Uploading a keystore
 
 1. Open your Codemagic Team settings, and go to  **codemagic.yaml settings** > **Code signing identities**.
 2. Open **Android keystores** tab.
@@ -44,11 +27,9 @@ However, keep the keystore file private and do not check it into a public reposi
 {{</notebox>}}
 
 
-## Referencing keystores in codemagic.yaml
+#### Referencing keystores in codemagic.yaml
 
 To tell Codemagic to fetch the uploaded keystores from the **Code signing identities** section during the build, list the reference of the uploaded keystore under the `android_signing` field.
-
-#### Fetching a single keystore file
 
 Add the following code to the `environment` section of your `codemagic.yaml` file:
 
@@ -69,30 +50,10 @@ Default environment variables are assigned by Codemagic for the values on the bu
 - Key alias: `CM_KEY_ALIAS`
 - Key alias password: `CM_KEY_PASSWORD`
 
-#### Fetching multiple keystore files
 
-When fetching multiple keystores during a build, it is necessary to explicitly set names for environment variables that will point to the file paths on the build machine.
-
-{{< highlight yaml "style=paraiso-dark">}}
-environment:
-  android_signing:
-    - keystore: keystore_reference_1
-      keystore_environment_variable: THIS_KEYSTORE_PATH_ON_DISK_1
-      keystore_password_environment_variable: THIS_KEYSTORE_PASSWORD_1
-      key_alias_environment_variable: THIS_KEY_ALIAS_1
-      key_password_environment_variable: THIS_KEY_PASSWORD_1
-    - keystore: keystore_reference_2
-      keystore_environment_variable: THIS_KEYSTORE_PATH_ON_DISK_2
-      keystore_password_environment_variable: THIS_KEYSTORE_PASSWORD_2
-      key_alias_environment_variable: THIS_KEY_ALIAS_2
-      key_password_environment_variable: THIS_KEY_PASSWORD_2
-{{< /highlight >}}
-
-
-## Signing Android apps using Gradle
+#### Signing Android apps using Gradle
 
 To sign your Android app, simply modify your **`android/app/build.gradle`** as follows:
-
 {{< highlight Groovy "style=paraiso-dark">}}
 ...
   android {
@@ -121,24 +82,4 @@ To sign your Android app, simply modify your **`android/app/build.gradle`** as f
       }
   }
   ...
-{{< /highlight >}}
-
-
-## Signing Android apps using user-specified keys
-
-Instead of modifying the `build.gradle` file, you can use a script to re-create a keystore file on the build machine and use default signing method via `key.properties` file:
-
-{{< highlight kotlin "style=paraiso-dark">}}
-scritpts:
-  
-  # ...
-
-  - name: Set up key.properties
-    script: | 
-      cat >> "$CM_BUILD_DIR/project_directory/android/key.properties" <<EOF
-      storePassword=$CM_KEYSTORE_PASSWORD
-      keyPassword=$CM_KEY_PASSWORD
-      keyAlias=$CM_KEY_ALIAS
-      storeFile=$CM_KEYSTORE_PATH
-      EOF    
 {{< /highlight >}}

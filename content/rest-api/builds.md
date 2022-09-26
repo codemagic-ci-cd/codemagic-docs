@@ -22,6 +22,8 @@ APIs for managing builds are currently available for developers to preview. Duri
 | `branch`      | `string` | Optional. The branch name. Either `branch` or `tag` is **required**. |
 | `tag`         | `string` | Optional. The tag name. Either `branch` or `tag` is **required**. |
 | `environment` | `object` | Optional. Specify environment variables, variable groups, and software versions to override or define in workflow settings. | 
+| `labels`      | `list`   | Optional. Specify labels to be included for the build in addition to existing labels. |
+
 
 #### Example
 
@@ -36,13 +38,14 @@ APIs for managing builds are currently available for developers to preview. Duri
        https://api.codemagic.io/builds
 {{< /highlight >}}
 
-#### Pass environment variables and software versions
+#### Pass custom build parameters
 
 {{< highlight json "style=paraiso-dark">}}
 {
   "appId": "5c9c064185dd2310123b8e96",
   "workflowId": "release",
   "branch": "master",
+  "labels": ["foo", "bar"],
   "environment": {
     "variables": {
       "ENVIRONMENT_VARIABLE_1": "...",
