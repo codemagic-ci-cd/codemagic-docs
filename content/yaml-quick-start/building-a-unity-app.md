@@ -504,6 +504,5 @@ workflows:
         track: alpha   # Any default or custom track    
 {{< /highlight >}}
 
-
 ## Sample Projects
 Checkout the sample projects [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity).
