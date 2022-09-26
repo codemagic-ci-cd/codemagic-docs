@@ -1,5 +1,5 @@
 ---
-title: Building a snap package
+title: Linux Snap packages
 description: How to build and release a snap package with codemagic.yaml
 weight: 11
 aliases:

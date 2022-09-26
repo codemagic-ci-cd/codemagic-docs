@@ -1,7 +1,7 @@
 ---
-title: Building a native Android app
+title: Android native apps
 description: How to build an Android app with codemagic.yaml
-weight: 7
+weight: 2
 aliases:
   - '../yaml/building-a-native-android-app'
   - /getting-started/building-a-native-android-app
@@ -97,7 +97,7 @@ workflows:
 ```
 
 {{<notebox>}}
-Note: You can skip `Set up key properties` script if you are using [Code-signing Identities](https://docs.codemagic.io/yaml-code-signing/code-signing-identities/#android-keystores-1). This feature is only available on **Teams**. You will need to add your keystore reference as follows in your yaml configuration.
+Note: You can skip `Set up key properties` script if you are using a **Team account**. Instead, follow the code signing guide for [Android code signing](../yaml-code-signing/signing-android). You will need to add your keystore reference as follows in your yaml configuration.
   
   ```
   environment:

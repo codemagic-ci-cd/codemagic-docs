@@ -6,13 +6,15 @@ weight: 1
 
 You can establish remote access to the virtual build machine running your build via SSH or a VNC/RDP client. 
 
-The **SSH access** allows you to access the build machine only through a terminal and run commands on it. This is an excellent option for debugging your builds. You can see the processes running during the CI job, reproduce all commands run during the build, or debug your custom scripts.
+The **SSH access** allows you to access the build machine through a terminal and run commands on it. This is an excellent option for debugging your builds. You can see the processes running during the CI job, reproduce all commands run during the build, or debug your custom scripts.
 
-The **VNC/RDP clients** allow you to access the remote build machine graphically. For example Mac machines may have multiple versions of Xcode and iOS simulators preinstalled, so you can run and test your iOS apps or change Xcode configuration files without owning a Mac yourself. Linux and Mac machines use VNC and Windows machines use RDP for GUI remote access.
+The **VNC/RDP clients** allow you to access the remote build machine GUI. For example Mac machines may have multiple versions of Xcode and iOS simulators preinstalled, so you can run and test your iOS apps or change Xcode configuration files without owning a Mac yourself. Linux and Mac machines use VNC and Windows machines use RDP for GUI remote access.
 
+ 
 ## How remote access to the build machines works
 
 All virtual machines are located within the private network. In order to allow users to connect to the virtual machine, Codemagic allows a temporary SSH or VNC/RDP access through the public gateway using a unique SSH key or user credentials that are generated before each build. The unique key and user credentials are valid for the duration of the build only and are revoked after the build is finished.
+
 
 ## Setting up an SSH connection to the virtual machine
 
@@ -23,8 +25,9 @@ All virtual machines are located within the private network. In order to allow u
 If you don't run the script before the build finishes, the unique SSH key expires and can't be used anymore. A new script will be generated every time you run the build, so previous scripts cannot be reused.
 
 {{<notebox>}}
-Note that the script for establishing SSH connection works natively on Linux and macOS but requires additional software like Git-bash on Windows.
+**Note:** The script for establishing SSH connection works natively on Linux and macOS but requires additional software like Git-bash on Windows.
 {{</notebox>}}
+
 
 ## Setting up VNC/RDP connection to the virtual machine
 
@@ -32,7 +35,7 @@ Note that the script for establishing SSH connection works natively on Linux and
 2. Use the given **Host**, **Port**, **Username** and **Password** on your VNC/RDP client to establish the connection.
 
 {{<notebox>}}
-You can download VNC Viewer for Windows [here](https://www.realvnc.com/en/connect/download/viewer/windows/). 
+**Tip:** You can download VNC Viewer for Windows [here](https://www.realvnc.com/en/connect/download/viewer/windows/). 
 
 If you are on macOS and need to connect to a Windows machine using RDP, we recommend using the official Microsoft Remote Desktop client for macOS which can be installed from [Mac App Store](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466)
 
@@ -40,6 +43,7 @@ When using VNC Viewer or Microsoft Remote Desktop, make sure to add the values f
 {{</notebox>}}
 
 New credentials will be generated every time you run the build, so previous credentials cannot be reused.
+
 
 ## Using the remote build machine
 
@@ -51,13 +55,15 @@ You can use the remote session to reproduce all commands run during the build, r
 
 * The `sudo` command is available on Linux/macOS so you can execute all commands with root privileges. PowerShell on Windows machines is already running in privileged mode.
 
+
 ## Remote access session time limit
 
 The SSH or VNC/RDP session remains active for a maximum of 20 minutes after all build steps are completed or until the maximum build duration limit is reached, whichever comes first. If you log out from the virtual machine during an active VNC or SSH/RDP session, the build is finished automatically, and you cannot access the builder for this session. You would have to run a new build to establish a new remote access connection.
 
 {{<notebox>}}
-If you have finished debugging the build, don't forget to end the session to avoid losing build time.
+**Note:** If you have finished debugging the build, don't forget to end the session to avoid losing build time.
 {{</notebox>}}
+
 
 ## Useful tips for debugging
 
@@ -68,13 +74,14 @@ If you have finished debugging the build, don't forget to end the session to avo
 * During an active SSH session, you can rerun the build with a different configuration right from the terminal.
 * Before terminating the connection, you may want to copy-paste the contents of the terminal window to keep a record of your actions on the builder machine.
 
+
 ### Making Configuration Changes
 
 * It is very easy to save any configuration changes that you make on Codemgaic VM. The repository is cloned from your GitHub/GitLab/Bitbucket account, so you can directly commit the changes using git and push them to your account.
 * In order to push the changes to your repo, you need to authenticate yourself in your git provider. This is necessary because Codemagic VM only has read access to the GitHub repo. 
 * Example, in order to authenticate with GitHub, you need to use your GitHub personal access token. See how to generate the token from [here](https://github.com/settings/tokens). You can run these commands from the terminal: 
   
-```
+{{< highlight bash "style=paraiso-dark">}}
 cd folder_name
 ....
 ....
@@ -82,4 +89,4 @@ gh auth login --with-token YOUR_GITHUB_PAT_TOKEN
 git add .
 git commit -m "Added configuration changes"
 git push
-```
+{{< /highlight >}}

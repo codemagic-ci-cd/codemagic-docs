@@ -11,7 +11,7 @@ menuCategories:
 To be able to test iOS builds on physical devices outside TestFlight, e.g. by downloading the app artifact from Slack or a [public link](/yaml-publishing/build-dashboards), the test devices have to be registered in Apple Developer Portal and included in the provisioning profile used for code signing the app. Codemagic enables you to send your trusted testers a device registration link to obtain their device UDIDs and automatically add them to the list of devices in Apple Developer Portal.
 
 {{<notebox>}}
-This feature is available for [teams](../teams/teams) only. But if you are not using teams this has to be done manually by [Registering your devices using your Developer Account](https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices#Register-Devices-in-Your-Developer-Account).
+**Note:** This feature is available for [teams](../teams/teams) only. If you are using a personal accont, this has to be done manually by [Registering your devices using your Developer Account](https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices#Register-Devices-in-Your-Developer-Account).
 
 You can also check the [Register Devices](https://help.apple.com/developer-account/#/dev40df0d9fa) section using Your Developer Account.
 {{</notebox>}}
@@ -33,7 +33,7 @@ You can also check the [Register Devices](https://help.apple.com/developer-accou
 To add devices to an existing group, find the group in the **Tester groups** section and click **Add new devices**. 
 
 {{<notebox>}}
-It is important to choose the actual bundle identifier when building an app instead of XC Wildcard, otherwise, the tester group will be unable to install the app and get the error "This app cannot be installed because its integrity could not be verified"
+**Note:** It is important to choose the actual bundle identifier when building an not use any XC Wildcards. Otherwise, the tester group will be unable to install the app and will get the error **_"This app cannot be installed because its integrity could not be verified_**"
 {{</notebox>}}
 
 ## Device registration

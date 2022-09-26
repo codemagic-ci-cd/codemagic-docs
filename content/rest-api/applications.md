@@ -1,5 +1,5 @@
 ---
-title: Applications
+title: Applications API
 weight: 2
 ---
 
@@ -9,30 +9,34 @@ APIs for managing applications are currently available for developers to preview
 
 `GET /apps`
 
-### Example
+#### Example
 
-```bash
-curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/apps
-```
+{{< highlight bash "style=paraiso-dark">}}
+curl -H "Content-Type: application/json" \
+     -H "x-auth-token: <API Token>" \
+     --request GET https://api.codemagic.io/apps
+{{< /highlight >}}
 
-### Response
 
-```json
+#### Response
+
+{{< highlight json "style=paraiso-dark">}}
 {
-	"applications": [{
-		"_id": "6172cc7d57278d06d4e915f1",
-		"appName": "Foobar-App",
-		"workflowIds": [
-			"5d85f242e941e00019e81bd2"
-		],
-		"workflows": {
-			"5d85f242e941e00019e81bd2": {
-				"name": "Android Workflow"
-			}
-		}
-	}]
+  "applications": [{
+    "_id": "6172cc7d57278d06d4e915f1",
+	"appName": "Foobar-App",
+	"workflowIds": [
+	  "5d85f242e941e00019e81bd2"
+	],
+	"workflows": {
+	  "5d85f242e941e00019e81bd2": {
+	    "name": "Android Workflow"
+	   }
+	}
+  }]
 }
-```
+{{< /highlight >}}
+
 
 ## Retrieve an application
 
@@ -40,15 +44,18 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 
 Based on the application id provided, returns the applications information.
 
-### Example
+#### Example
 
-```bash
-curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/apps/<app_id>
-```
+{{< highlight bash "style=paraiso-dark">}}
+curl -H "Content-Type: application/json" \
+     -H "x-auth-token: <API Token>" \
+     --request GET https://api.codemagic.io/apps/<app_id>
+{{< /highlight >}}
 
-### Response
 
-```yaml
+#### Response
+
+{{< highlight json "style=paraiso-dark">}}
 {
   "application": {
     "_id": "5d85eaa0e941e00019e81bc2",
@@ -66,7 +73,8 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
     }
   }
 }
-```
+{{< /highlight >}}
+
 
 ## Add a new application
 
@@ -74,107 +82,120 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
 
 Adds a Git repository to the applications list.
 
-### Parameters
+#### Parameters
 
 | **Name**        | **Type** | **Description** |
 | --------------- | -------- | --------------- |
 | `repositoryUrl` | `string` | **Required.** SSH or HTTPS URL for cloning the repository. |
-| `teamId` | `string` | **Optional.** ID of a team if you wish to add an app directly to one of your teams. You must be an owner of the team specified. |
+| `teamId` | `string` | **Optional.** Team ID, if you wish to add an app directly to one of your teams. You must be an owner of the team specified. |
 
-### Example
+#### Example
 
-```bash
-  curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" \
-  -d '{"repositoryUrl": "git@github.com:my-organization/my-repo.git"}' \
-  -X POST https://api.codemagic.io/apps  
-```
+{{< highlight bash "style=paraiso-dark">}}
+curl -H "Content-Type: application/json" \
+     -H "x-auth-token: <API Token>" \
+     -d '{
+       "repositoryUrl": "git@github.com:my-organization/my-repo.git"
+     }' \
+     -X POST https://api.codemagic.io/apps  
+{{< /highlight >}}
 
-### Response
 
-```yaml
+#### Response
+
+{{< highlight json "style=paraiso-dark">}}
 {
   "_id": "5c9c064185dd2310123b8e96",
   "appName": "my-repo"
 }
-```
+{{< /highlight >}}
+
 
 ## Add a new application from a private repository
 
 `POST /apps/new`
 
-Creates an application from a private repository with a SSH key
+Creates an application from a private repository with an SSH key
 
-### Parameters
+#### Parameters
 
 | **Name**        | **Type** | **Description** |
 | --------------- | -------- | --------------- |
 | `repositoryUrl` | `string` | **Required.** SSH or HTTPS URL for cloning the repository. |
 | `sshKey` | `JSON` | **Required.** |
 | `projectType` | `string` | `flutter-app` when adding Flutter application. | 
-| `teamId` | `string` | **Optional.** ID of a team if you wish to add an app directly to one of your teams. You must be an owner of the team specified. |
+| `teamId` | `string` | **Optional.** Team ID, if you wish to add an app directly to one of your teams. You must be an owner of the team specified. |
 
 #### `sshKey` parameter
 
 | **Name**        | **Type** | **Description** |
 | --------------- | -------- | --------------- |
 | `data` | `string` | **Required.** `base64`-encoded private key file. |
-| `passphrase` | `string` | **Required.** SSH key passphrase or `null` if it SSH key is without passphrase. | 
+| `passphrase` | `string` | **Required.** SSH key passphrase or `null` if it SSH key is without a passphrase. | 
 
 To encode private key file and paste result to clipboard
 
-```bash
+{{< highlight bash "style=paraiso-dark">}}
 base64 id_rsa | pbcopy
-```
+{{< /highlight >}}
 
-### Example
 
-```bash
-  curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" \
-  -d '{
-        "repositoryUrl": "git@github.com:my-organization/my-repo.git",
-        "sshKey": {
-          "data": "St89hgb-BASE64-ENCODED-SSH-KEY-FILE-H4ga7jgf==", 
-          "passphrase": null
-        }
-      }' \
-  -X POST https://api.codemagic.io/apps 
-```
+#### Example
 
-### Response
+{{< highlight bash "style=paraiso-dark">}}
+  curl -H "Content-Type: application/json" \
+       -H "x-auth-token: <API Token>" \
+       -d '{
+         "repositoryUrl": "git@github.com:my-organization/my-repo.git",
+         "sshKey": {
+           "data": "St89hgb-BASE64-ENCODED-SSH-KEY-FILE-H4ga7jgf==", 
+           "passphrase": null
+         }
+       }' \
+       -X POST https://api.codemagic.io/apps 
+{{< /highlight >}}
 
-```json
+
+#### Response
+
+{{< highlight json "style=paraiso-dark">}}
 {"application" : {
   "_id": "5c9c064185dd2310123b8e96",
   "appName": "my-repo"
 }}
-```
+{{< /highlight >}}
+
 
 
 ## Encrypting base64 encoded values
 
 #### Example
 
-```yaml
+{{< highlight bash "style=paraiso-dark">}}
+  curl -H "Content-Type: application/json" \
+       -H "x-auth-token: $CM_API_TOKEN" \
+       -d '{
+         "appId": "YOUR_APP_ID", 
+         "value": "BASE64_ENCODED_VALUE"
+       }' \
+       -X POST https://api.codemagic.io/apps/YOUR_APP_ID/encrypt-environment-variable
+{{< /highlight >}}
 
-curl -H "Content-Type: application/json" -H "x-auth-token: $CM_API_TOKEN" \
-  -d '{
-        "appId": "YOUR_APP_ID", 
-        "value": "BASE64_ENCODED_VALUE"
-      }' \
-  -X POST https://api.codemagic.io/apps/YOUR_APP_ID/encrypt-environment-variable
-```
 
-### Response
+#### Response
 
-```yaml
-{"encrypted": "Encrypted(Z0FBQUFBQmZMVkhwb3Q3QlJtRlVOeVFJcEJvTTRtWnZablpqMS0xN2V6dllTell1ODZSd2FUcnNqMUlZT09QY1paV0pjbVRfUlVJeDUxRWIzX1paOEZlc1dSdi1XMXlkUFVIdjNIZ2VqcE5Ja0tpMjlPWjhlSTQ9)"}
-```
+{{< highlight json "style=paraiso-dark">}}
+  {
+    "encrypted": "Encrypted(Z0FBQUFBQmZMVkhwb3Q3QlJtRlVOeVFJcEJvTTRtWnZablpqMS0xN2V6dllTell1ODZSd2FUcnNqMUlZT09QY1paV0pjbVRfUlVJeDUxRWIzX1paOEZlc1dSdi1XMXlkUFVIdjNIZ2VqcE5Ja0tpMjlPWjhlSTQ9)"
+  }
+{{< /highlight >}}
+
 
 ## Modify application variables and secrets
 
 Codemagic allows you to fetch and modify application variables and secrets using the REST API. Note that the API works slightly differently depending on whether your application is configured to use the `Workflow Editor` or `YAML configuration`.
 
-For the latter, variables and secrets are manually configured on the **Environment variables** tab in your application settings. These variables and secrets can be accessed in your configuration file across all workflows with the use of [groups](../building/environment-variable-groups). Variables configured for the `Workflow Editor` are specific to one workflow.
+For yaml, variables and secrets are manually configured on the **Environment variables** tab in your application settings. These variables and secrets can be accessed in your configuration file across all workflows with the use of [groups](../building/environment-variable-groups). Variables configured for the `Workflow Editor` are specific to one workflow.
 
 ### Fetch variables
 
@@ -184,14 +205,18 @@ Based on the application id provided, returns the configured variables.
 
 #### Example
 
-```bash
-curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'https://api.codemagic.io/apps/<app_id>/variables'
-```
+{{< highlight bash "style=paraiso-dark">}}
+  curl -XGET \
+       -H 'x-auth-token: <API Token>' \
+       -H "Content-type: application/json" \
+       'https://api.codemagic.io/apps/<app_id>/variables'
+{{< /highlight >}}
+
 
 #### Response
 
 ##### Response for applications using codemagic.yaml
-```json
+{{< highlight json "style=paraiso-dark">}}
 [
   {
     "group": "production",
@@ -201,10 +226,11 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
     "value": "[HIDDEN]"
   }
 ]
-```
+{{< /highlight >}}
+
 
 ##### Response for applications using Workflow Editor
-```json
+{{< highlight json "style=paraiso-dark">}}
 [
   {
     "id": "61b06dbe72d7ad0017679014", 
@@ -215,7 +241,8 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
     "workflowName": "Default Workflow"
   }
 ]
-```
+{{< /highlight >}}
+
 
 ### Add new variable
 
@@ -233,14 +260,19 @@ curl -XGET -H 'x-auth-token: <API Token>' -H "Content-type: application/json" 'h
 
 #### Example
 
-```bash
-curl -XPOST -H 'x-auth-token: <API TOKEN>' -H "Content-type: application/json" -d '{
-    "key": "FOO",
-    "value": "foobar",
-    "group": "production",
-    "secure": true
-  }' 'https://api.codemagic.io/apps/<app_id>/variables'
-```
+{{< highlight bash "style=paraiso-dark">}}
+  curl -XPOST \
+       -H 'x-auth-token: <API TOKEN>' \
+       -H "Content-type: application/json" \
+       -d '{
+         "key": "FOO",
+         "value": "foobar",
+         "group": "production",
+         "secure": true
+        }' \
+       'https://api.codemagic.io/apps/<app_id>/variables'
+{{< /highlight >}}
+
 
 #### Example of adding file variables
 
@@ -248,23 +280,27 @@ It is possible to pass text-based files to the `cURL` command with the help of C
 These tools provide options to properly retain newlines, which are essential for some files (e.g. private keys) to function correctly.
 
 
-```bash
-FILE=$(awk 1 ORS='\\n' file_path)
-curl -XPOST -H 'x-auth-token: <API TOKEN>' -H 'Content-Type: application/json;charset=utf-8' -d "{
-    \"key\":\"FOO\",
-    \"value\":\"$FILE\", 
-    \"group\":\"production\", 
-    \"secure\": true
-    }" 'https://api.codemagic.io/apps/<app_id>/variables'
-```
+{{< highlight bash "style=paraiso-dark">}}
+  FILE=$(awk 1 ORS='\\n' file_path)
+  curl -XPOST -H 'x-auth-token: <API TOKEN>' \
+       -H 'Content-Type: application/json;charset=utf-8' \
+       -d "{
+       \"key\":\"FOO\",
+       \"value\":\"$FILE\", 
+       \"group\":\"production\", 
+       \"secure\": true
+       }" \
+       'https://api.codemagic.io/apps/<app_id>/variables'
+{{< /highlight >}}
 
-To add binary-based files (e.g. images), they need to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) first before passing them to the value parameter as strings. Note that the values will have to be `base64 decoded` during the build so as to use them.
+
+To add binary-based files (e.g. images), they need to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) first before passing them to the value parameter as strings. Note that the values will have to be `base64 decoded` during the build in order to be used.
 
 
 #### Response
 
 ##### Response for applications using codemagic.yaml
-```json
+{{< highlight json "style=paraiso-dark">}}
 {
   "group": "production",
   "id": "619e329e0ca5fe19c3780c74",
@@ -272,10 +308,11 @@ To add binary-based files (e.g. images), they need to be [`base64 encoded`](../v
   "secure": true,
   "value": "[HIDDEN]"
 }
-```
+{{< /highlight >}}
+
 
 ##### Response for applications using Workflow Editor
-```json
+{{< highlight json "style=paraiso-dark">}}
 {
   "id": "61b06dbe72d7ad0017679014", 
   "key": "FOO", 
@@ -284,7 +321,34 @@ To add binary-based files (e.g. images), they need to be [`base64 encoded`](../v
   "workflowId": "60f0520c4c8734015080d401", 
   "workflowName": "Default Workflow"
 }
-```
+{{< /highlight >}}
+
+
+### Getting variable_id
+
+#### Example
+
+{{< highlight bash "style=paraiso-dark">}}
+  curl -XGET \
+       -H "X-Auth-Token: $CM_API_KEY" \
+       -H "Content-type: application/json" \
+       "https://api.codemagic.io/apps/YOUR_APP_ID/variables"
+{{< /highlight >}}
+
+
+#### Response
+
+{{< highlight json "style=paraiso-dark">}}
+  [{
+    "group": "test",
+    "id": "0000000000000",
+    "key": "TEST",
+    "secure": true,
+    "value": "[HIDDEN]"
+  }]
+{{< /highlight >}}
+
+
 
 ### Update existing variable
 
@@ -300,17 +364,22 @@ To add binary-based files (e.g. images), they need to be [`base64 encoded`](../v
 
 #### Example
 
-```bash
-curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -d '{
-    "value": "foobar2",
-    "secure": false
-  }' 'https://api.codemagic.io/apps/<app_id>/variables/<variable_id>'
-```
+{{< highlight bash "style=paraiso-dark">}}
+  curl -XPOST \
+       -H 'x-auth-token: <API Token>' \
+       -H "Content-type: application/json" \
+       -d '{
+         "value": "foobar2",
+         "secure": false
+       }' \
+       'https://api.codemagic.io/apps/<app_id>/variables/<variable_id>'
+{{< /highlight >}}
+
 
 #### Response
 
 ##### Response for applications using codemagic.yaml
-```json
+{{< highlight json "style=paraiso-dark">}}
 {
   "group": "production",
   "id": "619e329e0ca5fe19c3780c74",
@@ -318,10 +387,11 @@ curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -
   "secure": false,
   "value": "foobar2"
 }
-```
+{{< /highlight >}}
+
 
 ##### Response for applications using Workflow Editor
-```json
+{{< highlight json "style=paraiso-dark">}}
 {
   "id": "61b06dbe72d7ad0017679014", 
   "key": "FOO", 
@@ -330,7 +400,8 @@ curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -
   "workflowId": "60f0520c4c8734015080d401", 
   "workflowName": "Default Workflow"
 }
-```
+{{< /highlight >}}
+
 
 ### Remove variable
 
@@ -338,9 +409,13 @@ curl -XPOST -H 'x-auth-token: <API Token>' -H "Content-type: application/json" -
 
 #### Example
 
-```bash
-curl -XDELETE -H 'X-Auth-Token: <API Token>' -H "Content-type: application/json" 'https://api.codemagic.io/apps/<app_id>/variables/<variable_id>'
-```
+{{< highlight bash "style=paraiso-dark">}}
+  curl -XDELETE \
+       -H 'X-Auth-Token: <API Token>' \
+       -H "Content-type: application/json" \
+       'https://api.codemagic.io/apps/<app_id>/variables/<variable_id>'
+{{< /highlight >}}
+
 
 #### Response
 

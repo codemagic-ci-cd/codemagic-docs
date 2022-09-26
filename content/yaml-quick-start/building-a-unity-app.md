@@ -1,5 +1,5 @@
 ---
-title: Building Unity mobile apps
+title: Unity mobile apps
 description: How to build Unity mobile apps with codemagic.yaml
 weight: 12
 
@@ -189,6 +189,34 @@ public static class BuildScript
         Debug.Log("Built iOS");
     }
 
+    [MenuItem("Build/Build Windows")]
+    public static void BuildWindows()
+    {
+        BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+        buildPlayerOptions.locationPathName = "win/" + Application.productName + ".exe";
+        buildPlayerOptions.target = BuildTarget.StandaloneWindows;
+        buildPlayerOptions.options = BuildOptions.None;
+        buildPlayerOptions.scenes = GetScenes();
+
+        Debug.Log("Building Windows");
+        BuildPipeline.BuildPlayer(buildPlayerOptions);
+        Debug.Log("Built Windows");
+    }
+
+    [MenuItem("Build/Build Mac")]
+    public static void BuildMac()
+    {
+        BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+        buildPlayerOptions.locationPathName = "mac/" + Application.productName + ".app";
+        buildPlayerOptions.target = BuildTarget.StandaloneOSX;
+        buildPlayerOptions.options = BuildOptions.None;
+        buildPlayerOptions.scenes = GetScenes();
+
+        Debug.Log("Building StandaloneOSX");
+        BuildPipeline.BuildPlayer(buildPlayerOptions);
+        Debug.Log("Built StandaloneOSX");
+    }
+
     private static string[] GetScenes()
     {
         return (from scene in EditorBuildSettings.scenes where scene.enabled select scene.path).ToArray();
@@ -322,6 +350,53 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 {{< /highlight >}}
+
+
+## Returning the Licenses
+After the build is over you should return the used license on the machine using this command.
+
+
+
+{{< tabpane >}}
+{{% tab header="Mac Intel" %}}
+
+
+{{< highlight bash "style=paraiso-dark">}}
+$UNITY_BIN -batchmode -quit -returnlicense -nographics
+{{< /highlight >}}
+
+
+{{% /tab %}}
+
+{{% tab header="Mac M1" %}}
+
+{{< highlight bash "style=paraiso-dark">}}
+/Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client --return-ulf --username ${UNITY_USERNAME?} --password ${UNITY_PASSWORD?}
+{{< /highlight >}}
+
+{{< /tab >}}
+
+{{% tab header="Windows" %}}
+
+{{< highlight bash "style=paraiso-dark">}}
+cmd.exe /c "$env:UNITY_HOME\\Unity.exe" -batchmode -quit -returnlicense -nographics
+{{< /highlight >}}
+
+{{< /tab >}}
+
+{{< /tabpane >}}
+
+{{<notebox>}}
+Note that when the build is manually cancelled before the publishing section the license will not be returned automatically and you need to go to https://id.unity.com/en/subscriptions and remove the activation.
+{{</notebox>}}
+
+## Caching
+You can speed up your build by caching the Library folder, read more about caching [here](https://docs.codemagic.io/yaml/yaml-getting-started/#cache).
+{{< highlight bash "style=paraiso-dark">}}
+    cache:
+      cache_paths:
+        - $CM_BUILD_DIR/Library
+{{< /highlight >}}
 ## Workflow configuration with codemagic.yaml{#workflow-configuration}
 
 Your workflow should be configured using the **codemagic.yaml** configuration file and checked into the root of the branches you wish to build using Codemagic.
@@ -428,3 +503,7 @@ workflows:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         track: alpha   # Any default or custom track    
 {{< /highlight >}}
+
+
+## Sample Projects
+Checkout the sample projects [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity).

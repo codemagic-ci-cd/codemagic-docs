@@ -1,7 +1,7 @@
 ---
 title: Custom build steps
 description: How to execute custom scripts in builds configured with the Flutter workflow editor
-weight: 5
+weight: 7
 aliases: 
   - '../building/custom-scripts'
   - /flutter/custom-scripts

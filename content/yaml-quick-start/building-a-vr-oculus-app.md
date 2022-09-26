@@ -1,5 +1,5 @@
 ---
-title: Building Oculus VR apps with Unity
+title: Oculus VR apps with Unity
 description: How to build a Unity Oculus VR app with codemagic.yaml
 weight: 13
 
@@ -277,8 +277,9 @@ workflows:
         - name: Set up keystore
             script: | 
                 echo $CM_KEYSTORE | base64 --decode > $CM_BUILD_DIR/keystore.keystore
-        - name: Build Unity app
+        - name: Setup build number + Build Unity app
             script: | 
+                export NEW_BUILD_NUMBER=$BUILD_NUMBER
                 $UNITY_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.BuildAndroid -nographics -buildTarget Android
     artifacts:
         - android/*.apk
@@ -294,6 +295,8 @@ workflows:
               script: |
                 ./ovr-platform-util upload-quest-build --app_id $OCULUS_APP_ID  --app_secret $OCULUS_APP_SECRET --apk android/android.apk --channel $OCULUS_RELEASE_CHANNEL
 ```
+
+For the build stage, we can auto-increment the build number of the Unity project based on an environment variable that is [always passed by Codemagic](https://docs.codemagic.io/variables/environment-variables) and unique for each workflow.
 
 **Important note:** if you use the `OCULUS_USER_TOKEN` environment variable instead of the `OCULUS_APP_SECRET` one, you need to change the last line of the **codemagic.yaml** file to the following:
 

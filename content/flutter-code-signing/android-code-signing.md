@@ -8,7 +8,7 @@ aliases: /code-signing/android-code-signing
 Code signing is required for distributing your Android app to the Google Play store. It enables to identify who developed the app and ensure that all updates to the app come from you.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Signing Android apps using codemagic.yaml](../code-signing-yaml/signing-android).
+**Note:** This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Signing Android apps using codemagic.yaml](../code-signing-yaml/signing-android).
 {{</notebox>}}
 
 ## Requirements
@@ -24,9 +24,9 @@ For code signing, you need to upload the **keystore** containing your **certific
 As a keystore can hold multiple keys, each key in it must have an **alias**. Both the keystore file and the key alias are protected by **passwords**.
 
 {{<notebox>}}
+**Note:** Please note that every app must be signed using the same key throughout its lifespan.
 
-- Please note that every app must be signed using the same key throughout its lifespan.
-- If you're building Android App Bundles, you additionally need to [enroll your app into app signing by Google Play](https://support.google.com/googleplay/android-developer/answer/7384423).
+If you're building Android App Bundles, you additionally need to [enroll your app into app signing by Google Play](https://support.google.com/googleplay/android-developer/answer/7384423).
 
 {{</notebox>}}
 
@@ -34,9 +34,9 @@ As a keystore can hold multiple keys, each key in it must have an **alias**. Bot
 
 You can create a keystore for signing your release builds with the Java Keytool utility by running the following command:
 
-```bash
+{{< highlight bash "style=paraiso-dark">}}
 keytool -genkey -v -keystore keystore_name.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias alias_name
-```
+{{< /highlight >}}
 
 Keytool then prompts you to enter your personal details for creating the certificate, as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **keystore_name.jks** in the directory you're in. The key is valid for 10,000 days.
 
@@ -56,14 +56,13 @@ Alternatively, you can use [environment variables](../building/environment-varia
 
 Set your signing configuration in `build.gradle` or `build.gradle.kts` as follows:
 {{< tabpane >}}
-{{% tab header="build.gradle" %}}
+{{< tab header="build.gradle" >}}
 
-```gradle
+{{< highlight Groovy "style=paraiso-dark">}}
 ...
 android {
     ...
     defaultConfig { ... }
-
     signingConfigs {
         release {
             if (System.getenv()["CI"]) { // CI=true is exported by Codemagic
@@ -79,7 +78,6 @@ android {
             }
         }
     }
-
     buildTypes {
         release {
             ...
@@ -88,22 +86,21 @@ android {
     }
 }
 ...
-```
+{{< /highlight >}}
 
-{{% /tab %}}
+{{< /tab >}}
 
-{{% tab header="build.gradle.kts" %}}
+{{< tab header="build.gradle.kts" >}}
 
-```gradle
-
+{{< highlight groovy "style=paraiso-dark">}}
 import java.io.File
 import java.util.*
 
 val keystoreProperties =
-        Properties().apply {
-            var file = File("key.properties")
-            if (file.exists()) load(file.reader())
-        }
+    Properties().apply {
+        var file = File("key.properties")
+        if (file.exists()) load(file.reader())
+    }
 
 plugins { ... }
 
@@ -139,14 +136,13 @@ android {
 }
 
 dependencies { ... }
-```
-
+{{< /highlight >}}
 {{< /tab >}}
 
 {{< /tabpane >}}
 
 {{<notebox>}}
-Warning: Keep the key.properties file private; don’t check it into public source control.
+**Warning:** Keep the `key.properties` file private; don’t check it into public source control.
 {{</notebox>}}
 
 ## Setting up Android code signing on Codemagic
@@ -161,3 +157,4 @@ You are required to upload your keystore file and provide details about your key
 
 
 {{< youtube lYp9MAfouXE >}}
+

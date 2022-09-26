@@ -1,14 +1,14 @@
 ---
 title: Build dashboards
 description: Use public links to distribute builds and artifacts in codemagic.yaml
-weight: 12
+weight: 3
 aliases: /publishing-yaml/public-dashboards, /yaml-publishing/public-dashboards, /yaml-publishing/shared-dashboards
 ---
 
 Build dashboards make it possible for teams to share the list of team's builds, release notes (if passed) and build artifacts with people outside Codemagic using a public link (build logs will not be exposed). This is a convenient option for distributing builds to testers or sharing build artifacts with stakeholders.
 
 {{<notebox>}}
-The build dashboards feature is available for teams only. It is not possible to create build dashboards for apps on personal accounts.
+**Note:** The build dashboards feature is available for teams only. It is not possible to create build dashboards for apps on personal accounts.
 {{</notebox>}}
 
 ## Enabling build dashboards
@@ -26,7 +26,7 @@ Build dashboards can be disabled anytime by clicking **Disable sharing**.
 3. Then click **Share dashboard** at the top of the page to generate a public link. A popup with the generated link will appear, and you can copy the link to the clipboard. The generated link will be also saved to the **Build dashboards** section in team settings.
 
 {{<notebox>}}
-Please note that anyone with the public link can access the build dashboard and download build artifacts.
+**Note:** Please note that anyone with the public link can access the build dashboard and download build artifacts.
 {{</notebox>}}
 
 ## Managing links

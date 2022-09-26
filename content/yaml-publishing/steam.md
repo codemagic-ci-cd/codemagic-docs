@@ -1,14 +1,15 @@
 ---
 title: Steam
 description: How to deploy an app to Steam using codemagic.yaml
-weight: 5
+weight: 8
 ---
 
-Codemagic allows you to deploy your unity application to Steam.
-
+</p>
 {{<notebox>}}
-This guide only applies to workflows configured with the **codemagic.yaml**.
+**Note:** This guide only applies to workflows configured with the **codemagic.yaml**.
 {{</notebox>}}
+
+A sample project showcasing steps included in this guide is available in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity/unity-deploy-steam).
 
 ## Prerequisites
 
@@ -17,7 +18,7 @@ This guide only applies to workflows configured with the **codemagic.yaml**.
 
 ## Getting Started
 
-SteamCMD is a tool used to upload builds to Steam. SteamCMD requires logging in to Steam and typically requires entering a Steam Guard code.
+**SteamCMD** is a tool used to upload builds to Steam. SteamCMD requires logging in to Steam and typically requires entering a Steam Guard code.
 There are two ways of solving this problem.
 
 1. Disable Steam Guard for the account doing the Steam upload.  This is not recommended, as it makes the Steam account less secure.
@@ -29,93 +30,152 @@ Thus, we will save the sentry files as secure environment variables and place th
 First, you need to install the SteamCMD.
 {{< tabpane >}}
 {{% tab header="MacOS" %}}
-```shell
+{{< highlight bash "style=paraiso-dark">}}
    mkdir ~/Steam
    curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_osx.tar.gz" | tar zxvf - -C ~/Steam
-```
+{{< /highlight >}}
+
 
 {{% /tab %}}
 
 {{% tab header="Linux" %}}
-```shell
+{{< highlight bash "style=paraiso-dark">}}
    sudo apt-get install lib32gcc1
    mkdir ~/Steam 
    curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf - -C ~/Steam
-```
+{{< /highlight >}}
+
 {{< /tab >}}
 
 {{< /tabpane >}}
 
-Then log into Steam with the following, which will prompt for the Steam Guard code:
-```shell
+Then log into Steam using the following command, which will prompt for the Steam Guard code:
+{{< highlight bash "style=paraiso-dark">}}
    ~/Steam/steamcmd.sh +login steam $STEAM_USERNAME $STEAM_PASSWORD
-```
-You can now see the **ssfn** file in `~/Steam/ssfn*******************` and the **config.vdf** file at `~/Steam/config/config.vdf`.
+{{< /highlight >}}
+
+The **ssfn** file will be stored as `~/Steam/ssfn*******************` and the **config.vdf** file as `~/Steam/config/config.vdf`.
 
 {{<notebox>}}
-Warning: Keep the sentry files private; do not check them into public source control.
+**Warning:** Keep the sentry files private; do not check them into public source control.
 {{</notebox>}}
 
-- Save the ssfn file name, ssfn file itself, and the config file to the respective environment variables in the **Environment variables** section in Codemagic UI, so they can be used in subsequent builds. Click **Secure** to encrypt the values. Note that binary files (i.e. ssfn, config.vdf) have to be [`base64 encoded`](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build.
+### Configure environment variables
+
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
+2. Enter the desired **_Variable name_**, e.g. `SSFN_FILE_NAME`.
+3. Enter the ssfn file name as **_Variable value_**.
+4. Enter the variable group name, e.g. **_steam_**. Click the button to create the group.
+5. Make sure the **Secure** option is selected.
+6. Click the **Add** button to add the variable.
+7. Enter another variable named `SSFN_FILE` and copy/paste the `base64` encoded value of the ssfn file. Follow the intructions for [storing binary files](/yaml-basic-configuration/configuring-environment-variables/#storing-binary-files).
+8. Repeat the previous step to add the `config.vdf` file as a variable named `CONFIG_FILE`.
+
 
 {{<notebox>}}
-Warning: When base64 encoding the files, make sure to remove the new lines `\n` of the encoded value before saving it to Codemagic. 
+**Warning:** When base64 encoding the files, make sure to remove the new lines `\n` of the encoded value before saving it to Codemagic. 
 {{</notebox>}}
 
 If you don't want to install the SteamCMD on your local machine to obtain the sentry files, you can use Codemagic machines to do so and then copy them into your local machine using the secure copy command `scp`.
-```shell
+{{< highlight bash "style=paraiso-dark">}}
    scp -P <port> builder@X.X.X.X ~/Library/Application\ Support/ssfn******************* .
    scp -P <port> builder@X.X.X.X ~/Library/Application\ Support/config/config.vdf .
-```
+{{< /highlight >}}
 
 ### Decode Sentry Files
-In your workflow you need to base64 decode these files:
-```yaml
+In your workflow you need to base64 decode these binary files before they can be used:
+{{< highlight yaml "style=paraiso-dark">}}
       - name: Decode Sentry files
         script: | 
           echo $CONFIG_FILE | base64 --decode > steam/config.vdf
           echo $SSFN_FILE | base64 --decode > steam/$SSFN_FILE_NAME
-```
+{{< /highlight >}}
+
 
 ### Copy Sentry files
-And then copy them to the correct path:
+And then copy them to the correct path, depending on the build machine type:
 {{< tabpane >}}
 {{% tab header="MacOS" %}}
-```yaml
+{{< highlight yaml "style=paraiso-dark">}}
       - name: Copy Sentry Files
         script: | 
           mkdir -p ~/Library/Application\ Support/Steam/config
           cp ~/clone/steam/$SSFN_FILE_NAME ~/Library/Application\ Support/Steam
           cp ~/clone/steam/config.vdf ~/Library/Application\ Support/Steam/config
-```
+{{< /highlight >}}
+
 
 {{% /tab %}}
 
 {{% tab header="Linux" %}}
-```yaml
+{{< highlight yaml "style=paraiso-dark">}}
       - name: Copy Sentry Files
         script: | 
           mkdir -p ~/Steam/config
           cp ~/clone/steam/$SSFN_FILE_NAME ~/Steam
           cp ~/clone/steam/config.vdf ~/Steam/config
-```
+{{< /highlight >}}
+
 {{< /tab >}}
 
 {{< /tabpane >}}
 
 ### Upload to Steam
-To configure the upload to Steam, edit the following two files in the demo project:
-```
-   steam/app_build.vdf
-   steam/depot_build.vdf
-```
+To configure the upload to Steam, edit the following two files in the project by adding your application's AppID, DepotID, and branch name for deployment:
+
+**steam/app_build.vdf**
+{{< highlight json "style=paraiso-dark">}}
+
+"AppBuild"
+{
+	"AppID" "2086870" // Your AppID
+	"Desc" "Published using Codemagic" // internal description for this build
+	"Preview" "0" // make this a preview build only, nothing is uploaded
+	"Local" "" // put content on local content server instead of uploading to Steam
+	"SetLive" "cm-release" // set this build live on cm-branch branch (Change this)
+	"ContentRoot" "..\win64" // content root folder relative to this script file
+	"BuildOutput" ".\output\" // put build cache and log files on different drive for better performance
+	"Depots"
+	{
+		// file mapping instructions for each depot are in separate script files
+		"2086871" "depot_build.vdf"
+	}
+}
+{{< /highlight >}}
+
+**steam/depot_build.vdf**
+{{< highlight json "style=paraiso-dark">}}
+
+"DepotBuild"
+{
+	// Set your assigned depot ID here
+	"DepotID" "2086871"
+
+	// include all files recursivley
+	"FileMapping"
+	{
+		// This can be a full path, or a path relative to ContentRoot
+		"LocalPath" "*"
+
+		// This is a path relative to the install folder of your game
+		"DepotPath" "."
+		
+		// If LocalPath contains wildcards, setting this means that all
+		// matching files within subdirectories of LocalPath will also
+		// be included.
+		"Recursive" "1"
+  }
+}
+{{< /highlight >}}
 These are standard VDF files required for uploading a build to Steam and require your application's AppID, DepotID, and branch name for deployment.
 
-And then use the script to publish your app to steam:
-```yaml
-      - name: Upload Build to Steam
-        script: | 
-          ~/Steam/steamcmd.sh +login $STEAM_USERNAME $STEAM_PASSWORD +run_app_build ~/clone/steam/app_build.vdf +quit
-```
 
-See the sample project [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity/unity-deploy-steam).
+Finally, use the following script in your `codemagic.yaml` to publish your app to Steam:
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+    - name: Upload Build to Steam
+    script: | 
+        ~/Steam/steamcmd.sh +login $STEAM_USERNAME $STEAM_PASSWORD +run_app_build ~/clone/steam/app_build.vdf +quit
+{{< /highlight >}}
+

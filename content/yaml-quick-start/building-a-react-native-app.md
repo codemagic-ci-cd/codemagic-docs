@@ -1,11 +1,12 @@
 ---
-title: Building a React Native app
+title: React Native apps
 description: How to build a React Native app with codemagic.yaml
 weight: 5
 aliases:
   - '../yaml/building-a-react-native-app'
   - /getting-started/building-a-react-native-app
 ---
+
 React Native is a cross-platform solution that allows you to build apps for both iOS and Android faster using a single language. Pairing it with Codemagic's CI/CD pipeline creates a powerful tool that automates all phases of mobile app development.
 
 
@@ -84,35 +85,33 @@ expo eject
 
 ---
 
-{{< include "/partials/add-app-to-codemagic.md" >}}
+## Adding the app to Codemagic
+{{< include "/partials/quickstart/add-app-to-codemagic.md" >}}
 
----
-
-{{< include "/partials/create-yaml-intro.md" >}}
-
----
+## Creating codemagic.yaml
+{{< include "/partials/quickstart/create-yaml-intro.md" >}}
 
 ## Code signing
 
 All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
+
 {{<notebox>}}
-**Tip** If you are using [Codemagic Teams](../teams/teams), then signing files, such as Android keystores, can be managed under the [Code signing identities](./code-signing-identities) section in the team settings and do not have to be uploaded as environment variables as in the below instructions.
+**Tip** If you are using [Codemagic Teams](../teams/teams), then signing files, such as Android keystores, can be managed under following the [Android code signing](../yaml-code-signing/signing-android) guide and you do not have to be uploaded as environment variables as in the below instructions.
 {{</notebox>}}
 
 {{< tabpane >}}
 
 {{< tab header="Android" >}}
-{{< include "/partials/code-signing-android.md" >}}
+{{< include "/partials/quickstart/code-signing-android.md" >}}
 {{< /tab >}}
 
 {{< tab header="iOS" >}}
-{{< include "/partials/code-signing-ios.md" >}}
+{{< include "/partials/quickstart/code-signing-ios.md" >}}
 {{< /tab >}}
 
 {{< /tabpane >}}
 
 
----
 
 ## Setting up the Android package name and iOS bundle identifier
 
@@ -170,9 +169,8 @@ Example of minimal `app.json` file. Add the `android` and/or `ios` keys:
 }
 {{< /highlight >}}
 
----
 
-## Configure scripts to build and sign the app
+## Configure scripts to build the app
 Add the following scripts to your `codemagic.yaml` file in order to prepare the build environment and start the actual build process.
 In this step you can also define the build artifacts you are interested in. These files will be available for download when the build finishes. For more information about artifacts, see [here](../yaml/yaml-getting-started/#artifacts).
 
@@ -187,7 +185,7 @@ scripts:
     npm install
   - name: Set Android SDK location
     script: |
-   echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+   echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
   - name: Build Android release
     script: |
    cd android && ./gradlew bundleRelease
@@ -205,13 +203,15 @@ react-native-ios:
       # ...
     vars:
       BUNDLE_ID: "io.codemagic.sample.reactnative"
-      XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
-      XCODE_SCHEME: "CodemagicSample" # <-- Put the name of your Xcode scheme here
+      XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Name of your Xcode workspace
+      XCODE_SCHEME: "CodemagicSample" # <-- Nname of your Xcode scheme
 scripts:
   # ...
   - name: Build ipa for distribution
-    script: |
-   cd ios && xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+    script: | 
+      xcode-project build-ipa \
+        --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
+        --scheme "$XCODE_SCHEME"
 artifacts:
   - build/ios/ipa/*.ipa
   - /tmp/xcodebuild_logs/*.log
@@ -269,7 +269,6 @@ scripts:
 
 {{< /tabpane >}}
 
----
 
 ## Build versioning
 
@@ -279,22 +278,19 @@ If you are going to publish your app to App Store Connect or Google Play, each u
 {{< tabpane >}}
 
 {{< tab header="Android" >}}
-{{< include "/partials/build-versioning-android.md" >}}
+{{< include "/partials/quickstart/build-versioning-android.md" >}}
 {{< /tab >}}
 
 {{< tab header="iOS" >}}
-{{< include "/partials/build-versioning-ios.md" >}}
+{{< include "/partials/quickstart/build-versioning-ios.md" >}}
 {{< /tab >}}
 
 {{< /tabpane >}}
-
----
 
 ## Publishing
 
 {{< include "/partials/publishing-android-ios.md" >}}
 
----
 
 ## Conclusion
 Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to build, code sign, automatically version and publish your project using Codemagic CI/CD.
@@ -308,20 +304,15 @@ workflows:
   react-native-android:
     name: React Native Android
     max_build_duration: 120
-    instance_type: mac_mini
+    instance_type: mac_mini_m1
     environment:
+      android_signing:
+        - keystore_reference
       groups:
-        - keystore_credentials
         - google_play
       vars:
         PACKAGE_NAME: "io.codemagic.sample.reactnative"
     scripts:
-      - name: Set up keystore
-        script: | 
-          echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
-      - name: Install npm dependencies
-        script: | 
-          npm install
       - name: Set Android SDK location
         script: | 
           echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
@@ -335,9 +326,6 @@ workflows:
       - name: Set up app/build.gradle
         script: | 
           mv ./support-files/build.gradle android/app
-      - name: Set Android SDK location
-        script: | 
-          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
       - name: Build Android release
         script: | 
           LATEST_GOOGLE_PLAY_BUILD_NUMBER=$(google-play get-latest-build-number --package-name '$PACKAGE_NAME')
@@ -367,8 +355,11 @@ workflows:
   react-native-ios:
     name: React Native iOS
     max_build_duration: 120
-    instance_type: mac_mini
+    instance_type: mac_mini_m1
     environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: io.codemagic.sample.reactnative
       groups:
         - appstore_credentials
       vars:
@@ -390,25 +381,22 @@ workflows:
       - name: Install CocoaPods dependencies
         script: | 
           cd ios && pod install
-      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
+      - name: Initialize keychain
         script: keychain initialize
-      - name: Fetch signing files
-        script: | 
-          app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --type IOS_APP_STORE \
-            --create
-      - name: Set up signing certificate
+      - name: Add certificates to keychain
         script: keychain add-certificates
-      - name: Set up code signing settings on Xcode project
+      - name: Set up provisioning profiles settings on Xcode project
         script: xcode-project use-profiles
       - name: Increment build number
         script: | 
           cd $CM_BUILD_DIR/ios
-          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "APP_ID")
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
           agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build ipa for distribution
         script: | 
-          cd ios && xcode-project build-ipa --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+          xcode-project build-ipa \
+            --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
@@ -444,8 +432,8 @@ workflows:
 ## Next steps
 While this basic workflow configuration is incredibly useful, it is certainly not the end of the road and there are numerous advanced actions that Codemagic can help you with.
 
-We encourage you to investigate [Running tests with Codemagic](../yaml-testing/testing) to get you started with testing, as well as additional guides such as the one on running tests on [Firebase Test Lab](../yaml-testing/firebase-test-lab) or [Registering iOS test devices](../custom-menu-position/ios-provisioning).
+We encourage you to investigate [Running tests with Codemagic](../yaml-testing/testing) to get you started with testing, as well as additional guides such as the one on running tests on [Firebase Test Lab](../yaml-testing/firebase-test-lab) or [Registering iOS test devices](../testing/ios-provisioning).
 
-Documentation on [Using codemagic.yaml](../yaml/yaml-getting-started) teaches you to configure additional options such as [changing the instance type](../yaml-getting-started/#instance-type) on which to build, speeding up builds by configuring [Caching options](../yaml-getting-started/#instance-type#cache), or configuring builds to be [automatically triggered](../yaml-getting-started/#triggering) on repository events.
+Documentation on [Using codemagic.yaml](../yaml/yaml-getting-started) teaches you to configure additional options such as [changing the instance type](../yaml/yaml-getting-started/#instance-type) on which to build, speeding up builds by configuring [Caching options](https://docs.codemagic.io/yaml/yaml-getting-started/#cache), or configuring builds to be [automatically triggered](https://docs.codemagic.io/yaml/yaml-getting-started/#triggering) on repository events.
 
 ---

@@ -1,6 +1,3 @@
----
----
-
 It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
 
 1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
