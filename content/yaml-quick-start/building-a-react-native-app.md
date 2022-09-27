@@ -181,14 +181,14 @@ In this step you can also define the build artifacts you are interested in. Thes
 scripts:
     # ....
   - name: Install npm dependencies
-    script: |
-    npm install
+    script: | 
+      npm install
   - name: Set Android SDK location
-    script: |
-   echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+    script: | 
+      echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
   - name: Build Android release
-    script: |
-   cd android && ./gradlew bundleRelease
+    script: | 
+      cd android && ./gradlew bundleRelease
 
 artifacts:
   - android/app/build/outputs/**/*.aab
@@ -427,13 +427,8 @@ workflows:
         submit_to_app_store: false
 {{< /highlight >}}
 
----
 
 ## Next steps
-While this basic workflow configuration is incredibly useful, it is certainly not the end of the road and there are numerous advanced actions that Codemagic can help you with.
+{{< include "/partials/quickstart/next-steps.md" >}}
 
-We encourage you to investigate [Running tests with Codemagic](../yaml-testing/testing) to get you started with testing, as well as additional guides such as the one on running tests on [Firebase Test Lab](../yaml-testing/firebase-test-lab) or [Registering iOS test devices](../testing/ios-provisioning).
 
-Documentation on [Using codemagic.yaml](../yaml/yaml-getting-started) teaches you to configure additional options such as [changing the instance type](../yaml/yaml-getting-started/#instance-type) on which to build, speeding up builds by configuring [Caching options](https://docs.codemagic.io/yaml/yaml-getting-started/#cache), or configuring builds to be [automatically triggered](https://docs.codemagic.io/yaml/yaml-getting-started/#triggering) on repository events.
-
----

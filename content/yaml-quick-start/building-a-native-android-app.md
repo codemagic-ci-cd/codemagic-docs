@@ -7,119 +7,127 @@ aliases:
   - /getting-started/building-a-native-android-app
 ---
 
-## Setting up an Android project
+This guide will illustrate all of the necessary steps to successfully build and publish a native Android app with Codemagic. It will cover the basic steps such as build versioning, code signing and publishing.
 
-The apps you have available on Codemagic are listed on the Applications page. Click **Add application** to add a new app.
+You can find a complete project showcasing these steps in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/android/android-espresso-demo-project).
 
-1. On the Applications page, click **Set up build** next to the app you want to start building. 
-2. On the popup, select **Android App** as the project type and click **Continue**.
-3. Create a [`codemagic.yaml`](./yaml) file and add in it the commands to build, test and publish your project. See the full Android workflow example [below](#android-workflow-example).
-4. Commit the configuration file to the root of your repository.
-5. Back in app settings in Codemagic, scan for the `codemagic.yaml` file by selecting a **branch** to scan and clicking the **Check for configuration file** button at the top of the page. Note that you can have different configuration files in different branches.
-6. If a `codemagic.yaml` file is found in that branch, you can click **Start your first build** and select the **branch** and **workflow** to build.
-7. Finally, click **Start new build** to build the app.
+## Adding the app to Codemagic
+{{< include "/partials/quickstart/add-app-to-codemagic.md" >}}
+## Creating codemagic.yaml
+{{< include "/partials/quickstart/create-yaml-intro.md" >}}
 
-{{<notebox>}}
-**Tip**
+## Code signing
 
-Note that you need to set up a [webhook](../building/webhooks) for automatic build triggering. Click the **Create webhook** button on the right sidebar in app settings to add a webhook (not available for apps added via SSH/HTTP/HTTPS).
-
-{{</notebox>}}
-
-## Building an Android app
-
-The necessary command for building native Android application goes under `scripts` in the [overall architecture](../getting-started/yaml/#template) in the `codemagic.yaml` file. For Android (built with gradle), the script looks like this:
-
-```yaml
-- ./gradlew build
-```
-
-## Testing, code signing and publishing an Android app
-
-To test, code sign and publish an Android app:
-
-* The code for testing an Android app also goes under `scripts`. A few examples of testing can be found [here](../testing-yaml/testing).
-* All Android applications need to be signed before release, see how to do that [here](../code-signing-yaml/signing-android).
-* All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
-
-## Android workflow example
+All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
 
 {{<notebox>}}
-You can find an up-to-date codemagic.yaml Android workflow in [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/android/android-espresso-demo-project/codemagic.yaml).
+**Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
 {{</notebox>}}
 
-The following example shows how to set up a workflow that builds your app and publishes it to a Google Play internal track.
+{{< include "/partials/quickstart/code-signing-android.md" >}}
 
-```yaml
+
+## Setting up the Android package name
+
+Configure Android package name by adding the corresponding variable in the `codemagic.yaml`:
+{{< highlight yaml "style=paraiso-dark">}}
+  workflows:
+    react-native-android:
+      # ....
+      environment:
+        groups:
+          # ...
+        vars:
+          PACKAGE_NAME: "io.codemagic.sample.androidnative"
+{{< /highlight >}}
+
+## Configure scripts to build the app
+Add the following scripts to your `codemagic.yaml` file in order to prepare the build environment and start the actual build process.
+In this step you can also define the build artifacts you are interested in. These files will be available for download when the build finishes. For more information about artifacts, see [here](../yaml/yaml-getting-started/#artifacts).
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+    # ....
+  - name: Set Android SDK location
+    script: | 
+      echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+  - name: Build Android release
+    script: | 
+      ./gradlew bundleRelease # -> to create the .aab
+      # gradlew assembleRelease # -> to create the .apk
+
+artifacts:
+  - android/app/build/outputs/**/*.aab
+{{< /highlight >}}
+
+## Build versioning
+
+If you are going to publish your app to Google Play, each uploaded artifact must have a new version. Codemagic allows you to easily automate this process and increment the version numbers for each build. For more information and details, see [here](../configuration/build-versioning).
+
+{{< include "/partials/quickstart/build-versioning-android.md" >}}
+
+
+## Publishing
+
+Codemagic offers a wide array of options for app publishing and the list of partners and integrations is continuously growing. For the most up-to-date information, check the guides in the **Configuration > Publishing** section of these docs.
+To get more details on the publishing options presented in this guide, please check the [Email publishing](../yaml-publishing/email) and the [Google Play Store](../yaml-publishing/google-play) publishing docs.
+
+#### Email publishing
+{{< include "/partials/quickstart/publishing-email.md" >}}}
+
+#### Publishing to Google Play
+{{< include "/partials/quickstart/publishing-google-play.md" >}}
+
+
+## Conclusion
+Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to build, code sign, automatically version and publish your project using Codemagic CI/CD.
+Save your work, commit the changes to the repository, open the App in Codemagic UI and start the build to see it in action.
+
+
+Your final `codemagic.yaml` file should look something like this:
+
+{{< highlight yaml "style=paraiso-dark">}}
 workflows:
-  android-workflow:
-    name: Android Workflow
-    max_build_duration: 60
-    instance_type: mac_mini
+  native-android:
+    name: Native Android
+    max_build_duration: 120
+    instance_type: mac_mini_m1
     environment:
+      android_signing:
+        - keystore_reference
       groups:
-        - keystore_credentials # Comment this out if you are using code-signing-identities <-- Includes - CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS
-        - google_play # <-- Includes - GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        - other
-      # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-      node: latest
-    triggering:
-      events:
-        - push
-        - tag
-        - pull_request
-      branch_patterns:
-        - pattern: release
-          include: true
-          source: true
+        - google_play
+      vars:
+        PACKAGE_NAME: "io.codemagic.sample.androidnative"
     scripts:
-      - name: Set up local properties
-        script: echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
-      - name: Set up key.properties file for code signing
-        script: |
-          echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
-          cat >> "$CM_BUILD_DIR/key.properties" <<EOF
-          storePassword=$CM_KEYSTORE_PASSWORD
-          keyPassword=$CM_KEY_PASSWORD
-          keyAlias=$CM_KEY_ALIAS
-          storeFile=$CM_KEYSTORE_PATH
-          EOF
-      - name: Build Android app
-        script: 
-          ./gradlew bundleRelease  # To generate an .apk use--> ./gradlew assembleRelease
+      - name: Set Android SDK location
+        script: | 
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Build Android release
+        script: | 
+          LATEST_GOOGLE_PLAY_BUILD_NUMBER=$(google-play get-latest-build-number --package-name '$PACKAGE_NAME')
+          if [ -z LATEST_BUILD_NUMBER ]; then
+              # fallback in case no build number was found from google play. Alternatively, you can `exit 1` to fail the build
+              UPDATED_BUILD_NUMBER=$BUILD_NUMBER
+          else
+              UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
+          fi
+          ./gradlew bundleRelease -PversionCode=$UPDATED_BUILD_NUMBER -PversionName=1.0.$UPDATED_BUILD_NUMBER
     artifacts:
-      - app/build/outputs/**/**/*.aab
-      - app/build/outputs/**/**/*.apk
+      - android/app/build/outputs/**/*.aab
     publishing:
+      email:
+        recipients:
+          - user_1@example.com
+          - user_2@example.com
+        notify:
+          success: true
+          failure: false
       google_play:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         track: internal
-```
+        submit_as_draft: true
+{{< /highlight >}}
 
-{{<notebox>}}
-Note: You can skip `Set up key properties` script if you are using a **Team account**. Instead, follow the code signing guide for [Android code signing](../yaml-code-signing/signing-android). You will need to add your keystore reference as follows in your yaml configuration.
-  
-  ```
-  environment:
-    android_signing:
-        - your_keystore_reference
-  ```
-{{</notebox>}}
-
-
-{{<notebox>}}Note that you should incremenet the versionCode in `android/app/build.gradle`. {{</notebox>}}
-
-Incrementing the version code can be done as follows:
-
-```gradle
-android {
-    ...
-    
-    def appVersionCode = Integer.valueOf(System.env.BUILD_NUMBER ?: 0)
-    defaultConfig {
-        ...
-        versionCode appVersionCode
-        ...
-    }
-}
-```
+## Next steps
+{{< include "/partials/quickstart/next-steps.md" >}}
