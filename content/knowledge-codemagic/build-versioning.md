@@ -233,11 +233,10 @@ You will need to set up a service account in Google Play Console and create a JS
 {{< /tab >}}
 
 
-{{< tab header="Flutter Workflow Editor" >}}
-{{<markdown>}}
+{{% tab header="Flutter Workflow Editor"%}}
+
 Add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutter project in **App settings > Environment variables** (See the details [here](../flutter-configuration/env-variables)).
-{{</markdown>}}
-{{< /tab >}}
+{{% /tab %}}
 {{< /tabpane >}}
 
 
