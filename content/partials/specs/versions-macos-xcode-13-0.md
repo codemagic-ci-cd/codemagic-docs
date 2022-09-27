@@ -7,6 +7,7 @@ aliases:
   - '../specs/versions4'
   - '../specs/versions4-unity.md'
   - '../specs/versions-macos-xcode-13-0-unity'
+  - /specs/versions-macos-xcode-13-0
 weight: 7
 ---
 
