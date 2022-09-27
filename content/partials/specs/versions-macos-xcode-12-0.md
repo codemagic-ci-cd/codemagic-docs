@@ -4,6 +4,7 @@ title: macOS build machine specification (Xcode 12.0 - 12.4)
 aliases:
   - "../releases-and-versions/versions2"
   - "../specs/versions2"
+  - /specs/versions-macos-xcode-12-0
 weight: 5
 ---
 

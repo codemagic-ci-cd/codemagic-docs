@@ -4,6 +4,7 @@ title: macOS build machine specification (Xcode 13.3+ / Unity)
 aliases:
   - '../releases-and-versions/versions5'
   - '../specs/versions5'
+  - /specs/versions-macos-xcode-13-3
 weight: 8
 ---
 

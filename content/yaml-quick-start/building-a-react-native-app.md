@@ -96,7 +96,7 @@ expo eject
 All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
 
 {{<notebox>}}
-**Tip** If you are using [Codemagic Teams](../teams/teams), then signing files, such as Android keystores, can be managed under following the [Android code signing](../yaml-code-signing/signing-android) guide and you do not have to be uploaded as environment variables as in the below instructions.
+**Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
 {{</notebox>}}
 
 {{< tabpane >}}

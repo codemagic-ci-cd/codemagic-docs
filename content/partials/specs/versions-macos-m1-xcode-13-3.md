@@ -2,7 +2,7 @@
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS M1 build machine specification (Xcode 13.3+ / Unity)
 aliases:
-
+  - /specs/versions-macos-m1-xcode-13-3
 weight: 9
 ---
 
