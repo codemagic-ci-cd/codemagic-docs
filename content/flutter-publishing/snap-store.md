@@ -10,9 +10,9 @@ The [snap packages](../flutter-configuration/flutter-projects/#building-snap-pac
 1. Go to **App settings > Distribution > Snapcraft** to configure publishing to the Snapcraft Snap Store.
 2. Upload your Snapcraft login credentials file. This can be created by running the following command locally.
 
-```
+{{< highlight bash "style=paraiso-dark">}}
 snapcraft export-login snapcraft-login-credentials
-```
+{{< /highlight >}}
 
 3. Select a channel for publishing the snap package.
 4. Select the **Enable Snapcraft publishing** checkbox to enable publishing to the Snapcraft Snap Store.

@@ -1,20 +1,20 @@
 ---
 title: Huawei AppGallery
 description: How to deploy an app to Huawei AppGallery using codemagic.yaml
-weight: 4
+weight: 6
 ---
 
 Codemagic enables you to automatically publish your iOS or Android app to Huawei AppGallery.
 
 ## Creating an API Client in Huawei AppGallery
-An API client is an identity credential used by AppGallery Connect to manage user access to AppGallery Connect APIs. Before accessing an API, you must create an API client with the permission for accessing the API. The procedure is as follows:
+An API client is an identity credential used by **AppGallery Connect** to manage user access to AppGallery Connect APIs. Before accessing an API, you must create an API client with the permission for accessing the API. The procedure is as follows:
 
 1. Sign in to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html) and click **Users and permissions**.
 2. Go to **API key** > **Connect API** and click **Create**.
 3. For **Name**, enter a custom client name. Set **Project** to **N/A**, select the required roles, and click **OK**.
 
 {{<notebox>}}
-NOTE: Set Project to N/A to define the API client as a team-level one. Otherwise, the result code 403 will be returned during API calls.
+**Note:** Set Project to N/A to define the API client as a team-level one. Otherwise, the result code 403 will be returned during API calls.
 {{</notebox>}}
 
 4. After the client is successfully created, you need to save the **Client ID** and the **Client Secret** (**Key**) to [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles) in a group named **app_gallery** for example.
@@ -70,7 +70,7 @@ After you set everything up you need to execute the lane from you `codemagic.yam
 
 {{< highlight yaml "style=paraiso-dark">}}
       - name: Publish to the AppGallery store
-        script: |
+        script: | 
           fastlane add_plugin huawei_appgallery_connect
           bundle install
           bundle exec fastlane huawei
@@ -89,7 +89,7 @@ workflows:
     scripts:
       - chmod +x gradlew
       - name: Publish to the AppGallery store
-        script: |
+        script: | 
           fastlane add_plugin huawei_appgallery_connect
           bundle install
           bundle exec fastlane huawei

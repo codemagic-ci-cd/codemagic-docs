@@ -8,7 +8,7 @@ aliases: /publishing/firebase-app-distribution
 Set up publishing to [Firebase App Distribution](https://firebase.google.com/docs/app-distribution) to distribute your Android and iOS apps to testers.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml**, please go to [Publishing an app to Firebase App Distribution](../yaml-publishing/firebase-app-distribution).
+**Note:** This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml**, please go to [Publishing an app to Firebase App Distribution](../yaml-publishing/firebase-app-distribution).
 {{</notebox>}}
 
 ## Requirements
@@ -31,10 +31,8 @@ This guide only applies to workflows configured with the **Flutter workflow edit
 8. Finally, select **Enable publishing to Firebase App Distribution** at the top of the section to enable publishing.
 
 {{<notebox>}}
-Note that:
-
-- if no suitable artifacts are found, publishing to Firebase App Distribution is skipped;
-- each uploaded binary must have a different version to appear in the Firebase console, see how to [increment build version](../building/build-versioning/);
-- release notes can be published with the build if you have added them to your repository, read more [here](./publish-release-notes).
-
+**Note:**
+- If no suitable artifacts are found, publishing to Firebase App Distribution is skipped.
+- Each uploaded binary must have a different version to appear in the Firebase console, see how to [increment build version](../building/build-versioning/).
+- Release notes can be published with the build if you have added them to your repository, read more [here](./publish-release-notes).
 {{</notebox>}}

@@ -10,7 +10,7 @@ Code signing is required by Apple for integrating app services, installing your 
 To receive a signed `.ipa` file of your app on Codemagic, you need to set up code signing.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Signing iOS apps using codemagic.yaml](../code-signing-yaml/signing-ios).
+**Note:** This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Signing iOS apps using codemagic.yaml](../code-signing-yaml/signing-ios).
 {{</notebox>}}
 
 ## Prerequisites
@@ -27,7 +27,7 @@ The signing certificates — development or distribution — help to identify wh
 A provisioning profile — development or distribution — contains information about the app ID, the devices on which the app can be installed and the certificates that can be used for signing the app. Note that if your app contains app extensions, you need an additional provisioning profile for each app extension.
 
 {{<notebox >}} 
-With **automatic code signing**, Codemagic will create both the certificate and the provisioning profile for you on your behalf without requiring a Mac.
+**Note:** With **automatic code signing**, Codemagic will create both the certificate and the provisioning profile for you on your behalf without requiring a Mac.
 
 With **manual code signing**, you need to upload the signing files manually.
 {{</notebox>}}
@@ -61,7 +61,7 @@ Only App Store Connect admin can create an API key. It is recommended to create 
 5. As soon as the key is generated, you can see it added to the list of active keys. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
 
 {{<notebox >}} 
-Take note of the **Issuer ID** above the table of active keys as well as the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in Codemagic UI.
+**Note:** Take note of the **Issuer ID** above the table of active keys as well as the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in Codemagic UI.
 {{</notebox>}}
 
 ### Step 2. Connecting the Apple Developer Portal integration for your team/account
@@ -69,7 +69,7 @@ Take note of the **Issuer ID** above the table of active keys as well as the **K
 The Apple Developer Portal integration can be enabled in **User settings > Integrations** for personal projects and in **Team settings > Team integrations** for projects shared in the team (if you're the team owner). This allows you to conveniently use the same credentials for automatic code signing across different apps and workflows.
 
 {{<notebox >}} 
-Note that users who had previously set up the session-based integration have been automatically migrated to use the API-key based setup.
+**Note:** The users who had previously set up the session-based integration have been automatically migrated to use the API-key based setup.
 {{</notebox>}}
 
 1. In the list of available integrations, click the **Connect** button for **Developer Portal**.
@@ -91,7 +91,9 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 4. Select the **provisioning profile type** used for provisioning the build. Codemagic will automatically select or generate a matching certificate for code signing. The provisioning profiles (except for Distribution) will include all the devices you have registered on your Apple Developer account at the time of creating the profile.
 7. Select your app's **bundle identifier**. Codemagic lists all the bundle IDs available for the selected App Store Connect API key. If you can't see your app's bundle identifier listed, create one in [Apple Developer Portal](https://developer.apple.com/account/resources/identifiers/add/bundleId).
 
-    >Note that if your app contains app extensions, an additional provisioning profile is required for each extension. Codemagic will use the bundle identifier to find the relevant provisioning profiles. If your bundle identifier is `com.example.app`, the matching profiles are the ones with `com.example.app` and `com.example.app.*` as bundle identifier.
+{{<notebox>}}
+**Note:** If your app contains app extensions, an additional provisioning profile is required for each extension. Codemagic will use the bundle identifier to find the relevant provisioning profiles. If your bundle identifier is `com.example.app`, the matching profiles are the ones with `com.example.app` and `com.example.app.*` as bundle identifier.
+{{</notebox>}}
 
 As the next step, you can [configure publishing to App Store Connect](../publishing/publishing-to-app-store) to distribute the app via TestFlight or submit it to the App Store.
 

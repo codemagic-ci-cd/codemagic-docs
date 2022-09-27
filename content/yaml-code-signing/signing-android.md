@@ -19,8 +19,9 @@ Team owner permissions are required to upload and edit files under the **Code si
 
 If you need to create a new keystore file for signing your release builds, you can do so with the Java Keytool utility by running the following command:
 
-{{< highlight Shell "style=rrt">}}
-keytool -genkey -v -keystore codemagic.keystore -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias codemagic
+{{< highlight Shell "style=paraiso-dark">}}
+keytool -genkey -v -keystore codemagic.keystore -storetype JKS \
+        -keyalg RSA -keysize 2048 -validity 10000 -alias codemagic
 {{< /highlight >}}
 
 Keytool then prompts you to enter your personal details for creating the certificate, as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **codemagic.keystore** in the directory you're in. The key is valid for 10,000 days.
@@ -92,7 +93,7 @@ environment:
 
 To sign your Android app, simply modify your **`android/app/build.gradle`** as follows:
 
-{{< highlight kotlin "style=paraiso-dark">}}
+{{< highlight Groovy "style=paraiso-dark">}}
 ...
   android {
       ...

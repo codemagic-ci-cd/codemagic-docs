@@ -1,5 +1,5 @@
 ---
-title: Caches
+title: Caches API
 weight: 4
 ---
 
@@ -7,19 +7,19 @@ weight: 4
 
 `GET /apps/:id/caches`
 
-List caches information for specified application.
+List caches information for the specified application.
 
-### Example
+#### Example
 
-```bash
+{{< highlight bash "style=paraiso-dark">}}
 curl -H "Content-Type: application/json" \
      -H "x-auth-token: <API Token>" \
      -X GET https://api.codemagic.io/apps/<app_id>/caches
-```
+{{< /highlight >}}
 
-### Response
+#### Response
 
-```json
+{{< highlight json "style=paraiso-dark">}}
 {
   "caches": [
     {
@@ -38,55 +38,58 @@ curl -H "Content-Type: application/json" \
     }
   ]
 }
-```
+{{< /highlight >}}
 
 ## Delete all application caches
 
 `DELETE /apps/:id/caches`
 
-Remove all stored caches for specified application.
+Remove all stored caches for the specified application.
 
-### Example
+#### Example
 
-```bash
+{{< highlight bash "style=paraiso-dark">}}
 curl -H "Content-Type: application/json" \
      -H "x-auth-token: <API Token>" \
      -X DELETE https://api.codemagic.io/apps/<app_id>/caches
-```
+{{< /highlight >}}
 
-### Response
+#### Response
 
 Response for successful cache deletion request is `202 Accepted` and contains identifiers of the caches that are to be deleted. Actual deletion is completed asynchronously. 
 
-```json
+{{< highlight json "style=paraiso-dark">}}
 {
-  "caches": ["620f9f218ab90da6b1b22e0e", "620f9e948ab90da6b1b2217d"],
+  "caches": [
+    "620f9f218ab90da6b1b22e0e",
+    "620f9e948ab90da6b1b2217d"
+  ],
   "message": "Cache deletion was started asynchronously, it will be completed in a moment"
 }
-```
+{{< /highlight >}}
 
-## Delete specific cache from an application
+## Delete a specific cache from an application
 
 `DELETE /apps/:id/caches/:cacheId`
 
-Remove stored cache from a specified application for single workflow.
+Remove stored cache from the specified application for a single workflow.
 
-### Example
+#### Example
 
-```bash
+{{< highlight bash "style=paraiso-dark">}}
 curl -H "Content-Type: application/json" \
      -H "x-auth-token: <API Token>" \
      -X DELETE https://api.codemagic.io/apps/<app_id>/caches/<cache_id>
-```
+{{< /highlight >}}
 
-### Response
+#### Response
 
 Response for successful cache deletion request is `202 Accepted` and contains identifier of the cache that is to be deleted. Actual deletion is completed asynchronously. 
 
-```json
+{{< highlight json "style=paraiso-dark">}}
 {
   "caches": ["620f9f218ab90da6b1b22e0e"],
   "message": "Cache deletion was started asynchronously, it will be completed in a moment"
 }
-```
+{{< /highlight >}}
 

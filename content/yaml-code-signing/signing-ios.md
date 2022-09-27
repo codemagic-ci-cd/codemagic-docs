@@ -43,7 +43,7 @@ Codemagic lets you upload code signing certificates as PKCS#12 archives containi
 2. Open **iOS certificates** tab.
 3. Upload the certificate file by clicking on **Choose a .p12 or .pem file** or by dragging it into the indicated frame.
 4. Enter the **Certificate password** and choose a **Reference name**.
-5. Click *Add certificate**
+5. Click **Add certificate**
 
 #### Generating a new certificate
 

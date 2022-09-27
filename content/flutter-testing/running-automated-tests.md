@@ -17,7 +17,7 @@ Integration tests (Flutter Driver tests): `project_root/test_driver`
 
 {{<notebox>}}
 
-If your Flutter project is in a subdirectory of the repository, Codemagic cannot detect your tests automatically unless you add at least one test file in the `project_root/test` or `project_root/test_driver` folder.
+**Note:** If your Flutter project is in a subdirectory of the repository, Codemagic cannot detect your tests automatically unless you add at least one test file in the `project_root/test` or `project_root/test_driver` folder.
 
 {{</notebox>}}
 
@@ -39,15 +39,15 @@ Chrome (web)        • chrome        • web-javascript • Google Chrome
 
 For iOS and Android, it's recommended to launch the desired emulator before the tests start:
 
-```sh
+{{< highlight bash "style=paraiso-dark">}}
 flutter emulators --launch ios
-```
+{{< /highlight >}}
 
 or
 
-```bash
+{{< highlight bash "style=paraiso-dark">}}
 flutter emulators --launch emulator
-```
+{{< /highlight >}}
 
 {{<notebox>}}
 
@@ -59,23 +59,23 @@ flutter emulators --launch emulator
 
 The recommended approach to running integration tests is to use `flutter test` and the `integration_test` dependency. To do so, navigate to **App settings > Tests > Integration and unit tests** and under **Flutter drive arguments** define the following:
 
-```bash
+{{< highlight bash "style=paraiso-dark">}}
 test integration_test
-```
+{{< /highlight >}}
 
 To run only a specific test, the path has to be specified:
 
-```bash
+{{< highlight bash "style=paraiso-dark">}}
 test integration_test/app_test.dart
-```
+{{< /highlight >}}
 
 #### Web
 
 However, the above approach is not suitable for integration tests for web using `chromedriver`, and the following arguments are recommended instead:
 
-```bash
+{{< highlight bash "style=paraiso-dark">}}
 drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart
-```
+{{< /highlight >}}
 
 {{<notebox>}}
 
