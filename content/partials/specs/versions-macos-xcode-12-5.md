@@ -73,15 +73,10 @@ weight: 6
 - **11.0.11** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_292** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
-## Xcode 12.5.1 (12E507)
+## Xcode versions
 
-This is the Xcode version used by default when you select `12.5.1` in build settings in the workflow
-editor for Flutter apps or set Xcode version to `12.5.1` in your codemagic.yaml file.
-Other available versions are listed [here](#other-xcode-versions).
-
-Xcode path: `/Applications/Xcode-12.5.1.app`
-
-With Xcode `12.5.1` build version `12E507` the following runtimes and devices are installed:
+- 12.5.1 (12E507) `/Applications/Xcode-12.5.1.app`
+- 12.5 (12E262) `/Applications/Xcode-12.5.app`
 
 ### Runtimes
 
@@ -130,9 +125,3 @@ With Xcode `12.5.1` build version `12E507` the following runtimes and devices ar
 - iPhone 8 Plus
 - iPhone SE (2nd generation)
 - iPod touch (7th generation)
-
-## Other Xcode versions
-
-- 12.5 (12E262) `/Applications/Xcode-12.5.app`
-- 12.4 (12D4e) `/Applications/Xcode-12.4.app`
-
