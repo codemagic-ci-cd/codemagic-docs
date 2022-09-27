@@ -299,7 +299,7 @@ To execute the tests, use the following scripts in your `codemagic.yaml` file:
 
 Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/run-tests.md#run-tests) to learn more about more optional arguments to `xcode-project run-tests`.
 
-## Native macOS 
+## Native macOS
 
 {{<notebox>}}
 **Note:** macOS UI Testing is only supported on Xcode 13 images and above as it requires System Integrity Protection (SIP) to be disabled in order to access the accessibility permissions. Older images with Xcode 12 and below do not have SIP disabled and are unsuitable for UI testing macOS apps.

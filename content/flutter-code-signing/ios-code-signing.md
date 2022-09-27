@@ -52,7 +52,7 @@ The following sections describe how to set up automatic code signing for builds 
 
 ### Step 1. Creating an App Store API key for Codemagic
 
-It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
+Only App Store Connect admin can create an API key. It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
 
 1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
 2. Click on the + sign to generate a new API key.
