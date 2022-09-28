@@ -5,22 +5,23 @@ In order to get the latest build number from App Store or TestFlight, you will n
 2. Add the script to get the latest build number using `app-store-connect` and configure the new build number using `agvtool`.
 3. Your `codemagic.yaml` will look like this:
 {{< highlight yaml "style=paraiso-dark">}}
-react-native-ios:
-  # ...
-  environment:
-    # ...
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    environment:
+        groups:
+          - appstore_credentials
     vars:
-      # ...
       APP_ID: 1555555551
-  # ...
-  scripts:
-    - name: Increment build number
+  
+    scripts:
+      - name: Increment build number
+        script: | 
+          #!/bin/sh
+          cd $CM_BUILD_DIR
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
+          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
+      - name: Build ipa for distribution
       script: | 
-        #!/bin/sh
-        cd $CM_BUILD_DIR/ios
-        LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
-        agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
-    - name: Build ipa for distribution
-      script:
         # build command
 {{< /highlight >}}

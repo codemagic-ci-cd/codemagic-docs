@@ -63,7 +63,11 @@ artifacts:
 
 ## Build versioning
 
-If you are going to publish your app to Google Play, each uploaded artifact must have a new version. Codemagic allows you to easily automate this process and increment the version numbers for each build. For more information and details, see [here](../configuration/build-versioning).
+If you are going to publish your app to App Store, each uploaded artifact must have a new version. Codemagic allows you to easily automate this process and increment the version numbers for each build. For more information and details, see [here](../configuration/build-versioning).
+
+### Configure environment variables
+
+{{< include "/partials/quickstart/publish-ios-environment-variables.md">}}
 
 {{< include "/partials/quickstart/build-versioning-ios.md" >}}
 
@@ -109,10 +113,6 @@ workflows:
       - name: Install CocoaPods dependencies
         script: | 
           pod install
-      - name: Initialize keychain
-        script: keychain initialize
-      - name: Add certificates to keychain
-        script: keychain add-certificates
       - name: Set up provisioning profiles settings on Xcode project
         script: xcode-project use-profiles
       - name: Increment build number

@@ -21,6 +21,13 @@ Please note that
 1. for App Store Connect publishing, the provided key needs to have [App Manager permission](https://help.apple.com/app-store-connect/#/deve5f9a89d7),
 2. and in order to submit your iOS application to App Store Connect, it must be code signed with a distribution [certificate](https://developer.apple.com/support/certificates/).
 
+### Creating the App Store Connect API key
+Signing iOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership.
+
+{{< include "/partials/app-store-connect-api-key.md" >}}
+
+### Configuring environment variables
+{{< include "/partials/quickstart/publish-ios-environment-variables.md" >}}
 ### Distribution to App Store Connect
 
 The following snippet demonstrates how to authenticate with and upload the IPA to App Store Connect, submit the build to beta tester groups in TestFlight and configure releasing the app to App Store. See additional configuration options for App Store Connect publishing [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/publish.md).

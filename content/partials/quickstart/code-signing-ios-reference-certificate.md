@@ -13,15 +13,6 @@ workflows:
       ios_signing:
         distribution_type: app_store # or: ad_hoc | development | enterprise
         bundle_identifier: com.example.id
-    # ....
-    scripts:
-      # ...
-      - name: Initialize keychain
-        script: | 
-          keychain initialize
-      - name: Add certificates to keychain
-        script: | 
-          keychain add-certificates
 {{< /highlight >}}
 
 {{<notebox>}}
@@ -29,8 +20,6 @@ workflows:
 
 When using a **third party app distribution service** such as Firebase App Distribution, set the `distribution_type` to `IOS_APP_ADHOC`
 {{</notebox>}}
-
-Additionally, it is mandatory to specify `Initialize keychain` & `Add certificates to keychain` scripts as shown above.
 
 When defining the bundle identifier `com.example.id`, Codemagic will fetch any uploaded certificates and profiles matching the extensions as well (e.g. `com.example.id.NotificationService`).
 

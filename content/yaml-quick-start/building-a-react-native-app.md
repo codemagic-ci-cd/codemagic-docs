@@ -382,10 +382,6 @@ workflows:
       - name: Install CocoaPods dependencies
         script: | 
           cd ios && pod install
-      - name: Initialize keychain
-        script: keychain initialize
-      - name: Add certificates to keychain
-        script: keychain add-certificates
       - name: Set up provisioning profiles settings on Xcode project
         script: xcode-project use-profiles
       - name: Increment build number
