@@ -73,15 +73,16 @@ weight: 4
 - **1.8.0_202** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home`
 - **1.7.0_272** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
-## Xcode 11.7 (11E801a)
+## Xcode versions
 
-This is the Xcode version used by default when you select `11.7` in build settings in the workflow
-editor for Flutter apps or set Xcode version to `11.7` in your codemagic.yaml file.
-Other available versions are listed [here](#other-xcode-versions).
-
-Xcode path: `/Applications/Xcode-11.7.app`
-
-With Xcode `11.7` build version `11E801a` the following runtimes and devices are installed:
+- 11.7 (11E801a) `/Applications/Xcode-11.7.app`
+- 11.6 (11E708) `/Applications/Xcode-11.6.app`
+- 11.5 (11E608c) `/Applications/Xcode-11.5.app`
+- 11.4.1 (11E503a) `/Applications/Xcode-11.4.app`
+- 11.3.1 (11C505) `/Applications/Xcode-11.3.app`
+- 11.2.1 (11B500) `/Applications/Xcode-11.2.1.app`
+- 11.1 (11A1027) `/Applications/Xcode-11.1.app`
+- 11.0 (11A420a) `/Applications/Xcode-11.app`
 
 ### Runtimes
 
@@ -153,13 +154,3 @@ With Xcode `11.7` build version `11E801a` the following runtimes and devices are
 - iPhone Xs
 - iPhone Xs Max
 - iPhone Xʀ
-
-## Other Xcode versions
-
-- 11.6 (11E708) `/Applications/Xcode-11.6.app`
-- 11.5 (11E608c) `/Applications/Xcode-11.5.app`
-- 11.4.1 (11E503a) `/Applications/Xcode-11.4.app`
-- 11.3.1 (11C505) `/Applications/Xcode-11.3.app`
-- 11.2.1 (11B500) `/Applications/Xcode-11.2.1.app`
-- 11.1 (11A1027) `/Applications/Xcode-11.1.app`
-- 11.0 (11A420a) `/Applications/Xcode-11.app`

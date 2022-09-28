@@ -71,15 +71,12 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.7f1/Unity.app
 
-## Xcode 13.4.1 (13F100)
+## Xcode versions
 
-This is the Xcode version used by default when you select `13.4`, `13.4.1` or `latest` in build settings in the workflow
-editor for Flutter apps or set Xcode version to `13.4`, `13.4.1` or `latest` in your codemagic.yaml file.
-Other available versions are listed [here](#other-xcode-versions).
-
-Xcode path: `/Applications/Xcode-13.4.app`
-
-With Xcode `13.4.1` build version `13F100` the following runtimes and devices are installed:
+- 14.1 (14B5024i) `/Applications/Xcode-14.1.app`, also selected when specifying `edge` in Xcode version settings
+- 14.0.1 (14A400) `/Applications/Xcode-14.0.app`, also selected when specifying `latest` or `14` in Xcode version settings
+- 13.4.1 (13F100) `/Applications/Xcode-13.4.app`, also selected when specifying `13.4` in Xcode version settings
+- 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`, also selected when specifying `13.3` in Xcode version settings
 
 ### Runtimes
 
@@ -133,9 +130,3 @@ With Xcode `13.4.1` build version `13F100` the following runtimes and devices ar
 - iPhone SE (2nd generation)
 - iPhone SE (3rd generation)
 - iPod touch (7th generation)
-
-## Other Xcode versions
-
-- 14.1 (14B5024i) `/Applications/Xcode-14.1.app`
-- 14.0.1 (14A400) `/Applications/Xcode-14.0.app`
-- 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`
