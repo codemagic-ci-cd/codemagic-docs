@@ -80,18 +80,13 @@ weight: 7
 
 ## Unity 2020.3.28f1
 
-UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app
+UNITY_HOME: `/Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app`
 
-## Xcode 13.2.1 (13C100)
+## Xcode versions
 
-This is the Xcode version used by default when you select `13.2` or `13.2.1`
-in build settings in the workflow editor for Flutter apps or set Xcode version to
-`13.2` or `13.2.1` in your codemagic.yaml file.
-Other available versions are listed [here](#other-xcode-versions).
-
-Xcode path: `/Applications/Xcode-13.2.1.app`
-
-With Xcode `13.2.1` build version `13C100` the following runtimes and devices are installed:
+- 13.2.1 (13C100) `/Applications/Xcode-13.2.1.app`, also selected when you specify `13.2` in Xcode version settings
+- 13.1 (13A1030d) `/Applications/Xcode-13.1.app`
+- 13.0 (13A233) `/Applications/Xcode-13.0.app`
 
 ### Runtimes
 
@@ -142,8 +137,3 @@ With Xcode `13.2.1` build version `13C100` the following runtimes and devices ar
 - iPhone 8 Plus
 - iPhone SE (2nd generation)
 - iPod touch (7th generation)
-
-## Other Xcode versions
-
-- 13.1 (13A1030d) `/Applications/Xcode-13.1.app`
-- 13.0 (13A233) `/Applications/Xcode-13.0.app`
