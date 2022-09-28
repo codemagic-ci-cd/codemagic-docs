@@ -4,7 +4,7 @@ description: How to integrate your workflows with Perfecto using codemagic.yaml
 weight: 13
 ---
 
-**Perfecto** is a web-based platform that allows mobile application developers and QA Engineers to work with services such as advanced automation, monitoring, and testing services. It is possible to integrate with Perfecto directly from your **codemagic.yaml**
+**Perfecto** is a cloud-based test automation platform for web and mobile that allows application developers and QA engineers to create and execute tests across devices and browsers at scale. Being a market leader in its area, Perfecto offers many ways to integrate with different stages of the software development and testing lifecycle. It is possible to integrate with Perfecto directly from your **codemagic.yaml**
 
 A sample project that shows how to configure Perfecto integration for real device testing is available in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/perfecto_sample_project).
 
@@ -33,7 +33,7 @@ Signing up with [Perfecto](https://www.perfecto.io/) is required in order to get
 
 ## Uploading to Perfecto
 
-Using the following cURL script in a post-build script, **.apk**, **.aab** and **.ipa** binaries can be uploaded to the Perfecto platform:
+Using the following cURL script in a post-build script, **Release APK** and **Release IPA** binaries can be uploaded to the Perfecto platform:
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
@@ -50,19 +50,11 @@ Using the following cURL script in a post-build script, **.apk**, **.aab** and *
 
 ## Test Automation
 
-In order to automate tests, desired capabilities can be set inside your custom made test scripts in your project. For example, if your application requires device sensors such as camera or fingerprint reader, then **sensorInstrument** needs to be set:
+The uploaded files can be directly used to start your automation testing. To do this, desired capabilities can be set inside your custom-made test scripts in your project. For example, if your application requires device sensors such as camera or fingerprint reader, then **sensorInstrument** needs to be set:
 
 {{< highlight dart "style=paraiso-dark">}}
   capabilities.setCapability("sensorInstrument", true);
 {{< /highlight >}}
-
-
-With Appium tests, **autoInstrument** capability automatically instrument the application and it needs to be set to true:
-
-{{< highlight dart "style=paraiso-dark">}}
-  capabilities.setCapability("autoInstrument", true);
-{{< /highlight >}}
-
 
 ## Flutter apps integration
 

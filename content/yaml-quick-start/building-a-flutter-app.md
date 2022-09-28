@@ -5,6 +5,7 @@ weight: 4
 aliases:
   - '../yaml/building-a-flutter-app'
   - '/getting-started/building-a-flutter-app'
+  - /yaml-basic-configuration/building-a-flutter-app
 startLineBreak: true
 ---
 

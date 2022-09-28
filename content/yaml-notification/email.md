@@ -10,7 +10,7 @@ If the build finishes successfully, release notes (if passed), and the generated
 
 If you don't want to receive an email notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
 
-{{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight yaml "style=paraiso-dark">}}
 
 publishing:
   email:
