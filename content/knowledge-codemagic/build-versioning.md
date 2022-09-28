@@ -84,7 +84,7 @@ You can use the [Xcode command line agvtool](https://developer.apple.com/library
         #!/bin/sh
         set -e
         set -x
-        cd $CM_BUILD_DIR/ios
+        cd $CM_BUILD_DIR
         agvtool new-version -all $(($BUILD_NUMBER + 1))
 {{< /highlight >}}
 {{</markdown>}}
