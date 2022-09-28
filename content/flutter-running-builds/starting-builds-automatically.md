@@ -3,6 +3,7 @@ title: Starting builds automatically
 description: How to setup builds to run on repository events or on schedule
 weight: 4
 aliases: 
+  - /flutter-configuration/automatic-build-triggering
 ---
 
 In order to fully automate your CI/CD pipeline, you can set up automatic build triggering by configuring which branches to track and when to trigger builds.

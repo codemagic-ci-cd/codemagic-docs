@@ -7,6 +7,7 @@ aliases:
   - /variables/encrypting
   - /building/encrypting
   - /variables/environment-variable-groups
+  - /yaml/configuring-environment-variables
 ---
 
 ## Configuring Environment variables

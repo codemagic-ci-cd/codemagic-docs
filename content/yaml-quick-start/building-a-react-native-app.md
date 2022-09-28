@@ -5,6 +5,7 @@ weight: 5
 aliases:
   - '../yaml/building-a-react-native-app'
   - /getting-started/building-a-react-native-app
+  - /yaml-basic-configuration/building-a-react-native-app
 ---
 
 React Native is a cross-platform solution that allows you to build apps for both iOS and Android faster using a single language. Pairing it with Codemagic's CI/CD pipeline creates a powerful tool that automates all phases of mobile app development.
@@ -204,7 +205,7 @@ react-native-ios:
     vars:
       BUNDLE_ID: "io.codemagic.sample.reactnative"
       XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Name of your Xcode workspace
-      XCODE_SCHEME: "CodemagicSample" # <-- Nname of your Xcode scheme
+      XCODE_SCHEME: "CodemagicSample" # <-- Name of your Xcode scheme
 scripts:
   # ...
   - name: Build ipa for distribution

@@ -2,11 +2,11 @@
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 13.0 - 13.2 / Unity)
 aliases:
-  - '../releases-and-versions/versions4'
-  - '../releases-and-versions/versions4-unity.md'
-  - '../specs/versions4'
-  - '../specs/versions4-unity.md'
-  - '../specs/versions-macos-xcode-13-0-unity'
+  - '/releases-and-versions/versions4'
+  - '/releases-and-versions/versions4-unity.md'
+  - '/specs/versions4'
+  - '/specs/versions4-unity.md'
+  - '/specs/versions-macos-xcode-13-0-unity'
   - /specs/versions-macos-xcode-13-0
 weight: 7
 ---

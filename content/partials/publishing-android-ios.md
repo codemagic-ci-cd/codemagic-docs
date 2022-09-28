@@ -3,7 +3,7 @@ Codemagic offers a wide array of options for app publishing and the list of part
 To get more details on the publishing options presented in this guide, please check the [Email publishing](../yaml-publishing/email), the [Google Play Store](../yaml-publishing/google-play) publishing and the [App Store Connect](../yaml-publishing/app-store-connect).
 
 #### Email publishing
-{{< include "/partials/quickstart/publishing-email.md" >}}}
+{{< include "/partials/quickstart/publishing-email.md" >}}
 
 #### Publishing to Google Play and App Store
 
