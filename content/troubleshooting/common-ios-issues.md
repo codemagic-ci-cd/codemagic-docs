@@ -160,3 +160,37 @@ Add the following to the end of your `xcode-project build-ipa` command:
 {{< highlight yaml "style=paraiso-dark">}}
   --archive-flags="-destination 'generic/platform=iOS'"
 {{< /highlight >}}
+
+
+
+### XCode 14 known issues
+
+
+###### Error (Xcode): Signing for "XXX" requires a development team. Select a development team in the Signing & Capabilities editor
+
+
+**Solution**:
+
+This issue has been fixed on the stable channel in **Flutter 3.3.3**.
+
+However, if you would like to continue previous versions of Flutter you can open `ios/Podfile` and add the following at the end of it:
+
+{{< highlight yaml "style=paraiso-dark">}}
+post_install do |installer|
+ installer.pods_project.targets.each do |target|
+   flutter_additional_macos_build_settings(target)
+
+   target_is_resource_bundle = target.respond_to?(:product_type) && target.product_type == 'com.apple.product-type.bundle'
+   target.build_configurations.each do |build_configuration|
+     if target_is_resource_bundle
+       build_configuration.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+       build_configuration.build_settings['CODE_SIGNING_REQUIRED'] = 'NO'
+       build_configuration.build_settings['CODE_SIGNING_IDENTITY'] = '-'
+       build_configuration.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = '-'
+     end
+   end
+  end
+end
+{{< /highlight >}}
+
+In XCode 13 `CODE_SIGNING_ALLOWED` was set to `NO` by default for resource bundles. While in Xcode 14 they changed this to default to `YES`, which might be causing the problems.
