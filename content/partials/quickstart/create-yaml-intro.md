@@ -12,31 +12,13 @@ You can find codemagic.yaml examples in [Codemagic Sample Projects](https://gith
 
 If you prefer to write your `codemagic.yaml` file from scratch, you can start with this minimal configuration.
 
-{{< tabpane >}}
-{{% tab header="Android" %}}
-
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
-    android-workflow-id:
-        name: Android Sample Workflow
+    sample-workflow:
+        name: Codemagic Sample Workflow
         max_build_duration: 120
         instance_type: mac_mini_m1
 {{< /highlight >}}
-
-{{% /tab %}}
-
-{{% tab header="iOS" %}}
-
-{{< highlight yaml "style=paraiso-dark">}}
-workflows:
-    ios-workflow-id:
-        name: iOS Sample Workflow
-        max_build_duration: 120
-        instance_type: mac_mini_m1
-{{< /highlight >}}
-{{< /tab >}}
-
-{{< /tabpane >}}
 
 
 {{<notebox>}}
