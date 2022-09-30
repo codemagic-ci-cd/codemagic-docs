@@ -1,11 +1,10 @@
 ---
+title: Code signing for macOS - quick start version
 ---
-
 {{<markdown>}}
-### Creating the App Store Connect API key
+#### Creating the App Store Connect API key
 Signing macOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership.
 {{</markdown>}}
-
 {{< include "/partials/app-store-connect-api-key.md" >}}
 
 ### Automatic vs Manual code signing
@@ -24,7 +23,6 @@ There are several certificate types you can choose to sign your macOS app, depen
 - `DEVELOPER_ID_INSTALLER` is used to sign a Mac Installer Package before distributing it outside the Mac App Store
 
 For example, in order to publish to Mac App Store, the application must be signed with a `Mac App Distribution` certificate using a `Mac App Store` provisioning profile. If you want to create a `.pkg` Installer pacakge, you must use a `Mac Installer Distribution` certificate.
-
 #### Obtaining the certificate private key
 
 To enable Codemagic to automatically fetch or create the correct signing certificate on your behalf, you need to provide the corresponding `certificate private key`. You then have to save that key as a Codemagic environment variable.
@@ -66,7 +64,6 @@ openssl pkcs12 -in MAC_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out mac_d
 
 {{< /tabpane >}}
 
-
 #### Configuring environment variables
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter `CERTIFICATE_PRIVATE_KEY` as the **_Variable name_**.
@@ -100,8 +97,8 @@ workflows:
       groups:
         - appstore_credentials
 {{< /highlight >}}
-#### Automatic code signing
 
+#### Automatic code signing
 To code sign the app, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands. 
 
 
@@ -128,66 +125,6 @@ To code sign the app, add the following commands in the [`scripts`](../getting-s
 Instead of specifying the exact bundle ID, you can use `"$(xcode-project detect-bundle-id)"`.
 
 Based on the specified bundle ID and [provisioning profile type](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--mac_catalyst_app_development--mac_catalyst_app_direct--mac_catalyst_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store), Codemagic will fetch or create the relevant provisioning profile and certificate to code sign the build.
-
-#### Manual code signing
-
-In order to use manual code signing, you need the following: 
-- **Signing certificate**: Your development or distribution certificate in .P12 format.
-- **Certificate password**: The certificate password if the certificate is password-protected.
-- **Provisioning profile**: You can get it from **Apple Developer Center > Certificates, Identifiers & Profiles > Profiles** and select the provisioning profile you would like to export and download.
-
-{{<notebox>}}
-**Note**: With **Manual code signing**, you also have to manually **Package the application** into a `.pkg` container and **Notarize** it.
-{{</notebox>}}
-
-1. Open your Codemagic app settings, and go to the **Environment variables** tab.
-2. Enter `CM_CERTIFICATE` as the **_Variable name_**.
-3. Run the following command on the certificate file to `base64` encode it and copy to clipboard:
-{{< highlight Shell "style=rrt">}}
-cat ios_distribution_certificate.p12 | base64 | pbcopy
-{{< /highlight >}}
-4. Paste into the **_Variable value_** field.
-5. Enter a variable group name, e.g. **_appstore_credentials_**.
-6. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
-7. Click the **Add** button to add the variable.
-8. Repeat steps 2 - 7 to create variables `CM_PROVISIONING_PROFILE` and `INSTALLER_CERTIFICATE`. Paste the `base64` encoded values for both of these files.
-9. Add the `CM_CERTIFICATE_PASSWORD` and `INSTALLER_CERTIFICATE_PASSWORD` variables, make them **Secure** and add them to the same variable group.
-
-Then, add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
-
-{{< highlight yaml "style=paraiso-dark">}}
-    scripts:
-      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
-        script: keychain initialize
-      - name: Set up provisioning profiles from environment variables
-        script: | 
-            PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
-            mkdir -p "$PROFILES_HOME"
-            PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-            echo ${CM_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
-            echo "Saved provisioning profile $PROFILE_PATH"
-      - name: Set up signing certificate
-        script: | 
-            echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-            if [ -z ${CM_CERTIFICATE_PASSWORD+x} ]; then
-                # when using a certificate that is not password-protected
-                keychain add-certificates --certificate /tmp/certificate.p12
-            else
-                # when using a password-protected certificate
-                keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
-            fi
-
-            echo $INSTALLER_CERTIFICATE | base64 --decode > /tmp/installer_certificate.p12
-            if [ -z ${INSTALLER_CERTIFICATE_PASSWORD+x} ]; then
-                # when using a certificate that is not password-protected
-                keychain add-certificates --certificate /tmp/installer_certificate.p12
-            else
-                # when using a password-protected certificate
-                keychain add-certificates --certificate /tmp/installer_certificate.p12 --certificate-password $INSTALLER_CERTIFICATE_PASSWORD
-            fi
-      - name: Set up code signing settings on Xcode project
-        script: xcode-project use-profiles
-{{< /highlight >}}
 
 ### Creating the Installer package
 
