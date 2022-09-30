@@ -7,12 +7,26 @@ Signing macOS applications requires [Apple Developer Program](https://developer.
 {{</markdown>}}
 {{< include "/partials/app-store-connect-api-key.md" >}}
 
+### Automatic vs Manual code signing
 
+Signing macOS apps requires a `Signing certificate` (App Store **development** or **distribution** certificate in `.p12` format) and a `Provisioning profile`. In **Manual code signing** you save these files as Codemagic `Environment variables` and manually reference them in the appropriate build steps.
+
+In **Automatic code signing**, Codemagic takes care of Certificate and Provisioning profile management for you. Based on the `certificate private key` that you provide, Codemagic will automatically fetch the correct certificate from the App Store or create a new one if necessary.
+
+#### Certificate types
+There are several certificate types you can choose to sign your macOS app, depending on the distribution method you plan to use.
+
+- `MAC_APP_DEVELOPMENT` certificate allows you to build your app for internal testing and debugging.
+- `MAC_APP_DISTRIBUTION` certificate is used to sign a Mac app before submitting it to the Mac App Store
+- `MAC_INSTALLER_DISTRIBUTION` is used to sign and submit a Mac Installer Package to the Mac App Store
+- `DEVELOPER_ID_APPLICATION` is used to sign a Mac app before distributing it outside the Mac App Store
+- `DEVELOPER_ID_INSTALLER` is used to sign a Mac Installer Package before distributing it outside the Mac App Store
+
+For example, in order to publish to Mac App Store, the application must be signed with a `Mac App Distribution` certificate using a `Mac App Store` provisioning profile. If you want to create a `.pkg` Installer pacakge, you must use a `Mac Installer Distribution` certificate.
 #### Obtaining the certificate private key
 
-In order to publish to Mac App Store, the application must be signed with a `Mac App Distribution` certificate using a `Mac App Store` provisioning profile. Additionally, the application must be packaged into a `.pkg` Installer package which should be signed with a `Mac Installer Distribution` certificate.
+To enable Codemagic to automatically fetch or create the correct signing certificate on your behalf, you need to provide the corresponding `certificate private key`. You then have to save that key as a Codemagic environment variable.
 
-You can upload your signing certificate and distribution profile to Codemagic to manage code signing yourself or use the automatic code signing option where Codemagic takes care of code signing and signing files management on your behalf. Read more about the two options below.
 
 {{< tabpane >}}
 
@@ -50,7 +64,6 @@ openssl pkcs12 -in MAC_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out mac_d
 
 {{< /tabpane >}}
 
-
 #### Configuring environment variables
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter `CERTIFICATE_PRIVATE_KEY` as the **_Variable name_**.
@@ -86,8 +99,6 @@ workflows:
 {{< /highlight >}}
 
 #### Automatic code signing
-In **Automatic code signing**, Codemagic takes care of Certificate and Provisioning profile management for you. Based on the `certificate private key` that you provide, Codemagic will automatically fetch the correct certificate from the App Store or create a new one if necessary.
-
 To code sign the app, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands. 
 
 
@@ -102,10 +113,9 @@ To code sign the app, add the following commands in the [`scripts`](../getting-s
             --type MAC_APP_STORE \
             --create
       - name: Fetch Mac Installer Distribution certificates
-        script: | 
-           # You may omit the first command if you already have the installer certificate and provided the corresponding private key
-            app-store-connect create-certificate --type MAC_INSTALLER_DISTRIBUTION --save || \
-            app-store-connect list-certificates --type MAC_INSTALLER_DISTRIBUTION --save
+        script: |  
+            app-store-connect list-certificates --type MAC_APP_DISTRIBUTION --save || \
+            app-store-connect create-certificate --type MAC_APP_DISTRIBUTION --save
       - name: Set up signing certificate
         script: keychain add-certificates
       - name: Set up code signing settings on Xcode project
@@ -116,7 +126,7 @@ Instead of specifying the exact bundle ID, you can use `"$(xcode-project detect-
 
 Based on the specified bundle ID and [provisioning profile type](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--mac_catalyst_app_development--mac_catalyst_app_direct--mac_catalyst_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store), Codemagic will fetch or create the relevant provisioning profile and certificate to code sign the build.
 
-###### Packaging the application
+### Creating the Installer package
 
 To package your application into an `.pkg` Installer package and sign it with the `Mac Installer Distribution` certificate, use the following script:
 
@@ -150,12 +160,14 @@ To package your application into an `.pkg` Installer package and sign it with th
 **Note**: Don't forget to specify the path to your generated package in the [artifacts section](../getting-started/yaml/#artifacts).
 {{</notebox>}}
 
-###### Notarizing macOS applications
+### Notarizing macOS applications
 
-Notarization is a process where Apple verifies your application to make sure it has a Developer ID code signature and does not consist of malicious content. Notarizing an app during the Codemagic build process is possible using **altool** as follows:
+Notarization is a process where Apple verifies your application to make sure it has a Developer ID code signature and does not contain malicious content. All apps distributed outside the Mac App Store have to be notarized.
+
+Notarizing an app during the Codemagic build process is possible using the **altool** command as follows:
 
 {{< highlight bash "style=paraiso-dark">}}
 xcrun altool --notarize-app -f <file> --primary-bundle-id <bundle_id>
-    {-u <username> [-p <password>] | --apiKey <api_key> --apiIssuer <issuer_id>}
-    [--asc-provider <name> | --team-id <id> | --asc-public-id <id>]
+           {-u <username> [-p <password>] | --apiKey <api_key> --apiIssuer <issuer_id>}
+           [--asc-provider <name> | --team-id <id> | --asc-public-id <id>]
 {{< /highlight >}}
