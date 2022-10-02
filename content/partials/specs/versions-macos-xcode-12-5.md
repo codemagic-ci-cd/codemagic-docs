@@ -2,9 +2,8 @@
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 12.5)
 aliases:
-  - '/releases-and-versions/versions3'
-  - '/specs/versions3'
-  - /specs/versions-macos-xcode-12-5
+  - '../releases-and-versions/versions3'
+  - '../specs/versions3'
 weight: 6
 ---
 
@@ -73,10 +72,15 @@ weight: 6
 - **11.0.11** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_292** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 
-## Xcode versions
+## Xcode 12.5.1 (12E507)
 
-- 12.5.1 (12E507) `/Applications/Xcode-12.5.1.app`
-- 12.5 (12E262) `/Applications/Xcode-12.5.app`
+This is the Xcode version used by default when you select `12.5.1` in build settings in the workflow
+editor for Flutter apps or set Xcode version to `12.5.1` in your codemagic.yaml file.
+Other available versions are listed [here](#other-xcode-versions).
+
+Xcode path: `/Applications/Xcode-12.5.1.app`
+
+With Xcode `12.5.1` build version `12E507` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -125,3 +129,9 @@ weight: 6
 - iPhone 8 Plus
 - iPhone SE (2nd generation)
 - iPod touch (7th generation)
+
+## Other Xcode versions
+
+- 12.5 (12E262) `/Applications/Xcode-12.5.app`
+- 12.4 (12D4e) `/Applications/Xcode-12.4.app`
+

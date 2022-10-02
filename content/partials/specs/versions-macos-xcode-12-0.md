@@ -2,9 +2,8 @@
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 12.0 - 12.4)
 aliases:
-  - "/releases-and-versions/versions2"
-  - "/specs/versions2"
-  - /specs/versions-macos-xcode-12-0
+  - "../releases-and-versions/versions2"
+  - "../specs/versions2"
 weight: 5
 ---
 
@@ -73,14 +72,15 @@ weight: 5
 - **1.8.0_275** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_285** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
-## Xcode versions
+## Xcode 12.4 (12D4e)
 
-- 12.4 (12D4e) `/Applications/Xcode-12.4.app`
-- 12.3 (12C33) `/Applications/Xcode-12.3.app`
-- 12.2 (12B45b) `/Applications/Xcode-12.2.app`
-- 12.1.1 (12A7605b) `/Applications/Xcode-12.1.1.app`
-- 12.0.1 (12A7300) `/Applications/Xcode-12.app`
+This is the Xcode version used by default when you select `12.4` in build settings in the workflow
+editor for Flutter apps or set Xcode version to `12.4` in your codemagic.yaml file.
+Other available versions are listed [here](#other-xcode-versions).
 
+Xcode path: `/Applications/Xcode-12.4.app`
+
+With Xcode `12.4` build version `12D4e` the following runtimes and devices are installed:
 
 ### Runtimes
 
@@ -157,3 +157,10 @@ weight: 5
 - iPhone Xs Max
 - iPhone Xʀ
 - iPod touch (7th generation)
+
+## Other Xcode versions
+
+- 12.3 (12C33) `/Applications/Xcode-12.3.app`
+- 12.2 (12B45b) `/Applications/Xcode-12.2.app`
+- 12.1.1 (12A7605b) `/Applications/Xcode-12.1.1.app`
+- 12.0.1 (12A7300) `/Applications/Xcode-12.app`
