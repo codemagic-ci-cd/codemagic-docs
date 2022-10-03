@@ -2,7 +2,7 @@
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS M1 build machine specification (Xcode 13.3+ / Unity)
 aliases:
-  - /specs/versions-macos-m1-xcode-13-3
+  - '/specs/versions-macos-m1-xcode-13-3'
 weight: 9
 ---
 
@@ -14,7 +14,7 @@ weight: 9
 
 - System version `macOS 12.6 (21G115)`
 - Kernel version `Darwin 21.6.0`
-- Disk `294GB (Free Space: 31GB)`
+- Disk `294GB (Free Space: 48GB)`
 
 ## Pre-installed tools
 
@@ -27,21 +27,21 @@ weight: 9
 - curl `7.79.1`
 - docker `N/A`
 - ew-cli `0.0.48`
-- fastlane `2.209.1`
+- fastlane `2.210.1`
 - firebase `11.4.2`
-- flutter `3.3.2 ($HOME/programs/flutter)`
+- flutter `3.3.3 ($HOME/programs/flutter)`
 - gem `3.3.22`
-- gh `2.16.0`
+- gh `2.16.1`
 - git `2.37.3`
-- Google Cloud SDK `396.0.0`
+- Google Cloud SDK `404.0.0`
 - gradle `7.3.1`
-- gsutil `5.11`
-- homebrew `3.6.2`
+- gsutil `5.14`
+- homebrew `3.6.3`
 - ionic `5.4.16`
 - jq `1.6`
 - ktlint `0.47.1`
-- node `18.9.0`
-- npm `8.19.1`
+- node `18.10.0`
+- npm `8.19.2`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
@@ -73,7 +73,7 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.7f1/Unity.app
 
 ## Xcode versions
 
-- 14.1 (14B5024i) `/Applications/Xcode-14.1.app`, also selected when specifying `edge` in Xcode version settings
+- 14.1 (14B5033e) `/Applications/Xcode-14.1.app`, also selected when specifying `edge` in Xcode version settings
 - 14.0.1 (14A400) `/Applications/Xcode-14.0.app`, also selected when specifying `latest` or `14` in Xcode version settings
 - 13.4.1 (13F100) `/Applications/Xcode-13.4.app`, also selected when specifying `13.4` in Xcode version settings
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`, also selected when specifying `13.3` in Xcode version settings
@@ -83,15 +83,13 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.7f1/Unity.app
 - iOS 14.5
 - iOS 15.0
 - iOS 15.4
-- iOS 15.5
+- iOS 16.0
 - tvOS 14.5
 - tvOS 15.0
-- tvOS 15.4
 - tvOS 16.0
 - tvOS 16.1
 - watchOS 7.4
 - watchOS 8.0
-- watchOS 8.5
 - watchOS 9.0
 - watchOS 9.1
 
@@ -100,12 +98,23 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.7f1/Unity.app
 - Apple TV
 - Apple TV 4K (2nd generation)
 - Apple TV 4K (at 1080p) (2nd generation)
+- Apple Watch SE (40mm) (2nd generation)
+- Apple Watch SE (44mm) (2nd generation)
 - Apple Watch Series 5 (40mm)
 - Apple Watch Series 5 (44mm)
+- Apple Watch Series 5 - 40mm
+- Apple Watch Series 5 - 44mm
 - Apple Watch Series 6 (40mm)
 - Apple Watch Series 6 (44mm)
+- Apple Watch Series 6 - 40mm
+- Apple Watch Series 6 - 44mm
 - Apple Watch Series 7 (41mm)
 - Apple Watch Series 7 (45mm)
+- Apple Watch Series 7 - 41mm
+- Apple Watch Series 7 - 45mm
+- Apple Watch Series 8 (41mm)
+- Apple Watch Series 8 (45mm)
+- Apple Watch Ultra (49mm)
 - iPad (8th generation)
 - iPad (9th generation)
 - iPad Air (4th generation)
@@ -125,6 +134,10 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.7f1/Unity.app
 - iPhone 13 Pro
 - iPhone 13 Pro Max
 - iPhone 13 mini
+- iPhone 14
+- iPhone 14 Plus
+- iPhone 14 Pro
+- iPhone 14 Pro Max
 - iPhone 8
 - iPhone 8 Plus
 - iPhone SE (2nd generation)

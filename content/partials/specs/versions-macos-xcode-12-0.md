@@ -2,9 +2,9 @@
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 12.0 - 12.4)
 aliases:
-  - "/releases-and-versions/versions2"
-  - "/specs/versions2"
-  - /specs/versions-macos-xcode-12-0
+  - '/releases-and-versions/versions2'
+  - '/specs/versions2'
+  - '/specs/versions-macos-xcode-12-0'
 weight: 5
 ---
 
@@ -17,16 +17,17 @@ weight: 5
 
 - System version `macOS 10.15.5 (19F101)`
 - Kernel version `Darwin 19.5.0`
-- Disk `322GB (Free Space: 28GB)`
+- Disk `322GB (Free Space: 26GB)`
 
 ## Pre-installed tools
 
 - Android tools `$HOME/programs/android-sdk-macosx`
 - Android NDK `22.0.7026061`
 - aws `2.0.50`
+- carthage `0.36.1`
 - cocoapods `1.11.2`
 - cordova `10.0.0`
-- curl
+- curl `7.64.1`
 - docker `20.10.2`
 - fastlane `2.172.0`
 - firebase `9.3.0`
@@ -39,32 +40,32 @@ weight: 5
 - gsutil `4.53`
 - homebrew `3.1.0`
 - ionic `5.4.16`
-- jq
+- jq `1.6`
 - node `12.18.4`
 - npm `7.4.0`
 - python `2.7.16`
 - python3 `3.8.7`
 - ruby `2.7.1p83`
-- ssh
-- sudo
-- tar
-- unzip
-- wget
+- ssh `8.1p1`
+- sudo `1.8.31`
+- tar `3.3.2`
+- unzip `6.00`
+- wget `1.21`
 - yarn `1.22.10`
-- yq
-- zip
+- yq `4.4.1`
+- zip `3.0`
 
 ## Android emulators
 
 - **emulator**
 
-  - Device: `pixel_2 (Google)`
-  - Path: `/Users/builder/.android/avd/emulator.avd`
-  - Target: `Google APIs (Google Inc.)`
-  - Based on: `Android 10.0 (Q)`
-  - Tag/API: `google_apis/x86`
-  - Skin: `pixel_2`
-  - Sdcard: `512M`
+    - Device: `pixel_2 (Google)`
+    - Path: `/Users/builder/.android/avd/emulator.avd`
+    - Target: `Google APIs (Google Inc.)`
+    - Based on: `Android 10.0 (Q)`
+    - Tag/API: `google_apis/x86`
+    - Skin: `pixel_2`
+    - Sdcard: `512M`
 
 ## Java versions
 
@@ -81,7 +82,6 @@ weight: 5
 - 12.1.1 (12A7605b) `/Applications/Xcode-12.1.1.app`
 - 12.0.1 (12A7300) `/Applications/Xcode-12.app`
 
-
 ### Runtimes
 
 - iOS 11.4
@@ -94,7 +94,7 @@ weight: 5
 - iOS 13.5
 - iOS 13.6
 - iOS 13.7
-- iOS 14.4
+- iOS 14.3
 - tvOS 11.3
 - tvOS 11.4
 - tvOS 12.0

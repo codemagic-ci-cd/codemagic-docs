@@ -4,7 +4,7 @@ title: macOS build machine specification (Xcode 12.5)
 aliases:
   - '/releases-and-versions/versions3'
   - '/specs/versions3'
-  - /specs/versions-macos-xcode-12-5
+  - '/specs/versions-macos-xcode-12-5'
 weight: 6
 ---
 
@@ -17,16 +17,17 @@ weight: 6
 
 - System version `macOS 11.2 (20D64)`
 - Kernel version `Darwin 20.3.0`
-- Disk `322GB (Free Space: 71GB)`
+- Disk `322GB (Free Space: 68GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `22.1.7171670`
 - aws `2.2.14`
+- carthage `0.38.0`
 - cocoapods `1.11.2`
 - cordova `10.0.0`
-- curl
+- curl `7.64.1`
 - docker `20.10.2`
 - fastlane `2.186.0`
 - firebase `9.3.0`
@@ -39,20 +40,20 @@ weight: 6
 - gsutil `4.58`
 - homebrew `3.2.0`
 - ionic `6.12.4`
-- jq
+- jq `1.6`
 - node `14.15.5`
 - npm `7.18.1`
 - python `3.8.7`
 - python3 `3.8.7`
 - ruby `2.7.2p137`
-- ssh
-- sudo
-- tar
-- unzip
-- wget
+- ssh `8.1p1`
+- sudo `1.8.31`
+- tar `3.3.2`
+- unzip `6.00`
+- wget `1.21.1`
 - yarn `1.22.10`
-- yq
-- zip
+- yq `4.9.6`
+- zip `3.0`
 
 ## Android emulators
 
@@ -77,6 +78,7 @@ weight: 6
 
 - 12.5.1 (12E507) `/Applications/Xcode-12.5.1.app`
 - 12.5 (12E262) `/Applications/Xcode-12.5.app`
+- 12.4 (12D4e) `/Applications/Xcode-12.4.app`
 
 ### Runtimes
 
