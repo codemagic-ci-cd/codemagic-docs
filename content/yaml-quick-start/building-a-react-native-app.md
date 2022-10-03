@@ -189,7 +189,8 @@ scripts:
       echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
   - name: Build Android release
     script: | 
-      cd android && ./gradlew bundleRelease
+      cd android
+      ./gradlew bundleRelease
 
 artifacts:
   - android/app/build/outputs/**/*.aab
@@ -336,7 +337,10 @@ workflows:
           else
               UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
           fi
-          cd android && ./gradlew bundleRelease -PversionCode=$UPDATED_BUILD_NUMBER -PversionName=1.0.$UPDATED_BUILD_NUMBER
+          cd android
+          ./gradlew bundleRelease \
+            -PversionCode=$UPDATED_BUILD_NUMBER \
+            -PversionName=1.0.$UPDATED_BUILD_NUMBER
     artifacts:
       - android/app/build/outputs/**/*.aab
     publishing:

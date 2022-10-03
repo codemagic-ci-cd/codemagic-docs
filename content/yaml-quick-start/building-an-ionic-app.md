@@ -91,7 +91,7 @@ In this step you can also define the build artifacts you are interested in. Thes
         xcode-project use-profiles
     - name: Build ipa for distribution
       script: | 
-          cd android
+          cd ios/App
           xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
@@ -234,7 +234,7 @@ workflows:
           agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build ipa for distribution
         script: | 
-          cd android
+          cd ios/App
           xcode-project build-ipa --workspace "$XCODE_WORKSPACE" \
             --scheme "$XCODE_SCHEME"
     artifacts:
