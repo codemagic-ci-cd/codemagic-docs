@@ -6,8 +6,8 @@ aliases:
   - '/releases-and-versions/versions4-unity.md'
   - '/specs/versions4'
   - '/specs/versions4-unity.md'
+  - '/specs/versions-macos-xcode-13-0'
   - '/specs/versions-macos-xcode-13-0-unity'
-  - /specs/versions-macos-xcode-13-0
 weight: 7
 ---
 
@@ -27,14 +27,14 @@ weight: 7
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `23.1.7779620`
 - aws `2.4.6`
+- carthage `0.38.0`
 - cocoapods `1.11.2`
 - cordova `10.0.0`
 - curl `7.64.1`
 - docker `20.10.2`
-- ew-cli `N/A`
 - fastlane `2.199.0`
 - firebase `11.3.0`
-- flutter `3.3.2 ($HOME/programs/flutter)`
+- flutter `3.3.3 ($HOME/programs/flutter)`
 - gem `3.2.33`
 - gh `2.3.0`
 - git `2.34.1`
@@ -80,11 +80,11 @@ weight: 7
 
 ## Unity 2020.3.28f1
 
-UNITY_HOME: `/Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app`
+UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app
 
 ## Xcode versions
 
-- 13.2.1 (13C100) `/Applications/Xcode-13.2.1.app`, also selected when you specify `13.2` in Xcode version settings
+- 13.2.1 (13C100) `/Applications/Xcode-13.2.1.app`, also selected when specifying `13.2` in Xcode version settings
 - 13.1 (13A1030d) `/Applications/Xcode-13.1.app`
 - 13.0 (13A233) `/Applications/Xcode-13.0.app`
 
