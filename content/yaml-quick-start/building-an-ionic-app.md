@@ -1,13 +1,13 @@
 ---
 title: Ionic Capacitor apps 
-description: How to build an Ionic Capacitor app with codemagic.yaml
+description: How to build a Ionic Capacitor app with codemagic.yaml
 weight: 8
 aliases:
   - '../yaml/building-an-ionic-app'
   - /getting-started/building-an-ionic-app
 ---
 
-This guide will illustrate all of the necessary steps to successfully build and publish an Ionic Capacitor app with Codemagic. It will cover the basic steps such as build versioning, code signing and publishing.
+This guide will illustrate all of the necessary steps to successfully build and publish a Ionic Capacitor app with Codemagic. It will cover the basic steps such as build versioning, code signing and publishing.
 
 You can find a complete project showcasing these steps in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ionic/ionic-capacitor-demo-project).
 

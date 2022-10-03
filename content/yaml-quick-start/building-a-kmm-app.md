@@ -1,7 +1,7 @@
 ---
 title: KMM apps
 description: How to build a Kotlin Multiplatform Mobile app with codemagic.yaml
-weight: 8
+weight: 9
 ---
 
 ## Setting up a KMM project
