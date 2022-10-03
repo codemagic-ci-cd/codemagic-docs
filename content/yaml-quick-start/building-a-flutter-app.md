@@ -85,12 +85,12 @@ In this step you can also define the build artifacts you are interested in. Thes
     - name: Set up local.properties
       script: | 
         echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
-      - name: Get Flutter packages
-        script: | 
-          flutter packages pub get
-      - name: Build AAB with Flutter
-        script: | 
-          flutter build appbundle --release
+    - name: Get Flutter packages
+      script: | 
+        flutter packages pub get
+    - name: Build AAB with Flutter
+      script: | 
+        flutter build appbundle --release
     artifacts:
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
@@ -459,9 +459,9 @@ workflows:
       - name: Get Flutter packages
         script: | 
           flutter packages pub get
-       - name: Install pods
-         script: | 
-           find . -name "Podfile" -execdir pod install \;
+      - name: Install pods
+        script: | 
+          find . -name "Podfile" -execdir pod install \;
       - name: Flutter analyze
         script: | 
           flutter analyze
@@ -487,10 +487,21 @@ workflows:
         notify:
           success: true
           failure: false
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: $GOOGLE_PLAY_TRACK
-        submit_as_draft: true
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+
+        # Configuration related to TestFlight (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_testflight: true
+        beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+          - group name 1
+          - group name 2
+
+        # Configuration related to App Store (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_app_store: false
 {{< /highlight >}}
 {{< /tab >}}
 
@@ -530,9 +541,9 @@ workflows:
       - name: Get Flutter packages
         script: | 
           flutter packages pub get
-       - name: Install pods
-         script: | 
-           find . -name "Podfile" -execdir pod install \;
+      - name: Install pods
+        script: | 
+          find . -name "Podfile" -execdir pod install \;
       - name: Flutter analyze
         script: | 
           flutter analyze
@@ -580,10 +591,21 @@ workflows:
         notify:
           success: true
           failure: false
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: $GOOGLE_PLAY_TRACK
-        submit_as_draft: true
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+
+        # Configuration related to TestFlight (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_testflight: true
+        beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+          - group name 1
+          - group name 2
+
+        # Configuration related to App Store (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_app_store: false
 {{< /highlight >}}
 {{< /tab >}}
 
