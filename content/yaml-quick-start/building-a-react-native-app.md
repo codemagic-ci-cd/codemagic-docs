@@ -189,7 +189,8 @@ scripts:
       echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
   - name: Build Android release
     script: | 
-      cd android && ./gradlew bundleRelease
+      cd android
+      ./gradlew bundleRelease
 
 artifacts:
   - android/app/build/outputs/**/*.aab
@@ -295,7 +296,7 @@ If you are going to publish your app to App Store Connect or Google Play, each u
 
 ## Conclusion
 Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to build, code sign, automatically version and publish your project using Codemagic CI/CD.
-Save your work, commit the changes to the repository, open the App in Codemagic UI and start the build to see it in action.
+Save your work, commit the changes to the repository, open the app in the Codemagic UI and start the build to see it in action.
 
 
 Your final `codemagic.yaml` file should look something like this:
@@ -336,7 +337,10 @@ workflows:
           else
               UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
           fi
-          cd android && ./gradlew bundleRelease -PversionCode=$UPDATED_BUILD_NUMBER -PversionName=1.0.$UPDATED_BUILD_NUMBER
+          cd android
+          ./gradlew bundleRelease \
+            -PversionCode=$UPDATED_BUILD_NUMBER \
+            -PversionName=1.0.$UPDATED_BUILD_NUMBER
     artifacts:
       - android/app/build/outputs/**/*.aab
     publishing:

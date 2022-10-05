@@ -85,12 +85,12 @@ In this step you can also define the build artifacts you are interested in. Thes
     - name: Set up local.properties
       script: | 
         echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
-      - name: Get Flutter packages
-        script: | 
-          flutter packages pub get
-      - name: Build AAB with Flutter
-        script: | 
-          flutter build appbundle --release
+    - name: Get Flutter packages
+      script: | 
+        flutter packages pub get
+    - name: Build AAB with Flutter
+      script: | 
+        flutter build appbundle --release
     artifacts:
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
@@ -377,7 +377,7 @@ workflows:
 
 ## Conclusion
 Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to build, code sign, automatically version and publish your project using Codemagic CI/CD.
-Save your work, commit the changes to the repository, open the App in Codemagic UI and start the build to see it in action.
+Save your work, commit the changes to the repository, open the app in the Codemagic UI and start the build to see it in action.
 
 Your final `codemagic.yaml` file should look something like this:
 
@@ -459,9 +459,9 @@ workflows:
       - name: Get Flutter packages
         script: | 
           flutter packages pub get
-       - name: Install pods
-         script: | 
-           find . -name "Podfile" -execdir pod install \;
+      - name: Install pods
+        script: | 
+          find . -name "Podfile" -execdir pod install \;
       - name: Flutter analyze
         script: | 
           flutter analyze
@@ -487,10 +487,21 @@ workflows:
         notify:
           success: true
           failure: false
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: $GOOGLE_PLAY_TRACK
-        submit_as_draft: true
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+
+        # Configuration related to TestFlight (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_testflight: true
+        beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+          - group name 1
+          - group name 2
+
+        # Configuration related to App Store (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_app_store: false
 {{< /highlight >}}
 {{< /tab >}}
 
@@ -520,8 +531,9 @@ workflows:
         script: | 
            # You may omit the first command if you already have
            # the installer certificate and provided the corresponding private key
-            app-store-connect create-certificate --type MAC_INSTALLER_DISTRIBUTION --save || \
-            app-store-connect list-certificates --type MAC_INSTALLER_DISTRIBUTION --save
+            app-store-connect list-certificates --type MAC_INSTALLER_DISTRIBUTION --save || \
+            app-store-connect create-certificate --type MAC_INSTALLER_DISTRIBUTION --save
+            
       - name: Set up signing certificate
         script: keychain add-certificates
       - name: Set up code signing settings on Xcode project
@@ -530,9 +542,9 @@ workflows:
       - name: Get Flutter packages
         script: | 
           flutter packages pub get
-       - name: Install pods
-         script: | 
-           find . -name "Podfile" -execdir pod install \;
+      - name: Install pods
+        script: | 
+          find . -name "Podfile" -execdir pod install \;
       - name: Flutter analyze
         script: | 
           flutter analyze
@@ -580,10 +592,21 @@ workflows:
         notify:
           success: true
           failure: false
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: $GOOGLE_PLAY_TRACK
-        submit_as_draft: true
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+
+        # Configuration related to TestFlight (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_testflight: true
+        beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+          - group name 1
+          - group name 2
+
+        # Configuration related to App Store (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_app_store: false
 {{< /highlight >}}
 {{< /tab >}}
 

@@ -20,6 +20,7 @@ For further information on how to configure the **codemagic.yaml** for your proj
 * [Flavors](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/flutter/flutter-flavors-demo-project)
 * [macOS](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/flutter/flutter-macos-demo-project)
 * [Windows](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/flutter/flutter-windows-demo-project)
+* [Snapcraft](https://github.com/codemagic-ci-cd/flutter-snapcraft-example/)
 
 
 ### iOS (Native) Samples
