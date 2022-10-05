@@ -5,86 +5,167 @@ weight: 13
 
 ---
 
-Unity is a cross-platform game engine developed by Unity Technologies. It allows us to quickly create various types of applications and games and, in particular, it lets us design XR (AR or VR) experiences.
+Unity is a cross-platform game engine developed by Unity Technologies. It allows you to quickly create various types of applications and games and, in particular, it lets you design XR (AR or VR) experiences.
 
-An Oculus VR app is built just like an Android app: we have to produce an Android package (`.apk`). Codemagic's Unity premium macOS base image has the Unity SDK and Android modules pre-installed.
+The process of building Oculus VR apps with Unity closely follows the steps for building a regular Unity Android project with a couple of extra steps.
 
-This guide will show you how to configure your Unity project and a Codemagic workflow that builds and publishes a Unity VR app to an Oculus dev release channel using a **codemagic.yaml** configuration file.
+This guide will illustrate all of the necessary steps to successfully build and publish an Oculus Unity VR app with Codemagic. It will cover the basic steps such as build versioning, code signing and publishing.
 
 ## Prerequisites
 
-- A Unity Plus or Pro license. Your license is used to activate Unity on the Codemagic build server so the VR project can be exported. The license is returned during the publishing step of the workflow which is always run.
-- An Oculus developer account. This account will be used to publish the built Unity app to the Oculus app release channel. You can sign up for the Oculus developer program [here](https://developer.oculus.com/).
-- An Oculus app associated with your Unity VR app configured for new build uploads in release channels. To learn more about Oculus developer apps and release channels, check out [the Oculus official docs](https://developer.oculus.com/resources/publish-intro/).
+* Building Unity apps in a cloud CI/CD environment requires a Unity **Plus** or a **Pro** license. Your license is used to activate Unity on the Codemagic build server so the iOS and Android projects can be exported.  The license is returned during the publishing step of the workflow which is always run **except if the build is cancelled**.
 
-## Adding your Unity project to Codemagic
+  You can use [Unity dashboard](https://id.unity.com/en/serials) to check the number of free seats on your license or to manually return a seat if neccessary.
 
-It is possible to add repositories from Github, Gitlab, Bitbucket or any Git based repository. Please refer to the following documentation about adding apps from these sources.
+* You will also need an Oculus developer account. This account will be used to publish the built Unity app to the Oculus app release channel. You can sign up for the Oculus developer program [here](https://developer.oculus.com/).
+* An Oculus app associated with your Unity VR app configured for new build uploads in release channels. To learn more about Oculus developer apps and release channels, check out [the Oculus official docs](https://developer.oculus.com/resources/publish-intro/).
 
-- [Adding apps from GitHub.](https://docs.codemagic.io/getting-started/github/)
-- [Adding apps from GitLab.](https://docs.codemagic.io/getting-started/gitlab/)
-- [Adding apps from Bitbucket.](https://docs.codemagic.io/getting-started/bitbucket/)
-- [Adding apps from other repositories.](https://docs.codemagic.io/getting-started/other/)
+## Adding the app to Codemagic
+{{< include "/partials/quickstart/add-app-to-codemagic.md" >}}
+## Creating codemagic.yaml
+{{< include "/partials/quickstart/create-yaml-intro.md" >}}
 
-## Setting up your workflow
+## Code signing
 
-These are the key steps in setting up your workflow for building a Unity VR app for Oculus:
+All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
 
-1. On the Applications page in Codemagic, click the **Add application** button and follow the on-screen instructions to add your Unity project.
-2. Add environment variables for Unity as described [here](#unity-variables).
-3. Add environment variables for Android code signing as described [here](#android-variables).
-4. Add environment variables for Oculus app signing as described [here](#oculus-variables).
-5. Add a build script to Unity as explained [here](#unity-build-script).
-6. Configure the Android and VR build settings in Unity as described [here](#unity-build-settings).
-7. Configure Custom Gradle templates as described [here](#custom-gradle-template).
-8. Create a codemagic.yaml workflow configuration using the Unity template and configure with your details as shown [here](#workflow-configuration).
+{{<notebox>}}
+**Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
+{{</notebox>}}
 
-## Environment variables for Unity {#unity-variables}
+#### Generating a keystore
+You can create a keystore for signing your release builds with the Java Keytool utility by running the following command:
 
-You will need to set the following environment variables for Unity specific values in Codemagic:
+{{< highlight Shell "style=paraiso-dark">}}
+keytool -genkey -v -keystore codemagic.keystore -storetype JKS \
+        -keyalg RSA -keysize 2048 -validity 10000 -alias codemagic
+{{< /highlight >}}
 
-`UNITY_SERIAL`, `UNITY_USERNAME` and `UNITY_PASSWORD`.
+Keytool then prompts you to enter your personal details for creating the certificate, as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **codemagic.keystore** in the directory you're in. The key is valid for 10,000 days.
 
-If you are using a Team in Codemagic, you can add these as global environment variables for your team by clicking on **Teams > Your Team name** and then clicking on **Global variables and secrets**. Otherwise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
+#### Uploading a keystore
 
-Add the environment variables as follows (make sure the **Secure** option is checked for any sensitive values):
+1. Open your Codemagic Team settings, and go to  **codemagic.yaml settings** > **Code signing identities**.
+2. Open **Android keystores** tab.
+3. Upload the keystore file by clicking on **Choose a file** or by dragging it into the indicated frame.
+4. Enter the **Keystore password**, **Key alias** and **Key password** values as indicated.
+5. Enter the keystore **Reference name**. This is a unique name used to reference the file in `codemagic.yaml`
+6. Click the **Add keystore** button to add the keystore.
 
-1. Create a variable called `UNITY_SERIAL` and set the value to your Unity serial number. In the **Select group** dropdown type `unity` and click on the **Create "unity" group** button. Mark the variable as **secure** to encrypt the value and click the **Add** button.
-2. Create a variable called `UNITY_USERNAME` and set the value to **email address** used with your Unity ID, add it to the "unity" group, mark this as **secure** to encrypt the value and click the **Add** button.
-3. Create a variable called `UNITY_PASSWORD` and set the value to your Unity ID **password**, add to the "unity" group, mark this as **secure** to encrypt the value and click the **Add** button.
+For each of the added keystore, its common name, issuer, and expiration date are displayed.
 
-Note that the environment variable `UNITY_HOME` is already set on the build machines.
+{{<notebox>}}
+**Note**: The uploaded keystore cannot be downloaded from Codemagic. It is crucial that you independently store a copy of the keystore file as all subsequent builds released to Google Play should be signed with the same keystore.
+
+However, keep the keystore file private and do not check it into a public repository.
+{{</notebox>}}
+
+#### Referencing keystores in codemagic.yaml
+
+To tell Codemagic to fetch the uploaded keystores from the **Code signing identities** section during the build, list the reference of the uploaded keystore under the `android_signing` field.
+
+Add the following code to the `environment` section of your `codemagic.yaml` file:
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  android-workflow:
+    name: Android Workflow
+    # ....
+    environment:
+      android_signing:
+        - keystore_reference
+{{< /highlight >}}
+
+Default environment variables are assigned by Codemagic for the values on the build machine:
+
+- Keystore path: `CM_KEYSTORE_PATH`
+- Keystore password: `CM_KEYSTORE_PASSWORD`
+- Key alias: `CM_KEY_ALIAS`
+- Key alias password: `CM_KEY_PASSWORD`
+
+
+## Configuring Unity license
+
+Each Unity build will have to activate a valid Unity Plus or a Unity Pro license using your **Unity email**, **Unity serial number** and the **Unity password**.
+
+1. If you are using a Team in Codemagic, you can add these as global environment variables for your team by clicking on **Teams > your Team name** and then clicking on **Global variables and secrets**. Otherwise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
+
+2. Enter `UNITY_EMAIL` as the **_Variable name_**.
+3. Enter the email address used with your Unity ID as **_Variable value_**.
+4. Enter the variable group name, e.g. **_unity_credentials_**. Click the button to create the group.
+5. Make sure the **Secure** option is selected.
+6. Click the **Add** button to add the variable.
+7. Repeat the steps to also add `UNITY_SERIAL` and `UNITY_PASSWORD` variables.
+8. Add the **unity_credentials** variable group to the `codemagic.yaml`:
+{{< highlight yaml "style=paraiso-dark">}}
+  environment:
+    groups:
+      - unity_credentials
+{{< /highlight >}}
+
+{{<notebox>}}
+**Note:** The `UNITY_HOME` environment variable is already set on the build machines. 
 
 On the macOS Unity base image `UNITY_HOME` is set to `/Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app`.
+{{</notebox>}}
 
-## Environment variables for Android code signing {#android-variables}
 
-You will need to set the following environment variables in a variable group called `keystore_credentials` for Android code signing:
+## Activating and deactivating the license
+#### Activation
+To activate a Unity license on the build machine, add the following step at the top of your `scripts:` section in `codemagic.yaml`:
 
-`CM_KEYSTORE_PATH`, `CM_KEYSTORE`, `CM_KEYSTORE_PASSWORD`, `CM_KEY_PASSWORD` and `CM_KEY_ALIAS`.
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Activate Unity license
+      script: | 
+        $UNITY_BIN -batchmode -quit -logFile \
+          -serial ${UNITY_SERIAL?} \
+          -username ${UNITY_EMAIL?} \
+          -password ${UNITY_PASSWORD?}
+{{< /highlight >}}
 
-Please refer to the documentation about signing Android apps [here](https://docs.codemagic.io/yaml-code-signing/signing-android/) for further details.
+#### Deactivation
+To deactivate a Unity license on the build machine, add the following script step in the `publishing:` section in `codemagic.yaml`:
 
-## Environment variables for Oculus app signing {#oculus-variables}
+{{< tabpane >}}
 
-You will need to set the following environment variables in a variable group called `oculus` for Oculus app signing:
+{{< tab header="mac (Intel) & Linux instance types" >}}
+{{< highlight yaml "style=paraiso-dark">}}
+  publishing:
+    scripts:
+      - name: Deactivate Unity License
+      script: | 
+        $UNITY_BIN -batchmode -quit -returnlicense -nographics
+{{< /highlight >}}
+{{< /tab >}}
 
-`OCULUS_APP_ID` and `OCULUS_APP_SECRET` (or `OCULUS_USER_TOKEN`)
+{{% tab header="Mac M1 instances" %}}
+{{< highlight yaml "style=paraiso-dark">}}
+  publishing:
+    scripts:
+      - name: Deactivate Unity License
+      script: | 
+        /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
+          --return-ulf \
+          --username ${UNITY_USERNAME?} \
+          --password ${UNITY_PASSWORD?}
+{{< /highlight >}}
+{{% /tab %}}
 
-You can find this info in your Oculus app dashboard, in the API section:
+{{< /tabpane >}}
 
-- The `OCULUS_APP_ID` is the **App ID** field of your app.
-- If you own the application, then you'll be able to get the **App secret** field of your app and use it to fill the `OCULUS_APP_SECRET` Codemagic environment variable. Else, you will need to generate a user token and add it to your Codemagic environment variable as `OCULUS_USER_TOKEN`.
+{{<notebox>}}
+**Note:** If a build is manually cancelled before reaching the publishing section, the license WILL NOT BE RETURNED automatically. This may cause future builds to fail if there are no free license seats available.
 
-## Add a build script to Unity {#unity-build-script}
+Visit [Unity dashboard](https://id.unity.com/en/subscriptions) to manually deactivate license.
+{{</notebox>}}
 
-A Unity build script is required to build the project in headless mode.
 
-Open Unity and add a new C# script in the project explorer in Assets/Editor called **Build**.
+## Creating a build script
 
-Paste the following script into the new file:
+You need to create additional build script to allow building and codesigning Unity projects in headless mode. Add a new file `/Assets/Editor/Build.cs` with the following content:
 
-```cs
+{{< highlight csharp "style=paraiso-dark">}}
 using System.Linq;
 using System;
 using UnityEditor;
@@ -102,7 +183,7 @@ public static class BuildScript
 
         // Auto-set the version code using Codemagic's
         // current workflow index
-        var versionIsSet = int.TryParse(Environment.GetEnvironmentVariable("BUILD_NUMBER"), out int version);
+        var versionIsSet = int.TryParse(Environment.GetEnvironmentVariable("NEW_BUILD_NUMBER"), out int version);
         if (versionIsSet)
         {
             Debug.Log($"Bundle version code set to {version}");
@@ -175,45 +256,42 @@ public static class BuildScript
     {
         return (from scene in EditorBuildSettings.scenes where scene.enabled select scene.path).ToArray();
     }
-
 }
-```
+{{< /highlight >}}
 
-## Configure Android and VR build settings in Unity {#unity-build-settings}
+## Configuring Unity project settings
 
 To begin with, make sure that when you first create your project, you start from the **official Unity VR project template**. This will automatically add various sample assets and global settings to your project.
 
-Then, you need to check your build configuration so that the project uses Android as the build target. If it is not yet the case, click File > Build Settings, select Android in the Platform section and click on the **Switch Platform** button.
+Then, you need to check your build configuration so that the project uses Android as the build target. If it is not yet the case, click **File > Build Settings**, select **Android** in the **Platform** section and click on the **Switch Platform** button.
 
-Then, click Edit > Project Settings and:
+Then, click **Edit > Project Settings** and:
 
-1. Click on the XR Plug-in Management tab and pick the **Oculus** option for the Android build.
-2. Click on the Player settings tab.
-3. Expand 'Other Settings' and check the 'Override Default Package Name' checkbox.
-4. Enter the package name for your app, e.g. com.domain.yourappname.
-5. Set the 'Version number'.
-6. Put any integer value in the 'Bundle Version Code'. This will be overriden with the build script.
-7. Set the 'Minimum API Level' and 'Target API Level' to **Android 10.0 (API Level 29)** (be careful, higher versions are not supported by Oculus at the moment).
-8. In the 'Configuration' section set 'Scripting Backend' to **IL2CPP**.
+1. Click on the **XR Plug-in Management** tab and pick the **Oculus** option for the Android build.
+2. Click on the **Player settings** tab.
+3. Expand **Other Settings** and check the **Override Default Package Name** checkbox.
+4. Enter the package name for your app, e.g. `com.domain.yourappname`.
+5. Set the **Version number**.
+6. Put any integer value in the **Bundle Version Code**. This will be overriden with the build script.
+7. Set the **Minimum API Level** and **Target API Level** to `Android 10.0 (API Level 29)` (note that higher versions are not supported by Oculus at the moment).
+8. In the **Configuration** section set **Scripting Backend** to `IL2CPP`.
 
-## Add a custom base Gradle template {#custom-gradle-template}
+#### Add a custom base Gradle template
+You will need to add custom Gradle templates so your Android builds work with Codemagic.  
 
-You will need to add custom gradle templates so your Android builds work with Codemagic.
-
-1. Open Unity and File > Build Settings.
-2. Make sure Android is selected in the Platform section.
-3. Click on the Player Settings.
-4. Expand the Publishing Settings.
-5. Check the ‘Custom Base Gradle Template’.
+1. Open Unity and **File > Build Settings**.
+2. Make sure **Android** is selected in the **Platform** section.
+3. Click on the **Player Settings**.
+4. Expand the **Publishing Settings**.
+5. Check the **Custom Base Gradle Template**.
 6. Close the project settings and build settings.
 
-Then modify the base Gradle template as follows:
-
-1. In the project explorer expand Assets > Plugins > Android.
-2. Double click on baseProjectTemplate.gradle.
+#### Modify the base Gradle template
+1. In the project explorer expand **Assets > Plugins > Android**.
+2. Double click on **baseProjectTemplate.gradle**.
 3. Replace the entire file contents with the following:
 
-```gradle
+{{< highlight groovy "style=paraiso-dark">}}
 // GENERATED BY UNITY. REMOVE THIS COMMENT TO PREVENT OVERWRITING WHEN EXPORTING AGAIN
 
 allprojects {
@@ -222,7 +300,6 @@ allprojects {
             google()
             mavenCentral()
         }
-
         dependencies {
             // If you are changing the Android Gradle Plugin version, make sure it is compatible with the Gradle version preinstalled with Unity
             // See which Gradle version is preinstalled with Unity here https://docs.unity3d.com/Manual/android-gradle-overview.html
@@ -232,7 +309,6 @@ allprojects {
             **BUILD_SCRIPT_DEPS**
         }
     }
-
     repositories {**ARTIFACTORYREPOSITORY**
         google()
         mavenCentral()
@@ -245,61 +321,180 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-```
+{{< /highlight >}}
 
-## Workflow configuration with codemagic.yaml {#workflow-configuration}
 
-Your workflow should be configured using the **codemagic.yaml** configuration file and checked into the root of the branches you wish to build using Codemagic.
+## Build versioning
+When publishing your app, each uploaded artifact must have a unique build version. Codemagic allows you to easily automate this process and increment the version numbers for each build. For more information and details, see [here](../configuration/build-versioning).
 
-Since the Oculus CLI tools are not pre-installed on Codemagic machines, we need to download and set these up during the workflow, before using this CLI to publish our app to the release channel.
+A simple way to automatically increment the build version is to use Codemagic [built-in variables](../yaml-basic-configuration/environment-variables), such as `BUILD_NUMBER` - auto incremented number of builds for this project and workflow combination. The `/Assets/Editor/Build.cs` build script can use this environment variable to set the actual build number for the resulting `.apk`.
 
-Add the following to your **codemagic.yaml** configuration file:
 
-```yaml
+## Building the app
+
+Add the following scripts to your `codemagic.yaml` file in order to prepare the build environment and start the actual build process.
+In this step you can also define the build artifacts you are interested in. These files will be available for download when the build finishes. For more information about artifacts, see [here](../yaml/yaml-getting-started/#artifacts).
+
+{{< highlight yaml "style=paraiso-dark">}}
+  environment:
+    #...
+    vars:
+      UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
+  scripts:
+    - name: Activate Unity license
+      script: #...
+    - name: Set the build number
+      script: | 
+        export NEW_BUILD_NUMBER=$BUILD_NUMBER
+    - name: Build the project
+      script: | 
+        $UNITY_BIN -batchmode \
+          -quit \
+          -logFile \
+          -projectPath . \
+          -executeMethod BuildScript.BuildAndroid \
+          -nographics \
+          -buildTarget Android
+    artifacts:
+      - android/*.apk
+{{< /highlight >}}
+
+
+## Publishing
+Codemagic offers a wide array of options for app publishing and the list of partners and integrations is continuously growing. For the most up-to-date information, check the guides in the **Configuration > Publishing** section of these docs. 
+
+#### Email publishing
+{{< include "/partials/quickstart/publishing-email.md" >}}
+
+#### Oculus distribution
+Meta Platforms Technologies provides several options for selling and distributing apps on their platform. To learn more about different options, please visit their [official page](https://developer.oculus.com/policy/distribution-options/).
+
+To distribute your app to one of their stores, you can use the **Oculus Platform Utility**. This example will showcase distribution to the **Meta Quest Store** but you can find documentation on other available options in the [official Oculus platform utility docs](https://developer.oculus.com/resources/publish-reference-platform-command-line-utility/).
+
+##### Configure Oculus credentials
+Follow [the official guide](https://developer.oculus.com/resources/publish-reference-platform-command-line-utility/#credentials) to obtain either a **Oculus app ID / App secret** combination or an **Oculust user token**.
+
+1. If you are using a Team in Codemagic, you can add these as global environment variables for your team by clicking on **Teams > your Team name** and then clicking on **Global variables and secrets**. Otherwise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
+
+2. Enter `OCULUS_APP_ID` as the **_Variable name_**.
+3. Enter the corresponding value as **_Variable value_**.
+4. Enter the variable group name, e.g. **_oculus_credentials_**. Click the button to create the group.
+5. Make sure the **Secure** option is selected.
+6. Click the **Add** button to add the variable.
+7. Rrepeat the process to also add either the `OCULUS_APP_SECRET` or the `OCULUS_USER_TOKEN` variable.
+8. Add the **unity_credentials** variable group to the `codemagic.yaml`:
+{{< highlight yaml "style=paraiso-dark">}}
+  environment:
+    groups:
+      - oculus_credentials
+    vars:
+      OCULUS_RELEASE_CHANNEL: ALPHA
+{{< /highlight >}}
+
+##### Publish the app
+Add following script steps to the `publishing:` section in your `codemagic.yaml` file to download the Oculus Platform Utility tool and to upload your app to the store:
+
+{{< highlight yaml "style=paraiso-dark">}}
+  publishing:
+    scripts:
+      - name: Deactivate License
+        script: #...
+      - name: Install Oculus CLI tools
+        script: | 
+          wget -O ovr-platform-util \
+            "https://www.oculus.com/download_app/?id=1462426033810370&access_token=OC%7C1462426033810370%7C"
+          chmod +x ./ovr-platform-util
+      - name: Publish app on a Oculus test release channel
+        script: | 
+          ./ovr-platform-util upload-quest-build \
+            --app_id $OCULUS_APP_ID  \
+            --app_secret $OCULUS_APP_SECRET \
+            --apk android/android.apk \
+            --channel $OCULUS_RELEASE_CHANNEL
+{{< /highlight >}}
+
+
+{{<notebox>}}
+**Note:** If you are using Oculus user token to authenticate, replace the last script step with the following:
+{{< highlight yaml >}}
+    - name: Publish app on a Oculus test release channel
+      script: | 
+        ./ovr-platform-util upload-quest-build \
+        --app_id $OCULUS_APP_ID  \
+        --token $OCULUS_USER_TOKEN \
+        --apk android/android.apk \
+        --channel $OCULUS_RELEASE_CHANNEL
+{{< /highlight >}}
+{{</notebox>}}
+
+
+## Conclusion
+Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to build, code sign, automatically version and publish your project using Codemagic CI/CD.
+Save your work, commit the changes to the repository, open the App in Codemagic UI and start the build to see it in action.
+
+{{< highlight yaml "style=paraiso-dark">}}
 workflows:
   unity-oculus-workflow:
     name: Unity Oculus Workflow
     max_build_duration: 120
     environment:
-        groups:
-        # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
-            - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_USERNAME and UNITY_PASSWORD)
-            - keystore_credentials # <-- (Includes CM_KEYSTORE, CM_KEYSTORE_PASSWORD, CM_KEY_PASSWORD, CM_KEY_ALIAS)
-            - oculus # <-- (Includes OCULUS_APP_ID, OCULUS_APP_SECRET)
-        vars:
-            UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
-            PACKAGE_NAME: "com.domain.yourappname" # <-- Put your package name here e.g. com.domain.myapp
-            OCULUS_RELEASE_CHANNEL: ALPHA # <-- Put your release channel name here (cannot be "store" = Production)
+      android_signing:
+        - keystore_reference
+      groups:
+        - unity_credentials
+        - oculus_credentials
+      vars:
+        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
+        OCULUS_RELEASE_CHANNEL: ALPHA # <-- Put your release channel name here (cannot be "store" = Production)
     scripts:
-        - name: Activate Unity License
-            script: | 
-                $UNITY_BIN -batchmode -quit -logFile -serial ${UNITY_SERIAL?} -username ${UNITY_USERNAME?} -password ${UNITY_PASSWORD?}      
-        - name: Set up keystore
-            script: | 
-                echo $CM_KEYSTORE | base64 --decode > $CM_BUILD_DIR/keystore.keystore
-        - name: Setup build number + Build Unity app
-            script: | 
-                export NEW_BUILD_NUMBER=$BUILD_NUMBER
-                $UNITY_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.BuildAndroid -nographics -buildTarget Android
+      - name: Activate Unity License
+        script: | 
+        $UNITY_BIN -batchmode -quit -logFile \
+          -serial ${UNITY_SERIAL?} \
+          -username ${UNITY_EMAIL?} \
+          -password ${UNITY_PASSWORD?}     
+      - name: Set the build number
+        script: | 
+          export NEW_BUILD_NUMBER=$BUILD_NUMBER
+      - name: Build the project
+        script: | 
+          $UNITY_BIN -batchmode \
+            -quit \
+            -logFile \
+            -projectPath . \
+            -executeMethod BuildScript.BuildAndroid \
+            -nographics \
+            -buildTarget Android
     artifacts:
         - android/*.apk
     publishing:
-        scripts:
-            - name: Deactivate License
-              script: $UNITY_BIN -batchmode -quit -returnlicense -nographics
-            - name: Install Oculus CLI tools
-              script: |
-                wget -O ovr-platform-util "https://www.oculus.com/download_app/?id=1462426033810370&access_token=OC%7C1462426033810370%7C"
-                chmod +x ./ovr-platform-util
-            - name: Publish app on a Oculus test release channel
-              script: |
-                ./ovr-platform-util upload-quest-build --app_id $OCULUS_APP_ID  --app_secret $OCULUS_APP_SECRET --apk android/android.apk --channel $OCULUS_RELEASE_CHANNEL
-```
+      scripts:
+        - name: Deactivate License
+          script: | 
+            /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
+              --return-ulf \
+              --username ${UNITY_USERNAME?} \
+              --password ${UNITY_PASSWORD?}
+        - name: Install Oculus CLI tools
+          script: | 
+            wget -O ovr-platform-util \
+              "https://www.oculus.com/download_app/?id=1462426033810370&access_token=OC%7C1462426033810370%7C"
+            chmod +x ./ovr-platform-util
+        - name: Publish app on a Oculus test release channel
+          script: | 
+            ./ovr-platform-util upload-quest-build \
+              --app_id $OCULUS_APP_ID  \
+              --app_secret $OCULUS_APP_SECRET \
+              --apk android/android.apk \
+              --channel $OCULUS_RELEASE_CHANNEL
+      email:
+        recipients:
+          - user_1@example.com
+          - user_2@example.com
+        notify:
+          success: true
+          failure: false
+{{< /highlight >}}
 
-For the build stage, we can auto-increment the build number of the Unity project based on an environment variable that is [always passed by Codemagic](https://docs.codemagic.io/variables/environment-variables) and unique for each workflow.
-
-**Important note:** if you use the `OCULUS_USER_TOKEN` environment variable instead of the `OCULUS_APP_SECRET` one, you need to change the last line of the **codemagic.yaml** file to the following:
-
-```yaml
-./ovr-platform-util upload-quest-build --app_id $OCULUS_APP_ID --token $OCULUS_USER_TOKEN --apk android/android.apk --channel $OCULUS_RELEASE_CHANNEL
-```
+## Next steps
+{{< include "/partials/quickstart/next-steps.md" >}}

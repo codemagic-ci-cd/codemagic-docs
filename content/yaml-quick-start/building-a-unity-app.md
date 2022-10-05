@@ -169,11 +169,11 @@ To deactivate a Unity license on the build machine, add the following script ste
   publishing:
     scripts:
       - name: Deactivate Unity License
-      script: | 
-        /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
-          --return-ulf \
-          --username ${UNITY_USERNAME?} \
-          --password ${UNITY_PASSWORD?}
+        script: | 
+          /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
+            --return-ulf \
+            --username ${UNITY_USERNAME?} \
+            --password ${UNITY_PASSWORD?}
 {{< /highlight >}}
 {{% /tab %}}
 
@@ -362,16 +362,16 @@ Google recommends that Android applications be published to Google Play using th
 #### Add a custom base Gradle template
 You will need to add custom Gradle templates so your Android builds work with Codemagic.  
 
-1. Open Unity and File > Build Settings.
-2. Make sure Android is selected in the Platform section.
-3. Click on the Player Settings.
-4. Expand the Publishing Settings .
-5. Check the 'Custom Base Gradle Template'.
+1. Open Unity and **File > Build Settings**.
+2. Make sure **Android** is selected in the **Platform** section.
+3. Click on the **Player Settings**.
+4. Expand the **Publishing Settings**.
+5. Check the **Custom Base Gradle Template**.
 6. Close the project settings and build settings.
 
 #### Modify the base Gradle template
-1. In the project explorer expand Assets > Plugins > Android.
-2. Double click on baseProjectTemplate.gradle.
+1. In the project explorer expand **Assets > Plugins > Android**.
+2. Double click on **baseProjectTemplate.gradle**.
 3. Replace the entire file contents with the following:
 
 {{< highlight groovy "style=paraiso-dark">}}
