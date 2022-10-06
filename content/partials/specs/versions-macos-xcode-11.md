@@ -2,9 +2,9 @@
 description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 11.x)
 aliases:
-  - "/releases-and-versions/versions"
-  - "/specs/versions"
-  - /specs/versions-macos-xcode-11
+  - '/releases-and-versions/versions'
+  - '/specs/versions'
+  - '/specs/versions-macos-xcode-11'
 weight: 4
 ---
 
@@ -17,16 +17,17 @@ weight: 4
 
 - System version `macOS 10.15.4 (19E287)`
 - Kernel version `Darwin 19.4.0`
-- Disk `322GB (Free Space: 61GB)`
+- Disk `322GB (Free Space: 56GB)`
 
 ## Pre-installed tools
 
 - Android tools `$HOME/programs/android-sdk-macosx`
 - Android NDK `21.3.6528147`
 - aws `1.18.105`
+- carthage `0.35.0`
 - cocoapods `1.11.2`
 - cordova `8.1.2`
-- curl
+- curl `7.64.1`
 - docker `19.03.8`
 - fastlane `2.157.3`
 - firebase `9.3.0`
@@ -39,32 +40,32 @@ weight: 4
 - gsutil `4.46`
 - homebrew `3.1.0`
 - ionic `4.11.0`
-- jq
+- jq `1.6`
 - node `12.14.0`
 - npm `6.14.7`
 - python `2.7.17`
 - python3 `3.8.5`
 - ruby `2.6.5p114`
-- ssh
-- sudo
-- tar
-- unzip
-- wget
+- ssh `8.1p1`
+- sudo `1.8.31`
+- tar `3.3.2`
+- unzip `6.00`
+- wget `1.20.3`
 - yarn `1.22.5`
-- yq
-- zip
+- yq `3.3.2`
+- zip `3.0`
 
 ## Android emulators
 
 - **emulator**
 
-  - Device: `pixel_2 (Google)`
-  - Path: `/Users/builder/.android/avd/emulator.avd`
-  - Target: `Google APIs (Google Inc.)`
-  - Based on: `Android 9.0 (Pie)`
-  - Tag/API: `google_apis/x86`
-  - Skin: `pixel_2`
-  - Sdcard: `512M`
+    - Device: `pixel_2 (Google)`
+    - Path: `/Users/builder/.android/avd/emulator.avd`
+    - Target: `Google APIs (Google Inc.)`
+    - Based on: `Android 9.0 (Pie)`
+    - Tag/API: `google_apis/x86`
+    - Skin: `pixel_2`
+    - Sdcard: `512M`
 
 ## Java versions
 
