@@ -8,7 +8,7 @@ aliases:
 
 If your project requires accessing any private Git submodules or dependencies, you'll need to grant Codemagic access to them in order to build successfully.
 
-1. [Create an SSH key pair](../knowledge-base/generating-an-ssh-key) for use with Codemagic. Note that the SSH key **cannot** be password-protected.
+1. [Create an SSH key pair](../knowledge-git/generating-an-ssh-key) for use with Codemagic. Note that the SSH key **cannot** be password-protected.
 2. Add the **public key** to your repository settings. See how to do that on [GitHub](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account), [Bitbucket](https://confluence.atlassian.com/bitbucket/use-access-keys-294486051.html), [GitLab](https://docs.gitlab.com/ee/ssh/README.html#adding-an-ssh-key-to-your-gitlab-account).
 3.  Copy the contents of the **private key** file add it as an environment variable in the Codemagic UI and import it into your **codemagic.yaml** configuration file.
 {{<notebox>}}
