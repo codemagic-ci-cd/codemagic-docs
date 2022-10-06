@@ -1,20 +1,17 @@
 ---
 ---
 
-{{<markdown>}}
-### Creating the App Store Connect API key
-Signing macOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership.
-{{</markdown>}}
-
-{{< include "/partials/app-store-connect-api-key.md" >}}
-
 ### Automatic vs Manual code signing
+
+{{<notebox>}}
+Signing macOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. 
+{{</notebox>}}
 
 Signing macOS apps requires a `Signing certificate` (App Store **development** or **distribution** certificate in `.p12` format) and a `Provisioning profile`. In **Manual code signing** you save these files as Codemagic `Environment variables` and manually reference them in the appropriate build steps.
 
 In **Automatic code signing**, Codemagic takes care of Certificate and Provisioning profile management for you. Based on the `certificate private key` that you provide, Codemagic will automatically fetch the correct certificate from the App Store or create a new one if necessary.
 
-#### Certificate types
+### Certificate types
 There are several certificate types you can choose to sign your macOS app, depending on the distribution method you plan to use.
 
 - `MAC_APP_DEVELOPMENT` certificate allows you to build your app for internal testing and debugging.
@@ -25,7 +22,7 @@ There are several certificate types you can choose to sign your macOS app, depen
 
 For example, in order to publish to Mac App Store, the application must be signed with a `Mac App Distribution` certificate using a `Mac App Store` provisioning profile. If you want to create a `.pkg` Installer pacakge, you must use a `Mac Installer Distribution` certificate.
 
-#### Obtaining the certificate private key
+### Obtaining the certificate private key
 
 To enable Codemagic to automatically fetch or create the correct signing certificate on your behalf, you need to provide the corresponding `certificate private key`. You then have to save that key as a Codemagic environment variable.
 
@@ -66,8 +63,59 @@ openssl pkcs12 -in MAC_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out mac_d
 
 {{< /tabpane >}}
 
+### Automatic code signing
+
+When automatic code signing is used, then most up-to-date signing files are obtained directly from Apple during the build time. This requires that Codemagic has access to your Apple Developer portal account, which is achieved by using App Store Connect API key.
+
+#### Creating the App Store Connect API key
+
+{{< include "/partials/app-store-connect-api-key.md" >}}
 
 #### Configuring environment variables
+
+Provisioning profiles and code signing certificates are obtained from Apple Developer portal with command [`app-store-connect fetch-signing-files`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#fetch-signing-files). App Store Connect API key information can be passed to it via environment variables [`APP_STORE_CONNECT_KEY_IDENTIFIER`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--key-idkey_identifier), [`APP_STORE_CONNECT_ISSUER_ID`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id), [`APP_STORE_CONNECT_PRIVATE_KEY`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--private-keyprivate_key).
+
+{{< tabpane >}}
+
+{{< tab header="Use App Store Connect integration" >}}
+{{<markdown>}}
+
+{{< include "/partials/integrations-setup-app-store-connect.md" >}}
+
+Integration will take care of the App Store Connect API authentication part, but additionally the certificate private key has to be exported too. For this additional environment variable [`CERTIFICATE_PRIVATE_KEY`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--certificate-keyprivate_key) has to be defined.
+
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
+2. Enter `CERTIFICATE_PRIVATE_KEY` as the **_Variable name_**.
+3. Open the file `ios_distribution_private_key` with a text editor and copy the **entire contents** of the file, including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags. Alternatively, you can run the following command on the file:
+
+{{< highlight Shell "style=rrt">}}
+cat ios_distribution_private_key | pbcopy
+{{< /highlight >}}
+
+4. Paste into the **_Variable value_** field.
+5. Enter a variable group name, e.g. **_code-signing_**. Click the button to create the group.
+6. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
+7. Click the **Add** button to add the variable.
+
+In your workflow you can now simply use the following to ensure that all variables are readily available during build:
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  ios-workflow:
+    environment:
+        groups:
+            - code-signing
+    integrations:
+        app_store_connect: <App Store Connect API key name>
+{{< /highlight >}}
+
+This will expose necessary environment variables during the build.
+{{</markdown>}}
+{{< /tab >}}
+
+{{< tab header="Define environment variables by yourself" >}}
+{{<markdown>}}
+
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter `CERTIFICATE_PRIVATE_KEY` as the **_Variable name_**.
 3. Open the file `mac_distribution_private_key` with a text editor and copy the **entire contents** of the file, including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags. Alternatively, you can run the following command on the file:
@@ -100,10 +148,11 @@ workflows:
       groups:
         - appstore_credentials
 {{< /highlight >}}
-#### Automatic code signing
+{{</markdown>}}
+{{< /tab >}}
+{{< /tabpane >}}
 
 To code sign the app, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands. 
-
 
 {{< highlight yaml "style=paraiso-dark">}}
     scripts:
@@ -129,7 +178,7 @@ Instead of specifying the exact bundle ID, you can use `"$(xcode-project detect-
 
 Based on the specified bundle ID and [provisioning profile type](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--mac_catalyst_app_development--mac_catalyst_app_direct--mac_catalyst_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store), Codemagic will fetch or create the relevant provisioning profile and certificate to code sign the build.
 
-#### Manual code signing
+### Manual code signing
 
 In order to use manual code signing, you need the following: 
 - **Signing certificate**: Your development or distribution certificate in .P12 format.
