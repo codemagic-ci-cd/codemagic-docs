@@ -115,13 +115,13 @@ This will expose necessary environment variables during the build.
 
 {{< tab header="Define environment variables by yourself" >}}
 {{<markdown>}}
-
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter `CERTIFICATE_PRIVATE_KEY` as the **_Variable name_**.
 3. Open the file `mac_distribution_private_key` with a text editor and copy the **entire contents** of the file, including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags. Alternatively, you can run the following command on the file:
-{{< highlight bash "style=rrt">}}
-  cat mac_distribution_private_key | pbcopy
-{{< /highlight >}}
+ {{< highlight bash "style=rrt">}}
+   cat mac_distribution_private_key | pbcopy
+ {{< /highlight >}}
+
 4. Paste into the **_Variable value_** field.
 5. Enter a variable group name, e.g. **_appstore_credentials_**. Click the button to create the group.
 6. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
