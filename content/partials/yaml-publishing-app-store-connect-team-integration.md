@@ -9,12 +9,14 @@ The following snippet demonstrates how to authenticate with and upload the IPA t
 {{<notebox>}}**Note:** Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. Suppose you have set up an **app record** but have not manually uploaded the app's first version. In that case, manual configuration of the settings must be done on App Store Connect after the build is complete, such as uploading the required screenshots and providing the values for the privacy policy URL and application category. {{</notebox>}}
 
 {{< highlight yaml "style=paraiso-dark">}}
+# Integration section is required to make use of the keys stored in 
+# Codemagic UI under Apple Developer Portal integration.
 integrations:
   app_store_connect: <App Store Connect API key name>
 
 publishing:
   app_store_connect:
-    # Use referenced App Store Connect integration to authenticate binary upload
+    # Use referenced App Store Connect API key to authenticate binary upload
     auth: integration 
 
     # Configuration related to TestFlight (optional)

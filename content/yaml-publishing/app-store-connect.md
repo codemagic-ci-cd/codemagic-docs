@@ -26,11 +26,13 @@ Signing iOS applications requires [Apple Developer Program](https://developer.ap
 
 {{< include "/partials/app-store-connect-api-key.md" >}}
 
-### App Store Connect publishing set up
+### Setting up publishing to App Store Connect
+
+There are two options for setting up publishing to App Store Connect. You can either connect the Apple Developer Portal integration in the UI and reference the API key name in `codemagic.yaml`, or add the API key along with the required metadata as environment variables and reference them in your configuration file.
 
 {{< tabpane >}}
 
-{{< tab header="Using App Store Connect integration" >}}
+{{< tab header="Using Apple Developer Portal integration" >}}
 {{< include "/partials/yaml-publishing-app-store-connect-team-integration.md" >}}
 {{< /tab >}}
 

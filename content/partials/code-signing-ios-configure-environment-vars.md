@@ -3,7 +3,7 @@
 
 #### Configuring environment variables
 
-Provisioning profiles and code signing certificates are obtained from Apple Developer portal with command [`app-store-connect fetch-signing-files`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#fetch-signing-files). App Store Connect API key information can be passed to it via environment variables [`APP_STORE_CONNECT_KEY_IDENTIFIER`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--key-idkey_identifier), [`APP_STORE_CONNECT_ISSUER_ID`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id), [`APP_STORE_CONNECT_PRIVATE_KEY`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--private-keyprivate_key).
+Provisioning profiles and code signing certificates are obtained from Apple Developer portal with the command [`app-store-connect fetch-signing-files`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#fetch-signing-files). App Store Connect API key information can be passed to it via environment variables [`APP_STORE_CONNECT_KEY_IDENTIFIER`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--key-idkey_identifier), [`APP_STORE_CONNECT_ISSUER_ID`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id), [`APP_STORE_CONNECT_PRIVATE_KEY`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--private-keyprivate_key).
 
 {{< tabpane >}}
 
