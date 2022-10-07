@@ -1,25 +1,29 @@
 ---
 ---
-{{<markdown>}}
+
+### Automatic vs Manual code signing
+
+{{<notebox>}}
+Signing iOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. 
+{{</notebox>}}
+
+Signing iOS apps requires a `signing certificate` (App Store **development** or **distribution** certificate in `.p12` format) and a `provisioning profile`. In **manual code signing** you save these files as Codemagic `environment variables` and manually reference them in the appropriate build steps.
+
+In **Automatic code signing**, Codemagic takes care of Certificate and Provisioning profile management for you. Based on the `Certificate private key` that you provide, Codemagic will automatically fetch the correct certificate from the App Store or create a new one if necessary.
+
+### Automatic code signing
+
+When automatic code signing is used, then most up-to-date signing files are obtained directly from Apple during the build time. This requires that Codemagic has access to your Apple Developer portal account, which is achieved by using App Store Connect API key.
+
 #### Creating the App Store Connect API key
-Signing iOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership.
-{{</markdown>}}
+
 {{< include "/partials/app-store-connect-api-key.md" >}}
 
 {{< include "/partials/code-signing-ios-obtain-certificate.md" >}}
 
 {{< include "/partials/code-signing-ios-configure-environment-vars.md" >}}
 
-#### Automatic vs Manual code signing
-
-Signing iOS apps requires a `signing certificate` (App Store **development** or **distribution** certificate in `.p12` format) and a `provisioning profile`. In **manual code signing** you save these files as Codemagic `environment variables` and manually reference them in the appropriate build steps.
-
-In **Automatic code signing**, Codemagic takes care of Certificate and Provisioning profile management for you. Based on the `Certificate private key` that you provide, Codemagic will automatically fetch the correct certificate from the App Store or create a new one if necessary.
-
-#### Automatic code signing
-
-To code sign the app, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands. 
-
+Finally, to code sign the app, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands. 
 
 {{< highlight yaml "style=paraiso-dark">}}
     scripts:
@@ -45,7 +49,7 @@ If you are publishing to the **App Store** or you are using **TestFlight**  to d
 When using a **third party app distribution service** such as Firebase App Distribution, set the `--type` argument to `IOS_APP_ADHOC`
 
 
-#### Manual code signing
+### Manual code signing
 
 In order to use manual code signing, you need the following: 
 - **Signing certificate**: Your development or distribution certificate in .P12 format.
@@ -96,7 +100,7 @@ Then, add the code signing configuration and the commands to code sign the build
 
 
 
-#### Using multiple provisioning profiles
+### Using multiple provisioning profiles
 
 To set up multiple provisioning profiles, for example, to use app extensions such as [Notification Service](https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension), the easiest option is to add the provisioning profiles to your environment variables with a similar naming convention.
 
