@@ -159,12 +159,12 @@ workflows:
   ios-workflow:
     name: KMM iOS Workflow
     max_build_duration: 120
+    integrations:
+      app_store_connect: codemagic
     environment:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: io.codemagic.kmmsample
-      groups:
-        - appstore_credentials
       vars:
         APP_ID: 1555555551
         XCODE_WORKSPACE: "platforms/ios/YOUR_APP.xcworkspace"
@@ -199,9 +199,7 @@ workflows:
           success: true
           failure: false
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        auth: integration
 
         # Configuration related to TestFlight (optional)
         # Note: This action is performed during post-processing.

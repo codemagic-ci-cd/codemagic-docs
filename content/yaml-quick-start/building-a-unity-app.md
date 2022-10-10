@@ -465,10 +465,6 @@ workflows:
 
 {{% tab header="iOS" %}}
 
-### Configure environment variables
-
-{{< include "/partials/quickstart/publish-ios-environment-variables.md">}}
-
 In order to get the latest build number from App Store or TestFlight, you will need the App Store credentials as well as the **Application Apple ID**. This is an automatically generated ID assigned to your app and it can be found under **General > App Information > Apple ID** under your application in App Store Connect.
 
 1. Add the **Application Apple ID** to the `codemagic.yaml` as a variable
@@ -477,12 +473,12 @@ In order to get the latest build number from App Store or TestFlight, you will n
 workflows:
   ios-workflow:
     name: iOS Workflow
+    integrations:
+      app_store_connect: <App Store Connect API key name>
     environment:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: io.codemagic.unitysample
-      groups:
-        - appstore_credentials
       vars:
         APP_ID: 1555555551
     scripts:
@@ -807,13 +803,14 @@ workflows:
   unity-ios-workflow:
     name: Unity iOS Workflow
     max_build_duration: 120
+    integrations:
+      app_store_connect: codemagic
     environment:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: io.codemagic.unitysample
       groups:
         - unity_credentials
-        - appstore_credentials
       vars:
         UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
         UNITY_IOS_DIR: ios
@@ -868,9 +865,7 @@ workflows:
           success: true
           failure: false
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        auth: integration
         #
         # Configuration related to TestFlight (optional)
         # Note: This action is performed during post-processing.

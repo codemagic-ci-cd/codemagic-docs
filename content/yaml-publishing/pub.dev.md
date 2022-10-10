@@ -26,7 +26,7 @@ This will create the `credentials.json` file, which you can use to log in withou
   scripts:
     - name: Publish to pub.dev
       script: | 
-        echo $PUB_DEV_CREDENTIALS | base64 --decode > "$FLUTTER_ROOT/.pub-cache/credentials.json"
+        echo $PUB_DEV_CREDENTIALS > "$FLUTTER_ROOT/.pub-cache/credentials.json"
         flutter pub publish --dry-run
         flutter pub publish -f
 {{< /highlight >}}
