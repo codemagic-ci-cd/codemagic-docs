@@ -326,7 +326,7 @@ workflows:
   scripts:
     - name: Build AAB with Flutter
       script: | 
-        BUILD_NUMBER=($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks="$GOOGLE_PLAY_TRACK") + 1)      
+        BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks="$GOOGLE_PLAY_TRACK") + 1))      
         flutter build appbundle --release \
           --build-name=1.0.$BUILD_NUMBER \
           --build-number=$BUILD_NUMBER
@@ -358,8 +358,8 @@ workflows:
     scripts:
       - name: Flutter build ipa
         script: | 
-          BUILD_NUMBER=($(app-store-connect get-latest-app-store-build-number "$APP_ID") + 1)
-          flutter build appbundle --release \
+          BUILD_NUMBER=$(($(app-store-connect get-latest-app-store-build-number "$APP_ID") + 1))
+          flutter build ipa --release \
             --build-name=1.0.$BUILD_NUMBER \
             --build-number=$BUILD_NUMBER
 {{< /highlight >}}
@@ -414,7 +414,7 @@ workflows:
         ignore_failure: true
       - name: Build AAB with Flutter
         script: | 
-          BUILD_NUMBER=($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks="$GOOGLE_PLAY_TRACK") + 1)      
+          BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks="$GOOGLE_PLAY_TRACK") + 1))      
           flutter build appbundle --release \
             --build-name=1.0.$BUILD_NUMBER \
             --build-number=$BUILD_NUMBER
@@ -469,12 +469,12 @@ workflows:
         script: | 
           flutter test
         ignore_failure: true
-      - name: Build AAB with Flutter
+      - name: Flutter build ipa
         script: | 
-          BUILD_NUMBER=($(app-store-connect get-latest-app-store-build-number "$APP_ID") + 1)
-          flutter build appbundle --release \
-            --build-name=1.0.$BUILD_NUMBER \
-            --build-number=$BUILD_NUMBER
+          flutter build ipa --release \
+            --build-name=1.0.0 \
+            --build-number=$(($(app-store-connect get-latest-app-store-build-number "$APP_ID") + 1)) \
+            --export-options-plist=/Users/builder/export_options.plist
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
