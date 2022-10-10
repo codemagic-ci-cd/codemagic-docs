@@ -34,10 +34,8 @@ In this step you can also define the build artifacts you are interested in. Thes
 
 
 {{< highlight yaml "style=paraiso-dark">}}
-react-native-ios:
+ios-native:
   environment:
-    groups:
-      # ...
     vars:
       BUNDLE_ID: "io.codemagic.sample.iosnative"
       XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Name of your Xcode workspace
@@ -64,10 +62,6 @@ artifacts:
 ## Build versioning
 
 If you are going to publish your app to App Store, each uploaded artifact must have a new version. Codemagic allows you to easily automate this process and increment the version numbers for each build. For more information and details, see [here](../configuration/build-versioning).
-
-### Configure environment variables
-
-{{< include "/partials/quickstart/publish-ios-environment-variables.md">}}
 
 {{< include "/partials/quickstart/build-versioning-ios.md" >}}
 
@@ -96,12 +90,12 @@ workflows:
     name: iOS Native
     max_build_duration: 120
     instance_type: mac_mini_m1
+    integrations:
+      app_store_connect: codemagic
     environment:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: io.codemagic.sample.iosnative
-      groups:
-        - appstore_credentials
       vars:
         BUNDLE_ID: "io.codemagic.sample.iosnative"
         XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
@@ -139,9 +133,7 @@ workflows:
           success: true
           failure: false
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        auth: integration
 
         # Configuration related to TestFlight (optional)
         # Note: This action is performed during post-processing.

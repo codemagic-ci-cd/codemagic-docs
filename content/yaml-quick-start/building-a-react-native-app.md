@@ -361,12 +361,12 @@ workflows:
     name: React Native iOS
     max_build_duration: 120
     instance_type: mac_mini_m1
+    integrations:
+      app_store_connect: codemagic
     environment:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: io.codemagic.sample.reactnative
-      groups:
-        - appstore_credentials
       vars:
         BUNDLE_ID: "io.codemagic.sample.reactnative"
         XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
@@ -412,9 +412,7 @@ workflows:
           success: true
           failure: false
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        auth: integration
 
         # Configuration related to TestFlight (optional)
         # Note: This action is performed during post-processing.

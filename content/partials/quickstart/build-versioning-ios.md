@@ -8,12 +8,11 @@ In order to get the latest build number from App Store or TestFlight, you will n
 workflows:
   ios-workflow:
     name: iOS Workflow
+    integrations:
+      app_store_connect: <App Store Connect API key name>
     environment:
-        groups:
-          - appstore_credentials
-    vars:
-      APP_ID: 1555555551
-  
+      vars:
+        APP_ID: 1555555551
     scripts:
       - name: Increment build number
         script: | 
