@@ -177,7 +177,7 @@ Note that in case the credentials file is not specified in `firebaseAppDistribut
 scripts:
   -name: Decode Google credentials
    script: | 
-     echo $GOOGLE_APP_CREDENTIALS | base64 --decode > $CM_BUILD_DIR/your/file/path.json
+     echo $GOOGLE_APP_CREDENTIALS > $CM_BUILD_DIR/your/file/path.json
 {{< /highlight >}}
 
 </br>{{<markdown>}}
@@ -213,7 +213,7 @@ If you didn't specify `serviceCredentialsFile`, you may export it to a random lo
 scripts:
   - name: Export the credentials file
     script: | 
-      echo $GOOGLE_APP_CREDENTIALS | base64 --decode > /tmp/google-application-credentials.json
+      echo $GOOGLE_APP_CREDENTIALS > /tmp/google-application-credentials.json
   - name: Distribute app to firebase with gradle plugin
   script: | 
     export GOOGLE_APPLICATION_CREDENTIALS=/tmp/google-application-credentials.json
