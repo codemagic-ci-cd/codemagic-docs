@@ -109,7 +109,7 @@ To perform these steps, add the required scripts to your `codemagic.yaml` file:
     - name: Set the app URL and PATH
       script: | 
         CURL_RESULT=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \ 
-          -H 'Authorization: Basic $KOBITON_CREDENTIALS) \ 
+          -H 'Authorization: Basic $KOBITON_CREDENTIALS' \ 
           -H 'Content-Type: application/json' \ 
           -d '{"filename": "your_desired_binary_name.ipa"}' | jq -r)
 
@@ -122,7 +122,7 @@ To perform these steps, add the required scripts to your `codemagic.yaml` file:
           -H 'x-amz-tagging: unsaved=true' \
           -T "build/ios/ipa/kobition_integration.ipa"
     - name: Upload to Kobiton
-      scripts: | 
+      script: | 
         curl -X POST https://api.kobiton.com/v1/apps \
           -H 'Authorization:  Basic $KOBITON_CREDENTIALS' \
           -H 'Content-Type: application/json' \
