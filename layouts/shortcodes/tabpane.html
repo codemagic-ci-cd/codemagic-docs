@@ -51,7 +51,7 @@
       {{- $entryid := printf "tabs-%v-%v" $.Ordinal $index | anchorize -}}
 
       <a class="nav-link{{ if eq $disabled true }} disabled{{ end }}" 
-          data-toggle="tab" href="{{ $entryid }}" role="tab"
+          data-toggle="tab" name="{{ $entryid }}" role="tab"
         aria-controls="{{- $entryid -}}" aria-selected="{{- and ( not $activeSet ) ( not $disabled ) "true" "false" -}}">
         {{- index . "header" | markdownify -}}
       </a>
