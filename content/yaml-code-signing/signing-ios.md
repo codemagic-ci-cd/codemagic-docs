@@ -11,6 +11,9 @@ All iOS applications have to be digitally signed before they can be installed on
 **Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user or if you want to use alternative Code signing methods, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
 {{</notebox>}}
 
+<br> 
+
+{{< youtube idRJZxVafY0 >}}
 
 ## Managing and uploading files
 

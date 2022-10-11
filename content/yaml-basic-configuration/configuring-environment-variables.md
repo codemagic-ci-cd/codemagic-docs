@@ -9,6 +9,8 @@ aliases:
   - /variables/environment-variable-groups
   - /yaml/configuring-environment-variables
 ---
+<br>
+{{< youtube 7pAxVFe66hI >}}
 
 ## Configuring Environment variables
 
