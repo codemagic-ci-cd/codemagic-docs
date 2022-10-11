@@ -2,8 +2,8 @@
 title: Adding a Git tag with app version
 weight: 6
 aliases:
-  - '../custom-scripts/add-a-git-tag-with-app-version'
-  - '../knowledge-base/add-a-git-tag-with-app-version'
+  - /custom-scripts/add-a-git-tag-with-app-version
+  - /knowledge-base/add-a-git-tag-with-app-version
 ---
 
 You can use Codemagic to create a Git tag and push it to your repository.

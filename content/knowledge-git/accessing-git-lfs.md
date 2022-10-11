@@ -2,6 +2,8 @@
 description: How to use Git LFS with Codemagic
 title: Accessing Git LFS
 weight: 7
+aliases:
+  - /knowledge-base/accessing-git-lfs
 ---
 
 Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise. More info about Git LFS can be found [here](https://git-lfs.github.com/).

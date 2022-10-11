@@ -4,7 +4,7 @@ title: Build timeout settings
 weight: 2
 aliases: 
   - /building/timeout
-  - configuration/timeout
+  - /configuration/timeout
 ---
 
 By default, Codemagic builds are set to time out after 60 minutes. You can decrease or increase the maximum build duration **per workflow**.

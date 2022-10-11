@@ -3,7 +3,7 @@ description: How to change produced binary names for Android and iOS
 title: Custom binary names
 weight: 12
 aliases:
- - /knowledge-base/binary-name-updates
+ - /knowledge-base/binary-name-update
 ---
 
 ## iOS

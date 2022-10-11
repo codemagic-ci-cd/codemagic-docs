@@ -3,7 +3,9 @@ title: Fastlane integration
 description: How to use Fastlane in codemagic.yaml
 weight: 4
 aliases:
-  - '../knowledge-base/beta-deployment-with-fastlane'
+  - /knowledge-base/beta-deployment-with-fastlane
+  - /flutter-publishing/beta-deployment-with-fastlane
+  - /publishing/beta-deployment-with-fastlane
 ---
 
 **Fastlane** is an open source platform aimed at simplifying Android and iOS deployment. If your development team uses Fastlane, it can be used as part of your CI/CD pipeline to build and deploy your applications. Fastlane is preinstalled on the Codemagic build servers.

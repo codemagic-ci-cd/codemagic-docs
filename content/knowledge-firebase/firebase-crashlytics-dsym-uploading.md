@@ -3,7 +3,8 @@ description: How to upload dSYM artifacts to Firebase Crashlytics
 title: Firebase Crashlytics dSYM uploading
 weight: 13
 aliases:
-  - '../custom-scripts/firebase-crashlytics-dsym-uploading'
+  - /custom-scripts/firebase-crashlytics-dsym-uploading
+  - knowledge-base/firebase-crashlytics-dsym-uploading
 ---
 
 **dSYM** files store the debug symbols for your app. They contain mapping information to decode a stack-trace into a readable format. The purpose of **dSYM** is to replace symbols in the crash logs with the specific methods so it will be readable and helpful for debugging the crash. 

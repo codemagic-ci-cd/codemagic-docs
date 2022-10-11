@@ -2,6 +2,8 @@
 description: How to use Github packages for private dependencies 
 title: Using private packages / dependencies
 weight: 11
+aliases:
+  - /knowledge-base/private-packages
 ---
 
 Accessing GitHub packages for private dependencies requires the following steps:

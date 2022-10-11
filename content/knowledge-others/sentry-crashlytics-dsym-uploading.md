@@ -2,6 +2,8 @@
 description: How to upload dsym artifacts to Sentry
 title: Uploading dSYM to Sentry
 weight: 12
+aliases:
+ - /knowledge-base/sentry-crashlytics-dsym-uploading
 ---
 
 **Sentry** is a crash reporting platform that provides you with real-time insight into production deployments with info to reproduce and fix crashes.

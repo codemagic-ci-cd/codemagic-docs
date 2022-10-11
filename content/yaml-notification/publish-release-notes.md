@@ -4,7 +4,7 @@ title: Release notes
 weight: 4
 aliases: 
   - /publishing-yaml/publish-release-notes
-  - /yaml-publishin/publish-release-notes
+  - /yaml-publishing/publish-release-notes
 ---
 
 Create custom release notes file(s) to notify users of the changes as you publish a new version of your app.

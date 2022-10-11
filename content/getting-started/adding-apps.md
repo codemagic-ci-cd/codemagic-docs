@@ -3,15 +3,15 @@ description: How to add an app to Codemagic
 title: Adding apps to Codemagic
 weight: 2
 aliases:
-  - '../getting-started/codemagic-github-app'
-  - '../getting-started/github-organization-accounts'
-  - ../getting-started/github
-  - ../getting-started/gitlab
-  - ../getting-started/bitbucket
-  - ../getting-started/other
-  - ../getting-started/modifying-access
-  - ../getting/started/monorepo-apps
-  - ../getting/started/firewall
+  - /getting-started/codemagic-github-app
+  - /getting-started/github-organization-accounts
+  - /getting-started/github
+  - /getting-started/gitlab
+  - /getting-started/bitbucket
+  - /getting-started/other
+  - /getting-started/modifying-access
+  - /getting-started/monorepo-apps
+  - /getting-started/firewall
 ---
 
 ## Connecting a Git repository
