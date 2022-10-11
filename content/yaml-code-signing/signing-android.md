@@ -11,6 +11,9 @@ All Android applications have to be digitally signed before they are made availa
 **Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user or if you want to use alternative Code signing methods, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
 {{</notebox>}}
 
+<br>
+
+{{< youtube wPpGTY6Sis0 >}}
 ## Managing and uploading files
 
 Team owner permissions are required to upload and edit files under the **Code signing identities** section. However, all team members can view the file info for any of the uploaded files.

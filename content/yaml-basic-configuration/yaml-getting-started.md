@@ -13,6 +13,8 @@ popular: 1
 
 `codemagic.yaml` is a highly customizable configuration file for setting up your CI/CD pipeline with Codemagic. Configure all your workflows in a single file and commit the file to version control.
 
+
+{{< youtube er7hRWhW0B0 >}}
 ## Building with YAML
 
 In order to use `codemagic.yaml` for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
