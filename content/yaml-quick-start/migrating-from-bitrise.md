@@ -3,7 +3,8 @@ title: Migrating from Bitrise
 description: How to migrate your projects from Bitrise to Codemagic
 weight: 1
 aliases:
-  - /getting-started/migrating-from-bitrise 
+  - /getting-started/migrating-from-bitrise
+  - /knowledge-base/migrating-from-bitrise
 ---
 
 Codemagic makes use of [`codemagic.yaml`](../yaml/yaml-getting-started/) for configuring your workflow. As Codemagic supports any Git-based cloud or self-hosted repository, there is no need to migrate your code - simply add a `codemagic.yaml` file to your repository root folder.

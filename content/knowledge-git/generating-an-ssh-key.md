@@ -2,6 +2,8 @@
 description: How to create a secure SSH key pair in terminal
 title: Generating an SSH key
 weight: 1
+aliases:
+  - /knowledge-base/generating-an-ssh-key
 ---
 
 Different repository hosting services have different minimum requirements for their SSH keys. We recommend using a widely supported and secure algorithm such as `ECDSA` or `Ed25519` when generating your key pair.

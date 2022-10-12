@@ -2,7 +2,10 @@
 description: How to upload an apk or ipa file to App Center in a Flutter workflow editor post-build script
 title: Microsoft App Center
 weight: 4
-aliases: [/publishing/publish-app-artifacts-to-app-center, /flutter-publishing/publish-app-artifacts-to-app-center]
+aliases: 
+  - /publishing/publish-app-artifacts-to-app-center
+  - /flutter-publishing/publish-app-artifacts-to-app-center
+  - /knowledge-base/publish-app-artifacts-to-app-center
 ---
 
 As a custom build step, Codemagic can publish your app artifact to App Center using the [App Center Command Line Interface](https://github.com/microsoft/appcenter-cli). An **App Center API token** is required for publishing. It is advisable to create a new token for use on Codemagic, see the commands related to API tokens [here](https://github.com/microsoft/appcenter-cli#commands) or manage your tokens in [App Center settings](https://appcenter.ms/settings/apitokens). A token is generated under user settings, not app settings. 

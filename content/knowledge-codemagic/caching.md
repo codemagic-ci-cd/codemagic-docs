@@ -2,6 +2,9 @@
 description: How to configure caching for your builds
 title: Caching
 weight: 3
+aliases:
+  - /flutter/dependency-caching
+  - /flutter-configuration/dependency-caching
 ---
 
 You can speed up your builds by storing dependencies on Codemagic. 

@@ -3,7 +3,8 @@ description: How to load Firebase configuration files into environment variables
 title: Loading Firebase configuration
 weight: 14
 aliases:
-  - '../custom-scripts/load-firebase-configuration'
+  - /custom-scripts/load-firebase-configuration
+  - /knowledge-base/load-firebase-configuration
 ---
 
 Instead of committing the Firebase configuration files to your repository, you can upload them to Codemagic as **environment variables** and reference them in a custom script.

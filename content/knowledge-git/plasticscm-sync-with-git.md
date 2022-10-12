@@ -2,6 +2,8 @@
 description: How to Sync Plastic SCM with Git 
 title: Sync Plastic SCM with Git
 weight: 15
+aliases:
+  - /knowledge-base/plasticscm-sync-with-git
 ---
 
 [Plastic SCM](https://www.plasticscm.com/) is a full-featured DVCS (Distributed Version Control Software)which also supports the Git network protocol.

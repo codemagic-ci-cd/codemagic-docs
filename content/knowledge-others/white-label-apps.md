@@ -2,6 +2,8 @@
 description: How to white label apps with Codemagic
 title: White label apps
 weight: 10
+aliases:
+  - /getting-started/white-label-apps
 ---
 
 White labeling is the practice of building multiple versions of the same application. This can range from one or two up to thousands of different versions. 

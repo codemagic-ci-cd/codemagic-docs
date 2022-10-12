@@ -2,8 +2,8 @@
 title: Creating and managing teams
 weight: 3
 aliases:
- - ../teams/teams
- - ../teams/users
+ - /teams/teams
+ - /teams/users
 ---
 
 If more than one developer is contributing to a project, it is wiser to set up a team to work on the project together. Working in teams comes with some advantages:

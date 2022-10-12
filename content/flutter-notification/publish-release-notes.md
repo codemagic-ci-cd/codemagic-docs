@@ -2,7 +2,9 @@
 description: How to publish build release notes using the Flutter workflow editor
 title: Release notes
 weight: 12
-aliases: /publishing/publish-release-notes
+aliases: 
+  - /publishing/publish-release-notes
+  - /flutter-publishing/publish-release-notes
 ---
 
 Create custom release notes to notify users of the changes as you publish a new version of your app.
