@@ -3,7 +3,7 @@ description: How to customize slack messages for codemagic builds
 title: Custom Slack Integration with Codemagic
 weight: 15
 aliases:
-  - knowledge-base/slack-api-integration
+  - /knowledge-base/slack-api-integration
 ---
 
 Customize Slack notifications for publishing into your Codemagic build pipeline by building a Slack app from scratch via webhooks.
