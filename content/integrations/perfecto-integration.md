@@ -230,3 +230,9 @@ perfectoGradleSettings {
 {{< /tab >}}
 {{< /tabpane >}}
 
+## Get Help and Support with Perfecto
+	
+To test how Perfecto supports Flutter Integration Testing for native mobile applications, [visit their website](https://www.perfecto.io/integrations/flutter) and get access to a [free trial](https://www.perfecto.io/free-trial). Additionally, for video demonstrations and some more information on how to set up Flutter for iOS and Android apps in Perfecto, visit the following documentation pages:
+	 1. [Setting up Flutter for iOS in Perfecto](https://help.perfecto.io/perfecto-help/content/perfecto/automation-testing/flutter-ios.htm)
+	 2. [Setting up Flutter Android in Perfecto](https://help.perfecto.io/perfecto-help/content/perfecto/automation-testing/flutter-android.htm)
+
