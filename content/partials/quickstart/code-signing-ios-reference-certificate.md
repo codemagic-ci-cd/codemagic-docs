@@ -16,9 +16,9 @@ workflows:
 {{< /highlight >}}
 
 {{<notebox>}}
-**Note:** If you are publishing to the **App Store** or you are using **TestFlight**  to distribute your app to test users, set the `distribution_type` to `IOS_APP_STORE`. 
+**Note:** If you are publishing to the **App Store** or you are using **TestFlight**  to distribute your app to test users, set the `distribution_type` to `app_store`. 
 
-When using a **third party app distribution service** such as Firebase App Distribution, set the `distribution_type` to `IOS_APP_ADHOC`
+When using a **third party app distribution service** such as Firebase App Distribution, set the `distribution_type` to `ad_hoc`
 {{</notebox>}}
 
 When defining the bundle identifier `com.example.id`, Codemagic will fetch any uploaded certificates and profiles matching the extensions as well (e.g. `com.example.id.NotificationService`).
