@@ -172,7 +172,7 @@ To deactivate a Unity license on the build machine, add the following script ste
         script: | 
           /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
             --return-ulf \
-            --username ${UNITY_USERNAME?} \
+            --username ${UNITY_EMAIL?} \
             --password ${UNITY_PASSWORD?}
 {{< /highlight >}}
 {{% /tab %}}
@@ -781,7 +781,7 @@ workflows:
           script: | 
             /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
             --return-ulf \
-            --username ${UNITY_USERNAME?} \
+            --username ${UNITY_EMAIL?} \
             --password ${UNITY_PASSWORD?}
       email:
         recipients:
@@ -855,7 +855,7 @@ workflows:
           script: | 
             /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
             --return-ulf \
-            --username ${UNITY_USERNAME?} \
+            --username ${UNITY_EMAIL?} \
             --password ${UNITY_PASSWORD?}
       email:
         recipients:
@@ -964,7 +964,7 @@ workflows:
           script: | 
             /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
             --return-ulf \
-            --username ${UNITY_USERNAME?} \
+            --username ${UNITY_EMAIL?} \
             --password ${UNITY_PASSWORD?}
       email:
         recipients:
