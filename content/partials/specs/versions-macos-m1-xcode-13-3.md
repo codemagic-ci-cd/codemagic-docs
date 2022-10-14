@@ -29,7 +29,7 @@ weight: 9
 - ew-cli `0.0.48`
 - fastlane `2.210.1`
 - firebase `11.4.2`
-- flutter `3.3.3 ($HOME/programs/flutter)`
+- flutter `3.3.4 ($HOME/programs/flutter)`
 - gem `3.3.22`
 - gh `2.16.1`
 - git `2.37.3`
