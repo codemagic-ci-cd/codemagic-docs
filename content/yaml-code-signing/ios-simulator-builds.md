@@ -4,7 +4,7 @@ description: How to build an iOS app without code signing to use in simulator
 weight: 5
 ---
 
-To test your app on simulators, Apple requires you to create an unsigned iOS app (with the `.app` extensions).
+To test your app on simulators, Apple requires you to create an unsigned iOS app (with the `.app` extension).
 
 ## Building an unsigned native iOS app (.app)
 
