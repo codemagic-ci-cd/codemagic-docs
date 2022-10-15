@@ -78,7 +78,6 @@ weight: 6
 
 - 12.5.1 (12E507) `/Applications/Xcode-12.5.1.app`
 - 12.5 (12E262) `/Applications/Xcode-12.5.app`
-- 12.4 (12D4e) `/Applications/Xcode-12.4.app`
 
 ### Runtimes
 
