@@ -178,7 +178,9 @@ workflows:
       condition: not event.pull_request.draft
 {{< /highlight >}}
 
-
+{{<notebox>}}
+**Note:** Condition expression is evaluated only after cloning the repository so the builds will be started regardless of the `condition`. However, if a `condition` is not met, the build will terminate early and will be marked as `skipped`.
+{{</notebox>}}
 ## Using `when` to run or skip build steps
 
 You may want to either run or skip some specific build steps in your workflow when building your application.
