@@ -93,10 +93,6 @@ If you want to exit a build **when commit message does not include certain strin
 
 ## Using `when` to run or skip builds
 
-That’s not entirely correct. We would run script if
-the watched paths or codemagic.yaml was updated at some point
-there is no build that finished successfully since the last modification of watched files/dirs and codemagic.yaml
-
 In addition to [build triggers](#build-triggers) and [branch filtering](#tracking-specific-branches), you can further specify and automate workflow behavior by using `when` keyword to run or skip a build depending on the specified `changeset` and `condition` states.
 
 ### Using `changeset` inside `when`
