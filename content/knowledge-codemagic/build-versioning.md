@@ -9,6 +9,7 @@ aliases:
 
 If you are going to publish your app to **App Store Connect** or **Google Play**, each uploaded artifact must have a new version satisfying each app store's requirements. You'll need to devise a build versioning strategy that satisfies the App Store and/or Google Play Store versioning requirements and works for your team's development processes. On this page, we will explain the App Store and Google Play build versioning requirements, how the Flutter framework generalizes build versioning, and various strategies to set your build versions using Codemagic. See the [build versioning codemagic blog article](https://blog.codemagic.io/build-versioning-with-codemagic/) for a detailed overview.
 
+{{< youtube UezlgmCZLcU >}}
 
 ## Overview of Build Versioning Requirements
 

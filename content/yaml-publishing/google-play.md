@@ -10,6 +10,8 @@ Codemagic enables you to automatically publish your android application to Googl
 **Note:** This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Publishing to Google Play using Flutter workflow editor](../publishing/publishing-to-google-play).
 {{</notebox>}}
 
+{{< youtube qrtk6e0BYjM >}}
+
 Codemagic enables you to automatically publish your app either to one of the predefined tracks on Google Play or to your custom closed testing tracks.
 
 In order to do so, a service account is required when setting up publishing to Google Play. The service account JSON key file must be added to Codemagic to authenticate with these services.

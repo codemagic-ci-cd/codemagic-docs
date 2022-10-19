@@ -14,6 +14,8 @@ Codemagic enables you to automatically publish your iOS or macOS app to [App Sto
 **Note:** This guide only applies to workflows configured with **codmegic.yaml**. If your workflow is configured with the **Flutter workflow editor** please go to [Publishing to App Store Connect using Flutter workflow editor](../publishing/publishing-to-app-store).
 {{</notebox>}}
 
+{{< youtube hDXfKccLMjI >}}
+
 ### Requirements
 
 Please note that
