@@ -11,6 +11,9 @@ All Android applications have to be digitally signed before they are made availa
 **Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user or if you want to use alternative Code signing methods, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
 {{</notebox>}}
 
+<br>
+
+{{< youtube wPpGTY6Sis0 >}}
 ## Managing and uploading files
 
 Team owner permissions are required to upload and edit files under the **Code signing identities** section. However, all team members can view the file info for any of the uploaded files.
@@ -19,8 +22,9 @@ Team owner permissions are required to upload and edit files under the **Code si
 
 If you need to create a new keystore file for signing your release builds, you can do so with the Java Keytool utility by running the following command:
 
-{{< highlight Shell "style=rrt">}}
-keytool -genkey -v -keystore codemagic.keystore -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias codemagic
+{{< highlight Shell "style=paraiso-dark">}}
+keytool -genkey -v -keystore codemagic.keystore -storetype JKS \
+        -keyalg RSA -keysize 2048 -validity 10000 -alias codemagic
 {{< /highlight >}}
 
 Keytool then prompts you to enter your personal details for creating the certificate, as well as provide passwords for the keystore and the key. It then generates the keystore as a file called **codemagic.keystore** in the directory you're in. The key is valid for 10,000 days.
@@ -92,7 +96,7 @@ environment:
 
 To sign your Android app, simply modify your **`android/app/build.gradle`** as follows:
 
-{{< highlight kotlin "style=paraiso-dark">}}
+{{< highlight Groovy "style=paraiso-dark">}}
 ...
   android {
       ...

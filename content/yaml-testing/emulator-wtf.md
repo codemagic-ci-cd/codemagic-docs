@@ -6,70 +6,85 @@ weight: 2
 
 ## Configuring emulator.wtf API token
 
-You'll need your [emulator.wtf](https://emulator.wtf) API token handy. Add the token with the name `EW_API_TOKEN` into the **Environment variables** in Codemagic UI, either under [Apps](https://codemagic.io/apps) or [Teams](https://codemagic.io/teams). Name the group `emulatorwtf`.
+In order to use [emulator.wtf](https://emulator.wtf) service for app testing, you need to obtain an emulator.wtf API token and save it as an environment variable in Codemagic.
 
-You can then import the token with the following under your workflow:
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
+2. Enter the desired **_Variable name_**, e.g. `EW_API_TOKEN`.
+3. Copy and paste the content of the token as **_Variable value_**.
+4. Enter the variable group name, e.g. **_emulatorwtf_**. Click the button to create the group.
+5. Make sure the **Secure** option is selected.
+6. Click the **Add** button to add the variable.
 
-```yaml
-workflows:
-  android-build:
-    environment:
-      groups:
-        - emulatorwtf # adds EW_API_TOKEN to the workflow
-```
+You can then import the token in your workflow:
+
+{{< highlight yaml "style=paraiso-dark">}}
+  workflows:
+    android-build:
+      environment:
+        groups:
+          - emulatorwtf # adds EW_API_TOKEN to the workflow
+{{< /highlight >}}
+
 
 ## Running tests
 
 Add the following snippet under your workflow _after_ the Gradle build step. Update the `--app` and `--test` paths according to your build if necessary.
 
-```yaml
-- name: Test
-  script: |
-    ew-cli \
-      --app app/build/outputs/apk/debug/app-debug.apk \
-      --test app/build/outputs/apk/androidTest/app-debug-androidTest.apk \
-      --outputs-dir results
-  test_report: results/**/*.xml
-```
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Test
+    script: | 
+      ew-cli \
+        --app app/build/outputs/apk/debug/app-debug.apk \
+        --test app/build/outputs/apk/androidTest/app-debug-androidTest.apk \
+        --outputs-dir results
+    test_report: results/**/*.xml
+{{< /highlight >}}
 
 ## Capturing logcat
 
 Add the following to your workflow to capture logcat output from the emulator during the test run:
 
-```
-artifacts:
-  - results/**/logcat.txt
-```
+{{< highlight yaml "style=paraiso-dark">}}
+
+  artifacts:
+    - results/**/logcat.txt
+{{< /highlight >}}
+
 
 ## Running tests with coverage
 
 Add `--with-coverage` to the `ew-cli` script to capture coverage during the test run:
 
-```yaml
-- name: Test
-  script: |
-    ew-cli \
-      --app app/build/outputs/apk/debug/app-debug.apk \
-      --test app/build/outputs/apk/androidTest/app-debug-androidTest.apk \
-      --with-coverage \
-      --outputs-dir results
-  test_report: results/**/*.xml
-```
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Test
+    script: | 
+      ew-cli \
+        --app app/build/outputs/apk/debug/app-debug.apk \
+        --test app/build/outputs/apk/androidTest/app-debug-androidTest.apk \
+        --with-coverage \
+        --outputs-dir results
+    test_report: results/**/*.xml
+{{< /highlight >}}
+
 
 ## Running tests in parallel
 
 Add `--num-shards <NUMBER>` to run tests in parallel shards, here's an example to shard tests to 4:
 
-```yaml
-- name: Test
-  script: |
-    ew-cli \
-      --app app/build/outputs/apk/debug/app-debug.apk \
-      --test app/build/outputs/apk/androidTest/app-debug-androidTest.apk \
-      --num-shards 4 \
-      --outputs-dir results
-  test_report: results/**/*.xml
-```
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Test
+    script: | 
+      ew-cli \
+        --app app/build/outputs/apk/debug/app-debug.apk \
+        --test app/build/outputs/apk/androidTest/app-debug-androidTest.apk \
+        --num-shards 4 \
+        --outputs-dir results
+    test_report: results/**/*.xml
+{{< /highlight >}}
+
 
 ## Further information
 

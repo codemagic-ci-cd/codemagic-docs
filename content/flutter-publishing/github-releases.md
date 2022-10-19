@@ -5,14 +5,14 @@ weight: 13
 aliases: /publishing/github-release/
 ---
 
-Codemagic enables you to create a GitHub release automatically, and upload generated artifacts when your build is triggered on tag creation. Read more about GitHub releases in [GitHub's documentation](https://docs.github.com/en/github/administering-a-repository/about-releases).
+Codemagic enables you to create a GitHub release automatically and upload generated artifacts when your build is triggered on tag creation. Read more about GitHub releases in [GitHub's documentation](https://docs.github.com/en/github/administering-a-repository/about-releases).
 
 ## Requirements
 
 Publishing GitHub releases is available for GitHub repositories only. Publishing to GitHub happens only for successful builds triggered on tag creation and is unavailable for manual builds.
 
 {{<notebox>}}
-The UI section for setting up publishing GitHub releases is deprecated in Flutter workflow editor. To continue to publish GitHub releases, please follow the instructions below.
+**Note:** The UI section for setting up publishing GitHub releases is deprecated in Flutter workflow editor. To continue to publish GitHub releases, please follow the instructions below.
 {{</notebox>}}
 
 1. Create a personal access token in GitHub as described [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
@@ -20,13 +20,13 @@ The UI section for setting up publishing GitHub releases is deprecated in Flutte
 3. In the Build triggers section, select **Trigger on tag creation**. Don't forget to add a branch pattern and ensure the webhook exists.
 4. Add the following custom script in the **pre-publish step** that publishes the artifacts with tag builds. Edit the placeholders like your application name and the path to build artifacts to match your setup.
 
-   ```bash
+{{< highlight bash "style=paraiso-dark">}}
    #!/usr/bin/env zsh
 
    # Publish only for tag builds
    if [ -z ${CM_TAG} ]; then
-   echo "Not a tag build will not publish GitHub release"
-   exit 0
+     echo "Not a tag build will not publish GitHub release"
+     exit 0
    fi
 
    # See more options about `gh release create` usage from GitHub CLI
@@ -40,4 +40,4 @@ The UI section for setting up publishing GitHub releases is deprecated in Flutte
 
    # Note that you don't need to include title and changelog if you do not want to.
    # Any number of artifacts can be included with the release.
-   ```
+{{< /highlight >}}

@@ -4,60 +4,77 @@ description: How to integrate your workflows with Perfecto using codemagic.yaml
 weight: 13
 ---
 
-****Perfecto** is a web-based platform that allows mobile application developers and QA Engineers to work with services such as advanced automation, monitoring, and testing services. It is possible to integrate with Perfecto directly from your **codemagic.yaml**
+**Perfecto** is a cloud-based test automation platform for web and mobile that allows application developers and QA engineers to create and execute tests across devices and browsers at scale. Being a market leader in its area, Perfecto offers many ways to integrate with different stages of the software development and testing lifecycle. It is possible to integrate with Perfecto directly from your **codemagic.yaml**
+
+A sample project that shows how to configure Perfecto integration for real device testing is available in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/perfecto_sample_project).
+
+A sample project showcasing Perfecto **App Automate** integration for Flutter apps is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/perfecto_flutter_sample_project).
+
+
+## Configuring Perfecto access
 
 Signing up with [Perfecto](https://www.perfecto.io/) is required in order to get credentials that are needed during an upload process. 
 
-Using the following cURL script in a post-build script(a script that is run after executing build commands in yaml), **.apk**, **.aab** and **.ipa** binaries can be uploaded to the Perfecto platform:
+1. Get the Perfecto access token from the Perfecto UI.
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
+2. Enter the desired **_Variable name_**, e.g. `PERFECTO_TOKEN`.
+3. Copy and paste the Perfecto token string as **_Variable value_**.
+4. Enter the variable group name, e.g. **_perfecto_credentials_**. Click the button to create the group.
+5. Make sure the **Secure** option is selected.
+6. Click the **Add** button to add the variable.
 
-```
-curl "https://web.app.perfectomobile.com/repository/api/v1/artifacts" -H "Perfecto-Authorization: $PERFECTO_TOKEN" -H "Content-Type: multipart/form-data" -F "requestPart={\"artifactLocator\":\"PRIVATE:app.aab\",\"artifactType\":\"ANDROID\",\"override\":true}" -F "inputStream=@/path/to/your_binary"
-```
+7. Add the variable group to your `codemagic.yaml` file
+{{< highlight yaml "style=paraiso-dark">}}
+  environment:
+    groups:
+      - perfecto_credentials
+{{< /highlight >}}
 
-**PERFECTO_TOKEN** can be found in the Perfecto UI with your account. Environment variables can be added in the Codemagic web app using the ‘Environment variables tab. You can then import your variable groups into your codemagic.yaml. For example, if you named your variable group ‘perfecto_credentials’, you would import it as follows:
 
-```
-workflows:
-  workflow-name:
-    environment:
-      groups:
-        - perfecto_credentials
-```
+## Uploading to Perfecto
 
-For further information about using variable groups please click [here](.../variables/environment-variable-groups/).
+Using the following cURL script in a post-build script, **Release APK** and **Release IPA** binaries can be uploaded to the Perfecto platform:
+
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Upload to Perfect
+      script: | 
+        curl "https://web.app.perfectomobile.com/repository/api/v1/artifacts" \
+        -H "Perfecto-Authorization: $PERFECTO_TOKEN" \
+        -H "Content-Type: multipart/form-data" \
+        -F "requestPart={\"artifactLocator\":\"PRIVATE:app.aab\",\"artifactType\":\"ANDROID\",\"override\":true}" \
+        -F "inputStream=@/path/to/your_binary"
+{{< /highlight >}}
+
 
 
 ## Test Automation
 
-In order to automate tests, desired capabilities can be set inside your custom made test scripts in your project. For example, if your application requires device sensors such as camera or fingerprint reader, then **sensorInstrument** needs to be set:
+The uploaded files can be directly used to start your automation testing. To do this, desired capabilities can be set inside your custom-made test scripts in your project. For example, if your application requires device sensors such as camera or fingerprint reader, then **sensorInstrument** needs to be set:
 
-```
-capabilities.setCapability("sensorInstrument", true);
-```
-
-With Appium tests **autoInstrument** capability automatically instrument the application and it needs to be set to true:
-
-```
-capabilities.setCapability("autoInstrument", true);
-```
+{{< highlight dart "style=paraiso-dark">}}
+  capabilities.setCapability("sensorInstrument", true);
+{{< /highlight >}}
 
 ## Flutter apps integration
 
-**Android apps**
-
+{{< tabpane >}}
+{{< tab header="Android" >}}
+{{<markdown>}}
 In order to set up integration for Flutter specific apps the following steps must be followed:
 
 1. Generate a folder named **PerfectoRunAndroid** (can be named differently) in the root directory of your project.
 
-2. Moving into **PerfectoRunAndroid** directory and initiate Gradle by executing the following commands in your local terminal:
-```
+2. Change dir to **PerfectoRunAndroid** directory and initiate Gradle by executing the following commands in your local terminal:
+{{< highlight bash "style=paraiso-dark">}}
 cd PerfectoRun 
 gradle init 
 ./gradlew wrapper
-```
-3. Running these commands will create the necessary gradle files along with an empty **build.gradle** and its content needs to be adjusted as follows:
+{{< /highlight >}}
 
-```
+3. Running the above commands will create the necessary gradle files along with an empty `build.gradle`. Edit the `build.gradle` by adding the following:
+
+{{< highlight Groovy "style=paraiso-dark">}}
 buildscript {
     repositories {
         maven {
@@ -65,11 +82,9 @@ buildscript {
         }
         google()
         mavenCentral()
-        
     }
     dependencies {
         classpath "com.perfectomobile.instrumentedtest.gradleplugin:plugin:+"
-           
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -82,16 +97,16 @@ perfectoGradleSettings {
     task clean(type: Delete) {
         delete rootProject.buildDir
 }
-```
+{{< /highlight >}}
 
-3. Create a file called **ConfigFile.json** and add the following Json content in there:
 
-```
+4. Create a file called `ConfigFile.json` and add the following Json content in there:
+
+{{< highlight json "style=paraiso-dark">}}
 {
       "cloudURL": "web-fra.perfectomobile.com",
       "securityToken": "xxxxxxxxxxxx",
       "devices": [
-       
             {
               "platformName" : "Android",
               "platformVersion": "^12.*”,
@@ -120,38 +135,43 @@ perfectoGradleSettings {
       "shard": false,
       "testTimeout" : 60000
     }
-```
+{{< /highlight >}}
 
 **"securityToken"** contains your Perfecto Token that can be fetched from your Perfecto account.
 
-In order to generate **testBuildType** which refers to **testApkPath**, the following command needs to be run in a pre-build script (a script that is run after executing build commands) inside **codemagic.yaml**:
+5. Modify your `codemagic.yaml` file to include post-build scripts to generate **testBuildType** and upload the files to Perfecto
 
-```
-- name: Build Android Test release
-  script: |
-      ./gradlew assembleAndroidTest
-```
-5. As a last step, to successfully upload files and enable test automation, the following commands needs to be executed:
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Build Android Test release
+      script: | 
+        ./gradlew assembleAndroidTest
+    - name: Upload files to Perfecto and run tests
+      script: | 
+        cd PerfectoRunAndroid
+        ./gradlew perfecto-android-inst
+{{< /highlight >}}
 
-```
-- name: Upload files to Perfecto and run tests
-  script: |
-      cd PerfectoRunAndroid
-      ./gradlew perfecto-android-inst
-```
+{{</markdown>}}
+{{< /tab >}}
 
-**iOS apps**
 
-Flutter iOS apps take almost the step steps as android builds:
+
+{{< tab header="iOS" >}}
+{{<markdown>}}
+
+In order to set up integration for Flutter specific apps the following steps must be followed:
 
 1. Create another folder in the root directory named **PerfectoRunIos** (can be named differently)
-2. Manually create **build.gradle** along with the following cconten:
-```
+
+2. Manually create `build.gradle` file with the following content:
+
+{{< highlight Groovy "style=paraiso-dark">}}
 buildscript {
     repositories {
-            maven {
-                url "https://repo1.perfectomobile.com/public/repositories/maven"        
-            }
+        maven {
+            url "https://repo1.perfectomobile.com/public/repositories/maven"
+        }
     }
     dependencies {
         classpath "com.perfectomobile.instrumentedtest.gradleplugin:plugin:+"    
@@ -159,20 +179,19 @@ buildscript {
 }
 apply plugin: 'com.perfectomobile.instrumentedtest.gradleplugin'
 perfectoGradleSettings {
-    configFileLocation "configFile.json"}
-```
-3. Create **configFile.json** and add the following content in there:
-```
+    configFileLocation "configFile.json"
+}
+{{< /highlight >}}
+
+
+3. Create a file called `ConfigFile.json` and add the following Json content in there:
+{{< highlight json "style=paraiso-dark">}}
 {
     "cloudURL": "beta.perfectomobile.com",
     "securityToken":"xxxxxxxxxxxx",
-   
-	
 	"appPath":"repository:PATH_TO_IPA",
 	"hostedTestModuleName":"RunnerTests",
 	"isHostedTestModule":true,
-	
-	
 	"devices": [
 			{"deviceName":"00008020-000D2CC42ED8002E"},
 			{"deviceName":"00008101-000B05283081401E"}
@@ -192,22 +211,28 @@ perfectoGradleSettings {
 	"runUnitTests":false,
 	"installationDetails": {
 		"resign": true
-	  },
-	  
+	  },  
   	"numOfDevices": 2
   }
-```
-4. In order to successfully upload files and enable test automation, the following commands needs to be executed:
+{{< /highlight >}}
 
-```
-- name: Upload iOS files to Perfecto and run tests
-  script: |
-      cd PerfectoRunIos
-      gradle perfecto-xctest
-```
+4.  Modify your `codemagic.yaml` file to include a script upload the files to Perfecto
 
-## Sample projects
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Upload iOS files to Perfecto and run tests
+      script: | 
+        cd PerfectoRunIos
+        gradle perfecto-xctest
+{{< /highlight >}}
 
-A sample project that shows how to configure Perfecto integration for real device testing is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/perfecto_sample_project)
+{{</markdown>}}
+{{< /tab >}}
+{{< /tabpane >}}
 
-A sample project that shows how to configure Perfecto integration for **App Automate** for Flutter apps is available [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/perfecto_flutter_sample_project)
+## Get Help and Support with Perfecto
+	
+To test how Perfecto supports Flutter Integration Testing for native mobile applications, [visit their website](https://www.perfecto.io/integrations/flutter) and get access to a [free trial](https://www.perfecto.io/free-trial). Additionally, for video demonstrations and some more information on how to set up Flutter for iOS and Android apps in Perfecto, visit the following documentation pages:
+	 1. [Setting up Flutter for iOS in Perfecto](https://help.perfecto.io/perfecto-help/content/perfecto/automation-testing/flutter-ios.htm)
+	 2. [Setting up Flutter Android in Perfecto](https://help.perfecto.io/perfecto-help/content/perfecto/automation-testing/flutter-android.htm)
+

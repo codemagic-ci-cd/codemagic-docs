@@ -1,37 +1,48 @@
 ---
-title: Emerge integration
+title: Emerge Tools integration
 description: How to integrate your workflows with Emerge using codemagic.yaml
 weight: 11
 ---
 
-**Emerge Tools** helps you monitor and reduce app size with insights for instant savings. It provides continuous monitoring to write smaller, better code by profiling binary size on every pull request. 
+**Emerge Tools** helps you monitor and reduce app size with insights for instant savings. It provides continuous monitoring to write smaller, better code by profiling binary size on every pull request.
 
-## Getting Started with Emerge Tools
-You can get started with Emerge Tools [here](https://www.emergetools.com/) to upload the archive and analyze the binary for its size on every pull request.
+A sample project that shows how to configure Emerge Tools integration is available [in our Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/emerge-tools-integration-demo-project).
 
-## Creating the Emerge API Key
-Custom integrations with Codemagic require an API Key. It can be obtained from your [profile](https://www.emergetools.com/profile) on Emerge's website by clicking the button **Create a new API Key**. 
-
->  Make sure to save the API key, as you cannot view it again on the site.
 
 ## Configuring access to Emerge in Codemagic
 
-Add the API Key under the **environment variables** section in Codemagic. Name the variable as **EMERGE_API_TOKEN** and put it under the group **emerge_credentials**. Then, you can refer to the variable group in `codemagic.yaml` as: 
+To get started with [Emerge Tools](https://www.emergetools.com/), you need to create an API key and save it as an environment variable in Codemagic.
 
+1. Obtain an **API key** from your [Emerge Tools profile](https://www.emergetools.com/profile) by clicking the **Create a new API Key** button. 
+
+{{<notebox>}}
+**Warning:** Make sure to save the API key, as you cannot view it again on the site.
+{{</notebox>}}
+
+2. Open your Codemagic app settings, and go to the **Environment variables** tab.
+3. Enter the desired **_Variable name_**, e.g. `EMERGE_API_TOKEN`.
+4. Copy and paste the API key string as **_Variable value_**.
+5. Enter the variable group name, e.g. **_emergetools_credentials_**. Click the button to create the group.
+6. Make sure the **Secure** option is selected.
+7. Click the **Add** button to add the variable.
+
+8. Add the variable group to your `codemagic.yaml` file
 {{< highlight yaml "style=paraiso-dark">}}
-workflows:
-  ios-workflow:
-    name: iOS Workflow
-    environment:
-      groups:
-        - emerge_credentials
+  environment:
+    groups:
+      - emergetools_credentials
 {{< /highlight >}}
 
+
 ## Fastlane plugin
+
 Emerge has created a plugin for Fastlane that makes it easy to upload iOS builds. You can add it to your project by running:
 
 {{< highlight yaml "style=paraiso-dark">}}
-fastlane add_plugin emerge
+  scripts:
+    - name: Install Emerge Tools Fastlane plugin
+      script: | 
+        fastlane add_plugin emerge
 {{< /highlight >}}
 
 In the `Fastfile`, create a lane that utilizes the `emerge` plugin to upload the archive. You can refer to the complete example given below for uploading the build to Emerge:
@@ -79,30 +90,23 @@ end
 
 This script checks if the current build is building a pull request. If it is a pull request, it takes the source commit of the build and compares it to the build of the base commit hash. Then, it uploads it to Emerge for processing for the size comparison. Otherwise, it uploads the build to Emerge with the type "main".
 
-To use it in your `codemagic.yaml`, use the lane that you created: 
 
-{{< highlight yaml "style=paraiso-dark">}}
-- name: Upload archive to Emerge Tools
-  script: bundle exec fastlane emerge_app_upload
-{{< /highlight >}}
+## Configuring `codemagic.yaml`
 
-> You must upload a base build so Emerge can compare the archive's size differences in subsequent pull requests.
-
-## Codemagic.yaml
-You can upload the iOS build to Emerge Tool as a part of your Codemagic CI/CD workflow to automate the process. Here is an example of the scripts you can add to your `codemagic.yaml` for building the archive and uploading it to Emerge: 
+You can upload the iOS build to Emerge Tool as a part of your Codemagic CI/CD workflow to automate the process. Here is an example of the scripts you can add to your `codemagic.yaml` for building the archive and uploading it to Emerge. Don't forget to upload a base build so Emerge can compare the archive's size differences in subsequent pull requests.
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:
   - name: Bundle install
-     script: | 
-       bundle install
-  - name: Install Emerge Fastlane plugin
-     script: |
-       fastlane add_plugin emerge
+    script: | 
+      bundle install
+  - name: Install Emerge Tools Fastlane plugin
+    script: | 
+      fastlane add_plugin emerge
   - name: Build ipa for distribution
-     script: | 
-       xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
+    script: | 
+      xcode-project build-ipa --project "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
   - name: Upload archive to Emerge Tools
-     script: | 
-       bundle exec fastlane emerge_app_upload
+    script: | 
+      bundle exec fastlane emerge_app_upload
 {{< /highlight >}}

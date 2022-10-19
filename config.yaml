@@ -40,32 +40,68 @@ menu:
           name: Getting started
           weight: 1
 
-        - identifier: yaml
-          name: Codemagic.yaml
+        - identifier: yaml-quick-start
+          name: Quick start guides
           weight: 2
           params:
               preference: 'yaml'
 
-        - identifier: yaml-quick-start
-          name: Quick start guides
+        - identifier: yaml
+          name: Codemagic.yaml
+          weight: 3
+          params:
+              preference: 'yaml'
+
+        - identifier: yaml-basic-configuration
+          name: Basic configuration
           parent: yaml
           weight: 1
+        - identifier: yaml-running-builds
+          name: Running builds
+          parent: yaml
+          weight: 2
         - identifier: yaml-testing
           name: Testing
           parent: yaml
-          weight: 2
+          weight: 3
         - identifier: yaml-code-signing
           name: Code signing
           parent: yaml
-          weight: 3
+          weight: 4
         - identifier: yaml-publishing
           name: Publishing
           parent: yaml
-          weight: 4
+          weight: 5
+        - identifier: yaml-notification
+          name: Notifications
+          parent: yaml
+          weight: 6
+
         - identifier: integrations
           name: Integrations
           parent: yaml
-          weight: 5
+          weight: 7
+        - identifier: knowledge-base
+          name: Advanced configuration
+          weight: 8
+        - identifier: knowledge-git
+          name: Git
+          weight: 2
+          parent: knowledge-base
+        - identifier: knowledge-codemagic
+          name: Codemagic
+          weight: 1
+          parent: knowledge-base
+        - identifier: knowledge-firebase
+          name: Firebase
+          weight: 3
+          parent: knowledge-base
+        - identifier: knowledge-others
+          name: Various
+          weight: 4
+          parent: knowledge-base
+
+
 
         - identifier: flutter
           name: Flutter workflow editor
@@ -74,25 +110,37 @@ menu:
               preference: 'flutter'
 
         - identifier: flutter-configuration
-          name: Build configuration
+          name: Basic configuration
           parent: flutter
           weight: 1
+        - identifier: flutter-running-builds
+          name: Running builds
+          parent: flutter
+          weight: 2
         - identifier: flutter-testing
           name: Testing
           parent: flutter
-          weight: 2
+          weight: 3
         - identifier: flutter-code-signing
           name: Code signing
           parent: flutter
-          weight: 3
+          weight: 4
         - identifier: flutter-publishing
           name: Publishing
           parent: flutter
-          weight: 4
+          weight: 5
+        - identifier: flutter-notification
+          name: Notifications
+          parent: flutter
+          weight: 6
+        
+ 
 
         - identifier: variables
           name: Environment variables
           weight: 4
+          params:
+              hide: true
         - identifier: encrypting
           name: Encrypting sensitive data
           parent: variables
@@ -107,29 +155,36 @@ menu:
         - identifier: configuration
           name: Advanced configuration
           weight: 5
+          params:
+              hide: true
 
         - identifier: knowledge-base
           name: Knowledge base
           weight: 6
+          params:
+              hide: true
 
         - identifier: teams
           name: Teams
           weight: 7
+          params:
+              hide: true
 
         - identifier: rest-api
-          name: API reference
+          name: Codemagic REST API
           weight: 8
 
         - identifier: billing
           name: Billing & Pricing
-          weight: 9
+          weight: 10
 
         - identifier: troubleshooting
           name: Troubleshooting
-          weight: 10
+          weight: 9
 
         - identifier: specs
           name: Software and hardware
+          weight: 11
 
         - identifier: cli
           params:

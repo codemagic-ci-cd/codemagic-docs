@@ -1,175 +1,151 @@
 ---
-title: Building a native iOS app
+title: iOS native apps
 description: How to build an iOS app with codemagic.yaml
-weight: 6
+weight: 3
 aliases:
-  - '../yaml/building-a-native-ios-app'
+  - '/yaml/building-a-native-ios-app'
   - /getting-started/building-a-native-ios-app
+  - /yaml-basic-configuration/building-a-native-ios-app
 ---
 
-## Setting up an iOS project
+This guide will illustrate all of the necessary steps to successfully build and publish a native iOS app with Codemagic. It will cover the basic steps such as build versioning, code signing and publishing.
 
-The apps you have available on Codemagic are listed on the Applications page. Click **Add application** to add a new app.
+You can find a complete project showcasing these steps in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ios/ios-automatic-code-signing-demo-project).
 
-1. On the Applications page, click **Set up build** next to the app you want to start building. 
-2. On the popup, select **iOS App** as the project type and click **Continue**.
-3. Create a [`codemagic.yaml`](./yaml) file and add in it the commands to build, test and publish your project. See the full iOS workflow example [below](#ios-workflow-example).
-4. Commit the configuration file to the root of your repository.
-5. Back in app settings in Codemagic, scan for the `codemagic.yaml` file by selecting a **branch** to scan and clicking the **Check for configuration file** button at the top of the page. Note that you can have different configuration files in different branches.
-6. If a `codemagic.yaml` file is found in that branch, you can click **Start your first build** and select the **branch** and **workflow** to build.
-7. Finally, click **Start new build** to build the app.
 
-{{<notebox>}}
-**Tip**
+## Adding the app to Codemagic
+{{< include "/partials/quickstart/add-app-to-codemagic.md" >}}
+## Creating codemagic.yaml
+{{< include "/partials/quickstart/create-yaml-intro.md" >}}
 
-Note that you need to set up a [webhook](../building/webhooks) for automatic build triggering. Click the **Create webhook** button on the right sidebar in app settings to add a webhook (not available for apps added via SSH/HTTP/HTTPS).
+## Code signing
 
-{{</notebox>}}
-
-## Building an unsigned native iOS app (.app)
-
-For building an unsigned iOS app (.app), you need to run the following command in the scripts section:
-
-```yaml
-- xcodebuild build -workspace "MyXcodeWorkspace.xcworkspace" -scheme "MyScheme" CODE_SIGN_INDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
-```
-
-If you don't have a workspace, use `-project "MyXcodeProject.xcodeproj"` instead of the `-workspace "MyXcodeWorkspace.xcworkspace"` option.
-
-Your artifact will be generated at the default Xcode path. You can access it by adding the following pattern in the `artifacts` section of `codemagic.yaml`:
-
-```yaml
-$HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-```
-If you have Xcode Debugging Symbols enabled, the dSYM file will be generated in the same directory as the app and can be accessed with the following artifact pattern:
-
-```yaml
-$HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-```
-Configuring the yaml file like the following creates a zip file and **.app** inside it:
-
-```yaml
-workflows:
-    simulator-native-ios:
-        name: iOS simulator build
-        max_build_duration: 120
-        instance_type: mac_mini
-        environment:
-            vars:
-               XCODE_WORKSPACE: "your_workspace_name.xcworkspace" # <-- Put the name of your Xcode workspace here
-               XCODE_SCHEME: "your_workspace_name" # <-- Put the name of your Xcode scheme here
-            xcode: 13.0
-            cocoapods: default
-        scripts:
-            - name: Install CocoaPods dependencies
-              script: |
-                pod install
-            - name: Build ipa for distribution
-              script: |
-                xcodebuild build -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=15.4' -configuration Debug CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO 
-        artifacts:
-            - /tmp/xcodebuild_logs/*.log
-            - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-            - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-
-```
-
-## Building a native iOS app archive (.ipa)
+All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
 
 {{<notebox>}}
-Codemagic uses the [xcode-project](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/README.md#xcode-project) to prepare iOS application code signing properties for build.
+**Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
 {{</notebox>}}
 
-For building an archived iOS app (.ipa) from your Xcode project, you need to run the following command in the scripts section:
+{{< include "/partials/quickstart/code-signing-ios.md" >}}
 
-```yaml
-- xcode-project build-ipa --project "MyXcodeProject.xcodeproj" --scheme "MyScheme"
-```
+## Configure scripts to build the app
+Add the following scripts to your `codemagic.yaml` file in order to prepare the build environment and start the actual build process.
+In this step you can also define the build artifacts you are interested in. These files will be available for download when the build finishes. For more information about artifacts, see [here](../yaml/yaml-getting-started/#artifacts).
 
-You can also build an archive from your Xcode workspace:
 
-```yaml
-- xcode-project build-ipa --workspace "MyXcodeWorkspace.xcworkspace" --scheme "MyScheme"
-```
-
-Please check [Codemagic CLI tools documentation](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#build-ipa) to learn about more optional arguments to `xcode-project build-ipa`.
-
-By default, your artifacts will be generated into `build/ios/ipa` but you can specify a different location using the [`--ipa-directory`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/build-ipa.md#--ipa-directoryipa_directory) option. The Xcode build log can be made available with the `/tmp/xcodebuild_logs/*.log` pattern and the dSYM file will be still available at the default Xcode path.
-
-```yaml
+{{< highlight yaml "style=paraiso-dark">}}
+ios-native:
+  environment:
+    vars:
+      BUNDLE_ID: "io.codemagic.sample.iosnative"
+      XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Name of your Xcode workspace
+      XCODE_SCHEME: "CodemagicSample" # <-- Name of your Xcode scheme
+scripts:
+  # ...
+  - name: Build ipa for distribution
+    script: | 
+      xcode-project build-ipa \
+        --workspace "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
+        --scheme "$XCODE_SCHEME"
 artifacts:
   - build/ios/ipa/*.ipa
   - /tmp/xcodebuild_logs/*.log
+  - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
   - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-```
-
-{{<notebox>}}Read more about different schemes in [Apple documentation](https://help.apple.com/xcode/mac/current/#/dev0bee46f46).{{</notebox>}} 
-
-## Testing, code signing and publishing an iOS app
-
-To test, code sign and publish an iOS app:
-
-* The code for testing an iOS app also goes under `scripts`, before build commands. An example for testing an iOS app can be found [here](../yaml-testing/testing/#native-ios).
-* All iOS applications need to be signed before release. A full example of iOS code singing with YAML is available [here](../code-signing-yaml/signing-ios).
-* All generated artifacts can be published to external services. Script examples are available under the [Publishing section](../publishing-yaml/distribution/).
-
-## iOS workflow example
+{{< /highlight >}}
 
 {{<notebox>}}
-You can find an up-to-date codemagic.yaml iOS workflow in Codemagic Sample Projects for [automatic code signing](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/ios/ios-automatic-code-signing-demo-project/codemagic.yaml) and [manual code signing](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/ios/ios-manual-code-signing-demo-project/codemagic.yaml).
+**Note**: If you don't have a workspace, use `--project "MyXcodeProject.xcodeproj"` instead of the `--workspace "MyXcodeWorkspace.xcworkspace"` option.
 {{</notebox>}}
 
-The following example shows a workflow that can be used to publish your iOS app to App Store Connect.
 
-```yaml
+## Build versioning
+
+If you are going to publish your app to App Store, each uploaded artifact must have a new version. Codemagic allows you to easily automate this process and increment the version numbers for each build. For more information and details, see [here](../configuration/build-versioning).
+
+{{< include "/partials/quickstart/build-versioning-ios.md" >}}
+
+## Publishing
+
+Codemagic offers a wide array of options for app publishing and the list of partners and integrations is continuously growing. For the most up-to-date information, check the guides in the **Configuration > Publishing** section of these docs.
+To get more details on the publishing options presented in this guide, please check the [Email publishing](../yaml-publishing/email) and the [App Store Connect](../yaml-publishing/app-store-connect) publishing docs.
+
+#### Email publishing
+{{< include "/partials/quickstart/publishing-email.md" >}}
+
+#### Publishing to App Store
+{{< include "/partials/quickstart/publishing-app-store.md" >}}
+
+
+## Conclusion
+Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to build, code sign, automatically version and publish your project using Codemagic CI/CD.
+Save your work, commit the changes to the repository, open the app in the Codemagic UI and start the build to see it in action.
+
+
+Your final `codemagic.yaml` file should look something like this:
+
+{{< highlight yaml "style=paraiso-dark">}}
 workflows:
-  ios-workflow:
-    name: ios_workflow
+  ios-native-workflow:
+    name: iOS Native
+    max_build_duration: 120
+    instance_type: mac_mini_m1
+    integrations:
+      app_store_connect: codemagic
     environment:
-      groups:
-        - app_store_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY, CERTIFICATE_PRIVATE_KEY)
-        - ios_config # <-- (Includes APP_STORE_APP_ID)
-       # Add the group environment variables in Codemagic UI (either in Application/Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: io.codemagic.sample.iosnative
       vars:
-        XCODE_WORKSPACE: "YOUR_WORKSPACE_NAME.xcworkspace"  # PUT YOUR WORKSPACE NAME HERE
-        XCODE_SCHEME: "YOUR_SCHEME_NAME" # PUT THE NAME OF YOUR SCHEME HERE
+        BUNDLE_ID: "io.codemagic.sample.iosnative"
+        XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
+        XCODE_SCHEME: "CodemagicSample" # <-- Put the name of your Xcode scheme here
+        APP_ID: 1555555551
       xcode: latest
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: master
-          include: true
-          source: true
     scripts:
-      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
-        script: |
-          keychain initialize
-      - name: Fetch signing files
-        script: |
-          app-store-connect fetch-signing-files $(xcode-project detect-bundle-id) --type IOS_APP_STORE --create
-      - name: Add certificates to keychain
-        script: |
-          keychain add-certificates 
-      - name: Increment build number
-        script: agvtool new-version -all $(($BUILD_NUMBER +1))
-      - name: Set up code signing settings on Xcode project
+      - name: Install CocoaPods dependencies
+        script: | 
+          pod install
+      - name: Set up provisioning profiles settings on Xcode project
         script: xcode-project use-profiles
+      - name: Increment build number
+        script: | 
+          cd $CM_BUILD_DIR
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
+          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build ipa for distribution
-        script: xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+        script: | 
+          xcode-project build-ipa \
+            --workspace "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
     publishing:
+      email:
+        recipients:
+          - user_1@example.com
+          - user_2@example.com
+        notify:
+          success: true
+          failure: false
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY      # Contents of the API key
-        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER    # Alphanumeric value that identifies the API key
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID      # Alphanumeric value that identifies who created the API key
-        submit_to_testflight: false        # Optional boolean, defaults to false. Whether or not to submit the uploaded build to TestFlight to automatically enroll your build to beta testers.
-      # beta_groups:                                  # Specify the names of beta tester groups that will get access to the build once it has passed beta review. 
-      #     - group name 1
-      #     - group name 2
- 
-```
+        auth: integration
+
+        # Configuration related to TestFlight (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_testflight: true
+        beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+          - group name 1
+          - group name 2
+
+        # Configuration related to App Store (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_app_store: false
+{{< /highlight >}}
+
+## Next steps
+{{< include "/partials/quickstart/next-steps.md" >}}

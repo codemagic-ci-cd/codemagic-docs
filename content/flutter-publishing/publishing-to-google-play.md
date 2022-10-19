@@ -2,13 +2,15 @@
 description: Deploy a Flutter app to Google Play using the Flutter workflow editor
 title: Google Play
 weight: 2
-aliases: /publishing/publishing-to-google-play
+aliases: 
+  - /publishing/publishing-to-google-play
+  - /flutter-publishing/publishing-to-google-play
 ---
 
 Codemagic enables you to automatically publish your app to the **internal**, **alpha**, **beta** and **production** tracks on Google Play. To do so, you must first [set up Android code signing](../code-signing/android-code-signing/ 'Android code signing') and then configure publishing to Google Play.
 
 {{<notebox>}}
-This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Publishing to Google Play using codemagic.yaml](../yaml-publishing/google-play).
+**Note:** This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Publishing to Google Play using codemagic.yaml](../yaml-publishing/google-play).
 {{</notebox>}}
 
 ## Requirements
@@ -59,7 +61,7 @@ Before releasing the app to Google Play, ensure that it meets [Google Play's bes
 Once you make all the preparations as described [above](../publishing/publishing-to-google-play/#requirements) and configure publishing to Google Play, Codemagic will automatically distribute the app to Google Play every time you build the workflow.
 
 {{<notebox>}}
-The very first version of the app must be added to Google Play manually. You can download the **app_release.aab** from the build artifacts. In addition, each uploaded binary must have a different version; see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic.
+**Note:** The very first version of the app must be added to Google Play manually. You can download the **app_release.aab** from the build artifacts. In addition, each uploaded binary must have a different version; see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic.
 {{</notebox>}}
 
 1. Navigate to the Distribution section in app settings.

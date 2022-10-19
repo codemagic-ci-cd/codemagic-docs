@@ -1,5 +1,5 @@
 ---
-title: Builds
+title: Builds API
 weight: 3
 ---
 
@@ -10,10 +10,10 @@ APIs for managing builds are currently available for developers to preview. Duri
 `POST /builds`
 
 {{<notebox>}}
-Note that the workflow and branch information is passed with the curl request when starting builds from an API request. Any configuration related to triggers or branches in Flutter workflow editor or codemagic.yaml is ignored.
+**Note:** The workflow and branch information is passed with the curl request when starting builds from an API request. Any configuration related to triggers or branches in Flutter workflow editor or codemagic.yaml is ignored.
 {{</notebox>}}
 
-### Parameters
+#### Parameters
 
 | **Name**      | **Type** | **Description** |
 | ------------- | -------- | --------------- |
@@ -22,20 +22,30 @@ Note that the workflow and branch information is passed with the curl request wh
 | `branch`      | `string` | Optional. The branch name. Either `branch` or `tag` is **required**. |
 | `tag`         | `string` | Optional. The tag name. Either `branch` or `tag` is **required**. |
 | `environment` | `object` | Optional. Specify environment variables, variable groups, and software versions to override or define in workflow settings. | 
+| `labels`      | `list`   | Optional. Specify labels to be included for the build in addition to existing labels. |
 
-### Example
 
-```bash
-curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '{"appId": "<app_id>","workflowId": "<workflow_id>","branch": "<git_branch_name>"}' https://api.codemagic.io/builds
-```
+#### Example
 
-#### Pass environment variables and software versions
+{{< highlight bash "style=paraiso-dark">}}
+  curl -H "Content-Type: application/json" \
+       -H "x-auth-token: <API Token>" \
+       --data '{
+         "appId": "<app_id>",
+         "workflowId": "<workflow_id>",
+         "branch": "<git_branch_name>"
+       }' \
+       https://api.codemagic.io/builds
+{{< /highlight >}}
 
-```yaml
+#### Pass custom build parameters
+
+{{< highlight json "style=paraiso-dark">}}
 {
   "appId": "5c9c064185dd2310123b8e96",
   "workflowId": "release",
   "branch": "master",
+  "labels": ["foo", "bar"],
   "environment": {
     "variables": {
       "ENVIRONMENT_VARIABLE_1": "...",
@@ -51,20 +61,24 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --data '
     }
   }
 }
-```
+{{< /highlight >}}
 
-### Response
+#### Response
 
-The request returns the ID of the started build in JSON as `{"buildId":"5fabc6414c483700143f4f92"}`.
+{{< highlight json "style=paraiso-dark">}}
+  {
+    "buildId":"5fabc6414c483700143f4f92"
+  }
+{{< /highlight >}}
 
 
-## Get list of builds
+## Get a list of builds
 
 `GET /builds`
 
 Returns information about builds from the Codemagic build history. Filters are applicable.
 
-### Parameters
+#### Parameters
 
 | **Name**      | **Type** | **Description** |
 | ------------- | -------- | --------------- |
@@ -73,23 +87,25 @@ Returns information about builds from the Codemagic build history. Filters are a
 | `branch`      | `string` | **Optional.** The branch name. |
 | `tag`         | `string` | **Optional.** The tag name. |
 
-### Example
+#### Example
 
-```bash
-curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/builds?appId=<app_id>&workflowId=<workflow_id>&branch=<branch_name>&tag=<tag_name>
-```
+{{< highlight bash "style=paraiso-dark">}}
+  curl -H "Content-Type: application/json" \
+       -H "x-auth-token: <API Token>" \
+       --request GET https://api.codemagic.io/builds?appId=<app_id>&workflowId=<workflow_id>&branch=<branch_name>&tag=<tag_name>
+{{< /highlight >}}
 
-### Response
+#### Response
 
-```yaml
+{{< highlight json "style=paraiso-dark">}}
 {
   "applications": [
     {
-    "_id": "5d85eaa0e941e00019e81bc2",
-    "appName": "counter_flutter",
-    ...
+      "_id": "5d85eaa0e941e00019e81bc2",
+      "appName": "counter_flutter",
+      ...
     }
-   ],
+  ],
   "builds": [
     {
       "_id": "5ec8eea2261f342603f4d0bc",
@@ -123,39 +139,27 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
     ...
   ]
 }
-```
+{{< /highlight >}}
 
 ## Get build status
 
 `GET /builds/:id`
 
-Returns the build information of an already running build on Codemagic.
+Returns the build information of an already running build on Codemagic. **Status** will be one of:
 
-| **Status**  |
-| ------------- | 
-| `building`    | 
-| `canceled`    |
-| `finishing`   | 
-| `finished`    | 
-| `failed`      | 
-| `fetching`    |
-| `preparing`   |
-| `publishing`  |
-| `queued`      | 
-| `skipped`     |   
-| `testing`     |
-| `timeout`     |
-| `warning`     |
+`building`, `canceled`, `finishing`, `finished`, `failed`, `fetching`, `preparing`, `publishing`, `queued`, `skipped`, `testing`, `timeout`, `warning`
 
-### Example
+#### Example
 
-```bash
-curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request GET https://api.codemagic.io/builds/<build_id>
-```
+{{< highlight bash "style=paraiso-dark">}}
+  curl -H "Content-Type: application/json" \
+       -H "x-auth-token: <API Token>" \
+       --request GET https://api.codemagic.io/builds/<build_id>
+{{< /highlight >}}
 
-### Response
+#### Response
 
-```yaml
+{{< highlight json "style=paraiso-dark">}}
 {
   "application": {
     "_id": "5d85eaa0e941e00019e81bc2",
@@ -168,20 +172,22 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --reques
     "workflowId": "5d85f242e941e00019e81bd2"
   }
 }
-```
+{{< /highlight >}}
 
 ## Cancel build
 
 `POST /builds/:id/cancel`
 
-### Example
+#### Example
 
-```bash
-curl -H "Content-Type: application/json" -H "x-auth-token: <API Token>" --request POST https://api.codemagic.io/builds/<build_id>/cancel
-```
+{{< highlight bash "style=paraiso-dark">}}
+  curl -H "Content-Type: application/json" \
+       -H "x-auth-token: <API Token>" \
+       --request POST https://api.codemagic.io/builds/<build_id>/cancel
+{{< /highlight >}}
 
 The request will return `208 Already Reported` if the build has already finished.
 
 {{<notebox>}}
-If you have multiple similar workflows for the same project, you can configure your workflows dynamically using API calls, read more about it <a href="https://blog.codemagic.io/dynamic-workflows-with-codemagic-api/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','dynamic-workflows-with-codemagic-api')">here</a>.
+**Note:** If you have multiple similar workflows for the same project, you can configure your workflows dynamically using API calls, read more about it <a href="https://blog.codemagic.io/dynamic-workflows-with-codemagic-api/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','dynamic-workflows-with-codemagic-api')">here</a>.
 {{</notebox>}}

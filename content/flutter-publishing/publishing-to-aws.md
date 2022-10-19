@@ -16,7 +16,7 @@ Now, each time you build the workflow, the app artifact will be published to you
 
 Note that the minimal required permission policy attached to the AWS IAM is as follows:
 
-```JSON
+{{< highlight json "style=paraiso-dark">}}
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -28,4 +28,4 @@ Note that the minimal required permission policy attached to the AWS IAM is as f
         }
     ]
 }
-```
+{{< /highlight >}}

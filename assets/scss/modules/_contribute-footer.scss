@@ -1,0 +1,18 @@
+#contribute-footer {
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    align-items: center;
+    gap: 50px;
+
+    h2 {
+        font-size: 20px;
+        margin: 0 0 1em;
+    }
+    p {
+        margin: 1em 0;
+    }
+    .content {
+        padding: 0px 0 10px 0 ;
+    }
+}

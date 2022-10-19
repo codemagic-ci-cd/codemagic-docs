@@ -1,6 +1,6 @@
 ---
 title: Signup
-weight: 1
+weight: 1 
 aliases:
 ---
 
@@ -19,7 +19,7 @@ Enter your email address and name and click **Create your account** to get start
 You will be sent a new authentication key every time you need to log in again.
 ## Connecting several repository integrations
 
-You can connect several repository accounts (GitHub, GitLab, Bitbucket) with one Codemagic account or Codemagic team (read more about managing team integrations [here](../teams/teams/#managing-team-integrations)).
+You can connect several repository accounts (GitHub, GitLab, Bitbucket) with one Codemagic account or Codemagic team (read more about managing team integrations [here](../getting-started/teams/#managing-team-integrations)).
 
 1. Log in to Codemagic with the account you signed up.
 2. Click on your account avatar at the bottom left and open **User settings**.

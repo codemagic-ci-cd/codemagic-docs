@@ -1,10 +1,8 @@
 ---
 title: Common Google Play errors
+description: Troubleshooting common Google Play errors
 weight: 4
 ---
-
-
-## Troubleshooting common Google Play errors
 
 Codemagic enables you to automatically publish your app to the internal, alpha, beta, production or custom tracks on Google Play. While publishing to Google play you may encounter errors if the application does not meet the release criteria. You can see the explanations of some of the common errors:
 
@@ -18,7 +16,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    6. Given the service account access to your application
    7. Invited users to the service account
    
-   Checkout [this](../yaml-publishing/google-play) guide for codemagic.yaml or this guide for [Workflow editor](../publishing/publishing-to-google-play).
+   Checkout [this guide](../knowledge-base/google-services-authentication/#google-play) for codemagic.yaml or this guide for [Workflow editor](../flutter-publishing/publishing-to-google-play.md).
 
 ### The current user has insufficient permissions to perform the requested operation. status: PERMISSION_DENIED
    - This error may have caused due to Account permission issues. Try setting admin access for Account permissions on google play console. 
@@ -33,7 +31,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - Try to upload .aab by incrementing the version code.
 
 ### APK specifies a version code that has already been used
-   - Check version and version code. This error is possible when your version code is the same as the .aab already uploaded on google play.
+   - Check version and version code. This error is possible when your version code is the same as the `.aab` already uploaded on google play.
 
 ### Cannot update a published APK
    - If an app has already been sent to a specific track, you cannot re-upload it. 
@@ -41,7 +39,7 @@ This could be due to an invalid JSON file or permission issues with the service 
    - This error is possible when your version or version code is the same as the apk/aab already uploaded on google play.
 
 ### Your scoped storage permission declaration needs to be updated
-   - Google requires you to declare your [storage permissions](https://developer.android.com/about/versions/11/privacy/storagehttps://www.xda-developers.com/android-11-all-files-access-permission-form/)
+   - Google requires you to declare your [storage permissions](https://developer.android.com/about/versions/11/privacy/storage)
    - You will have to update your app accordingly to be able to publish to Google Play Store.
 
 ### You cannot rollout this release because it does not allow any existing users to upgrade to the newly added APKs
