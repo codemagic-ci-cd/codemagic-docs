@@ -1,12 +1,12 @@
 ---
-title: Code signing for personal accounts
-description: How to set up code signing for personal accounts
+title: Code signing without using Code Signing Identities
+description: How to set up code signing without the Code Signing Identities feature
 weight: 4
 aliases: /code-signing-yaml/code-signing-personal-accounts
 ---
 <br>
 {{<notebox>}}
-**Note**: This guide is written specifically for users with `Personal accounts`. While these methods can certainly be applied to workflows in `Team accounts`, we encourage Team account users to make use of the greatly simplified [iOS Code Signing](../yaml-code-signing/signing-ios), [MacOS Code Signing](../yaml-code-signing/signing-macos) and [Android Code Signing](../yaml-code-signing/signing-android) methods.
+**Note**: This guide is written specifically for users who do not wish to use the **Code Signing Identities** feature. While these methods can certainly be applied to all workflows, we encourage users to make use of the greatly simplified [iOS Code Signing](../yaml-code-signing/signing-ios), [MacOS Code Signing](../yaml-code-signing/signing-macos) and [Android Code Signing](../yaml-code-signing/signing-android) methods.
 {{</notebox>}}
 
 
@@ -17,11 +17,11 @@ All iOS, macOS and Android applications have to be digitally signed before they 
 {{< tabpane >}}
 
 {{< tab header="Android" >}}
-{{< include "/partials/code-signing-personal-android.md" >}}
+{{< include "/partials/code-signing-without-identities-android.md" >}}
 {{< /tab >}}
 
 {{< tab header="iOS" >}}
-{{< include "/partials/code-signing-personal-ios.md" >}}
+{{< include "/partials/code-signing-without-identities-ios.md" >}}
 {{< /tab >}}
 
 {{< tab header="MacOS" >}}

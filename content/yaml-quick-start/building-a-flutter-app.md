@@ -32,7 +32,7 @@ You can simultaneously set up workflows both in `codemagic.yaml` and the Workflo
 All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
 
 {{<notebox>}}
-**Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
+**Note**: This guide is written specifically for users who wish to use the **Code Signing Identities** feature. If you want to use use alternative Code signing methods, please check the [Code signing without identities](../yaml-code-signing/code-signing-without-identities) guide.
 {{</notebox>}}
 
 {{< tabpane >}}
@@ -105,7 +105,7 @@ In this step you can also define the build artifacts you are interested in. Thes
 {{</notebox>}}
 <br>
 {{<notebox>}}
-**Note**: To build a universal `.apk` from the existing `.aab` bundle with user-specified keys, configure the environment variables as explained [here](../yaml-code-signing/code-signing-personal) and add the following script after the build step:
+**Note**: To build a universal `.apk` from the existing `.aab` bundle with user-specified keys, configure the environment variables as explained [here](../yaml-code-signing/code-signing-without-identities) and add the following script after the build step:
 {{< highlight yaml>}}
   scripts:
     - name: Build universal apk

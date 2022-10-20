@@ -30,7 +30,7 @@ This guide will illustrate all of the necessary steps to successfully build and 
 All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
 
 {{<notebox>}}
-**Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
+**Note**: This guide is written specifically for users who wish to use the **Code Signing Identities** feature. If you want to use use alternative Code signing methods, please check the [Code signing without identities](../yaml-code-signing/code-signing-without-identities) guide.
 {{</notebox>}}
 
 #### Generating a keystore
@@ -88,7 +88,7 @@ Default environment variables are assigned by Codemagic for the values on the bu
 
 Each Unity build will have to activate a valid Unity Plus or a Unity Pro license using your **Unity email**, **Unity serial number** and the **Unity password**.
 
-1. If you are using a Team in Codemagic, you can add these as global environment variables for your team by clicking on **Teams > your Team name** and then clicking on **Global variables and secrets**. Otherwise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
+1. You can add these as global environment variables for your personal account by navigating to **Teams > Personal Team** or team by navigating to **Teams > Your Team Name** and then clicking on **Global variables and secrets**. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
 2. Enter `UNITY_EMAIL` as the **_Variable name_**.
 3. Enter the email address used with your Unity ID as **_Variable value_**.
@@ -374,7 +374,7 @@ To distribute your app to one of their stores, you can use the **Oculus Platform
 ##### Configure Oculus credentials
 Follow [the official guide](https://developer.oculus.com/resources/publish-reference-platform-command-line-utility/#credentials) to obtain either a **Oculus app ID / App secret** combination or an **Oculust user token**.
 
-1. If you are using a Team in Codemagic, you can add these as global environment variables for your team by clicking on **Teams > your Team name** and then clicking on **Global variables and secrets**. Otherwise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
+1. You can add these as global environment variables for your personal account by navigating to **Teams > Personal Team** or team by navigating to **Teams > Your Team Name** and then clicking on **Global variables and secrets**. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
 2. Enter `OCULUS_APP_ID` as the **_Variable name_**.
 3. Enter the corresponding value as **_Variable value_**.

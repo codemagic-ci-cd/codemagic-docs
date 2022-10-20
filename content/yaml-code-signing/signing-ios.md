@@ -8,7 +8,7 @@ aliases: [../code-signing-yaml/signing, /code-signing-yaml/signing-ios, code-sig
 All iOS applications have to be digitally signed before they can be installed on real devices or made available to the public.
 
 {{<notebox>}}
-**Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user or if you want to use alternative Code signing methods, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
+**Note**: This guide is written specifically for users who wish to use the **Code signing Identities** feature. If you want to use alternative Code signing methods, please check the [Code signing without identities](../yaml-code-signing/code-signing-without-identities) guide.
 {{</notebox>}}
 
 <br> 

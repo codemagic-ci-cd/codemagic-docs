@@ -50,7 +50,7 @@ If you revoke access to previously shared repositories, you will still see all y
 
 ## Disconnecting Codemagic GitHub App integration
 
-The Codemagic CI/CD GitHub App integration can be disabled by clicking **Manage integration > Disconnect** in **User settings > Integrations > GitHub App** for your personal account or in **Team settings > Team Integrations > GitHub App** to disconnect it from the team. This will delete the GitHub access token that Codemagic had stored which means we no longer interact with GitHub.
+The Codemagic CI/CD GitHub App integration can be disabled by clicking **Manage integration > Disconnect** in **Teams > Personal Team > Integrations > GitHub App** for your personal account or in **Teams > Your Team Name > Team Integrations > GitHub App** to disconnect it from the team. This will delete the GitHub access token that Codemagic had stored which means we no longer interact with GitHub.
 
 To completely remove the integration, **uninstall** the Codemagic CI/CD app and revoke the authorization in GitHub. Visit [https://github.com/settings/installations](https://github.com/settings/installations) for personal accounts or github.com/organizations/your-organization/settings/installations for organization accounts to check whether Codemagic CI/CD is listed both under installed and authorized GitHub Apps.
 
@@ -59,6 +59,6 @@ To completely remove the integration, **uninstall** the Codemagic CI/CD app and 
 Here are some tips on what to check if you can't see your repository listed in Codemagic or it's shown as unavailable.
 
 * If you chose to grant access to **select repositories only** as opposed to all repositories when setting up the GitHub App, make sure you have also granted access to the repository in question. Click **Manage integration > Configure** in team or user integrations to configure repository access settings.
-* Your personal Codemagic account and each team have separate integrations. Make sure you have connected the GitHub App integration to the right team or in your user settings.
+* Your personal Codemagic account and each team have separate integrations. Make sure you have connected the GitHub App integration to the right team.
 * If you build apps from different GitHub accounts or organizations, make sure that you have installed the GitHub App on the account that has the repository available. Click **Manage integration > Configure** to see which accounts have been connected. You can also visit [https://github.com/settings/installations](https://github.com/settings/installations) for personal accounts or github(dot)com/organizations/your-organization/settings/installations for organization accounts to check whether Codemagic CI/CD is listed both under installed and authorized GitHub Apps.
 * Private GitHub repositories can be shared with Codemagic only when the GitHub App is installed on the account that owns the repository. If you are a collaborator to a private repository, please ask the repository owner to install Codemagic GitHub App in GitHub: [https://github.com/apps/codemagic-ci-cd](https://github.com/apps/codemagic-ci-cd)
