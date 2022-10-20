@@ -1,13 +1,10 @@
 ---
-title: Code signing without using Code Signing Identities
-description: How to set up code signing without the Code Signing Identities feature
+title: Alternative code signing methods
+description: How to set up code signing without using code signing identities
 weight: 4
 aliases: /code-signing-yaml/code-signing-personal-accounts
 ---
 <br>
-{{<notebox>}}
-**Note**: This guide is written specifically for users who do not wish to use the **Code Signing Identities** feature. While these methods can certainly be applied to all workflows, we encourage users to make use of the greatly simplified [iOS Code Signing](../yaml-code-signing/signing-ios), [MacOS Code Signing](../yaml-code-signing/signing-macos) and [Android Code Signing](../yaml-code-signing/signing-android) methods.
-{{</notebox>}}
 
 
 All iOS, macOS and Android applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. This document will guide you through the necessary steps to sign your app if your workflows are configured to use the `codemagic.yaml` file. If you are using our `Flutter Workflow Editor`, please consult the relevant guides for [iOS](../flutter-code-signing/ios-code-signing), [Android](../flutter-code-signing/ios-code-signing) or [macOS](../flutter-code-signing/macos-code-signing).

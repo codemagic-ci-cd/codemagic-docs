@@ -7,9 +7,6 @@ aliases: /code-signing-yaml/signing-android
 
 All Android applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. 
 
-{{<notebox>}}
-**Note**: This guide is written specifically for users who wish to use the **Code Signing Identities** feature. If you want to use use alternative Code signing methods, please check the [Code signing without identities](../yaml-code-signing/code-signing-without-identities) guide.
-{{</notebox>}}
 
 <br>
 
