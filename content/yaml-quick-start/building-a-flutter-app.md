@@ -101,7 +101,7 @@ In this step you can also define the build artifacts you are interested in. Thes
 {{</notebox>}}
 <br>
 {{<notebox>}}
-**Note**: To build a universal `.apk` from the existing `.aab` bundle with user-specified keys, configure the environment variables as explained [here](../yaml-code-signing/code-signing-without-identities) and add the following script after the build step:
+**Note**: To build a universal `.apk` from the existing `.aab` bundle with user-specified keys, configure the environment variables as explained [here](../yaml-code-signing/alternative-code-signing-methods) and add the following script after the build step:
 {{< highlight yaml>}}
   scripts:
     - name: Build universal apk
