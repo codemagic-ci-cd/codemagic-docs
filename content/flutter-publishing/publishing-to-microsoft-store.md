@@ -52,7 +52,7 @@ Once you configure publishing to Microsoft Store, Codemagic will automatically d
 
 1. Navigate to the Distribution section in app settings.
 2. Click **Microsoft Partner Center** to expand the option.
-3. Choose the **tenant** you have configured in your team settings.
+3. Choose the **tenant** you have configured in your team or personal account settings.
 4. Provide the **Store ID** of the application that has been set up in the Partner Center.
 5. Provide the necessary package arguments for publishing (**Package name**, **Publisher ID**, **Publisher name**)
    These values can be found in [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/home) when navigating to **Apps and games > [Your application] > Product Identity**.
