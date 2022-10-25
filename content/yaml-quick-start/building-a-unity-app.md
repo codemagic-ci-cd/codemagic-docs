@@ -100,7 +100,7 @@ Code signing is not required when creating Windows Unity apps.
 
 Each Unity build will have to activate a valid Unity Plus or a Unity Pro license using your **Unity email**, **Unity serial number** and the **Unity password**.
 
-1. You can add these as global environment variables for your personal account by navigating to **Teams > Personal Team** or team by navigating to **Teams > Your Team Name** and then clicking on **Global variables and secrets**. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
+1. You can add these as global environment variables for your personal account by navigating to **Teams > Personal Account** or team by navigating to **Teams > Your Team Name** and then clicking on **Global variables and secrets**. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
 2. Enter `UNITY_EMAIL` as the **_Variable name_**.
 3. Enter the email address used with your Unity ID as **_Variable value_**.

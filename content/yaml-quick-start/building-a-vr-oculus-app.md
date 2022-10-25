@@ -84,7 +84,7 @@ Default environment variables are assigned by Codemagic for the values on the bu
 
 Each Unity build will have to activate a valid Unity Plus or a Unity Pro license using your **Unity email**, **Unity serial number** and the **Unity password**.
 
-1. You can add these as global environment variables for your personal account by navigating to **Teams > Personal Team** or team by navigating to **Teams > Your Team Name** and then clicking on **Global variables and secrets**. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
+1. You can add these as global environment variables for your personal account by navigating to **Teams > Personal Account** or team by navigating to **Teams > Your Team Name** and then clicking on **Global variables and secrets**. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
 2. Enter `UNITY_EMAIL` as the **_Variable name_**.
 3. Enter the email address used with your Unity ID as **_Variable value_**.
@@ -370,7 +370,7 @@ To distribute your app to one of their stores, you can use the **Oculus Platform
 ##### Configure Oculus credentials
 Follow [the official guide](https://developer.oculus.com/resources/publish-reference-platform-command-line-utility/#credentials) to obtain either a **Oculus app ID / App secret** combination or an **Oculust user token**.
 
-1. You can add these as global environment variables for your personal account by navigating to **Teams > Personal Team** or team by navigating to **Teams > Your Team Name** and then clicking on **Global variables and secrets**. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
+1. You can add these as global environment variables for your personal account by navigating to **Teams > Personal Account** or team by navigating to **Teams > Your Team Name** and then clicking on **Global variables and secrets**. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
 2. Enter `OCULUS_APP_ID` as the **_Variable name_**.
 3. Enter the corresponding value as **_Variable value_**.

@@ -31,7 +31,7 @@ Follow the instructions [here](../knowledge-base/partner-center-authentication) 
 
 ### Step 2. Connecting the Microsoft Partner Center integration for your team/account
 
-The Microsoft Partner Center integration can be enabled in **Teams > Personal Team > Integrations** for personal projects and in **Teams > Your Team Name > Team integrations** for projects shared in the team (if you're the team owner). This allows you to conveniently use the same access credentials for publishing across different apps and workflows.
+The Microsoft Partner Center integration can be enabled in **Teams > Personal Account > Integrations** for personal projects and in **Teams > Your Team Name > Team integrations** for projects shared in the team (if you're the team owner). This allows you to conveniently use the same access credentials for publishing across different apps and workflows.
 
 1. In the list of available integrations, click the **Connect** button for **Partner Center**.
 2. In the **Tenant name** field, provide a name for the set of credentials you are going to set up the integration with. This is for identifying the set of credentials in Codemagic.

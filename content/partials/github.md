@@ -50,7 +50,7 @@ If you revoke access to previously shared repositories, you will still see all y
 
 ## Disconnecting Codemagic GitHub App integration
 
-The Codemagic CI/CD GitHub App integration can be disabled by clicking **Manage integration > Disconnect** in **Teams > Personal Team > Integrations > GitHub App** for your personal account or in **Teams > Your Team Name > Team Integrations > GitHub App** to disconnect it from the team. This will delete the GitHub access token that Codemagic had stored which means we no longer interact with GitHub.
+The Codemagic CI/CD GitHub App integration can be disabled by clicking **Manage integration > Disconnect** in **Teams > Personal Account > Integrations > GitHub App** for your personal account or in **Teams > Your Team Name > Team Integrations > GitHub App** to disconnect it from the team. This will delete the GitHub access token that Codemagic had stored which means we no longer interact with GitHub.
 
 To completely remove the integration, **uninstall** the Codemagic CI/CD app and revoke the authorization in GitHub. Visit [https://github.com/settings/installations](https://github.com/settings/installations) for personal accounts or github.com/organizations/your-organization/settings/installations for organization accounts to check whether Codemagic CI/CD is listed both under installed and authorized GitHub Apps.
 
