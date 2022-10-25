@@ -14,7 +14,7 @@ aliases:
 
 ## Configuring Environment variables
 
-Environment variables are useful for storign various pieces of data and making it available during build time. Typical use cases include credentials, configuration files or API keys that are required for successful building or integration with external services. Besides user defined environment variables, Codemagic also provides numerous useful variables already built-in. You can check the full list [here.](../yaml-basic-configuration/environment-variables).
+Environment variables are useful for storing various pieces of data and making it available during build time. Typical use cases include credentials, configuration files or API keys that are required for successful building or integration with external services. Besides user defined environment variables, Codemagic also provides numerous useful variables already built-in. You can check the full list [here.](../yaml-basic-configuration/environment-variables).
 
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the desired **_Variable name_**.
@@ -119,12 +119,7 @@ workflows:
 
 ## Global variables and secrets
 
-Variable groups can also be defined on the [Teams page](https://codemagic.io/teams). Variable groups defined here are global and can be used in any `codemagic.yaml` workflow and in any application of the team. It is possible to limit variable groups to specific applications by clicking the edit icon next to the group you wish to manage under **Application access**.
-
-{{<notebox>}}
-Global variable groups are only available for Teams. You can read more about teams [here](https://docs.codemagic.io/teams/teams/).
-{{</notebox>}}
-
+Variable groups can also be defined on the [Teams page](https://codemagic.io/teams) for both teams and personal accounts. Variable groups defined here are global and can be used in any `codemagic.yaml` workflow and in any application of the team. It is possible to limit variable groups to specific applications by clicking the edit icon next to the group you wish to manage under **Application access**.
 
 
 ## Environment variable precedence

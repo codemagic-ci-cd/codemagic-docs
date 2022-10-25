@@ -22,10 +22,6 @@ You can find a complete project showcasing these steps in our [Sample projects r
 
 All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
 
-{{<notebox>}}
-**Note**: This guide is written specifically for users with `Team accounts`. If you are a `Personal account` user, please check the [Code signing for Personal accounts](../yaml-code-signing/code-signing-personal) guide.
-{{</notebox>}}
-
 {{< include "/partials/quickstart/code-signing-ios.md" >}}
 
 ## Configure scripts to build the app

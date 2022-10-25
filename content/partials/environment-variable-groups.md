@@ -74,10 +74,6 @@ Global variable groups can be defined on the team settings page (which you can n
 
 By default, variable groups defined here can be used in any codemagic.yaml workflow in any application of the team. It is possible to limit variable groups to specific applications by clicking the edit icon next to the group you wish to manage under **Application access**.
 
-{{<notebox>}}
-Global variable groups are only available for Teams. You can read more about teams [here](https://docs.codemagic.io/teams/teams/).
-{{</notebox>}}
-
 ## Application environment variables
 
 Application variable groups can be defined in the application settings **Environment Variables** tab and can be used in any codemagic.yaml workflow in the application.
@@ -130,7 +126,7 @@ For more information on iOS codesigning check [here](../code-signing-yaml/signin
 To access a variable, add the `$` symbol in front of its name. 
 
 {{<notebox>}}
-**Tip**: If the group of variables is reusable among various applications, they can be defined in Global variables and secrets in Team settings for easier access.
+**Tip**: If the group of variables is reusable among various applications, they can be defined in **Team settings > Global variables and secrets** for easier access.
 {{</notebox>}}
 
 ## Environment variable precedence

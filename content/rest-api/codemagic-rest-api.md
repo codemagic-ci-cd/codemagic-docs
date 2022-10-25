@@ -19,7 +19,7 @@ All API methods require that access token be included in HTTP headers in every c
 x-auth-token: <API Token>
 {{< /highlight >}}
 
-The access token is available in the Codemagic UI under **User settings > Integrations > Codemagic API > Show**.
+The access token is available in the Codemagic UI under **Teams > Personal Account > Integrations > Codemagic API > Show**.
 
 
 ## Rate Limiting
