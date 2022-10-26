@@ -9,7 +9,7 @@ aliases:
 
 Flutter can be integrated into your existing application as a library to render a part of your app’s UI in Flutter. To add a Flutter module to an existing app, please refer to [the official Flutter documentation](https://flutter.dev/docs/development/add-to-app).
 
-Please follow the guides on [native Android](../yaml-quick-start/building-a-native-android-app.md) and on [native iOS](../yaml-quick-start/building-a-native-ios-app.md) to get you started with the project and then modify the workflow as described below to add Flutter modules.
+Please follow the guides on [native Android](../yaml-quick-start/building-a-native-android-app) and on [native iOS](../yaml-quick-start/building-a-native-ios-app) to get you started with the project and then modify the workflow as described below to add Flutter modules.
 
 The examples below show how to build apps containing Flutter modules using `codemagic.yaml`. The examples provided here are inspired by [Flutter add-to-app samples](https://github.com/flutter/samples/tree/master/add_to_app) where the Flutter module directory (referred to as `my_flutter_module` in templates) is on the same level as the host app directory (referred to as `my_host_app`). 
 
