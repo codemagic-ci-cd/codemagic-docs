@@ -18,7 +18,6 @@ workflows:
     # ....
     environment:
       groups:
-        - keystore_credentials
         - google_play
 {{< /highlight >}}
 7. Modify the build script to calculate the build number and use it as gradlew arguments.
