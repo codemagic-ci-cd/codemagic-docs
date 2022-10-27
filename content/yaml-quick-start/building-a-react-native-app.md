@@ -182,7 +182,7 @@ scripts:
       npm install
   - name: Set Android SDK location
     script: | 
-      echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+      echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
   - name: Build Android release
     script: | 
       cd android
@@ -326,7 +326,7 @@ workflows:
           mv ./support-files/build.gradle android/app
       - name: Build Android release
         script: | 
-          LATEST_GOOGLE_PLAY_BUILD_NUMBER=$(google-play get-latest-build-number --package-name '$PACKAGE_NAME')
+          LATEST_GOOGLE_PLAY_BUILD_NUMBER=$(google-play get-latest-build-number --package-name "$PACKAGE_NAME")
           if [ -z LATEST_BUILD_NUMBER ]; then
               # fallback in case no build number was found from google play. Alternatively, you can `exit 1` to fail the build
               UPDATED_BUILD_NUMBER=$BUILD_NUMBER
