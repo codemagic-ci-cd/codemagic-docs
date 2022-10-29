@@ -331,7 +331,7 @@ For non-UI tests or unit tests:
   scripts:
     - name: Test
       script: ./gradlew test
-    test_report: app/build/test-results/**/*.xml
+      test_report: app/build/test-results/**/*.xml
 {{< /highlight >}}
 
 
