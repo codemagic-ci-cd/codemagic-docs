@@ -54,7 +54,7 @@ scripts:
       # gradlew assembleRelease # -> to create the .apk
 
 artifacts:
-  - android/app/build/outputs/**/*.aab
+  - app/build/outputs/**/*.aab
 {{< /highlight >}}
 
 ## Build versioning
@@ -111,7 +111,7 @@ workflows:
           fi
           ./gradlew bundleRelease -PversionCode=$UPDATED_BUILD_NUMBER -PversionName=1.0.$UPDATED_BUILD_NUMBER
     artifacts:
-      - android/app/build/outputs/**/*.aab
+      - app/build/outputs/**/*.aab
     publishing:
       email:
         recipients:
