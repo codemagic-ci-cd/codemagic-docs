@@ -128,7 +128,7 @@ workflows:
           else
             UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
           fi
-          cd android
+          cd $CM_BUILD_DIR/androidApp
           ./gradlew bundleRelease \
             -PversionCode=$UPDATED_BUILD_NUMBER \
             -PversionName=1.0.$UPDATED_BUILD_NUMBER
@@ -163,8 +163,8 @@ workflows:
         bundle_identifier: io.codemagic.kmmsample
       vars:
         APP_ID: 1555555551
-        XCODE_WORKSPACE: "platforms/ios/YOUR_APP.xcworkspace"
-        XCODE_SCHEME: "YOUR_SCHEME"
+        XCODE_WORKSPACE: "iosApp.xcodeproj"
+        XCODE_SCHEME: "iosApp"
     scripts:
       - name: Cocoapods installation
         script: | 
