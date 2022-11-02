@@ -18,7 +18,7 @@ When using the Flutter Workflow Editor, Codemagic automatically adds webhooks to
 
 Under the `events:` section you can specify on which events the builds should be triggered:
 - **push** - a build will be started every time you commit code to any of the tracked branches.
-- **pull** - your workflow is run when a pull request is opened or updated to verify the resulting merge commit.
+- **pull_request** - your workflow is run when a pull request is opened or updated to verify the resulting merge commit.
      
     For triggering pull requests, you can specify whether each branch pattern matches the **source** or the **target** branch of the pull request.
 
