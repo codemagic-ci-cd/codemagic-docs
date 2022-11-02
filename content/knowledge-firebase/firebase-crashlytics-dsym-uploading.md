@@ -41,6 +41,7 @@ As soon as your build finishes successfully, debug symbols are generated. Howeve
 In order to upload the dSYM files to Firebase Crashlytics, add the following script to your `codemagic.yaml` configuration file or to your post-publish script in the Flutter workflow editor: 
 
 {{< highlight yaml "style=paraiso-dark">}}
+publishing:
   scripts:
     - name: Upload debug symbols to Firebase Crashlytics
       script: | 
@@ -68,6 +69,7 @@ If necessary, you can use remote access to the build machine to find the correct
 For Native iOS apps, in the case of using SwiftPackageManager (SPM) instead of CocoaPods, the following script needs to be added in a post-publishing script:
 
 {{< highlight yaml "style=paraiso-dark">}}
+publishing:
   scripts:
     - name: Upload debug symbols to Firebase Crashlytics
       script: | 
