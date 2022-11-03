@@ -64,7 +64,7 @@ In this step you can also define the build artifacts you are interested in. Thes
 
 {{< tab header="iOS" >}}
 {{< highlight yaml "style=paraiso-dark">}}
-  environments:
+  environment:
     vars:
       XCODE_WORKSPACE: "platforms/ios/YOUR_APP.xcworkspace"
       XCODE_SCHEME: "YOUR_SCHEME"
@@ -225,13 +225,14 @@ workflows:
           xcode-project use-profiles
       - name: Increment build number
         script: | 
-          cd $CM_BUILD_DIR
+          cd $CM_BUILD_DIR/ios/App
           LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
           agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build ipa for distribution
         script: | 
-          cd ios/App
-          xcode-project build-ipa --workspace "$XCODE_WORKSPACE" \
+          cd $CM_BUILD_DIR/ios/App
+          xcode-project build-ipa \
+            --workspace "$XCODE_WORKSPACE" \
             --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
