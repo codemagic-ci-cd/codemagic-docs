@@ -47,7 +47,7 @@ In this step you can also define the build artifacts you are interested in. Thes
 
 {{< tab header="iOS" >}}
 {{< highlight yaml "style=paraiso-dark">}}
-  environments:
+  environment:
     vars:
       XCODE_WORKSPACE: "YOUR_APP.xcworkspace"
       XCODE_SCHEME: "YOUR_SCHEME"
