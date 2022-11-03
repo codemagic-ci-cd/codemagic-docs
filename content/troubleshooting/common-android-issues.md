@@ -1,5 +1,6 @@
 ---
 title: Common Android issues
+description: How to overcome common issues building Android mobile apps on Codemagic
 weight: 2
 ---
 

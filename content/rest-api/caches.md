@@ -1,5 +1,6 @@
 ---
 title: Caches API
+description: API to manage app storage cache
 weight: 4
 ---
 

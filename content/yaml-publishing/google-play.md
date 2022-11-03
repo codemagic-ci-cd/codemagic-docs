@@ -1,5 +1,6 @@
 ---
-title: Google Play
+title: Google Play publishing with codemagic.yaml
+linkTitle: Google Play
 description: How to deploy an app to Google Play using codemagic.yaml
 weight: 2
 ---

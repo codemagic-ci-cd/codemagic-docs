@@ -1,5 +1,6 @@
 ---
-title: Webhooks
+title: Webhooks configuration with codemagic.yaml
+linkTitle: Webhooks
 description: Set up webhooks for automatic builds
 weight: 3
 aliases: 

@@ -1,5 +1,6 @@
 ---
-title: Adding environment variables
+title: Adding environment variables in WFE
+linkTitle: Adding environment variables
 description: How to add environment variables in the Flutter workflow editor
 weight: 4
 aliases: /flutter/env-variables

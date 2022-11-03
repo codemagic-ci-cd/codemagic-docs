@@ -1,5 +1,6 @@
 ---
 title: Importing variables from a secret manager
+description: How to import variables and secrets from third party services and use them with Codemagic
 weight: 8
 aliases:
  - /knowledge-base/import-variables-from-secret-manager

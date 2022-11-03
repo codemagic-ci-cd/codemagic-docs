@@ -1,5 +1,6 @@
 ---
-title: Microsoft Store
+title: Microsoft Store publishing with codemagic.yaml
+linkTitle: Microsoft Store
 description: How to deploy an app to Microsoft Store using codemagic.yaml
 weight: 4
 ---

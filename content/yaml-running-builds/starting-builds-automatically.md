@@ -1,5 +1,6 @@
 ---
-title: Starting builds automatically
+title: Starting builds automatically with codemagic.yaml
+linkTitle: Starting builds automatically
 description: How to setup builds to run on repository events
 weight: 4
 aliases: 

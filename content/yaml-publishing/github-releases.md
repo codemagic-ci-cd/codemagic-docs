@@ -1,5 +1,6 @@
 ---
-title: Github Releases
+title: Github Releases with codemagic.yaml
+linkTitle: GitHub releases
 description: How to deploy an app to Github Releases using codemagic.yaml
 weight: 9
 ---

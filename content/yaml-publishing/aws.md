@@ -1,5 +1,6 @@
 ---
-title: Amazon S3
+title: Amazon S3 publishing using yaml
+linkTitle: Amazon S3
 description: How to publish build artifacts to Amazon S3 using codemagic.yaml
 weight: 11
 aliases: 

@@ -1,5 +1,6 @@
 ---
 title: Accessing private dependencies and Git submodules
+description: How to enable Codemagic to access your private dependencies and Git submodules
 weight: 5
 aliases: 
   - /building/access-private-git-submodules

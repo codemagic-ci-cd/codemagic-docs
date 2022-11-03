@@ -1,5 +1,6 @@
 ---
 title: API Overview
+description: REST API enabling programmatic access to Codemagic service
 weight: 1
 aliases: /rest-api/overview
 ---

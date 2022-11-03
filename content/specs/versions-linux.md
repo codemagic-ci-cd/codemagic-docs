@@ -1,5 +1,5 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic build machines.
+description: A list of tools available out-of-the-box on Codemagic Linux build machines.
 title: Linux build machine specification
 aliases:
   - "../releases-and-versions/versions-linux"

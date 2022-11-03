@@ -1,6 +1,7 @@
 ---
-description: How to use environment variables in scripts
-title: Using environment variables
+description: How to use environment variables in scripts in Flutter Workflow Editor
+title: Using environment variables with WFE
+linkTitle: Using environment variables
 weight: 5
 ---
 

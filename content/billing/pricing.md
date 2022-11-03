@@ -1,5 +1,6 @@
 ---
 title: Pricing
+description: Description of Codemagic plans and pricing options
 weight: 2
 ---
 

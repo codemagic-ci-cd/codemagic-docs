@@ -1,6 +1,7 @@
 ---
-description: Useful variables exported during builds
-title: Built-in environment variables
+description: Useful variables exported during builds using Flutter Workflow Editor
+title: Built-in environment variables using WFE
+linkTitle: Built-in environment variables
 weight: 6
 ---
 

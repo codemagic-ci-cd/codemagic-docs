@@ -1,5 +1,6 @@
 ---
-title: App Store Connect
+title: App Store Connect publishing using codemagic.yaml
+linkTitle: App Store Connect
 description: How to deploy an app to App Store and TestFlight using codemagic.yaml
 weight: 1
 aliases: 
