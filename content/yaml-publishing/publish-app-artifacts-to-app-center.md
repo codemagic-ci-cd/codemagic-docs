@@ -30,7 +30,7 @@ As a custom build step, Codemagic can publish your app artifact to App Center us
 
 ## Publish to App Center
 
-Add the following script to your `codemagic.yaml` file. If you are using **Flutter Workflow Editor**,
+Add the following script to your `codemagic.yaml` file. If you are using **Flutter workflow editor**,
 go to your app settings, expand the step between **Build** and **Publish** steps and add the respective **post-build** script.
 
 {{<notebox>}}

@@ -1,5 +1,6 @@
 ---
 title: Billing
+description: How to enable billing and manage your payments
 weight: 1
 ---
 

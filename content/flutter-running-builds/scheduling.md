@@ -1,6 +1,7 @@
 ---
-title: Scheduling builds
-description: Create schedules to run builds at regular intervals
+title: Scheduling builds with Flutter workflow editor
+linkTitle: Scheduling builds
+description: Create schedules to run builds at regular intervals using Flutter workflow editor
 weight: 1
 startLineBreak: true
 ---

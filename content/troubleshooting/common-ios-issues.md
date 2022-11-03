@@ -1,5 +1,5 @@
 ---
-description: How to overcome common issues building mobile apps on Codemagic 
+description: How to overcome common issues building iOS mobile apps on Codemagic 
 title: Common iOS issues
 weight: 3
 aliases:

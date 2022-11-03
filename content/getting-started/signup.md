@@ -1,5 +1,6 @@
 ---
 title: Signup
+description: How to signup with Codemagic
 weight: 1 
 aliases:
 ---

@@ -1,5 +1,6 @@
 ---
 title: Adding a Git tag with app version
+description: How to add a Git tag to your apps
 weight: 6
 aliases:
   - /custom-scripts/add-a-git-tag-with-app-version

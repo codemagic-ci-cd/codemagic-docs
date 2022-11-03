@@ -1,6 +1,7 @@
 ---
 description: Useful variables exported during builds
-title: Built-in environment variables
+title: Built-in environment variables in codemagic.yaml
+linkTitle: Built-in environment variables
 weight: 4
 aliases: 
   - /building/environment-variables

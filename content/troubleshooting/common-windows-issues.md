@@ -1,5 +1,7 @@
 ---
 title: Common Windows issues
+description: How to overcome common issues building mobile apps on Codemagic with Windows
+description: 
 weight: 2
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Validating codemagic.yaml locally
-description:
+description: How to enable codemagic.yaml validation in your local IDE
 weight: 7
 aliases: 
   - /knowledge-base/validate-yaml

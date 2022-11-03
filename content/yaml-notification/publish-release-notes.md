@@ -1,6 +1,7 @@
 ---
 description: How to publish release notes with successful builds
-title: Release notes
+title: Release notes publishing with codemagic.yaml
+linkTitle: Release notes
 weight: 4
 aliases: 
   - /publishing-yaml/publish-release-notes

@@ -1,5 +1,6 @@
 ---
-title: Adding environment variables
+title: Adding environment variables in codemagic.yaml
+linkTitle: Adding environment variables
 description: How to configure environment variables and groups
 weight: 2
 aliases:

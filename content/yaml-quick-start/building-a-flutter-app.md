@@ -445,8 +445,8 @@ workflows:
       flutter: stable
     scripts:
       - name: Set up code signing settings on Xcode project
-      script: | 
-        xcode-project use-profiles
+        script: | 
+          xcode-project use-profiles
       - name: Get Flutter packages
         script: | 
           flutter packages pub get

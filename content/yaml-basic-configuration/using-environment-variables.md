@@ -1,6 +1,7 @@
 ---
-description: How to use environment variables in scripts
-title: Using environment variables
+description: How to use environment variables in scripts in codemagic.yaml
+title: Using environment variables with codemagic.yaml
+linkTitle: Using environment variables
 weight: 3
 aliases:
   - /variables/using-environment-variables

@@ -1,6 +1,7 @@
 ---
-description: Limit the maximum duration of builds
-title: Build timeout settings
+description: Limit the maximum duration of builds using codemagic.yaml
+title: Build timeout settings in codemagic.yaml
+linkTitle: Build timeout settings
 weight: 2
 aliases: 
   - /building/timeout

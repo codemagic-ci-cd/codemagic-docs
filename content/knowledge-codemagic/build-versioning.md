@@ -149,7 +149,7 @@ Follow these steps to configure the above variables for your Codemagic app:
 {{< /tab >}}
 
 
-{{< tab header="Flutter Workflow Editor" >}}
+{{< tab header="Flutter workflow editor" >}}
 {{<markdown>}}
 Add the following environment variables to your Flutter project in **App settings > Environment variables** (See the details [here](/flutter-configuration/env-variables)):
 
@@ -234,7 +234,7 @@ You will need to set up a service account in Google Play Console and create a JS
 {{< /tab >}}
 
 
-{{% tab header="Flutter Workflow Editor"%}}
+{{% tab header="Flutter workflow editor"%}}
 
 Add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutter project in **App settings > Environment variables** (See the details [here](../flutter-configuration/env-variables)).
 {{% /tab %}}

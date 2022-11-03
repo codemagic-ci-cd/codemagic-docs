@@ -1,6 +1,7 @@
 ---
 description: How to deploy a Flutter app to App Store and TestFlight using the Flutter workflow editor
-title: App Store Connect
+title: App Store Connect publishing using Flutter workflow editor
+linkTitle: App Store Connect
 weight: 1
 aliases: /publishing/publishing-to-app-store
 ---

@@ -1,5 +1,6 @@
 ---
 title: Applications API
+description: API for managing apps added to Codemagic
 weight: 2
 ---
 

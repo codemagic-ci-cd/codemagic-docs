@@ -1,5 +1,6 @@
 ---
-title: Scheduling builds
+title: Scheduling builds with codemagic.yaml
+linkTitle: Scheduling builds
 description: Create schedules to run builds at regular intervals
 weight: 1
 startLineBreak: true

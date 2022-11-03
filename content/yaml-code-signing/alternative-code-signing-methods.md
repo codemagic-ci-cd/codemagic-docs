@@ -7,7 +7,7 @@ aliases: /code-signing-yaml/code-signing-personal-accounts
 <br>
 
 
-All iOS, macOS and Android applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. This document will guide you through the necessary steps to sign your app if your workflows are configured to use the `codemagic.yaml` file. If you are using our `Flutter Workflow Editor`, please consult the relevant guides for [iOS](../flutter-code-signing/ios-code-signing), [Android](../flutter-code-signing/ios-code-signing) or [macOS](../flutter-code-signing/macos-code-signing).
+All iOS, macOS and Android applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. This document will guide you through the necessary steps to sign your app if your workflows are configured to use the `codemagic.yaml` file. If you are using our `Flutter workflow editor`, please consult the relevant guides for [iOS](../flutter-code-signing/ios-code-signing), [Android](../flutter-code-signing/ios-code-signing) or [macOS](../flutter-code-signing/macos-code-signing).
 
 
 
