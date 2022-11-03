@@ -1,5 +1,5 @@
 ---
-title: Adding environment variables in WFE
+title: Adding environment variables in Flutter workflow editor
 linkTitle: Adding environment variables
 description: How to add environment variables in the Flutter workflow editor
 weight: 4

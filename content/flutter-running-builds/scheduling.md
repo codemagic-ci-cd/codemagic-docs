@@ -1,7 +1,7 @@
 ---
-title: Scheduling builds with WFE
+title: Scheduling builds with Flutter workflow editor
 linkTitle: Scheduling builds
-description: Create schedules to run builds at regular intervals using Flutter Workflow Editor
+description: Create schedules to run builds at regular intervals using Flutter workflow editor
 weight: 1
 startLineBreak: true
 ---

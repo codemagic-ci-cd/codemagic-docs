@@ -1,7 +1,7 @@
 ---
-title: Webhooks configuration with WFE
+title: Webhooks configuration with Flutter workflow editor
 linkTitle: Webhooks
-description: Set up webhooks for automatic builds using Flutter Workflow Editor
+description: Set up webhooks for automatic builds using Flutter workflow editor
 weight: 3
 ---
 

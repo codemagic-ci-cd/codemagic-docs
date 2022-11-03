@@ -1,6 +1,6 @@
 ---
 description: How to publish build release notes using the Flutter workflow editor
-title: Release notes publishing with WFE
+title: Release notes publishing with Flutter workflow editor
 linkTitle: Release notes
 weight: 12
 aliases: 

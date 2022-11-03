@@ -1,6 +1,6 @@
 ---
 description: Deploy a Flutter app to Google Play using the Flutter workflow editor
-title: Google Play publishing with WFE
+title: Google Play publishing with Flutter workflow editor
 linkTitle: Google Play
 weight: 2
 aliases: 

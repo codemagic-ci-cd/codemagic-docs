@@ -1,5 +1,5 @@
 ---
-title: Starting builds automatically with WFE
+title: Starting builds automatically with Flutter workflow editor
 linkTitle: Starting builds automatically
 description: How to setup builds to run on repository events or on schedule
 weight: 4
