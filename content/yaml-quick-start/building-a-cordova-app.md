@@ -226,10 +226,6 @@ workflows:
       ios_signing:
         distribution_type: app_store
         bundle_identifier: io.codemagic.ionicsample
-      vars:
-        APP_ID: 1555555551
-        XCODE_WORKSPACE: "platforms/ios/YOUR_APP.xcworkspace"
-        XCODE_SCHEME: "YOUR_SCHEME"
     scripts:
       - name: Install npm dependencies and update Cordova version
         script: | 
@@ -238,23 +234,16 @@ workflows:
             # Requires package-lock.json or npm-shrinkwrap.json to be present
           cvm install 9.0.0
           cvm use 9.0.0
+          npm install -g ionic
+          ionic info  
       -  name: Setup Cordova iOS platform
          script: | 
            ionic cordova platform remove ios --nosave
            ionic cordova platform add ios \
              --confirm \
              --no-interactive \
-             --noresources
-      - name: Cocoapods installation
-        script: | 
-          cd platforms/ios && pod install
-      - name: Update dependencies and copy web assets to native project
-        script: | 
-          # if you don't need to update native dependencies, use this:
-          # npx cap copy
-          #
-          # to update native dependencies, use this command:
-          npx cap sync
+             --noresources \
+             --save
       - name: Set up code signing settings on Xcode project
         script: | 
           xcode-project use-profiles
@@ -279,10 +268,8 @@ workflows:
           }EOF
           cordova build ios --release --device --buildConfig='build.json'
     artifacts:
-      - build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+      - /Users/builder/clone/platforms/ios/build/device/*.ipa
+      - /tmp/xcodebuild_logs/*.log 
     publishing:
       email:
         recipients:
