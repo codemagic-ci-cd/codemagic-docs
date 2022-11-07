@@ -1,5 +1,6 @@
 ---
-title: About Codemagic
+title: Welcome to Codemagic
+linkTitle: Welcome
 description: Introduction to Codemagic CI/CD
 weight: 2 
 aliases:
