@@ -20,7 +20,7 @@ weight: 9
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
-- aws `2.8.6`
+- aws `2.8.9`
 - carthage `0.38.0`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
@@ -29,14 +29,14 @@ weight: 9
 - ew-cli `0.0.48`
 - fastlane `2.210.1`
 - firebase `11.4.2`
-- flutter `3.3.6 ($HOME/programs/flutter)`
+- flutter `3.3.7 ($HOME/programs/flutter)`
 - gem `3.3.24`
-- gh `2.18.1`
+- gh `2.19.0`
 - git `2.38.1`
 - Google Cloud SDK `404.0.0`
 - gradle `7.3.1`
 - gsutil `5.14`
-- homebrew `3.6.7`
+- homebrew `3.6.8`
 - ionic `5.4.16`
 - jq `1.6`
 - ktlint `0.47.1`
@@ -53,7 +53,7 @@ weight: 9
 - unzip `6.00`
 - wget `1.21.3`
 - yarn `1.22.19`
-- yq `4.28.2`
+- yq `4.29.2`
 - zip `3.0`
 
 ## Android emulators
@@ -73,8 +73,8 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.7f1/Unity.app
 
 ## Xcode versions
 
-- 14.1 (14B47b) `/Applications/Xcode-14.1.app`, also selected when specifying `edge` in Xcode version settings
-- 14.0.1 (14A400) `/Applications/Xcode-14.0.app`, also selected when specifying `latest` or `14` in Xcode version settings
+- 14.1 (14B47b) `/Applications/Xcode-14.1.app`, also selected when specifying `latest` or `edge` in Xcode version settings
+- 14.0.1 (14A400) `/Applications/Xcode-14.0.app`, also selected when specifying `14` in Xcode version settings
 - 13.4.1 (13F100) `/Applications/Xcode-13.4.app`, also selected when specifying `13.4` in Xcode version settings
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`, also selected when specifying `13.3` in Xcode version settings
 
