@@ -1,7 +1,7 @@
 ---
 description: How to add an app to Codemagic
 title: Adding apps to Codemagic
-weight: 3
+weight: 4
 aliases:
   - /getting-started/codemagic-github-app
   - /getting-started/github-organization-accounts

@@ -1,7 +1,7 @@
 ---
 title: About Codemagic
 description: Introduction to Codemagic CI/CD
-weight: 1 
+weight: 2 
 aliases:
 ---
 
