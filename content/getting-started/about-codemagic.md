@@ -43,7 +43,7 @@ All the virtual machines come preloaded with the most common software you would 
 
 Please refer to the following documentation to see the software pre-installed on each instance type:
 - [Linux pre-installed software](https://docs.codemagic.io/specs/versions-linux/#pre-installed-tools)
-- [macOS pre-installed software](https://docs.codemagic.io/specs/versions-macos/#:~:text=Free%20Space%3A%2048GB)-,Pre%2Dinstalled%20tools,-Android%20tools%20/usr)
+- [macOS pre-installed software](https://docs.codemagic.io/specs/versions-macos/&#35;:~:text=Free%20Space%3A%2048GB&#41;-,Pre%2Dinstalled%20tools,-Android%20tools%20/usr)
 - [Windows pre-installed software](https://docs.codemagic.io/specs/versions-windows/#pre-installed-tools)
 
 ## Scalability
@@ -62,4 +62,4 @@ Full pricing details can be found on our pricing page [here](https://docs.codema
 
 ## Blog
 
-The Codemagic blog is a great resource that covers a multitude of technical subjects related to CI/CD ranging from code signing and publishing to general application development. Check out the blog here.
+The [Codemagic blog](https://blog.codemagic.io/) is a great resource that covers a multitude of technical subjects related to CI/CD ranging from code signing and publishing to general application development. Check out the blog here.
