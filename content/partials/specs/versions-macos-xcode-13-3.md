@@ -1,5 +1,5 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS build machines using Xcode version 13.3+.
+description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 13.3+ / Unity)
 aliases:
   - '/releases-and-versions/versions5'
@@ -32,7 +32,7 @@ weight: 8
 - ew-cli `0.0.48`
 - fastlane `2.210.1`
 - firebase `11.3.0`
-- flutter `3.3.6 ($HOME/programs/flutter)`
+- flutter `3.3.7 ($HOME/programs/flutter)`
 - gem `3.3.24`
 - gh `2.18.1`
 - git `2.38.1`
@@ -84,8 +84,8 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app
 
 ## Xcode versions
 
-- 14.1 (14B47b) `/Applications/Xcode-14.1.app`, also selected when specifying `edge` in Xcode version settings
-- 14.0.1 (14A400) `/Applications/Xcode-14.0.app`, also selected when specifying `latest` or `14` in Xcode version settings
+- 14.1 (14B47b) `/Applications/Xcode-14.1.app`, also selected when specifying `latest` or `edge` in Xcode version settings
+- 14.0.1 (14A400) `/Applications/Xcode-14.0.app`, also selected when specifying `14` in Xcode version settings
 - 13.4.1 (13F100) `/Applications/Xcode-13.4.app`, also selected when specifying `13.4` in Xcode version settings
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`, also selected when specifying `13.3` in Xcode version settings
 

@@ -1,5 +1,5 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS build machines using Xcode version 13.0-13.2.
+description: A list of tools available out-of-the-box on Codemagic build machines.
 title: macOS build machine specification (Xcode 13.0 - 13.2 / Unity)
 aliases:
   - '/releases-and-versions/versions4'
@@ -34,7 +34,7 @@ weight: 7
 - docker `20.10.2`
 - fastlane `2.199.0`
 - firebase `11.3.0`
-- flutter `3.3.6 ($HOME/programs/flutter)`
+- flutter `3.3.7 ($HOME/programs/flutter)`
 - gem `3.2.33`
 - gh `2.3.0`
 - git `2.34.1`
