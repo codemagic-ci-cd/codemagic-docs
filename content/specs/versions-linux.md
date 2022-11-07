@@ -21,13 +21,13 @@ weight: 2
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `22.0.7026061`
-- aws `1.18.69`
+- aws `2.8.9`
 - curl `7.68.0`
 - docker `20.10.7`
 - ew-cli `0.0.44`
 - fastlane `2.209.1`
 - firebase `11.3.0`
-- flutter `3.3.6 ($HOME/programs/flutter)`
+- flutter `3.3.7 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
