@@ -6,7 +6,7 @@
         class="{{ if eq $activePage $page }}active{{ end }}"
         href="{{ $page.RelPermalink }}"
         {{if $page.Params.platform}}data-js-platform-specific="{{$page.Params.platform}}"{{end}}>
-        {{ $page.Title }}
+        {{ $page.LinkTitle }}
     </a>
 {{ end }}
 
