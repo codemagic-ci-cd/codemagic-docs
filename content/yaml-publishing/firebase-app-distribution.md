@@ -30,7 +30,7 @@ To retrieve your Firebase token, follow the instructions in [Firebase documentat
 
 #### 2. Authenticating via service account
 
-Using a service account is a more secure option due to granular permission settings. It can also used to authenticate with various Firebase services, such as Firebase Test Lab and Firebase App Distribution.
+Using a service account is a more secure option due to granular permission settings. It can also be used to authenticate with various Firebase services, such as Firebase Test Lab and Firebase App Distribution.
 
 1. On the Firebase project page, navigate to **Project settings** by clicking on the cog button. Select the **Service accounts** tab. Click on the **X service accounts** button as shown on the screenshot. <br><br>
 ![Firebase service accounts](../uploads/firebase_service_accounts_button.png)
