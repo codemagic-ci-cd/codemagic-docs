@@ -2,6 +2,8 @@
 description: Browse the Codemagic documentation for a quick overview of how to configure
   Codemagic to get the most out of it.
 title: Codemagic Documentation
+layout: single
+
 ---
 
 ## Browse articles by topic
