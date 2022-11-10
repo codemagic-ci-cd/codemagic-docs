@@ -14,9 +14,9 @@ weight: 5
 
 For distributing an iOS application to [Firebase Console](https://console.firebase.google.com/), your application must use a development, Ad Hoc or Enterprise distribution profile.
 
-To authenticate with Firebase, Codemagic requires either a **Firebase token** or a service account with **Firebase App Distribution Admin** role.
+To authenticate with Firebase, Codemagic requires either a **Firebase token** or a service account with **Firebase App Distribution Admin** role, as shown below:
 
-#### Authenticating via token
+#### 1. Authenticating via token
 
 To retrieve your Firebase token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
 
@@ -28,16 +28,33 @@ To retrieve your Firebase token, follow the instructions in [Firebase documentat
 6. Click the **Add** button to add the variable.
 
 
-#### Authenticating via service account
+#### 2. Authenticating via service account
 
-Using a service account is a more secure option due to granular permission settings. Follow [this guide](/knowledge-base/google-services-authentication/#firebase) to set up service account for Firebase distribution.
+Using a service account is a more secure option due to granular permission settings. It can also used to authenticate with various Firebase services, such as Firebase Test Lab and Firebase App Distribution.
 
-1. Open your Codemagic app settings, and go to the **Environment variables** tab.
-2. Enter the desired **_Variable name_**, e.g. `FIREBASE_SERVICE_ACCOUNT`.
-3. Copy and paste the content of the service account JSON file as **_Variable value_**.
-4. Enter the variable group name, e.g. **_firebase_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
-6. Click the **Add** button to add the variable.
+1. On the Firebase project page, navigate to **Project settings** by clicking on the cog button. Select the **Service accounts** tab. Click on the **X service accounts** button as shown on the screenshot. <br><br>
+![Firebase service accounts](../uploads/firebase_service_accounts_button.png)
+
+2. This will lead you to the Google Cloud Platform. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
+
+3. In step 2, click the **Select a role** dropdown menu and choose the role. Note that **Editor** role is required for Firebase Test Lab and **Firebase App Distribution Admin** for Firebase App Distribution.
+
+4. In step 3, you can leave the fields blank and click **Done**.
+
+5. In the list of created service accounts, identify the account you have just created and click on the menu in the **Actions** column, then click **Manage keys**.<br><br>
+![Google cloud key](../uploads/google_cloud_three.png)
+
+6. In the Keys section, click **Add Key > Create new key**. Make sure that the key type is set to `JSON` and click **Create**. Save the key file in a secure location to have it available.<br><br>
+![Google cloud json](../uploads/google_cloud_four.png)
+
+7. Configure publishing in codemagic.yaml:
+
+    1. Open your Codemagic app settings, and go to the **Environment variables** tab.
+    2. Enter the desired **_Variable name_**, e.g. `FIREBASE_SERVICE_ACCOUNT`.
+    3. Copy and paste the content of the service account JSON file as **_Variable value_**.
+    4. Enter the variable group name, e.g. **_firebase_credentials_**. Click the button to create the group.
+    5. Make sure the **Secure** option is selected.
+    6. Click the **Add** button to add the variable.
 
 
 
