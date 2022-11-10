@@ -361,7 +361,7 @@ triggering:
 
 <p>
 {{<notebox>}}
-Read more about configuring [additional conditions to run or skip](/yaml/yaml-conditional-run) builds or build steps.
+Read more about configuring [additional conditions to run or skip](https://docs.codemagic.io/yaml-running-builds/starting-builds-automatically/#using-when-to-run-or-skip-builds) builds or build steps.
 {{</notebox>}}
 
 ### Scripts
