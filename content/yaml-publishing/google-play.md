@@ -9,7 +9,7 @@ Codemagic enables you to automatically publish your android application to Googl
 
 {{<notebox>}}
 **Note:** This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Publishing to Google Play using Flutter workflow editor](../publishing/publishing-to-google-play).
-{{</notebox>}}
+{{</notebox>}}<br><br>
 
 {{< youtube qrtk6e0BYjM >}}
 
@@ -38,7 +38,7 @@ In order to do so, a service account is required when setting up publishing to G
 ![Google cloud json](../uploads/google_cloud_four.png)
 
 8. Back in **Google Play Console**, navigate to **Setup > API access** and click **Manage Play Console permissions** next to the created account.<br><br>
-![Google play grant](https://s3.amazonaws.com/blog.codemagic.io/uploads/2022/09/s2.png)
+![Google play grant](../uploads/s2.png)
 
 9. On the **App permissions** tab, add the applications you wish to grant access to.<br><br>
 ![Google play selected](../uploads/s3.png)
@@ -61,7 +61,7 @@ Once you make all the preparations as described above and configure publishing t
 **Note:** The very first version of the app must be added to Google Play manually. You can download the **app_release.aab** from the build artifacts. In addition, each uploaded binary must have a different version; see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic.
 {{</notebox>}}
 
-1. Save the contents of the `JSON` key file as a [secure environment variable](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) in application or team settings.
+1. Save the contents of the `JSON` key file as a [secure environment variable](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) in application or team settings:
 
     1. Open your Codemagic app settings, and go to the **Environment variables** tab.
     2. Enter the desired **_Variable name_**, e.g. `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`.
