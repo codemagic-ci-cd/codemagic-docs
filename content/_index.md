@@ -1,66 +1,50 @@
 ---
-description: Browse the Codemagic documentation for a quick overview of how to configure
-  Codemagic to get the most out of it.
+description: Learn how to use Codemagic to build, test and deploy your mobile apps.
 title: Codemagic Documentation
 layout: single
 
 ---
-
-## Browse articles by topic
-
-<div class="links-group-wrap">
-
+<table>
+<tr><td>
 {{<links-group title="Getting started">}}
+_How to get started with Codemagic_ 
+- [Signup](../getting-started/signup)
+- [Adding apps to Codemagic](../getting-started/adding-apps)
+- [Creating and managing teams](../getting-started/teams) 
+- [FAQ](../getting-started/faq) 
 
-- [Signup](/getting-started/signup/)
-- [Adding repositories](/getting-started/github/)
-- [Project types](/getting-started/projects/)
-
-{{</links-group>}}
-
-{{<links-group title="Codemagic.yaml">}}
-
-- [Quick start guides](/yaml-quick-start/codemagic-sample-projects/)
-- [Testing](/yaml-testing/testing/)
-- [Code signing](/yaml-code-signing/signing-ios/)
-- {{<link-with-arrow text="View all" href="/yaml/yaml-getting-started/">}}
-
-{{</links-group>}}
-
-{{<links-group title="Flutter Workflow Editor">}}
-
-- [Build configurations](/flutter-configuration/flutter-projects/)
-- [Testing](/flutter-testing/running-automated-tests/)
-- [Code signing](/flutter-code-signing/ios-code-signing/)
-- {{<link-with-arrow text="View all" href="/flutter-configuration/flutter-projects/">}}
+{{</links-group>}} 
+</td>
+<td>
+{{<links-group title="Help and support">}}
+_Find answers and get help using Codemagic_
+- [Getting Help & Support](../troubleshooting/help-and-support)
+- [Support for billing enabled customers](../troubleshooting/help-and-support#billing-enabled-customers---intercom)
+- [GitHub Discussions community support](../troubleshooting/help-and-support#community-support-with-ghd)
 
 {{</links-group>}}
+</td></tr>
 
-{{<links-group title="Sample projects">}}
-
-- [React Native](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/react-native)
-- [iOS code signing](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ios/ios-automatic-code-signing-demo-project)
-- [SonarCloud](https://github.com/codemagic-ci-cd/sonarcloud-sample-project)
-- {{<link-with-arrow text="View all" href="https://github.com/codemagic-ci-cd/codemagic-sample-projects">}}
-
+<tr><td>
+{{<links-group title="iOS troubleshooting">}}
+_How to resolve iOS issues_
+- [iOS code signing](../yaml-code-signing/signing-ios) 
+- [App Store publishing](../yaml-publishing/app-store-connect)
+- [Common iOS issues](../troubleshooting/common-ios-issues)
 {{</links-group>}}
 
-{{<links-group title="Codemagic API & CLI tools">}}
+</td>
+<td>
 
-- [Overview](/rest-api/overview/)
-- [Applications](/rest-api/applications/)
-- [Builds](/rest-api/builds/)
-- [CLI tools](/cli/codemagic-cli-tools/)
-
-{{</links-group>}}
-
-{{<links-group title="Account management">}}
-
-- [Creating and managing teams](/teams/teams/)
-- [Counting users in teams](/teams/users/)
-- [Billing](/billing/billing/)
-- [Pricing](/billing/pricing/)
+{{<links-group title="Android troubleshooting">}}
+_How to resolve Android issues_
+- [Android code signing](../yaml-code-signing/signing-android)           |
+- [Google Play publishing](../yaml-publishing/google-play) 
+- [Common Android issues](../troubleshooting/common-android-issues.md)
 
 {{</links-group>}}
+</td></tr>
+</table>
 
-</div>
+### Note
+The footer should be removed from this page as well as the TOC menu (top-right).
