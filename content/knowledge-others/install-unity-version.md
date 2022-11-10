@@ -90,7 +90,7 @@ Use the Unity version you installed on the machine:
   scripts:
     - name: Build the Unity app
       script: |  
-        $UNITY_VERSION_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$BUILD_SCRIPT -nographics
+        $UNITY_VERSION_BIN -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$BUILD_SCRIPT -nographics -buildTarget Android 
 {{< /highlight >}}
 
 {{< /tab >}}
@@ -99,32 +99,93 @@ Use the Unity version you installed on the machine:
   scripts:
     - name: Build the Unity app
       script: |  
-        cmd.exe /c "$env:UNITY_VERSION_BIN" -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$env:BUILD_SCRIPT -nographics
+        cmd.exe /c "$env:UNITY_VERSION_BIN" -batchmode -quit -logFile -projectPath . -executeMethod BuildScript.$env:BUILD_SCRIPT -nographics -buildTarget Android   
 {{< /highlight >}}
 {{< /tab >}}
 
 {{< /tabpane >}}
 
+{{<notebox>}}
+When building with the new Unity version, it's better to add the **-buildTarget** argument to set the build target to `android` or `ios`.
+{{</notebox>}}
 ## Caching
-You can cache the newly installed version on Unity to avoid installing it in every build, read more about caching [here](https://docs.codemagic.io/yaml/yaml-getting-started/#cache).
+Instead of waiting from 5 to 7 minutes in every build to download and install your Unity editor, you can cache it using your external storage tool like AWS S3 or GCP.
 
-{{< tabpane >}}
-{{% tab header="Mac" %}}
-{{< highlight yaml "style=paraiso-dark">}}
-    cache:
-      cache_paths:
-        - /Applications/Unity/Hub/Editor/${UNITY_VERSION}
-{{< /highlight >}}
-{{< /tab >}}
-{{% tab header="Windows" %}}
-{{< highlight yaml "style=paraiso-dark">}}
-    cache:
-      cache_paths:
-        - C:\Program Files\Unity\Hub\Editor\$UNITY_VERSION
-{{< /highlight >}}
-{{< /tab >}}
+In the following example we are going to use AWS S3 to store our cached files.
 
-{{< /tabpane >}}
+#### Using AWS S3
+In order to use AWS S3, you need to configure your access credentials in Codemagic. You can follow the [instructions](https://aws.amazon.com/getting-started/hands-on/backup-to-s3-cli/) provided by Amazon to create your account and get the necessary details.
+
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
+2. Enter the desired **_Variable name_**, e.g. `AWS_ACCESS_KEY_ID`.
+3. Enter the required value as **_Variable value_**.
+4. Enter the variable group name, e.g. **_aws_credentials_**. Click the button to create the group.
+5. Make sure the **Secure** option is selected.
+6. Click the **Add** button to add the variable.
+7. Repeat the process to also add the `AWS_SECRET_ACCESS_KEY` variable.
+
+8. Import the  **_aws_credentials_** group and install the **awscli** using this script.
+
+{{< highlight yaml "style=paraiso-dark">}}
+environment:
+  groups:
+    - aws_credentials
+scripts:
+  - name: Install awscli
+    script: | 
+      sudo pip3 install awscli --upgrade
+{{< /highlight >}}
+
+Add the script below to your `scripts` section before your build script to check if S3 bucket has an old cached file. 
+
+{{< highlight yaml "style=paraiso-dark">}}
+- name: Check S3 bucket
+  script: | 
+    if echo $(aws s3 ls s3://<BUCKET_NAME>) | grep -q ${UNITY_VERSION}.tar.gz ; then 
+      echo "Unity editor ${UNITY_VERSION} was found in the S3 bucket."; 
+      echo "S3_HAS_EDITOR=true" >> $CM_ENV
+    else 
+      echo "Unity editor ${UNITY_VERSION} was not found in the S3 bucket."; 
+      echo "S3_HAS_EDITOR=false" >> $CM_ENV
+    fi
+{{< /highlight >}}
+
+{{<notebox>}}
+Replace `<BUCKET_NAME>` with your actual bucket name.
+{{</notebox>}}
+
+Now you can check the `$S3_HAS_EDITOR` variable, if the S3 bucket has the editor then just copy it to the build machine then extract it, or install the Unity editor with the modules then compress it and upload it to S3.
+
+{{< highlight yaml "style=paraiso-dark">}}
+- name: Install Unity editor
+  script: | 
+    if [ "$S3_HAS_EDITOR" == "false" ] ; then
+      /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version ${UNITY_VERSION} --changeset ${UNITY_VERSION_CHANGESET}
+      /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version ${UNITY_VERSION} -m ios android android-sdk-ndk-tools android-open-jdk
+    fi
+  ignore_failure: true
+- name: Compress Unity editor
+  script: | 
+    if [ "$S3_HAS_EDITOR" == "false" ] ; then
+      cd /Applications/Unity/Hub/Editor/
+      tar -cv ${UNITY_VERSION}/ | gzip > ${UNITY_VERSION}.tar.gz
+    fi
+- name: Copy editor to S3 bucket
+  script: | 
+    if [ "$S3_HAS_EDITOR" == "false" ] ; then
+      aws s3 cp /Applications/Unity/Hub/Editor/${UNITY_VERSION}.tar.gz s3://<BUCKET_NAME>
+    fi
+- name: Copy editor from S3 bucket
+  script: | 
+    if [ "$S3_HAS_EDITOR" == "true" ] ; then
+      aws s3 cp s3://<BUCKET_NAME>/${UNITY_VERSION}.tar.gz /Applications/Unity/Hub/Editor/
+    fi
+- name: Extract editor from S3 bucket
+  script: | 
+    if [ "$S3_HAS_EDITOR" == "true" ] ; then
+      gunzip < /Applications/Unity/Hub/Editor/${UNITY_VERSION}.tar.gz | tar -xv
+    fi
+{{< /highlight >}}
 
 ## Android Workflow configuration sample
 {{< tabpane >}}
