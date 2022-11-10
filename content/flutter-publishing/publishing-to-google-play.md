@@ -28,7 +28,7 @@ Before releasing the app to Google Play, ensure that it meets [Google Play's bes
 1. To allow Codemagic to publish applications to Google Play, it is necessary to set up access using Google Play API. 
 
 2. In the Google Play Console, navigate to **Setup > API access** and click **Learn how to create service accounts**.<br><br>
-![Google play start](../uploads/s1.png).<br><br>This will lead you to the **Google Cloud Platform**. 
+![Google play start](../uploads/s1.png)This will lead you to the **Google Cloud Platform**. 
 
 3. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
 
@@ -44,7 +44,7 @@ Before releasing the app to Google Play, ensure that it meets [Google Play's bes
 ![Google cloud json](../uploads/google_cloud_four.png)
 
 8. Back in **Google Play Console**, navigate to **Setup > API access** and click **Manage Play Console permissions** next to the created account.<br><br>
-![Google play grant](https://s3.amazonaws.com/blog.codemagic.io/uploads/2022/09/s2.png)
+![Google play grant](../uploads/s2.png)
 
 9. On the **App permissions** tab, add the applications you wish to grant access to.<br><br>
 ![Google play selected](../uploads/s3.png)
