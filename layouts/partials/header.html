@@ -9,7 +9,7 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        {{if .IsPage }}
+        {{if or .IsPage .IsHome }}
         <div id="header-content" js-header-content>
             <div id="sidebar-toggle" js-docs-menu-toggle>
                 <div class="bar"></div>

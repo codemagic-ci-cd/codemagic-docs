@@ -2,7 +2,6 @@
 description: Learn how to use Codemagic to build, test and deploy your mobile apps.
 title: Codemagic Documentation
 layout: single
-
 ---
 <table>
 <tr><td>
