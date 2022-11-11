@@ -733,7 +733,7 @@ If your caching step is being skipped because it's exceeding the maximum allowed
 In the following example we are going to use AWS S3 to store our cached files.
 
 #### Using AWS S3
-In order to use AWS S3, you need to configure your access credentials in Codemagic. You can follow the [instructions](https://aws.amazon.com/getting-started/hands-on/backup-to-s3-cli/) provided by Amazon to create your account and get the necessary details.
+In order to use AWS S3, you need to configure your access credentials in Codemagic. You can follow the [instructions](https://aws.amazon.com/getting-started/hands-on/backup-to-s3-cli/) provided by Amazon to create your account and get the necessary credentials.
 
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the desired **_Variable name_**, e.g. `AWS_ACCESS_KEY_ID`.
@@ -743,17 +743,7 @@ In order to use AWS S3, you need to configure your access credentials in Codemag
 6. Click the **Add** button to add the variable.
 7. Repeat the process to also add the `AWS_SECRET_ACCESS_KEY` variable.
 
-8. Import the  **_aws_credentials_** group and install the **awscli** using this script.
-
-{{< highlight yaml "style=paraiso-dark">}}
-environment:
-  groups:
-    - aws_credentials
-scripts:
-  - name: Install awscli
-    script: | 
-      sudo pip3 install awscli --upgrade
-{{< /highlight >}}
+8. Import the  **_aws_credentials_** group.
 
 Add the script below to your `scripts` section before your build script to check if S3 bucket has an old cached file. 
 
