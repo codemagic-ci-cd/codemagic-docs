@@ -5,6 +5,6 @@
         "algolia": "node algolia.js"
     },
     "devDependencies": {
-        "algoliasearch": "^4.11.0"
+        "algoliasearch": "^4.14.2"
     }
 }
