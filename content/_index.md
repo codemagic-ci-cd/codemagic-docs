@@ -8,16 +8,17 @@ layout: single
 _How to get started with Codemagic_ 
 - [Signup](../getting-started/signup)
 - [Adding apps to Codemagic](../getting-started/adding-apps)
-- [Creating and managing teams](../getting-started/teams) 
-- [FAQ](../getting-started/faq) 
+- [Onboarding assistance](https://codemagic.io/onboarding-assistance/)
+
 
 {{</links-group>}} 
 
-{{<links-group title="Help and support">}}
+{{<links-group title="Common questions">}}
 _Find answers and get help using Codemagic_
-- [Getting Help & Support](../troubleshooting/help-and-support)
-- [Support for billing enabled customers](../troubleshooting/help-and-support#billing-enabled-customers---intercom)
-- [GitHub Discussions community support](../troubleshooting/help-and-support#community-support-with-ghd)
+- [Getting help and support](../troubleshooting/help-and-support)
+- [Frequently asked questions](../getting-started/faq)
+- [Pricing](../billing/pricing.md) 
+
 
 {{</links-group>}}
 
