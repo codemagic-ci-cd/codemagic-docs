@@ -23,7 +23,7 @@ Codemagic is integrated with [Dart Code Metrics](https://pub.dev/packages/dart_c
 
 By default, Dart Code Metrics is disabled and has to be enabled in **App settings > Tests > Static code analysis** by checking the **Enable Dart Code Metrics** option.
 
-When enabled, `flutter pub run dart_code_metrics:metrics analyze lib` will be run with each build. You can see the results and the logs of the analysis under the **Running tests** step in build overview.
+When enabled, `flutter pub global run dart_code_metrics:metrics analyze lib` will be run with each build. You can see the results and the logs of the analysis under the **Running tests** step in build overview.
 
 ### Stop build if tests or analysis fail
 
