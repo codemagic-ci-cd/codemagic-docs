@@ -101,43 +101,46 @@ You can specify the JSON Payload in your post processing script, if you are usin
 publishing:
   scripts: 
     - name: Publish to Slack
-      script: | curl -0 -v -X POST $SLACK_WEBHOOK_URL \
-      -H 'Content-type: application/json' \
-      --data-raw
-      '{
-        "attachments": [
-          {
-            "blocks": [
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "Build with build id <https://codemagic.io/app/'"$CM_PROJECT_ID"'/build/'"$CM_BUILD_ID"'>"
-                }
-              },
-              {
-                "type": "divider"
-              },
-              {
-                "type": "section",
-                "block_id": "section567",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "<https://github.com/'"$CM_REPO_SLUG"'> Merge pull request"
-                }
-              },
-              {
-                "type": "divider"
-              },
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
-                }
-              },
-            ]
-          }
+      script: | 
+        ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".ipa"'")) | .url')
+        
+        curl -0 -v -X POST $SLACK_WEBHOOK_URL \
+        -H 'Content-type: application/json' \
+        --data-raw
+        '{
+          "attachments": [
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Build with build id <https://codemagic.io/app/'"$CM_PROJECT_ID"'/build/'"$CM_BUILD_ID"'>"
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "block_id": "section567",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "<https://github.com/'"$CM_REPO_SLUG"'> Merge pull request"
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
+                  }
+                },
+              ]
+            }
         ]
       }'
 {{< /highlight >}}
