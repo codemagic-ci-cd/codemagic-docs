@@ -106,8 +106,8 @@ publishing:
         
         curl -0 -v -X POST $SLACK_WEBHOOK_URL \
         -H 'Content-type: application/json' \
-        --data-raw
-        '{
+        --data-raw '
+        {
           "attachments": [
             {
               "blocks": [
