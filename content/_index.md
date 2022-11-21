@@ -4,9 +4,6 @@ title: Codemagic Documentation
 layout: single
 exclude: true
 ---
-<div>
-    
-</div>
 
 <div class="links-group-wrap">
 {{<links-group title="Start using Codemagic">}}
