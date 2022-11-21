@@ -1,6 +1,10 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
-{{ partial "breadcrumbs.html" . }} {{ with .Description }}
+{{ with .Params.exclude }}
+{{ else }}
+{{ partial "breadcrumbs.html" . }} 
+{{ end }}
+{{ with .Description }}
 <p class="description">{{.}}</p>
 {{ end }} {{ with .Params.StartLineBreak }}
 <br />
@@ -29,10 +33,19 @@
                 <main js-article>
                     {{ block "main" . }}{{ end }}
                     <!---->
-                    
+                    {{ with .Params.exclude }}
+                    {{ else }}
                     {{ partial "help-footer" }}
+                    {{ end }}
                 </main>
+                {{ with .Params.exclude }}
+                {{ else }}
                 <footer id="footer">{{ partial "footer" . }}</footer>
+                {{ end }}
+                {{ with .Params.exclude }}
+                {{ partial "footer-landing" }}
+                {{ else }}
+                {{ end }}
             </div>
         </div>
         {{ partial "analytics" . }} {{ partial "site-footer" . }}
