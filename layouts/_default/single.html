@@ -38,7 +38,14 @@
                     {{ partial "help-footer" }}
                     {{ end }}
                 </main>
+                {{ with .Params.exclude }}
+                {{ else }}
                 <footer id="footer">{{ partial "footer" . }}</footer>
+                {{ end }}
+                {{ with .Params.exclude }}
+                {{ partial "footer-landing" }}
+                {{ else }}
+                {{ end }}
             </div>
         </div>
         {{ partial "analytics" . }} {{ partial "site-footer" . }}
