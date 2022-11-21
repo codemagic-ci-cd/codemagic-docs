@@ -16,7 +16,7 @@ How to get started with Codemagic
 {{</links-group>}} 
 
 {{<links-group title="Common questions">}}
-Find answers and get help using Codemagic
+Find answers about using Codemagic
 - [Frequently asked questions](../getting-started/faq/)
 - [Machine specs](../specs/versions-macos/)
 - [Pricing](../billing/pricing/) 
