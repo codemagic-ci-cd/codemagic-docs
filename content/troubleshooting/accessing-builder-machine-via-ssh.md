@@ -4,7 +4,7 @@ title: Remote access to the build machine
 weight: 1
 ---
 
-You can establish remote access to the virtual build machine running your build via SSH or a VNC/RDP client. 
+You can enable remote access and connect to the virtual machine running your build via SSH or a VNC/RDP client.
 
 The **SSH access** allows you to access the build machine through a terminal and run commands on it. This is an excellent option for debugging your builds. You can see the processes running during the CI job, reproduce all commands run during the build, or debug your custom scripts.
 
@@ -18,9 +18,10 @@ All virtual machines are located within the private network. In order to allow u
 
 ## Setting up an SSH connection to the virtual machine
 
-1. While the build is running, click **Explore build machine via SSH or VNC/RDP client** above the build steps to see the command and instructions for establishing SSH access. 
-2. Copy the command to the clipboard manually or using the Copy button next to the command.
-3. Run the generated script in the terminal before the build finishes. An SSH session to the machine running the build will be opened in your terminal.
+1. Check **Enable remote access** checkbox in the **Start new build modal**.
+2. While the build is running, click **Explore build machine via SSH or VNC/RDP client** above the build steps to see the command and instructions for establishing SSH access.
+3. Copy the command to the clipboard manually or using the Copy button next to the command.
+4. Run the generated script in the terminal before the build finishes. An SSH session to the machine running the build will be opened in your terminal.
 
 If you don't run the script before the build finishes, the unique SSH key expires and can't be used anymore. A new script will be generated every time you run the build, so previous scripts cannot be reused.
 
