@@ -9,7 +9,7 @@
 {{ end }} {{ with .Params.StartLineBreak }}
 <br />
 {{ end }} {{ partial "content" . }} {{ with .TableOfContents }}
-<aside id="toc" js-toc>
+<aside id="toc" data-js-toc>
     <div class="heading">Table of contents</div>
     {{ . }}
 </aside>
@@ -22,15 +22,15 @@
     </head>
     <body class="page page--article">
         {{ partial "header" . }}
-        <div id="content-wrap" js-content-wrap class="inner">
-            <aside id="sidebar-positioner" js-sidebar-positioner></aside>
-            <aside id="sidebar" js-sidebar>
+        <div id="content-wrap" data-js-content-wrap class="inner">
+            <aside id="sidebar-positioner" data-js-sidebar-positioner></aside>
+            <aside id="sidebar" data-js-sidebar>
                 <div class="overlay"></div>
-                <div id="sidebar__header" js-docs-menu-toggle></div>
+                <div id="sidebar__header" data-js-docs-menu-toggle></div>
                 {{ partial "sidebar" . }}
             </aside>
             <div id="main-content">
-                <main js-article>
+                <main data-js-article>
                     {{ block "main" . }}{{ end }}
                     <!---->
                     {{ with .Params.exclude }}
