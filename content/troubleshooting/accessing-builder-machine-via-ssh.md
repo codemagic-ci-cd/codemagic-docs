@@ -15,13 +15,15 @@ The **VNC/RDP clients** allow you to access the remote build machine GUI. For ex
 
 All virtual machines are located within the private network. In order to allow users to connect to the virtual machine, Codemagic allows a temporary SSH or VNC/RDP access through the public gateway using a unique SSH key or user credentials that are generated before each build. The unique key and user credentials are valid for the duration of the build only and are revoked after the build is finished.
 
+For security reasons, remote access has to be enabled manually for each new build from Codemagic UI.
 
 ## Setting up an SSH connection to the virtual machine
 
-1. Check **Enable remote access** checkbox in the **Start new build modal**.
-2. While the build is running, click **Explore build machine via SSH or VNC/RDP client** above the build steps to see the command and instructions for establishing SSH access.
-3. Copy the command to the clipboard manually or using the Copy button next to the command.
-4. Run the generated script in the terminal before the build finishes. An SSH session to the machine running the build will be opened in your terminal.
+1. Click **Start new build** button in Codemagic UI.
+2. Check **Enable remote access** checkbox in the **Start new build modal**.
+3. While the build is running, click **Explore build machine via SSH or VNC/RDP client** above the build steps to see the command and instructions for establishing SSH access.
+4. Copy the command to the clipboard manually or using the Copy button next to the command.
+5. Run the generated script in the terminal before the build finishes. An SSH session to the machine running the build will be opened in your terminal.
 
 If you don't run the script before the build finishes, the unique SSH key expires and can't be used anymore. A new script will be generated every time you run the build, so previous scripts cannot be reused.
 
