@@ -1,5 +1,5 @@
-<div js-notifications-wrap>
-    <h3 js-notes-loading>Loading release notes...</h3>
+<div data-js-notifications-wrap>
+    <h3 data-js-notes-loading>Loading release notes...</h3>
 </div>
 
 {{ $mdScript := resources.Get "js/markdown-it.js" | resources.ExecuteAsTemplate "" . | minify | fingerprint }}
