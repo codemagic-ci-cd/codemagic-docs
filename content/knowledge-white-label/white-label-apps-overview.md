@@ -4,7 +4,7 @@ title: White labeling overview
 weight: 1
 aliases:
   - /getting-started/white-label-apps
-  - /knowledge-git/white-label-apps
+  - /knowledge-others/white-label-apps
 ---
 
 In the context of CI/CD, “white labeling” refers to automating the process of rebranding your core app for each customer and then publishing the app to stores or other distribution channels. 
@@ -21,7 +21,7 @@ If you are building white label apps for multiple customers, you will need acces
 
 You will also need to make sure that distribution certificates, bundle ids, provisioning profiles, APNS certificates, analytics configurations etc. are available for each version of the app you are going to build. 
 
-In order to write your white labeling scripts, familiarity with shell scripting will also be an advantage, but samples for common tasks are available [here]()
+In order to write your white labeling scripts, familiarity with shell scripting will also be an advantage. You can find some samples for common tasks [here](./white-label-scripts/).
 
 ## Flavors versus a white labeling workflow
 
@@ -66,7 +66,7 @@ In a Flutter project, for example, unit tests can be run using the following scr
       flutter test --machine > test-results/flutter.json
 {{< /highlight >}}
 
-For more information on running tests for native iOS and Android, React Native please find more information [here](https://docs.codemagic.io/yaml-testing/testing/).
+For more information on running tests for native iOS and Android, React Native please find more information [here](../yaml-testing/testing/).
 
 Integration tests can be run on the simulators or emulators on Codemagic’s machines, but it’s also possible to integrate your workflows with external testing services where your iOS and Android apps can be tested on a variety of device configurations and real devices. 
 
@@ -78,7 +78,7 @@ There are many services to choose from, but here are some popular choices:
 
 ## Distributing builds to developers or QA testers
 
-In addition to unit and integration testing developers and QA teams still want to get hands on with their apps to test bug fixes and new functionality. Pre-release apps can be distributed in any of the following ways:
+In addition to unit and integration testing, developers and QA teams still want to get hands on with their apps to test bug fixes and new functionality. Pre-release apps can be distributed in any of the following ways:
 
 - Install the app directly from Codemagic notification emails.
 - Configure Codemagic’s Slack integration and install build artifacts directly from notification messages.
@@ -108,10 +108,14 @@ workflows:
   ....
   {{< /highlight >}}
 
-  ## What next?
+## Getting started with white labeling on Codemagic
 
-  Sample white label scripts
+We would recommend getting familiar with setting up a single version of your app to begin with. Set up your workflow using a codemagic.yaml configuration file and consult the documentation to understand core concepts, such as using environment variables, build triggers, script steps, code signing and publishing. Once you have successfully built and published a version of your app to the stores, continue by adding additional versions to your configuration file. 
 
-  Branching strategies
+For more information about getting started with the **codemagic.yaml** configuration file, please refer to the documentation [here](../yaml/yaml-getting-started/).
 
-  Sample project
+Once you are familiar with how Codemagic works, you should try your automation scripts on your local machine to test things like authenticating with your own CMS system, or running scripts that change application assets, such as icons or images. You can even use Codemagic's open-source [CLI tools](https://github.com/codemagic-ci-cd/cli-tools) to test features such as code signing and publishing. Once you are confident that your scripts work as expected, you can then set up your workflow on Codemagic.
+
+## Next steps
+
+Check out some sample white labeling script examples [here](./white-label-scripts/).

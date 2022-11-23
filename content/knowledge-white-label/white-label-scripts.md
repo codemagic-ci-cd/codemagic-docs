@@ -7,7 +7,7 @@ aliases:
   - /knowledge-git/white-label-apps
 ---
 
-In most cases, white label automation is done using shell scripts to perform tasks such as copying files such as logos, images, fonts etc. to a new location or changing string values in projects. Here you will find some common script samples.
+In most cases, white label automation is done using shell scripts to perform tasks such as downloading assets,  copying files such as logos, images, fonts etc. to a new location or changing string values in projects. Here you will find some common script samples.
 
 ## Changing string values in files
 
@@ -100,6 +100,7 @@ GCLOUD_SERVICE_ACCOUNT_CREDENTIALS='{
 }'
 {{< /highlight >}}
 
+You can learn how to use a settings.env file at build time [here](../knowledge-others/import-variables-from-env-file/).
 
 ### Downloading assets from a headless CMS
 
@@ -120,7 +121,7 @@ curl -H "Authorization: Bearer $CONTENTFUL_API_TOKEN" $FILE_URL --output assets.
 
 ## Changing app icons
 
-If you look at an Xcode project using Finder you will see that the icons added in Xcode are located in `<project-name>/<scheme-name>/Assets.xcassets/AppIcon.appiconset`. This means that after downloading icon assets for a specific client’s build, you can change them on disk by simply deleting the existing `AppIcon.appiconset` directory, and then copying the assets into the `Assets.xcassets` directory. 
+For iOS apps, ff you look at an Xcode project using Finder you will see that the icons added in Xcode are located in `<project-name>/<scheme-name>/Assets.xcassets/AppIcon.appiconset`. This means that after downloading icon assets for a specific client’s build, you can change them on disk by simply deleting the existing `AppIcon.appiconset` directory, and then copying the assets into the `Assets.xcassets` directory. 
 
 For example, you could do the following as one of your workflow steps:
 
@@ -157,14 +158,12 @@ script: |
 
 ## Triggering builds with the Codemagic REST API
 
-The Codemagic REST API is used in a white label workflow to trigger builds for each unique client version you need to build. When triggering a build you can pass environment variables which identify a specific client, so their unique assets are downloaded and used for the build. It can be as simple as passing the ID number associated with the client. 
+The Codemagic REST API is used in a white label workflow to trigger builds for each unique client version you need to build. When triggering a build you can pass environment variables which identify a specific client, so their unique assets can be downloaded and used for the build. It can be as simple as passing the ID number associated with the client. 
 
 To trigger a build using the Codemagic REST API you need your API access token, the application id, and the workflow id. 
 
 - The access token is available in the Codemagic UI under **Teams > Personal Account > Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
-- Once you have added your app in Codemagic, open its settings and copy the application id from the browser address bar. 
-
-`https://codemagic.io/app/<APP_ID>/settings`
+- Once you have added your app in Codemagic, open its settings and copy the **application id** from the browser address bar - `https://codemagic.io/app/<APP_ID>/settings`
 - The workflow id is the string value you assigned to the `name` property e.g "ios-qa-build"
 
 An example of triggering a single build and passing an environment variable to spedify the client id might look like this:
@@ -188,3 +187,30 @@ An example of triggering a single build and passing an environment variable to s
               }' \
             https://api.codemagic.io/builds
 {{< /highlight >}}
+
+In the following example, to trigger builds for clients `001`, `002` and `003` a simple array is first defined and then a for loop is used to initiate a build for each element in the array. The unique `CLIENT_ID` variable is provided in the payload for the three builds that are started when this command is run.
+
+{{< highlight yaml "style=paraiso-dark">}}
+- name: Trigger multiple client builds
+        script: | 
+          CLIENTS=("001" "002" "003")
+          for CLIENT in ${CLIENTS[@]}; do
+            echo "CLIENT: $CLIENT"  
+            curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
+              --data '{
+                "appId": "62f12bd754bf379f7b80f532", 
+                "workflowId": "ios-qa-client-release",
+                "branch": "main",
+                "environment": { 
+                  "variables": { 
+                    "CLIENT_ID": "'${CLIENT}'"
+                   }
+                }
+              }' \
+            https://api.codemagic.io/builds
+          done
+{{< /highlight >}}
+
+The **Codemagic REST API** can also be used for white label solutions where a dashboard is made available to your customers so they can customize an app themselves. This means they could upload their own icons, images, etc. to brand their app and then create a new build of their app. It could also be more advanced and allow customers to add their own distribution certificates, provisioning profiles and API keys.
+
+You can find our more about the Codemagic REST API [here](../rest-api/codemagic-rest-api.md)
