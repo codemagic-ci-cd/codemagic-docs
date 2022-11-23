@@ -20,7 +20,7 @@ For security reasons, remote access has to be enabled manually for each new buil
 ## Setting up an SSH connection to the virtual machine
 
 1. Click **Start new build** button in Codemagic UI.
-2. Check **Enable remote access** checkbox in the **Start new build modal**.
+2. Check **Enable SSH/VNC access** checkbox in the **Start new build modal**.
 3. While the build is running, click **Explore build machine via SSH or VNC/RDP client** above the build steps to see the command and instructions for establishing SSH access.
 4. Copy the command to the clipboard manually or using the Copy button next to the command.
 5. Run the generated script in the terminal before the build finishes. An SSH session to the machine running the build will be opened in your terminal.
