@@ -25,7 +25,7 @@ In order to write your white labeling scripts, familiarity with shell scripting 
 
 ## Flavors versus a white labeling workflow
 
-With flavors you create different versions of your app within the same project. They are typically used when you would like to create a handful of different versions of your app so you can create   a “development” build, a “qa” build and a “production” build. Each version might be configured to point to a different API endpoint, or have a different icon to show which version it is so it’s clear which app is being used when testing the app.
+With flavors you create different versions of your app within the same project. They are typically used when you would like to create a handful of different versions of your app so you can create a “development” build, a “qa” build and a “production” build. Each version might be configured to point to a different API endpoint, or have a different icon to show which version it is so it’s clear which app is being used when testing the app.
 
 In Xcode you add different build schemes which can be used to customise the project output. Similarly, in Android Studio you can create product build variants and create a separate folder for each flavor’s resources.
 
