@@ -98,7 +98,7 @@ The following script first loads the **settings.env** file so you can read its v
 {{< highlight yaml "style=paraiso-dark">}}
 workflow-name:
   name: Workflow name
-  instance_type: mac_pro
+  instance_type: mac_mini_m1
     max_build_duration: 120
     environment:
       groups:
