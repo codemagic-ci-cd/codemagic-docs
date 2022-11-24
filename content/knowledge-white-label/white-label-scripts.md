@@ -13,7 +13,7 @@ In most cases, white label automation is done using shell scripts to perform tas
 
 The automation scripts used in a white label workflow will often need to modify the content of a configuration file. This can be achieved using the `sed` stream editor utility, which can perform basic text transformations such as replacing or adding text in a file. 
 
-For example, if you want to change the the bundle identifier used in the Xcode project by modifying the `project.pbxproj` file the following script will look for all instances of the string “io.codemagic.whitelabel.dev” and replace it with the string value stored in the environment variable called BUNDLE_ID which would be typically passed to the workflow using the REST API.
+For example, if you want to change the bundle identifier used in the Xcode project by modifying the `project.pbxproj` file, the following script will look for all instances of the string “io.codemagic.whitelabel.dev” and replace it with the string value stored in the environment variable called BUNDLE_ID which would be typically passed to the workflow using the REST API.
 
 {{< highlight yaml "style=paraiso-dark">}}
 environment:
