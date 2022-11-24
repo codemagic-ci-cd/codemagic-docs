@@ -53,7 +53,7 @@ $PLIST_BUDDY -c "Set :ITSAppUsesNonExemptEncryption NO" $PLIST
 {{< /highlight >}}
 
 
-### Downloading assets from Amazon S3
+## Downloading assets from Amazon S3
 
 The Amazon CLI tools are pre-installed on Codemagic’s machines which makes it easy to store assets such as images, fonts, logos, etc. in an encrypted S3 bucket and then download these to the build machine when building each white label version. 
 
