@@ -134,7 +134,7 @@ script: |
   cp -r ./client_assets/AppIcon.appiconset ios/Runner/Assets.xcassets/
 {{< /highlight >}}
 
-For Android apps, you should run a similar script to update the icons located in app/src/main/res where you will find a number of directories that contain an icon for specific resolutions such as drawable-hdpi, drawable-mdpi, drawable-xhdpi, drawable-xxhdpi, drawable-xxxhdpi . Your script to update the icons in your Android project might look something like this:
+For Android apps, you should run a similar script to update the icons located in app/src/main/res where you will find a number of directories that contain an icon for specific resolutions such as `drawable-hdpi`, `drawable-mdpi`, `drawable-xhdpi`, `drawable-xxhdpi`, `drawable-xxxhdpi`. Your script to update the icons in your Android project might look something like this:
 
 {{< highlight yaml "style=paraiso-dark">}}
 name: Change Android app icons
