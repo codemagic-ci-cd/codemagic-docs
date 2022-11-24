@@ -43,9 +43,9 @@ GCLOUD_SERVICE_ACCOUNT_CREDENTIALS='{
 }'
 {{< /highlight >}}
 
-  ## Add environment variables to codemagic.yaml
+## Add environment variables to codemagic.yaml
 
-  In your codemagic.yaml you’ll need to define the variables so you don’t get yaml validation errors.
+In your codemagic.yaml you’ll need to define the variables so you don’t get yaml validation errors.
 
 {{< highlight yaml "style=paraiso-dark">}}
     vars:
