@@ -31,7 +31,7 @@ In Xcode you add different build schemes which can be used to customise the proj
 
 If you only needed to white label a few versions of your app then you could use this approach to build different versions of your app. However, it’s not very scalable and creates an unnecessarily large project and makes it harder to automate the white label process.
 
-An automated white label workflow,  on the other hand, doesn’t require that your app has multiple schemes or flavors configured in your Xcode or Android project. When the app is built, a series of scripts are run which change the project’s properties and change things like icons, images, fonts, values in xml and plist files. In this way, a single base app can be used to create as many different versions as you need without having to add the customisations directly to the project.
+An automated white label workflow, on the other hand, doesn’t require that your app has multiple schemes or flavors configured in your Xcode or Android project. When the app is built, a series of scripts are run which change the project’s properties and change things like icons, images, fonts, and values in xml and plist files. In this way, a single base app can be used to create as many different versions as you need without having to add the customisations directly to the project.
 
 
 
