@@ -28,7 +28,7 @@ script: |
 
 ## Updating plist files
 
-PlistBuddy is a utility on macOS that can be used to perform operations on plist files. This approach can be used with native Swift/Objective-C apps, but please note that setting values directly in a Flutter project may cause problems with your project and you you should consider using `sed` instead.
+**PlistBuddy** is a utility on macOS that can be used to perform operations on plist files. This approach can be used with native Swift/Objective-C apps, but please note that setting values directly in a Flutter project may cause problems with your project and you should consider using `sed` instead.
 
 {{< highlight yaml "style=paraiso-dark">}}
 
