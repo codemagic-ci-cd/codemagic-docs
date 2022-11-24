@@ -192,23 +192,23 @@ In the following example, to trigger builds for clients `001`, `002` and `003` a
 
 {{< highlight yaml "style=paraiso-dark">}}
 - name: Trigger multiple client builds
-        script: | 
-          CLIENTS=("001" "002" "003")
-          for CLIENT in ${CLIENTS[@]}; do
-            echo "CLIENT: $CLIENT"  
-            curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
+  script: | 
+      CLIENTS=("001" "002" "003")
+      for CLIENT in ${CLIENTS[@]}; do
+          echo "CLIENT: $CLIENT"  
+          curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
               --data '{
-                "appId": "62f12bd754bf379f7b80f532", 
-                "workflowId": "ios-qa-client-release",
-                "branch": "main",
-                "environment": { 
-                  "variables": { 
-                    "CLIENT_ID": "'${CLIENT}'"
-                   }
-                }
+                  "appId": "62f12bd754bf379f7b80f532", 
+                  "workflowId": "ios-qa-client-release",
+                  "branch": "main",
+                  "environment": { 
+                      "variables": { 
+                          "CLIENT_ID": "'${CLIENT}'"
+                      }
+                  }
               }' \
-            https://api.codemagic.io/builds
-          done
+          https://api.codemagic.io/builds
+      done
 {{< /highlight >}}
 
 The **Codemagic REST API** can also be used for white label solutions where a dashboard is made available to your customers so they can customize an app themselves. This means they could upload their own icons, images, etc. to brand their app and then create a new build of their app. It could also be more advanced and allow customers to add their own distribution certificates, provisioning profiles and API keys.
