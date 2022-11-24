@@ -61,9 +61,9 @@ In a Flutter project, for example, unit tests can be run using the following scr
 
 {{< highlight yaml "style=paraiso-dark">}}
   name: Unit tests
-    script: | 
-      mkdir -p test-results
-      flutter test --machine > test-results/flutter.json
+  script: | 
+    mkdir -p test-results
+    flutter test --machine > test-results/flutter.json
 {{< /highlight >}}
 
 For more information on running tests for native iOS and Android, React Native please find more information [here](../yaml-testing/testing/).
