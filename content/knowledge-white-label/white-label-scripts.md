@@ -158,7 +158,7 @@ script: |
 
 ## Triggering builds with the Codemagic REST API
 
-The Codemagic REST API is used in a white label workflow to trigger builds for each unique client version you need to build. When triggering a build you can pass environment variables which identify a specific client, so their unique assets can be downloaded and used for the build. It can be as simple as passing the ID number associated with the client. 
+The Codemagic REST API is used in a white label workflow to trigger builds for each unique client version you need to build. When triggering a build, you can pass environment variables which identify a specific client so their unique assets can be downloaded and used for the build. It can be as simple as passing the ID number associated with the client. 
 
 To trigger a build using the Codemagic REST API you need your API access token, the application id, and the workflow id. 
 
