@@ -102,7 +102,7 @@ GCLOUD_SERVICE_ACCOUNT_CREDENTIALS='{
 
 You can learn how to use a settings.env file at build time [here](../knowledge-others/import-variables-from-env-file/).
 
-### Downloading assets from a headless CMS
+## Downloading assets from a headless CMS
 
 If you prefer to store your assets in a CMS system, then you can usually interact with its API and download any uploaded files using a cURL request.  
 
