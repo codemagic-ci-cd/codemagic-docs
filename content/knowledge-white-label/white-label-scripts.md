@@ -166,7 +166,7 @@ To trigger a build using the Codemagic REST API, you need your API access token,
 - Once you have added your app in Codemagic, open its settings and copy the **application id** from the browser address bar - `https://codemagic.io/app/<APP_ID>/settings`
 - The workflow id is the string value you assigned to the `name` property e.g "ios-qa-build"
 
-An example of triggering a single build and passing an environment variable to spedify the client id might look like this:
+An example of triggering a single build and passing an environment variable to specify the client id might look like this:
 
 
 {{< highlight yaml "style=paraiso-dark">}}
