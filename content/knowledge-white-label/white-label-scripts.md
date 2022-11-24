@@ -138,7 +138,7 @@ For Android apps, you should run a similar script to update the icons located in
 
 {{< highlight yaml "style=paraiso-dark">}}
 name: Change Android app icons
-script: |
+script: | 
   unzip android_assets.zip -d android_assets
   cp -r ./android_assets/* ./myapp/android/app/src/main/res
 {{< /highlight >}}
