@@ -100,6 +100,10 @@ menu:
           name: Various
           weight: 4
           parent: knowledge-base
+        - identifier: knowledge-white-label
+          name: White Label Apps
+          weight: 5
+          parent: knowledge-base
 
 
 
