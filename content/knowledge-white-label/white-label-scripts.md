@@ -171,21 +171,21 @@ An example of triggering a single build and passing an environment variable to s
 
 {{< highlight yaml "style=paraiso-dark">}}
 - name: Trigger single clieny builds
-        script: | 
-          CLIENT="001"
-            curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
-              --data '{
-                "appId": "62f12bd754bf379f7b80f532", 
-                "workflowId": "ios-qa-client-release",
-                "branch": "main",
-								"labels": ["'${CLIENT}'"],
-                "environment": { 
-                  "variables": { 
-                    "CLIENT_ID": "'${CLIENT}'"
-                   }
-                }
-              }' \
-            https://api.codemagic.io/builds
+  script: | 
+    CLIENT="001"
+    curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
+      --data '{
+          "appId": "62f12bd754bf379f7b80f532", 
+          "workflowId": "ios-qa-client-release",
+          "branch": "main",
+          "labels": ["'${CLIENT}'"],
+          "environment": { 
+              "variables": { 
+                  "CLIENT_ID": "'${CLIENT}'"
+              }
+          }
+        }' \
+       https://api.codemagic.io/builds
 {{< /highlight >}}
 
 In the following example, to trigger builds for clients `001`, `002` and `003` a simple array is first defined and then a for loop is used to initiate a build for each element in the array. The unique `CLIENT_ID` variable is provided in the payload for the three builds that are started when this command is run.
