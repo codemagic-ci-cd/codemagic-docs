@@ -3,7 +3,7 @@ title: Importing variables from a .env file
 description: How to import variables and secrets from a settings.env file
 weight: 9
 ---
-If you are white labelling apps for different customers and you might want to store the credentials for each customer in a settings.env in a secure S3 or GCP bucket. You can then download the settings.env for the specific customer to run the build and write the values to the `CM_ENV` environment variable. 
+If you are white labelling apps for different customers, you might want to store the credentials for each customer in a settings.env in a secure S3 or GCP bucket. You can then download the settings.env for the specific customer to run the build and write the values to the `CM_ENV` environment variable. 
 
 To learn more about setting environment variables at build time, please see [here](../yaml-basic-configuration/using-environment-variables/).
 
