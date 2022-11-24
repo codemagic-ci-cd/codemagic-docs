@@ -121,7 +121,7 @@ curl -H "Authorization: Bearer $CONTENTFUL_API_TOKEN" $FILE_URL --output assets.
 
 ## Changing app icons
 
-For iOS apps, ff you look at an Xcode project using Finder you will see that the icons added in Xcode are located in `<project-name>/<scheme-name>/Assets.xcassets/AppIcon.appiconset`. This means that after downloading icon assets for a specific client’s build, you can change them on disk by simply deleting the existing `AppIcon.appiconset` directory, and then copying the assets into the `Assets.xcassets` directory. 
+For iOS apps, if you look at an Xcode project using Finder, you will see that the icons added in Xcode are located in `<project-name>/<scheme-name>/Assets.xcassets/AppIcon.appiconset`. This means that after downloading icon assets for a specific client’s build, you can change them on disk by simply deleting the existing `AppIcon.appiconset` directory, and then copying the assets into the `Assets.xcassets` directory. 
 
 For example, you could do the following as one of your workflow steps:
 
