@@ -49,7 +49,7 @@ You can find detailed pricing information [here](https://docs.codemagic.io/billi
 
 ## Parallel white label builds
 
-If you have a large number of white label apps to it can take a many hours to build and publish them all. Fortunately with Codemagic, it is possible to use multiple concurrencies to run builds in parallel. 
+If you have a large number of white label apps, it can take many hours to build and publish them all. Fortunately, with Codemagic it is possible to use multiple concurrencies to run builds in parallel. 
 
 This means that if you have 40 white label app versions to build and you have 3 concurrencies available, the first 3 builds will start immediately and the remaining 37 builds will be queued for building. As soon as one of the first builds completes, the next build in the queue will start and so on until all the builds are complete.
 
