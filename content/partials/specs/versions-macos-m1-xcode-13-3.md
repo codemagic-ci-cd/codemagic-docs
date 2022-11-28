@@ -14,13 +14,13 @@ weight: 9
 
 - System version `macOS 12.6.1 (21G217)`
 - Kernel version `Darwin 21.6.0`
-- Disk `294GB (Free Space: 48GB)`
+- Disk `294GB (Free Space: 47GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
-- aws `2.8.9`
+- aws `2.9.1`
 - carthage `0.38.0`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
@@ -29,19 +29,19 @@ weight: 9
 - ew-cli `0.0.48`
 - fastlane `2.210.1`
 - firebase `11.4.2`
-- flutter `3.3.7 ($HOME/programs/flutter)`
+- flutter `3.3.9 ($HOME/programs/flutter)`
 - gem `3.3.24`
-- gh `2.19.0`
+- gh `2.20.2`
 - git `2.38.1`
 - Google Cloud SDK `404.0.0`
 - gradle `7.3.1`
 - gsutil `5.14`
-- homebrew `3.6.8`
+- homebrew `3.6.12`
 - ionic `5.4.16`
 - jq `1.6`
 - ktlint `0.47.1`
-- node `18.11.0`
-- npm `8.19.2`
+- node `19.1.0`
+- npm `8.19.3`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
@@ -53,7 +53,7 @@ weight: 9
 - unzip `6.00`
 - wget `1.21.3`
 - yarn `1.22.19`
-- yq `4.29.2`
+- yq `4.30.4`
 - zip `3.0`
 
 ## Android emulators

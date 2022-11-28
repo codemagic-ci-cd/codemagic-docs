@@ -24,7 +24,7 @@ weight: 3
 - curl `7.79.1`
 - DotNet4.5.2 `4.5.2.20140902`
 - fastlane `2.209.1`
-- flutter `3.3.7 (C:\Users\builder\programs\flutter)`
+- flutter `3.3.9 (C:\Users\builder\programs\flutter)`
 - gem `3.3.7`
 - gh `2.6.0`
 - Google Cloud SDK `357.0.0`
