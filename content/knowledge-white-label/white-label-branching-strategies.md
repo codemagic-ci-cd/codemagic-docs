@@ -58,7 +58,7 @@ BUILD ---> DISTRIBUTE(Distribute QA build) ---- TESTFLIGHT(TestFlight) & GOOGLE(
 
 ## Trigger branch and workflow
 
-The "trigger" branch and workflows serves one purpose; to trigger the builds for each client version. When a pull request is merged into this branch from the "QA" branch it will trigger a "trigger" workflow which is configured to trigger all your client builds using the Codemagic REST API.
+The "trigger" branch and workflow serve one purpose; to trigger the builds for each client version. When a pull request is merged into this branch from the "QA" branch it will trigger a "trigger" workflow which is configured to trigger all your client builds using the Codemagic REST API.
 
 
 {{< mermaid >}}
