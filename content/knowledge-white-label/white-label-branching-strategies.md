@@ -10,7 +10,7 @@ There are many different ways you can set up your branching strategy and workflo
 
 This "dev" branch is for developing and fixing the core version of the app. The app is built using the default “dev” icons, colors, fonts, bundle id etc. and no white label automation scripts are run to change this app. 
 
-When new code is committed to this branch it triggers a "dev-release" workflow that runs unit or integration tests. If the tests pass then build the core app and developers can download directly from the Codemagic build page or shared dashboard, via email or Slack notifications, Testflight, Google Play or other distribution channels. 
+When new code is committed to this branch, it triggers a "dev-release" workflow that runs unit or integration tests. If the tests pass, the core app is built and developers can download it directly from the Codemagic build page or shared dashboard, via email or Slack notifications, Testflight, Google Play, or other distribution channels. 
 
 If any of integration or unit tests fail, the developers should review the code, fix and issues and commit new code to trigger a new build.
 
