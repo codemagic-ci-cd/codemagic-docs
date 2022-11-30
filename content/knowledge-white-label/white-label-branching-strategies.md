@@ -34,7 +34,7 @@ BUILD(Build core app) ---> DISTRIBUTE(Distribute Dev build) ---- CM_BUILD(Codema
 
 ## QA branch and workflow
 
-If you are happy with the build from the "dev" branch, you can now proceed to raise a PR request to merge this into the "QA" branch. This triggers a "qa-release" workflows that runs the white label automation scripts to change the icons, images, fonts etc. to something other than the default dev version of the app. The resulting build can be distributed directly to your QA testers. 
+If you are happy with the build from the "dev" branch, you can now proceed to raise a PR request to merge this into the "QA" branch. This triggers a "qa-release" workflow that runs the white label automation scripts to change the icons, images, fonts, etc. to something other than the default dev version of the app. The resulting build can be distributed directly to your QA testers. 
 
 {{< mermaid >}}
 flowchart TD
