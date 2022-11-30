@@ -70,7 +70,7 @@ API ---> BUILD(Trigger client builds) ---- C1(Client '001') & C2(Client '002') &
 
 ## Client build triggered by Codemagic REST API
 
-Each client version build is triggered by the Codemagic REST API. The payload of the API request contains the client version to build and the workflow downloads the required assets and configuration for that versions. This means that a **single workflow** is required to build multiple client versions. The workflow runs the white label automation scripts, builds the app, and automatically distributes the app to the channel of your choice.
+Each client version build is triggered by the Codemagic REST API. The payload of the API request contains the client version to build and the workflow downloads the required assets and configuration for that version. This means that a **single workflow** is required to build multiple client versions. The workflow runs the white label automation scripts, builds the app, and automatically distributes the app to the channel of your choice.
 
 {{< mermaid >}}
 flowchart TD
