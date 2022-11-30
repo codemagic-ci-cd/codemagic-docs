@@ -12,7 +12,7 @@ This "dev" branch is for developing and fixing the core version of the app. The 
 
 When new code is committed to this branch, it triggers a "dev-release" workflow that runs unit or integration tests. If the tests pass, the core app is built and developers can download it directly from the Codemagic build page or shared dashboard, via email or Slack notifications, Testflight, Google Play, or other distribution channels. 
 
-If any of integration or unit tests fail, the developers should review the code, fix and issues and commit new code to trigger a new build.
+If any of integration or unit tests fail, the developers should review the code, fix any issues and commit new code to trigger a new build.
 
 {{< mermaid >}}
 flowchart TD
