@@ -717,13 +717,13 @@ public class IosBuildPostprocessor
 }
 {{< /highlight >}}
 
-## Caching
+<!-- ## Caching
 You can speed up your build by caching the Library folder, read more about caching [here](https://docs.codemagic.io/yaml/yaml-getting-started/#cache).
 {{< highlight yaml "style=paraiso-dark">}}
     cache:
       cache_paths:
         - $CM_BUILD_DIR/Library
-{{< /highlight >}}
+{{< /highlight >}} -->
 
 
 ## Conclusion
