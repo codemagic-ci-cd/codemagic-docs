@@ -209,7 +209,7 @@ Additionally, you will need to provide the package name of the app in Google Pla
 
 #### Creating Google service account credentials
 
-You will need to set up a service account in Google Play Console and create a JSON key with credentials. See how to [set up a service account and create a key](../knowledge-base/google-play-api/#setting-up-the-service-account-on-google-play-and-google-cloud-platform).
+You will need to set up a service account in Google Play Console and create a JSON key with credentials. See how to [set up a service account and create a key](https://docs.codemagic.io/yaml-publishing/google-play/#configure-google-play-api-access).
 
 
 #### Configuring the API access environment variables
@@ -290,7 +290,7 @@ scripts:
   - name: Build Android release
     script: | 
       LATEST_GOOGLE_PLAY_BUILD_NUMBER=$(google-play get-latest-build-number --package-name "$PACKAGE_NAME")
-      if [ -z LATEST_GOOGLE_PLAY_BUILD_NUMBER ]
+      if [ -z $LATEST_GOOGLE_PLAY_BUILD_NUMBER ]
         then
           # fallback in case no build number was found from Google Play.
           # Alternatively, you can `exit 1` to fail the build

@@ -105,27 +105,6 @@ Use the Unity version you installed on the machine:
 
 {{< /tabpane >}}
 
-## Caching
-You can cache the newly installed version on Unity to avoid installing it in every build, read more about caching [here](https://docs.codemagic.io/yaml/yaml-getting-started/#cache).
-
-{{< tabpane >}}
-{{% tab header="Mac" %}}
-{{< highlight yaml "style=paraiso-dark">}}
-    cache:
-      cache_paths:
-        - /Applications/Unity/Hub/Editor/${UNITY_VERSION}
-{{< /highlight >}}
-{{< /tab >}}
-{{% tab header="Windows" %}}
-{{< highlight yaml "style=paraiso-dark">}}
-    cache:
-      cache_paths:
-        - C:\Program Files\Unity\Hub\Editor\$UNITY_VERSION
-{{< /highlight >}}
-{{< /tab >}}
-
-{{< /tabpane >}}
-
 ## Android Workflow configuration sample
 {{< tabpane >}}
 {{% tab header="Mac" %}}

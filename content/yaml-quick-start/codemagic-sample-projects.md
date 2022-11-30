@@ -20,10 +20,10 @@ For further information on how to configure the **codemagic.yaml** for your proj
 * [Flavors](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/flutter/flutter-flavors-demo-project)
 * [macOS](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/flutter/flutter-macos-demo-project)
 * [Windows](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/flutter/flutter-windows-demo-project)
-* [Snapcraft](https://github.com/codemagic-ci-cd/flutter-snapcraft-example/)
 
 
 ### iOS (Native) Samples
+* [iOS sample project](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ios/ios-native-quick-start)
 * [Automatic code signing](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ios/ios-automatic-code-signing-demo-project)
 * [Manual code signing](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ios/ios-manual-code-signing-demo-project)
 * [White label single scheme](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ios/ios-white-label-single-scheme-demo-project)
@@ -34,19 +34,18 @@ For further information on how to configure the **codemagic.yaml** for your proj
 
 
 ### Android (Native) Samples
-* [Android with Espresso testing](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/android/android-espresso-demo-project)
+* [Android sample project](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/android/android-native-quick-start)
 
 
 ### React Native Samples
-* [React Native](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/react-native/react-native-demo-project)
-* [React Native Detox](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/react-native/react-native-detox-demo-project)
-* [React Native Expo, not ejected](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/react-native/expo-react-native-not-ejected)
+* [React Native Android and iOS](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/react-native/react-native-demo-project)
+* [React Native using Expo without ejecting](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/react-native/expo-react-native-not-ejected)
 * [iOS Simulator](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/react-native/react-native-ios-simulator-build)
 
 
 ### Unity
-* [Unity sample project](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity/unity-demo-project)
-* [Steam deployment](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity/unity-deploy-steam)
+* [Unity Android, iOS, Windows and macOS sample](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity/unity-demo-project)
+* [Steam Publishing sample](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/unity/unity-deploy-steam)
 
 
 ### Kotlin Multiplatform Mobile
@@ -54,8 +53,8 @@ For further information on how to configure the **codemagic.yaml** for your proj
 
 
 ### Ionic Samples
-* [Capacitor](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ionic/ionic-capacitor-demo-project)
-* [Cordova](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ionic/ionic-cordova-demo-project)
+* [Ionic + Capacitor sample](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ionic/ionic-capacitor-demo-project)
+* [Ionic + Cordova sample](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/ionic/ionic-cordova-demo-project)
 
 
 ### Integrations 

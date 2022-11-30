@@ -9,7 +9,8 @@ aliases:
 
 ## Configuring build machine type
 
-In `codemagic.yaml`, the build machine type can be specified with [Instance type](../yaml/yaml-getting-started/#instance-type).
+In `codemagic.yaml`, the build machine type can be specified with [Instance type](/yaml-basic-configuration/yaml-getting-started/#instance-type).
+
 
 For Flutter projects configured via the Flutter workflow editor, the build machine type can be selected in **App settings > Workflow settings > Machine**.
 

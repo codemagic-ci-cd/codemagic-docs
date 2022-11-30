@@ -1,7 +1,7 @@
 ---
 title: Creating and managing teams
 description: How to create and manage teams in Codemagic
-weight: 3
+weight: 5
 aliases:
  - /teams/teams
  - /teams/users

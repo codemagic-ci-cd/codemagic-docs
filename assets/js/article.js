@@ -39,7 +39,7 @@ const hashScroll = () => {
 }
 
 const adjustScrollPotion = () => {
-    const headerHeight = document.querySelector('[js-header]').offsetHeight
+    const headerHeight = document.querySelector('[data-js-header]').offsetHeight
     const targetMarginTop = 30
     const offset = headerHeight + targetMarginTop
     window.scrollBy(0, -offset)
@@ -69,7 +69,7 @@ const scrollToY = (target, duration) => {
 
 // Create anchor scroller
 const scrollToAnchor = (target, duration) => {
-    const headerHeight = document.querySelector('[js-header]').offsetHeight
+    const headerHeight = document.querySelector('[data-js-header]').offsetHeight
     const targetMarginTop = 30
     const offsetTop = window.scrollY + target.getBoundingClientRect().top
     let offset = headerHeight + targetMarginTop
@@ -108,11 +108,11 @@ const copyLinkFromTitles = (e) => {
 
 // Define shared data for sticky elements
 const getDataForSticky = () => {
-    const article = document.querySelector('[js-article]')
-    const header = document.querySelector('[js-header]')
-    const sidebar = document.querySelector('[js-sidebar]')
-    const wrap = document.querySelector('[js-content-wrap]')
-    const toc = document.querySelector('[js-toc')
+    const article = document.querySelector('[data-js-article]')
+    const header = document.querySelector('[data-js-header]')
+    const sidebar = document.querySelector('[data-js-sidebar]')
+    const wrap = document.querySelector('[data-js-content-wrap]')
+    const toc = document.querySelector('[data-js-toc')
 
     const windowHeight = window.innerHeight
     const windowWidth = window.innerWidth
@@ -125,8 +125,8 @@ const getDataForSticky = () => {
 
 // Handle docs menu positioning
 const handleSidebarPosition = () => {
-    const menu = document.querySelector('[js-docs-menu]')
-    const headerContent = document.querySelector('[js-header-content]')
+    const menu = document.querySelector('[data-js-docs-menu]')
+    const headerContent = document.querySelector('[data-js-header-content]')
     const { bottom, header, sidebar, wrap } = getDataForSticky()
 
     if (window.showDesktop) {
@@ -164,9 +164,9 @@ const handleTOCPositon = () => {
 
 // Handle header contents positioning
 const positionHeaderContents = () => {
-    const header = document.querySelector('[js-header]')
-    const headerContent = document.querySelector('[js-header-content]')
-    const headerMenu = document.querySelector('[js-header-menu-wrap]')
+    const header = document.querySelector('[data-js-header]')
+    const headerContent = document.querySelector('[data-js-header-content]')
+    const headerMenu = document.querySelector('[data-js-header-menu-wrap]')
 
     if (headerContent) {
         if (window.showDesktop) {
@@ -192,9 +192,9 @@ const positionHeaderContents = () => {
 
 // Toggle docs menu open
 const handleDocsToggle = ({ target }) => {
-    const menu = document.querySelector('[js-docs-menu]')
+    const menu = document.querySelector('[data-js-docs-menu]')
 
-    if (target.hasAttribute('js-docs-menu-toggle')) {
+    if (target.hasAttribute('data-js-docs-menu-toggle')) {
         target.classList.toggle('open')
         menu.classList.toggle('open')
         handleSidebarPosition()
@@ -207,7 +207,7 @@ const scrollMenuToActive = (selector, center) => {
     const activeItem = menu.querySelector('a.active')
 
     if (activeItem) {
-        const visibleHeight = window.innerHeight - document.querySelector('[js-header]').clientHeight
+        const visibleHeight = window.innerHeight - document.querySelector('[data-js-header]').clientHeight
         const offset = center ? visibleHeight / 2 - activeItem.clientHeight : 10
         menu.scrollTo({ top: activeItem.offsetTop - offset, behaviour: 'smooth' })
     }
@@ -215,9 +215,9 @@ const scrollMenuToActive = (selector, center) => {
 
 // Set TOC item active
 const setTocItemActive = (id) => {
-    const active = document.querySelector('[js-toc] a.active')
+    const active = document.querySelector('[data-js-toc] a.active')
     if (active) active.classList.remove('active')
-    document.querySelector(`[js-toc] a[href="#${id}"`).classList.add('active')
+    document.querySelector(`[data-js-toc] a[href="#${id}"`).classList.add('active')
 }
 
 // Check if element is in viewport
@@ -243,12 +243,12 @@ const observeHeaders = () => {
 
         if (headersOnScreen.length > 0) {
             setTocItemActive(headersOnScreen[0].id)
-            scrollMenuToActive('[js-toc]')
+            scrollMenuToActive('[data-js-toc]')
         } else if (entries[0].intersectionRatio === 0 && !window.scrollingDown) {
             currentIndex = headers.findIndex((header) => header.id === entries[0].target.getAttribute('id'))
             previousHeader = currentIndex ? currentIndex - 1 : 0
             setTocItemActive(headers[previousHeader].id)
-            scrollMenuToActive('[js-toc]')
+            scrollMenuToActive('[data-js-toc]')
         }
     })
     headersSelector.forEach((header) => observer.observe(header))
@@ -271,7 +271,7 @@ const changePreference = (target) => {
     openActiveCategory()
 
     if (target.hasAttribute('data-js-preference-option')) {
-        const bg = document.querySelector('[js-preference-bg]')
+        const bg = document.querySelector('[data-js-preference-bg]')
         const active = document.querySelector('[data-js-preference-option].active')
         const yamlLinks = document.querySelectorAll(
             '[data-js-configuration-category="yaml"], [data-js-platform-specific="yaml"]',
@@ -299,10 +299,10 @@ const changePreference = (target) => {
 
 // Handle category toggle
 const toggleCategory = ({ target }) => {
-    if (target.hasAttribute('js-category-toggle')) {
+    if (target.hasAttribute('data-js-category-toggle')) {
         const parent = target.parentNode
-        if (!parent.querySelector('[js-docs-link].active')) {
-            const category = parent.querySelector('[js-category-posts]')
+        if (!parent.querySelector('[data-js-docs-link].active')) {
+            const category = parent.querySelector('[data-js-category-posts]')
             target.classList.toggle('open')
             category.classList.toggle('open')
             window.slideToggle(category, 200)
@@ -312,12 +312,12 @@ const toggleCategory = ({ target }) => {
 
 // Make sure category with active item is open
 const openActiveCategory = () => {
-    const activeLinks = document.querySelectorAll('[js-docs-link].active')
+    const activeLinks = document.querySelectorAll('[data-js-docs-link].active')
     activeLinks.forEach((activeLink) => {
-        const parent = activeLink.closest('[js-docs-menu-item]')
+        const parent = activeLink.closest('[data-js-docs-menu-item]')
         if (parent) {
-            const name = parent.querySelector('[js-category-name]')
-            const posts = parent.querySelector('[js-category-posts]')
+            const name = parent.querySelector('[data-js-category-name]')
+            const posts = parent.querySelector('[data-js-category-posts]')
             parent.classList.add('open')
             name.classList.add('open')
             posts.classList.add('open')
@@ -328,19 +328,19 @@ const openActiveCategory = () => {
 
 // Toggle collapsible content
 const collapsibleListener = () => {
-    const collapsibleElements = document.querySelectorAll('[js-collapsible]')
+    const collapsibleElements = document.querySelectorAll('[data-js-collapsible]')
     collapsibleElements.forEach((el) => {
-        const title = el.querySelector('[js-collapsible-title]')
-        const content = el.querySelector('[js-collapsible-content]')
+        const title = el.querySelector('[data-js-collapsible-title]')
+        const content = el.querySelector('[data-js-collapsible-content]')
         const parent = el.parentElement
 
         title.addEventListener('click', () => {
             // Allow only singluar item to be open
             if (parent.classList.contains('singular')) {
-                const openItem = parent.querySelector('[js-collapsible].open')
+                const openItem = parent.querySelector('[data-js-collapsible].open')
                 if (openItem && openItem !== el) {
                     openItem.classList.remove('open')
-                    window.slideUp(openItem.querySelector('[js-collapsible-content]'), 200)
+                    window.slideUp(openItem.querySelector('[data-js-collapsible-content]'), 200)
                 }
             }
             // Toggle selected item
@@ -352,7 +352,7 @@ const collapsibleListener = () => {
 
 // On ready
 handleSidebarPosition()
-scrollMenuToActive('[js-docs-menu]', true)
+scrollMenuToActive('[data-js-docs-menu]', true)
 positionHeaderContents()
 setInitialPreference()
 openActiveCategory()
@@ -370,7 +370,7 @@ if (showToc) {
     observeHeaders()
     handleTOCPositon()
 } else {
-    document.querySelector('[js-toc]').style.display = 'none'
+    document.querySelector('[data-js-toc]').style.display = 'none'
 }
 
 // On click
