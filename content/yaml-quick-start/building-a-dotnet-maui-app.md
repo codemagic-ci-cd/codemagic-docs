@@ -1,5 +1,5 @@
 ---
-title: Dotnet MAUI apps
+title: .NET MAUI apps
 description: How to build a .NET MAUI app with codemagic.yaml
 weight: 14
 ---
