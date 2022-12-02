@@ -98,7 +98,9 @@ In addition to [build triggers](#build-triggers) and [branch filtering](#trackin
 
 ### Using `changeset` inside `when`
 
-Using `changeset` setting. you can avoid unnecessary builds when functional components of your repository were not modified. Use conditional workflow triggering to skip building the workflow if the watched files were not updated since the last successful build.
+Using `changeset` setting. you can avoid unnecessary builds when functional components of your repository were not modified. After `changeset` setting is configured in `codemagic.yaml`, the subsequent build will be triggered regardless of the condition and only after that successful build, builds will be skipped according to the `changeset` condition.
+
+Builds will be skipped only after having one successful build since `changeset` setting is configured in `codemagic.yaml`. 
 
 When using `changeset` filtering, a build will be run if any of the following is true:
 - `codemagic.yaml` file was modified
