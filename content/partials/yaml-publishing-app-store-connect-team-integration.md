@@ -37,6 +37,11 @@ publishing:
     # Optional boolean, defaults to false. Whether or not to submit the uploaded
     # build to App Store review. Note: This action is performed during post-processing.
     submit_to_app_store: true
+
+    # Optional boolean, defaults to false. Whether to cancel previous submissions (if applicable)
+    # to App Store Connect. It allows automatically submitting a new submission for review if a previous submission exists.
+    # Note: This action is performed during post-processing.
+    cancel_previous_submissions: true
     
     # Optional, defaults to MANUAL. Supported values: MANUAL, AFTER_APPROVAL or SCHEDULED
     release_type: SCHEDULED
