@@ -6,6 +6,8 @@ weight: 2
 
 **SonarCloud** is SonarQube's cloud-based code quality and code security service for projects hosted in cloud-based Git repositories such as GitHub, Bitbucket, GitLab and Azure DevOps. It can be used as part of your CI/CD workflow to analyse your code each time you commit new code.
 
+Sample projects that show how to configure SonarQube / SonarCloud integration are available in our sample projects repository for [Android](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/sonarqube_integration_demo_project/Android) and [iOS](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/sonarqube_integration_demo_project/Sonar).
+
 ## Create a SonarCloud account
 
 You will need access to a SonarCloud account and can [sign up](https://sonarcloud.io/) for free. This will allow you to work with public repositories.
@@ -167,7 +169,7 @@ All of the other steps will be performed using scripts in your `codemagic.yaml` 
         bash xccov-to-sonarqube-generic.sh Build/Logs/Test/*.xcresult/ > sonarqube-generic-coverage.xml
     - name: Generate and upload code analysis report
       script: | 
-        export PATH=$PATH:$FCI_BUILD_DIR/sonar-scanner/bin    
+        export PATH=$PATH:$CM_BUILD_DIR/sonar-scanner/bin    
         sonar-scanner \
           -Dsonar.projectKey=$SONAR_PROJECT_KEY \
           -Dsonar.organization=$SONAR_ORG_KEY \
