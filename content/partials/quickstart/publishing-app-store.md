@@ -27,10 +27,8 @@ publishing:
     # Note: This action is performed during post-processing.
     submit_to_testflight: true 
 
-    # Optional boolean, defaults to false. Set to true to automatically expire all previous builds except 
-    # the current one when submitting a new build to beta review.
-    # This allows the automation of creating a new beta review submission if a prior one exists. 
-    # Expired builds will no longer be available for testers.
+    # Optional boolean, defaults to false. Set to true to automatically expire all previous builds upon
+    # submitting a new build to beta review. Expired builds will no longer be available for testers.
     # Note: This action is performed during post-processing.
     expire_previous_builds: true
 
