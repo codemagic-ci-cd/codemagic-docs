@@ -57,7 +57,7 @@ There are three **environment variables** that need to be added to your workflow
 
 {{< tabpane >}}
 
-{{< tab header="Android" >}}
+{{% tab header="Android" %}}
 To use SonarCloud with Android projects, you need to add the **sonarqube plugin** to the `app/build.gradle` file:
 {{< highlight Groovy "style=paraiso-dark">}}
 plugins {
