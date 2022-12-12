@@ -61,12 +61,7 @@ You can use the remote session to reproduce all commands run during the build, r
 
 ## Remote access session time limit
 
-The SSH or VNC/RDP session remains active for a maximum of 20 minutes after all build steps are completed or until the maximum build duration limit is reached, whichever comes first. If you log out from the virtual machine during an active VNC or SSH/RDP session, the build is finished automatically, and you cannot access the builder for this session. You would have to run a new build to establish a new remote access connection.
-
-{{<notebox>}}
-**Note:** If you have finished debugging the build, don't forget to end the session to avoid losing build time.
-{{</notebox>}}
-
+The build virtual machine will remain available for an SSH or VNC/RDP connection for 10 minutes after the build finishes running. Once connected, the debug session remains active until build is cancelled or the maximum build duration limit is reached (60 minutes by default).
 
 ## Useful tips for debugging
 
