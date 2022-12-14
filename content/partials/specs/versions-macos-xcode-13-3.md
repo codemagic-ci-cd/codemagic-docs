@@ -1,6 +1,6 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS build machines using Xcode version 13.3+.
-title: macOS build machine specification (Xcode 13.3+ / Unity)
+description: A list of tools available out-of-the-box on Codemagic macOS build machines using Xcode version 13.3-14.1.
+title: macOS build machine specification (Xcode 13.3-14.1 / Unity)
 aliases:
   - '/releases-and-versions/versions5'
   - '/specs/versions5'
