@@ -260,10 +260,32 @@ environment:
   ndk: r21d         # Define default or revision (e.g. r19c)
   java: 1.8         # Define default, or platform version (e.g. 11)
   ruby: 2.7.2       # Define default or version
+  unity: 2021.3.15f1 # Define a Unity version from the list below
 {{< /highlight >}}
 
 Currently, only the above-mentioned software versions can be customized via the environment section in the yaml file. If a different software version needs to be customized, then it may require a different approach depending upon use cases.
-
+{{<notebox>}}
+**Note:** Available Unity versions on the Codemagic server are:
+2020.3.15f2-x86_64
+2020.3.21f1-x86_64
+2020.3.38f1-x86_64
+2020.3.40f1-x86_64
+2020.3.41f1-x86_64
+2021.3.4f1-arm64
+2021.3.4f1-x86_64
+2021.3.6f1-x86_64
+2021.3.7f1-arm64
+2021.3.7f1-x86_64
+2021.3.9f1-x86_64
+2021.3.10f1-x86_64
+2021.3.11f1-arm64
+2021.3.11f1-x86_64
+2021.3.12f1-x86_64
+2021.3.13f1-x86_64
+2021.3.15f1-arm64
+2021.3.15f1-x86_64
+{{</notebox>}}
+</p>
 {{<notebox>}}
 **Note:** The Xcode version defines type of macOS build machine used for the build (even if you're building Android). See the default software versions on Codemagic macOS build machines [here.](../specs/versions-macos/)
 {{</notebox>}}
