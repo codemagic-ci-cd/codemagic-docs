@@ -6,7 +6,7 @@ aliases:
  - /knowledge-base/install-unity-version
 ---
 
-Each build machine image has a specific version of Unity installed. You can find out the specific Unity version by consulting the build machine specification for [MacOS](../specs/versions-macos) and for [Windows](../specs/versions-windows) instances.
+Each build machine image has a specific version of Unity installed. You can find out the specific Unity version by consulting the build machine specification for [macOS](../specs/versions-macos) and for [Windows](../specs/versions-windows) instances.
 
 ## Use Codemagic's supported versions
 
@@ -19,14 +19,12 @@ workflows:
         unity: YOUR-DESIRED-UNITY-VERSION # e.g. 2021.3.6f1
 {{< /highlight >}}
 
-Then you can continue building your Unity apps as descriped [here](../yaml-quick-start/building-a-unity-app/).
+This will automatically install the specifed Unity version to the build machine and set the `UNITY_HOME` to `/Applications/Unity/Hub/Editor/<YOUR-DESIRED-UNITY-VERSION>/Unity.app` and you can continue building your app as descriped [here](../yaml-quick-start/building-a-unity-app/).
 
-{{< collapse title="Supported Unity versions on Mac machines">}}
-- `2020.3.15f2`
-- `2020.3.21f1`
-- `2020.3.38f1`
-- `2020.3.40f1`
-- `2020.3.41f1`
+
+#### The supported Unity versions on Mac machines are the following:
+{{< tabpane >}}
+{{% tab header="2021.X" %}}
 - `2021.3.4f1`
 - `2021.3.6f1`
 - `2021.3.7f1`
@@ -36,18 +34,23 @@ Then you can continue building your Unity apps as descriped [here](../yaml-quick
 - `2021.3.12f1`
 - `2021.3.13f1`
 - `2021.3.15f1`
+{{< /tab >}}
+{{% tab header="2020.X" %}}
+- `2020.3.15f2`
+- `2020.3.21f1`
+- `2020.3.38f1`
+- `2020.3.40f1`
+- `2020.3.41f1`
+{{< /tab >}}
+{{< /tabpane >}}
 
-{{<notebox>}}
-These editiors are `x86_64` have only the `macOS`, `Android`, and `iOS` modules, if you need other modules then you need to install it using [Unity Hub CLI](./-others/install-unity-version/#unity-installation-script).
-{{</notebox>}}
-
-{{< /collapse >}}
-
-
-{{<notebox>}}
 If you can't find your desired Unity version in the list, please contact us [here](https://codemagic.io/contact/).
-{{</notebox>}}
 
+{{<notebox>}}
+**Notes:**
+- These versions are the `Unity Editor (macOS x86_64)`, and have only the `macOS`, `Android`, and `iOS` modules.
+- If your app require additional modules then you need to install it using [Unity Hub CLI](./-others/install-unity-version/#unity-installation-script) like this: `/Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version <UNITY_VERSION> -m windows-mono`, this will install the windows modules for the spesfied `<UNITY_VERSION>`.
+{{</notebox>}}
 
 ## Download from Unity Hub CLI
 It is possible to use the Unity Hub CLI to download and install a different Unity Editor version and target support files for that version. 
