@@ -38,14 +38,14 @@ Then you can continue building your Unity apps as descriped [here](../yaml-quick
 - `2021.3.15f1`
 
 {{<notebox>}}
-These editiors are `x86_64` have only the `MacOS`, `Android`, and `iOS` modules, if you need other modules then you need to install it using [Unity Hub CLI](./-others/install-unity-version/#unity-installation-script).
+These editiors are `x86_64` have only the `macOS`, `Android`, and `iOS` modules, if you need other modules then you need to install it using [Unity Hub CLI](./-others/install-unity-version/#unity-installation-script).
 {{</notebox>}}
 
 {{< /collapse >}}
 
 
 {{<notebox>}}
-If you can't find your desired Unit version in the list, please contact us [here](https://codemagic.io/contact/).
+If you can't find your desired Unity version in the list, please contact us [here](https://codemagic.io/contact/).
 {{</notebox>}}
 
 
