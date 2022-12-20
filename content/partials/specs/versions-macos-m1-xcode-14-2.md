@@ -3,7 +3,7 @@ description: A list of tools available out-of-the-box on Codemagic macOS M1 buil
 title: macOS M1 build machine specification (Xcode 14.2+ / Unity)
 aliases:
 
-weight: 10
+weight: 11
 ---
 
 ## Hardware
@@ -14,13 +14,13 @@ weight: 10
 
 - System version `macOS 13.0.1 (22A400)`
 - Kernel version `Darwin 22.1.0`
-- Disk `294GB (Free Space: 83GB)`
+- Disk `294GB (Free Space: 109GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
-- aws `2.9.6`
+- aws `2.9.8`
 - carthage `0.38.0`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
@@ -29,7 +29,7 @@ weight: 10
 - ew-cli `0.0.48`
 - fastlane `2.211.0`
 - firebase `11.4.2`
-- flutter `3.3.9 ($HOME/programs/flutter)`
+- flutter `3.3.10 ($HOME/programs/flutter)`
 - gem `3.3.26`
 - gh `2.20.2`
 - git `2.39.0`
@@ -39,9 +39,9 @@ weight: 10
 - homebrew `3.6.15`
 - ionic `5.4.16`
 - jq `1.6`
-- ktlint `0.47.1`
-- node `19.2.0`
-- npm `8.19.3`
+- ktlint `0.48.0`
+- node `19.3.0`
+- npm `9.2.0`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
@@ -53,7 +53,7 @@ weight: 10
 - unzip `6.00`
 - wget `1.21.3`
 - yarn `1.22.19`
-- yq `4.30.5`
+- yq `4.30.6`
 - zip `3.0`
 
 ## Android emulators
