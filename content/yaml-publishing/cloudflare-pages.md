@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Pages
 description: How to deploy a website to Cloudflare Pages using codemagic.yaml
-weight: 11
+weight: 14
 ---
 
 [**Cloudflare Pages**](https://pages.cloudflare.com/) is a JAMstack platform for frontend developers to collaborate and deploy websites.
@@ -103,6 +103,6 @@ Here's a workflow for building a Flutter web application and then publish it to 
           script: | 
             wrangler pages publish build/web/ --project-name my-flutter-pages --branch production
       slack:
-        channel: "#test-codemagic1"
+        channel: "#builds"
         notify_on_build_start: true
 {{< /highlight >}}
