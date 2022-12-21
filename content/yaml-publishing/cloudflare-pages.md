@@ -50,9 +50,9 @@ See the offical [docs](https://developers.cloudflare.com/workers/wrangler/ci-cd/
 
 ## Publish to Cloudflare Pages
 
-After you have created your page from the [Cloudflare dashboard](https://dash.cloudflare.com/) and gave it a name, you can configure automatic publishing in your `codemagic.yaml`.
+After you have created your page from the [Cloudflare dashboard](https://dash.cloudflare.com/) and given it a name, you can configure automatic publishing in your `codemagic.yaml`.
 
-First we need to install `wingler`, which is a command-line tool for building with Cloudflare developer products, and then publish our website.
+First, we need to install `wrangler`, which is a command-line tool for building with Cloudflare developer products, and then publish our website.
 
 
 Add the following script to your `publishing` section:
