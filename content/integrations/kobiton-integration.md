@@ -91,7 +91,7 @@ Alternatively, use an [online tool](https://mixedanalytics.com/knowledge-base/ap
 {{< /tabpane >}}
 
 
-These capabitlies will allow Kobiton to detect which platform you want to you execute your test scripts with. Each device specific capabilities for Java can be found in the **Kobiton devices list** by clicking **device settings** and then **Automation Settings**.
+These capabitlies will allow Kobiton to detect which platform you want to execute your test scripts with. Each device specific capabilities for Java can be found in the **Kobiton devices list** by clicking **device settings** and then **Automation Settings**.
 
 
 ## Upload apps to Kobiton
