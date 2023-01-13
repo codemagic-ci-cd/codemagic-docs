@@ -67,6 +67,9 @@ scripts:
 
 {{< tab header="Android" >}}
 {{<markdown>}}
+{{<notebox>}}
+Due to limitations by Apple Silicon, the Apple Virtualisation API doesn’t support nested virtualisation required for emulators. To use simulators in macOS M1 workflows, please use 3rd party service integrations such as emulator.wtf, Katalon, Firebase, AWS or others.
+{{</notebox>}}
 
 For the Android emulator you can launch and run your tests as follows:
 
