@@ -150,7 +150,7 @@ workflows:
 {{< /highlight >}}
 
 
-As a result, commits with changes outside of the `android` folder will not trigger a build.
+As a result, commits with changes outside of the `android` folder will skip a build.
 
 {{<notebox>}}
 **Note:** The **`codemagic.yaml`** is always included in the changeset by default.
