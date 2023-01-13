@@ -153,6 +153,10 @@ workflows:
 As a result, commits with changes outside of the `android` folder will skip a build.
 
 {{<notebox>}}
+**Note:** Skipping a build means that the build will be triggered anyways and only after fetching app sources and meeting the **changeset** condition, the build will stop / skipped. 
+{{</notebox>}}
+
+{{<notebox>}}
 **Note:** The **`codemagic.yaml`** is always included in the changeset by default.
 {{</notebox>}}
 
