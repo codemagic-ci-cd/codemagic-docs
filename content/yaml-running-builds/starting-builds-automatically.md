@@ -153,7 +153,7 @@ workflows:
 As a result, commits with changes outside of the `android` folder will skip a build.
 
 {{<notebox>}}
-**Note:** Skipping a build means that the build will be triggered anyways and only after fetching app sources and meeting the **changeset** condition, the build will stop / skipped. 
+**Note:** 'Skipping' a build means that the build will be triggered and only after fetching app sources and meeting the **changeset** condition, the build will be stopped.
 {{</notebox>}}
 
 {{<notebox>}}
