@@ -33,9 +33,9 @@ To avoid running builds on outdated commits, you can set `cancel_previous_builds
 
 ## Tracking specific branches and tags
 
-The branches tracked for building are selected by configuring `branch_patterns` section. The tracked tags can be configured in `tag_patterns` section.
+The branches tracked for building are selected by configuring the `branch_patterns` section. The tracked tags can be configured in the `tag_patterns` section.
 
-A pattern can match the name of a particular branch or tag. You can use wildcard symbols to create a pattern that matches several branches or tags, see examples below.
+A pattern can match the name of a particular branch or tag. You can use wildcard symbols to create a pattern that matches several branches or tags, see the examples below.
 
 Note that for pull request builds, you have to specify whether the watched branch is the source or the target of the pull request.
 
@@ -76,7 +76,7 @@ triggering:
 |`*-dev`| Values with suffix `-dev`, e.g. `v0.0.42-dev`|
 |`!(*-dev)`| Values without suffix `-dev`, e.g. `v0.0.42`|
 |`{test,qa}/*`| Values with prefix `test/` and `qa/`, e.g. `test/popup`|
-|`v+([0-9]).+([0-9]).+([0-9])`| Tags with three numbers, e.g. `v0.0.42`|
+|`v+([0-9]).+([0-9]).+([0-9])`| Matches tags with three numbers, e.g. `v0.0.42`|
 
 Please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wcmatch/fnmatch/) for more advanced matching patterns.
 
