@@ -33,13 +33,15 @@ To avoid running builds on outdated commits, you can set `cancel_previous_builds
 
 ## Tracking specific branches and tags
 
+Instead of watching all branches and tags, you can limit automatic build triggering to branches or tags whose name matches a specific pattern.
+
 The branches tracked for building are selected by configuring the `branch_patterns` section. The tracked tags can be configured in the `tag_patterns` section.
 
 A pattern can match the name of a particular branch or tag. You can use wildcard symbols to create a pattern that matches several branches or tags, see the examples below.
 
 Note that for pull request builds, you have to specify whether the watched branch is the source or the target of the pull request.
 
-The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of branches further. In the case of conflicting patterns, the latter will prevail.
+The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of values further. In the case of conflicting patterns, the latter will prevail.
 
 
 {{< highlight yaml "style=paraiso-dark">}}
@@ -73,9 +75,9 @@ triggering:
 | Pattern | Explanation |
 |-|-|
 |`*`| Matches everything |
-|`*-dev`| Values with suffix `-dev`, e.g. `v0.0.42-dev`|
-|`!(*-dev)`| Values without suffix `-dev`, e.g. `v0.0.42`|
-|`{test,qa}/*`| Values with prefix `test/` and `qa/`, e.g. `test/popup`|
+|`*-dev`| Matches values with the suffix `-dev`, e.g. `v0.0.42-dev`|
+|`!(*-dev)`| Matches values without the suffix `-dev`, e.g. `v0.0.42`|
+|`{test,qa}/*`| Matches values with the prefix `test/` or `qa/`, e.g. `test/popup`|
 |`v+([0-9]).+([0-9]).+([0-9])`| Matches tags with three numbers, e.g. `v0.0.42`|
 
 Please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wcmatch/fnmatch/) for more advanced matching patterns.

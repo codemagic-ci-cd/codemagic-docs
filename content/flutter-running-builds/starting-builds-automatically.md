@@ -44,14 +44,15 @@ If you don't enable any automatic build triggers, you can start builds only manu
 
 ## Tracking specific branches or tags
 
-You can configure the branches and tags to track under **Watched branch pattern
-s** and **Watched tag patterns** respectively.
+Instead of watching all branches and tags, you can limit automatic build triggering to branches or tags whose name matches a specific pattern.
 
 The branches or tags tracked for building are selected by entering one or more patterns and including or excluding the matching branches or tags.
 
 Note that you can either enter the exact name of the branch or tag to select it or use the wildcard symbols to select more than one branch with one pattern. Click **Show pattern examples** in the UI for tips. Additionally, please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wcmatch/fnmatch/) for more advanced matching patterns.
 
-The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of branches further. In the case of conflicting patterns, the latter will prevail. You can check the targeted branches by clicking the eye icon next to **Watched branch patterns**.
+The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of values further. In the case of conflicting patterns, the latter will prevail.
+
+You can check the targeted branches by clicking the eye icon next to **Watched branch patterns**.
 
 To add a new branch pattern:
 
