@@ -31,10 +31,13 @@ To avoid running builds on outdated commits, you can set `cancel_previous_builds
 
 
 
-## Tracking specific branches
+## Tracking specific branches and tags
 
-The branches tracked for building are selected by configuring `branch_patterns:` section. 
-A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches. Note that for pull request builds, you have to specify whether the watched branch is the source or the target of the pull request.
+The branches tracked for building are selected by configuring `branch_patterns` section. The tracked tags can be configured in `tag_patterns` section.
+
+A pattern can match the name of a particular branch or tag. You can use wildcard symbols to create a pattern that matches several branches or tags, see examples below.
+
+Note that for pull request builds, you have to specify whether the watched branch is the source or the target of the pull request.
 
 The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of branches further. In the case of conflicting patterns, the latter will prevail.
 
@@ -65,6 +68,17 @@ triggering:
   cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
 {{< /highlight >}}
 
+### Pattern examples
+
+| Pattern | Explanation |
+|-|-|
+|`*`| Matches everything |
+|`*-dev`| Values with suffix `-dev`, e.g. `v0.0.42-dev`|
+|`!(*-dev)`| Values without suffix `-dev`, e.g. `v0.0.42`|
+|`{test,qa}/*`| Values with prefix `test/` and `qa/`, e.g. `test/popup`|
+|`v+([0-9]).+([0-9]).+([0-9])`| Tags with three numbers, e.g. `v0.0.42`|
+
+Please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wcmatch/fnmatch/) for more advanced matching patterns.
 
 ## Exit or ignore build on certain commit message
 
