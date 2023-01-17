@@ -48,7 +48,7 @@ Instead of watching all branches and tags, you can limit automatic build trigger
 
 The branches or tags tracked for building are selected by entering one or more patterns and including or excluding the matching branches or tags.
 
-Note that you can either enter the exact name of the branch or tag to select it or use the wildcard symbols to select more than one branch with one pattern. Click **Show pattern examples** in the UI for tips. Additionally, please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wcmatch/fnmatch/) for more advanced matching patterns.
+Note that you can either enter the exact name of the branch or tag or use wildcard symbols to match multiple branches or tags. Click **Show pattern examples** in the UI for tips. Additionally, please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wcmatch/fnmatch/) for more advanced matching patterns.
 
 The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of values further. In the case of conflicting patterns, the latter will prevail.
 
