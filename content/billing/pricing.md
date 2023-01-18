@@ -114,11 +114,17 @@ If you require additional concurrencies or have any other questions about the an
 If you require annual invoicing, please refer to the Enterprise plans below.
 ## Enterprise Plan
 
-Enterprise plans are available from **$500/month** (billed annually).
+Enterprise plans are available from **$1000/month** (billed annually) and include the following:
+
+- 8 concurrencies with unlimited access to all VM types
+- 180 minute build timeout
+- Priority support
+- Service level agreement
+- Account management services
+- Technical account manager
+- Private Slack channel
 
 This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, or **custom base images** or other account management services.
-
-Enterprise plans with a **Service Level Agreement** are available from **$1,000/month** (billed annually).
 
 Annual invoicing with bank transfer is available for Enterprise plans. 
 
