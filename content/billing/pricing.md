@@ -116,13 +116,16 @@ If you require annual invoicing, please refer to the Enterprise plans below.
 
 Enterprise plans are available from **$1000/month** (billed annually) and include the following:
 
-- 8 concurrencies with unlimited access to all VM types
+- 8 concurrencies* 
+- Unlimited access to all VM types
 - 180 minute build timeout
 - Priority support
 - Service level agreement
 - Account management services
 - Technical account manager
 - Private Slack channel
+
+*If you require an Enterprise plan with dedicated hosts the Enterprise plan can be configured with 2 dedicated macOS hosts (arm64 or Intel) which provides 4 concurrencies. If the dedicated hosts need to be EU-based then 1 dedicated host can be configured which provides 2 concurrencies.
 
 This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, or **custom base images** or other account management services.
 
