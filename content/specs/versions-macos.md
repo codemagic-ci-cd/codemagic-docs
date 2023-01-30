@@ -3,7 +3,7 @@ description: A list of tools available out-of-the-box on Codemagic macOS build m
 title: macOS build machine specification
 aliases:
   - "../releases-and-versions/versions-linux"
-weight: 2
+weight: 1
 ---
 
 Depending on the Xcode version that you specify in **Build Settings** or in `codemagic.yaml` file, Codemagic will use a different build machine type with different versions of preinstalled software:
