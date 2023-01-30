@@ -15,7 +15,7 @@ weight: 9
 
 - System version `macOS 12.6.1 (21G217)`
 - Kernel version `Darwin 21.6.0`
-- Disk `322GB (Free Space: 74GB)`
+- Disk `322GB (Free Space: 81GB)`
 
 ## Pre-installed tools
 
@@ -27,10 +27,10 @@ weight: 9
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `20.10.17`
-- ew-cli `0.0.48`
+- ew-cli `0.0.49`
 - fastlane `2.211.0`
-- firebase `11.3.0`
-- flutter `3.3.10 ($HOME/programs/flutter)`
+- firebase `11.21.0`
+- flutter `3.7.0 ($HOME/programs/flutter)`
 - gem `3.3.26`
 - gh `2.20.2`
 - git `2.39.0`
@@ -64,7 +64,7 @@ weight: 9
     - Device: `pixel_3a (Google)`
     - Path: `/Users/builder/.android/avd/emulator.avd`
     - Target: `Google Play (Google Inc.)`
-    - Based on: `Android 10.0 (Q)`
+    - Based on: `Android 11.0 (R)`
     - Tag/API: `google_apis_playstore/x86`
     - Skin: `pixel_3a`
     - Sdcard: `512M`
