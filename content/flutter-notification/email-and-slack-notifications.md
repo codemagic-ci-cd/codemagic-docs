@@ -13,7 +13,7 @@ Email publishing settings can be found in **App settings > Notifications > Email
 
 Email publishing is the only publishing option that is enabled by default. Codemagic uses the email specified as the default one in the service you used to log in (Github, Bitbucket, Gitlab). You can add multiple email addresses.
 
-If the build finishes successfully, release notes (if passed), and the generated artifacts will be published to the provided email.
+If the build finishes successfully, release notes (if passed), and the generated artifacts will be published to the provided email. The artifact download links in email are valid for 24 hours.
 
 If the build fails, you will be sent a link to the build logs. Check the **Publish artifacts even if tests fail** option in the workflow editor to publish artifacts even when one or more tests fail. If that option is unchecked, generated artifacts (if there are any) will be attached only to successful builds.
 
@@ -31,7 +31,7 @@ Once your Slack workspace is connected, you can enable Slack publishing and sele
 
 In order to publish to **private channels**, you need to invite the Codemagic app to the channels, otherwise, the app does not have access to private channels. To invite the Codemagic app to private channels, write `@codemagic` in the channel. If you are in the Codemagic web app, refresh the page, and the new channel will become available in the dropdown menu.
 
-If the build finishes successfully, release notes (if passed), and the generated artifacts will be published to the specified channel.
+If the build finishes successfully, release notes (if passed), and the generated artifacts will be published to the specified channel. The artifact download links in Slack notifications are valid for 24 hours.
 
 If the build fails, a link to the build logs is published. Check **Publish artifacts even if tests fail** to publish artifacts even when one or more tests fail. If the option is unchecked, generated artifacts (if any) will be attached to successful builds only.
 
