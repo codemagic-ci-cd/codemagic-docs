@@ -20,7 +20,7 @@ This URL can be obtained using the [Builds API](/rest-api/builds) or copied dire
 | ----------- | --------- | ---------------------------------------- |
 | `expiresAt` | `integer` | Optional. URL expiration UNIX timestamp. |
 
-The response contains the public artifact download URL under `url` key.
+The response contains the public artifact download URL under the `url` key.
 
 This URL can be shared with trusted people who don't have a Codemagic account to download artifacts directly.
 
