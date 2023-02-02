@@ -8,7 +8,7 @@ To test your app on simulators, Apple requires you to create an unsigned iOS app
 
 ## Building an unsigned native iOS app (.app)
 
-For building an unsigned iOS app, please follow the steps outlined in the [Native iOS guide](/content/yaml-quick-start/building-a-native-ios-app), stopping short of the code signing step.
+For building an unsigned iOS app, please follow the steps outlined in the [Native iOS guide](/yaml-quick-start/building-a-native-ios-app), stopping short of the code signing step.
 
 Adjust your build script to use this commands instead:
 

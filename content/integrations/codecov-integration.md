@@ -40,7 +40,7 @@ After writing tests with your test suite you can generate a coverage report usin
         mkdir -p test-results 
         flutter test --coverage --machine > test-results/flutter.json  
         
-        code_coverage=$(lcov --list $FCI_BUILD_DIR/coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
+        code_coverage=$(lcov --list $CM_BUILD_DIR/coverage/lcov.info | sed -n "s/.*Total:|\(.*\)%.*/\1/p")
         
         echo "Code Coverage: ${code_coverage}% "
         if (( $(echo "$code_coverage < $CODE_COVERAGE_TARGET" | bc) ))

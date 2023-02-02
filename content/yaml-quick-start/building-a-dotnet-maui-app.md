@@ -6,6 +6,8 @@ weight: 14
 
 This guide will illustrate all of the necessary steps to successfully build and publish a .NET MAUI app with Codemagic. It will cover the basic steps such as build versioning, code signing and publishing.
 
+You can find a complete project showcasing these steps in our [sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/dotnet-maui/dotnet-maui-android-ios/).
+
 ## Adding the app to Codemagic
 {{< include "/partials/quickstart/add-app-to-codemagic.md" >}}
 

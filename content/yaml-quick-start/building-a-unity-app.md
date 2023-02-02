@@ -1,5 +1,5 @@
 ---
-title: Unity mobile apps
+title: Unity apps
 description: How to build Unity mobile apps with codemagic.yaml
 weight: 12
 
@@ -116,9 +116,9 @@ Each Unity build will have to activate a valid Unity Plus or a Unity Pro license
 {{< /highlight >}}
 
 {{<notebox>}}
-**Note:** The `UNITY_HOME` environment variable is already set on the build machines. 
+**Note:** The `UNITY_HOME` environment variable is already set on the build machines to `/Applications/Unity/Hub/Editor/<default-unity-version>/Unity.app`.
 
-On the macOS Unity base image `UNITY_HOME` is set to `/Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app`.
+See the default Unity version from the macOS build machine specification [here](../specs/versions-macos/).
 {{</notebox>}}
 
 ## Activating and deactivating the license
@@ -132,10 +132,10 @@ To activate a Unity license on the build machine, add the following step at the 
   scripts:
     - name: Activate Unity license
       script: | 
-        $UNITY_BIN -batchmode -quit -logFile \
-          -serial ${UNITY_SERIAL?} \
-          -username ${UNITY_EMAIL?} \
-          -password ${UNITY_PASSWORD?}
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+          -serial ${UNITY_SERIAL} \
+          -username ${UNITY_EMAIL} \
+          -password ${UNITY_PASSWORD}
 {{< /highlight >}}
 {{< /tab >}}
 
@@ -156,7 +156,7 @@ To deactivate a Unity license on the build machine, add the following script ste
     scripts:
       - name: Deactivate Unity License
       script: | 
-        $UNITY_BIN -batchmode -quit -returnlicense -nographics
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -returnlicense -nographics
 {{< /highlight >}}
 {{< /tab >}}
 
@@ -502,8 +502,6 @@ In this step you can also define the build artifacts you are interested in. Thes
 {{< highlight yaml "style=paraiso-dark">}}
   environment:
     #...
-    vars:
-      UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
   scripts:
     - name: Activate Unity license
       script: #...
@@ -511,7 +509,7 @@ In this step you can also define the build artifacts you are interested in. Thes
       script: #... 
     - name: Build the project
       script: | 
-        $UNITY_BIN -batchmode \
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode \
           -quit \
           -logFile \
           -projectPath . \
@@ -528,7 +526,6 @@ In this step you can also define the build artifacts you are interested in. Thes
   environment:
     #...
     vars:
-      UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
       UNITY_IOS_DIR: ios
       XCODE_PROJECT: "Unity-iPhone.xcodeproj"
       XCODE_SCHEME: "Unity-iPhone"
@@ -537,7 +534,7 @@ In this step you can also define the build artifacts you are interested in. Thes
       script: #...
     - name: Generate the Xcode project from Unity
       script: | 
-        $UNITY_BIN -batchmode \
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode \
           -quit \
           -logFile \
           -projectPath . \
@@ -552,7 +549,7 @@ In this step you can also define the build artifacts you are interested in. Thes
       script: | 
         xcode-project build-ipa --project "$UNITY_IOS_DIR/$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
     artifacts:
-     - build/ios/ipa/*.ipa
+      - build/ios/ipa/*.ipa
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 {{< /highlight >}}
 
@@ -578,7 +575,6 @@ In this step you can also define the build artifacts you are interested in. Thes
   environment:
     #...
     vars:
-      UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
       UNITY_MAC_DIR: mac
       BUNDLE_ID: "io.codemagic.unitysample"
   scripts:
@@ -605,7 +601,7 @@ In this step you can also define the build artifacts you are interested in. Thes
       script: #...
     - name: Build the project
       script: | 
-        $UNITY_BIN -batchmode -quit -logFile \
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
           -projectPath . \
           -executeMethod BuildScript.BuildMac \
           -nographics
@@ -668,7 +664,11 @@ In this step you can also define the build artifacts you are interested in. Thes
 
 {{< /tab >}}
 {{< /tabpane >}}
+ 
 
+{{<notebox>}}
+**Note**: Read how to use different Unity version [here](../knowledge-others/install-unity-version/).
+{{</notebox>}}
 
 ## Publishing
 
@@ -747,15 +747,14 @@ workflows:
       vars:
         PACKAGE_NAME: "io.codemagic.unitysample"
         GOOGLE_PLAY_TRACK: alpha
-        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
         PACKAGE_NAME: "io.codemagic.unitysample"
     scripts:
       - name: Activate Unity License
-        script: |
-          $UNITY_BIN -batchmode -quit -logFile \
-            -serial ${UNITY_SERIAL?} \
-            -username ${UNITY_EMAIL?} \
-            -password ${UNITY_PASSWORD?}
+        script: | 
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+            -serial ${UNITY_SERIAL} \
+            -username ${UNITY_EMAIL} \
+            -password ${UNITY_PASSWORD}
       - name: Set the build number
         script: | 
           export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number \
@@ -763,7 +762,7 @@ workflows:
             --tracks="$GOOGLE_PLAY_TRACK") + 1))
       - name: Build the project
         script: | 
-          $UNITY_BIN -batchmode \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode \
             -quit \
             -logFile \
             -projectPath . \
@@ -777,8 +776,8 @@ workflows:
           script: | 
             /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
             --return-ulf \
-            --username ${UNITY_EMAIL?} \
-            --password ${UNITY_PASSWORD?}
+            --username ${UNITY_EMAIL} \
+            --password ${UNITY_PASSWORD}
       email:
         recipients:
           - user_1@example.com
@@ -808,7 +807,6 @@ workflows:
       groups:
         - unity_credentials
       vars:
-        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
         UNITY_IOS_DIR: ios
         XCODE_PROJECT: "Unity-iPhone.xcodeproj"
         XCODE_SCHEME: "Unity-iPhone"
@@ -817,13 +815,13 @@ workflows:
     scripts:
       - name: Activate Unity license
         script: | 
-          $UNITY_BIN -batchmode -quit -logFile \
-            -serial ${UNITY_SERIAL?} \
-            -username ${UNITY_EMAIL?} \
-            -password ${UNITY_PASSWORD?}
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+            -serial ${UNITY_SERIAL} \
+            -username ${UNITY_EMAIL} \
+            -password ${UNITY_PASSWORD}
       - name: Generate the Xcode project from Unity
         script: | 
-          $UNITY_BIN -batchmode \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode \
             -quit \
             -logFile \
             -projectPath . \
@@ -851,8 +849,8 @@ workflows:
           script: | 
             /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
             --return-ulf \
-            --username ${UNITY_EMAIL?} \
-            --password ${UNITY_PASSWORD?}
+            --username ${UNITY_EMAIL} \
+            --password ${UNITY_PASSWORD}
       email:
         recipients:
           - user_1@example.com
@@ -890,7 +888,6 @@ workflows:
         - unity_credentials
         - appstore_credentials
       vars:
-        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
         UNITY_MAC_DIR: mac
         XCODE_PROJECT: "Unity-iPhone.xcodeproj"
         XCODE_SCHEME: "Unity-iPhone"
@@ -898,10 +895,10 @@ workflows:
     scripts:
       - name: Activate Unity license
         script: | 
-          $UNITY_BIN -batchmode -quit -logFile \
-            -serial ${UNITY_SERIAL?} \
-            -username ${UNITY_EMAIL?} \
-            -password ${UNITY_PASSWORD?}
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+            -serial ${UNITY_SERIAL} \
+            -username ${UNITY_EMAIL} \
+            -password ${UNITY_PASSWORD}
       - name: Set up keychain
         script: | 
           keychain initialize
@@ -923,7 +920,7 @@ workflows:
           xcode-project use-profiles    
       - name: Build the project
         script: | 
-          $UNITY_BIN -batchmode -quit -logFile \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
             -projectPath . \
             -executeMethod BuildScript.BuildMac \
             -nographics
@@ -960,8 +957,8 @@ workflows:
           script: | 
             /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
             --return-ulf \
-            --username ${UNITY_EMAIL?} \
-            --password ${UNITY_PASSWORD?}
+            --username ${UNITY_EMAIL} \
+            --password ${UNITY_PASSWORD}
       email:
         recipients:
           - user_1@example.com

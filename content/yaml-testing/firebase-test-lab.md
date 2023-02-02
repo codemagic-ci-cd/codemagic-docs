@@ -14,7 +14,7 @@ To set up testing on Firebase Test Lab in Codemagic, follow these steps.
 You will need to set up the following in the [Firebase console](https://firebase.google.com/).
 
 1. Create a Firebase project.
-2. Create a service account with Editor permissions and download the **JSON key file** so you can authenticate with Firebase Test Lab during the build. See how to create a service account [here](../knowledge-base/google-play-api).
+2. Create a service account with Editor permissions and download the **JSON key file** so you can authenticate with Firebase Test Lab during the build. See how to create a service account [here](https://docs.codemagic.io/yaml-publishing/google-play/#configure-google-play-api-access).
 3. Enable the [Cloud Tools Results API](https://console.cloud.google.com/apis/library/toolresults.googleapis.com?pli=1&project=woven-voyage-217607&folder=&organizationId=).
 
 Please follow the guides in the [Firebase Test Lab documentation](https://firebase.google.com/docs/test-lab/?gclid=EAIaIQobChMIs5qVwqW25QIV8iCtBh3DrwyUEAAYASAAEgLFU_D_BwE) to set up a project.

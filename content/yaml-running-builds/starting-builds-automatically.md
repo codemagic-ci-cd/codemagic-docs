@@ -31,12 +31,17 @@ To avoid running builds on outdated commits, you can set `cancel_previous_builds
 
 
 
-## Tracking specific branches
+## Tracking specific branches and tags
 
-The branches tracked for building are selected by configuring `branch_patterns:` section. 
-A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches. Note that for pull request builds, you have to specify whether the watched branch is the source or the target of the pull request.
+Instead of watching all branches and tags, you can limit automatic build triggering to branches or tags whose name matches a specific pattern.
 
-The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of branches further. In the case of conflicting patterns, the latter will prevail.
+The branches tracked for building are selected by configuring the `branch_patterns` section. The tracked tags can be configured in the `tag_patterns` section.
+
+A pattern can match the name of a particular branch or tag. You can use wildcard symbols to create a pattern that matches several branches or tags, see the examples below.
+
+Note that for pull request builds, you have to specify whether the watched branch is the source or the target of the pull request.
+
+The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of values further. In the case of conflicting patterns, the latter will prevail.
 
 
 {{< highlight yaml "style=paraiso-dark">}}
@@ -65,6 +70,17 @@ triggering:
   cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
 {{< /highlight >}}
 
+### Pattern examples
+
+| Pattern | Explanation |
+|-|-|
+|`*`| Matches everything |
+|`*-dev`| Matches values with the suffix `-dev`, e.g. `v0.0.42-dev`|
+|`!(*-dev)`| Matches values without the suffix `-dev`, e.g. `v0.0.42`|
+|`{test,qa}/*`| Matches values with the prefix `test/` or `qa/`, e.g. `test/popup`|
+|`v+([0-9]).+([0-9]).+([0-9])`| Matches tags with three numbers, e.g. `v0.0.42`|
+
+Please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wcmatch/fnmatch/) for more advanced matching patterns.
 
 ## Exit or ignore build on certain commit message
 
@@ -98,7 +114,11 @@ In addition to [build triggers](#build-triggers) and [branch filtering](#trackin
 
 ### Using `changeset` inside `when`
 
-Using `changeset` setting. you can avoid unnecessary builds when functional components of your repository were not modified. Use conditional workflow triggering to skip building the workflow if the watched files were not updated since the last successful build.
+By using `changeset` setting, you can avoid unnecessary builds when functional components of your repository were not modified. 
+
+{{<notebox>}}
+**Note:** After `changeset` setting is configured in `codemagic.yaml`, the subsequent build will be triggered regardless of the condition and only after that successful build, builds will be skipped according to the `changeset` condition.
+{{</notebox>}}
 
 When using `changeset` filtering, a build will be run if any of the following is true:
 - `codemagic.yaml` file was modified
@@ -146,7 +166,11 @@ workflows:
 {{< /highlight >}}
 
 
-As a result, commits with changes outside of the `android` folder will not trigger a build.
+As a result, commits with changes outside of the `android` folder will skip a build.
+
+{{<notebox>}}
+**Note:** 'Skipping' a build means that the build will be triggered and only after fetching app sources and meeting the **changeset** condition, the build will be stopped.
+{{</notebox>}}
 
 {{<notebox>}}
 **Note:** The **`codemagic.yaml`** is always included in the changeset by default.

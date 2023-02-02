@@ -14,7 +14,7 @@ To access a variable during build time, add the `$` symbol in front of its name.
 {{</notebox>}}
 
 
-## Setting environment variables at build time
+## Setting environment variables at build time and accessing them across shell scripts
 
 By default, if you define an environment variable inside your script, you can only use it within that particular script itself. However, you can make an environment variable available to any subsequent step of your workflow by writing it to the `CM_ENV` environment file.
 

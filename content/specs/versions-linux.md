@@ -15,7 +15,7 @@ weight: 2
 
 - System version `Ubuntu 20.04.2 LTS`
 - Kernel version `5.11.0-1029-gcp`
-- Disk `97GB (Free Space: 50GB)`
+- Disk `97GB (Free Space: 46GB)`
 
 ## Pre-installed tools
 
@@ -26,8 +26,8 @@ weight: 2
 - docker `20.10.7`
 - ew-cli `0.0.44`
 - fastlane `2.209.1`
-- firebase `11.3.0`
-- flutter `3.3.9 ($HOME/programs/flutter)`
+- firebase `11.21.0`
+- flutter `3.7.0 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
@@ -38,7 +38,7 @@ weight: 2
 - jq `jq-1.6`
 - ktlint `0.43.2`
 - node `16.16.0`
-- npm `6.14.9`
+- npm `8.11.0`
 - python2 `2.7.18`
 - python `3.8.10`
 - ruby `2.7.2p137`
@@ -59,7 +59,7 @@ weight: 2
   - Device: `pixel_4 (Google)`
   - Path: `/home/builder/.android/avd/emulator.avd`
   - Target: `Google Play (Google Inc.)`
-  - Based on: `Android 10.0 (Q)`
+  - Based on: `Android 11.0 (R)`
   - Tag/API: `google_apis_playstore/x86`
   - Skin: `pixel_4`
   - Sdcard: `512M`

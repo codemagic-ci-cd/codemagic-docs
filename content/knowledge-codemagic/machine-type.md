@@ -46,13 +46,3 @@ Codemagic offers only premium Windows VMs. Windows VMs do not support nested vir
 {{<notebox>}}
 **Note:** Windows Premium machines are only available for teams and users that have [billing enabled](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for more information.
 {{</notebox>}}
-
-
-## Xcode version update policy
-
-Codemagic macOS build machines come with a range of Xcode versions and runtimes preinstalled. In general, we will always support the 3 latest major Xcode versions:
-
-* The latest major Xcode version and all of its minor versions
-* The latest minor version of two previous major Xcode versions
-
-You can check the currently available Xcode versions [here](../specs/versions-macos).

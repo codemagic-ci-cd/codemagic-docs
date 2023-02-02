@@ -8,7 +8,7 @@ In order to publish your generated artifacts to Google Cloud Storage:
 
 1. Log in to your Google Cloud platform [console](https://console.cloud.google.com/).
 
-2. Create a new service account under **IAM & Admin > Service Accounts**.Find more information about how to create a service account [here](https://docs.codemagic.io/knowledge-base/google-services-authentication/#creating-a-service-account).
+2. Create a new service account under **IAM & Admin > Service Accounts**.Find more information about how to create a service account [here](https://docs.codemagic.io/yaml-publishing/google-play/#configure-google-play-api-access).
 
 3. Generate a JSON key for the service account and download it.
 <br><br>
