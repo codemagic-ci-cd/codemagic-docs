@@ -8,7 +8,7 @@ weight: 3
 
 `GET /artifacts/:uuid1/:uuid2/:artifactName`
 
-This URL can be obtained using [Builds API](/rest-api/builds) or copied directly from Codemagic UI.
+This URL can be obtained using the [Builds API](/rest-api/builds) or copied directly from the Codemagic UI.
 
 ## Retrieve public download URL
 
@@ -20,12 +20,12 @@ This URL can be obtained using [Builds API](/rest-api/builds) or copied directly
 | ----------- | --------- | ---------------------------------------- |
 | `expiresAt` | `integer` | Optional. URL expiration UNIX timestamp. |
 
-The response contains public artifact download URL under `url` key.
+The response contains the public artifact download URL under `url` key.
 
-This URL can be shared with trusted people who don't have Codemagic account to download artifacts directly.
+This URL can be shared with trusted people who don't have a Codemagic account to download artifacts directly.
 
 {{<notebox>}}
-**Note:** URLs generated without providing `expiresAt` UNIX timestamp expire in 24 hours.
+**Note:** URLs generated without providing an `expiresAt` UNIX timestamp expire in 24 hours.
 {{</notebox>}}
 
 #### Example
