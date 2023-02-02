@@ -13,7 +13,7 @@ This URL can be obtained using the [Builds API](/rest-api/builds) or copied dire
 ## Retrieve public download URL
 
 {{<notebox>}}
-**Important!** Please take extra care when sharing public download URLs so as to not expose them. Using a public download URL, anyone will be able to access the build artifacts.
+**Important!** Please take extra care when sharing public download URLs so as to not expose them. Anyone with access to a public download URL will be able to download your build artifact.
 {{</notebox>}}
 
 `POST /artifacts/:uuid1/:uuid2/:artifactName/public-url`
