@@ -12,6 +12,10 @@ This URL can be obtained using the [Builds API](/rest-api/builds) or copied dire
 
 ## Retrieve public download URL
 
+{{<notebox>}}
+**Important!** Please take extra care when sharing public download URLs so as to not expose them. Anyone with access to a public download URL will be able to download your build artifact.
+{{</notebox>}}
+
 `POST /artifacts/:uuid1/:uuid2/:artifactName/public-url`
 
 #### Parameters
@@ -21,8 +25,6 @@ This URL can be obtained using the [Builds API](/rest-api/builds) or copied dire
 | `expiresAt` | `integer` | Optional. URL expiration UNIX timestamp. |
 
 The response contains the public artifact download URL under the `url` key.
-
-This URL can be shared with trusted people who don't have a Codemagic account to download artifacts directly.
 
 {{<notebox>}}
 **Note:** URLs generated without providing an `expiresAt` UNIX timestamp expire in 24 hours.
