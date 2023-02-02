@@ -27,10 +27,10 @@ publishing:
     # Note: This action is performed during post-processing.
     submit_to_testflight: true 
 
-    # Optional boolean, defaults to false. Set to true to automatically expire all previous builds upon
+    # Optional boolean, defaults to false. Set to true to automatically expire previous build in review or waiting for review in Testflight before
     # submitting a new build to beta review. Expired builds will no longer be available for testers.
     # Note: This action is performed during post-processing.
-    expire_previous_builds: true
+    expire_build_submitted_for_review: true
 
     # Specify the names of beta tester groups that will get access to the build 
     # once it has passed beta review.
