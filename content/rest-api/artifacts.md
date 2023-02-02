@@ -4,19 +4,19 @@ description: Authenticated and public access to build artifacts
 weight: 3
 ---
 
-## Authenticated download URL
+## Step 1: Get authenticated download URL
 
-`GET /artifacts/:uuid1/:uuid2/:artifactName`
+`GET /artifacts/:securePath/:artifactName`
 
 This URL can be obtained using the [Builds API](/rest-api/builds) or copied directly from the Codemagic UI.
 
-## Retrieve public download URL
+## Step 2: Create a public download URL using the URL obtained in step 1
 
 {{<notebox>}}
 **Important!** Please take extra care when sharing public download URLs so as to not expose them. Anyone with access to a public download URL will be able to download your build artifact.
 {{</notebox>}}
 
-`POST /artifacts/:uuid1/:uuid2/:artifactName/public-url`
+`POST /artifacts/:securePath/:artifactName/public-url`
 
 #### Parameters
 
@@ -33,10 +33,10 @@ The response contains the public artifact download URL under the `url` key.
 #### Example
 
 {{< highlight bash "style=paraiso-dark">}}
-curl https://api.codemagic.io/artifacts/12c0b167-b33c-4761-88c4-f3ac2478aeee/bc35a099-3ab9-41b2-b42f-f45ef59b5bac/Kefir.ipa/public-url \
-  -H "Content-Type: application/json" \
-  -H "X-Auth-Token: <API Token>" \
+curl -H "Content-Type: application/json" \
+  -H "x-auth-token: <API Token>" \
   -d '{"expiresAt": 1675419345}'
+  -X POST https://api.codemagic.io/artifacts/securepath/myapp.ipa/public-url
 {{< /highlight >}}
 
 #### Response
