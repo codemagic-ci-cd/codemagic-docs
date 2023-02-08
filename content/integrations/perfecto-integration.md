@@ -37,7 +37,7 @@ Using the following cURL script in a post-build script, **Release APK** and **Re
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
-    - name: Upload to Perfect
+    - name: Upload to Perfecto
       script: | 
         curl "https://web.app.perfectomobile.com/repository/api/v1/artifacts" \
         -H "Perfecto-Authorization: $PERFECTO_TOKEN" \

@@ -21,11 +21,7 @@ Set up publishing to [Firebase App Distribution](https://firebase.google.com/doc
 - Set up [Android code signing](../code-signing/android-code-signing). If you do not set up code signing, the artifact will be signed with a debug keystore from Codemagic build machine.
 - To authenticate with Firebase, Codemagic requires either a **Firebase token** or a service account with **Firebase App Distribution Admin** role, as shown below:
 
-#### 1. Authenticating via token
-
-To retrieve your Firebase token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
-
-#### 2. Authenticating via service account
+#### 1. Authenticating via service account
 
 Using a service account is a more secure option due to granular permission settings. It can also be used to authenticate with various Firebase services, such as Firebase Test Lab and Firebase App Distribution.
 
@@ -44,6 +40,12 @@ Using a service account is a more secure option due to granular permission setti
 6. In the Keys section, click **Add Key > Create new key**. Make sure that the key type is set to `JSON` and click **Create**. Save the key file in a secure location to have it available.<br><br>
 ![Google cloud json](../uploads/google_cloud_four.png)
 
+#### 2. Authenticating via token
+
+{{<notebox>}}**Warning:** Firebase has marked authentication via token as deprecated and might disable it in future versions of `firebase tool`. Please authenticate using a service account, as described below.
+{{</notebox>}}
+
+To retrieve your Firebase token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
 ## Enabling publishing to Firebase App Distribution
 
 1. Navigate to **App settings > Distribution > Firebase App Distribution**.
