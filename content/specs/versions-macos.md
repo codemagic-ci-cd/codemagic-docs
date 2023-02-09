@@ -34,10 +34,6 @@ Depending on the Xcode version that you specify in **Build Settings** or in `cod
 {{< include "/partials/specs/versions-macos-xcode-12-5.md" >}}
 {{< /tab >}}
 
-{{< tab header="Xcode 12.0 - 12.4" >}}
-{{< include "/partials/specs/versions-macos-xcode-12-0.md" >}}
-{{< /tab >}}
-
 {{< tab header="Xcode 11.x" >}}
 {{< include "/partials/specs/versions-macos-xcode-11.md" >}}
 {{< /tab >}}
