@@ -10,6 +10,8 @@ aliases:
 
 Build dashboards make it possible for teams to share the list of team's builds, release notes (if passed) and build artifacts with people outside Codemagic using a public link (build logs will not be exposed). This is a convenient option for distributing builds to testers or sharing build artifacts with stakeholders.
 
+The artifact download links in build dashboards are, by default, valid for 24 hours; the lifetime of publicly accessible artifact download links is configurable in **Team settings > Artifact download links**. Download links are recreated with the configured time on each dashboard refresh.
+
 {{<notebox>}}
 **Note:** The build dashboards feature is available for teams only. It is not possible to create build dashboards for apps on personal accounts.
 {{</notebox>}}
