@@ -14,10 +14,11 @@ You can schedule Codemagic to automatically build your app on certain days and t
 ## Setting up scheduled builds
 
 1. Open your application in Codemagic.
-2. Select the **Branch** and the **Workflow** to run.
-3. In the **Schedule for** field, select the days you want to run the build. 
-4. Specify the start time (UTC) of the build by selecting a value from the **At** field. Note that the build may be delayed up to 15 minutes during peak hours.
-5. Click **Add schedule** to save the schedule.
+2. Switch to **Scheduled builds** tab and click **Add new schedule** button.
+3. Select the **Branch** and the **Workflow** to run.
+4. In the **Schedule for** field, select the days you want to run the build. 
+5. Specify the start time (UTC) of the build by selecting a value from the **At** field. Note that the build may be delayed up to 15 minutes during peak hours.
+6. Click **Add schedule** to save the schedule.
 
 Saved schedules for each app are displayed in the **Scheduled builds** section on the right sidebar in app settings. If you no longer need the schedule, you can delete it by hovering on the schedule and clicking the trash bin icon.
 
