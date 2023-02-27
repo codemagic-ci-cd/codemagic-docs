@@ -6,9 +6,13 @@ weight: 3
 
 ## Step 1: Get authenticated download URL
 
-`GET /artifacts/:securePath/:artifactName`
+`GET /artifacts/:secureFilename`
 
 This URL can be obtained using the [Builds API](/rest-api/builds) or copied directly from the Codemagic UI.
+
+A typical URL looks like this:
+
+`https://api.codemagic.io/artifacts/ef45fb91-4c89-4395-8f7d-9368b97490de/2dd0b3d6-ae58-4894-b470-8bc2b24e259a/mayapp.ipa`
 
 ## Step 2: Create a public download URL using the URL obtained in step 1
 
@@ -16,19 +20,15 @@ This URL can be obtained using the [Builds API](/rest-api/builds) or copied dire
 **Important!** Please take extra care when sharing public download URLs so as to not expose them. Anyone with access to a public download URL will be able to download your build artifact.
 {{</notebox>}}
 
-`POST /artifacts/:securePath/:artifactName/public-url`
+`POST /artifacts/:secureFilename/public-url`
 
 #### Parameters
 
 | **Name**    | **Type**  | **Description**                          |
 | ----------- | --------- | ---------------------------------------- |
-| `expiresAt` | `integer` | Optional. URL expiration UNIX timestamp. |
+| `expiresAt` | `integer` | URL expiration UNIX timestamp in seconds. |
 
 The response contains the public artifact download URL under the `url` key.
-
-{{<notebox>}}
-**Note:** URLs generated without providing an `expiresAt` UNIX timestamp expire in 24 hours.
-{{</notebox>}}
 
 #### Example
 
@@ -36,7 +36,7 @@ The response contains the public artifact download URL under the `url` key.
 curl -H "Content-Type: application/json" \
   -H "x-auth-token: <API Token>" \
   -d '{"expiresAt": 1675419345}'
-  -X POST https://api.codemagic.io/artifacts/securepath/myapp.ipa/public-url
+  -X POST https://api.codemagic.io/artifacts/ef45fb91-4c89-4395-8f7d-9368b97490de/2dd0b3d6-ae58-4894-b470-8bc2b24e259a/mayapp.ipa/public-url
 {{< /highlight >}}
 
 #### Response
