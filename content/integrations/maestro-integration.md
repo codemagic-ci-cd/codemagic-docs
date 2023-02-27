@@ -4,7 +4,7 @@ description: How to integrate your workflows with Maestro using codemagic.yaml
 weight: 14
 ---
 
-[**Maestro UI testing framework**](https://mobile.dev/) from `Mobile.dev` enables you to test your iOS and Android mobile apps using simply created tests flows steps.
+[**Maestro UI testing framework**](https://mobile.dev/) from `Mobile.dev` lets you test your iOS and Android mobile apps using simple to-create test flows.
 
 A sample project that shows how to configure Maestro integration is available in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/maestro_integration_demo_project).
 
@@ -87,9 +87,9 @@ Here's the script on how you can build it.
         -derivedDataPath ios/output
 {{< /highlight >}}
 
-Don't forget to add the environment variables that holds your XCode workspace name under `$XCODE_WORKSPACE` and the Scheme name under `$XCODE_SCHEME`, see the complete sample project from [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/maestro_integration_demo_project/codemagic.yaml).
+Don't forget to add the environment variables that holds your XCode workspace name under `$XCODE_WORKSPACE` and the Scheme name under `$XCODE_SCHEME`. See the complete sample project [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/maestro_integration_demo_project/codemagic.yaml).
 {{</markdown>}}
 {{< /tab >}}
 {{< /tabpane >}}
 
-That's it, now if your Codemagic's build has failed at the maestro cloud step, then your tests has failed, or which means everything went well, and you can check out the build page for more details.
+If your Codemagic's build has failed at the Maestro cloud step, then your tests have failed. Otherwise, everything went well and you can check out the build page for more details.
