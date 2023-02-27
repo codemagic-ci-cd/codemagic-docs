@@ -5,7 +5,7 @@ let notificationsLoaded = false
 let fetchError = false
 const loadingHeader = document.querySelector('[data-js-notes-loading]')
 const fetchNotifications = async () => {
-    await fetch('https://strapi.codemagic.io/notifications', {
+    await fetch('https://strapi.codemagic.io/notifications?_limit=1000', {
         mode: 'cors',
         headers: { Accept: 'application/json' },
     })
