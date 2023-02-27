@@ -26,7 +26,7 @@ A typical URL looks like this:
 
 | **Name**    | **Type**  | **Description**                          |
 | ----------- | --------- | ---------------------------------------- |
-| `expiresAt` | `integer` | URL expiration UNIX timestamp. |
+| `expiresAt` | `integer` | URL expiration UNIX timestamp in seconds. |
 
 The response contains the public artifact download URL under the `url` key.
 
