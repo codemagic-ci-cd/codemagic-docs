@@ -58,7 +58,7 @@ publishing:
         fi
 {{< /highlight >}}
  
-The above-mentioned **dsymPath** is Flutter specific and it could change depending on what platform the app is built. E.g., for React Native or Native iOS applications you might use the dsymPath as:
+The above-mentioned **dsymPath** is Flutter specific and it could change depending on what platform the app is built on. For example, in React Native or Native iOS applications you might use the dsymPath as:
 
 {{< highlight yaml "style=paraiso-dark">}}
 dsymPath=$(find $CM_BUILD_DIR/build/ios/xcarchive/*.xcarchive -name "*.dSYM" | head -1)
