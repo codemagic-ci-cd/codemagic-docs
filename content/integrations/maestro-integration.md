@@ -6,7 +6,7 @@ weight: 14
 
 [**Maestro UI testing framework**](https://mobile.dev/) from `Mobile.dev` lets you test your iOS and Android mobile apps using simple to-create test flows.
 
-A sample project that shows how to configure Maestro integration is available in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/maestro_integration_demo_project).
+A sample project that shows how to configure Maestro integration is available in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/maestro_sample_project).
 
 
 ## Get Maestro Cloud API Key
@@ -87,7 +87,7 @@ Here's the script on how you can build it.
         -derivedDataPath ios/output
 {{< /highlight >}}
 
-Don't forget to add the environment variables that holds your XCode workspace name under `$XCODE_WORKSPACE` and the Scheme name under `$XCODE_SCHEME`. See the complete sample project [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/maestro_integration_demo_project/codemagic.yaml).
+Don't forget to add the environment variables that holds your XCode workspace name under `$XCODE_WORKSPACE` and the Scheme name under `$XCODE_SCHEME`. See the complete sample project [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/maestro_sample_project/codemagic.yaml).
 {{</markdown>}}
 {{< /tab >}}
 {{< /tabpane >}}
