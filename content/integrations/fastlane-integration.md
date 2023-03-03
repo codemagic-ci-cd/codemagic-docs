@@ -75,7 +75,7 @@ In the `codemagic.yaml`, you should install your depenpendencies with `bundle in
   scripts:
     - name: Run fastlane
       script: | 
-        bundle instal
+        bundle install
         bundle exec fastlane beta
 {{< /highlight >}}
 
