@@ -16,19 +16,17 @@ For Flutter projects configured via the Flutter workflow editor, the build machi
 
 ## macOS Standard and macOS Premium
 
-Codemagic offers three types of macOS machines for running builds:
+Codemagic offers two types of macOS machines for running builds:
 
 * Mac minis with Apple M1 chip (macOS M1 Standard VM, default)
 * Mac Pros (macOS premium VM)
-* Mac minis (macOS standard VM)
-
 
 Check the specific macOS build machine image for machine [specifications](../specs/versions-macos).
 
 Xcode 13 images and above have System Integrity Protection (SIP) disabled in order to run macOS UI tests, which require accessibility permissions. Older images with Xcode 12 and below do not have SIP disabled and are unsuitable for UI testing macOS apps.
 
 {{<notebox>}}
-**Note:** Mac Pro machines and Mac minis are only available for teams and users that have [billing enabled](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for more information.
+**Note:** Mac Pro machines are only available for teams and users that have [billing enabled](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for more information.
 {{</notebox>}}
 
 ## Linux Standard and Linux Premium
