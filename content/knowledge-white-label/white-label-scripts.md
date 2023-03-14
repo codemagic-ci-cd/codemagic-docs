@@ -52,12 +52,11 @@ $PLIST_BUDDY -c "Set :ITSAppUsesNonExemptEncryption NO" $PLIST
 
 {{< /highlight >}}
 
-
 ## Downloading assets from Amazon S3
 
 The Amazon CLI tools are pre-installed on Codemagic’s machines which makes it easy to store assets such as images, fonts, logos, etc. in an encrypted S3 bucket and then download these to the build machine when building each white label version. 
 
-One approach is to create a zip archive for each customer that contains their unique assets and use a unique identifier in the file name for each customer. For example, `assets_001.zip` would clearly identify that this zip archive contains the assets for client `001`. The following is an example of downloading a zip archive from Amazon S3 during the build where the `CLIENT_ID` variable is provided when the build is triggered using the Codemagic REST API:
+The following is an example of downloading a zip archive from Amazon S3 during the build where the `CLIENT_ID` variable is provided when the build is triggered using the Codemagic REST API:
 
 {{< highlight yaml "style=paraiso-dark">}}
 name: Get assets from AWS S3 bucket
@@ -121,6 +120,21 @@ curl -H "Authorization: Bearer $CONTENTFUL_API_TOKEN" $FILE_URL --output assets.
 
 ## Changing app icons
 
+{{< tabpane >}}
+{{% tab header="Android" %}}
+
+For Android apps, you should run a script to update the icons located in `android/app/src/main/res` where you will find a number of directories that contain an icon for specific resolutions such as `drawable-hdpi`, `drawable-mdpi`, `drawable-xhdpi`, `drawable-xxhdpi`, `drawable-xxxhdpi`. Your script to update the icons in your Android project might look something like this:
+
+{{< highlight yaml "style=paraiso-dark">}}
+name: Change Android app icons
+script: | 
+  cp -r ./$CLIENT_ASSETS_FOLDER/android_assets/* ./android/app/src/main/res
+{{< /highlight >}}
+
+{{% /tab %}}
+
+{{% tab header="iOS" %}}
+
 For iOS apps, if you look at an Xcode project using Finder, you will see that the icons added in Xcode are located in `<project-name>/<scheme-name>/Assets.xcassets/AppIcon.appiconset`. This means that after downloading icon assets for a specific client’s build, you can change them on disk by simply deleting the existing `AppIcon.appiconset` directory, and then copying the assets into the `Assets.xcassets` directory. 
 
 For example, you could do the following as one of your workflow steps:
@@ -131,17 +145,15 @@ script: |
   # delete the existing icons
   rm -rf ios/Runner/Assets.xcassets/AppIcon.appiconset
   # copy the downloaded icons to Assets.xcassets directory
-  cp -r ./client_assets/AppIcon.appiconset ios/Runner/Assets.xcassets/
+  cp -r ./$CLIENT_ASSETS_FOLDER/ios_assets ios/Runner/Assets.xcassets/
 {{< /highlight >}}
 
-For Android apps, you should run a similar script to update the icons located in app/src/main/res where you will find a number of directories that contain an icon for specific resolutions such as `drawable-hdpi`, `drawable-mdpi`, `drawable-xhdpi`, `drawable-xxhdpi`, `drawable-xxxhdpi`. Your script to update the icons in your Android project might look something like this:
+{{< /tab >}}
 
-{{< highlight yaml "style=paraiso-dark">}}
-name: Change Android app icons
-script: | 
-  unzip android_assets.zip -d android_assets
-  cp -r ./android_assets/* ./myapp/android/app/src/main/res
-{{< /highlight >}}
+{{< /tabpane >}}
+
+
+
 
 ## Automatic build versioning
 
@@ -214,3 +226,5 @@ In the following example, to trigger builds for clients `001`, `002` and `003` a
 The **Codemagic REST API** can also be used for white label solutions where a dashboard is made available to your customers so they can customize an app themselves. This means they could upload their own icons, images, etc. to brand their app and then create a new build of their app. It could also be more advanced and allow customers to add their own distribution certificates, provisioning profiles and API keys.
 
 You can find our more about the Codemagic REST API [here](../rest-api/codemagic-rest-api.md)
+
+Check out the final white label sample project [here](https://github.com/codemagic-ci-cd/white-label-demo-project).

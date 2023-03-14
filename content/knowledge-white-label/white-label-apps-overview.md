@@ -23,6 +23,26 @@ You will also need to make sure that distribution certificates, bundle ids, prov
 
 In order to write your white labeling scripts, familiarity with shell scripting will also be an advantage. You can find some samples for common tasks [here](./white-label-scripts/).
 
+## Managing assets
+
+The most important part when white labeling your application is your customer's assets.
+So you need to find a way to manage assets. One approach is to create a zip archive for each customer that contains their unique assets and use a unique identifier in the file name for each customer. For example, `assets_001.zip` would clearly identify that this zip archive contains the assets for client `001`. 
+
+Each customer zip archive should has the follwoing files with this naming convention:
+- **`ios_assets/`**. This folder contains the iOS icons from `/ios/Runner/Assets.xcassets/AppIcon.appiconset/`.
+- **`android_assets/`**. This folder contains the Android icons from `/android/app/src/main/res/`.
+- **`android.keystore`**. The signing keystore for Android app.
+- **`.env`** file if you app uses some secrest at runtime.
+- **`settings.env`**. This file has all of the customer data that Codemagic will use during the build to set or replace from the base code, and the required info to sign and publish the final app to the stores.
+
+{{<notebox>}}
+The **`settings.env`** can has the follwoing:
+
+`PACKAGE_NAME`, `CM_KEYSTORE_PASSWORD`, `CM_KEY_PASSWORD`, `CM_KEY_ALIAS`, `CM_KEYSTORE_PATH`, and `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` for **Android**.
+
+`APP_STORE_ID`, `BUNDLE_ID`, `APP_STORE_CONNECT_KEY_IDENTIFIER`, `APP_STORE_CONNECT_ISSUER_ID`, `APP_STORE_CONNECT_PRIVATE_KEY`, and `CERTIFICATE_PRIVATE_KEY` for **iOS**.
+{{</notebox>}}
+
 ## Flavors versus a white labeling workflow
 
 With flavors you create different versions of your app within the same project. They are typically used when you would like to create a handful of different versions of your app so you can create a “development” build, a “qa” build and a “production” build. Each version might be configured to point to a different API endpoint, or have a different icon to show which version it is so it’s clear which app is being used when testing the app.
@@ -118,4 +138,4 @@ Once you are familiar with how Codemagic works, you should try your automation s
 
 ## Next steps
 
-Check out some sample white labeling script examples [here](./white-label-scripts/).
+Check out some sample white labeling script examples [here](./white-label-scripts/) or the final white-label sample project [here](https://github.com/codemagic-ci-cd/white-label-demo-project).
