@@ -227,4 +227,4 @@ The **Codemagic REST API** can also be used for white label solutions where a da
 
 You can find our more about the Codemagic REST API [here](../rest-api/codemagic-rest-api.md)
 
-Check out the final white-label sample project [here](https://github.com/codemagic-ci-cd/white-label-demo-project).
+Check out the final white label sample project [here](https://github.com/codemagic-ci-cd/white-label-demo-project).

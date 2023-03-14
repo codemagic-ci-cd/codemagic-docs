@@ -23,9 +23,9 @@ You will also need to make sure that distribution certificates, bundle ids, prov
 
 In order to write your white labeling scripts, familiarity with shell scripting will also be an advantage. You can find some samples for common tasks [here](./white-label-scripts/).
 
-## Manging assets
+## Managing assets
 
-The most important part when white-labeling your application is your customers assets.
+The most important part when white labeling your application is your customer's assets.
 So you need to find a way to manage assets. One approach is to create a zip archive for each customer that contains their unique assets and use a unique identifier in the file name for each customer. For example, `assets_001.zip` would clearly identify that this zip archive contains the assets for client `001`. 
 
 Each customer zip archive should has the follwoing files with this naming convention:
