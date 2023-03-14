@@ -225,7 +225,7 @@ In the following example, to trigger builds for clients `001`, `002` and `003` a
 
 The **Codemagic REST API** can also be used for white label solutions where a dashboard is made available to your customers so they can customize an app themselves. This means they could upload their own icons, images, etc. to brand their app and then create a new build of their app. It could also be more advanced and allow customers to add their own distribution certificates, provisioning profiles and API keys.
 
-You can find our more about the Codemagic REST API [here](../rest-api/codemagic-rest-api.md)
+You can find out more about the Codemagic REST API [here](../rest-api/codemagic-rest-api.md)
 
 Check out the white label sample project [here](https://github.com/codemagic-ci-cd/white-label-demo-project).
 
