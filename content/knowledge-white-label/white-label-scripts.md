@@ -7,7 +7,7 @@ aliases:
   - /knowledge-git/white-label-apps
 ---
 
-In most cases, white label automation is done using shell scripts to perform tasks such as downloading assets, copying files such as logos, images, fonts etc. to a new location, or changing string values in projects. Here you will find some common script samples.
+In most cases, white label automation is done using shell scripts to perform tasks such as downloading assets, copying files such as logos, images, fonts etc. to a new location, or changing string values in projects. Here you will find some common script samples. For sample projects see the repository [here](https://github.com/codemagic-ci-cd/white-label-demo-project).
 
 ## Changing string values in files
 
@@ -227,4 +227,5 @@ The **Codemagic REST API** can also be used for white label solutions where a da
 
 You can find our more about the Codemagic REST API [here](../rest-api/codemagic-rest-api.md)
 
-Check out the final white label sample project [here](https://github.com/codemagic-ci-cd/white-label-demo-project).
+Check out the white label sample project [here](https://github.com/codemagic-ci-cd/white-label-demo-project).
+
