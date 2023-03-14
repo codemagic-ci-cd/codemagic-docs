@@ -58,10 +58,22 @@ publishing:
         fi
 {{< /highlight >}}
  
-The above-mentioned **dsymPath** is Flutter specific and it could change depending on what platform the app is built. E.g., for React Native or Native iOS applications you might use:
+The above-mentioned **dsymPath** is Flutter specific and it could change depending on what platform the app is built on. For example, in React Native or Native iOS applications you might use the dsymPath as:
 
 {{< highlight yaml "style=paraiso-dark">}}
 dsymPath=$(find $CM_BUILD_DIR/build/ios/xcarchive/*.xcarchive -name "*.dSYM" | head -1)
+{{< /highlight >}}
+
+Besides, as **Pods** is not located inside the **ios** directory for native iOS apps, the following path needs to be changed as well:
+
+{{< highlight yaml "style=paraiso-dark">}}
+ls -d -- ios/Pods/*
+{{< /highlight >}}
+
+to
+
+{{< highlight yaml "style=paraiso-dark">}}
+ls -d -- $CM_BUILD_DIR/*
 {{< /highlight >}}
 
 If necessary, you can use remote access to the build machine to find the correct path. More information can be found [here](https://docs.codemagic.io/troubleshooting/accessing-builder-machine-via-ssh).
