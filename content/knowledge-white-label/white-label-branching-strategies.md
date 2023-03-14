@@ -79,3 +79,6 @@ SCRIPTS ---> BUILD(Build app)
 
 BUILD ---> DISTRIBUTE(Distribute build) ---- TESTFLIGHT(TestFlight) & GOOGLE(Google Play) & OTHER(Other)
 {{< /mermaid >}}
+
+
+Check out the final white-label sample project the shows these strategies [here](https://github.com/codemagic-ci-cd/white-label-demo-project/tree/strategies).
