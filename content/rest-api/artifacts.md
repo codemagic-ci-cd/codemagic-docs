@@ -35,7 +35,7 @@ The response contains the public artifact download URL under the `url` key.
 {{< highlight bash "style=paraiso-dark">}}
 curl -H "Content-Type: application/json" \
   -H "x-auth-token: <API Token>" \
-  -d '{"expiresAt": 1675419345}'
+  -d '{"expiresAt": 1675419345}' \
   -X POST https://api.codemagic.io/artifacts/ef45fb91-4c89-4395-8f7d-9368b97490de/2dd0b3d6-ae58-4894-b470-8bc2b24e259a/mayapp.ipa/public-url
 {{< /highlight >}}
 
