@@ -14,7 +14,7 @@ In `codemagic.yaml`, the build machine type can be specified with [Instance type
 
 For Flutter projects configured via the Flutter workflow editor, the build machine type can be selected in **App settings > Workflow settings > Machine**.
 
-## macOS Standard and macOS Premium
+## macOS M1 and Intel
 
 Codemagic offers two types of macOS machines for running builds:
 
