@@ -168,7 +168,7 @@ The main sections in each workflow are described below.
 | **Instance Type** | **Build Machine** |
 | ------------- | -----------------  |
 | `mac_mini_m1`    | macOS M1 standard VM (default) |
-| `mac_pro`     | macOS premium VM            |
+| `mac_pro`     | macOS Intel VM            |
 | `linux`       | Linux standard VM           |
 | `linux_x2`    | Linux premium VM            |
 | `windows_x2`  | Windows premium VM          |
