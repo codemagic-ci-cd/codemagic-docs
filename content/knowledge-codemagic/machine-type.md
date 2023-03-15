@@ -19,7 +19,7 @@ For Flutter projects configured via the Flutter workflow editor, the build machi
 Codemagic offers two types of macOS machines for running builds:
 
 * Mac minis with Apple M1 chip (macOS M1 Standard VM, default)
-* Mac Pros (macOS premium VM)
+* Mac Pros with Intel chip (macOS Intel VM)
 
 Check the specific macOS build machine image for machine [specifications](../specs/versions-macos).
 
