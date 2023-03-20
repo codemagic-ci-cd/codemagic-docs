@@ -20,6 +20,10 @@ You can upload provisioning profiles with the `.mobileprovision` extension, prov
 {{</markdown>}}
 {{< /tab >}}
 
+{{<notebox>}}
+**Note:** If your app contains app extensions, an additional provisioning profile is required for each extension. Codemagic will use the bundle identifier to find the relevant provisioning profiles. If your bundle identifier is `com.example.app`, the matching profiles are the ones with `com.example.app` and `com.example.app.*` as bundle identifier.
+{{</notebox>}}
+
 {{< tab header="Fetch from Developer Portal" >}}
 {{<markdown>}}
 You can automatically fetch the provisioning profiles from the Apple Developer Portal based on your team's App Store Connect API key. The bundle identifier is listed for every available profile along with it's name.
