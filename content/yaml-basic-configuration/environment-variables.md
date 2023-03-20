@@ -38,7 +38,7 @@ Here is a list of the built-in environment variables with brief explanations:
 | CM_PULL_REQUEST         | `true`, if the current build is building a pull request, `false` otherwise                                                                                      |
 | CM_PULL_REQUEST_NUMBER  | Set to Integer ID of the pull request for the Git provider (Bitbucket, Github etc) if the current build is building a pull request, unset otherwise             |
 | CM_PULL_REQUEST_DEST    | The destination branch, if the current build is building a pull request, unset otherwise                                                                         |
-| CM_CLONE_DEPTH          | Number of commits to be cloned. Overwrites the following defaults: branch builds - 50, tag builds and destination branch for PR builds - 1 |
+| CM_CLONE_DEPTH          | Number of commits to be cloned. Overwrites the following defaults: branch builds and destination branch for PR builds - 50, tag builds - 1 |
 | CM_CLONE_UNSHALLOW      | Set `true` to clone full commit history |
 | CM_RECURSIVE_SUBMODULE_INIT  | If set to `false`, recursive submodule cloning is disabled                                                                                                                         |
 | CM_PROJECT_ID           | UUID of the project that is being built 
