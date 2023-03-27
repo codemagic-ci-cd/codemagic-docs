@@ -27,10 +27,10 @@ weight: 9
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `20.10.17`
-- ew-cli `0.9.1`
+- ew-cli `0.9.6`
 - fastlane `2.211.0`
 - firebase `11.21.0`
-- flutter `3.7.7 ($HOME/programs/flutter)`
+- flutter `3.7.8 ($HOME/programs/flutter)`
 - gem `3.3.26`
 - gh `2.20.2`
 - git `2.39.0`

@@ -27,11 +27,11 @@ weight: 2
 - ew-cli `0.0.44`
 - fastlane `2.209.1`
 - firebase `11.21.0`
-- flutter `3.7.7 ($HOME/programs/flutter)`
+- flutter `3.7.8 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
-- Google Cloud SDK `348.0.0`
+- Google Cloud SDK `423.0.0`
 - gradle `6.7.1`
 - gsutil `4.65`
 - ionic `5.4.16`
