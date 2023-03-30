@@ -45,7 +45,7 @@ One **environment variable**  needs to be added to your workflow for the Discord
 
 ## Post a message to Discord
 
-A cURL request can be used to send a message to your Discord channel with information anout your Codemagic builds.
+A cURL request can be used to send a message to your Discord channel with information about your Codemagic builds.
 
 The following is an example of how to perform a cURL request that uses your Discord webhook to send a message with a commit number, commit message, branch name, Git commit author and a link to the build artifact. It also adds a file attachment that contains the Git changelog.
 
@@ -103,7 +103,7 @@ The result will look similar to this:
 
 ## Environment variables in JSON
 
-If you want to use an environment variable within your message use single quotes and double quotes within the JSON value as follows (note that the addtional backticks will format it as code in Discord):
+If you want to use an environment variable within your message use single quotes and double quotes within the JSON value as follows (note that the additional backticks will format it as code in Discord):
 
 {{< highlight json "style=paraiso-dark">}}
 

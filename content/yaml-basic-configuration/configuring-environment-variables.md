@@ -65,7 +65,7 @@ sudo apt-get install xclip
 cat codemagic.keystore | base64 | xclip -selection clipboard
 {{< /highlight >}}
 
-Alternatively, you can run the following command and carefuly copy/paste the output:
+Alternatively, you can run the following command and carefully copy/paste the output:
 {{< highlight Shell "style=rrt">}}
 openssl base64 -in codemagic.keystore
 {{< /highlight >}}

@@ -22,7 +22,7 @@ There are several certificate types you can choose to sign your macOS app, depen
 - `DEVELOPER_ID_APPLICATION` is used to sign a Mac app before distributing it outside the Mac App Store
 - `DEVELOPER_ID_INSTALLER` is used to sign a Mac Installer Package before distributing it outside the Mac App Store
 
-For example, in order to publish to Mac App Store, the application must be signed with a `Mac App Distribution` certificate using a `Mac App Store` provisioning profile. If you want to create a `.pkg` Installer pacakge, you must use a `Mac Installer Distribution` certificate.
+For example, in order to publish to Mac App Store, the application must be signed with a `Mac App Distribution` certificate using a `Mac App Store` provisioning profile. If you want to create a `.pkg` Installer package, you must use a `Mac Installer Distribution` certificate.
 #### Obtaining the certificate private key
 
 To enable Codemagic to automatically fetch or create the correct signing certificate on your behalf, you need to provide the corresponding `certificate private key`. You then have to save that key as a Codemagic environment variable.
@@ -143,7 +143,7 @@ To package your application into an `.pkg` Installer package and sign it with th
       PACKAGE_NAME=$(basename "$APP_NAME" .app).pkg
       xcrun productbuild --component "$APP_NAME" /Applications/ unsigned.pkg  # Create and unsigned package
 
-      # Find the installer certificate commmon name in keychain
+      # Find the installer certificate common name in keychain
       INSTALLER_CERT_NAME=$(keychain list-certificates \
         | jq '.[]
         | select(.common_name

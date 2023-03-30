@@ -4,7 +4,7 @@ One very useful method of calculating the code version is to use Codemagic comma
 You can find the full sample project with the instructions on alternative ways to perform Android build versioning [in our repository](https://github.com/codemagic-ci-cd/android-versioning-example).
 
 
-The prerequisite is a valid **Google Cloud Service Account**. Plese follow these steps:
+The prerequisite is a valid **Google Cloud Service Account**. Please follow these steps:
 1. Go to [this guide](../knowledge-base/google-services-authentication) and complete the steps in the **Google Play** section.
 2. Skip to the **Creating a service account** section in the same guide and complete those steps also.
 3. You now have a `JSON` file with the credentials.

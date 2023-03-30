@@ -82,7 +82,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
 https://api.codemagic.io/builds
 ```
 
-Having passed a specific `CLIENT_ID` in the API call, you can then use the value to specifiy script steps in the codemagic.yaml configuration which authenticate with your CMS system and fetch the assets for that particular client ID and run the build for a specific client. 
+Having passed a specific `CLIENT_ID` in the API call, you can then use the value to specify script steps in the codemagic.yaml configuration which authenticate with your CMS system and fetch the assets for that particular client ID and run the build for a specific client. 
 
 An example of this might look like the following:
 
