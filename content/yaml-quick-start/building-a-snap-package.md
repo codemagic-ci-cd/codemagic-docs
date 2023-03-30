@@ -70,7 +70,7 @@ Snap packages can be published to the [Snap Store](https://snapcraft.io/).
 snapcraft export-login snapcraft-login-credentials
 {{< /highlight >}}
 
-2. Run the following command and carefuly copy/paste the output:
+2. Run the following command and carefully copy/paste the output:
 {{< highlight Shell "style=rrt">}}
 cat  snapcraft-login-credentials | base64
 {{< /highlight >}}

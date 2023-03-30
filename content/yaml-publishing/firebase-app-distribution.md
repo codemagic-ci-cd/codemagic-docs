@@ -45,7 +45,7 @@ Example configuration for publishing Android and iOS artifacts to Firebase:
 {{< highlight yaml "style=paraiso-dark">}}
 publishing:
   firebase:
-    # use this line to autenticate via service account
+    # use this line to authenticate via service account
     firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
     
     # or this line to authenticate via token:

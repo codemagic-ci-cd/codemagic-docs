@@ -244,7 +244,7 @@ exports.config = {
      browserName: '',
      appiumVersion: '1.13.0',
      platformName: 'Android',
-     platformVersion: '<emulator platform version>',    // Specify your emualator details
+     platformVersion: '<emulator platform version>',    // Specify your emulator details
      deviceName: '<emulator name>',
      app: '<path to APK>',
      automationName: 'UiAutomator2'

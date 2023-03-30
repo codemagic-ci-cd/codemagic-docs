@@ -28,7 +28,7 @@ In order to write your white labeling scripts, familiarity with shell scripting 
 The most important part when white labeling your application is your customer's assets.
 So you need to find a way to manage assets. One approach is to create a zip archive for each customer that contains their unique assets and use a unique identifier in the file name for each customer. For example, `assets_001.zip` would clearly identify that this zip archive contains the assets for client `001`. 
 
-Each customer zip archive should has the follwoing files with this naming convention:
+Each customer zip archive should has the following files with this naming convention:
 - **`ios_assets/`**. This folder contains the iOS icons from `/ios/Runner/Assets.xcassets/AppIcon.appiconset/`.
 - **`android_assets/`**. This folder contains the Android icons from `/android/app/src/main/res/`.
 - **`android.keystore`**. The signing keystore for Android app.
@@ -36,7 +36,7 @@ Each customer zip archive should has the follwoing files with this naming conven
 - **`settings.env`**. This file has all of the customer data that Codemagic will use during the build to set or replace from the base code, and the required info to sign and publish the final app to the stores.
 
 {{<notebox>}}
-The **`settings.env`** can has the follwoing:
+The **`settings.env`** can has the following:
 
 `PACKAGE_NAME`, `CM_KEYSTORE_PASSWORD`, `CM_KEY_PASSWORD`, `CM_KEY_ALIAS`, `CM_KEYSTORE_PATH`, and `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` for **Android**.
 
@@ -47,11 +47,11 @@ The **`settings.env`** can has the follwoing:
 
 With flavors you create different versions of your app within the same project. They are typically used when you would like to create a handful of different versions of your app so you can create a “development” build, a “qa” build and a “production” build. Each version might be configured to point to a different API endpoint, or have a different icon to show which version it is so it’s clear which app is being used when testing the app.
 
-In Xcode you add different build schemes which can be used to customise the project output. Similarly, in Android Studio you can create product build variants and create a separate folder for each flavor’s resources.
+In Xcode you add different build schemes which can be used to customize the project output. Similarly, in Android Studio you can create product build variants and create a separate folder for each flavor’s resources.
 
 If you only needed to white label a few versions of your app then you could use this approach to build different versions of your app. However, it’s not very scalable and creates an unnecessarily large project and makes it harder to automate the white label process.
 
-An automated white label workflow, on the other hand, doesn’t require that your app has multiple schemes or flavors configured in your Xcode or Android project. When the app is built, a series of scripts are run which change the project’s properties and change things like icons, images, fonts, and values in xml and plist files. In this way, a single base app can be used to create as many different versions as you need without having to add the customisations directly to the project.
+An automated white label workflow, on the other hand, doesn’t require that your app has multiple schemes or flavors configured in your Xcode or Android project. When the app is built, a series of scripts are run which change the project’s properties and change things like icons, images, fonts, and values in xml and plist files. In this way, a single base app can be used to create as many different versions as you need without having to add the customizations directly to the project.
 
 
 

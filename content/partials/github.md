@@ -26,7 +26,7 @@ Codemagic uses the [Codemagic CI/CD GitHub App](https://github.com/apps/codemagi
 {{</notebox>}}
 </p>
 {{<notebox>}}
-**Note:** If a repository is transferred to an organisation, then the organisation should be configured with [Codemagic CI/CD GitHub App](https://github.com/apps/codemagic-ci-cd) in order to show the repository in the dropdown.
+**Note:** If a repository is transferred to an organization, then the organization should be configured with [Codemagic CI/CD GitHub App](https://github.com/apps/codemagic-ci-cd) in order to show the repository in the dropdown.
 {{</notebox>}}
 
 1. In your user or team settings in Codemagic, navigate to the Integrations section and locate the GitHub App integration. The next steps may vary slightly depending on whether you have already authorized Codemagic or have the Codemagic GitHub App installed.

@@ -68,7 +68,7 @@ Start-Process -NoNewWindow -FilePath "path-to-your-exe-file" -ArgumentList 'your
 Scripts fail when using `base64` encoded variables or use incorrect values.
 
 ###### Solution
-Encoded variables need to be decoded back into their original form before they can be used. For example, to decoda a variable `$VAR1` and save the result as variable `PATH`, use the following script:
+Encoded variables need to be decoded back into their original form before they can be used. For example, to decode a variable `$VAR1` and save the result as variable `PATH`, use the following script:
 
 {{< highlight powershell "style=paraiso-dark">}}
 [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String("$env:VAR1")) | Out-File -FilePath $env:PATH

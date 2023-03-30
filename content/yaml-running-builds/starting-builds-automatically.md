@@ -62,7 +62,7 @@ triggering:
     - pattern: included-source
       include: true
       source: true
-  tag_patterns:                 # Include or exlude watched tag labels
+  tag_patterns:                 # Include or exclude watched tag labels
     - pattern: '*'
       include: true
     - pattern: excluded-tag
