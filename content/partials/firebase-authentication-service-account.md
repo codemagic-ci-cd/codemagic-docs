@@ -22,7 +22,7 @@ Service accounts are useful for setting up App Distribution in a CI environment.
 ![Google cloud json](../uploads/google_cloud_four.png)
 
 7. Configure variables in codemagic.yaml:
-    {{<notebox>}}**Note:** If you are using the same service account for both the Firebase and the Google Play publishing, we recommend using `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` as the name for the variable holding the service account JSON content as this is the default name used through the docs and sample projects.
+    {{<notebox>}}**Note:** If you are using the same service account for both the Firebase and the Google Play publishing, we recommend using `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` as the name for the variable holding the service account JSON content as this is the default name used throughout the docs and sample projects.
     {{</notebox>}}
 
     1. Open your Codemagic app settings, and go to the **Environment variables** tab.
