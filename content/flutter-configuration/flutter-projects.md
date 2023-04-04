@@ -151,5 +151,5 @@ After the first build, you can select the project for building in **App settings
 If you have changed the location of the project in the repository, renamed its parent directory or added new projects, you may have to rescan project paths by clicking the icon next to the **Project path** dropdown field. Then select the branch you want to search for projects and click **Rescan**, which will update the project paths for the chosen branch.
 
 {{<notebox>}}
-Rescanning is not available for repositories added from a custom source. Instead, project paths are scanned on each new build and are updated on change.
+Rescanning is not available for repositories added from self-hosted and repos added via SSH. Instead, project paths are scanned on each new build and are updated on change.
 {{</notebox>}}
