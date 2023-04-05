@@ -27,6 +27,57 @@ You can simultaneously set up workflows both in `codemagic.yaml` and the Workflo
 {{< include "/partials/quickstart/create-yaml-intro.md" >}}
 
 
+## Setting the Flutter version
+
+When building a Flutter application with Codemagic, you can customize your build environment by configuring various settings. One such setting is the option to choose the Flutter version or channel for the build process. Codemagic provides several options: defining a specific channel or version, or alternatively, you can leverage [Flutter Version Management (FVM)](https://fvm.app/docs/getting_started/overview) for version management.
+
+{{< tabpane >}}
+
+{{< tab header="Specific Flutter channel or version" >}}
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+    sample-workflow:
+        environment:
+            flutter: stable
+{{< /highlight >}}
+{{<notebox>}}
+**Note**: The possible versions are `default`, `stable`, `beta`, and `master`, along with any specific versions, e.g., `3.7.6`.
+{{</notebox>}}
+{{< /tab >}}
+
+{{< tab header="Flutter Version Management (FVM)" >}}
+{{<markdown>}}
+If you wish to use Flutter Version Management (FVM) in your Codemagic project, you must define the flutter version as `fvm` under the environment settings in your workflow.
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+    sample-workflow:
+        environment:
+            flutter: fvm
+{{< /highlight >}}
+{{<notebox>}}
+**Note**: This automatically sets the Flutter version from your project's `fvm_config.json` file, located at the root of your project in the `.fvm` directory. If this file does not exist, the build will fail.
+{{</notebox>}}
+
+Moreover, when using FVM, Codemagic allows you to set the specific FVM flavor in your `codemagic.yaml` to provide all the needed flexibility when managing the Flutter version.
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+    sample-workflow:
+        environment:
+            flutter:
+                version: fvm
+                flavor: dev
+{{< /highlight >}}
+{{<notebox>}}
+**Note**: If the requested flavor does not exist in the config file, the build will fail.
+{{</notebox>}}
+
+{{</markdown>}}
+{{< /tab >}}
+
+{{< /tabpane >}}
+
 ## Code signing
 
 All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.

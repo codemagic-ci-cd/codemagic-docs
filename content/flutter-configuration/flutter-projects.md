@@ -153,3 +153,9 @@ If you have changed the location of the project in the repository, renamed its p
 {{<notebox>}}
 Rescanning is not available for repositories added from self-hosted and repos added via SSH. Instead, project paths are scanned on each new build and are updated on change.
 {{</notebox>}}
+
+## Setting the Flutter version
+
+When building a Flutter application with Codemagic, you can customize your build environment by configuring various settings. One such setting is the option to choose the Flutter version or channel for the build process. Codemagic provides several options: `default`, `channel Stable`, `channel Beta`, `channel Master`, or a specific version. Alternatively, you can leverage [Flutter Version Management (FVM)](https://fvm.app/docs/getting_started/overview) by selecting the `from FVM configuration` option. This automatically sets the Flutter version from your project's `fvm_config.json` file, located at the root of your project in the `.fvm` directory. If this file does not exist, the build will fail.
+
+Moreover, when using FVM, Codemagic allows you to set the specific FVM flavor in the UI to provide all the needed flexibility when managing the Flutter version.

@@ -251,7 +251,7 @@ The snippet below shows how to specify the versions of Flutter, Xcode, CocoaPods
 
 {{< highlight yaml "style=paraiso-dark">}}
 environment:
-  flutter: stable   # Define the channel name or version (e.g. v1.13.4)
+  flutter: stable   # Define the channel name, version (e.g. v1.13.4), or fvm for Flutter Version Management
   xcode: latest     # Define latest, edge or version (e.g. 11.2)
   cocoapods: 1.9.1  # Define default or version
   node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
