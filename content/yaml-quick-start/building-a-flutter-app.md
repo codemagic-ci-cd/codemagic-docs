@@ -48,7 +48,6 @@ workflows:
 {{< tab header="Flutter Version Management (FVM)" >}}
 {{<markdown>}}
 If you wish to use Flutter Version Management (FVM) in your Codemagic project, you must define the flutter version as `fvm` under the environment settings in your workflow.
-{{</markdown>}}
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -59,10 +58,9 @@ workflows:
 {{<notebox>}}
 **Note**: This automatically sets the Flutter version from your project's `fvm_config.json` file, located at the root of your project in the `.fvm` directory. If this file does not exist, the build will fail.
 {{</notebox>}}
-<br>
-{{<markdown>}}
+
 Moreover, when using FVM, Codemagic allows you to set the specific FVM flavor in your `codemagic.yaml` to provide all the needed flexibility when managing the Flutter version.
-{{</markdown>}}
+
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
     sample-workflow:
@@ -74,6 +72,8 @@ workflows:
 {{<notebox>}}
 **Note**: If the requested flavor does not exist in the config file, the build will fail.
 {{</notebox>}}
+
+{{</markdown>}}
 {{< /tab >}}
 
 {{< /tabpane >}}
