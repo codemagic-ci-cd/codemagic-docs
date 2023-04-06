@@ -28,6 +28,8 @@ When billing is enabled, you will see the current usage, the due amount and the 
 
 Click on **Update billing details** to change the billing information or add additional details, such as company name, billing email, address and tax ID.
 
+Tax ID is only available for team accounts and not personal teams. 
+
 ### Changing card
 
 To change the card used for payments, click **Edit** in the credit card section under the billing details. You can then click **New card** to register a new card or select a different card from already registered cards.
