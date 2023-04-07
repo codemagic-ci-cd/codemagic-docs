@@ -103,7 +103,22 @@ A few things to mention here:
 
 The `getScreenWrapper()` function above returns the final screen we want to screenshot. But we first need to prepare the screenshot process.
 
-**STEP 2 (_Optional_):** Some screens display a back button in the app bar, but with that method above, that button won’t display. So the little trick I use here is to:
+**STEP 2:** In order to get your fonts working, you’ll need to add the `flutter_test_config.dart` file in your `test/` directory, with the following content:
+
+```Dart
+import 'dart:async';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:golden_toolkit/golden_toolkit.dart';
+
+Future<void> testExecutable(FutureOr<void> Function() testMain) async
+{
+  TestWidgetsFlutterBinding.ensureInitialized();
+  await loadAppFonts();
+  return testMain();
+}
+```
+
+**STEP 3 (_Optional_):** Some screens display a back button in the app bar, but with that method above, that button won’t display. So the little trick I use here is to:
 
 - Create a provider:  
     `final platformScreenshotProvider = Provider<bool?>((ref) => null);`
@@ -133,7 +148,7 @@ leading: (ref.read(platformScreenshotProvider) != null
 
 Note that this provider can be use anywhere in your app, to fake entered text in a `TextFormField` for example.
 
-**STEP 3:** There are specific requirements for the screenshots sizes. Here are the size and densities (we’ll need that info for later) that I use for both the Google Play Store and the App Store Connect:
+**STEP 4:** There are specific requirements for the screenshots sizes. Here are the size and densities (we’ll need that info for later) that I use for both the Google Play Store and the App Store Connect:
 
 - Android smartphone: 1107 x 1968 (density: 3)
 - 7 inches Android tablet: 1206 x 2144 (density: 2)
@@ -145,12 +160,12 @@ Note that this provider can be use anywhere in your app, to fake entered text in
 
 Note that while the sizes for the App Store Connect have to be specifically what I mentioned, the Google Play Store is more permissive. Also, if you want to display what your app looks like on a tablet, prefer the portrait mode (if it still makes sense for your app, of course), so your users can see more screens on the store without any swipe.
 
-**STEP 4:** When it comes to naming the screenshots files to be uploaded to the stores, you can name them anything you want. But keep in mind that:
+**STEP 5:** When it comes to naming the screenshots files to be uploaded to the stores, you can name them anything you want. But keep in mind that:
 
 - They will display in the stores in alphabetical order.
 - For the App Store Connect, since the two iPads have exactly the same size, we need to differentiate them by naming the iPad pro 6th gen files with a name that should contain `IPAD_PRO_3GEN_129` (other values are possible as you can see in the [deliver documentation](https://docs.fastlane.tools/actions/deliver/)).
 
-**STEP 5:** Now it’s time to screenshot! Here is how I do, using the [Golden Toolkit](https://pub.dev/packages/golden_toolkit) package:
+**STEP 6:** Now it’s time to screenshot! Here is how I do, using the [Golden Toolkit](https://pub.dev/packages/golden_toolkit) package:
 
 ```Dart
 Future<void> takeScreenshot({
@@ -190,7 +205,7 @@ A few important things to mention here:
 - The `customPump` argument, although not mandatory, can be useful in some cases. By default, the [Golden Toolkit](https://pub.dev/packages/golden_toolkit) package uses `pumpAndSettle()`, which can sometimes block the rendering if, for example, there is an infinite animation. In my case, I pass the following argument (only for the first screenshot) and it works very well: `(tester) async => await tester.pump(const Duration(milliseconds: 200))`.
 - The reason why I use `multiScreenGolden()` here is because not only can I use the `Device` object, which is very handy when it comes to specify the screen size and density, but it also generates only what I need without any extra stuff around the screenshot.
 
-**STEP 6:** Calling the `takeScreenshot()` function above generates an image file. Let’s load it in an image widget:
+**STEP 7:** Calling the `takeScreenshot()` function above generates an image file. Let’s load it in an image widget:
 
 ```Dart
 final screenFile = File("test/screenshots/goldens/$pageName.screen.png");  
@@ -198,7 +213,7 @@ final memoryImage = MemoryImage(screenFile.readAsBytesSync());
 final image = Image(image: memoryImage);
 ```
 
-**STEP 7:** Now it’s time to decorate the screenshot! I won’t go into details here since it depends on what you want to achieve, but basically, it will look like the following:
+**STEP 8:** Now it’s time to decorate the screenshot! I won’t go into details here since it depends on what you want to achieve, but basically, it will look like the following:
 
 ```Dart
 Widget getDecoratedScreen(Widget image, ...)
@@ -209,9 +224,9 @@ Widget getDecoratedScreen(Widget image, ...)
 }
 ```
 
-**STEP 8:** And finally, we can take a screenshot of the widget returned by the `getDecoratedScreen()` function mentioned above, again with the `takeScreenshot()` function! Note that this time, you shouldn’t need to pass anything to the `customPump` argument.
+**STEP 9:** And finally, we can take a screenshot of the widget returned by the `getDecoratedScreen()` function mentioned above, again with the `takeScreenshot()` function! Note that this time, you shouldn’t need to pass anything to the `customPump` argument.
 
-**STEP 9:** Now you can delete the first screenshot (the one in `screenFile` above):  `screenFile.deleteSync()`.
+**STEP 10:** Now you can delete the first screenshot (the one in `screenFile` above):  `screenFile.deleteSync()`.
 
 And for the first illustration which contains the slogan, I used the same technique (but without taking an actual screenshot obviously).
 
