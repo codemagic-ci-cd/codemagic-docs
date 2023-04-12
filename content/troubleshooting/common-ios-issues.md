@@ -46,6 +46,22 @@ Check your app's entitlements by going to **Apple Developer portal > Certificate
 This applies when your app has custom iOS schemes. By default, Codemagic builds the `Runner` scheme, but you can use the `CM_FLUTTER_SCHEME` [environment variable](../building/environment-variables) to specify another scheme.
 
 
+###### No matching certificate found for every requested profile
+
+This error indicates that the certificate used for code signing in your Codemagic project does not match the provisioning profile selected for your app.
+
+Ensure that the certificate you are using is associated with the provisioning profile you have selected. You can check this by logging into your Apple Developer account and verifying that the certificate is listed under the "Certificates" section of the provisioning profile.
+
+If you are not sure which one is yours from the list, try 
+1. Generating a [new Provisioning Profile](https://developer.apple.com/account/resources/profiles/list) by clicking on `Profiles +`
+2. Select the type of the Provisioning Profile you want to install
+3. Select an App ID
+4. Select the certificates you wish to include in this Provisioning Profile. You can `Select All` and include all available certificates into a Provisioning Profile.
+5. Select the devices you wish to include in this provisioning profile
+6. Enter Provisioning Profile Name and click `Generate`
+7. Download generated profile
+8. Upload it to Codemagic under **Codemagic.yaml settings > iOS provisioning profiles**.
+
 ###### Bundle ID mismatch
 
 Make sure that the bundle ID entered in automatic code signing setup on Codemagic matches the bundle ID in the build configuration that is used for archiving the app with Xcode.
