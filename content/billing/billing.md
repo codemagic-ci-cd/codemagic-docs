@@ -40,10 +40,6 @@ To disable billing, click **Disable billing** in the Billing details section. On
 
 Note that you may only disable billing if there are no unpaid invoices. In case you have unpaid invoices, please verify or update your card information. Then navigate to Billing history and find any invoice that is not in paid status. Finally, open up each unpaid invoice and click **Pay invoice** to retry the payment.
 
-## Billing per team user
-
-For pay-as-you-go team plans, each team user is billed at the rate on the [pricing page](https://codemagic.io/pricing/). See the [counting team users](../teams/users) guide for details on how we count team users.
-
 ## Billing per build minute
 
 For pay-as-you-go team and user plans, each build minute is billed at the rate on our [pricing page](https://codemagic.io/pricing/) based on the build [machine type](../specs/machine-type) used for the build. Builds that time out or fail because of a Codemagic service error will not count towards billing usage. Builds that fail for any other reason will count towards billing usage.
