@@ -41,7 +41,7 @@ workflows:
             flutter: stable
 {{< /highlight >}}
 {{<notebox>}}
-**Note**: The possible versions are `default`, `stable`, `beta`, and `master`, along with any specific versions, e.g., `3.7.6`.
+**Note**: The possible versions are `stable`, `beta`, and `master`, along with any specific versions, e.g., `3.7.6`.
 {{</notebox>}}
 {{< /tab >}}
 
