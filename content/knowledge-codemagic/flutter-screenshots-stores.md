@@ -9,11 +9,11 @@ aliases:
 
 If you are going to publish your Flutter app to **App Store Connect** or the **Google Play Store**, you can automate the process of taking screenshots and uploading them to the stores so your users can discover your app.
 
-In order to strictly follow the steps below, you'll need to use [Riverpod](https://pub.dev/packages/flutter_riverpod) (for dependendy injection) and [intl](https://pub.dev/packages/intl) (for internationalization) in your Flutter project. While it might not be necessary for your project, it’s important to keep in mind that, if you want this approach to work, you’ll have to properly separate the UI from the logic in your code, using Riverpod or something else, so you can easily mock anything you want.
+In order to strictly follow the steps below, you'll need to use [Riverpod](https://pub.dev/packages/flutter_riverpod) (for dependendy injection) and [intl](https://pub.dev/packages/intl) (for internationalization) in your Flutter project. While it might not be necessary for your project, it’s important to keep in mind that, if you want this approach to work, you’ll have to properly separate the UI from the logic in your code, using Riverpod or some other means of dependency injection, so you can easily mock anything you want.
 
 ## Automate screenshots generation
 
-The screenshots will be generated thans to golden testing, using the [Golden Toolkit](https://pub.dev/packages/golden_toolkit) package. In the steps below, the screenshots will be illustrated as they are commonly seen in the stores. For each illustrated screenshot, here are the main steps to follow:
+The screenshots will be generated thanks to golden testing, using the [Golden Toolkit](https://pub.dev/packages/golden_toolkit) package. In the steps below, the screenshots will be illustrated as they are commonly seen in the stores. For each illustrated screenshot, here are the main steps to follow:
 - You first take a screenshot of the screen you want
 - You load the generated image using  `MemoryImage`
 - You generate a new Flutter widget with all the needed decorations, texts, backgrounds… to decorate the screenshot
@@ -21,7 +21,7 @@ The screenshots will be generated thans to golden testing, using the [Golden Too
 
 Create a wrapper for the screen, so you'll be able to screenshot it later:
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight dart "style=paraiso-dark">}}
 Widget getScreenWrapper({
   required Widget child,
   required Locale locale,
@@ -64,7 +64,7 @@ The `getScreenWrapper()` function above returns the final screen to screenshot a
 
 In order to get your fonts working, you’ll need to add the following `flutter_test_config.dart` file in your `test/` directory, with the following content:
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight dart "style=paraiso-dark">}}
 import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
@@ -89,7 +89,7 @@ There are specific requirements for the screenshots sizes. Here are the size and
 | iPhone 8 Plus                     | `1242 x 2208`                            | `3`                |
 | iPhone Xs Max                     | `1242 x 2688`                            | `3`                |
 
-Note that while the sizes for the App Store Connect have to be specifically those sizes, the Google Play Store is more permissive. Also, if you want to display what your app looks like on a tablet, prefer the portrait mode (if it still makes sense for your app, of course), so your users can see more screens on the store without any swipe.
+Note that while the sizes for App Store Connect have to be specifically those sizes, the Google Play Store is more permissive. Also, if you want to display what your app looks like on a tablet, prefer the portrait mode (if it still makes sense for your app, of course), so your users can see more screens on the store without any swipe.
 
 When it comes to naming the screenshots files to be uploaded to the stores, you can name them anything you want. But keep in mind that:
 
@@ -98,7 +98,7 @@ When it comes to naming the screenshots files to be uploaded to the stores, you 
 
 Now you can take a screenshot of your screen (wrapped with the `getScreenWrapper()` function above), using the [Golden Toolkit](https://pub.dev/packages/golden_toolkit) package:
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight dart "style=paraiso-dark">}}
 Future<void> takeScreenshot({
    required WidgetTester tester,
    required Widget widget,
@@ -137,7 +137,7 @@ Here are some important notes about the arguments:
 
 Calling the `takeScreenshot()` function above generates an image file. You can load it into an image widget as follows:
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight dart "style=paraiso-dark">}}
 final screenFile = File("test/screenshots/goldens/$pageName.screen.png");  
 final memoryImage = MemoryImage(screenFile.readAsBytesSync());  
 final image = Image(image: memoryImage);
@@ -145,7 +145,7 @@ final image = Image(image: memoryImage);
 
 Now you can decorate your screenshot, using a function like the following that returns a new widget. Note that you might need to pass multiple arguments, including the screen information, depending on what you want to draw:
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight dart "style=paraiso-dark">}}
 Widget getDecoratedScreen(Widget image, ...)
 {
   return Container(
@@ -170,7 +170,7 @@ One last thing: some screens display a back button in the app bar, but with that
 - Even though that provider value is `null` by default, it will be overridden in the golden tests like this: `platformScreenshotProvider.overrideWithValue(isAndroid)`, where `isAndroid` can be `true` or `false` whether you’re on Android or iOS, and which returns an `Override` that you can pass in the `overrides` array argument of the `getScreenWrapper()` function above, like any other override.
 - Create a fake app bar back icon:
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight dart "style=paraiso-dark">}}
 class AppBarBackIcon extends ConsumerWidget
 {
   @override
@@ -185,7 +185,7 @@ class AppBarBackIcon extends ConsumerWidget
 
 - Use that icon for the `leading` argument of the app bar in your app:
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight dart "style=paraiso-dark">}}
 leading: (ref.read(platformScreenshotProvider) != null
         ? const AppBarBackIcon()
         : null)
@@ -197,7 +197,7 @@ Note that this provider can be use anywhere in your app, to fake entered text in
 
 To upload the screenshots to the stores, we will use the same strategy for both the Google Play Store and the App Store Connect: upload the screenshots while we deploy the app.
 
-To achieve that, we will use Fastlane. Fastlane is a set of open-source tools and scripts that automates building, testing, and deploying mobile apps for both iOS and Android.
+To achieve that, we will use Fastlane. Fastlane is pre-installed in Codemagic and is a set of open-source tools and scripts that automates building, testing, and deploying mobile apps for both iOS and Android.
 
 You can easily install Fastlane on your local machine with the following command: `sudo gem install fastlane`.
 
@@ -222,7 +222,7 @@ sudo chown your_id Gemfile.lock
 - Now you can test that Fastlane can communicate with your store with the following command:`fastlane run validate_play_store_json_key json_key:google-play-store.json`
 - Edit your `Appfile` file so you can update it like the following:
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight text "style=paraiso-dark">}}
 # Path to the json secret file, relative to the "android" directory:
 json_key_file("google-play-store.json")
 
@@ -248,7 +248,7 @@ sudo chown your_id Gemfile.lock
 
 - Now, we need an API Key, which is a JSON. Let's name that file `app_store_connect.json`, which will look like the following:
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight json "style=paraiso-dark">}}
 {
     "key_id": "D123SF789",
     "issuer_id": "1234a5cd-12a3-4acb-56dd-123bb1234567",
@@ -261,7 +261,7 @@ To get the different values, login to the App Store Connect, then go to _My Apps
 - For testing purposes, we can locally save that file in the `ios` directory. But don’t forget to add it in your `.gitignore` file.
 - Edit your `Appfile` file so you can update it like the following:
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight text "style=paraiso-dark">}}
 app_identifier("com.example.app") # The bundle identifier of your app 
 apple_id("yourlogin@icloud.com") # Your Apple Developer Portal username 
 itc_team_id("123456789") # App Store Connect Team ID 
@@ -277,7 +277,7 @@ team_id("123A4P567S") # Developer Portal Team ID
 
 Now you can add the following in your `.gitignore` file, at the root of your Flutter project:
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight text "style=paraiso-dark">}}
 /android/fastlane/metadata/android/fr-FR/images/
 /android/fastlane/metadata/android/en-US/images/
 /android/google-play-store.json
@@ -286,15 +286,15 @@ Now you can add the following in your `.gitignore` file, at the root of your Flu
 /ios/app_store_connect.json
 {{< /highlight >}}
 
-Since the `google-play-store.json` and the `app_store_connect.json` files are not meant to be added to your repository, we need to provide them in the CI in a safe way.
+Since the `google-play-store.json` and the `app_store_connect.json` files are not meant to be added to your repository, we need to provide them in the workflow in a safe way.
 
-With Codemagic, you can for example store the content of the `google-play-store.json` file in a encrypted environment variable named `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, and run a script in your CI that will generate the `google-play-store.json` in the right location, with the right content, by doing as follow:
+With Codemagic, you can for example store the content of the `google-play-store.json` file in a encrypted environment variable named `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, and run a script in your workflow that will generate the `google-play-store.json` in the right location, with the right content, by doing as follow:
 
 {{< highlight bash "style=paraiso-dark">}}
 echo $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS > android/google-play-store.json
 {{< /highlight >}}
 
-Then in your CI, you can write a script that copies the generated illustrations in the right directories. For example, here is how you can copy your illustrations for the French Android version of your app:
+Then in your workflow, you can write a script that copies the generated illustrations in the right directories. For example, here is how you can copy your illustrations for the French Android version of your app:
 
 {{< highlight bash "style=paraiso-dark">}}
 mkdir -p android/fastlane/metadata/android/fr-FR/images/phoneScreenshots
@@ -313,7 +313,7 @@ One last step: the `Fastfile` files, one for Android, one for iOS, that will eac
 
 Here is what the `Fastfile` file looks like for the Google Play Store (go to the  [supply](https://docs.fastlane.tools/actions/supply/)  documentation for more information):
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight ruby "style=paraiso-dark">}}
 default_platform(:android)
 
 platform :android do
@@ -339,7 +339,7 @@ end
 
 And here is what the `Fastfile` file looks like for the App Store Connect (go to the [deliver](http://docs.fastlane.tools/actions/deliver) documentation for more information):
 
-{{< highlight bash "style=paraiso-dark">}}
+{{< highlight ruby "style=paraiso-dark">}}
 default_platform(:ios)
 
 platform :ios do
@@ -383,7 +383,7 @@ platform :ios do
 end
 {{< /highlight >}}
 
-Now, in your CI, in order to run the `deployapp` command above for the Google Play Store, you just need to run the following script:
+Now, in your workflow, in order to run the `deployapp` command above for the Google Play Store, you just need to run the following script:
 
 {{< highlight bash "style=paraiso-dark">}}
 cd android/
@@ -398,5 +398,5 @@ cd ios/
 fastlane deployapp versionName:"1.0.0" # put your own version name here
 {{< /highlight >}}
 
-Note that the App Store Connect might sometimes be buggy when it comes to deleting the previous screenshots. If that operation takes too much time (it should be done in a matter of seconds), don’t hesitate to interrupt the script and run your CI all over again.
+Note that the App Store Connect might sometimes be buggy when it comes to deleting the previous screenshots. If that operation takes too much time (it should be done in a matter of seconds), don’t hesitate to interrupt the script and run your workflow all over again.
 
