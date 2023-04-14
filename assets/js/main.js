@@ -352,4 +352,15 @@ editableFields.forEach(field => {
 
         editing = false;
     })
+
+    document.addEventListener('keypress', (event) => {
+        if (event.key === "Enter") {
+            event.stopPropagation();
+
+            container.removeChild(input)
+            container.appendChild(field)
+
+            editing = false;
+        }
+    })
 })
