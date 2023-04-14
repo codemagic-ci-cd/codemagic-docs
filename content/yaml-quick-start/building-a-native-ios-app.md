@@ -33,7 +33,7 @@ In this step you can also define the build artifacts you are interested in. Thes
 ios-native:
   environment:
     vars:
-      BUNDLE_ID: $$$codemagic-sample$$$"io.codemagic.sample.iosnative"$$$
+      BUNDLE_ID: $$$bundle-id$$$"io.codemagic.sample.iosnative"$$$
       XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Name of your Xcode workspace
       XCODE_SCHEME: "CodemagicSample" # <-- Name of your Xcode scheme
 scripts:
@@ -91,9 +91,9 @@ workflows:
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: $$$codemagic-sample$$$io.codemagic.sample.iosnative$$$
+        bundle_identifier: $$$bundle-id$$$io.codemagic.sample.iosnative$$$
       vars:
-        BUNDLE_ID: $$$codemagic-sample$$$"io.codemagic.sample.iosnative"$$$
+        BUNDLE_ID: $$$bundle-id$$$"io.codemagic.sample.iosnative"$$$
         XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
         XCODE_SCHEME: "CodemagicSample" # <-- Put the name of your Xcode scheme here
         APP_ID: 1555555551
