@@ -25,7 +25,7 @@ weight: 3
 - DotNet4.5.2 `4.5.2.20140902`
 - fastlane `2.209.1`
 - firebase `11.21.0`
-- flutter `3.7.9 (C:\Users\builder\programs\flutter)`
+- flutter `3.7.11 (C:\Users\builder\programs\flutter)`
 - gem `3.3.7`
 - gh `2.6.0`
 - Google Cloud SDK `423.0.0`

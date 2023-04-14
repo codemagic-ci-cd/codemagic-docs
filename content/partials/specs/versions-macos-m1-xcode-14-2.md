@@ -14,7 +14,7 @@ weight: 11
 
 - System version `macOS 13.2.1 (22D68)`
 - Kernel version `Darwin 22.3.0`
-- Disk `294GB (Free Space: 80GB)`
+- Disk `294GB (Free Space: 89GB)`
 
 ## Pre-installed tools
 
@@ -26,10 +26,10 @@ weight: 11
 - cordova `11.0.0`
 - curl `7.86.0`
 - docker `N/A`
-- ew-cli `0.9.6`
+- ew-cli `0.9.7`
 - fastlane `2.212.1`
 - firebase `11.21.0`
-- flutter `3.7.9 ($HOME/programs/flutter)`
+- flutter `3.7.11 ($HOME/programs/flutter)`
 - gem `3.4.8`
 - gh `2.23.0`
 - git `2.39.2`
