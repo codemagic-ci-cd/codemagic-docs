@@ -12,13 +12,13 @@ You can find codemagic.yaml examples in [Codemagic Sample Projects](https://gith
 
 If you prefer to write your `codemagic.yaml` file from scratch, you can start with this minimal configuration.
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight-editable yaml "style=paraiso-dark">}}
 workflows:
     sample-workflow:
         name: Codemagic Sample Workflow
         max_build_duration: 120
-        instance_type: mac_mini_m1
-{{< /highlight >}}
+        instance_type: $$$mac_mini_m1$$$mac_mini_m1$$$
+{{< /highlight-editable >}}
 
 
 {{<notebox>}}

@@ -71,3 +71,23 @@ h6 {
     mask-size: contain;
     background-position: center center;
 }
+
+.editable-field {
+    position: relative;
+    border-bottom: 1px dotted;
+    padding-right: 15px;
+    cursor: pointer;
+
+    &::after {
+        content: '';
+        @include icon(getAssetUrl('media/icons/edit.svg'));
+        background-color: #f99b15;
+        margin-left: 5px;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translate(50%,-50%);
+    }
+}
