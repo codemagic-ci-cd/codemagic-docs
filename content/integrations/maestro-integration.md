@@ -4,7 +4,7 @@ description: How to integrate your workflows with Maestro using codemagic.yaml
 weight: 14
 ---
 
-[**Maestro UI testing framework**](https://mobile.dev/) from `Mobile.dev` lets you test your iOS and Android mobile apps using simple to-create test flows.
+[**Maestro UI testing framework**](https://maestro.mobile.dev/) from [mobile.dev](https://mobile.dev) lets you test your iOS and Android mobile apps using simple to-create test flows that are written in a declarative form using YAML. In order to run your tests in CI you can utilize [Maestro Cloud](https://cloud.mobile.dev/), which allows you to easily run your Flows without having to manage iOS and Android devices in your own CI. For more information on how to get started with Maestro and Maestro Cloud, please refer to the [Maestro documentation](https://maestro.mobile.dev/).
 
 A sample project that shows how to configure Maestro integration is available in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/maestro_sample_project).
 
@@ -85,6 +85,14 @@ Here's the script on how you can build it.
         -configuration "Debug" \
         -sdk iphonesimulator \
         -derivedDataPath ios/output
+    - name: Run tests on Maestro cloud
+        script: | 
+        export PATH="$PATH":"$HOME/.maestro/bin"
+        iosAppPath="$ios/output/..."
+        maestro cloud \
+        --apiKey $MDEV_API_KEY \
+        $iosAppPath \
+        .maestro/
 {{< /highlight >}}
 
 Don't forget to add the environment variables that holds your XCode workspace name under `$XCODE_WORKSPACE` and the Scheme name under `$XCODE_SCHEME`. See the complete sample project [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/maestro_sample_project/codemagic.yaml).
