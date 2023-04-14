@@ -71,3 +71,44 @@ h6 {
     mask-size: contain;
     background-position: center center;
 }
+
+.editable-field {
+    color: $blue-edit;
+    position: relative;
+    border: 1px dotted $blue-edit;
+    padding: 3px 33px 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &::before {
+        content: "";
+        background-color: $blue-edit;
+        position: absolute;
+        right: 25px;
+        height: 15px;
+        width: 1px;
+        top: 50%;
+        transform: translate(50%, -50%);
+    }
+    &::after {
+        content: '';
+        @include icon(getAssetUrl('media/icons/edit-code.svg'));
+        content: "";
+        background-color: white;
+        margin-right: 7px;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translate(50%, -50%);
+    }
+}
+.highlight {
+    input {
+        width: 100%;
+        padding: 5px;
+        border: 2px solid $blue-edit;
+        border-radius: 5px;
+    }
+}

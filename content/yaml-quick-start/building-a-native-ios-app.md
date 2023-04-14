@@ -29,11 +29,11 @@ Add the following scripts to your `codemagic.yaml` file in order to prepare the 
 In this step you can also define the build artifacts you are interested in. These files will be available for download when the build finishes. For more information about artifacts, see [here](../yaml/yaml-getting-started/#artifacts).
 
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight-editable yaml "style=paraiso-dark">}}
 ios-native:
   environment:
     vars:
-      BUNDLE_ID: "io.codemagic.sample.iosnative"
+      BUNDLE_ID: $$$bundle-id$$$"io.codemagic.sample.iosnative"$$$
       XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Name of your Xcode workspace
       XCODE_SCHEME: "CodemagicSample" # <-- Name of your Xcode scheme
 scripts:
@@ -48,7 +48,7 @@ artifacts:
   - /tmp/xcodebuild_logs/*.log
   - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
   - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-{{< /highlight >}}
+{{< /highlight-editable >}}
 
 {{<notebox>}}
 **Note**: If you don't have a workspace, use `--project "MyXcodeProject.xcodeproj"` instead of the `--workspace "MyXcodeWorkspace.xcworkspace"` option.
@@ -80,7 +80,7 @@ Save your work, commit the changes to the repository, open the app in the Codema
 
 Your final `codemagic.yaml` file should look something like this:
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight-editable yaml "style=paraiso-dark">}}
 workflows:
   ios-native-workflow:
     name: iOS Native
@@ -91,9 +91,9 @@ workflows:
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: io.codemagic.sample.iosnative
+        bundle_identifier: $$$bundle-id$$$io.codemagic.sample.iosnative$$$
       vars:
-        BUNDLE_ID: "io.codemagic.sample.iosnative"
+        BUNDLE_ID: $$$bundle-id$$$"io.codemagic.sample.iosnative"$$$
         XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
         XCODE_SCHEME: "CodemagicSample" # <-- Put the name of your Xcode scheme here
         APP_ID: 1555555551
@@ -141,7 +141,7 @@ workflows:
         # Configuration related to App Store (optional)
         # Note: This action is performed during post-processing.
         submit_to_app_store: false
-{{< /highlight >}}
+{{< /highlight-editable >}}
 
 ## Next steps
 {{< include "/partials/quickstart/next-steps.md" >}}

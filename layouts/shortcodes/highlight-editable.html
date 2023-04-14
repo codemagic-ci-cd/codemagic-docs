@@ -1,0 +1,4 @@
+{{ $language := .Get 0 }}
+{{ $styling := .Get 1 }}
+
+{{- ((highlight .Inner $language $styling) | replaceRE `\$\$\$(.*)\$\$\$(.*)\$\$\$` `<span editable-id="${1}" class="editable-field" data-js-editable-field>${2}</span>` | safeHTML ) -}}
