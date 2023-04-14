@@ -83,12 +83,12 @@ Save your work, commit the changes to the repository, open the app in the Codema
 
 Your final `codemagic.yaml` file should look something like this:
 
-{{< highlight-editable yaml "style=paraiso-dark">}}
+{{< highlight yaml "style=paraiso-dark">}}
 workflows:
   native-android:
     name: Native Android
     max_build_duration: 120
-    instance_type: $$$mac_mini_m1$$$mac_mini_m1$$$
+    instance_type: mac_mini_m1
     environment:
       android_signing:
         - keystore_reference
@@ -124,7 +124,7 @@ workflows:
         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
         track: internal
         submit_as_draft: true
-{{< /highlight-editable >}}
+{{< /highlight >}}
 
 ## Next steps
 {{< include "/partials/quickstart/next-steps.md" >}}
