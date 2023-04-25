@@ -88,7 +88,7 @@ Change the role of your team members. The available roles are `owner` and `devel
 
 #### Example
 
-How to upgrade a current member of your team, to team owner:
+How to upgrade a current member of your team to team owner:
 
 {{< highlight bash "style=paraiso-dark">}}
 curl -H "Content-Type: application/json" \
