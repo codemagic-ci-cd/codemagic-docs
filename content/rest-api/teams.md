@@ -1,6 +1,7 @@
 ---
 title: Teams API
-description: API for managing teams members
+description: API for managing team members
+
 weight: 5
 ---
 
