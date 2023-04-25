@@ -41,7 +41,8 @@ curl -H "Content-Type: application/json" \
 #### Response
 
 A full team object is returned. You can see that your invitation is created
-in `invitations` section: 
+in the `invitations` section: 
+
 
 {{< highlight json "style=paraiso-dark">}}
 {
