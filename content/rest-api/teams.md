@@ -69,7 +69,8 @@ in `invitations` section:
 
 ## Change a team member role
 
-Change the role of your team members (owner or developer).
+
+Change the role of your team members. The available roles are `owner` and `developer` (corresponds to "member" in the UI).
 
 `PUT /:team_id/collaborator/:user_id`
 
@@ -127,7 +128,7 @@ A collaborator objects is returned. You can see that the role is changed:
 
 
 
-## Delete a team
+## Delete a team member
 
 
 `DELETE /:team_id/collaborator/:user_id`
