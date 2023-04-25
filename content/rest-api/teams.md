@@ -5,7 +5,8 @@ description: API for managing team members
 weight: 5
 ---
 
-API endpoints for managing teams. To use this API you must be a **team owner**.
+This document describes the API endpoints for managing teams. To use this API, you must be a **team owner**.
+
 
 >Read more about [managing teams](../getting-started/teams/) 
 
