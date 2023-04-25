@@ -160,7 +160,8 @@ from the `collaborators` section:
     "applicationIds":[...],
     "billing":{...},
     "buildTimes": {...},
-    "collaborators":[...],  // <--- your team member is removed
+    "collaborators":[...],  // <--- your team member has been removed
+
     "invitations": [...],
         ...
         ...
