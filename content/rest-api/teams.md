@@ -1,12 +1,15 @@
 ---
 title: Teams API
-description: API for managing teams members
+description: API for managing team members
+
 weight: 5
 ---
 
-API endpoints for managing teams. To use this API you must be a **team owner**.
+This document describes the API endpoints for managing teams. To use this API, you must be a **team owner**.
 
->Read more about [managing teams](../getting-started/teams/) 
+
+>Read more about the [Teams](../getting-started/teams/) feature, the available user roles and permissions.
+
 
 
 ## Invite a new team member
@@ -38,7 +41,8 @@ curl -H "Content-Type: application/json" \
 #### Response
 
 A full team object is returned. You can see that your invitation is created
-in `invitations` section: 
+in the `invitations` section: 
+
 
 {{< highlight json "style=paraiso-dark">}}
 {
@@ -99,7 +103,8 @@ curl -H "Content-Type: application/json" \
 
 #### Response
 
-A collaborator objects is returned. You can see that the role is changed:
+A collaborator object is returned. You can see that the role has changed:
+
 
 {{< highlight json "style=paraiso-dark">}}
 
@@ -144,8 +149,10 @@ curl -H "Content-Type: application/json" \
 
 #### Response
 
-A full team object is returned. You can see that your team member  is removed
-from `collaborators` section: 
+A full team object is returned. You can see that your team member has been removed
+
+from the `collaborators` section: 
+
 
 {{< highlight json "style=paraiso-dark">}}
 {
@@ -154,7 +161,8 @@ from `collaborators` section:
     "applicationIds":[...],
     "billing":{...},
     "buildTimes": {...},
-    "collaborators":[...],  // <--- your team member is removed
+    "collaborators":[...],  // <--- your team member has been removed
+
     "invitations": [...],
         ...
         ...
