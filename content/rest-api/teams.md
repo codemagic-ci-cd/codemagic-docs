@@ -149,7 +149,8 @@ curl -H "Content-Type: application/json" \
 #### Response
 
 A full team object is returned. You can see that your team member  is removed
-from `collaborators` section: 
+from the `collaborators` section: 
+
 
 {{< highlight json "style=paraiso-dark">}}
 {
