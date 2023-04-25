@@ -102,7 +102,8 @@ curl -H "Content-Type: application/json" \
 
 #### Response
 
-A collaborator objects is returned. You can see that the role is changed:
+A collaborator object is returned. You can see that the role has changed:
+
 
 {{< highlight json "style=paraiso-dark">}}
 
