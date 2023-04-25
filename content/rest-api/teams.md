@@ -8,7 +8,8 @@ weight: 5
 This document describes the API endpoints for managing teams. To use this API, you must be a **team owner**.
 
 
->Read more about [managing teams](../getting-started/teams/) 
+>Read more about the [Teams](../getting-started/teams/) feature, the available user roles and permissions.
+
 
 
 ## Invite a new team member
