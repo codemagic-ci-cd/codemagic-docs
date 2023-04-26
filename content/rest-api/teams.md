@@ -46,46 +46,6 @@ Also, you can see your current active team members in the `collaborators` sectio
  where you can locate their `user_ids`.
 
 
-{{< highlight json "style=paraiso-dark">}}
-{
-  "team":{
-    "_id":"<team_id>",
-    "applicationIds":[...],
-    "billing":{...},
-    "buildTimes": {...},
-    "collaborators":[                       // <--- current team members
-        {
-            "createdAt": "<date>",
-            "addedBy": "<creator_user_id>",
-            "activatedAt":"<date>",
-            "updatedAt":"<date>",
-            "user":
-                {
-                    "id": <user_id>,        // <--- <user_id> of your team member
-                    "name": <user_name>,
-                    "email": <user_email>
-                },
-        },
-        ...
-    ],
-    "invitations": [                        // <--- you can see your invitation here
-
-        {
-            "invitedFrom": "email",
-            "isPendingRemoved": false,
-            "role": "developer",
-            "addedBy": "<user_id>",
-            "updatedAt": "<update_date>",
-            "createdAt": "<create_date>",
-            "email": "your_user@domain.com",
-            "permissions": [...],
-            "inviteCode": "<invite_code>"}
-        ],
-        ...
-        ...
-    }
-}
-{{< /highlight >}}
 
 
 ## Delete a team member
