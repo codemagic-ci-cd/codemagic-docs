@@ -40,10 +40,7 @@ curl -H "Content-Type: application/json" \
 
 #### Response
 
-A full team object is returned. You can see that your invitation has been created
-in the `invitations` section.
-Also, you can see your current active team members in the `collaborators` section,
- where you can locate their `user_ids`.
+A full team object is returned.
 
 
 
