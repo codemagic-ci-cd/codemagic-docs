@@ -88,67 +88,6 @@ Also, you can see your current active team members in the `collaborators` sectio
 {{< /highlight >}}
 
 
-## Change a team member role
-
-
-Change the role of your team members. The available roles are `owner` and `developer` (corresponds to "member" in the UI).
-
-`PUT /:team_id/collaborator/:user_id`
-
-#### Parameters
-
-
-| **Name** | **Type** | **Description**                                            |
-|----------| -------- |------------------------------------------------------------|
-| `role`   | `string` | **Required.** Could be `owner` or `developer`              |
-
-
-#### Example
-
-How to upgrade a current member of your team to team owner:
-
-{{< highlight bash "style=paraiso-dark">}}
-curl -H "Content-Type: application/json" \
-     -H "x-auth-token: <API Token>" \
-     -d '{
-        "role": "owner"
-     }' \
-     -X PUT https://api.codemagic.io/<team_id>/collaborator/<user_id>
-{{< /highlight >}}
-
-
-#### Response
-
-A collaborator object is returned. You can see that the role has changed:
-
-
-{{< highlight json "style=paraiso-dark">}}
-
-{
-    "collaborator":
-        {
-            "updatedAt":"<date>",
-            "updatedBy":"<your_user_id>",
-            "createdAt":"<date>",
-            "permissions":
-                [
-                    "apps_delete",
-                    "apps_edit",
-                    ...
-                ],
-            "isActiveRemoved":false,
-            "isExpiring":false,
-            "role":"owner",
-            "user":{<user_info>},
-            "addedBy":"<user_id>",
-            "activatedAt":"<date>"
-        }
-}
-
-{{< /highlight >}}
-
-
-
 ## Delete a team member
 
 
