@@ -20,10 +20,10 @@ Invite a new team member to your team.
 #### Parameters
 
 
-| **Name** | **Type** | **Description**                                            |
-|----------| -------- |------------------------------------------------------------|
-| `email`  | `string` | **Required.** SSH or HTTPS URL for cloning the repository. |
-| `role`   | `string` | **Required.** Could be `owner` or `developer`              |
+| **Name** | **Type** | **Description**                               |
+|----------| -------- |-----------------------------------------------|
+| `email`  | `string` | **Required.** User email                    |
+| `role`   | `string` | **Required.** Could be `owner` or `developer` |
 
 #### Example
 
@@ -111,7 +111,6 @@ How to upgrade a current member of your team to team owner:
 curl -H "Content-Type: application/json" \
      -H "x-auth-token: <API Token>" \
      -d '{
-        "email": "your_user@domain.com",
         "role": "owner"
      }' \
      -X PUT https://api.codemagic.io/<team_id>/collaborator/<user_id>
