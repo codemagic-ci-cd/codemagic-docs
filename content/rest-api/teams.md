@@ -40,8 +40,10 @@ curl -H "Content-Type: application/json" \
 
 #### Response
 
-A full team object is returned. You can see that your invitation is created
-in the `invitations` section: 
+A full team object is returned. You can see that your invitation has been created
+in the `invitations` section.
+Also, you can see your current active team members in the `collaborators` section,
+ where you can locate their `user_ids`.
 
 
 {{< highlight json "style=paraiso-dark">}}
@@ -51,18 +53,33 @@ in the `invitations` section:
     "applicationIds":[...],
     "billing":{...},
     "buildTimes": {...},
-    "collaborators":[...],
-    "invitations": [
+    "collaborators":[                       // <--- current team members
         {
-            "invitedFrom":"email",
-            "isPendingRemoved":false,
-            "role":"developer",
-            "addedBy":"<user_id>",
+            "createdAt": "<date>",
+            "addedBy": "<creator_user_id>",
+            "activatedAt":"<date>",
+            "updatedAt":"<date>",
+            "user":
+                {
+                    "id": <user_id>,        // <--- <user_id> of your team member
+                    "name": <user_name>,
+                    "email": <user_email>
+                },
+        },
+        ...
+    ],
+    "invitations": [                        // <--- you can see your invitation here
+
+        {
+            "invitedFrom": "email",
+            "isPendingRemoved": false,
+            "role": "developer",
+            "addedBy": "<user_id>",
             "updatedAt": "<update_date>",
             "createdAt": "<create_date>",
-            "email":"your_user@domain.com",
+            "email": "your_user@domain.com",
             "permissions": [...],
-            "inviteCode":"<invite_code>"}
+            "inviteCode": "<invite_code>"}
         ],
         ...
         ...
@@ -146,26 +163,3 @@ curl -H "Content-Type: application/json" \
      -X DELETE https://api.codemagic.io/<team_id>/collaborator/<user_id>
 {{< /highlight >}}
 
-
-#### Response
-
-A full team object is returned. You can see that your team member has been removed
-
-from the `collaborators` section: 
-
-
-{{< highlight json "style=paraiso-dark">}}
-{
-  "team":{
-    "_id":"<team_id>",
-    "applicationIds":[...],
-    "billing":{...},
-    "buildTimes": {...},
-    "collaborators":[...],  // <--- your team member has been removed
-
-    "invitations": [...],
-        ...
-        ...
-    }
-}
-{{< /highlight >}}
