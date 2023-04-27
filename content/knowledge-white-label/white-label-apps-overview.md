@@ -32,7 +32,7 @@ Each customer zip archive should has the following files with this naming conven
 - **`ios_assets/`**. This folder contains the iOS icons from `/ios/Runner/Assets.xcassets/AppIcon.appiconset/`.
 - **`android_assets/`**. This folder contains the Android icons from `/android/app/src/main/res/`.
 - **`android.keystore`**. The signing keystore for Android app.
-- **`.env`** file if you app uses some secrest at runtime.
+- **`.env`** file if your app uses some secrets at runtime.
 - **`settings.env`**. This file has all of the customer data that Codemagic will use during the build to set or replace from the base code, and the required info to sign and publish the final app to the stores.
 
 {{<notebox>}}
