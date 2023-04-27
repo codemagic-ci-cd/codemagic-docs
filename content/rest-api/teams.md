@@ -7,10 +7,7 @@ weight: 5
 
 This document describes the API endpoints for managing teams. To use this API, you must be a **team owner**.
 
-
 >Read more about the [Teams](../getting-started/teams/) feature, the available user roles and permissions.
-
-
 
 ## Invite a new team member
 Invite a new team member to your team.
@@ -19,11 +16,14 @@ Invite a new team member to your team.
 
 #### Parameters
 
-
 | **Name** | **Type** | **Description**                               |
 |----------| -------- |-----------------------------------------------|
 | `email`  | `string` | **Required.** User email                    |
 | `role`   | `string` | **Required.** Could be `owner` or `developer` |
+
+<br />
+
+>`developer` role corresponds to the "Member" role in Codemagic UI.
 
 #### Example
 
@@ -37,16 +37,11 @@ curl -H "Content-Type: application/json" \
      -X POST https://api.codemagic.io/<team_id>/invitation
 {{< /highlight >}}
 
-
 #### Response
 
 A full team object is returned.
 
-
-
-
 ## Delete a team member
-
 
 `DELETE /:team_id/collaborator/:user_id`
 
