@@ -42,7 +42,7 @@ curl -H "Content-Type: application/json" \
 A full team object is returned.
 
 ## Delete a team member
-
+Remove a team member from the team.
 `DELETE /:team_id/collaborator/:user_id`
 
 #### Example
