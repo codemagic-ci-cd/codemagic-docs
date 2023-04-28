@@ -24,6 +24,9 @@ This will automatically install the specified Unity version to the build machine
 
 #### The supported Unity versions on Mac machines are the following:
 {{< tabpane >}}
+{{% tab header="2022.X" %}}
+- `2022.2.16f1`
+{{< /tab >}}
 {{% tab header="2021.X" %}}
 - `2021.3.4f1`
 - `2021.3.6f1`
@@ -34,6 +37,7 @@ This will automatically install the specified Unity version to the build machine
 - `2021.3.12f1`
 - `2021.3.13f1`
 - `2021.3.15f1`
+- `2021.3.23f1`
 {{< /tab >}}
 {{% tab header="2020.X" %}}
 - `2020.3.15f2`
