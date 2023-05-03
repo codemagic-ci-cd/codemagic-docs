@@ -12,7 +12,7 @@ This document describes the API endpoints for managing teams. To use this API, y
 ## Invite a new team member
 Invite a new team member to your team.
 
-`POST /:team_id/invitation`
+`POST /team/:team_id/invitation`
 
 #### Parameters
 
@@ -34,7 +34,7 @@ curl -H "Content-Type: application/json" \
         "email": "your_user@domain.com",
         "role": "developer"
      }' \
-     -X POST https://api.codemagic.io/<team_id>/invitation
+     -X POST https://api.codemagic.io/team/<team_id>/invitation
 {{< /highlight >}}
 
 #### Response
@@ -43,13 +43,14 @@ A full team object is returned.
 
 ## Delete a team member
 Remove a team member from the team.
-`DELETE /:team_id/collaborator/:user_id`
+
+`DELETE /team/:team_id/collaborator/:user_id`
 
 #### Example
 
 {{< highlight bash "style=paraiso-dark">}}
 curl -H "Content-Type: application/json" \
      -H "x-auth-token: <API Token>" \
-     -X DELETE https://api.codemagic.io/<team_id>/collaborator/<user_id>
+     -X DELETE https://api.codemagic.io/team/<team_id>/collaborator/<user_id>
 {{< /highlight >}}
 
