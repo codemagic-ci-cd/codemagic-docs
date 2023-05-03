@@ -69,8 +69,8 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Xcode versions
 
-- 14.3 (14E222b) `/Applications/Xcode-14.3.app`, also selected when specifying `latest` or `edge` in Xcode version settings
-- 14.2 (14C18) `/Applications/Xcode-14.2.app`
+- 14.3 (14E222b) `/Applications/Xcode-14.3.app`
+- 14.2 (14C18) `/Applications/Xcode-14.2.app`, also selected when specifying `latest` or `edge` in Xcode version settings
 
 ### Runtimes
 
