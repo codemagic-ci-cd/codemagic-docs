@@ -7,7 +7,7 @@ weight: 8
 ### Repository is failing to be cloned from AWS CodeCommit
 
 ###### Description
-Repositories can be added to Codemagic from multiple sources such as Github, Gitlab, Bitbucket and others. When connecting repositories from AWS CodeCommit via https, you may get the following error at the fetching app sources step:
+Repositories can be added to Codemagic from multiple sources such as Github, Gitlab, Bitbucket, and others. When connecting repositories from AWS CodeCommit via HTTPS, you may get the following error at the fetching app sources step:
 
 ```
 Cloning into '/home/builder/clone'...
@@ -19,7 +19,7 @@ Failed to clone repository
 
 ###### Solution
 
-It is a known issue with repositories coming from AWS CodeCommit through HTTPs. In order to solve it, try SSH connection instead and when adding the repo url, it needs to look like:
+It is a known issue with repositories coming from AWS CodeCommit through HTTPS. In order to solve it, try an SSH connection instead, and when adding the repo URL, it needs to look like this:
 
 ```
 ssh://XXXXXXXX@git-codecommit.us-west-2.amazonaws.com/v1/repos/my_repo.git
