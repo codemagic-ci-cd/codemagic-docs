@@ -27,12 +27,12 @@ weight: 2
 - ew-cli `0.0.44`
 - fastlane `2.209.1`
 - firebase `11.21.0`
-- flutter `3.7.11 ($HOME/programs/flutter)`
+- flutter `3.7.12 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
 - Google Cloud SDK `423.0.0`
-- gradle `6.7.1`
+- gradle `7.3.1`
 - gsutil `4.65`
 - ionic `5.4.16`
 - jq `jq-1.6`
@@ -66,7 +66,8 @@ weight: 2
 
 ## Java versions
 
-- **15-ea (2020-09-15)** JAVA_HOME: `/usr/lib/jvm/java-1.15.0-openjdk-amd64`
+- **17 (2021-09-14)** JAVA_HOME: `/usr/lib/jvm/java-1.17.0-openjdk-amd64`
+- **15 (2020-09-15)** JAVA_HOME: `/usr/lib/jvm/java-1.15.0-openjdk-amd64`
 - **11.0.10 (2021-01-19)** (default) JAVA_HOME: `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
 - **1.8.0_282** JAVA_HOME: `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
 

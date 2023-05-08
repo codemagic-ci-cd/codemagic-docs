@@ -82,7 +82,7 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app
 
 ## Xcode versions
 
-- 14.2 (14C18) `/Applications/Xcode-14.2.app`, also selected when specifying `latest` or `edge` in Xcode version settings
+- 14.2 (14C18) `/Applications/Xcode-14.2.app`
 
 ### Runtimes
 

@@ -12,9 +12,9 @@ weight: 11
 
 ## System
 
-- System version `macOS 13.2.1 (22D68)`
-- Kernel version `Darwin 22.3.0`
-- Disk `294GB (Free Space: 89GB)`
+- System version `macOS 13.3.1 (22E261)`
+- Kernel version `Darwin 22.4.0`
+- Disk `294GB (Free Space: 86GB)`
 
 ## Pre-installed tools
 
@@ -22,14 +22,14 @@ weight: 11
 - Android NDK `25.1.8937393`
 - aws `2.11.6`
 - carthage `0.39.0`
-- cocoapods `1.12.0`
+- cocoapods `1.12.1`
 - cordova `11.0.0`
-- curl `7.86.0`
+- curl `7.87.0`
 - docker `N/A`
-- ew-cli `0.9.7`
-- fastlane `2.212.1`
+- ew-cli `0.9.8`
+- fastlane `2.212.2`
 - firebase `11.21.0`
-- flutter `3.7.11 ($HOME/programs/flutter)`
+- flutter `3.7.12 ($HOME/programs/flutter)`
 - gem `3.4.8`
 - gh `2.23.0`
 - git `2.39.2`
@@ -63,6 +63,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 ## Java versions
 
 - **19.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-19.jdk/Contents/Home`
+- **17.0.6** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
 - **11.0.18** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_362** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
@@ -77,7 +78,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - iOS 14.5
 - iOS 15.0
 - iOS 15.4
-- iOS 16.2
+- iOS 16.4
 - tvOS 14.5
 - tvOS 15.0
 - tvOS 16.0
