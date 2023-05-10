@@ -28,7 +28,7 @@ ssh://XXXXXXXX@git-codecommit.us-west-2.amazonaws.com/v1/repos/my_repo.git
 Please note that the ***XXXXXXXXX** refers to your **SSH-Key-ID**
 
 
-### Github Integration - Repositories not showing up in the dropdown
+### GitHub Integration - Repositories not showing up in the dropdown
 
 ###### Description
 
