@@ -35,4 +35,4 @@ Please note that the ***XXXXXXXXX** refers to your **SSH-Key-ID**
 GitHub repositories won't show up in the dropdown while trying to add an app to Codemagic.
 
 ###### Solution
-This will be solved by disconnecting and connecting to the github integration again.
+Try disconnecting the GitHub integration and then connecting it again.
