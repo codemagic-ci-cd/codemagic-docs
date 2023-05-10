@@ -32,7 +32,7 @@ Please note that the ***XXXXXXXXX** refers to your **SSH-Key-ID**
 
 ###### Description
 
-Github repostories won't show up in the dropdown while trying to add an app into Codemagic.
+GitHub repositories won't show up in the dropdown while trying to add an app to Codemagic.
 
 ###### Solution
 This will be solved by disconnecting and connecting to the github integration again.
