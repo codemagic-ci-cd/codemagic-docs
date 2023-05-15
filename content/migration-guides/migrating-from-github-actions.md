@@ -114,9 +114,59 @@ workflows:
         
 In this Codemagic example, the Xcode version is set in the environment variables section with `xcode: latest`. This will use the latest stable version of Xcode for the build. Codemagic takes care of the rest, simplifying the setup process.
 
-### Code signing
+## GitHub Actions Examples
 
-To set up code signing with `codemagic.yaml`, you must add your keystore and related information (passwords, alias, etc.) as environment variables.
+When you create a new native iOS project, GitHub Actions provides you with three templates. The simplest one is for setting up a Swift Package: 
+
+{{< highlight Shell "style=rrt">}}
+name: Swift
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
+{{< /highlight >}}
+
+Let's convert the Swift GitHub Actions workflow to a Codemagic workflow with similar functionality:
+
+{{< highlight Shell "style=rrt">}}
+workflows:
+  swift-workflow:
+    name: Swift
+    environment:
+      vars:
+        # Define your environment variables here
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Set up the environment
+        script: |
+          # Add any setup scripts if needed
+      - name: Build
+        script: swift build -v
+      - name: Run tests
+        script: swift test -v
+{{< /highlight >}}
+
+This `codemagic.yaml` will only trigger builds on pushes and pull requests to the main branch, matching the original GitHub Actions workflow.
 
 #### Modify build.gradle
 
