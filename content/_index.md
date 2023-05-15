@@ -12,6 +12,12 @@ How to get started with Codemagic
 - [Adding apps to Codemagic](../getting-started/adding-apps/)
 - [Onboarding assistance](https://codemagic.io/onboarding-assistance/)
 
+{{</links-group>}}
+
+{{<links-group title="Migrate to Codemagic">}}
+How to Migrate from CI/CD Providers to Codemagic 
+- [From GitHub Actions](../migration-guides/migrating-from-github-actions/)
+- [From Bitrise](../migration-guides/migrating-from-bitrise/)
 
 {{</links-group>}} 
 
