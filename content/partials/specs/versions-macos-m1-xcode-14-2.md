@@ -12,36 +12,36 @@ weight: 11
 
 ## System
 
-- System version `macOS 13.2.1 (22D68)`
-- Kernel version `Darwin 22.3.0`
-- Disk `294GB (Free Space: 87GB)`
+- System version `macOS 13.3.1 (22E261)`
+- Kernel version `Darwin 22.4.0`
+- Disk `294GB (Free Space: 86GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
-- aws `2.10.1`
+- aws `2.11.6`
 - carthage `0.39.0`
-- cocoapods `1.11.3`
+- cocoapods `1.12.1`
 - cordova `11.0.0`
-- curl `7.86.0`
+- curl `7.87.0`
 - docker `N/A`
-- ew-cli `0.0.50`
-- fastlane `2.211.0`
+- ew-cli `0.9.8`
+- fastlane `2.212.2`
 - firebase `11.21.0`
-- flutter `3.7.3 ($HOME/programs/flutter)`
-- gem `3.3.26`
+- flutter `3.7.12 ($HOME/programs/flutter)`
+- gem `3.4.8`
 - gh `2.23.0`
 - git `2.39.2`
 - Google Cloud SDK `404.0.0`
 - gradle `7.3.1`
 - gsutil `5.14`
-- homebrew `4.0.2`
+- homebrew `4.0.9`
 - ionic `5.4.16`
 - jq `1.6`
 - ktlint `0.48.2`
-- node `19.6.1`
-- npm `9.4.0`
+- node `19.7.0`
+- npm `9.5.0`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
@@ -63,34 +63,29 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 ## Java versions
 
 - **19.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-19.jdk/Contents/Home`
+- **17.0.6** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
 - **11.0.18** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_362** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
-## Unity 2021.3.7f1
-
-UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.7f1/Unity.app
-
 ## Xcode versions
 
-- 14.3 (14E5197f) `/Applications/Xcode-14.3.app`
-- 14.2 (14C18) `/Applications/Xcode-14.2.app`, also selected when specifying `latest` or `edge` in Xcode version settings
+- 14.3 (14E222b) `/Applications/Xcode-14.3.app`, also selected when specifying `latest` or `edge` in Xcode version settings
+- 14.2 (14C18) `/Applications/Xcode-14.2.app`
 
 ### Runtimes
 
 - iOS 14.5
 - iOS 15.0
 - iOS 15.4
-- iOS 16.2
+- iOS 16.4
 - tvOS 14.5
-
 - tvOS 15.0
 - tvOS 16.0
 - tvOS 16.1
 - tvOS 16.4
 - watchOS 7.4
 - watchOS 8.0
-- watchOS 9.0
 - watchOS 9.1
 - watchOS 9.4
 

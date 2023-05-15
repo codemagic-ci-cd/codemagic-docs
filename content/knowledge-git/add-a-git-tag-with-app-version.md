@@ -51,7 +51,7 @@ To create and publish git tags, add the following **pre-publish script**, replac
 
         if [ "$CM_BUILD_STEP_STATUS" = "success" ]
         then
-          new_version=v1.0.$BUILD_NUMBE
+          new_version=v1.0.$BUILD_NUMBER
           git tag $new_version
           git push "https://your-username:$APP_PASSWORD@your-git-service.com/your-repo.git" --tags
         fi

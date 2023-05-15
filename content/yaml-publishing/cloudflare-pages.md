@@ -28,7 +28,7 @@ From [Cloudflare dashboard](https://dash.cloudflare.com/) select your website an
 If there is only one account associated with the API token, then the account ID is inferred automatically.
 {{</notebox>}}
 
-See the offical [docs](https://developers.cloudflare.com/workers/wrangler/ci-cd/).
+See the official [docs](https://developers.cloudflare.com/workers/wrangler/ci-cd/).
 
 ### Configure environment variables
 

@@ -89,7 +89,7 @@ workflows:
             - appstore_credentials
 {{< /highlight >}}
 
-{{<markdown>}}
+{{</markdown>}}
 {{< /tab >}}
 
 {{< /tabpane >}}

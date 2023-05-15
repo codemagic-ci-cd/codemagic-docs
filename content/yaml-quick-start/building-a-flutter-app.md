@@ -27,6 +27,57 @@ You can simultaneously set up workflows both in `codemagic.yaml` and the Workflo
 {{< include "/partials/quickstart/create-yaml-intro.md" >}}
 
 
+## Setting the Flutter version
+
+When building a Flutter application with Codemagic, you can customize your build environment by configuring various settings. One such setting is the option to choose the Flutter version or channel for the build process. Codemagic provides several options: defining a specific channel or version, or alternatively, you can leverage [Flutter Version Management (FVM)](https://fvm.app/docs/getting_started/overview) for version management.
+
+{{< tabpane >}}
+
+{{< tab header="Specific Flutter channel or version" >}}
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+    sample-workflow:
+        environment:
+            flutter: stable
+{{< /highlight >}}
+{{<notebox>}}
+**Note**: The possible versions are `stable`, `beta`, and `master`, along with any specific versions, e.g., `3.7.6`. If not specified, the version preinstalled on the machine will be used by default.
+{{</notebox>}}
+{{< /tab >}}
+
+{{< tab header="Flutter Version Management (FVM)" >}}
+{{<markdown>}}
+If you wish to use Flutter Version Management (FVM) in your Codemagic project, you must define the flutter version as `fvm` under the environment settings in your workflow.
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+    sample-workflow:
+        environment:
+            flutter: fvm
+{{< /highlight >}}
+{{<notebox>}}
+**Note**: This automatically sets the Flutter version from your project's `fvm_config.json` file, located at the root of your project in the `.fvm` directory. If this file does not exist, the build will fail.
+{{</notebox>}}
+
+Moreover, when using FVM, Codemagic allows you to set the specific FVM flavor in your `codemagic.yaml` to provide all the needed flexibility when managing the Flutter version.
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+    sample-workflow:
+        environment:
+            flutter:
+                version: fvm
+                flavor: dev
+{{< /highlight >}}
+{{<notebox>}}
+**Note**: If the requested flavor does not exist in the config file, the build will fail.
+{{</notebox>}}
+
+{{</markdown>}}
+{{< /tab >}}
+
+{{< /tabpane >}}
+
 ## Code signing
 
 All applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
@@ -297,7 +348,7 @@ One very useful method of calculating the code version is to use Codemagic comma
 You can find the full sample project with the instructions on alternative ways to perform Android build versioning [in our repository](https://github.com/codemagic-ci-cd/android-versioning-example).
 
 
-The prerequisite is a valid **Google Cloud Service Account**. Plese follow these steps:
+The prerequisite is a valid **Google Cloud Service Account**. Please follow these steps:
 1. Go to [this guide](../knowledge-base/google-services-authentication) and complete the steps in the **Google Play** section.
 2. Skip to the **Creating a service account** section in the same guide and complete those steps also.
 3. You now have a `JSON` file with the credentials.
@@ -559,7 +610,7 @@ workflows:
           PACKAGE_NAME=$(basename "$APP_NAME" .app).pkg
           xcrun productbuild --component "$APP_NAME" /Applications/ unsigned.pkg
 
-          # Find the installer certificate commmon name in keychain
+          # Find the installer certificate common name in keychain
           INSTALLER_CERT_NAME=$(keychain list-certificates \
             | jq '.[]
             | select(.common_name

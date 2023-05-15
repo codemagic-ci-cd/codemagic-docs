@@ -314,3 +314,53 @@ window.addEventListener('load', function () {
 
     initCopyButtons()
 })
+
+const editableFields = document.querySelectorAll('[data-js-editable-field]')
+let editing = false 
+
+editableFields.forEach(field => {
+    const input = document.createElement('input')
+    const container =  field.parentElement
+
+    field.addEventListener('click', (event) => {
+        event.stopPropagation()
+
+        if (editing) return 
+    
+        container.removeChild(field)
+        input.value = field.innerText
+        container.appendChild(input)
+
+        editing = true 
+    })
+
+    input.addEventListener('click', (event) => {
+        event.stopPropagation()
+    })
+
+    input.addEventListener('input', (event) => {
+        Array.from(editableFields).filter(f => f.getAttribute('editable-id') === field.getAttribute('editable-id')).forEach(f => {
+            f.innerText = event.target.value
+        })
+    })
+
+    document.addEventListener('click', () => {
+        if (!container.contains(input)) return 
+    
+        container.removeChild(input)
+        container.appendChild(field)
+
+        editing = false;
+    })
+
+    document.addEventListener('keypress', (event) => {
+        if (event.key === "Enter") {
+            event.stopPropagation();
+
+            container.removeChild(input)
+            container.appendChild(field)
+
+            editing = false;
+        }
+    })
+})

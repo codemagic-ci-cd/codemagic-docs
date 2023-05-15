@@ -15,7 +15,7 @@ You can find a complete project showcasing these steps in our [Sample projects r
 
 Building Unity apps in a cloud CI/CD environment requires a Unity **Plus** or a **Pro** license. Your license is used to activate Unity on the Codemagic build server so the iOS and Android projects can be exported.  The license is returned during the publishing step of the workflow which is always run **except if the build is cancelled**.
 
-You can use [Unity dashboard](https://id.unity.com/en/serials) to check the number of free seats on your license or to manually return a seat if neccessary.
+You can use [Unity dashboard](https://id.unity.com/en/serials) to check the number of free seats on your license or to manually return a seat if necessary.
 
 ## Adding the app to Codemagic
 {{< include "/partials/quickstart/add-app-to-codemagic.md" >}}
@@ -350,7 +350,7 @@ Google recommends that Android applications be published to Google Play using th
 6. Expand **Other Settings** and check the **Override Default Package Name** checkbox.
 7. Enter the package name for your app, e.g. "com.domain.yourappname".
 8. Set the **Version number**.
-9. Put any integer value in the **Bundle Version Code**. This will be overriden by the build script.
+9. Put any integer value in the **Bundle Version Code**. This will be overridden by the build script.
 10. Set the **Minimum API Level** and **Target API Level** to `Android 11.0 (API level 30)` which is required for publishing application bundles.
 11. In the **Configuration** section set **Scripting Backend** to `IL2CPP`.
 12. In the **Target Architectures** section check **ARMv7** and **ARM64** to support 64-bit architectures so the app is compliant with the Google Play 64-bit requirement.
@@ -426,7 +426,7 @@ If you are going to publish your app to App Store Connect or Google Play, each u
 {{% tab header="Android" %}}
 One very useful method of calculating the code version is to use Codemagic command line tools to get the latest build number from Google Play and increment it by one. You can then save this as the `NEW_BUILD_NUMBER` environment variable that is already expected by the `/Assets/Editor/Build.cs` build script.
 
-The prerequisite is a valid **Google Cloud Service Account**. Plese follow these steps:
+The prerequisite is a valid **Google Cloud Service Account**. Please follow these steps:
 1. Go to [this guide](../knowledge-base/google-services-authentication) and complete the steps in the **Google Play** section.
 2. Skip to the **Creating a service account** section in the same guide and complete those steps also.
 3. You now have a `JSON` file with the credentials.
@@ -619,7 +619,7 @@ In this step you can also define the build artifacts you are interested in. Thes
           --component "$APP_NAME" \
           /Applications/ unsigned.pkg
         #
-        # Find the installer certificate commmon name in keychain
+        # Find the installer certificate common name in keychain
         INSTALLER_CERT_NAME=$(keychain list-certificates \
             | jq '.[]
               | select(.common_name

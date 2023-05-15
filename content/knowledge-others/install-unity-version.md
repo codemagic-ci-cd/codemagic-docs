@@ -19,11 +19,14 @@ workflows:
         unity: YOUR-DESIRED-UNITY-VERSION # e.g. 2021.3.6f1
 {{< /highlight >}}
 
-This will automatically install the specifed Unity version to the build machine and set the `UNITY_HOME` to `/Applications/Unity/Hub/Editor/<YOUR-DESIRED-UNITY-VERSION>/Unity.app` and you can continue building your app as descriped [here](../yaml-quick-start/building-a-unity-app/).
+This will automatically install the specified Unity version to the build machine and set the `UNITY_HOME` to `/Applications/Unity/Hub/Editor/<YOUR-DESIRED-UNITY-VERSION>/Unity.app` and you can continue building your app as described [here](../yaml-quick-start/building-a-unity-app/).
 
 
 #### The supported Unity versions on Mac machines are the following:
 {{< tabpane >}}
+{{% tab header="2022.X" %}}
+- `2022.2.16f1`
+{{< /tab >}}
 {{% tab header="2021.X" %}}
 - `2021.3.4f1`
 - `2021.3.6f1`
@@ -34,6 +37,7 @@ This will automatically install the specifed Unity version to the build machine 
 - `2021.3.12f1`
 - `2021.3.13f1`
 - `2021.3.15f1`
+- `2021.3.23f1`
 {{< /tab >}}
 {{% tab header="2020.X" %}}
 - `2020.3.15f2`
@@ -184,7 +188,7 @@ workflows:
         - name: Activate Unity License
           script: |  
             $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile -serial ${UNITY_SERIAL} -username ${UNITY_EMAIL} -password ${UNITY_PASSWORD}      
-        - name: Install Unity version, buld support modules, ndk and jdk
+        - name: Install Unity version, build support modules, ndk and jdk
           script: |  
             /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version ${UNITY_VERSION} --changeset ${UNITY_VERSION_CHANGESET}
             /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version ${UNITY_VERSION} -m android android-sdk-ndk-tools android-open-jdk          

@@ -27,17 +27,17 @@ weight: 9
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `20.10.17`
-- ew-cli `0.0.49`
+- ew-cli `0.9.6`
 - fastlane `2.211.0`
 - firebase `11.21.0`
-- flutter `3.7.3 ($HOME/programs/flutter)`
+- flutter `3.7.11 ($HOME/programs/flutter)`
 - gem `3.3.26`
 - gh `2.20.2`
 - git `2.39.0`
 - Google Cloud SDK `404.0.0`
 - gradle `7.3.1`
 - gsutil `5.14`
-- homebrew `3.6.15`
+- homebrew `4.0.6`
 - ionic `6.12.4`
 - jq `1.6`
 - ktlint `0.47.1`
@@ -82,7 +82,7 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app
 
 ## Xcode versions
 
-- 14.2 (14C18) `/Applications/Xcode-14.2.app`, also selected when specifying `latest` or `edge` in Xcode version settings
+- 14.2 (14C18) `/Applications/Xcode-14.2.app`
 
 ### Runtimes
 

@@ -93,7 +93,7 @@ Returns information about builds from the Codemagic build history. Filters are a
 {{< highlight bash "style=paraiso-dark">}}
   curl -H "Content-Type: application/json" \
        -H "x-auth-token: <API Token>" \
-       --request GET https://api.codemagic.io/builds?appId=<app_id>&workflowId=<workflow_id>&branch=<branch_name>&tag=<tag_name>
+       --request GET "https://api.codemagic.io/builds?appId=<app_id>&workflowId=<workflow_id>&branch=<branch_name>&tag=<tag_name>"
 {{< /highlight >}}
 
 #### Response

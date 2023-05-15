@@ -29,7 +29,9 @@ Under the `events:` section you can specify on which events the builds should be
 
 To avoid running builds on outdated commits, you can set `cancel_previous_builds` to automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch.
 
-
+{{<notebox>}}
+**Note:** When starting workflows using webhooks, Codemagic uses the `codemagic.yaml` file from the source branch. If you are triggering builds on Pull requests, make sure the PR source branch has a valid `codemagic.yaml` file. Otherwise, the build will be skipped and the **Recent deliveries** section in **Apps > Webhooks** will show a message similar to _*"Webhook is skipped. There are no workflows configured to run on pull request from 'testing' to 'release'"*_.
+{{</notebox>}}
 
 ## Tracking specific branches and tags
 
@@ -60,7 +62,7 @@ triggering:
     - pattern: included-source
       include: true
       source: true
-  tag_patterns:                 # Include or exlude watched tag labels
+  tag_patterns:                 # Include or exclude watched tag labels
     - pattern: '*'
       include: true
     - pattern: excluded-tag

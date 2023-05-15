@@ -72,7 +72,7 @@ workflows:
             -workspace "$XCODE_WORKSPACE" \
             -scheme "$XCODE_SCHEME" \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=15.4' \
+            -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2' \
             -configuration Debug \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \

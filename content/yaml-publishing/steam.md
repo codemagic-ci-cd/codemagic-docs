@@ -68,7 +68,7 @@ The **ssfn** file will be stored as `~/Steam/ssfn*******************` and the **
 4. Enter the variable group name, e.g. **_steam_**. Click the button to create the group.
 5. Make sure the **Secure** option is selected.
 6. Click the **Add** button to add the variable.
-7. Enter another variable named `SSFN_FILE` and copy/paste the `base64` encoded value of the ssfn file. Follow the intructions for [storing binary files](/yaml-basic-configuration/configuring-environment-variables/#storing-binary-files).
+7. Enter another variable named `SSFN_FILE` and copy/paste the `base64` encoded value of the ssfn file. Follow the instructions for [storing binary files](/yaml-basic-configuration/configuring-environment-variables/#storing-binary-files).
 8. Repeat the previous step to add the `config.vdf` file as a variable named `CONFIG_FILE`.
 
 
@@ -151,7 +151,7 @@ To configure the upload to Steam, edit the following two files in the project by
 	// Set your assigned depot ID here
 	"DepotID" "2086871"
 
-	// include all files recursivley
+	// include all files recursively
 	"FileMapping"
 	{
 		// This can be a full path, or a path relative to ContentRoot

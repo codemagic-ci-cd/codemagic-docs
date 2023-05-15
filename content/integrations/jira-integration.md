@@ -46,7 +46,7 @@ This value is used in the Authorization header used in cURL requests to the Jira
 
 #### JIRA_BASE_URL environment variable
 
-This is the subdomain you chose when you set up your Jira account e.g. "YOUR_SUBDOMAIN.atlassian.net". Put the subdomain including "atalassian.net" in the `JIRA_BASE_URL` environment variable. 
+This is the subdomain you chose when you set up your Jira account e.g. "YOUR_SUBDOMAIN.atlassian.net". Put the subdomain including "atlassian.net" in the `JIRA_BASE_URL` environment variable. 
 
 
 #### JIRA_ISSUE environment variable
@@ -77,7 +77,7 @@ Publishing to Jira is performed by a script in the `publishing:` section in the 
 
 ### Using jq to parse $CM_ARTIFACT_LINKS
 
-First, it uses **jq** (a command-line tool for parsing JSON) to parse the contents of the Codemagic built-in environment variable `$CM_ARTIFACT_LINKS` to find information such as the articact URL, filename, bundle id, and version name and store the values in environment variables.
+First, it uses **jq** (a command-line tool for parsing JSON) to parse the contents of the Codemagic built-in environment variable `$CM_ARTIFACT_LINKS` to find information such as the artifact URL, filename, bundle id, and version name and store the values in environment variables.
 
 See this link about the JSON data that [$CM_ARTIFACT_LINKS](../yaml-basic-configuration/environment-variables#artifact-links) contains.
 
