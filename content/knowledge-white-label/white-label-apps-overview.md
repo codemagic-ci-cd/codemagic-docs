@@ -33,15 +33,6 @@ Each customer zip archive should has the following files with this naming conven
 - **`android_assets/`**. This folder contains the Android icons from `/android/app/src/main/res/`.
 - **`android.keystore`**. The signing keystore for Android app.
 - **`.env`** file if your app uses some secrets at runtime.
-- **`settings.env`**. This file has all of the customer data that Codemagic will use during the build to set or replace from the base code, and the required info to sign and publish the final app to the stores.
-
-{{<notebox>}}
-The **`settings.env`** can has the following:
-
-`PACKAGE_NAME`, `CM_KEYSTORE_PASSWORD`, `CM_KEY_PASSWORD`, `CM_KEY_ALIAS`, `CM_KEYSTORE_PATH`, and `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` for **Android**.
-
-`APP_STORE_ID`, `BUNDLE_ID`, `APP_STORE_CONNECT_KEY_IDENTIFIER`, `APP_STORE_CONNECT_ISSUER_ID`, `APP_STORE_CONNECT_PRIVATE_KEY`, and `CERTIFICATE_PRIVATE_KEY` for **iOS**.
-{{</notebox>}}
 
 ## Flavors versus a white labeling workflow
 
