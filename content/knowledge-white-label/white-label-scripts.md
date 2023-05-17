@@ -65,42 +65,6 @@ script: |
   unzip assets.zip -d client_assets
 {{< /highlight >}}
 
-Since this is encrypted storage, it would also be possible to store other sensitive values for each customer such as API keys, tokens and certificates in a settings.env file which might look something like this:
-
-{{< highlight yaml "style=paraiso-dark">}}
-APP_STORE_CONNECT_KEY_IDENTIFIER=XXXXXXXXXX
-APP_STORE_CONNECT_ISSUER_ID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-
-APP_STORE_CONNECT_PRIVATE_KEY='-----BEGIN PRIVATE KEY-----
-xxxx
-xxxx
-xxxx
-xxxx
------END PRIVATE KEY-----'
-
-CERTIFICATE_PRIVATE_KEY='-----BEGIN RSA PRIVATE KEY-----
-xxxx
-xxxx
-xxxx
-xxxx
------END RSA PRIVATE KEY-----'
-
-GCLOUD_SERVICE_ACCOUNT_CREDENTIALS='{
-  "type": "service_account",
-  "project_id": "xxxx",
-  "private_key_id": "xxxx",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nXXXX\n-----END PRIVATE KEY-----\n",
-  "client_email": "xxxxx-xxxx@pxxxx.iam.gserviceaccount.com",
-  "client_id": "xxxx",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/xxxx-xxxx%40pc-api-xxxx-xxxx.iam.gserviceaccount.com"
-}'
-{{< /highlight >}}
-
-You can learn how to use a settings.env file at build time [here](../knowledge-others/import-variables-from-env-file/).
-
 ## Downloading assets from a headless CMS
 
 If you prefer to store your assets in a CMS system, then you can usually interact with its API and download any uploaded files using a cURL request.  
@@ -153,11 +117,39 @@ script: |
 {{< /tabpane >}}
 
 
+## Adding clients' environment variables
+During the white-label build, Codemagic uses client-specific data to set or replace various values in the base code and to sign and publish the app to the stores. 
+
+You should create a uniquely named environment variable group for each of your customers that contains secure environment variables for items such as certificates, profiles, API keys, or other customer-specific credentials.
+
+To add these values you can either use the [Codemagic UI](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/#configuring-environment-variables) or use the Codemagic REST API to add these groups and values programmatically, which could be advantageous if you have a large number of customers or wish to add these values from your own backend system or customer dashboard.
+
+
+To add an environment variable using the Codemagic REST API, you need your API access token, the application id, the client group unique name, and the variable name and value. 
+
+- The access token is available in the Codemagic UI under **Teams > Personal Account > Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
+- Once you have added your app in Codemagic, open its settings and copy the **application id** from the browser address bar - `https://codemagic.io/app/<APP_ID>/settings`
+- The client group name, is the group that holds all variables for this client e.g. "WL_CLIENT_ID".
+
+An example of adding a secure variable to an application group looks like this:
+
+{{< highlight bash "style=paraiso-dark">}}
+curl -XPOST -H 'x-auth-token: <your-auth-token>' \
+       -H 'Content-Type: application/json;charset=utf-8' \
+       -d '{
+       "key": "<variable-name>",
+       "value": "<variable-value>"
+       "group":"<client-unique-group-name>",
+       "secure": true
+       }' \
+       'https://api.codemagic.io/apps/<app-id>/variables'
+{{< /highlight >}}
+
 
 
 ## Automatic build versioning
 
-Each new app version that is published to Google Play or the Apple App Store needs to have a unique build number. You can use Codemagic’s CLI tools to retrieve the previous build number and then increment this for each new build. For example, the following shows how to increment the build number when building a Flutter iOS apps:
+Each new app version that is published to Google Play or the Apple App Store needs to have a unique build number. You can use Codemagic’s CLI tools to retrieve the previous build number and then increment this for each new build. For example, the following shows how to increment the build number when building Flutter iOS apps:
 
 {{< highlight yaml "style=paraiso-dark">}}
 name: Flutter build ipa and automatic versioning
@@ -170,7 +162,7 @@ script: |
 
 ## Triggering builds with the Codemagic REST API
 
-The Codemagic REST API is used in a white label workflow to trigger builds for each unique client version you need to build. When triggering a build, you can pass environment variables which identify a specific client so their unique assets can be downloaded and used for the build. It can be as simple as passing the ID number associated with the client. 
+The Codemagic REST API is used in a white-label workflow to trigger builds for each unique client version you need to build. When triggering a build, you can pass environment variables in the API request's payload that identify a specific client so their unique assets can be downloaded and used for the build, and the unique client environment group name that holds all the client secrets.
 
 To trigger a build using the Codemagic REST API, you need your API access token, the application id, and the workflow id. 
 
@@ -178,27 +170,32 @@ To trigger a build using the Codemagic REST API, you need your API access token,
 - Once you have added your app in Codemagic, open its settings and copy the **application id** from the browser address bar - `https://codemagic.io/app/<APP_ID>/settings`
 - The workflow id is the string value you assigned to the `name` property e.g "ios-qa-build"
 
-An example of triggering a single build and passing an environment variable to specify the client id might look like this:
+An example of triggering a single build and passing an environment variable to specify the client id and a group to read the variables from might look like this:
 
 
 {{< highlight yaml "style=paraiso-dark">}}
-- name: Trigger single clieny builds
+- name: Trigger single client builds
   script: | 
     CLIENT="001"
     curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
       --data '{
-          "appId": "62f12bd754bf379f7b80f532", 
-          "workflowId": "ios-qa-client-release",
-          "branch": "main",
+          "appId": "<app-id>", 
+          "workflowId": "<workflow-id>",
+          "branch": "<branch-name>",
           "labels": ["'${CLIENT}'"],
           "environment": { 
               "variables": { 
                   "CLIENT_ID": "'${CLIENT}'"
-              }
+              },
+              "groups": [
+                  "WL_${CLIENT}"
+              ]
           }
         }' \
        https://api.codemagic.io/builds
 {{< /highlight >}}
+
+
 
 In the following example, to trigger builds for clients `001`, `002` and `003` a simple array is first defined and then a for loop is used to initiate a build for each element in the array. The unique `CLIENT_ID` variable is provided in the payload for the three builds that are started when this command is run.
 
@@ -210,13 +207,16 @@ In the following example, to trigger builds for clients `001`, `002` and `003` a
           echo "CLIENT: $CLIENT"  
           curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
               --data '{
-                  "appId": "62f12bd754bf379f7b80f532", 
-                  "workflowId": "ios-qa-client-release",
-                  "branch": "main",
+                  "appId": "<app-id>", 
+                  "workflowId": "<workflow-id>",
+                  "branch": "<branch-name>",
                   "environment": { 
                       "variables": { 
                           "CLIENT_ID": "'${CLIENT}'"
-                      }
+                      },
+                      "groups": [
+                          "WL_${CLIENT}"
+                      ]                      
                   }
               }' \
           https://api.codemagic.io/builds
