@@ -117,10 +117,12 @@ script: |
 {{< /tabpane >}}
 
 
-## Adding clients environment variables
-During the white-label build, Codemagic uses the targeted client data to set or replace some values from the base code and to sign and publish the final app to the stores.
+## Adding clients' environment variables
+During the white-label build, Codemagic uses client-specific data to set or replace various values in the base code and to sign and publish the app to the stores. 
 
-Each client should have an environment variables group by his name. To add these values you can either use the [Codemagic UI](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/#configuring-environment-variables) or use the Codemagic REST API to do it if you have a huge number of customers.
+You should create a uniquely named environment variable group for each of your customers that contains secure environment variables for items such as certificates, profiles, API keys, or other customer-specific credentials.
+
+To add these values you can either use the [Codemagic UI](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/#configuring-environment-variables) or use the Codemagic REST API to add these groups and values programmatically, which could be advantageous if you have a large number of customers or wish to add these values from your own backend system or customer dashboard.
 
 
 To add an environment variable using the Codemagic REST API, you need your API access token, the application id, the client group unique name, and the variable name and value. 
@@ -160,7 +162,7 @@ script: |
 
 ## Triggering builds with the Codemagic REST API
 
-The Codemagic REST API is used in a white-label workflow to trigger builds for each unique client version you need to build. When triggering a build, you can pass environment variables that identify a specific client so their unique assets can be downloaded and used for the build, and the unique client environment group name that holds all the client secrets.
+The Codemagic REST API is used in a white-label workflow to trigger builds for each unique client version you need to build. When triggering a build, you can pass environment variables in the API request's payload that identify a specific client so their unique assets can be downloaded and used for the build, and the unique client environment group name that holds all the client secrets.
 
 To trigger a build using the Codemagic REST API, you need your API access token, the application id, and the workflow id. 
 
