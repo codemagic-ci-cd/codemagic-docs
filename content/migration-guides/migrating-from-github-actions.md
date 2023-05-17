@@ -160,6 +160,57 @@ workflows:
         script: swift test -v
 {{< /highlight >}}
 
+We go through each line one by one to tell the difference between the workflow configuration of each CI provider. 
+
+`workflows` is the root key for defining the workflows in the `codemagic.yaml`. `swift-workflow` is a unique identifier for the workflow. and `Swift` is the name of the workflow, similar to how it is named in GitHub Actions.
+
+{{< highlight Shell "style=rrt">}}
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+{{< /highlight >}}
+
+The next part is about triggering the workflow on the `main` branch for push and pull requests.
+
+In Codemagic, we do this by defining a section called as `triggering` for the triggering conditions for the workflow. Then, we have the `events` on which we trigger the workflow. In this case, the workflow is triggered by `push` and `pull_request` events. 
+
+Finally, the `branch_patterns` defines the branches that trigger the workflow. In this case, the workflow is triggered on the `main` branch. `include: true` means that the workflow will be triggered for the branches that match the pattern. and `source: true` means that the workflow will be triggered for source events that match the pattern (i.e. when the source of the event is a branch that matches the pattern).
+
+{{< highlight Shell "style=rrt">}}
+triggering:
+  events:
+    - push
+    - pull_request
+   branch_patterns:
+     - pattern: main
+     - include: true
+     - source: true
+{{< /highlight >}}
+
+Then, similar to how you have `steps` on GitHub Actions, you have a similar naming as `scripts` on Codemagic. You provide the name of the script and then the script for it.
+
+So, the steps of GitHub Actions: 
+{{< highlight Shell "style=rrt">}}
+steps:
+  - uses: actions/checkout@v3
+  - name: Build
+     run: swift build -v
+  - name: Run tests
+     run: swift test -v
+{{< /highlight >}}
+
+Simply becomes scripts in Codemagic: 
+
+{{< highlight Shell "style=rrt">}}
+scripts:
+  - name: Build
+    script: swift build -v
+  - name: Run tests
+    script: swift test -v
+{{< /highlight >}}
+
 This `codemagic.yaml` will only trigger builds on pushes and pull requests to the main branch, matching the original GitHub Actions workflow.
 
 ## Real-World Examples: MusadoraKit
