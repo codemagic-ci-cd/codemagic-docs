@@ -146,9 +146,14 @@ curl -XPOST -H 'x-auth-token: <your-auth-token>' \
 {{< /highlight >}}
 
 {{<notebox>}}
-**Note:** Use this command if you want to add a base64 encoded value. 
+**Note:** 
+Sometimes you might want to store files e.g. **Android keystores**, or **.env** files. You can pass them as a base64 encoded value like this:
 
   `-d '{ "key": "<variable-name>", "value":`**`$(cat fileName | base64) ...`**
+
+  And then decode it during the build like this:
+
+  `echo $VAR | base64 --decode > /path`
 
 {{</notebox>}}
 
