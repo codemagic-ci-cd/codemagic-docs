@@ -8,7 +8,9 @@ aliases:
 ---
 
 ## Email
-
+```
+** Note: We don't send email notifications unless building one of the published artifacts. ** 
+```
 Email publishing settings can be found in **App settings > Notifications > Email**.
 
 Email publishing is the only publishing option that is enabled by default. Codemagic uses the email specified as the default one in the service you used to log in (Github, Bitbucket, Gitlab). You can add multiple email addresses.
@@ -41,4 +43,4 @@ To receive a notification when a build starts, check the checkbox **Notify when 
 
 When you set up email or Slack publishing, Codemagic publishes the following artifacts:
 
-- `app`, `ipa`, `apk`, the archive with Flutter web build directory, Linux application bundle files, Windows MSIX packages
+- `app`, `ipa`, `apk`, the archive with Flutter web build directory, Linux application bundle files
