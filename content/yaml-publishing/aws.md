@@ -24,16 +24,15 @@ In order to publish your web application to AWS S3, you need to configure your a
 
 8.  Add the script below to your `scripts` section before your build script to update the S3 bucket. `<FOLDER OR FILE>` refers to a specific folder or file to be synced. Replace `<BUCKET_NAME>` with your actual bucket name. Note that all the artifact files that Codemagic generates during the build are located in `CM_BUILD_OUTPUT_DIR`.
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight-editable yaml "style=paraiso-dark">}}
 environment:
   groups:
     - aws_credentials
 scripts:
   - name: Update S3 bucket
     script: | 
-      sudo pip3 install awscli --upgrade
-      aws s3 sync <FOLDER OR FILE> s3://<BUCKET_NAME>
-{{< /highlight >}}
+      aws s3 sync $$$path$$$"path/to/folder_or_file"$$$ s3://$$$bucket-name$$$"bucket_name"$$$
+{{< /highlight-editable >}}
 
 
 Now, each time you build the workflow, the app artifact will be published to your Amazon S3 bucket.
