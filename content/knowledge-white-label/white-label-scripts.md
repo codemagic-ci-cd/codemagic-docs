@@ -145,7 +145,12 @@ curl -XPOST -H 'x-auth-token: <your-auth-token>' \
        'https://api.codemagic.io/apps/<app-id>/variables'
 {{< /highlight >}}
 
+{{<notebox>}}
+**Note:** Use this command if you want to add a base64 encoded value. 
 
+  `-d '{ "key": "<variable-name>", "value":`**`$(cat fileName | base64) ...`**
+
+{{</notebox>}}
 
 ## Automatic build versioning
 
