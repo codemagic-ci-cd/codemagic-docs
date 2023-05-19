@@ -1,0 +1,76 @@
+labels: ["Q&A"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Codemagic Community support
+
+        Ask the Codemagic Community for help with issues or general questions about using the Codemagic CI/CD. 
+
+        💡 Remember that if you have enabled billing you can contact support directly using the in-app chat widget.
+  - type: checkboxes
+    id: "confirmations"
+    attributes:
+      label: If you are looking for help, please confirm the following...
+      options:
+        - label: I confirm I have searched the [Docs](https://docs.codemagic.io), [Codemagic Sample Projects](https://github.com/codemagic-ci-cd/codemagic-sample-projects), and GitHub [Discussions](https://github.com/orgs/codemagic-ci-cd/discussions).
+          required: true
+        - label: I confirm the software versions on my local computer match the ones in CI environment (e.g. Xcode version, Gradle version). See [here](https://docs.codemagic.io/troubleshooting/common-android-issues/#builds-work-locally-but-fail-on-codemagic)
+          required: true
+        - label: I confirm I am able to do a fresh clone of the repository and build the project on my local computer.
+          required: true
+
+  - type: dropdown
+    id: "mobile-framework"
+    attributes:
+      label: "Which mobile framework are you using?"
+      description: "This information is helpful to assign proper people on your question."
+      multiple: false
+      options:
+        - "-"
+        - "Flutter (Dart)"
+        - "Ionic/Cordova"
+        - "Kotlin Multiplatorm"
+        - "React Native"
+        - "Unity"
+        - "Android (Kotlin)"
+        - "iOS (Swift, Objective-C)"
+        - "Other - please mention in your question"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: More detailed steps will significantly help us to investigate your problem.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected results
+      description: Please tell us what is expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual results
+      description: Please tell us what is actually happening.
+    validations:
+      required: true
+  - type: input
+    id: build-id
+    attributes:
+      label: Build id (optional)
+      description: | 
+        You can find the ID on the Build overview section. **Only Codemagic team can see your build logs**. 
+  - type: markdown
+    attributes:
+      value: |
+        ### When to expect an answer?
+
+        We try to answer all questions within 1 business day. 
+        
+        For urgent problems consider using in-app chat for [priority support](https://docs.codemagic.io/troubleshooting/help-and-support/#billing-enabled-customers---intercom)
