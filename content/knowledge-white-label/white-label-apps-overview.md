@@ -31,8 +31,6 @@ So you need to find a way to manage assets. One approach is to create a zip arch
 Each customer zip archive should has the following files with this naming convention:
 - **`ios_assets/`**. This folder contains the iOS icons from `/ios/Runner/Assets.xcassets/AppIcon.appiconset/`.
 - **`android_assets/`**. This folder contains the Android icons from `/android/app/src/main/res/`.
-- **`android.keystore`**. The signing keystore for Android app.
-- **`.env`** file if your app uses some secrets at runtime.
 
 ## Flavors versus a white labeling workflow
 

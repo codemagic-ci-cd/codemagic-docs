@@ -145,7 +145,17 @@ curl -XPOST -H 'x-auth-token: <your-auth-token>' \
        'https://api.codemagic.io/apps/<app-id>/variables'
 {{< /highlight >}}
 
+{{<notebox>}}
+**Note:** 
+Files such as **Android keystores**, or **.env** files should be base64 encoded and can be passed like this:
 
+  `-d '{ "key": "<variable-name>", "value":`**`$(cat fileName | base64) ...`**
+
+  And then decode it during the build like this:
+
+  `echo $VAR | base64 --decode > /path`
+
+{{</notebox>}}
 
 ## Automatic build versioning
 
