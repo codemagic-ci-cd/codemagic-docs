@@ -149,20 +149,20 @@ const authenticateUser = async () => {
         if (json.user.ok) {
             window.loggedIn = true
             window.auth._id = json.user._id
-            document.querySelector('[js-header-auth-user]').classList.add('transition-in')
-            document.querySelector('[js-header-user-avatar]').innerHTML = '<img src="' + auth.avatarUrl + '" alt=""/>'
+            document.querySelector('[data-js-header-auth-user]').classList.add('transition-in')
+            document.querySelector('[data-js-header-user-avatar]').innerHTML = '<img src="' + auth.avatarUrl + '" alt=""/>'
             setAnalyticsEvents()
         } else {
             window.loggedIn = false
-            document.querySelector('[js-header-auth-visitor]').classList.add('transition-in')
+            document.querySelector('[data-js-header-auth-visitor]').classList.add('transition-in')
         }
     } else {
         window.loggedIn = false
-        document.querySelector('[js-header-auth-visitor]').classList.add('transition-in')
+        document.querySelector('[data-js-header-auth-visitor]').classList.add('transition-in')
     }
-    document.querySelector('[js-header-auth-loading]').classList.add('transition-out')
+    document.querySelector('[data-js-header-auth-loading]').classList.add('transition-out')
     setTimeout(() => {
-        document.querySelector('[js-header-auth-loading-grey-line]').style.display = 'none'
+        document.querySelector('[data-js-header-auth-loading-grey-line]').style.display = 'none'
     }, 1000)
 }
 
@@ -193,12 +193,12 @@ const setAnalyticsEvents = async () => {
 
 // Log user out
 async function userLogout() {
-    document.querySelector('[js-header-authentication]').classList.add('loading')
-    document.querySelector('[js-header-auth-loading]').classList.remove('transition-out')
-    document.querySelector('[js-header-auth-loading]').classList.add('transition-in')
-    document.querySelector('[js-header-auth-loading-grey-line]').style.display = 'block'
+    document.querySelector('[data-js-header-authentication]').classList.add('loading')
+    document.querySelector('[data-js-header-auth-loading]').classList.remove('transition-out')
+    document.querySelector('[data-js-header-auth-loading]').classList.add('transition-in')
+    document.querySelector('[data-js-header-auth-loading-grey-line]').style.display = 'block'
     if (window.innerWidth < 841) {
-        document.querySelector('[js-header-menu-toggle]').classList.remove('open')
+        document.querySelector('[data-js-header-menu-toggle]').classList.remove('open')
     }
 
     const url = '{{ site.Param "backendURL" }}/logout'
@@ -210,26 +210,26 @@ async function userLogout() {
     }
     try {
         await fetch(url, options)
-        document.querySelector('[js-header-auth-user]').classList.remove('transition-in')
-        document.querySelector('[js-header-auth-user]').classList.add('transition-out')
+        document.querySelector('[data-js-header-auth-user]').classList.remove('transition-in')
+        document.querySelector('[data-js-header-auth-user]').classList.add('transition-out')
 
         setTimeout(() => {
-            document.querySelector('[js-header-auth-loading-grey-line]').style.display = 'none'
-            document.querySelector('[js-header-auth-visitor]').classList.remove('transition-out')
-            document.querySelector('[js-header-auth-visitor]').classList.add('transition-in')
+            document.querySelector('[data-js-header-auth-loading-grey-line]').style.display = 'none'
+            document.querySelector('[data-js-header-auth-visitor]').classList.remove('transition-out')
+            document.querySelector('[data-js-header-auth-visitor]').classList.add('transition-in')
         }, 1000)
     } catch (error) {
         location.reload()
     } finally {
         auth = { loaded: true }
         window.loggedIn = false
-        document.querySelector('[js-header-authentication]').classList.remove('loading')
-        document.querySelector('[js-header-auth-loading]').classList.remove('transition-in')
-        document.querySelector('[js-header-auth-loading]').classList.add('transition-out')
+        document.querySelector('[data-js-header-authentication]').classList.remove('loading')
+        document.querySelector('[data-js-header-auth-loading]').classList.remove('transition-in')
+        document.querySelector('[data-js-header-auth-loading]').classList.add('transition-out')
     }
 }
 // Logout listner
-document.querySelector('[js-header-auth-logout]').addEventListener('click', userLogout)
+document.querySelector('[data-js-header-auth-logout]').addEventListener('click', userLogout)
 
 // Open external links in new tab
 const handleExternalLinks = (e) => {
@@ -250,8 +250,8 @@ const showDesktopElements = () => {
 
 // Handle menu toggle
 const handleMenuToggle = ({ target }) => {
-    const menuWrap = document.querySelector('[js-header-menu-wrap]')
-    if (target.hasAttribute('js-header-menu-toggle')) {
+    const menuWrap = document.querySelector('[data-js-header-menu-wrap]')
+    if (target.hasAttribute('data-js-header-menu-toggle')) {
         target.classList.toggle('open')
         menuWrap.classList.toggle('open')
     }
@@ -303,7 +303,7 @@ window.addEventListener('load', function () {
         }
     }
 
-    const tabPanes = document.querySelectorAll('[js-tabs-nav]')
+    const tabPanes = document.querySelectorAll('[data-js-tabs-nav]')
     tabPanes.forEach((pane) => {
         pane.children[0].classList.add('active')
         for (let i = 0; i < pane.children.length; i++) {
@@ -313,4 +313,54 @@ window.addEventListener('load', function () {
     })
 
     initCopyButtons()
+})
+
+const editableFields = document.querySelectorAll('[data-js-editable-field]')
+let editing = false 
+
+editableFields.forEach(field => {
+    const input = document.createElement('input')
+    const container =  field.parentElement
+
+    field.addEventListener('click', (event) => {
+        event.stopPropagation()
+
+        if (editing) return 
+    
+        container.removeChild(field)
+        input.value = field.innerText
+        container.appendChild(input)
+
+        editing = true 
+    })
+
+    input.addEventListener('click', (event) => {
+        event.stopPropagation()
+    })
+
+    input.addEventListener('input', (event) => {
+        Array.from(editableFields).filter(f => f.getAttribute('editable-id') === field.getAttribute('editable-id')).forEach(f => {
+            f.innerText = event.target.value
+        })
+    })
+
+    document.addEventListener('click', () => {
+        if (!container.contains(input)) return 
+    
+        container.removeChild(input)
+        container.appendChild(field)
+
+        editing = false;
+    })
+
+    document.addEventListener('keypress', (event) => {
+        if (event.key === "Enter") {
+            event.stopPropagation();
+
+            container.removeChild(input)
+            container.appendChild(field)
+
+            editing = false;
+        }
+    })
 })

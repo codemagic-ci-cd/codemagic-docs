@@ -1,5 +1,5 @@
 ---
-title: Unity mobile apps
+title: Unity apps
 description: How to build Unity mobile apps with codemagic.yaml
 weight: 12
 
@@ -15,7 +15,7 @@ You can find a complete project showcasing these steps in our [Sample projects r
 
 Building Unity apps in a cloud CI/CD environment requires a Unity **Plus** or a **Pro** license. Your license is used to activate Unity on the Codemagic build server so the iOS and Android projects can be exported.  The license is returned during the publishing step of the workflow which is always run **except if the build is cancelled**.
 
-You can use [Unity dashboard](https://id.unity.com/en/serials) to check the number of free seats on your license or to manually return a seat if neccessary.
+You can use [Unity dashboard](https://id.unity.com/en/serials) to check the number of free seats on your license or to manually return a seat if necessary.
 
 ## Adding the app to Codemagic
 {{< include "/partials/quickstart/add-app-to-codemagic.md" >}}
@@ -116,9 +116,9 @@ Each Unity build will have to activate a valid Unity Plus or a Unity Pro license
 {{< /highlight >}}
 
 {{<notebox>}}
-**Note:** The `UNITY_HOME` environment variable is already set on the build machines. 
+**Note:** The `UNITY_HOME` environment variable is already set on the build machines to `/Applications/Unity/Hub/Editor/<default-unity-version>/Unity.app`.
 
-On the macOS Unity base image `UNITY_HOME` is set to `/Applications/Unity/Hub/Editor/2020.3.28f1/Unity.app`.
+See the default Unity version from the macOS build machine specification [here](../specs/versions-macos/).
 {{</notebox>}}
 
 ## Activating and deactivating the license
@@ -132,10 +132,10 @@ To activate a Unity license on the build machine, add the following step at the 
   scripts:
     - name: Activate Unity license
       script: | 
-        $UNITY_BIN -batchmode -quit -logFile \
-          -serial ${UNITY_SERIAL?} \
-          -username ${UNITY_EMAIL?} \
-          -password ${UNITY_PASSWORD?}
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+          -serial ${UNITY_SERIAL} \
+          -username ${UNITY_EMAIL} \
+          -password ${UNITY_PASSWORD}
 {{< /highlight >}}
 {{< /tab >}}
 
@@ -156,7 +156,7 @@ To deactivate a Unity license on the build machine, add the following script ste
     scripts:
       - name: Deactivate Unity License
       script: | 
-        $UNITY_BIN -batchmode -quit -returnlicense -nographics
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -returnlicense -nographics
 {{< /highlight >}}
 {{< /tab >}}
 
@@ -350,7 +350,7 @@ Google recommends that Android applications be published to Google Play using th
 6. Expand **Other Settings** and check the **Override Default Package Name** checkbox.
 7. Enter the package name for your app, e.g. "com.domain.yourappname".
 8. Set the **Version number**.
-9. Put any integer value in the **Bundle Version Code**. This will be overriden by the build script.
+9. Put any integer value in the **Bundle Version Code**. This will be overridden by the build script.
 10. Set the **Minimum API Level** and **Target API Level** to `Android 11.0 (API level 30)` which is required for publishing application bundles.
 11. In the **Configuration** section set **Scripting Backend** to `IL2CPP`.
 12. In the **Target Architectures** section check **ARMv7** and **ARM64** to support 64-bit architectures so the app is compliant with the Google Play 64-bit requirement.
@@ -426,7 +426,7 @@ If you are going to publish your app to App Store Connect or Google Play, each u
 {{% tab header="Android" %}}
 One very useful method of calculating the code version is to use Codemagic command line tools to get the latest build number from Google Play and increment it by one. You can then save this as the `NEW_BUILD_NUMBER` environment variable that is already expected by the `/Assets/Editor/Build.cs` build script.
 
-The prerequisite is a valid **Google Cloud Service Account**. Plese follow these steps:
+The prerequisite is a valid **Google Cloud Service Account**. Please follow these steps:
 1. Go to [this guide](../knowledge-base/google-services-authentication) and complete the steps in the **Google Play** section.
 2. Skip to the **Creating a service account** section in the same guide and complete those steps also.
 3. You now have a `JSON` file with the credentials.
@@ -502,8 +502,6 @@ In this step you can also define the build artifacts you are interested in. Thes
 {{< highlight yaml "style=paraiso-dark">}}
   environment:
     #...
-    vars:
-      UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
   scripts:
     - name: Activate Unity license
       script: #...
@@ -511,7 +509,7 @@ In this step you can also define the build artifacts you are interested in. Thes
       script: #... 
     - name: Build the project
       script: | 
-        $UNITY_BIN -batchmode \
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode \
           -quit \
           -logFile \
           -projectPath . \
@@ -528,7 +526,6 @@ In this step you can also define the build artifacts you are interested in. Thes
   environment:
     #...
     vars:
-      UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
       UNITY_IOS_DIR: ios
       XCODE_PROJECT: "Unity-iPhone.xcodeproj"
       XCODE_SCHEME: "Unity-iPhone"
@@ -537,7 +534,7 @@ In this step you can also define the build artifacts you are interested in. Thes
       script: #...
     - name: Generate the Xcode project from Unity
       script: | 
-        $UNITY_BIN -batchmode \
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode \
           -quit \
           -logFile \
           -projectPath . \
@@ -552,7 +549,7 @@ In this step you can also define the build artifacts you are interested in. Thes
       script: | 
         xcode-project build-ipa --project "$UNITY_IOS_DIR/$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
     artifacts:
-     - build/ios/ipa/*.ipa
+      - build/ios/ipa/*.ipa
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 {{< /highlight >}}
 
@@ -578,7 +575,6 @@ In this step you can also define the build artifacts you are interested in. Thes
   environment:
     #...
     vars:
-      UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
       UNITY_MAC_DIR: mac
       BUNDLE_ID: "io.codemagic.unitysample"
   scripts:
@@ -605,7 +601,7 @@ In this step you can also define the build artifacts you are interested in. Thes
       script: #...
     - name: Build the project
       script: | 
-        $UNITY_BIN -batchmode -quit -logFile \
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
           -projectPath . \
           -executeMethod BuildScript.BuildMac \
           -nographics
@@ -623,7 +619,7 @@ In this step you can also define the build artifacts you are interested in. Thes
           --component "$APP_NAME" \
           /Applications/ unsigned.pkg
         #
-        # Find the installer certificate commmon name in keychain
+        # Find the installer certificate common name in keychain
         INSTALLER_CERT_NAME=$(keychain list-certificates \
             | jq '.[]
               | select(.common_name
@@ -668,7 +664,11 @@ In this step you can also define the build artifacts you are interested in. Thes
 
 {{< /tab >}}
 {{< /tabpane >}}
+ 
 
+{{<notebox>}}
+**Note**: Read how to use different Unity version [here](../knowledge-others/install-unity-version/).
+{{</notebox>}}
 
 ## Publishing
 
@@ -803,15 +803,14 @@ workflows:
       vars:
         PACKAGE_NAME: "io.codemagic.unitysample"
         GOOGLE_PLAY_TRACK: alpha
-        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
         PACKAGE_NAME: "io.codemagic.unitysample"
     scripts:
       - name: Activate Unity License
-        script: |
-          $UNITY_BIN -batchmode -quit -logFile \
-            -serial ${UNITY_SERIAL?} \
-            -username ${UNITY_EMAIL?} \
-            -password ${UNITY_PASSWORD?}
+        script: | 
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+            -serial ${UNITY_SERIAL} \
+            -username ${UNITY_EMAIL} \
+            -password ${UNITY_PASSWORD}
       - name: Set the build number
         script: | 
           export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number \
@@ -819,7 +818,7 @@ workflows:
             --tracks="$GOOGLE_PLAY_TRACK") + 1))
       - name: Build the project
         script: | 
-          $UNITY_BIN -batchmode \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode \
             -quit \
             -logFile \
             -projectPath . \
@@ -833,8 +832,8 @@ workflows:
           script: | 
             /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
             --return-ulf \
-            --username ${UNITY_EMAIL?} \
-            --password ${UNITY_PASSWORD?}
+            --username ${UNITY_EMAIL} \
+            --password ${UNITY_PASSWORD}
       email:
         recipients:
           - user_1@example.com
@@ -864,7 +863,6 @@ workflows:
       groups:
         - unity_credentials
       vars:
-        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
         UNITY_IOS_DIR: ios
         XCODE_PROJECT: "Unity-iPhone.xcodeproj"
         XCODE_SCHEME: "Unity-iPhone"
@@ -873,13 +871,13 @@ workflows:
     scripts:
       - name: Activate Unity license
         script: | 
-          $UNITY_BIN -batchmode -quit -logFile \
-            -serial ${UNITY_SERIAL?} \
-            -username ${UNITY_EMAIL?} \
-            -password ${UNITY_PASSWORD?}
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+            -serial ${UNITY_SERIAL} \
+            -username ${UNITY_EMAIL} \
+            -password ${UNITY_PASSWORD}
       - name: Generate the Xcode project from Unity
         script: | 
-          $UNITY_BIN -batchmode \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode \
             -quit \
             -logFile \
             -projectPath . \
@@ -907,8 +905,8 @@ workflows:
           script: | 
             /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
             --return-ulf \
-            --username ${UNITY_EMAIL?} \
-            --password ${UNITY_PASSWORD?}
+            --username ${UNITY_EMAIL} \
+            --password ${UNITY_PASSWORD}
       email:
         recipients:
           - user_1@example.com
@@ -946,7 +944,6 @@ workflows:
         - unity_credentials
         - appstore_credentials
       vars:
-        UNITY_BIN: $UNITY_HOME/Contents/MacOS/Unity
         UNITY_MAC_DIR: mac
         XCODE_PROJECT: "Unity-iPhone.xcodeproj"
         XCODE_SCHEME: "Unity-iPhone"
@@ -954,10 +951,10 @@ workflows:
     scripts:
       - name: Activate Unity license
         script: | 
-          $UNITY_BIN -batchmode -quit -logFile \
-            -serial ${UNITY_SERIAL?} \
-            -username ${UNITY_EMAIL?} \
-            -password ${UNITY_PASSWORD?}
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+            -serial ${UNITY_SERIAL} \
+            -username ${UNITY_EMAIL} \
+            -password ${UNITY_PASSWORD}
       - name: Set up keychain
         script: | 
           keychain initialize
@@ -979,7 +976,7 @@ workflows:
           xcode-project use-profiles    
       - name: Build the project
         script: | 
-          $UNITY_BIN -batchmode -quit -logFile \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
             -projectPath . \
             -executeMethod BuildScript.BuildMac \
             -nographics
@@ -1016,8 +1013,8 @@ workflows:
           script: | 
             /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
             --return-ulf \
-            --username ${UNITY_EMAIL?} \
-            --password ${UNITY_PASSWORD?}
+            --username ${UNITY_EMAIL} \
+            --password ${UNITY_PASSWORD}
       email:
         recipients:
           - user_1@example.com

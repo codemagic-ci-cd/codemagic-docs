@@ -93,7 +93,7 @@ Returns information about builds from the Codemagic build history. Filters are a
 {{< highlight bash "style=paraiso-dark">}}
   curl -H "Content-Type: application/json" \
        -H "x-auth-token: <API Token>" \
-       --request GET https://api.codemagic.io/builds?appId=<app_id>&workflowId=<workflow_id>&branch=<branch_name>&tag=<tag_name>
+       --request GET "https://api.codemagic.io/builds?appId=<app_id>&workflowId=<workflow_id>&branch=<branch_name>&tag=<tag_name>"
 {{< /highlight >}}
 
 #### Response
@@ -124,7 +124,7 @@ Returns information about builds from the Codemagic build history. Filters are a
           "packageName": "io.codemagic.counter-flutter",
           "size": 59325441,
           "type": "apk",
-          "url": "https://static.codemagic.io/files/2667d83f-a05b-44a5-8839-51fd4b05e7ce/d44b59f6-ebe9-4ca5-80ee-86ce372790ee/app-debug.apk",
+          "url": "https://api.codemagic.io/artifacts/2667d83f-a05b-44a5-8839-51fd4b05e7ce/d44b59f6-ebe9-4ca5-80ee-86ce372790ee/app-debug.apk",
           "versionName": "1.0.2"
         },
         {
@@ -132,7 +132,7 @@ Returns information about builds from the Codemagic build history. Filters are a
           "name": "Runner.app",
           "size": 96849493,
           "type": "app",
-          "url": "https://static.codemagic.io/files/5020d900-14c2-4e96-9c95-93869e1e2d2f/0ec3367c-704e-4d36-895b-6b3944e43113/Runner.app"
+          "url": "https://api.codemagic.io/artifacts/5020d900-14c2-4e96-9c95-93869e1e2d2f/0ec3367c-704e-4d36-895b-6b3944e43113/Runner.app"
         }
       ],
       ...

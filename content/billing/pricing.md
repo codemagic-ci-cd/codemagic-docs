@@ -27,8 +27,7 @@ The instance types and hardware specifications can be found below.
 | **Item**        | **Specification**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | macOS M1 standard VM         | 3.2GHz Quad Core / 8GB                                                                                                                                                 |
-| macOS premium VM         | 3.7GHz Quad Core / 32GB                                                                                                                                                 |
-| macOS standard VM        | 2.3GHz Quad Core / 8GB                                                                                                                                                 |
+| macOS Intel VM         | 3.7GHz Quad Core / 32GB                                                                                                                                                 |
 | Linux premium VM         | 8 vCPUs, 32 GB memory                                                                                                                                                 |
 | Linux standard VM        | 4 vCPUs, 16 GB memory                                                 |
 | Windows premium VM       | 8 vCPUs, 32 GB memory  
@@ -49,22 +48,21 @@ When billing is enabled on personal accounts, you will still have **500 free bui
 
 Usage on macOS M1 standard VM that exceeds 500 minutes is charged at rate shown below.
 
-Builds on macOS standard VM, macOS premium VM, Linux standard VM, and Linux premium VM do not have free build minutes. The per minute pricing for each instance type is shown below.
+Builds on macOS Intel VM, Linux standard VM, and Linux premium VM do not have free build minutes. The per minute pricing for each instance type is shown below.
 
 You will never be charged more than $299/month on this plan.
 
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | macOS M1 standard VM         | $0.095 / minute                                                                                                                                                 |
-| macOS premium VM         | $0.095 / minute                                                                                                                                                 |
-| macOS standard VM        | $0.038 / minute                                                                                                                                                 |
+| macOS Intel VM         | $0.095 / minute                                                                                                                                                 |
 | Linux premium VM         | $0.045 / minute                                                                                                                                                 |
 | Linux standard VM        | $0.015 / minute                                                                                                                                                 |
 | Windows VM               | $0.045 / minute                                                                                                                                                 |
 
 ### Pricing for Teams
 
-For teams, all build minutes using macOS M1 standard VM, macOS standard VM, macOS premium VM, Linux standard VM, and Linux premium VM are charged at the rates shown below. 
+For teams, all build minutes using macOS M1 standard VM, macOS Intel VM, Linux standard VM, and Linux premium VM are charged at the rates shown below. 
 
 Each extra build concurrency allows running an additional build in parallel. For example, two extra build concurrencies allow running three builds in parallel. 
 
@@ -77,14 +75,13 @@ You will never be charged more than $299/month on this plan.
 | **Item**  | **Price**                                                                                                                                                       |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | macOS M1 standard VM         | $0.095 / minute                                                                                                                                                 |
-| macOS premium VM         | $0.095 / minute                                                                                                                                                 |
-| macOS standard VM        | $0.038 / minute                                                                                                                                                 |
+| macOS Intel VM         | $0.095 / minute                                                                                                                                                 |
 | Linux premium VM         | $0.045 / minute                                                                                                                                                 |
 | Linux standard VM        | $0.015 / minute                                                                                                                                                 |
 | Windows VM               | $0.045 / minute                                                                                                                                                 |                                                                                                              |
 | Extra build concurrency  | $49 / month                                                                                                                                                     | 
 
-Consider an annual plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on premium macOS, Linux, and Windows instances. For more information contact us [here](https://codemagic.io/contact/).
+Consider an annual plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on Intel macOS, Linux, and Windows instances. For more information contact us [here](https://codemagic.io/contact/).
 
 ## Monthly Plan with 4 or more concurrencies
 
@@ -94,7 +91,7 @@ If you need 4 or more concurrencies, paid on a monthly basis, a fixed price **mo
 
 The Codemagic annual plan gives you a fixed price plan with the following benefits:
 
-* 3 concurrencies (premium macOS, Mac mini M1, Linux, and Windows instances)
+* 3 concurrencies (Intel macOS, Mac mini M1, Linux, and Windows instances)
 * Unlimited build minutes
 * Unlimited team seats
 * In-app chat support
@@ -117,11 +114,21 @@ If you require additional concurrencies or have any other questions about the an
 If you require annual invoicing, please refer to the Enterprise plans below.
 ## Enterprise Plan
 
-Enterprise plans are available from **$500/month** (billed annually).
+Enterprise plans are available from **$1000/month** (billed annually) and include the following:
+
+- 8 concurrencies* 
+- Unlimited access to all VM types
+- 180 minute build timeout
+- Priority support
+- Service level agreement
+- Account management services
+- Technical account manager
+- Private Slack channel
+
+
+*If you require an Enterprise plan with dedicated hosts, the Enterprise plan can be configured with 2 dedicated macOS hosts (arm64 or Intel) which provide 4 concurrencies. If the dedicated hosts need to be EU-based then 1 dedicated host can be configured which provides 2 concurrencies.
 
 This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, or **custom base images** or other account management services.
-
-Enterprise plans with a **Service Level Agreement** are available from **$1,000/month** (billed annually).
 
 Annual invoicing with bank transfer is available for Enterprise plans. 
 
@@ -135,7 +142,7 @@ It's possible to resell the Codemagic Enterprise plan. Contact us [here](https:/
 
 If you need specific software and tools available on a builder machine we can provide dedicated macOS host machines which give you 2 VMs. 
 
-Dedicated macOS M1 standard and macOS premium hosts are available for $449/month, paid annually with **20% discount** comes to **$4,310/year**. 
+Dedicated macOS M1 standard and macOS Intel hosts are available for $449/month, paid annually with **20% discount** comes to **$4,310/year**. 
 
 Annual dedicated host plans can be paid for with credit card and invoicing with bank transfer is available.
 

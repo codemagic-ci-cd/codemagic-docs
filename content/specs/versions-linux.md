@@ -15,7 +15,7 @@ weight: 2
 
 - System version `Ubuntu 20.04.2 LTS`
 - Kernel version `5.11.0-1029-gcp`
-- Disk `97GB (Free Space: 50GB)`
+- Disk `97GB (Free Space: 46GB)`
 
 ## Pre-installed tools
 
@@ -26,19 +26,19 @@ weight: 2
 - docker `20.10.7`
 - ew-cli `0.0.44`
 - fastlane `2.209.1`
-- firebase `11.3.0`
-- flutter `3.3.7 ($HOME/programs/flutter)`
+- firebase `11.21.0`
+- flutter `3.7.12 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
-- Google Cloud SDK `348.0.0`
-- gradle `6.7.1`
+- Google Cloud SDK `423.0.0`
+- gradle `7.3.1`
 - gsutil `4.65`
 - ionic `5.4.16`
 - jq `jq-1.6`
 - ktlint `0.43.2`
 - node `16.16.0`
-- npm `6.14.9`
+- npm `8.11.0`
 - python2 `2.7.18`
 - python `3.8.10`
 - ruby `2.7.2p137`
@@ -59,14 +59,15 @@ weight: 2
   - Device: `pixel_4 (Google)`
   - Path: `/home/builder/.android/avd/emulator.avd`
   - Target: `Google Play (Google Inc.)`
-  - Based on: `Android 10.0 (Q)`
+  - Based on: `Android 11.0 (R)`
   - Tag/API: `google_apis_playstore/x86`
   - Skin: `pixel_4`
   - Sdcard: `512M`
 
 ## Java versions
 
-- **15-ea (2020-09-15)** JAVA_HOME: `/usr/lib/jvm/java-1.15.0-openjdk-amd64`
+- **17 (2021-09-14)** JAVA_HOME: `/usr/lib/jvm/java-1.17.0-openjdk-amd64`
+- **15 (2020-09-15)** JAVA_HOME: `/usr/lib/jvm/java-1.15.0-openjdk-amd64`
 - **11.0.10 (2021-01-19)** (default) JAVA_HOME: `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
 - **1.8.0_282** JAVA_HOME: `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
 

@@ -65,7 +65,7 @@ To fully migrate away from JCenter, replace all `jcenter()` occurrences with `ma
 - Disable or delete cache.
 - Run your build pipeline to see if everything works still.
   - If your build is successful, you’re done.
-  - If your build still fails, you’ll need to troubleshoot which dependencies still require JCenter. The errors in the failed build step will point out the dependecies using JCenter.
+  - If your build still fails, you’ll need to troubleshoot which dependencies still require JCenter. The errors in the failed build step will point out the dependencies using JCenter.
 
 {{<notebox>}}
 Note: You'll have to completely upgrade all dependencies that require JCenter to avoid failed builds.

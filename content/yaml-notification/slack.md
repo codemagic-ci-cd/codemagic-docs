@@ -30,7 +30,9 @@ The Slack channel for publishing is configured separately for each workflow in t
 **Note:** In order to publish to **private channels**, you need to invite the Codemagic app to the channels; otherwise, the app does not have access to private channels. To invite Codemagic app to private channels, write `@codemagic` in the channel. If the private channel access is restricted by Slack admin rights, it will have to be changed manually, otherwise publishing to that channel will not be possible.
 {{</notebox>}}
 
-If the build finishes successfully, release notes (if passed), and the generated artifacts will be published to the specified channel. If the build fails, a link to the build logs is published. When you set `notify_on_build_start` to `true`, the channel will be notified when a build starts.
+If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the specified channel. The artifact download links in Slack notifications are, by default, valid for 24 hours; the lifetime of publicly accessible artifact download links is configurable in **Team settings > Artifact download links**.
+
+If the build fails, a link to the build logs is published. When you set `notify_on_build_start` to `true`, the channel will be notified when a build starts.
 
 If you don't want to receive a Slack notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
 

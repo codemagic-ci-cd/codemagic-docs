@@ -1,7 +1,7 @@
 ---
 description: How to add an app to Codemagic
 title: Adding apps to Codemagic
-weight: 2
+weight: 4
 aliases:
   - /getting-started/codemagic-github-app
   - /getting-started/github-organization-accounts
@@ -16,7 +16,7 @@ aliases:
 
 ## Connecting a Git repository
 
-Adding applications to Codemagic is a simple and straightwordard process of conecting your Git repository and selecting the repository root for the application.
+Adding applications to Codemagic is a simple and straightwordard process of connecting your Git repository and selecting the repository root for the application.
 
 
 {{< tabpane >}}

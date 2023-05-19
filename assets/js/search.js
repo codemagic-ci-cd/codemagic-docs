@@ -26,16 +26,16 @@ const getBreadcrumbsHtml = (path, title) => {
 }
 
 const initSearchEvents = () => {
-    const search = document.querySelector('[js-search')
-    const searchInput = document.querySelector('[js-search-input')
+    const search = document.querySelector('[data-js-search')
+    const searchInput = document.querySelector('[data-js-search-input')
 
     const closeSearch = () => {
         // mousedown is before blur, 'click' wouldn't work because after blur the icon disappears
         updateFromInput(null)
     }
 
-    document.querySelector('[js-search-icon]').addEventListener('click', searchInput.focus)
-    document.querySelector('[js-search-clear-icon]').addEventListener('mousedown', closeSearch)
+    document.querySelector('[data-js-search-icon]').addEventListener('click', searchInput.focus)
+    document.querySelector('[data-js-search-clear-icon]').addEventListener('mousedown', closeSearch)
 
     window.addEventListener('click', closeSearch)
     search.addEventListener('click', (e) => e.stopPropagation())
@@ -99,10 +99,10 @@ const updateResults = async (query) => {
 }
 
 const updateInput = (query) => {
-    const searchInput = document.querySelector('[js-search-input]')
+    const searchInput = document.querySelector('[data-js-search-input]')
     searchInput.value = query
     if (query === null) searchInput.blur()
-    else if (query) document.querySelector('[js-search]').classList.add('search--active')
+    else if (query) document.querySelector('[data-js-search]').classList.add('search--active')
 }
 
 const createHtmlElement = (tag, props, children) => {

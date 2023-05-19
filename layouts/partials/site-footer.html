@@ -1,6 +1,9 @@
 {{ $script := resources.Get "js/main.js" | resources.ExecuteAsTemplate "" . | minify | fingerprint }}
 <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
-{{ if .IsPage }} {{ $articleScript := resources.Get "js/article.js" | resources.ExecuteAsTemplate "" . | minify |
+{{ if or .IsHome .IsPage }}
+{{ $articleScript := resources.Get "js/article.js" | resources.ExecuteAsTemplate "" . | minify |
 fingerprint }}
 <script src="{{ $articleScript.RelPermalink }}" integrity="{{ $articleScript.Data.Integrity }}"></script>
-{{end}}
+
+{{ end }}
+

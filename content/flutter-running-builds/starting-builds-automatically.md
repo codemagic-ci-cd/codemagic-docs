@@ -42,23 +42,31 @@ If you don't enable any automatic build triggers, you can start builds only manu
 
 
 
-## Tracking specific branches
+## Tracking specific branches or tags
 
-You can configure the branches to track under **Watched branch patterns**. 
+Instead of watching all branches and tags, you can limit automatic build triggering to branches or tags whose name matches a specific pattern.
 
-The branches tracked for building are selected by entering branch patterns and including or excluding the matching branches. Note that you can either enter the exact name of the branch to select it or use the wildcard symbols to select more than one branch with one pattern. Click **Show pattern examples** in the UI for tips.
+The branches or tags tracked for building are selected by entering one or more patterns and including or excluding the matching branches or tags.
 
-The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of branches further. In the case of conflicting patterns, the latter will prevail. You can check the targeted branches by clicking the eye icon next to **Watched branch patterns**.
+Note that you can either enter the exact name of the branch or tag or use wildcard symbols to match multiple branches or tags. Click **Show pattern examples** in the UI for tips. Additionally, please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wcmatch/fnmatch/) for more advanced matching patterns.
+
+The first (i.e. topmost) pattern in the list is applied first. Each following pattern will limit the set of values further. In the case of conflicting patterns, the latter will prevail.
+
+You can check the targeted branches by clicking the eye icon next to **Watched branch patterns**.
 
 To add a new branch pattern:
 
-1. Navigate to **App settings > Build triggers**.
+1. Navigate to **App settings > Build triggers > Watched branch patterns**.
 2. Enter a pattern matching the name of one or more branches in the project.
 3. Select **Include** or **Exclude** from the dropdown to limit the set of targeted branches by either including or excluding the matching branches.
 4. For **pull request builds**, select whether the tracked branch is the **Source** or the **Target** branch of the pull request. This setting does not affect other types of builds.
 5. Click **Add pattern** to save it. You can always edit or delete added patterns.
 
+To add a new tag pattern:
 
+1. Navigate to **App settings > Build triggers > Watched tag patterns**.
+2. Enter a tag pattern.
+5. Click **Add pattern** to save it. You can always edit or delete added patterns.
 
 ## Exit or ignore build on certain commit message
 

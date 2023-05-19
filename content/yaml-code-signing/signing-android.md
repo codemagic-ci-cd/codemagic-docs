@@ -129,7 +129,7 @@ To sign your Android app, simply modify your **`android/app/build.gradle`** as f
 Instead of modifying the `build.gradle` file, you can use a script to re-create a keystore file on the build machine and use default signing method via `key.properties` file:
 
 {{< highlight kotlin "style=paraiso-dark">}}
-scritpts:
+scripts:
   
   # ...
 

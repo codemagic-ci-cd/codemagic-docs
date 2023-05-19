@@ -11,7 +11,7 @@ A sample project that shows how to configure Kobiton integration is available in
 
 ## Configure Kobiton access
 
-Once you [sign up](https://kobiton.com/) with Kobiton, make note of your **username** and **API access token**. You need to combine these to get the `base64` encoded authentication string formated as:
+Once you [sign up](https://kobiton.com/) with Kobiton, make note of your **username** and **API access token**. You need to combine these to get the `base64` encoded authentication string formatted as:
 
 `username:api_token`
 
@@ -91,7 +91,7 @@ Alternatively, use an [online tool](https://mixedanalytics.com/knowledge-base/ap
 {{< /tabpane >}}
 
 
-These capabitlies will allow Kobiton to detect which platform you want to you execute your test scripts with. Each device specific capabilities for Java can be found in the **Kobiton devices list** by clicking **device settings** and then **Automation Settings**.
+These capabitlies will allow Kobiton to detect which platform you want to execute your test scripts with. Each device specific capabilities for Java can be found in the **Kobiton devices list** by clicking **device settings** and then **Automation Settings**.
 
 
 ## Upload apps to Kobiton
@@ -134,7 +134,7 @@ To perform these steps, add the required scripts to your `codemagic.yaml` file:
           -H 'Authorization: Basic $KOBITON_CREDENTIALS' \
           -H 'Content-Type: application/json' \
           -H 'Accept: application/json'
-        # Response should be formated as:
+        # Response should be formatted as:
         # {"testRunId":123168,"testRunDetailLink":"https://portal.kobiton.com/plans/123168/executions"}
 {{< /highlight >}}
 

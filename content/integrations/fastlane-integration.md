@@ -14,9 +14,9 @@ aliases:
 
 In order to use Fastlane with Codemagic, you need to configure the following environment variables: 
 
-- `MATCH_PASSWORD` - the password used to encrypt/decrypt the repository used to store your distrbution certificates and provisioning profiles.
+- `MATCH_PASSWORD` - the password used to encrypt/decrypt the repository used to store your distribution certificates and provisioning profiles.
 - `MATCH_KEYCHAIN` - an arbitrary name to use for the keychain on the build server, e.g "codemagic_keychain"
-- `MATCH_SSH_KEY` - an SSH private key used for cloning the Match repository that contains your distrbution certificates and provisioning profiles. The public key should be added to your Github account. See [here](https://docs.codemagic.io/configuration/access-private-git-submodules/) for more information about accessing Git dependencies with SSH keys.
+- `MATCH_SSH_KEY` - an SSH private key used for cloning the Match repository that contains your distribution certificates and provisioning profiles. The public key should be added to your Github account. See [here](https://docs.codemagic.io/configuration/access-private-git-submodules/) for more information about accessing Git dependencies with SSH keys.
 - `APP_STORE_CONNECT_PRIVATE_KEY` - the App Store Connect API key. Copy the entire contents of the .p8 file and paste into the environment variable value field. Make sure to mark it secure in order to encrypt the value. 
 - `APP_STORE_CONNECT_KEY_IDENTIFIER` - the key identifier of your App Store Connect API key.
 - `APP_STORE_CONNECT_ISSUER_ID` - the issuer of your App Store Connect API key.
@@ -63,19 +63,19 @@ If you are using any Fastlane plugins, you should create a script in your `codem
       script: | 
         cd ios     # change to ios/android folder as required
         bundle add fastlane-plugin-s3
-        bundle add fasllane-plugin-dropbox
+        bundle add fastlane-plugin-dropbox
 {{< /highlight >}}
 
 
 ## Running your Fastlane lane
 
-In the `codemagic.yaml`, you should install your depenpendencies with `bundle install` and then execute the Fastlane lane with `bundle exec fastlane <lane_name>` as follows:
+In the `codemagic.yaml`, you should install your dependencies with `bundle install` and then execute the Fastlane lane with `bundle exec fastlane <lane_name>` as follows:
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
     - name: Run fastlane
       script: | 
-        bundle instal
+        bundle install
         bundle exec fastlane beta
 {{< /highlight >}}
 

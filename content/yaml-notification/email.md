@@ -6,7 +6,9 @@ aliases:
   - /yaml-publishing/email
 ---
 
-If the build finishes successfully, release notes (if passed), and the generated artifacts will be published to the provided email address(es). If the build fails, an email with a link to build logs will be sent.
+If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the provided email address(es). The artifact download links in email are, by default, valid for 24 hours; the lifetime of publicly accessible artifact download links is configurable in **Team settings > Artifact download links**.
+
+If the build fails, an email with a link to build logs will be sent.
 
 If you don't want to receive an email notification on build success or failure, you can set `success` to `false` or `failure` to `false` accordingly.
 

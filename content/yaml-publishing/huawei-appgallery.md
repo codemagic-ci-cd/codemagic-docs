@@ -42,7 +42,7 @@ $ keytool -export -rfc -keystore YOUR_KEYSTORE.jks -alias upload -file upload_ce
 ## Adding the Fastlane script to your code
 First, you need to set up Fastlane at your project by running `fastlane init` command, see the [docs](https://docs.fastlane.tools/getting-started/android/setup/).
 
-Now add this lane to your **Fastlane** file.
+Now add this lane to your **Fastfile** file.
 {{< highlight shell "style=paraiso-dark">}}
   lane :huawei do
     gradle(

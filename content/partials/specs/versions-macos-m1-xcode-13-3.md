@@ -1,9 +1,9 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS M1 build machines using Xcode version 13.3+.
-title: macOS M1 build machine specification (Xcode 13.3+ / Unity)
+description: A list of tools available out-of-the-box on Codemagic macOS M1 build machines using Xcode version 13.3-14.1.
+title: macOS M1 build machine specification (Xcode 13.3-14.1 / Unity)
 aliases:
   - '/specs/versions-macos-m1-xcode-13-3'
-weight: 9
+weight: 10
 ---
 
 ## Hardware
@@ -14,34 +14,34 @@ weight: 9
 
 - System version `macOS 12.6.1 (21G217)`
 - Kernel version `Darwin 21.6.0`
-- Disk `294GB (Free Space: 48GB)`
+- Disk `294GB (Free Space: 46GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
-- aws `2.8.9`
+- aws `2.9.8`
 - carthage `0.38.0`
 - cocoapods `1.11.3`
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `N/A`
 - ew-cli `0.0.48`
-- fastlane `2.210.1`
+- fastlane `2.211.0`
 - firebase `11.4.2`
-- flutter `3.3.7 ($HOME/programs/flutter)`
-- gem `3.3.24`
-- gh `2.19.0`
-- git `2.38.1`
+- flutter `3.3.10 ($HOME/programs/flutter)`
+- gem `3.3.26`
+- gh `2.20.2`
+- git `2.39.0`
 - Google Cloud SDK `404.0.0`
 - gradle `7.3.1`
 - gsutil `5.14`
-- homebrew `3.6.8`
+- homebrew `3.6.15`
 - ionic `5.4.16`
 - jq `1.6`
-- ktlint `0.47.1`
-- node `18.11.0`
-- npm `8.19.2`
+- ktlint `0.48.0`
+- node `19.3.0`
+- npm `9.2.0`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
@@ -53,7 +53,7 @@ weight: 9
 - unzip `6.00`
 - wget `1.21.3`
 - yarn `1.22.19`
-- yq `4.29.2`
+- yq `4.30.6`
 - zip `3.0`
 
 ## Android emulators
@@ -73,7 +73,7 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2021.3.7f1/Unity.app
 
 ## Xcode versions
 
-- 14.1 (14B47b) `/Applications/Xcode-14.1.app`, also selected when specifying `latest` or `edge` in Xcode version settings
+- 14.1 (14B47b) `/Applications/Xcode-14.1.app`
 - 14.0.1 (14A400) `/Applications/Xcode-14.0.app`, also selected when specifying `14` in Xcode version settings
 - 13.4.1 (13F100) `/Applications/Xcode-13.4.app`, also selected when specifying `13.4` in Xcode version settings
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`, also selected when specifying `13.3` in Xcode version settings

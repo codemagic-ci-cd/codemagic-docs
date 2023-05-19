@@ -1,6 +1,6 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS build machines using Xcode version 13.3+.
-title: macOS build machine specification (Xcode 13.3+ / Unity)
+description: A list of tools available out-of-the-box on Codemagic macOS build machines using Xcode version 13.3-14.1.
+title: macOS build machine specification (Xcode 13.3-14.1 / Unity)
 aliases:
   - '/releases-and-versions/versions5'
   - '/specs/versions5'
@@ -17,7 +17,7 @@ weight: 8
 
 - System version `macOS 12.6.1 (21G217)`
 - Kernel version `Darwin 21.6.0`
-- Disk `322GB (Free Space: 49GB)`
+- Disk `322GB (Free Space: 50GB)`
 
 ## Pre-installed tools
 
@@ -29,17 +29,17 @@ weight: 8
 - cordova `11.0.0`
 - curl `7.79.1`
 - docker `20.10.17`
-- ew-cli `0.0.48`
+- ew-cli `0.0.49`
 - fastlane `2.210.1`
 - firebase `11.3.0`
-- flutter `3.3.7 ($HOME/programs/flutter)`
+- flutter `3.3.10 ($HOME/programs/flutter)`
 - gem `3.3.24`
 - gh `2.18.1`
 - git `2.38.1`
 - Google Cloud SDK `404.0.0`
 - gradle `7.3.1`
 - gsutil `5.14`
-- homebrew `3.6.7`
+- homebrew `3.6.8`
 - ionic `6.12.4`
 - jq `1.6`
 - ktlint `0.47.1`
@@ -66,7 +66,7 @@ weight: 8
     - Device: `pixel_3a (Google)`
     - Path: `/Users/builder/.android/avd/emulator.avd`
     - Target: `Google Play (Google Inc.)`
-    - Based on: `Android 10.0 (Q)`
+    - Based on: `Android 11.0 (R)`
     - Tag/API: `google_apis_playstore/x86`
     - Skin: `pixel_3a`
     - Sdcard: `512M`
@@ -84,7 +84,7 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app
 
 ## Xcode versions
 
-- 14.1 (14B47b) `/Applications/Xcode-14.1.app`, also selected when specifying `latest` or `edge` in Xcode version settings
+- 14.1 (14B47b) `/Applications/Xcode-14.1.app`
 - 14.0.1 (14A400) `/Applications/Xcode-14.0.app`, also selected when specifying `14` in Xcode version settings
 - 13.4.1 (13F100) `/Applications/Xcode-13.4.app`, also selected when specifying `13.4` in Xcode version settings
 - 13.3.1 (13E500a) `/Applications/Xcode-13.3.app`, also selected when specifying `13.3` in Xcode version settings

@@ -63,7 +63,7 @@ sudo apt-get install xclip
 cat codemagic.keystore | base64 | xclip -selection clipboard
 {{< /highlight >}}
 
-Alternatively, you can run the following command and carefuly copy/paste the output:
+Alternatively, you can run the following command and carefully copy/paste the output:
 {{< highlight Shell "style=rrt">}}
 openssl base64 -in codemagic.keystore
 {{< /highlight >}}
@@ -120,7 +120,7 @@ workflows:
             - keystore_credentials
 {{< /highlight >}}
 
-Environment variables added with the **Secure** option checked are tranferred to the build machine encrypted and are available only while the build is running. The build machine is destroyed at the end.
+Environment variables added with the **Secure** option checked are transferred to the build machine encrypted and are available only while the build is running. The build machine is destroyed at the end.
 
 The content of the `base64` encoded files needs to be decoded before it can be used. Add the following script to your `codemagic.yaml` **scripts** section:
 

@@ -168,8 +168,7 @@ The main sections in each workflow are described below.
 | **Instance Type** | **Build Machine** |
 | ------------- | -----------------  |
 | `mac_mini_m1`    | macOS M1 standard VM (default) |
-| `mac_mini ` | macOS standard VM        |
-| `mac_pro`     | macOS premium VM            |
+| `mac_pro`     | macOS Intel VM            |
 | `linux`       | Linux standard VM           |
 | `linux_x2`    | Linux premium VM            |
 | `windows_x2`  | Windows premium VM          |
@@ -185,7 +184,7 @@ The main sections in each workflow are described below.
 
 #### Environment variable groups
 
-The snippet below shows how to import [environment variable groups](../building/environment-variable-groups/) defined in the team settings and application settings and also how to define them in the cofiguration file. Environment variables typically include credentials and API keys required for [code signing](../code-signing-yaml/signing). Click **Secure** to encrypt the values. Note that binary files have to be [`base64 encoded`](../yaml/configuring-environment-variables/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build.
+The snippet below shows how to import [environment variable groups](../building/environment-variable-groups/) defined in the team settings and application settings and also how to define them in the configuration file. Environment variables typically include credentials and API keys required for [code signing](../code-signing-yaml/signing). Click **Secure** to encrypt the values. Note that binary files have to be [`base64 encoded`](../yaml/configuring-environment-variables/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build.
 
 {{< highlight yaml "style=paraiso-dark">}}
 environment:
@@ -252,7 +251,7 @@ The snippet below shows how to specify the versions of Flutter, Xcode, CocoaPods
 
 {{< highlight yaml "style=paraiso-dark">}}
 environment:
-  flutter: stable   # Define the channel name or version (e.g. v1.13.4)
+  flutter: stable   # Define the channel name, version (e.g. v1.13.4), or fvm for Flutter Version Management
   xcode: latest     # Define latest, edge or version (e.g. 11.2)
   cocoapods: 1.9.1  # Define default or version
   node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
@@ -347,7 +346,7 @@ triggering:
     - pattern: included-source
       include: true
       source: true
-  tag_patterns:                 # Include or exlude watched tag labels
+  tag_patterns:                 # Include or exclude watched tag labels
     - pattern: '*'
       include: true
     - pattern: excluded-tag

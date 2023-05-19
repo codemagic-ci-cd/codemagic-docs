@@ -24,7 +24,13 @@ publishing:
     # Optional boolean, defaults to false. Whether or not to submit the uploaded
     # build to TestFlight beta review. Required for distributing to beta groups.
     # Note: This action is performed during post-processing.
-    submit_to_testflight: true 
+    submit_to_testflight: true
+
+    # Optional boolean, defaults to false. Set to true to automatically expire 
+    # previous build in review or waiting for review in Testflight before
+    # submitting a new build to beta review. Expired builds will no longer be available for testers.
+    # Note: This action is performed during post-processing.
+    expire_build_submitted_for_review: true
 
     # Specify the names of beta tester groups that will get access to the build 
     # once it has passed beta review.
@@ -37,6 +43,12 @@ publishing:
     # Optional boolean, defaults to false. Whether or not to submit the uploaded
     # build to App Store review. Note: This action is performed during post-processing.
     submit_to_app_store: true
+
+    # Optional boolean, defaults to false. Set to true to cancel the previous 
+    # submission (if applicable) when submitting a new build to App Store review.
+    # This allows automatically submitting a new build for review if a previous submission exists.
+    # Note: This action is performed during post-processing.
+    cancel_previous_submissions: true
     
     # Optional, defaults to MANUAL. Supported values: MANUAL, AFTER_APPROVAL or SCHEDULED
     release_type: SCHEDULED

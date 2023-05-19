@@ -16,7 +16,15 @@ For distributing an iOS application to [Firebase Console](https://console.fireba
 
 To authenticate with Firebase, Codemagic requires either a **Firebase token** or a service account with **Firebase App Distribution Admin** role, as shown below:
 
-#### 1. Authenticating via token
+
+#### 1. Authenticating via service account
+
+{{< include "/partials/firebase-authentication-service-account.md" >}}
+
+#### 2. Authenticating via token
+{{<notebox>}}
+**Warning:** Firebase has marked authentication via token as deprecated and might disable it in future versions of `firebase tool`. Please authenticate using a service account, as described below.
+{{</notebox>}}
 
 To retrieve your Firebase token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
 
@@ -28,34 +36,6 @@ To retrieve your Firebase token, follow the instructions in [Firebase documentat
 6. Click the **Add** button to add the variable.
 
 
-#### 2. Authenticating via service account
-
-Using a service account is a more secure option due to granular permission settings. It can also be used to authenticate with various Firebase services, such as Firebase Test Lab and Firebase App Distribution.
-
-1. On the Firebase project page, navigate to **Project settings** by clicking on the cog button. Select the **Service accounts** tab. Click on the **X service accounts** button as shown on the screenshot. <br><br>
-![Firebase service accounts](../uploads/firebase_service_accounts_button.png)
-
-2. This will lead you to the Google Cloud Platform. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
-
-3. In step 2, click the **Select a role** dropdown menu and choose the role. Note that **Editor** role is required for Firebase Test Lab and **Firebase App Distribution Admin** for Firebase App Distribution.
-
-4. In step 3, you can leave the fields blank and click **Done**.
-
-5. In the list of created service accounts, identify the account you have just created and click on the menu in the **Actions** column, then click **Manage keys**.<br><br>
-![Google cloud key](../uploads/google_cloud_three.png)
-
-6. In the Keys section, click **Add Key > Create new key**. Make sure that the key type is set to `JSON` and click **Create**. Save the key file in a secure location to have it available.<br><br>
-![Google cloud json](../uploads/google_cloud_four.png)
-
-7. Configure publishing in codemagic.yaml:
-
-    1. Open your Codemagic app settings, and go to the **Environment variables** tab.
-    2. Enter the desired **_Variable name_**, e.g. `FIREBASE_SERVICE_ACCOUNT`.
-    3. Copy and paste the content of the service account JSON file as **_Variable value_**.
-    4. Enter the variable group name, e.g. **_firebase_credentials_**. Click the button to create the group.
-    5. Make sure the **Secure** option is selected.
-    6. Click the **Add** button to add the variable.
-
 
 
 ### Distribution to Firebase
@@ -65,11 +45,11 @@ Example configuration for publishing Android and iOS artifacts to Firebase:
 {{< highlight yaml "style=paraiso-dark">}}
 publishing:
   firebase:
-    # use this line to autenticate via token
-    firebase_token: $FIREBASE_TOKEN
+    # use this line to authenticate via service account
+    firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
     
-    # or this line to authenticate via service account
-  # firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
+    # or this line to authenticate via token:
+    # firebase_token: $FIREBASE_TOKEN
   
     android:
       # Add your Android app id retrieved from Firebase console
@@ -104,7 +84,7 @@ If you are building both an Android app bundle and an APK in your workflow, Code
 {{< highlight yaml "style=paraiso-dark">}}
 publishing:
   firebase:
-    firebase_token: $FIREBASE_TOKEN
+    firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
     android:
       app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx
       groups:
@@ -159,19 +139,10 @@ Then you need to call a lane. This code is similar for Android and iOS.
 
 ## Publishing an Android app to Firebase App Distribution with Gradle
 
-To authorize an application for Firebase App Distribution, you need [Google service account](https://firebase.google.com/docs/app-distribution/android/distribute-gradle#authenticate_using_a_service_account) credentials. 
+Make sure you have added the `FIREBASE_SERVICE_ACCOUNT` and `GOOGLE_APPLICATION_CREDENTIALS` variables as described above.
 
-1. Download the credentials file (named similar to `yourappname-6e632def9ad4.json`) and copy its content.
-2. Open your Codemagic app settings, and go to the **Environment variables** tab.
-3. Enter the desired **_Variable name_**, e.g. `GOOGLE_APP_CREDENTIALS`.
-4. Paste the content of the credentials file as **_Variable value_**.
-5. Enter the variable group name, e.g. **_google_credentials_**. Click the button to create the group.
-6. Make sure the **Secure** option is selected.
-7. Click the **Add** button to add the variable.
 
-<br>
-
-8. Specify the filepath in your `build.gradle` file under `firebaseAppDistribution` section as `serviceCredentialsFile="your/file/path.json"`.
+1. Specify the filepath in your `build.gradle` file under `firebaseAppDistribution` section as `serviceCredentialsFile="your/file/path.json"`. If you followed this guide, the path is already saved in `GOOGLE_APPLICATION_CREDENTIALS` variable
 
 {{< highlight Groovy "style=paraiso-dark">}}
 buildTypes {
@@ -180,28 +151,25 @@ buildTypes {
         ...
         firebaseAppDistribution {
             ...
-            serviceCredentialsFile="<your/file/path.json>"
+            serviceCredentialsFile=System.getenv('GOOGLE_APPLICATION_CREDENTIALS')
         }
     }
 {{< /highlight >}}
 
 
-Note that in case the credentials file is not specified in `firebaseAppDistribution` build type, the environment variable `GOOGLE_APPLICATION_CREDENTIALS` will be used instead.
-
-<br>{{<markdown>}}
-9. Decode application credentials for Firebase authorization:{{</markdown>}}
+2. Decode application credentials for Firebase authorization:
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:
   -name: Decode Google credentials
    script: | 
-     echo $GOOGLE_APP_CREDENTIALS > $CM_BUILD_DIR/your/file/path.json
+     echo $FIREBASE_SERVICE_ACCOUNT > $GOOGLE_APPLICATION_CREDENTIALS
 {{< /highlight >}}
 
-</br>{{<markdown>}}
-10. Build the application:
-{{</markdown>}}
-{{< highlight yaml "style=paraiso-dark">}}\
+
+3. Build the application:
+
+{{< highlight yaml "style=paraiso-dark">}}
 scripts:
   -name: Build the app
    script: | 
@@ -210,10 +178,8 @@ scripts:
      flutter build apk --release
 {{< /highlight >}}
 
-</br>
-{{<markdown>}}
-11. Call the **gradlew** task for distribution
-{{</markdown>}}
+
+4. Call the **gradlew** task for distribution
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:
@@ -221,21 +187,3 @@ scripts:
    script: | 
      cd android && ./gradlew appDistributionUploadRelease
 {{< /highlight >}}
-
-</br>
-{{<markdown>}}
-**Note:**
-If you didn't specify `serviceCredentialsFile`, you may export it to a random location like `/tmp/google-application-credentials.json` and then export the file path on the gradlew task.
-
-{{< highlight yaml "style=paraiso-dark">}}
-scripts:
-  - name: Export the credentials file
-    script: | 
-      echo $GOOGLE_APP_CREDENTIALS > /tmp/google-application-credentials.json
-  - name: Distribute app to firebase with gradle plugin
-  script: | 
-    export GOOGLE_APPLICATION_CREDENTIALS=/tmp/google-application-credentials.json
-    cd android && ./gradlew appDistributionUploadRelease
-{{< /highlight >}}
-
-{{</markdown>}}

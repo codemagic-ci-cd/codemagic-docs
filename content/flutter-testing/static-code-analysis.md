@@ -25,6 +25,10 @@ By default, Dart Code Metrics is disabled and has to be enabled in **App setting
 
 When enabled, `flutter pub run dart_code_metrics:metrics analyze lib` will be run with each build. You can see the results and the logs of the analysis under the **Running tests** step in build overview.
 
+{{<notebox>}}
+**Note:** Codemagic will attempt to use the `dart_code_metrics` version defined in your `pubspec.yaml`; if it is not defined, Codemagic will temporarily add the most recent compatible version of `dart_code_metrics` to your dependencies during build time. The minimum compatible version of `dart_code_metrics` is `3.0.0`.
+{{</notebox>}}
+
 ### Stop build if tests or analysis fail
 
 If you check **Stop build if tests or analysis fail**, the build will stop after finishing all the enabled tests or analysis runs when any of them fail. Such builds will have the status "failed".

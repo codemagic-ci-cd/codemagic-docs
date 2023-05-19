@@ -201,7 +201,7 @@
             transition: all 300ms linear;
         }
 
-        &:hover {
+        &:hover .label {
             color: $yellow;
         }
         &.transition-in ~ #header-auth-logout {

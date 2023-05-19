@@ -15,7 +15,7 @@ This guide will illustrate all of the necessary steps to successfully build and 
 
 * Building Unity apps in a cloud CI/CD environment requires a Unity **Plus** or a **Pro** license. Your license is used to activate Unity on the Codemagic build server so the iOS and Android projects can be exported.  The license is returned during the publishing step of the workflow which is always run **except if the build is cancelled**.
 
-  You can use [Unity dashboard](https://id.unity.com/en/serials) to check the number of free seats on your license or to manually return a seat if neccessary.
+  You can use [Unity dashboard](https://id.unity.com/en/serials) to check the number of free seats on your license or to manually return a seat if necessary.
 
 * You will also need an Oculus developer account. This account will be used to publish the built Unity app to the Oculus app release channel. You can sign up for the Oculus developer program [here](https://developer.oculus.com/).
 * An Oculus app associated with your Unity VR app configured for new build uploads in release channels. To learn more about Oculus developer apps and release channels, check out [the Oculus official docs](https://developer.oculus.com/resources/publish-intro/).
@@ -268,7 +268,7 @@ Then, click **Edit > Project Settings** and:
 3. Expand **Other Settings** and check the **Override Default Package Name** checkbox.
 4. Enter the package name for your app, e.g. `com.domain.yourappname`.
 5. Set the **Version number**.
-6. Put any integer value in the **Bundle Version Code**. This will be overriden with the build script.
+6. Put any integer value in the **Bundle Version Code**. This will be overridden with the build script.
 7. Set the **Minimum API Level** and **Target API Level** to `Android 10.0 (API Level 29)` (note that higher versions are not supported by Oculus at the moment).
 8. In the **Configuration** section set **Scripting Backend** to `IL2CPP`.
 
@@ -377,7 +377,7 @@ Follow [the official guide](https://developer.oculus.com/resources/publish-refer
 4. Enter the variable group name, e.g. **_oculus_credentials_**. Click the button to create the group.
 5. Make sure the **Secure** option is selected.
 6. Click the **Add** button to add the variable.
-7. Rrepeat the process to also add either the `OCULUS_APP_SECRET` or the `OCULUS_USER_TOKEN` variable.
+7. Repeat the process to also add either the `OCULUS_APP_SECRET` or the `OCULUS_USER_TOKEN` variable.
 8. Add the **unity_credentials** variable group to the `codemagic.yaml`:
 {{< highlight yaml "style=paraiso-dark">}}
   environment:

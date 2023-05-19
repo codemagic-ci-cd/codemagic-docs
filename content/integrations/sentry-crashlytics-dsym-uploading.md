@@ -1,12 +1,14 @@
 ---
 description: How to upload dsym artifacts to Sentry
 title: Uploading dSYM to Sentry
+linkTitle: Sentry integration
 weight: 12
 aliases:
  - /knowledge-base/sentry-crashlytics-dsym-uploading
+ - /knowledge-others/sentry-crashlytics-dsym-uploading
 ---
 
-**Sentry** is a crash reporting platform that provides you with real-time insight into production deployments with info to reproduce and fix crashes.
+[**Sentry**](https://sentry.io/from/crashlytics/) is a crash reporting platform that provides you with real-time insight into production deployments with info to reproduce and fix crashes.
 
 **dSYM** is used to symbolicate your crash reports. The purpose of **dSYM** is to replace symbols in the crash logs with the specific methods so it will be readable and helpful for debugging the crash.
 

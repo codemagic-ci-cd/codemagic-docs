@@ -2,7 +2,7 @@
     {{ $activePage := .activePage}}
     {{ $page := .page}}
     <a
-        js-docs-link
+        data-js-docs-link
         class="{{ if eq $activePage $page }}active{{ end }}"
         href="{{ $page.RelPermalink }}"
         {{if $page.Params.platform}}data-js-platform-specific="{{$page.Params.platform}}"{{end}}>
@@ -17,19 +17,19 @@
         {{ range .menuItems }}
             {{ if not .Params.hide }}
                 <div class="item item__category {{if $collapsible}}item__category--collapsible{{end}}"
-                    js-docs-menu-item
+                    data-js-docs-menu-item
                     {{if .Params.preference }}data-js-configuration-category="{{.Params.preference}}"{{end}}
                 >
                     <div
                         class="item__category__name"
-                        js-category-name
+                        data-js-category-name
                         data-category-id="{{ .Identifier }}"
-                        {{if $collapsible}}js-category-toggle{{end}}
-                        {{ if or ($currentPage.HasMenuCurrent "main" .) (in $currentPage.Params.menuCategories .Identifier) }}js-open{{ end }}
+                        {{if $collapsible}}data-js-category-toggle{{end}}
+                        {{ if or ($currentPage.HasMenuCurrent "main" .) (in $currentPage.Params.menuCategories .Identifier) }}data-js-open{{ end }}
                     >
                         {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}Configuration{{else}}{{.Name}}{{end}}
                     </div>
-                    <div class="item__category__posts {{ if .HasChildren }}item__category__posts--expandable{{end}}" js-category-posts>
+                    <div class="item__category__posts {{ if .HasChildren }}item__category__posts--expandable{{end}}" data-js-category-posts>
                         {{ if .HasChildren }}
                             {{ template "main-menu" ( dict "menuItems" .Children "currentPage" $currentPage "collapsible" true ) }}
                         {{ end }}
@@ -58,15 +58,15 @@
     <section class="collection collection--extra">
         {{ range .menuItems }}
             {{ range where site.Pages "Section" .Identifier }}
-                <a js-docs-link class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <a data-js-docs-link class="{{ if eq $currentPage . }}active{{ end }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
             {{ end }}
         {{ end }}
     </section>
 {{end}}
 
-<nav id="docs-menu" js-docs-menu>
-    <section id="preference-switch" js-preference-switch>
-        <div id="preference-bg" js-preference-bg></div>
+<nav id="docs-menu" data-js-docs-menu>
+    <section id="preference-switch" data-js-preference-switch>
+        <div id="preference-bg" data-js-preference-bg></div>
         <div class="option active" data-js-preference-option="flutter">Workflow Editor</div>
         <div class="option" data-js-preference-option="yaml">.YAML</div>
     </section>

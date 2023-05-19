@@ -31,9 +31,8 @@ environment:
 scripts:
   - name: Update S3 bucket
     script: | 
-      sudo pip3 install awscli --upgrade
       aws s3 sync <FOLDER OR FILE> s3://<BUCKET_NAME>
-{{< /highlight >}}
+{{< /highlight>}}
 
 
 Now, each time you build the workflow, the app artifact will be published to your Amazon S3 bucket.

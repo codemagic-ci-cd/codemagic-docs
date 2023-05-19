@@ -3,16 +3,16 @@ md = window.markdownit()
 let notifications = []
 let notificationsLoaded = false
 let fetchError = false
-const loadingHeader = document.querySelector('[js-notes-loading]')
+const loadingHeader = document.querySelector('[data-js-notes-loading]')
 const fetchNotifications = async () => {
-    await fetch('https://strapi.codemagic.io/notifications', {
+    await fetch('https://strapi.codemagic.io/notifications?_limit=1000', {
         mode: 'cors',
         headers: { Accept: 'application/json' },
     })
         .then((res) => {
             res.json()
                 .then((data) => {
-                    const toc = document.querySelector('[js-toc] #TableOfContents')
+                    const toc = document.querySelector('[data-js-toc] #TableOfContents')
                     renderNotifications(data, toc)
                 })
                 .catch((err) => {
@@ -48,7 +48,7 @@ const tocItemtemplate = ({ reference, title }) => {
 const renderNotifications = (notifications, toc) => {
     loadingHeader.style.display = 'none'
     toc.innerHTML = '<ul></ul>'
-    const wrap = document.querySelector('[js-notifications-wrap]')
+    const wrap = document.querySelector('[data-js-notifications-wrap]')
     const tocWrap = toc.querySelector('ul')
     notifications
         .sort((a, b) => new Date(b.start) - new Date(a.start))

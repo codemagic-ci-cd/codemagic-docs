@@ -28,6 +28,8 @@ When billing is enabled, you will see the current usage, the due amount and the 
 
 Click on **Update billing details** to change the billing information or add additional details, such as company name, billing email, address and tax ID.
 
+Tax ID is only available for team accounts and not personal teams. 
+
 ### Changing card
 
 To change the card used for payments, click **Edit** in the credit card section under the billing details. You can then click **New card** to register a new card or select a different card from already registered cards.
@@ -37,10 +39,6 @@ To change the card used for payments, click **Edit** in the credit card section 
 To disable billing, click **Disable billing** in the Billing details section. On disabling billing, you will be immediately charged for the used paid features.
 
 Note that you may only disable billing if there are no unpaid invoices. In case you have unpaid invoices, please verify or update your card information. Then navigate to Billing history and find any invoice that is not in paid status. Finally, open up each unpaid invoice and click **Pay invoice** to retry the payment.
-
-## Billing per team user
-
-For pay-as-you-go team plans, each team user is billed at the rate on the [pricing page](https://codemagic.io/pricing/). See the [counting team users](../teams/users) guide for details on how we count team users.
 
 ## Billing per build minute
 
@@ -64,6 +62,5 @@ Note that overdue invoices should be paid before the subscription can be disable
 
 The following certificates are available for download:
 
-- [Tax residency certificate](https://drive.google.com/file/d/1POJkniDAJ3w1wnN_-K7MkfqF6hXcjZ96/view?usp=sharing)
+- [Tax residency certificate](https://drive.google.com/file/d/1IHdt_WMULlm86ZWgq6U8z-wKxlqlbvVD/view?usp=sharing)
 - [W-8BEN-E certificate](https://drive.google.com/file/d/1xvdjxjIUc9EuYOtFZRrqyDfdAMCxs37p/view?usp=sharing)
-
