@@ -147,7 +147,7 @@ curl -XPOST -H 'x-auth-token: <your-auth-token>' \
 
 {{<notebox>}}
 **Note:** 
-Sometimes you might want to store files e.g. **Android keystores**, or **.env** files. You can pass them as a base64 encoded value like this:
+Files such as **Android keystores**, or **.env** files should be base64 encoded and can be passed like this:
 
   `-d '{ "key": "<variable-name>", "value":`**`$(cat fileName | base64) ...`**
 
