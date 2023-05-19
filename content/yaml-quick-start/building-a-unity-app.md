@@ -717,14 +717,70 @@ public class IosBuildPostprocessor
 }
 {{< /highlight >}}
 
-<!-- ## Caching
-You can speed up your build by caching the Library folder, read more about caching [here](https://docs.codemagic.io/yaml/yaml-getting-started/#cache).
+## Caching
+Caching certain directories can significantly speed up the build process by avoiding unnecessary recompilation or re-downloading of dependencies. Here are some directories that you should consider caching: 
+
+- `Library`: The Library directory in your Unity project contains various generated files, including the Unity package cache, script compilation artifacts, and build settings.
+
+- `Temp`: The Temp directory holds temporary files generated during the build process. Caching this directory can prevent redundant regeneration of temporary data, such as asset import caches, asset bundle dependencies, and shader compilations.
+
+### Using Codemagic's caching system
+You can cache up to **1 GB** files for each workflow you have by specifying the paths you want to cache like this.
 {{< highlight yaml "style=paraiso-dark">}}
     cache:
       cache_paths:
         - $CM_BUILD_DIR/Library
-{{< /highlight >}} -->
+        - $CM_BUILD_DIR/Temp
+{{< /highlight >}}
 
+Read more about caching [here](https://docs.codemagic.io/yaml/yaml-getting-started/#cache).
+### Using your own external storage system
+If your caching step is being skipped because it's exceeding the maximum allowed size of 1 GB then you can use some external storage to store your cahcing files.
+
+In the following example we are going to use **AWS S3**.
+
+#### Using AWS S3
+In order to use **AWS S3**, you need to configure your access credentials in Codemagic. You can follow the [instructions](https://aws.amazon.com/getting-started/hands-on/backup-to-s3-cli/) provided by Amazon to create your account and get the necessary credentials.
+
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
+2. Enter the desired **_Variable name_**, e.g. `AWS_ACCESS_KEY_ID`.
+3. Enter the required value as **_Variable value_**.
+4. Enter the variable group name, e.g. **_aws_credentials_**. Click the button to create the group.
+5. Make sure the **Secure** option is selected.
+6. Click the **Add** button to add the variable.
+7. Repeat the process to also add the `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION` variables.
+8. Import the  **_aws_credentials_** group.
+
+Add the script below to your `scripts` section before your build script to check if S3 bucket has an old cached file. 
+
+{{< highlight yaml "style=paraiso-dark">}}
+- name: Check S3 bucket for cached files
+  script: | 
+    if echo $(aws s3 ls s3://<BUCKET_NAME>) | grep -q library-<APP_NAME>.tar.gz ; then 
+      echo "Caching files were found in the S3 bucket."; 
+      aws s3 cp s3://<BUCKET_NAME>/library-<APP_NAME>.tar.gz ${CM_BUILD_DIR}
+      gunzip < library-<APP_NAME>.tar.gz | tar -xv
+    else 
+      echo "No caching files were found in the S3 bucket."; 
+    fi
+{{< /highlight >}}
+
+{{<notebox>}}
+Replace `<BUCKET_NAME>` with your actual bucket name and `<APP_NAME>` with your app name.
+{{</notebox>}}
+
+At the publishing section add this script to make a copy of your Library folder and upload it.
+
+{{< highlight yaml "style=paraiso-dark">}}
+publishing:
+  scripts:
+    - name: Uploading caching files to S3 bucket
+      script: | 
+        tar -cv Library/ | gzip > library-<APP_NAME>.tar.gz
+        aws s3 cp library-<APP_NAME>.tar.gz s3://<BUCKET_NAME>
+{{< /highlight >}}
+  
+It's important to note that the effectiveness of caching depends on the nature of your project and how frequently different directories change. It's recommended to experiment with caching different directories and measure the impact on your build times to find the optimal configuration for your Codemagic pipeline.
 
 ## Conclusion
 Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to build, code sign, automatically version and publish your project using Codemagic CI/CD.
