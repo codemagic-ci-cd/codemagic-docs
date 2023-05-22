@@ -440,3 +440,79 @@ workflows:
 {{< /highlight >}}
 
 Notice how Codemagic has native integration for sending to TestFlight and App Store.
+
+## 3rd Party Integrations
+
+There are many Actions in the marketplace that you usually use with GitHub Actions workflow. One of the popular collections is the [Apple GitHub Actions](https://github.com/Apple-Actions), which is A collection of GitHub Actions for building CI/CD pipelines for apps on Apple operating systems.
+
+These help with importing code-signing certificates into keychain, downloading provisioning profiles from Apple AppStore Connect, uploading the build to Apple TestFligh and App Store, etc.
+
+Being a mobile-focused CI provider, Codemagic has native integrations for all the above cases to make it easier to work with them.
+
+### Import Code Signing 
+In GitHub Actions, the `apple-actions/import-codesign-certs@v2` action is used for importing code signing certificates for an iOS application. This action takes the base64-encoded p12 file and password as secrets and uses them to set up the environment for code signing.
+
+{{< highlight Shell "style=rrt">}}
+uses: apple-actions/import-codesign-certs@v2
+with: 
+  p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
+  p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
+{{< /highlight >}}
+
+In Codemagic, code signing for iOS applications is handled differently. It requires you to upload the certificate (.p12) and provisioning profile (.mobileprovision) directly to the Codemagic dashboard. After uploading, Codemagic assigns an ID to these files, which you can then reference in your codemagic.yaml file if you want.
+
+### Downloading Profiles 
+
+In GitHub Actions, the `apple-actions/download-provisioning-profiles@v1` action is used for downloading the provisioning profiles from App Store Connect.
+
+In Codemagic, you usually upload the provisioning profile directly to the Codemagic dashboard, which then assigns an ID that can be used in the codemagic.yaml file.
+
+{{< highlight Shell "style=rrt">}}
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - name: 'Download Provisioning Profiles'
+      id: provisioning
+      uses: apple-actions/download-provisioning-profiles@v1
+      with: 
+        bundle-id: 'com.example.App'
+        profile-type: 'IOS_APP_STORE'
+        issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+        api-key-id: ${{ secrets.APPSTORE_KEY_ID }}
+        api-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+  
+    - name: 'Another example step'
+      run: echo ${{ steps.provisioning.outputs.profiles }}
+{{< /highlight >}}
+
+{{< highlight Shell "style=rrt">}}
+scripts:
+  - name: Set up provisioning profiles settings on Xcode project
+    script: xcode-project use-profiles
+{{< /highlight >}}
+
+### Uploading to TestFlight 
+In GitHub Actions, you can use the `apple-actions/upload-testflight-build@v1` action to upload the app to TestFlight.
+
+{{< highlight Shell "style=rrt">}}
+- name: 'Upload app to TestFlight'
+  uses: apple-actions/upload-testflight-build@v1
+  with: 
+    app-path: 'path/to/application.ipa' 
+    issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+    api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
+    api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+{{< /highlight >}}
+
+In Codemagic, however, you'd set up the TestFlight publishing under the publishing key in the `codemagic.yaml` that natively supports uploading to TestFlight and different beta groups.
+
+{{< highlight Shell "style=rrt">}}
+publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        beta_groups:
+          - Testers
+        submit_to_app_store: false
+{{< /highlight >}}
