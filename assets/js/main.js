@@ -327,9 +327,9 @@ editableFields.forEach(field => {
 
         if (editing) return 
     
+        container.insertBefore(input, field)
         container.removeChild(field)
         input.value = field.innerText
-        container.appendChild(input)
 
         editing = true 
     })
@@ -347,8 +347,8 @@ editableFields.forEach(field => {
     document.addEventListener('click', () => {
         if (!container.contains(input)) return 
     
+        container.insertBefore(field, input)
         container.removeChild(input)
-        container.appendChild(field)
 
         editing = false;
     })
@@ -357,8 +357,8 @@ editableFields.forEach(field => {
         if (event.key === "Enter") {
             event.stopPropagation();
 
+            container.insertBefore(field, input)
             container.removeChild(input)
-            container.appendChild(field)
 
             editing = false;
         }
