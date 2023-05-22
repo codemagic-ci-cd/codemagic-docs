@@ -330,7 +330,6 @@ editableFields.forEach(field => {
         container.insertBefore(input, field)
         container.removeChild(field)
         input.value = field.innerText
-        // container.appendChild(input)
 
         editing = true 
     })
