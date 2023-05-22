@@ -516,3 +516,73 @@ publishing:
           - Testers
         submit_to_app_store: false
 {{< /highlight >}}
+
+## Environment Variables 
+Both providers allow you to set environment variables in your workflows. Environment variables are used to dynamically adjust the execution environment, for example, by pointing to different file locations, specifying a build version, or managing secret data like API keys.
+
+In GitHub Actions, environment variables are set up within the GitHub Actions workflow configuration file or through the repository settings under **Secrets**. They can be used directly within your workflow file or in scripts. 
+
+Codemagic provides a similar way to manage environment variables. You can set them up in your Codemagic app settings or directly in the `codemagic.yaml` file. It offers additional security for sensitive data through the **encryption** of environment variables.
+
+The migration from GitHub Actions to Codemagic involves transferring these environment variables from GitHub Actions to Codemagic. This process for you includes identifying the variables in your GitHub workflows and then adding them to Codemagic while handling any sensitive data.
+
+In GitHub Actions:
+Identify the environment variables in your GitHub Actions workflows. These are typically defined in the env section of a job, step, or at the workflow level. For example:
+
+{{< highlight Shell "style=rrt">}}
+env:
+  MY_SECRET: ${{ secrets.MY_SECRET }}
+  MY_PUBLIC_VARIABLE: 'Hello, world!'
+{{< /highlight >}}
+
+In Codemagic:
+- Open your app settings in Codemagic and navigate to the Environment variables section.
+- Click on **Add new** to add a new environment variable. Enter the variable name (for example, MY_SECRET) and its corresponding value. Repeat this step for all the environment variables that you want to migrate.
+- Click on **Save** to save your changes.
+
+For your `codemagic.yaml`, you can now reference these environment variables using the $ notation, for example:
+
+{{< highlight Shell "style=rrt">}}
+workflows:
+  my-workflow:
+    environment:
+      vars:
+        MY_SECRET: $MY_SECRET
+        MY_PUBLIC_VARIABLE: 'Hello, world!'
+{{< /highlight >}}
+
+> Note: Make sure to respect any sensitive information and encrypt the variable in the Codemagic UI.
+
+
+## Scheduling Builds
+Both GitHub Actions and Codemagic provide features for scheduling your builds. This can be particularly useful for automating regular tasks such as nightly builds or regular checks against your codebase.
+
+In GitHub Actions, scheduling is done through the `on.schedule` syntax in your workflow file. For example:
+
+{{< highlight Shell "style=rrt">}}
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+{{< /highlight >}}
+
+This example triggers the workflow to run every day at midnight.
+
+### Migrating Scheduled Builds to Codemagic:
+In Codemagic, scheduled builds can be set up using the UI in your application settings.
+
+- Log in to Codemagic and select the project you wish to work on. In your project settings, go to **Scheduled Builds**, and click on **Add new schedule**
+- You can now select a branch and set the build trigger time by specifying the build frequency and time.
+- Click on **Save** to apply the scheduled build setting.
+
+Note: Codemagic does not provide the ability to configure scheduled builds directly in the codemagic.yaml configuration file. It is supposed to be done through the user-friendly interface as described above.
+
+## Webhooks 
+Webhooks provide a way for applications to be notified when specific events occur. GitHub Actions and Codemagic both support the use of webhooks, though the setup and configuration are a bit different for each. In GitHub, webhooks are set up at the repository level. You can configure a webhook to be triggered on specific events, such as a push to the repository, a pull request, or a new issue.
+
+### Migrating Webhooks to Codemagic
+In Codemagic, webhooks can be used to trigger builds automatically. Here is how you can set up a webhook in Codemagic:
+
+- Log in to Codemagic and go to your app settings and choose **Webhook** option.
+- Copy the provided URL, the Payload URL for this specific webhook.
+- Use this webhook URL in your external services or systems to trigger builds in Codemagic. For instance, you might want to set it up in your repository to start a build in Codemagic whenever a push is made.
+- Check for successful delivery by clicking on the **Refresh List** button. 
