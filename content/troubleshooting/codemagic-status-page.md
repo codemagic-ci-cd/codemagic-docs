@@ -4,6 +4,6 @@ title: Codemagic status page
 weight: 5
 ---
 
-We post information about the service status, including maintenances and service disruptions, Github Discussion channel available [here](https://github.com/orgs/codemagic-ci-cd/discussions)
+We post information about the service status, including maintenance and service disruptions on GitHub Discussions [here](https://github.com/orgs/codemagic-ci-cd/discussions)
 
 Please use this channel to report issues with the availability of the service.
