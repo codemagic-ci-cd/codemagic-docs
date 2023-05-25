@@ -21,7 +21,7 @@ If you are building white label apps for multiple customers, you will need acces
 
 You will also need to make sure that distribution certificates, bundle ids, provisioning profiles, APNS certificates, analytics configurations etc. are available for each version of the app you are going to build. 
 
-In order to write your white labeling scripts, familiarity with shell scripting will also be an advantage. You can find some samples for common tasks [here](./white-label-scripts/).
+In order to write your white labeling scripts, familiarity with shell scripting will also be an advantage. You can find some samples for common tasks [here](./white-label-getting-started/).
 
 ## Managing assets
 
@@ -127,4 +127,4 @@ Once you are familiar with how Codemagic works, you should try your automation s
 
 ## Next steps
 
-Check out some sample white labeling script examples [here](./white-label-scripts/) or the final white-label sample project [here](https://github.com/codemagic-ci-cd/white-label-demo-project).
+Check out the getting started guide [here](./white-label-getting-started/) or the final white-label sample project [here](https://github.com/codemagic-ci-cd/white-label-demo-project).
