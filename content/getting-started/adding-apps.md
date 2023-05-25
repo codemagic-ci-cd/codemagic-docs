@@ -16,7 +16,7 @@ aliases:
 
 ## Connecting a Git repository
 
-Adding applications to Codemagic is a simple and straightwordard process of connecting your Git repository and selecting the repository root for the application.
+Adding applications to Codemagic is a simple and straightforward process of connecting your Git repository and selecting the repository root for the application.
 
 
 {{< tabpane >}}
