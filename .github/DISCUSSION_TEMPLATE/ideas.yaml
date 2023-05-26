@@ -1,0 +1,18 @@
+labels: ["Ideas"]
+body:
+  - type: textarea
+    id: "use-case"
+    attributes:
+      label: "Use case"
+      description: "Please tell us what you are trying to achieve and if there are any current solutions or workarounds you are using."
+      render: Text
+    validations:
+      required: true
+  - type: textarea
+    id: "idea"
+    attributes:
+      label: "Idea"
+      description: "Briefly describe your idea."
+      render: Text
+    validations:
+      required: true
