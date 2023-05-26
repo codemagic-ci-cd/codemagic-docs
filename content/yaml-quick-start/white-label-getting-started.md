@@ -1,11 +1,11 @@
 ---
 description: All the required steps to White label your application using Codemagic
-title: White label getting started guide
-weight: 2
+title: White label apps
 aliases:
   - /getting-started/white-label-apps
   - /knowledge-git/white-label-apps
   - /knowledge-white-label/white-label-scripts
+weight: 15  
 ---
 
 These are the steps you need to get started white labeling your application using Codemagic.
@@ -19,11 +19,11 @@ These are the steps you need to get started white labeling your application usin
 ## 1. Create a Codemagic app linked with the base code
 You don’t have to create a Codemagic application for each client you want to white-label for, only one application linked with your base code is required.
 
-Adding applications to Codemagic is a simple and straightforward process of connecting your Git repository and selecting the repository root for the application, read more [here](https://docs.codemagic.io/getting-started/adding-apps/).
+{{< include "/partials/quickstart/add-app-to-codemagic.md" >}}
 
-## 2. Storing client’s assets
+## 2. Storing client assets
 
-While you have only one dynamic workflow, you need to give each client a unique identity so Codemagic knows who are you building for.
+While you have only one dynamic workflow, you need to give each client a unique identifer so Codemagic knows who are you building for.
 
 Each client should have a folder containing all unique assets needed for rebranding and uses a unique identifier in the file name for each client, e.g. `assets_001.zip` for client `001`.
 
@@ -36,11 +36,20 @@ Each client should have a folder containing all unique assets needed for rebrand
 
 All archive files for all clients need to be stored somewhere Codemagic can access during the build e.g.(S3/GCP bucket, or headless CMS).
 
-## 3. Create a new unique environment variables group for each client (via UI or API)
-
+## 3. Create a new unique environment variables group for each client
 During the white-label build, Codemagic uses client-specific data to set or replace various values in the base code and to sign and publish the app to the stores. 
 
 You should create a uniquely named environment variable group for each of your clients that contains secure environment variables for items such as certificates, profiles, API keys, or other client-specific credentials.
+
+This group might contain the following environment variables:
+- Android package name. `PACKAGE_NAME`.
+- Android Keystore information. `CM_KEYSTORE` (base64 encoded), `CM_KEY_ALIAS`, `CM_KEY_PASSWORD`, `CM_KEYSTORE_PASSWORD`, `CM_KEYSTORE_PATH`.
+- The content of the Google Cloud service JSON file to publish to Play Store. `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, learn how to get it [here](../yaml-publishing/google-play/#configure-google-play-api-access).
+- iOS app details. `APP_STORE_ID`, `BUNDLE_ID`.
+- App Store Connect API key. `APP_STORE_CONNECT_KEY_IDENTIFIER`, `APP_STORE_CONNECT_ISSUER_ID`, `APP_STORE_CONNECT_PRIVATE_KEY`, learn how to create create a new key [here](../yaml-code-signing/alternative-code-signing-methods/#:~:text=Creating%20the%20App%20Store%20Connect%20API%20key).
+- iOS Distribution certificate private key. `CERTIFICATE_PRIVATE_KEY`, learn how to obtain it [here](../yaml-code-signing/alternative-code-signing-methods/#:~:text=Obtaining%20the%20Certificate%20private%20key).
+- **.env** file if your app uses some secrets at runtime. `DOTENV_FILE` (base64 encoded).
+
 
 To add these values you can either use the [Codemagic UI](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/#configuring-environment-variables) or use the Codemagic REST API to add these groups and values programmatically, which could be advantageous if you have a large number of clients or wish to add these values from your own backend system or client dashboard.
 
@@ -49,7 +58,7 @@ To add an environment variable using the Codemagic REST API, you need your API a
 
 - The access token is available in the Codemagic UI under **Teams > Personal Account > Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
 - Once you have added your app in Codemagic, open its settings and copy the **application id** from the browser address bar - `https://codemagic.io/app/<APP_ID>/settings`
-- The client group name, is the group that holds all variables for this client e.g. "WL_CLIENT_ID".
+- The client group name, is the group that holds all variables for this client e.g. `WL_001`, `WL_002`.
 
 An example of adding a secure variable to an application group looks like this:
 
@@ -83,22 +92,6 @@ Your codemagic.yaml file contains various workflows for building your app for al
 
 In most cases, white label automation is done using shell scripts to perform tasks such as downloading assets, copying files such as logos, images, fonts, etc. to a new location, or changing string values in projects. Here you will find some common script samples we are using in our final [sample project](https://github.com/codemagic-ci-cd/white-label-demo-project/blob/main/codemagic.yaml).
 
-### Downloading assets from a headless CMS
-
-If you prefer to store your assets in a CMS system, then you can usually interact with its API and download any uploaded files using a cURL request.  
-
-The example below shows how to download assets from Contentful providing the `CLIENT_ID` for the assets you want to download.
-
-
-{{< highlight yaml "style=paraiso-dark">}}
-
-# curl request to the Contentful API and parse the response with jq to get the url and remove leading double slash from the url.
-FILE_URL=$(curl --request GET --header "Authorization: Bearer $CONTENTFUL_API_TOKEN" "https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/environments/master/assets" | jq '.items[].fields' | jq -r --arg id "assets_$CLIENT_ID" '. | select (.title==$id) | .file.url' | cut -c 3-) 
-
-# cURL request to download the file to the build machine
-curl -H "Authorization: Bearer $CONTENTFUL_API_TOKEN" $FILE_URL --output assets.zip
-{{< /highlight >}}
-
 ### Downloading assets from Amazon S3
 
 The Amazon CLI tools are pre-installed on Codemagic’s machines which makes it easy to store assets such as images, fonts, logos, etc. in an encrypted S3 bucket and then download these to the build machine when building each white label version. 
@@ -106,54 +99,82 @@ The Amazon CLI tools are pre-installed on Codemagic’s machines which makes it 
 The following is an example of downloading a zip archive from Amazon S3 during the build where the `CLIENT_ID` variable is provided when the build is triggered using the Codemagic REST API:
 
 {{< highlight yaml "style=paraiso-dark">}}
-name: Get assets from AWS S3 bucket
-script: | 
-  aws s3 cp s3://cmwhitelabel/assets_${CLIENT_ID}.zip $CM_BUILD_DIR/assets.zip
-  unzip assets.zip -d client_assets
+environment:
+  groups:
+    - aws_credentials
+  vars:
+    S3_BUCKET_NAME: cmwhitelabel 
+    CLIENT_ASSETS_FOLDER: client_assets
+  ...    
+scripts:
+  - name: Get assets from AWS S3 bucket
+    script: | 
+      aws s3 cp s3://$S3_BUCKET_NAME/assets_${CLIENT_ID}.zip assets.zip
+      unzip assets.zip -d $CLIENT_ASSETS_FOLDER
 {{< /highlight >}}
 
-### Changing string values in files
+{{<notebox>}}
+Use this script if you're using a headless CMS instead:
+{{< highlight yaml>}}
+scripts:
+  - name: Get assets from AWS S3 bucket
+    script: | 
+      FILE_URL=$(curl --request GET --header "Authorization: Bearer $CONTENTFUL_API_TOKEN" "https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/environments/master/assets" | jq '.items[].fields' | jq -r --arg id "assets_$CLIENT_ID" '. | select (.title==$id) | .file.url' | cut -c 3-) 
+      curl -H "Authorization: Bearer $CONTENTFUL_API_TOKEN" $FILE_URL --output assets.zip
+
+{{< /highlight >}}
+
+
+{{</notebox>}}
+
+### Replacing Android package name
+
+You can use the [change_app_package_name](https://pub.dev/packages/change_app_package_name) flutter package to set a new Android package name, by installing the package first, then running it with the string value stored in the environment variable called `$PACKAGE_NAME`.
+
+{{< highlight yaml "style=paraiso-dark">}}
+- name: Change Android package name
+  script: | 
+    flutter pub add change_app_package_name
+    flutter pub run change_app_package_name:main $PACKAGE_NAME
+{{< /highlight >}}
+### Replacing iOS bundle Id
 
 The automation scripts used in a white label workflow will often need to modify the content of a configuration file. This can be achieved using the `sed` stream editor utility, which can perform basic text transformations such as replacing or adding text in a file. 
 
-For example, if you want to change the bundle identifier used in the Xcode project by modifying the `project.pbxproj` file, the following script will look for all instances of the string “io.codemagic.whitelabel.dev” and replace it with the string value stored in the environment variable called BUNDLE_ID which would be typically passed to the workflow using the REST API.
+For example, if you want to change the bundle identifier used in the Xcode project by modifying the `project.pbxproj` file, the following script will look for all instances of the string “io.codemagic.whitelabel.dev” and replace it with the string value stored in the environment variable called `$BUNDLE_ID`.
 
 {{< highlight yaml "style=paraiso-dark">}}
-environment:
-  vars:
+- name: Set bundle id
+  script: | 
     PBXPROJ=$CM_BUILD_DIR/ios/Runner.xcodeproj/project.pbxproj
-    ...
-name: Set bundle id
-script: | 
-  # The value of BUNDLE_ID will be set when the build is triggered using the Codemagic REST API
-  sed -i.bak "s/\io.codemagic.whitelabel.dev/$BUNDLE_ID/g" $PBXPROJ
+    sed -i.bak "s/\$BASE_BUNDLE_ID/$BUNDLE_ID/g" $PBXPROJ
 {{< /highlight >}}
 
-### Updating plist files
+### Chaning app name
+
+{{< tabpane >}}
+{{% tab header="Android" %}}
+Using `sed`, the following script will replace the line in the `AndroidManifest.xml` that starts with `android:label=` with a new line contains the new app name `$APP_NAME`.
+
+{{< highlight yaml "style=paraiso-dark">}}
+- name: Change Android app name
+  script: sed -i.bak "s/android:label=.*/android:label=\"$APP_NAME\"/g" android/app/src/main/AndroidManifest.xml
+{{< /highlight >}}
+
+{{% /tab %}}
+
+{{% tab header="iOS" %}}
 
 **PlistBuddy** is a utility on macOS that can be used to perform operations on plist files. This approach can be used with native Swift/Objective-C apps, but please note that setting values directly in a Flutter project may cause problems with your project and you should consider using `sed` instead.
 
 {{< highlight yaml "style=paraiso-dark">}}
-
-# Set the path to the Info.plist in your project
-PLIST=$CM_BUILD_DIR/project-name/Info.plist
-
-# Set the location of the PlistBuddy binary
-PLIST_BUDDY=/usr/libexec/PlistBuddy
-
-# Set the bundle id $BUNDLE_ID which is passed as environment variable in API request to trigger the build
-$PLIST_BUDDY -c "Set :CFBundleIdentifier $BUNDLE_ID" $PLIST
-
-# Set CFBundleDisplayName using $BUNDLE_DISPLAY_NAME which is passed as environment variable in API request to trigger the build
-$PLIST_BUDDY -c "Set :CFBundleDisplayName $BUNDLE_DISPLAY_NAME" $PLIST
-
-# Set the app version number
-$PLIST_BUDDY -c "Set :CFBundleShortVersionString 1.0.0" $PLIST
-
-# Set the value for App Uses Non Exempt encryption to false
-$PLIST_BUDDY -c "Set :ITSAppUsesNonExemptEncryption NO" $PLIST
-
+- name: Change iOS app name
+  script: /usr/libexec/PlistBuddy -c "Set :CFBundleName $APP_NAME" -c "Set :CFBundleDisplayName $APP_NAME" ios/${XCODE_SCHEME}/Info.plist
 {{< /highlight >}}
+
+{{< /tab >}}
+
+{{< /tabpane >}}
 
 ### Changing app icons
 
@@ -164,8 +185,7 @@ For Android apps, you should run a script to update the icons located in `androi
 
 {{< highlight yaml "style=paraiso-dark">}}
 name: Change Android app icons
-script: | 
-  cp -r ./$CLIENT_ASSETS_FOLDER/android_assets/* ./android/app/src/main/res
+script: cp -r ./$CLIENT_ASSETS_FOLDER/android_assets/* ./android/app/src/main/res
 {{< /highlight >}}
 
 {{% /tab %}}
@@ -174,15 +194,9 @@ script: |
 
 For iOS apps, if you look at an Xcode project using Finder, you will see that the icons added in Xcode are located in `<project-name>/<scheme-name>/Assets.xcassets/AppIcon.appiconset`. This means that after downloading icon assets for a specific client’s build, you can change them on disk by simply deleting the existing `AppIcon.appiconset` directory, and then copying the assets into the `Assets.xcassets` directory. 
 
-For example, you could do the following as one of your workflow steps:
-
 {{< highlight yaml "style=paraiso-dark">}}
 name: Change iOS app icons
-script: | 
-  # delete the existing icons
-  rm -rf ios/Runner/Assets.xcassets/AppIcon.appiconset
-  # copy the downloaded icons to Assets.xcassets directory
-  cp -r ./$CLIENT_ASSETS_FOLDER/ios_assets ios/Runner/Assets.xcassets/
+script: cp -r ./$CLIENT_ASSETS_FOLDER/ios_assets ios/Runner/Assets.xcassets/
 {{< /highlight >}}
 
 {{< /tab >}}
@@ -191,10 +205,25 @@ script: |
 
 ### Automatic build versioning
 
-Each new app version that is published to Google Play or the Apple App Store needs to have a unique build number. You can use Codemagic’s CLI tools to retrieve the previous build number and then increment this for each new build. For example, the following shows how to increment the build number when building Flutter iOS apps:
+Each new app version that is published to Google Play or the Apple App Store needs to have a unique build number. You can use Codemagic’s CLI tools to retrieve the previous build number and then increment this for each new build. For example, the following shows how to increment the build number when building Flutter apps:
+{{< tabpane >}}
+{{% tab header="Android" %}}
 
 {{< highlight yaml "style=paraiso-dark">}}
-name: Flutter build ipa and automatic versioning
+name: Flutter build aab with automatic versioning
+script: | 
+  flutter build appbundle --release \
+    --build-name=1.0.0 \
+    --build-number=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks="$GOOGLE_PLAY_TRACK") + 1))
+
+{{< /highlight >}}
+
+{{% /tab %}}
+
+{{% tab header="iOS" %}}
+
+{{< highlight yaml "style=paraiso-dark">}}
+name: Flutter build ipa with automatic versioning
 script: | 
   flutter build ipa --release \
     --build-name=1.0.0 \
@@ -202,7 +231,11 @@ script: |
     --export-options-plist=/Users/builder/export_options.plist
 {{< /highlight >}}
 
-## Publish to client’s stores
+{{< /tab >}}
+
+{{< /tabpane >}}
+
+### Publishing to customer stores
 You can automate the process of publishing each client’s app to their store account with Codemagic.
 
 
@@ -244,8 +277,121 @@ Read more on this [here](https://docs.codemagic.io/yaml-publishing/app-store-con
 <br>
 {{<notebox>}}
 
-⚠️ There’s a limitation when it comes to dealing with stores, you need to manually create and upload the 1st version of each app, then Codemagic can take care of the rest.
+⚠️ When it comes to dealing with stores, due to shortage in provided APIs you need to manually create and upload the 1st version of each app, then Codemagic can take care of the rest.
 {{</notebox>}}
+
+### Conclusion
+Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to download client assets from AWS S3 bucket, chaning app name and icons, replacing exciting package name and bundle Id, build, code sign, automatically version and publish to each customer stores accounts.
+
+Your final `codemagic.yaml` file should look something like this:
+
+{{< tabpane >}}
+
+{{< tab header="Android" >}}
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  android-client-release:
+    name: Android client release
+    instance_type: mac_mini_m1
+    labels:
+      - ${CLIENT_ID} # Helpful when you open your Codemagic's builds page 
+    environment:
+      groups:
+        - aws_credentials # Includes (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION)
+      vars:
+        S3_BUCKET_NAME: cmwhitelabel # The name of your S3 bucket that have all of your clients assets.
+        CLIENT_ASSETS_FOLDER: client_assets # The name of unzipped folder on the build machine that have the client assets.
+        ANDROID_ASSETS_FOLDER: android_assets # The name of your folder in S3 bucket that have the client's Android assets from (/android/app/src/main/res/).
+        IOS_ASSETS_FOLDER: ios_assets # The name of your folder in S3 bucket that have the client's iOS assets from (/ios/Runner/Assets.xcassets/).
+        GOOGLE_PLAY_TRACK: internal
+    scripts:
+      - name: Get assets from AWS S3 bucket
+        script: | 
+          aws s3 cp s3://$S3_BUCKET_NAME/assets_${CLIENT_ID}.zip assets.zip
+          unzip assets.zip -d $CLIENT_ASSETS_FOLDER
+      - name: Set Package name
+        script: | 
+          flutter pub add change_app_package_name
+          flutter pub run change_app_package_name:main $PACKAGE_NAME
+      - name: Change Android icons
+        script: cp -r ./$CLIENT_ASSETS_FOLDER/$ANDROID_ASSETS_FOLDER/* ./android/app/src/main/res
+      - name: Set up keystore
+        script: echo $CM_KEYSTORE | base64 --decode > $CM_KEYSTORE_PATH
+      - name: Install dependencies
+        script: flutter packages pub get
+      - name: Flutter build aab and automatic versioning
+        script: | 
+          BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks="$GOOGLE_PLAY_TRACK") + 1))
+          flutter build appbundle --release \
+          --build-name=1.0.$BUILD_NUMBER \
+          --build-number=$BUILD_NUMBER
+    artifacts: 
+      - build/**/outputs/**/*.aab
+    publishing:
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: $GOOGLE_PLAY_TRACK 
+{{< /highlight >}}
+{{< /tab >}}
+
+{{< tab header="iOS" >}}
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  ios-client-release:
+    name: iOS client release
+    instance_type: mac_mini_m1
+    labels:
+      - ${CLIENT_ID} # Helpful when you open your Codemagic's builds page  
+    environment:
+      groups:
+        - aws_credentials # Includes (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_DEFAULT_REGION)
+      vars:
+        S3_BUCKET_NAME: cmwhitelabel # The name of your S3 bucket that have all of your clients assets.
+        CLIENT_ASSETS_FOLDER: client_assets # The name of unzipped folder on the build machine that have the client assets.
+        ANDROID_ASSETS_FOLDER: android_assets # The name of your folder in S3 bucket that have the client's Android assets from (/android/app/src/main/res/).
+        IOS_ASSETS_FOLDER: ios_assets # The name of your folder in S3 bucket that have the client's iOS assets from (/ios/Runner/Assets.xcassets/).
+        XCODE_WORKSPACE: "ios/Runner.xcworkspace"
+        XCODE_SCHEME: "Runner"
+        BASE_BUNDLE_ID: io.codemagic.whitelabel.dev # <-- Put the bundle ID that exists in the code, it will be replaced with the client's.
+    scripts:
+      - name: Get assets from AWS S3 bucket
+        script: | 
+          aws s3 cp s3://$S3_BUCKET_NAME/assets_${CLIENT_ID}.zip assets.zip
+          unzip assets.zip -d $CLIENT_ASSETS_FOLDER
+      - name: Set bundle id # Replace the base bundle Id with the client's
+        script: | 
+          PBXPROJ=$CM_BUILD_DIR/ios/Runner.xcodeproj/project.pbxproj
+          sed -i.bak "s/\$BASE_BUNDLE_ID/$BUNDLE_ID/g" $PBXPROJ
+      - name: Change iOS icons
+        script: cp -r ./$CLIENT_ASSETS_FOLDER/$IOS_ASSETS_FOLDER ios/Runner/Assets.xcassets/
+      - name: Install pods
+        script: find . -name "Podfile" -execdir pod install \;
+      - name: iOS code signing
+        script: | 
+          keychain initialize
+          app-store-connect fetch-signing-files "$BUNDLE_ID" --type IOS_APP_STORE --create
+          keychain add-certificates
+          xcode-project use-profiles
+      - name: Install dependencies
+        script: flutter packages pub get      
+      - name: Flutter build ipa and automatic versioning
+        script: | 
+          BUILD_NUMBER=$(($(app-store-connect get-latest-app-store-build-number "$APP_STORE_ID") + 1))
+          flutter build ipa --release \
+          --build-name=1.0.$BUILD_NUMBER \
+          --build-number=$BUILD_NUMBER\
+          --export-options-plist=/Users/builder/export_options.plist
+    artifacts: 
+      - build/ios/ipa/*.ipa
+    publishing:      
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+{{< /highlight >}}
+{{< /tab >}}
+
+{{< /tabpane >}}
 
 ## 5. Start new builds via API
 
