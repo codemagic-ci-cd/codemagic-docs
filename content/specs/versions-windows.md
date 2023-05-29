@@ -25,14 +25,14 @@ weight: 3
 - DotNet4.5.2 `4.5.2.20140902`
 - fastlane `2.209.1`
 - firebase `11.21.0`
-- flutter `3.7.12 (C:\Users\builder\programs\flutter)`
+- flutter `3.10.2 (C:\Users\builder\programs\flutter)`
 - gem `3.3.7`
 - gh `2.6.0`
 - Google Cloud SDK `423.0.0`
 - gsutil 4.67- git `2.33.1`
 - grep `2.1032`
 - less `590.0`
-- node `16.14.0`
+- node `16.20.0`
 - npm `8.3.1`
 - openssl `1.1.1.1100`
 - powershell-core `7.1.5`
