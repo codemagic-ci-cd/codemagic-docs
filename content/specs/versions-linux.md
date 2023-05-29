@@ -15,7 +15,7 @@ weight: 2
 
 - System version `Ubuntu 20.04.2 LTS`
 - Kernel version `5.11.0-1029-gcp`
-- Disk `97GB (Free Space: 46GB)`
+- Disk `97GB (Free Space: 43GB)`
 
 ## Pre-installed tools
 
@@ -27,17 +27,17 @@ weight: 2
 - ew-cli `0.0.44`
 - fastlane `2.209.1`
 - firebase `11.21.0`
-- flutter `3.7.12 ($HOME/programs/flutter)`
+- flutter `3.10.2 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
 - Google Cloud SDK `423.0.0`
-- gradle `7.3.1`
+- gradle `7.6`
 - gsutil `4.65`
 - ionic `5.4.16`
 - jq `jq-1.6`
 - ktlint `0.43.2`
-- node `16.16.0`
+- node `16.20.0`
 - npm `8.11.0`
 - python2 `2.7.18`
 - python `3.8.10`

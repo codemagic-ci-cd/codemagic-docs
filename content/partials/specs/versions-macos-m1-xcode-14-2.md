@@ -14,7 +14,7 @@ weight: 11
 
 - System version `macOS 13.3.1 (22E261)`
 - Kernel version `Darwin 22.4.0`
-- Disk `294GB (Free Space: 86GB)`
+- Disk `294GB (Free Space: 96GB)`
 
 ## Pre-installed tools
 
@@ -26,15 +26,15 @@ weight: 11
 - cordova `11.0.0`
 - curl `7.87.0`
 - docker `N/A`
-- ew-cli `0.9.8`
+- ew-cli `0.9.13`
 - fastlane `2.212.2`
 - firebase `11.21.0`
-- flutter `3.7.12 ($HOME/programs/flutter)`
+- flutter `3.10.1 ($HOME/programs/flutter)`
 - gem `3.4.8`
 - gh `2.23.0`
 - git `2.39.2`
 - Google Cloud SDK `404.0.0`
-- gradle `7.3.1`
+- gradle `8.1.1`
 - gsutil `5.14`
 - homebrew `4.0.9`
 - ionic `5.4.16`
@@ -70,7 +70,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Xcode versions
 
-- 14.3 (14E222b) `/Applications/Xcode-14.3.app`, also selected when specifying `latest` or `edge` in Xcode version settings
+- 14.3.1 (14E300b) `/Applications/Xcode-14.3.app`, also selected when specifying `14.3`, `latest` or `edge` in Xcode version settings
 - 14.2 (14C18) `/Applications/Xcode-14.2.app`
 
 ### Runtimes
