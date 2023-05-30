@@ -280,7 +280,7 @@ Read more on this [here](https://docs.codemagic.io/yaml-publishing/app-store-con
 ⚠️ When it comes to dealing with stores, due to shortage in provided APIs you need to manually create and upload the 1st version of each app, then Codemagic can take care of the rest.
 {{</notebox>}}
 
-### Conclusion
+### Full YAML sample
 Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to download client assets from AWS S3 bucket, chaning app name and icons, replacing exciting package name and bundle Id, build, code sign, automatically version and publish to each customer stores accounts.
 
 Your final `codemagic.yaml` file should look something like this:
@@ -407,53 +407,64 @@ An example of triggering a single build and passing an environment variable to s
 
 
 {{< highlight yaml "style=paraiso-dark">}}
-- name: Trigger single client builds
-  script: | 
-    CLIENT="001"
-    curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
-      --data '{
-          "appId": "<app-id>", 
-          "workflowId": "<workflow-id>",
-          "branch": "<branch-name>",
-          "labels": ["'${CLIENT}'"],
-          "environment": { 
-              "variables": { 
-                  "CLIENT_ID": "'${CLIENT}'"
-              },
-              "groups": [
-                  "WL_${CLIENT}"
-              ]
-          }
-        }' \
-       https://api.codemagic.io/builds
+curl -H "Content-Type: application/json" -H "x-auth-token: <auth-token>" \
+  --data '{
+      "appId": "<app-id>", 
+      "workflowId": "<workflow-id>",
+      "branch": "<branch-name>",
+      "labels": ["<client-id>"],
+      "environment": { 
+          "variables": { 
+              "CLIENT_ID": "<client-id>"
+          },
+          "groups": [
+              "<client-group-name>"
+          ]
+      }
+    }' \
+  https://api.codemagic.io/builds
 {{< /highlight >}}
 
+Instead of triggering a single build for each client on your local machine manually, you can create a Codemagic workflow that loops through all of your client and trigger a new build for each one of them.
 
-
-In the following example, to trigger builds for clients `001`, `002` and `003` a simple array is first defined and then a for loop is used to initiate a build for each element in the array. The unique `CLIENT_ID` variable is provided in the payload for the three builds that are started when this command is run.
+In the following example, you can trigger this workflow by merging a PR into this branch.
 
 {{< highlight yaml "style=paraiso-dark">}}
-- name: Trigger multiple client builds
-  script: | 
-      CLIENTS=("001" "002" "003")
-      for CLIENT in ${CLIENTS[@]}; do
-          echo "CLIENT: $CLIENT"  
-          curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
-              --data '{
-                  "appId": "<app-id>", 
-                  "workflowId": "<workflow-id>",
-                  "branch": "<branch-name>",
-                  "environment": { 
-                      "variables": { 
-                          "CLIENT_ID": "'${CLIENT}'"
-                      },
-                      "groups": [
-                          "WL_${CLIENT}"
-                      ]                      
-                  }
-              }' \
-          https://api.codemagic.io/builds
-      done
+workflows:
+  trigger:
+    name: trigger builds for all clients
+    environment:
+      groups:
+        - cm_credentials # Includes (CM_API_KEY)
+    triggering:
+      events:
+        - pull_request
+      branch_patterns:
+        - pattern: '<current-branch-name>'
+          include: true
+          source: true      
+    scripts:
+      - name: Trigger multiple client builds
+        script: | 
+            CLIENTS=("001" "002" "003") # put your clients IDs here
+            for CLIENT in ${CLIENTS[@]}; do
+                echo "CLIENT: $CLIENT"  
+                curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
+                    --data '{
+                        "appId": "<app-id>", 
+                        "workflowId": "<workflow-id>",
+                        "branch": "<branch-name>",
+                        "environment": { 
+                            "variables": { 
+                                "CLIENT_ID": "'${CLIENT}'"
+                            },
+                            "groups": [
+                                "WL_${CLIENT}"
+                            ]                      
+                        }
+                    }' \
+                https://api.codemagic.io/builds
+            done
 {{< /highlight >}}
 
 The **Codemagic REST API** can also be used for white label solutions where a dashboard is made available to your clients so they can customize an app themselves. This means they could upload their own icons, images, etc. to brand their app and then create a new build of their app. It could also be more advanced and allow clients to add their own distribution certificates, provisioning profiles and API keys.
