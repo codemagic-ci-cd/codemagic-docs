@@ -61,8 +61,8 @@ Post-processing does not consume any build minutes.
   [
     {
         "language": "en-US",
-        "text": "Customised text",
-        "whatsNew": "Customised description",
+        "text": "Customized text",
+        "whatsNew": "Customized description",
     }
   ]
   ```
