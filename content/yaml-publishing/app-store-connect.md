@@ -56,7 +56,7 @@ Note that Codemagic does not send status updates on the post-processing step. Yo
 Post-processing does not consume any build minutes.
 
 {{<notebox>}}
-**Note:** Post-processing step is triggered only when release notes are found in the project's working directory with the "whatsNew" keyword in it:
+**Note:** Post-processing triggered by the presence of release notes will only occur if the release notes are found in the project's working directory and contain the "whatsNew" keyword:
  ``` 
   [
     {
