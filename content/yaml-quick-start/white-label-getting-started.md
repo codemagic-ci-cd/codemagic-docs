@@ -1,5 +1,5 @@
 ---
-description: All the required steps to White label your application using Codemagic
+description: How to white-label your application using codemagic.yaml
 title: White label apps
 aliases:
   - /getting-started/white-label-apps
@@ -12,9 +12,9 @@ These are the steps you need to get started white labeling your application usin
 
 1. [Create a Codemagic app linked with the base code](#create-a-codemagic-app-linked-with-the-base-code)
 2. [Storing client’s assets somewhere Codemagic can access](#storing-clients-assets)
-3. [Create a new unique environment variables group for each client (via UI or API)](#create-a-new-unique-environment-variables-group-for-each-client-via-ui-or-api)
+3. [Create a unique environment variable group for each client (via UI or API)](#create-a-new-unique-environment-variables-group-for-each-client-via-ui-or-api)
 4. [Setup your `codemagic.yaml` workflows to dynamically build for all clients](#setup-your-codemagicyaml-workflows-to-dynamically-build-for-all-clients)
-5. [Start new builds via API, passing the client Id, and the environment variables’ group name](#start-new-builds-via-api)
+5. [Start new builds via API, passing the client Id, and the environment variable group name](#start-new-builds-via-api)
 
 ## 1. Create a Codemagic app linked with the base code
 You don’t have to create a Codemagic application for each client you want to white-label for, only one application linked with your base code is required.
@@ -28,15 +28,20 @@ While you have only one dynamic workflow, you need to give each client a unique 
 Each client should have a folder containing all unique assets needed for rebranding and uses a unique identifier in the file name for each client, e.g. `assets_001.zip` for client `001`.
 
 {{<notebox>}}
-💡 The zip archive can have these folders:
+💡 The zip archive typically contains these folders:
 
 - **`android_assets/`**. This folder contains the Android icons from `/android/app/src/main/res/`.
 - **`ios_assets/`**. This folder contains the iOS icons from `/ios/Runner/Assets.xcassets/AppIcon.appiconset/`.
+
+Other assets such as fonts, images, etc. can also be added to this zip archive. 
+
+Avoid adding any sensitive files such as certificates, profiles, key stores, or other sensitive data in this archive.
+
 {{</notebox>}}
 
 All archive files for all clients need to be stored somewhere Codemagic can access during the build e.g.(S3/GCP bucket, or headless CMS).
 
-## 3. Create a new unique environment variables group for each client
+## 3. Create a unique environment variable group for each client
 During the white-label build, Codemagic uses client-specific data to set or replace various values in the base code and to sign and publish the app to the stores. 
 
 You should create a uniquely named environment variable group for each of your clients that contains secure environment variables for items such as certificates, profiles, API keys, or other client-specific credentials.
@@ -117,7 +122,7 @@ scripts:
 Use this script if you're using a headless CMS instead:
 {{< highlight yaml>}}
 scripts:
-  - name: Get assets from AWS S3 bucket
+  - name: Get assets from Contentful CMS
     script: | 
       FILE_URL=$(curl --request GET --header "Authorization: Bearer $CONTENTFUL_API_TOKEN" "https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/environments/master/assets" | jq '.items[].fields' | jq -r --arg id "assets_$CLIENT_ID" '. | select (.title==$id) | .file.url' | cut -c 3-) 
       curl -H "Authorization: Bearer $CONTENTFUL_API_TOKEN" $FILE_URL --output assets.zip
@@ -127,7 +132,7 @@ scripts:
 
 {{</notebox>}}
 
-### Replacing Android package name
+### Changing the Android package name
 
 You can use the [change_app_package_name](https://pub.dev/packages/change_app_package_name) flutter package to set a new Android package name, by installing the package first, then running it with the string value stored in the environment variable called `$PACKAGE_NAME`.
 
@@ -137,7 +142,7 @@ You can use the [change_app_package_name](https://pub.dev/packages/change_app_pa
     flutter pub add change_app_package_name
     flutter pub run change_app_package_name:main $PACKAGE_NAME
 {{< /highlight >}}
-### Replacing iOS bundle Id
+### Changing the iOS bundle ID
 
 The automation scripts used in a white label workflow will often need to modify the content of a configuration file. This can be achieved using the `sed` stream editor utility, which can perform basic text transformations such as replacing or adding text in a file. 
 
@@ -277,7 +282,7 @@ Read more on this [here](https://docs.codemagic.io/yaml-publishing/app-store-con
 <br>
 {{<notebox>}}
 
-⚠️ When it comes to dealing with stores, due to shortage in provided APIs you need to manually create and upload the 1st version of each app, then Codemagic can take care of the rest.
+⚠️ Neither Apple nor Google provides APIs that programmatically allow an app to be created. Therefore, you will need to create and upload the first version of each app manually. After that Codemagic can fully automate the white-label process.
 {{</notebox>}}
 
 ### Full YAML sample
