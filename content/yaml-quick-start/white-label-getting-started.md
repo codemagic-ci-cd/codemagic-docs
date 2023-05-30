@@ -10,22 +10,22 @@ weight: 15
 
 These are the steps you need to get started white labeling your application using Codemagic.
 
-1. [Create a Codemagic app linked with the base code](#create-a-codemagic-app-linked-with-the-base-code)
+1. [Add your base app to Codemagic](#add-your-base-app-to-codemagic)
 2. [Storing client’s assets somewhere Codemagic can access](#storing-clients-assets)
 3. [Create a unique environment variable group for each client (via UI or API)](#create-a-new-unique-environment-variables-group-for-each-client-via-ui-or-api)
 4. [Setup your `codemagic.yaml` workflows to dynamically build for all clients](#setup-your-codemagicyaml-workflows-to-dynamically-build-for-all-clients)
 5. [Start new builds via API, passing the client Id, and the environment variable group name](#start-new-builds-via-api)
 
-## 1. Create a Codemagic app linked with the base code
+## 1. Add your base app to Codemagic
 You don’t have to create a Codemagic application for each client you want to white-label for, only one application linked with your base code is required.
 
 {{< include "/partials/quickstart/add-app-to-codemagic.md" >}}
 
 ## 2. Storing client assets
 
-While you have only one dynamic workflow, you need to give each client a unique identifer so Codemagic knows who are you building for.
+Instead of adding each customer's assets to the base app repository, you should store the assets required for rebranding the app somewhere accessible by Codemagic. This could be an encrypted S3 or GCP storage bucket or a headless CMS. Each customer should be assigned a unique identifier which can be passed to the white-label workflow when the build is started.
 
-Each client should have a folder containing all unique assets needed for rebranding and uses a unique identifier in the file name for each client, e.g. `assets_001.zip` for client `001`.
+You should create a zip archive for each client that uses their unique identifier in the file name, e.g. `assets_001.zip` for client `001`. When a build is started for a specific customer's app, this unique identifier will be sent in the API request payload and the correct asset archive will be downloaded and used to rebrand the app. 
 
 {{<notebox>}}
 💡 The zip archive typically contains these folders:
@@ -38,8 +38,6 @@ Other assets such as fonts, images, etc. can also be added to this zip archive.
 Avoid adding any sensitive files such as certificates, profiles, key stores, or other sensitive data in this archive.
 
 {{</notebox>}}
-
-All archive files for all clients need to be stored somewhere Codemagic can access during the build e.g.(S3/GCP bucket, or headless CMS).
 
 ## 3. Create a unique environment variable group for each client
 During the white-label build, Codemagic uses client-specific data to set or replace various values in the base code and to sign and publish the app to the stores. 
@@ -56,7 +54,7 @@ This group might contain the following environment variables:
 - **.env** file if your app uses some secrets at runtime. `DOTENV_FILE` (base64 encoded).
 
 
-To add these values you can either use the [Codemagic UI](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/#configuring-environment-variables) or use the Codemagic REST API to add these groups and values programmatically, which could be advantageous if you have a large number of clients or wish to add these values from your own backend system or client dashboard.
+To add these values you can either use the [Codemagic UI](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/#configuring-environment-variables) or use the [Codemagic REST API](https://docs.codemagic.io/rest-api/codemagic-rest-api/) to add these groups and values programmatically, which could be advantageous if you have a large number of clients or wish to add these values from your own backend system or client dashboard.
 
 
 To add an environment variable using the Codemagic REST API, you need your API access token, the application id, the client group unique name, and the variable name and value. 
@@ -155,7 +153,7 @@ For example, if you want to change the bundle identifier used in the Xcode proje
     sed -i.bak "s/\$BASE_BUNDLE_ID/$BUNDLE_ID/g" $PBXPROJ
 {{< /highlight >}}
 
-### Chaning app name
+### Changing app name
 
 {{< tabpane >}}
 {{% tab header="Android" %}}
