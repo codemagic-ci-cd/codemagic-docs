@@ -314,3 +314,116 @@ Provided you have exported your Google Play Console service account credentials 
 
 
 Alternatively, you can add a custom [Pre-build script](/flutter-configuration/custom-scripts) and write the build number to a file, which will be read from your `android/app/build.gradle` during the build (See details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file)).
+
+
+
+## Firebase latest build version
+
+Use [`firebase-app-distribution get-latest-build-version`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/firebase-app-distribution/get-latest-build-version.md#get-latest-build-version) action from Codemagic CLI tools to get the latest build version from Firebase.
+
+In order to do that, you need to provide Firebase access credentials by providing `FIREBASE_SERVICE_ACCOUNT_CREDENTIALS` as arguments to the action, as defined below.
+
+Additionally, you will need to provide project ID (e.g. `228333310124`) and application ID (e.g. `1:228333310124:ios:5e439e0d0231a788ac8f09`).
+
+
+#### Creating Firebase service account credentials
+
+You will need to set up a [Firebase service account](https://docs.codemagic.io/yaml-publishing/firebase-app-distribution/).
+
+#### Configuring the API access environment variables
+
+{{< tabpane >}}
+{{< tab header="codemagic.yaml" >}}
+{{<markdown>}}
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
+2. Enter the `FIREBASE_SERVICE_ACCOUNT_CREDENTIALS` as **_Variable name_**.
+3. Copy and paste the credentials content as **_Variable value_**.
+4. Enter the variable group name, e.g. **_firebase_credentials_**. Click the button to create the group.
+5. Make sure the **Secure** option is selected.
+6. Click the **Add** button to add the variable.
+
+7. Add the variable group to your `codemagic.yaml` file
+{{< highlight yaml "style=paraiso-dark">}}
+  environment:
+    groups:
+      - firebase_credentials
+{{< /highlight >}}
+{{</markdown>}}
+{{< /tab >}}
+
+
+{{% tab header="Flutter workflow editor"%}}
+
+Add the `FIREBASE_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutter project in **App settings > Environment variables** (See the details [here](../flutter-configuration/env-variables)).
+{{% /tab %}}
+{{< /tabpane >}}
+
+
+<br>
+{{<notebox>}}
+**Tip:** Alternatively, credentials can be specified as a command argument with the dedicated flag, see the details [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/firebase-app-distribution/get-latest-build-version.md#--credentials--cfirebase_service_account_credentials). In any case, it is advisable to save the service account credentials file to an environment variable so that it can be accessed during a build without committing it to version control. The environment variable will be a fallback for the missing value in the script.
+{{</notebox>}}
+
+
+#### Set the build version
+
+Once you have the Firebase access set, you can get the build version using the CLI tool:
+
+{{< highlight bash "style=paraiso-dark">}}
+LATEST_BUILD_VERSION=$(firebase-app-distribution get-latest-build-version -p 228333310124 -a 1:228333310124:ios:5e439e0d0231a788ac8f09)
+{{< /highlight >}}
+
+There are a number of ways how you can pass the obtained build version to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Here is an example using `gradlew` arguments:
+
+1. Edit your `build.gradle` file by adding the functions to read version name and code number from argument properties
+
+{{< highlight Groovy "style=paraiso-dark">}}
+// get version code from the specified property argument `-PversionCode` during the build call
+def getMyVersionCode = { ->
+    return project.hasProperty('versionCode') ? versionCode.toInteger() : -1
+}
+// get version name from the specified property argument `-PversionName` during the build call
+def getMyVersionName = { ->
+    return project.hasProperty('versionName') ? versionName : "1.0"
+}
+
+....
+android {
+    ....
+    defaultConfig {
+        ...
+        versionCode getMyVersionCode()
+        versionName getMyVersionName()
+{{< /highlight >}}
+
+2. Add a script to your `codemagic.yaml` file to set the build version and pass it to `gradlew` command
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Build Android release
+    script: |
+      LATEST_FIREBASE_BUILD_VERSION=$(firebase-app-distribution get-latest-build-version -p "$PACKAGE_ID" -a "$APPLICATION_ID")
+      if [ -z $LATEST_FIREBASE_BUILD_VERSION ]
+        then
+          # fallback in case no build version was found at Firebase.
+          # Alternatively, you can `exit 1` to fail the build
+          # BUILD_NUMBER is a Codemagic built-in variable tracking the number of
+          # times this workflow has been built
+          UPDATED_BUILD_VERSION=$BUILD_NUMBER
+        else
+          UPDATED_BUILD_VERSION=$(($LATEST_FIREBASE_BUILD_VERSION + 1))
+      fi
+      cd android # change folder if needed
+      ./gradlew bundleRelease -PversionCode=$UPDATED_BUILD_VERSION -PversionName=1.0.$UPDATED_BUILD_VERSION
+{{< /highlight >}}
+
+#### Get the build version in the Flutter workflow editor
+
+Provided you have exported your Firebase service account credentials as an environment variable `FIREBASE_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immediately as a build argument to your Android build command to increment the build version:
+
+{{< highlight bash "style=paraiso-dark">}}
+--build-number=$(($(firebase-app-distribution get-latest-build-version -p 228333310124 -a 1:228333310124:ios:5e439e0d0231a788ac8f09) + 1))
+{{< /highlight >}}
+
+
+Alternatively, you can add a custom [Pre-build script](/flutter-configuration/custom-scripts) and write the build version to a file, which will be read from your `android/app/build.gradle` during the build (See details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file)).
