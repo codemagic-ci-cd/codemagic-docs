@@ -48,7 +48,7 @@ There are two options for setting up publishing to App Store Connect. You can ei
 ### Post-processing of App Store Connect distribution (Magic Actions)
 
 {{<notebox>}}
-Please note that publishing to App Store Connect through **app_specific_password** has been deprecated and Post-processing action will not be triggered unless using the new way of publishing as explained above.
+Please note that publishing to App Store Connect through **app_specific_password** has been deprecated and post-processing actions will not be triggered unless using the new way of publishing as explained above.
 {{</notebox>}}
 
 Some App Store Connect actions, like `submit_to_testflight`, `beta_groups`, `cancel_previous_submissions`, `expire_build_submitted_for_review`, and uploading release notes take place asynchronously in the post-processing step after the app artifact has been successfully published to App Store Connect and the main workflow has completed running in Codemagic. This avoids using the macOS build machine while we are waiting for Apple to complete processing the build and it becomes available for further actions.
