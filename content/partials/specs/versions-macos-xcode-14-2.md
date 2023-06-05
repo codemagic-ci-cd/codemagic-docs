@@ -35,7 +35,7 @@ weight: 9
 - gh `2.20.2`
 - git `2.39.0`
 - Google Cloud SDK `404.0.0`
-- gradle `8.1.1!`
+- gradle `8.1.1`
 - gsutil `5.14`
 - homebrew `4.0.6`
 - ionic `6.12.4`
