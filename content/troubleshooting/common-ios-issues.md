@@ -40,8 +40,8 @@ When building a Flutter project, a similar error could be thrown due to a couple
 
     > Code Signing Error: "Runner" requires a provisioning profile with the Push Notifications feature. Select a provisioning profile in the Signing & Capabilities editor.
 
-1. Setting up code signing settings on Xcode project step is missing. Double check if **xcode-project use-profiles** step is missing. 
-2. Export options are not valid in the project. It can be configured by adding **--export-options-plist=/Users/builder/export_options.plist** to the build command.
+1. Setting up code signing settings on Xcode project step is missing. Double check if **xcode-project use-profiles** step is missing in **codemagic.yaml** before executing the build command.
+2. Export options are not valid in the project. It can be configured by adding **--export-options-plist=/Users/builder/export_options.plist** to the build command in **codemagic.yaml**. 
 
 
 ###### iOS scheme not specified for the `archive` action of an Xcode build
