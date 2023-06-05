@@ -317,9 +317,9 @@ Alternatively, you can add a custom [Pre-build script](/flutter-configuration/cu
 
 
 
-## Firebase latest build version
+## Firebase App Distribution latest build version
 
-Use [`firebase-app-distribution get-latest-build-version`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/firebase-app-distribution/get-latest-build-version.md#get-latest-build-version) action from Codemagic CLI tools to get the latest build version from Firebase.
+Use [`firebase-app-distribution get-latest-build-version`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/firebase-app-distribution/get-latest-build-version.md#get-latest-build-version) action from Codemagic CLI tools to get the latest build version from Firebase App Distribution.
 
 In order to do that, you need to provide Firebase access credentials by providing `FIREBASE_SERVICE_ACCOUNT_CREDENTIALS` as arguments to the action, as defined below.
 
