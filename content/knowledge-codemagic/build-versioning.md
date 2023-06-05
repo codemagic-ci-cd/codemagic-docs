@@ -426,4 +426,4 @@ Provided you have exported your Firebase service account credentials as an envir
 {{< /highlight >}}
 
 
-Alternatively, you can add a custom [Pre-build script](/flutter-configuration/custom-scripts) and write the build version to a file, which will be read from your `android/app/build.gradle` during the build (See details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file)).
+Alternatively, you can add a custom [Pre-build script](/flutter-configuration/custom-scripts) and write the build version to a file, which will be read from your `android/app/build.gradle` during the build (see details [here](https://github.com/codemagic-ci-cd/android-versioning-example/tree/autoversioning_through_file)).
