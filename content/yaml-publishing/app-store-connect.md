@@ -47,6 +47,10 @@ There are two options for setting up publishing to App Store Connect. You can ei
 
 ### Post-processing of App Store Connect distribution (Magic Actions)
 
+{{<notebox>}}
+Please note that publishing to App Store Connect through **app_specific_password** has been deprecated and post-processing actions will not be triggered unless using the new way of publishing as explained above.
+{{</notebox>}}
+
 Some App Store Connect actions, like `submit_to_testflight`, `beta_groups`, `cancel_previous_submissions`, `expire_build_submitted_for_review`, and uploading release notes take place asynchronously in the post-processing step after the app artifact has been successfully published to App Store Connect and the main workflow has completed running in Codemagic. This avoids using the macOS build machine while we are waiting for Apple to complete processing the build and it becomes available for further actions.
 
 Post-processing of App Store Distribution jobs, or Magic Actions in short, has a two-step timeout. If the uploaded build cannot be found in App Store Connect in 15 minutes, the step times out. This may happen if there are issues with the uploaded artifact, in which case the build does not become available in App Store Connect at all and you'll receive an email from App Store Connect. The overall timeout for post-processing is 120 minutes. If the uploaded build has not exited the processing status by then, post-processing is cancelled. You will still be able to manually submit the build to beta review, upload release notes and distribute the app to beta groups once the build becomes available in App Store Connect.
