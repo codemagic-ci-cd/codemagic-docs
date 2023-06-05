@@ -365,7 +365,7 @@ Add the `FIREBASE_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flut
 {{</notebox>}}
 
 
-#### Set the build version with `agvtool` for Apple projects
+#### Set the build version for iOS projects using `agvtool`
 
 Add the following script under your `scripts` field for `codemagic.yaml`, or as a custom [Pre-build script](/flutter-configuration/custom-scripts) in the Flutter workflow editor:
 
