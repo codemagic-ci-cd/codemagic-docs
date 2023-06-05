@@ -338,7 +338,7 @@ You will need to set up a [Firebase service account](https://docs.codemagic.io/y
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the `FIREBASE_SERVICE_ACCOUNT_CREDENTIALS` as **_Variable name_**.
 3. Copy and paste the credentials content as **_Variable value_**.
-4. Enter the variable group name, e.g. **_firebase_credentials_**. Click the button to create the group.
+4. Enter the variable group name, e.g. `firebase_credentials`. Click the button to create the group.
 5. Make sure the **Secure** option is selected.
 6. Click the **Add** button to add the variable.
 
@@ -365,7 +365,24 @@ Add the `FIREBASE_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flut
 {{</notebox>}}
 
 
-#### Set the build version
+#### Set the build version with `agvtool` for Apple projects
+
+Add the following script under your `scripts` field for `codemagic.yaml`, or as a custom [Pre-build script](/flutter-configuration/custom-scripts) in the Flutter workflow editor:
+
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Get the latest build number
+      script: |
+        LATEST_BUILD_VERSION=$(firebase-app-distribution get-latest-build-version -p 228333310124 -a 1:228333310124:ios:5e439e0d0231a788ac8f09)
+        cd ./ios # avgtool must run in the folder where xcodeproj file is located
+        agvtool new-version -all $(($LATEST_BUILD_VERSION + 1))
+{{< /highlight >}}
+
+
+Alternatively, if you use `YAML` configuration, you may just export the value to an environment variable and use it under your `CFBundleVersion` in `Info.plist`.
+
+
+#### Set the build version for Android projects
 
 Once you have the Firebase access set, you can get the build version using the CLI tool:
 
@@ -405,8 +422,8 @@ scripts:
       LATEST_FIREBASE_BUILD_VERSION=$(firebase-app-distribution get-latest-build-version -p "$PACKAGE_ID" -a "$APPLICATION_ID")
       if [ -z $LATEST_FIREBASE_BUILD_VERSION ]
         then
-          # fallback in case no build version was found at Firebase.
-          # Alternatively, you can `exit 1` to fail the build
+          # Fallback in case no build version was found at Firebase.
+          # Alternatively, you can `exit 1` to fail the build.
           # BUILD_NUMBER is a Codemagic built-in variable tracking the number of
           # times this workflow has been built
           UPDATED_BUILD_VERSION=$BUILD_NUMBER
