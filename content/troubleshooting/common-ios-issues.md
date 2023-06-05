@@ -34,14 +34,14 @@ For example, you're using a **development** certificate with a **distribution** 
 Make sure the certificate and the provisioning profile types match.
 
 ###### Missing entitlements in the Apple Developer portal
-In case of getting errors about an existing provisioning profile's missing entitlements, one can be added or updated by finding and editing the profile in **Apple Developer portal > Certificates, identifier & profiles > Identifiers**. Alternatively, it can be done in Xcode under **Signing&Capabilities** of the given target. 
+In case of getting errors about an existing provisioning profile's missing entitlements, you can add or update the entitlements by finding and editing the profile in **Apple Developer portal > Certificates, identifier & profiles > Identifiers**. Alternatively, it can be done in Xcode under **Signing & Capabilities** of the given target. 
 
 When building a Flutter project, a similar error could be thrown due to a couple of other reasons:
 
     > Code Signing Error: "Runner" requires a provisioning profile with the Push Notifications feature. Select a provisioning profile in the Signing & Capabilities editor.
 
-1. Setting up code signing settings on Xcode project step is missing
-2. Export options are not valid in the project.
+1. Setting up code signing settings on Xcode project step is missing. Double check if **xcode-project use-profiles** step is missing. 
+2. Export options are not valid in the project. It can be configured by adding **--export-options-plist=/Users/builder/export_options.plist** to the build command.
 
 
 ###### iOS scheme not specified for the `archive` action of an Xcode build
