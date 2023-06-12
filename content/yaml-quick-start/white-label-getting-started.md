@@ -144,13 +144,11 @@ You can use the [change_app_package_name](https://pub.dev/packages/change_app_pa
 
 The automation scripts used in a white label workflow will often need to modify the content of a configuration file. This can be achieved using the `sed` stream editor utility, which can perform basic text transformations such as replacing or adding text in a file. 
 
-For example, if you want to change the bundle identifier used in the Xcode project by modifying the `project.pbxproj` file, the following script will look for all instances of the string “io.codemagic.whitelabel.dev” and replace it with the string value stored in the environment variable called `$BUNDLE_ID`.
+For example, if you want to change the bundle identifier used in the Xcode project by modifying the `project.pbxproj` file, the following script will set the `PRODUCT_BUNDLE_IDENTIFIER` with a value stored in the environment variable called `$BUNDLE_ID`.
 
 {{< highlight yaml "style=paraiso-dark">}}
 - name: Set bundle id
-  script: | 
-    PBXPROJ=$CM_BUILD_DIR/ios/Runner.xcodeproj/project.pbxproj
-    sed -i.bak "s/\$BASE_BUNDLE_ID/$BUNDLE_ID/g" $PBXPROJ
+  script: sed -i '' -e 's/PRODUCT_BUNDLE_IDENTIFIER \= [^\;]*\;/PRODUCT_BUNDLE_IDENTIFIER = '${BUNDLE_ID}';/' ios/Runner.xcodeproj/project.pbxproj
 {{< /highlight >}}
 
 ### Changing app name
