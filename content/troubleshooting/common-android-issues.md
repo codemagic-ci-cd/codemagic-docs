@@ -93,13 +93,13 @@ You can refer to the Official Documentation from Android Developer guides to lea
 ### Could not find method firebaseAppDistribution() for arguments...
 
 ###### Description
-When trying to publish to Firebase app Distribution using Gradle build fails with this error "Could not find method firebaseAppDistribution() for arguments..."
+When publishing to Firebase app Distribution using Gradle, build fails with this error "Could not find method firebaseAppDistribution() for arguments..."
 
 ###### Couse
-This issue are likely caused by missing Distribution Gradle plugin or missing dependency for the App Distribution Gradle plugin.
+This issue is likely caused by missing Distribution Gradle plugin or missing dependency for the App Distribution Gradle plugin.
 
 ###### Solution
-1. In your root-level (project-level) Gradle file (<project>/build.gradle or <project>/build.gradle.kts), add the App Distribution Gradle plugin as a buildscript dependency:
+1. In your root-level (project-level) Gradle file (usually android/build.gradle), add the App Distribution Gradle plugin as a buildscript dependency:
 
 {{< highlight groovy "style=paraiso-dark">}}
 buildscript {
@@ -122,11 +122,11 @@ buildscript {
 }
 {{< /highlight >}}
 
-2. In your module (app-level) Gradle file (usually <project>/<app-module>/build.gradle or <project>/<app-module>/build.gradle.kts), add the App Distribution Gradle plugin. And make sure is located below android.application plugin. Sequence of applying plugin matters:
+2. In your module (app-level) Gradle file (usually android/app/build.gradle), add the App Distribution Gradle plugin, and make sure is located below **com.android.application** plugin because the sequence of applying plugin matters:
 
 {{< highlight groovy "style=paraiso-dark">}}
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.firebase.appdistribution'
 {{< /highlight >}}
 
-Check the official Firebase documentation for more information https://firebase.google.com/docs/app-distribution/android/distribute-gradle?apptype=aab#step_1_set_up_your_android_project
+Check the [official Firebase documentation](https://firebase.google.com/docs/app-distribution/android/distribute-gradle?apptype=aab#step_1_set_up_your_android_project) for more information.
