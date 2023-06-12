@@ -89,3 +89,44 @@ Upgrading to the latest version of Gradle in the `gradle-wrapper.properties` fil
 
 You can refer to the Official Documentation from Android Developer guides to learn more about the latest compatible version [here](https://developer.android.com/studio/releases/gradle-plugin#updating-gradle).
 
+
+### Could not find method firebaseAppDistribution() for arguments...
+
+###### Description
+When publishing to Firebase app Distribution using Gradle, build fails with this error "Could not find method firebaseAppDistribution() for arguments..."
+
+###### Couse
+This issue is likely caused by missing Distribution Gradle plugin or missing dependency for the App Distribution Gradle plugin.
+
+###### Solution
+1. In your root-level (project-level) Gradle file (usually android/build.gradle), add the App Distribution Gradle plugin as a buildscript dependency:
+
+{{< highlight groovy "style=paraiso-dark">}}
+buildscript {
+  repositories {
+    // Make sure that you have the following two repositories
+    google()  // Google's Maven repository
+    mavenCentral()  // Maven Central repository
+  }
+
+  dependencies {
+      ...
+      classpath("com.android.tools.build:gradle:7.2.0")
+
+      // Make sure that you have the Google services Gradle plugin dependency
+      classpath("com.google.gms:google-services:4.3.15")
+
+      // Add the dependency for the App Distribution Gradle plugin
+      classpath("com.google.firebase:firebase-appdistribution-gradle:4.0.0")
+  }
+}
+{{< /highlight >}}
+
+2. In your module (app-level) Gradle file (usually android/app/build.gradle), add the App Distribution Gradle plugin, and make sure that it is located below **com.android.application** plugin because the sequence of applying plugin matters:
+
+{{< highlight groovy "style=paraiso-dark">}}
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.firebase.appdistribution'
+{{< /highlight >}}
+
+Check the [official Firebase documentation](https://firebase.google.com/docs/app-distribution/android/distribute-gradle?apptype=aab#step_1_set_up_your_android_project) for more information.
