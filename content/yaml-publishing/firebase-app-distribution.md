@@ -156,8 +156,37 @@ buildTypes {
     }
 {{< /highlight >}}
 
+2. In your root-level (project-level) Gradle file **(<project>/build.gradle)** Add the App Distribution Gradle plugin as a buildscript dependency:
 
-2. Decode application credentials for Firebase authorization:
+{{< highlight groovy "style=paraiso-dark">}}
+buildscript {
+  repositories {
+    // Make sure that you have the following two repositories
+    google()  // Google's Maven repository
+    mavenCentral()  // Maven Central repository
+  }
+
+  dependencies {
+      ...
+      classpath("com.android.tools.build:gradle:7.2.0")
+
+      // Make sure that you have the Google services Gradle plugin dependency
+      classpath("com.google.gms:google-services:4.3.15")
+
+      // Add the dependency for the App Distribution Gradle plugin
+      classpath("com.google.firebase:firebase-appdistribution-gradle:4.0.0")
+  }
+}
+{{< /highlight >}}
+
+3. In your module (app-level) Gradle file (usually **<project>/<app-module>/build.gradle**), add the App Distribution Gradle plugin:
+
+{{< highlight groovy "style=paraiso-dark">}}
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.firebase.appdistribution'
+{{< /highlight >}}
+
+4. Decode application credentials for Firebase authorization:
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:
@@ -167,7 +196,7 @@ scripts:
 {{< /highlight >}}
 
 
-3. Build the application:
+5. Build the application:
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:
@@ -179,7 +208,7 @@ scripts:
 {{< /highlight >}}
 
 
-4. Call the **gradlew** task for distribution
+6. Call the **gradlew** task for distribution
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:
