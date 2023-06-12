@@ -156,7 +156,7 @@ buildTypes {
     }
 {{< /highlight >}}
 
-2. In your root-level (project-level) Gradle file **(<project>/build.gradle)** Add the App Distribution Gradle plugin as a buildscript dependency:
+2. In your root-level (project-level) Gradle file (usually android/build.gradle), add the App Distribution Gradle plugin as a buildscript dependency:
 
 {{< highlight groovy "style=paraiso-dark">}}
 buildscript {
@@ -179,7 +179,7 @@ buildscript {
 }
 {{< /highlight >}}
 
-3. In your module (app-level) Gradle file (usually **<project>/<app-module>/build.gradle**), add the App Distribution Gradle plugin:
+3. In your module (app-level) Gradle file (usually android/app/build.gradle), add the App Distribution Gradle plugin, and make sure is located below **com.android.application** plugin because the sequence of applying plugin matters:
 
 {{< highlight groovy "style=paraiso-dark">}}
 apply plugin: 'com.android.application'
