@@ -122,7 +122,7 @@ buildscript {
 }
 {{< /highlight >}}
 
-2. In your module (app-level) Gradle file (usually android/app/build.gradle), add the App Distribution Gradle plugin, and make sure is located below **com.android.application** plugin because the sequence of applying plugin matters:
+2. In your module (app-level) Gradle file (usually android/app/build.gradle), add the App Distribution Gradle plugin, and make sure that it is located below **com.android.application** plugin because the sequence of applying plugin matters:
 
 {{< highlight groovy "style=paraiso-dark">}}
 apply plugin: 'com.android.application'
