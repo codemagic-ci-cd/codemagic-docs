@@ -33,3 +33,4 @@ When you set up email publishing, Codemagic publishes the following artifacts:
 - the archive with Flutter web build directory
 - Linux application bundle files
 - Windows MSIX packages
+- .exe
