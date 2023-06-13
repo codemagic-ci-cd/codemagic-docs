@@ -16,7 +16,7 @@ When enabled, `flutter analyze` will be run with each build. You can see the res
 ### Dart Code Metrics
 
 {{<notebox>}}
-**Note:** To run Dart Code Metrics with Codemagic, Flutter version 1.27.0-1.0.pre or higher is required.
+**Important!** The Dart Code Metrics integration in Flutter workflow editor will be unavailable from July 16, 2023 onwards as the [dart_code_metrics](https://pub.dev/packages/dart_code_metrics) plugin will be deprecated. Please read the plugin maintainers' [official announcement](https://metabase.flutterci.com/public/dashboard/31550fb9-97a7-400e-87c7-361a38cfe0d8) for more information.
 {{</notebox>}}
 
 Codemagic is integrated with [Dart Code Metrics](https://pub.dev/packages/dart_code_metrics), helping to improve code quality. With Dart Code Metrics it is possible to report code metrics, define additional rules for your dart analyzer and check for anti-patterns.
