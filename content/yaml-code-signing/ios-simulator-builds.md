@@ -20,7 +20,7 @@ Adjust your build script to use this commands instead:
         xcodebuild build \
           -workspace "MyXcodeWorkspace.xcworkspace" \
           -scheme "MyScheme" \
-          CODE_SIGN_INDENTITY="" \
+          CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
           CODE_SIGNING_ALLOWED=NO
         #
@@ -28,7 +28,7 @@ Adjust your build script to use this commands instead:
         # xcodebuild build \
         #    -project ""MyXcodeProject.xcodeproj" \
         #    -scheme "MyScheme" \
-        #    CODE_SIGN_INDENTITY="" \
+        #    CODE_SIGN_IDENTITY="" \
         #    CODE_SIGNING_REQUIRED=NO \
         #    CODE_SIGNING_ALLOWED=NO
 {{< /highlight >}}
