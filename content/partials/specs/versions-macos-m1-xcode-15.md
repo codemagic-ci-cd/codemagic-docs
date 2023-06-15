@@ -70,7 +70,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Xcode versions
 
-- 15.0 (15A5160n) `/Applications/Xcode-15.0.app`
+- 15.0 (15A5160n) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
 
 ### Runtimes
 
