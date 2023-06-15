@@ -10,7 +10,11 @@ Depending on the Xcode version that you specify in **Build Settings** or in `cod
 
 {{< tabpane >}}
 
-{{< tab header="M1 Xcode 14.2+ (default)" >}}
+{{< tab header="M1 Xcode 15" >}}
+{{< include "/partials/specs/versions-macos-m1-xcode-15.md" >}}
+{{< /tab >}}
+
+{{< tab header="M1 Xcode 14.2-14.3 (default)" >}}
 {{< include "/partials/specs/versions-macos-m1-xcode-14-2.md" >}}
 {{< /tab >}}
 
