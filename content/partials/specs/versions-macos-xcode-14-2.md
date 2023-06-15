@@ -1,6 +1,6 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS build machines using Xcode version 14.2+.
-title: macOS build machine specification (Xcode 14.2+ / Unity)
+description: A list of tools available out-of-the-box on Codemagic macOS build machines using Xcode version 14.2.
+title: macOS build machine specification (Xcode 14.2)
 aliases:
 
 weight: 9

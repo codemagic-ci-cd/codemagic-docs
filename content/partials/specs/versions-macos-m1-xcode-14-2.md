@@ -1,6 +1,6 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS M1 build machines using Xcode version 14.2+.
-title: macOS M1 build machine specification (Xcode 14.2+ / Unity)
+description: A list of tools available out-of-the-box on Codemagic macOS M1 build machines using Xcode version 14.2-14.3.
+title: macOS M1 build machine specification (Xcode 14.2-14.3)
 aliases:
 
 weight: 11
@@ -70,7 +70,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Xcode versions
 
-- 14.3.1 (14E300c) `/Applications/Xcode-14.3.app`, also selected when specifying `14.3`, `latest` or `edge` in Xcode version settings
+- 14.3.1 (14E300c) `/Applications/Xcode-14.3.app`, also selected when specifying `14.3` or `latest` in Xcode version settings
 - 14.2 (14C18) `/Applications/Xcode-14.2.app`
 
 ### Runtimes
