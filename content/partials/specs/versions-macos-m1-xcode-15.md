@@ -1,112 +1,101 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS build machines using Xcode version 14.2.
-title: macOS build machine specification (Xcode 14.2)
+description: A list of tools available out-of-the-box on Codemagic macOS M1 build machines using Xcode version 15.0+.
+title: macOS M1 build machine specification (Xcode 15.0+)
 aliases:
 
-weight: 9
+weight: 12
 ---
 
 ## Hardware
 
-- Standard VM on Mac mini `2.3GHz Quad Core / 8GB`
-- Premium VM on Mac Pro `3.7GHz Quad Core / 32GB`
+- Standard VM on Mac mini M1 `3.2GHz Quad Core / 8GB`
 
 ## System
 
-- System version `macOS 12.6.1 (21G217)`
-- Kernel version `Darwin 21.6.0`
-- Disk `322GB (Free Space: 81GB)`
+- System version `macOS 13.4 (22F66)`
+- Kernel version `Darwin 22.5.0`
+- Disk `294GB (Free Space: 92GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
-- Android NDK `23.0.7123448`
-- aws `2.9.6`
-- carthage `0.38.0`
-- cocoapods `1.11.3`
+- Android NDK `25.1.8937393`
+- aws `2.11.6`
+- carthage `0.39.0`
+- cocoapods `1.12.1`
 - cordova `11.0.0`
-- curl `7.79.1`
-- docker `20.10.17`
-- ew-cli `0.9.16`
-- fastlane `2.211.0`
+- curl `7.88.1`
+- docker `N/A`
+- ew-cli `0.9.17`
+- fastlane `2.212.2`
 - firebase `11.21.0`
-- flutter `3.10.3 ($HOME/programs/flutter)`
-- gem `3.3.26`
-- gh `2.20.2`
-- git `2.39.0`
+- flutter `3.10.4 ($HOME/programs/flutter)`
+- gem `3.4.8`
+- gh `2.23.0`
+- git `2.39.2`
 - Google Cloud SDK `404.0.0`
 - gradle `8.1.1`
 - gsutil `5.14`
-- homebrew `4.0.6`
-- ionic `6.12.4`
+- homebrew `4.0.9`
+- ionic `5.4.16`
 - jq `1.6`
-- ktlint `0.47.1`
-- node `16.20.0`
-- npm `8.19.4`
-- python `3.8.7`
-- python3 `3.8.7`
-- ruby `2.7.2p137`
-- ssh `8.6p1`
+- ktlint `0.48.2`
+- node `19.7.0`
+- npm `9.5.0`
+- python `3.8.13`
+- python3 `3.8.13`
+- ruby `3.0.4p208`
+- ssh `9.0p1`
 - sudo `1.9.5p2`
 - swiftgen `6.6.2`
-- tar `3.5.1`
+- tar `3.5.3`
 - ucd `0.11.10`
 - unzip `6.00`
 - wget `1.21.3`
 - yarn `1.22.19`
-- yq `4.30.5`
+- yq `4.31.1`
 - zip `3.0`
 
 ## Android emulators
 
-- **emulator**
-
-    - Device: `pixel_3a (Google)`
-    - Path: `/Users/builder/.android/avd/emulator.avd`
-    - Target: `Google Play (Google Inc.)`
-    - Based on: `Android 11.0 (R)`
-    - Tag/API: `google_apis_playstore/x86`
-    - Skin: `pixel_3a`
-    - Sdcard: `512M`
+Android emulators are not available on M1 machines. Please use a Mac Pro or a Linux instance.
 
 ## Java versions
 
-- **19.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-19.jdk/Contents/Home`
-- **16.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-16.jdk/Contents/Home`
-- **11.0.17** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
-
-## Unity 2020.3.31f1
-
-UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app
+- **19.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-19.jdk/Contents/Home`
+- **17.0.6** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
+- **11.0.18** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_362** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
 ## Xcode versions
 
-- 14.2 (14C18) `/Applications/Xcode-14.2.app`
+- 15.0 (15A5160n) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
 
 ### Runtimes
 
 - iOS 14.5
 - iOS 15.0
 - iOS 15.4
-- iOS 16.2
+- iOS 17.0
 - tvOS 14.5
 - tvOS 15.0
 - tvOS 16.0
 - tvOS 16.1
+- tvOS 16.4
+- tvOS 17.0
 - watchOS 7.4
 - watchOS 8.0
-- watchOS 9.0
 - watchOS 9.1
+- watchOS 9.4
+- watchOS 10.0
 
 ### Devices
 
 - Apple TV
-- Apple TV 4K
 - Apple TV 4K (2nd generation)
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
-- Apple TV 4K (at 1080p)
 - Apple TV 4K (at 1080p) (2nd generation)
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
@@ -130,10 +119,8 @@ UNITY_HOME: /Applications/Unity/Hub/Editor/2020.3.31f1/Unity.app
 - iPad (9th generation)
 - iPad Air (4th generation)
 - iPad Air (5th generation)
-- iPad Pro (11-inch) (2nd generation)
 - iPad Pro (11-inch) (3rd generation)
 - iPad Pro (11-inch) (4th generation)
-- iPad Pro (12.9-inch) (4th generation)
 - iPad Pro (12.9-inch) (5th generation)
 - iPad Pro (12.9-inch) (6th generation)
 - iPad Pro (9.7-inch)
