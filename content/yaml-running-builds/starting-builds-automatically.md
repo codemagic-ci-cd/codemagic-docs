@@ -192,7 +192,7 @@ Environment variables are available under the `env` variable. You can check [bui
 
 Webhook payload is available under the `event` variable. You can check the structure of the webhook payloads that your git provider sends on the **Webhooks** tab in application settings. Note that `event` is not available if the build is started manually from the UI or by a schedule.
 
-For example, this build will continue if the triggering event was *not* a draft pull request update:
+Example 1. This build will continue if the triggering event was *not* a draft pull request update. In other words, it will skip the build if a pull request is marked as a draft:
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -203,6 +203,32 @@ workflows:
         - pull_request
     when:
       condition: not event.pull_request.draft
+{{< /highlight >}}
+
+Example 2. This build will *not* continue if the pull request branch has a specific label name, "codemagicTest" in the following sample:
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  build:
+    name: Build on PR update
+    triggering:
+      events:
+        - pull_request
+    when:
+      condition: not event.pull_request.labels[0].name == "codemagicTest"
+{{< /highlight >}}
+
+Example 3. You can also combine triggering conditions, just make sure that each condition is wrapped with brackets:
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  build:
+    name: Build on PR update
+    triggering:
+      events:
+        - pull_request
+    when:
+      condition: (not event.pull_request.draft) and (event.pull_request.labels[0].name == "codemagicTest)
 {{< /highlight >}}
 
 {{<notebox>}}
