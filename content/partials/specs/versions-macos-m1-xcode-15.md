@@ -70,7 +70,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Xcode versions
 
-- 15.0 (15A5160n) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
+- 15.0 (15A5160n) `/Applications/Xcode-15.0.app`
 
 ### Runtimes
 
@@ -122,7 +122,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - iPad Pro (11-inch) (3rd generation)
 - iPad Pro (11-inch) (4th generation)
 - iPad Pro (12.9-inch) (5th generation)
-- iPad Pro (12.9-inch) (6th generation)
+- iPad Pro (12.9-inch) (6th generation)
 - iPad Pro (9.7-inch)
 - iPad mini (6th generation)
 - iPhone 11
