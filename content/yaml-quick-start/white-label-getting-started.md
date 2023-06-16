@@ -131,14 +131,15 @@ scripts:
 {{</notebox>}}
 
 ### Changing the Android package name
+To natively change the Android package name, we can utilize a build automation tool like Gradle to modify the necessary files.
 
-You can use the [change_app_package_name](https://pub.dev/packages/change_app_package_name) flutter package to set a new Android package name, by installing the package first, then running it with the string value stored in the environment variable called `$PACKAGE_NAME`.
+In this example, we're first creating a file called `changePackage.gradle` in the root directory of the Android project, which updates the `applicationId` property of the defaultConfig block in your app's build configuration, then adding this line to the `app/build.gradle` file to apply the `changePackage.gradle` script during the build process.
 
 {{< highlight yaml "style=paraiso-dark">}}
 - name: Change Android package name
   script: | 
-    flutter pub add change_app_package_name
-    flutter pub run change_app_package_name:main $PACKAGE_NAME
+    echo "android {  defaultConfig { applicationId '${PACKAGE_NAME}' }  }" > android/changePackage.gradle
+    echo "apply from: rootProject.file('changePackage.gradle')" >> android/app/build.gradle
 {{< /highlight >}}
 ### Changing the iOS bundle ID
 
@@ -203,6 +204,11 @@ script: cp -r ./$CLIENT_ASSETS_FOLDER/ios_assets ios/Runner/Assets.xcassets/
 {{< /tab >}}
 
 {{< /tabpane >}}
+<br>
+{{<notebox>}}
+💡 You can also use the [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons) package to generate the icons.
+
+{{</notebox>}}
 
 ### Automatic build versioning
 
