@@ -199,3 +199,16 @@ end
 {{< /highlight >}}
 
 In XCode 13 `CODE_SIGNING_ALLOWED` was set to `NO` by default for resource bundles. While in Xcode 14 they changed this to default to `YES`, which might be causing the problems.
+
+### A required agreement is missing or has expired
+
+###### Description
+Suddenly, the builds started failing with the following message, even though we haven't made any updates to the code:
+
+    A required agreement is missing or has expired. - This request requires an in-effect agreement that has not been signed or has expired.
+
+###### Cause
+Apple has updated Apple Developer Program License Agreement and it needs to be reviewed
+
+###### Solution
+In order to update your existing apps and submit new apps to the App Store, the Account Holder must review and accept the updated agreement by signing in to their [account](https://appstoreconnect.apple.com/agreements/#/) on the Apple Developer website.
