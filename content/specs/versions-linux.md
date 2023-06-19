@@ -23,33 +23,33 @@ weight: 2
 - Android NDK `22.0.7026061`
 - aws `2.8.9`
 - curl `7.68.0`
-- docker `20.10.7`
-- ew-cli `0.0.44`
+- docker `24.0.2`
+- ew-cli `0.9.17`
 - fastlane `2.209.1`
 - firebase `11.21.0`
-- flutter `3.10.3 ($HOME/programs/flutter)`
+- flutter `3.10.5 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
-- Google Cloud SDK `423.0.0`
-- gradle `7.6`
-- gsutil `4.65`
+- Google Cloud SDK `435.0.1`
+- gradle `8.1.1`
+- gsutil `5.24`
 - ionic `5.4.16`
 - jq `jq-1.6`
 - ktlint `0.43.2`
 - node `16.20.0`
-- npm `8.11.0`
+- npm `8.19.4`
 - python2 `2.7.18`
 - python `3.8.10`
 - ruby `2.7.2p137`
 - ssh
-- snapcraft `6.1`
+- snapcraft `7.4.3`
 - sudo
 - tar / bsdtar
 - unzip
 - wget
-- yarn `1.22.5`
-- yq `4.24.2`
+- yarn `1.22.19`
+- yq `4.34.1`
 - zip
 
 ## Android emulators
