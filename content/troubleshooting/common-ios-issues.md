@@ -203,7 +203,7 @@ In XCode 13 `CODE_SIGNING_ALLOWED` was set to `NO` by default for resource bundl
 ### A required agreement is missing or has expired
 
 ###### Description
-Suddenly, the builds started failing with the following message, even though we haven't made any updates to the code:
+Builds are failing with the following message:
 
     A required agreement is missing or has expired. - This request requires an in-effect agreement that has not been signed or has expired.
 
