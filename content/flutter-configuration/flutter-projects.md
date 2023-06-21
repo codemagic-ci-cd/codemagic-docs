@@ -51,6 +51,10 @@ When you enroll an app into app signing by Google Play, Google will manage your 
 
 ## Building iOS apps
 
+{{<notebox>}}
+**Tip:** If you are new to building Flutter apps for iOS, you can start by working through the beginner friendly, [step by step tutorial we have that shows you how to build your first Flutter app for iOS](https://labs.codemagic.io/your-first-flutter-app-to-appstore). 
+{{</notebox>}}
+
 In your app settings, select **iOS** under **Build for platforms** and an available build machine type.
 
 Then scroll down to the **Build** section to specify the **Flutter**, **Xcode** and **Cocoapods** versions, select the build **Mode** (**Debug**, **Release** or **Profile**) or add additional build arguments, e.g. for [build versioning](../building/build-versioning) or verbose logging.
@@ -63,6 +67,7 @@ When you're building for release, you will need to build the app in Release mode
 The `flutter build ipa` command is available as of Flutter version 1.24.0-6.0 and is the recommended option to build an .ipa archive. To use this build command,
 enable code signing and select the **Use flutter build ipa** checkbox in build settings.
 {{</notebox>}}
+
 
 ## Building web apps
 
