@@ -60,7 +60,7 @@ It will usually refresh automatically when anything is changed
 For testing things that require a subdomain, add a subdomain to your hosts file:
 
 ```bash
-# example for MacOS
+# example for macOS
 
 sudo sh -c "echo '127.0.0.1\tdocs.codemagic.local' >> /etc/hosts"
 ```

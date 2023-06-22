@@ -228,7 +228,7 @@ async function userLogout() {
         document.querySelector('[data-js-header-auth-loading]').classList.add('transition-out')
     }
 }
-// Logout listner
+// Logout listener
 document.querySelector('[data-js-header-auth-logout]').addEventListener('click', userLogout)
 
 // Open external links in new tab

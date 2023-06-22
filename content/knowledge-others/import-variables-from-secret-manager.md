@@ -211,10 +211,10 @@ The Codemagic base build image doesn't have the **Doppler CLI** by default, so w
 The following example shows how to install the Doppler CLI on various build instance types:
 
 {{< tabpane >}}
-{{% tab header="MacOS" %}}
+{{% tab header="macOS" %}}
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
-    - name: Install Doppler on MacOS
+    - name: Install Doppler on macOS
       script: | 
         brew install gnupg
         brew install dopplerhq/cli/doppler

@@ -18,7 +18,7 @@ All iOS, macOS and Android applications have to be digitally signed before they 
 {{< include "/partials/alternative-code-signing-methods-ios.md" >}}
 {{< /tab >}}
 
-{{< tab header="MacOS" >}}
+{{< tab header="macOS" >}}
 {{< include "/partials/code-signing-macos.md" >}}
 {{< /tab >}}
 

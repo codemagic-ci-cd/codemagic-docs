@@ -933,7 +933,7 @@ workflows:
 {{< /highlight >}}
 {{< /tab >}}
 
-{{< tab header="MacOS" >}}
+{{< tab header="macOS" >}}
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
   unity-macos-workflow:
