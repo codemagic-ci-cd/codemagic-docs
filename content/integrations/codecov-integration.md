@@ -61,7 +61,7 @@ Code coverages can be submitted to the Codecov environment through Codemagic usi
 Codecov uses a separate upload tool to make it easy to upload coverage reports to Codecov for processing. Depending on the build machine type, add the corresponding script to your `codemagic.yaml` file: 
 
 {{< tabpane >}}
-{{< tab header="MacOS" >}}
+{{< tab header="macOS" >}}
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
     - name: Codecov upload

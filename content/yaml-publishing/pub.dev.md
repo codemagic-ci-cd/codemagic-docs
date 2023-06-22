@@ -6,7 +6,7 @@ weight: 10
 
 In order to get publishing permissions, you first need to log in to **pub.dev** locally. You can do this by running `pub publish --dry-run`.
 
-This will create the `credentials.json` file, which you can use to log in without the need for Google confirmation through the browser. Credentials will be created in the pub cache directory (`~/.pub-cache/credentials.json` on MacOS and Linux, `%APPDATA%\Pub\Cache\credentials.json` on Windows).
+This will create the `credentials.json` file, which you can use to log in without the need for Google confirmation through the browser. Credentials will be created in the pub cache directory (`~/.pub-cache/credentials.json` on macOS and Linux, `%APPDATA%\Pub\Cache\credentials.json` on Windows).
 
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the desired **_Variable name_**, e.g. `PUB_DEV_CREDENTIALS`.

@@ -29,7 +29,7 @@ Thus, we will save the sentry files as secure environment variables and place th
 ### Obtain the sentry files:
 First, you need to install the SteamCMD.
 {{< tabpane >}}
-{{% tab header="MacOS" %}}
+{{% tab header="macOS" %}}
 {{< highlight bash "style=paraiso-dark">}}
    mkdir ~/Steam
    curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_osx.tar.gz" | tar zxvf - -C ~/Steam
@@ -95,7 +95,7 @@ In your workflow you need to base64 decode these binary files before they can be
 ### Copy Sentry files
 And then copy them to the correct path, depending on the build machine type:
 {{< tabpane >}}
-{{% tab header="MacOS" %}}
+{{% tab header="macOS" %}}
 {{< highlight yaml "style=paraiso-dark">}}
       - name: Copy Sentry Files
         script: | 

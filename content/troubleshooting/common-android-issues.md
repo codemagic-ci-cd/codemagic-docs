@@ -10,7 +10,7 @@ weight: 2
 Builds succeeds locally but fails on Codemagic, throwing vague errors (e.g. _**Gradle task bundleRelease failed with exit code 1**_), or the build is successful, but some functions aren't working.
 
 ###### Cause
-These issues are likely caused by plugin and/or gradle versions used locally being different from the versions used on Codemagic. If you are using a gradle version that is different from Codemagic, you have to define it in `gradle wrapper`. Otherwise, Codemagic ignores your `build.gradle` file, and your build won't work properly. See which software versions Codemagic uses on [MacOS](../specs/versions-macos), on [Linux](../specs/versions-linux) and on [Windows](../specs/versions-windows) instances.
+These issues are likely caused by plugin and/or gradle versions used locally being different from the versions used on Codemagic. If you are using a gradle version that is different from Codemagic, you have to define it in `gradle wrapper`. Otherwise, Codemagic ignores your `build.gradle` file, and your build won't work properly. See which software versions Codemagic uses on [macOS](../specs/versions-macos), on [Linux](../specs/versions-linux) and on [Windows](../specs/versions-windows) instances.
 
 ###### Solution
 First, you need to make sure that the `gradlew` file isn't in `.gitignore`. Look for `**/android/gradlew`, and if it's in `.gitignore`, delete it from there. Then add `!gradle-wrapper.jar` to a new line in `.gitignore` to create an exception so that `gradle-wrapper.jar` would also be excluded from `.gitignore`.
