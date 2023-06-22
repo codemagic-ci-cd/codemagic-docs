@@ -68,7 +68,7 @@ scripts:
 {{< tab header="Android" >}}
 {{<markdown>}}
 {{<notebox>}}
-Due to limitations by Apple Silicon, the Apple Virtualisation API doesn’t support nested virtualization required for Android emulators. To use Android emulators in macOS M1 workflows, please use third-party service integrations such as emulator.wtf, Katalon, Firebase, or AWS Device Farm.
+Due to limitations by Apple silicon, the Apple Virtualisation API doesn’t support nested virtualization required for Android emulators. To use Android emulators in macOS M1 workflows, please use third-party service integrations such as emulator.wtf, Katalon, Firebase, or AWS Device Farm.
 {{</notebox>}}
 
 

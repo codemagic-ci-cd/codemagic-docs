@@ -28,7 +28,7 @@ Workflows are configured in code using a YAML configuration file which can be ch
 Flutter developers can also choose to set up their workflows using a graphical user interface called the “Workflow Editor”.
 
 ## Infrastructure
-Codemagic’s infrastructure is centered around the powerful Apple Silicon M1 (arm64) allowing for faster builds than the previous generation of macOS machines. Mac Pro (Intel), Linux and Windows machines are also available for all customers. 
+Codemagic’s infrastructure is centered around the powerful Apple silicon M1 (arm64) allowing for faster builds than the previous generation of macOS machines. Mac Pro (Intel), Linux and Windows machines are also available for all customers. 
 
 The following documentation pages show the hardware specifications for each instance type:
 
@@ -51,7 +51,7 @@ Please refer to the following documentation to see the software pre-installed on
 If you need to run parallel builds you can add additional concurrencies as your needs grow. The free tier and pay-as-you-go plan includes one concurrency to begin with but can be increased to a total of three. The Annual plan and Enterprise plans start with three concurrencies and an unlimited number of concurrencies can be added at any time during your subscription period. 
 
 ## Pricing
-Individuals and hobbyists can get started with Codemagic using its free tier which offers 500 free build minutes per month and lets you build on Apple Silicon M1 machines. This quota is reset at the beginning of each month. 
+Individuals and hobbyists can get started with Codemagic using its free tier which offers 500 free build minutes per month and lets you build on Apple silicon M1 machines. This quota is reset at the beginning of each month. 
 
 For development teams with limited budgets, the Codemagic pay-as-you-go plan offers an affordable way to get started with CI/CD. You only pay for the minutes you consume and the additional concurrencies you add. You also don’t need to worry about costs getting out of control because the pay-as-you-go plan is capped at $299/month which means once you reach this amount you don’t have to pay any extra to keep using the service. 
 

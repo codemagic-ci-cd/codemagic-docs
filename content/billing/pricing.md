@@ -125,7 +125,7 @@ Enterprise plans are available starting from **$1000/month** (billed annually) a
 - Private Slack channel
 
 
-Dedicated macOS hosts (Intel or Apple Silicon) are also available on request. A dedicated host is only used by your organization and provides 2 VMs which can be configured with the software you require. Dedicated hosts can also be EU-based.
+Dedicated macOS hosts (Intel or Apple silicon) are also available on request. A dedicated host is only used by your organization and provides 2 VMs which can be configured with the software you require. Dedicated hosts can also be EU-based.
 
 This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, or **custom base images** or other account management services.
 
