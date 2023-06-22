@@ -84,6 +84,34 @@ triggering:
 
 Please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wcmatch/fnmatch/) for more advanced matching patterns.
 
+## Working with Pull Requests
+When dealing with Pull Requests, you have two options: you can either focus on the branch where the proposed changes are made, or you can target the destination branch after the PR has been merged.
+
+Example 1 - When creating pull requests on the `feature` branch, remember to set `source:false`. This will ensure that the build runs on the proposed code changes within the `feature` branch.
+
+{{< highlight yaml "style=paraiso-dark">}}
+triggering:
+      events:
+        - pull_request
+      branch_patterns:
+        - pattern: 'feature'
+          include: true
+          source: false  
+{{< /highlight >}}
+
+Example 2 - To merge Pull Requests with the `master/main` branch, simply set `source:true`. This will trigger the build on `master/main` branch once the pull request has been merged.
+
+{{< highlight yaml "style=paraiso-dark">}}
+triggering:
+      events:
+        - pull_request
+      branch_patterns:
+        - pattern: 'feature'
+          include: true
+          source: true  
+{{< /highlight >}}
+
+
 ## Exit or ignore build on certain commit message
 
 You can **skip building** automatically triggered workflows by adding `[skip ci]` or `[ci skip]` to your commit message. The workflow will still be started but it will exit without building.
