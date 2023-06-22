@@ -14,7 +14,7 @@ weight: 12
 
 - System version `macOS 13.4 (22F66)`
 - Kernel version `Darwin 22.5.0`
-- Disk `294GB (Free Space: 92GB)`
+- Disk `294GB (Free Space: 107GB)`
 
 ## Pre-installed tools
 
@@ -29,7 +29,7 @@ weight: 12
 - ew-cli `0.9.17`
 - fastlane `2.212.2`
 - firebase `11.21.0`
-- flutter `3.10.4 ($HOME/programs/flutter)`
+- flutter `3.10.5 ($HOME/programs/flutter)`
 - gem `3.4.8`
 - gh `2.23.0`
 - git `2.39.2`
