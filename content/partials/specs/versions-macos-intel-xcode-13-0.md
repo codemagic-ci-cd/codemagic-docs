@@ -1,5 +1,5 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS build machines using Xcode version 13.0-13.2.
+description: A list of tools available out-of-the-box on Codemagic macOS build machines using Xcode version 13.0 - 13.2.
 title: macOS build machine specification (Xcode 13.0 - 13.2)
 aliases:
   - '/releases-and-versions/versions4'

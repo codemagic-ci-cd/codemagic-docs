@@ -14,7 +14,7 @@ weight: 12
 
 - System version `macOS 13.4 (22F66)`
 - Kernel version `Darwin 22.5.0`
-- Disk `294GB (Free Space: 107GB)`
+- Disk `294GB (Free Space: 113GB)`
 
 ## Pre-installed tools
 
@@ -26,7 +26,7 @@ weight: 12
 - cordova `11.0.0`
 - curl `7.88.1`
 - docker `N/A`
-- ew-cli `0.9.17`
+- ew-cli `0.9.18`
 - fastlane `2.212.2`
 - firebase `11.21.0`
 - flutter `3.10.5 ($HOME/programs/flutter)`
@@ -70,7 +70,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Xcode versions
 
-- 15.0 (15A5160n) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
+- 15.0 (15A5161b) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
 
 ### Runtimes
 
@@ -84,6 +84,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - tvOS 16.1
 - tvOS 16.4
 - tvOS 17.0
+- visionOS 1.0
 - watchOS 7.4
 - watchOS 8.0
 - watchOS 9.1
@@ -97,6 +98,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
 - Apple TV 4K (at 1080p) (2nd generation)
+- Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
 - Apple Watch Series 5 (40mm)
