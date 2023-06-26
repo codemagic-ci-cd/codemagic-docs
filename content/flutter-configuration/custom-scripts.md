@@ -17,8 +17,5 @@ Please note that custom scripts are always executed from the absolute path to th
 
 Using `codemagic.yaml` for build configuration allows for even greater customization of builds, read more about it [here](../getting-started/yaml).
 
-{{<notebox>}}
-You can find some useful scripts in the **Knowledge base** category.
-{{</notebox>}}
 
 
