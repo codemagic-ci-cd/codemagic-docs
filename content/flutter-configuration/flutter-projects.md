@@ -52,7 +52,7 @@ When you enroll an app into app signing by Google Play, Google will manage your 
 ## Building iOS apps
 
 {{<notebox>}}
-**Tip:** If you are new to building Flutter apps for iOS, you can start by working through the beginner friendly, [step by step tutorial we have that shows you how to build your first Flutter app for iOS](https://labs.codemagic.io/your-first-flutter-app-to-appstore). 
+**Tip:** If you are new to building Flutter apps for iOS, you can start by working through the beginner friendly, [step by step tutorial we have that shows you how to build your first Flutter app for iOS](https://labs.codemagic.io/your-first-flutter-app-to-appstore?utm_source=codemagic&utm_medium=docs&utm_campaign=flutter-projects&utm_id=codelab). 
 {{</notebox>}}
 
 In your app settings, select **iOS** under **Build for platforms** and an available build machine type.
