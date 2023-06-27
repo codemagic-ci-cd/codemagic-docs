@@ -1,66 +1,33 @@
 ---
 title: Pricing
-description: Description of Codemagic plans and pricing options
+description: An overview of Codemagic pricing
 weight: 2
 ---
+### Pricing for Individuals
+##### 1. Free plan
 
-## Free plan
-
-The free plan allows you to use 500 minutes per month on macOS M1 standard machines on a personal account. Your 500 free minutes will be reset on the 1st of each month. Free minutes are not available if you are using a Team.
+Individuals receive **500 free minutes** per month on macOS M1 standard machines on a personal account. These 500 free minutes are **reset on the 1st of each month**. Free minutes are not available if you are using a Team.
 
 To start using Codemagic for free, [sign up here](https://codemagic.io/signup). 
 
-## Pay-as-you-go pricing
+##### 2. Pay-as-you-go
 
 Pay-as-you-go pricing allows you to pay for only what you use.
 
-Extra build concurrencies allow Teams to run up to three parallel builds.
-
-To sign up for the pay-as-you-go plan, [visit this page](https://codemagic.io/signup). To enable billing after you are already signed in, proceed to [the billing section](https://codemagic.io/billing).
-
-### Instance Types
-
-Codemagic provides macOS, Windows, and Linux instance types.
-
-The instance types and hardware specifications can be found below.
-
-
-| **Item**        | **Specification**                                                                                                                                                       |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| macOS M1 standard VM         | 3.2GHz Quad Core / 8GB                                                                                                                                                 |
-| macOS Intel VM         | 3.7GHz Quad Core / 32GB                                                                                                                                                 |
-| Linux premium VM         | 8 vCPUs, 32 GB memory                                                                                                                                                 |
-| Linux standard VM        | 4 vCPUs, 16 GB memory                                                 |
-| Windows premium VM       | 8 vCPUs, 32 GB memory  
-
-If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs. Also, please note that Android emulators are not available on macOS M1 standard VMs.
-
-If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/contact/).
-
-For Linux instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-linux/)
-
-For macOS instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions3/)  
-
-For Windows instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-windows/)  
-
-### Pricing for Personal Accounts
-
-When billing is enabled on personal accounts, you will still have **500 free build minutes** on macOS M1 standard VM. To enable billing, proceed [here](https://codemagic.io/billing).
+When billing is enabled on personal accounts, you will still have **500 free build minutes** on macOS M1 standard VM and can pay for additional minutes on that instance type as. To enable billing, proceed [here](https://codemagic.io/billing).
 
 Usage on macOS M1 standard VM that exceeds 500 minutes is charged at the rate shown below.
 
-Builds on macOS Intel VM, Linux standard VM, and Linux premium VM do not have free build minutes. The per-minute pricing for each instance type is shown below.
+Builds on macOS Intel VM, Linux and Windows do not have free build minutes. The per-minute pricing for each instance type is shown below.
 
-You will never be charged more than $299/month on this plan.
-
-| **Item**  | **Price**                                                                                                                                                       |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| macOS (M1 & Intel) VM         | $0.095 / minute                                                                                                                                                 |
-| macOS Intel VM         | $0.095 / minute                                                                                                                                                 |
-| Linux premium VM         | $0.045 / minute                                                                                                                                                 |
-| Windows VM               | $0.045 / minute                                                                                                                                                 |
+| **Item**                     | **Price**                          |
+| ---------------------------- | ---------------------------------  |
+| macOS (M1 & Intel) VM        | $0.095 / minute                    |
+| Linux & Windows VMs          | $0.045 / minute                    |
 
 ### Pricing for Teams
+
+##### 1. Pay-as-you-go
 
 For teams, all build minutes using macOS M1 standard VM, macOS Intel VM, Linux standard VM, and Linux premium VM are charged at the rates shown below. 
 
@@ -71,16 +38,15 @@ You can **add additional concurrencies** in the Codemagic web app by clicking 'B
 Each additional concurrency is $49/month and you will be billed for each concurrency on the last day of each month.
 
 
-| **Item**  | **Price**                                                                                                                                                       |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| macOS (M1 & Intel) VM         | $0.095 / minute                                                                                                                                            |
-| Linux premium VM         | $0.045 / minute                                                                                                                                                 |
-| Windows VM               | $0.045 / minute                                                                                                                                                 |                                                                                                    
-| Extra build concurrency  | $49 / month                                                                                                                                                     | 
+| **Item**                     | **Price**                         |
+| ---------------------------- | --------------------------------- | 
+| macOS (M1 & Intel) VM        | $0.095 / minute                   |                                                                                                                                   
+| Linux & Windows VMs          | $0.045 / minute                   |                                                                       
+| Extra build concurrency      | $49 / month                       | 
 
 Consider an annual plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on Intel macOS, Linux, and Windows instances. For more information contact us [here](https://codemagic.io/contact/).
 
-## Team - Fixed Monthly Plan
+##### 2. Fixed Monthly Plan
 
 A fixed price **monthly** subscription with access to **Mac mini M2 VMs** is available for **$399/month** payable by credit card. 
 
@@ -94,7 +60,7 @@ The Codemagic monthly plan gives you a fixed-price plan with the following benef
   
 If you would like to set up a monthly subscription, please contact us [here](https://codemagic.io/contact/).
 
-## Team - Fixed Annual Plan
+##### 3. Fixed Annual Plan
 
 An **annual** subscription with access to **Mac mini M2 VMs** and **2 months free** is **$3,990/year**.
 
@@ -106,7 +72,7 @@ The Codemagic annual plan gives you a fixed-price plan with the following benefi
 * In-app chat support
 * Additional concurrencies are **$1500/year**. 
 
-The annual plan can only be paid for with a credit card.
+The fixed monthly and annual plans can only be paid for with a credit card.
 
 If you have already created a Team in the Codemagic web app, you can upgrade to the annual plan as follows:
 
@@ -121,7 +87,7 @@ If you require additional concurrencies or have any other questions about the an
 
 If you require annual invoicing, please refer to the Enterprise plans below.
 
-## Enterprise Plan
+## Pricing for Enterprises
 
 Enterprise plans are available starting from **$1000/month** (billed annually) and include the following:
 
@@ -179,4 +145,29 @@ If you need to support older versions of your application and need access to old
 You can download build artifacts via the Codemagic UI or using the [Codemagic REST API](../rest-api/builds/). 
 
 To keep copies of your future build artifacts, we advise you to set up publishing to external storage, see an example [here](../yaml-publishing/aws/).
+
+### Instance Types
+
+Codemagic provides macOS, Windows, and Linux instance types.
+
+The instance types and hardware specifications can be found below.
+
+
+| **Item**        | **Specification**                                                                                                                                                       |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| macOS M1 standard VM         | 3.2GHz Quad Core / 8GB                                                                                                                                                 |
+| macOS Intel VM         | 3.7GHz Quad Core / 32GB                                                                                                                                                 |
+| Linux premium VM         | 8 vCPUs, 32 GB memory                                                                                                                                                 |
+| Linux standard VM        | 4 vCPUs, 16 GB memory                                                 |
+| Windows premium VM       | 8 vCPUs, 32 GB memory  
+
+If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs. Also, please note that Android emulators are not available on macOS M1 standard VMs.
+
+If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/contact/).
+
+For Linux instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-linux/)
+
+For macOS instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions3/)  
+
+For Windows instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-windows/)  
 
