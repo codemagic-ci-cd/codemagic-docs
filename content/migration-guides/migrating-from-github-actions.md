@@ -9,11 +9,12 @@ aliases:
 If you're considering switching from GitHub Actions to Codemagic for a more streamlined CI/CD workflow for your mobile-focused apps, particularly for Flutter apps, this guide will help you understand Codemagic's key features and how you can quickly transition from your GitHub Actions setup.
 
 ## Why consider migrating?
-GitHub Actions is a powerful automation tool that allows you to build, test, and deploy your applications right from GitHub. However, if you're working on Flutter or mobile-focused applications, you should find Codemagic more beneficial. As a dedicated CI/CD for Flutter and Mobile, Codemagic provides a set of predefined workflows and out-of-the-box configurations tailored for Flutter, Native iOS/Android and React Native app development.
+GitHub Actions is a powerful automation tool that allows you to build, test, and deploy your applications right from GitHub. However, if you're working on Flutter or mobile-focused applications, you could find Codemagic more beneficial. As a dedicated CI/CD for Flutter and mobile apps, Codemagic provides a set of predefined workflows and out-of-the-box configurations tailored for Flutter, Native iOS/Android and React Native app development.
 
 By moving to Codemagic, you benefit from:
-- No need to manually script CI/CD workflows.
+
 - Streamlined Flutter-specific workflows.
+- No need to manually script CI/CD workflows.
 - Pre-configured testing, building, and deployment workflows.
 - Automated code signing and app store distribution.
 
@@ -21,19 +22,19 @@ Codemagic offers a straightforward YAML configuration and an up-to-date tech sta
 
 Codemagic makes use of [`codemagic.yaml`](../yaml/yaml-getting-started/) for configuring your workflow. As Codemagic supports any Git-based cloud or self-hosted repository, there is no need to migrate your code - simply add a `codemagic.yaml` file to your repository root folder.
 
-In Codemagic, there is also a [Flutter workflow editor](../flutter-configuration/flutter-projects/) for Flutter applications, which simplifies the setup but removes some flexibility.
+In Codemagic, there is also a web-based GUI [Flutter workflow editor](../flutter-configuration/flutter-projects/) for Flutter applications, which simplifies the setup but removes some flexibility.
 
 ## Managing builds on GitHub Actions and on Codemagic
 A build on Codemagic is defined by the app's workflow, specified in the `codemagic.yaml` file. It comprises a series of scripts delineated in a workflow executed by Codemagic on a clean virtual machine. 
 
-You can monitor your app's builds on the Codemagic dashboard or delve into your build logs on your app's individual Builds page.
+You can monitor your app's builds on the Codemagic dashboard or look through your build logs on your app's individual Builds page.
 
 ## Triggering builds on GitHub Actions and Codemagic
-In this section, we illustrate how you can trigger builds on Codemagic:
+In this section, we illustrate how you can trigger builds on Codemagic.
 
-The 'Run Workflow' feature in GitHub Actions corresponds with manually starting a build on Codemagic: click the 'Start new build' button on your builds page and either simply initiate a new build or modify the Advanced configuration options for starting/scheduling builds.
+The 'Run Workflow' feature in GitHub Actions corresponds with manually starting a build on Codemagic. To start a build manually on Codemagic, click the 'Start new build' button on [your apps page](https://codemagic.io/apps).
 
-The 'Scheduled Workflows' function in GitHub Actions is akin to the 'Scheduled Builds' function on Codemagic. 
+The 'Scheduled Workflows' function in GitHub Actions is akin to the 'Scheduled Builds' function on Codemagic. You can schedule builds in Codemagic by clicking on the "cog icon" [your apps page](https://codemagic.io/apps) and then selecting the "Scheduled builds" tab for options for scheduling builds.
 
 A significant advantage of Codemagic is that you don't have to manually set up a cron job, as you would in GitHub Actions, to schedule a specific time. Instead, select a day/s from the timeline and specify an hour and month.
 
