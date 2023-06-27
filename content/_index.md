@@ -11,7 +11,7 @@ How to get started with Codemagic
 - [Signup](../getting-started/signup/)
 - [Adding apps to Codemagic](../getting-started/adding-apps/)
 - [Onboarding assistance](https://codemagic.io/onboarding-assistance/)
-- [Publish your first Flutter app to the App Store](https://labs.codemagic.io/your-first-flutter-app-to-appstore)
+- [Publish your first Flutter app to the App Store](https://labs.codemagic.io/your-first-flutter-app-to-appstore?utm_source=codemagic&utm_medium=docs&utm_campaign=landingpage&utm_id=codelab)
 
 
 {{</links-group>}} 
