@@ -82,5 +82,8 @@ Only the team owner can delete the team. To do so, scroll down to the **Danger z
 
 {{<notebox>}}**Note:** Teams can only be deleted if they are empty (no members or shared applications) and billing has been disabled.{{</notebox>}}
 
+## Deleting Codemagic account
+
+If you need to delete your Codemagic account, navigate to **Teams** > **Personal Account** > **Danger zone** > **Delete account**
 
 <!-- {{< include "/partials/users.md" >}} -->
