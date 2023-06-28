@@ -99,7 +99,7 @@ triggering:
           source: false  
 {{< /highlight >}}
 
-Example 2 - To merge Pull Requests with the `master/main` branch, simply set `source:true`. This will trigger the build on `master/main` branch once the pull request has been merged.
+Example 2 - To merge pull requests with the `master/main` branch, simply set `source:true`. This will trigger the build on `master/main` branch once the pull request has been merged.
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
