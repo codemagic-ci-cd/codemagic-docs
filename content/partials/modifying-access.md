@@ -17,6 +17,4 @@ If the repository is added **via GitHub, Bitbucket or GitLab integration**, clic
 
 If the repository is added **from a URL**, click **Change settings** under **Repository access settings**. This will allow you to modify the repository URL, change username or password or update the SSH key. You can also generate a new private key in the settings section. Once you have changed the relevant settings, click **Update access settings**. Codemagic will verify that it has access to the repository using the updated details before saving the settings.
 
-## Deleting Codemagic account
 
-If you need to delete your Codemagic account, navigate to **Teams** > **Personal Account** > **Danger zone** > **Delete account**
