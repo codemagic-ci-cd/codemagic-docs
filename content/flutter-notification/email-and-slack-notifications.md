@@ -29,7 +29,7 @@ In order to set up publishing to Slack, you first need to connect the Slack work
 
 Once your Slack workspace is connected, you can enable Slack publishing and select a channel for publishing in **App settings > Notifications > Slack** when using the workflow editor.
 
-In order to publish to **private channels**, you need to invite the Codemagic app to the channels, otherwise, the app does not have access to private channels. To invite the Codemagic app to private channels, write `@codemagic` in the channel. If you are in the Codemagic web app, refresh the page, and the new channel will become available in the dropdown menu.
+In order to publish to **private channels**, you need to invite the Codemagic app to the channels, otherwise, the app does not have access to private channels. To invite the Codemagic app to private channels, write `@codemagic` in the channel. If you are in the Codemagic web app, start typing the name of your private channel in the dropdown menu. Once you do that, the new channel will become available in the dropdown menu for selection.
 
 If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the specified channel. The artifact download links in Slack notifications are, by default, valid for 24 hours; the lifetime of publicly accessible artifact download links is configurable in **Team settings > Artifact download links**.
 
