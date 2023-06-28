@@ -85,7 +85,7 @@ triggering:
 Please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wcmatch/fnmatch/) for more advanced matching patterns.
 
 ## Working with Pull Requests
-When dealing with Pull Requests, you have two options: you can either focus on the branch where the proposed changes are made, or you can target the destination branch after the PR has been merged.
+When dealing with pull requests, you have two options: you can either focus on the branch where the proposed changes are made, or you can target the destination branch after the pull request has been merged.
 
 Example 1 - When creating pull requests on the `feature` branch, remember to set `source:false`. This will ensure that the build runs on the proposed code changes within the `feature` branch.
 
