@@ -82,7 +82,7 @@ If you require annual invoicing, please refer to the Enterprise plans below.
 
 ## Pricing for Enterprises
 
-Enterprise plans are available starting from **$1000/month** (billed annually) and include the following:
+Enterprise plans are available starting from **$12k/year** and include the following:
 
 - Unlimited access to all VM types (including macOS M2) 
 - 180-minute build timeout
