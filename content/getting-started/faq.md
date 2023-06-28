@@ -62,3 +62,6 @@ Most definitely. The annual subscription grants you a 20% discount for the whole
 
 ## What’s an Enterprise plan?
 The Enterprise plan offers the same superb quality service you have come to expect from Codemagic but enhanced with additional customization options. This plan is recommended if you need to go through a security compliance process, vendor registration or have special requirements such as an NDA, DPA, dedicated hosts, custom base images, or other account management services. Enterprise customers are also able to authenticate using SSO.
+
+## How to Delete a Codemagic account?
+If you need to delete your Codemagic account, navigate to **Teams** > **Personal Account** > **Danger zone** > **Delete account**
