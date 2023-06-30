@@ -15,6 +15,7 @@ popular: 1
 
 
 {{< youtube er7hRWhW0B0 >}}
+
 ## Building with YAML
 
 In order to use `codemagic.yaml` for build configuration on Codemagic, it has to be committed to your repository. The name of the file must be `codemagic.yaml` and it must be located in the root directory of the repository.
@@ -22,6 +23,13 @@ In order to use `codemagic.yaml` for build configuration on Codemagic, it has to
 When detected in the repository, `codemagic.yaml` is automatically used for configuring builds triggered in response to the events defined in the file, provided that a [webhook](../building/webhooks) is set up. 
 
 Builds can also be started manually by clicking **Start new build** in Codemagic and selecting the branch and workflow to build in the **Specify build configuration** popup.
+
+
+{{<notebox>}}
+
+Check out the [**cheatsheet**](/codemagic-yaml-cheatsheet.html) we have created to help you when using Codemagic YAML.
+
+{{</notebox>}}
 
 ## Syntax
 
