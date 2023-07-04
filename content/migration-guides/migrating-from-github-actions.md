@@ -316,7 +316,7 @@ definitions:
   email: &email
     email:
       recipients:
-        - rudrankriyam@gmail.com
+        - example@gmail.com
       notify:
         success: true
         failure: true
