@@ -3,8 +3,8 @@ title: Pricing
 description: An overview of Codemagic pricing
 weight: 2
 ---
-### Pricing for Individuals
-##### 1. Free plan
+## Pricing for Individuals
+### 1. Free plan
 
 This plan is suitable for individuals working on hobby or indie projects. You can also use this plan for running a proof of concept.
 
@@ -14,7 +14,7 @@ You cannot invite collaborators to an individual plan.
 
 To start using Codemagic for free, [sign up here](https://codemagic.io/signup). 
 
-##### 2. Buying Additional Minutes
+### 2. Buying Additional Minutes
 
 You can enable billing on personal accounts and pay for any additional minutes you want to use. You will still have **500 free build minutes** on macOS M1 standard VM. To enable billing, proceed [here](https://codemagic.io/billing). 
 
@@ -29,9 +29,9 @@ Builds on macOS Intel VM, Linux and Windows do not have free build minutes. The 
 | macOS (M1 & Intel) VM        | $0.095 / minute                    |
 | Linux & Windows VMs          | $0.045 / minute                    |
 
-### Pricing for Teams
+## Pricing for Teams
 
-##### 1. Pay-as-you-go
+### 1. Pay-as-you-go
 
 For teams, all build minutes using macOS M1 standard VM, macOS Intel VM, Linux standard VM, and Linux premium VM are charged at the rates shown below. 
 
@@ -53,7 +53,7 @@ Consider an annual plan or Enterprise plan if more than three concurrent builds 
 
 macOS M2 is not currently available as a pay-as-you-go instance type, but is available on request for fixed annual plan as described below.
 
-##### 2. Fixed Annual Plan
+### 2. Fixed Annual Plan
 
 An annual subscription with access to **Mac mini M2 VMs** and **2 months free** is **$3,990/year**.
 
