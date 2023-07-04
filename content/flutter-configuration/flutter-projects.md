@@ -61,6 +61,13 @@ Then scroll down to the **Build** section to specify the **Flutter**, **Xcode** 
 
 When you're building for release, you will need to build the app in Release mode and set up [code signing](../code-signing/ios-code-signing/).
 
+{{<notebox>}}
+**Using `flutter build ipa`**
+
+The `flutter build ipa` command is available as of Flutter version 1.24.0-6.0 and is the recommended option to build an .ipa archive. To use this build command,
+enable code signing.
+{{</notebox>}}
+
 
 ## Building web apps
 
