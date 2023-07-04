@@ -67,3 +67,5 @@ The Enterprise plan offers the same superb quality service you have come to expe
 If you need to delete your Codemagic account, navigate to **Teams** > **Personal Account** > **Danger zone** > **Delete account**
 
 However, please note that the deletion will not occur immediately. There is a 14-day grace period before the deletion takes place, during which you have the opportunity to prevent it from happening before the scheduled deletion day.
+
+If you need us to delete any chat threads related to your account, please reach out to us, and we will take care of the deletion process for you.
