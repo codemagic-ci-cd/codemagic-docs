@@ -83,15 +83,17 @@ Builds succeed on Mac Pro machines but fail on M1 machines with the below error:
     Execution failed for task ':app:minifyReleaseWithR8'.
     > com.android.tools.r8.CompilationFailedException: Compilation failed to complete
 
-{{<notebox>}}
-Note: Xcode Version 14.2 or lower is required to use Mac Pro machines.
-{{</notebox>}}
-
 
 ###### Solution
 Upgrading to the latest version of Gradle in the `gradle-wrapper.properties` file and the Android Gradle plugin in the `android/build.gradle` file to the latest version fixes the issue.
 
 You can refer to the Official Documentation from Android Developer guides to learn more about the latest compatible version [here](https://developer.android.com/studio/releases/gradle-plugin#updating-gradle).
+
+If you can't upgrade the Gradle and AGP versions, then you can use Mac Pro machines instead.
+
+{{<notebox>}}
+Note: Xcode Version 14.2 or lower is required to use Mac Pro machines.
+{{</notebox>}}
 
 
 ### Could not find method firebaseAppDistribution() for arguments...
