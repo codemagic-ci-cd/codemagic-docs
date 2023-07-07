@@ -84,7 +84,7 @@ Builds succeed on Mac Pro machines but fail on M1 machines with the below error:
     > com.android.tools.r8.CompilationFailedException: Compilation failed to complete
 
 {{<notebox>}}
-Note: Xcode Version 14.2 is required to use Mac Pro machines.
+Note: Xcode Version 14.2 or lower is required to use Mac Pro machines.
 {{</notebox>}}
 
 
