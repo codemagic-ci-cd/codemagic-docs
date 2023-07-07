@@ -83,6 +83,10 @@ Builds succeed on Mac Pro machines but fail on M1 machines with the below error:
     Execution failed for task ':app:minifyReleaseWithR8'.
     > com.android.tools.r8.CompilationFailedException: Compilation failed to complete
 
+{{<notebox>}}
+Note: Xcode Version 14.2 is required to use Mac Pro machines.
+{{</notebox>}}
+
 
 ###### Solution
 Upgrading to the latest version of Gradle in the `gradle-wrapper.properties` file and the Android Gradle plugin in the `android/build.gradle` file to the latest version fixes the issue.
