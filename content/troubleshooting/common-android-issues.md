@@ -89,6 +89,12 @@ Upgrading to the latest version of Gradle in the `gradle-wrapper.properties` fil
 
 You can refer to the Official Documentation from Android Developer guides to learn more about the latest compatible version [here](https://developer.android.com/studio/releases/gradle-plugin#updating-gradle).
 
+If you can't upgrade the Gradle and AGP versions, then you can use Mac Pro machines instead.
+
+{{<notebox>}}
+Note: Xcode version 14.2 or lower is required to use Mac Pro machines.
+{{</notebox>}}
+
 
 ### Could not find method firebaseAppDistribution() for arguments...
 
