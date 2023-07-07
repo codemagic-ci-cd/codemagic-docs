@@ -1,6 +1,6 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS M1 build machines using Xcode version 15.0+.
-title: macOS M1 build machine specification (Xcode 15.0+)
+description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 15.0+.
+title: macOS Apple silicon build machine specification (Xcode 15.0+)
 aliases:
 
 weight: 12
@@ -14,7 +14,7 @@ weight: 12
 
 - System version `macOS 13.4 (22F66)`
 - Kernel version `Darwin 22.5.0`
-- Disk `294GB (Free Space: 113GB)`
+- Disk `294GB (Free Space: 92GB)`
 
 ## Pre-installed tools
 
@@ -26,7 +26,7 @@ weight: 12
 - cordova `11.0.0`
 - curl `7.88.1`
 - docker `N/A`
-- ew-cli `0.9.18`
+- ew-cli `0.9.19`
 - fastlane `2.212.2`
 - firebase `11.21.0`
 - flutter `3.10.5 ($HOME/programs/flutter)`
@@ -70,7 +70,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Xcode versions
 
-- 15.0 (15A5161b) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
+- 15.0 (15A5195k) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
 
 ### Runtimes
 
