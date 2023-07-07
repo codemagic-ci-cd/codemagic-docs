@@ -92,7 +92,7 @@ You can refer to the Official Documentation from Android Developer guides to lea
 If you can't upgrade the Gradle and AGP versions, then you can use Mac Pro machines instead.
 
 {{<notebox>}}
-Note: Xcode Version 14.2 or lower is required to use Mac Pro machines.
+Note: Xcode version 14.2 or lower is required to use Mac Pro machines.
 {{</notebox>}}
 
 
