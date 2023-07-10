@@ -83,3 +83,7 @@ Once you make all the preparations as described [above](../publishing/publishing
 9. In case you want to upload the artifacts generated in the build to Google Play as a draft release, select **Submit release as draft**. Note that you cannot set the rollout fraction for draft releases.
 10. If you want to publish the .apk even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
 11. Select **Enable Google Play publishing** at the top of the section to enable publishing.
+
+{{<notebox>}}
+**Note:** You can use the "**Wear OS Only**" track to manage Wear OS releases in Play Console. To target "**Wear OS Only**" track, add **wear:** in the track name.
+{{</notebox>}}

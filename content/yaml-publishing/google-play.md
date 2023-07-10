@@ -124,6 +124,15 @@ publishing:
 
 8. If you are getting a **400 error** related to the app being in draft status, either enable publishing to draft by setting the value of **submit_as_draft** to **true** or promote the draft build up by a level to one of the testing tracks. Play Console will show you how to do this. You'll need to go through the steps, fill out questionnaires, upload various screenshots, and then after approval, you can move to the Alpha testing track, and Codemagic will successfully publish.
 
+9. You can use the "**Wear OS Only**" track to manage Wear OS releases in Play Console. To target "**Wear OS Only**" track, add **wear:** in the track name.
+{{< highlight yaml "style=paraiso-dark">}}
+publishing:
+  google_play:
+    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+    # targeting internal Wear OS Only track
+    track: wear:internal
+{{< /highlight >}}
+
 
 {{<notebox>}}
 **Tip:** You can override the publishing track specified in the configuration file using the environment variable `GOOGLE_PLAY_TRACK`. This is useful if you're starting your builds via [Codemagic API](../rest-api/overview/) and want to build different configurations without editing the configuration file.
@@ -133,4 +142,3 @@ publishing:
 {{<notebox>}}
 **Note:** To use different Google Play Console accounts for publishing your Android apps, set up separate workflows. 
 {{</notebox>}}
-
