@@ -85,5 +85,5 @@ Once you make all the preparations as described [above](../publishing/publishing
 11. Select **Enable Google Play publishing** at the top of the section to enable publishing.
 
 {{<notebox>}}
-**Note:** To target "**Wear OS Only**" track, add **wear:** in the track name.
+**Note:** You can use the "**Wear OS Only**" track to manage Wear OS releases in Play Console. To target "**Wear OS Only**" track, add **wear:** in the track name.
 {{</notebox>}}
