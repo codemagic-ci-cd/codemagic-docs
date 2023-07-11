@@ -5,7 +5,7 @@ weight: 1
 aliases: /testing/running-automated-tests
 ---
 
-Codemagic supports running **unit**, **integration** and **widget** tests as well as static code analysis with [**flutter analyze**](./static-code-analysis) and [**Dart Code Metrics**](./static-code-analysis). When testing is enabled, tests are run automatically every time your project is built. You can configure the test settings in **App settings > Tests**.
+Codemagic supports running **unit**, **integration** and **widget** tests as well as static code analysis with [**flutter analyze**](./static-code-analysis). When testing is enabled, tests are run automatically every time your project is built. You can configure the test settings in **App settings > Tests**.
 
 ### Detecting tests
 
