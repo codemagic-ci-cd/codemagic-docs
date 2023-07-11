@@ -1,7 +1,6 @@
 <script type="text/javascript">
   const userFetchTimeoutMs = 3000
-  const analyticsId = '{{ site.Param "googleAnalyticsTrackingId" }}'
-  const optimizeId = '{{ site.Param "googleOptimizeId" }}'
+  const gtmId = '{{ site.Param "googleTagManagerId" }}'
   const appUserUrl = '{{ site.Param "appUserUrl" }}'
 
   window.dataLayer = window.dataLayer || []
@@ -15,8 +14,8 @@
         window.dataLayer.push({ user_state: 'User' })
       }
     } finally {
-      gtag('config', analyticsId, {
-        optimize_id: optimizeId,
+      gtag('config', {
+        gtm_id: gtmId,
         custom_map: { dimension1: 'user_state' }
       })
       gtag('js', new Date())

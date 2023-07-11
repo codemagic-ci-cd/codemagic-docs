@@ -2,7 +2,7 @@ buildDrafts: false
 baseURL: https://docs.codemagic.io
 
 params:
-  googleOptimizeId: GTM-TW39Z9J
+  googleTagManagerId: GTM-PFJ47PW
   appUserUrl: https://api.codemagic.io/user
   backendURL: https://api.codemagic.io
   landingURL: https://codemagic.io
