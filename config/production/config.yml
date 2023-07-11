@@ -3,7 +3,6 @@ baseURL: https://docs.codemagic.io
 
 params:
   googleTagManagerId: GTM-PFJ47PW
-  appUserUrl: https://api.codemagic.io/user
   backendURL: https://api.codemagic.io
   landingURL: https://codemagic.io
   appURL: https://codemagic.io

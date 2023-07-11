@@ -5,7 +5,6 @@ params:
     twitterShareHandle: codemagicio
     facebookAuthorHandle: codemagicio
     appLoginLink: https://codemagic.io/
-    appUserUrl: http://localhost:5000/user
     backendURL: http://localhost:5000
     landingURL: http://localhost:3000
     appURL: http://localhost:3000

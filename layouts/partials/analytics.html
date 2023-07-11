@@ -1,27 +1,10 @@
 <script type="text/javascript">
-  const userFetchTimeoutMs = 3000
   const gtmId = '{{ site.Param "googleTagManagerId" }}'
-  const appUserUrl = '{{ site.Param "appUserUrl" }}'
 
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments)};
   gtag('js', new Date());
   gtag('config', gtmId);
-
-  async function fetchJson(url, timeout) {
-    const options = {
-      mode: 'cors',
-      credentials: 'include',
-      headers: { Accept: 'application/json' }
-    }
-    const controller = new AbortController()
-    const signal = controller.signal
-
-    setTimeout(() => controller.abort(), timeout)
-
-    const response = await fetch(url, { ...options, signal })
-    return response.json()
-  }
 
   !(function(f, b, e, v, n, t, s) {
     if (f.fbq) return
