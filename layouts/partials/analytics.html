@@ -3,24 +3,10 @@
   const gtmId = '{{ site.Param "googleTagManagerId" }}'
   const appUserUrl = '{{ site.Param "appUserUrl" }}'
 
-  window.dataLayer = window.dataLayer || []
-  function gtag() {
-    window.dataLayer.push(arguments)
-  }
-  ;(async function() {
-    try {
-      const response = await fetchJson(appUserUrl, userFetchTimeoutMs)
-      if (response.user.ok) {
-        window.dataLayer.push({ user_state: 'User' })
-      }
-    } finally {
-      gtag('config', {
-        gtm_id: gtmId,
-        custom_map: { dimension1: 'user_state' }
-      })
-      gtag('js', new Date())
-    }
-  })()
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', gtmId);
 
   async function fetchJson(url, timeout) {
     const options = {
