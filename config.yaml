@@ -5,7 +5,6 @@ params:
     twitterShareHandle: codemagicio
     facebookAuthorHandle: codemagicio
     appLoginLink: https://codemagic.io/
-    appUserUrl: http://localhost:5000/user
     backendURL: http://localhost:5000
     landingURL: http://localhost:3000
     appURL: http://localhost:3000
@@ -14,7 +13,7 @@ params:
     defaultTwitterImage: /uploads/2019/02/twitter.png
     headerLinkTitle: Documentation
     locale: en_GB
-    googleOptimizeId: 'GTM-M67KWVX'
+    googleTagManagerId: 'GTM-PFJ47PW'
     pageRepoCommitPrefix: 'https://github.com/codemagic-ci-cd/codemagic-docs/commit/'
     pageRepoEditPrefix: 'https://github.com/codemagic-ci-cd/codemagic-docs/edit/master/content/'
     ignorefiles:

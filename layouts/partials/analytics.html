@@ -1,42 +1,10 @@
 <script type="text/javascript">
-  const userFetchTimeoutMs = 3000
-  const analyticsId = '{{ site.Param "googleAnalyticsTrackingId" }}'
-  const optimizeId = '{{ site.Param "googleOptimizeId" }}'
-  const appUserUrl = '{{ site.Param "appUserUrl" }}'
+  const gtmId = '{{ site.Param "googleTagManagerId" }}'
 
-  window.dataLayer = window.dataLayer || []
-  function gtag() {
-    window.dataLayer.push(arguments)
-  }
-  ;(async function() {
-    try {
-      const response = await fetchJson(appUserUrl, userFetchTimeoutMs)
-      if (response.user.ok) {
-        window.dataLayer.push({ user_state: 'User' })
-      }
-    } finally {
-      gtag('config', analyticsId, {
-        optimize_id: optimizeId,
-        custom_map: { dimension1: 'user_state' }
-      })
-      gtag('js', new Date())
-    }
-  })()
-
-  async function fetchJson(url, timeout) {
-    const options = {
-      mode: 'cors',
-      credentials: 'include',
-      headers: { Accept: 'application/json' }
-    }
-    const controller = new AbortController()
-    const signal = controller.signal
-
-    setTimeout(() => controller.abort(), timeout)
-
-    const response = await fetch(url, { ...options, signal })
-    return response.json()
-  }
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', gtmId);
 
   !(function(f, b, e, v, n, t, s) {
     if (f.fbq) return
