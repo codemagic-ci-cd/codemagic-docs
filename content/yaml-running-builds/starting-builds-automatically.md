@@ -87,7 +87,7 @@ Please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wc
 ## Working with Pull Requests
 When dealing with pull requests, you have two options: you can either focus on the branch where the proposed changes are made, or you can target the destination branch after the pull request has been merged.
 
-Example 1 - When creating pull requests on the `main` branch from, for, e.g. `feature` branch, which is a way to propose and review changes before they're integrated into `main`, remember to set `source:false` and `patter:main`. This will ensure that the build runs on the proposed code changes within the `feature` branch when pull request is created or updated.
+Example 1 - When creating pull requests on the `main` branch from a `feature` branch, which is a way to propose and review changes before they're integrated into `main`, remember to set `source:false` and `pattern:main`. This will ensure that the build runs on the proposed code changes within the `feature` branch when pull request is created or updated.
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
