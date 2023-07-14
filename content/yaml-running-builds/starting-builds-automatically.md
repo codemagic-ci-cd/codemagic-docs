@@ -99,7 +99,7 @@ triggering:
           source: false  
 {{< /highlight >}}
 
-Example 2 - Setting `source:true` and `branch:main`, will trigger the build on the `main` branch once the pull request has been merged from for, e.g. `feature` branch into the `main` branch.
+Example 2 - Setting `source:true` and `branch:main`, will trigger the build on the `main` branch once the pull request has been merged from the `feature` branch into the `main` branch.
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
