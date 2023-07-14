@@ -87,30 +87,31 @@ Please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wc
 ## Working with Pull Requests
 When dealing with pull requests, you have two options: you can either focus on the branch where the proposed changes are made, or you can target the destination branch after the pull request has been merged.
 
-Example 1 - When creating pull requests on the `feature` branch, remember to set `source:false`. This will ensure that the build runs on the proposed code changes within the `feature` branch.
+Example 1 - When creating pull requests on the `main` branch from, for, e.g. `feature` branch, which is a way to propose and review changes before they're integrated into `main`, remember to set `source:false` and `patter:main`. This will ensure that the build runs on the proposed code changes within the `feature` branch when pull request is created or updated.
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
       events:
         - pull_request
       branch_patterns:
-        - pattern: 'feature'
+        - pattern: 'main'
           include: true
           source: false  
 {{< /highlight >}}
 
-Example 2 - To merge pull requests with the `master/main` branch, simply set `source:true`. This will trigger the build on `master/main` branch once the pull request has been merged.
+Example 2 - Setting `source:true` and `branch:main`, will trigger the build on the `main` branch once the pull request has been merged from for, e.g. `feature` branch into the `main` branch.
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
       events:
         - pull_request
       branch_patterns:
-        - pattern: 'feature'
+        - pattern: 'main'
           include: true
           source: true  
 {{< /highlight >}}
 
+Note: Above pattern is set for `main` branch but you can set similar patterns for any branch depending on your workflow.
 
 ## Exit or ignore build on certain commit message
 
