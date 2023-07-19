@@ -93,24 +93,24 @@ Example 1 - When creating pull requests on the `main` branch from a `feature` br
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
-      events:
-        - pull_request
-      branch_patterns:
-        - pattern: 'main'
-          include: true
-          source: false  
+  events:
+    - pull_request
+  branch_patterns:
+    - pattern: 'main'
+      include: true
+      source: false  
 {{< /highlight >}}
 
 Example 2 - Setting `source:true` and `branch:main`, will trigger the build on the `main` branch once the pull request has been merged from the `feature` branch into the `main` branch.
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
-      events:
-        - pull_request
-      branch_patterns:
-        - pattern: 'main'
-          include: true
-          source: true  
+  events:
+    - pull_request
+  branch_patterns:
+    - pattern: 'main'
+      include: true
+      source: true  
 {{< /highlight >}}
 
 Note: Above pattern is set for `main` branch but you can set similar patterns for any branch depending on your workflow.
