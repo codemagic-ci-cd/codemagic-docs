@@ -476,11 +476,11 @@ workflows:
         distribution_type: app_store
         bundle_identifier: io.codemagic.unitysample
       vars:
-        APP_ID: 1555555551
+        APP_STORE_APPLE_ID: 1555555551
     scripts:
       - name: Set the build number
         script: | 
-          BUILD_NUMBER=($(app-store-connect get-latest-app-store-build-number "$APP_ID") + 1)
+          BUILD_NUMBER=($(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID") + 1)
           cd ios
           agvtool new-version -all $BUILD_NUMBER
 
@@ -867,7 +867,7 @@ workflows:
         XCODE_PROJECT: "Unity-iPhone.xcodeproj"
         XCODE_SCHEME: "Unity-iPhone"
         BUNDLE_ID: "io.codemagic.unitysample"
-        APP_ID: 1555555551
+        APP_STORE_APPLE_ID: 1555555551
     scripts:
       - name: Activate Unity license
         script: | 
@@ -888,7 +888,7 @@ workflows:
           xcode-project use-profiles
       - name: Set the build number
         script: | 
-          BUILD_NUMBER=($(app-store-connect get-latest-app-store-build-number "$APP_ID") + 1)
+          BUILD_NUMBER=($(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID") + 1)
           cd $UNITY_IOS_DIR
           agvtool new-version -all $BUILD_NUMBER
       - name: Build the project

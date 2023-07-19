@@ -2401,18 +2401,18 @@ agvtool new-version -all $(($BUILD_NUMBER + 1))
 
 <h3 id="get-the-latest-build-number-from-app-store">Get the latest build number from App Store</h3>
 
-<pre><code class="language-bash">LATEST_BUILD=$(get-latest-app-store-build-number "$APP_ID")
+<pre><code class="language-bash">LATEST_BUILD=$(get-latest-app-store-build-number "$APP_STORE_APPLE_ID")
 agvtool new-version -all $(($LATEST_BUILD + 1))
 </code></pre>
 <h3 id="get-the-latest-build-number-from-app-store-or-testflight">Get the latest build number from App Store or TestFlight</h3>
 
-<pre><code class="language-bash">LATEST_BUILD=$(app-store-connect get-latest-build-number "$APP_ID")
+<pre><code class="language-bash">LATEST_BUILD=$(app-store-connect get-latest-build-number "$APP_STORE_APPLE_ID")
 agvtool new-version -all $(($LATEST_BUILD + 1))
 </code></pre>
 
 <h3 id="get-the-latest-build-number-from-testflight">Get the latest build number from TestFlight</h3>
 
-<pre><code class="language-bash">LATEST_BUILD=$(app-store-connect get-latest-testflight-build-number "$APP_ID")
+<pre><code class="language-bash">LATEST_BUILD=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID")
 agvtool new-version -all $(($LATEST_BUILD + 1))
 </code></pre>
 

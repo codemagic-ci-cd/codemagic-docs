@@ -395,11 +395,11 @@ workflows:
       app_store_connect: <App Store Connect API key name>
     environment:
       vars:
-        APP_ID: 1555555551
+        APP_STORE_APPLE_ID: 1555555551
     scripts:
       - name: Flutter build ipa
         script: | 
-          BUILD_NUMBER=$(($(app-store-connect get-latest-app-store-build-number "$APP_ID") + 1))
+          BUILD_NUMBER=$(($(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID") + 1))
           flutter build ipa --release \
             --build-name=1.0.$BUILD_NUMBER \
             --build-number=$BUILD_NUMBER
@@ -491,7 +491,7 @@ workflows:
         distribution_type: app_store
         bundle_identifier: io.codemagic.fluttersample
       vars:
-        APP_ID: 1555555551
+        APP_STORE_APPLE_ID: 1555555551
       flutter: stable
     scripts:
       - name: Set up code signing settings on Xcode project
@@ -514,7 +514,7 @@ workflows:
         script: | 
           flutter build ipa --release \
             --build-name=1.0.0 \
-            --build-number=$(($(app-store-connect get-latest-app-store-build-number "$APP_ID") + 1)) \
+            --build-number=$(($(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID") + 1)) \
             --export-options-plist=/Users/builder/export_options.plist
     artifacts:
       - build/ios/ipa/*.ipa

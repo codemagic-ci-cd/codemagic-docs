@@ -96,7 +96,7 @@ workflows:
         BUNDLE_ID: $$$bundle-id$$$"io.codemagic.sample.iosnative"$$$
         XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
         XCODE_SCHEME: "CodemagicSample" # <-- Put the name of your Xcode scheme here
-        APP_ID: 1555555551
+        APP_STORE_APPLE_ID: 1555555551
       xcode: latest
       cocoapods: default
     scripts:
@@ -108,7 +108,7 @@ workflows:
       - name: Increment build number
         script: | 
           cd $CM_BUILD_DIR
-          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID")
           agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build ipa for distribution
         script: | 
