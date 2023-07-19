@@ -239,7 +239,7 @@ This is an example of the final script, including build versioning, code signing
   scripts: 
     - name: Build the app
       script: | 
-        LATEST_BUILD_NUMBER=$(app-store-connect get-latest-testflight-build-number "$APP_ID")
+        LATEST_BUILD_NUMBER=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID")
         if [ -z $LATEST_BUILD_NUMBER ]; then
           UPDATED_BUILD_NUMBER=$BUILD_NUMBER
         else
@@ -292,7 +292,7 @@ workflows:
       vars:
         DOTNET_PATH: $CM_BUILD_DIR/dotnet
         DOTNET: $CM_BUILD_DIR/dotnet/dotnet
-        APP_ID: 6444530615
+        APP_STORE_APPLE_ID: 6444530615
         BUNDLE_ID: "io.codemagic.maui.weather"
     scripts:
       - name: Install dotnet sdk
@@ -315,7 +315,7 @@ workflows:
           $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
       - name: Set build version and build the app
         script: | 
-          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-testflight-build-number "$APP_ID")
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID")
           if [ -z $LATEST_BUILD_NUMBER ]; then
             UPDATED_BUILD_NUMBER=$BUILD_NUMBER
           else

@@ -162,7 +162,7 @@ workflows:
         distribution_type: app_store
         bundle_identifier: io.codemagic.kmmsample
       vars:
-        APP_ID: 1555555551
+        APP_STORE_APPLE_ID: 1555555551
         XCODE_WORKSPACE: "iosApp.xcodeproj"
         XCODE_SCHEME: "iosApp"
     scripts:
@@ -176,7 +176,7 @@ workflows:
       - name: Increment build number
         script: | 
           cd $CM_BUILD_DIR/iosApp
-          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID")
           agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build ipa for distribution
         script: | 
