@@ -36,3 +36,13 @@ GitHub repositories won't show up in the dropdown while trying to add an app to 
 
 ###### Solution
 Try disconnecting the GitHub integration and then connecting it again.
+
+### Changing repository for an application
+
+###### Description
+When migrating from one repository to another, whether from the same provider or not, you may want to preserve the build history, environment variables etc instead of adding the application again, potentially losing valuable information.
+
+###### Solution
+Add your new repository as an application to Codemagic. Retrieve both the old and new application id-s, make sure to note which is which. You can find your app ID in the browser URL after ``app/`` when you open the app on Codemagic: ``https://codemagic.io/app/<appId>``. After you have both of the app id-s, contact and provide us the application id-s, which of them you would like to change, and we will make the change for you.
+
+
