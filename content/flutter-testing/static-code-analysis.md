@@ -15,9 +15,7 @@ Codemagic specifies the `analyze` command in the **Flutter analyze arguments** f
 
 For example, adding `--write=analyzer-output.txt` prints the results of static code analysis into a text file. If this is applied, the generated text file containing the test results can be retrieved as a downloadable artifact by adding this **Pre-publish** script:
 
-```
-cp -r $CM_BUILD_DIR/analyzer-output.txt $CM_EXPORT_DIR/analyzer-output.txt
-```
+{{< highlight bash "style=paraiso-dark">}} cp -r $CM_BUILD_DIR/analyzer-output.txt $CM_EXPORT_DIR/analyzer-output.txt {{< /highlight >}}
 
 
 ### Stop build if tests or analysis fail
