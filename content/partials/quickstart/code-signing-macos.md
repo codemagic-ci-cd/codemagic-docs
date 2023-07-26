@@ -45,7 +45,7 @@ This new private key will be used to create a new Mac App Distribution certifica
 {{% tab header="Use an existing key"%}}
 {{<markdown>}}
 
-1. On the Mac which created the iOS distribution certificate, open the **Keychain Access**, located in the **Applications and Utilities** folder.
+1. On the Mac which created the `Mac App Distribution` certificate, open the **Keychain Access**, located in the **Applications and Utilities** folder.
 2. Select the appropriate certificate entry.
 3. Right-click on it to select "Export."
 4. In the export prompt window that appears, make sure the file format is set to **Personal Information Exchange (.p12)**"**.
