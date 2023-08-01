@@ -37,6 +37,19 @@ Flutter generalizes iOS and Android build versioning with the [pubspec.yaml **ve
 
 It is advisable to set your build version (e.g. `1.2.3`) in the `pubspec.yaml` `version` property and commit this to version control, as this will only change on every app release. On the other hand, you should consider having your CI/CD pipeline increment and set build number automatically, as this should be updated for every build.
 
+To ensure Flutters generalized `pubspec.yaml` build versioning works for the iOS application, make sure the following keys have the following values in `ios/Runner/info.plist`:
+
+{{< highlight bash "style=paraiso-dark">}}
+<key>CFBundleShortVersionString</key>
+<string>$(FLUTTER_BUILD_NAME)</string>
+<key>CFBundleVersion</key>
+<string>$(FLUTTER_BUILD_NUMBER)</string>
+{{< /highlight >}}
+
+This solidifies that the version name and version number are indeed fetched from `pubspec.yaml`.
+
+
+
 <br>
 
 ---
