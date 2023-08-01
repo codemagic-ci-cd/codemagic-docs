@@ -36,3 +36,21 @@ GitHub repositories won't show up in the dropdown while trying to add an app to 
 
 ###### Solution
 Try disconnecting the GitHub integration and then connecting it again.
+
+### MacOS publishing failed
+
+The product archive is invalid. The Info.plist must contain a XXXXXXXXX key, whose value is the UTI for a valid category.
+
+Please note that the ***XXXXXXXXX** refers to your key in the Info.plist file.
+
+```
+For Example, The Info.plist must contain a LSApplicationCategoryType key.
+```
+
+###### Solution
+Add the <key> and the <string> in Info.plist file accordingly. 
+
+```
+  <key>LSApplicationCategoryType</key>
+	<string>public.app-category.education</string>
+```
