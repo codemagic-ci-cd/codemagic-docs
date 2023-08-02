@@ -259,7 +259,7 @@ workflows:
       events:
         - pull_request
     when:
-      condition: (not event.pull_request.draft) and (event.pull_request.labels[0].name == "codemagicTest)
+      condition: (not event.pull_request.draft) and (event.pull_request.labels[0].name == "codemagicTest")
 {{< /highlight >}}
 
 {{<notebox>}}
