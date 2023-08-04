@@ -44,7 +44,7 @@ The product archive is invalid. The Info.plist must contain a LSApplicationCateg
 ```
 
 ###### Solution
-Add the <key> and its value <string> in Info.plist file accordingly. 
+Add the <key> and its <string> value in Info.plist file accordingly. 
 
 ```
 <key>LSApplicationCategoryType</key>
