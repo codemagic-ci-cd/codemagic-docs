@@ -37,6 +37,21 @@ GitHub repositories won't show up in the dropdown while trying to add an app to 
 ###### Solution
 Try disconnecting the GitHub integration and then connecting it again.
 
+
+### MacOS publishing failed
+
+```
+The product archive is invalid. The Info.plist must contain a LSApplicationCategoryType key, whose value is the UTI for a valid category. For more details, see "Submitting your Mac apps to the App Store"
+```
+
+###### Solution
+Add the <key> and its <string> value in Info.plist file accordingly. 
+
+```
+<key>LSApplicationCategoryType</key>
+<string>public.app-category.education</string>
+```
+
 ### Changing repository for an application
 
 ###### Description
@@ -44,5 +59,6 @@ When migrating from one repository to another, whether from the same provider or
 
 ###### Solution
 Add your new repository as an application to Codemagic, then retrieve both old and new application IDs. You can find these IDs in the browser URL after ``app/`` when you open the app in your Codemagic account: ``https://codemagic.io/app/<appId>``. Then contact our support team by providing both IDs by specifying which one is which, and we will make the appropriate changes for you.
+
 
 
