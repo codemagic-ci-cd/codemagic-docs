@@ -35,8 +35,6 @@ You can find the Google Play build versioning requirements in the [Android docum
 
 Flutter generalizes iOS and Android build versioning with the [pubspec.yaml **version** property](https://github.com/flutter/flutter/blob/master/packages/flutter_tools/templates/app/pubspec.yaml.tmpl#L9-L19). This is a value in the form `{major}.{minor}.{patch}+{build_number}` (e.g. `1.2.3+45`). In Flutter builds, the value for build name, `{major}.{minor}.{patch}`, sets  `CFBundleShortVersionString` for iOS and `versionName` for Android. While the optional build number, `{build_number}`, sets `CFBundleVersion` for iOS and `versionCode` for Android. With `flutter build` commands these values can be overridden with the command line arguments `--build-name` and `--build-number` or by setting the environment variables `FLUTTER_BUILD_NAME` and `FLUTTER_BUILD_NUMBER`.
 
-It is advisable to set your build version (e.g. `1.2.3`) in the `pubspec.yaml` `version` property and commit this to version control, as this will only change on every app release. On the other hand, you should consider having your CI/CD pipeline increment and set build number automatically, as this should be updated for every build.
-
 In order to complete an automatic build versioning process for Flutter iOS apps, make sure the following keys along with their string values are set in `ios/Runner/info.plist`:
 
 {{< highlight bash "style=paraiso-dark">}}
@@ -45,6 +43,8 @@ In order to complete an automatic build versioning process for Flutter iOS apps,
 <key>CFBundleVersion</key>
 <string>$(FLUTTER_BUILD_NUMBER)</string>
 {{< /highlight >}}
+
+It is advisable to set your build version (e.g. `1.2.3`) in the `pubspec.yaml` `version` property and commit this to version control, as this will only change on every app release. On the other hand, you should consider having your CI/CD pipeline increment and set build number automatically, as this should be updated for every build.
 
 
 <br>
