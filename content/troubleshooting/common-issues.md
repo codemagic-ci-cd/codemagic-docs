@@ -39,18 +39,14 @@ Try disconnecting the GitHub integration and then connecting it again.
 
 ### MacOS publishing failed
 
-The product archive is invalid. The Info.plist must contain a XXXXXXXXX key, whose value is the UTI for a valid category.
-
-Please note that the ***XXXXXXXXX** refers to your key in the Info.plist file.
-
 ```
-For Example, The Info.plist must contain a LSApplicationCategoryType key.
+The product archive is invalid. The Info.plist must contain a LSApplicationCategoryType key, whose value is the UTI for a valid category. For more details, see "Submitting your Mac apps to the App Store"
 ```
 
 ###### Solution
 Add the <key> and the <string> in Info.plist file accordingly. 
 
 ```
-  <key>LSApplicationCategoryType</key>
-	<string>public.app-category.education</string>
+<key>LSApplicationCategoryType</key>
+<string>public.app-category.education</string>
 ```
