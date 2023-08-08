@@ -37,9 +37,6 @@ Codemagic allows you a lot of freedom and flexibility in choosing your tools and
 
 If you are building a Flutter project using Codemagic Workflow Editor, you can select the required versions for Flutter, Xcode, and CocoaPods directly from a dropdown list within the **Build** section.
 
-## Does the $299 monthly cap on the pay-as-you-go plan mean my builds will stop working when I reach that amount?
-Although it might seem a bit counterintuitive, Codemagic offers you an unlimited number of apps, build minutes, and team members while keeping the total price capped at $299 per month. You can use the service as little or as much as you need, and pay accordingly, but should you ever reach this upper cap, the rest of the month is on us - you can continue using the service for free.
-
 ## Why is my build shown as ‘queued’ and when will it start?
 Depending on your concurrency settings, you may be able to run up to 3 builds in parallel on the standard plan. If any additional builds are triggered, they will wait in queue for one of the active builds to finish. If you need more than 3 parallel builds, additional concurrencies are available for purchase.
 	
