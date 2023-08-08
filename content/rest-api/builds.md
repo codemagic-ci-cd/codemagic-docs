@@ -6,6 +6,8 @@ weight: 3
 
 APIs for managing builds are currently available for developers to preview. During the preview period, the API may change without advance notice.
 
+{{}} **Note:** Using our API you cannot fetch information about workflows when configuring with **codemagic.yaml**, as we do not save YAML configurations to our database. Values regarding workflows will be null or false. {{}}
+
 ## Start a new build
 
 `POST /builds`
