@@ -26,7 +26,7 @@ weight: 12
 - cordova `11.0.0`
 - curl `7.88.1`
 - docker `N/A`
-- ew-cli `0.10.0`
+- ew-cli `0.10.3`
 - fastlane `2.214.0`
 - firebase `11.21.0`
 - flutter `3.10.6 ($HOME/programs/flutter)`
@@ -70,7 +70,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Xcode versions
 
-- 15.0 (15A5209g) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
+- 15.0 (15A5219j) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
 
 ### Runtimes
 
