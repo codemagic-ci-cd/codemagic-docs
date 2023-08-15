@@ -26,6 +26,7 @@ This will automatically install the specified Unity version to the build machine
 {{< tabpane >}}
 {{% tab header="2022.X" %}}
 - `2022.2.16f1`
+- `2022.3.5f1`
 {{< /tab >}}
 {{% tab header="2021.X" %}}
 - `2021.3.4f1`
@@ -37,7 +38,9 @@ This will automatically install the specified Unity version to the build machine
 - `2021.3.12f1`
 - `2021.3.13f1`
 - `2021.3.15f1`
+- `2021.3.20f1`
 - `2021.3.23f1`
+- `2021.3.24f1`
 {{< /tab >}}
 {{% tab header="2020.X" %}}
 - `2020.3.15f2`
