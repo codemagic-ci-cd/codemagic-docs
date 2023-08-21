@@ -1,6 +1,6 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS M1 build machines using Xcode version 14.2 - 14.3.
-title: macOS M1 build machine specification (Xcode 14.2 - 14.3)
+description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 14.2 - 14.3.
+title: macOS Apple silicon build machine specification (Xcode 14.2 - 14.3)
 aliases:
 
 weight: 11
@@ -14,7 +14,7 @@ weight: 11
 
 - System version `macOS 13.3.1 (22E261)`
 - Kernel version `Darwin 22.4.0`
-- Disk `294GB (Free Space: 96GB)`
+- Disk `294GB (Free Space: 95GB)`
 
 ## Pre-installed tools
 
@@ -26,11 +26,11 @@ weight: 11
 - cordova `11.0.0`
 - curl `7.87.0`
 - docker `N/A`
-- ew-cli `0.9.17`
-- fastlane `2.212.2`
+- ew-cli `0.10.3`
+- fastlane `2.214.0`
 - firebase `11.21.0`
-- flutter `3.10.5 ($HOME/programs/flutter)`
-- gem `3.4.8`
+- flutter `3.13.0 ($HOME/programs/flutter)`
+- gem `3.4.19`
 - gh `2.23.0`
 - git `2.39.2`
 - Google Cloud SDK `404.0.0`

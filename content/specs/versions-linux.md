@@ -25,9 +25,9 @@ weight: 2
 - curl `7.68.0`
 - docker `24.0.2`
 - ew-cli `0.9.17`
-- fastlane `2.209.1`
+- fastlane `2.214.0`
 - firebase `11.21.0`
-- flutter `3.10.5 ($HOME/programs/flutter)`
+- flutter `3.13.0 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
