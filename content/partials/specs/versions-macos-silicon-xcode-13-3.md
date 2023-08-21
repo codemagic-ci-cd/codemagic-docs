@@ -1,6 +1,6 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS M1 build machines using Xcode version 13.3 - 14.1.
-title: macOS M1 build machine specification (Xcode 13.3 - 14.1)
+description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 13.3 - 14.1.
+title: macOS Apple silicon build machine specification (Xcode 13.3 - 14.1)
 aliases:
   - '/specs/versions-macos-m1-xcode-13-3'
 weight: 10

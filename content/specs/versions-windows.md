@@ -23,22 +23,22 @@ weight: 3
 - chocolatey-windowsupdate.extension `1.0.5`
 - curl `8.1.2`
 - DotNetFx `4.8.0.20220524`
-- fastlane `2.209.1`
-- firebase `11.21.0`
-- flutter `3.10.5 (C:\Users\builder\programs\flutter)`
-- gem `3.3.7`
+- fastlane `2.214.0`
+- firebase `12.4.8`
+- flutter `3.13.0 (C:\Users\builder\programs\flutter)`
+- gem `3.3.26`
 - gh `2.30.0`
 - Google Cloud SDK `423.0.0`
 - gsutil 4.67- git `2.33.1`
 - grep `3.7`
 - less `633.0`
 - node `16.20.0`
-- npm `8.3.1`
+- npm `9.8.1`
 - openssl `1.1.1.2100`
 - powershell-core `7.3.4`
 - pyenv-win `3.1.1`
 - python `3.9.6`
-- ruby `3.1.3.1`
+- ruby `3.1.3p185`
 - ssh
 - unzip `6.0`
 - vcredist140 `14.36.32532`
