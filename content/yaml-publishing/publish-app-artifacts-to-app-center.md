@@ -50,6 +50,6 @@ go to your app settings, expand the step between **Build** and **Publish** steps
             --app $APP_CENTER_USERNAME \
             --token $APP_CENTER_TOKEN \
             --quiet
-        # Alternatively: replace '$APP_CENTER_USERNAME' with '$ORGANIZATION_NAME/$APP_CENTER_APP_NAMEE'
+        # Alternatively: replace '$APP_CENTER_USERNAME' with '$ORGANIZATION_NAME/$APP_CENTER_APP_NAME'
 {{< /highlight >}}
 
