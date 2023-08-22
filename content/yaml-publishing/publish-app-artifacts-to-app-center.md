@@ -18,7 +18,7 @@ As a custom build step, Codemagic can publish your app artifact to App Center us
 4. Enter the variable group name, e.g. **_app_center_credentials_**. Click the button to create the group.
 5. Make sure the **Secure** option is selected.
 6. Click the **Add** button to add the variable.
-7. Repeat the steps to also add `APP_CENTER_USERNAME` or `ORGANIZATION_NAME` and `PACKAGE_NAME` variables.
+7. Repeat the steps to also add `ORGANIZATION_NAME` and `APP_CENTER_APP_NAME` variables.
 **Username** is your App Center username when signing up. Alternatively, you can use a combination of **organization name** (in case of creating one in the App Center UI) and **Application identifier** (your app's Bundle identifier / Package name). 
 
 8. Add the variable group to your `codemagic.yaml` file
@@ -32,11 +32,6 @@ As a custom build step, Codemagic can publish your app artifact to App Center us
 
 Add the following script to your `codemagic.yaml` file. If you are using **Flutter workflow editor**,
 go to your app settings, expand the step between **Build** and **Publish** steps and add the respective **post-build** script.
-
-{{<notebox>}}
-**Note:** When creating an app in App Center, its name must match your app's bundle identifier or package name, otherwise an incorrect Correlation ID error is thrown by App Center.
-{{</notebox>}}
-
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
@@ -52,9 +47,8 @@ go to your app settings, expand the step between **Build** and **Publish** steps
             --group Collaborators \
             --file $ARTIFACT_PATH \
             --release-notes 'App submission via Codemagic' \
-            --app $APP_CENTER_USERNAME \
+            --app $ORGANIZATION_NAME/$APP_CENTER_APP_NAME \
             --token $APP_CENTER_TOKEN \
             --quiet
-        # Alternatively: replace '$APP_CENTER_USERNAME' with '$ORGANIZATION_NAME/$PACKAGE_NAME'
 {{< /highlight >}}
 
