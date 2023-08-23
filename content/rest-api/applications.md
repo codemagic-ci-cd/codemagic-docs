@@ -6,7 +6,7 @@ weight: 2
 
 APIs for managing applications are currently available for developers to preview. During the preview period, the API may change without advance notice.
 
-{{}} **Note:** Using our API you cannot fetch information about workflows when configuring with **codemagic.yaml**, as we do not save YAML configurations to our database. Values regarding workflows will be null or false. {{}}
+{{}} **Note:** Using REST API will not fetch information about workflows when configuring with **codemagic.yaml**. It is because only workflows from the Workflow Editor are defaulted as no accessible data is present from codemagic.yaml until a repository is cloned, which means that there is no way to retrieve workflow IDs from codemagic.yaml before triggering a build. {{}}
 
 ## Retrieve all applications
 
