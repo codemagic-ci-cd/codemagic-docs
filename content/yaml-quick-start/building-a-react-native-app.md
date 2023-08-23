@@ -33,33 +33,17 @@ For a quick start, you can clone the appropriate project from our [Sample projec
 
 {{< tab header="New Expo project" >}}
 {{<markdown>}}
-If you are new to mobile development, the easiest way to get started is with Expo CLI. Expo is a set of tools built around React Native and, while it has many features, the most relevant feature for us right now is that it can get you writing a React Native app within minutes. You will only need a recent version of Node.js and a phone or emulator.
+If you are new to mobile development, the easiest way to get started is with Expo. Expo is a set of tools built around React Native and, while it has many features, the most relevant feature for us right now is that it can get you writing a React Native app within minutes. You will only need a recent version of Node.js and a phone or emulator.
 
 1. If necessary, install [Node 14 LTS](https://nodejs.org/en/download/) or greater.
 
-2. Install Expo CLI:
-{{</markdown>}}
-{{< tabpane >}}
-{{% tab header="npm" %}}
+2. Create a new project
 {{< highlight Shell "style=rrt">}}
-npm install -g expo-cli
-{{< /highlight >}}
-{{% /tab %}}
-
-{{% tab header="yarn" %}}
-{{< highlight Shell "style=rrt">}}
-yarn global add expo-cli
-{{< /highlight >}}
-{{% /tab %}}
-{{% /tabpane %}}
-{{<markdown>}}
-3. Create a new project
-{{< highlight Shell "style=rrt">}}
-expo init CodemagicSample
+npx create-expo-app CodemagicSample
 cd CodemagicSample
 {{< /highlight >}}
     
-4. Configure the Git repository for the app.
+3. Configure the Git repository for the app.
 {{</markdown>}}
 {{% /tab %}}
 
