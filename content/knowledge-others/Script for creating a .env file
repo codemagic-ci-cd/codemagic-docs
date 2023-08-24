@@ -1,0 +1,17 @@
+{{< highlight yaml "style=paraiso-dark">}}
+-name: Create a .env file
+ script: |
+   echo "MY_VAR=$MY_VAR" > .env
+   echo "ANOTHER_VAR=$MY_ANOTHER_VAR" >> .env
+   echo "AND_ANOTHER_VAR=$AND_ANOTHER_VAR" >> .env
+{{< /highlight >}}
+
+> [!NOTE]
+> using >> after the first line appends lines to the file
+
+`For Windows`, Powershell requires a different command for this case:
+
+{{< highlight powershell "style=rrt">}}
+cmd.exe /c "echo "BLA_BLA=$env:VAR_NAME" > .env"
+{{< /highlight >}}
+
