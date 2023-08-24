@@ -14,7 +14,7 @@ weight: 12
 
 - System version `macOS 13.4 (22F66)`
 - Kernel version `Darwin 22.5.0`
-- Disk `294GB (Free Space: 101GB)`
+- Disk `294GB (Free Space: 84GB)`
 
 ## Pre-installed tools
 
@@ -70,7 +70,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Xcode versions
 
-- 15.0 (15A5219j) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
+- 15.0 (15A5229h) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
 
 ### Runtimes
 
