@@ -9,6 +9,8 @@
 > [!NOTE]
 > using >> after the first line appends lines to the file
 
+The variables with $ in the above script can be imported from Codemagic UI. For more details, refer to this [document](https://docs.codemagic.io/yaml-basic-configuration/using-environment-variables/).
+
 `For Windows`, Powershell requires a different command for this case:
 
 {{< highlight powershell "style=rrt">}}
