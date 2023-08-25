@@ -64,9 +64,10 @@ To run a build on CI/CD we need to have the `ios` and `android` project folders.
 {{< highlight Shell "style=rrt">}}
 expo eject
 {{< /highlight >}}
-3. Copy the `android/app/build.gradle` file from the ejected project and add it to your main repository. In our example, we create a `support-files` folder and store the `build.gradle` inside.
-4. Whenever this guide calls for making changes to the `android/app/build.gradle`, apply these changes to the `support-files/build.gradle` file instead.
-5. Follow the steps in other **Expo without ejecting** sections in this guide to install the expo cli tools on the VM, run the scripts to copy the `build.gradle` file to the correct location and use other tools to adjust iOS settings in the `info.plist` file.
+3. Make sure that `namespace` and `applicationId` under `android{` section in `app/build.gradle` file uses the same package name. It will be used as a reference for the `app.json` file.
+4. Copy the `android/app/build.gradle` file from the ejected project and add it to your main repository. In our example, we create a `support-files` folder and store the `build.gradle` inside.
+5. Whenever this guide calls for making changes to the `android/app/build.gradle`, apply these changes to the `support-files/build.gradle` file instead.
+6. Follow the steps in other **Expo without ejecting** sections in this guide to install the expo cli tools on the VM, run the scripts to copy the `build.gradle` file to the correct location and use other tools to adjust iOS settings in the `info.plist` file.
 
 ---
 
