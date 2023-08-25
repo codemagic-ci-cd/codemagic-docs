@@ -11,6 +11,38 @@ weight: 7
 
 Publishing to Firebase Hosting with Codemagic is a straightforward process as the Firebase CLI is already pre-installed on our virtual machines. Please note that you will have to set it up for your project locally before publishing it to Firebase Hosting. You can find more information in the official [Firebase documentation](https://firebase.google.com/docs/hosting/quickstart).
 
+
+### Using Firebase Google Service Account
+1. To get started you will need a Google service account user with `Cloud Build Service Account`, `Firebase Admin` and `API Keys Admin roles` as shown in the Firebase [docs](https://cloud.google.com/build/docs/deploying-builds/deploy-firebase#required_iam_permissions).
+
+2. You can follow the step-by-step guide to create the service account user [here](../yaml-publishing/firebase-app-distribution/).
+
+3. Configure the `JSON` key received from step 2 as an environment variable name `FIREBASE_SERVICE_ACCOUNT` .
+
+4. Add an environment variable name GOOGLE_APPLICATION_CREDENTIALS and set its the value to `$CM_BUILD_DIR/firebase_credentials.json`. Make sure to mark it as `secure` and Enter the variable group name, e.g. **_firebase_credentials_**. You can check the doc [here](../yaml-basic-configuration/configuring-environment-variables/) for more details.
+
+5. In your workflow, use the below script to copy the contents of the JSON key in your project folder.
+
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Write Google credentials
+    script: | 
+      echo $FIREBASE_SERVICE_ACCOUNT > $GOOGLE_APPLICATION_CREDENTIALS
+{{< /highlight >}}
+
+
+6. For publishing to Firebase Hosting, add the following script in **codemagic.yaml** right after executing the build script.
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Publish to Firebase Hosting
+    script: | 
+      firebase deploy --only hosting
+{{< /highlight >}}
+
+### Using Firebase token
+
 1. To get started with adding Firebase Hosting to Codemagic, you will need to obtain your Firebase token. In order to do that, run the following in your local terminal:
 {{< highlight bash "style=paraiso-dark">}}
 firebase login:ci
