@@ -32,7 +32,7 @@ scripts:
 {{< /highlight >}}
 
 
-6. For publishing to Firebase Hosting, add the following script in codemagic.yaml right after executing the build script.
+6. For publishing to Firebase Hosting, add the following script in **codemagic.yaml** right after executing the build script.
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:
