@@ -62,7 +62,8 @@ APIs for managing builds are currently available for developers to preview. Duri
       "xcode": "11.4.1",
       "flutter": "v1.12.13+hotfix.9"
     }
-  }
+  },
+  "instanceType": "mac_mini_m1"
 }
 {{< /highlight >}}
 
