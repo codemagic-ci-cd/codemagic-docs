@@ -725,7 +725,7 @@ Caching certain directories can significantly speed up the build process by avoi
 - `Temp`: The Temp directory holds temporary files generated during the build process. Caching this directory can prevent redundant regeneration of temporary data, such as asset import caches, asset bundle dependencies, and shader compilations.
 
 ### Using Codemagic's caching system
-You can cache up to **1 GB** files for each workflow you have by specifying the paths you want to cache like this.
+You can cache up to **3GB** files for each workflow you have by specifying the paths you want to cache like this.
 {{< highlight yaml "style=paraiso-dark">}}
     cache:
       cache_paths:
@@ -735,7 +735,7 @@ You can cache up to **1 GB** files for each workflow you have by specifying the 
 
 Read more about caching [here](https://docs.codemagic.io/yaml/yaml-getting-started/#cache).
 ### Using your own external storage system
-If your caching step is being skipped because it's exceeding the maximum allowed size of 1 GB then you can use some external storage to store your cahcing files.
+If your caching step is being skipped because it's exceeding the maximum allowed size of **3GB** then you can use some external storage to store your cahcing files.
 
 In the following example we are going to use **AWS S3**.
 
