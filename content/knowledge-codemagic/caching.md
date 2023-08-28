@@ -54,7 +54,7 @@ To use caching, simply add a `cache` section to your `codemagic.yaml` file and l
 
 ## Cache usage limits
 
-Caching is limited to 1GB to avoid potential performance issues. Installing dependencies without using caching could be faster than retrieving or updating cached data.
+Caching is limited to **3GB** to avoid potential performance issues. Installing dependencies without using caching could be faster than retrieving or updating cached data.
 
 ## Removing cached dependencies
 
