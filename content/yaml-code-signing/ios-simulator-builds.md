@@ -48,7 +48,7 @@ If you have Xcode Debugging Symbols enabled, the dSYM file will be generated in 
 {{< /highlight >}}
 
 ## Building an unsigned Maui .NET7 iOS app (.app)
-Adjust your build script to use this commands
+Adjust your build script to use these commands
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:
@@ -103,6 +103,7 @@ workflows:
 
 ## Maui .NET7 example
 The following `codemagic.yaml` file shows a sample workflow that builds a `.zip` archive containing the `.app` file inside.
+You can find a complete project showcasing these steps in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/dotnet-maui/dotnet7-maui-unsigned-ios-app).
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
