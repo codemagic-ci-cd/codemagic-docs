@@ -55,7 +55,7 @@ Here is a list of the built-in environment variables with brief explanations:
 | CM_KEYSTORE_PATH        | Path of the file in our VM                                                                                                                                      |
 | CM_ARTIFACT_LINKS       | Information about generated build artifacts that is available in post-publishing step. Read more about it below.                                                |
 | CM_WORKFLOW_NAME        | Name of the workflow that is currently being built       
-| CM_ENV                  | Environment file that enables defining new environment variables
+| CM_ENV                  | Environment file that sets/overrides environment variables at build time
 
 ### Artifact links
 
