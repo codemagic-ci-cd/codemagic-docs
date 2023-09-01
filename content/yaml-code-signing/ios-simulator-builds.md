@@ -48,7 +48,7 @@ If you have Xcode Debugging Symbols enabled, the dSYM file will be generated in 
 {{< /highlight >}}
 
 ## Building an unsigned Maui .NET7 iOS app (.app)
-Adjust your build script to use these commands
+Adjust your build script to use these commands:
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:
