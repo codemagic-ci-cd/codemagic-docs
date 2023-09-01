@@ -18,6 +18,15 @@ When authenticating using a Bitbucket or GitLab account via OAuth, Codemagic ask
 Enter your email address and name and click **Create your account** to get started. Codemagic will then send a six-character authentication key to the provided email address. Enter the authentication key and click **Continue** to verify the email address and finish signup. Note that an unused key expires in 10 minutes. 
 
 You will be sent a new authentication key every time you need to log in again.
+
+## Codemagic Authentication Overview
+
+For Authentication, Codemagic uses an additional verification factor requiring OTP to be sent to the user's email address.
+
+It's also possible to enable multi-factor authentication (MFA) on the OAuth provider side. For example, one can enable MFA on GitHub and sign up via Github on Codemagic.
+
+Enterprise users can use SSO for enhanced authentication control, limiting access based on geolocation, device, and time range.
+
 ## Connecting several repository integrations
 
 You can connect several repository accounts (GitHub, GitLab, Bitbucket) with one Codemagic account or Codemagic team (read more about managing team integrations [here](../getting-started/teams/#managing-team-integrations)).
