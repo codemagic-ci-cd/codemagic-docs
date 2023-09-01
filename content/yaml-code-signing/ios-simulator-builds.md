@@ -47,7 +47,25 @@ If you have Xcode Debugging Symbols enabled, the dSYM file will be generated in 
     - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 {{< /highlight >}}
 
-## Example
+## Building an unsigned Maui .NET7 iOS app (.app)
+Adjust your build script to use these commands:
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Build the app for iOS Simulator
+    script: |
+      cd MauiNet7
+      $DOTNET dotnet build -f net7.0-ios -c Debug  -o ../artifacts
+{{< /highlight >}}
+
+Your artifact will be generated at the default artifacts path. You can access it by adding the following pattern in the `artifacts` section of `codemagic.yaml`:
+
+{{< highlight yaml "style=paraiso-dark">}}
+  artifacts:
+    - ./artifacts/*.app
+{{< /highlight >}}
+
+## Native iOS example
 The following `codemagic.yaml` file shows a sample workflow that builds a `.zip` archive containing the `.app` file inside.
 
 {{< highlight yaml "style=paraiso-dark">}}
@@ -81,4 +99,43 @@ workflows:
       - /tmp/xcodebuild_logs/*.log
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+{{< /highlight >}}
+
+## Maui .NET7 example
+The following `codemagic.yaml` file shows a sample workflow that builds a `.zip` archive containing the `.app` file inside.
+You can find a complete project showcasing these steps in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/dotnet-maui/dotnet7-maui-unsigned-ios-app).
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  maui-ios-simulator-build:
+    name: Dotnet MAUI iOS Simulator
+    max_build_duration: 120
+    instance_type: mac_mini_m1
+    environment:
+      xcode: latest
+      vars:
+        DOTNET_PATH: $CM_BUILD_DIR/dotnet
+        DOTNET: $CM_BUILD_DIR/dotnet/dotnet
+    scripts:
+      - name: Install .NET SDK
+        script: | 
+          wget https://dot.net/v1/dotnet-install.sh
+          chmod +x dotnet-install.sh
+          ./dotnet-install.sh --channel 7.0 --install-dir $DOTNET_PATH
+      - name: Add nuget source
+        script: |
+          $DOTNET nuget add source https://www.myget.org/F/caliburn-micro-builds/api/v3/index.json --name CaliburnNuGet.org
+      - name: Install MAUI
+        script: |
+          $DOTNET_BIN nuget locals all --clear
+          $DOTNET workload restore
+          $DOTNET workload install maui-android maui-ios \
+          --source https://aka.ms/dotnet7/nuget/index.json \
+          --source https://api.nuget.org/v3/index.json
+      - name: Build the app for iOS Simulator
+        script: |
+          cd MauiNet7
+          $DOTNET dotnet build -f net7.0-ios -c Debug  -o ../artifacts
+    artifacts:
+    - ./artifacts/*.app
 {{< /highlight >}}
