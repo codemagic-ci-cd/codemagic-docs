@@ -21,7 +21,7 @@ You will be sent a new authentication key every time you need to log in again.
 
 ## Codemagic Authentication Overview
 
-For Authentication, Codemagic uses an additional verification factor requiring OTP to be sent to the user's email address.
+When using email authentication, Codemagic uses an additional verification factor requiring a One Time Password to be sent to the user's email address.
 
 It's also possible to enable multi-factor authentication (MFA) on the OAuth provider side. For example, one can enable MFA on GitHub and sign up via Github on Codemagic.
 
