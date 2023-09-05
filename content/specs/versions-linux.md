@@ -20,14 +20,13 @@ weight: 2
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
-- Android NDK `22.0.7026061`
 - aws `2.8.9`
 - curl `7.68.0`
 - docker `24.0.2`
 - ew-cli `0.9.17`
 - fastlane `2.214.0`
 - firebase `11.21.0`
-- flutter `3.13.0 ($HOME/programs/flutter)`
+- flutter `3.13.2 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
@@ -71,6 +70,6 @@ weight: 2
 - **11.0.10 (2021-01-19)** (default) JAVA_HOME: `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
 - **1.8.0_282** JAVA_HOME: `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
 
-## Android Studio 4.1.2 (201.8743.12.41.7042882)
+## Android Studio 2022.3
 
 Android Studio path: `~/programs/android-studio`
