@@ -6,6 +6,20 @@ aliases:
   - /troubleshooting/common-issues
 ---
 
+### Getting **Not uploaded** message under the code signing identities for iOS provisioning profiles.
+
+###### Description
+
+When uploading a provisioning profile by opening the **Code signing identities** section in team settings, you are seeing a red cross ❌.
+
+###### Cause
+
+It happens when the certificate that is uploaded under the **iOS certificates** tab is not included in that particular provisioning profile that is giving you a red cross warning.
+
+###### Solution
+
+Open your Apple Developer account and find that exact profile under the Porfiles sidebar in the left, click to Edit it and then, choose the certificate that you have uploaded in the Codemagic UI under **Code signing identities**.  
+
 ### Error creating authentication sessions
 
 ###### Description
