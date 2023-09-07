@@ -97,7 +97,9 @@ Dedicated macOS hosts (Intel or Apple silicon) are also available on request. A 
 
 This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, or **custom base images** or other account management services.
 
-Annual invoicing with bank transfer is available for Enterprise plans. 
+Annual invoicing with bank transfer is available for Enterprise plans. Payment is also possible via AWS Marketplace [here](https://aws.amazon.com/marketplace/pp/prodview-hiscwaznkehlo?sr=0-1&ref_=beagle&applicationId=AWSMPContessa)
+
+Please also note that we have started working towards SOC2 certification and should be certified soon.
 
 If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/enterprise/). 
 
