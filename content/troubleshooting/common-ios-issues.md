@@ -18,7 +18,7 @@ It happens when the certificate that is uploaded under the **iOS certificates** 
 
 ###### Solution
 
-Open your Apple Developer account and find that exact profile under the Porfiles sidebar in the left, click to Edit it and then, choose the certificate that you have uploaded in the Codemagic UI under **Code signing identities**.  
+Open your Apple Developer account and find that exact profile under the Profiles sidebar in the left, click to Edit it and then, choose the certificate that you have uploaded in the Codemagic UI under **Code signing identities**.  
 
 ### Error creating authentication sessions
 
