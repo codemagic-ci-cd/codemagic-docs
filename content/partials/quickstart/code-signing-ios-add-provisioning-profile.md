@@ -41,3 +41,8 @@ The profiles are displayed grouped by category: `Development profiles`, `Ad Hoc 
 
 
 {{< /tabpane >}}
+
+<br>
+{{<notebox>}}
+**Note:** When you make essential changes to a provisioning profile, like modifying the app ID or adding/removing capabilities from the profile identifier, the provisioning profile becomes invalid. In such situations, you need to generate a new provisioning profile with these updates and then re-upload it to Codemagic.
+{{</notebox>}} 
