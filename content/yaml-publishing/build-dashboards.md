@@ -31,6 +31,10 @@ Build dashboards can be disabled anytime by clicking **Disable sharing**.
 3. Then click **Share dashboard** at the top of the page to generate a public link. A popup with the generated link will appear, and you can copy the link to the clipboard. The generated link will be also saved to the **Build dashboards** section in team settings.
 
 {{<notebox>}}
+**Note:** **Share dashboard** will be available only when a team with build dashboards enabled is selected in the **Builds** page. 
+{{</notebox>}}
+
+{{<notebox>}}
 **Note:** Please note that anyone with the public link can access the build dashboard and download build artifacts.
 {{</notebox>}}
 
