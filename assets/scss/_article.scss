@@ -235,6 +235,33 @@
                 padding: 2px 5px;
                 word-break: keep-all;
             }
+
+            @media (max-width: 768px) {
+                thead tr,
+                tbody tr {
+                    border: none;
+                    border-bottom: 2px solid #ccc;
+
+                    th,
+                    td {
+                        display: block;
+                        padding-left: 0;
+                        border: none;
+                    }
+                    th::before,
+                    td::before {
+                        display: block;
+                        content: attr(data-label);
+                        color: #999;
+                        font-weight: 600;
+                    }
+                    th:first-child,
+                    td:first-child {
+                        font-weight: 600;
+                        padding-bottom: 0;
+                    }
+                }
+            }
         }
 
         ol {
