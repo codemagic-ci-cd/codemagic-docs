@@ -15,7 +15,7 @@ weight: 2
 
 - System version `Ubuntu 20.04.2 LTS`
 - Kernel version `5.11.0-1029-gcp`
-- Disk `97GB (Free Space: 43GB)`
+- Disk `97GB (Free Space: 31GB)`
 
 ## Pre-installed tools
 
