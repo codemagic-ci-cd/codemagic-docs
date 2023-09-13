@@ -105,6 +105,21 @@ publishing:
     # Optional boolean. Publish artifacts under a draft release.
     # Can not be used together with rollout_fraction. Defaults to false
     submit_as_draft: true
+
+    # Optional. Enable release to be promoted to another track in addition to where it is
+    # originally published.
+    release_promotion:
+
+      # Name of the track to which release is promoted.
+      track: internal
+
+      # Optional. Rollout fraction (set only if releasing to a fraction of users)
+      # value between (0, 1)
+      rollout_fraction: 0.25
+
+      # Optional boolean. Promote the release as draft.
+      # Can not be used together with rollout_fraction. Defaults to false
+      draft: true
 {{< /highlight >}}
 
 3. Codemagic enables you to automatically publish your app either to one of the tracks:
