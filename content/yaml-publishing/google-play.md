@@ -119,7 +119,7 @@ publishing:
 
       # Optional boolean. Promote the release as draft.
       # Can not be used together with rollout_fraction. Defaults to false
-      draft: true
+      promote_as_draft: true
 {{< /highlight >}}
 
 3. Codemagic enables you to automatically publish your app either to one of the tracks:
