@@ -12,9 +12,9 @@ weight: 12
 
 ## System
 
-- System version `macOS 13.4 (22F66)`
-- Kernel version `Darwin 22.5.0`
-- Disk `294GB (Free Space: 113GB)`
+- System version `macOS 13.5.2 (22G91)`
+- Kernel version `Darwin 22.6.0`
+- Disk `294GB (Free Space: 103GB)`
 
 ## Pre-installed tools
 
@@ -24,12 +24,12 @@ weight: 12
 - carthage `0.39.0`
 - cocoapods `1.12.1`
 - cordova `11.0.0`
-- curl `7.88.1`
+- curl `8.1.2`
 - docker `N/A`
 - ew-cli `0.10.3`
 - fastlane `2.214.0`
 - firebase `11.21.0`
-- flutter `3.13.2 ($HOME/programs/flutter)`
+- flutter `3.13.3 ($HOME/programs/flutter)`
 - gem `3.4.17`
 - gh `2.32.1`
 - git `2.41.0`
@@ -70,7 +70,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Xcode versions
 
-- 15.0 (15A5229m) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
+- 15.0 (15A240d) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `edge` in Xcode version settings
 
 ### Runtimes
 
@@ -84,7 +84,6 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - tvOS 16.1
 - tvOS 16.4
 - tvOS 17.0
-- visionOS 1.0
 - watchOS 7.4
 - watchOS 8.0
 - watchOS 9.1
@@ -98,7 +97,6 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
 - Apple TV 4K (at 1080p) (2nd generation)
-- Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
 - Apple Watch Series 5 (40mm)
@@ -115,7 +113,10 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - Apple Watch Series 7 - 45mm
 - Apple Watch Series 8 (41mm)
 - Apple Watch Series 8 (45mm)
+- Apple Watch Series 9 (41mm)
+- Apple Watch Series 9 (45mm)
 - Apple Watch Ultra (49mm)
+- Apple Watch Ultra 2 (49mm)
 - iPad (10th generation)
 - iPad (8th generation)
 - iPad (9th generation)
@@ -142,6 +143,10 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - iPhone 14 Plus
 - iPhone 14 Pro
 - iPhone 14 Pro Max
+- iPhone 15
+- iPhone 15 Plus
+- iPhone 15 Pro
+- iPhone 15 Pro Max
 - iPhone 8
 - iPhone 8 Plus
 - iPhone SE (2nd generation)
