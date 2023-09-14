@@ -129,7 +129,7 @@ publishing:
    - **Production** --- release the app to production
    - **Custom** --- release the app to a custom closed testing track
 
-    In order to publish to a track (e.g. `internal`) and immediately promote the same release to another track (e.g. `alpha`) to reach a wider audience, configure the `release_promotion` section.
+    In order to publish to a track (e.g. `internal`) and immediately promote the same release to another track (e.g. `alpha`) to reach a wider audience, additionally configure the `release_promotion` section.
 
 4. If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates), Codemagic allows setting the update priority. Otherwise, `in_app_update_priority` can be omitted or set to `0`.
 
