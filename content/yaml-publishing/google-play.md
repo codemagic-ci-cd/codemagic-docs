@@ -89,7 +89,7 @@ publishing:
     
     # Name of the track internal, alpha, beta, production, internal app sharing,
     # or your custom track name
-    track: alpha
+    track: internal
     
     # Optional Priority of the release (only set if in-app updates are supported)
     # integer in range [0, 5]
@@ -105,14 +105,31 @@ publishing:
     # Optional boolean. Publish artifacts under a draft release.
     # Can not be used together with rollout_fraction. Defaults to false
     submit_as_draft: true
+
+    # Optional. Enable release to be promoted to another track in addition to where it is
+    # originally published.
+    release_promotion:
+
+      # Name of the track to which release is promoted.
+      track: alpha
+
+      # Optional. Rollout fraction (set only if releasing to a fraction of users)
+      # value between (0, 1)
+      rollout_fraction: 0.25
+
+      # Optional boolean. Promote the release as draft.
+      # Can not be used together with rollout_fraction. Defaults to false
+      promote_as_draft: true
 {{< /highlight >}}
 
-3. Codemagic enables you to automatically publish your app either to one of the tracks:
+3. Codemagic enables you to automatically publish your app to one of the tracks:
    - **Internal** --- publish for internal testing and QA
    - **Alpha** --- publish for testing with a small group of trusted users
    - **Beta** --- publish for testing to a wider set of users
    - **Production** --- release the app to production
    - **Custom** --- release the app to a custom closed testing track
+
+    In order to publish to a track (e.g. `internal`) and immediately promote the same release to another track (e.g. `alpha`) to reach a wider audience, additionally configure the `release_promotion` section.
 
 4. If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates), Codemagic allows setting the update priority. Otherwise, `in_app_update_priority` can be omitted or set to `0`.
 
@@ -132,7 +149,6 @@ publishing:
     # targeting internal Wear OS Only track
     track: wear:internal
 {{< /highlight >}}
-
 
 {{<notebox>}}
 **Tip:** You can override the publishing track specified in the configuration file using the environment variable `GOOGLE_PLAY_TRACK`. This is useful if you're starting your builds via [Codemagic API](../rest-api/overview/) and want to build different configurations without editing the configuration file.
