@@ -73,8 +73,17 @@ This could be due to an invalid JSON file or permission issues with the service 
   - changesNotSentForReview means (from Google Play API docs): Indicates that the changes in this edit will not be reviewed until they are explicitly sent for review from the Google Play Console UI. These changes will be added to any other changes that are not yet sent for review.
   - Beware, this parameter should not always be true.
   - If an app/track is in a "rejected" state, then you need to submit the app with changesNotSentForReview: true, otherwise, you should send without specifying changesNotSentForReview(or setting it to false). 
-  - Usually, If you are getting a 400 error related to the app being in draft status, either enable publishing to draft by setting the value of `submit_as_draft` to true or promote the draft build up by a level to one of the testing tracks.
+  {{< highlight yaml "style=paraiso-dark">}}
+publishing:
+  google_play:
+    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+    track: internal
+    # Optional boolean To be used ONLY if your app cannot be sent for review automatically
+    changes_not_sent_for_review: true
+{{< /highlight >}}
+  - If you are getting a **400 error** related to the app being in draft status, either enable publishing to draft by setting the value of **submit_as_draft** to **true** or promote the draft build up by a level to one of the testing tracks. Play Console will show you how to do this. You'll need to go through the steps, fill out questionnaires, upload various screenshots, and then after approval, you can move to the Alpha testing track, and Codemagic will successfully publish.
   - Depending on your app's update status, it may not be sent for review automatically. 
+  - If your changes are sent to review automatically, but the field is still set to `true`, you may get the error _**Changes are sent for review automatically. The query parameter changesNotSentForReview must not be set.**_
   - Also, it might be that the actual cause of the error is getting swallowed and is surfaced by changesNotSentForReview error. In that case, try to re-run it by adding `--stacktrace` that will print out a full stack trace.
   - Check [this](https://docs.codemagic.io/yaml-publishing/google-play/) out.
 
