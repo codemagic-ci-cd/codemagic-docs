@@ -131,24 +131,16 @@ publishing:
 
     In order to publish to a track (e.g. `internal`) and immediately promote the same release to another track (e.g. `alpha`) to reach a wider audience, additionally configure the `release_promotion` section.
 
+{{<notebox>}}
+**Note:** You can use the "**Wear OS Only**" track to manage Wear OS releases in Play Console. 
+To target "**Wear OS Only**" track, add **wear:** in the track name.
+
+`track: wear:internal`
+{{</notebox>}}
+
 4. If your application supports [in-app updates](https://developer.android.com/guide/playcore/in-app-updates), Codemagic allows setting the update priority. Otherwise, `in_app_update_priority` can be omitted or set to `0`.
 
 5. In addition, Codemagic supports [staged releases](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en), allowing users to choose which fraction of the testers or users get access to the application. To release to everyone, omit `rollout_fraction` from codemagic.yaml.
-
-6. The field `changes_not_sent_for_review` is required if you are getting the error _**Changes cannot be sent for review automatically. Please set the query parameter changesNotSentForReview to true. Once committed, the changes in this edit can be sent for review from the Google Play Console UI.**_
-
-7. If your changes are sent to review automatically, but the field is still set to `true`, you may get the error _**Changes are sent for review automatically. The query parameter changesNotSentForReview must not be set.**_
-
-8. If you are getting a **400 error** related to the app being in draft status, either enable publishing to draft by setting the value of **submit_as_draft** to **true** or promote the draft build up by a level to one of the testing tracks. Play Console will show you how to do this. You'll need to go through the steps, fill out questionnaires, upload various screenshots, and then after approval, you can move to the Alpha testing track, and Codemagic will successfully publish.
-
-9. You can use the "**Wear OS Only**" track to manage Wear OS releases in Play Console. To target "**Wear OS Only**" track, add **wear:** in the track name.
-{{< highlight yaml "style=paraiso-dark">}}
-publishing:
-  google_play:
-    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-    # targeting internal Wear OS Only track
-    track: wear:internal
-{{< /highlight >}}
 
 {{<notebox>}}
 **Tip:** You can override the publishing track specified in the configuration file using the environment variable `GOOGLE_PLAY_TRACK`. This is useful if you're starting your builds via [Codemagic API](../rest-api/overview/) and want to build different configurations without editing the configuration file.
