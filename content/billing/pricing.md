@@ -8,7 +8,7 @@ weight: 2
 
 This plan is suitable for individuals working on hobby or indie projects. You can also use this plan for running a proof of concept.
 
-Individuals receive **500 free minutes** per month on macOS M1 standard machines on a personal account. These 500 free minutes are **reset on the 1st of each month**. Free minutes are not available if you are using a Team. 
+Individuals receive **500 free minutes** per month on macOS M1 machines on a personal account. These 500 free minutes are **reset on the 1st of each month**. Free minutes are not available if you are using a Team. 
 
 You cannot invite collaborators to an individual plan.
 
@@ -16,13 +16,13 @@ To start using Codemagic for free, [sign up here](https://codemagic.io/signup).
 
 ### 2. Buying Additional Minutes
 
-You can enable billing on personal accounts and pay for any additional minutes you want to use. You will still have **500 free build minutes** on macOS M1 standard VM. To enable billing, proceed [here](https://codemagic.io/billing). 
+You can enable billing on personal accounts and pay for any additional minutes you want to use. You will still have **500 free build minutes** on macOS M1 VM. To enable billing, proceed [here](https://codemagic.io/billing). 
 
 Postpaid minutes are billed on the first day of the following month in which they were used.
 
-Usage on macOS M1 standard VM that exceeds 500 minutes is charged at the rate shown below.
+Usage on macOS M1 VM that exceeds 500 minutes is charged at the rate shown below.
 
-Builds on macOS Intel VM, Linux and Windows do not have free build minutes. The per-minute pricing for each instance type is shown below.
+Builds on macOS Intel VM, Linux, and Windows do not have free build minutes. The per-minute pricing for each instance type is shown below.
 
 | **Item**                     | **Price**                          |
 | ---------------------------- | ---------------------------------  |
@@ -33,9 +33,9 @@ Builds on macOS Intel VM, Linux and Windows do not have free build minutes. The 
 
 ### 1. Pay-as-you-go
 
-For teams, all build minutes using macOS M1 standard VM, macOS Intel VM, Linux standard VM, and Linux premium VM are charged at the rates shown below. 
+For teams, all build minutes using macOS M1 VM, macOS Intel VM, and Linux VM are charged at the rates shown below. 
 
-Each extra build concurrency allows running an additional build in parallel. For example, adding two extra build concurrencies allow running a total of three builds in parallel. 
+Each extra build concurrency allows running an additional build in parallel. For example, adding two extra build concurrencies allows running a total of three builds in parallel. 
 
 You can **add additional concurrencies** in the Codemagic web app by clicking 'Billing' in the left-hand menu and then clicking on your Team name. In the 'Billing Overview' you should click 'update' in the Build concurrency section and select the number of concurrencies you wish to add to your Team. 
 
@@ -48,10 +48,10 @@ Each additional concurrency is $49/month and you will be billed for each concurr
 | Linux & Windows VMs          | $0.045 / minute                   |                                                                       
 | Extra build concurrency      | $49 / month                       | 
 
-Consider an annual plan or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on Intel macOS, Linux, and Windows instances. 
+Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Intel and Apple Silicon M2), Linux, and Windows instances. 
 
 
-macOS M2 is not currently available as a pay-as-you-go instance type, but is available on request for fixed annual plan as described below.
+macOS M2 is not currently available as a pay-as-you-go instance type but is available for the fixed annual plan as described below.
 
 ### 2. Fixed Annual Plan
 
@@ -59,7 +59,7 @@ An annual subscription with access to **Mac mini M2 VMs** and **2 months free** 
 
 The Codemagic annual plan gives you a fixed-price plan with the following benefits:
 
-* 3 concurrencies (with access to Mac mini M2, macOS M1 & Intel, Linux, and Windows instances)
+* 3 concurrencies (with access to Mac mini M2, Linux, and Windows instances)
 * Unlimited build minutes
 * Unlimited team seats
 * In-app chat support
@@ -111,7 +111,7 @@ It's possible to resell the Codemagic Enterprise plan. Contact us [here](https:/
 
 If you need specific software and tools available on a builder machine we can provide dedicated macOS host machines which give you 2 VMs. 
 
-Dedicated macOS M1 standard and macOS Intel hosts are available for $449/month, paid annually with **20% discount** comes to **$4,310/year**. 
+Dedicated macOS M2 or macOS Intel hosts are available for $449/month, paid annually with **20% discount** comes to **$4,310/year**. 
 
 Annual dedicated host plans can be paid for with a credit card and invoicing with bank transfer is available.
 
@@ -119,18 +119,14 @@ For more information contact us [here](https://codemagic.io/contact/).
 
 ## Build history and artifact storage
 
-Build history and artifact retention time depends on your account type and pricing plan.
-
-{{<notebox>}}
-**Important**: We are changing our build history and artifact retention policy starting from August 1, 2022, and limiting the retention period for teams on the Pay as you go plan. See more details below.
-{{</notebox>}}
+Build history and artifact retention time depend on your account type and pricing plan.
 
 <br>
 
 | **Account type**  |  **Retention period** |
 |---------------|-------------------|
 | Personal accounts | Build history and artifacts of apps on the personal account are stored in Codemagic for **30 days** after which they are deleted. | 
-| Teams on Pay as you go plan | Build history and artifacts of apps on the team account with Pay as you go pricing are stored in Codemagic for **60 days** after which they are deleted. (Unlimited until August 1, 2022)| 
+| Teams on Pay as you go plan | Build history and artifacts of apps on the team account with Pay as you go pricing are stored in Codemagic for **60 days** after which they are deleted.| 
 | Teams on Professional or Enterprise plan | Unlimited | 
 
 ### Backing up build artifacts
@@ -157,7 +153,7 @@ The instance types and hardware specifications can be found below.
 | Linux VM                 | 4 vCPUs, 16 GB memory                                                           |
 | Windows VM               | 8 vCPUs, 32 GB memory  
 
-If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs. Also, please note that Android emulators are not available on macOS M1 standard VMs.
+If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs. Also, please note that Android emulators are not available on macOS M1 or M2 VMs.
 
 If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/contact/).
 
