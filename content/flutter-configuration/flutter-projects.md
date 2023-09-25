@@ -165,7 +165,7 @@ When building a Flutter application with Codemagic, you can customize your build
 
 Codemagic provides several options: `channel Stable`, `channel Beta`, `channel Master`, or a specific version. 
 
-Setting the Flutter version in workflow editor is possible in the build section of your workfor editor. 
+Setting the Flutter version in workflow editor is possible in the build section of your workflow editor. 
 
 Alternatively, you can leverage [Flutter Version Management (FVM)](https://fvm.app/docs/getting_started/overview) by selecting the `from FVM configuration` option. This automatically sets the Flutter version from your project's `fvm_config.json` file, located at the root of your project in the `.fvm` directory. If this file does not exist, the build will fail.
 
