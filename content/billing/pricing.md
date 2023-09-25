@@ -149,8 +149,7 @@ The instance types and hardware specifications can be found below.
 | macOS M2 VM              | Mac mini M2 8-core CPU / 8GB RAM                                                |
 | macOS M1 VM              | 3.2GHz Quad Core / 8GB                                                          |
 | macOS Intel VM           | 3.7GHz Quad Core / 32GB                                                         |
-| Linux X2 VM              | 8 vCPUs, 32 GB memory                                                           |
-| Linux VM                 | 4 vCPUs, 16 GB memory                                                           |
+| Linux VM                 | 8 vCPUs, 32 GB memory                                                           |
 | Windows VM               | 8 vCPUs, 32 GB memory  
 
 If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs. Also, please note that Android emulators are not available on macOS M1 or M2 VMs.
