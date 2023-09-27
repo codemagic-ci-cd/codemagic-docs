@@ -226,3 +226,16 @@ Apple has updated Apple Developer Program License Agreement and it needs to be r
 
 ###### Solution
 In order to update your existing apps and submit new apps to the App Store, the Account Holder must review and accept the updated agreement by signing in to their [account](https://appstoreconnect.apple.com/agreements/#/) on the Apple Developer website.
+
+### Certificate will no longer be valid in 30 days
+
+###### Description
+You received e-mail from Apple stating that:
+
+    Your Distribution Certificate will no longer be valid in 30 days. To generate a new certificate, sign in and visit Certificates, Identifiers & Profiles.
+
+###### Cause
+Distribution certificates issued by Apple have a validity period of one year from the date of issuance. After one year, they expire, which means they can no longer be used to sign and distribute apps.
+
+###### Solution
+There's no need to worry, as Codemagic will automatically renew your current certificate. You won't have to generate one manually or replace the old one.
