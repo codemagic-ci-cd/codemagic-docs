@@ -127,4 +127,4 @@ Once you are familiar with how Codemagic works, you should try your automation s
 
 ## Next steps
 
-Check out the getting started guide [here](./white-label-getting-started/) or the final white-label sample project [here](https://github.com/codemagic-ci-cd/white-label-demo-project).
+Check out the getting started guide [here](../yaml-quick-start/white-label-getting-started/) or the final white-label sample project [here](https://github.com/codemagic-ci-cd/white-label-demo-project).
