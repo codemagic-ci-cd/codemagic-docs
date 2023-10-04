@@ -801,7 +801,7 @@ workflows:
         - unity_credentials
         - google_play
       vars:
-        PACKAGE_NAME: "io.codemagic.unitysample"
+        BUILD_SCRIPT: BuildAndroid
         GOOGLE_PLAY_TRACK: alpha
         PACKAGE_NAME: "io.codemagic.unitysample"
     scripts:
