@@ -6,11 +6,11 @@ aliases:
  - /knowledge-base/install-unity-version
 ---
 
-Each build machine image has a specific version of Unity installed. You can find out the specific Unity version by consulting the build machine specification for [macOS](../specs/versions-macos) and for [Windows](../specs/versions-windows) instances.
+Some build machines have Unity pre-installed. Consult build machine specification ([macOS](../specs/versions-macos) and [Windows](../specs/versions-windows)) to find out the version of the pre-installed Unity if any.
 
 ## Use Codemagic's supported versions
 
-If you need to use a different Unity version, then you can specify this version in your `codemagic.yaml` file like this:
+If you need to install or change Unity version, you would need to specify the preferred version in your `codemagic.yaml` file like this:
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
   unity-workflow:
@@ -22,7 +22,7 @@ workflows:
 This will automatically install the specified Unity version to the build machine and set the `UNITY_HOME` to `/Applications/Unity/Hub/Editor/<YOUR-DESIRED-UNITY-VERSION>/Unity.app` and you can continue building your app as described [here](../yaml-quick-start/building-a-unity-app/).
 
 
-#### The supported Unity versions on Mac Pro (Intel) machines are the following:
+#### The available Unity versions are the following:
 {{< tabpane >}}
 {{% tab header="2022.X" %}}
 - `2022.2.16f1`
@@ -56,6 +56,7 @@ If you can't find your desired Unity version in the list, please contact us [her
 {{<notebox>}}
 **Notes:**
 - These versions are the `Unity Editor (macOS x86_64)`, and have only the `macOS`, `Android`, and `iOS` modules.
+- Mac machines with Apple Silicon support Unity built for `x86_46` architecture.
 - If your app requires additional modules then you need to install it using [Unity Hub CLI](./-others/install-unity-version/#unity-installation-script) like this: `/Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version <UNITY_VERSION> -m windows-mono`, this will install the windows modules for the specified` <UNITY_VERSION>`.
 {{</notebox>}}
 
