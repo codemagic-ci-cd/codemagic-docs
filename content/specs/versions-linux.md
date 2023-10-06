@@ -15,7 +15,7 @@ weight: 2
 
 - System version `Ubuntu 20.04.2 LTS`
 - Kernel version `5.11.0-1029-gcp`
-- Disk `97GB (Free Space: 31GB)`
+- Disk `97GB (Free Space: 30GB)`
 
 ## Pre-installed tools
 
@@ -26,7 +26,7 @@ weight: 2
 - ew-cli `0.9.17`
 - fastlane `2.214.0`
 - firebase `11.21.0`
-- flutter `3.13.2 ($HOME/programs/flutter)`
+- flutter `3.13.6 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
