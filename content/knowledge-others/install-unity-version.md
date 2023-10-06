@@ -6,9 +6,8 @@ aliases:
  - /knowledge-base/install-unity-version
 ---
 
-Intel Mac and Windows machines have Unity pre-installed. It's possible to install other supported Unity versions.
 
-## Use Codemagic's supported versions (macOS only)
+## Quick install (macOS only)
 
 If you need to install Unity, you would need to specify the preferred version in your `codemagic.yaml` file like this:
 {{< highlight yaml "style=paraiso-dark">}}
@@ -22,7 +21,7 @@ workflows:
 This will automatically install the specified Unity version to the build machine and set the `UNITY_HOME` to `/Applications/Unity/Hub/Editor/<YOUR-DESIRED-UNITY-VERSION>/Unity.app` and you can continue building your app as described [here](../yaml-quick-start/building-a-unity-app/).
 
 
-**The available Unity versions on Mac machines are the following:**
+**The available Unity versions are the following:**
 {{< tabpane >}}
 {{% tab header="2022.X" %}}
 - `2022.2.16f1`
