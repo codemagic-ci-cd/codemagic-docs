@@ -59,7 +59,7 @@ If you can't find your desired Unity version in the list, please contact us [her
 - If your app requires additional modules then you need to install it using [Unity Hub CLI](./-others/install-unity-version/#unity-installation-script) like this: `/Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version <UNITY_VERSION> -m windows-mono`, this will install the windows modules for the specified` <UNITY_VERSION>`.
 {{</notebox>}}
 
-## Download from Unity Hub CLI
+## Download and install from Unity Hub
 It is possible to use the Unity Hub CLI to download and install a different Unity Editor version and target support files for that version. 
 
 License activation and return takes place with the Unity version already installed on the machine, but building of the Xcode project or Android binary will use the version of Unity you install. 
