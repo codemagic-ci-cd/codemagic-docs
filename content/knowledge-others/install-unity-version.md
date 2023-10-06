@@ -21,7 +21,7 @@ workflows:
 This will automatically install the specified Unity version to the build machine and set the `UNITY_HOME` to `/Applications/Unity/Hub/Editor/<YOUR-DESIRED-UNITY-VERSION>/Unity.app` and you can continue building your app as described [here](../yaml-quick-start/building-a-unity-app/).
 
 
-#### The available Unity versions are the following:
+#### The available Unity versions on Mac machines are the following:
 {{< tabpane >}}
 {{% tab header="2022.X" %}}
 - `2022.2.16f1`
