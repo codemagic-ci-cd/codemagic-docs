@@ -6,11 +6,10 @@ aliases:
  - /knowledge-base/install-unity-version
 ---
 
-Some build machines have Unity pre-installed. Consult build machine specification ([macOS](../specs/versions-macos) and [Windows](../specs/versions-windows)) to find out the version of the pre-installed Unity if any.
 
 ## Use Codemagic's supported versions
 
-If you need to install or change Unity version, you would need to specify the preferred version in your `codemagic.yaml` file like this:
+If you need to install Unity, you would need to specify the preferred version in your `codemagic.yaml` file like this:
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
   unity-workflow:
@@ -56,7 +55,7 @@ If you can't find your desired Unity version in the list, please contact us [her
 {{<notebox>}}
 **Notes:**
 - These versions are the `Unity Editor (macOS x86_64)`, and have only the `macOS`, `Android`, and `iOS` modules.
-- Mac machines with Apple Silicon support Unity built for `x86_46` architecture.
+- Mac machines with Apple silicon support Unity built for `x86_46` architecture.
 - If your app requires additional modules then you need to install it using [Unity Hub CLI](./-others/install-unity-version/#unity-installation-script) like this: `/Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version <UNITY_VERSION> -m windows-mono`, this will install the windows modules for the specified` <UNITY_VERSION>`.
 {{</notebox>}}
 
