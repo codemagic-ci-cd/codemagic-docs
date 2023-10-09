@@ -15,7 +15,7 @@ When signing up via GitHub, you will be asked to authorize Codemagic to authenti
 When authenticating using a Bitbucket or GitLab account via OAuth, Codemagic asks for access to your account and repositories so they can be listed when you're adding applications. You will need to authorize Codemagic to connect the Bitbucket/GitLab account to your Codemagic account.
 ## Sign up via email
 
-Enter your email address and name and click **Create your account** to get started. Codemagic will then send a six-character authentication key to the provided email address. Enter the authentication key and click **Continue** to verify the email address and finish signup. Note that an unused key expires in 10 minutes. 
+Enter your email address and name and click **Create your account** to get started. Codemagic will then send a six-character authentication key to the provided email address. Enter the authentication key and click **Continue** to verify the email address and finish signup. Note that an unused key expires in **10 minutes**. 
 
 You will be sent a new authentication key every time you need to log in again.
 
