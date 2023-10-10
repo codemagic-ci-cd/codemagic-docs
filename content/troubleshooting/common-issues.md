@@ -37,11 +37,9 @@ GitHub repositories won't show up in the dropdown while trying to add an app to 
 ###### Solution
 Try disconnecting the GitHub/Bitbucket integration and then connecting it again.
 
-1- Go to your Team settings.
-
-2- Expand Team Integrations
-
-3- Disconnect your GitHub/Bitbucket Integration and then reconnect. 
+1. Go to your Team settings.
+2. Expand Team Integrations
+3. Disconnect your GitHub/Bitbucket Integration and then reconnect. 
 
 
 ### MacOS publishing failed
