@@ -101,7 +101,7 @@ Note: Xcode version 14.2 or lower is required to use Mac Pro machines.
 ###### Description
 When publishing to Firebase app Distribution using Gradle, build fails with this error "Could not find method firebaseAppDistribution() for arguments..."
 
-###### Couse
+###### Cause
 This issue is likely caused by missing Distribution Gradle plugin or missing dependency for the App Distribution Gradle plugin.
 
 ###### Solution
