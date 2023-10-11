@@ -238,4 +238,6 @@ You received e-mail from Apple stating that:
 Distribution certificates issued by Apple have a validity period of one year from the date of issuance. After one year, they expire, which means they can no longer be used to sign and distribute apps.
 
 ###### Solution
-There's no need to worry, as Codemagic will automatically renew your current certificate. You won't have to generate one manually or replace the old one.
+Rest assured, Codemagic simplifies the certificate management process for you. Here's how it works:
+ - If you're using `automatic code signing`, Codemagic handles certificate and provisioning profile management. It will also automatically renew the certificate when it's about to expire.
+ - If you're using `manual code signing` or Codemagic signing identities (CSI), you will need to upload your certificates and profiles manually to Codemagic.
