@@ -91,7 +91,7 @@ Enterprise plans are available starting from **$12k/year** and include the follo
 - Account management services
 - Technical account manager
 - Private Slack channel
-- SSO (Single sign-on)
+- SSO Login (OpenID, OAuth2 or SAML 2.0)
 
 
 Dedicated macOS hosts (Intel or Apple silicon) are also available on request. A dedicated host is only used by your organization and provides 2 VMs that can be configured with the software you require. Dedicated hosts can also be EU-based.
