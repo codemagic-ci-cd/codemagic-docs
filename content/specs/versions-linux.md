@@ -8,14 +8,13 @@ weight: 2
 
 ## Hardware
 
-- Standard VM on Linux `4 vCPUs, 16 GB memory`
-- Premium VM on Linux `8 vCPUs, 32 GB memory`
+- VM on Linux `8 vCPUs, 32 GB memory`
 
 ## System
 
 - System version `Ubuntu 20.04.2 LTS`
 - Kernel version `5.11.0-1029-gcp`
-- Disk `97GB (Free Space: 30GB)`
+- Disk `97GB (Free Space: 31GB)`
 
 ## Pre-installed tools
 

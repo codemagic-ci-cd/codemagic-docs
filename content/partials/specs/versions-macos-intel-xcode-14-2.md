@@ -8,7 +8,7 @@ weight: 9
 
 ## Hardware
 
-- Premium VM on Mac Pro `3.7GHz Quad Core / 32GB`
+- VM on Mac Pro `3.7GHz Quad Core / 32GB`
 
 ## System
 

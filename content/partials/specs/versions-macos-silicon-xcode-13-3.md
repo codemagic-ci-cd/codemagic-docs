@@ -8,7 +8,7 @@ weight: 10
 
 ## Hardware
 
-- Standard VM on Mac mini M1 `3.2GHz Quad Core / 8GB`
+- VM on Mac mini M1 `3.2GHz Quad Core / 8GB`
 
 ## System
 
