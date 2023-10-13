@@ -2,9 +2,6 @@
 title: Moving From Workflow Editor to yaml
 description: How to move from Codemagic workflow editor to yaml configuration.
 weight: 7
-aliases:
-  - '../building/custom-scripts'
-  - /flutter/custom-scripts
 ---
 
 Please follow the steps we have included below for moving from workflow editor to yaml configuration.
