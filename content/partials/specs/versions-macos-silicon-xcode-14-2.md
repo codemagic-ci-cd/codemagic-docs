@@ -8,7 +8,8 @@ weight: 11
 
 ## Hardware
 
-- Standard VM on Mac mini M1 `3.2GHz Quad Core / 8GB`
+- VM on Mac mini M1 `3.2GHz Quad Core / 8GB`
+- VM on Mac mini M2 `3.5GHz Quad Core / 8GB`
 
 ## System
 
@@ -22,15 +23,15 @@ weight: 11
 - Android NDK `25.1.8937393`
 - aws `2.11.6`
 - carthage `0.39.0`
-- cocoapods `1.12.1`
+- cocoapods `1.13.0`
 - cordova `11.0.0`
 - curl `7.87.0`
 - docker `N/A`
 - ew-cli `0.10.3`
-- fastlane `2.214.0`
+- fastlane `2.216.0`
 - firebase `11.21.0`
-- flutter `3.13.0 ($HOME/programs/flutter)`
-- gem `3.4.19`
+- flutter `3.13.6 ($HOME/programs/flutter)`
+- gem `3.4.20`
 - gh `2.23.0`
 - git `2.39.2`
 - Google Cloud SDK `404.0.0`

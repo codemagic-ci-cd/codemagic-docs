@@ -8,13 +8,14 @@ weight: 12
 
 ## Hardware
 
-- Standard VM on Mac mini M1 `3.2GHz Quad Core / 8GB`
+- VM on Mac mini M1 `3.2GHz Quad Core / 8GB`
+- VM on Mac mini M2 `3.5GHz Quad Core / 8GB`
 
 ## System
 
 - System version `macOS 13.5.2 (22G91)`
 - Kernel version `Darwin 22.6.0`
-- Disk `294GB (Free Space: 103GB)`
+- Disk `294GB (Free Space: 98GB)`
 
 ## Pre-installed tools
 
@@ -22,15 +23,15 @@ weight: 12
 - Android NDK `25.1.8937393`
 - aws `2.13.4`
 - carthage `0.39.0`
-- cocoapods `1.12.1`
+- cocoapods `1.13.0`
 - cordova `11.0.0`
 - curl `8.1.2`
 - docker `N/A`
 - ew-cli `0.10.3`
-- fastlane `2.214.0`
+- fastlane `2.216.0`
 - firebase `11.21.0`
-- flutter `3.13.3 ($HOME/programs/flutter)`
-- gem `3.4.17`
+- flutter `3.13.6 ($HOME/programs/flutter)`
+- gem `3.4.20`
 - gh `2.32.1`
 - git `2.41.0`
 - Google Cloud SDK `404.0.0`
@@ -40,7 +41,7 @@ weight: 12
 - ionic `5.4.16`
 - jq `1.6`
 - ktlint `0.50.0`
-- node `20.5.0`
+- node `19.7.0`
 - npm `9.8.0`
 - python `3.8.13`
 - python3 `3.8.13`
