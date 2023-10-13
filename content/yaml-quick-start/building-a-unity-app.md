@@ -360,7 +360,11 @@ You will need to add custom Gradle templates so your Android builds work with Co
 
 We need to perform this action due to the prior inclusion of a reference to **jcenter()** a repository that had been deprecated and proven to be unreliable, despite its intended read-only status. As a remedy, you should replace the reference to **jcenter()** with **mavenCentral()**.
 
-Begin by installing various local versions. Next, set up a mobile project tailored for Android. Go to **File > Build Settings** and ensure you select **Development Build** and **Export Project** before exporting the project. Afterward, navigate to the **Export** option on the Build Settings screen and proceed by clicking the **Export** button to save the project in a designated folder. Finally, review the output to inspect the **build.gradle** file.
+Once you have set up an Android mobile project on your local machine go to **File > Build Settings** and ensure you select **Development Build** and **Export Project** before exporting the project. 
+
+Afterward, navigate to the **Export** option on the Build Settings screen and proceed by clicking the **Export** button to save the project in a designated folder. 
+
+Finally, review the output to inspect the **build.gradle**. Replace the reference to **jcenter()** with **mavenCentral()** and use it as the base Gradle Template as discussed in the following steps.
 
 OR
 
