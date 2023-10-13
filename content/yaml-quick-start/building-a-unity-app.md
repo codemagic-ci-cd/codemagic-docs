@@ -358,7 +358,7 @@ Google recommends that Android applications be published to Google Play using th
 #### Add a custom base Gradle template **(Only for Unity Versions older than Unity 2022)**
 You will need to add custom Gradle templates so your Android builds work with Codemagic.
 
-We need to perform this action due to the prior inclusion of a reference to **jcenter()** a repository that had been deprecated and proven to be unreliable, despite its intended read-only status. As a remedy, we replaced this reference with **mavenCentral()**
+We need to perform this action due to the prior inclusion of a reference to **jcenter()** a repository that had been deprecated and proven to be unreliable, despite its intended read-only status. As a remedy, you should replace the reference to **jcenter()** with **mavenCentral()**.
 
 Begin by installing various local versions. Next, set up a mobile project tailored for Android. Go to **File > Build Settings** and ensure you select **Development Build** and **Export Project** before exporting the project. Afterward, navigate to the **Export** option on the Build Settings screen and proceed by clicking the **Export** button to save the project in a designated folder. Finally, review the output to inspect the **build.gradle** file.
 
