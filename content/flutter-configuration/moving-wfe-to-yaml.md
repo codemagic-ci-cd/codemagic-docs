@@ -6,7 +6,7 @@ weight: 7
 
 Converting workflow settings to `yaml` cannot be done directly at the moment.
 
-Please follow the steps we have included below for moving from workflow editor to yaml configuration.
+Please follow the steps we have included below for moving from Workflow Editor to YAML configuration.
 
 1. Prepare your `codemagic.yaml` file. You can use our sample templates for [iOS](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/flutter/flutter-android-and-ios-yaml-demo-project/codemagic.yaml#L51) and [Android](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/flutter/flutter-android-and-ios-yaml-demo-project/codemagic.yaml#L2) workflows for Flutter. You should be able to use it with minimal modifications.
 
