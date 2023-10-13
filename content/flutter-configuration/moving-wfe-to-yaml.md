@@ -1,6 +1,6 @@
 ---
 title: Moving From Workflow Editor to YAML
-description: How to move from Codemagic workflow editor to yaml configuration.
+description: How to move from Codemagic Workflow Editor to YAML configuration.
 weight: 7
 ---
 
