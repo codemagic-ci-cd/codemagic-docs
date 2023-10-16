@@ -57,7 +57,7 @@ To use caching, simply add a `cache` section to your `codemagic.yaml` file and l
 ## Cache usage limits
 
 Maximum cache size is limited to
-- **10GB** per workflow for team account, and 
+- **10GB** per workflow for teams, and 
 - **3GB** per workflow for personal accounts.
 
 Note that installing dependencies without using caching could be faster than retrieving or updating cached data.
