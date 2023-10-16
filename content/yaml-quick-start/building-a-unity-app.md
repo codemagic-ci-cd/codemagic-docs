@@ -355,8 +355,18 @@ Google recommends that Android applications be published to Google Play using th
 11. In the **Configuration** section set **Scripting Backend** to `IL2CPP`.
 12. In the **Target Architectures** section check **ARMv7** and **ARM64** to support 64-bit architectures so the app is compliant with the Google Play 64-bit requirement.
 
-#### Add a custom base Gradle template
-You will need to add custom Gradle templates so your Android builds work with Codemagic.  
+#### Add a custom base Gradle template **(Only for Unity Versions older than Unity 2022)**
+You will need to add custom Gradle templates so your Android builds work with Codemagic.
+
+We need to perform this action due to the prior inclusion of a reference to **jcenter()** a repository that had been deprecated and proven to be unreliable, despite its intended read-only status. As a remedy, you should replace the reference to **jcenter()** with **mavenCentral()**.
+
+Once you have set up an Android mobile project on your local machine go to **File > Build Settings** and ensure you select **Development Build** and **Export Project** before exporting the project. 
+
+Afterward, navigate to the **Export** option on the Build Settings screen and proceed by clicking the **Export** button to save the project in a designated folder. 
+
+Finally, review the output to inspect the **build.gradle**. Replace the reference to **jcenter()** with **mavenCentral()** and use it as the base Gradle Template as discussed in the following steps.
+
+OR
 
 1. Open Unity and **File > Build Settings**.
 2. Make sure **Android** is selected in the **Platform** section.
@@ -365,6 +375,7 @@ You will need to add custom Gradle templates so your Android builds work with Co
 5. Check the **Custom Base Gradle Template**.
 6. Close the project settings and build settings.
 
+##
 #### Modify the base Gradle template
 1. In the project explorer expand **Assets > Plugins > Android**.
 2. Double click on **baseProjectTemplate.gradle**.
