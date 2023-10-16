@@ -239,9 +239,10 @@ Distribution certificates issued by Apple have a validity period of one year fro
 
 ###### Solution
 Rest assured, Codemagic simplifies the certificate management process for you. Here's how it works:
- - If you're using `automatic code signing`, Codemagic takes care of certificate and provisioning profile management for you. This means it also automatically renews the certificate when it's about to expire.
+ - By providing your **App Store Connect API key ID**, **issuer ID**, and API key as a **.p8 file**, Codemagic takes care of your certificate and provisioning profile management, including the automatic renewal of certificates when they near expiration. This process is referred to as  `automatic code signing`.
+
+    -  If you want to use a specific certificate, you'll need to provide its private RSA key associated with an iOS Distribution certificate that has previously been generated within your Apple Developer Program account. You can find additional information on how to update an RSA key (CERTIFICATE_PRIVATE_KEY) for a certificate [here](https://docs.codemagic.io/yaml-code-signing/alternative-code-signing-methods/#:~:text=Obtaining%20the%20Certificate%20private%20key).
 
  - If you're using `manual code signing` or `Codemagic signing identities (CSI)`, you will need to create and upload your certificates and profiles that you generated on the Apple Developer UI manually to Codemagic.
  Alernativley, with CSI, users can also fetch or create resources directly from Codemagic UI instead of navigating the Apple Developer UI when going in **Teams** > **Codesignng identities** > **iOS certificate** tab > **Generate certificate** button and in there provide your API key.
 
-     If you want to use a specific certificate with CSI, you'll need to provide its private RSA key associated with an iOS Distribution certificate that has previously been generated within your Apple Developer Program account. You can find additional information on how to update an RSA key (CERTIFICATE_PRIVATE_KEY) for a certificate [here](https://docs.codemagic.io/yaml-code-signing/alternative-code-signing-methods/#:~:text=Obtaining%20the%20Certificate%20private%20key).
