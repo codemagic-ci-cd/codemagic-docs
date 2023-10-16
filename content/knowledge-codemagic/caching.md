@@ -7,7 +7,9 @@ aliases:
   - /flutter-configuration/dependency-caching
 ---
 
-You can speed up your builds by storing dependencies on Codemagic. 
+Caching can improve the efficiency of your build and deployment processes on Codemagic by reusing artifacts, such as packages, libraries, and compiled code.
+
+The caching process begins when a successful build generates a cache. Codemagic stores this cache for a maximum of 14 days. After 14 days, the cache expires and is no longer accessible for subsequent builds. When this occurs, your workflow will revert to building without cache, which means dependencies and artifacts need to be fetched and generated again. If a build successfully completes without cache, Codemagic will automatically generate a new cache based on the build's output. This new cache is then uploaded and can be used for the next 14 days, following the same process.
 
 For example, you may consider caching the following paths:
 
@@ -54,7 +56,11 @@ To use caching, simply add a `cache` section to your `codemagic.yaml` file and l
 
 ## Cache usage limits
 
-Caching is limited to **3GB** to avoid potential performance issues. Installing dependencies without using caching could be faster than retrieving or updating cached data.
+Maximum cache size is limited to
+- **10GB** per workflow for team account, and 
+- **3GB** per workflow for personal accounts.
+
+Note that installing dependencies without using caching could be faster than retrieving or updating cached data.
 
 ## Removing cached dependencies
 
