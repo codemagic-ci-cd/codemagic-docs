@@ -9,7 +9,7 @@ aliases:
 
 Caching can improve the efficiency of your build and deployment processes on Codemagic by reusing artifacts, such as packages, libraries, and compiled code.
 
-The caching process begins when a successful build generates a cache. Codemagic stores this cache for a maximum of 14 days. After 14 days, the cache expires and is no longer accessible for subsequent builds. When this occurs, your workflow will revert to building without cache, which means dependencies and artifacts need to be fetched and generated again. If a build successfully completes without cache, Codemagic will automatically generate a new cache based on the build's output. This new cache is then uploaded and can be used for the next 14 days, following the same process.
+When you have enabled caching for a workflow, Codemagic will automatically generate a cache based on the output of the first successful build. This cache is stored for a maximum of 14 days. After 14 days, the cache expires and is no longer accessible for subsequent builds. When this occurs, your workflow will fetch all dependencies and artifacts again and generate a new cache. This new cache is then uploaded and can be used for the next 14 days, following the same process.
 
 For example, you may consider caching the following paths:
 
