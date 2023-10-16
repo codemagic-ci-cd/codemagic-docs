@@ -12,12 +12,12 @@ Depending on the Xcode version that you specify in **Build Settings** or in `cod
 
 {{< tabpane >}}
 
-{{< tab header="Xcode 14.2 - 14.3 (default)" >}}
-{{< include "/partials/specs/versions-macos-silicon-xcode-14-2.md" >}}
+{{< tab header="Xcode 15 (default)" >}}
+{{< include "/partials/specs/versions-macos-silicon-xcode-15.md" >}}
 {{< /tab >}}
 
-{{< tab header="Xcode 15 (edge)" >}}
-{{< include "/partials/specs/versions-macos-silicon-xcode-15.md" >}}
+{{< tab header="Xcode 14.2 - 14.3" >}}
+{{< include "/partials/specs/versions-macos-silicon-xcode-14-2.md" >}}
 {{< /tab >}}
 
 {{< tab header="Xcode 13.3 - 14.1" >}}
