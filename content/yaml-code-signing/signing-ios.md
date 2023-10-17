@@ -14,7 +14,7 @@ All iOS applications have to be digitally signed before they can be installed on
 
 ## Managing and uploading files
 
-Team owner permissions are required to upload and edit files under the **Code signing identities** section. However, all team members can view the file info for any of the uploaded files.
+Team admin permissions are required to upload and edit files under the **Code signing identities** section. However, all team members can view the file info for any of the uploaded files.
 
 ### Creating the App Store Connect API key
 

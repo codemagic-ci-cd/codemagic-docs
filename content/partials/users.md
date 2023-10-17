@@ -20,6 +20,6 @@ git config --global user.email johndoe@example.com
 
 ## User limit
 
-To avoid unexpected costs, team owners can limit the maximum number of users allowed to run builds. Any number of users within the limit will be allowed to run builds. If the number of active users for the current subscription period is equal to the limit, builds from other users will be blocked. You can see the blocked build attempts in team settings. 
+To avoid unexpected costs, team admins can limit the maximum number of users allowed to run builds. Any number of users within the limit will be allowed to run builds. If the number of active users for the current subscription period is equal to the limit, builds from other users will be blocked. You can see the blocked build attempts in team settings. 
 
-To allow builds from additional users, team owners can increase the user limit by clicking **Manage billing** in team settings or selecting the team on the Billing page and then clicking **Update user limit** in Billing overview. Note that when decreasing the current limit, the new limit will apply starting from the next subscription period.
+To allow builds from additional users, team admins can increase the user limit by clicking **Manage billing** in team settings or selecting the team on the Billing page and then clicking **Update user limit** in Billing overview. Note that when decreasing the current limit, the new limit will apply starting from the next subscription period.

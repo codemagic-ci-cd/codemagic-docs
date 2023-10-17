@@ -46,14 +46,14 @@ For pay-as-you-go team and user plans, each build minute is billed at the rate o
 
 ## Overdue and failed invoice payments
 
-Invoices that have not been paid on the due date are shown as "Overdue" or "Failed" on the [Billing](https://codemagic.io/billing/) page. This usually happens when there are problems with charging the card, of which team or account owners are notified by email. Codemagic will then attempt to retry the payment in 3, 5 or 7 days.
+Invoices that have not been paid on the due date are shown as "Overdue" or "Failed" on the [Billing](https://codemagic.io/billing/) page. This usually happens when there are problems with charging the card, of which team or account admins are notified by email. Codemagic will then attempt to retry the payment in 3, 5 or 7 days.
 
 As soon as there is a failed invoice payment, your subscription will be put on hold and running builds will be disabled. In order to continue building, all invoices should be paid.
 
-Team or account owners can manually retry the payment by clicking the **Pay invoice** button on the overdue/pending invoice in **Billing history**. This will redirect you to the Stripe-based payment website where you are required to add your credit card details and click **Make Payment**.
+Team or account admins can manually retry the payment by clicking the **Pay invoice** button on the overdue/pending invoice in **Billing history**. This will redirect you to the Stripe-based payment website where you are required to add your credit card details and click **Make Payment**.
 
 {{<notebox>}}
-**Pending invoices**: Some invoices may remain pending due to issues with the payment. This can happen when international payments on your card are disabled or when automatic payments are not allowed in which case the first payment has to be made manually to comply with the new RBI regulations for Indian cardholders. Team or account owners can then manually retry the payment as described above.
+**Pending invoices**: Some invoices may remain pending due to issues with the payment. This can happen when international payments on your card are disabled or when automatic payments are not allowed in which case the first payment has to be made manually to comply with the new RBI regulations for Indian cardholders. Team or account admins can then manually retry the payment as described above.
 {{</notebox>}}
 
 Note that overdue invoices should be paid before the subscription can be disabled. Please refer to the [Disable billing](/billing/billing/#disabling-billing) section for further info.
