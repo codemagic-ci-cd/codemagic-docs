@@ -7,7 +7,7 @@ aliases:
   - /flutter-configuration/dependency-caching
 ---
 
-Caching can improve the efficiency of your build and deployment processes on Codemagic by reusing artifacts, such as packages, libraries, and compiled code.
+Caching can improve the efficiency of your build and deployment processes on Codemagic by reusing components that are generated or fetched during the build, such as packages, libraries, and compiled code.
 
 When you have enabled caching for a workflow, Codemagic will automatically generate a cache based on the output of the first successful build. This cache is stored for a maximum of 14 days. After 14 days, the cache expires and is no longer accessible for subsequent builds. When this occurs, your workflow will fetch all dependencies and artifacts again and generate a new cache. This new cache is then uploaded and can be used for the next 14 days, following the same process.
 
