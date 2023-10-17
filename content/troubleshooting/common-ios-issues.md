@@ -226,3 +226,21 @@ Apple has updated Apple Developer Program License Agreement and it needs to be r
 
 ###### Solution
 In order to update your existing apps and submit new apps to the App Store, the Account Holder must review and accept the updated agreement by signing in to their [account](https://appstoreconnect.apple.com/agreements/#/) on the Apple Developer website.
+
+### Certificate will no longer be valid in 30 days
+
+###### Description
+You received e-mail from Apple stating that:
+
+    Your Distribution Certificate will no longer be valid in 30 days. To generate a new certificate, sign in and visit Certificates, Identifiers & Profiles.
+
+###### Cause
+Distribution certificates issued by Apple have a validity period of one year from the date of issuance. After one year, they expire, which means they can no longer be used to sign and distribute apps.
+
+###### Solution
+Rest assured, Codemagic simplifies the certificate management process for you. Here's how it works:
+ - By providing your **App Store Connect API key ID**, **issuer ID**, and API key as a **.p8 file** (more info about how to add environment variables can be found [here](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/)), Codemagic takes care of your certificate and provisioning profile management, including the automatic renewal of certificates, except in the case where you are using a private RSA key associated with an iOS Distribution certificate previously generated within your Apple Developer Program account. You can find additional information on how to update an RSA key (CERTIFICATE_PRIVATE_KEY) for a certificate [here](https://docs.codemagic.io/yaml-code-signing/alternative-code-signing-methods/#:~:text=Obtaining%20the%20Certificate%20private%20key).
+
+ - If you're using `manual code signing` or `Codemagic signing identities (CSI)`, you will need to create and upload your certificates and profiles that you generated on the Apple Developer UI manually to Codemagic.
+ Alernativley, with CSI, users can also fetch or create resources directly from Codemagic UI instead of navigating the Apple Developer UI when going in **Teams** > **Codesignng identities** > **iOS certificate** tab > **Generate certificate** button and in there provide your API key.
+
