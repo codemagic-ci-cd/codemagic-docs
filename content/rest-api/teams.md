@@ -19,11 +19,12 @@ Invite a new team member to your team.
 | **Name** | **Type** | **Description**                               |
 |----------| -------- |-----------------------------------------------|
 | `email`  | `string` | **Required.** User email                    |
-| `role`   | `string` | **Required.** Could be `admin` or `developer` |
+| `role`   | `string` | **Required.** Could be `owner` or `developer` |
 
-<br />
+<br>
 
->`developer` role corresponds to the "Member" role in Codemagic UI.
+>`developer` role corresponds to the **Member** role and `owner` role corresponds to the **Admin** role in Codemagic UI.
+
 
 #### Example
 
