@@ -81,6 +81,3 @@ A team member can leave the team at any time by clicking **Leave team** in the l
 Only the team admin can delete the team. To do so, scroll down to the **Danger zone** and click **Delete team**.
 
 {{<notebox>}}**Note:** Teams can only be deleted if they are empty (no members or shared applications) and billing has been disabled.{{</notebox>}}
-
-
-<!-- {{< include "/partials/users.md" >}} -->
