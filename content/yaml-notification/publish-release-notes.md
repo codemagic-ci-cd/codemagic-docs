@@ -106,7 +106,7 @@ You can use the **git log** command to generate release notes with commit massag
     script: | 
         git fetch --all --tags
 
-        rev_tag=$(git for-each-ref --sort=-creatordate  --format '%(objectname)' refs/tags | sed -n 2p )
+        prev_tag=$(git for-each-ref --sort=-creatordate  --format '%(objectname)' refs/tags | sed -n 2p )
         notes=$(git log --pretty=format:"\n- %s" "$prev_tag"..HEAD)
 
         echo "$notes" | tee release_notes.txt
@@ -122,17 +122,13 @@ If you use this script localy it will generate release notes with all commits be
 
 However, when using Codemagic, you will also need to configure the `CM_CLONE_DEPTH` environment variable. By default, this variable is set to clone only one commit for builds triggered by tags. To capture all commits between tags, e.x. v1.0.0 and v2.0.0, you should set`CM_CLONE_DEPTH` to a value greater than the number of commits between those tags (e.g., 10 or more). This adjustment will ensure that the script fetches and generates release notes from the desired commit range.
 
-Open your Codemagic app settings, and go to the Environment variables tab.
-1. Enter the Variable name **CM_CLONE_DEPTH**.
-2. Enter the Variable value.
-3. Enter the variable group name, e.g. **clone_depth** Click the button to create the group.
-4. Reference variable group inisde your yaml.
+In your YAML file, set the value for the CM_CLONE_DEPTH variable under the environment variable section as shown below;
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
   workflow-name:
     environment:
-      groups:
-        - clone_depth
+       vars:
+         CM_CLONE_DEPTH: 5
 {{< /highlight >}}
 
-Keep in mind that modifying CM_CLONE_DEPTH might increase the time it takes to clone the repository during the build, so consider the trade-off between clone depth and build performance.
+Keep in mind that by setting CM_CLONE_DEPTH  value to a greater number might increase the time it takes to clone the repository during the build, so consider the trade-off between clone depth and build performance.
