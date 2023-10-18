@@ -223,6 +223,91 @@ Environment variables are available under the `env` variable. You can check [bui
 
 Webhook payload is available under the `event` variable. You can check the structure of the webhook payloads that your git provider sends on the **Webhooks** tab in application settings. Note that `event` is not available if the build is started manually from the UI or by a schedule.
 
+{{< collapsible title="Webhook payload sample" >}}
+Here's a JOSN payload that you can access from the `event` variable.
+```json
+{
+    "action": "labeled", // could be "opened", "synchronize", "reopened", or "ready_for_review"
+    "number": 2,
+    "pull_request": {
+      "url": "https://api.github.com/repos/username/repo/pulls/2",
+      "id": 100000000,
+      "issue_url": "https://api.github.com/repos/username/repo/issues/2",
+      "number": 2,
+      "state": "open",
+      "title": "fix-2",
+      "user": {
+        "login": "username",
+        "id": 100000000,
+        "url": "https://api.github.com/users/username",
+        ...
+      },
+      "created_at": "2023-10-18T05:27:35Z",
+      "updated_at": "2023-10-18T05:28:21Z",
+      "assignee": null,
+      "assignees": [],
+      "requested_reviewers": [],
+      "requested_teams": [],
+      "labels": [
+        {
+          "id": 100000000,
+          "url": "https://api.github.com/repos/username/repo/labels/label",
+          "name": "label",
+          "color": "6816E0",
+          "default": false,
+          "description": ""
+        }
+      ],
+      "draft": false,
+      "merged": false,
+      "mergeable": true,
+      "rebaseable": true,
+      "mergeable_state": "clean",
+      "merged_by": null,
+      "comments": 0,
+      "review_comments": 0,
+      "maintainer_can_modify": false,
+      "commits": 1,
+      "additions": 2,
+      "deletions": 4,
+      "changed_files": 1,
+      ...
+    },
+    "label": {
+      "id": 100000000,
+      "url": "https://api.github.com/repos/username/repo/labels/label",
+      "name": "label",
+      "color": "6816E0",
+      "default": false,
+      "description": ""
+    },
+    "repository": {
+      "id": 100000000,
+      "name": "repo",
+      "full_name": "username/repo",
+      "private": true,
+      "html_url": "https://github.com/username/repo",
+      "created_at": "2023-10-16T11:24:57Z",
+      "updated_at": "2023-10-16T11:24:57Z",
+      "pushed_at": "2023-10-18T05:27:35Z",
+      "git_url": "git://github.com/username/repo.git",
+      "visibility": "private",
+      "default_branch": "main",
+      ...
+    },
+    "sender": {
+      "login": "username",
+      "id": 100000000,
+      "url": "https://api.github.com/users/username",
+      "type": "User",
+      ...
+    },
+    ...
+  }
+```
+{{< /collapsible >}}
+
+
 Example 1. This build will continue if the triggering event was *not* a draft pull request update. In other words, it will skip the build if a pull request is marked as a draft:
 
 {{< highlight yaml "style=paraiso-dark">}}
