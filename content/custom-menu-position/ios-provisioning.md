@@ -18,7 +18,7 @@ You can also check the [Register Devices](https://help.apple.com/developer-accou
 
 ## Requirements
 
-* You have to be a team owner to manage iOS test devices. 
+* You have to be a team admin to manage iOS test devices. 
 * The **Apple Developer Portal integration** must be connected in **Team integrations** to be able to register new devices. This requires creating an App Store Connect API key with **Developer** permissions, see how to create one [here](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api).
 
 ## Creating a tester group

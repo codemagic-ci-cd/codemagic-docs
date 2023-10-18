@@ -5,7 +5,7 @@ description: API for managing team members
 weight: 5
 ---
 
-This document describes the API endpoints for managing teams. To use this API, you must be a **team owner**.
+This document describes the API endpoints for managing teams. To use this API, you must be a **team admin**.
 
 >Read more about the [Teams](../getting-started/teams/) feature, the available user roles and permissions.
 
@@ -21,9 +21,10 @@ Invite a new team member to your team.
 | `email`  | `string` | **Required.** User email                    |
 | `role`   | `string` | **Required.** Could be `owner` or `developer` |
 
-<br />
+<br>
 
->`developer` role corresponds to the "Member" role in Codemagic UI.
+>`developer` role corresponds to the **Member** role and `owner` role corresponds to the **Admin** role in Codemagic UI.
+
 
 #### Example
 

@@ -18,7 +18,7 @@ The artifact download links in build dashboards are valid for 24 hours. Download
 
 ## Enabling build dashboards
 
-To use build dashboards, team owners will have to enable the feature in team settings. 
+To use build dashboards, team admins will have to enable the feature in team settings. 
 
 In team settings, expand the **Build dashboards** section and click **Enable sharing**. This will allow any team member to create dashboards and generate public links to share them.
 
@@ -42,4 +42,4 @@ Build dashboards can be disabled anytime by clicking **Disable sharing**.
 
 All generated links to build dashboards are listed in the **Build dashboards** section in team settings.
 
-Links can be revoked by deleting them or when a team owner disables sharing by clicking **Disable sharing**. When sharing is re-enabled, the available links become active again.
+Links can be revoked by deleting them or when a team admin disables sharing by clicking **Disable sharing**. When sharing is re-enabled, the available links become active again.

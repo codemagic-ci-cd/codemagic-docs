@@ -7,7 +7,7 @@ aliases:
 
 Navigate to **App settings > Repository settings** to update repository access settings, change the app name or icon in Codemagic, archive or delete the app.
 
-Note that if the app is part of a team, only team owners can update repository access settings or delete the app.
+Note that if the app is part of a team, only team admins can update repository access settings or delete the app.
 
 ## Updating access to the repository
 
