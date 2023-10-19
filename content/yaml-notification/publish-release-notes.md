@@ -112,7 +112,7 @@ You can use the **git log** command to generate release notes with commit messag
         echo "$notes" | tee release_notes.txt
 {{< /highlight >}}
 
-If you use this script localy, it will generate release notes with all the commits between tags e.g v1.0.0 and v2.0.0
+If you use this script locally, it will generate release notes with all the commits between tags e.g v1.0.0 and v2.0.0
 
 {{< highlight json "style=paraiso-dark">}}
     v2.0.0
