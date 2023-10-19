@@ -98,7 +98,7 @@ There are three supported options to set up release notes:
 
 ### Generating release notes with git commits
 If your Codemagic workflow is triggered when creating a `Git tag`, you may want to automate the process of generating release notes based on your Git commits.
-You can use the **git log** command to generate release notes with commit massages between two Git tags. Here's how you can do it:
+You can use the **git log** command to generate release notes with commit messages between two Git tags. Here's how you can do it:
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
@@ -112,7 +112,7 @@ You can use the **git log** command to generate release notes with commit massag
         echo "$notes" | tee release_notes.txt
 {{< /highlight >}}
 
-If you use this script localy it will generate release notes with all commits between tags e.x v1.0.0 and v2.0.0
+If you use this script localy, it will generate release notes with all the commits between tags e.g v1.0.0 and v2.0.0
 
 {{< highlight json "style=paraiso-dark">}}
     v2.0.0
@@ -120,7 +120,7 @@ If you use this script localy it will generate release notes with all commits be
     Fix bug B
 {{< /highlight >}}
 
-However, when using Codemagic, you will also need to configure the `CM_CLONE_DEPTH` environment variable. By default, this variable is set to clone only one commit for builds triggered by tags. To capture all commits between tags, e.x. v1.0.0 and v2.0.0, you should set`CM_CLONE_DEPTH` to a value greater than the number of commits between those tags (e.g., 10 or more). This adjustment will ensure that the script fetches and generates release notes from the desired commit range.
+However, when using Codemagic, you will also need to configure the `CM_CLONE_DEPTH` environment variable. By default, this variable is set to clone only one commit for builds triggered by tags. To capture all commits between tags, e.x. v1.0.0 and v2.0.0, you should set`CM_CLONE_DEPTH` to a value greater than the number of commits between those tags (e.g., 10 or more). This adjustment will ensure to capture all the commits.
 
 In your YAML file, set the value for the CM_CLONE_DEPTH variable under the environment variable section as shown below;
 {{< highlight yaml "style=paraiso-dark">}}
@@ -131,4 +131,4 @@ workflows:
          CM_CLONE_DEPTH: 5
 {{< /highlight >}}
 
-Keep in mind that by setting CM_CLONE_DEPTH  value to a greater number might increase the time it takes to clone the repository during the build, so consider the trade-off between clone depth and build performance.
+Keep in mind that by setting CM_CLONE_DEPTH value to a greater number might increase the time it takes to clone the repository during the build, so consider the trade-off between clone depth and build performance.
