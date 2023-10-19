@@ -120,7 +120,7 @@ If you use this script localy, it will generate release notes with all the commi
     Fix bug B
 {{< /highlight >}}
 
-However, when using Codemagic, you will also need to configure the `CM_CLONE_DEPTH` environment variable. By default, this variable is set to clone only one commit for builds triggered by tags. To capture all commits between tags, e.x. v1.0.0 and v2.0.0, you should set`CM_CLONE_DEPTH` to a value greater than the number of commits between those tags (e.g., 10 or more). This adjustment will ensure to capture all the commits.
+However, when using Codemagic, you will also need to configure the `CM_CLONE_DEPTH` environment variable. By default, this variable is set to clone only one commit for builds triggered by tags. To capture all commits between tags, e.g. v1.0.0 and v2.0.0, you should set `CM_CLONE_DEPTH` to a value greater than the number of commits between those tags (e.g. 10 or more). This adjustment will ensure to capture all the commits.
 
 In your YAML file, set the value for the CM_CLONE_DEPTH variable under the environment variable section as shown below;
 {{< highlight yaml "style=paraiso-dark">}}
