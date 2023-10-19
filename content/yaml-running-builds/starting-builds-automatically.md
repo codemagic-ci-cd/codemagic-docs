@@ -224,7 +224,7 @@ Environment variables are available under the `env` variable. You can check [bui
 Webhook payload is available under the `event` variable. You can check the structure of the webhook payloads that your git provider sends on the **Webhooks** tab in application settings. Note that `event` is not available if the build is started manually from the UI or by a schedule.
 
 {{< collapsible title="Webhook payload sample" >}}
-Here's a JOSN payload that you can access from the `event` variable.
+Here's a JOSN payload from GitHub which you can access from the `event` variable.
 ```json
 {
     "action": "labeled", // could be "opened", "synchronize", "reopened", or "ready_for_review"
