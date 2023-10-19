@@ -32,7 +32,7 @@ Release notes can be published to:
 
 There are three supported options to set up release notes:
 
-#### Single file
+### Single file
 
 1. Create a `release_notes.txt` or `release_notes.json` file for **Play Store** and a `release_notes.json` file for **App Store Connect**. If your workflow is publishing to both the Play Store and the App Store then it is recommended that you use JSON.
 
@@ -41,7 +41,7 @@ There are three supported options to set up release notes:
     * For email, Slack and Firebase it will be published as is.
     * For Google Play it will be published under `en-US` language localization code.
 
-#### One file per language used
+### One file per language used
 
 {{<notebox>}}
 **App Store Connect** supported languages and codes are listed [here](https://developer.apple.com/documentation/appstoreconnectapi/betabuildlocalizationcreaterequest/data/attributes). 
@@ -56,7 +56,7 @@ There are three supported options to set up release notes:
    * Release notes with `en-US` language code will be published to email and Slack in case file with `en-US` language code exists. If not, the first found release notes file will be published.
    * For both App Store Connect and Google Play, only the release notes with the supported language codes will be published, omitting language codes that are not supported.
 
-#### Single file for multiple languages
+### Single file for multiple languages
 
 1. Create a `release_notes.json` file containing the release notes in all supported languages:
 
@@ -96,3 +96,39 @@ There are three supported options to set up release notes:
 ]
 {{< /highlight >}}
 
+### Generating release notes with git commits
+If your Codemagic workflow is triggered when creating a `Git tag`, you may want to automate the process of generating release notes based on your Git commits.
+You can use the **git log** command to generate release notes with commit messages between two Git tags. Here's how you can do it:
+
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    name: Generating release notes with git commits
+    script: | 
+        git fetch --all --tags
+
+        prev_tag=$(git for-each-ref --sort=-creatordate  --format '%(objectname)' refs/tags | sed -n 2p )
+        notes=$(git log --pretty=format:"\n- %s" "$prev_tag"..HEAD)
+
+        echo "$notes" | tee release_notes.txt
+{{< /highlight >}}
+
+If you use this script locally, it will generate release notes with all the commits between tags e.g v1.0.0 and v2.0.0
+
+{{< highlight json "style=paraiso-dark">}}
+    v2.0.0
+    Fix bug A
+    Fix bug B
+{{< /highlight >}}
+
+However, when using Codemagic, you will also need to configure the `CM_CLONE_DEPTH` environment variable. By default, this variable is set to clone only one commit for builds triggered by tags. To capture all commits between tags, e.g. v1.0.0 and v2.0.0, you should set `CM_CLONE_DEPTH` to a value greater than the number of commits between those tags (e.g. 10 or more). This adjustment will ensure to capture all the commits.
+
+In your YAML file, set the value for the CM_CLONE_DEPTH variable under the environment variable section as shown below;
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  workflow-name:
+    environment:
+       vars:
+         CM_CLONE_DEPTH: 5
+{{< /highlight >}}
+
+Keep in mind that by setting CM_CLONE_DEPTH value to a greater number might increase the time it takes to clone the repository during the build, so consider the trade-off between clone depth and build performance.
