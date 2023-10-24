@@ -745,7 +745,7 @@ You can cache files for each workflow you have by specifying the paths you want 
         - $CM_BUILD_DIR/Temp
 {{< /highlight >}}
 
-Please refer to the cache usage limits [here](../knowledge-codemagic/caching/#cache-usage-limits)
+Please refer to the **cache usage limits** [here](../knowledge-codemagic/caching/#cache-usage-limits).
 
 ### Using your own external storage system
 If your caching step is being skipped because it's exceeding the maximum allowed [cache usage limit](../knowledge-codemagic/caching/#cache-usage-limits) then you can use some external storage to store your caching files.
