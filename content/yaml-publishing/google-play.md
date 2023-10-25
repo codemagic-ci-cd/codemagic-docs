@@ -77,8 +77,10 @@ Once you make all the preparations as described above and configure publishing t
 
 {{< highlight yaml "style=paraiso-dark">}}
 publishing:
-google_play: # Contents of the JSON key file for Google Play service account saved # as a secure environment variable
-credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+  google_play: 
+    # Contents of the JSON key file for Google Play service account saved 
+    # as a secure environment variable
+    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
 
     # Name of the track internal, alpha, beta, production, internal app sharing,
     # or your custom track name
