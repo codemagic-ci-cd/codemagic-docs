@@ -53,6 +53,9 @@ To use caching, simply add a `cache` section to your `codemagic.yaml` file and l
 
 {{< /tabpane >}}
 
+{{<notebox>}}
+**⚠️ Note:** Caching process can be false positive if downloading dependencies have warnings/errors inside. If a success message received under the Cleaning up section, but it still takes longer to install dependencies with subsequent builds, then worth checking if these warnings/errors were thrown when installing them. 
+{{</notebox>}}
 
 ## Cache usage limits
 
