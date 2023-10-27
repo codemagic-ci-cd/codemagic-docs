@@ -15,7 +15,7 @@ weight: 13
 
 - System version `macOS 14.0 (23A344)`
 - Kernel version `Darwin 23.0.0`
-- Disk `294GB (Free Space: 95GB)`
+- Disk `294GB (Free Space: 93GB)`
 
 ## Pre-installed tools
 
@@ -30,7 +30,7 @@ weight: 13
 - ew-cli `0.10.3`
 - fastlane `2.216.0`
 - firebase `11.21.0`
-- flutter `3.13.8 ($HOME/programs/flutter)`
+- flutter `3.13.9 ($HOME/programs/flutter)`
 - gem `3.4.20`
 - gh `2.32.1`
 - git `2.41.0`
@@ -71,7 +71,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 
 ## Xcode versions
 
-- 15.1 (15C5028h) `/Applications/Xcode-15.1.app`, also selected when specifying `edge` in Xcode version settings
+- 15.1 (15C5042i) `/Applications/Xcode-15.1.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
@@ -79,18 +79,21 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - iOS 15.0
 - iOS 15.4
 - iOS 17.0
+- iOS 17.2
 - tvOS 14.5
 - tvOS 15.0
 - tvOS 16.0
 - tvOS 16.1
 - tvOS 16.4
 - tvOS 17.0
+- tvOS 17.2
 - visionOS 1.0
 - watchOS 7.4
 - watchOS 8.0
 - watchOS 9.1
 - watchOS 9.4
 - watchOS 10.0
+- watchOS 10.2
 
 ### Devices
 
