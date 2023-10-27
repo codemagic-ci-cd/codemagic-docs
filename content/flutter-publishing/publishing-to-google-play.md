@@ -27,8 +27,8 @@ Before releasing the app to Google Play, ensure that it meets [Google Play's bes
 
 1. To allow Codemagic to publish applications to Google Play, it is necessary to set up access using Google Play API. 
 
-2. In the Google Play Console, navigate to **Setup > API access** and click **Learn how to create service accounts**.<br><br>
-![Google play start](../uploads/s1.png)This will lead you to the **Google Cloud Platform**. 
+2. In the Google Cloud Console, navigate to **Dashboard > IAM and Admin** and click **Create Service Account**.<br><br>
+![Google play start](../uploads/gcp_service_user.png)
 
 3. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
 
@@ -37,14 +37,13 @@ Before releasing the app to Google Play, ensure that it meets [Google Play's bes
 
 5. In step 3, you can leave the fields blank and click **Done**.
 
-6. In the list of created service accounts, identify the account you have just created and click on the menu in the **Actions** column, then click **Manage keys**.<br><br>
+6. In the list of created service accounts, locate the account you just created. Copy its email address, which will be required later. Then, click on the menu in the **Actions** column, then click **Manage keys**.<br><br>
 ![Google cloud key](../uploads/google_cloud_three.png)
 
 7. In the Keys section, click **Add Key > Create new key**. Make sure that the key type is set to `JSON` and click **Create**. Save the key file in a secure location to have it available.<br><br>
 ![Google cloud json](../uploads/google_cloud_four.png)
 
-8. Back in **Google Play Console**, navigate to **Setup > API access** and click **Manage Play Console permissions** next to the created account.<br><br>
-![Google play grant](../uploads/s2.png)
+8. Back in **Google Play Console**, navigate to **Users and Permissions** and click **Invite new users**. Enter the email id which you copied in step 6.<br>
 
 9. On the **App permissions** tab, add the applications you wish to grant access to.<br><br>
 ![Google play selected](../uploads/s3.png)
