@@ -175,11 +175,11 @@ The main sections in each workflow are described below.
 `instance_type:` specifies the [build machine type](../specs/machine-type) to use for the build. The supported build machines are:
 | **Instance Type** | **Build Machine** |
 | ------------- | -----------------  |
-| `mac_mini_m1`    | macOS M1  VM (default)   |
-| `mac_mini_m2`    | macOS M2  VM             |
-| `mac_pro`     | macOS Intel VM              |
-| `linux`       | Linux         VM            |
-| `windows_x2`  | Windows         VM          |
+| `mac_mini_m1`    | Apple silicon M1 Mac mini |
+| `mac_mini_m2`    | Apple silicon M2 Mac mini |
+| `mac_pro` | Intel-based Mac Pro |
+| `linux_x2`  | Linux |
+| `windows_x2`  | Windows |
 
 <br>
 {{<notebox>}}
