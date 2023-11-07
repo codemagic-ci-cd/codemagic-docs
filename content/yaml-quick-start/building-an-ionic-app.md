@@ -170,7 +170,7 @@ workflows:
             UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
           fi
           cd android
-          ./gradlew bundleRelease \
+          ./gradlew assembleRelease \
             -PversionCode=$UPDATED_BUILD_NUMBER \
             -PversionName=1.0.$UPDATED_BUILD_NUMBER
     artifacts:
