@@ -73,6 +73,15 @@ workflows:
 **Note**: If the requested flavor does not exist in the config file, the build will fail.
 {{</notebox>}}
 
+{{<notebox>}}
+**Note**: When using Melos for managing monorepos in conjuction with FVM, and **sdkPath** is set to **.fvm/flutter_sdk** inside **melos.yaml**, then the `sourceFile` needs to be linked to the `targetFile` by running the following command:
+
+```
+ln -s $FLUTTER_ROOT $CM_BUILD_DIR/.fvm/flutter_sdk
+```
+
+{{</notebox>}}
+
 {{</markdown>}}
 {{< /tab >}}
 
