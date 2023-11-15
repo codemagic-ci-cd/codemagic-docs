@@ -58,7 +58,7 @@ weight: 10
 
 ## Android emulators
 
-Android emulators are not available on M1 machines. Please use a Mac Pro or a Linux instance.
+Android emulators are unavailable on Apple silicon machines due to the Apple Virtualization Framework not supporting nested virtualization. Please use a Linux instance.
 
 ## Java versions
 
