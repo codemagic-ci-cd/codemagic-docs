@@ -15,34 +15,34 @@ weight: 13
 
 - System version `macOS 14.0 (23A344)`
 - Kernel version `Darwin 23.0.0`
-- Disk `294GB (Free Space: 93GB)`
+- Disk `294GB (Free Space: 136GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
-- aws `2.13.4`
-- carthage `0.39.0`
-- cocoapods `1.13.0`
+- aws `2.13.35`
+- carthage `0.39.1`
+- cocoapods `1.14.2`
 - cordova `11.0.0`
 - curl `8.1.2`
 - docker `N/A`
-- ew-cli `0.10.3`
-- fastlane `2.216.0`
+- ew-cli `0.10.4`
+- fastlane `2.217.0`
 - firebase `11.21.0`
-- flutter `3.13.9 ($HOME/programs/flutter)`
-- gem `3.4.20`
-- gh `2.32.1`
-- git `2.41.0`
+- flutter `3.16.0 ($HOME/programs/flutter)`
+- gem `3.4.22`
+- gh `2.39.1`
+- git `2.42.1`
 - Google Cloud SDK `404.0.0`
 - gradle `8.1.1`
 - gsutil `5.14`
-- homebrew `4.1.1`
+- homebrew `4.1.20`
 - ionic `5.4.16`
-- jq `1.6`
-- ktlint `0.50.0`
+- jq `1.7`
+- ktlint `1.0.1`
 - node `19.7.0`
-- npm `9.8.0`
+- npm `9.5.0`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
@@ -53,44 +53,38 @@ weight: 13
 - ucd `0.11.10`
 - unzip `6.00`
 - wget `1.21.4`
-- yarn `1.22.19`
-- yq `4.34.2`
+- yarn `1.22.21`
+- yq `4.35.2`
 - zip `3.0`
 
 ## Android emulators
 
-Android emulators are not available on M1 machines. Please use a Mac Pro or a Linux instance.
+Android emulators are unavailable on Apple silicon machines due to the Apple Virtualization Framework not supporting nested virtualization. Please use a Linux instance.
 
 ## Java versions
 
-- **20.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-20.jdk/Contents/Home`
-- **17.0.8** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
-- **11.0.20** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_382** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **21.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home`
+- **17.0.9** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
+- **11.0.21** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_392** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
 ## Xcode versions
 
-- 15.1 (15C5042i) `/Applications/Xcode-15.1.app`, also selected when specifying `edge` in Xcode version settings
+- 15.1 (15C5059c) `/Applications/Xcode-15.1.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
-- iOS 14.5
-- iOS 15.0
 - iOS 15.4
+- iOS 16.4
 - iOS 17.0
 - iOS 17.2
-- tvOS 14.5
-- tvOS 15.0
-- tvOS 16.0
-- tvOS 16.1
+- tvOS 15.4
 - tvOS 16.4
 - tvOS 17.0
 - tvOS 17.2
 - visionOS 1.0
-- watchOS 7.4
-- watchOS 8.0
-- watchOS 9.1
+- watchOS 8.5
 - watchOS 9.4
 - watchOS 10.0
 - watchOS 10.2
@@ -124,9 +118,7 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - Apple Watch Ultra (49mm)
 - Apple Watch Ultra 2 (49mm)
 - iPad (10th generation)
-- iPad (8th generation)
 - iPad (9th generation)
-- iPad Air (4th generation)
 - iPad Air (5th generation)
 - iPad Pro (11-inch) (3rd generation)
 - iPad Pro (11-inch) (4th generation)
@@ -155,6 +147,5 @@ Android emulators are not available on M1 machines. Please use a Mac Pro or a Li
 - iPhone 15 Pro Max
 - iPhone 8
 - iPhone 8 Plus
-- iPhone SE (2nd generation)
 - iPhone SE (3rd generation)
 - iPod touch (7th generation)
