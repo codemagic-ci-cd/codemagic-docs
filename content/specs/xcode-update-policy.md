@@ -31,3 +31,10 @@ Codemagic uses two aliases for Xcode versions -- `latest` and `edge`. `latest` p
 When a new release version of Xcode becomes available in Codemagic, you can expect the Xcode version that is now no longer among the four latest major versions to be deprecated. For example, once Xcode 15 is released, we are bound to remove Xcode 11. In such cases we will post an announcement about the upcoming deprecation and the timeline in our [GitHub Discussions](https://github.com/codemagic-ci-cd/codemagic-docs/discussions) page.
 
 Please note that in certain cases we may decide to keep certain Xcode versions available for a longer period of time.
+
+## Runtimes
+
+On every Xcode image, we aim to support the most recent simulator versions bundled with the Xcode version as well as two previous simulator versions. More sepcifically, for every Xcode major version, the image will contain the following simulator runtimes:
+
+* The latest major simulator version and all of its minor versions.
+* The two previous major simulator versions at the latest minor version.
