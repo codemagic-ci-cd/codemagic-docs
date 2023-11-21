@@ -25,7 +25,7 @@ In the `events:` section, specify which events in the repository trigger builds.
      
     For triggering pull requests, you can specify whether each branch pattern matches the **source** or the **target** branch of the pull request.
 
-- **pull_request_labeled** - a build will be started every time you add a new label to a pull request.
+- **pull_request_labeled** - a build will be started every time you add a new label to a **GitHub** pull request.
 
 - **tag** - Codemagic will automatically build the tagged commit whenever you create a tag for this app. Note that the watched branch settings do not affect tag builds.
 
@@ -55,7 +55,7 @@ triggering:
   events:                       # List the events that trigger builds
     - push
     - pull_request
-    - pull_request_labeled
+    - pull_request_labeled      #GitHub only
     - tag
   branch_patterns:              # Include or exclude watched branches
     - pattern: '*'
