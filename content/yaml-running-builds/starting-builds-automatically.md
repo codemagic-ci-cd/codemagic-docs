@@ -19,11 +19,13 @@ For repositories added via SSH or HTTP/HTTPS, or if you are configuring your bui
 
 ## Build triggers
 
-Under the `events:` section you can specify on which events the builds should be triggered:
+In the `events:` section, specify which events in the repository trigger builds.
 - **push** - a build will be started every time you commit code to any of the tracked branches.
-- **pull_request** - your workflow is run when a pull request is opened or updated to verify the resulting merge commit.
+- **pull_request** - a build will be started when a pull request is opened or updated to verify the resulting merge commit.
      
     For triggering pull requests, you can specify whether each branch pattern matches the **source** or the **target** branch of the pull request.
+
+- **pull_request_labeled** - a build will be started every time you add a new label to a pull request.
 
 - **tag** - Codemagic will automatically build the tagged commit whenever you create a tag for this app. Note that the watched branch settings do not affect tag builds.
 
@@ -53,6 +55,7 @@ triggering:
   events:                       # List the events that trigger builds
     - push
     - pull_request
+    - pull_request_labeled
     - tag
   branch_patterns:              # Include or exclude watched branches
     - pattern: '*'
@@ -89,7 +92,7 @@ Please refer to [Wildcard Match Documentation](https://facelessuser.github.io/wc
 ## Working with Pull Requests
 When dealing with pull requests, you have two options: you can either focus on the branch where the proposed changes are made, or you can target the destination branch after the pull request has been merged.
 
-Example 1 - When creating pull requests on the `main` branch from a `feature` branch, which is a way to propose and review changes before they're integrated into `main`, remember to set `source:false` and `pattern:main`. This will ensure that the build runs on the proposed code changes within the `feature` branch when pull request is created or updated.
+**Example 1**. When creating pull requests on the `main` branch from a `feature` branch, which is a way to propose and review changes before they're integrated into `main`, remember to set `source:false` and `pattern:main`. This will ensure that the build runs on the proposed code changes within the `feature` branch when pull request is created or updated.
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
@@ -101,7 +104,7 @@ triggering:
       source: false  
 {{< /highlight >}}
 
-Example 2 - Setting `source:true` and `branch:main`, will trigger the build on the `main` branch once the pull request has been merged from the `feature` branch into the `main` branch.
+**Example 2**. Setting `source:true` and `branch:main`, will trigger the build on the `main` branch once the pull request has been merged from the `feature` branch into the `main` branch.
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
@@ -113,7 +116,18 @@ triggering:
       source: true  
 {{< /highlight >}}
 
-Note: Above pattern is set for `main` branch but you can set similar patterns for any branch depending on your workflow.
+{{<notebox>}}
+**Note:** The above pattern is set for the `main` branch but you can set similar patterns for any branch depending on your workflow.
+{{</notebox>}}
+
+**Example 3**. Trigger a build when adding a label to your pull request.
+
+{{< highlight yaml "style=paraiso-dark">}}
+triggering:
+  events:
+    - pull_request_labeled
+{{< /highlight >}}
+You will learn later in this page how to add a [condition](#using-condition-inside-when) to filter the added labels.
 
 ## Exit or ignore build on certain commit message
 
@@ -308,7 +322,7 @@ Here's a JOSN payload from GitHub which you can access from the `event` variable
 {{< /collapsible >}}
 
 
-Example 1. This build will continue if the triggering event was *not* a draft pull request update. In other words, it will skip the build if a pull request is marked as a draft:
+**Example 1**. This build will continue if the triggering event was *not* a draft pull request update. In other words, it will skip the build if a pull request is marked as a draft:
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -321,7 +335,7 @@ workflows:
       condition: not event.pull_request.draft
 {{< /highlight >}}
 
-Example 2. This build will *not* continue if the pull request branch has a specific label name, "codemagicTest" in the following sample:
+**Example 2**. This build is triggered on adding a label to a pull request but will continue only if the label added was anything else than "codemagicTest":
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -329,12 +343,12 @@ workflows:
     name: Build on PR update
     triggering:
       events:
-        - pull_request
+        - pull_request_labeled
     when:
       condition: not event.pull_request.labels[0].name == "codemagicTest"
 {{< /highlight >}}
 
-Example 3. You can also combine triggering conditions, just make sure that each condition is wrapped with brackets:
+**Example 3**. You can also combine triggering conditions, just make sure that each condition is wrapped in brackets:
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -343,8 +357,9 @@ workflows:
     triggering:
       events:
         - pull_request
+        - pull_request_labeled
     when:
-      condition: (not event.pull_request.draft) and (event.pull_request.labels[0].name == "codemagicTest")
+      condition: (not event.pull_request.draft) and (not event.pull_request.labels[0].name == "codemagicTest")
 {{< /highlight >}}
 
 {{<notebox>}}
