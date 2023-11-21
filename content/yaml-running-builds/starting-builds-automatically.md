@@ -117,10 +117,10 @@ triggering:
 {{< /highlight >}}
 
 {{<notebox>}}
-**Note:** Above pattern is set for `main` branch but you can set similar patterns for any branch depending on your workflow.
+**Note:** The Above pattern is set for the `main` branch but you can set similar patterns for any branch depending on your workflow.
 {{</notebox>}}
 
-**Example 3**. Trigger a new build when adding new labels to your pull requests.
+**Example 3**. Trigger a build when adding a label to your pull request.
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
@@ -335,7 +335,7 @@ workflows:
       condition: not event.pull_request.draft
 {{< /highlight >}}
 
-**Example 2**. This build will *not* continue if the new label added to a pull request is not a specific label name, "codemagicTest" in the following sample:
+**Example 2**. This build is triggered on adding a label to a pull request but will continue only if the label added was anything else than "codemagicTest":
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -348,7 +348,7 @@ workflows:
       condition: not event.pull_request.label.name == "codemagicTest"
 {{< /highlight >}}
 
-**Example 3**. You can also combine triggering conditions, just make sure that each condition is wrapped with brackets:
+**Example 3**. You can also combine triggering conditions, just make sure that each condition is wrapped in brackets:
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
