@@ -19,7 +19,7 @@ For repositories added via SSH or HTTP/HTTPS, or if you are configuring your bui
 
 ## Build triggers
 
-Under the `events:` section you can specify on which events the builds should be triggered:
+In the `events:` section, specify which events in the repository trigger builds.
 - **push** - a build will be started every time you commit code to any of the tracked branches.
 - **pull_request** - a build will be started when a pull request is opened or updated to verify the resulting merge commit.
      
@@ -117,7 +117,7 @@ triggering:
 {{< /highlight >}}
 
 {{<notebox>}}
-**Note:** The Above pattern is set for the `main` branch but you can set similar patterns for any branch depending on your workflow.
+**Note:** The above pattern is set for the `main` branch but you can set similar patterns for any branch depending on your workflow.
 {{</notebox>}}
 
 **Example 3**. Trigger a build when adding a label to your pull request.
@@ -127,7 +127,7 @@ triggering:
   events:
     - pull_request_labeled
 {{< /highlight >}}
-You will learn later in this page how to add a condition to filter the added labels.
+You will learn later in this page how to add a [condition](#using-condition-inside-when) to filter the added labels.
 
 ## Exit or ignore build on certain commit message
 
@@ -345,7 +345,7 @@ workflows:
       events:
         - pull_request_labeled
     when:
-      condition: not event.pull_request.label.name == "codemagicTest"
+      condition: not event.pull_request.labels[0].name == "codemagicTest"
 {{< /highlight >}}
 
 **Example 3**. You can also combine triggering conditions, just make sure that each condition is wrapped in brackets:
@@ -359,7 +359,7 @@ workflows:
         - pull_request
         - pull_request_labeled
     when:
-      condition: (not event.pull_request.draft) and (not event.pull_request.label.name == "codemagicTest")
+      condition: (not event.pull_request.draft) and (not event.pull_request.labels[0].name == "codemagicTest")
 {{< /highlight >}}
 
 {{<notebox>}}
