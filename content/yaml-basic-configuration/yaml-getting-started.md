@@ -343,6 +343,7 @@ triggering:
   events:                       # List the events that trigger builds
     - push
     - pull_request
+    - pull_request_labeled
     - tag
   branch_patterns:              # Include or exclude watched branches
     - pattern: '*'
