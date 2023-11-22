@@ -51,9 +51,9 @@ The following examples show how to use **cURL** commands in your `codemagic.yaml
     - name: Publishing IPA with a Certificate name
       script: |  
         curl --location "https://public.sofy.ai/parser-microservice/build-upload" \ 
-        --header "x-sofy-auth-key: $SOFY_SUBSCRIPTION_KEY" \ 
-        --form "applicationFile=@build/ios/ipa/native_ios_app.ipa" \ 
-        --form 'CertificateName=""' 
+          --header "x-sofy-auth-key: $SOFY_SUBSCRIPTION_KEY" \ 
+          --form "applicationFile=@build/ios/ipa/native_ios_app.ipa" \ 
+          --form 'CertificateName=""' 
 {{< /highlight >}}
 
 #### Uploading apps with Application Guid (linking application)
@@ -63,9 +63,9 @@ The following examples show how to use **cURL** commands in your `codemagic.yaml
     - name: Publishing APK with Application Guid 
       script: |        
         curl --location "https://public.sofy.ai/parser-microservice/build-upload" \ 
-        --header "x-sofy-auth-key: SOFY_SUBSCRIPTION_KEY" \ 
-        --form "applicationFile=@/build/app/outputs/flutter-apk/app-release.apk" \ 
-        --form 'ApplicationGUID=""'
+          --header "x-sofy-auth-key: SOFY_SUBSCRIPTION_KEY" \ 
+          --form "applicationFile=@/build/app/outputs/flutter-apk/app-release.apk" \ 
+          --form 'ApplicationGUID=""'
 {{< /highlight >}}
 
 
@@ -86,7 +86,7 @@ The following examples show how to use **cURL** commands in your `codemagic.yaml
   scripts: 
       - name: Schedule an automation test (on a specific build) with Sofy 
         script: | 
-          curl --location --request POST "https://public.sofy.ai/scheduler-microservice/scheduled-runs/:scheduledRunGuid/execute?appHash=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" ` 
+          curl --location --request POST "https://public.sofy.ai/scheduler-microservice/scheduled-runs/:scheduledRunGuid/execute?appHash=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" \
             --header "x-sofy-auth-key: SOFY_SUBSCRIPTION_KEY"
 {{< /highlight >}}
 
@@ -110,7 +110,7 @@ Note: **:scheduledRunGuid** will be replaced by the **SOFY_SCHEDULE_GUID** varia
    scripts: 
       - name: Checking the status of scheduled tests 
         script: |  
-          curl --location "https://public.sofy.ai/scheduler-microservice/scheduled-runs/$SOFY_SCHEDULE_GUID/status/:testRunGroupId" ` 
+          curl --location "https://public.sofy.ai/scheduler-microservice/scheduled-runs/$SOFY_SCHEDULE_GUID/status/:testRunGroupId" \
             --header "x-sofy-auth-key: SOFY_SUBSCRIPTION_KEY"
 {{< /highlight >}}
 
