@@ -19,7 +19,7 @@ You will need to sign up with [Sofy](https://sofy.ai/) so you can obtain an **AP
 4. Enter the variable group name, e.g. **_sofy_credentials_**. Click the button to create the group.
 5. Make sure the **Secure** option is selected.
 6. Click the **Add** button to add the variable.
-7. Repeat the steps to also add `SOFY_SUBSCRIPTION_KEY` and `SOFY_SCHEDULE_ID` variables.
+7. Repeat the steps to also add `SOFY_SUBSCRIPTION_KEY`, `SOFY_SCHEDULE_ID`, and `$SOFY_SCHEDULE_GUID` variables.
 
 8. Add the variable group to your `codemagic.yaml` file
 {{< highlight yaml "style=paraiso-dark">}}
@@ -39,10 +39,35 @@ The following examples show how to use **cURL** commands in your `codemagic.yaml
   scripts:
     - name: Publish APK / AAB / IPA to Sofy
       script: | 
-        curl --location --request POST 'https://api.sofy.ai/api/AppTests/buildUpload' \
-          --header "SubscriptionKey: $SOFY_SUBSCRIPTION_KEY" \
-          --form "applicationFile=@/build/app/outputs/flutter-apk/app-release.apk"
+        curl --location "https://public.sofy.ai/parser-microservice/build-upload" \ 
+          --header "x-sofy-auth-key: $SOFY_SUBSCRIPTION_KEY" \ 
+          --form "applicationFile=@/build/app/outputs/flutter-apk/app-release.apk" \ 
 {{< /highlight >}}
+
+#### Uploading apps with Certificate Name (if any) for iOS builds
+
+{{< highlight yaml "style=paraiso-dark">}}
+ scripts: 
+    - name: Publishing IPA with a Certificate name
+      script: |  
+        curl --location "https://public.sofy.ai/parser-microservice/build-upload" \ 
+        --header "x-sofy-auth-key: $SOFY_SUBSCRIPTION_KEY" \ 
+        --form "applicationFile=@build/ios/ipa/native_ios_app.ipa" \ 
+        --form 'CertificateName=""' 
+{{< /highlight >}}
+
+#### Uploading apps with Application Guid (linking application)
+
+{{< highlight yaml "style=paraiso-dark">}}
+ scripts: 
+    - name: Publishing APK with Application Guid 
+      script: |        
+        curl --location "https://public.sofy.ai/parser-microservice/build-upload" \ 
+        --header "x-sofy-auth-key: SOFY_SUBSCRIPTION_KEY" \ 
+        --form "applicationFile=@/build/app/outputs/flutter-apk/app-release.apk" \ 
+        --form 'ApplicationGUID=""'
+{{< /highlight >}}
+
 
 
 #### Scheduling automation tests
@@ -51,31 +76,47 @@ The following examples show how to use **cURL** commands in your `codemagic.yaml
   scripts:
     - name: Schedule an automation test with Sofy
       script: | 
-        curl --location --request POST 'https://api.sofy.ai/api/CICD/ScheduleAutomatedTestRun' \
-          --header 'Content-Type: application/json' \
-          --data-raw '{
-            "APIKey": "$SOFY_API_KEY",
-            "ScheduledID" :$SOFY_SCHEDULE_ID
-            }'
+          curl --location --request POST "https://public.sofy.ai/scheduler-microservice/scheduled-runs/:scheduledRunGuid/execute" \
+            --header "x-sofy-auth-key: SOFY_SUBSCRIPTION_KEY" 
 {{< /highlight >}}
 
+#### Scheduling automation tests on a particular build using application hash
+
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts: 
+      - name: Schedule an automation test (on a specific build) with Sofy 
+        script: | 
+          curl --location --request POST "https://public.sofy.ai/scheduler-microservice/scheduled-runs/:scheduledRunGuid/execute?appHash=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" ` 
+            --header "x-sofy-auth-key: SOFY_SUBSCRIPTION_KEY"
+{{< /highlight >}}
+
+{{<notebox>}}
+Note: **:scheduledRunGuid** will be replaced by the **SOFY_SCHEDULE_GUID** variable which can be found in your Sofy account, **appHash** will be fetched from the app upload API response mentioned above.
+{{</notebox>}}
+
+#### Fetching test run group IDs
+
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts: 
+      - name: Fetch test run group IDs with Sofy 
+        script: | 
+          curl --location "https://public.sofy.ai/scheduler-microservice/scheduled-runs/$SOFY_SCHEDULE_GUID/test-run-groups" \
+            --header "x-sofy-auth-key: SOFY_SUBSCRIPTION_KEY" 
+{{< /highlight >}}
 
 #### Checking the status of scheduled tests
 
 {{< highlight yaml "style=paraiso-dark">}}
-  scripts:
-    - name: Schedule an automation test with Sofy
-      script: | 
-        curl --location --request POST 'https://api.sofy.ai/api/CICD/ScheduleAutomatedTestRunStatus' \
-          --header 'Content-Type: application/json'     
-          --data-raw '{
-            "APIKey": "$SOFY_API_KEY",
-            "ScheduledID": $SOFY_SCHEDULE_ID
-            }'
+   scripts: 
+      - name: Checking the status of scheduled tests 
+        script: |  
+          curl --location "https://public.sofy.ai/scheduler-microservice/scheduled-runs/$SOFY_SCHEDULE_GUID/status/:testRunGroupId" ` 
+            --header "x-sofy-auth-key: SOFY_SUBSCRIPTION_KEY"
 {{< /highlight >}}
 
-
-
+{{<notebox>}}
+`:testRunGroupId` will be replaced by test run group ID fetched from the response of the `Fetching test run group IDs` step above.
+{{</notebox>}}
 
 As soon as your **.ipa** and **.apk** are successfully built, they will appear in the **Sofy UI** and any preferred devices can be selected for testing with **Real Time**. If devices need to be pre-chosen, then some capabilities provided by **Sofy** device settings must be injected into your project's test scripts first. 
 
