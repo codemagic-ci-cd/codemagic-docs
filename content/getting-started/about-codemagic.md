@@ -57,7 +57,7 @@ For development teams with limited budgets, the Codemagic pay-as-you-go plan off
 
 An annual subscription with access to Mac mini M2 VMs comes with 2 months of free usage.
 
-Enterprise plans are also available for customers who require additional services such as SO Login (OpenID, OAuth2 or SAML 2.0), registration with procurement systems, invoicing and payment by bank transfer, signed NDA, DPA, and other account management services such as collaborating with infosec teams.
+Enterprise plans are also available for customers who require additional services such as SSO Login (OpenID, OAuth2 or SAML 2.0), registration with procurement systems, invoicing and payment by bank transfer, signed NDA, DPA, and other account management services such as collaborating with infosec teams.
 
 Full pricing details can be found on our pricing page [here](https://docs.codemagic.io/billing/pricing/).
 
