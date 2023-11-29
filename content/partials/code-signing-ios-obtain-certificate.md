@@ -36,7 +36,7 @@ This new private key will be used to create a new iOS Distribution certificate i
 7. Use the following `openssl` command to export the private key:
 
 {{< highlight Shell "style=rrt">}}
-openssl pkcs12 -in IOS_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out ios_distribution_private_key
+openssl pkcs12 -in IOS_DISTRIBUTION.p12 -nodes -nocerts --legacy | openssl rsa -out ios_distribution_private_key
 {{< /highlight >}}
 
 8. When prompted for the import password, just press enter. The private key will be written to a file called **ios_distribution_private_key** in the directory where you ran the command.
