@@ -6,7 +6,7 @@ weight: 2
 aliases:
 ---
 
-Codemagic is a cloud-based Continuous Integration/Continuous Delivery (CI/CD) product specifically designed for mobile developers building apps with Flutter, React Native, native iOS, native Android, Unity, Kotlin Multiplatform Mobile, and Ionic.
+Codemagic is a cloud-based Continuous Integration/Continuous Delivery (CI/CD) product specifically designed for mobile developers building apps with Flutter, React Native, native iOS, native Android, Unity, Kotlin Multiplatform Mobile, and Ionic. Codemagic's API and versatile workflow configurations also provide a great platform for mobile development teams who are White labeling their apps.
 
 ## Automatic build and deployment
 Codemagic automates the process of app building, testing, and deployment to app stores such as the Apple App Store, Google Play, Microsoft Store, and Huawei App Gallery. New builds can be triggered when code is pushed to your repository, tags are added, or pull requests are merged. You can configure multiple workflows to make the app available to your dev team, distribute the latest build to your test team, or publish your app to production. 
@@ -28,7 +28,7 @@ Workflows are configured in code using a YAML configuration file which can be ch
 Flutter developers can also choose to set up their workflows using a graphical user interface called the “Workflow Editor”.
 
 ## Infrastructure
-Codemagic’s infrastructure is centered around the powerful Apple silicon M1 (arm64) allowing for faster builds than the previous generation of macOS machines. Mac Pro (Intel), Linux and Windows machines are also available for all customers. 
+Codemagic’s infrastructure is centered around the powerful Apple silicon M1 and M2(arm64) machines allowing for faster builds than the previous generation of macOS machines. Linux and Windows machines are also available for all customers. 
 
 The following documentation pages show the hardware specifications for each instance type:
 
@@ -37,7 +37,7 @@ The following documentation pages show the hardware specifications for each inst
 - [Windows hardware specifications](https://docs.codemagic.io/specs/versions-windows/)
 
 
-Our data centers are located in the US but it is possible to set up dedicated macOS hosts in the EU on request. 
+Our data centers are located in the US but it is possible to set up dedicated macOS hosts in the EU on request.
 
 ## Pre-installed software
 All the virtual machines come preloaded with the most common software you would need for building mobile apps such as Xcode, Android Studio, and a variety of CLI tools and frameworks. Codemagic’s engineers continuously monitor system availability and take care of updating software like Xcode and checking everything works when building with new versions so you don’t have to worry about running and maintaining your own systems. 
@@ -53,14 +53,14 @@ If you need to run parallel builds you can add additional concurrencies as your 
 ## Pricing
 Individuals and hobbyists can get started with Codemagic using its free tier which offers 500 free build minutes per month and lets you build on Apple silicon M1 machines. This quota is reset at the beginning of each month. 
 
-For development teams with limited budgets, the Codemagic pay-as-you-go plan offers an affordable way to get started with CI/CD. You only pay for the minutes you consume and the additional concurrencies you add. You also don’t need to worry about costs getting out of control because the pay-as-you-go plan is capped at $299/month which means once you reach this amount you don’t have to pay any extra to keep using the service. 
+For development teams with limited budgets, the Codemagic pay-as-you-go plan offers an affordable way to get started with CI/CD. You only pay for the minutes you consume and the additional concurrencies you add. 
 
-Annual plans offer a 20% discount and can be purchased in the web app using your credit card.
+An annual subscription with access to Mac mini M2 VMs comes with 2 months of free usage.
 
-Enterprise plans are also available for customers who require additional services such as SSO authentication, registration with procurement systems, invoicing and payment by bank transfer, signed NDA, DPA, and other account management services such as collaborating with infosec teams. 
+Enterprise plans are also available for customers who require additional services such as SSO Login (OpenID, OAuth2 or SAML 2.0), registration with procurement systems, invoicing and payment by bank transfer, signed NDA, DPA, and other account management services such as collaborating with infosec teams.
 
 Full pricing details can be found on our pricing page [here](https://docs.codemagic.io/billing/pricing/).
 
 ## Blog
 
-The [Codemagic blog](https://blog.codemagic.io/) is a great resource that covers a multitude of technical subjects related to CI/CD ranging from code signing and publishing to general application development. Check out the blog here.
+The [Codemagic blog](https://blog.codemagic.io/) is a great resource that covers a multitude of technical subjects related to CI/CD ranging from code signing and publishing to general application development.
