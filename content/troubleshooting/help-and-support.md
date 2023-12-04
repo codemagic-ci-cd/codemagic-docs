@@ -36,5 +36,3 @@ To guarantee the best experience and speed up issue resolution time, please foll
 
 Our support engineers are available during office hours, Mon - Fri 9:00 - 18:00 EEST (UTC+3), excluding Estonian [public holidays](https://www.eesti.ee/en/republic-of-estonia/republic-of-estonia/national-public-and-school-holidays).
 
-## Onboarding support
-Paid plans grant you a free [onboarding call](https://codemagic.io/onboarding-assistance/) with Codemagic experts to help you get everything up and running. Calls are conducted in English over Google Meet, typically last 15-30 minutes, and give you a chance to ask questions about topics such as setting your CI/CD pipeline with Codemagic, integrating Codemagic with third-party services, understanding Codemagic REST API and how it can be used for app white labeling, or maybe you just want to share your ideas on how to improve Codemagic to better suit your business needs.
