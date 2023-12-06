@@ -62,7 +62,7 @@ To run a build on CI/CD we need to have the `ios` and `android` project folders.
 1. Clone your repository to a temporary new location or create a new branch. in order to eject Expo once and get the `android/app/build.gradle` file.
 2. Eject Expo once by running the following command:
 {{< highlight Shell "style=rrt">}}
-expo eject
+npx expo prebuild
 {{< /highlight >}}
 3. Make sure that `namespace` and `applicationId` under `android{` section in `app/build.gradle` file uses the same package name. It will be used as a reference for the `app.json` file.
 4. Copy the `android/app/build.gradle` file from the ejected project and add it to your main repository. In our example, we create a `support-files` folder and store the `build.gradle` inside.
@@ -217,8 +217,7 @@ Add the following scripts just after the **Install npm dependencies**
 scripts:
   - name: Install Expo CLI and eject
     script: | 
-      npm install -g expo-cli
-      expo eject
+      npx expo prebuild
   - name: Set up app/build.gradle
     script: |
    mv ./support-files/build.gradle android/app
@@ -236,8 +235,7 @@ scripts:
   - name: Install Expo CLI and eject
     script: | 
       yarn install
-      yarn global add expo-cli
-      expo eject
+      npx expo prebuild
   - name: Set Info.plist values
     script: | 
       PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
