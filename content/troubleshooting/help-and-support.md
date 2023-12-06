@@ -29,6 +29,11 @@ If searching the discussions does not give any results and you are convinced you
 
 Please don’t forget to mark the issue as resolved once the correct answer has been found as this will greatly help others.
 
+## Codemagic Community Discord Server
+You can join the Codemagic Community Discord Server to connect with the Codemagic Team and chat with other Codemagic users. 
+
+You can join the Discord server [here](https://discord.gg/pefznye93R).
+
 ## Billing enabled customers - Intercom
 In addition to the above, customers on paid plans can contact our support team directly using the chat widget available in their Codemagic UI. 
 
