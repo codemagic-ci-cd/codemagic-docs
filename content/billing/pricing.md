@@ -90,7 +90,7 @@ Enterprise plans are available starting from **$12k/year** and include the follo
 - Service level agreement
 - Account management services
 - Technical account manager
-- Private Slack channel
+- Private Discord channel
 - SSO Login (OpenID, OAuth2 or SAML 2.0)
 
 
