@@ -13,9 +13,9 @@ weight: 13
 
 ## System
 
-- System version `macOS 14.0 (23A344)`
-- Kernel version `Darwin 23.0.0`
-- Disk `294GB (Free Space: 136GB)`
+- System version `macOS 14.2 (23C64)`
+- Kernel version `Darwin 23.2.0`
+- Disk `294GB (Free Space: 141GB)`
 
 ## Pre-installed tools
 
@@ -25,12 +25,12 @@ weight: 13
 - carthage `0.39.1`
 - cocoapods `1.14.2`
 - cordova `11.0.0`
-- curl `8.1.2`
+- curl `8.4.0`
 - docker `N/A`
-- ew-cli `0.10.4`
+- ew-cli `0.10.6`
 - fastlane `2.217.0`
 - firebase `11.21.0`
-- flutter `3.16.0 ($HOME/programs/flutter)`
+- flutter `3.16.3 ($HOME/programs/flutter)`
 - gem `3.4.22`
 - gh `2.39.1`
 - git `2.42.1`
@@ -46,7 +46,7 @@ weight: 13
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
-- ssh `9.3p2`
+- ssh `9.4p1`
 - sudo `1.9.13p2`
 - swiftgen `6.6.2`
 - tar `3.5.3`
@@ -71,9 +71,10 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 15.1 (15C5059c) `/Applications/Xcode-15.1.app`, also selected when specifying `edge` in Xcode version settings
+- 15.1 (15C65) `/Applications/Xcode-15.1.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
+
 
 - iOS 15.4
 - iOS 16.4
@@ -83,7 +84,6 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - tvOS 16.4
 - tvOS 17.0
 - tvOS 17.2
-- visionOS 1.0
 - watchOS 8.5
 - watchOS 9.4
 - watchOS 10.0
@@ -96,7 +96,6 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
 - Apple TV 4K (at 1080p) (2nd generation)
-- Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
 - Apple Watch Series 5 (40mm)
