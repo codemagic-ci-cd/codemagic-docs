@@ -6,6 +6,13 @@ aliases:
 weight: 1
 ---
 
+## Xcode 15.1
+<div class="note__timestamp">December 14th 2023</div>
+
+**Xcode 15.1 release** is now available on our macOS M1 build machines. This version will be used to run the build if you specify `15.1` or `edge` as the Xcode version.
+
+See the [build machine specs](https://docs.codemagic.io/specs/versions-macos/) for information about the preinstalled software and available runtimes.
+
 ## Introducing Codemagic Community on Discord
 <div class="note__timestamp">November 28th 2023</div>
 
