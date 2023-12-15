@@ -48,7 +48,7 @@ Before releasing the app to Google Play, ensure that it meets [Google Play's bes
 9. On the **App permissions** tab, add the applications you wish to grant access to.<br><br>
 ![Google play selected](../uploads/s3.png)
 
-10. Go with the default settings for app permissions and click **Apply** (financial data permissions can be left blank).<br><br> 
+10. Ensure that you check the Releases section. You can leave the rest of the settings as default and click **Apply** (financial data permissions can be left blank).<br><br> 
 ![Google play apply](../uploads/s4.png)
 
 11. On the **Account permissions** tab, leave everything as it is. (There is NO need to grant the service account **Admin** access).
