@@ -55,6 +55,7 @@ There are three supported options to set up release notes:
 
    * Release notes with `en-US` language code will be published to email and Slack in case file with `en-US` language code exists. If not, the first found release notes file will be published.
    * For both App Store Connect and Google Play, only the release notes with the supported language codes will be published, omitting language codes that are not supported.
+   * It is required to include `What's New` notes for the primary locale while setting up Release notes.
 
 ### Single file for multiple languages
 
