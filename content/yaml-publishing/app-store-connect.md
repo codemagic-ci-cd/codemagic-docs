@@ -58,16 +58,3 @@ Post-processing of App Store Distribution jobs, or Magic Actions in short, has a
 Note that Codemagic does not send status updates on the post-processing step. You can check the build log for the status of post-processing or check your email for updates from App Store Connect.
 
 Post-processing does not consume any build minutes.
-
-{{<notebox>}}
-**Note:** Post-processing triggered by the presence of release notes will only occur if the release notes are found in the project's working directory and contain the "whatsNew" keyword:
- ``` 
-  [
-    {
-        "language": "en-US",
-        "text": "Customized text",
-        "whatsNew": "Customized description",
-    }
-  ]
-  ```
-{{</notebox>}}
