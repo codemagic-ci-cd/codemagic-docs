@@ -71,7 +71,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 15.1 (15C65) `/Applications/Xcode-15.1.app`, also selected when specifying `edge` in Xcode version settings
+- 15.1 (15C65) `/Applications/Xcode-15.1.app`
 
 ### Runtimes
 
