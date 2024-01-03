@@ -121,8 +121,8 @@ After activating the Unity license as usual, add the following script to install
   scripts: 
     - name: Install Unity version
       script: |  
-        /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version $UNITY_VERSION --changeset $UNITY_VERSION_CHANGESET 
-        /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version $UNITY_VERSION -m ios android 
+        /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version $UNITY_VERSION --changeset $UNITY_VERSION_CHANGESET -a arm64 # -a x86_64
+        /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version $UNITY_VERSION -m ios android -a arm64 # -a x86_64
 {{< /highlight >}}
 {{< /tab >}}
 {{% tab header="Windows" %}}
