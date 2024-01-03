@@ -583,8 +583,8 @@ workflows:
         script: | 
            # You may omit the first command if you already have
            # the installer certificate and provided the corresponding private key
-            app-store-connect list-certificates --type MAC_INSTALLER_DISTRIBUTION --save || \
-            app-store-connect create-certificate --type MAC_INSTALLER_DISTRIBUTION --save
+            app-store-connect certificates list --type MAC_INSTALLER_DISTRIBUTION --save || \
+            app-store-connect certificates create --type MAC_INSTALLER_DISTRIBUTION --save
             
       - name: Set up signing certificate
         script: keychain add-certificates
