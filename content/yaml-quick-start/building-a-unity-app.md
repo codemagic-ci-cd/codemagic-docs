@@ -376,7 +376,7 @@ OR
 6. Close the project settings and build settings.
 
 ##
-#### Modify the base Gradle template
+#### Modify the base Gradle template (Only for Unity Versions older than Unity 2022)
 1. In the project explorer expand **Assets > Plugins > Android**.
 2. Double click on **baseProjectTemplate.gradle**.
 3. Replace the entire file contents with the following:
