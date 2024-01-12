@@ -86,6 +86,24 @@ scripts:
 {{< /highlight >}}
 
 
+## Running tests with orchestrator
+
+Add `--use-orchestrator` to run tests with Android Test Orchestrator 
+(more infos [here](https://docs.emulator.wtf/integrations/cli/#run-tests-with-orchestrator-while-clearing-package-data)):
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Test
+    script: | 
+      ew-cli \
+        --app app/build/outputs/apk/debug/app-debug.apk \
+        --test app/build/outputs/apk/androidTest/app-debug-androidTest.apk \
+        --use-orchestrator \
+        --outputs-dir results
+    test_report: results/**/*.xml
+{{< /highlight >}}
+
+
 ## Further information
 
 There are more options available like pulling directories from the emulator after tests have finished, running on various device models, etc. Check the [emulator.wtf docs](https://emulator.wtf) for more `ew-cli` options to customize your test run.
