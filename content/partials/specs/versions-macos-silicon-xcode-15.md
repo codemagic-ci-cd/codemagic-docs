@@ -71,7 +71,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 15.0.1 (15A507) `/Applications/Xcode-15.0.app`, also selected when specifying `15` or `latest` in Xcode version settings
+- 15.0.1 (15A507) `/Applications/Xcode-15.0.app`, also selected when specifying `15` in Xcode version settings
 
 ### Runtimes
 
