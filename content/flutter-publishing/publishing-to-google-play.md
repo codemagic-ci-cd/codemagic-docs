@@ -45,8 +45,8 @@ Before releasing the app to Google Play, ensure that it meets [Google Play's bes
 
 8. Back in **Google Play Console**, navigate to **Users and Permissions** and click **Invite new users**. Enter the email id which you copied in step 6.<br>
 
-9. On the **App permissions** tab, add the applications you wish to grant access to.<br><br>
-![Google play selected](../uploads/s3.png)
+9. Navigate to **Users and Permissions**. Click on the invited user and go to **App Permissions**. Add the desired applications to grant access.<br><br>
+![Google play selected](../uploads/app-permissions.png)
 
 10. Ensure that you check the Releases section. You can leave the rest of the settings as default and click **Apply** (financial data permissions can be left blank).<br><br> 
 ![Google play apply](../uploads/s4.png)
