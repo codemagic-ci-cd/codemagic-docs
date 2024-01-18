@@ -32,6 +32,7 @@ This will automatically install the specified Unity version to the build machine
 - `2022.3.7f1`
 - `2022.3.10f1`
 - `2022.3.11f1`
+- `2022.3.17f1`
 - `2022.2.16f1`
 {{< /tab >}}
 {{% tab header="2021.X" %}}
