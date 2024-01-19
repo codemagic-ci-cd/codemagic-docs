@@ -33,7 +33,7 @@ For a quick start, you can clone the appropriate project from our [Sample projec
 
 {{< tab header="New Expo project" >}}
 {{<markdown>}}
-If you are new to mobile development, the easiest way to get started is with Expo. Expo is a set of tools built around React Native and, while it has many features, the most relevant feature for us right now is that it can get you writing a React Native app within minutes. You will only need a recent version of Node.js and a phone or emulator.
+If you are new to mobile development, the easiest way to get started is with Expo. Expo is a set of tools built around React Native and, while it has many features, the most relevant feature for us right now is that it can get you writing a React Native app within minutes. You will only need a recent version of Node.js and a phone or emulator. The following steps must be completed on your local machine before pushing the repository to Codemagic for building and publishing to the stores:
 
 1. If necessary, install [Node LTS](https://nodejs.org/en/download/).
 
