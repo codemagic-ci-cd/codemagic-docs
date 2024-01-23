@@ -15,7 +15,7 @@ For example, you may consider caching the following paths:
 
 | **Path**                                    | **Description**                                  |
 | ------------------------------------------- | ------------------------------------------------ |
-| `$FLUTTER_ROOT/.pub-cache`                  | Dart cache                                       |
+| `$HOME/.pub-cache`                          | Dart cache                                       |
 | `$HOME/.gradle/caches`                      | Gradle cache. Note: do not cache `$HOME/.gradle` |
 | `$HOME/Library/Caches/CocoaPods`            | CocoaPods cache                                  |
 
