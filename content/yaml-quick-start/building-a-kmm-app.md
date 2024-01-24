@@ -20,13 +20,15 @@ All applications have to be digitally signed before they are made available to t
 
 {{< tabpane >}}
 {{< tab header="Android" >}}
-{{< include "/partials/quickstart/code-signing-android.md" >}}
+{{< include "/partials/quickstart/code-signing-kmm-android.md" >}}
 {{< /tab >}}
+
 
 {{< tab header="iOS" >}}
 {{< include "/partials/quickstart/code-signing-ios.md" >}}
 {{< /tab >}}
 {{< /tabpane >}}
+
 
 # Configure scripts to build the app
 Add the following scripts to your `codemagic.yaml` file in order to prepare the build environment and start the actual build process.
@@ -79,7 +81,7 @@ If you are going to publish your app to App Store Connect or Google Play, each u
 
 {{< tabpane >}}
 {{< tab header="Android" >}}
-{{< include "/partials/quickstart/build-versioning-android.md" >}}
+{{< include "/partials/quickstart/build-versioning-kmm-android.md" >}}
 {{< /tab >}}
 
 {{< tab header="iOS" >}}
@@ -128,7 +130,6 @@ workflows:
           else
             UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
           fi
-          cd $CM_BUILD_DIR/androidApp
           ./gradlew bundleRelease \
             -PversionCode=$UPDATED_BUILD_NUMBER \
             -PversionName=1.0.$UPDATED_BUILD_NUMBER
