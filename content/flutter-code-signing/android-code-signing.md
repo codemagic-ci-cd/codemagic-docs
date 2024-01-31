@@ -54,7 +54,7 @@ You can follow the instructions in [Flutter's documentation](https://flutter.dev
 
 Alternatively, you can use [environment variables](../building/environment-variables/ 'Environment variables') to prepare your app for code signing.
 
-Set your signing configuration in `build.gradle` or `build.gradle.kts` as follows:
+Set your signing configuration in app level `build.gradle` or `build.gradle.kts` as follows:
 {{< tabpane >}}
 {{< tab header="build.gradle" >}}
 
