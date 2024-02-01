@@ -10,7 +10,7 @@ weight: 18
 
 To get started with [Dart Code Metrics](https://dcm.dev/), you need an API key and save it as an environment variable in Codemagic.
 
-1. To effectively integrate Dart Code Metrics (DCM) into your Codemagic CI/CD pipeline, it's essential to obtain a Team Plan API key. This key is a crucial component as it authorizes the use of DCM on CI/CD platforms, allowing you to run code analysis as part of your automated workflows.
+1. To effectively integrate Dart Code Metrics (DCM) into your Codemagic CI/CD pipeline, it's essential to obtain a [Team Plan API key](https://dcm.dev/pricing/). This key is a crucial component as it authorizes the use of DCM on CI/CD platforms, allowing you to run code analysis as part of your automated workflows.
 2. Open your Codemagic app settings, and go to the **Environment variables** tab.
 3. Enter the desired **_Variable name_**, e.g. `DCM_KEY`.
 4. Copy and paste the API key string as **_Variable value_**.
