@@ -14,22 +14,22 @@ To get started with [Dart Code Metrics](https://dcm.dev/pricing/), you need an A
 2. Open your Codemagic app settings, and go to the **Environment variables** tab.
 3. Enter the desired **_Variable name_**, e.g. `DCM_KEY`.
 4. Copy and paste the API key string as **_Variable value_**.
-5. Enter the variable group name, e.g. **_dcm_key_**. Click the button to create the group.
+5. Enter the variable group name, e.g. **_dcm_credntials_**. Click the button to create the group.
 6. Make sure the **Secure** option is selected.
 7. Click the **Add** button to add the variable.
-8. Repeat the above process for `DCM_EMAIL_ID`
+8. Repeat the above process for `DCM_EMAIL_ID`.
 
 9. Add the variable group to your `codemagic.yaml` file
 {{< highlight yaml "style=paraiso-dark">}}
   environment:
     groups:
-      - dcm_key
+      - dcm_credntials
 {{< /highlight >}}
 
 ## Configuring DCM Rules with `analysis_options.yaml`
 Dart Code Metrics (DCM) provides a flexible way to define and enforce coding standards through its rules. These rules are specified in a file named `analysis_options.yaml`, which should be located at the root of your project. By configuring this file, you can tailor DCM to analyze your code according to specific guidelines that align with your project's requirements and coding standards.
 
-Here is a sample Rule set
+Here is a sample Rule set.
 
 {{< highlight yaml "style=paraiso-dark">}}
   dart_code_metrics:
@@ -55,7 +55,7 @@ You can further customise the Rule set as per your requirements by visiting the 
 
 ## Configuring `codemagic.yaml`
 
-After setting up your `analysis_options.yaml` file with the desired Dart Code Metrics (DCM) rules, let's configure the `codemagic.yaml` file to the same in our workflow.
+After setting up your `analysis_options.yaml` file with the desired Dart Code Metrics (DCM) rules, let's configure our `codemagic.yaml` file.
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:
