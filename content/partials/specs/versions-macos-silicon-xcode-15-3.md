@@ -1,9 +1,9 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 15.1.
-title: macOS Apple silicon build machine specification (Xcode 15.1+)
+description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 15.3.
+title: macOS Apple silicon build machine specification (Xcode 15.3+)
 aliases:
 
-weight: 13
+weight: 15
 ---
 
 ## Hardware
@@ -13,9 +13,9 @@ weight: 13
 
 ## System
 
-- System version `macOS 14.2 (23C64)`
-- Kernel version `Darwin 23.2.0`
-- Disk `294GB (Free Space: 141GB)`
+- System version `macOS 14.3 (23D56)`
+- Kernel version `Darwin 23.3.0`
+- Disk `294GB (Free Space: 110GB)`
 
 ## Pre-installed tools
 
@@ -27,10 +27,10 @@ weight: 13
 - cordova `11.0.0`
 - curl `8.4.0`
 - docker `N/A`
-- ew-cli `0.10.6`
+- ew-cli `0.10.7`
 - fastlane `2.217.0`
 - firebase `11.21.0`
-- flutter `3.16.3 ($HOME/programs/flutter)`
+- flutter `3.16.9 ($HOME/programs/flutter)`
 - gem `3.4.22`
 - gh `2.39.1`
 - git `2.42.1`
@@ -71,23 +71,26 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 15.1 (15C65) `/Applications/Xcode-15.1.app`
+- 15.3 (15E5178i) `/Applications/Xcode-15.3.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
-
 
 - iOS 15.4
 - iOS 16.4
 - iOS 17.0
 - iOS 17.2
+- iOS 17.4
 - tvOS 15.4
 - tvOS 16.4
 - tvOS 17.0
 - tvOS 17.2
+- tvOS 17.4
+- visionOS 1.0
 - watchOS 8.5
 - watchOS 9.4
 - watchOS 10.0
 - watchOS 10.2
+- watchOS 10.4
 
 ### Devices
 
@@ -96,6 +99,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
 - Apple TV 4K (at 1080p) (2nd generation)
+- Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
 - Apple Watch Series 5 (40mm)
