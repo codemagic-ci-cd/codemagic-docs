@@ -15,19 +15,20 @@ weight: 15
 
 - System version `macOS 14.3 (23D56)`
 - Kernel version `Darwin 23.3.0`
-- Disk `294GB (Free Space: 110GB)`
+- Disk `294GB (Free Space: 112GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
+- appium `2.5.0`
 - aws `2.13.35`
 - carthage `0.39.1`
 - cocoapods `1.14.2`
-- cordova `11.0.0`
+- cordova `12.0.0`
 - curl `8.4.0`
 - docker `N/A`
-- ew-cli `0.10.7`
+- ew-cli `0.10.8`
 - fastlane `2.217.0`
 - firebase `11.21.0`
 - flutter `3.16.9 ($HOME/programs/flutter)`
@@ -37,12 +38,12 @@ weight: 15
 - Google Cloud SDK `404.0.0`
 - gradle `8.1.1`
 - gsutil `5.14`
-- homebrew `4.1.20`
-- ionic `5.4.16`
+- homebrew `4.2.7`
+- ionic `7.2.0`
 - jq `1.7`
 - ktlint `1.0.1`
-- node `19.7.0`
-- npm `9.5.0`
+- node `20.11.0`
+- npm `10.2.4`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
@@ -71,7 +72,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 15.3 (15E5178i) `/Applications/Xcode-15.3.app`, also selected when specifying `edge` in Xcode version settings
+- 15.3 (15E5188j) `/Applications/Xcode-15.3.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
@@ -86,6 +87,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - tvOS 17.2
 - tvOS 17.4
 - visionOS 1.0
+- visionOS 1.1
 - watchOS 8.5
 - watchOS 9.4
 - watchOS 10.0
