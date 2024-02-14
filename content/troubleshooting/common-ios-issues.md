@@ -32,7 +32,7 @@ When App Store Connect is not correctly set up, users might encounter an error m
 The most common reason for this error message is using your Apple ID password instead of [app-specific password](https://support.apple.com/en-us/HT204397) in App Store Connect publishing settings. 
 
 ###### Solution
-Publishing iOS apps with **app-specific-password** is outdated, refer to the documentation [here](https://docs.codemagic.io/yaml-publishing/app-store-connect/) that explains how to publish iOS apps to App Store Connect.
+Publishing iOS apps with **app-specific-password** is deprecated, refer to the documentation [here](https://docs.codemagic.io/yaml-publishing/app-store-connect/) that explains how to publish iOS apps to App Store Connect.
 
 
 ### Errors with code signing
