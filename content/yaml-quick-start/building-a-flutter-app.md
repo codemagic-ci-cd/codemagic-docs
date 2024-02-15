@@ -56,7 +56,7 @@ workflows:
             flutter: fvm
 {{< /highlight >}}
 {{<notebox>}}
-**Note**: This automatically sets the Flutter version from your project's `fvm_config.json` file, located at the root of your project in the `.fvm` directory. If this file does not exist, the build will fail.
+**Note**: This automatically sets the Flutter version from your project's `.fvmrc` file (or from `.fvm/fvm_config.json` if you're using an older version of FVM). If this file does not exist, the build will fail.
 {{</notebox>}}
 
 Moreover, when using FVM, Codemagic allows you to set the specific FVM flavor in your `codemagic.yaml` to provide all the needed flexibility when managing the Flutter version.
