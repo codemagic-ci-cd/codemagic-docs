@@ -64,10 +64,11 @@ weight: 2
 
 ## Java versions
 
-- **17 (2021-09-14)** JAVA_HOME: `/usr/lib/jvm/java-1.17.0-openjdk-amd64`
-- **15 (2020-09-15)** JAVA_HOME: `/usr/lib/jvm/java-1.15.0-openjdk-amd64`
-- **11.0.10 (2021-01-19)** (default) JAVA_HOME: `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
-- **1.8.0_282** JAVA_HOME: `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
+- **21.0.1** JAVA_HOME: `/usr/lib/jvm/java-1.21.0-openjdk-amd64`
+- **17.0.8.1** JAVA_HOME: `/usr/lib/jvm/java-1.17.0-openjdk-amd64`
+- **15.0.3** JAVA_HOME: `/usr/lib/jvm/java-1.15.0-openjdk-amd64`
+- **11.0.20.1** (default) JAVA_HOME: `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
+- **1.8.0_382** JAVA_HOME: `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
 
 ## Android Studio 2022.3
 
