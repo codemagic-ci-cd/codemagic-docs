@@ -6,10 +6,15 @@ aliases:
 weight: 1
 ---
 
-## Xcode 15.2 release
+## Xcode 15.3 Beta
+<div class="note__timestamp">February 5th 2024</div>
+
+**Xcode 15.3 Beta** build image is now available on our macOS build machines. See the [build machine specs](https://docs.codemagic.io/specs/versions-macos/) for information about the preinstalled software and available runtimes.
+
+## Xcode 15.2 Release
 <div class="note__timestamp">January 17th 2024</div>
 
-**Xcode 15.2 release** is now available on our macOS M1 build machines. This version will be used to run the build if you specify `15.2` or `edge` as the Xcode version.
+**Xcode 15.2 release** is now available on our macOS M1 build machines. This version will be used to run the build if you specify `15.2` or `latest` as the Xcode version.
 
 See the [build machine specs](https://docs.codemagic.io/specs/versions-macos/) for information about the preinstalled software and available runtimes.
 
