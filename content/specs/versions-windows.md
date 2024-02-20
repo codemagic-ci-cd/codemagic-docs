@@ -50,9 +50,10 @@ weight: 3
 - zip `3.0`
 
 ## Java versions
-- **20.0.1 (2023-04-18)** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-20.0.1`
-- **17 (2021-09-14)** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-17`
-- **11.0.13 (2021-10-19)** (default) JAVA_HOME: `C:\Program Files\OpenJDK\openjdk-11.0.13_8`
+- **21.0.2** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-21.0.2`
+- **20.0.1** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-20.0.1`
+- **17** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-17`
+- **11.0.13** (default) JAVA_HOME: `C:\Program Files\OpenJDK\openjdk-11.0.13_8`
 - **1.8.0_312** JAVA_HOME: `C:\Program Files\OpenJDK\openjdk-8u312-b07`
 
 ## Android Studio 2020.3 (AI-203.7717.56.2031.7784292)
