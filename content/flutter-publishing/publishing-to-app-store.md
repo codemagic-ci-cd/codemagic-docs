@@ -35,17 +35,7 @@ This section gives step-by-step instructions on how to configure publishing to A
 **Tip:** You may also reuse any of the keys you've already set up for automatic [iOS](../code-signing/ios-code-signing/#automatic-code-signing) or [macOS](../code-signing/macos-code-signing/#automatic-code-signing) code signing.
 {{</notebox>}}
 
-It is recommended to create a dedicated App Store Connect API key for Codemagic in [App Store Connect](https://appstoreconnect.apple.com/access/api). To do so:
-
-1. Log in to App Store Connect and navigate to **Users and Access > Keys**.
-2. Click on the + sign to generate a new API key.
-3. Enter the name for the key and select an access level. For App Store Connect publishing, the key needs to have `App Manager` permissions. Read more about Apple Developer Program role permissions [here](https://help.apple.com/app-store-connect/#/deve5f9a89d7).
-4. Click **Generate**.
-5. As soon as the key is generated, you can see it added to the active keys list. Click **Download API Key** to save the private key for later. Note that the key can only be downloaded once.
-
-{{<notebox >}} 
-**Note:** Take note of the **Issuer ID** above the table of active keys and the **Key ID** of the generated key as these will be required when setting up the Apple Developer Portal integration in Codemagic UI.
-{{</notebox>}}
+{{< include "/partials/app-store-connect-api-key.md">}}
 
 ### Step 2. Connecting the Apple Developer Portal integration for your team/account
 
