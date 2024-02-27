@@ -22,5 +22,4 @@ You can schedule Codemagic to automatically build your app on certain days and t
 
 Saved schedules for each app are displayed in the **Scheduled builds** section on the right sidebar in app settings. If you no longer need the schedule, you can delete it by hovering on the schedule and clicking the trash bin icon.
 
-Builds that are triggered from a schedule are marked with "scheduled" on the **Builds** page and have "Schedule" as the trigger in the build overview.
-
+Builds that are triggered from a schedule are marked with "Schedule" as the trigger in the build overview page.
