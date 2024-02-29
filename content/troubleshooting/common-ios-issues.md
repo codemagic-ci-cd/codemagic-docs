@@ -268,4 +268,4 @@ workflows:
     working_directory: ios/path-to-your-project
 {{< /highlight >}}
 
-If you are using the Workflow Editor, specify the project path inside the Build step and select your project path from the Project path dropdown.
+If you are using the Workflow Editor, specify the project path inside the Build step by selecting your project from the Project path dropdown.
