@@ -244,3 +244,28 @@ Rest assured, Codemagic simplifies the certificate management process for you. H
  - If you're using `manual code signing` or `Codemagic signing identities (CSI)`, you will need to create and upload your certificates and profiles that you generated on the Apple Developer UI manually to Codemagic.
  Alernativley, with CSI, users can also fetch or create resources directly from Codemagic UI instead of navigating the Apple Developer UI when going in **Teams** > **Codesignng identities** > **iOS certificate** tab > **Generate certificate** button and in there provide your API key.
 
+
+### Did not find xcodeproj from /Users/builder/clone/ios
+
+###### Description
+Builds are failing with the following message:
+
+    Did not find xcodeproj from /Users/builder/clone/ios
+
+###### Cause
+Codemagic is not able to locate the Xcode project file (xcodeproj) in the expected directory. This could be due to the project structure being different from the script's assumptions, most likely because the project is a mono repo.
+
+###### Solution
+The solution is to update the path to your project. In order to target apps inside your monorepo app, **working_directory** key is used. For example, the following sample snippet shows how it works:
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  default-workflow:
+    name: Default workflow
+    instance_type: mac_mini_m1
+    max_build_duration: 120
+    # Specify path to the app folder like this
+    working_directory: ios/path-to-your-project
+{{< /highlight >}}
+
+If you are using the Workflow Editor, specify the project path inside the Build step and select your project path from the Project path dropdown.
