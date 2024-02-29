@@ -104,11 +104,12 @@ triggering:
       source: false  
 {{< /highlight >}}
 
-**Example 2**. Setting `source:true` and `branch:main`, will trigger the build on the `main` branch once the pull request has been merged from the `feature` branch into the `main` branch.
+**Example 2**. Setting `source:true`, `branch:main` and triggering events `push` and `pull_request` will trigger the build on the `main` branch once the pull request has been merged from the `feature` branch into the `main` branch.
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
   events:
+    - push
     - pull_request
   branch_patterns:
     - pattern: 'main'
