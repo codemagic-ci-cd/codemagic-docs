@@ -15,7 +15,7 @@ weight: 15
 
 - System version `macOS 14.3.1 (23D60)`
 - Kernel version `Darwin 23.3.0`
-- Disk `294GB (Free Space: 104GB)`
+- Disk `294GB (Free Space: 111GB)`
 
 ## Pre-installed tools
 
@@ -72,7 +72,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 15.3 (15E5202a) `/Applications/Xcode-15.3.app`, also selected when specifying `edge` in Xcode version settings
+- 15.3 (15E204a) `/Applications/Xcode-15.3.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
