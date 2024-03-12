@@ -6,6 +6,11 @@ aliases:
 weight: 1
 ---
 
+## Xcode 15.3 Release
+<div class="note__timestamp">March 7th 2024</div>
+
+The **Xcode 15.3** build image now has Xcode 15.3 release available. See [build machine specs](https://docs.codemagic.io/specs/versions-macos/) for information about the preinstalled software and available runtimes.
+
 ## Xcode 15.3 RC 1
 <div class="note__timestamp">March 4th 2024</div>
 
