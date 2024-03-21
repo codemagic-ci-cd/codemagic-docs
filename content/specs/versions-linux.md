@@ -35,8 +35,8 @@ weight: 2
 - ionic `5.4.16`
 - jq `jq-1.6`
 - ktlint `0.43.2`
-- node `16.20.0`
-- npm `8.19.4`
+- node `20.11.1`
+- npm `10.2.4`
 - python2 `2.7.18`
 - python `3.8.10`
 - ruby `2.7.2p137`
