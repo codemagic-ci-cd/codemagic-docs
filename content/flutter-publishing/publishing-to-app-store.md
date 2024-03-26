@@ -23,14 +23,14 @@ It is also worth pointing out the necessity for each uploaded binary to have a *
 {{<notebox>}}**Note:** You will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually.
 {{</notebox>}}
 
-In order to be able to test iOS apps on Apple devices, manual device UDID registration in the Apple Developer Program account is required. Alternatively, Codemagic's automatic device registration can be used to register devices as explained [here](https://docs.codemagic.io/testing/ios-provisioning/). 
+In order to be able to test iOS apps on Apple devices, manual device UDID registration in the Apple Developer Program account is required. Alternatively, Codemagic's automatic device registration can be used to register devices as explained [here](https://docs.codemagic.io/testing/ios-provisioning/).
 
 ## Setting up publishing to App Store Connect on Codemagic
 
 This section gives step-by-step instructions on how to configure publishing to App Store Connect using Flutter workflow editor.
 
 ### Step 1. Creating an App Store API key for Codemagic
-    
+
 {{<notebox>}}
 **Tip:** You may also reuse any of the keys you've already set up for automatic [iOS](../code-signing/ios-code-signing/#automatic-code-signing) or [macOS](../code-signing/macos-code-signing/#automatic-code-signing) code signing.
 {{</notebox>}}
@@ -51,7 +51,7 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 4. Mark the **Publish even if tests fail** checkbox to continue uploading the app artifact even when the tests failed.
 5. Select **Enable App Store Connect publishing** at the top of the section to enable publishing.
 
-Your app will be now published to App Store Connect. However, you can select additional options to submit the build to TestFlight beta review or App Store review. 
+Your app will be now published to App Store Connect. However, you can select additional options to submit the build to TestFlight beta review or App Store review.
 
 #### Submitting an app to TestFlight
 
@@ -60,7 +60,7 @@ Your app will be now published to App Store Connect. However, you can select add
 
 #### Submitting an app to App Store review
 
-In order to submit your application to App Store review, mark the **Submit to App Store review** checkbox. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution). 
+In order to submit your application to App Store review, mark the **Submit to App Store review** checkbox. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution).
 
 Alternatively, if you wish to submit an already uploaded build for review in App Store Connect, follow the steps below:
 
@@ -69,7 +69,7 @@ Alternatively, if you wish to submit an already uploaded build for review in App
 3. To start the submission process, click **Prepare for Submission**.
 4. Check that your app metadata is up to date, and once everything is ready, click the **Submit for Review** button.
 
-Note that the application must be manually released to the App Store once Apple approves the release.
+Please note that when using the workflow editor, the application will be manually released to the App Store by default once it is approved by Apple. However, you have the option to set up automatic publishing by making the necessary changes in your `Apple developer account > Apps > Distribution settings`.
 
 ## Submitting release notes
 
@@ -94,10 +94,9 @@ Supported languages could be found [here](https://developer.apple.com/documentat
 **Note:** Uploading release notes takes place in the [post-processing](#post-processing-of-app-store-connect-distribution) step.
 {{</notebox>}}
 
-
 ## Post-processing of App Store Connect distribution
 
-Some App Store Connect actions, like submitting the build to TestFlight beta review, distributing the build to beta groups and uploading release notes take place asynchronously in the post-processing step after the app artifact has been successfully published to App Store Connect and the main workflow has completed running in Codemagic. This avoids using the macOS build machine while we are waiting for Apple to complete processing the build and it becomes available for further actions. 
+Some App Store Connect actions, like submitting the build to TestFlight beta review, distributing the build to beta groups and uploading release notes take place asynchronously in the post-processing step after the app artifact has been successfully published to App Store Connect and the main workflow has completed running in Codemagic. This avoids using the macOS build machine while we are waiting for Apple to complete processing the build and it becomes available for further actions.
 
 Post-processing has a two-step timeout. If the uploaded build cannot be found in App Store Connect in 15 minutes, the step times out. This may happen if there are issues with the uploaded artifact, in which case the build does not become available in App Store Connect at all and you'll receive an email from App Store Connect. The overall timeout for post-processing is 120 minutes. If the uploaded build has not exited the processing status by then, post-processing in cancelled. You will be still able to manually submit the build to beta review, upload release notes and distribute the app to beta groups once the build becomes available in App Store Connect.
 
