@@ -5,10 +5,18 @@ weight: 7
 aliases:
 ---
 
-To allow Codemagic access a private repository, the following IP addresses need to be whitelisted:
+If your repositories are within an internal network/behind a firewall, which is usually the case with enterprises, the network configuration of these repositories must be configured for direct access.
 
-1. `34.74.234.56` - used by our backend for getting basic information about the repository
-2. `35.185.76.207` - used by our Linux and Windows build machines to download the code and build it
-3. `199.7.162.128/29` - used by our macOS build machines to download the code and build it
+Codemagic requires direct access to the repositories for the following use cases:
+- For retrieving the repository information such as the branches and the commits.
+- For cloning the repository to the build machine during the build.
+
+The following IP addresses must be allowed through the firewall (whitelisted):
+{{< highlight Shell "style=rrt">}}
+199.7.162.128/29
+207.254.42.240/29
+34.74.234.56/32
+35.185.76.207/32
+{{< /highlight >}}
 
 Since Codemagic needs to access the Git service, please allow ports that your service uses - usually the default SSH or HTTPS ports.
