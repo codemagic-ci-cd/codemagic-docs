@@ -5,7 +5,7 @@ weight: 7
 aliases:
 ---
 
-If your repositories are within an internal network/behind a firewall, which is usually the case with enterprises, the network configuration of these repositories must be configured for external access.
+If your repositories are within an internal network / behind a firewall, which is usually the case with enterprises, the network configuration of these repositories must be configured for external access.
 
 Codemagic requires direct access to the repositories for the following use cases:
 - For retrieving the repository information such as the branches and the commits.
