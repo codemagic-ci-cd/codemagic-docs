@@ -39,7 +39,7 @@ weight: 1
 | `iOS and Android QR testing`| `No`           | `Yes`        |
 
 
-* CodePush will continue standalone, so users can continue using the feature by App Center
+* CodePush will continue standalone, so users can continue using the feature by App Center. Alternatively, Codemagic can be integrated with EAS updates.
 * Codemagic allows you to integrate with Sentry and Firebase Crahslytics for analytics and uploading debug symbols
 
 ## Comparison in practice
@@ -103,7 +103,7 @@ workflows:
           expo eject
       - name: Set Info.plist values
         script: |
-          PLIST=$FCI_BUILD_DIR/$XCODE_SCHEME/Info.plist
+          PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
           PLIST_BUDDY=/usr/libexec/PlistBuddy
           $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
       - name: Install CocoaPods dependencies
