@@ -1,0 +1,706 @@
+---
+title: Seamless relocation from App Center to Codemagic
+description: How to ship your workflows to Codemagic
+weight: 1
+---
+
+## Quick comparison
+
+
+| **Features**                | **App Center** | **Codemagic**|
+|-----------------------------| ---------------|--------------|
+| `Swift/Objective-C iOS`     | `Yes`          | `Yes`        |
+| `Android apps`              | `Yes`          | `Yes`        |
+| `React Native builds`       | `Yes`          | `Yes`        |
+| `Flutter apps`              | `No`           | `Yes`        |
+| `Unity`                     | `Yes`          | `Yes`        |
+| `Ionic`                     | `Yes`          | `Yes`        |
+| `White-labeling solution`   | `No`           | `Yes`        |
+| `Automatic iOS code signing`| `No`           | `Yes`        |
+| `Manual iOS code signing`   | `Yes`          | `Yes`        |
+| `Android code signing`      | `Yes`          | `Yes`        |
+| `Automatic build versioning`| `Yes`          | `Yes`        |
+| `Running integrations tests`| `Yes`          | `Yes`        |
+| `Running unit tests`        | `Yes`          | `Yes`        |
+| `App Store publishing`      | `Yes`          | `Yes`        |
+| `Play Store publishing`     | `Yes`          | `Yes`        |
+| `Firebase App Distribution `| `No`           | `Yes`        |
+| `Running integrations tests`| `Yes`          | `Yes`        |
+| `Slack integration`         | `No`           | `Yes`        |
+| `Email notifications`       | `Yes`          | `Yes`        |
+| `macOS M2 support`          | `No`           | `Yes`        |
+| `Linux VM support`          | `No`           | `Yes`        |
+| `Windows VM support`        | `Yes`          | `Yes`        |
+| `Over-the-air-update`       | `Yes`          | `No`*        |
+| `Analytics`                 | `Yes`          | `No`*        |
+| `Apple device registration` | `No`           | `Yes`        |
+| `Remote access to VMs`      | `No`           | `Yes`        |
+| `Global environment variables`| `No`         | `Yes`        |
+| `iOS and Android QR testing`| `No`           | `Yes`        |
+
+
+* CodePush will continue standalone, so users can continue using the feature by App Center
+* Codemagic allows you to integrate with Sentry and Firebase Crahslytics for analytics and uploading debug symbols
+
+## Comparison in practice
+
+#### Performance comparison with open source benchmark projects
+
+------------------
+
+## Step-by-Step transitioning guide
+
+1. Sign up with Codemagic by clicking the link [here](https://codemagic.io/signup), or if you have already registered, then login your account [here](https://codemagic.io/login)
+2. Complete the onboarding the process by either getting started with a personal account or by creating a team where you and your colleagues can contribute to your app building and publishing process. You will be guided through once signed up.
+3. Connect your Git cloud provider to your account in order to be able to add the repository. You have an option to add it manually without connecting your Git account.
+4. Add **codemagic.yaml** in the root directory of the repository and check the file content below:
+
+
+{{< tabpane >}}
+
+{{< tab header="iOS with Expo" >}}
+{{<markdown>}}
+
+### Ready-to-use *codemagic.yaml* file
+
+Copying the following content for iOS workflows and pasting in the codemagic.yaml file suffice:
+
+{{< highlight kotlin "style=paraiso-dark">}}
+```
+workflows:
+   react-native-ios:
+    name: React Native iOS
+    max_build_duration: 120
+    instance_type: mac_mini_m1
+    integrations:
+      app_store_connect: codemagic
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: io.codemagic.expoapp
+      vars:
+          XCODE_WORKSPACE: "ExpoApp.xcworkspace" # <-- Put the name of your Xcode workspace here
+          XCODE_SCHEME: "ExpoApp" # <-- Put the name of your Xcode scheme here
+          BUNDLE_ID: "io.codemagic.expoapp" # <-- Put your Bundle Id here e.g com.domain.myapp
+          APP_ID: 1616629701 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
+      node: 16.14.2
+      xcode: 13.1
+      cocoapods: default
+    triggering:
+        events:
+            - push
+            - tag
+            - pull_request
+        branch_patterns:
+            - pattern: develop
+              include: true
+              source: true
+    scripts:
+      - name: Install dependencies, Expo CLI and eject app
+        script: |
+          yarn install
+          yarn global add expo-cli
+          expo eject
+      - name: Set Info.plist values
+        script: |
+          PLIST=$FCI_BUILD_DIR/$XCODE_SCHEME/Info.plist
+          PLIST_BUDDY=/usr/libexec/PlistBuddy
+          $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios && pod install
+      - name: Increment build number
+        script: |
+          cd $CM_BUILD_DIR/ios
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
+          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
+      - name: Set up code signing settings on Xcode project
+        script: |
+          xcode-project use-profiles --warn-only
+      - name: Build ipa for distribution
+        script: |
+          xcode-project build-ipa \
+            --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+        - build/ios/ipa/*.ipa
+        - /tmp/xcodebuild_logs/*.log
+        - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+        - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+    publishing:
+      email:
+        recipients:
+          - user_1@example.com
+          - user_2@example.com
+        notify:
+          success: true
+          failure: false
+      app_store_connect:
+        auth: integration
+
+        # Configuration related to TestFlight (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_testflight: true
+        beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+          - group name 1
+          - group name 2
+
+        # Configuration related to App Store (optional)
+        # Note: This action is performed during post-processing.
+        submit_to_app_store: false
+```
+{{< /highlight >}}
+
+{{</markdown>}}
+{{< /tab >}}
+
+
+{{< tab header="iOS with React Native CLI" >}}
+{{<markdown>}}
+
+{{< highlight yaml "style=paraiso-dark">}}
+```
+workflows:
+ react-native-ios:
+        name: React Native iOS
+        max_build_duration: 120
+        instance_type: mac_mini_m2
+        integrations:
+          app_store_connect: codemagic
+        environment:
+          ios_signing:
+            distribution_type: app_store
+            bundle_identifier: io.codemagic.sample.reactnative
+          vars:
+            XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
+            XCODE_SCHEME: "CodemagicSample" # <-- Put the name of your Xcode scheme here
+            APP_ID: 1555555551 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
+          node: v19.7.0
+          xcode: latest
+          cocoapods: default
+        scripts:
+            - name: Install npm dependencies
+              script: |
+                npm install
+            - name: Install CocoaPods dependencies
+              script: |
+                cd ios && pod install
+            - name: Set Info.plist values
+              script: |
+                # This allows publishing without manually answering the question about encryption 
+                PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
+                PLIST_BUDDY=/usr/libexec/PlistBuddy
+                $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
+            - name: Set up code signing settings on Xcode project
+              script: |
+                xcode-project use-profiles --warn-only
+            - name: Increment build number
+              script: |
+                cd $CM_BUILD_DIR/ios
+                LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
+                agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
+            - name: Build ipa for distribution
+              script: |
+                xcode-project build-ipa \
+                  --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
+                  --scheme "$XCODE_SCHEME"
+        artifacts:
+            - build/ios/ipa/*.ipa
+            - /tmp/xcodebuild_logs/*.log
+            - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+            - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+        publishing:
+          email:
+            recipients:
+              - user_1@example.com
+              - user_2@example.com
+            notify:
+              success: true
+              failure: false
+          app_store_connect:
+            auth: integration
+
+            # Configuration related to TestFlight (optional)
+            # Note: This action is performed during post-processing.
+            submit_to_testflight: true
+            beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
+              - group name 1
+              - group name 2
+
+            # Configuration related to App Store (optional)
+            # Note: This action is performed during post-processing.
+            submit_to_app_store: false
+```
+{{< /highlight >}}
+
+{{</markdown>}}
+{{< /tab >}}
+
+
+{{< tab header="Android with Expo" >}}
+{{<markdown>}}
+
+{{< highlight yaml "style=paraiso-dark">}}
+```
+workflows:
+  react-native-android:
+    name: React Native Android
+    max_build_duration: 120
+    instance_type: linux_x2
+    environment:
+      android_signing:
+        - keystore_reference
+      groups:
+        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
+      vars:
+        PACKAGE_NAME: "io.codemagic.expoapp" # <-- Put your package name here e.g. com.domain.myapp
+      node: 16.14.2
+    triggering:
+      events:
+          - push
+          - tag
+          - pull_request
+      branch_patterns:
+          - pattern: develop
+            include: true
+            source: true
+    scripts:
+      - name: Install dependencies and Expo CLI, and eject app
+        script: |
+          yarn install
+          yarn global add expo-cli
+          expo eject
+      - name: Set up app/build.gradle
+        script: |
+          mv ./support-files/build.gradle android/app
+      - name: Set Android SDK location
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"          
+      - name: Build Android release
+        script: |
+          LATEST_GOOGLE_PLAY_BUILD_NUMBER=$(google-play get-latest-build-number --package-name "$PACKAGE_NAME")
+          if [ -z LATEST_BUILD_NUMBER ]; then
+              # fallback in case no build number was found from google play. Alternatively, you can `exit 1` to fail the build
+              UPDATED_BUILD_NUMBER=$BUILD_NUMBER
+          else
+              UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
+          fi
+          cd android
+          ./gradlew bundleRelease \
+            -PversionCode=$UPDATED_BUILD_NUMBER \
+            -PversionName=1.0.$UPDATED_BUILD_NUMBER
+    artifacts:
+        - android/app/build/outputs/**/*.aab
+    publishing:
+      email:
+        recipients:
+          - user_1@example.com
+          - user_2@example.com
+        notify:
+          success: true
+          failure: false
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal
+        submit_as_draft: true
+```
+{{< /highlight >}}
+
+{{</markdown>}}
+{{< /tab >}}
+
+{{< tab header="Android with React Native CLI" >}}
+{{<markdown>}}
+
+{{< highlight yaml "style=paraiso-dark">}}
+```
+workflows:
+    react-native-android:
+        name: React Native Android
+        max_build_duration: 120
+        instance_type: mac_mini_m2
+        environment:
+          android_signing:
+            - keystore_reference
+          groups:
+            - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
+          vars:
+            PACKAGE_NAME: "io.codemagic.sample.reactnative" # <-- Put your package name here e.g. com.domain.myapp
+          node: v19.7.0
+        scripts:
+            - name: Install npm dependencies
+              script: |
+                npm install
+            - name: Set Android SDK location
+              script: |
+                echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"            
+            - name: Build Android release
+              script: |
+                LATEST_GOOGLE_PLAY_BUILD_NUMBER=$(google-play get-latest-build-number --package-name "$PACKAGE_NAME")
+                if [ -z LATEST_BUILD_NUMBER ]; then
+                  # fallback in case no build number was found from google play. Alternatively, you can `exit 1` to fail the build
+                  UPDATED_BUILD_NUMBER=$BUILD_NUMBER
+                else
+                  UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
+                fi
+                cd android
+                ./gradlew bundleRelease \
+                  -PversionCode=$UPDATED_BUILD_NUMBER \
+                  -PversionName=1.0.$UPDATED_BUILD_NUMBER
+        artifacts:
+            - android/app/build/outputs/**/*.aab
+        publishing:
+          email:
+            recipients:
+              - user_1@example.com
+              - user_2@example.com
+            notify:
+              success: true     # To not receive a notification when a build succeeds
+              failure: false    # To not receive a notification when a build fails
+          google_play:
+            credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+            track: alpha   # Any default or custom track that is not in ‘draft’ status
+```
+{{< /highlight >}}
+
+{{</markdown>}}
+{{< /tab >}}
+
+{{< /tabpane >}}
+
+
+Once **codemagic.yaml** is configured, Codemagic automatically detects it and by clicking the **Start new build** button, your app is built and published to the stores.
+
+
+## Automatic build triggering without manual intervention
+
+Codemagic allows you to trigger builds on **pull_request**, **pull_request_labeled**, ** **push** and **tag** events. 
+
+- **push** - a build will be started every time you commit code to any of the tracked branches.
+- **pull_request** - a build will be started when a pull request is opened or updated to verify the resulting merge commit.
+- **pull_request_labeled** - a build will be started every time you add a new label to a **GitHub** pull request.
+- **tag** - Codemagic will automatically build the tagged commit whenever you create a tag for this app. Note that the watched branch settings do not affect tag builds.
+
+Below you can find the steps to enable automatic build triggering:
+
+1. Grab the webhooks URL and configure it in the repository settings. You can find the webhook URL in the Codemagic web app when navigating to your application and selecting the Webhooks tab:
+
+
+{{< tabpane >}}
+
+{{< tab header="Webhooks with Github" >}}
+{{<markdown>}}
+Open your project and navigate to **Settings** > **Webhooks** > **Add webhook**, paste the **payload URL** from above (both `application/json` or `application/x-www-form-urlencoded` are supported as the **Content type**), and select the following events: **Branch or tag creation**, **Pull requests**, **Pushes**.
+{{</markdown>}}
+{{< /tab>}}
+
+{{< tab header="Webhooks with Gitlab" >}}
+{{<markdown>}}
+Navigate to Settings > Webhooks, paste the payload URL and check the following boxes in the Trigger section: Push events, Tag push events, Merge request events. Also, be sure to enable SSL verification.
+{{</markdown>}}
+{{< /tab>}}
+
+{{< tab header="Webhooks with Bitbucket" >}}
+{{<markdown>}}
+Open your application repository, go to Settings > Webhooks (in Workflow section) > Add webhook, then enter an arbitrary title for the webhook and paste the payload URL in the URL field. For Triggers, select Choose from a full list of triggers and select the following events: Push in the Repository section and Created, Updated, Merged in the Pull Request section.
+{{</markdown>}}
+{{< /tab>}}
+
+{{< tab header="Webhooks with AWS CodeCommit" >}}
+{{<markdown>}}
+To start using webhooks with AWS CodeCommit, it is first necessary to create a subscription with the AWS Simple Notification Service.
+
+### Configure Subscription
+
+1. Open up AWS Simple Notification Service in the AWS Console.
+2. Navigate to Topics > Create topic.
+3. Set the type to Standard, give the topic a name and click on Create topic.
+4. Navigate to Subscriptions > Create subscription.
+5. Select the previously configured topic, set the protocol to HTTPS, and set the Codemagic payload URL as the endpoint.
+6. Confirm that Enable raw message delivery is unticked.
+7. Proceed by clicking Create subscription.
+8. In the Codemagic UI, navigate to your application and select the Webhooks tab.
+9. Under Recent deliveries, choose the most recent webhook, and copy the subscription link under the Results tab to your browser.
+
+### Configure Webhook Events
+
+Open your application repository and navigate to Notify > Create notification rule and enter a name for your Notification rule.
+
+Under Events that trigger notifications, select the Source updated and Created events in the Pull request section and the Created and Updated events in the Branches and tags section.
+
+Set the target type to SNS topic, select a configured target and click on Submit.
+
+If, after triggering a build, the SNS Notification target status shows as Unreachable, navigate to the topic settings and modify the access policy to match the following structure:
+
+{{< highlight json "style=paraiso-dark">}}
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "CodeNotification_publish",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "codestar-notifications.amazonaws.com"
+      },
+      "Action": "SNS:Publish",
+      "Resource": "arn:aws:sns:REGION:ACCOUNT_ID:REPOSITORY"
+    }
+  ]
+}
+{{< /highlight >}}
+
+The **Resource** field should match the ARN of the topic.
+
+{{</markdown>}}
+{{< /tab>}}
+
+{{< tab header="Webhooks with Azure DevOps" >}}
+{{<markdown>}}
+Open your application repository, go to **Project Settings** > **Service Hooks**, click on **Create a new subscription...** and select **Web Hooks**. Under **Trigger on this type of event**, choose the event you wish to trigger builds for. Codemagic supports **Code pushed**, **Pull request created**, and **Pull request updated** events. In Azure, each of the events requires its own webhook. Once the event has been selected, choose your repository under filters and configure any additional settings.
+{{</markdown>}}
+{{< /tab>}}
+
+{{< /tabpane >}}
+
+2. Configure the **triggering** section in **codemagic.yaml**. The ready-to-use codemagic.yaml samples above have it already added. Check them for reference:
+
+{{< highlight yaml "style=paraiso-dark">}}
+```
+ triggering:
+      events:
+          - push
+          - tag
+          - pull_request
+          - pull_request_labeled
+      branch_patterns:
+          - pattern: develop
+            include: true
+            source: true
+```
+{{< /highlight}}
+
+3. Done! Now, as soon as any changes made based on the events above, builds will be triggered and you can check the webhook messages by navigating to your application and selecting the Webhooks tab.
+
+Additionally, by using **when** to run and skip builds along with using **changeset** inside **when**, you can avoid unnecessary builds when functional components of your repository were not modified. More information about it can be found [here](https://docs.codemagic.io/yaml-running-builds/starting-builds-automatically/#using-when-to-run-or-skip-builds)
+
+
+## Code signing iOS apps
+
+All iOS applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. Codemagic handles the code signing process with ease through its manual and automatic code signing methods. The following steps will help you set up code signing for iOS applications:
+
+1. Have your Apple Developer account as required by Apple
+2. You can either let Codemagic generate a distribution certificate and provisioning profile or you do it yourself in Apple Developer account, then share them with Codemagic, so it can use these resources during code signing the application:
+
+{{< tabpane >}}
+
+#### Adding code signing certificate
+
+{{< tab header="Upload certificate" >}}
+{{<markdown>}}
+  a) Log in to App Store Connect and navigate to Users and Access > Integrations » App Store Connect API.
+  b) Click on the + sign to generate a new API key.
+  c) Enter the name for the key and select an access level. We recommend choosing App Manager access rights.
+  d) Click Generate.
+  e) As soon as the key is generated, you can see it added to the list of active keys. Click Download API Key to save the private key.
+  f) Open your Codemagic Team settings, go to Team integrations > Developer Portal > Manage keys.
+  g) Click the Add key button.
+  h) Enter the App Store Connect API key name. This is a human readable name for the key that will be used to refer to the key later in application settings.
+  i) Enter the Issuer ID and Key ID values.
+  g) Click on Choose a **.p8** file or drag the file to upload the App Store Connect API key downloaded earlier.
+  k) Click Save.
+
+{{</markdown>}}
+{{< /tab >}}
+
+{{< tab header="Generate new certificate" >}}
+{{<markdown>}}
+  If you have added the App Store Connect API key to Codemagic, you can also generate a new Apple Development or Apple Distribution certificate.
+
+    1. Open your Codemagic Team settings, go to codemagic.yaml settings > Code signing identities.
+    2. Open iOS certificates tab.
+    3. Click Generate certificate.
+    4. Provide a Reference name for the certificate.
+    5. Choose the Certificate type.
+    6. Select the App Store Connect API key to use.
+    7. Click Create certificate.
+
+  Once the certificate has been created, Codemagic will allow you to download the certificate and provides the password for it.
+ 
+{{</markdown>}}
+{{< /tab >}}
+
+{{<markdown>}}
+    Existing signing certificates previously generated by Codemagic can be automatically fetched from Apple Developer Portal based on your team’s App Store Connect API key.
+
+    Fetching a certificate that was not generated by Codemagic is not possible because each certificate is linked with a private signing key to which Codemagic has no access.
+
+       1. Open your Codemagic Team settings, go to codemagic.yaml settings > Code signing identities.
+       2. Open iOS certificates tab.
+       3. Click Fetch certificate.
+       4. Select a certificate from the Development certificates or Distribution certificates list.
+       5. Click Fetch selected.
+
+{{</markdown>}}
+{{< /tab >}}
+
+{{< /tabpane >}}
+
+{{< tabpane >}}
+
+#### Adding code signing provisioning profile
+
+{{< tab header="Upload a profile" >}}
+{{<markdown>}}
+    You can automatically fetch the provisioning profiles from the Apple Developer Portal based on your team’s App Store Connect API key. The bundle identifier is listed for every available profile along with it’s name.
+
+    The profiles are displayed grouped by category: Development profiles, Ad Hoc profiles, App Store profiles, and Enterprise profiles. For each selected profile, it is necessary to provide a unique Reference name, which can be later used in codemagic.yaml to fetch the profile.
+
+        1. Open your Codemagic Team settings, go to codemagic.yaml settings > Code signing identities.
+        2. Open iOS provisioning profiles tab.
+        3. Click Fetch profiles
+        4. Select the desired profile(s) and enter a Reference name for each one.
+        5. Click Download selected. (scroll down if necessary)
+
+{{</markdown>}}
+{{< /tab >}}
+
+{{< tab header="Fetch from developer account" >}}
+{{<markdown>}}
+    You can automatically fetch the provisioning profiles from the Apple Developer Portal based on your team’s App Store Connect API key. The bundle identifier is listed for every available profile along with it’s name.
+
+    The profiles are displayed grouped by category: Development profiles, Ad Hoc profiles, App Store profiles, and Enterprise profiles. For each selected profile, it is necessary to provide a unique Reference name, which can be later used in codemagic.yaml to fetch the profile.
+
+        1. Open your Codemagic Team settings, go to codemagic.yaml settings > Code signing identities.
+        2. Open iOS provisioning profiles tab.
+        3. Click Fetch profiles
+        4. Select the desired profile(s) and enter a Reference name for each one.
+        5. Click Download selected. (scroll down if necessary)
+
+{{</markdown>}}
+{{< /tab >}}
+
+{{< tab header="Upload a profile" >}}
+{{<markdown>}}
+    You can upload provisioning profiles with the .mobileprovision extension, providing a unique Reference name is required for each uploaded profile.
+
+        1. Open your Codemagic Team settings, go to codemagic.yaml settings > Code signing identities.
+        2. Open iOS provisioning profiles tab.
+        3. Upload the provisioning profile file by clicking on Choose a .mobileprovision file or by dragging it into the indicated frame.
+        4. Enter the Reference name for the profile.
+        5. Click Add profile.
+
+{{</markdown>}}
+{{< /tab >}}
+
+{{< /tabpane >}}
+
+## Code signing Android apps
+
+All Android applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. Follow the steps below to complete the android code signing configuration:
+
+1. Generate a keystore file for signing your release builds. Running the following Java Keytool utility on your local machine will generate the necessary keystore file:
+
+{{< highlight Shell "style=paraiso-dark">}}
+keytool -genkey -v -keystore codemagic.keystore -storetype JKS \
+        -keyalg RSA -keysize 2048 -validity 10000 -alias codemagic
+{{< /highlight >}}
+
+2. Open your Codemagic Team settings, and go to codemagic.yaml settings > Code signing identities.
+3. Open Android keystores tab.
+4. Upload the keystore file by clicking on Choose a file or by dragging it into the indicated frame.
+5. Enter the Keystore password, Key alias and Key password values as indicated.
+6. Enter the keystore Reference name. This is a unique name used to reference the file in codemagic.yaml
+7. Click the Add keystore button to add the keystore.
+8. Go to your android workflow in codemagic.yaml, and reference the keystore file name like below:
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  android-workflow:
+    name: Android Workflow
+    # ....
+    environment:
+      android_signing:
+        - keystore_reference
+{{< /highlight >}}
+
+
+
+## Publishing iOS apps to App Store Connect
+
+Codemagic enables you to automatically publish your iOS or macOS app to App Store Connect for beta testing with TestFlight or distributing the app to users via App Store. Codemagic uses the App Store Connect API key for authenticating communication with Apple’s services. You can read more about generating an API key from Apple’s documentation page.
+
+The following steps will allow you to configure the process successfully:
+
+1. As you have already created and connected your .p8 file from the App Store Connect account as explained above under the Adding code signing certificate section, we can refer to the steps there for generating the api key and adding to Codemagic
+2. After completing those steps, all you need is to use the reference name in codemagic.yaml:
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    integrations:
+      app_store_connect: <App Store Connect API key name>
+{{< /highlight >}}
+
+3. And add the publishing section in codemagic.yaml as shown in the ready-to-use content right at the top:
+
+
+{{< highlight yaml "style=paraiso-dark">}}
+  publishing:
+      app_store_connect:
+        # Use referenced App Store Connect API key to authenticate binary upload
+        auth: integration 
+
+        # Configuration related to TestFlight (optional)
+
+        # Optional boolean, defaults to false. Whether or not to submit the uploaded
+        # build to TestFlight beta review. Required for distributing to beta groups.
+        # Note: This action is performed during post-processing.
+        submit_to_testflight: true
+
+        # Optional boolean, defaults to false. Set to true to automatically expire 
+        # previous build in review or waiting for review in Testflight before
+        # submitting a new build to beta review. Expired builds will no longer be available for testers.
+        # Note: This action is performed during post-processing.
+        expire_build_submitted_for_review: true
+
+        # Specify the names of beta tester groups that will get access to the build 
+        # once it has passed beta review.
+        beta_groups: 
+          - group name 1
+          - group name 2
+        
+        # Configuration related to App Store (optional)
+
+        # Optional boolean, defaults to false. Whether or not to submit the uploaded
+        # build to App Store review. Note: This action is performed during post-processing.
+        submit_to_app_store: true
+
+        # Optional boolean, defaults to false. Set to true to cancel the previous 
+        # submission (if applicable) when submitting a new build to App Store review.
+        # This allows automatically submitting a new build for review if a previous submission exists.
+        # Note: This action is performed during post-processing.
+        cancel_previous_submissions: true
+        
+        # Optional, defaults to MANUAL. Supported values: MANUAL, AFTER_APPROVAL or SCHEDULED
+        release_type: SCHEDULED
+
+        # Optional. Timezone-aware ISO8601 timestamp with hour precision when scheduling
+        # the release. This can be only used when release type is set to SCHEDULED.
+        # It cannot be set to a date in the past.
+        earliest_release_date: 2021-12-01T14:00:00+00:00 
+        
+        # Optional. The name of the person or entity that owns the exclusive rights
+        # to your app, preceded by the year the rights were obtained.
+        copyright: 2021 Nevercode Ltd
+{{< /highlight >}}
+
+With these, your app will be published to TestFlight or App Store Connect for production. All it takes is just specifying **true** or **false**.
+
+## Publishing Android apps to Google Play Store
+
+Like App Store Connect publishing, Codemagic builds and publishes your Android apps to Play Store. To achieve it, you need to follow the steps below:
+
+1. To allow Codemagic to publish applications to Google Play, it is necessary to set up access using Google Play API. Visual explanation of how to create a service account json file and connect it with your Play Store app can be found [here](https://docs.codemagic.io/yaml-publishing/google-play/)
+2. After creating the required JSON file, you can now configure Play Store publishing in **codemagic.yaml**. [Here](https://docs.codemagic.io/yaml-publishing/google-play/#configure-publishing-in-codemagicyaml) you can find on how to achieve it easily.
+
