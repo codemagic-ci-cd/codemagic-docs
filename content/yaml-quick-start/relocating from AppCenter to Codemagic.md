@@ -1,5 +1,5 @@
 ---
-title: Seamless relocation from App Center to Codemagic
+title: Seamless migration from App Center to Codemagic
 description: How to ship your workflows to Codemagic
 weight: 1
 ---
@@ -36,7 +36,7 @@ weight: 1
 | `Apple device registration` | `No`           | `Yes`        |
 | `Remote access to VMs`      | `No`           | `Yes`        |
 | `Global environment variables`| `No`         | `Yes`        |
-| `iOS and Android QR testing`| `No`           | `Yes`        |
+| `Install apps from QR code` | `No`           | `Yes`        |
 
 
 * CodePush will continue standalone, so users can continue using the feature by App Center. Alternatively, Codemagic can be integrated with EAS updates.
@@ -50,7 +50,7 @@ weight: 1
 
 ## Step-by-Step transitioning guide
 
-1. Sign up with Codemagic by clicking the link [here](https://codemagic.io/signup), or if you have already registered, then login your account [here](https://codemagic.io/login)
+1. Sign up with Codemagic by clicking the link [here](https://codemagic.io/signup), or if you have already registered, then login to your account [here](https://codemagic.io/login)
 2. Complete the onboarding the process by either getting started with a personal account or by creating a team where you and your colleagues can contribute to your app building and publishing process. You will be guided through once signed up.
 3. Connect your Git cloud provider to your account in order to be able to add the repository. You have an option to add it manually without connecting your Git account.
 4. Add **codemagic.yaml** in the root directory of the repository and check the file content below:
@@ -83,8 +83,8 @@ workflows:
           XCODE_SCHEME: "ExpoApp" # <-- Put the name of your Xcode scheme here
           BUNDLE_ID: "io.codemagic.expoapp" # <-- Put your Bundle Id here e.g com.domain.myapp
           APP_ID: 1616629701 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
-      node: 16.14.2
-      xcode: 13.1
+      node: latest
+      xcode: latest
       cocoapods: default
     triggering:
         events:
@@ -254,7 +254,7 @@ workflows:
         - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
       vars:
         PACKAGE_NAME: "io.codemagic.expoapp" # <-- Put your package name here e.g. com.domain.myapp
-      node: 16.14.2
+      node: v19.7.0
     triggering:
       events:
           - push
@@ -688,11 +688,11 @@ workflows:
         # Optional. Timezone-aware ISO8601 timestamp with hour precision when scheduling
         # the release. This can be only used when release type is set to SCHEDULED.
         # It cannot be set to a date in the past.
-        earliest_release_date: 2021-12-01T14:00:00+00:00 
+        earliest_release_date: 2024-12-01T14:00:00+00:00 
         
         # Optional. The name of the person or entity that owns the exclusive rights
         # to your app, preceded by the year the rights were obtained.
-        copyright: 2021 Nevercode Ltd
+        copyright: 2024 Nevercode Ltd
 {{< /highlight >}}
 
 With these, your app will be published to TestFlight or App Store Connect for production. All it takes is just specifying **true** or **false**.
