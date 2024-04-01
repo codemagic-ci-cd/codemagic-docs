@@ -7,46 +7,59 @@ weight: 1
 ## Quick comparison
 
 
-| **Features**                | **App Center** | **Codemagic**|
-|-----------------------------| ---------------|--------------|
-| `Swift/Objective-C iOS`     | `Yes`          | `Yes`        |
-| `Android apps`              | `Yes`          | `Yes`        |
-| `React Native builds`       | `Yes`          | `Yes`        |
-| `Flutter apps`              | `No`           | `Yes`        |
-| `Unity`                     | `Yes`          | `Yes`        |
-| `Ionic`                     | `Yes`          | `Yes`        |
-| `White-labeling solution`   | `No`           | `Yes`        |
-| `Automatic iOS code signing`| `No`           | `Yes`        |
-| `Manual iOS code signing`   | `Yes`          | `Yes`        |
-| `Android code signing`      | `Yes`          | `Yes`        |
-| `Automatic build versioning`| `Yes`          | `Yes`        |
-| `Running integrations tests`| `Yes`          | `Yes`        |
-| `Running unit tests`        | `Yes`          | `Yes`        |
-| `App Store publishing`      | `Yes`          | `Yes`        |
-| `Play Store publishing`     | `Yes`          | `Yes`        |
-| `Firebase App Distribution `| `No`           | `Yes`        |
-| `Running integrations tests`| `Yes`          | `Yes`        |
-| `Slack integration`         | `No`           | `Yes`        |
-| `Email notifications`       | `Yes`          | `Yes`        |
-| `macOS M2 support`          | `No`           | `Yes`        |
-| `Linux VM support`          | `No`           | `Yes`        |
-| `Windows VM support`        | `Yes`          | `Yes`        |
-| `Over-the-air-update`       | `Yes`          | `No`*        |
-| `Analytics`                 | `Yes`          | `No`*        |
-| `Apple device registration` | `No`           | `Yes`        |
-| `Remote access to VMs`      | `No`           | `Yes`        |
-| `Global environment variables`| `No`         | `Yes`        |
-| `Install apps from QR code` | `No`           | `Yes`        |
+| **Features**                | **App Center** | **Codemagic**  |
+|-----------------------------| ---------------|----------------|
+| `Swift/Objective-C iOS`     |    ☑️           |      ✅        |
+| `Android apps`              |    ☑️           |      ✅        |
+| `React Native apps`         |    ☑️           |      ✅        |
+| `Flutter apps`              |    ❌          |      ✅        |
+| `Unity apps`                |    ☑️           |      ✅        |
+| `Ionic cAPA`                |    ☑️           |      ✅        |
+| `White-labeling solution`   |    ❌          |      ✅        |
+| `Automatic iOS code signing`|    ❌          |      ✅        |
+| `Manual iOS code signing`   |    ☑️           |      ✅        |
+| `Android code signing`      |    ☑️           |      ✅        |
+| `Automatic build versioning`|    ☑️           |      ✅        |
+| `Running integrations tests`|    ☑️           |      ✅        |
+| `Running unit tests`        |    ☑️           |      ✅        |
+| `App Store publishing`      |    ☑️           |      ✅        |
+| `Play Store publishing`     |    ☑️           |      ✅        |
+| `Firebase App Distribution `|    ❌          |      ✅        |
+| `Slack integration`         |    ❌          |      ✅        |
+| `Email notifications`       |    ☑️           |      ✅        |
+| `macOS M2 support`          |    ❌           |      ✅        |
+| `Linux machines support`    |    ❌           |      ✅        |
+| `Windows machines support`  |    ☑️            |      ✅        |
+| `Over-the-air-update`       |    ☑️            |      ❌*       |
+| `Analytics`                 |    ☑️            |      ❌*       |
+| `Apple device registration` |    ❌           |      ✅        |
+| `Remote access to build machines`| ❌         |      ✅        |
+| `Global environment variables`|  ❌           |      ✅        |
+| `Install apps from QR code` |    ❌           |      ✅        |
+| `Gitlab self-hosted runners`|    ☑️            |      ✅        |
+| `Github self-hosted runners`|    ❌           |      ✅        |
+| `Bitbucket self-hosted runners`| ❌           |      ✅        |
+| `Enabling iOS app capability`|    ❌          |      ✅        |
+| `Building iOS and Android together`| ❌       |      ✅        |
+| `Inter-connected workflow support`|  ❌       |      ✅        |
+| `Build logs for each build step`|    ❌       |      ✅        |
+| `Dependency caching`            |    ❌       |      ✅        |
 
 
-* CodePush will continue standalone, so users can continue using the feature by App Center. Alternatively, Codemagic can be integrated with EAS updates.
+
+* CodePush will continue standalone, so users can continue using the feature by App Center. Alternatively, Codemagic can be integrated with Expo Application Services (EAS update).
 * Codemagic allows you to integrate with Sentry and Firebase Crahslytics for analytics and uploading debug symbols
 
-## Comparison in practice
 
-#### Performance comparison with open source benchmark projects
+## Performance overview
 
-------------------
+**Test name** | **Codemagic (Mac mini M2)** | **Codemagic (Mac mini M1)** | App Center
+
+--- | --- | --- | ---
+Building Project | [**5m 18s**](https://codemagic.io/app/660936c197f2bee5b7353663/build/660a8d4e0ba56522a14e7d67) | [6m 8s](https://codemagic.io/app/660936c197f2bee5b7353663/build/660a4d0eb8a1331f2041a692) | [39m 24s](https://appcenter.ms/orgs/Nevercode_Codemagic/apps/Benchmark_iOS/build/branches/main/builds/9)
+Overall improvement | 744% | 630% | -744% / - 643%
+
+As it can be seen, building the benchmark project took around 5-6 minutes with Codemagic macOS M1 and M2 machines while the build completed in 39 minutes 24 seconds with App Center. Worth pointing out that App Center limits free tier users to 30 minutes build duration per build and based on the performance rate above, the 30 minute build duration range will not allow you to complete your builds due to the fact that they will timeout.
 
 ## Step-by-Step transitioning guide
 
@@ -491,23 +504,26 @@ All iOS applications have to be digitally signed before they are made available 
 1. Have your Apple Developer account as required by Apple
 2. You can either let Codemagic generate a distribution certificate and provisioning profile or you do it yourself in Apple Developer account, then share them with Codemagic, so it can use these resources during code signing the application:
 
-{{< tabpane >}}
 
 #### Adding code signing certificate
 
+The steps below describe how to upload a distribution certificate. 
+
+{{< tabpane >}}
+
 {{< tab header="Upload certificate" >}}
 {{<markdown>}}
-  a) Log in to App Store Connect and navigate to Users and Access > Integrations » App Store Connect API.
-  b) Click on the + sign to generate a new API key.
-  c) Enter the name for the key and select an access level. We recommend choosing App Manager access rights.
-  d) Click Generate.
-  e) As soon as the key is generated, you can see it added to the list of active keys. Click Download API Key to save the private key.
-  f) Open your Codemagic Team settings, go to Team integrations > Developer Portal > Manage keys.
-  g) Click the Add key button.
-  h) Enter the App Store Connect API key name. This is a human readable name for the key that will be used to refer to the key later in application settings.
-  i) Enter the Issuer ID and Key ID values.
-  g) Click on Choose a **.p8** file or drag the file to upload the App Store Connect API key downloaded earlier.
-  k) Click Save.
+  1. Log in to App Store Connect and navigate to Users and Access > Integrations » App Store Connect API.
+  2. Click on the + sign to generate a new API key.
+  3. Enter the name for the key and select an access level. We recommend choosing App Manager access rights.
+  4. Click Generate.
+  5. As soon as the key is generated, you can see it added to the list of active keys. Click Download API Key to save the private key.
+  6. Open your Codemagic Team settings, go to Team integrations > Developer Portal > Manage keys.
+  7. Click the Add key button.
+  8. Enter the App Store Connect API key name. This is a human readable name for the key that will be used to refer to the key later in application settings.
+  9. Enter the Issuer ID and Key ID values.
+  10. Click on Choose a **.p8** file or drag the file to upload the App Store Connect API key downloaded earlier.
+  11. Click Save.
 
 {{</markdown>}}
 {{< /tab >}}
@@ -529,6 +545,7 @@ All iOS applications have to be digitally signed before they are made available 
 {{</markdown>}}
 {{< /tab >}}
 
+{{< tab header="Fetch from Developer Portal" >}}
 {{<markdown>}}
     Existing signing certificates previously generated by Codemagic can be automatically fetched from Apple Developer Portal based on your team’s App Store Connect API key.
 
@@ -545,24 +562,12 @@ All iOS applications have to be digitally signed before they are made available 
 
 {{< /tabpane >}}
 
-{{< tabpane >}}
 
 #### Adding code signing provisioning profile
 
-{{< tab header="Upload a profile" >}}
-{{<markdown>}}
-    You can automatically fetch the provisioning profiles from the Apple Developer Portal based on your team’s App Store Connect API key. The bundle identifier is listed for every available profile along with it’s name.
+Codemagic allows you to upload a provisioning profile to be used for the application or to fetch a profile from the Apple Developer Portal.
 
-    The profiles are displayed grouped by category: Development profiles, Ad Hoc profiles, App Store profiles, and Enterprise profiles. For each selected profile, it is necessary to provide a unique Reference name, which can be later used in codemagic.yaml to fetch the profile.
-
-        1. Open your Codemagic Team settings, go to codemagic.yaml settings > Code signing identities.
-        2. Open iOS provisioning profiles tab.
-        3. Click Fetch profiles
-        4. Select the desired profile(s) and enter a Reference name for each one.
-        5. Click Download selected. (scroll down if necessary)
-
-{{</markdown>}}
-{{< /tab >}}
+{{< tabpane >}}
 
 {{< tab header="Fetch from developer account" >}}
 {{<markdown>}}
@@ -622,7 +627,6 @@ workflows:
       android_signing:
         - keystore_reference
 {{< /highlight >}}
-
 
 
 ## Publishing iOS apps to App Store Connect
