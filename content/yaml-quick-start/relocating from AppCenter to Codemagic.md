@@ -61,6 +61,13 @@ Overall improvement | 744% | 630% | -744% / - 643%
 
 As it can be seen, building the benchmark project took around 5-6 minutes with Codemagic macOS M1 and M2 machines while the build completed in 39 minutes 24 seconds with App Center. Worth pointing out that App Center limits free tier users to 30 minutes build duration per build and based on the performance rate above, the 30 minute build duration range will not allow you to complete your builds due to the fact that they will timeout.
 
+## Debugging issues
+
+Unlike App Center, Codemagic allows you to have straightforward debugging sessions:
+
+1. Each build step has its own logs which helps you understand where issues could stem from
+2. When building with Codemagic, you can enable remote access to builder machines through SSH and VNC sessions which means that you can access Xcode and Mac machines without quitting your ongoing build while debugging issues. Once you confirmed that your solution works, then you can either directly push these changes from Codemagic machines or do it manually.
+
 ## Step-by-Step transitioning guide
 
 1. Sign up with Codemagic by clicking the link [here](https://codemagic.io/signup), or if you have already registered, then login to your account [here](https://codemagic.io/login)
