@@ -53,7 +53,7 @@ weight: 1
 
 ## Performance overview
 
-**Test name** | **Codemagic (Mac mini M2)** | **Codemagic (Mac mini M1)** | App Center
+**Test name** | **Codemagic (M2)** | **Codemagic (M1)** | App Center
 
 --- | --- | --- | ---
 Building Project | [**5m 14s**](https://codemagic.io/app/660936c197f2bee5b7353663/build/660ac06e7516a74a9ee65ef1) | [6m 13s](https://codemagic.io/app/660936c197f2bee5b7353663/build/660abe3a7eedcf9b3279f83d) | [39m 27s](https://appcenter.ms/orgs/Nevercode_Codemagic/apps/Benchmark_iOS/build/branches/main/builds/9)
