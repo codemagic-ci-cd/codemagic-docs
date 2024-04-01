@@ -65,7 +65,7 @@ As it can be seen, building the benchmark project took around 5-6 minutes with C
 
 Unlike App Center, Codemagic allows you to have straightforward debugging sessions:
 
-1. Each build step has its own logs which helps you understand where issues could stem from
+1. Each build step has its own logs printed out which help you understand where issues could stem from
 2. When building with Codemagic, you can enable remote access to builder machines through SSH and VNC sessions which means that you can access Xcode and Mac machines without quitting your ongoing build while debugging issues. Once you confirmed that your solution works, then you can either directly push these changes from Codemagic machines or do it manually.
 
 ## Step-by-Step transitioning guide
