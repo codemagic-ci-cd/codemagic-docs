@@ -11,7 +11,8 @@ weight: 1
 |-----------------------------| ---------------|----------------|
 | `Swift/Objective-C iOS`     |    ☑️           |      ✅        |
 | `Android apps`              |    ☑️           |      ✅        |
-| `React Native apps`         |    ☑️           |      ✅        |
+| `React Native CLI apps`     |    ☑️           |      ✅        |
+| `Expo React Native apps`    |    ☑️           |      ✅        |
 | `Flutter apps`              |    ❌          |      ✅        |
 | `Unity apps`                |    ☑️           |      ✅        |
 | `Ionic cAPA`                |    ☑️           |      ✅        |
