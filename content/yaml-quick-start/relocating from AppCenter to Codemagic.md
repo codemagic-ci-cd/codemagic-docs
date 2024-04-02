@@ -30,8 +30,8 @@ weight: 1
 | `macOS M2 support`          |    ❌           |      ✅        |
 | `Linux machines support`    |    ❌           |      ✅        |
 | `Windows machines support`  |    ☑️            |      ✅        |
-| `Over-the-air-update`       |    ☑️            |      ❌*       |
-| `Analytics`                 |    ☑️            |      ❌*       |
+| `Over-the-air-update`       |    ☑️            |      ✔️*       |
+| `Analytics`                 |    ☑️            |      ✔️*       |
 | `Apple device registration` |    ❌           |      ✅        |
 | `Remote access to build machines`| ❌         |      ✅        |
 | `Global environment variables`|  ❌           |      ✅        |
