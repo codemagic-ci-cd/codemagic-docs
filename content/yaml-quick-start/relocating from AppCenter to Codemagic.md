@@ -15,7 +15,7 @@ weight: 1
 | `Expo React Native apps`    |    ❌          |      ✅        |
 | `Flutter apps`              |    ❌          |      ✅        |
 | `Unity apps`                |    ☑️           |      ✅        |
-| `Ionic cAPA`                |    ☑️           |      ✅        |
+| `Ionic app`                |    ☑️           |      ✅        |
 | `White-labeling solution`   |    ❌          |      ✅        |
 | `Automatic iOS code signing`|    ❌          |      ✅        |
 | `Manual iOS code signing`   |    ☑️           |      ✅        |
