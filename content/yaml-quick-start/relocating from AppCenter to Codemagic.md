@@ -82,7 +82,7 @@ Unlike App Center, Codemagic allows you to have straightforward debugging sessio
 {{< tab header="iOS with Expo" >}}
 {{<markdown>}}
 
-### Ready-to-use *codemagic.yaml* file
+#### Ready-to-use *codemagic.yaml* file
 
 Copying the following content for iOS workflows and pasting in the codemagic.yaml file suffice:
 
