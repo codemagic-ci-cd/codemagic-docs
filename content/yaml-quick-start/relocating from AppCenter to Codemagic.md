@@ -28,11 +28,11 @@ weight: 1
 | `Firebase App Distribution `|    ❌          |      ✅        |
 | `Slack integration`         |    ❌          |      ✅        |
 | `Email notifications`       |    ☑️           |      ✅        |
-| `macOS M2 support`          |    ❌           |      ✅        |
-| `Linux machines support`    |    ❌           |      ✅        |
-| `Windows machines support`  |    ☑️            |      ✅        |
-| `Over-the-air-update`       |    ☑️            |      ✔️*       |
-| `Analytics`                 |    ☑️            |      ✔️*       |
+| `macOS M2 support`          |    ❌          |      ✅        |
+| `Linux machines support`    |    ❌          |      ✅        |
+| `Windows machines support`  |    ☑️           |      ✅        |
+| `Over-the-air (OTA) updates`|    ☑️           |      ✔️*        |
+| `Analytics`                 |    ☑️           |      ✔️*        |
 | `Apple device registration` |    ❌           |      ✅        |
 | `Remote access to build machines`| ❌         |      ✅        |
 | `Global environment variables`|  ❌           |      ✅        |
@@ -52,7 +52,7 @@ weight: 1
 * Codemagic allows you to integrate with Sentry and Firebase Crahslytics for analytics and uploading debug symbols
 
 
-## Performance overview
+#### Performance overview
 
 **Test name** | **Codemagic (M2)** | **Codemagic (M1)** | App Center
 
@@ -62,7 +62,7 @@ Overall improvement | 753% | 635% | -753% / -635%
 
 As it can be seen, building the benchmark project took around 5-6 minutes with Codemagic macOS M1 and M2 machines while the build completed in 39 minutes 24 seconds with App Center. Worth pointing out that App Center limits free tier users to 30 minutes build duration per build and based on the performance rate above, the 30 minute build duration range will not allow you to complete your builds due to the fact that they will timeout.
 
-## Debugging issues
+#### Debugging options
 
 Unlike App Center, Codemagic allows you to have straightforward debugging sessions:
 
@@ -73,7 +73,7 @@ Unlike App Center, Codemagic allows you to have straightforward debugging sessio
 
 1. Sign up with Codemagic by clicking the link [here](https://codemagic.io/signup), or if you have already registered, then login to your account [here](https://codemagic.io/login)
 2. Complete the onboarding the process by either getting started with a personal account or by creating a team where you and your colleagues can contribute to your app building and publishing process. You will be guided through once signed up.
-3. Connect your Git cloud provider to your account in order to be able to add the repository. You have an option to add it manually without connecting your Git account.
+3. Add your repository to Codemagic by either connecting your Git cloud provider account or by entering the clone URL manually.
 4. Add **codemagic.yaml** in the root directory of the repository and check the file content below:
 
 
