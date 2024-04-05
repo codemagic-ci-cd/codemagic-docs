@@ -66,7 +66,7 @@ As it can be seen, building the benchmark project took around 5-6 minutes with C
 
 Unlike App Center, Codemagic allows you to have straightforward debugging sessions:
 
-1. Each build step has its own logs printed out which help you understand where issues could stem from
+1. Each build step has its own logs printed out which help you understand where issues could stem from. However, App Center presents all the build logs in one output which makes it extra challenging.
 2. When building with Codemagic, you can enable remote access to builder machines through SSH and VNC sessions which means that you can access Xcode and Mac machines without quitting your ongoing build while debugging issues. Once you confirmed that your solution works, then you can either directly push these changes from Codemagic machines or do it manually.
 
 ## Step-by-Step transitioning guide
@@ -78,102 +78,6 @@ Unlike App Center, Codemagic allows you to have straightforward debugging sessio
 
 
 {{< tabpane >}}
-
-{{< tab header="iOS with Expo" >}}
-{{<markdown>}}
-
-#### Ready-to-use *codemagic.yaml* file
-
-Copying the following content for iOS workflows and pasting in the codemagic.yaml file suffice:
-
-{{< highlight kotlin "style=paraiso-dark">}}
-```
-workflows:
-   react-native-ios:
-    name: React Native iOS
-    max_build_duration: 120
-    instance_type: mac_mini_m1
-    integrations:
-      app_store_connect: codemagic
-    environment:
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: io.codemagic.expoapp
-      vars:
-          XCODE_WORKSPACE: "ExpoApp.xcworkspace" # <-- Put the name of your Xcode workspace here
-          XCODE_SCHEME: "ExpoApp" # <-- Put the name of your Xcode scheme here
-          BUNDLE_ID: "io.codemagic.expoapp" # <-- Put your Bundle Id here e.g com.domain.myapp
-          APP_ID: 1616629701 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
-      node: latest
-      xcode: latest
-      cocoapods: default
-    triggering:
-        events:
-            - push
-            - tag
-            - pull_request
-        branch_patterns:
-            - pattern: develop
-              include: true
-              source: true
-    scripts:
-      - name: Install dependencies, Expo CLI and eject app
-        script: |
-          yarn install
-          yarn global add expo-cli
-          expo eject
-      - name: Set Info.plist values
-        script: |
-          PLIST=$CM_BUILD_DIR/$XCODE_SCHEME/Info.plist
-          PLIST_BUDDY=/usr/libexec/PlistBuddy
-          $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
-      - name: Install CocoaPods dependencies
-        script: |
-          cd ios && pod install
-      - name: Increment build number
-        script: |
-          cd $CM_BUILD_DIR/ios
-          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
-          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
-      - name: Set up code signing settings on Xcode project
-        script: |
-          xcode-project use-profiles --warn-only
-      - name: Build ipa for distribution
-        script: |
-          xcode-project build-ipa \
-            --workspace "$CM_BUILD_DIR/ios/$XCODE_WORKSPACE" \
-            --scheme "$XCODE_SCHEME"
-    artifacts:
-        - build/ios/ipa/*.ipa
-        - /tmp/xcodebuild_logs/*.log
-        - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-        - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-    publishing:
-      email:
-        recipients:
-          - user_1@example.com
-          - user_2@example.com
-        notify:
-          success: true
-          failure: false
-      app_store_connect:
-        auth: integration
-
-        # Configuration related to TestFlight (optional)
-        # Note: This action is performed during post-processing.
-        submit_to_testflight: true
-        beta_groups: # Specify the names of beta tester groups that will get access to the build once it has passed beta review.
-          - group name 1
-          - group name 2
-
-        # Configuration related to App Store (optional)
-        # Note: This action is performed during post-processing.
-        submit_to_app_store: false
-```
-{{< /highlight >}}
-
-{{</markdown>}}
-{{< /tab >}}
 
 
 {{< tab header="iOS with React Native CLI" >}}
@@ -258,78 +162,6 @@ workflows:
 {{< /tab >}}
 
 
-{{< tab header="Android with Expo" >}}
-{{<markdown>}}
-
-{{< highlight yaml "style=paraiso-dark">}}
-```
-workflows:
-  react-native-android:
-    name: React Native Android
-    max_build_duration: 120
-    instance_type: linux_x2
-    environment:
-      android_signing:
-        - keystore_reference
-      groups:
-        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
-      vars:
-        PACKAGE_NAME: "io.codemagic.expoapp" # <-- Put your package name here e.g. com.domain.myapp
-      node: v19.7.0
-    triggering:
-      events:
-          - push
-          - tag
-          - pull_request
-      branch_patterns:
-          - pattern: develop
-            include: true
-            source: true
-    scripts:
-      - name: Install dependencies and Expo CLI, and eject app
-        script: |
-          yarn install
-          yarn global add expo-cli
-          expo eject
-      - name: Set up app/build.gradle
-        script: |
-          mv ./support-files/build.gradle android/app
-      - name: Set Android SDK location
-        script: |
-          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"          
-      - name: Build Android release
-        script: |
-          LATEST_GOOGLE_PLAY_BUILD_NUMBER=$(google-play get-latest-build-number --package-name "$PACKAGE_NAME")
-          if [ -z LATEST_BUILD_NUMBER ]; then
-              # fallback in case no build number was found from google play. Alternatively, you can `exit 1` to fail the build
-              UPDATED_BUILD_NUMBER=$BUILD_NUMBER
-          else
-              UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
-          fi
-          cd android
-          ./gradlew bundleRelease \
-            -PversionCode=$UPDATED_BUILD_NUMBER \
-            -PversionName=1.0.$UPDATED_BUILD_NUMBER
-    artifacts:
-        - android/app/build/outputs/**/*.aab
-    publishing:
-      email:
-        recipients:
-          - user_1@example.com
-          - user_2@example.com
-        notify:
-          success: true
-          failure: false
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: internal
-        submit_as_draft: true
-```
-{{< /highlight >}}
-
-{{</markdown>}}
-{{< /tab >}}
-
 {{< tab header="Android with React Native CLI" >}}
 {{<markdown>}}
 
@@ -404,84 +236,11 @@ Codemagic allows you to trigger builds on **pull_request**, **pull_request_label
 
 Below you can find the steps to enable automatic build triggering:
 
-1. Grab the webhooks URL and configure it in the repository settings. You can find the webhook URL in the Codemagic web app when navigating to your application and selecting the Webhooks tab:
+1. Grab the webhooks URL and configure it in the repository settings. You can find the webhook URL in the Codemagic web app when navigating to your application and selecting the Webhooks tab. Below you can find how to configure webhooks with Azure DevOps.
 
+#### Azure DevOps webhook configuration
 
-{{< tabpane >}}
-
-{{< tab header="Webhooks with Github" >}}
-{{<markdown>}}
-Open your project and navigate to **Settings** > **Webhooks** > **Add webhook**, paste the **payload URL** from above (both `application/json` or `application/x-www-form-urlencoded` are supported as the **Content type**), and select the following events: **Branch or tag creation**, **Pull requests**, **Pushes**.
-{{</markdown>}}
-{{< /tab>}}
-
-{{< tab header="Webhooks with Gitlab" >}}
-{{<markdown>}}
-Navigate to Settings > Webhooks, paste the payload URL and check the following boxes in the Trigger section: Push events, Tag push events, Merge request events. Also, be sure to enable SSL verification.
-{{</markdown>}}
-{{< /tab>}}
-
-{{< tab header="Webhooks with Bitbucket" >}}
-{{<markdown>}}
-Open your application repository, go to Settings > Webhooks (in Workflow section) > Add webhook, then enter an arbitrary title for the webhook and paste the payload URL in the URL field. For Triggers, select Choose from a full list of triggers and select the following events: Push in the Repository section and Created, Updated, Merged in the Pull Request section.
-{{</markdown>}}
-{{< /tab>}}
-
-{{< tab header="Webhooks with AWS CodeCommit" >}}
-{{<markdown>}}
-To start using webhooks with AWS CodeCommit, it is first necessary to create a subscription with the AWS Simple Notification Service.
-
-### Configure Subscription
-
-1. Open up AWS Simple Notification Service in the AWS Console.
-2. Navigate to Topics > Create topic.
-3. Set the type to Standard, give the topic a name and click on Create topic.
-4. Navigate to Subscriptions > Create subscription.
-5. Select the previously configured topic, set the protocol to HTTPS, and set the Codemagic payload URL as the endpoint.
-6. Confirm that Enable raw message delivery is unticked.
-7. Proceed by clicking Create subscription.
-8. In the Codemagic UI, navigate to your application and select the Webhooks tab.
-9. Under Recent deliveries, choose the most recent webhook, and copy the subscription link under the Results tab to your browser.
-
-### Configure Webhook Events
-
-Open your application repository and navigate to Notify > Create notification rule and enter a name for your Notification rule.
-
-Under Events that trigger notifications, select the Source updated and Created events in the Pull request section and the Created and Updated events in the Branches and tags section.
-
-Set the target type to SNS topic, select a configured target and click on Submit.
-
-If, after triggering a build, the SNS Notification target status shows as Unreachable, navigate to the topic settings and modify the access policy to match the following structure:
-
-{{< highlight json "style=paraiso-dark">}}
-{
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "CodeNotification_publish",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "codestar-notifications.amazonaws.com"
-      },
-      "Action": "SNS:Publish",
-      "Resource": "arn:aws:sns:REGION:ACCOUNT_ID:REPOSITORY"
-    }
-  ]
-}
-{{< /highlight >}}
-
-The **Resource** field should match the ARN of the topic.
-
-{{</markdown>}}
-{{< /tab>}}
-
-{{< tab header="Webhooks with Azure DevOps" >}}
-{{<markdown>}}
 Open your application repository, go to **Project Settings** > **Service Hooks**, click on **Create a new subscription...** and select **Web Hooks**. Under **Trigger on this type of event**, choose the event you wish to trigger builds for. Codemagic supports **Code pushed**, **Pull request created**, and **Pull request updated** events. In Azure, each of the events requires its own webhook. Once the event has been selected, choose your repository under filters and configure any additional settings.
-{{</markdown>}}
-{{< /tab>}}
-
-{{< /tabpane >}}
 
 2. Configure the **triggering** section in **codemagic.yaml**. The ready-to-use codemagic.yaml samples above have it already added. Check them for reference:
 
