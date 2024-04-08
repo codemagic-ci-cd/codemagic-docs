@@ -257,7 +257,7 @@ Open your application repository, go to **Project Settings** > **Service Hooks**
             include: true
             source: true
 ```
-{{< /highlight}}
+{{< /highlight>}}
 
 3. Done! Now, as soon as any changes made based on the events above, builds will be triggered and you can check the webhook messages by navigating to your application and selecting the Webhooks tab.
 
