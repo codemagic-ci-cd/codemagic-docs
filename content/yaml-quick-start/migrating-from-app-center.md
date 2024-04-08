@@ -1,5 +1,5 @@
 ---
-title: Seamless migration from App Center to Codemagic
+title: Migrating from App Center
 description: How to ship your workflows to Codemagic
 weight: 1
 ---
@@ -54,8 +54,7 @@ weight: 1
 
 #### Performance overview
 
-**Test name** | **Codemagic (M2)** | **Codemagic (M1)** | App Center
-
+**Test name** | **Codemagic (M2)** | **Codemagic (M1)** | **App Center**
 --- | --- | --- | ---
 Building Project | [**5m 4s**](https://codemagic.io/app/660936c197f2bee5b7353663/build/6613924355709ef49738d259) | [6m 13s](https://codemagic.io/app/660936c197f2bee5b7353663/build/660abe3a7eedcf9b3279f83d) | [39m 27s](https://appcenter.ms/orgs/Nevercode_Codemagic/apps/Benchmark_iOS/build/branches/main/builds/9)
 Overall improvement | 778% | 635% | -778% / -635%
