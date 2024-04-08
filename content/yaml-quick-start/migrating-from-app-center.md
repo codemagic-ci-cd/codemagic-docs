@@ -83,7 +83,6 @@ Unlike App Center, Codemagic allows you to have straightforward debugging sessio
 {{<markdown>}}
 
 {{< highlight yaml "style=paraiso-dark">}}
-```
 workflows:
  react-native-ios:
         name: React Native iOS
@@ -154,7 +153,6 @@ workflows:
             # Configuration related to App Store (optional)
             # Note: This action is performed during post-processing.
             submit_to_app_store: false
-```
 {{< /highlight >}}
 
 {{</markdown>}}
@@ -165,7 +163,6 @@ workflows:
 {{<markdown>}}
 
 {{< highlight yaml "style=paraiso-dark">}}
-```
 workflows:
     react-native-android:
         name: React Native Android
@@ -212,7 +209,6 @@ workflows:
           google_play:
             credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
             track: alpha   # Any default or custom track that is not in ‘draft’ status
-```
 {{< /highlight >}}
 
 {{</markdown>}}
