@@ -57,8 +57,8 @@ weight: 1
 **Test name** | **Codemagic (M2)** | **Codemagic (M1)** | App Center
 
 --- | --- | --- | ---
-Building Project | [**5m 14s**](https://codemagic.io/app/660936c197f2bee5b7353663/build/660ac06e7516a74a9ee65ef1) | [6m 13s](https://codemagic.io/app/660936c197f2bee5b7353663/build/660abe3a7eedcf9b3279f83d) | [39m 27s](https://appcenter.ms/orgs/Nevercode_Codemagic/apps/Benchmark_iOS/build/branches/main/builds/9)
-Overall improvement | 753% | 635% | -753% / -635%
+Building Project | [**5m 4s**](https://codemagic.io/app/660936c197f2bee5b7353663/build/6613924355709ef49738d259) | [6m 13s](https://codemagic.io/app/660936c197f2bee5b7353663/build/660abe3a7eedcf9b3279f83d) | [39m 27s](https://appcenter.ms/orgs/Nevercode_Codemagic/apps/Benchmark_iOS/build/branches/main/builds/9)
+Overall improvement | 778% | 635% | -778% / -635%
 
 As it can be seen, building the benchmark project took around 5-6 minutes with Codemagic macOS M1 and M2 machines while the build completed in 39 minutes 24 seconds with App Center. Worth pointing out that App Center limits free tier users to 30 minutes build duration per build and based on the performance rate above, the 30 minute build duration range will not allow you to complete your builds due to the fact that they will timeout.
 
