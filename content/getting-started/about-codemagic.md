@@ -67,4 +67,4 @@ The [Codemagic blog](https://blog.codemagic.io/) is a great resource that covers
 
 ## Newsletter
 
-To stay updated with the latest news and updates about the Codemagic product, subscribe to our Newsletter. You can do this by clicking on the "Sign me up for newsletter" checkbox in your User Preferences page.
+To stay updated with the latest news and updates about the Codemagic product, subscribe to our Newsletter. You can do this by clicking on the "Sign me up for newsletter" checkbox on your User Preferences page.
