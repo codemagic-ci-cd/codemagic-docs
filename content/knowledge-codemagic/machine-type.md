@@ -7,40 +7,13 @@ aliases:
     - /specs/machine-type
 ---
 
-## Configuring build machine type
+## Build machine types
 
-In `codemagic.yaml`, the build machine type can be specified with [Instance type](/yaml-basic-configuration/yaml-getting-started/#instance-type).
+Codemagic allows you to build your applications using the following machine types:
 
+1. macOS M1
+2. macOS M2
+3. Linux
+4. Windows
 
-For Flutter projects configured via the Flutter workflow editor, the build machine type can be selected in **App settings > Workflow settings > Machine**.
-
-## macOS M1 and Intel
-
-Codemagic offers two types of macOS machines for running builds:
-
-* Mac minis with Apple M1 chip (macOS M1 VM, default)
-* Mac Pros with Intel chip (macOS Intel VM)
-
-Check the specific macOS build machine image for machine [specifications](../specs/versions-macos).
-
-Xcode 13 images and above have System Integrity Protection (SIP) disabled in order to run macOS UI tests, which require accessibility permissions. Older images with Xcode 12 and below do not have SIP disabled and are unsuitable for UI testing macOS apps.
-
-{{<notebox>}}
-**Note:** Mac Pro machines are only available for teams and users that have [billing enabled](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for more information.
-{{</notebox>}}
-
-## Linux
-
-Linux machines support nested virtualization, including Android emulator support with hardware acceleration. Linux machines do not support macOS specific software, such as brew and Xcode, and cannot be used to build iOS artifacts. Specifications for these machines are available [here](../specs/versions-linux/#hardware).
-
-{{<notebox>}}
-**Note:** Linux machines are only available for teams and users that have [billing enabled](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for more information.
-{{</notebox>}}
-
-## Windows
-
-Windows VMs do not support nested virtualization which is required for the use of Android emulator. Additionally, Windows machines do not support macOS specific software, such as brew and Xcode, and cannot be used to build iOS artifacts. Specifications for these machines are available [here](../specs/versions-windows/).
-
-{{<notebox>}}
-**Note:** Windows machines are only available for teams and users that have [billing enabled](../billing/billing). See the [pricing page](https://codemagic.io/pricing/) for more information.
-{{</notebox>}}
+More information about the machine specifications, please check [this page](https://docs.codemagic.io/specs/versions-macos/).
