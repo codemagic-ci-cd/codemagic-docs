@@ -16,4 +16,4 @@ Codemagic allows you to build your applications using the following machine type
 3. Linux
 4. Windows
 
-More information about the machine specifications, please check [this page](https://docs.codemagic.io/specs/versions-macos/).
+For more information about the machine specifications, please check [this page](https://docs.codemagic.io/specs/versions-macos/).
