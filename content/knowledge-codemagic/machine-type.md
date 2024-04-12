@@ -22,7 +22,7 @@ Keywords for instance types can be found [here](https://docs.codemagic.io/yaml-b
 
 For Flutter projects configured via the Flutter workflow editor, the build machine type can be selected in App settings > Workflow settings > Machine.
 
-Codemagic allows you to build your applications using the following machine types:
+The following build machine types are provided by Codemagic:
 
 1. Apple silicon M1 Mac mini
 2. Apple silicon M2 Mac mini
