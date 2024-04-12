@@ -13,14 +13,9 @@ To receive a signed `.ipa` file of your app on Codemagic, you need to set up cod
 **Note:** This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml** please go to [Signing iOS apps using codemagic.yaml](../code-signing-yaml/signing-ios).
 {{</notebox>}}
 
-## Prerequisites
+## Introduction
 
-Before you can start signing or distributing your app, there are a few things you need.
-
-* [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership
-* An [app ID](https://developer.apple.com/account/resources/identifiers/bundleId/add/) for your iOS app in Apple Developer portal 
-* A **signing certificate** (`Personal Information Exchange, .p12`)
-* A **provisioning profile** (`.mobileprovision`)
+Before you can start signing or distributing your app, you must have an [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership.
 
 The signing certificates — development or distribution — help to identify who built the code. 
 
