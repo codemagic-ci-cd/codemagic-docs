@@ -17,6 +17,9 @@ workflows:
     name: Default Workflow
     instance_type: mac_mini_m2
 ```
+
+Keywords for instance types can be found [here](https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/#instance-type).
+
 For Flutter projects configured via the Flutter workflow editor, the build machine type can be selected in App settings > Workflow settings > Machine.
 
 Codemagic allows you to build your applications using the following machine types:
