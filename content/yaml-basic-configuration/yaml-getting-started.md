@@ -177,13 +177,12 @@ The main sections in each workflow are described below.
 | ------------- | -----------------  |
 | `mac_mini_m1`    | Apple silicon M1 Mac mini |
 | `mac_mini_m2`    | Apple silicon M2 Mac mini |
-| `mac_pro` | Intel-based Mac Pro |
 | `linux_x2`  | Linux |
 | `windows_x2`  | Windows |
 
 <br>
 {{<notebox>}}
-**Note:** The `mac_pro`, `linux_x2` and `windows_x2` are only available for teams and users with [billing enabled](../billing/billing/). `mac_mini_m2` is only available on fixed price annual plan. 
+**Note:** The `linux_x2` and `windows_x2` are only available for teams and users with [billing enabled](../billing/billing/). `mac_mini_m2` is only available on fixed price annual plan. 
 {{</notebox>}}
 
 ### Environment
