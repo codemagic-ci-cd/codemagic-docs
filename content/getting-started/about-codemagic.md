@@ -64,3 +64,7 @@ Full pricing details can be found on our pricing page [here](https://docs.codema
 ## Blog
 
 The [Codemagic blog](https://blog.codemagic.io/) is a great resource that covers a multitude of technical subjects related to CI/CD ranging from code signing and publishing to general application development.
+
+## Newsletter
+
+To stay updated with the latest news and updates about the Codemagic product, subscribe to our Newsletter. You can do this by clicking on the "Sign me up for newsletter" checkbox in your User Preferences page.
