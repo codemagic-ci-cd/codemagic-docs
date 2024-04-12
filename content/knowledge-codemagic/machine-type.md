@@ -7,7 +7,7 @@ aliases:
     - /specs/machine-type
 ---
 
-## Configuring build machines
+## Configuring build machine types
 
 To switch between build machines, **instance_type** needs to be configured when working with **codemagic.yaml**:
 
