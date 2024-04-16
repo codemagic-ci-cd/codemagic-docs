@@ -69,7 +69,29 @@ Alternatively, if you wish to submit an already uploaded build for review in App
 3. To start the submission process, click **Prepare for Submission**.
 4. Check that your app metadata is up to date, and once everything is ready, click the **Submit for Review** button.
 
-Please note that when using the workflow editor, the application will be manually released to the App Store by default once it is approved by Apple. However, you have the option to set up automatic publishing by making the necessary changes in your `App Store Connect > Apps > Distribution settings > App Store Version Release`.
+When using the workflow editor, developers have a few different methods to choose from for publishing their app on Apple's App Store once it has been approved by Apple. Each method caters to different strategies and needs. Here’s a breakdown of the release options available and how you can configure them in App Store Connect:
+
+**Release Methods**
+
+1. **Manual Release**: Once your app is approved by Apple, you can choose when to release it on the App Store manually. This gives you complete control over the timing of the release.
+
+2. **Automatic Release**: By selecting this option, your application will be automatically released on the App Store once it is approved by Apple. This feature is useful if you wish to make your app available to users as soon as possible without any manual intervention required.
+
+3. **Scheduled Release**: You have the option to schedule a specific date and time for your app to be published on the App Store. This feature is useful if you want your app to be launched at a particular moment, such as the beginning of a business day or a particular event, but only after it has been approved by Apple.
+
+Configuration in App Store Connect
+To configure these release options, you need to navigate to App Store Connect. Here’s how you can set it up:
+
+1. Log in to your Apple Developer account and access App Store Connect.
+2. Select your app from the list of your applications.
+3. Navigate to the 'App Store' tab, and then go to the **Distribution settings** section.
+4. Scroll to the 'Version Release' section: Here, you will find options to manage how your app is released:
+    * Choose "Manually release this version" if you want to manually push your app live after Apple's approval.
+    * Select "Automatically release this version" to have the app go live as soon as Apple approves it.
+    * Opt for "Automatically release this version after App Review, but no earlier than..." to set up a scheduled release. You can specify the date and time when the app should go live.
+
+These settings must be specified before you submit your app for review by Apple. Changing these settings after submission or post-approval might require another submission or at least an update in your App Store Connect configuration.
+
 
 ## Submitting release notes
 
