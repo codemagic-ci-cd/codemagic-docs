@@ -16,6 +16,10 @@ Depending on the Xcode version that you specify in **Build Settings** or in `cod
 {{< include "/partials/specs/versions-macos-silicon-xcode-15-3.md" >}}
 {{< /tab >}}
 
+{{< tab header="Xcode 15.4 (edge)" >}}
+{{< include "/partials/specs/versions-macos-silicon-xcode-15-4.md" >}}
+{{< /tab >}}
+
 {{< tab header="Xcode 15.2" >}}
 {{< include "/partials/specs/versions-macos-silicon-xcode-15-2.md" >}}
 {{< /tab >}}
