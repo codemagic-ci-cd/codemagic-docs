@@ -17,6 +17,7 @@ The following IP addresses must be allowed through the firewall (whitelisted):
 207.254.42.240/29
 34.74.234.56/32
 35.185.76.207/32
+66.185.17.82/32
 {{< /highlight >}}
 
 Since Codemagic needs to access the Git service, please allow ports that your service uses - usually the default SSH or HTTPS ports.
