@@ -265,7 +265,7 @@ environment:
   npm: 6.13.7       # Define default, latest, next, lts or version
   ndk: r21d         # Define default or revision (e.g. r19c)
   java: 1.8         # Define default, or platform version (e.g. 11)
-  ruby: 2.7.2       # Define default or version
+  ruby: 2.7.2       # Define default or version (macOS only)
 {{< /highlight >}}
 
 Currently, only the above-mentioned software versions can be customized via the environment section in the yaml file. If a different software version needs to be customized, then it may require a different approach depending upon use cases.
