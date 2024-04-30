@@ -69,7 +69,7 @@ Alternatively, if you wish to submit an already uploaded build for review in App
 3. To start the submission process, click **Prepare for Submission**.
 4. Check that your app metadata is up to date, and once everything is ready, click the **Submit for Review** button.
 
-When using the workflow editor, developers have a few different methods to choose from for publishing their app on Apple's App Store once it has been approved by Apple. Each method caters to different strategies and needs. Here’s a breakdown of the release options available and how you can configure them in App Store Connect:
+When using the workflow editor, developers have a few different methods to choose from for publishing their app on Apple's App Store once it has been approved by Apple. Each method caters to different strategies and needs. By default, the release method is set to Manual Release. Here’s a breakdown of the release options available and how you can configure them in App Store Connect:
 
 **Release Methods**
 
