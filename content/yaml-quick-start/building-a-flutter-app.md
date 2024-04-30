@@ -29,7 +29,7 @@ You can simultaneously set up workflows both in `codemagic.yaml` and the Workflo
 
 ## Setting the Flutter version
 
-When building a Flutter application with Codemagic, you can customize your build environment by configuring various settings. One such setting is the option to choose the Flutter version or channel for the build process. Codemagic provides several options: defining a specific channel or version, or alternatively, you can leverage [Flutter Version Management (FVM)](https://fvm.app/docs/getting_started/overview) for version management.
+When building a Flutter application with Codemagic, you can customize your build environment by configuring various settings. One such setting is the option to choose the Flutter version or channel for the build process. Codemagic provides several options: defining a specific channel or version, or alternatively, you can leverage [Flutter Version Management (FVM)](https://fvm.app/documentation/getting-started) for version management.
 
 {{< tabpane >}}
 
