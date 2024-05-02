@@ -16,52 +16,50 @@ weight: 3
 ## Pre-installed tools
 
 - Android tools `C:\Users\builder\programs\android-sdk`
-- Android NDK `23.1.7779620`
-- 7zip `22.1`
-- chocolatey `2.0.0`
+- Android NDK `26.2.11394342`
+- 7zip `23.1`
+- chocolatey `2.2.2`
 - chocolatey-core.extension `1.4.0`
 - chocolatey-windowsupdate.extension `1.0.5`
-- curl `8.1.2`
+- curl `8.6.0`
 - DotNetFx `4.8.0.20220524`
-- fastlane `2.214.0`
-- firebase `12.4.8`
-- flutter `3.13.6 (C:\Users\builder\programs\flutter)`
-- gem `3.3.26`
-- gh `2.30.0`
-- Google Cloud SDK `423.0.0`
-- gsutil 4.67- git `2.33.1`
-- grep `3.7`
-- less `633.0`
-- node `16.20.0`
-- npm `9.8.1`
-- openssl `1.1.1.2100`
-- powershell-core `7.3.4`
+- fastlane `2.219.0`
+- firebase `13.6.0`
+- flutter `3.19.4 (C:\Users\builder\programs\flutter)`
+- gem `3.5.3`
+- gh `2.46.0`
+- Google Cloud SDK `468.0.0` gsutil `5.27`
+- git `2.44.0`
+- grep `3.11`
+- less `634.0`
+- node `20.12.2`
+- npm `10.5.0`
+- openssl `3.2.1`
+- powershell-core `7.4.1`
 - pyenv-win `3.1.1`
 - python `3.9.6`
-- ruby `3.1.3p185`
+- ruby `3.3.0`
 - ssh
 - unzip `6.0`
-- vcredist140 `14.36.32532`
+- vcredist140 `14.38.33135`
 - vcredist2015 `14.0.24215.20170201`
-- vim `9.0.1636`
+- vim `9.1.202`
 - visualcpp-build-tools `15.0.26228.20170424`
 - wget `1.21.4`
-- yarn `1.22.17`
-- zip `3.0`
+- yarn `1.22.19`
+- zip `3.0.0`
 
 ## Java versions
 - **21.0.2** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-21.0.2`
 - **20.0.1** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-20.0.1`
 - **17** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-17`
-- **11.0.13** (default) JAVA_HOME: `C:\Program Files\OpenJDK\openjdk-11.0.13_8`
-- **1.8.0_312** JAVA_HOME: `C:\Program Files\OpenJDK\openjdk-8u312-b07`
+- **11.0.22** (default) JAVA_HOME: `C:\Program Files\OpenJDK\jdk-11.0.22`
+- **1.8.0** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-1.8.0`
 
-## Android Studio 2020.3 (AI-203.7717.56.2031.7784292)
+## Android Studio Iguana | 2023.2.1 (#AI-232.10300.40.2321.11567975)
 
 Android Studio path: `C:\Program Files\Android\Android Studio\`
 
-## Unity 2020.3.23f1
+## Unity Hub 3.7.0
 
-`UNITY_HOME` is set to `C:\Program Files\Unity\Hub\Editor\2020.3.23f1\Editor`
-
-Includes pre-installed modules for Windows and WebGL build support.
+Unity Hub path: `C:\Program Files\Unity Hub\`
