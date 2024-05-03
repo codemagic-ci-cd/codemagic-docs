@@ -10,8 +10,8 @@ weight: 3
 
 ## System
 
-- System version `Microsoft Windows Server 2019 Datacenter 10.0.17763`
-- Disk `150GB (Free Space: 64GB)`
+- System version `Microsoft Windows Server 2022 Datacenter (OS Build 20348.643)`
+- Disk `150GB (Free Space: 66GB)`
 
 ## Pre-installed tools
 
