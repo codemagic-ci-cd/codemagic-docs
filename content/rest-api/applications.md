@@ -6,8 +6,6 @@ weight: 2
 
 APIs for managing applications are currently available for developers to preview. During the preview period, the API may change without advance notice.
 
-{{}} **Note:** Using REST API will not fetch information about workflows when configuring with **codemagic.yaml**. It is because only workflows from the Workflow Editor are defaulted as no accessible data is present from **codemagic.yaml** until a repository is cloned, which means that there is no way to retrieve workflow IDs from **codemagic.yaml** before triggering a build. {{}}
-
 ## Retrieve all applications
 
 `GET /apps`
@@ -199,6 +197,8 @@ base64 id_rsa | pbcopy
 Codemagic allows you to fetch and modify application variables and secrets using the REST API. Note that the API works slightly differently depending on whether your application is configured to use the `Workflow Editor` or `YAML configuration`.
 
 For yaml, variables and secrets are manually configured on the **Environment variables** tab in your application settings. These variables and secrets can be accessed in your configuration file across all workflows with the use of [groups](../building/environment-variable-groups). Variables configured for the `Workflow Editor` are specific to one workflow.
+
+Note that the API returns workflow information such as `workflowId` or `workflowName` only for Worfklow Editor workflows. For workflows configured in **codemagic.yaml**, this information is not available without cloning the repository.
 
 ### Fetch variables
 
