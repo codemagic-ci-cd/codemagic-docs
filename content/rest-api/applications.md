@@ -327,32 +327,6 @@ To add binary-based files (e.g. images), they need to be [`base64 encoded`](../v
 {{< /highlight >}}
 
 
-### Getting variable_id
-
-#### Example
-
-{{< highlight bash "style=paraiso-dark">}}
-  curl -XGET \
-       -H "X-Auth-Token: $CM_API_KEY" \
-       -H "Content-type: application/json" \
-       "https://api.codemagic.io/apps/YOUR_APP_ID/variables"
-{{< /highlight >}}
-
-
-#### Response
-
-{{< highlight json "style=paraiso-dark">}}
-  [{
-    "group": "test",
-    "id": "0000000000000",
-    "key": "TEST",
-    "secure": true,
-    "value": "[HIDDEN]"
-  }]
-{{< /highlight >}}
-
-
-
 ### Update existing variable
 
 `POST /apps/:id/variables/:variable_id`
