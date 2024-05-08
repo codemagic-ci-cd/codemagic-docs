@@ -12,12 +12,13 @@ Codemagic requires direct access to the repositories for the following use cases
 - For cloning the repository to the build machine during the build.
 
 The following IP addresses must be allowed through the firewall (whitelisted):
+
 {{< highlight Shell "style=rrt">}}
+66.185.17.80/29
 199.7.162.128/29
 207.254.42.240/29
 34.74.234.56/32
 35.185.76.207/32
-66.185.17.82/32
 {{< /highlight >}}
 
 Since Codemagic needs to access the Git service, please allow ports that your service uses - usually the default SSH or HTTPS ports.
