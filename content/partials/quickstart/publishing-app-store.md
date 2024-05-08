@@ -62,4 +62,12 @@ publishing:
     # Optional. The name of the person or entity that owns the exclusive rights
     # to your app, preceded by the year the rights were obtained.
     copyright: 2021 Nevercode Ltd
+  
+    # Optional boolean. Whether or not to release an App Store version update in phases.
+    # With this option turned on, your version update will be released over a 7-day period
+    # to a percentage of your users (selected at random by their Apple ID) with automatic
+    # updates turned on. Learn more from 
+    # https://developer.apple.com/help/app-store-connect/update-your-app/release-a-version-update-in-phases.
+    # If not specified, then App Store version default phased release configuration is reused.
+    phased_release: true
 {{< /highlight >}}
