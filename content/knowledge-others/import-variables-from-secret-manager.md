@@ -369,7 +369,7 @@ vault kv get -field=GCLOUD_SERVICE_ACCOUNT_CREDENTIALS secret/gcloud
 {{< /highlight >}}
 
 
-#### Retrieving secrets
+#### Retrieving secrets from Hashicorp Vault
 Secrets can be retrieved using the **Hashicorp Vault CLI**.
 
 To retrieve a secret (e.g. 'message') stored as plain text value on a specified path (e.g. 'secret/greetings'):
@@ -430,7 +430,7 @@ GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=@/path/to/service_account.json
 {{< tab header="iOS" >}}
 {{<markdown>}}
 
-1. Add your App Store credentials to vault.
+1. Add your App Store credentials to Hashicorp Vault.
 
 {{< highlight bash "style=paraiso-dark">}}
 vault kv put secret/appstore \\
@@ -456,7 +456,7 @@ CERTIFICATE_PRIVATE_KEY=@/path/to/ios_distribution_cert_private_key_file
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
-    - name: Set iOS credentials from AWS secrets
+    - name: Set iOS credentials from Hashicorp Vault
       script: | 
         echo "APP_STORE_CONNECT_PRIVATE_KEY<<DELIMITER" >> $CM_ENV
         echo "$(vault kv get -field=APP_STORE_CONNECT_PRIVATE_KEY secret/appstore)" >> $CM_ENV
