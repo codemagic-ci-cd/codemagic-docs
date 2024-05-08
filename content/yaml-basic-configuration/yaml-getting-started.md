@@ -347,7 +347,7 @@ triggering:
   branch_patterns:              # Include or exclude watched branches
     - pattern: '*'
       include: true
-      source: true
+      source: true              # Applicable only to Pull Request triggers to determine if pattern is for source or target branch
     - pattern: excluded-target
       include: false
       source: false
