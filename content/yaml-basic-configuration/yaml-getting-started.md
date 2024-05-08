@@ -187,7 +187,12 @@ The main sections in each workflow are described below.
 
 ### Environment
 
-`environment:` section specifies the environment variables, variable groups and build machine software versions.
+`environment:` section specifies the environment variables and their respective group and build machine software versions.
+
+<br>
+{{<notebox>}}
+**Note:** Environment variables must belong to a group if environment variables are defined in the Codemagic app settings.
+{{</notebox>}}
 
 #### Environment variable groups
 
@@ -347,7 +352,7 @@ triggering:
   branch_patterns:              # Include or exclude watched branches
     - pattern: '*'
       include: true
-      source: true
+      source: true              # Applicable only to Pull Request triggers to determine if pattern is for source or target branch
     - pattern: excluded-target
       include: false
       source: false
