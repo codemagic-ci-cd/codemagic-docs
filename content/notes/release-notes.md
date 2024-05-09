@@ -6,6 +6,21 @@ aliases:
 weight: 1
 ---
 
+## Xcode 15.4 RC 1
+<div class="note__timestamp">May 9th 2024</div>
+
+The **Xcode 15.4** build image now has Xcode 15.4 RC 1 available. See [build machine specs](https://docs.codemagic.io/specs/versions-macos/) for information about the preinstalled software and available runtimes.
+
+## App Store phased releases
+<div class="note__timestamp">May 8th 2024</div>
+
+Using codemagic.yaml workflows, it is now possible to [release an App Store version in phases](https://developer.apple.com/help/app-store-connect/update-your-app/release-a-version-update-in-phases). See a configuration sample [here](https://docs.codemagic.io/yaml-publishing/app-store-connect/).
+
+## Xcode 15.4 Beta
+<div class="note__timestamp">April 17th 2024</div>
+
+The **Xcode 15.4** build image now has Xcode 15.4 Beta 1 available. See [build machine specs](https://docs.codemagic.io/specs/versions-macos/) for information about the preinstalled software and available runtimes.
+
 ## Xcode 15.3 Release
 <div class="note__timestamp">March 7th 2024</div>
 
