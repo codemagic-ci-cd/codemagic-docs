@@ -13,8 +13,8 @@ weight: 16
 
 ## System
 
-- System version `macOS 14.3.1 (23D60)`
-- Kernel version `Darwin 23.3.0`
+- System version `macOS 14.4.1 (23E224)`
+- Kernel version `Darwin 23.4.0`
 - Disk `294GB (Free Space: 83GB)`
 
 ## Pre-installed tools
@@ -31,7 +31,7 @@ weight: 16
 - ew-cli `0.10.9`
 - fastlane `2.220.0`
 - firebase `11.21.0`
-- flutter `3.19.5 ($HOME/programs/flutter)`
+- flutter `3.19.6 ($HOME/programs/flutter)`
 - gem `3.5.9`
 - gh `2.48.0`
 - git `2.44.0`
@@ -47,7 +47,7 @@ weight: 16
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
-- ssh `9.4p1`
+- ssh `9.6p1`
 - sudo `1.9.13p2`
 - swiftgen `6.6.3`
 - tar `3.5.3`
@@ -73,18 +73,14 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 15.4 (15F5021i) `/Applications/Xcode-15.4.app`, also selected when specifying `edge` in Xcode version settings
+- 15.4 (15F31c) `/Applications/Xcode-15.4.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
-- iOS 15.4
-- iOS 16.4
 - iOS 17.0
 - iOS 17.2
 - iOS 17.4
 - iOS 17.5
-- tvOS 15.4
-- tvOS 16.4
 - tvOS 17.0
 - tvOS 17.2
 - tvOS 17.4
@@ -92,8 +88,6 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - visionOS 1.0
 - visionOS 1.1
 - visionOS 1.2
-- watchOS 8.5
-- watchOS 9.4
 - watchOS 10.0
 - watchOS 10.2
 - watchOS 10.4
@@ -102,25 +96,17 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ### Devices
 
 - Apple TV
-- Apple TV 4K (2nd generation)
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
-- Apple TV 4K (at 1080p) (2nd generation)
 - Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
 - Apple Watch Series 5 (40mm)
 - Apple Watch Series 5 (44mm)
-- Apple Watch Series 5 - 40mm
-- Apple Watch Series 5 - 44mm
 - Apple Watch Series 6 (40mm)
 - Apple Watch Series 6 (44mm)
-- Apple Watch Series 6 - 40mm
-- Apple Watch Series 6 - 44mm
 - Apple Watch Series 7 (41mm)
 - Apple Watch Series 7 (45mm)
-- Apple Watch Series 7 - 41mm
-- Apple Watch Series 7 - 45mm
 - Apple Watch Series 8 (41mm)
 - Apple Watch Series 8 (45mm)
 - Apple Watch Series 9 (41mm)
@@ -128,25 +114,14 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Apple Watch Ultra (49mm)
 - Apple Watch Ultra 2 (49mm)
 - iPad (10th generation)
-- iPad (9th generation)
 - iPad Air (5th generation)
-- iPad Pro (11-inch) (3rd generation)
+- iPad Air 11-inch (M2)
+- iPad Air 13-inch (M2)
 - iPad Pro (11-inch) (4th generation)
-- iPad Pro (12.9-inch) (5th generation)
 - iPad Pro (12.9-inch) (6th generation)
-- iPad Pro (9.7-inch)
+- iPad Pro 11-inch (M4)
+- iPad Pro 13-inch (M4)
 - iPad mini (6th generation)
-- iPhone 11
-- iPhone 11 Pro
-- iPhone 11 Pro Max
-- iPhone 12
-- iPhone 12 Pro
-- iPhone 12 Pro Max
-- iPhone 12 mini
-- iPhone 13
-- iPhone 13 Pro
-- iPhone 13 Pro Max
-- iPhone 13 mini
 - iPhone 14
 - iPhone 14 Plus
 - iPhone 14 Pro
@@ -155,7 +130,4 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - iPhone 15 Plus
 - iPhone 15 Pro
 - iPhone 15 Pro Max
-- iPhone 8
-- iPhone 8 Plus
 - iPhone SE (3rd generation)
-- iPod touch (7th generation)
