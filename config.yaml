@@ -188,24 +188,12 @@ menu:
           name: Software and hardware
           weight: 11
 
-        - identifier: cli
-          params:
-              hide: true
-        - identifier: notes
-          params:
-              hide: true
         - identifier: custom-menu-position
           params:
               hide: true
         - identifier: partials
           params:
               hide: true
-
-    extra:
-        - identifier: cli
-          weight: 1
-        - identifier: notes
-          weight: 2
 
 mediaTypes:
     video/mp4:

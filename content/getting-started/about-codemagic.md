@@ -4,6 +4,7 @@ linkTitle: Welcome
 description: Introduction to Codemagic CI/CD
 weight: 2 
 aliases:
+  - /notes/release-notes/ 
 ---
 
 Codemagic is a cloud-based Continuous Integration/Continuous Delivery (CI/CD) product specifically designed for mobile developers building apps with Flutter, React Native, native iOS, native Android, Unity, Kotlin Multiplatform Mobile, and Ionic. Codemagic's API and versatile workflow configurations also provide a great platform for mobile development teams who are White labeling their apps.
