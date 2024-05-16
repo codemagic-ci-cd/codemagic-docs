@@ -103,12 +103,12 @@ publishing:
         
         ARTIFACT_TYPE=".ipa" 
               
-        # Get URL, Name, Bundle Id and Version name from $FCI_ARTIFACT_LINKS
-        ARTIFACT_URL=$(echo $FCI_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .url')
-        ARTIFACT_NAME=$(echo $FCI_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .name')
-        TYPE=$(echo $FCI_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .type')
-        BUNDLE=$(echo $FCI_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .bundleId')
-        VERSION_NAME=$(echo $FCI_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .versionName')
+        # Get URL, Name, Bundle Id and Version name from $CM_ARTIFACT_LINKS
+        ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .url')
+        ARTIFACT_NAME=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .name')
+        TYPE=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .type')
+        BUNDLE=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .bundleId')
+        VERSION_NAME=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .versionName')
               
         BUILD_VERSION=$(( ${BUILD_NUMBER} + 1 ))
               
@@ -120,7 +120,7 @@ publishing:
         TEST_URL=$(echo "${IPA_URL}" | sed 's#/#\\/#g')
               
         # Get first 7 digits of commit number
-        COMMIT=$(echo "${FCI_COMMIT}" | sed 's/^\(........\).*/\1/;q')
+        COMMIT=$(echo "${CM_COMMIT}" | sed 's/^\(........\).*/\1/;q')
               
         # Get the name of the test .xml file so we can attach it to a Jira issue
         if [ $ARTIFACT_TYPE == ".ipa" ]
@@ -131,14 +131,14 @@ publishing:
         fi  
         
         # Get the Git commit message for this build
-        GIT_COMMIT_MESSAGE=$(git log --format=%B -n 1 $FCI_COMMIT)
+        GIT_COMMIT_MESSAGE=$(git log --format=%B -n 1 $CM_COMMIT)
               
         # Populate the values in the .json template which will be used as the 
         # JSON payload that will be set as a comment in Jira.               
         sed -i.bak "s/\$BUILD_DATE/$BUILD_DATE/" .templates/jira.json
         sed -i.bak "s/\$ARTIFACT_NAME/$ARTIFACT_NAME/" .templates/jira.json
         sed -i.bak "s/\$ARTIFACT_URL/$TEST_URL/" .templates/jira.json
-        sed -i.bak "s/\$FCI_COMMIT/$COMMIT/" .templates/jira.json
+        sed -i.bak "s/\$CM_COMMIT/$COMMIT/" .templates/jira.json
         sed -i.bak "s/\$GIT_COMMIT_MESSAGE/$GIT_COMMIT_MESSAGE/" .templates/jira.json
         sed -i.bak "s/\$VERSION_NAME/$VERSION_NAME/" .templates/jira.json
         sed -i.bak "s/\$BUILD_VERSION/$BUILD_VERSION/" .templates/jira.json
