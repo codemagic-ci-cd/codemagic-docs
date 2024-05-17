@@ -34,7 +34,7 @@ weight: 3
 - less `634.0`
 - node `20.12.2`
 - npm `10.5.0`
-- openssl `3.2.1`
+- openssl `1.1.1.2100`
 - powershell-core `7.4.1`
 - pyenv-win `3.1.1`
 - python `3.9.6`
