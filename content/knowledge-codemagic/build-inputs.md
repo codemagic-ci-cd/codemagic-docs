@@ -10,9 +10,7 @@ Build inputs are customizable parameters you can define within your workflow to 
 
 Inputs are workflow-specific and are defined in `codemagic.yaml` under the `inputs` mapping (see the [example](#minimal-example) below). The started workflow receives specified input values in the `inputs` context, i.e. `${{ inputs.inputId }}` is replaced with the value passed to input with identifier `inputId`.
 
-When starting a build for a workflow that has inputs, Codemagic will show a form where user can enter desired values before starting the build.
-
-#### Minimal example
+### Minimal example
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -25,6 +23,26 @@ workflows:
     scripts:
       - echo "Hello, ${{ inputs.name }}"
 {{< /highlight >}}
+
+## Starting Builds with Inputs
+
+To successfully start a build, all required inputs must be specified. For optional inputs (those with required: false), the provided default value will be used if no value is specified when the build is started.
+
+{{<notebox>}}
+**Note**: Builds will fail if invalid values are provided for inputs (strings for numbers inputs, undefined choice options, etc.) or values are missing for required inputs.
+{{</notebox>}}
+
+### Starting Builds Manually via Codemagic UI
+
+When starting a build via the Codemagic UI, you will automatically be prompted to enter the inputs. Optional inputs are pre-filled with default values, but all required inputs must be manually entered before the build can be started.
+
+### Starting Builds Using REST API
+
+To start a build using the REST API, values for all required inputs must be included in the `POST` request payload. For more detailed information on starting builds with inputs using the REST API, refer to the section [below](#specify-inputs-when-starting-builds-with-api). Optional inputs can be omitted from the request payload; their default values will be used instead.
+
+### Starting Builds Using Webhook Events
+
+Only builds that do not rely on required inputs can be started with webhook events. If you want to use Git events to automatically trigger builds for workflows with inputs, ensure that all inputs for those workflows have default values.
 
 ## YAML schema for inputs
 
