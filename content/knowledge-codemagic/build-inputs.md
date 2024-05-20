@@ -6,11 +6,9 @@ weight: 6
 
 ## Overview
 
-Build inputs are customizable parameters that you can define within your workflow. These parameters allow users to provide specific values when starting a build for the workflow, making it more flexible and adaptable to different scenarios.
+Build inputs are customizable parameters you can define within your workflow to make it more adaptable to different scenarios. With build inputs, you can create a single workflow and run it with different configurations by providing the values for inputs when starting a build for the workflow. For example, you can use build inputs to determine whether to build the workflow for test or release purposes or which app flavor to build. This eliminates the need to create multiple similar workflows with specific hardcoded values, making the workflow more reusable and dynamic.
 
-By using inputs, you can tailor your workflow's behavior based on user-provided values. This eliminates the need to hardcode specific values within the workflow itself, making it more reusable and dynamic.
-
-Inputs are workflow specific and are defined in `codemagic.yaml` under `inputs` mapping (see the [example](#minimal-example) below). Started workflow receives specified input values in the `inputs` context, i.e. `${{ inputs.inputId }}` is replaced with value passed to input with identifier `inputId`.
+Inputs are workflow-specific and are defined in `codemagic.yaml` under the `inputs` mapping (see the [example](#minimal-example) below). The started workflow receives specified input values in the `inputs` context, i.e. `${{ inputs.inputId }}` is replaced with the value passed to input with identifier `inputId`.
 
 When starting a build for a workflow that has inputs, Codemagic will show a form where user can enter desired values before starting the build.
 
@@ -112,7 +110,7 @@ workflows:
 
 In the above workflow user is prompted with two options when starting a build:
 1. whether to run tests before build, which controls the first script step using `when` condition,
-2. whether to submit the build ipa to TestFlight as part of App Store Connect publishing.
+2. whether to submit the built ipa to TestFlight as part of App Store Connect publishing.
 
 Defaults are provided for both inputs and standard build can be started without choosing anything. 
 
