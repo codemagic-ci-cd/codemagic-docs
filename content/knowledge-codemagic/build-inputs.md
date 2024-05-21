@@ -18,43 +18,46 @@ workflows:
     inputs:
       name:
         description: Who is greeted?
-        required: false
         default: Codemagic
     scripts:
       - echo "Hello, ${{ inputs.name }}"
 {{< /highlight >}}
 
-## Starting Builds with Inputs
+## Starting builds with Inputs
 
-To successfully start a build, all required inputs must be specified. For optional inputs (those with required: false), the provided default value will be used if no value is specified when the build is started.
+All inputs must be specified to successfully start a build, either by providing a `default` value in the YAML configuration, or giving a one-off value when starting the build. 
 
 {{<notebox>}}
-**Note**: Builds will fail if invalid values are provided for inputs (strings for numbers inputs, undefined choice options, etc.) or values are missing for required inputs.
+**Note**: Builds will fail if invalid values are provided (strings for numbers inputs, undefined choice options, etc.) or values are missing.
 {{</notebox>}}
 
-### Starting Builds Manually via Codemagic UI
+### Starting builds manually via Codemagic UI
 
-When starting a build via the Codemagic UI, you will automatically be prompted to enter the inputs. Optional inputs are pre-filled with default values, but all required inputs must be manually entered before the build can be started.
+When starting a build via the Codemagic UI, you will automatically be prompted to enter the inputs. Inputs that have predefined default values will be pre-filled with those values from configuration file. All other inputs must be manually entered before the build can be started.
 
-### Starting Builds Using REST API
+Not entering anything for a string input will result in an empty string, i.e. `""`. For other input types an actual value which matches the requested type must be entered. 
 
-To start a build using the REST API, values for all required inputs must be included in the `POST` request payload. For more detailed information on starting builds with inputs using the REST API, refer to the section [below](#specify-inputs-when-starting-builds-with-api). Optional inputs can be omitted from the request payload; their default values will be used instead.
+### Starting builds using REST API
 
-### Starting Builds Using Webhook Events
+To start a build using the REST API, values for inputs that do not define `default` must be included in the `POST` request payload. The inputs which have default value declared in YAML configuration can be omitted from request payload, in that case the specified default will be used.  
 
-Only builds that do not rely on required inputs can be started with webhook events. If you want to use Git events to automatically trigger builds for workflows with inputs, ensure that all inputs for those workflows have default values.
+Given values must be in accordance with the input definitions, that is:
+- type of the value must match with the input type (numeric values for number inputs, truth values for boolean inputs and textual values for string inputs),
+- value for choice input must be included in the options list. 
+
+For more detailed information on starting builds with inputs using the REST API, refer to the section [below](#specify-inputs-when-starting-builds-with-api). Optional inputs can be omitted from the request payload; their default values will be used instead.
+
+### Starting builds using webhook events
+
+Only builds that do not rely on inputs can be started with webhook events. If you want to use Git events to automatically trigger builds for workflows with inputs, ensure that all inputs for those workflows have default values.
 
 ## YAML schema for inputs
 
 Build inputs are defined in `codemagic.yaml` as a mapping `workflow.<workflow_id>.inputs` where keys are input IDs and values are inputs that have the following fields.
 
-### `required`
-
-A **boolean** value determining whether the input must be specified when starting a build. If `false`, then a default value must be defined. **Must be defined**.
-
 ### `description`
 
-A **string** description for this build input. Description is displayed in Codemagic when manually starting a build for this workflow and user is prompted to provide values for the inputs. **Must be defined**.
+**Required**. A **string** description for this build input. Description is displayed in Codemagic when manually starting a build for this workflow and user is prompted to provide values for the inputs.
 
 ### `type`
 
@@ -68,7 +71,7 @@ Provide a list of values as options for the `choice` input. Values are all impli
 
 ### `default`
 
-Provide a default value for the input parameter. If `type` is choice, then it must be one of the defined `options`, otherwise value type must match with the `type` definition.  **Must be specified if the input is not required and prohibited otherwise**.
+Provide a default value for the input parameter. If `type` is choice, then it must be one of the defined `options`, otherwise value type must match with the `type` definition.
 
 ## Examples
 
@@ -82,12 +85,11 @@ workflows:
     inputs:
       name:
         description: Who is greeted?
-        required: true
     scripts:
       - echo "Hello, ${{ inputs.name }}"
 {{< /highlight >}}
 
-As in the above example input is marked as required, then builds for this workflow can only be started if value is provided for this input.
+As in the above example no `default` value is provided, then name must be specified when starting builds for this workflow, or otherwise it will be left blank.
 
 ### Boolean inputs
 
@@ -99,12 +101,10 @@ workflows:
     inputs:
       submitToTestFlight:
         description: Enable testflight submission
-        required: false
         type: boolean
         default: false
       runTests:
         description: Run tests before build
-        required: false
         type: boolean
         default: true
     integrations:
@@ -132,9 +132,21 @@ In the above workflow user is prompted with two options when starting a build:
 
 Defaults are provided for both inputs and standard build can be started without choosing anything. 
 
+{{<notebox>}}
+**Note**: When using booleans in textual context, such as in scripts, truthy and falsy values are interpolated as strings `"true"` and `"false"` respectively. For example,
+```
+echo "My boolean: ${{ inputs.myTruthValue }}"
+```
+would be resolved to
+```
+echo: "My boolean: true"
+```
+if build is started with `myTruthValue: true`.
+{{</notebox>}}
+
 ### Choice inputs
 
-Inputs with type choice provide a way to limit the user to choose only specific predefined values for inputs. Choice options are shows to user as a dropdowns. Choices can be useful to prevent typos or other human errors, and to easily present only the values that are relevant to use-case.
+Inputs with type choice provide a way to limit the user to choose only specific predefined values for inputs. Choice options are shown to user as a dropdowns. Choices can be useful to prevent typos or other human errors, and to easily present only the values that are relevant to use-case.
 
 Inputs with type `choice` must define additional field `options` where valid choices are listed.
 
@@ -144,7 +156,6 @@ workflows:
     inputs:
       distributionType:
         description: iOS distribution type 
-        required: false
         type: choice
         options: ["ad_hoc", "app_store", "development", "invalid"]
         default: development
@@ -169,16 +180,13 @@ workflows:
     inputs:
       googlePlayInAppUpdatePriority:
         description: Google Play publisher priority
-        required: false
         type: number
         default: 4
       buildNumber:
         description: Build number for artifact versioning
-        required: true
         type: number
       rolloutFraction:
         description: Rollout fraction for Google Play release promotion
-        required: false
         type: number
         default: 0.25
     environment:
@@ -197,7 +205,7 @@ workflows:
 
 ## Specify inputs when starting builds with API
 
-Builds for workflows which have **required inputs** (i.e. inputs without default values) cannot be started without specifying values for those inputs. This also applies when starting builds using [API](/rest-api/builds/#start-a-new-build).
+Builds for workflows which have inputs without default values cannot be started unless values for those inputs are specified. This also applies when starting builds using [API](/rest-api/builds/#start-a-new-build).
 
 Build input values can be specified via API using the `inputs` field in the start build request payload, where the `inputs` value is an JSON `object` whose keys correspond to input IDs. 
 
@@ -209,15 +217,12 @@ workflows:
     inputs:
       stringInput:
         description: String value
-        required: true
         type: string
       booleanInput:
         description: Boolean value
-        required: true
         type: boolean
       numberInput:
         description: Numeric value
-        required: false
         type: number
         default: 0
     scripts:
@@ -235,8 +240,10 @@ curl -H "Content-Type: application/json" \
        "inputs": {
          "stringInput": "string value",
          "booleanInput": true,
-         "numberInput": 5,
+         "numberInput": 5
        }
      }' \
      -X POST https://api.codemagic.io/builds
 {{< /highlight >}}
+
+Note that in the above HTTP request `inputs.numberInput` is actually optional and could have been omitted from request payload as `numberInput` has a default value. In case of omission, the default value `0` would be used.
