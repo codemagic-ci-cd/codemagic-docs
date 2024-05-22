@@ -1,7 +1,7 @@
 ---
 description: How to configure caching for your builds
 title: Caching
-weight: 3
+weight: 4
 aliases:
   - /flutter/dependency-caching
   - /flutter-configuration/dependency-caching

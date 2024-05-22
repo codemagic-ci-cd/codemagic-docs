@@ -1,7 +1,7 @@
 ---
 description: Generate screenshots for a Flutter app with golden testing and upload them to the stores
 title: Screenshots
-weight: 5
+weight: 6
 aliases:
   - /flutter/generate-upload-screenshots-stores
   - /flutter-configuration/generate-upload-screenshots-stores

@@ -1,7 +1,7 @@
 ---
 title: Build inputs
 description: Specify optional inputs that are passed to the workflow when starting a build
-weight: 6
+weight: 3
 ---
 
 ## Overview
