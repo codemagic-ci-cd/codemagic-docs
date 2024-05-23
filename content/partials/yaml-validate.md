@@ -16,4 +16,4 @@ Codemagic JSON schema is available out of the box in the IDEs integrated with [s
 If your IDE does not have the Codemagic JSON schema available by default, you can set up validation manually. To do so:
 
 * make sure you have YAML language support in the IDE
-* configure the IDE to use the Codemagic JSON schema for validation available at [https://static.codemagic.io/codemagic-schema.json](https://static.codemagic.io/codemagic-schema.json)
+* configure the IDE to use the Codemagic JSON schema for validation available at [https://codemagic.io/codemagic-schema.json](https://codemagic.io/codemagic-schema.json)
