@@ -12,6 +12,8 @@ Inputs are workflow-specific and are defined in `codemagic.yaml` under the `inpu
 
 ### Minimal example
 
+This example configures one input with the ID `name`. Unless given another value when starting a build, `name` defaults to `Codemagic`.
+
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
   greetings:
@@ -28,7 +30,7 @@ workflows:
 All inputs must be specified to successfully start a build, either by providing a `default` value in the YAML configuration, or giving a one-off value when starting the build. 
 
 {{<notebox>}}
-**Note**: Builds will fail if invalid values are provided (strings for numbers inputs, undefined choice options, etc.) or values are missing.
+**Note**: Builds will fail if invalid values are provided (strings for number inputs, undefined choice options, etc.) or values are missing.
 {{</notebox>}}
 
 ### Starting builds manually via Codemagic UI
@@ -37,19 +39,9 @@ When starting a build via the Codemagic UI, you will automatically be prompted t
 
 Not entering anything for a string input will result in an empty string, i.e. `""`. For other input types an actual value which matches the requested type must be entered. 
 
-### Starting builds using REST API
-
-To start a build using the REST API, values for inputs that do not define `default` must be included in the `POST` request payload. The inputs which have default value declared in YAML configuration can be omitted from request payload, in that case the specified default will be used.  
-
-Given values must be in accordance with the input definitions, that is:
-- type of the value must match with the input type (numeric values for number inputs, truth values for boolean inputs and textual values for string inputs),
-- value for choice input must be included in the options list. 
-
-For more detailed information on starting builds with inputs using the REST API, refer to the section [below](#specify-inputs-when-starting-builds-with-api). Optional inputs can be omitted from the request payload; their default values will be used instead.
-
 ### Starting builds using webhook events
 
-Only builds that do not rely on inputs can be started with webhook events. If you want to use Git events to automatically trigger builds for workflows with inputs, ensure that all inputs for those workflows have default values.
+Only builds that do not rely on inputs can be started with webhook events. If you want to use Git events or scheduled builds to automatically trigger builds for workflows with inputs, ensure that all inputs for those workflows have default values.
 
 ## YAML schema for inputs
 
@@ -202,48 +194,3 @@ workflows:
           track: alpha
           rollout_fraction: ${{ inputs.rolloutFraction }}
 {{< /highlight >}}
-
-## Specify inputs when starting builds with API
-
-Builds for workflows which have inputs without default values cannot be started unless values for those inputs are specified. This also applies when starting builds using [API](/rest-api/builds/#start-a-new-build).
-
-Build input values can be specified via API using the `inputs` field in the start build request payload, where the `inputs` value is an JSON `object` whose keys correspond to input IDs. 
-
-For example, builds for the following workflow
-
-{{< highlight yaml "style=paraiso-dark">}}
-workflows:
-  build-inputs:
-    inputs:
-      stringInput:
-        description: String value
-        type: string
-      booleanInput:
-        description: Boolean value
-        type: boolean
-      numberInput:
-        description: Numeric value
-        type: number
-        default: 0
-    scripts:
-      - ...
-{{< /highlight >}}
-
-can be started with HTTP request
-
-{{< highlight bash "style=paraiso-dark">}}
-curl -H "Content-Type: application/json" \
-     -H "x-auth-token: <token>" \
-     -d '{
-       "appId": "<app-id>",
-       "workflowId": "build-inputs",
-       "inputs": {
-         "stringInput": "string value",
-         "booleanInput": true,
-         "numberInput": 5
-       }
-     }' \
-     -X POST https://api.codemagic.io/builds
-{{< /highlight >}}
-
-Note that in the above HTTP request `inputs.numberInput` is actually optional and could have been omitted from request payload as `numberInput` has a default value. In case of omission, the default value `0` would be used.
