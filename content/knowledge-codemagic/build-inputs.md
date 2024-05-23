@@ -35,13 +35,17 @@ All inputs must be specified to successfully start a build, either by providing 
 
 ### Starting builds manually via Codemagic UI
 
-When starting a build via the Codemagic UI, you will automatically be prompted to enter the inputs. Inputs that have predefined default values will be pre-filled with those values from configuration file. All other inputs must be manually entered before the build can be started.
+When starting a build via the Codemagic UI, you will automatically be prompted to enter the inputs. Inputs that have predefined default values will be prefilled with those values from configuration file. All other inputs must be manually entered before the build can be started.
 
-Not entering anything for a string input will result in an empty string, i.e. `""`. For other input types an actual value which matches the requested type must be entered. 
+{{<notebox>}}
+**Note on inputs without default values:**
+
+Not entering anything for a string input will result in an empty string, i.e. `""`. Boolean inputs default to `false` in the UI. For other input types, an actual value that matches the requested type must be entered.
+{{</notebox>}}
 
 ### Starting builds using webhook events
 
-Only builds that do not rely on inputs can be started with webhook events. If you want to use Git events or scheduled builds to automatically trigger builds for workflows with inputs, ensure that all inputs for those workflows have default values.
+Only workflows that do not require user input for values can be started with webhook events. If you want to use Git events or scheduled builds to automatically trigger builds for workflows with inputs, ensure that all inputs in those workflows have default values. Otherwise, the build will fail due to undefined inputs.
 
 ## YAML schema for inputs
 
