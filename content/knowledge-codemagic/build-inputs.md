@@ -107,7 +107,7 @@ workflows:
 
 As no `default` value is provided in the above example, then name must be specified when starting builds for this workflow, or otherwise it will be left blank.
 
-### Using inputs to conditionally run scripts (booleans)
+### Using inputs to conditionally run scripts
 
  Boolean inputs can be useful to control whether some build steps are enabled or disabled, or they can be used to turn some features on or off. When given boolean values are substituted into the workflow, then their type is kept as boolean as long as they are not directly used within other values that are already strings (such as scripts). 
 
@@ -159,7 +159,7 @@ echo: "My boolean: true"
 if build is started with `myTruthValue: true`.
 {{</notebox>}}
 
-### Using inputs for publishing (number)
+### Using inputs for publishing
 
 You can use number inputs for build versioning or to control other release parameters, such as rollout fraction or in-app update priority. As with booleans, number types are also persisted when substitutions are being made to workflows unless the value is not directly used within a string. Both integers and floating point numbers are accepted as valid values.
 
@@ -192,7 +192,7 @@ workflows:
           rollout_fraction: ${{ inputs.rolloutFraction }}
 {{< /highlight >}}
 
-### Using inputs for determining build distribution type (choice)
+### Using inputs for determining build distribution type
 
 Inputs with type `choice` provide a way to limit the user to choose only specific predefined values for inputs, such as distribution type.
 
