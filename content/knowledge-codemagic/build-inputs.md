@@ -91,7 +91,7 @@ Provide a default value for the input parameter. If type is `choice`, then it mu
 
 Below are some example use cases for leveraging different types of build inputs in your workflows.
 
-### Pass input values to script commands (strings)
+### Using input values in scripts
 
 You can use inputs in scripts by referencing the ID of the input.
 
@@ -133,7 +133,6 @@ workflows:
           condition: ${{ inputs.runTests }}
       - ./setup_code_signing.sh
       - xcode-project build-ipa --project "project.xcodeproj" --scheme "app"
-      - echo "Hello, ${{ inputs.name }}"
     artifacts:
       - build/**/*.ipa
     publishing:
