@@ -34,9 +34,7 @@ All inputs must be specified to successfully start a build, either by providing 
 When starting a build via the Codemagic UI, you will automatically be prompted to enter the inputs. Inputs that have predefined default values will be prefilled with those values from configuration file. All other inputs must be manually entered before the build can be started.
 
 {{<notebox>}}
-**Note on inputs without default values:**
-
-Not entering anything for a string input will result in an empty string, i.e. `""`. Boolean inputs default to `false` in the UI. For other input types, an actual value that matches the requested type must be entered.
+Not entering anything for a string input will result in an empty string, i.e. `""`.
 {{</notebox>}}
 
 ### Starting builds using webhook events
@@ -45,7 +43,7 @@ Only workflows that do not require user input for values can be started with web
 
 ## YAML schema for inputs
 
-Build inputs are defined in `codemagic.yaml` as a mapping `workflow.<workflow_id>.inputs` where keys are input IDs and values are inputs that have the following fields.
+Build inputs are defined in `codemagic.yaml` as a mapping `workflows.<workflow_id>.inputs` where keys are input IDs and values are inputs that have the following fields.
 
 ### `description`
 
@@ -63,7 +61,7 @@ Provide a list of values as options for the `choice` input. Values are all impli
 
 ### `default`
 
-Provide a default value for the input parameter. If `type` is choice, then it must be one of the defined `options`, otherwise value type must match with the `type` definition.
+Provide a default value for the input parameter. If type is `choice`, then it must be one of the defined `options`, otherwise value type must match with the `type` definition.
 
 ## Examples
 
