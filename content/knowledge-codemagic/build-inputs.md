@@ -16,34 +16,58 @@ This example configures one input with the ID `name`. Unless given another value
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
-  greetings:
+  my-workflow:
     inputs:
-      name:
+      name: # input ID
         description: Who is greeted?
         default: Codemagic
     scripts:
       - echo "Hello, ${{ inputs.name }}"
 {{< /highlight >}}
 
-## Starting builds with Inputs
+## Starting builds with Inputs manually
 
-All inputs must be specified to successfully start a build, either by providing a `default` value in the YAML configuration, or giving a one-off value when starting the build. 
-
-### Starting builds manually via Codemagic UI
-
-When starting a build via the Codemagic UI, you will automatically be prompted to enter the inputs. Inputs that have predefined default values will be prefilled with those values from configuration file. All other inputs must be manually entered before the build can be started.
+When starting a build for a workflow that contains inputs via the Codemagic UI, you will be prompted to enter the inputs. Inputs that have predefined default values will be prefilled with those values from configuration file. All other inputs must be manually entered before the build can be started.
 
 {{<notebox>}}
 Not entering anything for a string input will result in an empty string, i.e. `""`.
 {{</notebox>}}
 
-### Starting builds using webhook events
+## Starting builds with Inputs automatically
 
 Only workflows that do not require user input for values can be started with webhook events. If you want to use Git events or scheduled builds to automatically trigger builds for workflows with inputs, ensure that all inputs in those workflows have default values. Otherwise, the build will fail due to undefined inputs.
 
 ## YAML schema for inputs
 
 Build inputs are defined in `codemagic.yaml` as a mapping `workflows.<workflow_id>.inputs` where keys are input IDs and values are inputs that have the following fields.
+
+If `default` is omitted, value for input must be specified when starting the build.
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  my-workflow:
+    inputs:
+      number_input:
+        description: Number input
+        type: number
+        default: 1        # Optional
+      string_input:
+        description: String input
+        type: string
+        default: "hello"  # Optional  
+      boolean_input:
+        description: Boolean input
+        type: boolean
+        default: true     # Optional
+      choice_input:
+        description: Choice input
+        type: choice
+        default: option 2 # Optional. If set, must be one of defined options.
+        options:          # Required for choice input
+          - option 1
+          - option 2
+          - option 3
+{{< /highlight >}}
 
 ### `description`
 
@@ -57,7 +81,7 @@ Defines the data type of the input parameter. Input values for the `choice` type
 
 ### `options`
 
-Provide a list of values as options for the `choice` input. Values are all implicitly cast to strings. **Required if type is `choice` and prohibited otherwise**.
+Provide a list of values as options for the `choice` input. Values are all implicitly cast to strings. Inputs with type `choice` must define additional field `options` where valid choices are listed. **Required if type is `choice` and prohibited otherwise**.
 
 ### `default`
 
@@ -65,13 +89,15 @@ Provide a default value for the input parameter. If type is `choice`, then it mu
 
 ## Examples
 
-### String inputs
+Below are some example use cases for leveraging different types of build inputs in your workflows.
 
-Default type for inputs is `string`. So, when declaring an input whose values are strings we can omit the `type` field. 
+### Pass input values to script commands (strings)
+
+You can use inputs in scripts by referencing the ID of the input.
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
-  greetings:
+  my-workflow:
     inputs:
       name:
         description: Who is greeted?
@@ -79,11 +105,11 @@ workflows:
       - echo "Hello, ${{ inputs.name }}"
 {{< /highlight >}}
 
-As in the above example no `default` value is provided, then name must be specified when starting builds for this workflow, or otherwise it will be left blank.
+As no `default` value is provided in the above example, then name must be specified when starting builds for this workflow, or otherwise it will be left blank.
 
-### Boolean inputs
+### Using inputs to conditionally run scripts (booleans)
 
-When given boolean values are substituted into the workflow, then their type is kept as boolean as long as they are not directly used within other values that are already strings (such as scripts). Consequently, boolean inputs can be useful to control whether some build steps are enabled or disabled, or they can be used to turn some features on or off. Such as:
+ Boolean inputs can be useful to control whether some build steps are enabled or disabled, or they can be used to turn some features on or off. When given boolean values are substituted into the workflow, then their type is kept as boolean as long as they are not directly used within other values that are already strings (such as scripts). 
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -120,7 +146,7 @@ In the above workflow user is prompted with two options when starting a build:
 1. whether to run tests before build, which controls the first script step using `when` condition,
 2. whether to submit the built ipa to TestFlight as part of App Store Connect publishing.
 
-Defaults are provided for both inputs and standard build can be started without choosing anything. 
+Defaults are provided for both inputs and a standard build can be started without choosing anything. 
 
 {{<notebox>}}
 **Note**: When using booleans in textual context, such as in scripts, truthy and falsy values are interpolated as strings `"true"` and `"false"` respectively. For example,
@@ -134,35 +160,9 @@ echo: "My boolean: true"
 if build is started with `myTruthValue: true`.
 {{</notebox>}}
 
-### Choice inputs
+### Using inputs for publishing (number)
 
-Inputs with type choice provide a way to limit the user to choose only specific predefined values for inputs. Choice options are shown to user as a dropdowns. Choices can be useful to prevent typos or other human errors, and to easily present only the values that are relevant to use-case.
-
-Inputs with type `choice` must define additional field `options` where valid choices are listed.
-
-{{< highlight yaml "style=paraiso-dark">}}
-workflows:
-  ios:
-    inputs:
-      distributionType:
-        description: iOS distribution type 
-        type: choice
-        options: ["ad_hoc", "app_store", "development", "invalid"]
-        default: development
-    integrations:
-      app_store_connect: MY_ASC_KEY
-    environment:
-      ios_signing:
-        distribution_type: ${{ inputs.distributionType }}
-        bundle_identifier: com.example.app
-    scripts:
-      - xcode-project use-profiles
-      - flutter build ipa --debug --export-options-plist "${HOME:?}/export_options.plist"
-{{< /highlight >}}
-
-### Number inputs
-
-As with booleans, number types are also persisted when substitutions are being made to workflows unless the value is not directly used within a string. Both integers and floating point numbers are accepted as valid values.
+You can use number inputs for build versioning or to control other release parameters, such as rollout fraction or in-app update priority. As with booleans, number types are also persisted when substitutions are being made to workflows unless the value is not directly used within a string. Both integers and floating point numbers are accepted as valid values.
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -191,4 +191,30 @@ workflows:
         release_promotion:
           track: alpha
           rollout_fraction: ${{ inputs.rolloutFraction }}
+{{< /highlight >}}
+
+### Using inputs for determining build distribution type (choice)
+
+Inputs with type `choice` provide a way to limit the user to choose only specific predefined values for inputs, such as distribution type.
+
+Choice options are shown to user in a dropdown.
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  ios:
+    inputs:
+      distributionType:
+        description: iOS distribution type 
+        type: choice
+        options: ["ad_hoc", "app_store", "development", "invalid"]
+        default: development
+    integrations:
+      app_store_connect: MY_ASC_KEY
+    environment:
+      ios_signing:
+        distribution_type: ${{ inputs.distributionType }}
+        bundle_identifier: com.example.app
+    scripts:
+      - xcode-project use-profiles
+      - flutter build ipa --debug --export-options-plist "${HOME:?}/export_options.plist"
 {{< /highlight >}}
