@@ -26,7 +26,6 @@ APIs for managing builds are currently available for developers to preview. Duri
 | `branch`      | `string` | Optional. The branch name. Either `branch` or `tag` is **required**.                                                                                    |
 | `tag`         | `string` | Optional. The tag name. Either `branch` or `tag` is **required**.                                                                                       |
 | `environment` | `object` | Optional. Specify environment variables, variable groups, and software versions to override or define in workflow settings.                             |
-| `inputs`      | `object` | Optional. Specify values for build inputs. Read more about from [here](/knowledge-codemagic/build-inputs/#specify-inputs-when-starting-builds-with-api) |
 | `labels`      | `list`   | Optional. Specify labels to be included for the build in addition to existing labels.                                                                   |
 
 
