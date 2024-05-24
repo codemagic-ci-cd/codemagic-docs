@@ -29,10 +29,6 @@ workflows:
 
 All inputs must be specified to successfully start a build, either by providing a `default` value in the YAML configuration, or giving a one-off value when starting the build. 
 
-{{<notebox>}}
-**Note**: Builds will fail if invalid values are provided (strings for number inputs, undefined choice options, etc.) or values are missing.
-{{</notebox>}}
-
 ### Starting builds manually via Codemagic UI
 
 When starting a build via the Codemagic UI, you will automatically be prompted to enter the inputs. Inputs that have predefined default values will be prefilled with those values from configuration file. All other inputs must be manually entered before the build can be started.
