@@ -23,7 +23,7 @@ Patch releases will replace the previous patch version of an Xcode release. If y
 
 Codemagic uses two aliases for Xcode versions -- `latest` and `edge`. `latest` points to the latest *release* version of Xcode. When a new major release version is rolled out, we do not point `latest` to that version immediately but announce the date on our [GitHub Discussions](https://github.com/orgs/codemagic-ci-cd/discussions) page. In case of minor and patch version updates, `latest` is updated as soon as the versions are rolled out. 
 
-`edge` always points to the latest available Xcode version (`minor.major.patch`) on our build machines and can thus point to a release or a beta version. We recommend using `latest` and `edge` in your build configuration if you want to regularly test your builds against the latest release or beta versions.
+`edge` always points to the latest available Xcode version (`major.minor.patch`) on our build machines and can thus point to a release or a beta version. We recommend using `latest` and `edge` in your build configuration if you want to regularly test your builds against the latest release or beta versions.
 
 ## Deprecation of Xcode versions
 
