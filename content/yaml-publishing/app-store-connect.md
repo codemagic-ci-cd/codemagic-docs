@@ -12,7 +12,7 @@ aliases:
 Codemagic enables you to automatically publish your iOS or macOS app to [App Store Connect](https://appstoreconnect.apple.com/) for beta testing with [TestFlight](https://developer.apple.com/testflight/) or distributing the app to users via App Store. Codemagic uses the **App Store Connect API key** for authenticating communication with Apple's services. You can read more about generating an API key from Apple's [documentation page](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api).
 
 {{<notebox>}}
-**Note:** This guide only applies to workflows configured with **codmegic.yaml**. If your workflow is configured with the **Flutter workflow editor** please go to [Publishing to App Store Connect using Flutter workflow editor](../publishing/publishing-to-app-store).
+**Note:** This guide only applies to workflows configured with **codemagic.yaml**. If your workflow is configured with the **Flutter workflow editor** please go to [Publishing to App Store Connect using Flutter workflow editor](../publishing/publishing-to-app-store).
 {{</notebox>}}
 
 {{< youtube hDXfKccLMjI >}}
