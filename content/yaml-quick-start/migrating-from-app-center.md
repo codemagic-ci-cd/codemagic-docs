@@ -51,6 +51,9 @@ weight: 1
 * CodePush will continue standalone, so users can continue using the feature by App Center. Alternatively, Codemagic can be integrated with Expo Application Services (EAS update).
 * Codemagic allows you to integrate with Sentry and Firebase Crahslytics for analytics and uploading debug symbols
 
+{{<notebox>}}
+**Note:** When adding React Native projects to App Center, iOS and Android platforms are added separately like two different projects. This behavior does not allow you to build and publish iOS and Android within the same workflow. With Codemagic, React Native repositories are added only once which prevents iOS and Android from being added separately. Besides, both platforms can be built and published within the same workflow. 
+{{</notebox>}}
 
 #### Performance overview
 
