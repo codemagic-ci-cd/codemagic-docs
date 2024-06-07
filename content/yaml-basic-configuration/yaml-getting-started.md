@@ -120,6 +120,10 @@ workflows:
       - ${TENANT_NAME}
     instance_type: mac_mini_m1
     max_build_duration: 60
+    inputs:
+      name: # input ID
+        description: Input description
+        default: Codemagic
     environment:
       groups:
         - group_name
@@ -139,6 +143,7 @@ workflows:
           source: true
       cancel_previous_builds: false
     scripts:
+      - echo "Hello, ${{ inputs.name }}"
       - ...
     artifacts:
       - build/**/outputs/bundle/**/*.aab
