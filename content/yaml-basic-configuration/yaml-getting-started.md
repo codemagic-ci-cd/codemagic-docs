@@ -120,7 +120,7 @@ workflows:
       - ${TENANT_NAME}
     instance_type: mac_mini_m1
     max_build_duration: 60
-    inputs:
+    inputs: # more information about build inputs:https://docs.codemagic.io/knowledge-codemagic/build-inputs/
       name: # input ID
         description: Input description
         default: Codemagic
