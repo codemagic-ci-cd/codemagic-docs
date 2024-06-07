@@ -155,6 +155,10 @@ workflows:
         - echo 'Post-publish script'
 {{< /highlight >}}
 
+### Build inputs
+
+Build inputs are parameters that allow you to customize your build configurations right before starting a new build without adding them in **codemagic.yaml** manually. For example, build inputs can be used to determine whether to build the workflow for test or release purposes or which Xcode version to use etc. More information about how to configure build inputs and real time examples can be found (here)[https://docs.codemagic.io/knowledge-codemagic/build-inputs/].
+
 ### Workflows
 
 You can use `codemagic.yaml` to define several workflows for building a project. Each workflow describes the entire build pipeline from triggers to publishing. For example, you may want to have separate workflows for developing, testing, and publishing the app.
