@@ -157,7 +157,7 @@ workflows:
 
 ### Build inputs
 
-Build inputs are parameters that allow you to customize your build configurations right before starting a new build without adding them in **codemagic.yaml** manually. For example, build inputs can be used to determine whether to build the workflow for test or release purposes or which Xcode version to use etc. More information about how to configure build inputs and real time examples can be found (here)[https://docs.codemagic.io/knowledge-codemagic/build-inputs/].
+Build inputs are parameters that allow you to customize your build configurations right before starting a new build without hardcoding them in **codemagic.yaml**. For example, build inputs can be used to determine whether to build the workflow for test or release purposes or which Xcode version to use, etc. More information about how to configure build inputs and examples can be found [here](https://docs.codemagic.io/knowledge-codemagic/build-inputs/]).
 
 ### Workflows
 
