@@ -37,9 +37,9 @@ weight: 1
 | `Remote access to build machines`| ❌         |      ✅        |
 | `Global environment variables`|  ❌           |      ✅        |
 | `Install apps from QR code` |    ❌           |      ✅        |
-| `Gitlab self-hosted runners`|    ☑️            |      ✅        |
-| `Github self-hosted runners`|    ❌           |      ✅        |
-| `Bitbucket self-hosted runners`| ❌           |      ✅        |
+| `Gitlab self-hosted repositories`|    ☑️       |     ✅         |
+| `Github self-hosted repositories`|    ❌      |      ✅        |
+| `Bitbucket self-hosted repositories`| ❌      |      ✅        |
 | `Enabling iOS app capability`|    ❌          |      ✅        |
 | `Building iOS and Android together`| ❌       |      ✅        |
 | `Inter-connected workflow support`|  ❌       |      ✅        |
