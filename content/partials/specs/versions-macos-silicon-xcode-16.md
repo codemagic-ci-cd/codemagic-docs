@@ -1,9 +1,9 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 15.4.
-title: macOS Apple silicon build machine specification (Xcode 15.4+)
+description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 16.0.
+title: macOS Apple silicon build machine specification (Xcode 16.0+)
 aliases:
 
-weight: 16
+weight: 17
 ---
 
 ## Hardware
@@ -13,9 +13,9 @@ weight: 16
 
 ## System
 
-- System version `macOS 14.4.1 (23E224)`
-- Kernel version `Darwin 23.4.0`
-- Disk `294GB (Free Space: 82GB)`
+- System version `macOS 14.5 (23F79)`
+- Kernel version `Darwin 23.5.0`
+- Disk `294GB (Free Space: 84GB)`
 
 ## Pre-installed tools
 
@@ -26,12 +26,12 @@ weight: 16
 - carthage `0.39.1`
 - cocoapods `1.15.2`
 - cordova `12.0.0`
-- curl `8.4.0`
+- curl `8.6.0`
 - docker `N/A`
-- ew-cli `0.10.9`
+- ew-cli `0.11.0`
 - fastlane `2.220.0`
 - firebase `11.21.0`
-- flutter `3.22.0 ($HOME/programs/flutter)`
+- flutter `3.22.2 ($HOME/programs/flutter)`
 - gem `3.5.9`
 - gh `2.48.0`
 - git `2.44.0`
@@ -73,7 +73,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 15.4 (15F31d) `/Applications/Xcode-15.4.app`
+- 16.0 (16A5171c) `/Applications/Xcode-16.0.app`, also selected when specifying `16` or `edge` in Xcode version settings
 
 ### Runtimes
 
@@ -81,17 +81,21 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - iOS 17.2
 - iOS 17.4
 - iOS 17.5
+- iOS 18.0
 - tvOS 17.0
 - tvOS 17.2
 - tvOS 17.4
 - tvOS 17.5
+- tvOS 18.0
 - visionOS 1.0
 - visionOS 1.1
 - visionOS 1.2
+- visionOS 2.0
 - watchOS 10.0
 - watchOS 10.2
 - watchOS 10.4
 - watchOS 10.5
+- watchOS 11.0
 
 ### Devices
 
