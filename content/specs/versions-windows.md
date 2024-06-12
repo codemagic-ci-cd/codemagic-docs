@@ -52,8 +52,8 @@ weight: 3
 ## Java versions
 - **21.0.2** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-21.0.2`
 - **20.0.1** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-20.0.1`
-- **17** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-17`
-- **11.0.22** (default) JAVA_HOME: `C:\Program Files\OpenJDK\jdk-11.0.22`
+- **17** (default) JAVA_HOME: `C:\Program Files\OpenJDK\jdk-17`
+- **11.0.22** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-11.0.22`
 - **1.8.0** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-1.8.0`
 
 ## Android Studio Iguana | 2023.2.1 (#AI-232.10300.40.2321.11567975)
