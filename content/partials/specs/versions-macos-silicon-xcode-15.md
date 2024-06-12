@@ -64,8 +64,8 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Java versions
 
 - **20.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-20.jdk/Contents/Home`
-- **17.0.8** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
-- **11.0.20** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **17.0.8** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
+- **11.0.20** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_382** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
