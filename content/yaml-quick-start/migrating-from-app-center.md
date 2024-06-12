@@ -55,7 +55,7 @@ weight: 1
 **Note:** When adding React Native projects to App Center, iOS and Android platforms are added separately like two different projects. This behavior does not allow you to build and publish iOS and Android within the same workflow. With Codemagic, React Native repositories are added only once which prevents iOS and Android from being added separately. Besides, both platforms can be built and published within the same workflow. 
 {{</notebox>}}
 
-#### Performance overview
+### Performance overview
 
 **Test name** | **Codemagic (M2)** | **Codemagic (M1)** | **App Center**
 --- | --- | --- | ---
@@ -64,7 +64,7 @@ Overall improvement | 778% | 635% | 1
 
 As it can be seen, building the benchmark project took around 5-6 minutes with Codemagic macOS M1 and M2 machines while the build completed in 39 minutes 24 seconds with App Center. Worth pointing out that App Center limits free tier users to 30 minutes build duration per build and based on the performance rate above, the 30 minute build duration range will not allow you to complete your builds due to the fact that they will timeout.
 
-#### Debugging options
+### Debugging options
 
 Unlike App Center, Codemagic allows you to have straightforward debugging sessions:
 
@@ -230,7 +230,7 @@ Below you can find the steps to enable automatic build triggering:
 
 1. Grab the webhooks URL and configure it in the repository settings. You can find the webhook URL in the Codemagic web app when navigating to your application and selecting the Webhooks tab. Below you can find how to configure webhooks with Azure DevOps.
 
-#### Azure DevOps webhook configuration
+### Azure DevOps webhook configuration
 
 Open your application repository, go to **Project Settings** > **Service Hooks**, click on **Create a new subscription...** and select **Web Hooks**. Under **Trigger on this type of event**, choose the event you wish to trigger builds for. Codemagic supports **Code pushed**, **Pull request created**, and **Pull request updated** events. In Azure, each of the events requires its own webhook. Once the event has been selected, choose your repository under filters and configure any additional settings.
 
@@ -264,7 +264,7 @@ All iOS applications have to be digitally signed before they are made available 
 2. You can either let Codemagic generate a distribution certificate and provisioning profile or you do it yourself in Apple Developer account, then share them with Codemagic, so it can use these resources during code signing the application:
 
 
-#### Adding code signing certificate
+### Adding code signing certificate
 
 The steps below describe how to upload a distribution certificate. 
 
@@ -322,7 +322,7 @@ The steps below describe how to upload a distribution certificate.
 {{< /tabpane >}}
 
 
-#### Adding code signing provisioning profile
+### Adding code signing provisioning profile
 
 Codemagic allows you to upload a provisioning profile to be used for the application or to fetch a profile from the Apple Developer Portal.
 
