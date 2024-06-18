@@ -3,6 +3,12 @@ title: Migrating from App Center
 description: How to ship your workflows to Codemagic
 weight: 1
 ---
+<p>
+{{<notebox>}}
+**Join our community of mobile experts**
+
+Connect with Codemagic team members and 670+ users in our [Discord community](https://discord.com/invite/ZJsYR6JCBD) to share knowledge and experiences of migrating from App Center and getting started with Codemagic.
+{{</notebox>}}
 
 ## Quick comparison
 
