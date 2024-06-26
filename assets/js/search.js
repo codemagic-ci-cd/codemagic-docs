@@ -71,7 +71,7 @@ const updateFromInput = (query) => {
 }
 
 const updateFromUrl = () => {
-    const params = window.location.search || '';
+    const params = window.location.search || ''
     const searchParams = new URLSearchParams(params)
     if (searchParams.has('q')) {
         updateInput(searchParams.get('q'))
