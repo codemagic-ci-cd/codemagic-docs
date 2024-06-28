@@ -31,7 +31,7 @@ workflows:
         # Configuration related to TestFlight (optional)
 
         # Optional boolean, defaults to false. Whether or not to submit the uploaded
-        # build to TestFlight beta review. Required for distributing to beta groups.
+        # build to TestFlight beta review.
         # Note: This action is performed during post-processing.
         submit_to_testflight: true
 
@@ -41,8 +41,7 @@ workflows:
         # Note: This action is performed during post-processing.
         expire_build_submitted_for_review: true
 
-        # Specify the names of beta tester groups that will get access to the build 
-        # once it has passed beta review.
+        # Specify the names of beta tester groups that will get access to the build.
         beta_groups: 
           - group name 1
           - group name 2
