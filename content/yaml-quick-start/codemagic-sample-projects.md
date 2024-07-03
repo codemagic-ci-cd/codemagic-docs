@@ -61,6 +61,7 @@ For further information on how to configure the **codemagic.yaml** for your proj
 * [Appetize](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/appetize_integration_demo_project)
 * [BrowserStack App Automate](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/browserstack_app_automate_demo_project)
 * [BrowserStack App Live](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/browserstack_app_live_demo_project)
+* [Capawesome Cloud](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/capawesome_cloud_demo_project)
 * [Capgo](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/capgo_integration_demo_project)
 * [Codecov](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/codecov_integration_demo_project)
 * [Discord](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/discord_integration_demo_project)
