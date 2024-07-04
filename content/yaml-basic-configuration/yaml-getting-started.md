@@ -488,6 +488,11 @@ workflows:
 {{< /highlight >}}
 
 If you are building white label apps and use the Codemagic REST API to initiate your builds, labels should be passed as described [here](https://docs.codemagic.io/rest-api/builds/) because it is not possible to override environment variables that will be used as labels.
+
+{{<notebox>}}
+Labels are supported for Team apps only.
+{{</notebox>}}
+
 ## Working directory
 
 You may select a working directory globally for the entire workflow or individual scripts only. If not specified, the global working directory defaults to the directory where the repository is cloned (`/Users/builder/clone`). You can override the global working directory by specifying the working directory in the individual steps. Consider the example below:
