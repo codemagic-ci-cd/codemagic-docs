@@ -490,7 +490,7 @@ workflows:
 If you are building white label apps and use the Codemagic REST API to initiate your builds, labels should be passed as described [here](https://docs.codemagic.io/rest-api/builds/) because it is not possible to override environment variables that will be used as labels.
 
 {{<notebox>}}
-Labels are supported for Team apps only.
+Labels are displayed for Team apps only.
 {{</notebox>}}
 
 ## Working directory
