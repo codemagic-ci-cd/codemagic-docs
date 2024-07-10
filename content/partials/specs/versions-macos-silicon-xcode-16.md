@@ -73,7 +73,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 16.0 (16A5171r) `/Applications/Xcode-16.0.app`, also selected when specifying `16` or `edge` in Xcode version settings
+- 16.0 (16A5202i) `/Applications/Xcode-16.0.app`, also selected when specifying `16` or `edge` in Xcode version settings
 
 ### Runtimes
 
