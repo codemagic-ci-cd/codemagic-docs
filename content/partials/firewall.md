@@ -13,12 +13,22 @@ Codemagic requires direct access to the repositories for the following use cases
 
 The following IP addresses must be allowed through the firewall (whitelisted):
 
-{{< highlight Shell "style=rrt">}}
-66.185.17.80/29
-199.7.162.128/29
-207.254.42.240/29
-34.74.234.56/32
-35.185.76.207/32
-{{< /highlight >}}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span id="ip-addresses">Fetching IP addresses...</span></span></code></pre></div>
 
 Since Codemagic needs to access the Git service, please allow ports that your service uses - usually the default SSH or HTTPS ports.
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('https://codemagic.io/api/v3/meta')
+    .then(response => response.json())
+    .then(data => {
+      const ipAddresses = data.data.address_prefixes
+      const ipList = ipAddresses.join('\n')
+      document.getElementById('ip-addresses').innerHTML = ipList
+    })
+    .catch(error => {
+      document.getElementById('ip-addresses').innerHTML = 'Failed to fetch IP addresses.'
+      console.error('Error fetching IP addresses:', error)
+    })
+})
+</script>
