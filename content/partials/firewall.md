@@ -13,7 +13,11 @@ Codemagic requires direct access to the repositories for the following use cases
 
 The following IP addresses must be allowed through the firewall (whitelisted):
 
-<pre id="ip-addresses">Fetching IP addresses...</pre>
+<div class="highlight">
+  <pre class="ip-addresses"><code><span style="display:flex;">
+    <span id="ip-addresses">Fetching IP addresses...</span>
+  </span></code></pre>
+</div>
 
 Since Codemagic needs to access the Git service, please allow ports that your service uses - usually the default SSH or HTTPS ports.
 
@@ -32,3 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 })
 </script>
+
+<style>
+  .ip-addresses {
+    color: #f8f8f2;
+    background-color: #000;
+  }
+</style>
