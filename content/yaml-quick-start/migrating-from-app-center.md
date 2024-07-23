@@ -68,6 +68,10 @@ Overall improvement | 778% | 635% | 1
 
 As it can be seen, building the benchmark project took around 5-6 minutes with Codemagic macOS M1 and M2 machines while the build completed in 39 minutes 24 seconds with App Center. Worth pointing out that App Center limits free tier users to 30 minutes build duration per build and based on the performance rate above, the 30 minute build duration range will not allow you to complete your builds due to the fact that they will timeout.
 
+### Support options
+
+Besides having an opportunity for premium support through a dedicated MS Teams/Slack/Discord channel, your team will have access to the chat widget in the Codemagic web app. Worth mentioning that Codemagic offers community support in [GitHub Discussions](https://github.com/orgs/codemagic-ci-cd/discussions) and [Discord Community Server](https://discord.com/invite/pefznye93R) as well.  
+
 ### Debugging options
 
 Unlike App Center, Codemagic allows you to have straightforward debugging sessions:
