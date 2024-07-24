@@ -106,7 +106,7 @@ If you would like more information about our Enterprise plan, please contact us 
 
 ## Resellers
 
-It's possible to resell the Codemagic Enterprise plan. Contact us [here](https://codemagic.io/enterprise/) for further details. 
+It's possible to resell the Codemagic Enterprise plan. Contact us [here](https://codemagic.io/pricing/#enterprise) for further details. 
 
 ## Dedicated Hosts
 
