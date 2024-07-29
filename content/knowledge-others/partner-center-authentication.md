@@ -14,7 +14,7 @@ An Azure Active Directory (Azure AD) tenant is required when setting up publishi
 
 2. If you already have an existing tenant, you can choose to associate it with your Partner Center account, but we recommend creating a new tenant for use with Codemagic. Click **Create** and fill in all the required information to create a new tenant.
 
-3. The newly created tenant can now be used to access [Azure AD](https://azure.microsoft.com/en-us/services/active-directory/) by logging in with the email and password that you created for your tenant.
+3. The newly created tenant can now be used to access [Azure AD](https://portal.azure.com/) by logging in with the email and password that you created for your tenant.
 
 4. When logged in, navigate to **App registrations** and select **+ New registration**. Give the registration a name, and limit the access to a single tenant under **Supported account types**. For our usecase, the **Redirect URI** can be left blank. Proceed by clicking **Register**.
 
