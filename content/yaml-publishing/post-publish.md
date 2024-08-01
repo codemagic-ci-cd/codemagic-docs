@@ -7,7 +7,7 @@ weight: 13
 Codemagic has a number of integrations for publishing but you can also publish elsewhere with custom scripts.
 
 {{<notebox>}}
-**Note:** By default, the publishing scripts are run regardless of the build status except for ``canceled`` and ``timeout``. You can specify additional conditions using if statements in scripts themselves.
+**Note:** If a build fails, publishing scripts will be executed. You can specify additional conditions using if statements in scripts themselves.
 {{</notebox>}}
 
 Below are just a few post-publish script examples to illustrate the most common options:
