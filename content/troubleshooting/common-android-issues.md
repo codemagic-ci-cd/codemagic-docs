@@ -85,13 +85,17 @@ Builds succeed on Mac Pro machines but fail on M1 machines with the below error:
 
 
 ###### Solution
-Upgrading to the latest version of Gradle in the `gradle-wrapper.properties` file and the Android Gradle plugin in the `android/build.gradle` file to the latest version fixes the issue.
 
-You can refer to the Official Documentation from Android Developer guides to learn more about the latest compatible version [here](https://developer.android.com/studio/releases/gradle-plugin#updating-gradle).
+Java Heap space error is a well-known issue and can be thrown for multiple reasons e.g. enabling ProGuard or DexGuard requires more power to complete the tasks. Here are some suggested solutions to try:
 
-{{<notebox>}}
-Note: Xcode version 14.2 or lower is required to use Mac Pro machines.
-{{</notebox>}}
+1. Upgrading to the latest version of Gradle in the `gradle-wrapper.properties` file and the Android Gradle plugin in the `android/build.gradle` file to the latest version could help fix the issue. You can refer to the Official Documentation from Android Developer guides to learn more about the latest compatible version [here](https://developer.android.com/studio/releases/gradle-plugin#updating-gradle).
+2. Set the maximum heap size by adding **-Dorg.gradle.jvmargs="-Xmx4096m"** to the build command or you can add the following line in **android/gradlew**:
+
+```
+exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain -Dorg.gradle.jvmargs="-Xmx4096m" "$@"
+```
+
+To access more powerful macOS M2 Pro, M2 Max, and M2 Ultra machines, please get in touch with us [here](https://codemagic.io/contact/). 
 
 
 ### Could not find method firebaseAppDistribution() for arguments...
