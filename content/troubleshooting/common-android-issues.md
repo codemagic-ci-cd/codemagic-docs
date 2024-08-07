@@ -94,9 +94,9 @@ Java Heap space error is a well-known issue and can be thrown for multiple reaso
 ```
 exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain -Dorg.gradle.jvmargs="-Xmx4096m" "$@"
 ```
-
+{{<notebox>}}
 To access more powerful macOS M2 Pro, M2 Max, and M2 Ultra machines, please get in touch with us [here](https://codemagic.io/contact/). 
-
+{{</notebox>}}
 
 ### Could not find method firebaseAppDistribution() for arguments...
 
