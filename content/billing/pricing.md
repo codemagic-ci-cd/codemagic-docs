@@ -128,7 +128,7 @@ Build history and artifact retention time depend on your account type and pricin
 |---------------|-------------------|
 | Personal accounts | Build history and artifacts of apps on the personal account are stored in Codemagic for **30 days** after which they are deleted. | 
 | Teams on Pay as you go plan | Build history and artifacts of apps on the team account with Pay as you go pricing are stored in Codemagic for **60 days** after which they are deleted.| 
-| Teams on Professional or Enterprise plan | Unlimited | 
+| Teams on Fixed Annual or Enterprise plan | Unlimited | 
 
 ### Backing up build artifacts
 
