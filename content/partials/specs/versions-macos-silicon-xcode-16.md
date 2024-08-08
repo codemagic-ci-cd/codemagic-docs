@@ -15,7 +15,7 @@ weight: 17
 
 - System version `macOS 14.5 (23F79)`
 - Kernel version `Darwin 23.5.0`
-- Disk `294GB (Free Space: 46GB)`
+- Disk `294GB (Free Space: 40GB)`
 
 ## Pre-installed tools
 
@@ -29,10 +29,10 @@ weight: 17
 - curl `8.6.0`
 - docker `N/A`
 - ew-cli `0.11.0`
-- fastlane `2.220.0`
+- fastlane `2.222.0`
 - firebase `11.21.0`
-- flutter `3.22.3 ($HOME/programs/flutter)`
-- gem `3.5.9`
+- flutter `3.24.0 ($HOME/programs/flutter)`
+- gem `3.5.17`
 - gh `2.48.0`
 - git `2.44.0`
 - Google Cloud SDK `404.0.0`
@@ -73,7 +73,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 16.0 (16A5211f) `/Applications/Xcode-16.0.app`, also selected when specifying `16` or `edge` in Xcode version settings
+- 16.0 (16A5221g) `/Applications/Xcode-16.0.app`, also selected when specifying `16` or `edge` in Xcode version settings
 
 ### Runtimes
 
