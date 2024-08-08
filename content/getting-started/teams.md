@@ -28,13 +28,19 @@ To create a new team:
 
 Once the team has been created, team admins can change the team's name, add or remove shared applications, add or remove users, change user roles and manage billing.
 
-{{<notebox>}}**Note:** Keep in mind to review the filter settings on the Applications page to see your newly created team and shared team apps.{{</notebox>}}
+## Managing team applications
 
-## Managing shared applications
+To add new applications to a team, click **Add application** on the Apps page and select the team to which you wish to add the application. Alternatively, you can transfer existing applications from your personal account by navigating to Teams > Personal Account > Applications and clicking the transfer icon.
 
-To add or remove shared applications, click on **Shared applications** to see the list of available applications. Check the repositories you wish to share with your team and uncheck the ones you wish to remove. Once done, click **Save changes**.
+{{<notebox>}}
+**Notes on transferring apps to team:** 
+* Please review the repository settings and team integrations to ensure that your setup is intact and the repository is still accessible after the transfer. Read more about configuring repository access in [team integrations](#managing-team-integrations).
+* Global variables and secrets are not transferred from personal account, so please copy over any environment variables and secrets that your workflows rely on.
+* If you used code signing identities on your personal account, please review any setup related to code signing identities.
+* Once an application has been transferred to a team, it cannot be transferred back to the personal account or to other teams.
+{{</notebox>}}
 
-{{<notebox>}}**Note:** Unless you set up a repository integration in [Team integrations](#managing-team-integrations), Codemagic will use the primary team admin's credentials for accessing the repositories.{{</notebox>}}
+Deleting an application in team settings removes the app from Codemagic.
 
 ## Inviting team members
 
