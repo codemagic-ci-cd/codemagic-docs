@@ -115,6 +115,28 @@ defaultConfig {
 
 {{< /tab >}}
 
+{{< tab header="Flutter" >}}
+{{<markdown>}}
+
+With Flutter the approach is slightly different. You will have to pass your environment keys using the --dart-define command during the build phase. 
+
+When using the Workflow editor scroll down to the `Build` step, now include `--dart-define=MAPS_API_KEY=$CM_MAPS_API_KEY`, where CM_MAPS_API_KEY is an environment variable set in your Code Magic App settings (as a global variable) or have it defined in your current workflow at the start under `Environment variables` step.
+
+When using .yaml workflow file, go to the script where the flutter build command is ran and add the --dart-define. It could look something like `flutter build appbundle --release --dart-define=MAPS_API_KEY=$CM_MAPS_API_KEY` or in your step to build for iOS `flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist --dart-define=MAPS_API_KEY=$CM_MAPS_API_KEY`.
+
+For each key the command has to be added, e.g.  `flutter build ip --release --dart-define=KEY_ONE=$CM_KEY_ONE --dart-define=KEY_TWO=$CM_KEY_TWO`
+
+Within your Flutter app it can be used in any part of your code
+{{< highlight Dart "style=paraiso-dark">}}
+void main(){
+    final secret = String.fromEnvironment('MAPS_API_KEY');
+    print(secret);
+}
+{{< /highlight >}}
+{{</markdown>}}
+
+{{< /tab >}}
+
 {{< tab header="iOS (Swift)" >}}
 {{<markdown>}}
 1. Add your key as an environment variable with the name `MAPS_API_KEY`
