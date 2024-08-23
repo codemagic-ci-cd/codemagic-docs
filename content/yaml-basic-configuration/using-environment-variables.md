@@ -118,19 +118,23 @@ defaultConfig {
 {{< tab header="Flutter" >}}
 {{<markdown>}}
 
-With Flutter the approach is slightly different. You will have to pass your environment keys using the --dart-define command during the build phase. 
+1. Add your key as an environment variable with the name `MAPS_API_KEY`
+2. In the build step, add `--dart-define` to your build script
 
-When using the Workflow editor it is important to know that it is not possible to use global environment variables from your [teams settings](https://codemagic.io/teams). In the Workflow editor you can put your keys under the `Environment variables` step, for this example the `CM_MAPS_API_KEY` is set with a random value (make sure it doesn't contain any spaces). To use it, scroll down to the `Build` step, include `--dart-define=MAPS_API_KEY=$CM_MAPS_API_KEY`, note the use of two separate keys, it is only show the difference between the key used in your code magic workflow and the one used in your dart code, but you are free to call them whatever you like, but it is important to use the `$` in front of the environment variable defined in your Workflow.
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Flutter build ipa
+      script: | 
+        flutter build ipa --release \
+          --dart-define=MAPS_API_KEY=$MAPS_API_KEY
+{{< /highlight >}}
 
-When using a .yaml workflow file, you are allowed to use [global variables](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/). In your `codemagic.yaml` file go to the script where the flutter build command is ran and add the --dart-define. It could look something like `flutter build appbundle --release --dart-define=MAPS_API_KEY=$CM_MAPS_API_KEY` or in your step to build for iOS `flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist --dart-define=MAPS_API_KEY=$CM_MAPS_API_KEY`.
+3. Within your Flutter Application, use `String.fromEnvironment` to retrieve these variables in your Dart Code.
 
-For each key the command has to be added, e.g.  `flutter build ip --release --dart-define=KEY_ONE=$CM_KEY_ONE --dart-define=KEY_TWO=$CM_KEY_TWO`
-
-Within your Flutter app it can be used in any part of your code
 {{< highlight Dart "style=paraiso-dark">}}
-void main(){
-    final secret = String.fromEnvironment('MAPS_API_KEY');
-    print(secret);
+void main() {
+  final secret = String.fromEnvironment('MAPS_API_KEY');
+  print(secret);
 }
 {{< /highlight >}}
 {{</markdown>}}
@@ -168,3 +172,10 @@ GMSServices.provideAPIKey(Bundle.main.object(forInfoDictionaryKey: "MAPS_API_KEY
 
 {{< /tabpane >}}
 
+With Flutter the approach is slightly different. You will have to pass your environment keys using the --dart-define command during the build phase. 
+
+When using the Workflow editor it is important to know that it is not possible to use global environment variables from your [teams settings](https://codemagic.io/teams). In the Workflow editor you can put your keys under the `Environment variables` step, for this example the `CM_MAPS_API_KEY` is set with a random value (make sure it doesn't contain any spaces). To use it, scroll down to the `Build` step, include `--dart-define=MAPS_API_KEY=$CM_MAPS_API_KEY`, note the use of two separate keys, it is only show the difference between the key used in your code magic workflow and the one used in your dart code, but you are free to call them whatever you like, but it is important to use the `$` in front of the environment variable defined in your Workflow.
+
+When using a .yaml workflow file, you are allowed to use [global variables](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/). In your `codemagic.yaml` file go to the script where the flutter build command is ran and add the --dart-define. It could look something like `flutter build appbundle --release --dart-define=MAPS_API_KEY=$CM_MAPS_API_KEY` or in your step to build for iOS `flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist --dart-define=MAPS_API_KEY=$CM_MAPS_API_KEY`.
+
+For each key the command has to be added, e.g.  `flutter build ip --release --dart-define=KEY_ONE=$CM_KEY_ONE --dart-define=KEY_TWO=$CM_KEY_TWO`
