@@ -13,9 +13,9 @@ weight: 17
 
 ## System
 
-- System version `macOS 14.5 (23F79)`
-- Kernel version `Darwin 23.5.0`
-- Disk `294GB (Free Space: 40GB)`
+- System version `macOS 14.6.1 (23G93)`
+- Kernel version `Darwin 23.6.0`
+- Disk `294GB (Free Space: 139GB)`
 
 ## Pre-installed tools
 
@@ -26,12 +26,12 @@ weight: 17
 - carthage `0.39.1`
 - cocoapods `1.15.2`
 - cordova `12.0.0`
-- curl `8.6.0`
+- curl `8.7.1`
 - docker `N/A`
 - ew-cli `0.11.0`
 - fastlane `2.222.0`
 - firebase `11.21.0`
-- flutter `3.24.0 ($HOME/programs/flutter)`
+- flutter `3.24.1 ($HOME/programs/flutter)`
 - gem `3.5.17`
 - gh `2.48.0`
 - git `2.44.0`
@@ -47,7 +47,7 @@ weight: 17
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
-- ssh `9.6p1`
+- ssh `9.7p1`
 - sudo `1.9.13p2`
 - swiftgen `6.6.3`
 - tar `3.5.3`
@@ -73,28 +73,13 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 16.0 (16A5221g) `/Applications/Xcode-16.0.app`, also selected when specifying `16` in Xcode version settings
+- 16.0 (16A5230g) `/Applications/Xcode-16.0.app`, also selected when specifying `16` in Xcode version settings
 
 ### Runtimes
 
-- iOS 17.0
-- iOS 17.2
-- iOS 17.4
-- iOS 17.5
 - iOS 18.0
-- tvOS 17.0
-- tvOS 17.2
-- tvOS 17.4
-- tvOS 17.5
 - tvOS 18.0
-- visionOS 1.0
-- visionOS 1.1
-- visionOS 1.2
 - visionOS 2.0
-- watchOS 10.0
-- watchOS 10.2
-- watchOS 10.4
-- watchOS 10.5
 - watchOS 11.0
 
 ### Devices
@@ -105,31 +90,15 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
-- Apple Watch Series 5 (40mm)
-- Apple Watch Series 5 (44mm)
-- Apple Watch Series 6 (40mm)
-- Apple Watch Series 6 (44mm)
-- Apple Watch Series 7 (41mm)
-- Apple Watch Series 7 (45mm)
-- Apple Watch Series 8 (41mm)
-- Apple Watch Series 8 (45mm)
 - Apple Watch Series 9 (41mm)
 - Apple Watch Series 9 (45mm)
-- Apple Watch Ultra (49mm)
 - Apple Watch Ultra 2 (49mm)
 - iPad (10th generation)
-- iPad Air (5th generation)
 - iPad Air 11-inch (M2)
 - iPad Air 13-inch (M2)
-- iPad Pro (11-inch) (4th generation)
-- iPad Pro (12.9-inch) (6th generation)
 - iPad Pro 11-inch (M4)
 - iPad Pro 13-inch (M4)
 - iPad mini (6th generation)
-- iPhone 14
-- iPhone 14 Plus
-- iPhone 14 Pro
-- iPhone 14 Pro Max
 - iPhone 15
 - iPhone 15 Plus
 - iPhone 15 Pro
