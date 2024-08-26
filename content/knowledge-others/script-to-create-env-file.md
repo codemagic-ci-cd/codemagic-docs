@@ -26,6 +26,6 @@ The variables with $ in the above script can be imported from Codemagic UI. For 
 `For Windows`, Powershell requires a different command for this case:
 
 {{< highlight powershell "style=rrt">}}
-cmd.exe /c "echo "BLA_BLA=$env:VAR_NAME" > .env"
+cmd.exe /c "echo "MY_VAR=$env:VAR_NAME" > .env"
 {{< /highlight >}}
 
