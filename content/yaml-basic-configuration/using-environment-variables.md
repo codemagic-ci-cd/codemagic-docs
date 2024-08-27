@@ -115,6 +115,32 @@ defaultConfig {
 
 {{< /tab >}}
 
+{{< tab header="Flutter" >}}
+{{<markdown>}}
+
+1. Add your key as an environment variable with the name `MAPS_API_KEY`
+2. In the build step, add `--dart-define` to your build script
+
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Flutter build ipa
+      script: | 
+        flutter build ipa --release \
+          --dart-define=MAPS_API_KEY=$MAPS_API_KEY
+{{< /highlight >}}
+
+3. Within your Flutter Application, use `String.fromEnvironment` to retrieve these variables in your Dart Code.
+
+{{< highlight Dart "style=paraiso-dark">}}
+void main() {
+  final secret = String.fromEnvironment('MAPS_API_KEY');
+  print(secret);
+}
+{{< /highlight >}}
+{{</markdown>}}
+
+{{< /tab >}}
+
 {{< tab header="iOS (Swift)" >}}
 {{<markdown>}}
 1. Add your key as an environment variable with the name `MAPS_API_KEY`
@@ -145,4 +171,3 @@ GMSServices.provideAPIKey(Bundle.main.object(forInfoDictionaryKey: "MAPS_API_KEY
 {{< /tab >}}
 
 {{< /tabpane >}}
-
