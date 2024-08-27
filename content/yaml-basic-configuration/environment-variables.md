@@ -56,6 +56,8 @@ Here is a list of the built-in environment variables with brief explanations:
 | CM_ARTIFACT_LINKS       | Information about generated build artifacts that is available in post-publishing step. Read more about it below.                                                |
 | CM_WORKFLOW_NAME        | Name of the workflow that is currently being built       
 | CM_ENV                  | Environment file that sets/overrides environment variables at build time
+| CM_TRIGGER_SOURCE                  | The source that triggered the build. Values are `webhook`, `schedule`, or `api`
+| CM_BUILD_STARTED_BY                  | The email of the user who started the build if `CM_TRIGGER_SOURCE = api`
 
 ### Artifact links
 
