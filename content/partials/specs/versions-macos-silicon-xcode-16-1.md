@@ -8,8 +8,12 @@ weight: 18
 
 ## Hardware
 
-- VM on Mac mini M1 `3.2GHz Quad Core / 8GB`
-- VM on Mac mini M2 `3.5GHz Quad Core / 8GB`
+- Mac mini M2 `3.5GHz 8-Core / 16GB`
+
+Available on request:
+- Mac mini M2 Pro
+- Mac Studio M2 Max
+- Mac Studio M2 Ultra
 
 ## System
 
