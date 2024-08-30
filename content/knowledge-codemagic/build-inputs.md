@@ -10,6 +10,10 @@ Build inputs are customizable parameters you can define within your workflow to 
 
 Inputs are workflow-specific and are defined in `codemagic.yaml` under the `inputs` mapping (see the [example](#minimal-example) below). The started workflow receives specified input values in the `inputs` context, i.e. `${{ inputs.inputId }}` is replaced with the value passed to input with identifier `inputId`.
 
+{{<notebox>}}
+The Build inputs feature is only available for workflows configured using `codemagic.yaml`.
+{{</notebox>}}
+
 ### Minimal example
 
 This example configures one input with the ID `name`. Unless given another value when starting a build, `name` defaults to `Codemagic`.
