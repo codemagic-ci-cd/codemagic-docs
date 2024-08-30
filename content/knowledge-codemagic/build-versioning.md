@@ -117,6 +117,10 @@ In order to allow Codemagic to connect to your App Store Connect account, you ne
 
 #### Configuring the API access variables
 
+{{<notebox>}}
+If you have already set up [App Store Connect publishing](../yaml-publishing/app-store-connect/) integration using a **codemagic.yaml** configuration you do **not** need to add separate environment variables as shown below.
+{{</notebox>}}
+
 Configure the following environment variables if they are missing from your Codemagic UI:
 
 - `APP_STORE_CONNECT_KEY_IDENTIFIER`
