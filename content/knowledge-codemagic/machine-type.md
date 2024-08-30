@@ -18,9 +18,9 @@ workflows:
     instance_type: mac_mini_m2
 ```
 
-{{<notebook>}}
+{{<notebox>}}
 If builds are triggered through Codemagic REST API and **instance_type** parameter is specified in the cURL request, it will override **instance_type** value in **codemagic.yaml**
-{{</notebook>}}
+{{</notebox>}}
 
 Keywords for instance types can be found [here](https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/#instance-type).
 
