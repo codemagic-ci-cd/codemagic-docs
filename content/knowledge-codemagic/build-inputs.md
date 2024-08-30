@@ -3,7 +3,7 @@ title: Build inputs
 description: Specify optional inputs that are passed to the workflow when starting a build
 weight: 3
 ---
-
+<p>
 {{<notebox>}}
 The Build inputs feature is only available for workflows configured using `codemagic.yaml`.
 {{</notebox>}}
