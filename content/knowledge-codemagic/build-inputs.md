@@ -4,15 +4,15 @@ description: Specify optional inputs that are passed to the workflow when starti
 weight: 3
 ---
 
+{{<notebox>}}
+The Build inputs feature is only available for workflows configured using `codemagic.yaml`.
+{{</notebox>}}
+
 ## Overview
 
 Build inputs are customizable parameters you can define within your workflow to make it more adaptable to different scenarios. With build inputs, you can create a single workflow and run it with different configurations by providing the values for inputs when starting a build for the workflow. For example, you can use build inputs to determine whether to build the workflow for test or release purposes or which app flavor to build. This eliminates the need to create multiple similar workflows with specific hardcoded values, making the workflow more reusable and dynamic.
 
 Inputs are workflow-specific and are defined in `codemagic.yaml` under the `inputs` mapping (see the [example](#minimal-example) below). The started workflow receives specified input values in the `inputs` context, i.e. `${{ inputs.inputId }}` is replaced with the value passed to input with identifier `inputId`.
-
-{{<notebox>}}
-The Build inputs feature is only available for workflows configured using `codemagic.yaml`.
-{{</notebox>}}
 
 ### Minimal example
 
