@@ -149,7 +149,7 @@ The instance types and hardware specifications can be found below.
 | Linux VM                 | 8 vCPUs, 32 GB memory                                                           |
 | Windows VM               | 8 vCPUs, 32 GB memory  
 
-If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Please note that Android emulators are not available on macOS M1 or M2 VMs.
+If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Please note that Android emulators are not available on macOS M1 or M2 VMs due to the Apple Virtualization Framework not supporting nested virtualization.
 
 If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/contact/).
 
