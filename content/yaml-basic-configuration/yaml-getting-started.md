@@ -187,7 +187,7 @@ The main sections in each workflow are described below.
 
 <br>
 {{<notebox>}}
-**Note:** The `linux_x2` and `windows_x2` are only available for teams and users with [billing enabled](../billing/billing/). `mac_mini_m2` is only available on fixed price annual plan. 
+**Note:** Instance types `linux_x2`, `windows_x2` and `mac_mini_m2` are only available for teams and users with [billing enabled](../billing/billing/). 
 {{</notebox>}}
 
 ### Build inputs

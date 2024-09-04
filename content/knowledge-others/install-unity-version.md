@@ -174,7 +174,7 @@ Use the Unity version you installed on the machine:
 workflows:
   unity-android-workflow:
       name: Unity Android Workflow
-      instance_type: mac_pro
+      instance_type: linux_x2
       max_build_duration: 120
       environment:
         groups:
@@ -187,8 +187,7 @@ workflows:
           BUILD_SCRIPT: BuildAndroid
           PACKAGE_NAME: "io.codemagic.unity" # <-- Put your package name here e.g. com.domain.myapp
         android_signing:
-        - unity_test
-        xcode: latest
+          - unity_test
       triggering:
         events:
           - push
