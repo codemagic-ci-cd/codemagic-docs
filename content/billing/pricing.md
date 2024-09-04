@@ -74,7 +74,7 @@ If you have already created a Team in the Codemagic web app, you can upgrade to 
 3. Click on your Team account.
 4. Click on the **Enable billing** button.
 5. Enter your **credit card** details and **company information**.
-6. Once you have entered your details, pay-as-you-go billing will be enabled. To upgrade to the annual Professional plan, click on the **Upgrade** button and follow the instructions to subscribe to the Professional plan.
+6. Once you have entered your details, pay-as-you-go billing will be enabled. To upgrade to the Fixed Annual plan, click on the **Upgrade** button and follow the instructions to subscribe to the Fixed Annual plan.
 
 If you require additional concurrencies or have any other questions about the annual plan, including requests for **macOS M2 instances**,  please contact us [here](https://codemagic.io/contact/).
 
@@ -128,7 +128,7 @@ Build history and artifact retention time depend on your account type and pricin
 |---------------|-------------------|
 | Personal accounts | Build history and artifacts of apps on the personal account are stored in Codemagic for **30 days** after which they are deleted. | 
 | Teams on Pay as you go plan | Build history and artifacts of apps on the team account with Pay as you go pricing are stored in Codemagic for **60 days** after which they are deleted.| 
-| Teams on Professional or Enterprise plan | Unlimited | 
+| Teams on Fixed Annual or Enterprise plan | Unlimited | 
 
 ### Backing up build artifacts
 
