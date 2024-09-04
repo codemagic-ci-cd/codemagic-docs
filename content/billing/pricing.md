@@ -22,18 +22,18 @@ Postpaid minutes are billed on the first day of the following month in which the
 
 Usage on macOS M1 VM that exceeds 500 minutes is charged at the rate shown below.
 
-Builds on macOS Intel VM, Linux, and Windows do not have free build minutes. The per-minute pricing for each instance type is shown below.
+Builds on Linux and Windows do not have free build minutes. The per-minute pricing for each instance type is shown below.
 
 | **Item**                     | **Price**                          |
 | ---------------------------- | ---------------------------------  |
-| macOS (M1 & Intel) VM        | $0.095 / minute                    |
+| macOS (M1, M2) VM        | $0.095 / minute                    |
 | Linux & Windows VMs          | $0.045 / minute                    |
 
 ## Pricing for Teams
 
 ### 1. Pay-as-you-go
 
-For teams, all build minutes using macOS M1 VM, macOS Intel VM, and Linux VM are charged at the rates shown below. 
+For teams, all build minutes using macOS M1 VM, macOS M2 VM, and Linux VM are charged at the rates shown below. 
 
 Each extra build concurrency allows running an additional build in parallel. For example, adding two extra build concurrencies allows running a total of three builds in parallel. 
 
@@ -44,14 +44,11 @@ Each additional concurrency is $49/month and you will be billed for each concurr
 
 | **Item**                     | **Price**                         |
 | ---------------------------- | --------------------------------- | 
-| macOS (M1 & Intel) VM        | $0.095 / minute                   |                                                                                                                                   
+| macOS (M1, M2) VM        | $0.095 / minute                   |                                                                                                                                   
 | Linux & Windows VMs          | $0.045 / minute                   |                                                                       
 | Extra build concurrency      | $49 / month                       | 
 
-Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Intel and Apple Silicon M2), Linux, and Windows instances. 
-
-
-macOS M2 is not currently available as a pay-as-you-go instance type but is available for the fixed annual plan as described below.
+Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M2), Linux, and Windows instances. 
 
 ### 2. Fixed Annual Plan
 
@@ -149,11 +146,10 @@ The instance types and hardware specifications can be found below.
 | ------------------------ | --------------------------------------------------------------------------------|
 | macOS M2 VM              | Mac mini M2 8-core CPU / 8GB RAM                                                |
 | macOS M1 VM              | 3.2GHz Quad Core / 8GB                                                          |
-| macOS Intel VM           | 3.7GHz Quad Core / 32GB                                                         |
 | Linux VM                 | 8 vCPUs, 32 GB memory                                                           |
 | Windows VM               | 8 vCPUs, 32 GB memory  
 
-If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs. Also, please note that Android emulators are not available on macOS M1 or M2 VMs.
+If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Please note that Android emulators are not available on macOS M1 or M2 VMs due to the Apple Virtualization Framework not supporting nested virtualization.
 
 If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/contact/).
 

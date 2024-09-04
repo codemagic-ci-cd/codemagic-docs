@@ -2140,8 +2140,8 @@ ul.-also-see.-also-see.-also-see > li > em {
 <p>Define a section at the top of the .yaml file and reuse it later in different workflows.</p>
 
 <pre><code class="language-yaml">definitions:
-  instance_mac_pro: &amp;instance_mac_pro
-    instance_type: mac_pro
+  instance_mac_mini_m2: &amp;instance_mac_mini_m2
+    instance_type: mac_mini_m2
     max_build_duration: 120
   env_versions: &amp;env_versions
     flutter: stable
@@ -2159,7 +2159,7 @@ ul.-also-see.-also-see.-also-see > li > em {
 <pre data-line="4,6,8"><code class="language-yaml">workflows:
   ios-release:
     name: iOS release
-    &lt;&lt;: *instance_mac_pro
+    &lt;&lt;: *instance_mac_mini_m2
     environment:
       &lt;&lt;: *env_versions
     scripts:
