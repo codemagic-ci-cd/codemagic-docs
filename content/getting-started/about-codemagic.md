@@ -7,7 +7,7 @@ aliases:
   - /notes/release-notes/ 
 ---
 
-Codemagic is a cloud-based Continuous Integration/Continuous Delivery (CI/CD) product specifically designed for mobile developers building apps with Flutter, React Native, native iOS, native Android, Unity, Kotlin Multiplatform Mobile, and Ionic. Codemagic's API and versatile workflow configurations also provide a great platform for mobile development teams who are White labeling their apps.
+Codemagic is a cloud-based Continuous Integration/Continuous Delivery (CI/CD) product specifically designed for mobile developers building apps with Flutter, React Native, native iOS, native Android, Unity, Kotlin Multiplatform Mobile,.NET MAUI and Ionic. Codemagic's API and versatile workflow configurations also provide a great platform for mobile development teams who are White labeling their apps.
 
 ## Automatic build and deployment
 Codemagic automates the process of app building, testing, and deployment to app stores such as the Apple App Store, Google Play, Microsoft Store, and Huawei App Gallery. New builds can be triggered when code is pushed to your repository, tags are added, or pull requests are merged. You can configure multiple workflows to make the app available to your dev team, distribute the latest build to your test team, or publish your app to production. 
