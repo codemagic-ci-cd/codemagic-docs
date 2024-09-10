@@ -19,7 +19,7 @@ Available on request:
 
 - System version `macOS 14.6.1 (23G93)`
 - Kernel version `Darwin 23.6.0`
-- Disk `294GB (Free Space: 139GB)`
+- Disk `294GB (Free Space: 138GB)`
 
 ## Pre-installed tools
 
@@ -35,7 +35,7 @@ Available on request:
 - ew-cli `0.11.0`
 - fastlane `2.222.0`
 - firebase `11.21.0`
-- flutter `3.24.1 ($HOME/programs/flutter)`
+- flutter `3.24.2 ($HOME/programs/flutter)`
 - gem `3.5.17`
 - gh `2.48.0`
 - git `2.44.0`
@@ -77,7 +77,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 16.0 (16A5230g) `/Applications/Xcode-16.0.app`, also selected when specifying `16` in Xcode version settings
+- 16.0 (16A242) `/Applications/Xcode-16.0.app`, also selected when specifying `16` in Xcode version settings
 
 ### Runtimes
 
@@ -94,6 +94,8 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
+- Apple Watch Series 10 (42mm)
+- Apple Watch Series 10 (46mm)
 - Apple Watch Series 9 (41mm)
 - Apple Watch Series 9 (45mm)
 - Apple Watch Ultra 2 (49mm)
@@ -107,4 +109,8 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - iPhone 15 Plus
 - iPhone 15 Pro
 - iPhone 15 Pro Max
+- iPhone 16
+- iPhone 16 Plus
+- iPhone 16 Pro
+- iPhone 16 Pro Max
 - iPhone SE (3rd generation)
