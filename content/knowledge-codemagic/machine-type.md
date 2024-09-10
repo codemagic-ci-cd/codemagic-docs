@@ -18,6 +18,10 @@ workflows:
     instance_type: mac_mini_m2
 ```
 
+{{<notebox>}}
+If builds are triggered through Codemagic REST API and **instance_type** parameter is specified in the cURL request, it will override **instance_type** value in **codemagic.yaml**
+{{</notebox>}}
+
 Keywords for instance types can be found [here](https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/#instance-type).
 
 For Flutter projects configured via the Flutter workflow editor, the build machine type can be selected in Workflow settings > Change instance.
