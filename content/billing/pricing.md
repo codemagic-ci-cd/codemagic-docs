@@ -33,7 +33,7 @@ Builds on Linux and Windows do not have free build minutes. The per-minute prici
 
 ### 1. Pay-as-you-go
 
-For teams, all build minutes using macOS M2 VM, and Linux VM are charged at the rates shown below. 
+For teams, all build minutes using macOS M2 VM and Linux VM are charged at the rates shown below. 
 
 Each extra build concurrency allows running an additional build in parallel. For example, adding two extra build concurrencies allows running a total of three builds in parallel. 
 
