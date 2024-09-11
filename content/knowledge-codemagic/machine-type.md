@@ -28,9 +28,8 @@ For Flutter projects configured via the Flutter workflow editor, the build machi
 
 The following build machine types are provided by Codemagic:
 
-1. Apple silicon M1 Mac mini
-2. Apple silicon M2 Mac mini
-3. Linux
-4. Windows
+1. Apple silicon M2 Mac mini
+2. Linux
+3. Windows
 
 For more information about the machine specifications, please check [this page](https://docs.codemagic.io/specs/versions-macos/).

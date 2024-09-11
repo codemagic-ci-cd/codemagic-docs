@@ -64,7 +64,7 @@ APIs for managing builds are currently available for developers to preview. Duri
       "flutter": "v1.12.13+hotfix.9"
     }
   },
-  "instanceType": "mac_mini_m1"
+  "instanceType": "mac_mini_m2"
 }
 {{< /highlight >}}
 
