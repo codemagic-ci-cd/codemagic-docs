@@ -299,7 +299,7 @@ Your final `codemagic.yaml` file should look something like this:
 workflows:
   android-client-release:
     name: Android client release
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     labels:
       - ${CLIENT_ID} # Helpful when you open your Codemagic's builds page 
     environment:
@@ -346,7 +346,7 @@ workflows:
 workflows:
   ios-client-release:
     name: iOS client release
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     labels:
       - ${CLIENT_ID} # Helpful when you open your Codemagic's builds page  
     environment:

@@ -282,7 +282,7 @@ workflows:
   maui-ios:
     name: Dotnet MAUI iOS
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     integrations:
       app_store_connect: codemagic-api
     environment:
@@ -345,7 +345,7 @@ workflows:
   maui-android:
     name: Dotnet MAUI Android
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     environment:
       android_signing:
         - codemagic-key

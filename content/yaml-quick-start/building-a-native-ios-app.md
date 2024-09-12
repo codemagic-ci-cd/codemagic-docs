@@ -85,7 +85,7 @@ workflows:
   ios-native-workflow:
     name: iOS Native
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     integrations:
       app_store_connect: codemagic
     environment:

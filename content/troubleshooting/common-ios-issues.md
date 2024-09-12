@@ -147,14 +147,14 @@ This issue is known to be fixed on the `master` channel.
 
 
 
-### Mac M1 issues
+### Mac M2 issues
 
 ###### Builds not starting
 
-Builds not starting at all even though the team has access to `mac_mini_m1` instance.
+Builds not starting at all even though the team has access to the `mac_mini_m2` instance.
 
 **Solution**:
-This error occurs on M1 machines when the `xcode` property is not set to version 13.x. Please configure your workflow to use Xcode version 13 or above.
+This error occurs on M2 machines when the `xcode` property is set to a version that is not supported. Please configure your workflow to use Xcode version 15 or above.
 
 
 ###### Builds failing intermittently
@@ -262,7 +262,7 @@ The solution is to update the path to your project. In order to target apps insi
 workflows:
   default-workflow:
     name: Default workflow
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     max_build_duration: 120
     # Specify path to the app folder like this
     working_directory: ios/path-to-your-project

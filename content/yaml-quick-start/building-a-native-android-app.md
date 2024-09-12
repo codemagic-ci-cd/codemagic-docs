@@ -88,7 +88,7 @@ workflows:
   native-android:
     name: Native Android
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     environment:
       android_signing:
         - keystore_reference

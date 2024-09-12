@@ -118,7 +118,7 @@ workflows:
     labels:
       - QA
       - ${TENANT_NAME}
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     max_build_duration: 60
     inputs: # more information about build inputs:https://docs.codemagic.io/knowledge-codemagic/build-inputs/
       name: # input ID
@@ -163,7 +163,7 @@ You can use `codemagic.yaml` to define several workflows for building a project.
 workflows:
   my-workflow:                   # workflow ID
     name: My workflow name       # workflow name displayed in Codemagic UI
-    instance_type: mac_mini_m1   # machine instance type
+    instance_type: mac_mini_m2   # machine instance type
     max_build_duration: 60       # build duration in minutes (min 1, max 120)
     environment:
     cache:
@@ -180,7 +180,6 @@ The main sections in each workflow are described below.
 `instance_type:` specifies the [build machine type](../specs/machine-type) to use for the build. The supported build machines are:
 | **Instance Type** | **Build Machine** |
 | ------------- | -----------------  |
-| `mac_mini_m1`    | Apple silicon M1 Mac mini |
 | `mac_mini_m2`    | Apple silicon M2 Mac mini |
 | `linux_x2`  | Linux |
 | `windows_x2`  | Windows |

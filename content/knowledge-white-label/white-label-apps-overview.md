@@ -101,14 +101,14 @@ In addition to unit and integration testing, developers and QA teams still want 
 
 Even though it’s possible to build both iOS and Android apps on macOS machines, we offer Linux machines as well. If Linux machines are preferred for Android builds, then you should create separate workflows for iOS and Android builds and set the `instance_type` property in your *codemagic.yaml*. 
 
-- For iOS, use the latest Apple silicon M1 machine where possible. Set the instance type to `mac_mini_m1` in the `codemagic.yaml` configuration file.
+- For iOS, use the latest Apple silicon machine where possible. Set the instance type to `mac_mini_m2` in the `codemagic.yaml` configuration file.
 - For Android builds, use premium Linux machines. Set the instance type to `linux_x2` in the `codemagic.yaml` configuration file.
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
   ios-dev-release:
     name: iOS dev release
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
   ....
 
   android-dev-release:

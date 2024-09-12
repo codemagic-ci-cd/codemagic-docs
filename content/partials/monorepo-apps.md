@@ -12,7 +12,7 @@ To begin with, **codemagic.yaml** file must be created in the root directory of 
 workflows:
   default-workflow:
     name: Default workflow
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     max_build_duration: 60
     environment:
       flutter: stable
