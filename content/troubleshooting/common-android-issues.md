@@ -72,10 +72,10 @@ Note: You'll have to completely upgrade all dependencies that require JCenter to
 {{</notebox>}}
 
 
-### Java heap space out of memory error for M1 builds
+### Java heap space out of memory error
 
 ###### Description
-Builds fail on M1 machines with the below error:
+Builds fail with the below error:
 
     ERROR:: R8: java.lang.OutOfMemoryError: Java heap space
     FAILURE: Build failed with an exception.
