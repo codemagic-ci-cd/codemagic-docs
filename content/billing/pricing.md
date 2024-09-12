@@ -62,7 +62,7 @@ The Codemagic annual plan gives you a fixed-price plan with the following benefi
 * In-app chat support
 * Additional concurrencies are **$1500/year**. 
 
-The fixed monthly and annual plans can only be paid for with a credit card.
+The fixed annual plan can only be paid with a credit card.
 
 If you have already created a Team in the Codemagic web app, you can upgrade to the annual plan as follows:
 
