@@ -17,9 +17,9 @@ Available on request:
 
 ## System
 
-- System version `macOS 14.6.1 (23G93)`
+- System version `macOS 14.7 (23H124)`
 - Kernel version `Darwin 23.6.0`
-- Disk `294GB (Free Space: 138GB)`
+- Disk `294GB (Free Space: 139GB)`
 
 ## Pre-installed tools
 
@@ -35,7 +35,7 @@ Available on request:
 - ew-cli `0.11.0`
 - fastlane `2.222.0`
 - firebase `11.21.0`
-- flutter `3.24.2 ($HOME/programs/flutter)`
+- flutter `3.24.3 ($HOME/programs/flutter)`
 - gem `3.5.17`
 - gh `2.48.0`
 - git `2.44.0`
@@ -77,7 +77,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 16.0 (16A242) `/Applications/Xcode-16.0.app`, also selected when specifying `16` in Xcode version settings
+- 16.0 (16A242d) `/Applications/Xcode-16.0.app`, also selected when specifying `16` in Xcode version settings
 
 ### Runtimes
 
