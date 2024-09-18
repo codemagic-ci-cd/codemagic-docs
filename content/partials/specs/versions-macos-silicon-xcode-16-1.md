@@ -17,9 +17,9 @@ Available on request:
 
 ## System
 
-- System version `macOS 14.6.1 (23G93)`
-- Kernel version `Darwin 23.6.0`
-- Disk `294GB (Free Space: 152GB)`
+- System version `macOS 15.0 (24A335)`
+- Kernel version `Darwin 24.0.0`
+- Disk `294GB (Free Space: 149GB)`
 
 ## Pre-installed tools
 
@@ -35,7 +35,7 @@ Available on request:
 - ew-cli `0.11.0`
 - fastlane `2.222.0`
 - firebase `11.21.0`
-- flutter `3.24.0 ($HOME/programs/flutter)`
+- flutter `3.24.3 ($HOME/programs/flutter)`
 - gem `3.5.17`
 - gh `2.48.0`
 - git `2.44.0`
@@ -51,7 +51,7 @@ Available on request:
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
-- ssh `9.7p1`
+- ssh `9.8p1`
 - sudo `1.9.13p2`
 - swiftgen `6.6.3`
 - tar `3.5.3`
@@ -77,14 +77,14 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 16.1 (16B5001e) `/Applications/Xcode-16.1.app`, also selected when specifying `edge` in Xcode version settings
+- 16.1 (16B5014f) `/Applications/Xcode-16.1.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
 - iOS 18.1
-- tvOS 18.0
-- visionOS 2.0
-- watchOS 11.0
+- tvOS 18.1
+- visionOS 2.1
+- watchOS 11.1
 
 ### Devices
 
@@ -94,8 +94,8 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
-- Apple Watch Series 9 (41mm)
-- Apple Watch Series 9 (45mm)
+- Apple Watch Series 10 (42mm)
+- Apple Watch Series 10 (46mm)
 - Apple Watch Ultra 2 (49mm)
 - iPad (10th generation)
 - iPad Air 11-inch (M2)
@@ -107,4 +107,8 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - iPhone 15 Plus
 - iPhone 15 Pro
 - iPhone 15 Pro Max
+- iPhone 16
+- iPhone 16 Plus
+- iPhone 16 Pro
+- iPhone 16 Pro Max
 - iPhone SE (3rd generation)
