@@ -19,6 +19,7 @@ weight: 2
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
+- Android NDK `25.2.9519653`
 - aws `2.8.9`
 - curl `7.68.0`
 - docker `24.0.2`
