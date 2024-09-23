@@ -28,7 +28,7 @@ You can add new testers and remove existing ones anytime.
 
 Note that you will also need to include the tester group in your codemagic.yaml workflow to publish builds to that group, see more about that [in the following section](#configuring-build-delivery-to-tester-groups).
 
-## Configuring build delivery to tester groups
+## Updating workflows to send new build versions
 
 In order to send testers publishing emails with app artifacts, the names of the tester groups must be specified in the `publishing` section of `codemagic.yaml` as follows:
 
