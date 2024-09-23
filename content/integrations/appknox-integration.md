@@ -33,12 +33,14 @@ Signing up with Appknox [here](https://www.appknox.com/) is required to be able 
     script: curl -L https://github.com/appknox/appknox-go/releases/latest/download/appknox-`uname -s`-x86_64 > /usr/local/bin/appknox && chmod +x /usr/local/bin/appknox 
 {{< /highlight >}}
 
+Make sure that the following script is executed in the post-build script (after your app binary is built):
+
 {{< highlight yaml "style=paraiso-dark">}}
   - name: Upload binary to Appknox
-    script: appknox upload /Users/builder/clone/build/ios/ipa/Codemagic_Native_iOS.ipa
+    script: appknox upload PATH_TO_APP_BINARY
 {{< /highlight >}}
 
-**It is also possible to check if the scanner detected any vulnerability risk levels by executing the following command**
+It is also possible to check if the scanner detected any vulnerability risk levels by executing the following command:
 
 {{< highlight yaml "style=paraiso-dark">}}
   - name: Check vulnerability risk level
