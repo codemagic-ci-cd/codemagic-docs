@@ -38,7 +38,7 @@ Signing up with Appknox [here](https://www.appknox.com/) is required to be able 
     script: appknox upload /Users/builder/clone/build/ios/ipa/Codemagic_Native_iOS.ipa
 {{< /highlight >}}
 
-**If necessary, it is possible to check if scanner detected any vulnerability risk levels by executing the following command**
+**It is also possible to check if the scanner detected any vulnerability risk levels by executing the following command**
 
 {{< highlight yaml "style=paraiso-dark">}}
   - name: Check vulnerability risk level
