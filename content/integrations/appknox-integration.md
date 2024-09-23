@@ -25,7 +25,7 @@ Signing up with Appknox [here](https://www.appknox.com/) is required to be able 
       - appknox_credentials
 {{< /highlight >}}
 
-8. Adding the following scripts in **codemagic.yaml** will allow you to upload your application to the Appknox environment:
+8. Adding the following scripts in **codemagic.yaml** will allow you to start the security scanning process in the the Appknox environment:
 
 
 {{< highlight yaml "style=paraiso-dark">}}
