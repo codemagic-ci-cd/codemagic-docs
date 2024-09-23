@@ -30,20 +30,17 @@ Signing up with Appknox [here](https://www.appknox.com/) is required to be able 
 
 {{< highlight yaml "style=paraiso-dark">}}
   - name: Appknox binary installation
-    script: |
-        curl -L https://github.com/appknox/appknox-go/releases/latest/download/appknox-`uname -s`-x86_64 > /usr/local/bin/appknox && chmod +x /usr/local/bin/appknox 
+    script: curl -L https://github.com/appknox/appknox-go/releases/latest/download/appknox-`uname -s`-x86_64 > /usr/local/bin/appknox && chmod +x /usr/local/bin/appknox 
 {{< /highlight >}}
 
 {{< highlight yaml "style=paraiso-dark">}}
   - name: Upload binary to Appknox
-    script: |
-        appknox upload /Users/builder/clone/build/ios/ipa/Codemagic_Native_iOS.ipa
+    script: appknox upload /Users/builder/clone/build/ios/ipa/Codemagic_Native_iOS.ipa
 {{< /highlight >}}
 
 **If necessary, it is possible to check if scanner detected any vulnerability risk levels by executing the following command**
 
 {{< highlight yaml "style=paraiso-dark">}}
   - name: Check vulnerability risk level
-    script: |
-      appknox cicheck <file-id> --risk_threshold <low|medium|high|critical>
+    script: appknox cicheck <file-id> --risk_threshold <low|medium|high|critical>
 {{< /highlight >}}
