@@ -35,10 +35,10 @@ Signing up with Appknox [here](https://www.appknox.com/) is required to be able 
 
 {{< highlight yaml "style=paraiso-dark">}}
   - name: Upload binary to Appknox
-    script: appknox upload /Users/builder/clone/build/ios/ipa/Codemagic_Native_iOS.ipa
+    script: appknox upload PATH_TO_APP_BINARY
 {{< /highlight >}}
 
-**It is also possible to check if the scanner detected any vulnerability risk levels by executing the following command**
+It is also possible to check if the scanner detected any vulnerability risk levels by executing the following command:
 
 {{< highlight yaml "style=paraiso-dark">}}
   - name: Check vulnerability risk level
