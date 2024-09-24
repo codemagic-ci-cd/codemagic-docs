@@ -5,7 +5,7 @@ weight: 3
 aliases:
 ---
 
-Tester groups is a convenient way to manage the testers for your app in the Codemagic UI and distribute app builds to a group of emails outside Codemagic. Your confirmed testers will receive an email with app artifacts on every successful build of the workflow.
+Tester groups are a convenient way to manage testers for your app in the Codemagic UI and distribute app builds to a group of email addresses outside of Codemagic. Testers who have confirmed their email addresses will receive an email with the app artifacts after every successful build of the workflow.
 
 {{<notebox>}}
 Note that tester groups are only available for **teams** and apps using the `codemagic.yaml` configuration.
