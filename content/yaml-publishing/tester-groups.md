@@ -40,7 +40,7 @@ Tester groups receive an email only when the workflow builds successfully. If th
 
 Each invited tester will receive an email to confirm their consent to receive build emails with app artifacts. Only confirmed testers will receieve emails with app artifacts. 
 
-In th UI, testers will have one of the following statuses:
+In the UI, testers will have one of the following statuses:
 
 * **"Active"** -- tester is eligible to receieve emails on successful app builds.
 * **"Pending"** -- tester has not confirmed the invitation and will not receive any further emails until they confirm.
