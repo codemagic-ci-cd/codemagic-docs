@@ -15,7 +15,7 @@ Clicking **Quick Launch** displays a configuration popup for selecting the simul
 
 When the simulator is ready for use, you'll see the URL to access the simulator printed in the logs under the "Running iOS simulator" step as well as a link to open the simulator on the left panel of the build overview page. The simulator session remains active for a maximum of **20 minutes** or until you cancel the build. 
 
-As the session ends, the virtual machine running the build is wiped clean and destroyed.
+Once the session ends, the virtual machine running the build is wiped clean and destroyed.
 
 ## Build minutes usage
 
