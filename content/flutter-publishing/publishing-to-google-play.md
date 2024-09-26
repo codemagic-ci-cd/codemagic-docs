@@ -3,9 +3,9 @@ description: Deploy a Flutter app to Google Play using the Flutter workflow edit
 title: Google Play publishing with Flutter workflow editor
 linkTitle: Google Play
 weight: 2
-aliases: 
-  - /publishing/publishing-to-google-play
-  - /flutter-publishing/publishing-to-google-play
+aliases:
+   - /publishing/publishing-to-google-play
+   - /flutter-publishing/publishing-to-google-play
 ---
 
 Codemagic enables you to automatically publish your app to the **internal**, **alpha**, **beta** and **production** tracks on Google Play. To do so, you must first [set up Android code signing](../code-signing/android-code-signing/ 'Android code signing') and then configure publishing to Google Play.
@@ -24,38 +24,66 @@ Codemagic enables you to automatically publish your app to the **internal**, **a
 Before releasing the app to Google Play, ensure that it meets [Google Play's best practices guidelines](https://developer.android.com/distribute/best-practices/launch/).
 
 ## Setting up Google Play API access
+To allow Codemagic to publish applications to Google Play, it is necessary to set up access using Google Play API.
 
-1. To allow Codemagic to publish applications to Google Play, it is necessary to set up access using Google Play API. 
+1. Open your app's project on the [Google Cloud Console](https://console.cloud.google.com/) (or create a new one [here](https://console.cloud.google.com/projectcreate) if necessary).
 
-2. In the Google Cloud Console, navigate to **Dashboard > IAM and Admin** and click **Create Service Account**.<br><br>
-![Google play start](../uploads/gcp_service_user.png)
+2. Enable the [Google Play Android Developer API](https://console.developers.google.com/apis/api/androidpublisher.googleapis.com/).
 
-3. In step 1, fill in the **Service account details** and click **Create**. The name of the service account will allow you to identify it among other service accounts you may have created.
+   ![Google Cloud 1](../uploads/2024/9/google_cloud_1.png)
 
-4. In step 2, click the **Select a role** dropdown menu and choose the role. In this example we will use **Service Account User** as the desired role. Start typing the name of the role that you wish to add.<br><br>
-![Google cloud editor](../uploads/google_cloud_two.png)
+3. Create a new service account from **CREATE CREDENTIALS** on the [Credentials menu page](https://console.cloud.google.com/apis/credentials).
 
-5. In step 3, you can leave the fields blank and click **Done**.
+   ![Google Cloud 2](../uploads/2024/9/google_cloud_2.png)
 
-6. In the list of created service accounts, locate the account you just created. Copy its email address, which will be required later. Then, click on the menu in the **Actions** column, then click **Manage keys**.<br><br>
-![Google cloud key](../uploads/google_cloud_three.png)
+4. In Step 1, enter the account name and description.
 
-7. In the Keys section, click **Add Key > Create new key**. Make sure that the key type is set to `JSON` and click **Create**. Save the key file in a secure location to have it available.<br><br>
-![Google cloud json](../uploads/google_cloud_four.png)
+   ![Google Cloud 3](../uploads/2024/9/google_cloud_3.png)
 
-8. Back in **Google Play Console**, navigate to **Users and Permissions** and click **Invite new users**. Enter the email id which you copied in step 6.<br>
+5. In Step 2, select the **Service Accounts > Service Account User** role.
 
-9. Navigate to **Users and Permissions**. Click on the invited user and go to **App Permissions**. Add the desired applications to grant access.<br><br>
-![Google play selected](../uploads/app-permissions.png)
+   ![Google Cloud 4](../uploads/2024/9/google_cloud_4.png)
 
-10. Ensure that you check the Releases section. You can leave the rest of the settings as default and click **Apply** (financial data permissions can be left blank).<br><br> 
-![Google play apply](../uploads/s4.png)
+6. Step 3 is unnecessary, so complete it by clicking **Done**.
 
-11. On the **Account permissions** tab, leave everything as it is. (There is NO need to grant the service account **Admin** access).
+   ![Google Cloud 5](../uploads/2024/9/google_cloud_5.png)
 
-12. Finally, click **Invite user** to finish setting up the service account on Google Play. In the Invite user window, the Email address field is pre-filled. Under Permissions, the default ones are already selected. You can go with these. Click Invite user at the bottom of the page.<br><br>
-![Google play all](../uploads/s5.png)
+7. Open the edit page from the **Actions** column of the created service account.
 
+   ![Google Cloud 6](../uploads/2024/9/google_cloud_6.png)
+
+8. From the **KEYS** tab page, click on **ADD KEY > Create new key**.
+
+   ![Google Cloud 7](../uploads/2024/9/google_cloud_7.png)
+
+9. Select **JSON** as the Key type and create a new key.
+
+   ![Google Cloud 8](../uploads/2024/9/google_cloud_8.png)
+
+10. The private key for this service account will be downloaded. Please store it in a safe place as it will be necessary later for the Codemagic configuration.
+
+    ![Google Cloud 9](../uploads/2024/9/google_cloud_9.png)
+
+11. Once you've completed this, let's move to the [Google Play Console](https://play.google.com/console).
+12. Click on **Invite new users** on the **Users and permissions** page.
+
+    ![Google Play 1](../uploads/2024/9/google_play_console_1.png)
+
+13. For the **Email address**, enter the one for the service account you just created.
+
+    ![Google Play 2](../uploads/2024/9/google_play_console_2.png)
+
+14. From the **Add app**, select the target app.
+
+    ![Google Play 3](../uploads/2024/9/google_play_console_3.png)
+
+15. Grant permissions for the **Releases** section (the rest of the settings can be left as default), and click **Apply**.
+
+    ![Google Play 4](../uploads/2024/9/google_play_console_4.png)
+
+16. invite the service account by clicking **Invite user**.
+
+    ![Google Play 5](../uploads/2024/9/google_play_console_5.png)
 ## Setting up publishing to Google Play on Codemagic
 
 Once you make all the preparations as described [above](../publishing/publishing-to-google-play/#requirements) and configure publishing to Google Play, Codemagic will automatically distribute the app to Google Play every time you build the workflow.
@@ -78,7 +106,7 @@ Once you make all the preparations as described [above](../publishing/publishing
 7. In case you want to release a [staged version](https://support.google.com/googleplay/android-developer/answer/6346149?hl=en) of your application, which reaches only a fraction of users, set **Rollout fraction** to a value between 0 and 1. To release to everyone, leave the value empty.
 8. If you are getting the next error: `Changes cannot be sent for review automatically. Please set the query parameter changesNotSentForReview to true`, mark the checkbox **Do not send changes for review**.
 
-    But if the checkbox is marked and the app is sent for review automatically, you will get the error `Changes are sent for review automatically. The query parameter changesNotSentForReview must not be set.`
+   But if the checkbox is marked and the app is sent for review automatically, you will get the error `Changes are sent for review automatically. The query parameter changesNotSentForReview must not be set.`
 9. In case you want to upload the artifacts generated in the build to Google Play as a draft release, select **Submit release as draft**. Note that you cannot set the rollout fraction for draft releases.
 10. If you want to publish the .apk even when one or more tests fail, mark the **Publish even if tests fail** checkbox.
 11. Select **Enable Google Play publishing** at the top of the section to enable publishing.
