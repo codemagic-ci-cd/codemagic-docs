@@ -1,7 +1,7 @@
 ---
 ---
 
-Codemagic allows you to preview your `.app` artifact on an iOS simulator and interact with the simulator via a web browser. You can easily test the functionalities of your app as well as system notifications and flows that require location data on different simulator devices without requiring a physical device.
+Codemagic allows you to preview your unsigned `.app` artifact on an iOS simulator and interact with the simulator via a web browser. You can easily test the functionalities of your app as well as system notifications and flows that require location data on different simulator devices without requiring a physical device.
 
 {{<notebox>}}
 Note that this feature is available for **teams** on the Pay as you go billing plan by default and can be enabled for teams on the annual plan on request.
