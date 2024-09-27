@@ -41,6 +41,27 @@ Not entering anything for a string input will result in an empty string, i.e. `"
 
 Only workflows that do not require user input for values can be started with webhook events. If you want to use Git events or scheduled builds to automatically trigger builds for workflows with inputs, ensure that all inputs in those workflows have default values. Otherwise, the build will fail due to undefined inputs.
 
+## Viewing Inputs values
+
+It is possible to view input values either on the builds page or under the Build overview section through [labels](https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/#labels). The following sample snippet can be referenced to achieve it:
+
+```
+    inputs:
+      xcode_version:
+        description: Set Xcode version
+        type: number
+      publish_to_appstore:
+        description: App Store publishing
+        type: boolean
+```
+and then, assign it to **labels**:
+
+```
+labels:
+   - Xcode_version ${{ inputs.xcode_version }}
+   - App_Store_Publishing ${{ inputs.publish_to_appstore }}
+```
+
 ## YAML schema for inputs
 
 Build inputs are defined in `codemagic.yaml` as a mapping `workflows.<workflow_id>.inputs` where keys are input IDs and values are inputs that have the following fields.
