@@ -44,7 +44,7 @@ Only workflows that do not require user input for values can be started with web
 {{<notebox>}}
 Tip: To better distinguish builds based on their input values, you can display the chosen value in the Build overview or on the builds page by using [labels](https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/#labels). The following sample snippet can be referenced to achieve it:
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
     inputs:
       xcode_version:
         description: Set Xcode version
@@ -52,14 +52,16 @@ Tip: To better distinguish builds based on their input values, you can display t
       publish_to_appstore:
         description: App Store publishing
         type: boolean
-```
+{{< /highlight >}}
+
 Then, assign the input to a label:
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 labels:
    - Xcode_version ${{ inputs.xcode_version }}
    - App_Store_Publishing ${{ inputs.publish_to_appstore }}
-```
+{{< /highlight >}}
+
 {{</notebox>}}
 
 ## YAML schema for inputs
