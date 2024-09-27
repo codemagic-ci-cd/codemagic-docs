@@ -53,7 +53,7 @@ Tip: To better distinguish builds based on their input values, you can display t
         description: App Store publishing
         type: boolean
 ```
-Then, assign the input to a **labels**:
+Then, assign the input to a label:
 
 ```
 labels:
