@@ -12,16 +12,16 @@ Select the desired build machine by specifying the Xcode version and instance ty
 
 {{< tabpane >}}
 
-{{< tab header="Xcode 15.4 (default)" >}}
-{{< include "/partials/specs/versions-macos-silicon-xcode-15-4.md" >}}
+{{< tab header="Xcode 16.0 (default)" >}}
+{{< include "/partials/specs/versions-macos-silicon-xcode-16.md" >}}
 {{< /tab >}}
 
 {{< tab header="Xcode 16.1 (edge)" >}}
 {{< include "/partials/specs/versions-macos-silicon-xcode-16-1.md" >}}
 {{< /tab >}}
 
-{{< tab header="Xcode 16.0" >}}
-{{< include "/partials/specs/versions-macos-silicon-xcode-16.md" >}}
+{{< tab header="Xcode 15.4" >}}
+{{< include "/partials/specs/versions-macos-silicon-xcode-15-4.md" >}}
 {{< /tab >}}
 
 {{< tab header="Xcode 15.3" >}}
