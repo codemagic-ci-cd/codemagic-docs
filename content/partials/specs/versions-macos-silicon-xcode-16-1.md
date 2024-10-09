@@ -17,37 +17,37 @@ Available on request:
 
 ## System
 
-- System version `macOS 15.0 (24A335)`
+- System version `macOS 15.0.1 (24A348)`
 - Kernel version `Darwin 24.0.0`
-- Disk `294GB (Free Space: 149GB)`
+- Disk `294GB (Free Space: 150GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
 - appium `2.5.0`
-- aws `2.15.38`
-- carthage `0.39.1`
+- aws `2.18.1`
+- carthage `0.40.0`
 - cocoapods `1.15.2`
 - cordova `12.0.0`
 - curl `8.7.1`
 - docker `N/A`
 - ew-cli `0.11.0`
-- fastlane `2.222.0`
+- fastlane `2.224.0`
 - firebase `11.21.0`
 - flutter `3.24.3 ($HOME/programs/flutter)`
-- gem `3.5.17`
-- gh `2.48.0`
-- git `2.44.0`
+- gem `3.5.21`
+- gh `2.58.0`
+- git `2.47.0`
 - Google Cloud SDK `404.0.0`
 - gradle `8.1.1`
 - gsutil `5.14`
-- homebrew `4.2.18`
+- homebrew `4.4.0`
 - ionic `7.2.0`
 - jq `1.7.1`
-- ktlint `1.2.1`
-- node `20.12.2`
-- npm `10.5.0`
+- ktlint `1.3.1`
+- node `22.9.0`
+- npm `10.8.3`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
@@ -59,7 +59,7 @@ Available on request:
 - unzip `6.00`
 - wget `1.24.5`
 - yarn `1.22.22`
-- yq `4.43.1`
+- yq `4.44.3`
 - zip `3.0`
 
 ## Android emulators
@@ -68,16 +68,16 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Java versions
 
-- **22.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-22.jdk/Contents/Home`
-- **21.0.3** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home`
-- **17.0.11** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
-- **11.0.23** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_412** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **23** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-23.jdk/Contents/Home`
+- **21.0.4** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home`
+- **17.0.12** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
+- **11.0.24** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_422** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
 ## Xcode versions
 
-- 16.1 (16B5014f) `/Applications/Xcode-16.1.app`, also selected when specifying `edge` in Xcode version settings
+- 16.1 (16B5029d) `/Applications/Xcode-16.1.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
