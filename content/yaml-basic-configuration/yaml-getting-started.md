@@ -413,11 +413,11 @@ workflows:
     default-workflow:
         name: Default Workflow
         pre_clone_scripts:
-          - name: Scripts before repository cloned
+          - name: Scripts to run before cloning the repository
             script:
                  .......
         scripts:
-            - name: Scripts after repository cloned
+            - name: Scripts to run after cloning the repository
               script: |
                  .......
 {{< /highlight >}}
