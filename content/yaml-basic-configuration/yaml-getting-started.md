@@ -414,12 +414,10 @@ workflows:
         name: Default Workflow
         pre_clone_scripts:
           - name: Scripts to run before cloning the repository
-            script:
-                 .......
+            script: ...
         scripts:
             - name: Scripts to run after cloning the repository
-              script: |
-                 .......
+              script: ...
 {{< /highlight >}}
 
 ### Artifacts
