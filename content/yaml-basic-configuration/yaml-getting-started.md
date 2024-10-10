@@ -406,7 +406,7 @@ scripts:
 
 There are example scripts available for building a [Flutter application](./building-a-flutter-app/), [React Native application](./building-a-react-native-app/), [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
 
-To run scripts before the repository cloning step, the following syntax needs to be applied:
+By default, scripts are run after your app sources are fetched and the repository is cloned. To run scripts before the repository cloning step, use the pre_clone_scripts step:
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
