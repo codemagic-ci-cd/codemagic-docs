@@ -406,6 +406,22 @@ scripts:
 
 There are example scripts available for building a [Flutter application](./building-a-flutter-app/), [React Native application](./building-a-react-native-app/), [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
 
+To run scripts before the repository cloning step, the following syntax needs to be applied:
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+    default-workflow:
+        name: Default Workflow
+        pre_clone_scripts:
+          - name: Scripts before repository cloned
+            script:
+                 .......
+        scripts:
+            - name: Scripts after repository cloned
+              script: |
+                 .......
+{{< /highlight >}}
+
 ### Artifacts
 
 Configure the paths and names of the artifacts you would like to use in the following steps, e.g. for publishing, or have available for download on the build page. All paths are relative to the clone directory, but absolute paths are supported as well. You can also use [environment variables](../building/environment-variables) in artifact patterns.
