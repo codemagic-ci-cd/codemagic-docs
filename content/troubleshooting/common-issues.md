@@ -18,7 +18,6 @@ Failed to clone repository
 ```
 
 ###### Solution
-
 It is a known issue with repositories coming from AWS CodeCommit through HTTPS. In order to solve it, try an SSH connection instead, and when adding the repo URL, it needs to look like this:
 
 ```
@@ -26,6 +25,25 @@ ssh://XXXXXXXX@git-codecommit.us-west-2.amazonaws.com/v1/repos/my_repo.git
 ```
 
 Please note that the ***XXXXXXXXX** refers to your **SSH-Key-ID**
+
+
+### Cannot access the repository. Request is unauthorized (401)
+
+###### Description
+
+After switching your GitHub account to organization or making significant changes, you might encounter the following error when trying to select an app to build:
+
+```
+"Cannot access the repository. Request is unauthorized (401). Please check your credentials to access https://api.github.com/repos/myrepo/myrepo-flutter/branches?per_page=100."
+```
+
+###### Solution
+
+The issue may be related to the integration token requiring a refresh. To solve this, try disconnecting the GitHub integration and then connecting it again.
+
+1. Go to your Team settings.
+2. Expand Team Integrations
+3. Disconnect your GitHub Integration and then reconnect. 
 
 
 ### GitHub Integration - Repositories not showing up in the dropdown
