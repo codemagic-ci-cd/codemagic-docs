@@ -54,7 +54,7 @@ workflows:
 
 ## Using your settings.json to build your app
 
-You will now need to save the settings.json file to disk so it can be used in your workflow. Assuming you named your varaible `JSON_CONFIG` you can do this as follows:
+You will now need to save the settings.json file to disk so it can be used in your workflow. Assuming you named your variable `JSON_CONFIG` you can do this as follows:
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
