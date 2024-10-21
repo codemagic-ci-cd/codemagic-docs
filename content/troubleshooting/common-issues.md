@@ -31,20 +31,29 @@ Please note that the ***XXXXXXXXX** refers to your **SSH-Key-ID**
 
 ###### Description
 
-After switching your GitHub account to organization or making significant changes, you might encounter the following error when trying to select an app to build:
+When fetching repositories from Github, Gitlab, Bitbucket, and others, you might encounter below error due to the following reasons:
+
+1. Repository settings were changed
+2. Access credentials are not valid e.g. provided SSH key is either expired or malformed or any other reason
+3. Repository is behind a firewall and requires IP addresses to be whitelisted
+4. OAuth access token should be refreshed
 
 ```
-"Cannot access the repository. Request is unauthorized (401). Please check your credentials to access https://api.github.com/repos/myrepo/myrepo-flutter/branches?per_page=100."
+"Cannot access the repository. Request is unauthorized (401). Please check your credentials to access ..."
+```
+or
+```
+Repository is not accessible. Check access credentials and firewall settings...
 ```
 
 ###### Solution
 
-The issue may be related to the integration token requiring a refresh. To solve this, try disconnecting the GitHub integration and then connecting it again.
+The following can help resolve the issue:
 
-1. Go to your Team settings.
-2. Expand Team Integrations
-3. Disconnect your GitHub Integration and then reconnect. 
-
+1. Verify that the access credentials e.g. SSH key pairs were added correctly
+2. In general, ensure that the repository access is up to date. You can find more information [here](https://docs.codemagic.io/getting-started/adding-apps/#modifying-access)
+3. Confirm that the relevant IP addresses are [whitelisted](https://docs.codemagic.io/getting-started/adding-apps/#firewall-configuration-for-privately-hosted-repositories)
+4. Refresh the OAuth integration by going to Team settings, disconnecting, and then reconnecting the integration.
 
 ### GitHub Integration - Repositories not showing up in the dropdown
 
