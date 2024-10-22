@@ -49,7 +49,7 @@ This could happen due to a number of reasons such as:
 
 ###### Solution
 
-The following can help resolve the issue:
+The following suggestions can help resolve the issue:
 
 1. Verify that the access credentials e.g. SSH key pairs were added correctly
 2. In general, ensure that the repository access is up to date. You can find more information [here](https://docs.codemagic.io/getting-started/adding-apps/#modifying-access)
