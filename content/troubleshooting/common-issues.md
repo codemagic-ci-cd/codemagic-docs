@@ -31,12 +31,7 @@ Please note that the ***XXXXXXXXX** refers to your **SSH-Key-ID**
 
 ###### Description
 
-When fetching repositories from Github, Gitlab, Bitbucket, and others, you might encounter below error due to the following reasons:
-
-1. Repository settings were changed
-2. Access credentials are not valid e.g. provided SSH key is either expired or malformed or any other reason
-3. Repository is behind a firewall and requires IP addresses to be whitelisted
-4. OAuth access token should be refreshed
+When fetching or adding repositories from Github, Gitlab, Bitbucket, and others, you might encounter below error:
 
 ```
 "Cannot access the repository. Request is unauthorized (401). Please check your credentials to access ..."
@@ -45,6 +40,12 @@ or
 ```
 Repository is not accessible. Check access credentials and firewall settings...
 ```
+This could happen due to a number of reasons such as:
+1. Repository settings were changed
+2. Access credentials are not valid e.g. provided SSH key is either expired or malformed or any other reason
+3. Repository is behind a firewall and requires IP addresses to be whitelisted
+4. OAuth access token should be refreshed
+
 
 ###### Solution
 
