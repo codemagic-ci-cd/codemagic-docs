@@ -32,7 +32,7 @@ Available on request:
 - cordova `12.0.0`
 - curl `8.7.1`
 - docker `N/A`
-- ew-cli `0.11.0`
+- ew-cli `0.11.1`
 - fastlane `2.224.0`
 - firebase `11.21.0`
 - flutter `3.24.3 ($HOME/programs/flutter)`
@@ -77,7 +77,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 16.1 (16B5029d) `/Applications/Xcode-16.1.app`, also selected when specifying `edge` in Xcode version settings
+- 16.1 (16B40) `/Applications/Xcode-16.1.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
@@ -103,6 +103,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - iPad Pro 11-inch (M4)
 - iPad Pro 13-inch (M4)
 - iPad mini (6th generation)
+- iPad mini (A17 Pro)
 - iPhone 15
 - iPhone 15 Plus
 - iPhone 15 Pro
