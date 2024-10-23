@@ -31,7 +31,7 @@ Please note that the ***XXXXXXXXX** refers to your **SSH-Key-ID**
 
 ###### Description
 
-When fetching or adding repositories from Github, Gitlab, Bitbucket, and others, you might encounter below error:
+When fetching or adding repositories from Github, Gitlab, Bitbucket, and others, you might encounter the below error:
 
 ```
 "Cannot access the repository. Request is unauthorized (401). Please check your credentials to access ..."
@@ -40,7 +40,7 @@ or
 ```
 Repository is not accessible. Check access credentials and firewall settings...
 ```
-This could happen due to a number of reasons such as:
+This could happen due to many reasons such as:
 1. Repository settings were changed
 2. Access credentials are not valid e.g. provided SSH key is either expired or malformed or any other reason
 3. Repository is behind a firewall and requires IP addresses to be whitelisted
@@ -52,7 +52,7 @@ This could happen due to a number of reasons such as:
 The following suggestions can help resolve the issue:
 
 1. Verify that the access credentials e.g. SSH key pairs were added correctly
-2. In general, ensure that the repository access is up to date. You can find more information [here](https://docs.codemagic.io/getting-started/adding-apps/#modifying-access)
+2. Generally, ensure that the repository access is up to date. You can find more information [here](https://docs.codemagic.io/getting-started/adding-apps/#modifying-access)
 3. Confirm that the relevant IP addresses are [whitelisted](https://docs.codemagic.io/getting-started/adding-apps/#firewall-configuration-for-privately-hosted-repositories)
 4. Refresh the OAuth integration by going to Team settings, disconnecting, and then reconnecting the integration.
 
