@@ -54,7 +54,7 @@ The following suggestions can help resolve the issue:
 1. Verify that the access credentials e.g. SSH key pairs were added correctly
 2. Generally, ensure that the repository access is up to date. You can find more information [here](https://docs.codemagic.io/getting-started/adding-apps/#modifying-access)
 3. Confirm that the relevant IP addresses are [whitelisted](https://docs.codemagic.io/getting-started/adding-apps/#firewall-configuration-for-privately-hosted-repositories)
-4. Refresh the OAuth integration by going to Team settings, disconnecting, and then reconnecting the integration.
+4. Refresh the OAuth integration by going to Teams > Select your team > Team integrations > click to disconnect and re-connect
 
 ### GitHub Integration - Repositories not showing up in the dropdown
 
