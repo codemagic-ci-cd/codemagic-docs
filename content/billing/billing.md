@@ -62,5 +62,5 @@ Note that overdue invoices should be paid before the subscription can be disable
 
 The following certificates are available for download:
 
-- [Tax residency certificate](https://drive.google.com/file/d/1PmP-qSs8dcHO0JC1SxZb7dotwkw5-iGN/view?usp=sharing)
+- [Tax residency certificate](https://drive.google.com/file/d/1Z_FhYledJmjyjN6kr--cBRbpxMVqBgUv/view?usp=sharing)
 - [W-8BEN-E certificate](https://drive.google.com/file/d/1adCRr0p3Agzhc7PpFt5pI2dMdbyIndU2/view?usp=sharing)
