@@ -17,9 +17,9 @@ Available on request:
 
 ## System
 
-- System version `macOS 15.0.1 (24A348)`
-- Kernel version `Darwin 24.0.0`
-- Disk `294GB (Free Space: 150GB)`
+- System version `macOS 15.1 (24B83)`
+- Kernel version `Darwin 24.1.0`
+- Disk `294GB (Free Space: 149GB)`
 
 ## Pre-installed tools
 
@@ -28,15 +28,15 @@ Available on request:
 - appium `2.5.0`
 - aws `2.18.1`
 - carthage `0.40.0`
-- cocoapods `1.15.2`
+- cocoapods `1.16.0`
 - cordova `12.0.0`
 - curl `8.7.1`
 - docker `N/A`
 - ew-cli `0.11.1`
-- fastlane `2.224.0`
+- fastlane `2.225.0`
 - firebase `11.21.0`
-- flutter `3.24.3 ($HOME/programs/flutter)`
-- gem `3.5.21`
+- flutter `3.24.4 ($HOME/programs/flutter)`
+- gem `3.5.22`
 - gh `2.58.0`
 - git `2.47.0`
 - Google Cloud SDK `404.0.0`
