@@ -120,7 +120,7 @@ workflows:
 
 ## Global variables and secrets
 
-Variable groups can also be defined on the [Teams page](https://codemagic.io/teams) for both teams and personal accounts. Variable groups defined here are global and can be used in any `codemagic.yaml` workflow and in any application of the team. It is possible to limit variable groups to specific applications by clicking the edit icon next to the group you wish to manage under **Application access**.
+Variable groups can also be defined on the [Teams page](https://codemagic.io/teams) for teams. Variable groups defined here are global and can be used in any `codemagic.yaml` workflow and in any application of the team. It is possible to limit variable groups to specific applications by clicking the edit icon next to the group you wish to manage under **Application access**.
 
 
 ## Environment variable precedence
