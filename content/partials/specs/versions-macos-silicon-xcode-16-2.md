@@ -17,9 +17,9 @@ Available on request:
 
 ## System
 
-- System version `macOS 15.1 (24B83)`
+- System version `macOS 15.1 (24B2083)`
 - Kernel version `Darwin 24.1.0`
-- Disk `294GB (Free Space: 146GB)`
+- Disk `294GB (Free Space: 145GB)`
 
 ## Pre-installed tools
 
@@ -42,7 +42,7 @@ Available on request:
 - Google Cloud SDK `404.0.0`
 - gradle `8.1.1`
 - gsutil `5.14`
-- homebrew `4.4.3`
+- homebrew `4.4.4`
 - ionic `7.2.0`
 - jq `1.7.1`
 - ktlint `1.4.0`
@@ -77,14 +77,14 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 16.2 (16B5100e) `/Applications/Xcode-16.2.app`, also selected when specifying `edge` in Xcode version settings
+- 16.2 (16C5013f) `/Applications/Xcode-16.2.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
 - iOS 18.2
-- tvOS 18.1
-- visionOS 2.1
-- watchOS 11.1
+- tvOS 18.2
+- visionOS 2.2
+- watchOS 11.2
 
 ### Devices
 
