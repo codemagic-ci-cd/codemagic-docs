@@ -13,6 +13,7 @@ Join 670+ mobile experts in our [Discord community](https://discord.com/invite/Z
 
 | **Features**                | **App Center** | **Codemagic**  |
 |-----------------------------| ---------------|----------------|
+| `Over-the-air (OTA) updates (CodePush)`|    ☑️|      ✅        |
 | `Swift/Objective-C iOS`     |    ☑️           |      ✅        |
 | `Android apps`              |    ☑️           |      ✅        |
 | `React Native CLI apps`     |    ☑️           |      ✅        |
@@ -51,8 +52,6 @@ Join 670+ mobile experts in our [Discord community](https://discord.com/invite/Z
 | `Dependency caching`            |    ❌       |      ✅        |
 
 
-
-* CodePush will continue standalone, so users can continue using the feature by App Center. Alternatively, Codemagic can be integrated with Expo Application Services (EAS update).
 * Codemagic allows you to integrate with Sentry and Firebase Crahslytics for analytics and uploading debug symbols
 
 {{<notebox>}}
