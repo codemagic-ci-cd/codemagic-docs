@@ -71,10 +71,11 @@ const updateFromInput = (query) => {
 }
 
 const updateFromUrl = () => {
-    const query = decodeURIComponent((window.location.search || '').slice(3)) || null
-    if (window.location.search.indexOf('utm_') < 0) {
-        updateInput(query)
-        window.setTimeout(() => updateResults(query))
+    const params = window.location.search || ''
+    const searchParams = new URLSearchParams(params)
+    if (searchParams.has('q')) {
+        updateInput(searchParams.get('q'))
+        window.setTimeout(() => updateResults(searchParams.get('q')))
     }
 }
 

@@ -55,7 +55,7 @@ Free build minutes are reserved for personal and hobby projects.
 Because of the great freedom it offers in customizing your CI/CD workflows, Codemagic is a great choice for building white-label apps. Whether you want to utilize our REST API or the possibility to configure advanced Bash or Python scripts, Codemagic has you covered out of the box and without any extra costs.
 
 ## Can I pay annually and get a discount?
-Most definitely. The annual subscription grants you a 20% discount for the whole plan, including any extra concurrencies.
+Most definitely. The annual subscription grants you 2 months of free usage for the whole plan, including any extra concurrencies.
 
 ## What’s an Enterprise plan?
 The Enterprise plan offers the same superb quality service you have come to expect from Codemagic but enhanced with additional customization options. This plan is recommended if you need to go through a security compliance process, vendor registration or have special requirements such as an NDA, DPA, dedicated hosts, custom base images, or other account management services. Enterprise customers are also able to authenticate using SSO.

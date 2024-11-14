@@ -24,7 +24,7 @@ For example, for each version of your app, you could create a workflow in the co
 workflows:
   version-one:
     name: Version one
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     environment:
       groups:
         ...
@@ -38,7 +38,7 @@ workflows:
       ...
   version-two:
     name: Version two
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     environment:
       groups:
         ...

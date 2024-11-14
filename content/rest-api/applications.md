@@ -6,7 +6,10 @@ weight: 2
 
 APIs for managing applications are currently available for developers to preview. During the preview period, the API may change without advance notice.
 
-{{}} **Note:** Using REST API will not fetch information about workflows when configuring with **codemagic.yaml**. It is because only workflows from the Workflow Editor are defaulted as no accessible data is present from **codemagic.yaml** until a repository is cloned, which means that there is no way to retrieve workflow IDs from **codemagic.yaml** before triggering a build. {{}}
+{{<notebox>}}
+**Using the API with apps configured with codemagic.yaml:**<br>
+Unlike with Workflow Editor, information about workflows in **codemagic.yaml** is not stored in Codemagic and is therefore not available before starting a build and cloning the repository. Therefore, the API does not return workflow information such as `workflowId` for **codemagic.yaml** workflows.
+{{</notebox>}}
 
 ## Retrieve all applications
 
@@ -325,32 +328,6 @@ To add binary-based files (e.g. images), they need to be [`base64 encoded`](../v
   "workflowName": "Default Workflow"
 }
 {{< /highlight >}}
-
-
-### Getting variable_id
-
-#### Example
-
-{{< highlight bash "style=paraiso-dark">}}
-  curl -XGET \
-       -H "X-Auth-Token: $CM_API_KEY" \
-       -H "Content-type: application/json" \
-       "https://api.codemagic.io/apps/YOUR_APP_ID/variables"
-{{< /highlight >}}
-
-
-#### Response
-
-{{< highlight json "style=paraiso-dark">}}
-  [{
-    "group": "test",
-    "id": "0000000000000",
-    "key": "TEST",
-    "secure": true,
-    "value": "[HIDDEN]"
-  }]
-{{< /highlight >}}
-
 
 
 ### Update existing variable

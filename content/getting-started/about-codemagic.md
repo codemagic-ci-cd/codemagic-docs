@@ -4,9 +4,10 @@ linkTitle: Welcome
 description: Introduction to Codemagic CI/CD
 weight: 2 
 aliases:
+  - /notes/release-notes/ 
 ---
 
-Codemagic is a cloud-based Continuous Integration/Continuous Delivery (CI/CD) product specifically designed for mobile developers building apps with Flutter, React Native, native iOS, native Android, Unity, Kotlin Multiplatform Mobile, and Ionic. Codemagic's API and versatile workflow configurations also provide a great platform for mobile development teams who are White labeling their apps.
+Codemagic is a cloud-based Continuous Integration/Continuous Delivery (CI/CD) product specifically designed for mobile developers building apps with Flutter, React Native, native iOS, native Android, Unity, Kotlin Multiplatform Mobile, .NET MAUI and Ionic. Codemagic's API and versatile workflow configurations also provide a great platform for mobile development teams who are White labeling their apps.
 
 ## Automatic build and deployment
 Codemagic automates the process of app building, testing, and deployment to app stores such as the Apple App Store, Google Play, Microsoft Store, and Huawei App Gallery. New builds can be triggered when code is pushed to your repository, tags are added, or pull requests are merged. You can configure multiple workflows to make the app available to your dev team, distribute the latest build to your test team, or publish your app to production. 
@@ -28,7 +29,7 @@ Workflows are configured in code using a YAML configuration file which can be ch
 Flutter developers can also choose to set up their workflows using a graphical user interface called the “Workflow Editor”.
 
 ## Infrastructure
-Codemagic’s infrastructure is centered around the powerful Apple silicon M1 and M2(arm64) machines allowing for faster builds than the previous generation of macOS machines. Linux and Windows machines are also available for all customers. 
+Codemagic’s infrastructure is centered around the powerful Apple silicon M2 (arm64) machines allowing for faster builds than the previous generation of macOS machines. Linux and Windows machines are also available for all customers. 
 
 The following documentation pages show the hardware specifications for each instance type:
 
@@ -51,7 +52,7 @@ Please refer to the following documentation to see the software pre-installed on
 If you need to run parallel builds you can add additional concurrencies as your needs grow. The free tier and pay-as-you-go plan includes one concurrency to begin with but can be increased to a total of three. The Annual plan and Enterprise plans start with three concurrencies and an unlimited number of concurrencies can be added at any time during your subscription period. 
 
 ## Pricing
-Individuals and hobbyists can get started with Codemagic using its free tier which offers 500 free build minutes per month and lets you build on Apple silicon M1 machines. This quota is reset at the beginning of each month. 
+Individuals and hobbyists can get started with Codemagic using its free tier which offers 500 free build minutes per month and lets you build on Apple silicon M2 machines. This quota is reset at the beginning of each month. 
 
 For development teams with limited budgets, the Codemagic pay-as-you-go plan offers an affordable way to get started with CI/CD. You only pay for the minutes you consume and the additional concurrencies you add. 
 

@@ -336,7 +336,20 @@ workflows:
       condition: not event.pull_request.draft
 {{< /highlight >}}
 
-**Example 2**. This build is triggered on adding a label to a pull request but will continue only if the label added was anything else than "codemagicTest":
+**Example 2**. Use built-in environment variables in the condition. This build will continue only if the source branch is "master." In other words, it will skip the build if the source branch of the pull request is anything other than "master," regardless of the destination branch.
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  build:
+    name: Build on PR update
+    triggering:
+      events:
+        - pull_request
+    when:
+      condition: env.CM_BRANCH == "master"
+{{< /highlight >}}
+
+**Example 3**. This build is triggered on adding a label to a pull request but will continue only if the label added was anything else than "codemagicTest":
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -349,7 +362,7 @@ workflows:
       condition: not event.pull_request.labels[0].name == "codemagicTest"
 {{< /highlight >}}
 
-**Example 3**. You can also combine triggering conditions, just make sure that each condition is wrapped in brackets:
+**Example 4**. You can also combine triggering conditions, just make sure that each condition is wrapped in brackets:
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:

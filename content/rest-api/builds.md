@@ -19,14 +19,14 @@ APIs for managing builds are currently available for developers to preview. Duri
 
 #### Parameters
 
-| **Name**      | **Type** | **Description** |
-| ------------- | -------- | --------------- |
-| `appId`       | `string` | **Required.** The application identifier. |
-| `workflowId`  | `string` | **Required.** The workflow identifier as specified in YAML file. |
-| `branch`      | `string` | Optional. The branch name. Either `branch` or `tag` is **required**. |
-| `tag`         | `string` | Optional. The tag name. Either `branch` or `tag` is **required**. |
-| `environment` | `object` | Optional. Specify environment variables, variable groups, and software versions to override or define in workflow settings. | 
-| `labels`      | `list`   | Optional. Specify labels to be included for the build in addition to existing labels. |
+| **Name**      | **Type** | **Description**                                                                                                                                         |
+|---------------| -------- |---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `appId`       | `string` | **Required.** The application identifier.                                                                                                               |
+| `workflowId`  | `string` | **Required.** The workflow identifier as specified in YAML file.                                                                                        |
+| `branch`      | `string` | Optional. The branch name. Either `branch` or `tag` is **required**.                                                                                    |
+| `tag`         | `string` | Optional. The tag name. Either `branch` or `tag` is **required**.                                                                                       |
+| `environment` | `object` | Optional. Specify environment variables, variable groups, and software versions to override or define in workflow settings.                             |
+| `labels`      | `list`   | Optional. Specify labels to be included for the build in addition to existing labels.                                                                   |
 
 
 #### Example
@@ -39,7 +39,7 @@ APIs for managing builds are currently available for developers to preview. Duri
          "workflowId": "<workflow_id>",
          "branch": "<git_branch_name>"
        }' \
-       https://api.codemagic.io/builds
+       -X POST https://api.codemagic.io/builds
 {{< /highlight >}}
 
 #### Pass custom build parameters
@@ -64,7 +64,7 @@ APIs for managing builds are currently available for developers to preview. Duri
       "flutter": "v1.12.13+hotfix.9"
     }
   },
-  "instanceType": "mac_mini_m1"
+  "instanceType": "mac_mini_m2"
 }
 {{< /highlight >}}
 

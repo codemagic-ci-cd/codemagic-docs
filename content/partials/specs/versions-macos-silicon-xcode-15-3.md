@@ -8,14 +8,18 @@ weight: 15
 
 ## Hardware
 
-- VM on Mac mini M1 `3.2GHz Quad Core / 8GB`
-- VM on Mac mini M2 `3.5GHz Quad Core / 8GB`
+- Mac mini M2 `3.5GHz 8-Core / 16GB`
+
+Available on request:
+- Mac mini M2 Pro
+- Mac Studio M2 Max
+- Mac Studio M2 Ultra
 
 ## System
 
 - System version `macOS 14.3.1 (23D60)`
 - Kernel version `Darwin 23.3.0`
-- Disk `294GB (Free Space: 76GB)`
+- Disk `294GB (Free Space: 74GB)`
 
 ## Pre-installed tools
 
@@ -24,15 +28,15 @@ weight: 15
 - appium `2.5.0`
 - aws `2.13.35`
 - carthage `0.39.1`
-- cocoapods `1.14.2`
+- cocoapods `1.16.1`
 - cordova `12.0.0`
 - curl `8.4.0`
 - docker `N/A`
-- ew-cli `0.10.9`
-- fastlane `2.217.0`
+- ew-cli `0.11.1`
+- fastlane `2.225.0`
 - firebase `11.21.0`
-- flutter `3.16.7 ($HOME/programs/flutter)`
-- gem `3.4.22`
+- flutter `3.24.4 ($HOME/programs/flutter)`
+- gem `3.5.22`
 - gh `2.39.1`
 - git `2.42.1`
 - Google Cloud SDK `404.0.0`
@@ -65,14 +69,14 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Java versions
 
 - **21.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home`
-- **17.0.9** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
-- **11.0.21** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **17.0.9** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
+- **11.0.21** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
 - **1.8.0_392** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
 ## Xcode versions
 
-- 15.3 (15E204a) `/Applications/Xcode-15.3.app`, also selected when specifying `latest` in Xcode version settings
+- 15.3 (15E204a) `/Applications/Xcode-15.3.app`
 
 ### Runtimes
 

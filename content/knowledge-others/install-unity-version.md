@@ -35,6 +35,11 @@ This will automatically install the specified Unity version to the build machine
 - `2022.3.11f1`
 - `2022.3.17f1`
 - `2022.3.19f1`
+- `2022.3.21f1`
+- `2022.3.22f1`
+- `2022.3.29f1`
+- `2022.3.30f1`
+- `2022.3.47f1`
 {{< /tab >}}
 {{% tab header="2021.X" %}}
 - `2021.3.4f1`
@@ -174,7 +179,7 @@ Use the Unity version you installed on the machine:
 workflows:
   unity-android-workflow:
       name: Unity Android Workflow
-      instance_type: mac_pro
+      instance_type: linux_x2
       max_build_duration: 120
       environment:
         groups:
@@ -187,8 +192,7 @@ workflows:
           BUILD_SCRIPT: BuildAndroid
           PACKAGE_NAME: "io.codemagic.unity" # <-- Put your package name here e.g. com.domain.myapp
         android_signing:
-        - unity_test
-        xcode: latest
+          - unity_test
       triggering:
         events:
           - push

@@ -118,8 +118,12 @@ workflows:
     labels:
       - QA
       - ${TENANT_NAME}
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     max_build_duration: 60
+    inputs: # more information about build inputs:https://docs.codemagic.io/knowledge-codemagic/build-inputs/
+      name: # input ID
+        description: Input description
+        default: Codemagic
     environment:
       groups:
         - group_name
@@ -139,6 +143,7 @@ workflows:
           source: true
       cancel_previous_builds: false
     scripts:
+      - echo "Hello, ${{ inputs.name }}"
       - ...
     artifacts:
       - build/**/outputs/bundle/**/*.aab
@@ -158,7 +163,7 @@ You can use `codemagic.yaml` to define several workflows for building a project.
 workflows:
   my-workflow:                   # workflow ID
     name: My workflow name       # workflow name displayed in Codemagic UI
-    instance_type: mac_mini_m1   # machine instance type
+    instance_type: mac_mini_m2   # machine instance type
     max_build_duration: 60       # build duration in minutes (min 1, max 120)
     environment:
     cache:
@@ -175,19 +180,27 @@ The main sections in each workflow are described below.
 `instance_type:` specifies the [build machine type](../specs/machine-type) to use for the build. The supported build machines are:
 | **Instance Type** | **Build Machine** |
 | ------------- | -----------------  |
-| `mac_mini_m1`    | Apple silicon M1 Mac mini |
 | `mac_mini_m2`    | Apple silicon M2 Mac mini |
 | `linux_x2`  | Linux |
 | `windows_x2`  | Windows |
 
 <br>
 {{<notebox>}}
-**Note:** The `linux_x2` and `windows_x2` are only available for teams and users with [billing enabled](../billing/billing/). `mac_mini_m2` is only available on fixed price annual plan. 
+**Note:** Instance types `linux_x2`, `windows_x2` and `mac_mini_m2` are only available for teams and users with [billing enabled](../billing/billing/). 
 {{</notebox>}}
+
+### Build inputs
+
+Build inputs are parameters that allow you to customize your build configurations right before starting a new build without hardcoding them in **codemagic.yaml**. For example, build inputs can be used to determine whether to build the workflow for test or release purposes or which Xcode version to use, etc. More information about how to configure build inputs and examples can be found [here](https://docs.codemagic.io/knowledge-codemagic/build-inputs/).
 
 ### Environment
 
-`environment:` section specifies the environment variables, variable groups and build machine software versions.
+`environment:` section specifies the environment variables and their respective group and build machine software versions.
+
+<br>
+{{<notebox>}}
+**Note:** Environment variables must belong to a group if environment variables are defined in the Codemagic app settings.
+{{</notebox>}}
 
 #### Environment variable groups
 
@@ -347,7 +360,7 @@ triggering:
   branch_patterns:              # Include or exclude watched branches
     - pattern: '*'
       include: true
-      source: true
+      source: true              # Applicable only to Pull Request triggers to determine if pattern is for source or target branch
     - pattern: excluded-target
       include: false
       source: false
@@ -392,6 +405,20 @@ scripts:
 {{< /highlight >}}
 
 There are example scripts available for building a [Flutter application](./building-a-flutter-app/), [React Native application](./building-a-react-native-app/), [native Android application](./building-a-native-android-app/) or a [native iOS application](./building-a-native-ios-app/).
+
+By default, scripts are run after your app sources are fetched and the repository is cloned. To run scripts before the repository cloning step, use the pre_clone_scripts step:
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+    default-workflow:
+        name: Default Workflow
+        pre_clone_scripts:
+          - name: Scripts to run before cloning the repository
+            script: ...
+        scripts:
+            - name: Scripts to run after cloning the repository
+              script: ...
+{{< /highlight >}}
 
 ### Artifacts
 

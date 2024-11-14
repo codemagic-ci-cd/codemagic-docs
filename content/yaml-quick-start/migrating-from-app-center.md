@@ -3,12 +3,17 @@ title: Migrating from App Center
 description: How to ship your workflows to Codemagic
 weight: 1
 ---
+<p>
+{{<notebox>}}
+Join 670+ mobile experts in our [Discord community](https://discord.com/invite/ZJsYR6JCBD) to share knowledge and experiences of migrating from App Center and getting started with Codemagic.
+{{</notebox>}}
 
 ## Quick comparison
 
 
 | **Features**                | **App Center** | **Codemagic**  |
 |-----------------------------| ---------------|----------------|
+| `Over-the-air (OTA) updates (CodePush)`|    ☑️|      ✅        |
 | `Swift/Objective-C iOS`     |    ☑️           |      ✅        |
 | `Android apps`              |    ☑️           |      ✅        |
 | `React Native CLI apps`     |    ☑️           |      ✅        |
@@ -37,9 +42,9 @@ weight: 1
 | `Remote access to build machines`| ❌         |      ✅        |
 | `Global environment variables`|  ❌           |      ✅        |
 | `Install apps from QR code` |    ❌           |      ✅        |
-| `Gitlab self-hosted runners`|    ☑️            |      ✅        |
-| `Github self-hosted runners`|    ❌           |      ✅        |
-| `Bitbucket self-hosted runners`| ❌           |      ✅        |
+| `Gitlab self-hosted repositories`|    ☑️       |     ✅         |
+| `Github self-hosted repositories`|    ❌      |      ✅        |
+| `Bitbucket self-hosted repositories`| ❌      |      ✅        |
 | `Enabling iOS app capability`|    ❌          |      ✅        |
 | `Building iOS and Android together`| ❌       |      ✅        |
 | `Inter-connected workflow support`|  ❌       |      ✅        |
@@ -47,21 +52,26 @@ weight: 1
 | `Dependency caching`            |    ❌       |      ✅        |
 
 
-
-* CodePush will continue standalone, so users can continue using the feature by App Center. Alternatively, Codemagic can be integrated with Expo Application Services (EAS update).
 * Codemagic allows you to integrate with Sentry and Firebase Crahslytics for analytics and uploading debug symbols
 
+{{<notebox>}}
+**Note:** When adding React Native projects to App Center, iOS and Android platforms are added separately like two different projects. This behavior does not allow you to build and publish iOS and Android within the same workflow. With Codemagic, React Native repositories are added only once which prevents iOS and Android from being added separately. Besides, both platforms can be built and published within the same workflow. 
+{{</notebox>}}
 
-#### Performance overview
+### Performance overview
 
 **Test name** | **Codemagic (M2)** | **Codemagic (M1)** | **App Center**
 --- | --- | --- | ---
 Building Project | [**5m 4s**](https://codemagic.io/app/660936c197f2bee5b7353663/build/6613924355709ef49738d259) | [6m 13s](https://codemagic.io/app/660936c197f2bee5b7353663/build/660abe3a7eedcf9b3279f83d) | [39m 27s](https://appcenter.ms/orgs/Nevercode_Codemagic/apps/Benchmark_iOS/build/branches/main/builds/9)
 Overall improvement | 778% | 635% | 1
 
-As it can be seen, building the benchmark project took around 5-6 minutes with Codemagic macOS M1 and M2 machines while the build completed in 39 minutes 24 seconds with App Center. Worth pointing out that App Center limits free tier users to 30 minutes build duration per build and based on the performance rate above, the 30 minute build duration range will not allow you to complete your builds due to the fact that they will timeout.
+As it can be seen, building the benchmark project took around 5-6 minutes with Codemagic macOS M1 (now deprecated) and M2 machines while the build completed in 39 minutes 24 seconds with App Center. Worth pointing out that App Center limits free tier users to 30 minutes build duration per build and based on the performance rate above, the 30 minute build duration range will not allow you to complete your builds due to the fact that they will timeout.
 
-#### Debugging options
+### Support options
+
+Besides having an opportunity for premium support through a dedicated MS Teams/Slack/Discord channel, your team will have access to the chat widget in the Codemagic web app. Worth mentioning that Codemagic offers community support in [GitHub Discussions](https://github.com/orgs/codemagic-ci-cd/discussions) and [Discord Community Server](https://discord.com/invite/pefznye93R) as well.  
+
+### Debugging options
 
 Unlike App Center, Codemagic allows you to have straightforward debugging sessions:
 
@@ -227,7 +237,7 @@ Below you can find the steps to enable automatic build triggering:
 
 1. Grab the webhooks URL and configure it in the repository settings. You can find the webhook URL in the Codemagic web app when navigating to your application and selecting the Webhooks tab. Below you can find how to configure webhooks with Azure DevOps.
 
-#### Azure DevOps webhook configuration
+### Azure DevOps webhook configuration
 
 Open your application repository, go to **Project Settings** > **Service Hooks**, click on **Create a new subscription...** and select **Web Hooks**. Under **Trigger on this type of event**, choose the event you wish to trigger builds for. Codemagic supports **Code pushed**, **Pull request created**, and **Pull request updated** events. In Azure, each of the events requires its own webhook. Once the event has been selected, choose your repository under filters and configure any additional settings.
 
@@ -261,7 +271,7 @@ All iOS applications have to be digitally signed before they are made available 
 2. You can either let Codemagic generate a distribution certificate and provisioning profile or you do it yourself in Apple Developer account, then share them with Codemagic, so it can use these resources during code signing the application:
 
 
-#### Adding code signing certificate
+### Adding code signing certificate
 
 The steps below describe how to upload a distribution certificate. 
 
@@ -319,7 +329,7 @@ The steps below describe how to upload a distribution certificate.
 {{< /tabpane >}}
 
 
-#### Adding code signing provisioning profile
+### Adding code signing provisioning profile
 
 Codemagic allows you to upload a provisioning profile to be used for the application or to fetch a profile from the Apple Developer Portal.
 

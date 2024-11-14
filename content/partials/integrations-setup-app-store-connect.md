@@ -2,7 +2,7 @@ The Apple Developer Portal integration can be enabled in **Teams > Personal Acco
 
 1. In the list of available integrations, click the **Connect** button for **Developer Portal**.
 2. In the **App Store Connect API key name**, provide a name for the key you are going to set up the integration with. This is for identifying the key in Codemagic.
-3. Enter the **Issuer ID** related to your Apple Developer account. You can find it above the table of active keys on the Integrations tab of the [Users and Access](https://appstoreconnect.apple.com/access/api) page.
+3. Enter the **Issuer ID** related to your Apple Developer account. You can find it above the table of active keys on the Integrations tab of the [Users and Access](https://appstoreconnect.apple.com/access/integrations/api) page.
 4. Enter the **Key ID** of the key to be used for code signing.
 5. In the **API key** field, upload the private API key downloaded from App Store Connect.
 6. Click **Save** to finish the setup.

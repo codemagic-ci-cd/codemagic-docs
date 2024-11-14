@@ -39,12 +39,15 @@ As Flutter does not allow binary names to be changed in `build.gradle`, a tempor
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
-    - name: Rename the apk file
+    - name: Rename the apk and aab file
       script: | 
         mv build/app/outputs/flutter-apk/app-release.apk \
           build/app/outputs/flutter-apk/my_renamed_binary_name-release.apk
+
+        mv build/app/outputs/bundle/release/app-release.aab \
+          build/app/outputs/bundle/release/my_renamed_binary_name-release.aab
   artifacts:
     - build/app/outputs/flutter-apk/my_renamed_binary_name-release.apk
+    - build/app/outputs/bundle/release/my_renamed_binary_name-release.aab
 {{< /highlight >}}
-
 

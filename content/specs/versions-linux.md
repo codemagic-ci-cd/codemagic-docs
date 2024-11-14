@@ -19,6 +19,7 @@ weight: 2
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
+- Android NDK `25.2.9519653`
 - aws `2.8.9`
 - curl `7.68.0`
 - docker `24.0.2`
@@ -65,9 +66,9 @@ weight: 2
 ## Java versions
 
 - **21.0.1** JAVA_HOME: `/usr/lib/jvm/java-1.21.0-openjdk-amd64`
-- **17.0.8.1** JAVA_HOME: `/usr/lib/jvm/java-1.17.0-openjdk-amd64`
+- **17.0.11** (default) JAVA_HOME: `/usr/lib/jvm/java-1.17.0-openjdk-amd64`
 - **15.0.3** JAVA_HOME: `/usr/lib/jvm/java-1.15.0-openjdk-amd64`
-- **11.0.20.1** (default) JAVA_HOME: `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
+- **11.0.20.1** JAVA_HOME: `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
 - **1.8.0_382** JAVA_HOME: `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
 
 ## Android Studio 2022.3

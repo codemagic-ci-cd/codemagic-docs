@@ -147,10 +147,10 @@ In this step you can also define the build artifacts you are interested in. Thes
     - name: Build AAB with Flutter
       script: | 
         flutter build appbundle --release
-    artifacts:
-      - build/**/outputs/**/*.aab
-      - build/**/outputs/**/mapping.txt
-      - flutter_drive.log
+  artifacts:
+    - build/**/outputs/**/*.aab
+    - build/**/outputs/**/mapping.txt
+    - flutter_drive.log
 {{< /highlight >}}
 
 {{<notebox>}}
@@ -197,10 +197,10 @@ Please make sure to wrap the `--bundle` pattern in single quotes. If the `--bund
         flutter build ipa --release \
           --build-name=1.0.0 \
           --export-options-plist=/Users/builder/export_options.plist
-    artifacts:
-      - build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
-      - flutter_drive.log
+  artifacts:
+    - build/ios/ipa/*.ipa
+    - /tmp/xcodebuild_logs/*.log
+    - flutter_drive.log
 {{< /highlight >}}
 
 {{<notebox>}}
@@ -232,8 +232,8 @@ Please make sure to wrap the `--bundle` pattern in single quotes. If the `--bund
     
     # ... create package scripts
         
-    artifacts:
-      - build/macos/**/*.pkg
+  artifacts:
+    - build/macos/**/*.pkg
 {{< /highlight >}}
 {{< /tab >}}
 
@@ -253,13 +253,13 @@ Please make sure to wrap the `--bundle` pattern in single quotes. If the `--bund
         flutter build windows --release
         cd build/windows/x64/runner/Release
         7z a -r ../release.zip ./*
-    artifacts:
-      - build\windows\x64\runner\release.zip
+  artifacts:
+    - build\windows\x64\runner\release.zip
 {{< /highlight >}}
 
-{{notebook}}
+{{<notebox>}}
 🔔 Note: Flutter changed Windows build path to add the target architecture which landed in 3.15.0-0.0.pre and in stable release v3.16.0. More info can be found [here](https://docs.flutter.dev/release/breaking-changes/windows-build-architecture). So, depending on the Flutter version being used, `\x64` needs to be added to the path in order to be able to produce a zip file containing `.exe`
-{{/notebook}}
+{{</notebox>}}
 
 #### Creating an MSIX package for publishing to Microsoft Store
 Codemagic uses the [Flutter msix package](https://pub.dev/packages/msix) for packaging the application. For publishing to the Microsoft Store, it is necessary to define certain arguments during packaging.
@@ -321,8 +321,8 @@ Add the following script after the **Build Flutter Windows** step:
         #  --publisher=CN=xx-yy-zz \
         #  --identity-name=com.flutter.MyApp \
         #  --version=1.0.2.0
-    artifacts:
-      - build/windows/**/*.msix
+  artifacts:
+    - build/windows/**/*.msix
 {{< /highlight >}}
 
 For all the possible flags for the `msix:create` command, check the [pub documentation](https://pub.dev/packages/msix#clipboard-available-configuration-fields). Note that when configuring the flags both in `codemagic.yaml` and `pubspec.yaml`, the ones configured in `codemagic.yaml` take precedence.

@@ -73,7 +73,7 @@ workflows:
   simulator-native-ios:
     name: iOS simulator build
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     environment:
       vars:
         XCODE_WORKSPACE: "your_workspace_name.xcworkspace"
@@ -110,7 +110,7 @@ workflows:
   maui-ios-simulator-build:
     name: Dotnet MAUI iOS Simulator
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     environment:
       xcode: latest
       vars:

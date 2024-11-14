@@ -8,7 +8,7 @@ weight: 2
 
 This plan is suitable for individuals working on hobby or indie projects. You can also use this plan for running a proof of concept.
 
-Individuals receive **500 free minutes** per month on macOS M1 machines on a personal account. These 500 free minutes are **reset on the 1st of each month**. Free minutes are not available if you are using a Team. 
+Individuals receive **500 free minutes** per month on macOS M2 machines on a personal account. These 500 free minutes are **reset on the 1st of each month**. Free minutes are not available if you are using a Team. 
 
 You cannot invite collaborators to an individual plan.
 
@@ -16,24 +16,24 @@ To start using Codemagic for free, [sign up here](https://codemagic.io/signup).
 
 ### 2. Buying Additional Minutes
 
-You can enable billing on personal accounts and pay for any additional minutes you want to use. You will still have **500 free build minutes** on macOS M1 VM. To enable billing, proceed [here](https://codemagic.io/billing). 
+You can enable billing on personal accounts and pay for any additional minutes you want to use. You will still have **500 free build minutes** on macOS M2 VM. To enable billing, proceed [here](https://codemagic.io/billing). 
 
 Postpaid minutes are billed on the first day of the following month in which they were used.
 
-Usage on macOS M1 VM that exceeds 500 minutes is charged at the rate shown below.
+Usage on macOS M2 VM that exceeds 500 minutes is charged at the rate shown below.
 
-Builds on macOS Intel VM, Linux, and Windows do not have free build minutes. The per-minute pricing for each instance type is shown below.
+Builds on Linux and Windows do not have free build minutes. The per-minute pricing for each instance type is shown below.
 
 | **Item**                     | **Price**                          |
 | ---------------------------- | ---------------------------------  |
-| macOS (M1 & Intel) VM        | $0.095 / minute                    |
+| macOS (M2) VM        | $0.095 / minute                    |
 | Linux & Windows VMs          | $0.045 / minute                    |
 
 ## Pricing for Teams
 
 ### 1. Pay-as-you-go
 
-For teams, all build minutes using macOS M1 VM, macOS Intel VM, and Linux VM are charged at the rates shown below. 
+For teams, all build minutes using macOS M2 VM and Linux VM are charged at the rates shown below. 
 
 Each extra build concurrency allows running an additional build in parallel. For example, adding two extra build concurrencies allows running a total of three builds in parallel. 
 
@@ -44,14 +44,11 @@ Each additional concurrency is $49/month and you will be billed for each concurr
 
 | **Item**                     | **Price**                         |
 | ---------------------------- | --------------------------------- | 
-| macOS (M1 & Intel) VM        | $0.095 / minute                   |                                                                                                                                   
+| macOS (M2) VM        | $0.095 / minute                   |                                                                                                                                   
 | Linux & Windows VMs          | $0.045 / minute                   |                                                                       
 | Extra build concurrency      | $49 / month                       | 
 
-Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Intel and Apple Silicon M2), Linux, and Windows instances. 
-
-
-macOS M2 is not currently available as a pay-as-you-go instance type but is available for the fixed annual plan as described below.
+Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M2), Linux, and Windows instances. 
 
 ### 2. Fixed Annual Plan
 
@@ -65,7 +62,7 @@ The Codemagic annual plan gives you a fixed-price plan with the following benefi
 * In-app chat support
 * Additional concurrencies are **$1500/year**. 
 
-The fixed monthly and annual plans can only be paid for with a credit card.
+The fixed annual plan can only be paid with a credit card.
 
 If you have already created a Team in the Codemagic web app, you can upgrade to the annual plan as follows:
 
@@ -74,7 +71,7 @@ If you have already created a Team in the Codemagic web app, you can upgrade to 
 3. Click on your Team account.
 4. Click on the **Enable billing** button.
 5. Enter your **credit card** details and **company information**.
-6. Once you have entered your details, pay-as-you-go billing will be enabled. To upgrade to the annual Professional plan, click on the **Upgrade** button and follow the instructions to subscribe to the Professional plan.
+6. Once you have entered your details, pay-as-you-go billing will be enabled. To upgrade to the Fixed Annual plan, click on the **Upgrade** button and follow the instructions to subscribe to the Fixed Annual plan.
 
 If you require additional concurrencies or have any other questions about the annual plan, including requests for **macOS M2 instances**,  please contact us [here](https://codemagic.io/contact/).
 
@@ -106,7 +103,7 @@ If you would like more information about our Enterprise plan, please contact us 
 
 ## Resellers
 
-It's possible to resell the Codemagic Enterprise plan. Contact us [here](https://codemagic.io/enterprise/) for further details. 
+It's possible to resell the Codemagic Enterprise plan. Contact us [here](https://codemagic.io/pricing/#enterprise) for further details. 
 
 ## Dedicated Hosts
 
@@ -128,7 +125,7 @@ Build history and artifact retention time depend on your account type and pricin
 |---------------|-------------------|
 | Personal accounts | Build history and artifacts of apps on the personal account are stored in Codemagic for **30 days** after which they are deleted. | 
 | Teams on Pay as you go plan | Build history and artifacts of apps on the team account with Pay as you go pricing are stored in Codemagic for **60 days** after which they are deleted.| 
-| Teams on Professional or Enterprise plan | Unlimited | 
+| Teams on Fixed Annual or Enterprise plan | Unlimited | 
 
 ### Backing up build artifacts
 
@@ -148,18 +145,16 @@ The instance types and hardware specifications can be found below.
 | **Item**                 | **Specification**                                                               |
 | ------------------------ | --------------------------------------------------------------------------------|
 | macOS M2 VM              | Mac mini M2 8-core CPU / 8GB RAM                                                |
-| macOS M1 VM              | 3.2GHz Quad Core / 8GB                                                          |
-| macOS Intel VM           | 3.7GHz Quad Core / 32GB                                                         |
 | Linux VM                 | 8 vCPUs, 32 GB memory                                                           |
 | Windows VM               | 8 vCPUs, 32 GB memory  
 
-If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Android emulators are more stable on Linux VMs than on macOS VMs. Also, please note that Android emulators are not available on macOS M1 or M2 VMs.
+If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Please note that Android emulators are not available on macOS M2 VMs due to the Apple Virtualization Framework not supporting nested virtualization.
 
 If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/contact/).
 
 For Linux instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-linux/)
 
-For macOS instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions3/)  
+For macOS instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-macos/)  
 
 For Windows instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-windows/)  
 

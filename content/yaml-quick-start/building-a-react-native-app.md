@@ -284,7 +284,7 @@ workflows:
   react-native-android:
     name: React Native Android
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     environment:
       android_signing:
         - keystore_reference
@@ -337,7 +337,7 @@ workflows:
   react-native-ios:
     name: React Native iOS
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     integrations:
       app_store_connect: codemagic
     environment:

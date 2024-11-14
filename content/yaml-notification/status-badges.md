@@ -30,7 +30,7 @@ Thus, the final URL should look something like `https://api.codemagic.io/apps/5f
 To use the build status badge with markdown, e.g. when adding it to a repository's README, it should be formatted in the following way:
 
 {{< highlight markdown "style=paraiso-dark">}}
-[![Codemagic build status](https://api.codemagic.io/apps/<app-id>/<workflow-id>/status_badge.svg)](https://codemagic.io/apps/<app-id>/<workflow-id>/latest_build)
+[![Codemagic build status](https://api.codemagic.io/apps/<app-id>/<workflow-id>/status_badge.svg)](https://codemagic.io/app/<app-id>/<workflow-id>/latest_build)
 {{< /highlight >}}
 
 

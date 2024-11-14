@@ -282,7 +282,7 @@ workflows:
   maui-ios:
     name: Dotnet MAUI iOS
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     integrations:
       app_store_connect: codemagic-api
     environment:
@@ -302,8 +302,8 @@ workflows:
           ./dotnet-install.sh --install-dir $DOTNET_PATH
       - name: Install MAUI
         script: | 
-          $DOTNET_BIN nuget locals all --clear 
-          $DOTNET_BIN workload install ios maui \
+          $DOTNET nuget locals all --clear 
+          $DOTNET workload install ios maui \
             --source https://aka.ms/dotnet6/nuget/index.json \
             --source https://api.nuget.org/v3/index.json      
       - name: Set Info.plist values
@@ -326,7 +326,7 @@ workflows:
           PROFILE_NAME=$(find ~/Library/MobileDevice/Provisioning\ Profiles -name "*.mobileprovision" -execdir sh -c '/usr/libexec/PlistBuddy -c "print :Name" /dev/stdin <<< $(security cms -D -i {})' \;)
           
           cd src
-          $DOTNET_BIN publish -f net6.0-ios \
+          $DOTNET publish -f net6.0-ios \
             -c Release \
             -p:BuildIpa=True \
             -p:ApplicationDisplayVersion="1.0.0" \
@@ -345,7 +345,7 @@ workflows:
   maui-android:
     name: Dotnet MAUI Android
     max_build_duration: 120
-    instance_type: mac_mini_m1
+    instance_type: mac_mini_m2
     environment:
       android_signing:
         - codemagic-key
@@ -364,7 +364,7 @@ workflows:
       - name: Install MAUI
         script: | 
           $DOTNET nuget locals all --clear 
-          $DOTNET_BIN workload install android maui \
+          $DOTNET workload install android maui \
             --source https://aka.ms/dotnet6/nuget/index.json \
             --source https://api.nuget.org/v3/index.json      
       - name: Build
@@ -377,7 +377,7 @@ workflows:
           fi
           
           cd src
-          $DOTNET_BIN publish -f net6.0-android \
+          $DOTNET publish -f net6.0-android \
             -c Release \
             -p:AndroidKeyStore=True \
             -p:AndroidSigningKeyStore=$CM_KEYSTORE_PATH \
