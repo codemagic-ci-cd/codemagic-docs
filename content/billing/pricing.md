@@ -87,8 +87,9 @@ Enterprise plans are available starting from **$12k/year** and include the follo
 - Service level agreement
 - Account management services
 - Technical account manager
-- Private Discord channel
+- Private Slack/Discord/MS Teams channel
 - SSO Login (OpenID, OAuth2 or SAML 2.0)
+- OpenID Connect (on request)
 
 
 Dedicated **macOS M2** hosts are also available on request. A dedicated host is only used by your organization and provides 2 VMs that can be configured with the software you require. Dedicated hosts can also be EU-based.
