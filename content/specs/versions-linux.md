@@ -63,6 +63,16 @@ weight: 2
   - Skin: `pixel_4`
   - Sdcard: `512M`
 
+- **emulator-34**
+
+  - Device: `pixel_4 (Google)`
+  - Path: `/home/builder/.android/avd/emulator-34.avd`
+  - Target: `Google Play (Google Inc.)`
+  - Based on: `Android 14 (API level 34)`
+  - Tag/API: `google_apis_playstore/x86`
+  - Skin: `pixel_4`
+  - Sdcard: `512M`
+
 ## Java versions
 
 - **21.0.1** JAVA_HOME: `/usr/lib/jvm/java-1.21.0-openjdk-amd64`
