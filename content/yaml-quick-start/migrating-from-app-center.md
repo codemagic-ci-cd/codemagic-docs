@@ -65,7 +65,7 @@ Join 670+ mobile experts in our [Discord community](https://discord.com/invite/Z
 Building Project | [**2m 46s**](https://codemagic.io/app/660936c197f2bee5b7353663/build/67365494bdb50729da7ac73a) | [4m 23s](https://codemagic.io/app/660936c197f2bee5b7353663/build/673654731bd5c81d4bac8598) | [39m 27s](https://appcenter.ms/orgs/Nevercode_Codemagic/apps/Benchmark_iOS/build/branches/main/builds/9)
 Overall improvement | 174% | 152% | 1
 
-As it can be seen, building the benchmark project took around 5-6 minutes with Codemagic macOS M1 (now deprecated) and M2 machines while the build completed in 39 minutes 24 seconds with App Center. Worth pointing out that App Center limits free tier users to 30 minutes build duration per build and based on the performance rate above, the 30 minute build duration range will not allow you to complete your builds due to the fact that they will timeout.
+As it can be seen, building the benchmark project took around 2-4 minutes with Codemagic macOS M2 and Max Studio machines while the build was completed in 39 minutes 24 seconds with App Center. Worth pointing out that App Center limits free tier users to 30 minutes build duration per build and based on the performance rate above, the 30 minute build duration range will not allow you to complete your builds due to the fact that they will timeout.
 
 ### Support options
 
