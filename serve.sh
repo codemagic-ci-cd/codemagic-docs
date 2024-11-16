@@ -6,7 +6,7 @@ cd "${0%/*}"
 
 rm -rf dist/
 
-./hugo server \
+hugo server \
   --watch \
   --bind 0.0.0.0 \
   --disableFastRender \
