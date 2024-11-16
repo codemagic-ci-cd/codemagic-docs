@@ -9,7 +9,7 @@ Codemagic offers multiple build machines with different specifications and pre-i
 
 ## Hardware
 
-- Mac mini M2 `3.5GHz 8-Core / 16GB`
+- Mac mini M2 `3.5GHz 8-Core / 8GB`
 
 Available on request:
 - Mac mini M2 Pro
