@@ -1,10 +1,11 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 15.2.
-title: macOS Apple silicon build machine specification (Xcode 15.2+)
+title: Xcode 15.2.x
 aliases:
 
-weight: 14
+weight: 108
 ---
+
+Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
 
 ## Hardware
 

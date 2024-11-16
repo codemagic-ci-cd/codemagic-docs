@@ -1,10 +1,11 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 16.1.
-title: macOS Apple silicon build machine specification (Xcode 16.1+)
+title: Xcode 16.2.x (edge)
 aliases:
 
-weight: 18
+weight: 98
 ---
+
+Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
 
 ## Hardware
 
@@ -17,18 +18,18 @@ Available on request:
 
 ## System
 
-- System version `macOS 15.1 (24B83)`
+- System version `macOS 15.1 (24B2083)`
 - Kernel version `Darwin 24.1.0`
-- Disk `294GB (Free Space: 149GB)`
+- Disk `294GB (Free Space: 145GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
 - appium `2.5.0`
-- aws `2.18.1`
+- aws `2.18.15`
 - carthage `0.40.0`
-- cocoapods `1.16.0`
+- cocoapods `1.15.2`
 - cordova `12.0.0`
 - curl `8.7.1`
 - docker `N/A`
@@ -37,15 +38,15 @@ Available on request:
 - firebase `11.21.0`
 - flutter `3.24.4 ($HOME/programs/flutter)`
 - gem `3.5.22`
-- gh `2.58.0`
+- gh `2.60.1`
 - git `2.47.0`
 - Google Cloud SDK `404.0.0`
 - gradle `8.1.1`
 - gsutil `5.14`
-- homebrew `4.4.0`
+- homebrew `4.4.4`
 - ionic `7.2.0`
 - jq `1.7.1`
-- ktlint `1.3.1`
+- ktlint `1.4.0`
 - node `22.9.0`
 - npm `10.8.3`
 - python `3.8.13`
@@ -68,23 +69,23 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Java versions
 
-- **23** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-23.jdk/Contents/Home`
-- **21.0.4** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home`
-- **17.0.12** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
-- **11.0.24** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_422** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **23.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-23.jdk/Contents/Home`
+- **21.0.5** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home`
+- **17.0.13** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
+- **11.0.25** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_432** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
 - **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
 
 ## Xcode versions
 
-- 16.1 (16B40) `/Applications/Xcode-16.1.app`
+- 16.2 (16C5013f) `/Applications/Xcode-16.2.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
-- iOS 18.1
-- tvOS 18.1
-- visionOS 2.1
-- watchOS 11.1
+- iOS 18.2
+- tvOS 18.2
+- visionOS 2.2
+- watchOS 11.2
 
 ### Devices
 
@@ -102,12 +103,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - iPad Air 13-inch (M2)
 - iPad Pro 11-inch (M4)
 - iPad Pro 13-inch (M4)
-- iPad mini (6th generation)
 - iPad mini (A17 Pro)
-- iPhone 15
-- iPhone 15 Plus
-- iPhone 15 Pro
-- iPhone 15 Pro Max
 - iPhone 16
 - iPhone 16 Plus
 - iPhone 16 Pro
