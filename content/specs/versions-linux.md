@@ -8,7 +8,7 @@ weight: 2
 
 ## Hardware
 
-- VM on Linux `8 vCPUs, 32 GB memory`
+- Linux virtual machine: `8 vCPUs, 32 GB memory`
 
 ## System
 
@@ -16,7 +16,41 @@ weight: 2
 - Kernel version `5.11.0-1029-gcp`
 - Disk `97GB (Free Space: 31GB)`
 
-## Pre-installed tools
+## Android emulators
+
+- **emulator**
+
+  - Device: `pixel_4 (Google)`
+  - Path: `/home/builder/.android/avd/emulator.avd`
+  - Target: `Google Play (Google Inc.)`
+  - Based on: `Android 11.0 (R)`
+  - Tag/API: `google_apis_playstore/x86`
+  - Skin: `pixel_4`
+  - Sdcard: `512M`
+
+- **emulator-34**
+
+  - Device: `pixel_4 (Google)`
+  - Path: `/home/builder/.android/avd/emulator-34.avd`
+  - Target: `Google Play (Google Inc.)`
+  - Based on: `Android 14 (API level 34)`
+  - Tag/API: `google_apis_playstore/x86`
+  - Skin: `pixel_4`
+  - Sdcard: `512M`
+
+## Android Studio 2022.3
+
+Android Studio path: `~/programs/android-studio`
+
+## Java versions
+
+- **21.0.1** JAVA_HOME: `/usr/lib/jvm/java-1.21.0-openjdk-amd64`
+- **17.0.11** (default) JAVA_HOME: `/usr/lib/jvm/java-1.17.0-openjdk-amd64`
+- **15.0.3** JAVA_HOME: `/usr/lib/jvm/java-1.15.0-openjdk-amd64`
+- **11.0.20.1** JAVA_HOME: `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
+- **1.8.0_382** JAVA_HOME: `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
+
+## Other pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.2.9519653`
@@ -50,37 +84,3 @@ weight: 2
 - yarn `1.22.19`
 - yq `4.34.1`
 - zip
-
-## Android emulators
-
-- **emulator**
-
-  - Device: `pixel_4 (Google)`
-  - Path: `/home/builder/.android/avd/emulator.avd`
-  - Target: `Google Play (Google Inc.)`
-  - Based on: `Android 11.0 (R)`
-  - Tag/API: `google_apis_playstore/x86`
-  - Skin: `pixel_4`
-  - Sdcard: `512M`
-
-- **emulator-34**
-
-  - Device: `pixel_4 (Google)`
-  - Path: `/home/builder/.android/avd/emulator-34.avd`
-  - Target: `Google Play (Google Inc.)`
-  - Based on: `Android 14 (API level 34)`
-  - Tag/API: `google_apis_playstore/x86`
-  - Skin: `pixel_4`
-  - Sdcard: `512M`
-
-## Java versions
-
-- **21.0.1** JAVA_HOME: `/usr/lib/jvm/java-1.21.0-openjdk-amd64`
-- **17.0.11** (default) JAVA_HOME: `/usr/lib/jvm/java-1.17.0-openjdk-amd64`
-- **15.0.3** JAVA_HOME: `/usr/lib/jvm/java-1.15.0-openjdk-amd64`
-- **11.0.20.1** JAVA_HOME: `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
-- **1.8.0_382** JAVA_HOME: `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
-
-## Android Studio 2022.3
-
-Android Studio path: `~/programs/android-studio`

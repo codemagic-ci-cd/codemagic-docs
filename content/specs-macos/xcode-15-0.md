@@ -24,58 +24,6 @@ Available on request:
 - Kernel version `Darwin 22.6.0`
 - Disk `294GB (Free Space: 101GB)`
 
-## Pre-installed tools
-
-- Android tools `/usr/local/share/android-sdk`
-- Android NDK `25.1.8937393`
-- aws `2.13.4`
-- carthage `0.39.0`
-- cocoapods `1.13.0`
-- cordova `11.0.0`
-- curl `8.1.2`
-- docker `N/A`
-- ew-cli `0.10.4`
-- fastlane `2.216.0`
-- firebase `11.21.0`
-- flutter `3.16.0 ($HOME/programs/flutter)`
-- gem `3.4.20`
-- gh `2.32.1`
-- git `2.41.0`
-- Google Cloud SDK `404.0.0`
-- gradle `8.1.1`
-- gsutil `5.14`
-- homebrew `4.1.1`
-- ionic `5.4.16`
-- jq `1.6`
-- ktlint `0.50.0`
-- node `19.7.0`
-- npm `9.8.0`
-- python `3.8.13`
-- python3 `3.8.13`
-- ruby `3.0.4p208`
-- ssh `9.0p1`
-- sudo `1.9.5p2`
-- swiftgen `6.6.2`
-- tar `3.5.3`
-- ucd `0.11.10`
-- unzip `6.00`
-- wget `1.21.4`
-- yarn `1.22.19`
-- yq `4.34.2`
-- zip `3.0`
-
-## Android emulators
-
-Android emulators are unavailable on Apple silicon machines due to the Apple Virtualization Framework not supporting nested virtualization. Please use a Linux instance.
-
-## Java versions
-
-- **20.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-20.jdk/Contents/Home`
-- **17.0.8** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
-- **11.0.20** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_382** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
-- **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
-
 ## Xcode versions
 
 - 15.0.1 (15A507) `/Applications/Xcode-15.0.app`, also selected when specifying `15` in Xcode version settings
@@ -161,3 +109,55 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - iPhone SE (2nd generation)
 - iPhone SE (3rd generation)
 - iPod touch (7th generation)
+
+## Android emulators
+
+Android emulators are unavailable on Apple silicon machines due to the Apple Virtualization Framework not supporting nested virtualization. Please use a Linux instance.
+
+## Java versions
+
+- **20.0.2** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-20.jdk/Contents/Home`
+- **17.0.8** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
+- **11.0.20** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_382** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
+
+## Other pre-installed tools
+
+- Android tools `/usr/local/share/android-sdk`
+- Android NDK `25.1.8937393`
+- aws `2.13.4`
+- carthage `0.39.0`
+- cocoapods `1.13.0`
+- cordova `11.0.0`
+- curl `8.1.2`
+- docker `N/A`
+- ew-cli `0.10.4`
+- fastlane `2.216.0`
+- firebase `11.21.0`
+- flutter `3.16.0 ($HOME/programs/flutter)`
+- gem `3.4.20`
+- gh `2.32.1`
+- git `2.41.0`
+- Google Cloud SDK `404.0.0`
+- gradle `8.1.1`
+- gsutil `5.14`
+- homebrew `4.1.1`
+- ionic `5.4.16`
+- jq `1.6`
+- ktlint `0.50.0`
+- node `19.7.0`
+- npm `9.8.0`
+- python `3.8.13`
+- python3 `3.8.13`
+- ruby `3.0.4p208`
+- ssh `9.0p1`
+- sudo `1.9.5p2`
+- swiftgen `6.6.2`
+- tar `3.5.3`
+- ucd `0.11.10`
+- unzip `6.00`
+- wget `1.21.4`
+- yarn `1.22.19`
+- yq `4.34.2`
+- zip `3.0`

@@ -24,7 +24,54 @@ Available on request:
 - Kernel version `Darwin 24.1.0`
 - Disk `294GB (Free Space: 145GB)`
 
-## Pre-installed tools
+## Xcode versions
+
+- 16.2 (16C5013f) `/Applications/Xcode-16.2.app`, also selected when specifying `edge` in Xcode version settings
+
+### Runtimes
+
+- iOS 18.2
+- tvOS 18.2
+- visionOS 2.2
+- watchOS 11.2
+
+### Devices
+
+- Apple TV
+- Apple TV 4K (3rd generation)
+- Apple TV 4K (3rd generation) (at 1080p)
+- Apple Vision Pro
+- Apple Watch SE (40mm) (2nd generation)
+- Apple Watch SE (44mm) (2nd generation)
+- Apple Watch Series 10 (42mm)
+- Apple Watch Series 10 (46mm)
+- Apple Watch Ultra 2 (49mm)
+- iPad (10th generation)
+- iPad Air 11-inch (M2)
+- iPad Air 13-inch (M2)
+- iPad Pro 11-inch (M4)
+- iPad Pro 13-inch (M4)
+- iPad mini (A17 Pro)
+- iPhone 16
+- iPhone 16 Plus
+- iPhone 16 Pro
+- iPhone 16 Pro Max
+- iPhone SE (3rd generation)
+
+## Android emulators
+
+Android emulators are unavailable on Apple silicon machines due to the Apple Virtualization Framework not supporting nested virtualization. Please use a Linux instance.
+
+## Java versions
+
+- **23.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-23.jdk/Contents/Home`
+- **21.0.5** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home`
+- **17.0.13** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
+- **11.0.25** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
+- **1.8.0_432** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
+- **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
+
+## Other pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
@@ -64,50 +111,3 @@ Available on request:
 - yarn `1.22.22`
 - yq `4.44.3`
 - zip `3.0`
-
-## Android emulators
-
-Android emulators are unavailable on Apple silicon machines due to the Apple Virtualization Framework not supporting nested virtualization. Please use a Linux instance.
-
-## Java versions
-
-- **23.0.1** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-23.jdk/Contents/Home`
-- **21.0.5** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home`
-- **17.0.13** (default) JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home`
-- **11.0.25** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home`
-- **1.8.0_432** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home`
-- **1.7.0_352** JAVA_HOME: `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home`
-
-## Xcode versions
-
-- 16.2 (16C5013f) `/Applications/Xcode-16.2.app`, also selected when specifying `edge` in Xcode version settings
-
-### Runtimes
-
-- iOS 18.2
-- tvOS 18.2
-- visionOS 2.2
-- watchOS 11.2
-
-### Devices
-
-- Apple TV
-- Apple TV 4K (3rd generation)
-- Apple TV 4K (3rd generation) (at 1080p)
-- Apple Vision Pro
-- Apple Watch SE (40mm) (2nd generation)
-- Apple Watch SE (44mm) (2nd generation)
-- Apple Watch Series 10 (42mm)
-- Apple Watch Series 10 (46mm)
-- Apple Watch Ultra 2 (49mm)
-- iPad (10th generation)
-- iPad Air 11-inch (M2)
-- iPad Air 13-inch (M2)
-- iPad Pro 11-inch (M4)
-- iPad Pro 13-inch (M4)
-- iPad mini (A17 Pro)
-- iPhone 16
-- iPhone 16 Plus
-- iPhone 16 Pro
-- iPhone 16 Pro Max
-- iPhone SE (3rd generation)
