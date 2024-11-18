@@ -1,6 +1,6 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic Linux build machines.
-title: Linux build machine specification
+title: Linux machines
 aliases:
   - "../releases-and-versions/versions-linux"
 weight: 2
