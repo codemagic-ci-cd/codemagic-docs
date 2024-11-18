@@ -24,10 +24,6 @@ Android Studio path: `C:\Program Files\Android\Android Studio\`
 - **11.0.22** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-11.0.22`
 - **1.8.0** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-1.8.0`
 
-## Unity Hub 3.7.0
-
-Unity Hub path: `C:\Program Files\Unity Hub\`
-
 ## Other pre-installed tools
 
 - Android tools `C:\Users\builder\programs\android-sdk`
