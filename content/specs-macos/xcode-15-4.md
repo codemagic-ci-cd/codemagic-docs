@@ -1,25 +1,28 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 16.0.
-title: macOS Apple silicon build machine specification (Xcode 16.0+)
+title: Xcode 15.4.x
 aliases:
 
-weight: 17
+weight: 106
 ---
+
+Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
 
 ## Hardware
 
-- Mac mini M2 `3.5GHz 8-Core / 16GB`
+- Mac mini M2 `3.5GHz 8-Core / 8GB`
 
+{{<notebox>}}
 Available on request:
 - Mac mini M2 Pro
 - Mac Studio M2 Max
 - Mac Studio M2 Ultra
+{{</notebox>}}
 
 ## System
 
-- System version `macOS 14.7 (23H124)`
-- Kernel version `Darwin 23.6.0`
-- Disk `294GB (Free Space: 141GB)`
+- System version `macOS 14.4.1 (23E224)`
+- Kernel version `Darwin 23.4.0`
+- Disk `294GB (Free Space: 81GB)`
 
 ## Pre-installed tools
 
@@ -30,7 +33,7 @@ Available on request:
 - carthage `0.39.1`
 - cocoapods `1.16.1`
 - cordova `12.0.0`
-- curl `8.7.1`
+- curl `8.4.0`
 - docker `N/A`
 - ew-cli `0.11.1`
 - fastlane `2.225.0`
@@ -51,7 +54,7 @@ Available on request:
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
-- ssh `9.7p1`
+- ssh `9.6p1`
 - sudo `1.9.13p2`
 - swiftgen `6.6.3`
 - tar `3.5.3`
@@ -77,14 +80,25 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 16.0 (16A242d) `/Applications/Xcode-16.0.app`, also selected when specifying `latest` or `16` in Xcode version settings
+- 15.4 (15F31d) `/Applications/Xcode-15.4.app`
 
 ### Runtimes
 
-- iOS 18.0
-- tvOS 18.0
-- visionOS 2.0
-- watchOS 11.0
+- iOS 17.0
+- iOS 17.2
+- iOS 17.4
+- iOS 17.5
+- tvOS 17.0
+- tvOS 17.2
+- tvOS 17.4
+- tvOS 17.5
+- visionOS 1.0
+- visionOS 1.1
+- visionOS 1.2
+- watchOS 10.0
+- watchOS 10.2
+- watchOS 10.4
+- watchOS 10.5
 
 ### Devices
 
@@ -94,23 +108,33 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
-- Apple Watch Series 10 (42mm)
-- Apple Watch Series 10 (46mm)
+- Apple Watch Series 5 (40mm)
+- Apple Watch Series 5 (44mm)
+- Apple Watch Series 6 (40mm)
+- Apple Watch Series 6 (44mm)
+- Apple Watch Series 7 (41mm)
+- Apple Watch Series 7 (45mm)
+- Apple Watch Series 8 (41mm)
+- Apple Watch Series 8 (45mm)
 - Apple Watch Series 9 (41mm)
 - Apple Watch Series 9 (45mm)
+- Apple Watch Ultra (49mm)
 - Apple Watch Ultra 2 (49mm)
 - iPad (10th generation)
+- iPad Air (5th generation)
 - iPad Air 11-inch (M2)
 - iPad Air 13-inch (M2)
+- iPad Pro (11-inch) (4th generation)
+- iPad Pro (12.9-inch) (6th generation)
 - iPad Pro 11-inch (M4)
 - iPad Pro 13-inch (M4)
 - iPad mini (6th generation)
+- iPhone 14
+- iPhone 14 Plus
+- iPhone 14 Pro
+- iPhone 14 Pro Max
 - iPhone 15
 - iPhone 15 Plus
 - iPhone 15 Pro
 - iPhone 15 Pro Max
-- iPhone 16
-- iPhone 16 Plus
-- iPhone 16 Pro
-- iPhone 16 Pro Max
 - iPhone SE (3rd generation)

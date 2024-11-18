@@ -1,19 +1,22 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 16.2.
-title: macOS Apple silicon build machine specification (Xcode 16.2+)
+title: Xcode 16.2.x (edge)
 aliases:
 
-weight: 19
+weight: 98
 ---
+
+Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
 
 ## Hardware
 
-- Mac mini M2 `3.5GHz 8-Core / 16GB`
+- Mac mini M2 `3.5GHz 8-Core / 8GB`
 
+{{<notebox>}}
 Available on request:
 - Mac mini M2 Pro
 - Mac Studio M2 Max
 - Mac Studio M2 Ultra
+{{</notebox>}}
 
 ## System
 

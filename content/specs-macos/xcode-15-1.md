@@ -1,53 +1,55 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic macOS Apple silicon build machines using Xcode version 15.3.
-title: macOS Apple silicon build machine specification (Xcode 15.3+)
+title: Xcode 15.1.x
 aliases:
 
-weight: 15
+weight: 109
 ---
+
+Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
 
 ## Hardware
 
-- Mac mini M2 `3.5GHz 8-Core / 16GB`
+- Mac mini M2 `3.5GHz 8-Core / 8GB`
 
+{{<notebox>}}
 Available on request:
 - Mac mini M2 Pro
 - Mac Studio M2 Max
 - Mac Studio M2 Ultra
+{{</notebox>}}
 
 ## System
 
-- System version `macOS 14.3.1 (23D60)`
-- Kernel version `Darwin 23.3.0`
-- Disk `294GB (Free Space: 74GB)`
+- System version `macOS 14.2 (23C64)`
+- Kernel version `Darwin 23.2.0`
+- Disk `294GB (Free Space: 141GB)`
 
 ## Pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
-- appium `2.5.0`
 - aws `2.13.35`
 - carthage `0.39.1`
-- cocoapods `1.16.1`
-- cordova `12.0.0`
+- cocoapods `1.14.2`
+- cordova `11.0.0`
 - curl `8.4.0`
 - docker `N/A`
-- ew-cli `0.11.1`
-- fastlane `2.225.0`
+- ew-cli `0.10.6`
+- fastlane `2.217.0`
 - firebase `11.21.0`
-- flutter `3.24.4 ($HOME/programs/flutter)`
-- gem `3.5.22`
+- flutter `3.16.3 ($HOME/programs/flutter)`
+- gem `3.4.22`
 - gh `2.39.1`
 - git `2.42.1`
 - Google Cloud SDK `404.0.0`
 - gradle `8.1.1`
 - gsutil `5.14`
-- homebrew `4.2.7`
-- ionic `7.2.0`
+- homebrew `4.1.20`
+- ionic `5.4.16`
 - jq `1.7`
 - ktlint `1.0.1`
-- node `20.11.0`
-- npm `10.2.4`
+- node `19.7.0`
+- npm `9.5.0`
 - python `3.8.13`
 - python3 `3.8.13`
 - ruby `3.0.4p208`
@@ -76,27 +78,23 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Xcode versions
 
-- 15.3 (15E204a) `/Applications/Xcode-15.3.app`
+- 15.1 (15C65) `/Applications/Xcode-15.1.app`
 
 ### Runtimes
+
 
 - iOS 15.4
 - iOS 16.4
 - iOS 17.0
 - iOS 17.2
-- iOS 17.4
 - tvOS 15.4
 - tvOS 16.4
 - tvOS 17.0
 - tvOS 17.2
-- tvOS 17.4
-- visionOS 1.0
-- visionOS 1.1
 - watchOS 8.5
 - watchOS 9.4
 - watchOS 10.0
 - watchOS 10.2
-- watchOS 10.4
 
 ### Devices
 
@@ -105,7 +103,6 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
 - Apple TV 4K (at 1080p) (2nd generation)
-- Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
 - Apple Watch Series 5 (40mm)
