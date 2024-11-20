@@ -22,7 +22,7 @@ Available on request:
 
 - System version `macOS 13.5.2 (22G91)`
 - Kernel version `Darwin 22.6.0`
-- Disk `294GB (Free Space: 101GB)`
+- Disk `294GB (Free Space: 75GB)`
 
 ## Xcode versions
 
@@ -126,16 +126,16 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
+- appium `1.22.3`
 - aws `2.13.4`
 - carthage `0.39.0`
 - cocoapods `1.13.0`
 - cordova `11.0.0`
 - curl `8.1.2`
 - docker `N/A`
-- ew-cli `0.10.4`
+- ew-cli `0.11.1`
 - fastlane `2.216.0`
 - firebase `11.21.0`
-- flutter `3.16.0 ($HOME/programs/flutter)`
 - gem `3.4.20`
 - gh `2.32.1`
 - git `2.41.0`

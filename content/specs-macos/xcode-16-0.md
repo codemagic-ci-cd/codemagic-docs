@@ -1,7 +1,7 @@
 ---
 title: Xcode 16.0.x (default)
-aliases: /specs/versions-macos/
-
+aliases:
+- /specs/versions-macos/
 weight: 100
 ---
 
@@ -91,7 +91,6 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - ew-cli `0.11.1`
 - fastlane `2.225.0`
 - firebase `11.21.0`
-- flutter `3.24.4 ($HOME/programs/flutter)`
 - gem `3.5.22`
 - gh `2.48.0`
 - git `2.44.0`

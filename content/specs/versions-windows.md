@@ -36,7 +36,6 @@ Android Studio path: `C:\Program Files\Android\Android Studio\`
 - DotNetFx `4.8.0.20220524`
 - fastlane `2.219.0`
 - firebase `13.6.0`
-- flutter `3.19.4 (C:\Users\builder\programs\flutter)`
 - gem `3.5.3`
 - gh `2.46.0`
 - Google Cloud SDK `468.0.0` gsutil `5.27`
