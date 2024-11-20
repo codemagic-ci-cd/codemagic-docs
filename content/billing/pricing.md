@@ -5,7 +5,7 @@ weight: 2
 ---
 
 {{<notebox>}}
-Over-the-air (OTA) updates (CodePush) for React Native projects is **$99/month per team** with the Pay-as-you-go plan and it is free for the annual plans. [Contact us](https://codemagic.io/contact/) for more information.
+Over-the-air (OTA) updates (CodePush) for React Native projects is **$99/month per team** with the Pay-as-you-go plan and it is free for the annual plans. If a dedicated CodePush server is required, it is $6k/year. [Contact us](https://codemagic.io/contact/) for more information.
 {{</notebox>}}
 
 ## Pricing for Individuals
