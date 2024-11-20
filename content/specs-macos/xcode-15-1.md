@@ -119,13 +119,14 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
+- appium `1.22.3`
 - aws `2.13.35`
 - carthage `0.39.1`
 - cocoapods `1.14.2`
 - cordova `11.0.0`
 - curl `8.4.0`
 - docker `N/A`
-- ew-cli `0.10.6`
+- ew-cli `0.11.1`
 - fastlane `2.217.0`
 - firebase `11.21.0`
 - flutter `3.16.3 ($HOME/programs/flutter)`
