@@ -60,7 +60,6 @@ Android Studio path: `~/programs/android-studio`
 - ew-cli `0.9.17`
 - fastlane `2.214.0`
 - firebase `11.21.0`
-- flutter `3.13.6 ($HOME/programs/flutter)`
 - gem `3.1.4`
 - gh `1.8.1`
 - git `2.25.1`
