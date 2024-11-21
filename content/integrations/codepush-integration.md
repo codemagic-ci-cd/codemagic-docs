@@ -1,7 +1,7 @@
 ---
 title: CodePush integration
 description: How to integrate your workflows with CodePush
-weight: 7
+weight: 22
 ---
 
 [**CodePush**](https://github.com/microsoft/code-push) is a cloud service that enables React Native developers to deploy mobile app updates directly to their users’ devices without re-deploying them to the stores.
