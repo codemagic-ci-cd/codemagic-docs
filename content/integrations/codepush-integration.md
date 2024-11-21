@@ -62,11 +62,18 @@ scripts:
         npm install
     - name: Codepush deployment
       script: |         
-           code-push-standalone release-react APP_NAME_CREATED_ABOVE ios 
-           code-push-standalone release-react APP_NAME_CREATED_ABOVE android
+           code-push-standalone release-react APP_NAME_CREATED_ABOVE ios -d Staging# -d refers to the deployment name e.g. Production, Staging
+           code-push-standalone release-react APP_NAME_CREATED_ABOVE android -d Staging # -d refers to the deployment name e.g. Production, Staging
 ```
 
-**Note**: $CODEPUSH_TOKEN for authentication will be provided by the Codemagic team.
+{{<notebox>}}
+****Note**: **$CODEPUSH_TOKEN** for authentication will be provided by the Codemagic team.
+{{</notebox>}}
+
+{{<notebox>}}
+**Note**: Running **code-push-standalone release-react** generates updates and releases them to the server to be served 
+{{</notebox>}}
+
 
 7. In order to reveal the Deployment keys, run **code-push-standalone deployment ls YOUR_APP_NAME -k**
 8. By default, you get two Deployment channels: Staging and Production. You can add new ones, rename them or delete them by running the following commands:
@@ -82,6 +89,9 @@ To Add: code-push-standalone app add <appName>
 To Rename: code-push-standalone app rename <appName> <newAppName>
 To Delete: code-push-standalone app rm <appName>
 ```
+10. If you need to patch releases e.g. you need to make a change in a previous release e.g. increase rollout percentage, a missed bug fix etc. you can achieve it by running **code-push-standalone patch <appName> <deploymentName>**
+
+11. You cannot delete a deployment release history but you can roll it back in case any release was shipped with a broken feature or anything, by running **code-push-standalone rollback <appName> <deploymentName>**
 
 ## Debugging notes
 
