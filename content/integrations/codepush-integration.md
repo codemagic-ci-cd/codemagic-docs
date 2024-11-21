@@ -84,6 +84,7 @@ To Remove: code-push-standalone deployment rm <appName> <deploymentName>
 To Rename: code-push-standalone deployment rename <appName> <deploymentName> <newDeploymentName>
 ```
 9. Likewise, apps can be added, renamed and deleted:
+
 ```
 To Add: code-push-standalone app add <appName>
 To Rename: code-push-standalone app rename <appName> <newAppName>
