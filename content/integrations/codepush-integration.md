@@ -38,7 +38,7 @@ for Android:
 ```
 <string moduleConfig="true" name="CodePushDeploymentKey">YOUR_DEPLOYMENT_KEY</string>
 ```
-**Note**: About how to find the deployment keys, please refer to step 7
+**Note**: About how to find the deployment keys, please refer to step **7**
 
 5. After configuring all the above-mentioned steps, it is time to set up the Codemagic side congiruations and authentication. For that, [contact Codemagic team](https://codemagic.io/contact/) for an access key.
 6. Add the following lines in **codemagic.yaml****:
@@ -62,8 +62,33 @@ scripts:
         npm install
     - name: Codepush deployment
       script: |         
-           code-push-standalone release-react APP_NAME_CREATED_ABOVE ios
+           code-push-standalone release-react APP_NAME_CREATED_ABOVE ios 
+           code-push-standalone release-react APP_NAME_CREATED_ABOVE android
 ```
 
 **Note**: $CODEPUSH_TOKEN for authentication will be provided by the Codemagic team.
 
+7. In order to reveal the Deployment keys, run **code-push-standalone deployment ls YOUR_APP_NAME -k**
+8. By default, you get two Deployment channels: Staging and Production. You can add new ones, rename them or delete them by running the following commands:
+
+```
+To Add: code-push-standalone deployment add <appName> <deploymentName>
+To Remove: code-push-standalone deployment rm <appName> <deploymentName>
+To Rename: code-push-standalone deployment rename <appName> <deploymentName> <newDeploymentName>
+```
+9. Likewise, apps can be added, renamed and deleted:
+```
+To Add: code-push-standalone app add <appName>
+To Rename: code-push-standalone app rename <appName> <newAppName>
+To Delete: code-push-standalone app rm <appName>
+```
+
+## Debugging notes
+
+If your project **Info.plist** file key **CFBundleShortVersionString** does not hold a semver string value, then highly likely you will see the following error when releasing an update:
+
+```
+[Error]  The "CFBundleShortVersionString" key in the "ios/Codemagic_RN/Info.plist" file needs to specify a valid semver string, containing both a major and minor version (e.g. 1.3.2, 1.1).
+```
+
+Solution is either change the value in **Info.plist** file to a semver string value which is not recommended, or the best option is to add **--targetBinaryVersion**  to the build/release command: **code-push-standalone release-react iOS ios --targetBinaryVersion 1.0.0**
