@@ -1,6 +1,6 @@
 ---
 title: CodePush integration
-description: How to integrate your workflows with CodePush
+description: How to integrate your workflows with CodePush using Codemagic
 weight: 22
 ---
 
