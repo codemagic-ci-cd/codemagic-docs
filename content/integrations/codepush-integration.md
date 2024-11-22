@@ -17,28 +17,28 @@ While the CodePush license is free for annual plan subscriptions, there is a pos
 2. Install React Native CodePush plugin by running **npm install --save react-native-code-push** in the root directory
 3. Make sure Codemagic provided server URL is correctly configured in the project:
 
-for iOS, place the following key and its string in Info.plist:
+For iOS, place the following key and its string in Info.plist:
 
 ```
 <key>CodePushServerURL</key>
 <string>https://codepush.codemagic.io/</string>
 ```
 
-for Android, add the following line in **strings.xml**:
+For Android, add the following line in **strings.xml**:
 
 ```
  <string moduleConfig="true" name="CodePushServerUrl">https://codepush.codemagic.io/</string>
 ```
 4. While making changes in Info.plist and strings.xml files, add the Deployment keys:
 
-for iOS:
+For iOS:
 
 ```
 <key>CodePushDeploymentKey</key>
 <string>YOUR_DEPLOYMENT_KEY</string>
 ```
 
-for Android:
+For Android:
 
 ```
 <string moduleConfig="true" name="CodePushDeploymentKey">YOUR_DEPLOYMENT_KEY</string>
@@ -72,7 +72,7 @@ scripts:
 ```
 
 {{<notebox>}}
-****Note**: **$CODEPUSH_TOKEN** for authentication will be provided by the Codemagic team.
+****Note**: **$CODEPUSH_TOKEN** for authentication will be provided by the Codemagic team and it needs to be added as an environment variable and then imported in **codemagic.yaml**. More info can be found [here](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/)
 {{</notebox>}}
 
 {{<notebox>}}
@@ -101,7 +101,7 @@ To Delete: code-push-standalone app rm <appName>
 
 ## Debugging notes
 
-If your project **Info.plist** file key **CFBundleShortVersionString** does not hold a semver string value, then highly likely you will see the following error when releasing an update:
+If your project **Info.plist** file key **CFBundleShortVersionString** does not hold a semver string value, then it's highly likely you will see the following error when releasing an update:
 
 ```
 [Error]  The "CFBundleShortVersionString" key in the "ios/Codemagic_RN/Info.plist" file needs to specify a valid semver string, containing both a major and minor version (e.g. 1.3.2, 1.1).
