@@ -58,7 +58,7 @@ scripts:
     - name: CodePush authentication
       script: |
           code-push-standalone login "https://codepush.codemagic.io" --key $CODEPUSH_TOKEN       
-    - name: CodePush add app
+    - name: CodePush add app # this script can be skipped if you have existing apps
       script: |
           code-push-standalone app add YOUR_PREFERRED_APP_NAME
           code-push-standalone app ls
