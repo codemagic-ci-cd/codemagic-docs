@@ -143,7 +143,7 @@ In this step you can also define the build artifacts you are interested in. Thes
         echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
     - name: Get Flutter packages
       script: | 
-        flutter packages pub get
+        flutter pub get
     - name: Build AAB with Flutter
       script: | 
         flutter build appbundle --release
@@ -188,7 +188,7 @@ Please make sure to wrap the `--bundle` pattern in single quotes. If the `--bund
         xcode-project use-profiles
     - name: Get Flutter packages
       script: | 
-        flutter packages pub get
+        flutter pub get
     - name: Install pods
       script: | 
         find . -name "Podfile" -execdir pod install \;
@@ -221,7 +221,7 @@ Please make sure to wrap the `--bundle` pattern in single quotes. If the `--bund
 
     - name: Get Flutter packages
       script: | 
-          flutter packages pub get
+          flutter pub get
     - name: Install pods
       script: | 
         find . -name "Podfile" -execdir pod install \;
@@ -246,7 +246,7 @@ Please make sure to wrap the `--bundle` pattern in single quotes. If the `--bund
   scripts:
     - name: Get Flutter packages
       script: | 
-          flutter packages pub get
+          flutter pub get
     - name: Build Flutter Windows
       script: | 
         flutter config --enable-windows-desktop
@@ -458,7 +458,7 @@ workflows:
           echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
       - name: Get Flutter packages
         script: | 
-          flutter packages pub get
+          flutter pub get
       - name: Flutter analyze
         script: | 
           flutter analyze
@@ -512,7 +512,7 @@ workflows:
           xcode-project use-profiles
       - name: Get Flutter packages
         script: | 
-          flutter packages pub get
+          flutter pub get
       - name: Install pods
         script: | 
           find . -name "Podfile" -execdir pod install \;
@@ -593,7 +593,7 @@ workflows:
           xcode-project use-profiles
       - name: Get Flutter packages
         script: | 
-          flutter packages pub get
+          flutter pub get
       - name: Install pods
         script: | 
           find . -name "Podfile" -execdir pod install \;
@@ -678,7 +678,7 @@ workflows:
         - ~/.pub-cache
     scripts:
       - name: Get Flutter packages
-        script: flutter packages pub get
+        script: flutter pub get
       - name: Configure for Windows
         script: flutter config --enable-windows-desktop
       - name: Build Windows
@@ -709,7 +709,7 @@ workflows:
         - ~/.pub-cache
     scripts:
       - name: Get Flutter packages
-        script: flutter packages pub get
+        script: flutter pub get
       - name: Configure for Windows
         script: flutter config --enable-windows-desktop
       - name: Build Windows

@@ -1,19 +1,30 @@
 ---
 description: A list of tools available out-of-the-box on Codemagic Windows build machines.
-title: Windows build machine specification
+title: Windows machines
 weight: 3
 ---
 
 ## Hardware
 
-- VM on Windows `8 vCPUs, 32 GB memory`
+- Windows virtual machine: `8 vCPUs, 32 GB memory`
 
 ## System
 
 - System version `Microsoft Windows Server 2022 Datacenter (OS Build 20348.643)`
 - Disk `150GB (Free Space: 66GB)`
 
-## Pre-installed tools
+## Android Studio Iguana | 2023.2.1 (#AI-232.10300.40.2321.11567975)
+
+Android Studio path: `C:\Program Files\Android\Android Studio\`
+
+## Java versions
+- **21.0.2** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-21.0.2`
+- **20.0.1** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-20.0.1`
+- **17** (default) JAVA_HOME: `C:\Program Files\OpenJDK\jdk-17`
+- **11.0.22** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-11.0.22`
+- **1.8.0** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-1.8.0`
+
+## Other pre-installed tools
 
 - Android tools `C:\Users\builder\programs\android-sdk`
 - Android NDK `26.2.11394342`
@@ -25,7 +36,6 @@ weight: 3
 - DotNetFx `4.8.0.20220524`
 - fastlane `2.219.0`
 - firebase `13.6.0`
-- flutter `3.19.4 (C:\Users\builder\programs\flutter)`
 - gem `3.5.3`
 - gh `2.46.0`
 - Google Cloud SDK `468.0.0` gsutil `5.27`
@@ -48,18 +58,3 @@ weight: 3
 - wget `1.21.4`
 - yarn `1.22.19`
 - zip `3.0.0`
-
-## Java versions
-- **21.0.2** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-21.0.2`
-- **20.0.1** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-20.0.1`
-- **17** (default) JAVA_HOME: `C:\Program Files\OpenJDK\jdk-17`
-- **11.0.22** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-11.0.22`
-- **1.8.0** JAVA_HOME: `C:\Program Files\OpenJDK\jdk-1.8.0`
-
-## Android Studio Iguana | 2023.2.1 (#AI-232.10300.40.2321.11567975)
-
-Android Studio path: `C:\Program Files\Android\Android Studio\`
-
-## Unity Hub 3.7.0
-
-Unity Hub path: `C:\Program Files\Unity Hub\`

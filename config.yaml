@@ -188,6 +188,11 @@ menu:
           name: Software and hardware
           weight: 11
 
+        - identifier: specs-macos
+          name: macOS machines
+          parent: specs
+          weight: 1
+
         - identifier: custom-menu-position
           params:
               hide: true
