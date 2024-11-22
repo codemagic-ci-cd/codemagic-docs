@@ -9,6 +9,10 @@ While the CodePush license is free for annual plan subscriptions, there is a pos
 
 ## Step by step guide to configure CodePush
 
+{{<notebox>}}
+****Note**: Skip to step 5 if CodePush is already configured for your project
+{{</notebox>}}
+
 1. Start with setting up CodePush in your React Native project by following the steps for [iOS](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-ios.md) and [Android](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-android.md)
 2. Install React Native CodePush plugin by running **npm install --save react-native-code-push** in the root directory
 3. Make sure Codemagic provided server URL is correctly configured in the project:
@@ -41,7 +45,7 @@ for Android:
 ```
 **Note**: About how to find the deployment keys, please refer to step **7**
 
-5. After configuring all the above-mentioned steps, it is time to set up the Codemagic side congiruations and authentication. For that, [contact Codemagic team](https://codemagic.io/contact/) for an access key.
+5. After configuring all the above-mentioned steps, it is time to set up the Codemagic side configurations and authentication. For that, [contact Codemagic team](https://codemagic.io/contact/) for an access key.
 6. Add the following lines in **codemagic.yaml****:
 
 ```
