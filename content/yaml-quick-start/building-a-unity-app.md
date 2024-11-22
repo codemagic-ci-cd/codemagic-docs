@@ -116,9 +116,9 @@ Each Unity build will have to activate a valid Unity Plus or a Unity Pro license
 {{< /highlight >}}
 
 {{<notebox>}}
-**Note:** The `UNITY_HOME` environment variable is already set on the build machines to `/Applications/Unity/Hub/Editor/<default-unity-version>/Unity.app`.
+**Note:** Running Unity commands requires a specified Unity version installed on the build machine.
 
-See the default Unity version from the macOS build machine specification [here](../specs/versions-macos/).
+To install a version of Unity, follow the steps [here](https://docs.codemagic.io/knowledge-others/install-unity-version/)
 {{</notebox>}}
 
 ## Activating and deactivating the license
