@@ -24,6 +24,9 @@ Version: 0.0.1
 @import './modules/tabbed-pane';
 @import './modules/clipboard';
 
+html {
+    scroll-behavior: smooth;
+}
 body {
     margin: 0;
     padding: 0;
