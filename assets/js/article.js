@@ -268,8 +268,6 @@ const setInitialPreference = () => {
 }
 // Handle preference change
 const changePreference = (target) => {
-    openActiveCategory()
-
     if (target.hasAttribute('data-js-preference-option')) {
         const bg = document.querySelector('[data-js-preference-bg]')
         const active = document.querySelector('[data-js-preference-option].active')
@@ -354,8 +352,8 @@ const collapsibleListener = () => {
 handleSidebarPosition()
 positionHeaderContents()
 setInitialPreference()
-scrollMenuToActive('[data-js-docs-menu]', true)
 openActiveCategory()
+scrollMenuToActive('[data-js-docs-menu]', true)
 collapsibleListener()
 
 // fix scroll position of default scroll to hash
