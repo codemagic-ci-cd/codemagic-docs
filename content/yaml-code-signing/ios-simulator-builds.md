@@ -20,6 +20,9 @@ Adjust your build script to use this commands instead:
         xcodebuild build \
           -workspace "MyXcodeWorkspace.xcworkspace" \
           -scheme "MyScheme" \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=18.0' \
+          -configuration Debug \
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
           CODE_SIGNING_ALLOWED=NO
@@ -28,6 +31,9 @@ Adjust your build script to use this commands instead:
         # xcodebuild build \
         #    -project ""MyXcodeProject.xcodeproj" \
         #    -scheme "MyScheme" \
+        #    -sdk iphonesimulator \
+        #    -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=18.0' \
+        #    -configuration Debug \
         #    CODE_SIGN_IDENTITY="" \
         #    CODE_SIGNING_REQUIRED=NO \
         #    CODE_SIGNING_ALLOWED=NO
@@ -90,7 +96,7 @@ workflows:
             -workspace "$XCODE_WORKSPACE" \
             -scheme "$XCODE_SCHEME" \
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2' \
+            -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=18.0' \
             -configuration Debug \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
