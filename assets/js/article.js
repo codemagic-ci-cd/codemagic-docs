@@ -352,9 +352,9 @@ const collapsibleListener = () => {
 
 // On ready
 handleSidebarPosition()
-scrollMenuToActive('[data-js-docs-menu]', true)
 positionHeaderContents()
 setInitialPreference()
+scrollMenuToActive('[data-js-docs-menu]', true)
 openActiveCategory()
 collapsibleListener()
 
