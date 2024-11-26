@@ -5,12 +5,12 @@ weight: 22
 ---
 
 [**CodePush**](https://github.com/microsoft/code-push) is a cloud service that enables React Native developers to deploy mobile app updates directly to their users’ devices without re-deploying them to the stores. 
-While the CodePush license is free for annual plan subscriptions, there is a possibility to enable a dedicated server. To activate your team's CodePush account and for more information, please contact us [here](https://codemagic.io/contact/).
+Codemagic offers a hosted and maintained CodePush server with a free license for annual plan subscriptions. Dedicated CodePush servers are available on request. To activate your team's CodePush account and for more information, please contact us [here](https://codemagic.io/contact/).
 
 ## Step by step guide to configure CodePush
 
 {{<notebox>}}
-****Note**: Skip to step 5 if CodePush is already configured for your project
+**Note**: Skip to step 5 if CodePush is already configured for your project.
 {{</notebox>}}
 
 1. Start with setting up CodePush in your React Native project by following the steps for [iOS](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-ios.md) and [Android](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-android.md)
@@ -43,10 +43,10 @@ For Android:
 ```
 <string moduleConfig="true" name="CodePushDeploymentKey">YOUR_DEPLOYMENT_KEY</string>
 ```
-**Note**: About how to find the deployment keys, please refer to step **7**
+**Note**: About how to find the deployment keys, please refer to step **7**.
 
-5. After configuring all the above-mentioned steps, it is time to set up the Codemagic side configurations and authentication. For that, [contact Codemagic team](https://codemagic.io/contact/) for an access key.
-6. Add the following lines in **codemagic.yaml****:
+5. After configuring all the above-mentioned steps, it is time to set up the Codemagic side configuration and authentication. For that, [contact Codemagic team](https://codemagic.io/contact/) for an access key.
+6. Add the following lines in **codemagic.yaml**:
 
 ```
 scripts:
@@ -72,7 +72,7 @@ scripts:
 ```
 
 {{<notebox>}}
-****Note**: **$CODEPUSH_TOKEN** for authentication will be provided by the Codemagic team and it needs to be added as an environment variable and then imported in **codemagic.yaml**. More info can be found [here](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/)
+**Note**: **$CODEPUSH_TOKEN** for authentication will be provided by the Codemagic team and it needs to be added as an environment variable and then imported in **codemagic.yaml**. More info can be found [here](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/)
 {{</notebox>}}
 
 {{<notebox>}}
@@ -107,4 +107,4 @@ If your project **Info.plist** file key **CFBundleShortVersionString** does not 
 [Error]  The "CFBundleShortVersionString" key in the "ios/Codemagic_RN/Info.plist" file needs to specify a valid semver string, containing both a major and minor version (e.g. 1.3.2, 1.1).
 ```
 
-Solution is either change the value in **Info.plist** file to a semver string value which is not recommended, or the best option is to add **--targetBinaryVersion**  to the build/release command: **code-push-standalone release-react iOS ios --targetBinaryVersion 1.0.0**
+The solution is to either change the value in **Info.plist** file to a semver string value which is not recommended, or the best option is to add **--targetBinaryVersion**  to the build/release command: **code-push-standalone release-react iOS ios --targetBinaryVersion 1.0.0**
