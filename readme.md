@@ -27,12 +27,12 @@ Development requires [Hugo static site generator](https://gohugo.io). It can be 
 brew install hugo
 ```
 
-Note that Hugo extended v0.85.0 is used in production. This Hugo version can be downloaded from [releases page](https://github.com/gohugoio/hugo/releases/tag/v0.85.0).
+Note that Hugo extended v0.139.1 is used in production. This Hugo version can be downloaded from [releases page](https://github.com/gohugoio/hugo/releases/tag/v0.139.1).
 
 Windows users can install [Chocolatey](https://chocolatey.org/install). After that Hugo can be installed with
 
 ```
-choco install hugo-extended --version 0.85.0
+choco install hugo-extended --version 0.139.1
 ```
 
 For general info see [Hugo documentation](https://gohugo.io/documentation/).
