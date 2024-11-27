@@ -208,7 +208,6 @@ mediaTypes:
 title: Codemagic Docs
 disableKinds:
     - taxonomy
-    - taxonomyTerm
     - section
 
 deployment:
