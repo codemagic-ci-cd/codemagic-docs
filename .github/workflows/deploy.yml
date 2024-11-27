@@ -15,7 +15,7 @@ jobs:
             - uses: actions/checkout@v3
               with:
                   fetch-depth: 0
-            - run: curl --location https://github.com/gohugoio/hugo/releases/download/v0.139.1/hugo_extended_0.139.1_Linux-64bit.tar.gz | tar -vxzO hugo > hugo && chmod a+x hugo
+            - run: curl --location https://github.com/gohugoio/hugo/releases/download/v0.139.2/hugo_extended_0.139.2_Linux-64bit.tar.gz | tar -vxzO hugo > hugo && chmod a+x hugo
             - run: ./hugo --environment production --minify
             - run: ./hugo deploy --environment production --invalidateCDN true --maxDeletes -1
 
