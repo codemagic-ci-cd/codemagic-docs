@@ -88,8 +88,9 @@ Builds fail with the below error:
 
 Java Heap space error is a well-known issue and can be thrown for multiple reasons e.g. enabling ProGuard or DexGuard requires more power to complete the tasks. Here are some suggested solutions to try:
 
-1. Upgrading to the latest version of Gradle in the `gradle-wrapper.properties` file and the Android Gradle plugin in the `android/build.gradle` file to the latest version could help fix the issue. You can refer to the Official Documentation from Android Developer guides to learn more about the latest compatible version [here](https://developer.android.com/studio/releases/gradle-plugin#updating-gradle).
-2. Set the maximum heap size by adding **-Dorg.gradle.jvmargs="-Xmx4096m"** to the build command or you can add the following line in **android/gradlew**:
+1. Set **JAVA_TOOL_OPTIONS: "-Xmx5g"** as an environement variable. This allows the JVM to use up to 5 GB of memory, which can help prevent memory allocation errors.
+2. Upgrading to the latest version of Gradle in the `gradle-wrapper.properties` file and the Android Gradle plugin in the `android/build.gradle` file to the latest version could help fix the issue. You can refer to the Official Documentation from Android Developer guides to learn more about the latest compatible version [here](https://developer.android.com/studio/releases/gradle-plugin#updating-gradle).
+3. Set the maximum heap size by adding **-Dorg.gradle.jvmargs="-Xmx4096m"** to the build command or you can add the following line in **android/gradlew**:
 
 ```
 exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain -Dorg.gradle.jvmargs="-Xmx4096m" "$@"
