@@ -100,6 +100,7 @@ Java Heap space error is a well-known issue and can be thrown for multiple reaso
         vars:
           JAVA_TOOL_OPTIONS: "-Xmx5g"
 {{< /highlight >}}
+- if using Workflow Editor - add `JAVA_TOOL_OPTIONS` with the value `-Xmx5g` under the Environment Variables section
 
 2. Upgrading to the latest version of Gradle in the `gradle-wrapper.properties` file and the Android Gradle plugin in the `android/build.gradle` file to the latest version could help fix the issue. You can refer to the Official Documentation from Android Developer guides to learn more about the latest compatible version [here](https://developer.android.com/studio/releases/gradle-plugin#updating-gradle).
 3. Set the maximum heap size by adding **-Dorg.gradle.jvmargs="-Xmx4096m"** to the build command or you can add the following line in **android/gradlew**:
