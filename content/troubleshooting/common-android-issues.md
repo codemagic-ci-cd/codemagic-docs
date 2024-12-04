@@ -72,7 +72,7 @@ Note: You'll have to completely upgrade all dependencies that require JCenter to
 {{</notebox>}}
 
 
-### Java heap space out of memory error
+### Java heap space out of memory error or JVM garbage collector is thrashing
 
 ###### Description
 Builds fail with the below error:
@@ -82,6 +82,12 @@ Builds fail with the below error:
     * What went wrong:
     Execution failed for task ':app:minifyReleaseWithR8'.
     > com.android.tools.r8.CompilationFailedException: Compilation failed to complete
+
+Or
+
+    FAILURE: Build failed with an exception.
+    * What went wrong:
+    Gradle build daemon has been stopped: since the JVM garbage collector is thrashing
 
 
 ###### Solution
