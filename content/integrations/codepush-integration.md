@@ -98,6 +98,12 @@ To Delete: code-push-standalone app rm <appName>
 10. If you need to patch releases e.g. you need to make a change in a previous release e.g. increase rollout percentage, a missed bug fix etc. you can achieve it by running **code-push-standalone patch <appName> <deploymentName>**
 
 11. You cannot delete a deployment release history but you can roll it back in case any release was shipped with a broken feature or anything, by running **code-push-standalone rollback <appName> <deploymentName>**
+    
+12. After testing an update against a deployment channel, it is possible to promote it by running the following command:
+
+```
+code-push-standalone promote <appName> <sourceDeploymentName> <destDeploymentName>
+``` 
 
 ## Debugging notes
 
