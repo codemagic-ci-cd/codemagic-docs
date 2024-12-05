@@ -19,36 +19,38 @@ Codemagic offers a hosted and maintained CodePush server with a free license for
 
 For iOS, place the following key and its string in Info.plist:
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 <key>CodePushServerURL</key>
 <string>https://codepush.codemagic.io/</string>
-```
+{{< /highlight >}}
 
 For Android, add the following line in **strings.xml**:
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
  <string moduleConfig="true" name="CodePushServerUrl">https://codepush.codemagic.io/</string>
-```
+{{< /highlight >}}
+
 4. While making changes in Info.plist and strings.xml files, add the Deployment keys:
 
 For iOS:
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 <key>CodePushDeploymentKey</key>
 <string>YOUR_DEPLOYMENT_KEY</string>
-```
+{{< /highlight >}}
 
 For Android:
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 <string moduleConfig="true" name="CodePushDeploymentKey">YOUR_DEPLOYMENT_KEY</string>
-```
+{{< /highlight >}}
+
 **Note**: About how to find the deployment keys, please refer to step **7**.
 
 5. After configuring all the above-mentioned steps, it is time to set up the Codemagic side configuration and authentication. For that, [contact Codemagic team](https://codemagic.io/contact/) for an access key.
 6. Add the following lines in **codemagic.yaml**:
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 scripts:
     - name: Install CodePush cli tools
       script: |                         
@@ -69,7 +71,7 @@ scripts:
       script: |         
            code-push-standalone release-react APP_NAME_CREATED_ABOVE ios -d Staging# -d refers to the deployment name e.g. Production, Staging
            code-push-standalone release-react APP_NAME_CREATED_ABOVE android -d Staging # -d refers to the deployment name e.g. Production, Staging
-```
+{{< /highlight >}}
 
 {{<notebox>}}
 **Note**: **$CODEPUSH_TOKEN** for authentication will be provided by the Codemagic team and it needs to be added as an environment variable and then imported in **codemagic.yaml**. More info can be found [here](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/)
@@ -83,34 +85,36 @@ scripts:
 7. In order to reveal the Deployment keys, run **code-push-standalone deployment ls YOUR_APP_NAME -k**
 8. By default, you get two Deployment channels: Staging and Production. You can add new ones, rename or delete them by running the following commands:
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 To Add: code-push-standalone deployment add <appName> <deploymentName>
 To Remove: code-push-standalone deployment rm <appName> <deploymentName>
 To Rename: code-push-standalone deployment rename <appName> <deploymentName> <newDeploymentName>
-```
+{{< /highlight >}}
+
 9. Likewise, apps can be added, renamed and deleted:
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 To Add: code-push-standalone app add <appName>
 To Rename: code-push-standalone app rename <appName> <newAppName>
 To Delete: code-push-standalone app rm <appName>
-```
+{{< /highlight >}}
+
 10. If you need to patch releases e.g. you need to make a change in a previous release e.g. increase rollout percentage, a missed bug fix etc. you can achieve it by running **code-push-standalone patch <appName> <deploymentName>**
 
 11. You cannot delete a deployment release history but you can roll it back in case any release was shipped with a broken feature or anything, by running **code-push-standalone rollback <appName> <deploymentName>**
     
 12. After testing an update against a deployment channel, it is possible to promote it by running the following command:
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 code-push-standalone promote <appName> <sourceDeploymentName> <destDeploymentName>
-``` 
+{{< /highlight >}}
 
 ## Debugging notes
 
 If your project **Info.plist** file key **CFBundleShortVersionString** does not hold a semver string value, then it's highly likely you will see the following error when releasing an update:
 
-```
+{{< highlight yaml "style=paraiso-dark">}}
 [Error]  The "CFBundleShortVersionString" key in the "ios/Codemagic_RN/Info.plist" file needs to specify a valid semver string, containing both a major and minor version (e.g. 1.3.2, 1.1).
-```
+{{< /highlight >}}
 
 The solution is to either change the value in **Info.plist** file to a semver string value which is not recommended, or the best option is to add **--targetBinaryVersion**  to the build/release command: **code-push-standalone release-react iOS ios --targetBinaryVersion 1.0.0**
