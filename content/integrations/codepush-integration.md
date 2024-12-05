@@ -19,14 +19,14 @@ Codemagic offers a hosted and maintained CodePush server with a free license for
 
 For iOS, place the following key and its string in Info.plist:
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight bash "style=paraiso-dark">}}
 <key>CodePushServerURL</key>
 <string>https://codepush.codemagic.io/</string>
 {{< /highlight >}}
 
 For Android, add the following line in **strings.xml**:
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight bash "style=paraiso-dark">}}
  <string moduleConfig="true" name="CodePushServerUrl">https://codepush.codemagic.io/</string>
 {{< /highlight >}}
 
@@ -34,14 +34,14 @@ For Android, add the following line in **strings.xml**:
 
 For iOS:
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight bash "style=paraiso-dark">}}
 <key>CodePushDeploymentKey</key>
 <string>YOUR_DEPLOYMENT_KEY</string>
 {{< /highlight >}}
 
 For Android:
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight bash "style=paraiso-dark">}}
 <string moduleConfig="true" name="CodePushDeploymentKey">YOUR_DEPLOYMENT_KEY</string>
 {{< /highlight >}}
 
@@ -50,7 +50,7 @@ For Android:
 5. After configuring all the above-mentioned steps, it is time to set up the Codemagic side configuration and authentication. For that, [contact Codemagic team](https://codemagic.io/contact/) for an access key.
 6. Add the following lines in **codemagic.yaml**:
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight bash "style=paraiso-dark">}}
 scripts:
     - name: Install CodePush cli tools
       script: |                         
@@ -85,7 +85,7 @@ scripts:
 7. In order to reveal the Deployment keys, run **code-push-standalone deployment ls YOUR_APP_NAME -k**
 8. By default, you get two Deployment channels: Staging and Production. You can add new ones, rename or delete them by running the following commands:
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight bash "style=paraiso-dark">}}
 To Add: code-push-standalone deployment add <appName> <deploymentName>
 To Remove: code-push-standalone deployment rm <appName> <deploymentName>
 To Rename: code-push-standalone deployment rename <appName> <deploymentName> <newDeploymentName>
@@ -93,7 +93,7 @@ To Rename: code-push-standalone deployment rename <appName> <deploymentName> <ne
 
 9. Likewise, apps can be added, renamed and deleted:
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight bash "style=paraiso-dark">}}
 To Add: code-push-standalone app add <appName>
 To Rename: code-push-standalone app rename <appName> <newAppName>
 To Delete: code-push-standalone app rm <appName>
@@ -105,7 +105,7 @@ To Delete: code-push-standalone app rm <appName>
     
 12. After testing an update against a deployment channel, it is possible to promote it by running the following command:
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight bash "style=paraiso-dark">}}
 code-push-standalone promote <appName> <sourceDeploymentName> <destDeploymentName>
 {{< /highlight >}}
 
@@ -113,7 +113,7 @@ code-push-standalone promote <appName> <sourceDeploymentName> <destDeploymentNam
 
 If your project **Info.plist** file key **CFBundleShortVersionString** does not hold a semver string value, then it's highly likely you will see the following error when releasing an update:
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight bash "style=paraiso-dark">}}
 [Error]  The "CFBundleShortVersionString" key in the "ios/Codemagic_RN/Info.plist" file needs to specify a valid semver string, containing both a major and minor version (e.g. 1.3.2, 1.1).
 {{< /highlight >}}
 
