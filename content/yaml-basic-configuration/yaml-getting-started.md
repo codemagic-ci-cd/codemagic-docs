@@ -330,7 +330,7 @@ cache:
     - ~/.gradle/caches
     - ...
 {{< /highlight >}}
-You can read more about configuring caching for your builds and it's usage limits [here](https://docs.codemagic.io/knowledge-codemagic/caching/)
+You can read more about configuring caching for your builds and its usage limits [here](https://docs.codemagic.io/knowledge-codemagic/caching/)
 
 {{<notebox>}}
 **Note:** Codemagic doesn't support caching symlinks.
