@@ -20,13 +20,13 @@ Available on request:
 
 ## System
 
-- System version `macOS 15.1.1 (24B91)`
-- Kernel version `Darwin 24.1.0`
-- Disk `294GB (Free Space: 150GB)`
+- System version `macOS 15.2 (24C101)`
+- Kernel version `Darwin 24.2.0`
+- Disk `294GB (Free Space: 151GB)`
 
 ## Xcode versions
 
-- 16.2 (16C5023f) `/Applications/Xcode-16.2.app`, also selected when specifying `edge` in Xcode version settings
+- 16.2 (16C5032a) `/Applications/Xcode-16.2.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
@@ -76,7 +76,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
 - appium `2.5.0`
-- aws `2.18.15`
+- aws `2.22.15`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
@@ -90,10 +90,10 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Google Cloud SDK `502.0.0`
 - gradle `8.1.1`
 - gsutil `5.31`
-- homebrew `4.4.6`
+- homebrew `4.4.11`
 - ionic `7.2.0`
 - jq `1.7.1`
-- ktlint `1.4.0`
+- ktlint `1.5.0`
 - node `22.9.0`
 - npm `10.8.3`
 - python `3.12.7`
