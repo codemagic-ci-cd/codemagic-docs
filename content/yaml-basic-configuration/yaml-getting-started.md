@@ -186,7 +186,7 @@ The main sections in each workflow are described below.
 
 <br>
 {{<notebox>}}
-**Note:** Instance types `linux_x2`, `windows_x2` and `mac_mini_m2` are only available for teams and users with [billing enabled](../billing/billing/). 
+**Note:** Instance types `linux_x2` and `windows_x2` are only available for teams and users with [billing enabled](../billing/billing/). 
 {{</notebox>}}
 
 ### Build inputs
@@ -330,6 +330,8 @@ cache:
     - ~/.gradle/caches
     - ...
 {{< /highlight >}}
+You can read more about configuring caching for your builds and its usage limits [here](https://docs.codemagic.io/knowledge-codemagic/caching/)
+
 {{<notebox>}}
 **Note:** Codemagic doesn't support caching symlinks.
 {{</notebox>}}
