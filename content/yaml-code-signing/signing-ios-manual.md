@@ -1,6 +1,6 @@
 ---
-title: Signing iOS apps
-description: How to set up iOS code signing in codemagic.yaml
+title: Signing iOS apps manually
+description: How to set up manuall iOS code signing in codemagic.yaml
 weight: 1
 aliases: [../code-signing-yaml/signing, /code-signing-yaml/signing-ios, code-signing-identities, ../yaml-code-signing/code-signing-identities]
 ---
@@ -39,7 +39,7 @@ Signing iOS applications requires [Apple Developer Program](https://developer.ap
 ### Adding the provisioning profile
 {{< include "/partials/quickstart/code-signing-ios-add-provisioning-profile.md" >}}
 
-## Referencing certificates and profiles in codemagic.yaml
+### Referencing certificates and profiles in codemagic.yaml
 
 Codemagic provides two means of fetching the required certificates and provisioning profiles during the build with the use of `codemagic.yaml`. Fetching can either be configured by specifying the distribution type and bundle identifier, or for more advanced use-cases, individual files can be fetched by their reference names.
 
@@ -121,7 +121,7 @@ workflows:
 {{< /highlight >}}
 
 
-## Using provisioning profiles
+### Using provisioning profiles
 
 To apply the profiles to your project during the build, add the following script before your build scripts:
 
