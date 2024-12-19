@@ -51,9 +51,18 @@ Once the Apple Developer Portal has been enabled for the account or team the app
 4. Mark the **Publish even if tests fail** checkbox to continue uploading the app artifact even when the tests failed.
 5. Select **Enable App Store Connect publishing** at the top of the section to enable publishing.
 
-Your app will be now published to App Store Connect. However, you can select additional options to submit the build to TestFlight beta review or App Store review.
+Your app will be now published to App Store Connect. However, you can select additional options to submit the build to TestFlight internal testing, TestFlight beta review or App Store review.
 
-#### Submitting an app to TestFlight
+#### Submitting an app to TestFlight internal testing
+In order to distribute your application to internal testers only, without requiring Apple's beta review:
+1. Create a group and add internal testers (App Store Connect users with access to your content) to test your app using TestFlight in your App Store Connect portal.
+2. In Codemagic workflow editor, create a new environment variable `XCODE_PROJECT_CUSTOM_EXPORT_OPTIONS` and assign the value `{"testFlightInternalTestingOnly": true}`.
+
+{{<notebox>}}
+**Note:** Builds marked as TestFlight Internal Only will display "internal" next to the build number and can exclusively be added to internal tester groups. They cannot be submitted for external testing or distributed to customers.
+{{</notebox>}}
+
+#### Submitting an app to TestFlight beta review
 
 1. Mark the **Submit to TestFlight beta review** checkbox to submit the build for beta review and prepare it for distributing to beta testers. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution).
 2. Mark the **Distribute to beta groups** checkbox and enter the names of the beta groups to automatically distribute the build to the testers in those groups once the build has passed beta review. Note: This action is performed during [post-processing](#post-processing-of-app-store-connect-distribution).

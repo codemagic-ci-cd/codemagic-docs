@@ -36,3 +36,21 @@ To apply the profiles to your project during the build, add the following script
     
     # ... your build commands
 {{< /highlight >}}
+
+{{<notebox>}}
+See additional configuration options for setting up code signing settings to use given provisioning profiles [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/xcode-project/use-profiles.md)
+{{</notebox>}}
+
+To distribute signed iOS applications solely to internal testers without the need for Apple's beta review (TestFlight Internal Testing Only):
+
+{{< highlight yaml "style=paraiso-dark">}}  
+  scripts:  
+    # ... your dependencies installation  
+    - name: Set up code signing settings on Xcode project  
+      script: xcode-project use-profiles   
+                --custom-export-options='{"testFlightInternalTestingOnly": true}'  
+    # ... your build commands  
+{{< /highlight >}}  
+{{<notebox>}}  
+**Note:** Builds marked as TestFlight Internal Only will display "internal" next to the build number and can exclusively be added to internal tester groups. They cannot be submitted for external testing or distributed to customers. 
+{{</notebox>}}
