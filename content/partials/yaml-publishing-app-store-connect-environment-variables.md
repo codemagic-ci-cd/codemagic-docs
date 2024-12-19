@@ -6,6 +6,8 @@
 
 The following snippet demonstrates how to authenticate with and upload the IPA to App Store Connect, submit the build to beta tester groups in TestFlight and configure releasing the app to App Store. See additional configuration options for App Store Connect publishing [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/publish.md).
 
+To submit solely to internal testers without requiring Apple's beta review (TestFlight Internal Testing Only), add the `--custom-export-options='{"testFlightInternalTestingOnly": true}'` argument to `use-profiles` during iOS code signing as detailed [here](https://docs.codemagic.io/yaml-code-signing/signing-ios/#using-provisioning-profiles).
+
 {{<notebox>}}**Note:** Please note that you will need to create an **app record** in App Store Connect before you can automate publishing with Codemagic. It is recommended to upload the very first version of the app manually. Suppose you have set up an **app record** but have not manually uploaded the app's first version. In that case, manual configuration of the settings must be done on App Store Connect after the build is complete, such as uploading the required screenshots and providing the values for the privacy policy URL and application category. {{</notebox>}}
 
 
