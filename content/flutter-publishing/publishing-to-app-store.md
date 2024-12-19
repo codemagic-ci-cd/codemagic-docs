@@ -56,7 +56,7 @@ Your app will be now published to App Store Connect. However, you can select add
 #### Submitting an app to TestFlight internal testing
 In order to distribute your application to internal testers only, without requiring Apple's beta review:
 1. Create a group and add internal testers (App Store Connect users with access to your content) to test your app using TestFlight in your App Store Connect portal.
-2. In your Codemagic workflow editor, create a new environment variable `XCODE_PROJECT_CUSTOM_EXPORT_OPTIONS` and assign the value `{"testFlightInternalTestingOnly": true}`.
+2. In Codemagic workflow editor, create a new environment variable `XCODE_PROJECT_CUSTOM_EXPORT_OPTIONS` and assign the value `{"testFlightInternalTestingOnly": true}`.
 
 {{<notebox>}}
 **Note:** Builds marked as TestFlight Internal Only will display "internal" next to the build number and can exclusively be added to internal tester groups. They cannot be submitted for external testing or distributed to customers.
