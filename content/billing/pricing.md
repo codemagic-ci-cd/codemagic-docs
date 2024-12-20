@@ -7,7 +7,7 @@ weight: 2
 CodePush (Over-the-Air updates) for React Native projects is priced as follows: 
 - **Free** for annual plans and Enterprise plan customers.
 - **$99/month per team** for Pay-as-you-go plan customers.
-- **$3k/year per team** to integrate into existing CI pipelines without a requirement for migration.
+- **$3k/year per team** to integrate into your existing CI pipeline without a requirement for migration.
 - **$6k/year** for a dedicated, standalone CodePush instance.
 
 ## Pricing for Individuals
