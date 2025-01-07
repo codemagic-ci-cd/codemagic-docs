@@ -86,6 +86,10 @@ publishing:
     # or your custom track name
     track: internal
 
+    # Optional text. The release name.
+    # Not required to be unique. If not set, the name is generated from the APK's versionName.
+    release_name: Custom release name
+
     # Optional Priority of the release (only set if in-app updates are supported)
     # integer in range [0, 5]
     in_app_update_priority: 3
