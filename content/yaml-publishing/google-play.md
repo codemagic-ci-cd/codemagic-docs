@@ -86,7 +86,7 @@ publishing:
     # or your custom track name
     track: internal
 
-    # Optional text. The release name.
+    # Optional string. The release name.
     # Not required to be unique. If not set, the name is generated from the APK's versionName.
     release_name: Custom release name
 
