@@ -55,15 +55,15 @@ Each additional concurrency is $49/month and you will be billed for each concurr
 | Linux & Windows VMs          | $0.045 / minute                   |                                                                       
 | Extra build concurrency      | $49 / month                       | 
 
-Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M2), Linux, and Windows instances. 
+Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M4), Linux, and Windows instances. 
 
-### 2. Fixed Annual Plan
+### 2. macOS M2 - Fixed Annual Plan
 
-An annual subscription with access to **Mac mini M2 VMs** and **2 months free** is **$3,990/year**.
+An annual subscription with access to **macOS M2s** instances and **2 months free** is **$3,990/year**.
 
-The Codemagic annual plan gives you a fixed-price plan with the following benefits:
+The Codemagic **macOS M2** annual plan gives you a fixed-price plan with the following benefits:
 
-* 3 concurrencies (with access to Mac mini M2, Linux, and Windows instances)
+* 3 concurrencies (with access to macOS M2, Linux, and Windows instances)
 * Unlimited build minutes
 * Unlimited team seats
 * In-app chat support
@@ -80,9 +80,41 @@ If you have already created a Team in the Codemagic web app, you can upgrade to 
 5. Enter your **credit card** details and **company information**.
 6. Once you have entered your details, pay-as-you-go billing will be enabled. To upgrade to the Fixed Annual plan, click on the **Upgrade** button and follow the instructions to subscribe to the Fixed Annual plan.
 
-If you require additional concurrencies or have any other questions about the annual plan, including requests for **macOS M2 instances**,  please contact us [here](https://codemagic.io/contact/).
+If you require additional concurrencies or have any other questions about the annual plan, including requests for **macOS M4 instances**,  please contact us [here](https://codemagic.io/contact/).
 
 If you require annual invoicing, please refer to the Enterprise plans below.
+
+## macOS M4 - Fixed Annual Plan
+
+An annual subscription with access to **macOS M4** instances is **$5,400/year**.
+
+The Codemagic **macOS M4** annual plan gives you a fixed-price plan with the following benefits:
+
+* 3 concurrencies (with access to macOS M4, Linux, and Windows instances)
+* Unlimited build minutes
+* Unlimited team seats
+* In-app chat support
+* Additional concurrencies are **$1800/year**. 
+
+The **macOS M4** annual plan can only be paid with a credit card.
+
+To request this plan, please contact us [here](https://codemagic.io/contact/)
+
+## macOS M4 Pro - Fixed Annual Plan
+
+An annual subscription with access to **macOS M4 Pro** instances is **$10,830/year**.
+
+The Codemagic **macOS M4 Pro** annual plan gives you a fixed-price plan with the following benefits:
+
+* 3 concurrencies (with access to macOS M4 Pro, Linux, and Windows instances)
+* Unlimited build minutes
+* Unlimited team seats
+* In-app chat support
+* Additional concurrencies are **$3,610/year**. 
+
+The **macOS M4 Pro** annual plan can only be paid with a credit card.
+
+To request this plan, please contact us [here](https://codemagic.io/contact/)
 
 ## Pricing for Enterprises
 
@@ -99,7 +131,7 @@ Enterprise plans are available starting from **$12k/year** and include the follo
 - OpenID Connect (on request)
 
 
-Dedicated **macOS M2** hosts are also available on request. A dedicated host is only used by your organization and provides 2 VMs that can be configured with the software you require. Dedicated hosts can also be EU-based.
+Dedicated **Mac mini M4 Pro** and **Mac mini M2 Max Studio** hosts are also available on request. A dedicated host is only used by your organization and provides 2 VMs that can be configured with the software you require. Dedicated hosts can also be EU-based.
 
 This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, or **custom base images** or other account management services.
 
