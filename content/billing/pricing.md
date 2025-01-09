@@ -116,6 +116,22 @@ The **macOS M4 Pro** annual plan can only be paid with a credit card.
 
 To request this plan, please contact us [here](https://codemagic.io/contact/)
 
+## macOS M2 Max Studio - Fixed Annual Plan
+
+An annual subscription with access to **macOS M2 Max Studio** instances is **$11,830/year**.
+
+The Codemagic **macOS M2 Max Studio** annual plan gives you a fixed-price plan with the following benefits:
+
+* 3 concurrencies (with access to macOS M2 Max Studio, Linux, and Windows instances)
+* Unlimited build minutes
+* Unlimited team seats
+* In-app chat support
+* Additional concurrencies are **$3,943/year**. 
+
+The **macOS M2 Max Studio** annual plan can only be paid with a credit card.
+
+To request this plan, please contact us [here](https://codemagic.io/contact/)
+
 ## Pricing for Enterprises
 
 Enterprise plans are available starting from **$12k/year** and include the following:
