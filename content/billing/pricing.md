@@ -117,7 +117,10 @@ It's possible to resell the Codemagic Enterprise plan. Contact us [here](https:/
 
 If you need specific software and tools available on a builder machine we can provide dedicated macOS host machines which give you 2 VMs. 
 
-Dedicated **macOS M2** hosts are available for **$5,990/year**. 
+| Dedicated Host Type    | Cost (per year) |
+|------------------------|-----------------|
+| macOS M4 Pro           | $8,000          |
+| macOS M2 Max Studio    | $9,000          |
 
 Annual dedicated host plans can be paid for with a credit card and invoicing with bank transfer is available.
 
