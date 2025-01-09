@@ -131,7 +131,7 @@ Enterprise plans are available starting from **$12k/year** and include the follo
 - OpenID Connect (on request)
 
 
-Dedicated **Mac mini M4 Pro** and **Mac mini M2 Max Studio** hosts are also available on request. A dedicated host is only used by your organization and provides 2 VMs that can be configured with the software you require. Dedicated hosts can also be EU-based.
+Dedicated **Mac mini M4 Pro** and **Mac mini M2 Max Studio** **hosts** are also available on request. A dedicated host is only used by your organization and provides 2 VMs that can be configured with the software you require. Dedicated hosts can also be EU-based.
 
 This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, or **custom base images** or other account management services.
 
@@ -188,6 +188,9 @@ The instance types and hardware specifications can be found below.
 | **Item**                 | **Specification**                                                               |
 | ------------------------ | --------------------------------------------------------------------------------|
 | macOS M2 VM              | Mac mini M2 8-core CPU / 8GB RAM                                                |
+| macOS M4 VM              | Mac mini M4 10-core CPU / 16GB RAM                                              |
+| macOS M4 Pro VM          | Mac mini M4 Pro 14-core CPU / 32GB RAM                                          |
+| macOS M2 Max Studio      | Max Studio M2 14-core CPU / 32GB RAM / 30 Core GPU                              |
 | Linux VM                 | 8 vCPUs, 32 GB memory                                                           |
 | Windows VM               | 8 vCPUs, 32 GB memory  
 
