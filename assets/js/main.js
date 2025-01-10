@@ -151,7 +151,6 @@ const authenticateUser = async () => {
             window.auth._id = json.user._id
             document.querySelector('[data-js-header-auth-user]').classList.add('transition-in')
             document.querySelector('[data-js-header-user-avatar]').innerHTML = '<img src="' + auth.avatarUrl + '" alt=""/>'
-            setAnalyticsEvents()
         } else {
             window.loggedIn = false
             document.querySelector('[data-js-header-auth-visitor]').classList.add('transition-in')
@@ -166,30 +165,6 @@ const authenticateUser = async () => {
     }, 1000)
 }
 
-// Set up analytics
-const setAnalyticsEvents = async () => {
-    const sendEvent = async (eventName) => {
-        try {
-            await fetch('{{ site.Param "backendURL" }}/analytics', {
-                mode: 'cors',
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                credentials: 'include',
-                body: JSON.stringify({
-                    site: window.location.host,
-                    page_url: window.location.pathname,
-                    event_name: eventName,
-                }),
-            })
-        } catch (error) {
-            console.error(error)
-        }
-    }
-    await sendEvent('page_viewed')
-    document.addEventListener('copy', async () => await sendEvent('text_copied'))
-}
 
 // Log user out
 async function userLogout() {

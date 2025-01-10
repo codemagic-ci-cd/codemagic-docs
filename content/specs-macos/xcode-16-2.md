@@ -13,9 +13,8 @@ Codemagic offers multiple build machines with different specifications and pre-i
 
 {{<notebox>}}
 Available on request:
-- Mac mini M2 Pro
-- Mac Studio M2 Max
-- Mac Studio M2 Ultra
+- Mac mini M4 and M4 Pro
+- Mac Studio M2 Max and M2 Ultra
 {{</notebox>}}
 
 ## System
