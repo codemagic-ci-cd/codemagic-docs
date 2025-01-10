@@ -94,3 +94,25 @@ Add your new repository as an application to Codemagic, then retrieve both old a
 
 
 
+### Flutter build error when using localizations
+
+###### Description
+You might encounter a Flutter build error when using localizations in your app, as shown below:
+
+```logs
+    Try correcting the name to the name of an existing getter, or defining a getter or field named 
+    'AppLocalizations'.
+        AppLocalizations.of(context)!.helloWorldString
+        ^
+```
+This happens when the required localization files are not generated during the build process.
+
+###### Solution
+To resolve this issue, include the `flutter gen-l10n` command in your pre-build script, right after `flutter pub get`. This ensures that the necessary localization files are generated before the build process begins.
+
+```bash
+flutter pub get  # Optional if dependencies are already being fetched
+flutter gen-l10n
+```
+
+For more details on setting up localizations, refer to [Flutter's documentation on Localization](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization#adding-your-own-localized-messages) (Step 6).
