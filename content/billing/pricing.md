@@ -153,7 +153,7 @@ This plan is recommended if you need to go through a **security compliance proce
 
 Annual invoicing with bank transfer is available for Enterprise plans. Payment is also possible via AWS Marketplace [here](https://aws.amazon.com/marketplace/pp/prodview-hiscwaznkehlo?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and Google Cloud Marketplace.
 
-Please also note that we have completed our SOC 2 assessment and the report is available on request. 
+Please also note that we have completed our SOC 2 Type 2 assessment, and the report is available on request. 
 
 If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/enterprise/). 
 
