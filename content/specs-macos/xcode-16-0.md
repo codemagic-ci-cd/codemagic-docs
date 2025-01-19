@@ -25,7 +25,7 @@ Available on request:
 
 ## Xcode versions
 
-- 16.0 (16A242d) `/Applications/Xcode-16.0.app`, also selected when specifying `latest` or `16` in Xcode version settings
+- 16.0 (16A242d) `/Applications/Xcode-16.0.app`, also selected when specifying `16` in Xcode version settings
 
 ### Runtimes
 
