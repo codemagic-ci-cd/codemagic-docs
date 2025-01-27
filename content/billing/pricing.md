@@ -136,7 +136,21 @@ To request this plan, please contact us [here](https://codemagic.io/contact/)
 
 Enterprise plans are available starting from **$12k/year** and include the following:
 
-- Unlimited access to all VM types (including macOS M2) 
+- Unlimited access to all VM types (including macOS M4) 
+- 180-minute build timeout
+- Priority support
+- Service level agreement
+- Account management services
+- Technical account manager
+- Private Slack/Discord/MS Teams channel
+- SSO Login (OpenID, OAuth2 or SAML 2.0)
+- OpenID Connect (on request)
+
+## Pricing for Enterprises with macOS M4 Pro
+
+Enterprise plans are available starting from **$17,400/year** and include the following:
+
+- Unlimited access to all VM types (including macOS M4 Pro) 
 - 180-minute build timeout
 - Priority support
 - Service level agreement
