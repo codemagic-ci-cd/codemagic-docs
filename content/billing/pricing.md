@@ -132,7 +132,7 @@ The **macOS M2 Max Studio** annual plan can only be paid with a credit card.
 
 To request this plan, please contact us [here](https://codemagic.io/contact/)
 
-## Pricing for Enterprises
+## Pricing for Enterprises with macOS M4
 
 Enterprise plans are available starting from **$12k/year** and include the following:
 
