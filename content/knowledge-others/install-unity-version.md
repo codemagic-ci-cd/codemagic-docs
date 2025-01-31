@@ -128,9 +128,22 @@ After activating the Unity license as usual, add the following script to install
   scripts: 
     - name: Install Unity version
       script: |  
-        /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version $UNITY_VERSION --changeset $UNITY_VERSION_CHANGESET -a arm64 # -a x86_64
-        /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version $UNITY_VERSION -m ios android -a arm64 # -a x86_64
+
+        # To install Unity and its required modules, such as Android-Open-JDK
+        yes Y | /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version $UNITY_VERSION --changeset $UNITY_VERSION_CHANGESET -a arm64 # -a x86_64
+        yes Y | /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version $UNITY_VERSION -m ios android -a arm64 # -a x86_64
+
+        # If you do not need Android-Open-JDK or specific modules
+        # yes n | /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install --version $UNITY_VERSION --changeset $UNITY_VERSION_CHANGESET -a arm64 # -a x86_64
+        # yes n | /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version $UNITY_VERSION -m ios android -a arm64 # -a x86_64
+
 {{< /highlight >}}
+
+{{<notebox>}}
+**Note:** `yes Y` automatically accepts all prompts while `yes n` skips prompts, ensuring no additional downloads or installations.
+
+{{</notebox>}}
+
 {{< /tab >}}
 {{% tab header="Windows" %}}
 {{< highlight yaml "style=paraiso-dark">}}
