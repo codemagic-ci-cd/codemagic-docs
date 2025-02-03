@@ -9,14 +9,8 @@ Note that this feature is available for **teams** on request. Please [contact us
 
 ## Running preview builds
 
-You can preview any `.app` artifact built in Codemagic that targets the iOS simulator. For such artifacts, there is a **Quick Launch** button available next to the artifact name on the build overview page.
+You can preview any `.app` artifact built in Codemagic that targets the `iPhoneSimulator`. For such artifacts, there is a **Quick Launch** button available next to the artifact name on the build overview page.
 
-Clicking **Quick Launch** displays a configuration popup for selecting the simulator device and runtime. Once you click **Start**, Codemagic starts a preview build during which the simulator is booted and the app is installed on the simulator. 
-
-When the simulator is ready for use, you'll see the URL to access the simulator printed in the logs under the "Running iOS simulator" step as well as a link to open the simulator on the left panel of the build overview page. The simulator session remains active for a maximum of **20 minutes** or until you cancel the build. 
+Clicking **Quick Launch** displays a configuration popup for selecting the simulator device and runtime. Once you click **Start**, Codemagic opens a simulator in a new tab and installs your application. The simulator session remains active for a maximum of **20 minutes**.
 
 Once the session ends, you can start a new one if needed.
-
-## Build minutes usage
-
-Preview builds run on a macOS machine and consume build minutes at the same per-minute rate as regular builds. If your team is on the Pay as you go plan, the minutes used for app previews will be added to your macOS minutes count.
