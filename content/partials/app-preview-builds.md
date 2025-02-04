@@ -9,7 +9,7 @@ Note that this feature is available for **teams** on request. Please [contact us
 
 ## Using Workflow Editor to create iOS .app binaries for testing
 
-In the 'Build' section of the Workflow Editor set the 'Mode' to debug. In the 'Build arguments' add `--simulator` next to the iOS '--debug' section.
+In the 'Build' section of the Workflow Editor, set the 'Mode' to debug. In the 'Build arguments' field, add `--simulator` next to the iOS '--debug' section.
 
 ## Creating iOS .app binaries for testing with codemagic.yaml
 
