@@ -7,7 +7,11 @@ Codemagic allows you to preview your `.app` artifact on an iOS simulator and int
 Note that this feature is available for **teams** on request. Please [contact us](https://codemagic.io/contact/) for more information.
 {{</notebox>}}
 
-## Creating iOS .app binaries for testing
+## Using Workflow Editor to create iOS .app binaries for testing
+
+In the 'Build' section of the Workflow Editor set the 'Mode' to debug. In the 'Build arguments' add `--simulator` next to the iOS '--debug' section.
+
+## Creating iOS .app binaries for testing with codemagic.yaml
 
 To create a `.app` to run on the iOS simulator consult the **codemagic.yaml** samples below.
 
