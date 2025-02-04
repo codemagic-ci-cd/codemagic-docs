@@ -4,10 +4,12 @@ description: An overview of Codemagic pricing
 weight: 2
 ---
 
+## CodePush Pricing
+
 CodePush (Over-the-Air updates) for React Native projects is priced as follows: 
 - **Free** for annual plans and Enterprise plan customers.
-- **$99/month per team** for Pay-as-you-go plan customers.
-- **$3k/year per team** to integrate into your existing CI pipeline without a requirement for migration.
+- **$99/month per team** for Pay-as-you-go plan customers using Codemagic for CI/CD.
+- **$3k/year per team** to integrate into your existing CI pipeline without a requirement for migration to Codemagic for CI/CD.
 - **$6k/year** for a dedicated, standalone CodePush instance.
 
 ## Pricing for Individuals
