@@ -59,7 +59,7 @@ workflows:
 {{< tab header="Flutter (Flavors)" >}}
 {{<markdown>}}
 
-If you are using Flutter flavors and want to preview a specific flavor make sure that you set the correct value for your flavor's `-scheme` and set the entry point for your flavor using `FLUTTER_TARGET`. 
+If you are using Flutter flavors and want to preview a specific flavor, make sure that you set the correct value for your flavor's `-scheme` and set the entry point for your flavor using `FLUTTER_TARGET`. 
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
