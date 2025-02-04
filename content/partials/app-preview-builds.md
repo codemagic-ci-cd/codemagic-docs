@@ -21,7 +21,7 @@ You can find the macOS specifications that list the available iOS devices and ru
 {{< tabpane >}}
 {{< tab header="Flutter" >}}
 {{<markdown>}}
-Sample **codemagic.yaml** for build an iOS `.app` binary for Flutter projects.
+Sample **codemagic.yaml** for building an iOS `.app` binary for Flutter projects.
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
