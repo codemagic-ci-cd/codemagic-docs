@@ -13,7 +13,7 @@ In the 'Build' section of the Workflow Editor set the 'Mode' to debug. In the 'B
 
 ## Creating iOS .app binaries for testing with codemagic.yaml
 
-To create a `.app` to run on the iOS simulator consult the **codemagic.yaml** samples below.
+To create a `.app` to run on the iOS simulator, consult the **codemagic.yaml** samples below.
 
 You should make sure that the following values in the `-destination` string correspond with the macOS instance you are using:
 
