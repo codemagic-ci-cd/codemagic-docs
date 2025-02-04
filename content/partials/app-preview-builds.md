@@ -17,7 +17,7 @@ To create a `.app` to run on the iOS simulator, consult the **codemagic.yaml** s
 
 You should make sure that the following values in the `-destination` string correspond with the macOS instance you are using:
 
-- `name` corresponds with the one of the devices available on the macOS instance being used.
+- `name` corresponds with one of the devices available on the macOS instance being used.
 - `OS` matches the iOS runtime available on the macOS instance being used.
 
 You can find the macOS specifications that list the available iOS devices and runtimes [here](https://docs.codemagic.io/specs-macos/xcode-16-2/#:~:text=Software%20and%20hardware-,macOS%20machines,-Xcode%2016.2.x).
