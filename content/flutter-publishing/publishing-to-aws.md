@@ -2,7 +2,7 @@
 description: How to publish a web app to Amazon S3 using Flutter workflow editor
 title: Amazon S3 publishing using Flutter workflow editor
 linkTitle: Amazon S3
-weight: 7
+weight: 8
 ---
 
 In order to publish your web application to AWS S3:
