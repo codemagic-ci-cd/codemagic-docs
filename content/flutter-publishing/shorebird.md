@@ -26,7 +26,7 @@ Release builds can be published to app stores and patched once they've been dist
 
 1. In workflow editor, select the platforms for which you want to build. Only **Android** and **iOS** are supported with Shorebird for now.
 2. Under **Publish updates to user devices using Shorebird**, select **Release**.
-3. Scroll to the **Shorebird** section and specify the Flutter version and Xcode version (if you selected **iOS**) to be used for building the app. 
+3. Scroll to the **Shorebird** section and specify the Flutter version and the Xcode version (if you selected **iOS**) to be used for building the app. 
 4. Copy-paste your token generated with Shorebird CLI in the **Shorebird token** field. Once you save it, the token can no longer be viewed, only modified or deleted.
 5. If your Flutter project is not in the root of the repository, update the **Project path** to point to the right directory.
 6. You can add additional build arguments to the build command, e.g. to specify the flavor or target for your app. See more info [here](https://docs.shorebird.dev/code-push/release/).
