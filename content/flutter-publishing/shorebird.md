@@ -12,13 +12,13 @@ Code push for Flutter is a cloud service by [Shorebird](https://shorebird.dev/) 
 **Note:** This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured using **codemagic.yaml**, you can follow the guide [here](https://docs.shorebird.dev/ci/codemagic/).
 {{</notebox>}}
 
-## Requirements
+## Prerequisites
 
 In order to configure a Shorebird workflow in Codemagic, the following is needed:
 
 - Shorebird needs to be [initialized](https://docs.shorebird.dev/code-push/initialize/) for your Flutter project;
-- You need to generate a token for authentication with Shorebird, see how to create the token [here](https://docs.shorebird.dev/ci/codemagic/#authentication);
-- Code signing files for release builds.
+- A token for authentication with Shorebird, see how to create the token [here](https://docs.shorebird.dev/ci/codemagic/#authentication);
+- Code signing files.
 
 ## Building a release
 
@@ -29,10 +29,9 @@ Release builds can be published to app stores and patched once they've been dist
 3. Scroll to the **Shorebird** section and specify the Flutter version and the Xcode version (if you selected **iOS**) to be used for building the app. 
 4. Copy-paste your token generated with Shorebird CLI in the **Shorebird token** field. Once you save it, the token can no longer be viewed, only modified or deleted.
 5. If your Flutter project is not in the root of the repository, update the **Project path** to point to the right directory.
-6. You can add additional build arguments to the build command, e.g. to specify the flavor or target for your app. See more info [here](https://docs.shorebird.dev/code-push/release/).
-7. Scroll down to the **Distribution** section to set up code signing. You can follow the guides for [iOS code signing](../flutter-code-signing/ios-code-signing) and [Android code signing](../flutter-code-signing/android-code-signing) respectively.
-8. Save the settings and start a new build. On successful build, you can find the link to the build in Shorebird console in the build logs.
-
+6. You can add additional **build arguments** to the `shorebird release` build command, e.g. to specify the flavor or target for your app. See more info [here](https://docs.shorebird.dev/code-push/release/).
+7. Scroll down to the **Distribution** section to set up code signing. You can follow the guides for [iOS code signing](../flutter-code-signing/ios-code-signing) and [Android code signing](../flutter-code-signing/android-code-signing) respectively. 
+8. Save the settings and start a new build. On successful build, the release artifact will be uploaded to your Shorebird console.
 
 {{<notebox>}}
 
@@ -53,6 +52,7 @@ Once you have a published a release of your app, you can patch it by pushing an 
 4. Specify the **Android release version** and/or the **iOS release version** to patch. To patch the latest release, set the value to `latest` or leave empty.
 5. Copy-paste your token generated with Shorebird CLI in the **Shorebird token** field. Once you save it, the token can no longer be viewed, only modified or deleted.
 6. If your Flutter project is not in the root of the repository, update the **Project path** to point to the right directory.
-7. You can add additional build arguments to the build command, e.g. to specify the flavor or target for your app. See more info [here](https://docs.shorebird.dev/code-push/release/).
-8. Save the settings and start a new build. On successful build, you can find the link to the build in Shorebird console in the build logs.
+7. You can add additional **build arguments** to the `shorebird patch` build command, e.g. to specify the flavor or target for your app. See more info [here](https://docs.shorebird.dev/code-push/patch/).
+8. Scroll down to the **Distribution** section to set up code signing. You can follow the guides for [iOS code signing](../flutter-code-signing/ios-code-signing) and [Android code signing](../flutter-code-signing/android-code-signing) respectively.
+9. Save the settings and start a new build. On successful build, the patch artifact will be uploaded to your Shorebird console.
 
