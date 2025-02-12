@@ -70,7 +70,8 @@ Once you make all the preparations as described above and configure publishing t
    7. Add the variable group to your `codemagic.yaml` file
       {{< highlight yaml "style=paraiso-dark">}}
       environment:
-      groups: - google_credentials
+         groups:
+            - google_credentials
       {{< /highlight >}}
 
 2. Configure publishing section in `codemagic.yaml` to publish to Google Play:
