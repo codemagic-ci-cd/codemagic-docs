@@ -174,4 +174,5 @@ base64 id_rsa | pbcopy
 
 ## Modify application variables and secrets
 
-For up-to-date information on managing environment variables and secrets please refer to **Secrets and Environment Vars** endpoints in [Codemagic REST API documentation](https://codemagic.io/api/v3/schema).
+For up-to-date information on managing environment variables and secrets, please refer to the **Secrets and Environment Vars** endpoints in [Codemagic REST API documentation](https://codemagic.io/api/v3/schema).
+
