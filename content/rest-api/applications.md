@@ -172,31 +172,6 @@ base64 id_rsa | pbcopy
 {{< /highlight >}}
 
 
-
-## Encrypting base64 encoded values
-
-#### Example
-
-{{< highlight bash "style=paraiso-dark">}}
-  curl -H "Content-Type: application/json" \
-       -H "x-auth-token: $CM_API_TOKEN" \
-       -d '{
-         "appId": "YOUR_APP_ID", 
-         "value": "BASE64_ENCODED_VALUE"
-       }' \
-       -X POST https://api.codemagic.io/apps/YOUR_APP_ID/encrypt-environment-variable
-{{< /highlight >}}
-
-
-#### Response
-
-{{< highlight json "style=paraiso-dark">}}
-  {
-    "encrypted": "Encrypted(Z0FBQUFBQmZMVkhwb3Q3QlJtRlVOeVFJcEJvTTRtWnZablpqMS0xN2V6dllTell1ODZSd2FUcnNqMUlZT09QY1paV0pjbVRfUlVJeDUxRWIzX1paOEZlc1dSdi1XMXlkUFVIdjNIZ2VqcE5Ja0tpMjlPWjhlSTQ9)"
-  }
-{{< /highlight >}}
-
-
 ## Modify application variables and secrets
 
 Codemagic allows you to fetch and modify application variables and secrets using the REST API. Note that the API works slightly differently depending on whether your application is configured to use the `Workflow Editor` or `YAML configuration`.
