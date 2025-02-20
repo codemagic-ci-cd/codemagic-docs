@@ -39,12 +39,14 @@ In this step you can also define the build artifacts you are interested in. Thes
 {{< tab header="Android" >}}
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
-    - name: Install npm dependencies for Ionic Capacitor project
-      script: | 
-        npm install
     - name: Set up local.properties
       script: | 
         echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+    - name: Install npm dependencies for Ionic Capacitor project
+      script: | 
+        npm install
+    - name: Compile web code to 'dist' folder
+      script: npm run build
     - name: Update dependencies and copy web assets to native project
       script: | 
         # if you don't need to update native dependencies, use this:
@@ -75,6 +77,8 @@ In this step you can also define the build artifacts you are interested in. Thes
     - name: Cocoapods installation
         script: | 
           cd ios/App && pod install
+    - name: Compile web code to 'dist' folder
+      script: npm run build
     - name: Update dependencies and copy web assets to native project
       script: | 
         # if you don't need to update native dependencies, use this:
@@ -90,7 +94,7 @@ In this step you can also define the build artifacts you are interested in. Thes
           cd ios/App
           xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
     artifacts:
-      - build/ios/ipa/*.ipa
+      - ios/App/build/ios/ipa/App.ipa
       - /tmp/xcodebuild_logs/*.log
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
@@ -144,12 +148,14 @@ workflows:
         GOOGLE_PLAY_TRACK: alpha
       node: latest
     scripts:
-      - name: Install npm dependencies for Ionic Capacitor project
-        script: | 
-          npm install
       - name: Set up local.properties
         script: | 
           echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Install npm dependencies for Ionic Capacitor project
+        script: | 
+          npm install
+      - name: Compile web code to 'dist' folder
+        script: npm run build
       - name: Update dependencies and copy web assets to native project
         script: | 
           # if you don't need to update native dependencies, use this:
@@ -203,7 +209,7 @@ workflows:
         distribution_type: app_store
         bundle_identifier: io.codemagic.ionicsample
       vars:
-        APP_STORE_APPLE_ID: 1555555551
+        APP_ID: 1555555551
         XCODE_WORKSPACE: "platforms/ios/YOUR_APP.xcworkspace"
         XCODE_SCHEME: "YOUR_SCHEME"
     scripts:
@@ -213,6 +219,8 @@ workflows:
       - name: Cocoapods installation
         script: | 
           cd ios/App && pod install
+      - name: Compile web code to 'dist' folder
+        script: npm run build
       - name: Update dependencies and copy web assets to native project
         script: | 
           # if you don't need to update native dependencies, use this:
@@ -226,7 +234,7 @@ workflows:
       - name: Increment build number
         script: | 
           cd $CM_BUILD_DIR/ios/App
-          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID")
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
           agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
       - name: Build ipa for distribution
         script: | 
@@ -235,7 +243,7 @@ workflows:
             --workspace "$XCODE_WORKSPACE" \
             --scheme "$XCODE_SCHEME"
     artifacts:
-      - build/ios/ipa/*.ipa
+      - ios/App/build/ios/ipa/App.ipa
       - /tmp/xcodebuild_logs/*.log
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
