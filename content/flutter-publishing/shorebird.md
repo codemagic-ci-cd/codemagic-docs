@@ -17,8 +17,20 @@ Code push for Flutter is a cloud service by [Shorebird](https://shorebird.dev/) 
 In order to configure a Shorebird workflow in Codemagic, the following is needed:
 
 - Shorebird needs to be [initialized](https://docs.shorebird.dev/code-push/initialize/) for your Flutter project;
-- A token for authentication with Shorebird, see how to create the token [here](https://docs.shorebird.dev/ci/codemagic/#authentication);
+- A token for authentication with Shorebird;
 - Code signing files.
+
+## Generating a Shorebird token
+
+In your terminal, run the following command:
+
+{{< highlight Groovy "style=paraiso-dark">}}
+shorebird login:ci
+{{< /highlight >}}
+
+You will be then asked to log in to your Shorebird account. After successful authentication, the token is printed to your terminal window. Have the token ready for use in Codemagic.
+
+Note that the Shorebird token is a secret and should not be shared publicly or checked in to source control.
 
 ## Building a release
 
