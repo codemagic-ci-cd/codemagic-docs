@@ -1,5 +1,5 @@
 ---
-title: Xcode 16.2.x (default)
+title: Xcode 16.2.x (edge)
 aliases:
 
 weight: 98
