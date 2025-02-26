@@ -77,12 +77,13 @@ workflows:
           xcodebuild -workspace "ios/Runner.xcworkspace" \
             -scheme "Runner-dev" \ 
             -sdk iphonesimulator \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            -destination "platform=iOS Simulator,name=iPhone 16,OS=18.2" \
             -configuration Debug \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
             FLUTTER_TARGET=lib/main_dev.dart \
+            FLUTTER_BUILD_MODE=debug \
             -derivedDataPath ios/output
     artifacts:
       - ios/output/Build/Products/Debug-iphonesimulator/Runner.app
