@@ -1,8 +1,8 @@
 ---
-title: Xcode 16.2.x (default)
+title: Xcode 16.3.x (edge)
 aliases:
 
-weight: 98
+weight: 97
 ---
 
 Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
@@ -19,20 +19,20 @@ Available on request:
 
 ## System
 
-- System version `macOS 15.2 (24C101)`
-- Kernel version `Darwin 24.2.0`
-- Disk `294GB (Free Space: 151GB)`
+- System version `macOS 15.3.1 (24D70)`
+- Kernel version `Darwin 24.3.0`
+- Disk `294GB (Free Space: 148GB)`
 
 ## Xcode versions
 
-- 16.2 (16C5032a) `/Applications/Xcode-16.2.app`, also selected when specifying `latest` in Xcode version settings
+- 16.3 (16E5104o) `/Applications/Xcode-16.3.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
-- iOS 18.2
-- tvOS 18.2
-- visionOS 2.2
-- watchOS 11.2
+- iOS 18.4
+- tvOS 18.4
+- visionOS 2.4
+- watchOS 11.4
 
 ### Devices
 
@@ -55,7 +55,6 @@ Available on request:
 - iPhone 16 Plus
 - iPhone 16 Pro
 - iPhone 16 Pro Max
-- iPhone SE (3rd generation)
 
 ## Android emulators
 
