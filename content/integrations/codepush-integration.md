@@ -109,6 +109,23 @@ To Delete: code-push-standalone app rm <appName>
 code-push-standalone promote <appName> <sourceDeploymentName> <destDeploymentName>
 {{< /highlight >}}
 
+## Managing apps and deployments with the CodePush CLI
+
+You can manage your apps and deployments using the CodePush CLI which you can install on your local machine as follows:
+
+{{< highlight bash "style=paraiso-dark">}}
+git clone https://github.com/microsoft/code-push-server /tmp/code-push-server
+cd /tmp/code-push-server/cli
+npm install && npm run build && npm install -g
+{{< /highlight >}}
+
+You can log into your account using the CodePush access key provided by Codemagic.
+
+The CodePush CLI reference is available [here](https://github.com/microsoft/code-push-server/tree/main/cli). 
+
+To view deployments, update metadata, and installation metrics you can use the `code-push-standalone deployment ls <app_name>` command as described in the CodePush CLI docs [here](https://github.com/microsoft/code-push-server/tree/main/cli#:~:text=If%20at%20any%20time%20you%27d%20like%20to%20view%20the%20list%20of%20deployments%20that%20a%20specific%20app%20includes%2C%20you%20can%20simply%20run%20the%20following%20command%3A)
+
+
 ## Debugging notes
 
 If your project **Info.plist** file key **CFBundleShortVersionString** does not hold a semver string value, then it's highly likely you will see the following error when releasing an update:
