@@ -25,7 +25,7 @@ Available on request:
 
 ## Xcode versions
 
-- 16.2 (16C5032a) `/Applications/Xcode-16.2.app`, also selected when specifying `latest` or `edge` in Xcode version settings
+- 16.2 (16C5032a) `/Applications/Xcode-16.2.app`, also selected when specifying `latest` in Xcode version settings
 
 ### Runtimes
 
