@@ -35,6 +35,9 @@ In order to publish your generated artifacts to Google Cloud Storage:
 
 {{< highlight yaml "style=paraiso-dark">}}
 publishing:
+  environment:
+    groups:
+      - google_credentials
   scripts:
     - name: Publish to Google Cloud
       script: | 
