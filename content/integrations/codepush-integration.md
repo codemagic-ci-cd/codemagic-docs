@@ -21,13 +21,13 @@ For iOS, place the following key and its string in Info.plist:
 
 {{< highlight bash "style=paraiso-dark">}}
 <key>CodePushServerURL</key>
-<string>https://codepush.codemagic.io/</string>
+<string>https://codepush.pro/</string>
 {{< /highlight >}}
 
 For Android, add the following line in **strings.xml**:
 
 {{< highlight bash "style=paraiso-dark">}}
- <string moduleConfig="true" name="CodePushServerUrl">https://codepush.codemagic.io/</string>
+ <string moduleConfig="true" name="CodePushServerUrl">https://codepush.pro/</string>
 {{< /highlight >}}
 
 4. While making changes in Info.plist and strings.xml files, add the Deployment keys:
@@ -59,7 +59,7 @@ scripts:
           npm install && npm run build && npm install -g
     - name: CodePush authentication
       script: |
-          code-push-standalone login "https://codepush.codemagic.io" --key $CODEPUSH_TOKEN       
+          code-push-standalone login "https://codepush.pro" --key $CODEPUSH_TOKEN       
     - name: CodePush add app # this script can be skipped if you have existing apps
       script: |
           code-push-standalone app add YOUR_PREFERRED_APP_NAME
