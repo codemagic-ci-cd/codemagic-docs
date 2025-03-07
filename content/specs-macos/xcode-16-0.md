@@ -1,7 +1,7 @@
 ---
 title: Xcode 16.0.x
 aliases:
-- /specs/versions-macos/
+
 weight: 100
 ---
 
