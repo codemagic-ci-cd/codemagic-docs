@@ -21,11 +21,11 @@ Available on request:
 
 - System version `macOS 15.3.1 (24D70)`
 - Kernel version `Darwin 24.3.0`
-- Disk `294GB (Free Space: 148GB)`
+- Disk `294GB (Free Space: 150GB)`
 
 ## Xcode versions
 
-- 16.3 (16E5104o) `/Applications/Xcode-16.3.app`, also selected when specifying `edge` in Xcode version settings
+- 16.3 (16E5121h) `/Applications/Xcode-16.3.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
@@ -55,6 +55,7 @@ Available on request:
 - iPhone 16 Plus
 - iPhone 16 Pro
 - iPhone 16 Pro Max
+- iPhone 16e
 
 ## Android emulators
 
