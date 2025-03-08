@@ -90,5 +90,14 @@ workflows:
 
 You may want to either run or skip some specific build steps in your workflow when building your application.
 
+{{< highlight yaml "style=paraiso-dark">}}
+  scripts:
+    - name: Run unit tests
+      script: |
+        flutter test
+      when:
+        condition: env.RUN_TEST == "true"
+{{< /highlight >}}
+
 Both `changeset` and `condition` are supported for build steps.
 
