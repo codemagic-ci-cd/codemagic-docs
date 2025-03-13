@@ -160,7 +160,7 @@ To deactivate a Unity license on the build machine, add the following script ste
 {{< /highlight >}}
 {{< /tab >}}
 
-{{% tab header="Mac M2 instances" %}}
+{{% tab header="macOS instances" %}}
 {{< highlight yaml "style=paraiso-dark">}}
   publishing:
     scripts:
