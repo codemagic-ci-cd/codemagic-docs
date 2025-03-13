@@ -160,7 +160,7 @@ To deactivate a Unity license on the build machine, add the following script ste
 {{< /highlight >}}
 {{< /tab >}}
 
-{{% tab header="Mac M2 instances" %}}
+{{% tab header="macOS instances" %}}
 {{< highlight yaml "style=paraiso-dark">}}
   publishing:
     scripts:
@@ -808,6 +808,7 @@ workflows:
     name: Unity Android Workflow
     max_build_duration: 120
     environment:
+      unity: 2022.2.16f1 # specify unity version you want to use
       android_signing:
         - keystore_reference
       groups:
@@ -870,6 +871,7 @@ workflows:
     integrations:
       app_store_connect: codemagic
     environment:
+      unity: 2022.2.16f1 # specify unity version you want to use
       ios_signing:
         distribution_type: app_store
         bundle_identifier: io.codemagic.unitysample
@@ -953,6 +955,7 @@ workflows:
     name: Unity Mac Workflow
     max_build_duration: 120
     environment:
+      unity: 2022.2.16f1 # specify unity version you want to use
       groups:
         - unity_credentials
         - appstore_credentials
@@ -1053,6 +1056,7 @@ workflows:
     max_build_duration: 120
     instance_type: windows_x2
     environment:
+      unity: 2022.2.16f1 # specify unity version you want to use
       groups:
         - unity_credentials
     scripts:
