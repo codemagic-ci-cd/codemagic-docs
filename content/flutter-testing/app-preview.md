@@ -1,5 +1,5 @@
 ---
-title: Previewing apps in browser
+title: Previewing apps in the browser
 description: How to preview and test your iOS or Android app on a simulator or emulator running in the browser
 weight: 4
 aliases:
