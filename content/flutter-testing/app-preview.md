@@ -8,8 +8,10 @@ aliases:
 Codemagic allows you to launch your iOS or Android app on an iOS simulator or Android emulator running in the browser, regardless of the operating system you are using. Test your app against different device and OS configurations, emulate GPS location or demo the latest app version without needing access to a physical device. 
 
 {{<notebox>}}
-Note that this feature is available for **teams** on request. Please [contact us](https://codemagic.io/contact/) for more information.
+This feature is available for **teams** on request. Please [contact us](https://codemagic.io/contact/) for more information.
 {{</notebox>}}
+
+**Tip:** The following sections describe creating previewable artifacts using the Flutter Workflow Editor. If you're using codemagic.yaml, follow the instructions [here](../yaml-testing/app-preview).
 
 ## Creating iOS .app binaries for previewing on the simulator
 
