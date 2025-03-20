@@ -19,19 +19,19 @@ Available on request:
 
 ## System
 
-- System version `macOS 15.3.1 (24D70)`
+- System version `macOS 15.3.2 (24D81)`
 - Kernel version `Darwin 24.3.0`
-- Disk `294GB (Free Space: 150GB)`
+- Disk `294GB (Free Space: 158GB)`
 
 ## Xcode versions
 
-- 16.3 (16E5121h) `/Applications/Xcode-16.3.app`, also selected when specifying `edge` in Xcode version settings
+- 16.3 (16E5129f) `/Applications/Xcode-16.3.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
+- iOS 18.0
 - iOS 18.4
 - tvOS 18.4
-- visionOS 2.4
 - watchOS 11.4
 
 ### Devices
@@ -39,15 +39,17 @@ Available on request:
 - Apple TV
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
-- Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
 - Apple Watch Series 10 (42mm)
 - Apple Watch Series 10 (46mm)
 - Apple Watch Ultra 2 (49mm)
 - iPad (10th generation)
+- iPad (A16)
 - iPad Air 11-inch (M2)
+- iPad Air 11-inch (M3)
 - iPad Air 13-inch (M2)
+- iPad Air 13-inch (M3)
 - iPad Pro 11-inch (M4)
 - iPad Pro 13-inch (M4)
 - iPad mini (A17 Pro)
