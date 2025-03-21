@@ -10,6 +10,10 @@ Codemagic offers a hosted and maintained CodePush server with a free license for
 ## Step by step guide to configure CodePush
 
 {{<notebox>}}
+**Note**: The same server can be used for all of your apps. 
+{{</notebox>}}
+
+{{<notebox>}}
 **Note**: Skip to step 5 if CodePush is already configured for your project.
 {{</notebox>}}
 
