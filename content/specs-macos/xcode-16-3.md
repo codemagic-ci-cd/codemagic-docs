@@ -25,13 +25,13 @@ Available on request:
 
 ## Xcode versions
 
-- 16.3 (16E5129f) `/Applications/Xcode-16.3.app`, also selected when specifying `edge` in Xcode version settings
+- 16.3 (16E137) `/Applications/Xcode-16.3.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
-- iOS 18.0
 - iOS 18.4
 - tvOS 18.4
+- visionOS 2.4
 - watchOS 11.4
 
 ### Devices
@@ -39,6 +39,7 @@ Available on request:
 - Apple TV
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
+- Apple Vision Pro
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
 - Apple Watch Series 10 (42mm)
