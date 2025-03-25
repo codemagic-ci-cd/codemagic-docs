@@ -68,7 +68,7 @@ The Codemagic **macOS M2** annual plan gives you a fixed-price plan with the fol
 * Unlimited build minutes
 * Unlimited team seats
 * In-app chat support
-* Additional concurrencies are **$1500/year**. 
+* Additional concurrencies are **$1,500/year**. 
 
 The fixed annual plan can only be paid with a credit card.
 
@@ -81,7 +81,7 @@ If you have already created a Team in the Codemagic web app, you can upgrade to 
 5. Enter your **credit card** details and **company information**.
 6. Once you have entered your details, pay-as-you-go billing will be enabled. To upgrade to the Fixed Annual plan, click on the **Upgrade** button and follow the instructions to subscribe to the Fixed Annual plan.
 
-If you require additional concurrencies or have any other questions about the annual plan, including requests for **macOS M4 instances**,  please contact us [here](https://codemagic.io/contact/).
+If you require additional concurrencies or have any other questions about the annual plan, including requests for **macOS M4 instances**,  please contact us [here](https://codemagic.io/pricing/#enterprise).
 
 If you require annual invoicing, please refer to the Enterprise plans below.
 
@@ -95,11 +95,11 @@ The Codemagic **macOS M4** annual plan gives you a fixed-price plan with the fol
 * Unlimited build minutes
 * Unlimited team seats
 * In-app chat support
-* Additional concurrencies are **$1800/year**. 
+* Additional concurrencies are **$1,800/year**. 
 
 The **macOS M4** annual plan can only be paid with a credit card.
 
-To request this plan, please contact us [here](https://codemagic.io/contact/)
+To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
 
 ## macOS M4 Pro - Fixed Annual Plan
 
@@ -115,7 +115,7 @@ The Codemagic **macOS M4 Pro** annual plan gives you a fixed-price plan with the
 
 The **macOS M4 Pro** annual plan can only be paid with a credit card.
 
-To request this plan, please contact us [here](https://codemagic.io/contact/)
+To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
 
 ## macOS M2 Max Studio - Fixed Annual Plan
 
@@ -131,7 +131,7 @@ The Codemagic **macOS M2 Max Studio** annual plan gives you a fixed-price plan w
 
 The **macOS M2 Max Studio** annual plan can only be paid with a credit card.
 
-To request this plan, please contact us [here](https://codemagic.io/contact/)
+To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
 
 ## Pricing for Enterprises with macOS M4
 
@@ -170,7 +170,7 @@ Annual invoicing with bank transfer is available for Enterprise plans. Payment i
 
 Please also note that we have completed our SOC 2 Type 2 assessment, and the report is available on request. 
 
-If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/enterprise/). 
+If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/pricing/#enterprise). 
 
 ## Resellers
 
@@ -187,7 +187,7 @@ If you need specific software and tools available on a builder machine we can pr
 
 Annual dedicated host plans can be paid for with a credit card and invoicing with bank transfer is available.
 
-For more information contact us [here](https://codemagic.io/contact/).
+For more information contact us [here](https://codemagic.io/pricing/#enterprise).
 
 ## Build history and artifact storage
 
@@ -226,12 +226,12 @@ The instance types and hardware specifications can be found below.
 | Windows VM               | 8 vCPUs, 32 GB memory  
 
 {{<notebox>}}
-To access more powerful macOS M2 Max Studio, and M2 Ultra machines, please get in touch with us [here](https://codemagic.io/contact/).
+To access more powerful macOS M2 Max Studio, and M2 Ultra machines, please get in touch with us [here](https://codemagic.io/pricing/#enterprise).
 {{</notebox>}}
 
 If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Please note that Android emulators are not available on macOS M2 VMs due to the Apple Virtualization Framework not supporting nested virtualization.
 
-If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/contact/).
+If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/pricing/#enterprise).
 
 For Linux instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-linux/)
 
