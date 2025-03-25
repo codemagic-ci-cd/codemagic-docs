@@ -5,7 +5,7 @@ weight: 22
 ---
 
 [**CodePush**](https://github.com/microsoft/code-push) is a cloud service that enables React Native developers to deploy mobile app updates directly to their users’ devices without re-deploying them to the stores. 
-Codemagic offers a hosted and maintained CodePush server with a free license for annual plan subscriptions. Dedicated CodePush servers are available on request. To activate your team's CodePush account and for more information, please contact us [here](https://codemagic.io/contact/).
+Codemagic offers a hosted and maintained CodePush server with a free license for annual plan subscriptions. Dedicated CodePush servers are available on request. To activate your team's CodePush account and for more information, please contact us [here](https://codemagic.io/pricing/#enterprise).
 
 ## Step by step guide to configure CodePush
 
@@ -51,7 +51,7 @@ For Android:
 
 **Note**: About how to find the deployment keys, please refer to step **7**.
 
-5. After configuring all the above-mentioned steps, it is time to set up the Codemagic side configuration and authentication. For that, [contact Codemagic team](https://codemagic.io/contact/) for an access key.
+5. After configuring all the above-mentioned steps, it is time to set up the Codemagic side configuration and authentication. For that, [contact Codemagic team](https://codemagic.io/pricing/#enterprise) for an access key.
 6. Add the following lines in **codemagic.yaml**:
 
 {{< highlight bash "style=paraiso-dark">}}
