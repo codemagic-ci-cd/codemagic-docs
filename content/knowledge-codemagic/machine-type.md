@@ -33,7 +33,7 @@ The following build machine types are provided by Codemagic:
 3. Windows
    
 {{<notebox>}}
-Contact us [here](https://codemagic.io/contact/) to have access to macOS with Apple M2 Pro, Max, Ultra chips and Linux with arm64.
+Contact us [here](https://codemagic.io/pricing/#enterprise) to have access to macOS with Apple M2 Pro, Max, Ultra chips and Linux with arm64.
 {{</notebox>}}
 
 For more information about the machine specifications, please check [this page](https://docs.codemagic.io/specs/versions-macos/).

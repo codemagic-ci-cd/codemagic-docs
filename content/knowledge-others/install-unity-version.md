@@ -69,7 +69,7 @@ This will automatically install the specified Unity version to the build machine
 {{< /tab >}}
 {{< /tabpane >}}
 
-If you can't find your desired Unity version in the list, please contact us [here](https://codemagic.io/contact/).
+If you can't find your desired Unity version in the list, please contact us on [GitHub Discussions](https://github.com/orgs/codemagic-ci-cd/discussions) or in [Discord](https://codemagic.io/discord/).
 
 {{<notebox>}}
 **Notes:**
