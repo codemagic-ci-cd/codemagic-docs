@@ -61,7 +61,7 @@ Once you have a published a release of your app, you can patch it by pushing an 
 1. In workflow editor, select the platforms for which you want to build. Only **Android** and **iOS** are supported with Shorebird for now.
 2. Under **Publish updates to user devices using Shorebird**, select **Patch**.
 3. Scroll to the **Shorebird** section and specify the Xcode version (if you selected **iOS**) to be used for building the app. Note that it is recommended to use the same Xcode version that was used to build the app version you are going to patch so as to avoid warnings about the app containing native changes.  
-4. Specify the **Android release version** and/or the **iOS release version** to patch. To patch the latest release, set the value to `latest` or leave empty.
+4. Specify the **Android release version** and/or the **iOS release version** to patch. To patch the latest release, set the value to `latest`.
 5. Copy-paste your token generated with Shorebird CLI in the **Shorebird token** field. Once you save it, the token can no longer be viewed, only modified or deleted.
 6. If your Flutter project is not in the root of the repository, update the **Project path** to point to the right directory.
 7. You can add additional **build arguments** to the `shorebird patch` build command, e.g. to specify the flavor or target for your app. See more info [here](https://docs.shorebird.dev/code-push/patch/).
