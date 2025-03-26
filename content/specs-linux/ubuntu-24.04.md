@@ -5,9 +5,6 @@ aliases:
 weight: 4
 ---
 
-
-# TODO: Review all information and set it properly with new image characteristics
-
 ## Hardware
 
 - Linux virtual machine: `8 vCPUs, 32 GB memory`
@@ -15,8 +12,8 @@ weight: 4
 ## System
 
 - System version `Ubuntu 24.04.2 LTS`
-- Kernel version `TBD`
-- Disk `XXGB (Free Space: XXGB)`
+- Kernel version `6.8.0-1021-gcp`
+- Disk `97GB (Free Space: 63GB)`
 
 
 
@@ -28,63 +25,78 @@ weight: 4
   - Device: `pixel_4 (Google)`
   - Path: `/home/builder/.android/avd/emulator.avd`
   - Target: `Google Play (Google Inc.)`
-  - Based on: `Android 11.0 (R)`
+  - Based on: `Android 14.0 (API level 34)`
   - Tag/API: `google_apis_playstore/x86`
   - Skin: `pixel_4`
   - Sdcard: `512M`
 
-- **emulator-34**
+- **emulator-35**
 
   - Device: `pixel_4 (Google)`
-  - Path: `/home/builder/.android/avd/emulator-34.avd`
+  - Path: `/home/builder/.android/avd/emulator-35.avd`
   - Target: `Google Play (Google Inc.)`
-  - Based on: `Android 14 (API level 34)`
+  - Based on: `Android 15 (API level 35)`
   - Tag/API: `google_apis_playstore/x86`
   - Skin: `pixel_4`
   - Sdcard: `512M`
 
-## Android Studio 2022.3
+- **emulator-36**
+
+  - Device: `pixel_6a (Google)`
+  - Path: `/home/builder/.android/avd/emulator-36.avd`
+  - Target: `Google Play (Google Inc.)`
+  - Based on: `Android 16 (API level 36)`
+  - Tag/API: `google_apis_playstore/x86`
+  - Skin: `pixel_6a`
+  - Sdcard: `512M`
+
+
+## Android Studio 2024.3.1.13
 
 Android Studio path: `~/programs/android-studio`
 
 ## Java versions
 
-- **21.0.1** JAVA_HOME: `/usr/lib/jvm/java-1.21.0-openjdk-amd64`
+- **21.0.1** `/usr/lib/jvm/java-1.21.0-openjdk-amd64`
 - **17.0.11** (default) JAVA_HOME: `/usr/lib/jvm/java-1.17.0-openjdk-amd64`
-- **15.0.3** JAVA_HOME: `/usr/lib/jvm/java-1.15.0-openjdk-amd64`
-- **11.0.20.1** JAVA_HOME: `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
-- **1.8.0_382** JAVA_HOME: `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
+- **11.0.20.1** `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
+- **1.8.0_382** `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
+
+## Gradle versions
+
+- **8.13** `/home/builder/programs/gradle-8.13` 
+- **8.11.1** (default) `/home/builder/programs/gradle-8.11.1`
+- **8.1.1** `/home/builder/programs/gradle-8.1.1`
+- **7.6** `/home/builder/programs/gradle-7.6`
 
 ## Other pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.2.9519653`
-- aws `2.8.9`
-- curl `7.68.0`
-- docker `24.0.2`
-- ew-cli `0.9.17`
-- fastlane `2.214.0`
-- firebase `11.21.0`
-- gem `3.1.4`
-- gh `1.8.1`
-- git `2.25.1`
-- Google Cloud SDK `435.0.1`
-- gradle `8.1.1`
-- gsutil `5.24`
-- ionic `5.4.16`
-- jq `jq-1.6`
-- ktlint `0.43.2`
-- node `20.11.1`
-- npm `10.2.4`
-- python2 `2.7.18`
-- python `3.8.10`
-- ruby `2.7.2p137`
-- ssh
-- snapcraft `7.4.3`
+- aws `2.24.26`
+- curl `8.5.0`
+- docker `28.0.1`
+- ew-cli `0.11.1`
+- fastlane `2.226.0`
+- firebase `13.34.0`
+- gem `3.3.7`
+- gh `2.45.0`
+- git `2.43.0`
+- Google Cloud SDK `514.0.0`
+- gsutil `5.33`
+- ionic `7.2.0`
+- jq `jq-1.7`
+- ktlint `1.5.0`
+- node `20.18.3`
+- npm `11.2.0`
+- python `3.12.5`
+- ruby `3.4.2`
+- OpenSSH `9.6p1`
+- snapcraft `8.7.2`
 - sudo
 - tar / bsdtar
 - unzip
 - wget
-- yarn `1.22.19`
-- yq `4.34.1`
+- yarn `4.7.0`
+- yq `4.44.5
 - zip
