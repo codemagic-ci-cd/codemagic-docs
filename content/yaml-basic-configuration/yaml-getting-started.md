@@ -273,7 +273,7 @@ The snippet below shows how to specify the versions of Flutter, Xcode, Ubuntu, C
 environment:
   flutter: stable   # Define the channel name, version (e.g. v1.13.4), or fvm for Flutter Version Management
   xcode: latest     # Define latest, edge or version (e.g. 11.2)
-  ubuntu: 20.04     # Define the OS version for linux_x2 instance type (Available options: 20.04, 24.04)
+  ubuntu: 20.04     # Define the OS version for linux_x2 instance type (available options are 20.04, 24.04)
   cocoapods: 1.9.1  # Define default or version
   node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
   npm: 6.13.7       # Define default, latest, next, lts or version
