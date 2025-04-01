@@ -2,7 +2,7 @@
 description: A list of tools available out-of-the-box on Codemagic Linux Ubuntu 24.04
 title: Ubuntu 24.04
 aliases:
-weight: 4
+weight: 1
 ---
 
 ## Hardware

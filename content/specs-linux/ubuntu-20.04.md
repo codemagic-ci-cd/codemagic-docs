@@ -3,7 +3,7 @@ description: A list of tools available out-of-the-box on Codemagic Linux Ubuntu 
 title: Ubuntu 20.04 (default)
 aliases:
   - /specs/versions-linux/
-weight: 3
+weight: 2
 ---
 
 ## Hardware
