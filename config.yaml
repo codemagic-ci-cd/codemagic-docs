@@ -193,6 +193,11 @@ menu:
           parent: specs
           weight: 1
 
+        - identifier: specs-linux
+          name: Linux machines
+          parent: specs
+          weight: 2
+
         - identifier: custom-menu-position
           params:
               hide: true

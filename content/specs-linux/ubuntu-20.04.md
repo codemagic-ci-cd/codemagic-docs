@@ -1,8 +1,8 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic Linux build machines.
-title: Linux machines
+description: A list of tools available out-of-the-box on Codemagic Linux Ubuntu 20.04
+title: Ubuntu 20.04 (default)
 aliases:
-  - "../releases-and-versions/versions-linux"
+  - /specs/versions-linux/
 weight: 2
 ---
 
