@@ -57,10 +57,10 @@ Android Studio path: `~/programs/android-studio`
 
 ## Java versions
 
-- **21.0.1** `/usr/lib/jvm/java-1.21.0-openjdk-amd64`
-- **17.0.11** (default) JAVA_HOME: `/usr/lib/jvm/java-1.17.0-openjdk-amd64`
-- **11.0.20.1** `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
-- **1.8.0_382** `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
+- **21.0.6** `/usr/lib/jvm/java-1.21.0-openjdk-amd64`
+- **17.0.14** (default) JAVA_HOME: `/usr/lib/jvm/java-1.17.0-openjdk-amd64`
+- **11.0.26** `/usr/lib/jvm/java-1.11.0-openjdk-amd64`
+- **1.8.0_442** `/usr/lib/jvm/java-1.8.0-openjdk-amd64`
 
 ## Gradle versions
 
@@ -80,10 +80,10 @@ Android Studio path: `~/programs/android-studio`
 - ew-cli `0.11.1`
 - fastlane `2.226.0`
 - firebase `13.34.0`
-- gem `3.4.2`
+- gem `3.6.2`
 - gh `2.45.0`
 - git `2.43.0`
-- Google Cloud SDK `516.0.0`
+- Google Cloud SDK `514.0.0`
 - gsutil `5.33`
 - ionic `7.2.0`
 - jq `jq-1.7`
