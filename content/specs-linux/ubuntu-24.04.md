@@ -78,7 +78,7 @@ Android Studio path: `~/programs/android-studio`
 - curl `8.5.0`
 - docker `28.0.1`
 - ew-cli `0.11.1`
-- fastlane `2.226.0`
+- fastlane `2.227.0`
 - firebase `13.34.0`
 - gem `3.6.2`
 - gh `2.45.0`
