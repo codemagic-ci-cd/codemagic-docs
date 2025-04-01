@@ -12,8 +12,8 @@ weight: 4
 ## System
 
 - System version `Ubuntu 24.04.2 LTS`
-- Kernel version `6.8.0-1021-gcp`
-- Disk `97GB (Free Space: 63GB)`
+- Kernel version `6.8.0-1026-gcp`
+- Disk `150GB (Free Space: 86GB)`
 
 
 
@@ -68,35 +68,37 @@ Android Studio path: `~/programs/android-studio`
 - **8.11.1** (default) `/home/builder/programs/gradle-8.11.1`
 - **8.1.1** `/home/builder/programs/gradle-8.1.1`
 - **7.6** `/home/builder/programs/gradle-7.6`
+- **7.3.1** `/home/builder/programs/gradle-7.3.1`
 
 ## Other pre-installed tools
 
 - Android tools `/usr/local/share/android-sdk`
-- Android NDK `25.2.9519653`
-- aws `2.24.26`
+- Android NDK `22.0.7026061` `25.2.9519653`
+- aws `2.25.7`
 - curl `8.5.0`
 - docker `28.0.1`
 - ew-cli `0.11.1`
 - fastlane `2.226.0`
 - firebase `13.34.0`
-- gem `3.3.7`
+- gem `3.4.2`
 - gh `2.45.0`
 - git `2.43.0`
-- Google Cloud SDK `514.0.0`
+- Google Cloud SDK `516.0.0`
 - gsutil `5.33`
 - ionic `7.2.0`
 - jq `jq-1.7`
 - ktlint `1.5.0`
-- node `20.18.3`
+- node `22.14.1`
 - npm `11.2.0`
 - python `3.12.5`
 - ruby `3.4.2`
 - OpenSSH `9.6p1`
-- snapcraft `8.7.2`
+- snapcraft `8.7.3`
 - sudo
 - tar / bsdtar
 - unzip
 - wget
 - yarn `4.7.0`
-- yq `4.44.5
+- yq `4.44.5`
 - zip
+
