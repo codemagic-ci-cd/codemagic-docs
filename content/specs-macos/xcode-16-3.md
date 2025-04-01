@@ -25,7 +25,7 @@ Available on request:
 
 ## Xcode versions
 
-- 16.3 (16E137) `/Applications/Xcode-16.3.app`, also selected when specifying `edge` in Xcode version settings
+- 16.3 (16E140) `/Applications/Xcode-16.3.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
