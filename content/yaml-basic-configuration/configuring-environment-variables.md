@@ -21,13 +21,13 @@ You can add environment variables and secrets on the [app level](#app-level-envi
 
 Codemagic also provides a variety of built-in environment variables to streamline your workflows. You can check the full list [here](../yaml-basic-configuration/environment-variables).
 
-See an overview of how to add environment variables and use them in scripts in the video below.
+See an overview of how to work with environment variables in Codemagic.
 <br>
 {{< youtube 7pAxVFe66hI >}}
 
-## Variable groups
+## Variable groups and accessing variables
 
-All environment variables and secrets added in the Codemagic UI must be assigned a **group** which you need to reference in your codemagic.yaml workflow in order to access the variables.
+All environment variables and secrets added in the Codemagic UI must be assigned a **group** which you need to reference in your codemagic.yaml workflow in order to make them available to the build machine.
 
 A variable group allows you to define and store related environment variables that can be imported together in a codemagic.yaml file. For instance, you might create separate `staging` and `production` groups, each containing variables with the same names but different values. By importing the appropriate group in your workflow, you can reuse the same script logic while dynamically applying environment-specific configurations.
 
