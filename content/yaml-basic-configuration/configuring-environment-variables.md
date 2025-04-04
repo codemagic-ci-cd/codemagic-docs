@@ -17,7 +17,7 @@ Environment variables are useful for storing various pieces of data and making t
 
 If you're storing **secrets**, you can enable an extra layer of security by marking the variable as **Secure**. This encrypts the variable and obfuscates its value in the UI and build logs.
 
-You can add environment variables and secrets on the [app level](#app-level-environment-variables) or on the [team level](#global-variables-and-secrets) to make them available across team apps.
+Codemagic organizes user-defined environment variables into **variable groups**. You can add environment variables and groups on the [app level](#app-level-environment-variables) or on the [team level](#global-variables-and-secrets) to make them available across team apps.
 
 Codemagic also provides a variety of built-in environment variables to streamline your workflows. You can check the full list [here](../yaml-basic-configuration/environment-variables).
 
