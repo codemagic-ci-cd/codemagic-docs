@@ -1,7 +1,7 @@
 ---
-title: Adding environment variables in codemagic.yaml
-linkTitle: Adding environment variables
-description: How to configure environment variables and groups
+title: Environment variables and variable groups
+linkTitle: Environment variables and groups
+description: How to configure environment variables and groups in Codemagic
 weight: 2
 aliases:
   - /building/environment-variable-groups
@@ -10,42 +10,64 @@ aliases:
   - /variables/environment-variable-groups
   - /yaml/configuring-environment-variables
 ---
+
+Environment variables are the recommended way to store configuration settings and sensitive data—such as credentials, configuration files, or API keys—needed for successful builds and integrations with external services. Sensitive information should never be committed to your Git repository. Instead, add it securely as environment variables in the Codemagic UI, where it can be accessed during workflows without being exposed in version control.
+
+If you're storing **secrets** in environment variables, you can enable an extra layer of security by marking the variable as **Secure**. This encrypts the variable and hides its value in the UI and build logs.
+
+You can add environment variables and secrets on the [app level](#app-level-environment-variables) or on the [team level](#global-variables-and-secrets) to make them available across team apps. Codemagic organizes user-defined environment variables into **variable groups** which you can import during the build, read more about it [below](#variable-groups-and-accessing-variables).
+
+Codemagic also provides a variety of built-in environment variables to streamline your workflows. You can check the full list [here](../yaml-basic-configuration/environment-variables).
+
+See an overview of how to work with environment variables in Codemagic in the video below.
 <br>
 {{< youtube 7pAxVFe66hI >}}
 
-## Configuring Environment variables
+## Variable groups and accessing variables
 
-Environment variables are useful for storing various pieces of data and making it available during build time. Typical use cases include credentials, configuration files or API keys that are required for successful building or integration with external services. Besides user defined environment variables, Codemagic also provides numerous useful variables already built-in. You can check the full list [here.](../yaml-basic-configuration/environment-variables).
+All environment variables and secrets added in the Codemagic UI must be assigned a **group**. To make the variables available to the build machine, the variable group must be referenced in your codemagic.yaml workflow.
 
-1. Open your Codemagic app settings, and go to the **Environment variables** tab.
-2. Enter the desired **_Variable name_**.
-3. Enter the **_Variable value_**.
-4. Enter the variable group name, e.g. **_appstore_credentials_**. Click the button to create the group.
-5. If the **Secure** option is selected, the variable will be protected by encryption. Its value will not be visible in Codemagic UI or build logs, it will be transferred securely to the build machine and made available only while the build is running. The whole build machine will be destroyed after build ends.
-6. Click the **Add** button to add the variable.
+A variable group allows you to define and store related environment variables that can be imported together in a codemagic.yaml file. For instance, you might create separate `staging` and `production` groups, each containing variables with the same names but different values. By importing the appropriate group in your workflow, you can reuse the same script logic while dynamically applying environment-specific configurations.
 
-
-## Variable groups
-
-Environment variable groups allow you to define and store related sets of variables that are reusable in your [codemagic.yaml](../getting-started/yaml/) workflows. A variable _group_ tags a set of variables that can be imported together in a codemagic.yaml file. For example, you could define a `staging` group for variables related to your staging deployment and a `production` group for variables related to your production deployment. The variable names in staging and production groups can be identical, but the values will be set depending on which group is imported in the workflow. This allows you to reference variables in reusable scripts, but assign the actual values per workflow based on the imported group.
-
-One or more variable groups can be imported into codemagic.yaml [environment section](../getting-started/yaml/#environment). For example, variable groups named `magic_values` and `other_values` can be imported with the following syntax:
+Variable groups to be imported are listed in the [environment section](../yaml-basic-configuration/yaml-getting-started#environment) of codemagic.yaml. For example, variable groups named `staging` and `production` can be imported using the following syntax:
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
   workflow-name:
     environment:
       groups:
-        - magic_values
-        - other_values
+        - staging
+        - production
 {{< /highlight >}}
 
-Variables defined in environment variable groups work exactly as all other environment variables. E.g., the value of a variable named `API_TOKEN` can be referenced in a workflow as `$API_TOKEN`. Variables defined with the **_secure_** option will have values obfuscated in the Codemagic UI.
+Variables defined in environment variable groups work exactly as all other environment variables. E.g., the value of a variable named `API_TOKEN` can be referenced in a workflow as `$API_TOKEN`. 
 
+## App-level environment variables
+
+The environment variables you add in application settings are accessible only to the application at hand.
+
+1. Open your Codemagic app settings, and go to the **Environment variables** tab.
+2. Enter the desired **_Variable name_**.
+3. Enter the **_Variable value_**.
+4. Enter the variable group name, e.g. **_appstore_credentials_**. Click the button to create the group.
+5. If the **Secure** option is selected, the variable will be protected by encryption. Its value will not be visible in Codemagic UI or build logs, it will be transferred securely to the build machine and made available only while the build is running. 
+6. Click the **Add** button to add the variable.
+
+## Global variables and secrets
+
+The **Global variables and secrets** section on the [Teams page](https://codemagic.io/teams) allows defining variable groups that can be made available to any application of the team. 
+
+It is possible to limit applications' access to the variable group in variable group settings. Selecting **All applications** will grant all present and future apps access to the variable group. You can review application access settings anytime.
+
+Marking a variable **Secure** will encrypt the variable and hide its value in the Codemagic UI and build logs. The variable will be transferred securely to the build machine and made available only while the build is running. 
+
+### Bulk import of variables
+
+To add many variables at once, click **Add variables** and select the option to import variables from a `.env` file. For each variable listed in the upload modal, you can choose to enable extra security by clicking the lock icon.
 
 ## Storing binary files
 
-In order to store **_binary files_** as environment variables, they first need to be **_base64 encoded_** locally. To use the files, you will have to decode them during the build.
+In order to store **_binary files_** in environment variables, they first need to be **_base64 encoded_** locally. To use the files, you will have to decode them during the build.
 
 Commonly used binary files that need to be base64 encoded include:
 - Android keystore (.jks or .keystore)
@@ -103,7 +125,7 @@ After running these command lines, you can paste the automatically copied string
 **Tip**: A convenient way to check if a file is binary is to try to peek into the file using `less filename.extension`. If it is binary, you'll be asked "**_filename maybe is a binary file.  See it anyway?_**"
 {{</notebox>}}
 
-#### Using binary files
+### Using binary files during build
 
 In order to use binary files during the build time, you need to `base64` decode them and generate the file again. This can be performed with a simple `echo` command in a script.
 
@@ -116,12 +138,6 @@ workflows:
         script: | 
           echo $YOUR_ENVIRONMENT_VARIABLE | base64 --decode > /path/to/decode/to/codemagic.keystore
 {{< /highlight >}}
-
-
-## Global variables and secrets
-
-Variable groups can also be defined on the [Teams page](https://codemagic.io/teams) for teams. Variable groups defined here are global and can be used in any `codemagic.yaml` workflow and in any application of the team. It is possible to limit variable groups to specific applications by clicking the edit icon next to the group you wish to manage under **Application access**.
-
 
 ## Environment variable precedence
 
@@ -143,7 +159,6 @@ environment:
 {{< /highlight >}}
 
 Then the variable value in the group `wand` will be used.
-
 
 ## Commonly used variable examples
 
@@ -169,8 +184,6 @@ PACKAGE_NAME | Put your package name here | other
         - google_play_credentials
         - other 
 {{< /highlight >}}
-
-
 
 #### iOS builds
 
