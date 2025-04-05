@@ -11,9 +11,9 @@ aliases:
   - /yaml/configuring-environment-variables
 ---
 
-Environment variables are useful for storing various pieces of data and making them available during build time. A common use case is securely storing sensitive information, such as credentials, configuration files, or API keys, required for successful builds and integration with external services. This type of data should not be committed to the repository. 
+Environment variables are the recommended way to store configuration settings and sensitive data—such as credentials, configuration files, or API keys—needed for successful builds and integrations with external services. Sensitive information should never be committed to your Git repository. Instead, add it securely as environment variables in the Codemagic UI, where it can be accessed during workflows without being exposed in version control.
 
-If you're storing **secrets**, you can enable an extra layer of security by marking the variable as **Secure**. This encrypts the variable and obfuscates its value in the UI and build logs.
+If you're storing **secrets** in environment variables, you can enable an extra layer of security by marking the variable as **Secure**. This encrypts the variable and hides its value in the UI and build logs.
 
 You can add environment variables and secrets on the [app level](#app-level-environment-variables) or on the [team level](#global-variables-and-secrets) to make them available across team apps. Codemagic organizes user-defined environment variables into **variable groups** which you can import during the build, read more about it [below](#variable-groups-and-accessing-variables).
 
@@ -59,7 +59,7 @@ The **Global variables and secrets** section on the [Teams page](https://codemag
 
 It is possible to limit applications' access to the variable group in variable group settings. Selecting **All applications** will grant all present and future apps access to the variable group. You can review application access settings anytime.
 
-Marking a variable **Secure** will encrypt the variable and obfuscate its value in the Codemagic UI and build logs. The variable will be transferred securely to the build machine and made available only while the build is running. 
+Marking a variable **Secure** will encrypt the variable and hide its value in the Codemagic UI and build logs. The variable will be transferred securely to the build machine and made available only while the build is running. 
 
 ### Bulk import of variables
 
