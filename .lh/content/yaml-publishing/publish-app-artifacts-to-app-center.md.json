@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1747037692627,
@@ -12,6 +12,10 @@
                 {
                     "date": 1747037714170,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,17 @@\n ---\n description: How to upload an apk or ipa file to App Center in a Flutter workflow editor post-build script\n title: Microsoft App Center\n weight: 4\n-aliases: \n+aliases:\n   - /publishing/publish-app-artifacts-to-app-center\n   - /flutter-publishing/publish-app-artifacts-to-app-center\n   - /knowledge-base/publish-app-artifacts-to-app-center\n ---\n-<!-- \n-  @maintainer: App Center is deprecated (shutdown March 2025). \n-  Docs need updates to reflect alternatives (Firebase/AWS/TestFlight). \n-  Ref: https://appcenter.ms/ \n+<!--\n+  @maintainer: App Center is deprecated (shutdown March 2025).\n+  Docs need updates to reflect alternatives (Firebase/AWS/TestFlight).\n+  Ref: https://appcenter.ms/\n -->\n As a custom build step, Codemagic can publish your app artifact to App Center using the [App Center Command Line Interface](https://github.com/microsoft/appcenter-cli). An **App Center API token** is required for publishing. It is advisable to create a new token for use on Codemagic, see the commands related to API tokens [here](https://github.com/microsoft/appcenter-cli#commands) or manage your tokens in [App Center settings](https://appcenter.ms/settings/apitokens). A token is generated under user settings, not app settings.\n \n ## Configure environment variables\n"
+                },
+                {
+                    "date": 1747038455278,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n ---\n <!--\n   @maintainer: App Center is deprecated (shutdown March 2025).\n   Docs need updates to reflect alternatives (Firebase/AWS/TestFlight).\n-  Ref: https://appcenter.ms/\n+  Ref: https://learn.microsoft.com/en-gb/appcenter/retirement/\n -->\n As a custom build step, Codemagic can publish your app artifact to App Center using the [App Center Command Line Interface](https://github.com/microsoft/appcenter-cli). An **App Center API token** is required for publishing. It is advisable to create a new token for use on Codemagic, see the commands related to API tokens [here](https://github.com/microsoft/appcenter-cli#commands) or manage your tokens in [App Center settings](https://appcenter.ms/settings/apitokens). A token is generated under user settings, not app settings.\n \n ## Configure environment variables\n"
                 }
             ],
             "date": 1747037692627,

@@ -10,7 +10,7 @@ aliases:
 <!--
   @maintainer: App Center is deprecated (shutdown March 2025).
   Docs need updates to reflect alternatives (Firebase/AWS/TestFlight).
-  Ref: https://appcenter.ms/
+  Ref: https://learn.microsoft.com/en-gb/appcenter/retirement/
 -->
 As a custom build step, Codemagic can publish your app artifact to App Center using the [App Center Command Line Interface](https://github.com/microsoft/appcenter-cli). An **App Center API token** is required for publishing. It is advisable to create a new token for use on Codemagic, see the commands related to API tokens [here](https://github.com/microsoft/appcenter-cli#commands) or manage your tokens in [App Center settings](https://appcenter.ms/settings/apitokens). A token is generated under user settings, not app settings.
 
