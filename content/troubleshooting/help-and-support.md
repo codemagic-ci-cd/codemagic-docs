@@ -34,7 +34,7 @@ You can join the Codemagic Community Discord Server to connect with the Codemagi
 
 You can join the Discord server [here](https://discord.gg/pefznye93R).
 
-## Billing enabled customers - Intercom
+## Billing enabled customers - Chat Widget
 In addition to the above, customers on paid plans can contact our support team directly using the chat widget available in their Codemagic UI. 
 
 To guarantee the best experience and speed up issue resolution time, please follow the same error reporting guidelines as for the GitHub discussions.
