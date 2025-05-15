@@ -288,10 +288,10 @@ Now you can add the following in your `.gitignore` file, at the root of your Flu
 
 Since the `google-play-store.json` and the `app_store_connect.json` files are not meant to be added to your repository, we need to provide them in the workflow in a safe way.
 
-With Codemagic, you can for example store the content of the `google-play-store.json` file in a encrypted environment variable named `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, and run a script in your workflow that will generate the `google-play-store.json` in the right location, with the right content, by doing as follow:
+With Codemagic, you can for example store the content of the `google-play-store.json` file in a encrypted environment variable named `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`, and run a script in your workflow that will generate the `google-play-store.json` in the right location, with the right content, by doing as follow:
 
 {{< highlight bash "style=paraiso-dark">}}
-echo $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS > android/google-play-store.json
+echo $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS > android/google-play-store.json
 {{< /highlight >}}
 
 Then in your workflow, you can write a script that copies the generated illustrations in the right directories. For example, here is how you can copy your illustrations for the French Android version of your app:

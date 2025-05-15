@@ -76,7 +76,7 @@ This could be due to an invalid JSON file or permission issues with the service 
   {{< highlight yaml "style=paraiso-dark">}}
 publishing:
   google_play:
-    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+    credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
     track: internal
     # Optional boolean To be used ONLY if your app cannot be sent for review automatically
     changes_not_sent_for_review: true
