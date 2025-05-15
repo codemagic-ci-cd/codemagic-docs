@@ -201,7 +201,7 @@ workflows:
         groups:
           # Add the group environment variables in Codemagic UI (in Application or Team variables) - https://docs.codemagic.io/variables/environment-variable-groups/
           - unity # <-- (Includes UNITY_HOME, UNITY_SERIAL, UNITY_EMAIL and UNITY_PASSWORD)
-          - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
+          - google_play # <-- (Includes GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
         vars:
           UNITY_VERSION: 2019.4.38f1
           UNITY_VERSION_CHANGESET: fdbb7325fa47

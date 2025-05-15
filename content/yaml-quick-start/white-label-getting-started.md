@@ -47,7 +47,7 @@ You should create a uniquely named environment variable group for each of your c
 This group might contain the following environment variables:
 - Android package name. `PACKAGE_NAME`.
 - Android Keystore information. `CM_KEYSTORE` (base64 encoded), `CM_KEY_ALIAS`, `CM_KEY_PASSWORD`, `CM_KEYSTORE_PASSWORD`, `CM_KEYSTORE_PATH`.
-- The content of the Google Cloud service JSON file to publish to Play Store. `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, learn how to get it [here](../yaml-publishing/google-play/#configure-google-play-api-access).
+- The content of the Google Cloud service JSON file to publish to Play Store. `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`, learn how to get it [here](../yaml-publishing/google-play/#configure-google-play-api-access).
 - iOS app details. `APP_STORE_ID`, `BUNDLE_ID`.
 - App Store Connect API key. `APP_STORE_CONNECT_KEY_IDENTIFIER`, `APP_STORE_CONNECT_ISSUER_ID`, `APP_STORE_CONNECT_PRIVATE_KEY`, learn how to create create a new key [here](../yaml-code-signing/alternative-code-signing-methods/#:~:text=Creating%20the%20App%20Store%20Connect%20API%20key).
 - iOS Distribution certificate private key. `CERTIFICATE_PRIVATE_KEY`, learn how to obtain it [here](../yaml-code-signing/alternative-code-signing-methods/#:~:text=Obtaining%20the%20Certificate%20private%20key).
@@ -253,7 +253,7 @@ Make sure you add each client’s service account JSON key file to their environ
 {{< highlight yaml "style=paraiso-dark">}}
 publishing:
   google_play:
-    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+    credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
     track: <your-track>
 {{< /highlight >}}
 {{<markdown>}}
@@ -336,7 +336,7 @@ workflows:
       - build/**/outputs/**/*.aab
     publishing:
       google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
         track: $GOOGLE_PLAY_TRACK 
 {{< /highlight >}}
 {{< /tab >}}

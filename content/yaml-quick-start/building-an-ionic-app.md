@@ -190,7 +190,7 @@ workflows:
           success: true
           failure: false
       google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
         track: internal
         submit_as_draft: true
 {{< /highlight >}}
