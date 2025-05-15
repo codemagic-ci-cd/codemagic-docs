@@ -1,7 +1,7 @@
 ---
-title: Xcode 16.3.x (edge)
+title: Xcode 16.3.x (default)
 aliases:
-
+- /specs/versions-macos/
 weight: 97
 ---
 
@@ -25,7 +25,7 @@ Available on request:
 
 ## Xcode versions
 
-- 16.3 (16E140) `/Applications/Xcode-16.3.app`, also selected when specifying `edge` in Xcode version settings
+- 16.3 (16E140) `/Applications/Xcode-16.3.app`, also selected when specifying `latest` in Xcode version settings
 
 ### Runtimes
 

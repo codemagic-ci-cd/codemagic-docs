@@ -277,7 +277,7 @@ environment:
   cocoapods: 1.9.1  # Define default or version
   node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
   npm: 6.13.7       # Define default, latest, next, lts or version
-  ndk: r21d         # Define default or revision (e.g. r19c)
+  ndk: r21d         # Define default or revision if supported (e.g. r26) or full version (e.g. 26.1.10909125)
   java: 1.8         # Define default, or platform version (e.g. 11)
   ruby: 2.7.2       # Define default or version (macOS only)
 {{< /highlight >}}

@@ -5,7 +5,7 @@ weight: 22
 ---
 
 [**CodePush**](https://github.com/microsoft/code-push) is a cloud service that enables React Native developers to deploy mobile app updates directly to their users’ devices without re-deploying them to the stores. 
-Codemagic offers a hosted and maintained CodePush server with a free license for annual plan subscriptions. Dedicated CodePush servers are available on request. To activate your team's CodePush account and for more information, please contact us [here](https://codemagic.io/pricing/#enterprise).
+Codemagic offers a hosted and maintained CodePush server. Dedicated CodePush servers are available on request. To activate your team's CodePush account and for more information, please contact us [here](https://codemagic.io/pricing/#enterprise).
 
 ## Step by step guide to configure CodePush
 
