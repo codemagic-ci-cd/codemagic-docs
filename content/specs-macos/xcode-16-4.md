@@ -19,13 +19,13 @@ Available on request:
 
 ## System
 
-- System version `macOS 15.4.1 (24E263)`
-- Kernel version `Darwin 24.4.0`
-- Disk `294GB (Free Space: 139GB)`
+- System version `macOS 15.5 (24F74)`
+- Kernel version `Darwin 24.5.0`
+- Disk `294GB (Free Space: 148GB)`
 
 ## Xcode versions
 
-- 16.4 (16F1t) `/Applications/Xcode-16.4.app`, also selected when specifying `edge` in Xcode version settings
+- 16.4 (16F6) `/Applications/Xcode-16.4.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes
 
@@ -75,21 +75,21 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Android tools `/usr/local/share/android-sdk`
 - Android NDK `25.1.8937393`
 - appium `2.5.0`
-- aws `2.27.4`
+- aws `2.27.16`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
 - curl `8.7.1`
 - ew-cli `0.12.2`
-- fastlane `2.227.0`
+- fastlane `2.227.2`
 - firebase `11.21.0`
-- gem `3.6.6`
-- gh `2.71.2`
+- gem `3.6.9`
+- gh `2.72.0`
 - git `2.49.0`
 - Google Cloud SDK `502.0.0`
 - gradle `8.1.1/lib/native-platform-0.22-milestone-24.jar)`
 - gsutil `5.31`
-- homebrew `4.5.0`
+- homebrew `4.5.2`
 - ionic `7.2.0`
 - jq `1.7.1`
 - ktlint `1.5.0`
@@ -98,7 +98,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - python `3.12.7`
 - python3 `3.12.7`
 - ruby `3.3.6`
-- ssh `9.9p1`
+- ssh `9.9p2`
 - sudo `1.9.13p2`
 - swiftgen `6.6.3`
 - tar `3.5.3`
@@ -106,5 +106,5 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - unzip `6.00`
 - wget `1.25.0`
 - yarn `1.22.22`
-- yq `4.45.1`
+- yq `4.45.4`
 - zip `3.0`
