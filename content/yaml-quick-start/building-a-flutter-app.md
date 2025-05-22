@@ -364,7 +364,7 @@ You can find the full sample project with the instructions on alternative ways t
 The prerequisite is a valid **Google Cloud Service Account**. Please follow these steps:
 1. Go to [this link](https://docs.codemagic.io/yaml-publishing/google-play/#configure-google-play-api-access) and complete the steps.
 2. You now have a `JSON` file with the credentials.
-3. Open Codemagic UI and create a new Environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`.
+3. Open Codemagic UI and create a new Environment variable `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`.
 4. Paste the content of the downloaded `JSON` file in the **_Value_** field, set the group name (e.g. **google_play**) and make sure the **Secure** option is checked.
 5. Add the **google_play** variable group to the `codemagic.yaml` as well as define the `PACKAGE_NAME` and the `GOOGLE_PLAY_TRACK`:
 {{< highlight yaml "style=paraiso-dark">}}
@@ -485,7 +485,7 @@ workflows:
           success: true
           failure: false
       google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
         track: $GOOGLE_PLAY_TRACK
         submit_as_draft: true
 {{< /highlight >}}

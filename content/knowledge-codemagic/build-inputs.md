@@ -189,7 +189,7 @@ workflows:
       - flutter build apk --build-number="${{ inputs.buildNumber }}" --release
     publishing:
       google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
         in_app_update_priority: ${{ inputs.googlePlayInAppUpdatePriority }}
         release_promotion:
           track: alpha

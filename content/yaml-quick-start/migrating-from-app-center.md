@@ -176,7 +176,7 @@ workflows:
           android_signing:
             - keystore_reference
           groups:
-            - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
+            - google_play # <-- (Includes GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json)
           vars:
             PACKAGE_NAME: "io.codemagic.sample.reactnative" # <-- Put your package name here e.g. com.domain.myapp
           node: v19.7.0
@@ -211,7 +211,7 @@ workflows:
               success: true     # To not receive a notification when a build succeeds
               failure: false    # To not receive a notification when a build fails
           google_play:
-            credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+            credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
             track: alpha   # Any default or custom track that is not in ‘draft’ status
 {{< /highlight >}}
 
