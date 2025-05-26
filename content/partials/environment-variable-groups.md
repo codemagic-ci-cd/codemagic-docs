@@ -97,7 +97,7 @@ CM_KEYSTORE | contents of keystore - [`base64 encoded`](../variables/environment
 CM_KEYSTORE_PASSWORD | Put your keystore password here | keystore_credentials
 CM_KEY_PASSWORD | Put your key alias password here | keystore_credentials
 CM_KEY_ALIAS | Put your key alias here | keystore_credentials
-GCLOUD_SERVICE_ACCOUNT_CREDENTIALS | Put your Google Play service account credentials here | google_play_credentials
+GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS | Put your Google Play service account credentials here | google_play_credentials
 GOOGLE_PLAY_TRACK | Any default or custom track that is not in ‘draft’ status | google_play_credentials
 PACKAGE_NAME | Put your package name here | other
 

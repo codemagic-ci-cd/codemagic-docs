@@ -61,7 +61,7 @@ Once you make all the preparations as described above and configure publishing t
 1. Save the contents of the `JSON` key file as a [secret environment variable](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) in application or team settings:
 
    1. Open your Codemagic app settings, and go to the **Environment variables** tab.
-   2. Enter the desired **_Variable name_**, e.g. `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`.
+   2. Enter the desired **_Variable name_**, e.g. `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`.
    3. Copy and paste the key file content as **_Variable value_**.
    4. Enter the variable group name, e.g. **_google_credentials_**. Click the button to create the group.
    5. Make sure the **Secret** option is selected.
@@ -81,7 +81,7 @@ publishing:
   google_play: 
     # Contents of the JSON key file for Google Play service account saved 
     # as a secret environment variable
-    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+    credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
 
     # Name of the track internal, alpha, beta, production, internal app sharing,
     # or your custom track name

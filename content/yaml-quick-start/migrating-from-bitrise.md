@@ -171,7 +171,7 @@ To deploy to **Google Play**, a service account is required. Creating a service 
 
 If you have already uploaded your service account to Bitrise, you can download it from there under `Generic file storage`. Alternatively, you can set up a new service account following the instructions [here](../knowledge-base/google-services-authentication/).
 
-To add your service account to your configuration file, add it as an environment variable. For example, `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`. First, navigate to your application and click the `Environment variables` tab. To add the file, encode its contents with base64 and paste the value into Codemagic; make sure to check **Secret** when providing sensitive information. You can either add it to an already created group or create a new group, which you can later reference in your `codemagic.yaml`.
+To add your service account to your configuration file, add it as an environment variable. For example, `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`. First, navigate to your application and click the `Environment variables` tab. To add the file, encode its contents with base64 and paste the value into Codemagic; make sure to check **Secret** when providing sensitive information. You can either add it to an already created group or create a new group, which you can later reference in your `codemagic.yaml`.
 
 Like Bitrise's `Google Play Deploy` step, Codemagic allows you to modify the track, rollout fraction, and update priority. In addition, you can conveniently configure to submit the build as a draft or choose to send the changes directly to review.
 
@@ -199,7 +199,7 @@ The `Google Play Deploy` step in `bitrise.yml` and the publishing in `codemagic.
 {{< highlight yaml "style=paraiso-dark">}}
 publishing:
   google_play:
-    credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS 
+    credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS 
     track: alpha 
     in_app_update_priority: 3
     rollout_fraction: 0.25
