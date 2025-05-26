@@ -216,7 +216,7 @@ Alternatively, if you use `YAML` configuration, you may just export the value to
 
 Use [`google-play get-latest-build-number`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#get-latest-build-number) action from Codemagic CLI tools to get the latest build number from Google Play Console.
 
-In order to do that, you need to provide Google Play API access credentials by providing `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` as arguments to the action, as defined below.
+In order to do that, you need to provide Google Play API access credentials by providing `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` as arguments to the action, as defined below.
 
 Additionally, you will need to provide the package name of the app in Google Play Console (Ex. `com.example.app`).
 
@@ -232,7 +232,7 @@ You will need to set up a service account in Google Play Console and create a JS
 {{< tab header="codemagic.yaml" >}}
 {{<markdown>}}
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
-2. Enter the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` as **_Variable name_**.
+2. Enter the `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` as **_Variable name_**.
 3. Copy and paste the credentials content as **_Variable value_**.
 4. Enter the variable group name, e.g. **_google_play_credentials_**. Click the button to create the group.
 5. Make sure the **Secure** option is selected.
@@ -250,7 +250,7 @@ You will need to set up a service account in Google Play Console and create a JS
 
 {{% tab header="Flutter workflow editor"%}}
 
-Add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutter project in **App settings > Environment variables** (See the details [here](../flutter-configuration/env-variables)).
+Add the `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` environment variable to your Flutter project in **App settings > Environment variables** (See the details [here](../flutter-configuration/env-variables)).
 {{% /tab %}}
 {{< /tabpane >}}
 
@@ -320,7 +320,7 @@ scripts:
 
 #### Get the build number in the Flutter workflow editor
 
-Provided you have exported your Google Play Console service account credentials as an environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immediately as a build argument to your Android build command to increment the build number:
+Provided you have exported your Google Play Console service account credentials as an environment variable `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`, you can call it immediately as a build argument to your Android build command to increment the build number:
 
 {{< highlight bash "style=paraiso-dark">}}
 --build-number=$(($(google-play get-latest-build-number --package-name 'com.example.app') + 1))
