@@ -21,7 +21,7 @@ To link your Microsoft Partner Center account with the Azure AD application and 
 
 It is also necessary for you to provide your `store_id`, which can be found when you open the application in the [Partner Center apps dashboard](https://partner.microsoft.com/en-us/dashboard/apps).
 
-To safely store and use the `client_secret`, save it as an [environment variable](/variables/environment-variable-groups/#storing-sensitive-valuesfiles) in the Codemagic UI. Click **Secure** to encrypt the value.
+To safely store and use the `client_secret`, save it as an [environment variable](/variables/environment-variable-groups/#storing-sensitive-valuesfiles) in the Codemagic UI. Click **Secret** to encrypt the value.
 
 {{< highlight yaml "style=paraiso-dark">}}
 publishing:

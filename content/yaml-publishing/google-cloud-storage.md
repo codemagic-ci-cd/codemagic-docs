@@ -17,7 +17,7 @@ In order to publish your generated artifacts to Google Cloud Storage:
 5. Enter `GCLOUD_STORAGE_KEY` as the **_Variable name_**.
 6. Copy and paste the content of the JSON key file as **_Variable value_**.
 7. Enter the variable group name, e.g. **_google_credentials_**. Click the button to create the group.
-8. Make sure the **Secure** option is selected.
+8. Make sure the **Secret** option is selected.
 9. Click the **Add** button to add the variable.
 <br><br>
 

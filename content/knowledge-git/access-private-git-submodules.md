@@ -20,7 +20,7 @@ If your project requires accessing any private Git submodules or dependencies, y
     2. Enter the desired **_Variable name_**, e.g. `MODULE_SSH_KEY`.
     3. Copy and paste the key string as **_Variable value_**.
     4. Enter the variable group name, e.g. **_module_credentials_**. Click the button to create the group.
-    5. Make sure the **Secure** option is selected.
+    5. Make sure the **Secret** option is selected.
     6. Click the **Add** button to add the variable.
 
     7. Add the variable group to your `codemagic.yaml` file

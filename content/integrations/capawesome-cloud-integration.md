@@ -15,7 +15,7 @@ Follow these steps to configure access to Capawesome Cloud:
 3. Enter the desired **_Variable name_**, e.g. `CAPAWESOME_TOKEN`.
 4. Copy and paste the Capawesome Cloud token string as **_Variable value_**.
 5. Enter the variable group name, e.g. **_capawesome_credentials_**. Click the button to create the group.
-6. Make sure the **Secure** option is selected.
+6. Make sure the **Secret** option is selected.
 7. Click the **Add** button to add the variable.
 8. Add the variable group to your `codemagic.yaml` file
 

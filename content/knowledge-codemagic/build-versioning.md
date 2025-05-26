@@ -149,7 +149,7 @@ Follow these steps to configure the above variables for your Codemagic app:
 2. Enter the desired **_Variable name_**, e.g. `APP_STORE_CONNECT_KEY_IDENTIFIER`.
 3. Enter the variable value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_app_store_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the steps to also add all of the above variables.
 
@@ -235,7 +235,7 @@ You will need to set up a service account in Google Play Console and create a JS
 2. Enter the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` as **_Variable name_**.
 3. Copy and paste the credentials content as **_Variable value_**.
 4. Enter the variable group name, e.g. **_google_play_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 
 7. Add the variable group to your `codemagic.yaml` file
@@ -353,7 +353,7 @@ You will need to set up a [Firebase service account](https://docs.codemagic.io/y
 2. Enter the `FIREBASE_SERVICE_ACCOUNT_CREDENTIALS` as **_Variable name_**.
 3. Copy and paste the credentials content as **_Variable value_**.
 4. Enter the variable group name, e.g. `firebase_credentials`. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 
 7. Add the variable group to your `codemagic.yaml` file

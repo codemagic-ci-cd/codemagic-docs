@@ -11,7 +11,7 @@ This will create the `credentials.json` file, which you can use to log in withou
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the desired **_Variable name_**, e.g. `PUB_DEV_CREDENTIALS`.
 3. Enter the token value as **_Variable value_**.
-4. Make sure the **Secure** option is selected.
+4. Make sure the **Secret** option is selected.
 5. Click the **Add** button to add the variable.
 
 6. Configure publishing in `codemagic.yaml`

@@ -21,7 +21,7 @@ After getting your `API KEY` you need to add it to your [environment variables](
 2. Enter the desired **_Variable name_**, e.g. `MDEV_API_KEY`.
 3. Enter the desired variable value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_maestro_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 
 7. Add the variable group to your `codemagic.yaml` file

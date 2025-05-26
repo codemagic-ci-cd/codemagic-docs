@@ -33,7 +33,7 @@ This value is used in the Authorization header used in cURL requests to the Lamb
 2. Enter the desired **_Variable name_**, e.g. `LAMBDATEST_AUTH`.
 3. Copy and paste the `base64` encoded authentication string as **_Variable value_**.
 4. Enter the variable group name, e.g. **_lambdatest_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 
 7. Add the variable group to your `codemagic.yaml` file

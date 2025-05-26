@@ -22,7 +22,7 @@ You will need to configure the environment variables `AWS_DEFAULT_REGION` , `AWS
 2. Enter the desired **_Variable name_**, e.g. `AWS_DEFAULT_REGION`.
 3. Enter the variable value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_aws_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the steps to also add `AWS_SECRET_ACCESS_KEY` and `AWS_ACCESS_KEY_ID` variables.
 
@@ -181,7 +181,7 @@ You will need to configure the `DOPPLER_TOKEN` environment variable  in Codemagi
 2. Enter the desired **_Variable name_**, e.g. `DOPPLER_TOKEN`.
 3. Enter the tokan value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_doppler_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 
 7. Add the variable group to your `codemagic.yaml` file
@@ -324,7 +324,7 @@ You will need to configure the `VAULT_NAMESPACE`, `VAULT_ADDRESS`, and `VAULT_TO
 2. Enter the desired **_Variable name_**, e.g. `VAULT_NAMESPACE`.
 3. Enter the variable value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_vault_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the steps to also add `VAULT_ADDRESS` and `VAULT_TOKEN` variables.
 

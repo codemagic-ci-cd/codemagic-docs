@@ -16,7 +16,7 @@ As a custom build step, Codemagic can publish your app artifact to App Center us
 2. Enter the desired **_Variable name_**, e.g. `APP_CENTER_TOKEN`.
 3. Enter your App Center API token as **_Variable value_**.
 4. Enter the variable group name, e.g. **_app_center_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the steps to also add `ORGANIZATION_NAME` and `APP_CENTER_APP_NAME` variables.
 **Username** is your App Center username when signing up. Alternatively, you can use a combination of **organization name** (in case of creating one in the App Center UI) and **Application identifier** (your app's Bundle identifier / Package name). 

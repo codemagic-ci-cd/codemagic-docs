@@ -15,7 +15,7 @@ Signing up with Appknox [here](https://www.appknox.com/) is required to be able 
 2. Enter the desired **_Variable name_**, e.g. `APPKNOX_ACCESS_TOKEN`
 3. Enter the required value as **_Token value_**
 4. Enter the variable group name, e.g. **_appknox_credentials_**
-5. Make sure the **Secure** option is selected
+5. Make sure the **Secret** option is selected
 6. Click the **Add** button to add the variable
 
 7. Add the variable group to your `codemagic.yaml` file

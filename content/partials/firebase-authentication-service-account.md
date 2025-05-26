@@ -27,7 +27,7 @@ Service accounts are useful for setting up App Distribution in a CI environment.
     2. Enter the desired **_Variable name_**, e.g. `FIREBASE_SERVICE_ACCOUNT`.
     3. Copy and paste the content of the service account JSON file as **_Variable value_**.
     4. Enter the variable group name, e.g. **_firebase_credentials_**. Click the button to create the group.
-    5. Make sure the **Secure** option is selected.
+    5. Make sure the **Secret** option is selected.
     6. Click the **Add** button to add the variable.
     7. Repeat the steps to add a variable named `GOOGLE_APPLICATION_CREDENTIALS` and set its value to a path where the credentials file will be placed during build. Suggested value is "$CM_BUILD_DIR/firebase_credentials.json"
 

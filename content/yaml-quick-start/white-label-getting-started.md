@@ -42,7 +42,7 @@ Avoid adding any sensitive files such as certificates, profiles, key stores, or 
 ## 3. Create a unique environment variable group for each client
 During the white-label build, Codemagic uses client-specific data to set or replace various values in the base code and to sign and publish the app to the stores. 
 
-You should create a uniquely named environment variable group for each of your clients that contains secure environment variables for items such as certificates, profiles, API keys, or other client-specific credentials.
+You should create a uniquely named environment variable group for each of your clients that contains secret environment variables for items such as certificates, profiles, API keys, or other client-specific credentials.
 
 This group might contain the following environment variables:
 - Android package name. `PACKAGE_NAME`.
@@ -61,9 +61,9 @@ To add an environment variable using the Codemagic REST API, you need your API a
 
 - The access token is available in the Codemagic UI under **Teams > Personal Account > Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
 - Once you have added your app in Codemagic, open its settings and copy the **application id** from the browser address bar - `https://codemagic.io/app/<APP_ID>/settings`
-- The client group name, is the group that holds all variables for this client e.g. `WL_001`, `WL_002`.
+- The client group name is the group that holds all variables for this client e.g. `WL_001`, `WL_002`.
 
-An example of adding a secure variable to an application group looks like this:
+An example of adding a secret variable to an application group looks like this:
 
 {{< highlight bash "style=paraiso-dark">}}
 curl -XPOST -H 'x-auth-token: <your-auth-token>' \

@@ -22,32 +22,32 @@ workflows:
         - other_values
 ```
 
-Variables defined in environment variable groups work exactly as [Environment Variables](../variables/environment-variables/#using-environment-variables). The value of a variable named `API_TOKEN` can be referenced in a workflow as `$API_TOKEN`. Variables defined with the **_secure_** option will have values obfuscated in the Codemagic UI.
+Variables defined in environment variable groups work exactly as [Environment Variables](../variables/environment-variables/#using-environment-variables). The value of a variable named `API_TOKEN` can be referenced in a workflow as `$API_TOKEN`. Variables defined with the **Secret** option will have values obfuscated in the Codemagic UI.
 
 ## Storing sensitive values/files
 
-Entering values in the Variable value input and marking the **Secure** checkbox will automatically encrypt those values. However, note that in order to store **_binary files_** as secure environment variables, first it needs to be **_base64 encoded_** locally. To use the files, you will have to decode them during the build.
+Entering values in the Variable value input and marking the **Secret** checkbox will automatically encrypt those values. However, note that in order to store **_binary files_** as secret environment variables, you first need to **_base64-encode_** them locally. To use the files, you will have to decode them during the build.
 
-Some commonly known binary files that need to be base64 encoded. e.g.
+Some commonly known binary files that need to be base64-encoded. e.g.
 - Android keystore (.jks or .keystore)
-- Provisioning profiles when manual code signing (.mobileprovision)
-- iOS distribution certificate (.p12) when manual code signing.
+- Provisioning profiles when using manual code signing (.mobileprovision)
+- iOS distribution certificate (.p12) when using manual code signing.
 
-This can be done with the help of different OS-specific command lines':
+This can be done with the help of different OS-specific command line tools.
 
-On macOS, running the following command base64 encodes the file and copies the result to the clipboard:
+On macOS, running the following command base64-encodes the file and copies the result to the clipboard:
 
 {{< highlight Shell "style=rrt" >}}
   cat your_file_name.extension | base64 | pbcopy
 {{< /highlight >}}
 
-For Windows, the PowerShell command to base64 encode a file and copy it to the clipboard is:
+On Windows, the PowerShell command to base64-encode a file and copy it to the clipboard is:
 
 {{< highlight PowerShell "style=rrt" >}}
 [Convert]::ToBase64String([IO.File]::ReadAllBytes("your_file_name_.extension")) | Set-Clipboard
 {{< /highlight >}}
 
-For Linux machines, we recommend installing xclip:
+On Linux machines, we recommend installing xclip:
 
 {{< highlight Shell "style=rrt" >}}
 sudo apt-get install xclip
@@ -55,17 +55,17 @@ cat your_file_name.extension | base64 | xclip -selection clipboard
 {{< /highlight >}}
 
 {{<notebox>}}
-**Tip**: A convenient way to find a binary file is to try to peek into the file using `less filename.extension`. You'll be asked "**_filename maybe is a binary file.  See it anyway?_**"
+**Tip**: A convenient way to identify a binary file is to try to peek into the file using `less filename.extension`. You'll be asked "**_filename maybe is a binary file.  See it anyway?_**"
 {{</notebox>}}
 
-After running these command lines, you can paste the automatically copied string into the Variable value input and check the **Secure** checkbox to store the value in encrypted form in Codemagic.
+After running these command lines, you can paste the automatically copied string into the Variable value input and check the **Secret** checkbox to store the value in encrypted form in Codemagic.
 
-Finally, base64 decode it during build time in your scripts section using the following command:
+Finally, base64-decode it during build time in your scripts section using the following command:
 
 `echo $YOUR_ENVIRONMENT_VARIABLE | base64 --decode > /path/to/decode/to/your_file_name.extension`
 
 {{<notebox>}}
-**Tip**: When copying file contents always include any tags. e.g. Don't forget to copy `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` too.
+**Tip**: When copying file contents always include any tags contained in the file. For example, don't forget to copy `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` too.
 {{</notebox>}}
 
 ## Global variables and secrets
@@ -88,7 +88,7 @@ Here you'll find some of the application environment groups and variables explai
         - google_play_credentials
         - other 
 
-Add the above-mentioned group environment variables in Codemagic UI (either in Application/Team variables), don't forget to click **Secure** to make sensitive data encrypted: 
+Add the above-mentioned group environment variables in Codemagic UI (either in Application/Team variables), don't forget to click **Secret** to make sensitive data encrypted: 
 
 **Variable name** | **Variable value** | **Group**
 --- | --- | ---
@@ -108,7 +108,7 @@ PACKAGE_NAME | Put your package name here | other
         - appstore_credentials
         - ios_config
 
-Add the above-mentioned group environment variables in Codemagic UI (either in Application/Team variables), don't forget to click **Secure** to make sensitive data encrypted:
+Add the above-mentioned group environment variables in Codemagic UI (either in Application/Team variables), don't forget to click **Secret** to make sensitive data encrypted:
 
 **Variable name** | **Variable value** | **Group**
 --- | --- | ---

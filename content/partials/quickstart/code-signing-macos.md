@@ -73,7 +73,7 @@ openssl pkcs12 -in MAC_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out mac_d
 {{< /highlight >}}
 4. Paste into the **_Variable value_** field.
 5. Enter a variable group name, e.g. **_appstore_credentials_**. Click the button to create the group.
-6. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
+6. Make sure the **Secret** option is selected so that the variable can be protected by encryption.
 7. Click the **Add** button to add the variable.
 8. Run the following command on the **App Store Connect API key** file that you downloaded earlier (in our example saved as `codemagic_api_key.p8`) to copy its content to clipboard:
 {{< highlight Shell "style=rrt">}}

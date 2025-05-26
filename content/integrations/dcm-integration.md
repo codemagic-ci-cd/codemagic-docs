@@ -15,7 +15,7 @@ To get started with [Dart Code Metrics](https://dcm.dev/), you need an API key a
 3. Enter the desired **_Variable name_**, e.g. `DCM_KEY`.
 4. Copy and paste the API key string as **_Variable value_**.
 5. Enter the variable group name, e.g. **_dcm_credntials_**. Click the button to create the group.
-6. Make sure the **Secure** option is selected.
+6. Make sure the **Secret** option is selected.
 7. Click the **Add** button to add the variable.
 8. Repeat the above process for `DCM_EMAIL_ID`.
 

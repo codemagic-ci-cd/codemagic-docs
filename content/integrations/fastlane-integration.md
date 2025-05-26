@@ -17,7 +17,7 @@ In order to use Fastlane with Codemagic, you need to configure the following env
 - `MATCH_PASSWORD` - the password used to encrypt/decrypt the repository used to store your distribution certificates and provisioning profiles.
 - `MATCH_KEYCHAIN` - an arbitrary name to use for the keychain on the build server, e.g "codemagic_keychain"
 - `MATCH_SSH_KEY` - an SSH private key used for cloning the Match repository that contains your distribution certificates and provisioning profiles. The public key should be added to your Github account. See [here](https://docs.codemagic.io/configuration/access-private-git-submodules/) for more information about accessing Git dependencies with SSH keys.
-- `APP_STORE_CONNECT_PRIVATE_KEY` - the App Store Connect API key. Copy the entire contents of the .p8 file and paste into the environment variable value field. Make sure to mark it secure in order to encrypt the value. 
+- `APP_STORE_CONNECT_PRIVATE_KEY` - the App Store Connect API key. Copy the entire contents of the .p8 file and paste into the environment variable value field. Make sure to mark it secret in order to encrypt the value. 
 - `APP_STORE_CONNECT_KEY_IDENTIFIER` - the key identifier of your App Store Connect API key.
 - `APP_STORE_CONNECT_ISSUER_ID` - the issuer of your App Store Connect API key.
 
@@ -27,7 +27,7 @@ In order to use Fastlane with Codemagic, you need to configure the following env
 2. Enter the desired **_Variable name_**, e.g. `MATCH_PASSWORD`.
 3. Enter the required value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_fastlane_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the steps to add other required variables
 

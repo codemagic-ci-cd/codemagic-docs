@@ -10,7 +10,7 @@ cat codemagic_api_key.p8 | pbcopy
 {{< /highlight >}}
 4. Paste into the **_Variable value_** field.
 5. Enter a variable group name, e.g. **_appstore_credentials_**. Click the button to create the group.
-6. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
+6. Make sure the **Secret** option is selected so that the variable can be protected by encryption.
 7. Click the **Add** button to add the variable.
 8. Create variable `APP_STORE_CONNECT_KEY_IDENTIFIER`. The value is the **Key ID** field from **App Store Connect > Users and Access > Keys**.
 9. Create variable `APP_STORE_CONNECT_ISSUER_ID`. The value is the **Issuer ID** field from **App Store Connect > Users and Access > Keys**.

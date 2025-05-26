@@ -9,13 +9,13 @@ aliases:
 
 Instead of committing the Firebase configuration files to your repository, you can upload them to Codemagic as **environment variables** and reference them in a custom script.
 
- Save the **contents** of Firebase config files as environment variables, e.g. `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` in Codemagic UI (either in Application or Team variables) and select **Secure**. 
+ Save the **contents** of Firebase config files as environment variables, e.g. `ANDROID_FIREBASE_SECRET` and `IOS_FIREBASE_SECRET` in Codemagic UI (either in Application or Team variables) and select **Secret**. 
 
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the desired **_Variable name_**, e.g. `ANDROID_FIREBASE_SECRET` or `IOS_FIREBASE_SECRET`.
 3. Copy and paste the config file content as **_Variable value_**.
 4. Enter the variable group name, e.g. **_firebase_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 
 7. Add the variable group to your `codemagic.yaml` file

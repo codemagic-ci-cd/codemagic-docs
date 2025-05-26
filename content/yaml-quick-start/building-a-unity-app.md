@@ -105,7 +105,7 @@ Each Unity build will have to activate a valid Unity Plus or a Unity Pro license
 2. Enter `UNITY_EMAIL` as the **_Variable name_**.
 3. Enter the email address used with your Unity ID as **_Variable value_**.
 4. Enter the variable group name, e.g. **_unity_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the steps to also add `UNITY_SERIAL` and `UNITY_PASSWORD` variables.
 8. Add the **unity_credentials** variable group to the `codemagic.yaml`:
@@ -442,7 +442,7 @@ The prerequisite is a valid **Google Cloud Service Account**. Please follow thes
 2. Skip to the **Creating a service account** section in the same guide and complete those steps also.
 3. You now have a `JSON` file with the credentials.
 4. Open Codemagic UI and create a new Environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`.
-5. Paste the content of the downloaded `JSON` file in the **_Value_** field, set the group name (e.g. **google_play**) and make sure the **Secure** option is checked.
+5. Paste the content of the downloaded `JSON` file in the **_Value_** field, set the group name (e.g. **google_play**) and make sure the **Secret** option is checked.
 6. Add the **google_play** variable group to the `codemagic.yaml` as well as define the `PACKAGE_NAME` and the `GOOGLE_PLAY_TRACK`:
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -759,7 +759,7 @@ In order to use **AWS S3**, you need to configure your access credentials in Cod
 2. Enter the desired **_Variable name_**, e.g. `AWS_ACCESS_KEY_ID`.
 3. Enter the required value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_aws_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the process to also add the `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION` variables.
 8. Import the  **_aws_credentials_** group.

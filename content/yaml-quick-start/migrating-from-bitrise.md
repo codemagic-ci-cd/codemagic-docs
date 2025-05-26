@@ -102,7 +102,7 @@ cat codemagic.keystore | base64 | pbcopy
 2. Enter `CM_KEYSTORE` as the **_Variable name_**.
 3. Paste the base64 encoded value of the keystore file in the **_Variable value_** field.
 4. Enter a variable group name, e.g. **_android_code_signing_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
+5. Make sure the **Secret** option is selected so that the variable can be protected by encryption.
 6. Click the **Add** button to add the variable.
 7. Continue by adding `CM_KEYSTORE_PASSWORD`, `CM_KEY_ALIAS` and `CM_KEY_PASSWORD`
 8. Add the `CM_KEYSTORE_PATH` variable with the value `$CM_BUILD_DIR/codemagic.keystore`
@@ -123,7 +123,7 @@ workflows:
             - android_code_signing
 {{< /highlight >}}
 
-Environment variables added with the **Secure** option checked are transferred to the build machine encrypted and are available only while the build is running. The build machine is destroyed at the end.
+Environment variables added with the **Secret** option checked are transferred to the build machine encrypted and are available only while the build is running. The build machine is destroyed at the end.
 
 The content of the `base64` encoded files needs to be decoded before it can be used. Instead of the `Android sign` step on Bitrise, define a script in the `codemagic.yaml` to base64 decode your keystore to a specified location:
 
@@ -171,7 +171,7 @@ To deploy to **Google Play**, a service account is required. Creating a service 
 
 If you have already uploaded your service account to Bitrise, you can download it from there under `Generic file storage`. Alternatively, you can set up a new service account following the instructions [here](../knowledge-base/google-services-authentication/).
 
-To add your service account to your configuration file, add it as an environment variable. For example, `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`. First, navigate to your application and click the `Environment variables` tab. To add the file, encode its contents with base64 and paste the value into Codemagic; make sure to check `Secure` when providing sensitive information. You can either add it to an already created group or create a new group, which you can later reference in your `codemagic.yaml`.
+To add your service account to your configuration file, add it as an environment variable. For example, `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`. First, navigate to your application and click the `Environment variables` tab. To add the file, encode its contents with base64 and paste the value into Codemagic; make sure to check **Secret** when providing sensitive information. You can either add it to an already created group or create a new group, which you can later reference in your `codemagic.yaml`.
 
 Like Bitrise's `Google Play Deploy` step, Codemagic allows you to modify the track, rollout fraction, and update priority. In addition, you can conveniently configure to submit the build as a draft or choose to send the changes directly to review.
 
@@ -268,10 +268,10 @@ cat ios_distribution_certificate.p12 | base64 | pbcopy
 {{< /highlight >}}{{</markdown>}}
 4. Paste into the **_Variable value_** field.
 5. Enter a variable group name, e.g. **_ios_code_signing_**.
-6. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
+6. Make sure the **Secret** option is selected so that the variable can be protected by encryption.
 7. Click the **Add** button to add the variable.
 8. Repeat steps 2 -7 to create the variable `CM_PROVISIONING_PROFILE` and paste the `base64` encoded value of the provisioning profile file.
-9. Add the `CM_CERTIFICATE_PASSWORD` variable, make it **Secure** and add it to the same variable group.
+9. Add the `CM_CERTIFICATE_PASSWORD` variable, make it **Secret** and add it to the same variable group.
 
 10. Environment variables have to be added to the workflow either individually or as a group. Modify your `codemagic.yaml` file by adding the following:
 {{< highlight yaml "style=paraiso-dark">}}
