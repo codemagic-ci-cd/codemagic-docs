@@ -12,7 +12,7 @@ In order to use [emulator.wtf](https://emulator.wtf) service for app testing, yo
 2. Enter the desired **_Variable name_**, e.g. `EW_API_TOKEN`.
 3. Copy and paste the content of the token as **_Variable value_**.
 4. Enter the variable group name, e.g. **_emulatorwtf_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 
 You can then import the token in your workflow:

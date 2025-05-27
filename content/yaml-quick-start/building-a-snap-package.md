@@ -79,7 +79,7 @@ cat  snapcraft-login-credentials | base64
 4. Enter the desired **_Variable name_**, e.g. `SNAPCRAFT_LOGIN_CREDENTIALS`.
 5. Paste the `base64` encoded credentials from Step 2. as **_Variable value_**.
 6. Enter the variable group name, e.g. **_snapcraft_credentials_**. Click the button to create the group.
-7. Make sure the **Secure** option is selected.
+7. Make sure the **Secret** option is selected.
 8. Click the **Add** button to add the variable.
 
 9. Add the variable group to your `codemagic.yaml` file

@@ -89,7 +89,7 @@ Each Unity build will have to activate a valid Unity Plus or a Unity Pro license
 2. Enter `UNITY_EMAIL` as the **_Variable name_**.
 3. Enter the email address used with your Unity ID as **_Variable value_**.
 4. Enter the variable group name, e.g. **_unity_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the steps to also add `UNITY_SERIAL` and `UNITY_PASSWORD` variables.
 8. Add the **unity_credentials** variable group to the `codemagic.yaml`:
@@ -375,7 +375,7 @@ Follow [the official guide](https://developer.oculus.com/resources/publish-refer
 2. Enter `OCULUS_APP_ID` as the **_Variable name_**.
 3. Enter the corresponding value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_oculus_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the process to also add either the `OCULUS_APP_SECRET` or the `OCULUS_USER_TOKEN` variable.
 8. Add the **unity_credentials** variable group to the `codemagic.yaml`:

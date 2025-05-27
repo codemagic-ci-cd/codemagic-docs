@@ -204,7 +204,7 @@ Build inputs are parameters that allow you to customize your build configuration
 
 #### Environment variable groups
 
-The snippet below shows how to import [environment variable groups](../building/environment-variable-groups/) defined in the team settings and application settings and also how to define them in the configuration file. Environment variables typically include credentials and API keys required for [code signing](../code-signing-yaml/signing). Click **Secure** to encrypt the values. Note that binary files have to be [`base64 encoded`](../yaml/configuring-environment-variables/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build.
+The snippet below shows how to import [environment variable groups](../building/environment-variable-groups/) defined in the team settings and application settings and also how to define them in the configuration file. Environment variables typically include credentials and API keys required for [code signing](../code-signing-yaml/signing). Click **Secret** to encrypt the values. Note that binary files have to be [`base64 encoded`](../yaml/configuring-environment-variables/#storing-sensitive-valuesfiles) locally before they can be saved to environment variables and decoded during the build.
 
 {{< highlight yaml "style=paraiso-dark">}}
 environment:

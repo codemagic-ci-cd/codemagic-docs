@@ -27,7 +27,7 @@ To access the Firebase project from Codemagic, add the service account JSON key 
 2. Enter the desired **_Variable name_**, e.g. `GCLOUD_KEY_FILE`.
 3. Copy and paste the content of the JSON key file as **_Variable value_**.
 4. Enter the variable group name, e.g. **_firebase_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the steps to add the `FIREBASE_PROJECT` variable to store your **Firebase project ID**.
 

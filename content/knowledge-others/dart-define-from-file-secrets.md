@@ -37,7 +37,7 @@ You can now add the Base64 encoded file as an environment variable in Codemagic 
 2. Enter the desired **_Variable name_**.
 3. Enter the **_Variable value_**.
 4. Enter the variable group name, e.g. **_json_**. Click the button to create the group.
-5. If the **Secure** option is selected, the variable will be protected by encryption. Its value will not be visible in Codemagic UI or build logs, it will be transferred securely to the build machine and made available only while the build is running. The whole build machine will be destroyed after build ends.
+5. If the **Secret** option is selected, the variable will be protected by encryption. Its value will not be visible in Codemagic UI or build logs, it will be transferred securely to the build machine and made available only while the build is running. The whole build machine will be destroyed after build ends.
 6. Click the **Add** button to add the variable.
 
 ## Import the environment variable group in codemagic.yaml

@@ -14,7 +14,7 @@ To submit solely to internal testers without requiring Apple's beta review (Test
 {{< highlight yaml "style=paraiso-dark">}}
 publishing:
   app_store_connect:
-    # Contents of the API key saved as a secure environment variable:
+    # Contents of the API key saved as a secret environment variable:
     api_key: $APP_STORE_CONNECT_PRIVATE_KEY 
     
     # Alphanumeric value that identifies the API key, 

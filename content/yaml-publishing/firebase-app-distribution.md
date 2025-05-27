@@ -32,7 +32,7 @@ To retrieve your Firebase token, follow the instructions in [Firebase documentat
 2. Enter the desired **_Variable name_**, e.g. `FIREBASE_TOKEN`.
 3. Enter the token value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_firebase_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 
 

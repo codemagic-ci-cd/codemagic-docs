@@ -26,7 +26,7 @@ To get a **public key** for your app, **you first have to upload your app manual
 2. Enter the desired **_Variable name_**, e.g. `APPETIZE_API_TOKEN`.
 3. Enter the desired variable value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_appetize_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the steps to add the `APPETIZE_APP_PUBLIC_KEY`.
 

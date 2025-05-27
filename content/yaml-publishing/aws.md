@@ -17,7 +17,7 @@ In order to publish your web application to AWS S3, you need to configure your a
 2. Enter the desired **_Variable name_**, e.g. `AWS_ACCESS_KEY_ID`.
 3. Enter the required value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_aws_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the process to also add the `AWS_SECRET_ACCESS_KEY` variable.
 

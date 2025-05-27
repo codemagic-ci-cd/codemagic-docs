@@ -9,7 +9,7 @@ The prerequisite is a valid **Google Cloud Service Account**. Please follow thes
 2. Skip to the **Creating a service account** section in the same guide and complete those steps also.
 3. You now have a `JSON` file with the credentials.
 4. Open Codemagic UI and create a new Environment variable `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`.
-5. Paste the content of the downloaded `JSON` file in the **_Value_** field, set the group name (e.g. **google_play**) and make sure the **Secure** option is checked.
+5. Paste the content of the downloaded `JSON` file in the **_Value_** field, set the group name (e.g. **google_play**) and make sure the **Secret** option is checked.
 ---
 6. Add the **google_play** variable group to the `codemagic.yaml`
 {{< highlight yaml "style=paraiso-dark">}}

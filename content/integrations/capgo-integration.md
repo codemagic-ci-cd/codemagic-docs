@@ -21,7 +21,7 @@ In order to get live updates in your Capgo account via Codemagic, you need to co
 2. Enter the desired **_Variable name_**, e.g. `CAPGO_TOKEN`.
 3. Copy and paste the Capgo token string as **_Variable value_**.
 4. Enter the variable group name, e.g. **_capgo_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 
 7. Add the variable group to your `codemagic.yaml` file

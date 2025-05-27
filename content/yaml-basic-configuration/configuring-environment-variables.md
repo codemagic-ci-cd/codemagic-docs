@@ -13,7 +13,7 @@ aliases:
 
 Environment variables are the recommended way to store configuration settings and sensitive data—such as credentials, configuration files, or API keys—needed for successful builds and integrations with external services. Sensitive information should never be committed to your Git repository. Instead, add it securely as environment variables in the Codemagic UI, where it can be accessed during workflows without being exposed in version control.
 
-If you're storing **secrets** in environment variables, you can enable an extra layer of security by marking the variable as **Secure**. This encrypts the variable and hides its value in the UI and build logs.
+If you're storing **secrets** in environment variables, you can enable an extra layer of security by marking the variable as **Secret**. This encrypts the variable and hides its value in the UI and build logs.
 
 You can add environment variables and secrets on the [app level](#app-level-environment-variables) or on the [team level](#global-variables-and-secrets) to make them available across team apps. Codemagic organizes user-defined environment variables into **variable groups** which you can import during the build, read more about it [below](#variable-groups-and-accessing-variables).
 
@@ -50,7 +50,7 @@ The environment variables you add in application settings are accessible only to
 2. Enter the desired **_Variable name_**.
 3. Enter the **_Variable value_**.
 4. Enter the variable group name, e.g. **_appstore_credentials_**. Click the button to create the group.
-5. If the **Secure** option is selected, the variable will be protected by encryption. Its value will not be visible in Codemagic UI or build logs, it will be transferred securely to the build machine and made available only while the build is running. 
+5. If the **Secret** option is selected, the variable will be protected by encryption. Its value will not be visible in Codemagic UI or build logs, it will be transferred securely to the build machine and made available only while the build is running. 
 6. Click the **Add** button to add the variable.
 
 ## Global variables and secrets
@@ -59,7 +59,7 @@ The **Global variables and secrets** section on the [Teams page](https://codemag
 
 It is possible to limit applications' access to the variable group in variable group settings. Selecting **All applications** will grant all present and future apps access to the variable group. You can review application access settings anytime.
 
-Marking a variable **Secure** will encrypt the variable and hide its value in the Codemagic UI and build logs. The variable will be transferred securely to the build machine and made available only while the build is running. 
+Marking a variable **Secret** will encrypt the variable and hide its value in the Codemagic UI and build logs. The variable will be transferred securely to the build machine and made available only while the build is running. 
 
 ### Bulk import of variables
 
@@ -164,7 +164,7 @@ Then the variable value in the group `wand` will be used.
 
 #### Android builds
 
-The following variable groups and variables are commonly used in Android builds. Add them in Codemagic UI (either as Application or as Team variables), make sure to click **Secure** to make sensitive data encrypted, and include the variable groups in your workflow.
+The following variable groups and variables are commonly used in Android builds. Add them in Codemagic UI (either as Application or as Team variables), make sure to click **Secret** to make sensitive data encrypted, and include the variable groups in your workflow.
 
 **Variable name** | **Variable value** | **Group**
 --- | --- | ---
@@ -187,7 +187,7 @@ PACKAGE_NAME | Put your package name here | other
 
 #### iOS builds
 
-The following variable groups and variables are commonly used in iOS builds. Add them in Codemagic UI (either as Application or as Team variables), make sure to click **Secure** to make sensitive data encrypted, and include the variable groups in your workflow.
+The following variable groups and variables are commonly used in iOS builds. Add them in Codemagic UI (either as Application or as Team variables), make sure to click **Secret** to make sensitive data encrypted, and include the variable groups in your workflow.
 
 
 **Variable name** | **Variable value** | **Group**

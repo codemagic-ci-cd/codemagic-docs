@@ -13,7 +13,7 @@ Accessing GitHub packages for private dependencies requires the following steps:
 3. Enter the desired **_Variable name_**, e.g. `GITHUB_TOKEN`.
 4. Copy and paste the token as **_Variable value_**.
 5. Enter the variable group name, e.g. **_github_credentials_**. Click the button to create the group.
-6. Make sure the **Secure** option is selected.
+6. Make sure the **Secret** option is selected.
 7. Click the **Add** button to add the variable.
 
 

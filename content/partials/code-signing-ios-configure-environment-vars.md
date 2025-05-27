@@ -24,7 +24,7 @@ cat ios_distribution_private_key | pbcopy
 
 4. Paste into the **_Variable value_** field.
 5. Enter a variable group name, e.g. **_code-signing_**. Click the button to create the group.
-6. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
+6. Make sure the **Secret** option is selected so that the variable can be protected by encryption.
 7. Click the **Add** button to add the variable.
 
 In your workflow you can now simply use the following to ensure that all variables are readily available during build:
@@ -57,7 +57,7 @@ cat ios_distribution_private_key | pbcopy
 
 4. Paste into the **_Variable value_** field.
 5. Enter a variable group name, e.g. **_appstore_credentials_**. Click the button to create the group.
-6. Make sure the **Secure** option is selected so that the variable can be protected by encryption.
+6. Make sure the **Secret** option is selected so that the variable can be protected by encryption.
 7. Click the **Add** button to add the variable.
 
 ---

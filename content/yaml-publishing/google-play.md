@@ -58,13 +58,13 @@ Once you make all the preparations as described above and configure publishing t
 **Note:** The very first version of the app must be added to Google Play manually. You can download the **app_release.aab** from the build artifacts. In addition, each uploaded binary must have a different version; see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic.
 {{</notebox>}}
 
-1. Save the contents of the `JSON` key file as a [secure environment variable](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) in application or team settings:
+1. Save the contents of the `JSON` key file as a [secret environment variable](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) in application or team settings:
 
    1. Open your Codemagic app settings, and go to the **Environment variables** tab.
    2. Enter the desired **_Variable name_**, e.g. `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`.
    3. Copy and paste the key file content as **_Variable value_**.
    4. Enter the variable group name, e.g. **_google_credentials_**. Click the button to create the group.
-   5. Make sure the **Secure** option is selected.
+   5. Make sure the **Secret** option is selected.
    6. Click the **Add** button to add the variable.
 
    7. Add the variable group to your `codemagic.yaml` file
@@ -80,7 +80,7 @@ Once you make all the preparations as described above and configure publishing t
 publishing:
   google_play: 
     # Contents of the JSON key file for Google Play service account saved 
-    # as a secure environment variable
+    # as a secret environment variable
     credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
 
     # Name of the track internal, alpha, beta, production, internal app sharing,

@@ -46,7 +46,7 @@ As you can use Codemagic's automatic code signing to create new profiles and cer
 
 Codemagic requires you to add all of your signing files (profiles, certificates, etc.) as environment variables with the manual option. These are the same files uploaded on Bitrise under the applications `Code Signing` tab.
 
-If you have already set up manual code signing on Bitrise, setting it up with Codemagic is relatively simple. You can download the necessary provisioning profiles and certificates from Bitrise's `Code Signing` tab. To add them as environment variables in Codemagic, navigate to your application and click the `Environment variables` tab. Encode the contents of your files with base64 and paste the values into Codemagic; make sure to check `Secure` when providing sensitive information. Along with creating these variables, create a new variable group, e.g., `ios_code_signing`, which you can later reference in your `codemagic.yaml`. 
+If you have already set up manual code signing on Bitrise, setting it up with Codemagic is relatively simple. You can download the necessary provisioning profiles and certificates from Bitrise's `Code Signing` tab. To add them as environment variables in Codemagic, navigate to your application and click the `Environment variables` tab. Encode the contents of your files with base64 and paste the values into Codemagic; make sure to check **Secret** when providing sensitive information. Along with creating these variables, create a new variable group, e.g., `ios_code_signing`, which you can later reference in your `codemagic.yaml`. 
 
 For consistency, we recommend setting up the following environment variables:
 ```
@@ -159,7 +159,7 @@ CM_KEY_ALIAS
 CM_KEY_PASSWORD
 ```
 
-Navigate to your application and click the `Environment variables` tab to add environment variables. To add the keystore file, encode its contents with base64 and paste the value into Codemagic; make sure to check `Secure` when providing sensitive information. Along with creating these variables, create a new variable group, e.g., `android_code_signing`, which you can later reference in your `codemagic.yaml`.
+Navigate to your application and click the `Environment variables` tab to add environment variables. To add the keystore file, encode its contents with base64 and paste the value into Codemagic; make sure to check **Secret** when providing sensitive information. Along with creating these variables, create a new variable group, e.g., `android_code_signing`, which you can later reference in your `codemagic.yaml`.
 
 In your `build.gradle`, you can reference these variables directly to code sign or set up a `key.properties` file based on these variables. More details can be found [here](../yaml-code-signing/signing-android/).
 
@@ -199,7 +199,7 @@ To deploy to Google Play, a service account is required. Creating a service acco
 
 If you have already uploaded your service account to Bitrise, you can download it from there under `Generic file storage`. Alternatively, you can set up a new service account following the instructions [here](../knowledge-base/google-services-authentication/).
 
-To add your service account to your configuration file, add it as an environment variable. For example, `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`. First, navigate to your application and click the `Environment variables` tab. To add the file, encode its contents with base64 and paste the value into Codemagic; make sure to check `Secure` when providing sensitive information. You can either add it to an already created group or create a new group, which you can later reference in your `codemagic.yaml`.
+To add your service account to your configuration file, add it as an environment variable. For example, `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`. First, navigate to your application and click the `Environment variables` tab. To add the file, encode its contents with base64 and paste the value into Codemagic; make sure to check **Secret** when providing sensitive information. You can either add it to an already created group or create a new group, which you can later reference in your `codemagic.yaml`.
 
 Like Bitrise's `Google Play Deploy` step, Codemagic allows you to modify the track, rollout fraction, and update priority. In addition, you can conveniently configure to submit the build as a draft or choose not the send the changes directly to review.
 

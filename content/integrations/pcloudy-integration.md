@@ -17,7 +17,7 @@ Signing up with pCloudy is required in order to be able to get the **username** 
 2. Enter the desired **_Variable name_**, e.g. `PCLOUDY_USERNAME`.
 3. Enter the desired variable value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_pcloudy_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the steps to add the `PCLOUDY_API_TOKEN`.
 

@@ -26,7 +26,7 @@ In order to enable Codemagic to publish releases to GitHub, you need to grant it
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the desired **_Variable name_**, e.g. `GITHUB_TOKEN`.
 3. Enter the token value as **_Variable value_**.
-4. Make sure the **Secure** option is selected.
+4. Make sure the **Secret** option is selected.
 5. Click the **Add** button to add the variable.
 
 6. Include the `GITHUB_TOKEN` variable in your `codemagic.yaml` and configure build triggering on tag creation. Don't forget to add a branch pattern and ensure the webhook exists.

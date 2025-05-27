@@ -24,7 +24,7 @@ There are two ways of solving this problem.
 1. Disable Steam Guard for the account doing the Steam upload.  This is not recommended, as it makes the Steam account less secure.
 
 2. Use sentry files that are generated after logging in successfully to Steam. A Steam Guard code is not required when these sentry files are present on the build machine.
-Thus, we will save the sentry files as secure environment variables and place them at the correct path when the build starts.
+Thus, we will save the sentry files as secret environment variables and place them at the correct path when the build starts.
 
 ### Obtain the sentry files:
 First, you need to install the SteamCMD.
@@ -66,7 +66,7 @@ The **ssfn** file will be stored as `~/Steam/ssfn*******************` and the **
 2. Enter the desired **_Variable name_**, e.g. `SSFN_FILE_NAME`.
 3. Enter the ssfn file name as **_Variable value_**.
 4. Enter the variable group name, e.g. **_steam_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Enter another variable named `SSFN_FILE` and copy/paste the `base64` encoded value of the ssfn file. Follow the instructions for [storing binary files](/yaml-basic-configuration/configuring-environment-variables/#storing-binary-files).
 8. Repeat the previous step to add the `config.vdf` file as a variable named `CONFIG_FILE`.

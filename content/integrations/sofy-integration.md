@@ -17,7 +17,7 @@ You will need to sign up with [Sofy](https://sofy.ai/) so you can obtain an **AP
 2. Enter the desired **_Variable name_**, e.g. `SOFY_API_KEY`.
 3. Copy and paste the API key string as **_Variable value_**.
 4. Enter the variable group name, e.g. **_sofy_credentials_**. Click the button to create the group.
-5. Make sure the **Secure** option is selected.
+5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
 7. Repeat the steps to also add `SOFY_SUBSCRIPTION_KEY`, `SOFY_SCHEDULE_ID`, and `$SOFY_SCHEDULE_GUID` variables.
 
