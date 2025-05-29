@@ -66,22 +66,32 @@ To add an environment variable using the Codemagic REST API, you need your API a
 An example of adding a secret variable to an application group looks like this:
 
 {{< highlight bash "style=paraiso-dark">}}
-curl -XPOST -H 'x-auth-token: <your-auth-token>' \
-       -H 'Content-Type: application/json;charset=utf-8' \
-       -d '{
-       "key": "<variable-name>",
-       "value": "<variable-value>"
-       "group":"<client-unique-group-name>",
-       "secure": true
-       }' \
-       'https://api.codemagic.io/apps/<app-id>/variables'
+curl --request POST \
+  --url https://codemagic.io/api/v3/variable-groups/{variable_group_id}/variables \
+  --header 'Accept: application/json' \
+  --header 'Content-Type: application/json' \
+  --header 'x-auth-token: $CODEMAGIC_AUTH_TOKEN' \
+  --data '{
+  "secure": true,
+  "variables": [
+    {
+      "name": "string",
+      "value": "string"
+    }
+  ]
+}'
 {{< /highlight >}}
+
+{{<notebox>}}
+💡 To find **{variable_group_id}**, a group needs to be created before uploading variables. More information can be found [here](https://codemagic.io/api/v3/schema#/) under the Secrets and Environment Vars dropdown.
+
+{{</notebox>}}
 
 {{<notebox>}}
 💡
 Files such as **Android keystores**, or **.env** files should be base64 encoded and can be passed like this:
 
-  `-d '{ "key": "<variable-name>", "value":`**`$(cat fileName | base64) ...`**
+  `{ "name": "<variable-name>", "value":`**`$(cat fileName | base64) ...`**
 
   And then decode it during the build like this:
 
