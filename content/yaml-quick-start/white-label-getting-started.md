@@ -54,7 +54,7 @@ This group might contain the following environment variables:
 - **.env** file if your app uses some secrets at runtime. `DOTENV_FILE` (base64 encoded).
 
 
-To add these values you can either use the [Codemagic UI](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/#configuring-environment-variables) or use the [Codemagic REST API](https://docs.codemagic.io/rest-api/codemagic-rest-api/) to add these groups and values programmatically, which could be advantageous if you have a large number of clients or wish to add these values from your own backend system or client dashboard.
+To add these values you can either use the [Codemagic UI](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/#configuring-environment-variables) or use the [Codemagic REST API](https://codemagic.io/api/v3/schema#/) to add these groups and values programmatically, which could be advantageous if you have a large number of clients or wish to add these values from your own backend system or client dashboard.
 
 
 To add an environment variable using the Codemagic REST API, you need your API access token, the application id, the client group unique name, and the variable name and value. 
