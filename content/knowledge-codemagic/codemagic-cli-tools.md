@@ -17,7 +17,7 @@ For more information, review the full documentation on [CLI tools](https://githu
 
 
 {{<notebox>}}
-**Note:** Requires: Python ≥ 3.7
+**Note:** Requires: Python ≥ 3.8
 {{</notebox>}}
 
 
