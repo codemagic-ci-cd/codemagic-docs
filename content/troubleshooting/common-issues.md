@@ -116,3 +116,13 @@ flutter gen-l10n
 ```
 
 For more details on setting up localizations, refer to [Flutter's documentation on Localization](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization#adding-your-own-localized-messages) (Step 6).
+
+
+### App is stuck on splash screen
+
+###### Description
+
+The app builds and deploys successfully to Firebase App Distribution and Google Play. However, after downloading it from either source, it fails to open and remains stuck on the splash screen.
+
+###### Solution
+This issue is often caused by a mismatch or missing environment variable in your Codemagic configuration. Make sure that all necessary Firebase configuration values like `ANDROID_API_KEY`, `ANDROID_APP_ID`, `SERVICE_ACCOUNT`, `IOS_APP_ID`, `IOS_API_KEY`, or any other required for your use-case, are correctly set as Codemagic environment variables.
