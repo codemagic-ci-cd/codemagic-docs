@@ -17,7 +17,7 @@ Stellar is our iOS simulator and Android emulator running in your browser. Launc
 This feature is available for **teams** only. 
 {{</notebox>}}
 
-Teams on the **Pay as you go** plan can enable the feature via the **App Preview** page on the left sidebar and will get 100 free trial minutes. Once used up, further app preview minutes will be billed at the rate of 0.095/min and included in your monthly invoice.
+Teams on the **Pay as you go** plan can enable the feature via the **App Preview** page on the left sidebar and will get 100 free trial minutes. Once used up, further app preview minutes will be billed at the rate of $0.095/min and included in your monthly invoice.
 
 Teams on annual plans can try out App Preview by [contacting us](https://codemagic.io/contact/).
 
