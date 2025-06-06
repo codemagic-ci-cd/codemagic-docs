@@ -63,48 +63,9 @@ workflows:
       flutter: 3.27.3
       xcode: 16.2
     scripts:
-      - name: Run Flutter pub get
-        script: flutter pub get
-      - name: Build unsigned .app for simulator
-        script: flutter build ios --simulator
+      - flutter build ios --simulator --flavor staging  # --flavor is optional
     artifacts:
       - build/ios/iphonesimulator/Runner.app
-{{< /highlight >}}
-{{</markdown>}}
-{{< /tab >}}
-
-
-{{< tab header="Flutter (Flavors)" >}}
-{{<markdown>}}
-
-If you are using Flutter flavors and want to preview a specific flavor, make sure that you set the correct value for your flavor's `-scheme` and set the entry point for your flavor using `FLUTTER_TARGET`. 
-
-{{< highlight yaml "style=paraiso-dark">}}
-workflows:
-  flutter-flavor-ios-simulator:
-    name: Flutter Flavor iOS Simulator
-    environment:
-      flutter: 3.27.3
-      xcode: 16.2
-      cocoapods: default
-    scripts:
-      - name: install dependencies
-        script: flutter pub get
-      - name: Build unsigned .app
-        script: |  
-          xcodebuild -workspace "ios/Runner.xcworkspace" \
-            -scheme "Runner-dev" \ 
-            -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone 16,OS=18.2" \
-            -configuration Debug \
-            CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGNING_ALLOWED=NO \
-            FLUTTER_TARGET=lib/main_dev.dart \
-            FLUTTER_BUILD_MODE=debug \
-            -derivedDataPath ios/output
-    artifacts:
-      - ios/output/Build/Products/Debug-iphonesimulator/Runner.app
 {{< /highlight >}}
 {{</markdown>}}
 {{< /tab >}}
