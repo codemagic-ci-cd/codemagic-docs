@@ -242,7 +242,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 | **Version** | **Path** |
 |---------|------|
-| **8.1.1** (default) | `/Users/builder/programs/gradle-8.1.1` |
+| 8.1.1 | `/Users/builder/programs/gradle-8.1.1` |
 | 7.6 | `/Users/builder/programs/gradle-7.6` |
 | 7.3.1 | `/Users/builder/programs/gradle-7.3.1` |
 

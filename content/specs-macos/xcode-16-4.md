@@ -21,7 +21,7 @@ Available on request:
 
 - System version `macOS 15.5 (24F74)`
 - Kernel version `Darwin 24.5.0`
-- Disk `294GB (Free Space: 149GB)`
+- Disk `294GB (Free Space: 167GB)`
 
 ## Xcode versions
 
@@ -210,15 +210,13 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 | **Version** | **Path** |
 |---------|------|
-| **8.1.1** (default) | `/Users/builder/programs/gradle-8.1.1` |
-| 7.6 | `/Users/builder/programs/gradle-7.6` |
-| 7.3.1 | `/Users/builder/programs/gradle-7.3.1` |
+| 8.14.1 | `/Users/builder/programs/gradle-8.14.1` |
 
 
 ## Other pre-installed tools
 
 - appium `2.5.0`
-- aws `2.27.16`
+- aws `2.27.33`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
@@ -227,14 +225,14 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - fastlane `2.227.2`
 - firebase `11.21.0`
 - gem `3.6.9`
-- gh `2.72.0`
+- gh `2.74.1`
 - git `2.49.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `4.5.2`
+- homebrew `4.5.6`
 - ionic `7.2.0`
-- jq `1.7.1`
-- ktlint `1.5.0`
+- jq `1.8.0`
+- ktlint `1.6.0`
 - node `22.9.0`
 - npm `10.8.3`
 - python `3.12.7`
@@ -247,6 +245,6 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - ucd `0.11.10`
 - unzip `6.00`
 - wget `1.25.0`
-- yarn `1.22.22`
+- yarn `4.9.2`
 - yq `4.45.4`
 - zip `3.0`

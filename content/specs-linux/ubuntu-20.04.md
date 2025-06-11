@@ -169,7 +169,7 @@ Available Android Virtual Devices:
 
 | **Version** | **Path** |
 |---------|------|
-| **8.1.1** (default) | `/home/builder/programs/gradle-8.1.1` |
+| 8.1.1 | `/home/builder/programs/gradle-8.1.1` |
 | 7.6 | `/home/builder/programs/gradle-7.6` |
 | 7.3.1 | `/home/builder/programs/gradle-7.3.1` |
 
