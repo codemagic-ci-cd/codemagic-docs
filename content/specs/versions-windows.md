@@ -106,9 +106,9 @@ Installed packages:
 
 ## Gradle versions
 
-| **Version**          | **Path**                                  |
-|----------------------|-------------------------------------------|
-| **8.14.1** (default) | `C:\Users\builder\programs\gradle-8.14.1` |
+| **Version** | **Path** |
+|--------|------|
+| 8.14.1 | `C:\Users\builder\programs\gradle-8.14.1` |
 
 
 
