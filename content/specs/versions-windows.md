@@ -21,11 +21,11 @@ Android Studio Iguana `2023.2.1` installed at `C:\Program Files\Android\Android 
 
 ## Android SDK
 
-> SDK Manager at `C:\Users\builder/programs/android-sdk\cmdline-tools\latest\bin\sdkmanager.bat`
+> SDK Manager at `C:\Users\builder\programs\android-sdk\cmdline-tools\latest\bin\sdkmanager.bat`
 
 {{< collapsible title="Installed SDK packages" >}}
 ```
-$ C:\Users\builder/programs/android-sdk\cmdline-tools\latest\bin\sdkmanager.bat --list_installed
+$ C:\Users\builder\programs\android-sdk\cmdline-tools\latest\bin\sdkmanager.bat --list_installed
 ```
 
 Installed packages:
@@ -101,6 +101,15 @@ Installed packages:
 | 17 | `C:\Program Files\OpenJDK\jdk-17` |
 | 2 | `C:\Program Files\OpenJDK\jdk-20.0.1` |
 | **21** (default) | `C:\Program Files\OpenJDK\jdk-21.0.2` |
+
+
+
+## Gradle versions
+
+| **Version**          | **Path**                                  |
+|----------------------|-------------------------------------------|
+| **8.14.1** (default) | `C:\Users\builder\programs\gradle-8.14.1` |
+
 
 
 ## Other pre-installed tools
