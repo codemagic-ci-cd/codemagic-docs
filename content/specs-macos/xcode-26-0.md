@@ -1,8 +1,8 @@
 ---
-title: Xcode 16.4.x
+title: Xcode 26.0.x
 aliases:
 
-weight: 96
+weight: 95
 ---
 
 Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
@@ -21,25 +21,25 @@ Available on request:
 
 - System version `macOS 15.5 (24F74)`
 - Kernel version `Darwin 24.5.0`
-- Disk `294GB (Free Space: 167GB)`
+- Disk `294GB (Free Space: 163GB)`
 
 ## Xcode versions
 
-- 16.4 (16F6) `/Applications/Xcode-16.4.app`
+- 26.0 (17A5241e) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
 
 ### Runtimes
 
-- iOS 18.5
-- tvOS 18.5
-- visionOS 2.5
-- watchOS 11.5
+- iOS 26.0
+- tvOS 26.0
+- visionOS 26.0
+- watchOS 26.0
 
 ### Devices
 
 - Apple TV
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
-- Apple Vision Pro
+- Apple Vision Pro 4K
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
 - Apple Watch Series 10 (42mm)
