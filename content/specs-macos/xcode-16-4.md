@@ -21,7 +21,7 @@ Available on request:
 
 - System version `macOS 15.5 (24F74)`
 - Kernel version `Darwin 24.5.0`
-- Disk `294GB (Free Space: 167GB)`
+- Disk `294GB (Free Space: 157GB)`
 
 ## Xcode versions
 
@@ -29,6 +29,7 @@ Available on request:
 
 ### Runtimes
 
+- iOS 17.5
 - iOS 18.5
 - tvOS 18.5
 - visionOS 2.5
@@ -45,17 +46,31 @@ Available on request:
 - Apple Watch Series 10 (42mm)
 - Apple Watch Series 10 (46mm)
 - Apple Watch Ultra 2 (49mm)
+- iPad (10th generation)
 - iPad (A16)
+- iPad Air (5th generation)
 - iPad Air 11-inch (M3)
 - iPad Air 13-inch (M3)
+- iPad Pro (11-inch) (4th generation)
+- iPad Pro (12.9-inch) (6th generation)
 - iPad Pro 11-inch (M4)
 - iPad Pro 13-inch (M4)
+- iPad mini (6th generation)
 - iPad mini (A17 Pro)
+- iPhone 14
+- iPhone 14 Plus
+- iPhone 14 Pro
+- iPhone 14 Pro Max
+- iPhone 15
+- iPhone 15 Plus
+- iPhone 15 Pro
+- iPhone 15 Pro Max
 - iPhone 16
 - iPhone 16 Plus
 - iPhone 16 Pro
 - iPhone 16 Pro Max
 - iPhone 16e
+- iPhone SE (3rd generation)
 
 ## Android Studio
 
@@ -216,20 +231,21 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.5.0`
-- aws `2.27.33`
+- aws `2.27.37`
+- azure-cli `2.74.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `0.12.3`
+- ew-cli `0.12.4`
 - fastlane `2.227.2`
 - firebase `11.21.0`
 - gem `3.6.9`
 - gh `2.74.1`
-- git `2.49.0`
+- git `2.50.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `4.5.6`
+- homebrew `4.5.7`
 - ionic `7.2.0`
 - jq `1.8.0`
 - ktlint `1.6.0`
