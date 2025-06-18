@@ -56,25 +56,23 @@ For Android:
 
 {{< highlight bash "style=paraiso-dark">}}
 scripts:
-    - name: Install CodePush cli tools
-      script: |                         
-          git clone https://github.com/microsoft/code-push-server /tmp/code-push-server
-          cd /tmp/code-push-server/cli
-          npm install && npm run build && npm install -g
+    - name: Install Codemagic CodePush CLI tools
+      script: |
+          npm install -g @codemagic/code-push-cli
     - name: CodePush authentication
       script: |
-          code-push-standalone login "https://codepush.pro" --key $CODEPUSH_TOKEN       
+          code-push login "https://codepush.pro" --key $CODEPUSH_TOKEN       
     - name: CodePush add app # this script can be skipped if you have existing apps
       script: |
-          code-push-standalone app add YOUR_PREFERRED_APP_NAME
-          code-push-standalone app ls
+          code-push app add YOUR_PREFERRED_APP_NAME
+          code-push app ls
     - name: Install npm dependencies
       script: |
         npm install
     - name: Codepush deployment
       script: |         
-           code-push-standalone release-react APP_NAME_CREATED_ABOVE ios -d Staging# -d refers to the deployment name e.g. Production, Staging
-           code-push-standalone release-react APP_NAME_CREATED_ABOVE android -d Staging # -d refers to the deployment name e.g. Production, Staging
+           code-push release-react APP_NAME_CREATED_ABOVE ios -d Staging# -d refers to the deployment name e.g. Production, Staging
+           code-push release-react APP_NAME_CREATED_ABOVE android -d Staging # -d refers to the deployment name e.g. Production, Staging
 {{< /highlight >}}
 
 {{<notebox>}}
@@ -82,7 +80,7 @@ scripts:
 {{</notebox>}}
 
 {{<notebox>}}
-**Note**: Running **code-push-standalone release-react** generates updates and releases them to the server to be served 
+**Note**: Running **code-push release-react** generates updates and releases them to the server to be served 
 {{</notebox>}}
 
 
@@ -90,44 +88,42 @@ scripts:
 8. By default, you get two Deployment channels: Staging and Production. You can add new ones, rename or delete them by running the following commands:
 
 {{< highlight bash "style=paraiso-dark">}}
-To Add: code-push-standalone deployment add <appName> <deploymentName>
-To Remove: code-push-standalone deployment rm <appName> <deploymentName>
-To Rename: code-push-standalone deployment rename <appName> <deploymentName> <newDeploymentName>
+To Add: code-push deployment add <appName> <deploymentName>
+To Remove: code-push deployment rm <appName> <deploymentName>
+To Rename: code-push deployment rename <appName> <deploymentName> <newDeploymentName>
 {{< /highlight >}}
 
 9. Likewise, apps can be added, renamed and deleted:
 
 {{< highlight bash "style=paraiso-dark">}}
-To Add: code-push-standalone app add <appName>
-To Rename: code-push-standalone app rename <appName> <newAppName>
-To Delete: code-push-standalone app rm <appName>
+To Add: code-push app add <appName>
+To Rename: code-push app rename <appName> <newAppName>
+To Delete: code-push app rm <appName>
 {{< /highlight >}}
 
-10. If you need to patch releases e.g. you need to make a change in a previous release e.g. increase rollout percentage, a missed bug fix etc. you can achieve it by running **code-push-standalone patch <appName> <deploymentName>**
+10. If you need to patch releases e.g. you need to make a change in a previous release e.g. increase rollout percentage, a missed bug fix etc. you can achieve it by running **code-push patch <appName> <deploymentName>**
 
-11. You cannot delete a deployment release history but you can roll it back in case any release was shipped with a broken feature or anything, by running **code-push-standalone rollback <appName> <deploymentName>**
+11. You cannot delete a deployment release history but you can roll it back in case any release was shipped with a broken feature or anything, by running **code-push rollback <appName> <deploymentName>**
     
 12. After testing an update against a deployment channel, it is possible to promote it by running the following command:
 
 {{< highlight bash "style=paraiso-dark">}}
-code-push-standalone promote <appName> <sourceDeploymentName> <destDeploymentName>
+code-push promote <appName> <sourceDeploymentName> <destDeploymentName>
 {{< /highlight >}}
 
 ## Managing apps and deployments with the CodePush CLI
 
-You can manage your apps and deployments using the CodePush CLI which you can install on your local machine as follows:
+You can manage your apps and deployments using the Codemagic CodePush CLI which you can install on your local machine as follows:
 
 {{< highlight bash "style=paraiso-dark">}}
-git clone https://github.com/microsoft/code-push-server /tmp/code-push-server
-cd /tmp/code-push-server/cli
-npm install && npm run build && npm install -g
+   npm install -g @codemagic/code-push-cli
 {{< /highlight >}}
 
 You can log into your account using the CodePush access key provided by Codemagic.
 
-The CodePush CLI reference is available [here](https://github.com/microsoft/code-push-server/tree/main/cli). 
+The CodePush CLI reference is available [here](https://github.com/codemagic-ci-cd/code-push-pro). 
 
-To view deployments, update metadata, and installation metrics you can use the `code-push-standalone deployment ls <app_name>` command as described in the CodePush CLI docs [here](https://github.com/microsoft/code-push-server/tree/main/cli#:~:text=If%20at%20any%20time%20you%27d%20like%20to%20view%20the%20list%20of%20deployments%20that%20a%20specific%20app%20includes%2C%20you%20can%20simply%20run%20the%20following%20command%3A)
+To view deployments, update metadata, and installation metrics you can use the `code-push deployment ls <app_name>` command as described in the CodePush CLI docs [here](https://github.com/codemagic-ci-cd/code-push-pro?tab=readme-ov-file#deployment-management)
 
 
 ## Debugging notes
@@ -138,4 +134,4 @@ If your project **Info.plist** file key **CFBundleShortVersionString** does not 
 [Error]  The "CFBundleShortVersionString" key in the "ios/Codemagic_RN/Info.plist" file needs to specify a valid semver string, containing both a major and minor version (e.g. 1.3.2, 1.1).
 {{< /highlight >}}
 
-The solution is to either change the value in **Info.plist** file to a semver string value which is not recommended, or the best option is to add **--targetBinaryVersion**  to the build/release command: **code-push-standalone release-react iOS ios --targetBinaryVersion 1.0.0**
+The solution is to either change the value in **Info.plist** file to a semver string value which is not recommended, or the best option is to add **--targetBinaryVersion**  to the build/release command: **code-push release-react iOS ios --targetBinaryVersion 1.0.0**
