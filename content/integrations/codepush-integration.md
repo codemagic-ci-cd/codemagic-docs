@@ -103,7 +103,7 @@ To Delete: code-push app rm <appName>
 
 10. If you need to patch a previous release, e.g. increase the rollout percentage, push a missed bug fix or similar, you can achieve it by running **code-push patch <appName> <deploymentName>**
 
-11. You cannot delete a deployment release history but you can roll it back in case any release was shipped with a broken feature or anything, by running **code-push rollback <appName> <deploymentName>**
+11. You cannot delete a deployment release history but you can roll back a release by running **code-push rollback <appName> <deploymentName>**
     
 12. After testing an update against a deployment channel, it is possible to promote it by running the following command:
 
