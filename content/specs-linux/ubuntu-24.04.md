@@ -16,7 +16,7 @@ weight: 1
 
 - System version `Ubuntu 24.04.2 LTS`
 - Kernel version `6.8.0-1026-gcp`
-- Disk `155GB (Free Space: 95GB)`
+- Disk `155GB (Free Space: 94GB)`
 
 ## Android Studio
 
@@ -91,9 +91,8 @@ Installed packages:
   system-images;android-35;google_apis_playstore;x86_64 | 9                 | Google Play Intel x86_64 Atom System Image | system-images/android-35/google_apis_playstore/x86_64
   system-images;android-36;google_apis;x86_64           | 5                 | Google APIs Intel x86_64 Atom System Image | system-images/android-36/google_apis/x86_64
   system-images;android-36;google_apis_playstore;x86_64 | 5                 | Google Play Intel x86_64 Atom System Image | system-images/android-36/google_apis_playstore/x86_64
-
 {{< /collapsible >}}
-            
+
 
 
 ## Android NDK
@@ -176,10 +175,11 @@ Available Android Virtual Devices:
 
 ## Other pre-installed tools
 
-- aws `2.27.25`
+- aws `2.27.5`
+- azure-cli `2.74.0`
 - curl `8.5.0`
 - docker `28.0.1`
-- ew-cli `0.12.3`
+- ew-cli `0.12.4`
 - fastlane `2.227.0`
 - firebase `13.34.0`
 - gem `3.6.2`
