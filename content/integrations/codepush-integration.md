@@ -84,7 +84,7 @@ scripts:
 {{</notebox>}}
 
 
-7. In order to reveal the Deployment keys, run **code-push-standalone deployment ls YOUR_APP_NAME -k**
+7. In order to reveal the Deployment keys, run **code-push deployment ls YOUR_APP_NAME -k**
 8. By default, you get two Deployment channels: Staging and Production. You can add new ones, rename or delete them by running the following commands:
 
 {{< highlight bash "style=paraiso-dark">}}
