@@ -84,7 +84,7 @@ scripts:
 {{</notebox>}}
 
 
-7. In order to reveal the Deployment keys, run **code-push-standalone deployment ls YOUR_APP_NAME -k**
+7. In order to reveal the Deployment keys, run **code-push deployment ls YOUR_APP_NAME -k**
 8. By default, you get two Deployment channels: Staging and Production. You can add new ones, rename or delete them by running the following commands:
 
 {{< highlight bash "style=paraiso-dark">}}
@@ -101,9 +101,9 @@ To Rename: code-push app rename <appName> <newAppName>
 To Delete: code-push app rm <appName>
 {{< /highlight >}}
 
-10. If you need to patch a previous release, e.g. increase the rollout percentage, push a missed bug fix or similar, you can achieve it by running **code-push patch <appName> <deploymentName>**
+10. If you need to patch a previous release, e.g. increase the rollout percentage, push a missed bug fix or similar, you can achieve it by running `code-push patch <appName> <deploymentName>`
 
-11. You cannot delete a deployed release, but you can roll back a release by running **code-push rollback <appName> <deploymentName>**
+11. You cannot delete a deployed release, but you can roll back a release by running `code-push rollback <appName> <deploymentName>`
     
 12. After testing an update against a deployment channel, it is possible to promote it by running the following command:
 
