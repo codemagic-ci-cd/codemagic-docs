@@ -27,36 +27,15 @@ Available on request:
 
 - 16.4 (16F6) `/Applications/Xcode-16.4.app`
 
-### Runtimes
+### Runtimes and Devices
 
-- iOS 17.5
-- iOS 18.5
-- tvOS 18.5
-- visionOS 2.5
-- watchOS 11.5
 
-### Devices
-
-- Apple TV
-- Apple TV 4K (3rd generation)
-- Apple TV 4K (3rd generation) (at 1080p)
-- Apple Vision Pro
-- Apple Watch SE (40mm) (2nd generation)
-- Apple Watch SE (44mm) (2nd generation)
-- Apple Watch Series 10 (42mm)
-- Apple Watch Series 10 (46mm)
-- Apple Watch Ultra 2 (49mm)
+{{< collapsible title="iOS 17.5" >}}
 - iPad (10th generation)
-- iPad (A16)
 - iPad Air (5th generation)
-- iPad Air 11-inch (M3)
-- iPad Air 13-inch (M3)
 - iPad Pro (11-inch) (4th generation)
 - iPad Pro (12.9-inch) (6th generation)
-- iPad Pro 11-inch (M4)
-- iPad Pro 13-inch (M4)
 - iPad mini (6th generation)
-- iPad mini (A17 Pro)
 - iPhone 14
 - iPhone 14 Plus
 - iPhone 14 Pro
@@ -65,12 +44,45 @@ Available on request:
 - iPhone 15 Plus
 - iPhone 15 Pro
 - iPhone 15 Pro Max
+- iPhone SE (3rd generation)
+{{< /collapsible >}}
+
+
+{{< collapsible title="iOS 18.5" >}}
+- iPad (A16)
+- iPad Air 11-inch (M3)
+- iPad Air 13-inch (M3)
+- iPad Pro 11-inch (M4)
+- iPad Pro 13-inch (M4)
+- iPad mini (A17 Pro)
 - iPhone 16
 - iPhone 16 Plus
 - iPhone 16 Pro
 - iPhone 16 Pro Max
 - iPhone 16e
-- iPhone SE (3rd generation)
+{{< /collapsible >}}
+
+
+{{< collapsible title="tvOS 18.5" >}}
+- Apple TV
+- Apple TV 4K (3rd generation)
+- Apple TV 4K (3rd generation) (at 1080p)
+{{< /collapsible >}}
+
+
+{{< collapsible title="visionOS 2.5" >}}
+- Apple Vision Pro
+{{< /collapsible >}}
+
+
+{{< collapsible title="watchOS 11.5" >}}
+- Apple Watch SE (40mm) (2nd generation)
+- Apple Watch SE (44mm) (2nd generation)
+- Apple Watch Series 10 (42mm)
+- Apple Watch Series 10 (46mm)
+- Apple Watch Ultra 2 (49mm)
+{{< /collapsible >}}
+
 
 ## Android Studio
 

@@ -27,24 +27,10 @@ Available on request:
 
 - 16.1 (16B40) `/Applications/Xcode-16.1.app`
 
-### Runtimes
+### Runtimes and Devices
 
-- iOS 18.1
-- tvOS 18.1
-- visionOS 2.1
-- watchOS 11.1
 
-### Devices
-
-- Apple TV
-- Apple TV 4K (3rd generation)
-- Apple TV 4K (3rd generation) (at 1080p)
-- Apple Vision Pro
-- Apple Watch SE (40mm) (2nd generation)
-- Apple Watch SE (44mm) (2nd generation)
-- Apple Watch Series 10 (42mm)
-- Apple Watch Series 10 (46mm)
-- Apple Watch Ultra 2 (49mm)
+{{< collapsible title="iOS 18.1" >}}
 - iPad (10th generation)
 - iPad Air 11-inch (M2)
 - iPad Air 13-inch (M2)
@@ -61,6 +47,26 @@ Available on request:
 - iPhone 16 Pro
 - iPhone 16 Pro Max
 - iPhone SE (3rd generation)
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 18.1" >}}
+- Apple TV
+- Apple TV 4K (3rd generation)
+- Apple TV 4K (3rd generation) (at 1080p)
+{{< /collapsible >}}
+
+{{< collapsible title="visionOS 2.1" >}}
+- Apple Vision Pro
+{{< /collapsible >}}
+
+{{< collapsible title="watchOS 11.1" >}}
+- Apple Watch SE (40mm) (2nd generation)
+- Apple Watch SE (44mm) (2nd generation)
+- Apple Watch Series 10 (42mm)
+- Apple Watch Series 10 (46mm)
+- Apple Watch Ultra 2 (49mm)
+{{< /collapsible >}}
+
 
 ## Android Studio
 

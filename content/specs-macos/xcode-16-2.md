@@ -22,29 +22,16 @@ Available on request:
 - System version `macOS 15.2 (24C101)`
 - Kernel version `Darwin 24.2.0`
 - Disk `294GB (Free Space: 151GB)`
+- Disk `294GB (Free Space: 150GB)`
 
 ## Xcode versions
 
 - 16.2 (16C5032a) `/Applications/Xcode-16.2.app`
 
-### Runtimes
+### Runtimes and Devices
 
-- iOS 18.2
-- tvOS 18.2
-- visionOS 2.2
-- watchOS 11.2
 
-### Devices
-
-- Apple TV
-- Apple TV 4K (3rd generation)
-- Apple TV 4K (3rd generation) (at 1080p)
-- Apple Vision Pro
-- Apple Watch SE (40mm) (2nd generation)
-- Apple Watch SE (44mm) (2nd generation)
-- Apple Watch Series 10 (42mm)
-- Apple Watch Series 10 (46mm)
-- Apple Watch Ultra 2 (49mm)
+{{< collapsible title="iOS 18.2" >}}
 - iPad (10th generation)
 - iPad Air 11-inch (M2)
 - iPad Air 13-inch (M2)
@@ -56,6 +43,26 @@ Available on request:
 - iPhone 16 Pro
 - iPhone 16 Pro Max
 - iPhone SE (3rd generation)
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 18.2" >}}
+- Apple TV
+- Apple TV 4K (3rd generation)
+- Apple TV 4K (3rd generation) (at 1080p)
+{{< /collapsible >}}
+
+{{< collapsible title="visionOS 2.2" >}}
+- Apple Vision Pro
+{{< /collapsible >}}
+
+{{< collapsible title="watchOS 11.2" >}}
+- Apple Watch SE (40mm) (2nd generation)
+- Apple Watch SE (44mm) (2nd generation)
+- Apple Watch Series 10 (42mm)
+- Apple Watch Series 10 (46mm)
+- Apple Watch Ultra 2 (49mm)
+{{< /collapsible >}}
+
 
 ## Android Studio
 

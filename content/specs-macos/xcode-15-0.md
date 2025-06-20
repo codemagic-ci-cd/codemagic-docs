@@ -27,61 +27,33 @@ Available on request:
 
 - 15.0.1 (15A507) `/Applications/Xcode-15.0.app`, also selected when specifying `15` in Xcode version settings
 
-### Runtimes
+### Runtimes and Devices
 
-- iOS 14.5
-- iOS 15.0
-- iOS 15.4
-- iOS 16.4
-- iOS 17.0
-- tvOS 14.5
-- tvOS 15.0
-- tvOS 16.0
-- tvOS 16.1
-- tvOS 16.4
-- tvOS 17.0
-- watchOS 7.4
-- watchOS 8.0
-- watchOS 9.1
-- watchOS 9.4
-- watchOS 10.0
 
-### Devices
-
-- Apple TV
-- Apple TV 4K (2nd generation)
-- Apple TV 4K (3rd generation)
-- Apple TV 4K (3rd generation) (at 1080p)
-- Apple TV 4K (at 1080p) (2nd generation)
-- Apple Watch SE (40mm) (2nd generation)
-- Apple Watch SE (44mm) (2nd generation)
-- Apple Watch Series 5 (40mm)
-- Apple Watch Series 5 (44mm)
-- Apple Watch Series 5 - 40mm
-- Apple Watch Series 5 - 44mm
-- Apple Watch Series 6 (40mm)
-- Apple Watch Series 6 (44mm)
-- Apple Watch Series 6 - 40mm
-- Apple Watch Series 6 - 44mm
-- Apple Watch Series 7 (41mm)
-- Apple Watch Series 7 (45mm)
-- Apple Watch Series 7 - 41mm
-- Apple Watch Series 7 - 45mm
-- Apple Watch Series 8 (41mm)
-- Apple Watch Series 8 (45mm)
-- Apple Watch Series 9 (41mm)
-- Apple Watch Series 9 (45mm)
-- Apple Watch Ultra (49mm)
-- Apple Watch Ultra 2 (49mm)
-- iPad (10th generation)
+{{< collapsible title="iOS 14.5" >}}
 - iPad (8th generation)
+- iPad Air (4th generation)
+- iPad Pro (11-inch) (3rd generation)
+- iPad Pro (12.9-inch) (5th generation)
+- iPad Pro (9.7-inch)
+- iPhone 11
+- iPhone 11 Pro
+- iPhone 11 Pro Max
+- iPhone 12
+- iPhone 12 Pro
+- iPhone 12 Pro Max
+- iPhone 12 mini
+- iPhone 8
+- iPhone 8 Plus
+- iPhone SE (2nd generation)
+- iPod touch (7th generation)
+{{< /collapsible >}}
+
+{{< collapsible title="iOS 15.0" >}}
 - iPad (9th generation)
 - iPad Air (4th generation)
-- iPad Air (5th generation)
 - iPad Pro (11-inch) (3rd generation)
-- iPad Pro (11-inch) (4th generation)
 - iPad Pro (12.9-inch) (5th generation)
-- iPad Pro (12.9-inch) (6th generation)
 - iPad Pro (9.7-inch)
 - iPad mini (6th generation)
 - iPhone 11
@@ -95,6 +67,55 @@ Available on request:
 - iPhone 13 Pro
 - iPhone 13 Pro Max
 - iPhone 13 mini
+- iPhone 8
+- iPhone 8 Plus
+- iPhone SE (2nd generation)
+- iPod touch (7th generation)
+{{< /collapsible >}}
+
+{{< collapsible title="iOS 15.4" >}}
+- iPad (9th generation)
+- iPad Air (5th generation)
+- iPad Pro (11-inch) (3rd generation)
+- iPad Pro (12.9-inch) (5th generation)
+- iPad Pro (9.7-inch)
+- iPad mini (6th generation)
+- iPhone 11
+- iPhone 11 Pro
+- iPhone 11 Pro Max
+- iPhone 12
+- iPhone 12 Pro
+- iPhone 12 Pro Max
+- iPhone 12 mini
+- iPhone 13
+- iPhone 13 Pro
+- iPhone 13 Pro Max
+- iPhone 13 mini
+- iPhone 8
+- iPhone 8 Plus
+- iPhone SE (3rd generation)
+- iPod touch (7th generation)
+{{< /collapsible >}}
+
+{{< collapsible title="iOS 16.4" >}}
+- iPad (10th generation)
+- iPad Air (5th generation)
+- iPad Pro (11-inch) (4th generation)
+- iPad Pro (12.9-inch) (6th generation)
+- iPad mini (6th generation)
+- iPhone 14
+- iPhone 14 Plus
+- iPhone 14 Pro
+- iPhone 14 Pro Max
+- iPhone SE (3rd generation)
+{{< /collapsible >}}
+
+{{< collapsible title="iOS 17.0" >}}
+- iPad (10th generation)
+- iPad Air (5th generation)
+- iPad Pro (11-inch) (4th generation)
+- iPad Pro (12.9-inch) (6th generation)
+- iPad mini (6th generation)
 - iPhone 14
 - iPhone 14 Plus
 - iPhone 14 Pro
@@ -103,11 +124,107 @@ Available on request:
 - iPhone 15 Plus
 - iPhone 15 Pro
 - iPhone 15 Pro Max
-- iPhone 8
-- iPhone 8 Plus
-- iPhone SE (2nd generation)
 - iPhone SE (3rd generation)
-- iPod touch (7th generation)
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 14.5" >}}
+- Apple TV
+- Apple TV 4K (2nd generation)
+- Apple TV 4K (at 1080p) (2nd generation)
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 15.0" >}}
+- Apple TV
+- Apple TV 4K (2nd generation)
+- Apple TV 4K (at 1080p) (2nd generation)
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 16.0" >}}
+- Apple TV
+- Apple TV 4K (2nd generation)
+- Apple TV 4K (at 1080p) (2nd generation)
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 16.1" >}}
+- Apple TV
+- Apple TV 4K (2nd generation)
+- Apple TV 4K (3rd generation)
+- Apple TV 4K (3rd generation) (at 1080p)
+- Apple TV 4K (at 1080p) (2nd generation)
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 16.4" >}}
+- Apple TV
+- Apple TV 4K (3rd generation)
+- Apple TV 4K (3rd generation) (at 1080p)
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 17.0" >}}
+- Apple TV
+- Apple TV 4K (3rd generation)
+- Apple TV 4K (3rd generation) (at 1080p)
+{{< /collapsible >}}
+
+{{< collapsible title="watchOS 7.4" >}}
+- Apple Watch Series 5 - 40mm
+- Apple Watch Series 5 - 44mm
+- Apple Watch Series 6 - 40mm
+- Apple Watch Series 6 - 44mm
+{{< /collapsible >}}
+
+{{< collapsible title="watchOS 8.0" >}}
+- Apple Watch Series 5 - 40mm
+- Apple Watch Series 5 - 44mm
+- Apple Watch Series 6 - 40mm
+- Apple Watch Series 6 - 44mm
+- Apple Watch Series 7 - 41mm
+- Apple Watch Series 7 - 45mm
+{{< /collapsible >}}
+
+{{< collapsible title="watchOS 9.1" >}}
+- Apple Watch SE (40mm) (2nd generation)
+- Apple Watch Series 5 (40mm)
+- Apple Watch Series 5 (44mm)
+- Apple Watch Series 6 (40mm)
+- Apple Watch Series 6 (44mm)
+- Apple Watch Series 7 (41mm)
+- Apple Watch Series 7 (45mm)
+- Apple Watch Series 8 (41mm)
+- Apple Watch Series 8 (45mm)
+- Apple Watch Ultra (49mm)
+{{< /collapsible >}}
+
+{{< collapsible title="watchOS 9.4" >}}
+- Apple Watch SE (40mm) (2nd generation)
+- Apple Watch SE (44mm) (2nd generation)
+- Apple Watch Series 5 (40mm)
+- Apple Watch Series 5 (44mm)
+- Apple Watch Series 6 (40mm)
+- Apple Watch Series 6 (44mm)
+- Apple Watch Series 7 (41mm)
+- Apple Watch Series 7 (45mm)
+- Apple Watch Series 8 (41mm)
+- Apple Watch Series 8 (45mm)
+- Apple Watch Ultra (49mm)
+{{< /collapsible >}}
+
+{{< collapsible title="watchOS 10.0" >}}
+- Apple Watch SE (40mm) (2nd generation)
+- Apple Watch SE (44mm) (2nd generation)
+- Apple Watch Series 5 (40mm)
+- Apple Watch Series 5 (44mm)
+- Apple Watch Series 6 (40mm)
+- Apple Watch Series 6 (44mm)
+- Apple Watch Series 7 (41mm)
+- Apple Watch Series 7 (45mm)
+- Apple Watch Series 8 (41mm)
+- Apple Watch Series 8 (45mm)
+- Apple Watch Series 9 (41mm)
+- Apple Watch Series 9 (45mm)
+- Apple Watch Ultra (49mm)
+- Apple Watch Ultra 2 (49mm)
+{{< /collapsible >}}
+
 
 ## Android Studio
 

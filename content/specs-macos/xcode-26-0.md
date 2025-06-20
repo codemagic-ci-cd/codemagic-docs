@@ -27,25 +27,10 @@ Available on request:
 
 - 26.0 (17A5241e) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
 
-### Runtimes
+### Runtimes and Devices
 
-- iOS 18.5
-- iOS 26.0
-- tvOS 26.0
-- visionOS 26.0
-- watchOS 26.0
 
-### Devices
-
-- Apple TV
-- Apple TV 4K (3rd generation)
-- Apple TV 4K (3rd generation) (at 1080p)
-- Apple Vision Pro 4K
-- Apple Watch SE (40mm) (2nd generation)
-- Apple Watch SE (44mm) (2nd generation)
-- Apple Watch Series 10 (42mm)
-- Apple Watch Series 10 (46mm)
-- Apple Watch Ultra 2 (49mm)
+{{< collapsible title="iOS 18.5" >}}
 - iPad (A16)
 - iPad Air 11-inch (M3)
 - iPad Air 13-inch (M3)
@@ -57,6 +42,44 @@ Available on request:
 - iPhone 16 Pro
 - iPhone 16 Pro Max
 - iPhone 16e
+{{< /collapsible >}}
+
+
+{{< collapsible title="iOS 26.0" >}}
+- iPad (A16)
+- iPad Air 11-inch (M3)
+- iPad Air 13-inch (M3)
+- iPad Pro 11-inch (M4)
+- iPad Pro 13-inch (M4)
+- iPad mini (A17 Pro)
+- iPhone 16
+- iPhone 16 Plus
+- iPhone 16 Pro
+- iPhone 16 Pro Max
+- iPhone 16e
+{{< /collapsible >}}
+
+
+{{< collapsible title="tvOS 26.0" >}}
+- Apple TV
+- Apple TV 4K (3rd generation)
+- Apple TV 4K (3rd generation) (at 1080p)
+{{< /collapsible >}}
+
+
+{{< collapsible title="visionOS 26.0" >}}
+- Apple Vision Pro 4K
+{{< /collapsible >}}
+
+
+{{< collapsible title="watchOS 26.0" >}}
+- Apple Watch SE (40mm) (2nd generation)
+- Apple Watch SE (44mm) (2nd generation)
+- Apple Watch Series 10 (42mm)
+- Apple Watch Series 10 (46mm)
+- Apple Watch Ultra 2 (49mm)
+{{< /collapsible >}}
+
 
 ## Android Studio
 
