@@ -27,24 +27,10 @@ Available on request:
 
 - 16.3 (16E140) `/Applications/Xcode-16.3.app`, also selected when specifying `latest` in Xcode version settings
 
-### Runtimes
+### Runtimes and Devices
 
-- iOS 18.4
-- tvOS 18.4
-- visionOS 2.4
-- watchOS 11.4
 
-### Devices
-
-- Apple TV
-- Apple TV 4K (3rd generation)
-- Apple TV 4K (3rd generation) (at 1080p)
-- Apple Vision Pro
-- Apple Watch SE (40mm) (2nd generation)
-- Apple Watch SE (44mm) (2nd generation)
-- Apple Watch Series 10 (42mm)
-- Apple Watch Series 10 (46mm)
-- Apple Watch Ultra 2 (49mm)
+{{< collapsible title="iOS 18.4" >}}
 - iPad (10th generation)
 - iPad (A16)
 - iPad Air 11-inch (M2)
@@ -59,6 +45,29 @@ Available on request:
 - iPhone 16 Pro
 - iPhone 16 Pro Max
 - iPhone 16e
+{{< /collapsible >}}
+
+
+{{< collapsible title="tvOS 18.4" >}}
+- Apple TV
+- Apple TV 4K (3rd generation)
+- Apple TV 4K (3rd generation) (at 1080p)
+{{< /collapsible >}}
+
+
+{{< collapsible title="visionOS 2.4" >}}
+- Apple Vision Pro
+{{< /collapsible >}}
+
+
+{{< collapsible title="watchOS 11.4" >}}
+- Apple Watch SE (40mm) (2nd generation)
+- Apple Watch SE (44mm) (2nd generation)
+- Apple Watch Series 10 (42mm)
+- Apple Watch Series 10 (46mm)
+- Apple Watch Ultra 2 (49mm)
+{{< /collapsible >}}
+
 
 ## Android Studio
 
@@ -175,9 +184,8 @@ Installed packages:
   sources;android-31                       | 1            | Sources for Android 31                      | sources/android-31
   sources;android-32                       | 1            | Sources for Android 32                      | sources/android-32
   sources;android-35                       | 1            | Sources for Android 35                      | sources/android-35
-
 {{< /collapsible >}}
-            
+
 
 ## Android NDK
 
