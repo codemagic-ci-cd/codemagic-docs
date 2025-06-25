@@ -21,7 +21,7 @@ Available on request:
 
 - System version `macOS 15.5 (24F74)`
 - Kernel version `Darwin 24.5.0`
-- Disk `294GB (Free Space: 157GB)`
+- Disk `294GB (Free Space: 156GB)`
 
 ## Xcode versions
 
@@ -47,7 +47,6 @@ Available on request:
 - iPhone SE (3rd generation)
 {{< /collapsible >}}
 
-
 {{< collapsible title="iOS 18.5" >}}
 - iPad (A16)
 - iPad Air 11-inch (M3)
@@ -62,18 +61,15 @@ Available on request:
 - iPhone 16e
 {{< /collapsible >}}
 
-
 {{< collapsible title="tvOS 18.5" >}}
 - Apple TV
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
 {{< /collapsible >}}
 
-
 {{< collapsible title="visionOS 2.5" >}}
 - Apple Vision Pro
 {{< /collapsible >}}
-
 
 {{< collapsible title="watchOS 11.5" >}}
 - Apple Watch SE (40mm) (2nd generation)
@@ -242,7 +238,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 ## Other pre-installed tools
 
-- appium `2.5.0`
+- appium `2.19.0`
 - aws `2.27.37`
 - azure-cli `2.74.0`
 - carthage `0.40.0`
@@ -250,7 +246,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - cordova `12.0.0`
 - curl `8.7.1`
 - ew-cli `0.12.4`
-- fastlane `2.227.2`
+- fastlane `2.228.0`
 - firebase `11.21.0`
 - gem `3.6.9`
 - gh `2.74.1`
@@ -258,11 +254,11 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
 - homebrew `4.5.7`
-- ionic `7.2.0`
+- ionic `7.2.1`
 - jq `1.8.0`
 - ktlint `1.6.0`
-- node `22.9.0`
-- npm `10.8.3`
+- node `22.16.0`
+- npm `10.9.2`
 - python `3.12.7`
 - python3 `3.12.7`
 - ruby `3.3.6`
