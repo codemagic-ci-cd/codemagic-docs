@@ -1,7 +1,7 @@
 ---
 title: Capawesome Cloud integration
 description: How to integrate your workflows with Capawesome Cloud using codemagic.yaml
-weight: 7
+weight: 4
 ---
 
 [Capawesome Cloud](https://capawesome.io/cloud/) is a powerful platform that provides a suite of tools to help you deploy [Live Updates](https://capawesome.io/blog/announcing-the-capacitor-live-update-plugin/) to your [Capacitor](https://capacitorjs.com/) apps after they have been published to the App Store or Google Play.

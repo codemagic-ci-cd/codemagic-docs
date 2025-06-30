@@ -1,7 +1,7 @@
 ---
 title: Capgo integration
 description: How to integrate your workflows with Capgo using codemagic.yaml
-weight: 7
+weight: 5
 ---
 
 [Capgo](https://capgo.app/) allows you to deploy live updates for Capacitor apps after they have been published to the App Store or Google Play.

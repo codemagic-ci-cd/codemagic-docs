@@ -1,7 +1,7 @@
 ---
 title: Discord integration
 description: How to integrate your workflows with Discord using codemagic.yaml
-weight: 3
+weight: 9
 ---
 
 **Discord** is a free voice, video and text chat application originally built for gamers, but has since become a general use platform for many different communities. If your development team uses Discord, it can be used as part of your CI/CD to notify your development team when a build is complete and include information about the build and links to download build artifacts. 

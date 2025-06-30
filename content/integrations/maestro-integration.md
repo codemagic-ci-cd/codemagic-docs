@@ -1,7 +1,7 @@
 ---
 title: Maestro integration
 description: How to integrate your workflows with Maestro using codemagic.yaml
-weight: 14
+weight: 16
 ---
 
 [**Maestro UI testing framework**](https://maestro.mobile.dev/) from [mobile.dev](https://mobile.dev) lets you test your iOS and Android mobile apps using simple to-create test flows that are written in a declarative form using YAML. In order to run your tests in CI you can utilize [Maestro Cloud](https://cloud.mobile.dev/), which allows you to easily run your Flows without having to manage iOS and Android devices in your own CI. For more information on how to get started with Maestro and Maestro Cloud, please refer to the [Maestro documentation](https://maestro.mobile.dev/).

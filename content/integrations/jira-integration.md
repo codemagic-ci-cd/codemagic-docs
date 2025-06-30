@@ -1,7 +1,7 @@
 ---
 title: Jira integration
 description: How to integrate your workflows with Jira using codemagic.yaml
-weight: 1
+weight: 12
 ---
 
 **Jira** is an issue tracking and project management product developed by Atlassian. Many software development teams use it to maintain the visibility of their projects. 

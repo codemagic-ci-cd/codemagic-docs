@@ -1,7 +1,7 @@
 ---
 title: BrowserStack integration
 description: How to integrate your workflows with BrowserStack using codemagic.yaml
-weight: 5
+weight: 3
 ---
 
 **BrowserStack** is a cloud-based mobile testing platform that provides the ability to test your applications on real mobile devices. BrowserStack can be used as a part of your Codemagic CI/CD pipeline to test your applications.

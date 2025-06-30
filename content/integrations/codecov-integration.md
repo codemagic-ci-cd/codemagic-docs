@@ -1,7 +1,7 @@
 ---
 title: Codecov integration
 description: How to integrate your workflows with Codecov using codemagic.yaml
-weight: 7
+weight: 6
 ---
 
 [**Codecov**](https://about.codecov.io/) is a dedicated code analysis tool and one of the leading code coverage solutions for mobile applications. It can be used as a part of the Codemagic CI/CD pipeline for code coverage.

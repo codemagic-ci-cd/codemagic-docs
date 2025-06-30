@@ -1,7 +1,7 @@
 ---
 title: Katalon integration
 description: How to integrate your workflows with Katalon using codemagic.yaml
-weight: 10
+weight: 13
 ---
 
 **Katalon** is designed to create and reuse automated test scripts for UI without coding.
