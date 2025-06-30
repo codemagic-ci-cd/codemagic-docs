@@ -1,7 +1,7 @@
 ---
 title: Patrol integration
 description: How to integrate your workflows with Patrol using codemagic.yaml
-weight: 1
+weight: 17
 ---
 
 [**Patrol**](https://patrol.leancode.co?utm_source=codemagic&utm_medium=referral) is a powerful, open-source UI testing framework designed specifically for Flutter apps, developed and maintained by [LeanCode](https://leancode.co?utm_source=codemagic&utm_medium=referral), one of the world's leading Flutter development consultancies. Patrol can be seamlessly integrated with Codemagic CI/CD to enable comprehensive automated testing workflows. Patrol allows you to:
@@ -10,19 +10,19 @@ weight: 1
 - Modify device settings, toggle Wi-Fi, and more
 - All achieved effortlessly using plain Dart code
 
-A sample project that shows how to configure Patrol integration is available in codemagic's [patrol-demo-project](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/patrol-demo-project).
+A sample project that shows how to configure Patrol integration is available in Codemagic's [patrol-demo-project](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/patrol-demo-project).
 
 This sample project includes:
 
 - Complete `codemagic.yaml` configuration with multiple integrations
 - Example Patrol tests
-- How to sign in iOS before running patrol on physical device
+- How to sign in iOS before running Patrol on physical device
 - Integration with device farms (Firebase Test Lab)
 - Best practices for CI/CD testing workflows
 
 Refer to the sample project's README and configuration files for detailed setup instructions and integration examples.
 
-## How to start using patrol in your workflows
+## How to start using Patrol in your workflows
 
 ### Prerequisites
 
@@ -37,9 +37,10 @@ Before integrating Patrol with Codemagic, ensure you have:
 Add the following configuration to your `codemagic.yaml` file to build Patrol tests and send them to Firebase Test Lab:
 
 ```yaml
-environment: &environment
-  flutter: 3.27.3 # Replace with your Flutter version
-  java: 17 # Replace with your Java version
+definitions:
+  environment: &environment
+    flutter: 3.27.3 # Replace with your Flutter version
+    java: 17 # Replace with your Java version
 
 workflows:
   patrol_android_build:
@@ -93,7 +94,7 @@ Patrol can be integrated with popular device farms through Codemagic:
 - **BrowserStack**: Execute tests on BrowserStack's real device cloud
 - **emulator.wtf**: Run tests on emulator.wtf's cloud emulators
 
-It can be also run on your codemagic itself. There is a [Blog post](https://blog.codemagic.io/how-to-test-native-features-in-flutter-apps-with-patrol-and-codemagic/).
+It can be also run on your Codemagic itself. There is a [Blog post](https://blog.codemagic.io/how-to-test-native-features-in-flutter-apps-with-patrol-and-codemagic/).
 
 ### Getting Help
 
