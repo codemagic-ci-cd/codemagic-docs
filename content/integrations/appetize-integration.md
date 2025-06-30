@@ -1,7 +1,7 @@
 ---
 title: Appetize integration
 description: How to integrate your workflows with Appetize using codemagic.yaml
-weight: 11
+weight: 1
 ---
 
 [**Appetize**](https://appetize.io/) enables you to run native iOS and Android mobile apps directly in your browser. No downloads, plugins, or extra permissions needed. 

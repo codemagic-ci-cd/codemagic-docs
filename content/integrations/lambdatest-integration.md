@@ -1,7 +1,7 @@
 ---
 title: LambdaTest integration
 description: How to integrate your workflows with LambdaTest using codemagic.yaml
-weight: 6
+weight: 15
 ---
 
 **LambdaTest** is a cloud-based mobile testing platform that provides the ability to test your applications on real mobile devices. LambdaTest can be used as a part of your Codemagic CI/CD pipeline to test your applications.

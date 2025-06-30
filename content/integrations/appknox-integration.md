@@ -1,7 +1,7 @@
 ---
 title: Appknox integration
 description: How to integrate your workflows with Appknox using codemagic.yaml
-weight: 18
+weight: 2
 ---
 
 **Appknox** is a mobile application security testing solution that can be integrated into your Codemagic CI/CD pipelines to run security checks for your applications.

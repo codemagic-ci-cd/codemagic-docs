@@ -1,7 +1,7 @@
 ---
 title: Kobiton integration
 description: How to integrate your workflows with Kobiton using codemagic.yaml
-weight: 9
+weight: 14
 ---
 
 **Kobiton** is a mobile testing platform that accelerates delivery and testing of mobile apps by offering manual and automated testing on real devices, in cloud & on-premises.
