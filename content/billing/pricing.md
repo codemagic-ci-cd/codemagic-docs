@@ -7,9 +7,21 @@ weight: 2
 ## CodePush Pricing
 
 CodePush (Over-the-Air updates) for React Native projects is priced as follows: 
-- Starting from **$3k/year per team** with the option to integrate CodePush into your existing CI pipeline without a requirement for migration to Codemagic for CI/CD.
-- Starting from **$6k/year** for a dedicated, standalone CodePush instance.
-- Starting from **$12k/year** for Enterprise with a security compliance process included.
+
+1. $99/month per 100k Monthly Active Users (MAU)
+2. No limit on updates and bandwith
+3. We can offer up to 6 months up front payment, otherwise billing is monthly. Invoicing is available starting 1M MAU.
+
+| Monthly Active Users (MAUs) | Price (USD) |
+|-----------------------------|-------------|
+| 10,000                      | $99         |
+| 100,000                     | $99         |
+| 150,000                     | $198        |
+| 500,000                     | $495        |
+| 1,000,000                   | $990        |
+| 2,000,000                   | $1,980      |
+| 5,000,000                   | $4,950      |
+| 10,000,000                  | $9,900      |
 
 ## Pricing for Individuals
 ### 1. Free plan
