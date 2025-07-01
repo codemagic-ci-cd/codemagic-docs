@@ -36,7 +36,7 @@ Before integrating Patrol with Codemagic, ensure you have:
 
 Add the following configuration to your `codemagic.yaml` file to build Patrol tests and send them to Firebase Test Lab:
 
-```yaml
+{{< highlight yaml "style=paraiso-dark">}}
 definitions:
   environment: &environment
     flutter: 3.27.3 # Replace with your Flutter version
@@ -82,7 +82,7 @@ workflows:
     artifacts:
       - build/app/outputs/apk/dev/debug/app-dev-debug.apk
       - build/app/outputs/apk/androidTest/dev/debug/app-dev-debug-androidTest.apk
-```
+{{< /highlight >}}
 
 For more detailed configuration, look at [patrol-demo-project](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/patrol-demo-project).
 
