@@ -70,8 +70,13 @@ Each additional concurrency is $49/month and you will be billed for each concurr
 
 Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M4), Linux, and Windows instances. 
 
-### 2. macOS M2 - Fixed Annual Plan
+### 2. Fixed Annual Plans
 
+The following optons are available for teams with different macOS machines:
+
+{{< tabpane >}}
+{{< tab header="macOS M2">}}
+{{<markdown>}}
 An annual subscription with access to **macOS M2s** instances and **2 months free** is **$3,990/year**.
 
 The Codemagic **macOS M2** annual plan gives you a fixed-price plan with the following benefits:
@@ -96,9 +101,11 @@ If you have already created a Team in the Codemagic web app, you can upgrade to 
 If you require additional concurrencies or have any other questions about the annual plan, including requests for **macOS M4 instances**,  please contact us [here](https://codemagic.io/pricing/#enterprise).
 
 If you require annual invoicing, please refer to the Enterprise plans below.
+{{</markdown>}}
+{{< /tab >}}
 
-## macOS M4 - Fixed Annual Plan
-
+{{< tab header="macOS M4" >}}
+{{<markdown>}}
 An annual subscription with access to **macOS M4** instances is **$5,400/year**.
 
 The Codemagic **macOS M4** annual plan gives you a fixed-price plan with the following benefits:
@@ -112,9 +119,11 @@ The Codemagic **macOS M4** annual plan gives you a fixed-price plan with the fol
 The **macOS M4** annual plan can only be paid with a credit card.
 
 To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
+{{</markdown>}}
+{{< /tab >}}
 
-## macOS M4 Pro - Fixed Annual Plan
-
+{{< tab header="macOS M4 Pro" >}}
+{{<markdown>}}
 An annual subscription with access to **macOS M4 Pro** instances is **$10,830/year**.
 
 The Codemagic **macOS M4 Pro** annual plan gives you a fixed-price plan with the following benefits:
@@ -128,9 +137,11 @@ The Codemagic **macOS M4 Pro** annual plan gives you a fixed-price plan with the
 The **macOS M4 Pro** annual plan can only be paid with a credit card.
 
 To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
+{{</markdown>}}
+{{< /tab >}}
 
-## macOS M2 Max Studio - Fixed Annual Plan
-
+{{< tab header="macOS M2 Max Studio" >}}
+{{<markdown>}}
 An annual subscription with access to **macOS M2 Max Studio** instances is **$11,830/year**.
 
 The Codemagic **macOS M2 Max Studio** annual plan gives you a fixed-price plan with the following benefits:
@@ -144,8 +155,20 @@ The Codemagic **macOS M2 Max Studio** annual plan gives you a fixed-price plan w
 The **macOS M2 Max Studio** annual plan can only be paid with a credit card.
 
 To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
+{{</markdown>}}
+{{< /tab >}}
 
-## Pricing for Enterprises with macOS M4
+{{< /tabpane >}}
+
+
+## Pricing for Enterprises
+
+macOS M4 and M4 Pro machines are available with the following Enterprise subscriptions:
+
+{{< tabpane >}}
+
+{{< tab header="Enterprises with macOS M4" >}}
+{{<markdown>}}
 
 Enterprise plans are available starting from **$12k/year** and include the following:
 
@@ -158,9 +181,11 @@ Enterprise plans are available starting from **$12k/year** and include the follo
 - Private Slack/Discord/MS Teams channel
 - SSO Login (OpenID, OAuth2 or SAML 2.0)
 - OpenID Connect (on request)
+{{</markdown>}}
+{{< /tab >}}
 
-## Pricing for Enterprises with macOS M4 Pro
-
+{{< tab header="Enterprises with macOS M4 Pro" >}}
+{{<markdown>}}
 Enterprise plans are available starting from **$17,400/year** and include the following:
 
 - Unlimited access to all VM types (including macOS M4 Pro) 
@@ -172,7 +197,9 @@ Enterprise plans are available starting from **$17,400/year** and include the fo
 - Private Slack/Discord/MS Teams channel
 - SSO Login (OpenID, OAuth2 or SAML 2.0)
 - OpenID Connect (on request)
-
+{{</markdown>}}
+{{< /tab >}}
+{{< /tabpane >}}
 
 Dedicated **Mac mini M4 Pro** and **Mac mini M2 Max Studio** **hosts** are also available on request. A dedicated host is only used by your organization and provides 2 VMs that can be configured with the software you require. Dedicated hosts can also be EU-based.
 
