@@ -1,296 +1,280 @@
 ---
-title: Signing macOS apps
-description: How to set up macOS code signing in codemagic.yaml
+title: Pricing
+description: An overview of Codemagic pricing
 weight: 2
-aliases: /code-signing-yaml/signing-macos
 ---
 
-All macOS applications have to be digitally signed before they can be installed on devices or made available to the public via the Mac App Store or outside of the Mac App Store.
+## CodePush Pricing
 
-{{<notebox>}}
-This guide only applies to workflows configured with the **codemagic.yaml**. If your workflow is configured with **Flutter workflow editor** please go to [Signing macOS apps using the Flutter workflow editor](../code-signing/macos-code-signing).
-{{</notebox>}}
+CodePush (Over-the-Air updates) for React Native projects is priced as follows: 
 
-## Automatic vs Manual code signing
+1. $99/month per 100k Monthly Active Users (MAU)
+2. No limit on updates and bandwith
+3. We can offer up to 6 months up front payment, otherwise billing is monthly. Invoicing is available starting 1M MAU.
 
-{{<notebox>}}
-Signing macOS applications requires [Apple Developer Program](https://developer.apple.com/programs/enroll/) membership. 
-{{</notebox>}}
+| Monthly Active Users (MAUs) | Price (USD) |
+|-----------------------------|-------------|
+| 10,000                      | $99         |
+| 100,000                     | $99         |
+| 150,000                     | $198        |
+| 500,000                     | $495        |
+| 1,000,000                   | $990        |
+| 2,000,000                   | $1,980      |
+| 5,000,000                   | $4,950      |
+| 10,000,000                  | $9,900      |
 
-Signing macOS apps requires a `Signing certificate` (App Store **development** or **distribution** certificate in `.p12` format) and a `Provisioning profile`. In **Manual code signing** you save these files as Codemagic `Environment variables` and manually reference them in the appropriate build steps.
+## Pricing for Individuals
+### 1. Free plan
 
-In **Automatic code signing**, Codemagic takes care of Certificate and Provisioning profile management for you. Based on the `certificate private key` that you provide, Codemagic will automatically fetch the correct certificate from the App Store or create a new one if necessary.
+This plan is suitable for individuals working on hobby or indie projects. You can also use this plan for running a proof of concept.
 
-## Certificate types
-There are several certificate types you can choose to sign your macOS app, depending on the distribution method you plan to use.
+Individuals receive **500 free minutes** per month on macOS M2 machines on a personal account. These 500 free minutes are **reset on the 1st of each month**. Free minutes are not available if you are using a Team. 
 
-- `MAC_APP_DEVELOPMENT` certificate allows you to build your app for internal testing and debugging.
-- `MAC_APP_DISTRIBUTION` certificate is used to sign a Mac app before submitting it to the Mac App Store
-- `MAC_INSTALLER_DISTRIBUTION` is used to sign and submit a Mac Installer Package to the Mac App Store
-- `DEVELOPER_ID_APPLICATION` is used to sign a Mac app before distributing it outside the Mac App Store
-- `DEVELOPER_ID_INSTALLER` is used to sign a Mac Installer Package before distributing it outside the Mac App Store
+You cannot invite collaborators to an individual plan.
 
-For example, in order to publish to Mac App Store, the application must be signed with a `Mac App Distribution` certificate using a `Mac App Store` provisioning profile. If you want to create a `.pkg` Installer package, you must use a `Mac Installer Distribution` certificate.
+To start using Codemagic for free, [sign up here](https://codemagic.io/signup). 
 
-## Obtaining the certificate private key
+### 2. Buying Additional Minutes
 
-To enable Codemagic to automatically fetch or create the correct signing certificate on your behalf, you need to provide the corresponding `certificate private key`. You then have to save that key as a Codemagic environment variable.
+You can enable billing on personal accounts and pay for any additional minutes you want to use. You will still have **500 free build minutes** on macOS M2 VM. To enable billing, proceed [here](https://codemagic.io/billing). 
 
+Postpaid minutes are billed on the first day of the following month in which they were used.
+
+Usage on macOS M2 VM that exceeds 500 minutes is charged at the rate shown below.
+
+Builds on Linux and Windows do not have free build minutes. The per-minute pricing for each instance type is shown below.
+
+| **Item**                     | **Price**                          |
+| ---------------------------- | ---------------------------------  |
+| macOS (M2) VM        | $0.095 / minute                    |
+| Linux & Windows VMs          | $0.045 / minute                    |
+
+## Pricing for Teams
+
+### 1. Pay-as-you-go
+
+For teams, all build minutes using macOS M2 VM and Linux VM are charged at the rates shown below. 
+
+Each extra build concurrency allows running an additional build in parallel. For example, adding two extra build concurrencies allows running a total of three builds in parallel. 
+
+You can **add additional concurrencies** in the Codemagic web app by clicking 'Billing' in the left-hand menu and then clicking on your Team name. In the 'Billing Overview' you should click 'update' in the Build concurrency section and select the number of concurrencies you wish to add to your Team. 
+
+Each additional concurrency is $49/month and you will be billed for each concurrency on the last day of each month.
+
+
+| **Item**                     | **Price**                         |
+| ---------------------------- | --------------------------------- | 
+| macOS (M2) VM        | $0.095 / minute                   |                                                                                                                                   
+| Linux & Windows VMs          | $0.045 / minute                   |                                                                       
+| Extra build concurrency      | $49 / month                       | 
+
+Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M4), Linux, and Windows instances. 
+
+### 2. Fixed Annual Plans
+
+The following options are available for teams with different macOS machines:
 
 {{< tabpane >}}
-
-{{< tab header="Create a new key" >}}
+{{< tab header="macOS M2">}}
 {{<markdown>}}
-You can create a new 2048 bit RSA key by running the command below in your terminal:
+An annual subscription with access to **macOS M2s** instances and **2 months free** is **$3,990/year**.
 
-{{< highlight Shell "style=rrt">}}
-ssh-keygen -t rsa -b 2048 -m PEM -f ~/Desktop/mac_distribution_private_key -q -N ""
-{{< /highlight >}}
+The Codemagic **macOS M2** annual plan gives you a fixed-price plan with the following benefits:
 
-This new private key will be used to create a new Mac App Distribution certificate in your Apple Developer Program account if there isn't one that already matches this private key.
+* 3 concurrencies (with access to macOS M2, Linux, and Windows instances)
+* Unlimited build minutes
+* Unlimited team seats
+* In-app chat support
+* Additional concurrencies are **$1,500/year**. 
+
+The fixed annual plan can only be paid with a credit card.
+
+If you have already created a Team in the Codemagic web app, you can upgrade to the annual plan as follows:
+
+1. Log in to Codemagic.
+2. Click **Billing** in the left-hand menu.
+3. Click on your Team account.
+4. Click on the **Enable billing** button.
+5. Enter your **credit card** details and **company information**.
+6. Once you have entered your details, pay-as-you-go billing will be enabled. To upgrade to the Fixed Annual plan, click on the **Upgrade** button and follow the instructions to subscribe to the Fixed Annual plan.
+
+If you require additional concurrencies or have any other questions about the annual plan, including requests for **macOS M4 instances**,  please contact us [here](https://codemagic.io/pricing/#enterprise).
+
+If you require annual invoicing, please refer to the Enterprise plans below.
 {{</markdown>}}
 {{< /tab >}}
 
-{{% tab header="Use an existing key"%}}
+{{< tab header="macOS M4" >}}
 {{<markdown>}}
+An annual subscription with access to **macOS M4** instances is **$5,400/year**.
 
-1. On the Mac which created the `Mac App Distribution` certificate, open the **Keychain Access**, located in the **Applications and Utilities** folder.
-2. Select the appropriate certificate entry.
-3. Right-click on it to select "Export."
-4. In the export prompt window that appears, make sure the file format is set to **Personal Information Exchange (.p12)**"**.
-5. Give the file a name such as "MAC_DISTRIBUTION", choose a location and click **Save**.
-6. On the next prompt, leave the password empty and click **OK**.
-7. Use the following `openssl` command to export the private key:
+The Codemagic **macOS M4** annual plan gives you a fixed-price plan with the following benefits:
 
-{{< highlight Shell "style=rrt">}}
-openssl pkcs12 -in MAC_DISTRIBUTION.p12 -nodes -nocerts | openssl rsa -out mac_distribution_private_key
-{{< /highlight >}}
+* 3 concurrencies (with access to macOS M4, Linux, and Windows instances)
+* Unlimited build minutes
+* Unlimited team seats
+* In-app chat support
+* Additional concurrencies are **$1,800/year**. 
 
-8. When prompted for the import password, just press enter. The private key will be written to a file called **mac_distribution_private_key** in the directory where you ran the command.
+The **macOS M4** annual plan can only be paid with a credit card.
 
+To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
 {{</markdown>}}
-{{% /tab %}}
+{{< /tab >}}
+
+{{< tab header="macOS M4 Pro" >}}
+{{<markdown>}}
+An annual subscription with access to **macOS M4 Pro** instances is **$10,830/year**.
+
+The Codemagic **macOS M4 Pro** annual plan gives you a fixed-price plan with the following benefits:
+
+* 3 concurrencies (with access to macOS M4 Pro, Linux, and Windows instances)
+* Unlimited build minutes
+* Unlimited team seats
+* In-app chat support
+* Additional concurrencies are **$3,610/year**. 
+
+The **macOS M4 Pro** annual plan can only be paid with a credit card.
+
+To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
+{{</markdown>}}
+{{< /tab >}}
+
+{{< tab header="macOS M2 Max Studio" >}}
+{{<markdown>}}
+An annual subscription with access to **macOS M2 Max Studio** instances is **$11,830/year**.
+
+The Codemagic **macOS M2 Max Studio** annual plan gives you a fixed-price plan with the following benefits:
+
+* 3 concurrencies (with access to macOS M2 Max Studio, Linux, and Windows instances)
+* Unlimited build minutes
+* Unlimited team seats
+* In-app chat support
+* Additional concurrencies are **$3,943/year**. 
+
+The **macOS M2 Max Studio** annual plan can only be paid with a credit card.
+
+To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
+{{</markdown>}}
+{{< /tab >}}
 
 {{< /tabpane >}}
 
-## Automatic code signing
 
-When automatic code signing is used, then most up-to-date signing files are obtained directly from Apple during the build time. This requires that Codemagic has access to your Apple Developer portal account, which is achieved by using App Store Connect API key.
+## Pricing for Enterprises
 
-### Creating the App Store Connect API key
-
-{{< include "/partials/app-store-connect-api-key.md" >}}
-
-### Configuring environment variables
-
-Provisioning profiles and code signing certificates are obtained from Apple Developer portal with the command [`app-store-connect fetch-signing-files`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#fetch-signing-files). App Store Connect API key information can be passed to it via environment variables [`APP_STORE_CONNECT_KEY_IDENTIFIER`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--key-idkey_identifier), [`APP_STORE_CONNECT_ISSUER_ID`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--issuer-idissuer_id), [`APP_STORE_CONNECT_PRIVATE_KEY`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--private-keyprivate_key).
+macOS M4 and M4 Pro machines are available with the following Enterprise subscriptions:
 
 {{< tabpane >}}
 
-{{< tab header="Use App Store Connect integration" >}}
+{{< tab header="Enterprises with macOS M4" >}}
 {{<markdown>}}
 
-{{< include "/partials/integrations-setup-app-store-connect.md" >}}
+Enterprise plans are available starting from **$12k/year** and include the following:
 
-Integration will take care of the App Store Connect API authentication part, but additionally the certificate private key has to be exported too. For this additional environment variable [`CERTIFICATE_PRIVATE_KEY`](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--certificate-keyprivate_key) has to be defined.
-
-1. Open your Codemagic app settings, and go to the **Environment variables** tab.
-2. Enter `CERTIFICATE_PRIVATE_KEY` as the **_Variable name_**.
-3. Open the file `ios_distribution_private_key` with a text editor and copy the **entire contents** of the file, including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags. Alternatively, you can run the following command on the file:
-
-{{< highlight Shell "style=rrt">}}
-cat ios_distribution_private_key | pbcopy
-{{< /highlight >}}
-
-4. Paste into the **_Variable value_** field.
-5. Enter a variable group name, e.g. **_code-signing_**. Click the button to create the group.
-6. Make sure the **Secret** option is selected so that the variable can be protected by encryption.
-7. Click the **Add** button to add the variable.
-
-In your workflow you can now simply use the following to ensure that all variables are readily available during build:
-
-{{< highlight yaml "style=paraiso-dark">}}
-workflows:
-  ios-workflow:
-    environment:
-        groups:
-            - code-signing
-    integrations:
-        app_store_connect: <App Store Connect API key name>
-{{< /highlight >}}
-
-This will expose necessary environment variables during the build.
+- Unlimited access to all VM types (including macOS M4) 
+- 180-minute build timeout
+- Priority support
+- Service level agreement
+- Account management services
+- Technical account manager
+- Private Slack/Discord/MS Teams channel
+- SSO Login (OpenID, OAuth2 or SAML 2.0)
+- OpenID Connect (on request)
 {{</markdown>}}
 {{< /tab >}}
 
-{{< tab header="Define environment variables by yourself" >}}
+{{< tab header="Enterprises with macOS M4 Pro" >}}
 {{<markdown>}}
-1. Open your Codemagic app settings, and go to the **Environment variables** tab.
-2. Enter `CERTIFICATE_PRIVATE_KEY` as the **_Variable name_**.
-3. Open the file `mac_distribution_private_key` with a text editor and copy the **entire contents** of the file, including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` tags. Alternatively, you can run the following command on the file:
- {{< highlight bash "style=rrt">}}
-   cat mac_distribution_private_key | pbcopy
- {{< /highlight >}}
+Enterprise plans are available starting from **$17,400/year** and include the following:
 
-4. Paste into the **_Variable value_** field.
-5. Enter a variable group name, e.g. **_appstore_credentials_**. Click the button to create the group.
-6. Make sure the **Secret** option is selected so that the variable can be protected by encryption.
-7. Click the **Add** button to add the variable.
-8. Run the following command on the **App Store Connect API key** file that you downloaded earlier (in our example saved as `codemagic_api_key.p8`) to copy its content to clipboard:
-{{< highlight Shell "style=rrt">}}
-cat codemagic_api_key.p8 | pbcopy
-{{< /highlight >}}
-
-9. Create a new Environment variable `APP_STORE_CONNECT_PRIVATE_KEY` and paste the value from clipboard.
-10. Create variable `APP_STORE_CONNECT_KEY_IDENTIFIER`. The value is the **Key ID** field from **App Store Connect > Users and Access > Keys**.
-11. Create variable `APP_STORE_CONNECT_ISSUER_ID`. The value is the **Issuer ID** field from **App Store Connect > Users and Access > Keys**.
-
-{{<notebox>}}
-**Tip**: Store all the of these variables in the same group so they can be imported to codemagic.yaml workflow at once. 
-{{</notebox>}}
-
-Environment variables have to be added to the workflow either individually or as a group. Modify your `codemagic.yaml` file by adding the following:
-{{< highlight yaml "style=paraiso-dark">}}
-workflows:
-  macos-workflow:
-    name: macOS Workflow
-    environment:
-      groups:
-        - appstore_credentials
-{{< /highlight >}}
+- Unlimited access to all VM types (including macOS M4 Pro) 
+- 180-minute build timeout
+- Priority support
+- Service level agreement
+- Account management services
+- Technical account manager
+- Private Slack/Discord/MS Teams channel
+- SSO Login (OpenID, OAuth2 or SAML 2.0)
+- OpenID Connect (on request)
 {{</markdown>}}
 {{< /tab >}}
 {{< /tabpane >}}
 
-To code sign the app, add the following commands in the [`scripts`](../getting-started/yaml#scripts) section of the configuration file, after all the dependencies are installed, right before the build commands. 
+Dedicated **Mac mini M4 Pro** and **Mac mini M2 Max Studio** **hosts** are also available on request. A dedicated host is only used by your organization and provides 2 VMs that can be configured with the software you require. Dedicated hosts can also be EU-based.
 
-{{< highlight yaml "style=paraiso-dark">}}
-    scripts:
-      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
-        script: keychain initialize
-      - name: Fetch signing files
-        script: | 
-          app-store-connect fetch-signing-files "$BUNDLE_ID" \
-            --platform MAC_OS \
-            --type MAC_APP_STORE \
-            --create
-      - name: Fetch Mac Installer Distribution certificates
-        script: |  
-            app-store-connect certificates list --type MAC_APP_DISTRIBUTION --save || \
-            app-store-connect certificates create --type MAC_APP_DISTRIBUTION --save
-      - name: Set up signing certificate
-        script: keychain add-certificates
-      - name: Set up code signing settings on Xcode project
-        script: xcode-project use-profiles
-{{< /highlight >}}
+This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, or **custom base images** or other account management services.
 
-Instead of specifying the exact bundle ID, you can use `"$(xcode-project detect-bundle-id)"`.
+Annual invoicing with bank transfer is available for Enterprise plans. Payment is also possible via AWS Marketplace [here](https://aws.amazon.com/marketplace/pp/prodview-hiscwaznkehlo?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and Google Cloud Marketplace.
 
-Based on the specified bundle ID and [provisioning profile type](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/app-store-connect/fetch-signing-files.md#--typeios_app_adhoc--ios_app_development--ios_app_inhouse--ios_app_store--mac_app_development--mac_app_direct--mac_app_store--mac_catalyst_app_development--mac_catalyst_app_direct--mac_catalyst_app_store--tvos_app_adhoc--tvos_app_development--tvos_app_inhouse--tvos_app_store), Codemagic will fetch or create the relevant provisioning profile and certificate to code sign the build.
+Please also note that we have completed our SOC 2 Type 2 assessment, and the report is available on request. 
 
-## Manual code signing
+If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/pricing/#enterprise). 
 
-In order to use manual code signing, you need the following: 
-- **Signing certificate**: Your development or distribution certificate in .P12 format.
-- **Certificate password**: The certificate password if the certificate is password-protected.
-- **Provisioning profile**: You can get it from **Apple Developer Center > Certificates, Identifiers & Profiles > Profiles** and select the provisioning profile you would like to export and download.
+## Resellers
 
-{{<notebox>}}
-**Note**: With **Manual code signing**, you also have to manually **Package the application** into a `.pkg` container and **Notarize** it.
-{{</notebox>}}
+It's possible to resell the Codemagic Enterprise plan. Contact us [here](https://codemagic.io/pricing/#enterprise) for further details. 
 
-1. Open your Codemagic app settings, and go to the **Environment variables** tab.
-2. Enter `CM_CERTIFICATE` as the **_Variable name_**.
-3. Run the following command on the certificate file to `base64` encode it and copy to clipboard:
-{{< highlight Shell "style=rrt">}}
-cat ios_distribution_certificate.p12 | base64 | pbcopy
-{{< /highlight >}}
-4. Paste into the **_Variable value_** field.
-5. Enter a variable group name, e.g. **_appstore_credentials_**.
-6. Make sure the **Secret** option is selected so that the variable can be protected by encryption.
-7. Click the **Add** button to add the variable.
-8. Repeat steps 2 - 7 to create variables `CM_PROVISIONING_PROFILE` and `INSTALLER_CERTIFICATE`. Paste the `base64` encoded values for both of these files.
-9. Add the `CM_CERTIFICATE_PASSWORD` and `INSTALLER_CERTIFICATE_PASSWORD` variables, mark them as **Secret** and add them to the same variable group.
+## Dedicated Hosts
 
-Then, add the code signing configuration and the commands to code sign the build in the scripts section, after all the dependencies are installed, right before the build commands.
+If you need specific software and tools available on a builder machine we can provide dedicated macOS host machines which give you 2 VMs. 
 
-{{< highlight yaml "style=paraiso-dark">}}
-    scripts:
-      - name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
-        script: keychain initialize
-      - name: Set up provisioning profiles from environment variables
-        script: | 
-            PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
-            mkdir -p "$PROFILES_HOME"
-            PROFILE_PATH="$(mktemp "$PROFILES_HOME"/$(uuidgen).mobileprovision)"
-            echo ${CM_PROVISIONING_PROFILE} | base64 --decode > "$PROFILE_PATH"
-            echo "Saved provisioning profile $PROFILE_PATH"
-      - name: Set up signing certificate
-        script: | 
-            echo $CM_CERTIFICATE | base64 --decode > /tmp/certificate.p12
-            if [ -z ${CM_CERTIFICATE_PASSWORD+x} ]; then
-                # when using a certificate that is not password-protected
-                keychain add-certificates --certificate /tmp/certificate.p12
-            else
-                # when using a password-protected certificate
-                keychain add-certificates --certificate /tmp/certificate.p12 --certificate-password $CM_CERTIFICATE_PASSWORD
-            fi
+| Dedicated Host Type    | Cost (per year) |
+|------------------------|-----------------|
+| macOS M4 Pro           | $8,000          |
+| macOS M2 Max Studio    | $9,000          |
 
-            echo $INSTALLER_CERTIFICATE | base64 --decode > /tmp/installer_certificate.p12
-            if [ -z ${INSTALLER_CERTIFICATE_PASSWORD+x} ]; then
-                # when using a certificate that is not password-protected
-                keychain add-certificates --certificate /tmp/installer_certificate.p12
-            else
-                # when using a password-protected certificate
-                keychain add-certificates --certificate /tmp/installer_certificate.p12 --certificate-password $INSTALLER_CERTIFICATE_PASSWORD
-            fi
-      - name: Set up code signing settings on Xcode project
-        script: xcode-project use-profiles
-{{< /highlight >}}
+Annual dedicated host plans can be paid for with a credit card and invoicing with bank transfer is available.
 
-## Creating the Installer package
+For more information contact us [here](https://codemagic.io/pricing/#enterprise).
 
-To package your application into an `.pkg` Installer package and sign it with the `Mac Installer Distribution` certificate, use the following script:
+## Build history and artifact storage
 
-{{< highlight yaml "style=paraiso-dark">}}
-  scripts:
-    - name: Package application
-      script: | 
-      set -x
-    
-      # Command to find the path to your generated app, may be different
-      APP_NAME=$(find $(pwd) -name "*.app")  
-      cd $(dirname "$APP_NAME")
-    
-      PACKAGE_NAME=$(basename "$APP_NAME" .app).pkg
-      xcrun productbuild --component "$APP_NAME" /Applications/ unsigned.pkg  # Create and unsigned package
+Build history and artifact retention time depend on your account type and pricing plan.
 
-      # Find the installer certificate common name in keychain
-      INSTALLER_CERT_NAME=$(keychain list-certificates \
-        | jq '.[]
-        | select(.common_name
-        | contains("Mac Developer Installer"))
-        | .common_name' \
-        | xargs)
-      
-      xcrun productsign --sign "$INSTALLER_CERT_NAME" unsigned.pkg "$PACKAGE_NAME" # Sign the package
-    
-      rm -f unsigned.pkg                                                       # Optionally remove the not needed unsigned package
-{{< /highlight >}}
+<br>
+
+| **Account type**  |  **Retention period** |
+|---------------|-------------------|
+| Personal accounts | Build history and artifacts of apps on the personal account are stored in Codemagic for **30 days** after which they are deleted. | 
+| Teams on Pay as you go plan | Build history and artifacts of apps on the team account with Pay as you go pricing are stored in Codemagic for **60 days** after which they are deleted.| 
+| Teams on Fixed Annual or Enterprise plan | Unlimited | 
+
+### Backing up build artifacts
+
+If you need to support older versions of your application and need access to old versions of your `ipa`, `apk`, `dSYM`, and proguard mapping files to debug issues, then these should be downloaded and stored outside Codemagic. Once they have been deleted from Codemagic, they cannot be retrieved.
+
+You can download build artifacts via the Codemagic UI or using the [Codemagic REST API](../rest-api/builds/). 
+
+To keep copies of your future build artifacts, we advise you to set up publishing to external storage, see an example [here](../yaml-publishing/aws/).
+
+### Instance Types
+
+Codemagic provides macOS, Windows, and Linux instance types.
+
+The instance types and hardware specifications can be found below.
+
+
+| **Item**                 | **Specification**                                                               |
+| ------------------------ | --------------------------------------------------------------------------------|
+| macOS M2 VM              | Mac mini M2 8-core CPU / 8GB RAM                                                |
+| macOS M4 VM              | Mac mini M4 10-core CPU / 16GB RAM                                              |
+| macOS M4 Pro VM          | Mac mini M4 Pro 14-core CPU / 32GB RAM                                          |
+| macOS M2 Max Studio      | Max Studio M2 14-core CPU / 32GB RAM / 30 Core GPU                              |
+| Linux VM                 | 8 vCPUs, 32 GB memory                                                           |
+| Windows VM               | 8 vCPUs, 32 GB memory  
 
 {{<notebox>}}
-**Note**: Don't forget to specify the path to your generated package in the [artifacts section](../getting-started/yaml/#artifacts).
+To access more powerful macOS M2 Max Studio, and M2 Ultra machines, please get in touch with us [here](https://codemagic.io/pricing/#enterprise).
 {{</notebox>}}
 
-## Notarizing macOS applications
+If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Please note that Android emulators are not available on macOS M2 VMs due to the Apple Virtualization Framework not supporting nested virtualization.
 
-Notarization is a process where Apple verifies your application to make sure it has a Developer ID code signature and does not contain malicious content. All apps distributed outside the Mac App Store have to be notarized.
+If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/pricing/#enterprise).
 
-Notarizing an app during the Codemagic build process is possible using the **altool** command as follows:
+For Linux instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-linux/)
 
-{{< highlight bash "style=paraiso-dark">}}
-xcrun altool --notarize-app -f <file> --primary-bundle-id <bundle_id>
-           {-u <username> [-p <password>] | --apiKey <api_key> --apiIssuer <issuer_id>}
-           [--asc-provider <name> | --team-id <id> | --asc-public-id <id>]
-{{< /highlight >}}
+For macOS instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-macos/)  
+
+For Windows instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-windows/)  
 
