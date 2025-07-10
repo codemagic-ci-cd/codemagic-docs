@@ -21,11 +21,11 @@ Available on request:
 
 - System version `macOS 15.5 (24F74)`
 - Kernel version `Darwin 24.5.0`
-- Disk `294GB (Free Space: 147GB)`
+- Disk `294GB (Free Space: 115GB)`
 
 ## Xcode versions
 
-- 26.0 (17A5241o) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
+- 26.0 (17A5276g) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -236,8 +236,8 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.27.41`
-- azure-cli `2.74.0`
+- aws `2.27.49`
+- azure-cli `2.75.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
@@ -246,16 +246,16 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - fastlane `2.228.0`
 - firebase `11.21.0`
 - gem `3.6.9`
-- gh `2.74.2`
-- git `2.50.0`
+- gh `2.75.0`
+- git `2.50.1`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `4.5.8`
+- homebrew `4.5.9`
 - ionic `7.2.1`
-- jq `1.8.0`
+- jq `1.8.1`
 - ktlint `1.6.0`
-- node `24.2.0`
-- npm `11.3.0`
+- node `24.3.0`
+- npm `11.4.2`
 - python `3.12.7`
 - python3 `3.12.7`
 - ruby `3.3.6`
