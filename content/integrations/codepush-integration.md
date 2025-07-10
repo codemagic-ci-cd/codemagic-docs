@@ -8,6 +8,9 @@ weight: 7
 Codemagic offers a hosted and maintained CodePush server. Dedicated CodePush servers are available on request. To activate your team's CodePush account and for more information, please contact us [here](https://codemagic.io/pricing/#enterprise).
 
 ## Step by step guide to configure CodePush
+{{<notebox>}}
+**Note**: The following instructions are for the React Native New Architecture. Please update your project by checking the steps below if you need the New Architecture support for CodePush.
+{{</notebox>}}
 
 {{<notebox>}}
 **Note**: The same server can be used for all of your apps. 
@@ -17,8 +20,8 @@ Codemagic offers a hosted and maintained CodePush server. Dedicated CodePush ser
 **Note**: Skip to step 5 if CodePush is already configured for your project.
 {{</notebox>}}
 
-1. Start with setting up CodePush in your React Native project by following the steps for [iOS](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-ios.md) and [Android](https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-android.md)
-2. Install React Native CodePush plugin by running **npm install --save react-native-code-push** in the root directory
+1. Start with setting up CodePush in your React Native project by following the steps for [iOS](https://github.com/CodePushNext/react-native-code-push/blob/master/docs/setup-ios.md) and [Android](https://github.com/CodePushNext/react-native-code-push/blob/master/docs/setup-android.md)
+2. Install React Native CodePush plugin by running `yarn add @code-push-next/react-native-code-push` in the root directory
 3. Make sure Codemagic provided server URL is correctly configured in the project:
 
 For iOS, place the following key and its string in Info.plist:
