@@ -24,7 +24,7 @@ This will automatically install the specified Unity version to the build machine
 **The available Unity versions are the following:**
 {{< tabpane >}}
 {{% tab header="v6000" %}}
-- versions newer than `6000.0.37f1` are automaticaly available
+- LTS versions newer than `6000.0.37f1` are automaticaly available
 {{< /tab >}}
 {{% tab header="2023.X" %}}
 - `2023.1.10f1`
@@ -69,7 +69,7 @@ This will automatically install the specified Unity version to the build machine
 {{< /tab >}}
 {{< /tabpane >}}
 
-If you can't find your desired Unity version in the list, please contact us on [GitHub Discussions](https://github.com/orgs/codemagic-ci-cd/discussions) or in [Discord](https://codemagic.io/discord/).
+If you can't find your desired Unity version in the list, please contact us via the chat widget in the dashboard, on [GitHub Discussions](https://github.com/orgs/codemagic-ci-cd/discussions) or in [Discord](https://codemagic.io/discord/).
 
 {{<notebox>}}
 **Notes:**
