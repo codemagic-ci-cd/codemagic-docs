@@ -12,16 +12,20 @@ CodePush (Over-the-Air updates) for React Native projects is priced as follows:
 2. No limit on updates and bandwith
 3. We can offer up to 12 months up front payment, otherwise billing is monthly. Invoicing is available starting 1M MAU.
 
-| Monthly Active Users (MAUs) | Price (USD) |
-|-----------------------------|-------------|
-| 10,000                      | $99         |
-| 100,000                     | $99         |
-| 150,000                     | $198        |
-| 500,000                     | $495        |
-| 1,000,000                   | $990        |
-| 2,000,000                   | $1,980      |
-| 5,000,000                   | $4,950      |
-| 10,000,000                  | $9,900      |
+{{<notebox>}}
+🔔 Annual subscriptions with 1M and above MAUs get 2 months of free usage discount.
+{{</notebox>}}
+
+| Monthly Active Users (MAUs) | Monthly price (USD) | Yearly price (USD)   |
+|-----------------------------|---------------------|----------------------|
+| 10,000                      | $99                 | $1,188               |
+| 100,000                     | $99                 | $1,188               |
+| 150,000                     | $198                | $2,376               |
+| 500,000                     | $495                | $5,940               |
+| 1,000,000                   | $990                | $9,900  (discounted) | 
+| 2,000,000                   | $1,980              | $19,800 (discounted) |
+| 5,000,000                   | $4,950              | $49,500 (discounted) |
+| 10,000,000                  | $9,900              | $99,000 (discounted) |
 
 ## Pricing for Individuals
 ### 1. Free plan
