@@ -21,11 +21,11 @@ Available on request:
 
 - System version `macOS 15.5 (24F74)`
 - Kernel version `Darwin 24.5.0`
-- Disk `294GB (Free Space: 115GB)`
+- Disk `294GB (Free Space: 131GB)`
 
 ## Xcode versions
 
-- 26.0 (17A5276g) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
+- 26.0 (17A5285i) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -242,7 +242,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - cocoapods `1.16.2`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `0.12.4`
+- ew-cli `0.12.5`
 - fastlane `2.228.0`
 - firebase `11.21.0`
 - gem `3.6.9`
