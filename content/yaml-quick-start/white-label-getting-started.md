@@ -321,6 +321,7 @@ workflows:
         ANDROID_ASSETS_FOLDER: android_assets # The name of your folder in S3 bucket that have the client's Android assets from (/android/app/src/main/res/).
         IOS_ASSETS_FOLDER: ios_assets # The name of your folder in S3 bucket that have the client's iOS assets from (/ios/Runner/Assets.xcassets/).
         GOOGLE_PLAY_TRACK: internal
+        CLIENT_ID: "_" # Placeholder for $CLIENT_ID in labels
     scripts:
       - name: Get assets from AWS S3 bucket
         script: | 
@@ -370,6 +371,7 @@ workflows:
         XCODE_WORKSPACE: "ios/Runner.xcworkspace"
         XCODE_SCHEME: "Runner"
         BASE_BUNDLE_ID: io.codemagic.whitelabel.dev # <-- Put the bundle ID that exists in the code, it will be replaced with the client's.
+        CLIENT_ID: "_" # Placeholder for $CLIENT_ID in labels
     scripts:
       - name: Get assets from AWS S3 bucket
         script: | 
