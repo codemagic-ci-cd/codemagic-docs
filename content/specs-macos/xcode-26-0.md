@@ -19,13 +19,13 @@ Available on request:
 
 ## System
 
-- System version `macOS 15.5 (24F74)`
-- Kernel version `Darwin 24.5.0`
-- Disk `294GB (Free Space: 131GB)`
+- System version `macOS 15.6 (24G84)`
+- Kernel version `Darwin 24.6.0`
+- Disk `294GB (Free Space: 141GB)`
 
 ## Xcode versions
 
-- 26.0 (17A5285i) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
+- 26.0 (17A5295f) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -218,11 +218,11 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 | **Version** | **Path** |
 |-------------|----------|
-| 24.0.1 | `/Library/Java/JavaVirtualMachines/zulu-24.jdk/Contents/Home` |
-| 21.0.7 | `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home` |
-| **17.0.15** (default) | `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` |
-| 11.0.27 | `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` |
-| 1.8.0_452 | `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home` |
+| 24.0.2 | `/Library/Java/JavaVirtualMachines/zulu-24.jdk/Contents/Home` |
+| 21.0.8 | `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home` |
+| **17.0.16** (default) | `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` |
+| 11.0.28 | `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` |
+| 1.8.0_462 | `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home` |
 | 1.7.0_352 | `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home` |
 
 
@@ -236,8 +236,8 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.27.49`
-- azure-cli `2.75.0`
+- aws `2.28.4`
+- azure-cli `2.76.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
@@ -245,15 +245,15 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - ew-cli `0.12.5`
 - fastlane `2.228.0`
 - firebase `11.21.0`
-- gem `3.6.9`
-- gh `2.75.0`
+- gem `3.7.1`
+- gh `2.76.2`
 - git `2.50.1`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `4.5.9`
+- homebrew `4.6.0`
 - ionic `7.2.1`
 - jq `1.8.1`
-- ktlint `1.6.0`
+- ktlint `1.7.1`
 - node `24.3.0`
 - npm `11.4.2`
 - python `3.12.7`
@@ -267,5 +267,5 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - unzip `6.00`
 - wget `1.25.0`
 - yarn `4.9.2`
-- yq `4.45.4`
+- yq `4.47.1`
 - zip `3.0`
