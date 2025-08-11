@@ -5,7 +5,7 @@ weight: 5
 
 ---
 
-Detox is a tool that helps you test your mobile apps automatically, the same way a real person would use it. Detox testing refers to end-to-end (E2E) testing for React Native apps using the Detox framework. It is especially built for React Native, however it also supports native iOS and Android apps.
+Detox testing refers to end-to-end (E2E) testing for React Native apps using the Detox framework. Detox provides a gray box testing solution, meaning it runs tests on a real device or emulator while also accessing the app's internal state for better synchronization.
 
 
 ## Prerequisites
@@ -21,7 +21,7 @@ Pre-installed means that Codemagic machines already have them ready to use, so n
 
 ## Running Detox tests
 
-1. Configure your project **package.json** file with Detox:
+1. Configure your project's **package.json** file with Detox:
 
 ```json
   "detox": {
@@ -63,4 +63,21 @@ detox test --configuration ios.sim.release
 Here is how your **codemagic.yaml** should look like:
 
 ```yaml
+  workflows:
+    detox-test:
+        name: Deto test automation
+        environment:
+          node: latest
+          xcode: latest
+        scripts:
+            - name: Install Detox CLI tools
+              script: npm install detox-cli --global
+            - name: Install applesimutils
+              script: |
+                brew tap wix/brew
+                brew install applesimutils
+            - name: Build Detox app
+              script: detox build --configuration ios.sim.release
+            - name: Execute Detox testing
+              script: detox test --configuration ios.sim.release
 ```
