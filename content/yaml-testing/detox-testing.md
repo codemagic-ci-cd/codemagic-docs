@@ -40,11 +40,19 @@ Pre-installed means that Codemagic machines already have the software ready to u
   }
 ```
 2. Install the required tools by running the following commands:
+
+```yaml
+npm install detox-cli --global
+brew tap wix/brew
+brew install applesimutils
+```
+
+3. Build and run detox tests:
    
-   2.1 **detox-cli** by running **npm install detox-cli --global**
-   2.2 Add a script to install **applesimutils** as it is required by Detox to work with iOS simulators: `brew tap wix/brew` and `brew install applesimutils`
-   2.3 To build the app: `detox build --configuration ios.sim.release`
-   2.4 Once you have successfully installed the necessary tools and built your app, it is time to test it: `detox test --configuration ios.sim.release`
+```yaml
+detox build --configuration ios.sim.release
+detox test --configuration ios.sim.release
+```
  
 Here is how your **codemagic.yaml** should look like:
 
