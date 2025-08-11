@@ -13,10 +13,10 @@ Detox testing refers to end-to-end (E2E) testing for React Native apps using the
 1. **npm/yarn** are pre-installed
 2. A ready React Native project
 3. Xcode for iOS and Android Studio for Android are pre-installed
-4. **homebrew** are pre-installed
+4. **homebrew** is pre-installed
 
 {{<notebox>}}
-Pre-installed means that Codemagic machines already have them ready to use, so no need to install them manually.
+Pre-installed means that Codemagic machines already have the software ready to use, so there is no need to install it manually.
 {{</notebox>}}
 
 ## Running Detox tests
