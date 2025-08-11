@@ -10,8 +10,8 @@ Detox testing refers to end-to-end (E2E) testing for React Native apps using the
 
 ## Prerequisites
 
-1. **npm/yarn** are pre-installed
-2. A ready React Native project
+1. A React Native project
+2. **npm/yarn** are pre-installed
 3. Xcode for iOS and Android Studio for Android are pre-installed
 4. **homebrew** is pre-installed
 
