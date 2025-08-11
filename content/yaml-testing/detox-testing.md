@@ -41,15 +41,18 @@ Pre-installed means that Codemagic machines already have the software ready to u
 ```
 2. Install the required tools by running the following commands:
 
-```yaml
+```bash
+# install Detox CLI tools
 npm install detox-cli --global
+
+# Detox requires applesimutils to work with iOS simulators
 brew tap wix/brew
 brew install applesimutils
 ```
 
 3. Build and run detox tests:
    
-```yaml
+```bash
 detox build --configuration ios.sim.release
 detox test --configuration ios.sim.release
 ```
