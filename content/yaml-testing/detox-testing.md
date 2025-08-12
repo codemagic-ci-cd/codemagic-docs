@@ -40,17 +40,15 @@ Adjust your project's **package.json** file with Detox before starting Codemagic
   }
 ```
 
-##Running Detox tests in Codemagic
+## Running Detox tests in Codemagic
 
 We are going to add all the scripts we need to run to install additional software and execute Detox tests to the `scripts` section of `codemagic.yaml`.
 
 
-1.
+1. Install Detox CLI tools and **applesimutils** which is required by Detox to work with iOS simulators:
+   
 ```bash
-# install Detox CLI tools
 npm install detox-cli --global
-
-# Detox requires applesimutils to work with iOS simulators
 brew tap wix/brew
 brew install applesimutils
 ```
