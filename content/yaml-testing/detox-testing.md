@@ -40,6 +40,8 @@ Adjust your project's **package.json** file with Detox before starting Codemagic
   }
 ```
 
+More information about Detox environment setup can be found in the official documentation [here](https://wix.github.io/Detox/docs/introduction/environment-setup).
+
 ## Running Detox tests in Codemagic
 
 We are going to add all the scripts we need to run to install additional software and execute Detox tests to the `scripts` section of `codemagic.yaml`.
