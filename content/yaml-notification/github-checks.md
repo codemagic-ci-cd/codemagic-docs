@@ -24,4 +24,5 @@ Checks can be set up in GitHub when configuring [branch protection rules](https:
 6. Select the name of the workflow to add it as a check. Note that the workflow name is listed only if you have already built this workflow in Codemagic.
 7. Click **Save changes**.
 
-Note that it's not currently possible to rerun failed checks (builds) from GitHub UI.
+## Re-running Checks
+You can re-reun failed builds (checks) or all check suite's builds from GitHub UI.
