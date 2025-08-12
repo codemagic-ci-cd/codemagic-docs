@@ -19,9 +19,9 @@ Detox testing refers to end-to-end (E2E) testing for React Native apps using the
 Pre-installed means that Codemagic machines already have the software ready to use, so there is no need to install it manually.
 {{</notebox>}}
 
-## Running Detox tests from codemagic.yaml
+## Preparing the application
 
-1. Adjust your project's **package.json** file with Detox before starting Codemagic configurations:
+Adjust your project's **package.json** file with Detox before starting Codemagic configurations:
 
 ```json
   "detox": {
@@ -39,8 +39,13 @@ Pre-installed means that Codemagic machines already have the software ready to u
     }
   }
 ```
-2. Install the required tools by running the following commands:
 
+##Running Detox tests in Codemagic
+
+We are going to add all the scripts we need to run to install additional software and execute Detox tests to the `scripts` section of `codemagic.yaml`.
+
+
+1.
 ```bash
 # install Detox CLI tools
 npm install detox-cli --global
@@ -50,7 +55,7 @@ brew tap wix/brew
 brew install applesimutils
 ```
 
-3. Build and run detox tests:
+2. Build and run detox tests:
    
 ```bash
 detox build --configuration ios.sim.release
