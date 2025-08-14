@@ -74,7 +74,7 @@ scripts:
         npm install
     - name: Codepush deployment
       script: |         
-           code-push release-react APP_NAME_CREATED_ABOVE ios -d Staging# -d refers to the deployment name e.g. Production, Staging
+           code-push release-react APP_NAME_CREATED_ABOVE ios -d Staging # -d refers to the deployment name e.g. Production, Staging
            code-push release-react APP_NAME_CREATED_ABOVE android -d Staging # -d refers to the deployment name e.g. Production, Staging
 {{< /highlight >}}
 
