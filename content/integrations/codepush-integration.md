@@ -11,77 +11,90 @@ Codemagic offers a hosted and maintained CodePush server. Dedicated CodePush ser
 {{<notebox>}}
 **Note**: The following instructions are for the React Native New Architecture. Please update your project by checking the steps below if you need the New Architecture support for CodePush.
 {{</notebox>}}
-
+<br/>
 {{<notebox>}}
 **Note**: The same server can be used for all of your apps. 
 {{</notebox>}}
-
+<br/>
 {{<notebox>}}
 **Note**: Skip to step 5 if CodePush is already configured for your project.
 {{</notebox>}}
 
-1. Install React Native CodePush plugin by running `yarn add @code-push-next/react-native-code-push` in the root directory of your project.
+1. Install the React Native CodePush plugin by running `yarn add @code-push-next/react-native-code-push` in the root directory of your project.
 2. Set up CodePush in your React Native project by following the steps for [iOS](https://github.com/CodePushNext/react-native-code-push/blob/master/docs/setup-ios.md) and [Android](https://github.com/CodePushNext/react-native-code-push/blob/master/docs/setup-android.md)
 3. Make sure Codemagic provided server URL is correctly configured in the project:
 
-For iOS, place the following key and its string in Info.plist:
+    For iOS, place the following key and its string in Info.plist:
 
-{{< highlight bash "style=paraiso-dark">}}
-<key>CodePushServerURL</key>
-<string>https://codepush.pro/</string>
-{{< /highlight >}}
+    {{< highlight bash "style=paraiso-dark">}}
+    <key>CodePushServerURL</key>
+    <string>https://codepush.pro/</string>
+    {{< /highlight >}}
 
-For Android, add the following line in **strings.xml**:
+    For Android, add the following line in **strings.xml**:
 
-{{< highlight bash "style=paraiso-dark">}}
- <string moduleConfig="true" name="CodePushServerUrl">https://codepush.pro/</string>
-{{< /highlight >}}
+    {{< highlight bash "style=paraiso-dark">}}
+    <string moduleConfig="true" name="CodePushServerUrl">https://codepush.pro/</string>
+    {{< /highlight >}}
 
 4. While making changes in Info.plist and strings.xml files, add the Deployment keys:
 
-For iOS:
+    For iOS:
 
-{{< highlight bash "style=paraiso-dark">}}
-<key>CodePushDeploymentKey</key>
-<string>YOUR_DEPLOYMENT_KEY</string>
-{{< /highlight >}}
+    {{< highlight bash "style=paraiso-dark">}}
+    <key>CodePushDeploymentKey</key>
+    <string>YOUR_DEPLOYMENT_KEY</string>
+    {{< /highlight >}}
 
-For Android:
+    For Android:
 
-{{< highlight bash "style=paraiso-dark">}}
-<string moduleConfig="true" name="CodePushDeploymentKey">YOUR_DEPLOYMENT_KEY</string>
-{{< /highlight >}}
-
+    {{< highlight bash "style=paraiso-dark">}}
+    <string moduleConfig="true" name="CodePushDeploymentKey">YOUR_DEPLOYMENT_KEY</string>
+    {{< /highlight >}}
+{{<notebox>}}
 **Note**: About how to find the deployment keys, please refer to step **7**.
+{{</notebox>}}
 
 5. After configuring all the above-mentioned steps, it is time to set up the Codemagic side configuration and authentication. For that, [contact Codemagic team](https://codemagic.io/pricing/#enterprise) for an access key.
-6. Add the following lines in **codemagic.yaml**:
+6. Use the CodePush plugin in your app to export your root component as follows:
 
-{{< highlight bash "style=paraiso-dark">}}
-scripts:
-    - name: Install Codemagic CodePush CLI tools
-      script: |
-          npm install -g @codemagic/code-push-cli
-    - name: CodePush authentication
-      script: |
-          code-push login "https://codepush.pro" --key $CODEPUSH_TOKEN       
-    - name: CodePush add app # this script can be skipped if you have existing apps
-      script: |
-          code-push app add YOUR_PREFERRED_APP_NAME
-          code-push app ls
-    - name: Install npm dependencies
-      script: |
-        npm install
-    - name: Codepush deployment
-      script: |         
-           code-push release-react APP_NAME_CREATED_ABOVE ios -d Staging # -d refers to the deployment name e.g. Production, Staging
-           code-push release-react APP_NAME_CREATED_ABOVE android -d Staging # -d refers to the deployment name e.g. Production, Staging
-{{< /highlight >}}
+    {{< highlight bash "style=paraiso-dark">}}
+    # import the CodePush plugin
+    import codePush from '@code-push-next/react-native-code-push';
+
+    function App() {
+      ...
+    }
+    # export your root component
+    export default codePush(App);
+    {{< /highlight >}}
+7. Add the following lines in **codemagic.yaml**:
+
+    {{< highlight bash "style=paraiso-dark">}}
+    scripts:
+        - name: Install Codemagic CodePush CLI tools
+          script: |
+              npm install -g @codemagic/code-push-cli
+        - name: CodePush authentication
+          script: |
+              code-push login "https://codepush.pro" --key $CODEPUSH_TOKEN       
+        - name: CodePush add app # this script can be skipped if you have existing apps
+          script: |
+              code-push app add YOUR_PREFERRED_APP_NAME
+              code-push app ls
+        - name: Install npm dependencies
+          script: |
+            npm install
+        - name: Codepush deployment
+          script: |         
+              code-push release-react APP_NAME_CREATED_ABOVE ios -d Staging # -d refers to the deployment name e.g. Production, Staging
+              code-push release-react APP_NAME_CREATED_ABOVE android -d Staging # -d refers to the deployment name e.g. Production, Staging
+    {{< /highlight >}}
 
 {{<notebox>}}
 **Note**: **$CODEPUSH_TOKEN** for authentication will be provided by the Codemagic team and it needs to be added as an environment variable and then imported in **codemagic.yaml**. More info can be found [here](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/)
 {{</notebox>}}
-
+<br/>
 {{<notebox>}}
 **Note**: Running **code-push release-react** generates updates and releases them to the server to be served 
 {{</notebox>}}
