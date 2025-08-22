@@ -55,7 +55,7 @@ brew tap wix/brew
 brew install applesimutils
 ```
 
-2. Build and run detox tests:
+2. Build and run Detox tests:
    
 ```bash
 detox build --configuration ios.sim.release
@@ -65,21 +65,23 @@ detox test --configuration ios.sim.release
 Here is how your **codemagic.yaml** should look like:
 
 ```yaml
-  workflows:
-    detox-test:
-        name: Deto test automation
-        environment:
-          node: latest
-          xcode: latest
-        scripts:
-            - name: Install Detox CLI tools
-              script: npm install detox-cli --global
-            - name: Install applesimutils
-              script: |
-                brew tap wix/brew
-                brew install applesimutils
-            - name: Build Detox app
-              script: detox build --configuration ios.sim.release
-            - name: Execute Detox testing
-              script: detox test --configuration ios.sim.release
+workflows:
+  detox-test:
+      name: Detox test automation
+      environment:
+        node: latest
+        xcode: latest
+      scripts:
+          - name: Install Detox CLI tools
+            script: npm install detox-cli --global
+          - name: Install applesimutils
+            script: |
+              brew tap wix/brew
+              brew install applesimutils
+          - name: Build Detox app
+            script: detox build --configuration ios.sim.release
+          - name: Execute Detox testing
+            script: detox test --configuration ios.sim.release
 ```
+
+To run this workflow automatically in response to events in the repository, you can additionally configure [automatic build triggering](https://docs.codemagic.io/yaml-running-builds/starting-builds-automatically/).
