@@ -23,7 +23,7 @@ Detox testing refers to end-to-end (E2E) testing for React Native apps using the
 
 Adjust your project's **package.json** file with Detox before starting Codemagic configurations:
 
-```json
+{{< highlight yaml "style=paraiso-dark">}}
   "detox": {
     "runnerConfig": "e2e/config.json",
     "configurations": {
@@ -38,7 +38,7 @@ Adjust your project's **package.json** file with Detox before starting Codemagic
       },
     }
   }
-```
+{{< /highlight >}}
 
 More information about Detox environment setup can be found in the official documentation [here](https://wix.github.io/Detox/docs/introduction/environment-setup).
 
@@ -46,25 +46,24 @@ More information about Detox environment setup can be found in the official docu
 
 We are going to add all the scripts we need to run to install additional software and execute Detox tests to the `scripts` section of `codemagic.yaml`.
 
-
 1. Install Detox CLI tools and **applesimutils** which is required by Detox to work with iOS simulators:
    
-```bash
+{{< highlight yaml "style=paraiso-dark">}}
 npm install detox-cli --global
 brew tap wix/brew
 brew install applesimutils
-```
+{{< /highlight >}}
 
 2. Build and run Detox tests:
    
-```bash
+{{< highlight yaml "style=paraiso-dark">}}
 detox build --configuration ios.sim.release
 detox test --configuration ios.sim.release
-```
+{{< /highlight >}}
  
 Here is how your **codemagic.yaml** should look like:
 
-```yaml
+{{< highlight yaml "style=paraiso-dark">}}
 workflows:
   detox-test:
     name: Detox test automation
@@ -82,6 +81,6 @@ workflows:
         script: detox build --configuration ios.sim.release
       - name: Execute Detox testing
         script: detox test --configuration ios.sim.release
-```
+{{< /highlight >}}
 
 To run this workflow automatically in response to events in the repository, you can additionally configure [automatic build triggering](https://docs.codemagic.io/yaml-running-builds/starting-builds-automatically/).
