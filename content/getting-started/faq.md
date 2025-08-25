@@ -6,9 +6,10 @@ aliases:
 ---
 
 ## Where are the build servers located?
-Codemagic build servers are based in:
-- South Carolina, North America for Linux and Windows machines
-- Atlanta, Georgia for macOS machines
+Codemagic build servers are all based in US:
+- Milwaukee
+- Phoenix
+- Las Vegas
 
 ## Will Codemagic make permanent changes to my project?
 Codemagic uses your source control system, such as GitHub, Bitbucket, or Gitlab, to get read-only access to the CI/CD features, such as list branches, set webhooks, get the latest commit information, update commit/PR statuses, etc. 
