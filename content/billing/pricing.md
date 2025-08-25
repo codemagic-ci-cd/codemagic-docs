@@ -85,7 +85,7 @@ An annual subscription with access to **macOS M2s** instances and **2 months fre
 
 The Codemagic **macOS M2** annual plan gives you a fixed-price plan with the following benefits:
 
-* 3 concurrencies (with access to macOS M2, Linux, and Windows instances)
+* 3 concurrencies (with access to macOS M2, Linux X2, and Windows instances)
 * Unlimited build minutes
 * Unlimited team seats
 * In-app chat support
@@ -114,13 +114,29 @@ An annual subscription with access to **macOS M4** instances is **$5,400/year**.
 
 The Codemagic **macOS M4** annual plan gives you a fixed-price plan with the following benefits:
 
-* 3 concurrencies (with access to macOS M4, Linux, and Windows instances)
+* 3 concurrencies (with access to macOS M4, Linux X2, and Windows instances)
 * Unlimited build minutes
 * Unlimited team seats
 * In-app chat support
 * Additional concurrencies are **$1,800/year**. 
 
 The **macOS M4** annual plan can only be paid with a credit card.
+
+To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
+{{</markdown>}}
+{{< /tab >}}
+
+{{< tab header="macOS Mac Studio M4 Max" >}}
+{{<markdown>}}
+
+The Codemagic **macOS Mac Studio M4 Max** annual plan gives you a fixed-price plan with the following benefits:
+
+* 3 concurrencies (with access to macOS Mac Studio M4 Max, Linux X2, and Windows instances)
+* Unlimited build minutes
+* Unlimited team seats
+* In-app chat support
+
+The **macOS Mac Studio M4 Max** annual plan can only be paid with a credit card.
 
 To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
 {{</markdown>}}
