@@ -132,7 +132,7 @@ To activate a Unity license on the build machine, add the following step at the 
   scripts:
     - name: Activate Unity license
       script: | 
-        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
           -serial ${UNITY_SERIAL} \
           -username ${UNITY_EMAIL} \
           -password ${UNITY_PASSWORD}

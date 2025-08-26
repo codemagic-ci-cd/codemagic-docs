@@ -114,7 +114,7 @@ To activate a Unity license on the build machine, add the following step at the 
   scripts:
     - name: Activate Unity license
       script: | 
-        $UNITY_BIN -batchmode -quit -logFile \
+        $UNITY_BIN -batchmode -quit -logFile - \
           -serial ${UNITY_SERIAL?} \
           -username ${UNITY_EMAIL?} \
           -password ${UNITY_PASSWORD?}
