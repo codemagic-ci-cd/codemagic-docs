@@ -126,6 +126,24 @@ To request this plan, please contact us [here](https://codemagic.io/pricing/#ent
 {{</markdown>}}
 {{< /tab >}}
 
+{{< tab header="macOS M4 + Linux X4" >}}
+{{<markdown>}}
+An annual subscription with access to **macOS M4** and **Linux X4** instances is **$8,100/year**.
+
+The Codemagic **macOS M4 + Linux X4** annual plan gives you a fixed-price plan with the following benefits:
+
+* 3 concurrencies (with access to macOS M4, Linux X4, and Windows instances)
+* Unlimited build minutes
+* Unlimited team seats
+* In-app chat support
+* Additional concurrencies are **$2,700/year**. 
+
+The **macOS M4 + Linux X4** annual plan can only be paid with a credit card.
+
+To request this plan, please contact us [here](https://codemagic.io/pricing/#enterprise)
+{{</markdown>}}
+{{< /tab >}}
+
 {{< tab header="macOS Mac Studio M4 Max" >}}
 {{<markdown>}}
 
