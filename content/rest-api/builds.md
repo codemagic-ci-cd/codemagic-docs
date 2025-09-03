@@ -77,39 +77,6 @@ APIs for managing builds are currently available for developers to preview. Duri
 {{< /highlight >}}
 
 
-## Get build status
-
-`GET /builds/:id`
-
-Returns the build information of an already running build on Codemagic. **Status** will be one of:
-
-`building`, `canceled`, `finishing`, `finished`, `failed`, `fetching`, `preparing`, `publishing`, `queued`, `skipped`, `testing`, `timeout`, `warning`
-
-#### Example
-
-{{< highlight bash "style=paraiso-dark">}}
-  curl -H "Content-Type: application/json" \
-       -H "x-auth-token: <API Token>" \
-       --request GET https://api.codemagic.io/builds/<build_id>
-{{< /highlight >}}
-
-#### Response
-
-{{< highlight json "style=paraiso-dark">}}
-{
-  "application": {
-    "_id": "5d85eaa0e941e00019e81bc2",
-    "appName": "counter_flutter"
-  },
-  "build": {
-    "_id": "5ec8eea2261f342603f4d0bc",
-    "startedAt": "2020-05-23T09:36:39.028+0000",
-    "status": "building",
-    "workflowId": "5d85f242e941e00019e81bd2"
-  }
-}
-{{< /highlight >}}
-
 ## Cancel build
 
 `POST /builds/:id/cancel`
