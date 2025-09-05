@@ -21,6 +21,18 @@ For repositories added via SSH or HTTP/HTTPS, or if you are configuring your bui
 
 In the `events:` section, specify which events in the repository trigger builds.
 - **push** - a build will be started every time you commit code to any of the tracked branches.
+
+    GitHub Merge Queue as a feature helps manage and automate the process of merging multiple pull requests (PRs) into a branch. Merge Queue allows to automate and serialize merges, making sure that every pull request is tested not in isolation, but as it will be after it’s merged. More information can be found [here](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue). 
+    
+    To configure it with Codemagic workflows, a branch name prefixed with *gh-readonly-queue/{base_branch}* needs to be added in **codemagic.yaml** as explained [here](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue#triggering-merge-group-checks-with-third-party-ci-providers)
+    {{< highlight yaml "style=paraiso-dark">}}
+     triggering:
+        events:
+          - push
+        branch_patterns:
+          - pattern: 'gh-readonly-queue/main/*'
+    {{< /highlight >}}
+
 - **pull_request** - a build will be started when a pull request is opened or updated to verify the resulting merge commit.
      
     For triggering pull requests, you can specify whether each branch pattern matches the **source** or the **target** branch of the pull request.
