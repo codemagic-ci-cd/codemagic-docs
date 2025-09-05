@@ -51,7 +51,7 @@ Builds on Linux and Windows do not have free build minutes. The per-minute prici
 | **Item**                     | **Price**                          |
 | ---------------------------- | ---------------------------------  |
 | macOS (M2) VM        | $0.095 / minute                    |
-| Linux & Windows VMs          | $0.045 / minute                    |
+| Linux X2 & Windows VMs          | $0.045 / minute                    |
 
 ## Pricing for Teams
 
@@ -69,7 +69,7 @@ Each additional concurrency is $49/month and you will be billed for each concurr
 | **Item**                     | **Price**                         |
 | ---------------------------- | --------------------------------- | 
 | macOS (M2) VM        | $0.095 / minute                   |                                                                                                                                   
-| Linux & Windows VMs          | $0.045 / minute                   |                                                                       
+| Linux X2 & Windows VMs          | $0.045 / minute                   |                                                                       
 | Extra build concurrency      | $49 / month                       | 
 
 Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M4), Linux, and Windows instances. 
