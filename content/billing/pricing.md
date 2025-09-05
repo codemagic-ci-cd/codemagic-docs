@@ -261,9 +261,9 @@ The instance types and hardware specifications can be found below.
 | ------------------------ | --------------------------------------------------------------------------------|
 | macOS M2 VM              | Mac mini M2 8-core CPU / 8GB RAM                                                |
 | macOS M4 VM              | Mac mini M4 10-core CPU / 16GB RAM                                              |
-| macOS M4 Pro VM          | Mac mini M4 Pro 14-core CPU / 32GB RAM                                          |
-| macOS M2 Max Studio      | Max Studio M2 14-core CPU / 32GB RAM / 30 Core GPU                              |
-| Linux VM                 | 8 vCPUs, 32 GB memory                                                           |
+| macOS Studio M4 Max VM   | Mac Studio M4 Max 16-core CPU / 32GB RAM                                        |
+| Linux X2 VM              | 8 vCPUs, 32 GB memory                                                           |
+| Linux X4 VM              | 16 vCPUs, 64 GB memory                                                          |
 | Windows VM               | 8 vCPUs, 32 GB memory  
 
 {{<notebox>}}
