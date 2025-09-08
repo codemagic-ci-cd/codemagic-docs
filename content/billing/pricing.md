@@ -165,70 +165,98 @@ To request this plan, please contact us [here](https://codemagic.io/pricing/#ent
 
 ## Pricing for Enterprises
 
-macOS M4 and M4 Pro machines are available with the following Enterprise subscriptions:
+This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, **custom base images**, or other account management services. Enterprise plan pricing starts from $12k/year.
+
+The following options are available with the Enterprise offering:
+
 
 {{< tabpane >}}
 
-{{< tab header="Enterprises with macOS M4" >}}
+{{< tab header="macOS M4" >}}
 {{<markdown>}}
 
-Enterprise plans are available starting from **$12k/year** and include the following:
-
-- Unlimited access to all VM types (including macOS M4) 
+- Unlimited builds on: 
+  - macOS M4 (Mac mini M4 10-core CPU / 16GB RAM)
+  - Linux X4 (16 vCPUs, 64 GB memory)
+  - Windows (8 vCPUs, 32 GB memory)
 - 180-minute build timeout
 - Priority support
+- Private Slack/Discord/MS Teams channel
 - Service level agreement
 - Account management services
 - Technical account manager
-- Private Slack/Discord/MS Teams channel
+- Audit Log Connector
+- Build Analytics Dashboard
 - SSO Login (OpenID, OAuth2 or SAML 2.0)
 - OpenID Connect (on request)
+
+If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/pricing/#enterprise).
+
 {{</markdown>}}
 {{< /tab >}}
 
-{{< tab header="Enterprises with macOS M4 Pro" >}}
+{{< tab header="macOS Studio M4 Max" >}}
 {{<markdown>}}
-Enterprise plans are available starting from **$17,400/year** and include the following:
 
-- Unlimited access to all VM types (including macOS M4 Pro) 
+- Unlimited builds on:  
+  - macOS Studio M4 Max (Mac Studio M4 Max 16-core CPU / 32GB RAM)
+  - Linux X4 (16 vCPUs, 64 GB memory)
+  - Windows instances (8 vCPUs, 32 GB memory)
 - 180-minute build timeout
 - Priority support
+- Private Slack/Discord/MS Teams channel
 - Service level agreement
 - Account management services
 - Technical account manager
-- Private Slack/Discord/MS Teams channel
+- Audit Log Connector
+- Build Analytics Dashboard
 - SSO Login (OpenID, OAuth2 or SAML 2.0)
 - OpenID Connect (on request)
+
+If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/pricing/#enterprise).
+
 {{</markdown>}}
 {{< /tab >}}
+
+{{< tab header="Virtual Private Cloud" >}}
+{{<markdown>}}
+
+
+A Virtual Private Cloud (VPC) of dedicated **Mac mini M4** or **Mac Studio M4 Max** hosts can be set up for your organization. 
+
+It is only used by your organization and provides 2 VMs that can be configured with the software you require. 
+
+Dedicated hosts can also be EU-based if you have specific data residency requirements.
+
+If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/pricing/#enterprise).
+
+{{</markdown>}}
+{{< /tab >}}
+
+
+{{< tab header="Enterprise Billing" >}}
+{{<markdown>}}
+
+Annual invoicing with bank transfer is available for Enterprise plans. 
+
+Payment is also possible via **AWS Marketplace** and **Google Cloud Marketplace** private offers.
+
+Discounts are available for multi year contracts.
+
+Codemagic is **SOC 2 Type II** audited and the report is available on request. 
+
+If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/pricing/#enterprise).
+
+{{</markdown>}}
+{{< /tab >}}
+
+
+
 {{< /tabpane >}}
-
-Dedicated **Mac mini M4 Pro** and **Mac mini M2 Max Studio** **hosts** are also available on request. A dedicated host is only used by your organization and provides 2 VMs that can be configured with the software you require. Dedicated hosts can also be EU-based.
-
-This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, or **custom base images** or other account management services.
-
-Annual invoicing with bank transfer is available for Enterprise plans. Payment is also possible via AWS Marketplace [here](https://aws.amazon.com/marketplace/pp/prodview-hiscwaznkehlo?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and Google Cloud Marketplace.
-
-Please also note that we have completed our SOC 2 Type 2 assessment, and the report is available on request. 
-
-If you would like more information about our Enterprise plan, please contact us [here](https://codemagic.io/pricing/#enterprise). 
 
 ## Resellers
 
 It's possible to resell the Codemagic Enterprise plan. Contact us [here](https://codemagic.io/pricing/#enterprise) for further details. 
-
-## Dedicated Hosts
-
-If you need specific software and tools available on a builder machine we can provide dedicated macOS host machines which give you 2 VMs. 
-
-| Dedicated Host Type    | Cost (per year) |
-|------------------------|-----------------|
-| macOS M4 Pro           | $8,000          |
-| macOS M2 Max Studio    | $9,000          |
-
-Annual dedicated host plans can be paid for with a credit card and invoicing with bank transfer is available.
-
-For more information contact us [here](https://codemagic.io/pricing/#enterprise).
 
 ## Build history and artifact storage
 
