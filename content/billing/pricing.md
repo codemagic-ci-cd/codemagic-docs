@@ -165,7 +165,7 @@ To request this plan, please contact us [here](https://codemagic.io/pricing/#ent
 
 ## Pricing for Enterprises
 
-This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, **custom base images**, or other account management services. Enpterprise plan pricing starts from $12k/year,
+This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, **custom base images**, or other account management services. Enpterprise plan pricing starts from $12k/year.
 
 
 {{< tabpane >}}
