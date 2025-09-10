@@ -54,7 +54,7 @@ In order to do so, a service account is required when setting up publishing to G
 ⚠️ Important: The very first version of your app must be uploaded to Google Play manually.
 
 
-1. Run your Codemagic workflow to produce an `app-release.aab` (look under Artifacts in your build logs). Make sure to [configure Android code signing](../yaml-code-signing/signing-android/) so the app is properly signed before uploading.
+1. Run your Codemagic workflow to produce an `app-release.aab`. Make sure to [configure Android code signing](../yaml-code-signing/signing-android/) so the app is properly signed before uploading.
 
 2. Download the generated `app-release.aab` binary from the build artifacts section.
 
