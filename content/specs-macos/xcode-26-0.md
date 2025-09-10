@@ -21,11 +21,11 @@ Available on request:
 
 - System version `macOS 15.6.1 (24G90)`
 - Kernel version `Darwin 24.6.0`
-- Disk `294GB (Free Space: 166GB)`
+- Disk `294GB (Free Space: 157GB)`
 
 ## Xcode versions
 
-- 26.0 (17A5305k) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
+- 26.0 (17A321) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -56,6 +56,10 @@ Available on request:
 - iPhone 16 Pro
 - iPhone 16 Pro Max
 - iPhone 16e
+- iPhone 17
+- iPhone 17 Pro
+- iPhone 17 Pro Max
+- iPhone Air
 {{< /collapsible >}}
 
 {{< collapsible title="tvOS 26.0" >}}
@@ -71,9 +75,14 @@ Available on request:
 {{< collapsible title="watchOS 26.0" >}}
 - Apple Watch SE (40mm) (2nd generation)
 - Apple Watch SE (44mm) (2nd generation)
+- Apple Watch SE 3 (40mm)
+- Apple Watch SE 3 (44mm)
 - Apple Watch Series 10 (42mm)
 - Apple Watch Series 10 (46mm)
+- Apple Watch Series 11 (42mm)
+- Apple Watch Series 11 (46mm)
 - Apple Watch Ultra 2 (49mm)
+- Apple Watch Ultra 3 (49mm)
 {{< /collapsible >}}
 
 
@@ -236,8 +245,8 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.28.21`
-- azure-cli `2.76.0`
+- aws `2.28.26`
+- azure-cli `2.77.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
@@ -245,12 +254,12 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - ew-cli `0.12.5`
 - fastlane `2.228.0`
 - firebase `14.12.1`
-- gem `3.7.1`
-- gh `2.78.0`
+- gem `3.7.2`
+- gh `2.79.0`
 - git `2.51.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `4.6.7`
+- homebrew `4.6.10`
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.7.1`
@@ -258,7 +267,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - npm `11.5.1`
 - python `3.12.7`
 - python3 `3.12.7`
-- ruby `3.3.6`
+- ruby `3.4.5`
 - ssh `9.9p2`
 - sudo `1.9.13p2`
 - swiftgen `6.6.3`
@@ -267,5 +276,5 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - unzip `6.00`
 - wget `1.25.0`
 - yarn `4.9.2`
-- yq `4.47.1`
+- yq `4.47.2`
 - zip `3.0`
