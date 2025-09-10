@@ -111,7 +111,7 @@ Here's a [sample](https://github.com/codemagic-ci-cd/codemagic-sample-projects/b
 
 This is the skeleton structure of `codemagic.yaml`. Each section, along with the configuration options, is described in more detail 
 
-{{< highlight yaml "style=paraiso-dark">}}
+{{< highlight-clickable yaml "style=paraiso-dark">}}
 workflows:
   my-workflow:
     name: My workflow name
@@ -153,7 +153,7 @@ workflows:
           - name@example.com
       scripts:
         - echo 'Post-publish script'
-{{< /highlight >}}
+{{< /highlight-clickable >}}
 
 ### Workflows
 
