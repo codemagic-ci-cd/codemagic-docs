@@ -54,9 +54,9 @@ In order to do so, a service account is required when setting up publishing to G
 ⚠️ Important: The very first version of your app must be uploaded to Google Play manually.
 
 
-1. Run your Codemagic workflow to produce an .aab (look under Artifacts in your build logs).
+1. Run your Codemagic workflow to produce an `app-release.aab` (look under Artifacts in your build logs). Make sure to [configure Android code signing](../yaml-code-signing/signing-android/) so the app is properly signed before uploading.
 
-2. Download the generated app-release.aab.
+2. Download the generated `app-release.aab` binary from the build artifacts section.
 
 3. Go to your Google Play Console, create your application entry (if it doesn’t exist yet), and manually upload this .aab in Production ![google_play_create_app](../uploads/2024/9/google_play_create_app.png)
 
@@ -67,8 +67,7 @@ In order to do so, a service account is required when setting up publishing to G
 
 After this first manual upload, Codemagic can automatically publish subsequent versions to the track(s) you configured in your codemagic.yaml.
 
-Also remember: each new build uploaded to Google Play must have a higher version code. You can automate this by [incrementing the build versions](../building/build-versioning/ 'Build versioning') on Codemagic.
- in your workflow.
+Also remember: each new build uploaded to Google Play must have a higher version code than the previously uploaded one. You can automate [incrementing the build versions](../building/build-versioning/ 'Build versioning') in your Codemagic workflows.
 
 ## Configure publishing in codemagic.yaml
 
