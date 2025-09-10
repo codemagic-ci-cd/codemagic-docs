@@ -50,13 +50,29 @@ In order to do so, a service account is required when setting up publishing to G
 12. Finally, click **Invite user** to finish setting up the service account on Google Play. In the Invite user window, the Email address field is pre-filled. Under Permissions, the default ones are already selected. You can go with these. Click Invite user at the bottom of the page.<br><br>
     ![Google play all](../uploads/s5.png)
 
+## Preparing your first release
+⚠️ Important: The very first version of your app must be uploaded to Google Play manually.
+
+
+1. Run your Codemagic workflow to produce an `app-release.aab`. Make sure to [configure Android code signing](../yaml-code-signing/signing-android/) so the app is properly signed before uploading.
+
+2. Download the generated `app-release.aab` binary from the build artifacts section.
+
+3. Go to your Google Play Console, create your application entry (if it doesn’t exist yet), and manually upload this .aab in Production ![google_play_create_app](../uploads/2024/9/google_play_create_app.png)
+
+4. Create new release (or the track you want to start with).
+![google_play_create_new_release](../uploads/2024/9/google_play_create_new_release.png)
+
+5. Complete the required app setup steps (app details, screenshots, content rating, etc.) and roll out your release.
+
+After this first manual upload, Codemagic can automatically publish subsequent versions to the track(s) you configured in your codemagic.yaml.
+
+Also remember: each new build uploaded to Google Play must have a higher version code than the previously uploaded one. You can automate [incrementing the build versions](../building/build-versioning/ 'Build versioning') in your Codemagic workflows.
+
 ## Configure publishing in codemagic.yaml
 
 Once you make all the preparations as described above and configure publishing to Google Play, Codemagic will automatically distribute the app to Google Play every time you build the workflow.
 
-{{<notebox>}}
-**Note:** The very first version of the app must be added to Google Play manually. You can download the **app_release.aab** from the build artifacts. In addition, each uploaded binary must have a different version; see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic.
-{{</notebox>}}
 
 1. Save the contents of the `JSON` key file as a [secret environment variable](../variables/environment-variable-groups/#storing-sensitive-valuesfiles) in application or team settings:
 
