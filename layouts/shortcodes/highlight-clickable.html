@@ -1,0 +1,33 @@
+{{ $language := .Get 0 }}
+{{ $styling  := .Get 1 }}
+
+{{- $raw := .Inner -}}
+
+{{/* Mark each key (start-of-line, optional indent) with unique open/close tokens */}}
+{{- $raw = replaceRE `(?m)^(\s*)(workflows:)(.*)$`      `${1}__WF__${2}__WF_END__${3}` $raw -}}
+{{- $raw = replaceRE `(?m)^(\s*)(labels:)(.*)$`         `${1}__LB__${2}__LB_END__${3}` $raw -}}
+{{- $raw = replaceRE `(?m)^(\s*)(instance_type:)(.*)$`  `${1}__IT__${2}__IT_END__${3}` $raw -}}
+{{- $raw = replaceRE `(?m)^(\s*)(inputs:)(.*)$`         `${1}__IN__${2}__IN_END__${3}` $raw -}}
+{{- $raw = replaceRE `(?m)^(\s*)(environment:)(.*)$`    `${1}__EN__${2}__EN_END__${3}` $raw -}}
+{{- $raw = replaceRE `(?m)^(\s*)(cache:)(.*)$`          `${1}__CH__${2}__CH_END__${3}` $raw -}}
+{{- $raw = replaceRE `(?m)^(\s*)(triggering:)(.*)$`     `${1}__TR__${2}__TR_END__${3}` $raw -}}
+{{- $raw = replaceRE `(?m)^(\s*)(scripts:)(.*)$`        `${1}__SC__${2}__SC_END__${3}` $raw -}}
+{{- $raw = replaceRE `(?m)^(\s*)(artifacts:)(.*)$`      `${1}__AR__${2}__AR_END__${3}` $raw -}}
+{{- $raw = replaceRE `(?m)^(\s*)(publishing:)(.*)$`     `${1}__PB__${2}__PB_END__${3}` $raw -}}
+
+{{/* Highlight after marking */}}
+{{- $html := highlight $raw $language $styling -}}
+
+{{/* Swap markers for anchors to the corresponding section IDs */}}
+{{- $html = $html | replaceRE `__WF__` `<a href="#workflows">`           | replaceRE `__WF_END__` `</a>` -}}
+{{- $html = $html | replaceRE `__LB__` `<a href="#labels">`              | replaceRE `__LB_END__` `</a>` -}}
+{{- $html = $html | replaceRE `__IT__` `<a href="#instance-type">`       | replaceRE `__IT_END__` `</a>` -}}
+{{- $html = $html | replaceRE `__IN__` `<a href="#build-inputs">`        | replaceRE `__IN_END__` `</a>` -}}
+{{- $html = $html | replaceRE `__EN__` `<a href="#environment">`         | replaceRE `__EN_END__` `</a>` -}}
+{{- $html = $html | replaceRE `__CH__` `<a href="#cache">`               | replaceRE `__CH_END__` `</a>` -}}
+{{- $html = $html | replaceRE `__TR__` `<a href="#triggering">`          | replaceRE `__TR_END__` `</a>` -}}
+{{- $html = $html | replaceRE `__SC__` `<a href="#scripts">`             | replaceRE `__SC_END__` `</a>` -}}
+{{- $html = $html | replaceRE `__AR__` `<a href="#artifacts">`           | replaceRE `__AR_END__` `</a>` -}}
+{{- $html = $html | replaceRE `__PB__` `<a href="#publishing">`          | replaceRE `__PB_END__` `</a>` -}}
+
+{{- $html | safeHTML -}}
