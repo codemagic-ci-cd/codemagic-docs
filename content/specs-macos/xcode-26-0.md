@@ -19,13 +19,13 @@ Available on request:
 
 ## System
 
-- System version `macOS 15.6.1 (24G90)`
+- System version `macOS 15.7 (24G222)`
 - Kernel version `Darwin 24.6.0`
-- Disk `294GB (Free Space: 157GB)`
+- Disk `294GB (Free Space: 153GB)`
 
 ## Xcode versions
 
-- 26.0 (17A321) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
+- 26.0 (17A324) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -169,6 +169,7 @@ Installed packages:
   extras;google;market_licensing           | 1                 | Google Play Licensing Library               | extras/google/market_licensing
   extras;google;webdriver                  | 2                 | Google Web Driver                           | extras/google/webdriver
   ndk;25.1.8937393                         | 25.1.8937393      | NDK (Side by side) 25.1.8937393             | ndk/25.1.8937393
+  ndk;27.3.13750724                        | 27.3.13750724     | NDK (Side by side) 27.3.13750724            | ndk/27.3.13750724
   ndk;29.0.13113456                        | 29.0.13113456 rc1 | NDK (Side by side) 29.0.13113456            | ndk/29.0.13113456
   patcher;v4                               | 1                 | SDK Patch Applier v4                        | patcher/v4
   platform-tools                           | 35.0.2            | Android SDK Platform-Tools                  | platform-tools
@@ -216,6 +217,7 @@ Installed packages:
 | **Version** | **Path** |
 |---------|------|
 | 29.0.13113456 | `/usr/local/share/android-sdk/ndk/29.0.13113456` |
+| 27.3.13750724 | `/usr/local/share/android-sdk/ndk/27.3.13750724` |
 | 25.1.8937393 | `/usr/local/share/android-sdk/ndk/25.1.8937393` |
 
 
