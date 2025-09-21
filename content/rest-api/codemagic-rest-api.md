@@ -11,6 +11,10 @@ Codemagic API can be accessed at `https://api.codemagic.io`.
 
 API uses the HTTPS protocol and all data is sent and received in JSON format.
 
+{{<notebox>}}
+⚠️ Note: We are transitioning to our new API. For up-to-date information, please refer to the new [Codemagic REST API documentation](https://codemagic.io/api/v3/schema).
+{{</notebox>}}
+
 
 ## Authentication
 
