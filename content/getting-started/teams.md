@@ -35,7 +35,7 @@ To add new applications to a team, click **Add application** on the Apps page an
 {{<notebox>}}
 **Notes on transferring apps to team:** 
 * Please review the repository settings and team integrations to ensure that your setup is intact and the repository is still accessible after the transfer. Read more about configuring repository access in [team integrations](#managing-team-integrations).
-* As Personal accounts and team accounts are two different teams/accounts, iOS and Android code signing configurations are not transferred from personal account, so please re-adjust workflows that rely on these configurations.
+* As Personal accounts and team accounts are two different teams/accounts, iOS and Android code signing identities are not transferred from personal accounts, so please re-adjust workflows that rely on these configurations. To continue working with iOS automatic code signing in the Workflow Editor, you need to re-add the App Store Connect API key (.p8) in your team settings as the API keys are not shared between accounts. Moreover, none of the personal account integrations from Teams >> Personal account >> Integrations is migrated.
 * If you used code signing identities on your personal account, please review any setup related to code signing identities.
 * Once an application has been transferred to a team, it cannot be transferred back to the personal account or to other teams.
 {{</notebox>}}
