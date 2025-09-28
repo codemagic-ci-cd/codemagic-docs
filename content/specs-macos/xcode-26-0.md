@@ -25,7 +25,7 @@ Available on request:
 
 ## Xcode versions
 
-- 26.0 (17A324) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
+- 26.0.1 (17A400) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -229,7 +229,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 | **Version** | **Path** |
 |-------------|----------|
-| 24.0.2 | `/Library/Java/JavaVirtualMachines/zulu-24.jdk/Contents/Home` |
+| 25 | `/Library/Java/JavaVirtualMachines/zulu-25.jdk/Contents/Home` |
 | 21.0.8 | `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home` |
 | **17.0.16** (default) | `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` |
 | 11.0.28 | `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` |
@@ -247,7 +247,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.28.26`
+- aws `2.31.3`
 - azure-cli `2.77.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
@@ -257,11 +257,11 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - fastlane `2.228.0`
 - firebase `14.12.1`
 - gem `3.7.2`
-- gh `2.79.0`
+- gh `2.80.0`
 - git `2.51.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `4.6.10`
+- homebrew `4.6.14`
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.7.1`
