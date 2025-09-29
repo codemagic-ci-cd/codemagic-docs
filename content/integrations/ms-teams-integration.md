@@ -25,7 +25,6 @@ To receive messages in a Teams channel, you first need to configure the **Incomi
 
 ## Configuring access to Teams in Codemagic
 
-One **environment variable** needs to be added to your workflow for the Teams integration: `TEAMS_WEBHOOK_URL`.
 
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the desired **_Variable name_**, e.g. `TEAMS_WEBHOOK_URL`.
