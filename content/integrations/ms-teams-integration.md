@@ -8,7 +8,7 @@ weight: 9
 
 ## Create an Incoming Webhook in Teams
 
-To receive messages in a Teams channel, you first need to configure an **Incoming Webhook**:
+To receive messages in a Teams channel, you first need to configure the **Incoming Webhook**:
 
 
 1. In Microsoft Teams, open the channel you want to post notifications to.
