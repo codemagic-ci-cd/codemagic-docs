@@ -51,7 +51,7 @@ The following example shows how you can check the publishing status of a build a
 publishing:
   scripts:
     # Fetch the artifact URL for the .ipa file
-    IPA_LINK=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith(".ipa")) | .url')
+    ARTIFACT_LINK=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith(".ipa")) | .url')
 
     # Get first 7 digits of commit hash
     COMMIT=$(echo "${CM_COMMIT}" | sed 's/^\(........\).*/\1/;q')
@@ -66,7 +66,7 @@ publishing:
     curl -H "Content-Type: application/json" \
       -d "{
             \"title\": \"📦 New Codemagic Build\",
-            \"text\": \"**Branch:** $CM_BRANCH <br>**Commit:** \`$COMMIT\` <br>**Author:** $AUTHOR <br>**Commit message:** $COMMIT_MESSAGE <br>**Artifact:** <a href='$IPA_LINK'>Download IPA</a>\"
+            \"text\": \"**Branch:** $CM_BRANCH <br>**Commit:** \`$COMMIT\` <br>**Author:** $AUTHOR <br>**Commit message:** $COMMIT_MESSAGE <br>**Artifact:** <a href='$ARTIFACT_LINK'>Download IPA</a>\"
           }" \
       $TEAMS_WEBHOOK_URL
 {{< /highlight >}}
