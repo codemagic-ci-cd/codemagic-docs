@@ -65,8 +65,8 @@ publishing:
     # Send notification to MS Teams
     curl -H "Content-Type: application/json" \
       -d "{
-            \"title\": \"New Codemagic Build\",
-            \"text\": \"**Branch:** $CM_BRANCH \n**Commit:** \`$COMMIT\` \n**Author:** $AUTHOR \n**Commit message:** $COMMIT_MESSAGE \n**Artifact:** [Download IPA]($IPA_LINK)\"
+            \"title\": \"📦 New Codemagic Build\",
+            \"text\": \"**Branch:** $CM_BRANCH <br>**Commit:** \`$COMMIT\` <br>**Author:** $AUTHOR <br>**Commit message:** $COMMIT_MESSAGE <br>**Artifact:** <a href='$IPA_LINK'>Download IPA</a>\"
           }" \
       $TEAMS_WEBHOOK_URL
 {{< /highlight >}}
