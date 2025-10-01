@@ -68,3 +68,44 @@ Note that installing dependencies without using caching could be faster than ret
 ## Removing cached dependencies
 
 In order to clear the collected cache, navigate to the **Dependency caching** section in app settings and click **Clear cache**. During the next build, dependencies will be downloaded afresh.
+
+## Xcode compilation caching 
+
+Starting with Xcode 26 it is possible to use **compilation caching**. This is a new build system feature designed to make builds significantly faster by caching and reusing compilation outputs across different builds.
+
+On macOS, the compilation cache can usually be found in `~/Library/Developer/Xcode/CompilationCache.noindex`.
+
+For Codemagic to reuse the compilation cache you should add the its path to your cache paths in your `codemagic.yaml` configuration file as follows:
+
+{{< highlight yaml "style=paraiso-dark">}}
+  cache:
+    cache_paths:
+      - ~/Library/Developer/Xcode/CompilationCache.noindex
+{{< /highlight >}}
+
+When building and exporting your `.ipa` with Codemagic's CLI tools you can ensure the compilation cache is used during builds by adding the `COMPILATION_CACHE_ENABLE_CACHING=True` flag as follows:
+
+{{< highlight yaml "style=paraiso-dark">}}
+  - name: Build ipa for distribution
+    script: | 
+      xcode-project build-ipa \
+        --workspace "${XCODE_SCHEME}.xcworkspace" \
+        --scheme "${XCODE_SCHEME}" \
+        --archive-xcargs "COMPILATION_CACHE_ENABLE_CACHING=True"
+{{< /highlight >}}
+
+The first build will generate the cache which will be uploaded to Codemagic's cache server. On subsequent builds Codemagic restores the directory containing the compilation cache which should speed up the build.
+
+You can see if the compilation cache is being used by looking at the Xcode build logs.
+
+{{< highlight bash "style=paraiso-dark">}}
+CompilationCacheMetrics
+note: 85 hits / 85 cacheable tasks (100%)
+{{< /highlight >}}
+
+Xcode build logs can be gathered as artifacts by setting the path to the logs in the `artifacts` section of your `codemagic.yaml` configuration file.
+
+{{< highlight yaml "style=paraiso-dark">}}
+artifacts:
+  - /tmp/xcodebuild_logs/*.log
+{{< /highlight >}}
