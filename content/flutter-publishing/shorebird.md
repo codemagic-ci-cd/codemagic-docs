@@ -56,7 +56,7 @@ Release builds can be published to app stores and patched once they've been dist
 
 ## Building a patch
 
-Once you have a published a release of your app, you can patch it by pushing an app update directly to users' devices. Read more about Shorebird [patches](https://docs.shorebird.dev/code-push/patch/).
+Once you have published a release of your app, you can patch it by pushing an app update directly to users' devices. Read more about Shorebird [patches](https://docs.shorebird.dev/code-push/patch/).
 
 1. In workflow editor, select the platforms for which you want to build. Only **Android** and **iOS** are supported with Shorebird for now.
 2. Under **Publish updates to user devices using Shorebird**, select **Patch**.
