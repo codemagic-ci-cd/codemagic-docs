@@ -25,7 +25,7 @@ Available on request:
 
 ## Xcode versions
 
-- 26.1 (17B5025f) `/Applications/Xcode-26.1.app`, also selected when specifying `edge` in Xcode version settings
+- 26.1 (17B5035f) `/Applications/Xcode-26.1.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -242,7 +242,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.31.5`
+- aws `2.31.10`
 - azure-cli `2.77.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
@@ -252,11 +252,11 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - fastlane `2.228.0`
 - firebase `14.12.1`
 - gem `3.7.2`
-- gh `2.80.0`
+- gh `2.81.0`
 - git `2.51.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `4.6.15`
+- homebrew `4.6.16`
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.7.1`
