@@ -25,7 +25,7 @@ Available on request:
 
 ## Xcode versions
 
-- 26.0.1 (17A400) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `edge` in Xcode version settings
+- 26.0.1 (17A400) `/Applications/Xcode-26.0.app`, also selected when specifying `26` or `26.0` in Xcode version settings
 
 ### Runtimes and Devices
 
