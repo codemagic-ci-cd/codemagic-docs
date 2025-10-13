@@ -269,3 +269,35 @@ workflows:
 {{< /highlight >}}
 
 If you are using the Workflow Editor, specify the project path inside the Build step by selecting your project from the Project path dropdown.
+
+### Failed to set code signing settings for **/*.xcodeproj
+
+###### Description
+When building a React Native iOS project, you may encounter an error similar to the following, often referencing a dependency inside the `node_modules` directory:
+
+    Searching for files matching /Users/builder/clone/**/*.xcodeproj
+    Failed to set code signing settings for node_modules/react-native-fast-image/ios/FastImage.xcodeproj
+
+For example, this error may appear for packages such as `react-native-fast-image`, `react-native-camera-kit`, or other dependencies that include their own `.xcodeproj` files.
+
+###### Cause
+By default, Codemagic’s `xcode-project use-profiles` command searches recursively for all `.xcodeproj` files in the repository to apply code signing settings. In React Native projects, several dependencies inside the `node_modules` directory (e.g. `react-native-fast-image`) include their own `.xcodeproj` files.
+As a result, Codemagic may attempt to apply signing settings to these dependency projects instead of the actual application project.
+
+###### Solution
+Explicitly specify your app’s .xcodeproj file when running the xcode-project use-profiles command to ensure that code signing settings are applied only to the main project.
+
+For example, update your build script as follows:
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Set up code signing
+    script: |
+      xcode-project use-profiles --project ios/<project_name>.xcodeproj
+{{< /highlight >}}
+
+Alternatively, if your iOS directory contains a single `.xcodeproj` file, you can use a wildcard:
+
+{{< highlight yaml "style=paraiso-dark">}}
+xcode-project use-profiles --project ios/*.xcodeproj
+{{< /highlight >}}
