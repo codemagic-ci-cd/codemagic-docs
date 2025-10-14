@@ -37,7 +37,7 @@ You will need to upload the signing key to the Codemagic environment variables s
 $ keytool -export -rfc -keystore YOUR_KEYSTORE.jks -alias upload -file upload_certificate.pem
 {{< /highlight >}}
 
-5. Upload the **upload_certificate.pem** file and click **Submit**.
+5. Upload the **upload_certificate.pem** file to AppGallery Connect under the App Signing tab and click **Submit**.
 
 ## Adding the Fastlane script to your code
 First, you need to set up Fastlane at your project by running `fastlane init` command, see the [docs](https://docs.fastlane.tools/getting-started/android/setup/).
