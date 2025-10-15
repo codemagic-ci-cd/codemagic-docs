@@ -285,7 +285,7 @@ By default, Codemagic’s `xcode-project use-profiles` command searches recursiv
 As a result, Codemagic may attempt to apply signing settings to these dependency projects instead of the actual application project.
 
 ###### Solution
-Explicitly specify your app’s .xcodeproj file when running the xcode-project use-profiles command to ensure that code signing settings are applied only to the main project.
+Explicitly specify your app’s .xcodeproj file when running the `xcode-project use-profiles` command to ensure that code signing settings are applied only to the main project.
 
 For example, update your build script as follows:
 
