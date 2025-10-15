@@ -287,7 +287,7 @@ As a result, Codemagic may attempt to apply signing settings to these dependency
 ###### Solution
 Explicitly specify your app’s .xcodeproj file when running the `xcode-project use-profiles` command to ensure that code signing settings are applied only to the main project.
 
-For example, update your build script as follows:
+For example, update your script as follows:
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:
