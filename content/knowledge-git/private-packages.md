@@ -25,10 +25,18 @@ Accessing GitHub packages for private dependencies requires the following steps:
 {{< /highlight >}}
 
 
-9. Create a **.npmrc** file with the following contents (where @owner is your github username):
+9. Create a **.npmrc** file with the following contents (where @owner is your GitHub username):
 {{< highlight INI "style=paraiso-dark">}}
   registry=https://registry.npmjs.org/
   @owner:registry=https://npm.pkg.github.com/
   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 {{< /highlight >}}
+
+or the code below for private registries:
+
+{{< highlight INI "style=paraiso-dark">}}
+  registry=https://my-private-registry.example.com/
+  //my-private-registry.example.com/:_authToken=YOUR_AUTH_TOKEN
+{{< /highlight >}}
+
 
