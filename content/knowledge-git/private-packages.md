@@ -25,43 +25,10 @@ Accessing GitHub packages for private dependencies requires the following steps:
 {{< /highlight >}}
 
 
-9. Create a **.npmrc** file with the following contents (where @owner is your GitHub username):
+9. Create a **.npmrc** file with the following contents (where @owner is your github username):
 {{< highlight INI "style=paraiso-dark">}}
   registry=https://registry.npmjs.org/
   @owner:registry=https://npm.pkg.github.com/
   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 {{< /highlight >}}
-
-   or the code below for private registries with your **NPM_TOKEN**:
-
-  {{< highlight INI "style=paraiso-dark">}}
-    registry=https://my-private-registry.example.com/
-    //my-private-registry.example.com/:_authToken=$NPM_TOKEN
-  {{< /highlight >}}
-
-###### Debugging issues
-
-It is important to note that the Yarn ecosystem behaves differently depending on which version you use. As Yarn 2+ uses Plug'n'Play (PnP) system, it might check **yarnrc.yml** instead of **.npmrc**, so it needs to be configured:
-
-```
-npmScopes:
- package_name:
-  npmRegistryServer: "REGISTRY_URL"
-  npmAuthToken: "${NPM_TOKEN}"
-```
-
-You can check if you are authorized successfully by running `npm whoami --registry=https://REGISTRY_URL` and if the private package has been published to the registry by running `npm view @PACKAGE_NAME`. An easy way to debug private registry-related issues is at runtime by [enabling remote access to the builder machines](https://docs.codemagic.io/troubleshooting/accessing-builder-machine-via-ssh/).
-
-**Note:** If your builds work fine locally when running `yarn install`, then double-check if you are using the same yarn version with your Codemagic builds. You can downgrade or upgrade it at runtime if necessary:
-
-{{< highlight INI "style=paraiso-dark">}}
- - name: Change Yarn version
-   script: |
-       corepack disable
-       npm uninstall -g yarn
-       npm install -g yarn@1.22.19
-{{< /highlight >}}
-
-{{</notebox>}}
-
 
