@@ -51,7 +51,7 @@ npmScopes:
   npmAuthToken: "${NPM_TOKEN}"
  {{< /highlight >}}
 
-You can check if you are authorized successfully by running `npm whoami --registry=https://REGISTRY_URL` and if the private package has been published to the registry by running `npm view @PACKAGE_NAME`. The easiest way to debug private registry-related issues is at runtime by [enabling remote access to the builder machines](https://docs.codemagic.io/troubleshooting/accessing-builder-machine-via-ssh/).
+You can check if you are authorized successfully by running `npm whoami --registry=https://REGISTRY_URL` and if the private package has been published to the registry by running `npm view @PACKAGE_NAME`. An easy way to debug private registry-related issues is by [enabling remote access to the builder machines](https://docs.codemagic.io/troubleshooting/accessing-builder-machine-via-ssh/) at runtime.
 
 {{<notebox>}}
 **Note:** If your builds work fine locally when running `yarn install`, then double-check if you are using the same yarn version with your Codemagic builds. You can downgrade or upgrade it at runtime if necessary:
