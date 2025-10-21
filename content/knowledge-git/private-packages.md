@@ -32,7 +32,7 @@ Accessing GitHub packages for private dependencies requires the following steps:
   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 {{< /highlight >}}
 
-     or the code below for private registries with **NPM_TOKEN**:
+     or the code below for private registries with your **NPM_TOKEN**:
 
     {{< highlight INI "style=paraiso-dark">}}
       registry=https://my-private-registry.example.com/
