@@ -32,11 +32,11 @@ Accessing GitHub packages for private dependencies requires the following steps:
   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 {{< /highlight >}}
 
-     or the code below for private registries:
+     or the code below for private registries with **NPM_TOKEN**:
 
     {{< highlight INI "style=paraiso-dark">}}
       registry=https://my-private-registry.example.com/
-      //my-private-registry.example.com/:_authToken=YOUR_AUTH_TOKEN
+      //my-private-registry.example.com/:_authToken=$NPM_TOKEN
     {{< /highlight >}}
 
 ###### Debugging issues
@@ -51,7 +51,7 @@ npmScopes:
   npmAuthToken: "${NPM_TOKEN}"
  {{< /highlight >}}
 
-You can check if you are authorized successfully by running `npm whoami --registry=https://REGISTRY_URL` and if the private package has been published to the registry by running `npm view @PACKAGE_NAME`. The easiest way to debug private registry-related issues is at runtime by [enabling remote access to the builder machines](https://docs.codemagic.io/troubleshooting/accessing-builder-machine-via-ssh/).
+You can check if you are authorized successfully by running `npm whoami --registry=https://REGISTRY_URL` and if the private package has been published to the registry by running `npm view @PACKAGE_NAME`. An easy way to debug private registry-related issues is by [enabling remote access to the builder machines](https://docs.codemagic.io/troubleshooting/accessing-builder-machine-via-ssh/) at runtime.
 
 {{<notebox>}}
 
