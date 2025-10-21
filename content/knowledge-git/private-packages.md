@@ -65,7 +65,3 @@ You can check if you are authorized successfully by running `npm whoami --regist
 {{</notebox>}}
 
 
-
-
-
-
