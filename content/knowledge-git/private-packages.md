@@ -36,7 +36,7 @@ Accessing GitHub packages for private dependencies requires the following steps:
 
   {{< highlight INI "style=paraiso-dark">}}
     registry=https://my-private-registry.example.com/
-    //my-private-registry.example.com/:_authToken=YOUR_AUTH_TOKEN
+    //my-private-registry.example.com/:_authToken=$NPM_TOKEN
   {{< /highlight >}}
 
 ###### Debugging issues
