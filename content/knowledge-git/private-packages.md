@@ -25,14 +25,14 @@ Accessing GitHub packages for private dependencies requires the following steps:
 {{< /highlight >}}
 
 
-9. Create a **.npmrc** file with the following contents (where @owner is your github username):
+9. Create a **.npmrc** file with the following contents (where @owner is your GitHub username):
 {{< highlight INI "style=paraiso-dark">}}
   registry=https://registry.npmjs.org/
   @owner:registry=https://npm.pkg.github.com/
   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 {{< /highlight >}}
 
- or the code below for private registries:
+     or the code below for private registries:
 
     {{< highlight INI "style=paraiso-dark">}}
       registry=https://my-private-registry.example.com/
@@ -51,9 +51,10 @@ npmScopes:
   npmAuthToken: "${NPM_TOKEN}"
  {{< /highlight >}}
 
-You can check if you are authorized successfully by running `npm whoami --registry=https://REGISTRY_URL` and if the private package has been published to the registry by running `npm view @PACKAGE_NAME`. An easy way to debug private registry-related issues is by [enabling remote access to the builder machines](https://docs.codemagic.io/troubleshooting/accessing-builder-machine-via-ssh/) at runtime.
+You can check if you are authorized successfully by running `npm whoami --registry=https://REGISTRY_URL` and if the private package has been published to the registry by running `npm view @PACKAGE_NAME`. The easiest way to debug private registry-related issues is at runtime by [enabling remote access to the builder machines](https://docs.codemagic.io/troubleshooting/accessing-builder-machine-via-ssh/).
 
 {{<notebox>}}
+
 **Note:** If your builds work fine locally when running `yarn install`, then double-check if you are using the same yarn version with your Codemagic builds. You can downgrade or upgrade it at runtime if necessary:
 
 ```yaml
@@ -65,4 +66,9 @@ You can check if you are authorized successfully by running `npm whoami --regist
 ```
 
 {{</notebox>}}
+
+
+
+
+
 
