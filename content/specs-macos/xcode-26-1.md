@@ -21,11 +21,11 @@ Available on request:
 
 - System version `macOS 26.0.1 (25A362)`
 - Kernel version `Darwin 25.0.0`
-- Disk `294GB (Free Space: 149GB)`
+- Disk `294GB (Free Space: 148GB)`
 
 ## Xcode versions
 
-- 26.1 (17B5035f) `/Applications/Xcode-26.1.app`, also selected when specifying `edge` in Xcode version settings
+- 26.1 (17B5045g) `/Applications/Xcode-26.1.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -35,7 +35,9 @@ Available on request:
 - iPad Air 11-inch (M3)
 - iPad Air 13-inch (M3)
 - iPad Pro 11-inch (M4)
+- iPad Pro 11-inch (M5)
 - iPad Pro 13-inch (M4)
+- iPad Pro 13-inch (M5)
 - iPad mini (A17 Pro)
 - iPhone 16
 - iPhone 16 Plus
@@ -53,7 +55,9 @@ Available on request:
 - iPad Air 11-inch (M3)
 - iPad Air 13-inch (M3)
 - iPad Pro 11-inch (M4)
+- iPad Pro 11-inch (M5)
 - iPad Pro 13-inch (M4)
+- iPad Pro 13-inch (M5)
 - iPad mini (A17 Pro)
 - iPhone 16e
 - iPhone 17
@@ -224,11 +228,11 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 | **Version** | **Path** |
 |-------------|----------|
-| 25 | `/Library/Java/JavaVirtualMachines/zulu-25.jdk/Contents/Home` |
-| 21.0.8 | `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home` |
-| **17.0.16** (default) | `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` |
-| 11.0.28 | `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` |
-| 1.8.0_462 | `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home` |
+| 25.0.1 | `/Library/Java/JavaVirtualMachines/zulu-25.jdk/Contents/Home` |
+| 21.0.9 | `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home` |
+| **17.0.17** (default) | `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` |
+| 11.0.29 | `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` |
+| 1.8.0_472 | `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home` |
 | 1.7.0_352 | `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home` |
 
 
@@ -242,26 +246,26 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.31.10`
-- azure-cli `2.77.0`
+- aws `2.31.20`
+- azure-cli `2.78.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `0.12.5`
+- ew-cli `0.12.6`
 - fastlane `2.228.0`
 - firebase `14.12.1`
 - gem `3.7.2`
-- gh `2.81.0`
-- git `2.51.0`
+- gh `2.82.1`
+- git `2.51.1`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `4.6.16`
+- homebrew `4.6.18`
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.7.1`
-- node `24.7.0`
-- npm `11.5.1`
+- node `20.19.5`
+- npm `10.8.2`
 - python `3.12.7`
 - python3 `3.12.7`
 - ruby `3.4.5`
@@ -273,5 +277,5 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - unzip `6.00`
 - wget `1.25.0`
 - yarn `4.9.2`
-- yq `4.47.2`
+- yq `4.48.1`
 - zip `3.0`
