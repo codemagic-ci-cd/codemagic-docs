@@ -25,4 +25,4 @@ Checks can be set up in GitHub when configuring [branch protection rules](https:
 7. Click **Save changes**.
 
 ## Re-running Checks
-You can re-reun failed builds (checks) or all check suite's builds from GitHub UI.
+You can re-run failed builds (checks) or all check suite's builds from GitHub UI.
