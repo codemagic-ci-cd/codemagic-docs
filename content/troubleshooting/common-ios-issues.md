@@ -301,3 +301,23 @@ Alternatively, if your iOS directory contains a single `.xcodeproj` file, you ca
 {{< highlight yaml "style=paraiso-dark">}}
 xcode-project use-profiles --project ios/*.xcodeproj
 {{< /highlight >}}
+
+### Scheme "xxx" not found from repository! Please reconfigure your project.
+
+###### Description
+When building a Flutter app using the Workflow Editor, you may encounter the following error during the Installing dependencies step:
+
+    Scheme "xxx" not found from repository! Please reconfigure your project.
+
+###### Cause
+This issue usually occurs when the iOS project files (such as schemes or workspace definitions) are not fully generated before the automatic dependency installation starts.
+Even though flutter pub get is automatically executed by Codemagic later in the build process, it might happen too late, before the Xcode project is properly set up.
+
+###### Solution
+To ensure that all necessary iOS project files are generated before dependency installation, add the following command to the `Post-clone` script section of your workflow:
+
+{{< highlight yaml "style=paraiso-dark">}}
+flutter pub get
+{{< /highlight >}}
+
+This guarantees that the Flutter project and its iOS artifacts (including Xcode schemes) are properly initialized before Codemagic proceeds with the rest of the build steps.
