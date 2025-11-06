@@ -324,3 +324,21 @@ If the scheme is correct and shared, add the following command to the Post-clone
 flutter pub get
 {{< /highlight >}}
 This ensures that all necessary iOS project files are properly generated before dependency installation begins.
+
+
+### The bundle identifier cannot be changed from the current value, 'xxx'.
+
+###### Description
+When building code signing an ios app, you may encounter the following error in the publishing step:
+
+    This bundle is invalid. The bundle identifier cannot be changed from the current value, 'xxx'. If you want to change your bundle identifier, you will need to create a new application in App Store Connect
+
+###### Cause
+This is an known issue which comes with the recent versions of [altool](https://github.com/fastlane/fastlane/issues/29698#issuecomment-3329783816)(shipped with Xcode 26) which has introduced a bug that can cause binary uploads to fail when multiple apps share a similar bundle ID prefix (e.g., com.mycompany.app and com.mycompany.app.test)., it's related to this bug in new 
+
+
+###### Solution
+The known and effective workaround is to explicitly force altool to use the correct app ID by passing the argument: ```--apple-id <app-apple-id>```. We’ve added support for an optional ```--altool-additional-arguments``` option to the app-store-connect publish action. This allows you to pass any additional CLI arguments directly to altool. You can also set this via the environment variable: ```APP_STORE_CONNECT_ALTOOL_ADDITIONAL_ARGUMENTS```. Your app's Apple ID can be found in  AppStoreConnect > General > App Information > Apple ID
+
+{{< figure size="medium" src="../uploads/2025/altool-bug.png" caption="Environment variable for altool fix" >}}
+
