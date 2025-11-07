@@ -19,13 +19,13 @@ Available on request:
 
 ## System
 
-- System version `macOS 26.0.1 (25A362)`
-- Kernel version `Darwin 25.0.0`
-- Disk `294GB (Free Space: 148GB)`
+- System version `macOS 26.1 (25B78)`
+- Kernel version `Darwin 25.1.0`
+- Disk `294GB (Free Space: 149GB)`
 
 ## Xcode versions
 
-- 26.1 (17B54) `/Applications/Xcode-26.1.app`, also selected when specifying `edge` in Xcode version settings
+- 26.1 (17B55) `/Applications/Xcode-26.1.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -246,8 +246,8 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.31.24`
-- azure-cli `2.78.0`
+- aws `2.31.30`
+- azure-cli `2.79.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
@@ -256,11 +256,11 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - fastlane `2.228.0`
 - firebase `14.12.1`
 - gem `3.7.2`
-- gh `2.82.1`
+- gh `2.83.0`
 - git `2.51.2`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `4.6.19`
+- homebrew `4.6.20`
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.7.1`
@@ -270,7 +270,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - python3 `3.12.7`
 - ruby `3.4.5`
 - ssh `10.0p2`
-- sudo `1.9.13p2`
+- sudo `1.9.17p2`
 - swiftgen `6.6.3`
 - tar `3.5.3`
 - ucd `0.11.10`
