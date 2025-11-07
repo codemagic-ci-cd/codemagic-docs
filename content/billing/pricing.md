@@ -22,10 +22,10 @@ CodePush (Over-the-Air updates) for React Native projects is priced as follows:
 | 100,000                     | $99                 | $990                 |
 | 150,000                     | $198                | $1,980               |
 | 500,000                     | $495                | $4,950               |
-| 1,000,000                   | $990                | $9,900  (discounted) | 
-| 2,000,000                   | $1,980              | $19,800 (discounted) |
-| 5,000,000                   | $4,950              | $49,500 (discounted) |
-| 10,000,000                  | $9,900              | $99,000 (discounted) |
+| 1,000,000                   | $990                | $9,900               | 
+| 2,000,000                   | $1,980              | $19,800              |
+| 5,000,000                   | $4,950              | $49,500              |
+| 10,000,000                  | $9,900              | $99,000              |
 
 ## Pricing for Individuals
 ### 1. Free plan
