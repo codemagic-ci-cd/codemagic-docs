@@ -324,3 +324,28 @@ If the scheme is correct and shared, add the following command to the Post-clone
 flutter pub get
 {{< /highlight >}}
 This ensures that all necessary iOS project files are properly generated before dependency installation begins.
+
+### No matching profiles found for bundle identifier "io.example.test" and distribution type "app_store"
+
+###### Description
+When building an iOS app in Codemagic, you may encounter the following error when starting a build:
+
+    No matching profiles found for bundle identifier "io.example.test" and distribution type "app_store"
+
+This means that in the ios_signing section of your YAML configuration, you are referencing a provisioning profile that has not yet been uploaded to Codemagic.
+
+
+{{< highlight yaml "style=paraiso-dark">}}
+    ios-workflow:
+      name: iOS Workflow
+      instance_type: mac_mini_m2
+      environment:
+        ios_signing: # This part indicates manual code signing
+          distribution_type: app_store
+          bundle_identifier: io.example.test
+{{< /highlight >}}
+
+###### Solution
+
+Go to Teams > [your team name] > Code signing identities > iOS Provisioning profiles
+and make sure a valid profile for your bundle identifier and distribution type exists.
