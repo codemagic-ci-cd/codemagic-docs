@@ -34,15 +34,15 @@ In order to get live updates in your Capgo account via Codemagic, you need to co
 
 ### Configure your project
 
+There are two ways of configuring your Capacitor project with Capgo: automatic and manual.
+
 #### Automatic mode
 
 1. `npx @capgo/cli init [CAPGO_TOKEN]`
 
-And follow the onboarding
-
 #### Manual mode
 
-1. Add Capgo plugin in your packages
+1. Add the Capgo plugin to your packages
 
 `npm i @capgo/capacitor-updater`
 
