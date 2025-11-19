@@ -34,12 +34,27 @@ In order to get live updates in your Capgo account via Codemagic, you need to co
 
 ### Configure your project
 
-1. Modify your Capacitor project by adding the following in your **capacitor.config.json**
+There are two ways of configuring your Capacitor project with Capgo: automatic and manual.
+
+#### Automatic mode
+
+Enable it by running the following command with your CAPGO_TOKEN:
+
+`npx @capgo/cli init [CAPGO_TOKEN]`
+
+#### Manual mode
+
+1. Add the Capgo plugin to your packages
+
+`npm i @capgo/capacitor-updater`
+
+2. Modify your Capacitor project by adding the following in your **capacitor.config.json**
 
 {{< highlight json "style=paraiso-dark">}}
   "plugins": {
       "CapacitorUpdater": {
-          "autoUpdate": true
+          "autoUpdate": true,  
+          "version": "1.0.0" // Bump this number each time you release a native version in the app store
       }
   }
 {{< /highlight >}}
@@ -56,30 +71,25 @@ CapacitorUpdater.notifyAppReady()
 ### Configure `codemagic.yaml`
 
 Add the following scripts to your `codemagic.yaml` file to:
-- install the **capacitor-updater**
-- update dependencies and copy assets to native project
 - upload your project to Capgo
+
+Ensure you first install your dependencies and build your JS:
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
-    - name: Install npm dependencies for Ionic project
-      script: | 
-        npm install @capgo/capacitor-updater
-        npx @capgo/cli login $CAPGO_TOKEN
     - name: Update dependencies and copy web assets to native project
       script: | 
         npx cap sync
     - name: Upload to Capgo
       script: | 
-        npx @capgo/cli add 
-        npx @capgo/cli upload
+        npx @capgo/cli bundle upload --a $CAPGO_TOKEN
 {{< /highlight >}}
 
 
 When uploading app versions to **Capgo**, executing the following command will submit updates to all users (if production channel is set to public):
 
 {{< highlight yaml "style=paraiso-dark">}}
-  npx @capgo/cli@latest upload -c production
+  npx @capgo/cli@latest bundle upload -c production
 {{< /highlight >}}
 
 As soon as users start installing app versions on their devices, a device list will be visible in the Capgo UI. You can choose any one of them in order to let specific groups of users know about updates shipped with version uploads.
