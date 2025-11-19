@@ -248,6 +248,11 @@ You can use logical operators `==`, `not`, `and`, `or`.
 
 Environment variables are available under the `env` variable. You can check [built-in](https://docs.codemagic.io/variables/environment-variables/) or other environment variables.
 
+{{<notebox>}}
+**Note:** In when conditions, environment variables must be referenced using the **`env.`** prefix (for example, **`env.ENV_VAR`**). Shell-style references such as **`$ENV_VAR`** are not supported inside the **`when`** block.
+{{</notebox>}}
+
+
 Webhook payload is available under the `event` variable. You can check the structure of the webhook payloads that your git provider sends on the **Webhooks** tab in application settings. Note that `event` is not available if the build is started manually from the UI or by a schedule.
 
 {{< collapsible title="Webhook payload sample" >}}
