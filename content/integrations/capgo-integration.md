@@ -38,7 +38,9 @@ There are two ways of configuring your Capacitor project with Capgo: automatic a
 
 #### Automatic mode
 
-1. `npx @capgo/cli init [CAPGO_TOKEN]`
+Enable it by running the following command with your CAPGO_TOKEN:
+
+`npx @capgo/cli init [CAPGO_TOKEN]`
 
 #### Manual mode
 
@@ -71,7 +73,7 @@ CapacitorUpdater.notifyAppReady()
 Add the following scripts to your `codemagic.yaml` file to:
 - upload your project to Capgo
 
-Ensure first you do install your dependencies and build your JS
+Ensure you first install your dependencies and build your JS:
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
