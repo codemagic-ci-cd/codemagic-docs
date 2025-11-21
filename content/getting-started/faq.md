@@ -52,6 +52,9 @@ If you require any of the listed advanced account services, they are available a
 ## Do Teams get 500 free build minutes?
 Free build minutes are reserved for personal and hobby projects.
 
+## If i enable Billing for my Personal account, will I still get the 500 free minutes?
+Yes, you will always receive 500 free build minutes on a Personal account, even if billing is enabled.
+
 ## Does it cost extra to build white-label apps?
 Because of the great freedom it offers in customizing your CI/CD workflows, Codemagic is a great choice for building white-label apps. Whether you want to utilize our REST API or the possibility to configure advanced Bash or Python scripts, Codemagic has you covered out of the box and without any extra costs.
 
