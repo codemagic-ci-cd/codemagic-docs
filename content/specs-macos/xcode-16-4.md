@@ -1,7 +1,5 @@
 ---
-title: Xcode 16.4.x (default)
-aliases:
-- /specs/versions-macos/
+title: Xcode 16.4.x
 weight: 96
 ---
 
@@ -25,7 +23,7 @@ Available on request:
 
 ## Xcode versions
 
-- 16.4 (16F6) `/Applications/Xcode-16.4.app`, also selected when specifying `latest` in Xcode version settings
+- 16.4 (16F6) `/Applications/Xcode-16.4.app`
 
 ### Runtimes and Devices
 
