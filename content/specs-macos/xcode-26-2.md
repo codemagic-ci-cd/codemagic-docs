@@ -1,8 +1,8 @@
 ---
-title: Xcode 26.1.x (default)
+title: Xcode 26.2.x
 aliases:
-- /specs/versions-macos/
-weight: 94
+
+weight: 93
 ---
 
 Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
@@ -21,34 +21,14 @@ Available on request:
 
 - System version `macOS 26.1 (25B78)`
 - Kernel version `Darwin 25.1.0`
-- Disk `294GB (Free Space: 150GB)`
+- Disk `294GB (Free Space: 149GB)`
 
 ## Xcode versions
 
-- 26.1.1 (17B100) `/Applications/Xcode-26.1.app`, also selected when specifying `26.1` or `latest` in Xcode version settings
+- 26.2 (17C5038g) `/Applications/Xcode-26.2.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
-
-{{< collapsible title="iOS 26.0" >}}
-- iPad (A16)
-- iPad Air 11-inch (M3)
-- iPad Air 13-inch (M3)
-- iPad Pro 11-inch (M4)
-- iPad Pro 11-inch (M5)
-- iPad Pro 13-inch (M4)
-- iPad Pro 13-inch (M5)
-- iPad mini (A17 Pro)
-- iPhone 16
-- iPhone 16 Plus
-- iPhone 16 Pro
-- iPhone 16 Pro Max
-- iPhone 16e
-- iPhone 17
-- iPhone 17 Pro
-- iPhone 17 Pro Max
-- iPhone Air
-{{< /collapsible >}}
 
 {{< collapsible title="iOS 26.1" >}}
 - iPad (A16)
@@ -66,17 +46,31 @@ Available on request:
 - iPhone Air
 {{< /collapsible >}}
 
-{{< collapsible title="tvOS 26.1" >}}
+{{< collapsible title="iOS 26.2" >}}
+- iPad (A16)
+- iPad Air 11-inch (M3)
+- iPad Air 13-inch (M3)
+- iPad Pro 11-inch (M5)
+- iPad Pro 13-inch (M5)
+- iPad mini (A17 Pro)
+- iPhone 16e
+- iPhone 17
+- iPhone 17 Pro
+- iPhone 17 Pro Max
+- iPhone Air
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 26.2" >}}
 - Apple TV
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
 {{< /collapsible >}}
 
-{{< collapsible title="visionOS 26.1" >}}
+{{< collapsible title="visionOS 26.2" >}}
 - Apple Vision Pro
 {{< /collapsible >}}
 
-{{< collapsible title="watchOS 26.1" >}}
+{{< collapsible title="watchOS 26.2" >}}
 - Apple Watch SE 3 (40mm)
 - Apple Watch SE 3 (44mm)
 - Apple Watch Series 11 (42mm)
@@ -246,7 +240,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.32.1`
+- aws `2.32.3`
 - azure-cli `2.80.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
@@ -260,7 +254,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - git `2.52.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `5.0.2`
+- homebrew `5.0.3`
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.8.0`
@@ -277,5 +271,5 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - unzip `6.00`
 - wget `1.25.0`
 - yarn `4.9.2`
-- yq `4.48.2`
+- yq `4.49.1`
 - zip `3.0`
