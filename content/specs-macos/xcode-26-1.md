@@ -1,7 +1,7 @@
 ---
-title: Xcode 26.1.x
+title: Xcode 26.1.x (default)
 aliases:
-
+- /specs/versions-macos/
 weight: 94
 ---
 
@@ -21,11 +21,11 @@ Available on request:
 
 - System version `macOS 26.1 (25B78)`
 - Kernel version `Darwin 25.1.0`
-- Disk `294GB (Free Space: 149GB)`
+- Disk `294GB (Free Space: 150GB)`
 
 ## Xcode versions
 
-- 26.1 (17B55) `/Applications/Xcode-26.1.app`, also selected when specifying `edge` in Xcode version settings
+- 26.1.1 (17B100) `/Applications/Xcode-26.1.app`, also selected when specifying `26.1`, `latest` or `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -246,24 +246,24 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.31.30`
-- azure-cli `2.79.0`
+- aws `2.32.1`
+- azure-cli `2.80.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `0.12.6`
+- ew-cli `1.0.1`
 - fastlane `2.228.0`
 - firebase `14.12.1`
 - gem `3.7.2`
-- gh `2.83.0`
-- git `2.51.2`
+- gh `2.83.1`
+- git `2.52.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `4.6.20`
+- homebrew `5.0.2`
 - ionic `7.2.1`
 - jq `1.8.1`
-- ktlint `1.7.1`
+- ktlint `1.8.0`
 - node `24.11.0`
 - npm `11.6.1`
 - python `3.12.7`
@@ -277,5 +277,5 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - unzip `6.00`
 - wget `1.25.0`
 - yarn `4.9.2`
-- yq `4.48.1`
+- yq `4.48.2`
 - zip `3.0`
