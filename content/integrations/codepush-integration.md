@@ -52,7 +52,7 @@ Codemagic offers a hosted and maintained CodePush server. Dedicated CodePush ser
     <string moduleConfig="true" name="CodePushDeploymentKey">YOUR_DEPLOYMENT_KEY</string>
     {{< /highlight >}}
 {{<notebox>}}
-**Note**: About how to find the deployment keys, please refer to step **7**.
+**Note**: About how to find the deployment keys, please refer to step **8**.
 {{</notebox>}}
 
 5. After configuring all the above-mentioned steps, it is time to set up the Codemagic side configuration and authentication. For that, [contact Codemagic team](https://codemagic.io/pricing/#enterprise) for an access key.
@@ -100,8 +100,8 @@ Codemagic offers a hosted and maintained CodePush server. Dedicated CodePush ser
 {{</notebox>}}
 
 
-7. In order to reveal the Deployment keys, run **code-push deployment ls YOUR_APP_NAME -k**
-8. By default, you get two Deployment channels: Staging and Production. You can add new ones, rename or delete them by running the following commands:
+8. In order to reveal the Deployment keys, run **code-push deployment ls YOUR_APP_NAME -k**
+9. By default, you get two Deployment channels: Staging and Production. You can add new ones, rename or delete them by running the following commands:
 
 {{< highlight bash "style=paraiso-dark">}}
 To Add: code-push deployment add <appName> <deploymentName>
@@ -109,7 +109,7 @@ To Remove: code-push deployment rm <appName> <deploymentName>
 To Rename: code-push deployment rename <appName> <deploymentName> <newDeploymentName>
 {{< /highlight >}}
 
-9. Likewise, apps can be added, renamed and deleted:
+10. Likewise, apps can be added, renamed and deleted:
 
 {{< highlight bash "style=paraiso-dark">}}
 To Add: code-push app add <appName>
@@ -117,11 +117,11 @@ To Rename: code-push app rename <appName> <newAppName>
 To Delete: code-push app rm <appName>
 {{< /highlight >}}
 
-10. If you need to patch a previous release, e.g. increase the rollout percentage, push a missed bug fix or similar, you can achieve it by running `code-push patch <appName> <deploymentName>`
+11. If you need to patch a previous release, e.g. increase the rollout percentage, push a missed bug fix or similar, you can achieve it by running `code-push patch <appName> <deploymentName>`
 
-11. You cannot delete a deployed release, but you can roll back a release by running `code-push rollback <appName> <deploymentName>`
+12. You cannot delete a deployed release, but you can roll back a release by running `code-push rollback <appName> <deploymentName>`
     
-12. After testing an update against a deployment channel, it is possible to promote it by running the following command:
+13. After testing an update against a deployment channel, it is possible to promote it by running the following command:
 
 {{< highlight bash "style=paraiso-dark">}}
 code-push promote <appName> <sourceDeploymentName> <destDeploymentName>
