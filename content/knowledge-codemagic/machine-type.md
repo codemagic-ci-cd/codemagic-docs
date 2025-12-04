@@ -28,12 +28,12 @@ For Flutter projects configured via the Flutter workflow editor, the build machi
 
 The following build machine types are provided by Codemagic:
 
-1. macOS with Apple M2, Max and Ultra chips
+1. macOS with Apple M2, M4 and M4 Max chips
 2. Linux (x64 and arm64)
 3. Windows
    
 {{<notebox>}}
-Contact us [here](https://codemagic.io/pricing/#enterprise) to have access to macOS with Apple M2 Pro, Max, Ultra chips and Linux with arm64.
+Contact us [here](https://codemagic.io/pricing/#enterprise) to have access to macOS with Apple M4, M4 Max and Linux with arm64.
 {{</notebox>}}
 
 For more information about the machine specifications, please check [this page](https://docs.codemagic.io/specs/versions-macos/).
