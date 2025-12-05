@@ -132,7 +132,7 @@ To activate a Unity license on the build machine, add the following step at the 
   scripts:
     - name: Activate Unity license
       script: | 
-        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
           -serial ${UNITY_SERIAL} \
           -username ${UNITY_EMAIL} \
           -password ${UNITY_PASSWORD}
@@ -612,7 +612,7 @@ In this step you can also define the build artifacts you are interested in. Thes
       script: #...
     - name: Build the project
       script: | 
-        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
           -projectPath . \
           -executeMethod BuildScript.BuildMac \
           -nographics
@@ -821,7 +821,7 @@ workflows:
     scripts:
       - name: Activate Unity License
         script: | 
-          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
             -serial ${UNITY_SERIAL} \
             -username ${UNITY_EMAIL} \
             -password ${UNITY_PASSWORD}
@@ -886,7 +886,7 @@ workflows:
     scripts:
       - name: Activate Unity license
         script: | 
-          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
             -serial ${UNITY_SERIAL} \
             -username ${UNITY_EMAIL} \
             -password ${UNITY_PASSWORD}
@@ -967,7 +967,7 @@ workflows:
     scripts:
       - name: Activate Unity license
         script: | 
-          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
             -serial ${UNITY_SERIAL} \
             -username ${UNITY_EMAIL} \
             -password ${UNITY_PASSWORD}
@@ -992,7 +992,7 @@ workflows:
           xcode-project use-profiles    
       - name: Build the project
         script: | 
-          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
             -projectPath . \
             -executeMethod BuildScript.BuildMac \
             -nographics
