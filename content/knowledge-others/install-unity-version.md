@@ -238,7 +238,8 @@ workflows:
       publishing:
         scripts:
           - name: Deactivate Unity License
-            script: $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -returnlicense -nographics
+            script: |
+                $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - -returnlicense -username ${UNITY_EMAIL} -password ${UNITY_PASSWORD}
 {{< /highlight >}}
 {{< /tab >}}
 {{% tab header="Windows" %}}
