@@ -87,8 +87,8 @@ ln -s $FLUTTER_ROOT $CM_BUILD_DIR/.fvm/flutter_sdk
 ```yaml
 - name: Configure FVM
   script: |
-    - brew tap leoafarias/fvm && brew install fvm
-    - fvm install && fvm use
+     brew tap leoafarias/fvm && brew install fvm
+     fvm install && fvm use
 ```
 
 {{</notebox>}}
