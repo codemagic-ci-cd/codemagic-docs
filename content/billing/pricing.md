@@ -311,8 +311,6 @@ To access more powerful macOS M4, M4 Max Studio and Linux X4, please get in touc
 
 If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Please note that Android emulators are not available on macOS M2 VMs due to the Apple Virtualization Framework not supporting nested virtualization.
 
-If you need more powerful Linux or macOS machines, please contact us [here](https://codemagic.io/pricing/#enterprise).
-
 For Linux instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-linux/)
 
 For macOS instances, details of the hardware specification, system information, and pre-installed software can be found [here](https://docs.codemagic.io/specs/versions-macos/)  
