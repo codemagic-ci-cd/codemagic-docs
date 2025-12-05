@@ -74,7 +74,7 @@ workflows:
 {{</notebox>}}
 
 {{<notebox>}}
-**Note**: When using Melos for managing monorepos in conjuction with FVM, and **sdkPath** is set to **.fvm/flutter_sdk** inside **melos.yaml**, then the `sourceFile` needs to be linked to the `targetFile` by running the following command:
+**Note**: When using Melos for managing monorepos in conjunction with FVM, and **sdkPath** is set to **.fvm/flutter_sdk** inside **melos.yaml**, then the `sourceFile` needs to be linked to the `targetFile` by running the following command:
 
 ```
 ln -s $FLUTTER_ROOT $CM_BUILD_DIR/.fvm/flutter_sdk
@@ -83,7 +83,7 @@ ln -s $FLUTTER_ROOT $CM_BUILD_DIR/.fvm/flutter_sdk
 {{</notebox>}}
 
 {{<notebox>}}
-**Note**: For monorepo projects, where the FVM configuration file is often located inside a subdirectory. Instead of setting **flutter: fvm** in the workflow's environment section, install and configure FVM manually in the relevant app directory:
+**Note**: For monorepo projects, where the FVM configuration file is located inside a subdirectory: instead of setting **flutter: fvm** in the workflow's environment section, install and configure FVM by running the following scripts in the relevant app directory:
 ```
 scripts:
   - brew tap leoafarias/fvm && brew install fvm
