@@ -132,7 +132,7 @@ To activate a Unity license on the build machine, add the following step at the 
   scripts:
     - name: Activate Unity license
       script: | 
-        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
           -serial ${UNITY_SERIAL} \
           -username ${UNITY_EMAIL} \
           -password ${UNITY_PASSWORD}
@@ -156,7 +156,7 @@ To deactivate a Unity license on the build machine, add the following script ste
     scripts:
       - name: Deactivate Unity License
       script: | 
-        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -returnlicense -nographics
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - -returnlicense -username ${UNITY_EMAIL} -password ${UNITY_PASSWORD}
 {{< /highlight >}}
 {{< /tab >}}
 
@@ -166,10 +166,7 @@ To deactivate a Unity license on the build machine, add the following script ste
     scripts:
       - name: Deactivate Unity License
         script: | 
-          /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
-            --return-ulf \
-            --username ${UNITY_EMAIL?} \
-            --password ${UNITY_PASSWORD?}
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - -returnlicense -username ${UNITY_EMAIL} -password ${UNITY_PASSWORD}
 {{< /highlight >}}
 {{% /tab %}}
 
@@ -612,7 +609,7 @@ In this step you can also define the build artifacts you are interested in. Thes
       script: #...
     - name: Build the project
       script: | 
-        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+        $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
           -projectPath . \
           -executeMethod BuildScript.BuildMac \
           -nographics
@@ -821,7 +818,7 @@ workflows:
     scripts:
       - name: Activate Unity License
         script: | 
-          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
             -serial ${UNITY_SERIAL} \
             -username ${UNITY_EMAIL} \
             -password ${UNITY_PASSWORD}
@@ -844,10 +841,7 @@ workflows:
       scripts:
         - name: Deactivate Unity License
           script: | 
-            /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
-            --return-ulf \
-            --username ${UNITY_EMAIL} \
-            --password ${UNITY_PASSWORD}
+            $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - -returnlicense -username ${UNITY_EMAIL} -password ${UNITY_PASSWORD}
       email:
         recipients:
           - user_1@example.com
@@ -886,7 +880,7 @@ workflows:
     scripts:
       - name: Activate Unity license
         script: | 
-          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
             -serial ${UNITY_SERIAL} \
             -username ${UNITY_EMAIL} \
             -password ${UNITY_PASSWORD}
@@ -918,10 +912,7 @@ workflows:
       scripts:
         - name: Deactivate Unity License
           script: | 
-            /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
-            --return-ulf \
-            --username ${UNITY_EMAIL} \
-            --password ${UNITY_PASSWORD}
+            $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - -returnlicense -username ${UNITY_EMAIL} -password ${UNITY_PASSWORD}
       email:
         recipients:
           - user_1@example.com
@@ -967,7 +958,7 @@ workflows:
     scripts:
       - name: Activate Unity license
         script: | 
-          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
             -serial ${UNITY_SERIAL} \
             -username ${UNITY_EMAIL} \
             -password ${UNITY_PASSWORD}
@@ -992,7 +983,7 @@ workflows:
           xcode-project use-profiles    
       - name: Build the project
         script: | 
-          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile \
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - \
             -projectPath . \
             -executeMethod BuildScript.BuildMac \
             -nographics
@@ -1027,10 +1018,7 @@ workflows:
       scripts:
         - name: Deactivate Unity License
           script: | 
-            /Applications/Unity\ Hub.app/Contents/Frameworks/UnityLicensingClient_V1.app/Contents/MacOS/Unity.Licensing.Client \
-            --return-ulf \
-            --username ${UNITY_EMAIL} \
-            --password ${UNITY_PASSWORD}
+            $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - -returnlicense -username ${UNITY_EMAIL} -password ${UNITY_PASSWORD}
       email:
         recipients:
           - user_1@example.com
