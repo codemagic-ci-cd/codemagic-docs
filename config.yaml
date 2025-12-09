@@ -176,17 +176,21 @@ menu:
           name: Codemagic REST API
           weight: 8
 
+        - identifier: rn-codepush
+          name: React Native CodePush
+          weight: 9
+
         - identifier: billing
           name: Billing & Pricing
           weight: 10
 
         - identifier: troubleshooting
           name: Troubleshooting
-          weight: 9
+          weight: 11
 
         - identifier: specs
           name: Software and hardware
-          weight: 11
+          weight: 12
 
         - identifier: specs-macos
           name: macOS machines
