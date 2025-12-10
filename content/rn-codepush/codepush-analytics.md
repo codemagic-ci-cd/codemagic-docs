@@ -1,6 +1,6 @@
 ---
-title: OTA updates analytics
-description: Get an overview of your deployments
+title: Analytics
+description: Installation and usage metrics for OTA updates
 weight: 2
 ---
 
@@ -8,12 +8,12 @@ Customers using a CodePush server managed by Codemagic get access to analytics a
 
 ## Usage analytics
 
-The main [OTA update]((https://codemagic.io/ota)) page gives an overview of your total usage across all your projects, grouped by month.
+The main [OTA update](https://codemagic.io/ota) page gives an overview of your total usage across all your projects, grouped by month.
 
-* **Downloads** - the total number of downloads across all projects (apps) and updates in a month
-* **Installs** - the total number of successful installs across all projects (apps) and updates in a month
+* **Downloads** - the total number of downloads across all projects (apps) in a month
+* **Installs** - the total number of successful installs across all projects (apps) in a month
 
-The installation data graph shows the daily number of successful and failed installs, allowing you to understand when your end users have been installing updates and whether there have been major issues on a specific date.
+To understand when your end users have been installing updates and whether there have been major issues on a specific date, we display an installation chart showing the number of daily successful and failed installs.
 
 {{<notebox>}}
 **Note**: Data on the page is updated hourly.
@@ -21,7 +21,7 @@ The installation data graph shows the daily number of successful and failed inst
 
 ## Projects and release metrics
 
-Your projects ("apps" in CodePush CLI) on the server are listed in the **Projects** section of the OTA Updates page. 
+Your projects (apps) on the server are listed in the **Projects** section of the OTA Updates page. 
 
 To view detailed metrics per project and deployment channel, click the **arrow** icon next to the project. Then, select the correct **Deployment channel** at the top of the page. 
 

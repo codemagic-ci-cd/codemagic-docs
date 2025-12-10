@@ -180,12 +180,12 @@ menu:
           name: React Native CodePush
           weight: 9
 
-        - identifier: billing
-          name: Billing & Pricing
-          weight: 10
-
         - identifier: troubleshooting
           name: Troubleshooting
+          weight: 10
+
+        - identifier: billing
+          name: Billing & Pricing
           weight: 11
 
         - identifier: specs
