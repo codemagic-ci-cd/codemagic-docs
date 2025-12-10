@@ -13,7 +13,8 @@ Codemagic offers multiple build machines with different specifications and pre-i
 
 {{<notebox>}}
 Available on request:
-- Mac mini M4 and M4 Max
+- Mac mini M4 and M4 Pro
+- Mac Studio M2 Max and M2 Ultra
 {{</notebox>}}
 
 ## System
@@ -24,7 +25,7 @@ Available on request:
 
 ## Xcode versions
 
-- 26.2 (17C5038g) `/Applications/Xcode-26.2.app`, also selected when specifying `edge` in Xcode version settings
+- 26.2 (17C48) `/Applications/Xcode-26.2.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -239,21 +240,21 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.32.3`
-- azure-cli `2.80.0`
+- aws `2.32.12`
+- azure-cli `2.81.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `1.0.1`
-- fastlane `2.228.0`
+- ew-cli `1.0.2`
+- fastlane `2.229.1`
 - firebase `14.12.1`
-- gem `3.7.2`
+- gem `4.0.1`
 - gh `2.83.1`
 - git `2.52.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `5.0.3`
+- homebrew `5.0.5`
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.8.0`
@@ -270,5 +271,5 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - unzip `6.00`
 - wget `1.25.0`
 - yarn `4.9.2`
-- yq `4.49.1`
+- yq `4.49.2`
 - zip `3.0`
