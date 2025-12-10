@@ -1,5 +1,5 @@
 ---
-title: Analytics
+title: CodePush Analytics
 description: Installation and usage metrics for OTA updates
 weight: 2
 ---
