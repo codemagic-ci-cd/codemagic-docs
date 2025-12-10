@@ -8,10 +8,10 @@ Customers using a CodePush server managed by Codemagic get access to analytics a
 
 ## Usage analytics
 
-The main [OTA update](https://codemagic.io/ota) page gives an overview of your total usage across all your projects, grouped by month.
+The main [OTA update](https://codemagic.io/ota) page gives an overview of your total usage across all your projects (apps), grouped by month.
 
-* **Downloads** - the total number of downloads across all projects (apps) in a month
-* **Installs** - the total number of successful installs across all projects (apps) in a month
+* **Downloads** - the total number of downloads across all projects in a month
+* **Installs** - the total number of successful installs across all projects in a month
 
 To understand when your end users have been installing updates and whether there have been major issues on a specific date, we display an installation chart showing the number of daily successful and failed installs.
 
