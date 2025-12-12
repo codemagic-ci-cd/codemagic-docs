@@ -66,6 +66,11 @@ publishing:
       fi
 
 {{< /highlight >}}
+
+{{<notebox>}}
+ **Note:** The sample path uses `Runner.xcarchive` because Flutter iOS projects use `Runner` as the default app target.  
+ If your project was renamed or you manually changed the iOS target name, make sure to update the path accordingly.
+{{</notebox>}}
  
 The above-mentioned **dsymPath** is Flutter specific and it could change depending on what platform the app is built on. For example, in React Native or Native iOS applications you might use the dsymPath as:
 
