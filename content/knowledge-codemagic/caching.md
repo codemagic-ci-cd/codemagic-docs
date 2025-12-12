@@ -75,14 +75,14 @@ In order to clear the collected cache, navigate to the **Dependency caching** se
 
 Starting with Xcode 26 it is possible to use **compilation caching**. This is a new build system feature designed to make builds significantly faster by caching and reusing compilation outputs across different builds.
 
-On macOS, the compilation cache can usually be found in `~/Library/Developer/Xcode/CompilationCache.noindex`.
+On macOS, the compilation cache can usually be found in `~/Library/Developer/Xcode/DerivedData/CompilationCache.noindex`.
 
 For Codemagic to reuse the compilation cache you should add the its path to your cache paths in your `codemagic.yaml` configuration file as follows:
 
 {{< highlight yaml "style=paraiso-dark">}}
   cache:
     cache_paths:
-      - ~/Library/Developer/Xcode/CompilationCache.noindex
+      - ~/Library/Developer/Xcode/DerivedData/CompilationCache.noindex
 {{< /highlight >}}
 
 When building and exporting your `.ipa` with Codemagic's CLI tools you can ensure the compilation cache is used during builds by adding the `COMPILATION_CACHE_ENABLE_CACHING=True` flag as follows:
