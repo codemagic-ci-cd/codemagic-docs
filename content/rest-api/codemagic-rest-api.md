@@ -17,10 +17,12 @@ Authentication with Codemagic APIs is performed using a **Codemagic API token**.
 
 The Codemagic API token is a personal token that is unique to each Codemagic user. The actions permitted by the token are determined by the user’s role within the team.
 
-You can find your API token by navigating to **Teams > Personal Account > Integrations > Codemagic API > Show**. In API calls, use it as the value for the `x-auth-token` header:
+You can find your API token by navigating to **Teams > Personal Account > Integrations > Codemagic API > Show**. 
+
+When making API calls, include the API token in the `x-auth-token` request header. For security reasons, we recommend storing the token as an environment variable and referencing it in your requests, rather than embedding the token value directly in your code or workflows. For example:
 
 {{< highlight bash "style=paraiso-dark">}}
-x-auth-token: H6WbPlu0UjiH…ASVCVJKSEB4
+x-auth-token: $CM_API_TOKEN
 {{< /highlight>}}
 
 ### Regenerating an API token
