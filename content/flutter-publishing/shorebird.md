@@ -9,7 +9,7 @@ aliases:
 Code push for Flutter is a cloud service by [Shorebird](https://shorebird.dev/) that allows developers to push over-the-air (OTA) app updates directly to users' devices without publishing each update on app stores. With Codemagic, you can use Shorebird to build and publish a release or a patch for Android and iOS.
 
 {{<notebox>}}
-**Note:** This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured using **codemagic.yaml**, you can follow the guide [here](https://docs.shorebird.dev/ci/codemagic/).
+**Note:** This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured using **codemagic.yaml**, you can follow the guide [here](https://docs.shorebird.dev/code-push/ci/codemagic/).
 {{</notebox>}}
 
 ## Prerequisites
