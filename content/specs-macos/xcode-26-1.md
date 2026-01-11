@@ -1,7 +1,7 @@
 ---
-title: Xcode 26.1.x (default)
+title: Xcode 26.1.x
 aliases:
-- /specs/versions-macos/
+
 weight: 94
 ---
 
@@ -24,7 +24,7 @@ Available on request:
 
 ## Xcode versions
 
-- 26.1.1 (17B100) `/Applications/Xcode-26.1.app`, also selected when specifying `26.1` or `latest` in Xcode version settings
+- 26.1.1 (17B100) `/Applications/Xcode-26.1.app`, also selected when specifying `26.1` in Xcode version settings
 
 ### Runtimes and Devices
 
