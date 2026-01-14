@@ -58,11 +58,31 @@ Team admins or account owners can manually retry the payment by clicking the **P
 
 Note that overdue invoices should be paid before the subscription can be disabled. Please refer to the [Disable billing](/billing/billing/#disabling-billing) section for further info.
 
-## Tax certificates
+## Tax information
 
-The following certificates are available for download:
+The following section provides information about Codemagic tax residency as well as tax registrations in various regions.
 
+### Tax residency
 
-- [Tax residency certificate](https://drive.google.com/file/d/1P17RkI82EqJ5j0QyA8FNsWyxwA3F6JQd/view?usp=sharing)
+Codemagic (Nevercode Ltd) is a tax resident of the UK.
+
+[Tax residency certificate](https://drive.google.com/file/d/1P17RkI82EqJ5j0QyA8FNsWyxwA3F6JQd/view?usp=sharing)
+
+### European Union
+
+TBD
+
+### India
+
+Codemagic (Nevercode Ltd) is registered for Indian GST under GSTIN `9925GBR29027OS2`.
+
+[Form GST REG-06](https://drive.google.com/file/d/1ZYLvXImNuZdc7EOibkPLFdPo-l6k332y/view)
+
+### Philippines
+
+Codemagic (Nevercode Ltd) is registered for Philippine VAT as a non-resident digital services provider under TIN `691133439`.
+
+### USA
+
 - [W-8BEN-E certificate](https://drive.google.com/file/d/1ZqDXcorGbkZ1jPbbaoAXjSFSLzktGHY1/view?usp=sharing)
-- [Form GST REG-06](https://drive.google.com/file/d/1ZYLvXImNuZdc7EOibkPLFdPo-l6k332y/view)
+
