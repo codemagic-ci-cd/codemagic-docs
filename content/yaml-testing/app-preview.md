@@ -1,11 +1,11 @@
 ---
 title: Previewing apps in the browser
-description: Test your iOS or Android app in the browser with Stellar App Preview
+description: Test your iOS or Android app in the browser with App Preview
 weight: 4
 aliases:
 ---
 
-Stellar is our iOS simulator and Android emulator running in your browser. Launch and interact with your iOS or Android app right in the browser, regardless of the operating system you are using. Test your app against different device and OS configurations, emulate GPS location or demo the latest app version without needing access to a physical device. 
+App Preview is our iOS simulator and Android emulator running in your browser. Launch and interact with your iOS or Android app right in the browser, regardless of the operating system you are using. Test your app against different device and OS configurations, emulate GPS location or demo the latest app version without needing access to a physical device. 
 
 {{< youtube vb_pSHy9PG0 >}}
 
