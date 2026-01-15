@@ -1,5 +1,5 @@
 ---
-title: CodePush Analytics
+title: CodePush analytics
 description: Installation and usage metrics for OTA updates
 weight: 2
 ---
@@ -8,12 +8,12 @@ Customers using a CodePush server managed by Codemagic get access to analytics a
 
 ## Usage analytics
 
-The main [OTA update](https://codemagic.io/ota) page gives an overview of your total usage across all your projects (apps), grouped by month.
+The main [OTA Updates](https://codemagic.io/ota) page gives an overview of your OTA usage across all projects (apps), grouped by month.
 
-* **Downloads** - the total number of downloads across all projects in a month
-* **Installs** - the total number of successful installs across all projects in a month
+* **Downloads** - the total number of update downloads across all projects in a given month
+* **Installs** - the total number of successful update installs across all projects in a given month
 
-To understand when your end users have been installing updates and whether there have been major issues on a specific date, we display an installation chart showing the number of daily successful and failed installs.
+Additionally, the page includes an installation chart showing the daily number of successful and failed installs, helping you understand when end users install updates and identify trends or potential issues.
 
 {{<notebox>}}
 **Note**: Data on the page is updated hourly.
@@ -23,9 +23,9 @@ To understand when your end users have been installing updates and whether there
 
 Your projects (apps) on the server are listed in the **Projects** section of the OTA Updates page. 
 
-To view detailed metrics per project and deployment channel, click the **arrow** icon next to the project. Then, select the correct **Deployment channel** at the top of the page. 
+To view detailed metrics for a specific project and deployment channel, click the **arrow** icon next to the project and select the desired **Deployment channel** at the top of the page. 
 
-This will list all releases to the project for the selected deployment channel and display the number of downloads, installs and failures per release. Select a time period at the top of the page to see changes in release adoption over time.
+The page then lists all updates to the project for the selected deployment channel and shows the number of downloads, successful installs, and failed installs for each update. You can also select a time period at the top of the page to track adoption trends over time.
 
 {{<notebox>}}
 **Note**: Data on the page is updated hourly.
