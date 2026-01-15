@@ -1,7 +1,7 @@
 ---
-title: Xcode 26.2.x
+title: Xcode 26.2.x (default)
 aliases:
-
+- /specs/versions-macos/
 weight: 93
 ---
 
@@ -24,7 +24,7 @@ Available on request:
 
 ## Xcode versions
 
-- 26.2 (17C52) `/Applications/Xcode-26.2.app`, also selected when specifying `edge` in Xcode version settings
+- 26.2 (17C52) `/Applications/Xcode-26.2.app`, also selected when specifying `latest` or `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
