@@ -60,29 +60,26 @@ Note that overdue invoices should be paid before the subscription can be disable
 
 ## Tax information
 
-The following section provides information about Codemagic tax residency as well as tax registrations in various regions.
+Codemagic is registered to collect taxes on transactions with customers in the following locations.
 
-### Tax residency
+* **European Union**
 
-Codemagic (Nevercode Ltd) is a tax resident of the UK.
+    Codemagic (Nevercode Ltd) is registered for the EU OSS VAT under `EU233019224`.
 
-[Tax residency certificate](https://drive.google.com/file/d/1P17RkI82EqJ5j0QyA8FNsWyxwA3F6JQd/view?usp=sharing)
+* **United Kingdom**
 
-### European Union
+    Codemagic (Nevercode Ltd) is registered for the GB VAT under `GB347624190`.
 
-TBD
+* **India**
 
-### India
+    Codemagic (Nevercode Ltd) is registered for Indian GST under GSTIN `9925GBR29027OS2`.
 
-Codemagic (Nevercode Ltd) is registered for Indian GST under GSTIN `9925GBR29027OS2`.
+* **Philippines**
 
-[Form GST REG-06](https://drive.google.com/file/d/1ZYLvXImNuZdc7EOibkPLFdPo-l6k332y/view)
+    Codemagic (Nevercode Ltd) is registered for Philippine VAT as a non-resident digital services provider under TIN `691133439`.
 
-### Philippines
+The following documents are available for download:
 
-Codemagic (Nevercode Ltd) is registered for Philippine VAT as a non-resident digital services provider under TIN `691133439`.
-
-### USA
-
-- [W-8BEN-E certificate](https://drive.google.com/file/d/1ZqDXcorGbkZ1jPbbaoAXjSFSLzktGHY1/view?usp=sharing)
-
+* [Tax residency certificate](https://drive.google.com/file/d/1P17RkI82EqJ5j0QyA8FNsWyxwA3F6JQd/view?usp=sharing)
+* [W-8BEN-E certificate](https://drive.google.com/file/d/1ZqDXcorGbkZ1jPbbaoAXjSFSLzktGHY1/view?usp=sharing)
+* [Form GST REG-06](https://drive.google.com/file/d/1ZYLvXImNuZdc7EOibkPLFdPo-l6k332y/view)
