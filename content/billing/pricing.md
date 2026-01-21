@@ -174,7 +174,7 @@ Burstable concurrencies allow you to use more concurrencies than you otherwise w
 
 To determine which concurrencies are bursted and which ones are not we divide billing period into 5 second intervals and sample concurrency usage every 5 seconds. We then reorder this graph in descending order so the left of the graph is consisting of high use of concurrency and tail end of the graph is low use of concurrency. We then discard 5% of the high use as “bursting” and consider only the use at 95th percentile.
 
-If you subscribe to 20 concurrencies and consume 10 within the 95th percentile, then you pay full price for 10 and **1/3** of the price for the remaining 20.
+If you subscribe to 20 concurrencies and consume 10 within the 95th percentile, then you pay full price for 10 and **1/3** of the price for the remaining 10.
 
 ## Pricing for Enterprises
 
