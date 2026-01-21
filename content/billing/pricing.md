@@ -51,13 +51,14 @@ Builds on Linux and Windows do not have free build minutes. The per-minute prici
 | **Item**                     | **Price**                          |
 | ---------------------------- | ---------------------------------  |
 | macOS (M2) VM        | $0.095 / minute                    |
+| macOS (M4) VM        | $0.114 / minute                    |
 | Linux X2 & Windows VMs          | $0.045 / minute                    |
 
 ## Pricing for Teams
 
 ### 1. Pay-as-you-go
 
-For teams, all build minutes using macOS M2 VM and Linux VM are charged at the rates shown below. 
+For teams, all build minutes using macOS M2 VM, macOS M4 VM, and Linux VM are charged at the rates shown below.
 
 Each extra build concurrency allows running an additional build in parallel. For example, adding two extra build concurrencies allows running a total of three builds in parallel. 
 
@@ -66,13 +67,14 @@ You can **add additional concurrencies** in the Codemagic web app by clicking 'B
 Each additional concurrency is $49/month and you will be billed for each concurrency on the last day of each month.
 
 
-| **Item**                     | **Price**                         |
-| ---------------------------- | --------------------------------- | 
-| macOS (M2) VM        | $0.095 / minute                   |                                                                                                                                   
-| Linux X2 & Windows VMs          | $0.045 / minute                   |                                                                       
-| Extra build concurrency      | $49 / month                       | 
+| **Item**                   | **Price**       |
+| -------------------------- | --------------- |
+| macOS (M2) VM              | $0.095 / minute |
+| macOS (M4) VM              | $0.114 / minute |
+| Linux X2 & Windows VMs     | $0.045 / minute |
+| Extra build concurrency    | $49 / month     | 
 
-Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M4), Linux, and Windows instances. 
+Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M4 Max), Linux, and Windows instances.
 
 ### 2. Fixed Annual Plans
 
