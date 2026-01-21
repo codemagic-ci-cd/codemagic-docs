@@ -308,7 +308,7 @@ The instance types and hardware specifications can be found below.
 | Windows VM               | 8 vCPUs, 32 GB memory  
 
 {{<notebox>}}
-To access more powerful macOS M4, M4 Max Studio and Linux X4, please get in touch with us [here](https://codemagic.io/pricing/#enterprise).
+To access more powerful macOS M4 Max Studio and Linux X4, please get in touch with us [here](https://codemagic.io/pricing/#enterprise).
 {{</notebox>}}
 
 If you are planning to run instrumentation tests with Android emulators, it is advised to use Linux instances. Please note that Android emulators are not available on macOS M2 VMs due to the Apple Virtualization Framework not supporting nested virtualization.
