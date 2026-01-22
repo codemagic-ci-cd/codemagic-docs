@@ -7,7 +7,7 @@ aliases:
 
 App Preview is our iOS simulator and Android emulator running in your browser. Launch and interact with your iOS or Android app right in the browser, regardless of the operating system you are using. Test your app against different device and OS configurations, emulate GPS location or demo the latest app version without needing access to a physical device. 
 
-{{< youtube vb_pSHy9PG0 >}}
+<div style="position: relative; padding-bottom: 55.987558320373246%; height: 0;"><iframe src="https://www.loom.com/embed/2467ee53d6f34f5fae29b01caa075e48" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 **Tip:** The following sections describe creating previewable artifacts using codemagic.yaml. If you're using the Flutter Workflow Editor, follow the instructions [here](../flutter-testing/app-preview).
 
