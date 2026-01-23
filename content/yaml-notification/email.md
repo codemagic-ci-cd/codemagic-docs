@@ -34,3 +34,6 @@ When you set up email publishing, Codemagic publishes the following artifacts:
 - Linux application bundle files
 - Windows MSIX packages
 - .exe
+
+
+**Important:** Email notifications are only sent when artifacts are available for Codemagic to collect. If your build scripts include cleanup steps (such as `flutter clean` or Fastlane's `clean_build_artifacts`) that run *before* Codemagic collects artifacts, the binaries will be deleted and **no email will be sent**—even if the build itself succeeded.
