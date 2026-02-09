@@ -1,7 +1,7 @@
 ---
-title: CodePush integration
+title: CodePush server integration
 description: How to integrate your workflows with CodePush using Codemagic
-weight: 7
+weight: 1
 ---
 
 [**CodePush**](https://github.com/microsoft/code-push) is a cloud service that enables React Native developers to deploy mobile app updates directly to their users’ devices without re-deploying them to the stores. 
@@ -139,7 +139,7 @@ You can log into your account using the CodePush access key provided by Codemagi
 
 The CodePush CLI reference is available [here](https://github.com/codemagic-ci-cd/code-push-pro). 
 
-To view deployments, update metadata, and installation metrics you can use the `code-push deployment ls <app_name>` command as described in the CodePush CLI docs [here](https://github.com/codemagic-ci-cd/code-push-pro?tab=readme-ov-file#deployment-management)
+To view deployments, update metadata, and installation metrics you can use the `code-push deployment ls <app_name>` command as described in the CodePush CLI docs [here](https://github.com/codemagic-ci-cd/code-push-pro?tab=readme-ov-file#deployment-management). Additionally, you can visit the [OTA Updates](https://codemagic.io/ota) page for analytics on your monthly usage and update adoption trends, [read more](./codepush-analytics). 
 
 
 ## Debugging notes

@@ -7,11 +7,11 @@ Codemagic offers multiple build machines with different specifications and pre-i
 
 ## Hardware
 
-- Mac mini M2 `3.5GHz 8-Core / 8GB`
+- Mac mini M2 `8-Core CPU / 8GB`
+- Mac mini M4 `10-Core CPU / 16GB`
 
 {{<notebox>}}
-Available on request:
-- Mac mini M4 and M4 Max
+Mac Studio M4 Max available on request.
 {{</notebox>}}
 
 ## System

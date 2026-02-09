@@ -181,6 +181,7 @@ The main sections in each workflow are described below.
 | **Instance Type** | **Build Machine** |
 | ------------- | -----------------  |
 | `mac_mini_m2`    | Apple silicon M2 Mac mini |
+| `mac_mini_m4`    | Apple silicon M4 Mac mini |
 | `linux_x2`  | Linux |
 | `windows_x2`  | Windows |
 

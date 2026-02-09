@@ -4,14 +4,14 @@ description: How to integrate your workflows with Maestro using codemagic.yaml
 weight: 16
 ---
 
-[**Maestro UI testing framework**](https://maestro.mobile.dev/) from [mobile.dev](https://mobile.dev) lets you test your iOS and Android mobile apps using simple to-create test flows that are written in a declarative form using YAML. In order to run your tests in CI you can utilize [Maestro Cloud](https://cloud.mobile.dev/), which allows you to easily run your Flows without having to manage iOS and Android devices in your own CI. For more information on how to get started with Maestro and Maestro Cloud, please refer to the [Maestro documentation](https://maestro.mobile.dev/).
+[**Maestro UI testing framework**](https://maestro.dev/) lets you test your iOS and Android mobile apps using simple to-create test flows that are written in a declarative form using YAML. In order to run your tests in CI you can utilize [Maestro Cloud](https://app.maestro.dev/), which allows you to easily run your Flows without having to manage iOS and Android devices in your own CI. For more information on how to get started with Maestro and Maestro Cloud, please refer to the [Maestro documentation](https://docs.maestro.dev/).
 
 A sample project that shows how to configure Maestro integration is available in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/maestro_sample_project).
 
 
 ## Get Maestro Cloud API Key
 
-In order to use Maestro Cloud to run your tests on, you will need to signup here and get the `API Key` from your [console](https://console.mobile.dev/), click on your email, **View API Key** and copy the value.
+In order to use Maestro Cloud to run your tests on, you will need to signup here and get the `API Key` from your [console](https://app.maestro.dev/), click on your email, **View API Key** and copy the value.
 
 After getting your `API KEY` you need to add it to your [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles) in a group named ***maestro*** for example.
 

@@ -1,7 +1,7 @@
 ---
-title: Xcode 26.2.x
+title: Xcode 26.2.x (default)
 aliases:
-
+- /specs/versions-macos/
 weight: 93
 ---
 
@@ -9,22 +9,22 @@ Codemagic offers multiple build machines with different specifications and pre-i
 
 ## Hardware
 
-- Mac mini M2 `3.5GHz 8-Core / 8GB`
+- Mac mini M2 `8-Core CPU / 8GB`
+- Mac mini M4 `10-Core CPU / 16GB`
 
 {{<notebox>}}
-Available on request:
-- Mac mini M4 and M4 Max
+Mac Studio M4 Max available on request.
 {{</notebox>}}
 
 ## System
 
-- System version `macOS 26.1 (25B78)`
-- Kernel version `Darwin 25.1.0`
-- Disk `294GB (Free Space: 149GB)`
+- System version `macOS 26.2 (25C56)`
+- Kernel version `Darwin 25.2.0`
+- Disk `294GB (Free Space: 147GB)`
 
 ## Xcode versions
 
-- 26.2 (17C48) `/Applications/Xcode-26.2.app`, also selected when specifying `edge` in Xcode version settings
+- 26.2 (17C52) `/Applications/Xcode-26.2.app`, also selected when specifying `latest` or `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -80,7 +80,7 @@ Available on request:
 
 ## Android Studio
 
-> Android Studio `2024.3` installed at `~/programs/android-studio`
+> Android Studio `2025.2` installed at `~/programs/android-studio`
 
 
 ## Android SDK
@@ -93,114 +93,116 @@ $ /usr/local/share/android-sdk/cmdline-tools/latest/bin/sdkmanager --list_instal
 ```
 
 Installed packages:
-  Path                                     | Version           | Description                                 | Location
-  -------                                  | -------           | -------                                     | -------
-  add-ons;addon-google_apis-google-19      | 20                | Google APIs                                 | add-ons/addon-google_apis-google-19
-  add-ons;addon-google_apis-google-21      | 1                 | Google APIs                                 | add-ons/addon-google_apis-google-21
-  add-ons;addon-google_apis-google-22      | 1                 | Google APIs                                 | add-ons/addon-google_apis-google-22
-  add-ons;addon-google_apis-google-23      | 1                 | Google APIs                                 | add-ons/addon-google_apis-google-23
-  add-ons;addon-google_apis-google-24      | 1                 | Google APIs                                 | add-ons/addon-google_apis-google-24
-  build-tools;19.1.0                       | 19.1.0            | Android SDK Build-Tools 19.1                | build-tools/19.1.0
-  build-tools;20.0.0                       | 20.0.0            | Android SDK Build-Tools 20                  | build-tools/20.0.0
-  build-tools;21.1.2                       | 21.1.2            | Android SDK Build-Tools 21.1.2              | build-tools/21.1.2
-  build-tools;22.0.1                       | 22.0.1            | Android SDK Build-Tools 22.0.1              | build-tools/22.0.1
-  build-tools;23.0.1                       | 23.0.1            | Android SDK Build-Tools 23.0.1              | build-tools/23.0.1
-  build-tools;23.0.2                       | 23.0.2            | Android SDK Build-Tools 23.0.2              | build-tools/23.0.2
-  build-tools;23.0.3                       | 23.0.3            | Android SDK Build-Tools 23.0.3              | build-tools/23.0.3
-  build-tools;24.0.0                       | 24.0.0            | Android SDK Build-Tools 24                  | build-tools/24.0.0
-  build-tools;24.0.1                       | 24.0.1            | Android SDK Build-Tools 24.0.1              | build-tools/24.0.1
-  build-tools;24.0.2                       | 24.0.2            | Android SDK Build-Tools 24.0.2              | build-tools/24.0.2
-  build-tools;24.0.3                       | 24.0.3            | Android SDK Build-Tools 24.0.3              | build-tools/24.0.3
-  build-tools;25.0.0                       | 25.0.0            | Android SDK Build-Tools 25                  | build-tools/25.0.0
-  build-tools;25.0.1                       | 25.0.1            | Android SDK Build-Tools 25.0.1              | build-tools/25.0.1
-  build-tools;25.0.2                       | 25.0.2            | Android SDK Build-Tools 25.0.2              | build-tools/25.0.2
-  build-tools;25.0.3                       | 25.0.3            | Android SDK Build-Tools 25.0.3              | build-tools/25.0.3
-  build-tools;26.0.0                       | 26.0.0            | Android SDK Build-Tools 26                  | build-tools/26.0.0
-  build-tools;26.0.1                       | 26.0.1            | Android SDK Build-Tools 26.0.1              | build-tools/26.0.1
-  build-tools;26.0.2                       | 26.0.2            | Android SDK Build-Tools 26.0.2              | build-tools/26.0.2
-  build-tools;26.0.3                       | 26.0.3            | Android SDK Build-Tools 26.0.3              | build-tools/26.0.3
-  build-tools;27.0.0                       | 27.0.0            | Android SDK Build-Tools 27                  | build-tools/27.0.0
-  build-tools;27.0.1                       | 27.0.1            | Android SDK Build-Tools 27.0.1              | build-tools/27.0.1
-  build-tools;27.0.2                       | 27.0.2            | Android SDK Build-Tools 27.0.2              | build-tools/27.0.2
-  build-tools;27.0.3                       | 27.0.3            | Android SDK Build-Tools 27.0.3              | build-tools/27.0.3
-  build-tools;28.0.0                       | 28.0.0            | Android SDK Build-Tools 28                  | build-tools/28.0.0
-  build-tools;28.0.1                       | 28.0.1            | Android SDK Build-Tools 28.0.1              | build-tools/28.0.1
-  build-tools;28.0.2                       | 28.0.2            | Android SDK Build-Tools 28.0.2              | build-tools/28.0.2
-  build-tools;28.0.3                       | 28.0.3            | Android SDK Build-Tools 28.0.3              | build-tools/28.0.3
-  build-tools;29.0.0                       | 29.0.0            | Android SDK Build-Tools 29                  | build-tools/29.0.0
-  build-tools;29.0.1                       | 29.0.1            | Android SDK Build-Tools 29.0.1              | build-tools/29.0.1
-  build-tools;29.0.2                       | 29.0.2            | Android SDK Build-Tools 29.0.2              | build-tools/29.0.2
-  build-tools;29.0.3                       | 29.0.3            | Android SDK Build-Tools 29.0.3              | build-tools/29.0.3
-  build-tools;30.0.0                       | 30.0.0            | Android SDK Build-Tools 30                  | build-tools/30.0.0
-  build-tools;30.0.1                       | 30.0.1            | Android SDK Build-Tools 30.0.1              | build-tools/30.0.1
-  build-tools;30.0.2                       | 30.0.2            | Android SDK Build-Tools 30.0.2              | build-tools/30.0.2
-  build-tools;30.0.3                       | 30.0.3            | Android SDK Build-Tools 30.0.3              | build-tools/30.0.3
-  build-tools;31.0.0                       | 31.0.0            | Android SDK Build-Tools 31                  | build-tools/31.0.0
-  build-tools;32.0.0                       | 32.0.0            | Android SDK Build-Tools 32                  | build-tools/32.0.0
-  build-tools;32.1.0-rc1                   | 32.1.0 rc1        | Android SDK Build-Tools 32.1-rc1            | build-tools/32.1.0-rc1
-  build-tools;33.0.0                       | 33.0.0            | Android SDK Build-Tools 33                  | build-tools/33.0.0
-  build-tools;35.0.1                       | 35.0.1            | Android SDK Build-Tools 35.0.1              | build-tools/35.0.1
-  build-tools;36.0.0                       | 36.0.0            | Android SDK Build-Tools 36                  | build-tools/36.0.0
-  cmake;3.10.2.4988404                     | 3.10.2            | CMake 3.10.2.4988404                        | cmake/3.10.2.4988404
-  cmake;3.18.1                             | 3.18.1            | CMake 3.18.1                                | cmake/3.18.1
-  cmake;3.22.1                             | 3.22.1            | CMake 3.22.1                                | cmake/3.22.1
-  cmake;3.6.4111459                        | 3.6.4111459       | CMake 3.6.4111459                           | cmake/3.6.4111459
-  cmake;4.0.2                              | 4.0.2             | CMake 4.0.2                                 | cmake/4.0.2
-  cmdline-tools;1.0                        | 1.0               | Android SDK Command-line Tools              | cmdline-tools/1.0
-  cmdline-tools;2.1                        | 2.1               | Android SDK Command-line Tools              | cmdline-tools/2.1
-  cmdline-tools;3.0                        | 3.0               | Android SDK Command-line Tools              | cmdline-tools/3.0
-  cmdline-tools;4.0                        | 4.0               | Android SDK Command-line Tools              | cmdline-tools/4.0
-  cmdline-tools;5.0                        | 5.0               | Android SDK Command-line Tools              | cmdline-tools/5.0
-  cmdline-tools;6.0                        | 6.0               | Android SDK Command-line Tools              | cmdline-tools/6.0
-  cmdline-tools;7.0                        | 7.0               | Android SDK Command-line Tools              | cmdline-tools/7.0
-  cmdline-tools;latest                     | 19.0              | Android SDK Command-line Tools (latest)     | cmdline-tools/latest
-  emulator                                 | 35.5.10           | Android Emulator                            | emulator
-  extras;google;google_play_services       | 49                | Google Play services                        | extras/google/google_play_services
-  extras;google;instantapps                | 1.9.0             | Google Play Instant Development SDK         | extras/google/instantapps
-  extras;google;market_apk_expansion       | 1                 | Google Play APK Expansion library           | extras/google/market_apk_expansion
-  extras;google;market_licensing           | 1                 | Google Play Licensing Library               | extras/google/market_licensing
-  extras;google;webdriver                  | 2                 | Google Web Driver                           | extras/google/webdriver
-  ndk;25.1.8937393                         | 25.1.8937393      | NDK (Side by side) 25.1.8937393             | ndk/25.1.8937393
-  ndk;27.3.13750724                        | 27.3.13750724     | NDK (Side by side) 27.3.13750724            | ndk/27.3.13750724
-  ndk;29.0.13113456                        | 29.0.13113456 rc1 | NDK (Side by side) 29.0.13113456            | ndk/29.0.13113456
-  patcher;v4                               | 1                 | SDK Patch Applier v4                        | patcher/v4
-  platform-tools                           | 35.0.2            | Android SDK Platform-Tools                  | platform-tools
-  platforms;android-19                     | 4                 | Android SDK Platform 19                     | platforms/android-19
-  platforms;android-20                     | 2                 | Android SDK Platform 20                     | platforms/android-20
-  platforms;android-21                     | 2                 | Android SDK Platform 21                     | platforms/android-21
-  platforms;android-22                     | 2                 | Android SDK Platform 22                     | platforms/android-22
-  platforms;android-23                     | 3                 | Android SDK Platform 23                     | platforms/android-23
-  platforms;android-24                     | 2                 | Android SDK Platform 24                     | platforms/android-24
-  platforms;android-25                     | 3                 | Android SDK Platform 25                     | platforms/android-25
-  platforms;android-26                     | 2                 | Android SDK Platform 26                     | platforms/android-26
-  platforms;android-27                     | 3                 | Android SDK Platform 27                     | platforms/android-27
-  platforms;android-28                     | 6                 | Android SDK Platform 28                     | platforms/android-28
-  platforms;android-29                     | 5                 | Android SDK Platform 29                     | platforms/android-29
-  platforms;android-30                     | 3                 | Android SDK Platform 30                     | platforms/android-30
-  platforms;android-31                     | 1                 | Android SDK Platform 31                     | platforms/android-31
-  platforms;android-32                     | 1                 | Android SDK Platform 32                     | platforms/android-32
-  platforms;android-33                     | 3                 | Android SDK Platform 33                     | platforms/android-33
-  platforms;android-34                     | 3                 | Android SDK Platform 34                     | platforms/android-34
-  platforms;android-35                     | 2                 | Android SDK Platform 35                     | platforms/android-35
-  platforms;android-36                     | 2                 | Android SDK Platform 36                     | platforms/android-36
-  platforms;android-TiramisuPrivacySandbox | 8                 | Android SDK Platform TiramisuPrivacySandbox | platforms/android-TiramisuPrivacySandbox
-  sources;android-19                       | 2                 | Sources for Android 19                      | sources/android-19
-  sources;android-20                       | 1                 | Sources for Android 20                      | sources/android-20
-  sources;android-21                       | 1                 | Sources for Android 21                      | sources/android-21
-  sources;android-22                       | 1                 | Sources for Android 22                      | sources/android-22
-  sources;android-23                       | 1                 | Sources for Android 23                      | sources/android-23
-  sources;android-24                       | 1                 | Sources for Android 24                      | sources/android-24
-  sources;android-25                       | 1                 | Sources for Android 25                      | sources/android-25
-  sources;android-26                       | 1                 | Sources for Android 26                      | sources/android-26
-  sources;android-27                       | 1                 | Sources for Android 27                      | sources/android-27
-  sources;android-28                       | 1                 | Sources for Android 28                      | sources/android-28
-  sources;android-29                       | 1                 | Sources for Android 29                      | sources/android-29
-  sources;android-30                       | 1                 | Sources for Android 30                      | sources/android-30
-  sources;android-31                       | 1                 | Sources for Android 31                      | sources/android-31
-  sources;android-32                       | 1                 | Sources for Android 32                      | sources/android-32
-  sources;android-34                       | 2                 | Sources for Android 34                      | sources/android-34
-  sources;android-35                       | 1                 | Sources for Android 35                      | sources/android-35
-  sources;android-36                       | 1                 | Sources for Android 36                      | sources/android-36
+  Path                                     | Version       | Description                                 | Location
+  -------                                  | -------       | -------                                     | -------
+  add-ons;addon-google_apis-google-19      | 20            | Google APIs                                 | add-ons/addon-google_apis-google-19
+  add-ons;addon-google_apis-google-21      | 1             | Google APIs                                 | add-ons/addon-google_apis-google-21
+  add-ons;addon-google_apis-google-22      | 1             | Google APIs                                 | add-ons/addon-google_apis-google-22
+  add-ons;addon-google_apis-google-23      | 1             | Google APIs                                 | add-ons/addon-google_apis-google-23
+  add-ons;addon-google_apis-google-24      | 1             | Google APIs                                 | add-ons/addon-google_apis-google-24
+  build-tools;19.1.0                       | 19.1.0        | Android SDK Build-Tools 19.1                | build-tools/19.1.0
+  build-tools;20.0.0                       | 20.0.0        | Android SDK Build-Tools 20                  | build-tools/20.0.0
+  build-tools;21.1.2                       | 21.1.2        | Android SDK Build-Tools 21.1.2              | build-tools/21.1.2
+  build-tools;22.0.1                       | 22.0.1        | Android SDK Build-Tools 22.0.1              | build-tools/22.0.1
+  build-tools;23.0.1                       | 23.0.1        | Android SDK Build-Tools 23.0.1              | build-tools/23.0.1
+  build-tools;23.0.2                       | 23.0.2        | Android SDK Build-Tools 23.0.2              | build-tools/23.0.2
+  build-tools;23.0.3                       | 23.0.3        | Android SDK Build-Tools 23.0.3              | build-tools/23.0.3
+  build-tools;24.0.0                       | 24.0.0        | Android SDK Build-Tools 24                  | build-tools/24.0.0
+  build-tools;24.0.1                       | 24.0.1        | Android SDK Build-Tools 24.0.1              | build-tools/24.0.1
+  build-tools;24.0.2                       | 24.0.2        | Android SDK Build-Tools 24.0.2              | build-tools/24.0.2
+  build-tools;24.0.3                       | 24.0.3        | Android SDK Build-Tools 24.0.3              | build-tools/24.0.3
+  build-tools;25.0.0                       | 25.0.0        | Android SDK Build-Tools 25                  | build-tools/25.0.0
+  build-tools;25.0.1                       | 25.0.1        | Android SDK Build-Tools 25.0.1              | build-tools/25.0.1
+  build-tools;25.0.2                       | 25.0.2        | Android SDK Build-Tools 25.0.2              | build-tools/25.0.2
+  build-tools;25.0.3                       | 25.0.3        | Android SDK Build-Tools 25.0.3              | build-tools/25.0.3
+  build-tools;26.0.0                       | 26.0.0        | Android SDK Build-Tools 26                  | build-tools/26.0.0
+  build-tools;26.0.1                       | 26.0.1        | Android SDK Build-Tools 26.0.1              | build-tools/26.0.1
+  build-tools;26.0.2                       | 26.0.2        | Android SDK Build-Tools 26.0.2              | build-tools/26.0.2
+  build-tools;26.0.3                       | 26.0.3        | Android SDK Build-Tools 26.0.3              | build-tools/26.0.3
+  build-tools;27.0.0                       | 27.0.0        | Android SDK Build-Tools 27                  | build-tools/27.0.0
+  build-tools;27.0.1                       | 27.0.1        | Android SDK Build-Tools 27.0.1              | build-tools/27.0.1
+  build-tools;27.0.2                       | 27.0.2        | Android SDK Build-Tools 27.0.2              | build-tools/27.0.2
+  build-tools;27.0.3                       | 27.0.3        | Android SDK Build-Tools 27.0.3              | build-tools/27.0.3
+  build-tools;28.0.0                       | 28.0.0        | Android SDK Build-Tools 28                  | build-tools/28.0.0
+  build-tools;28.0.1                       | 28.0.1        | Android SDK Build-Tools 28.0.1              | build-tools/28.0.1
+  build-tools;28.0.2                       | 28.0.2        | Android SDK Build-Tools 28.0.2              | build-tools/28.0.2
+  build-tools;28.0.3                       | 28.0.3        | Android SDK Build-Tools 28.0.3              | build-tools/28.0.3
+  build-tools;29.0.0                       | 29.0.0        | Android SDK Build-Tools 29                  | build-tools/29.0.0
+  build-tools;29.0.1                       | 29.0.1        | Android SDK Build-Tools 29.0.1              | build-tools/29.0.1
+  build-tools;29.0.2                       | 29.0.2        | Android SDK Build-Tools 29.0.2              | build-tools/29.0.2
+  build-tools;29.0.3                       | 29.0.3        | Android SDK Build-Tools 29.0.3              | build-tools/29.0.3
+  build-tools;30.0.0                       | 30.0.0        | Android SDK Build-Tools 30                  | build-tools/30.0.0
+  build-tools;30.0.1                       | 30.0.1        | Android SDK Build-Tools 30.0.1              | build-tools/30.0.1
+  build-tools;30.0.2                       | 30.0.2        | Android SDK Build-Tools 30.0.2              | build-tools/30.0.2
+  build-tools;30.0.3                       | 30.0.3        | Android SDK Build-Tools 30.0.3              | build-tools/30.0.3
+  build-tools;31.0.0                       | 31.0.0        | Android SDK Build-Tools 31                  | build-tools/31.0.0
+  build-tools;32.0.0                       | 32.0.0        | Android SDK Build-Tools 32                  | build-tools/32.0.0
+  build-tools;32.1.0-rc1                   | 32.1.0 rc1    | Android SDK Build-Tools 32.1-rc1            | build-tools/32.1.0-rc1
+  build-tools;33.0.0                       | 33.0.0        | Android SDK Build-Tools 33                  | build-tools/33.0.0
+  build-tools;35.0.1                       | 35.0.1        | Android SDK Build-Tools 35.0.1              | build-tools/35.0.1
+  build-tools;36.0.0                       | 36.0.0        | Android SDK Build-Tools 36                  | build-tools/36.0.0
+  build-tools;36.1.0                       | 36.1.0        | Android SDK Build-Tools 36.1                | build-tools/36.1.0
+  cmake;3.10.2.4988404                     | 3.10.2        | CMake 3.10.2.4988404                        | cmake/3.10.2.4988404
+  cmake;3.18.1                             | 3.18.1        | CMake 3.18.1                                | cmake/3.18.1
+  cmake;3.22.1                             | 3.22.1        | CMake 3.22.1                                | cmake/3.22.1
+  cmake;3.31.6                             | 3.31.6        | CMake 3.31.6                                | cmake/3.31.6
+  cmake;3.6.4111459                        | 3.6.4111459   | CMake 3.6.4111459                           | cmake/3.6.4111459
+  cmake;4.1.2                              | 4.1.2         | CMake 4.1.2                                 | cmake/4.1.2
+  cmdline-tools;1.0                        | 1.0           | Android SDK Command-line Tools              | cmdline-tools/1.0
+  cmdline-tools;2.1                        | 2.1           | Android SDK Command-line Tools              | cmdline-tools/2.1
+  cmdline-tools;3.0                        | 3.0           | Android SDK Command-line Tools              | cmdline-tools/3.0
+  cmdline-tools;4.0                        | 4.0           | Android SDK Command-line Tools              | cmdline-tools/4.0
+  cmdline-tools;5.0                        | 5.0           | Android SDK Command-line Tools              | cmdline-tools/5.0
+  cmdline-tools;6.0                        | 6.0           | Android SDK Command-line Tools              | cmdline-tools/6.0
+  cmdline-tools;7.0                        | 7.0           | Android SDK Command-line Tools              | cmdline-tools/7.0
+  cmdline-tools;latest                     | 19.0          | Android SDK Command-line Tools (latest)     | cmdline-tools/latest
+  extras;google;google_play_services       | 49            | Google Play services                        | extras/google/google_play_services
+  extras;google;instantapps                | 1.9.0         | Google Play Instant Development SDK         | extras/google/instantapps
+  extras;google;market_apk_expansion       | 1             | Google Play APK Expansion library           | extras/google/market_apk_expansion
+  extras;google;market_licensing           | 1             | Google Play Licensing Library               | extras/google/market_licensing
+  extras;google;webdriver                  | 2             | Google Web Driver                           | extras/google/webdriver
+  ndk;25.1.8937393                         | 25.1.8937393  | NDK (Side by side) 25.1.8937393             | ndk/25.1.8937393
+  ndk;27.3.13750724                        | 27.3.13750724 | NDK (Side by side) 27.3.13750724            | ndk/27.3.13750724
+  ndk;28.2.13676358                        | 28.2.13676358 | NDK (Side by side) 28.2.13676358            | ndk/28.2.13676358
+  ndk;29.0.14206865                        | 29.0.14206865 | NDK (Side by side) 29.0.14206865            | ndk/29.0.14206865
+  patcher;v4                               | 1             | SDK Patch Applier v4                        | patcher/v4
+  platform-tools                           | 36.0.0        | Android SDK Platform-Tools                  | platform-tools
+  platforms;android-19                     | 4             | Android SDK Platform 19                     | platforms/android-19
+  platforms;android-20                     | 2             | Android SDK Platform 20                     | platforms/android-20
+  platforms;android-21                     | 2             | Android SDK Platform 21                     | platforms/android-21
+  platforms;android-22                     | 2             | Android SDK Platform 22                     | platforms/android-22
+  platforms;android-23                     | 3             | Android SDK Platform 23                     | platforms/android-23
+  platforms;android-24                     | 2             | Android SDK Platform 24                     | platforms/android-24
+  platforms;android-25                     | 3             | Android SDK Platform 25                     | platforms/android-25
+  platforms;android-26                     | 2             | Android SDK Platform 26                     | platforms/android-26
+  platforms;android-27                     | 3             | Android SDK Platform 27                     | platforms/android-27
+  platforms;android-28                     | 6             | Android SDK Platform 28                     | platforms/android-28
+  platforms;android-29                     | 5             | Android SDK Platform 29                     | platforms/android-29
+  platforms;android-30                     | 3             | Android SDK Platform 30                     | platforms/android-30
+  platforms;android-31                     | 1             | Android SDK Platform 31                     | platforms/android-31
+  platforms;android-32                     | 1             | Android SDK Platform 32                     | platforms/android-32
+  platforms;android-33                     | 3             | Android SDK Platform 33                     | platforms/android-33
+  platforms;android-34                     | 3             | Android SDK Platform 34                     | platforms/android-34
+  platforms;android-35                     | 2             | Android SDK Platform 35                     | platforms/android-35
+  platforms;android-36.1                   | 1             | Android SDK Platform 36.1                   | platforms/android-36.1
+  platforms;android-TiramisuPrivacySandbox | 8             | Android SDK Platform TiramisuPrivacySandbox | platforms/android-TiramisuPrivacySandbox
+  sources;android-19                       | 2             | Sources for Android 19                      | sources/android-19
+  sources;android-20                       | 1             | Sources for Android 20                      | sources/android-20
+  sources;android-21                       | 1             | Sources for Android 21                      | sources/android-21
+  sources;android-22                       | 1             | Sources for Android 22                      | sources/android-22
+  sources;android-23                       | 1             | Sources for Android 23                      | sources/android-23
+  sources;android-24                       | 1             | Sources for Android 24                      | sources/android-24
+  sources;android-25                       | 1             | Sources for Android 25                      | sources/android-25
+  sources;android-26                       | 1             | Sources for Android 26                      | sources/android-26
+  sources;android-27                       | 1             | Sources for Android 27                      | sources/android-27
+  sources;android-28                       | 1             | Sources for Android 28                      | sources/android-28
+  sources;android-29                       | 1             | Sources for Android 29                      | sources/android-29
+  sources;android-30                       | 1             | Sources for Android 30                      | sources/android-30
+  sources;android-31                       | 1             | Sources for Android 31                      | sources/android-31
+  sources;android-32                       | 1             | Sources for Android 32                      | sources/android-32
+  sources;android-34                       | 2             | Sources for Android 34                      | sources/android-34
+  sources;android-35                       | 1             | Sources for Android 35                      | sources/android-35
+  sources;android-36.1                     | 1             | Sources for Android 36.1                    | sources/android-36.1
 {{< /collapsible >}}
 
 
@@ -208,9 +210,10 @@ Installed packages:
 
 | **Version** | **Path** |
 |---------|------|
-| 29.0.13113456 | `/usr/local/share/android-sdk/ndk/29.0.13113456` |
+| 28.2.13676358 | `/usr/local/share/android-sdk/ndk/28.2.13676358` |
 | 27.3.13750724 | `/usr/local/share/android-sdk/ndk/27.3.13750724` |
 | 25.1.8937393 | `/usr/local/share/android-sdk/ndk/25.1.8937393` |
+| 29.0.14206865 | `/usr/local/share/android-sdk/ndk/29.0.14206865` |
 
 
 ## Android emulators
@@ -239,17 +242,17 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.32.12`
+- aws `2.32.16`
 - azure-cli `2.81.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `1.0.2`
+- ew-cli `1.0.4`
 - fastlane `2.229.1`
-- firebase `14.12.1`
+- firebase `15.0.0`
 - gem `4.0.1`
-- gh `2.83.1`
+- gh `2.83.2`
 - git `2.52.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
@@ -257,11 +260,11 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.8.0`
-- node `24.11.0`
-- npm `11.6.1`
+- node `24.12.0`
+- npm `11.6.2`
 - python `3.12.7`
 - python3 `3.12.7`
-- ruby `3.4.5`
+- ruby `3.4.7`
 - ssh `10.0p2`
 - sudo `1.9.17p2`
 - swiftgen `6.6.3`
@@ -270,5 +273,5 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - unzip `6.00`
 - wget `1.25.0`
 - yarn `4.9.2`
-- yq `4.49.2`
+- yq `4.50.1`
 - zip `3.0`

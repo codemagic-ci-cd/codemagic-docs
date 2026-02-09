@@ -1,7 +1,7 @@
 ---
-title: Xcode 26.1.x (default)
+title: Xcode 26.1.x
 aliases:
-- /specs/versions-macos/
+
 weight: 94
 ---
 
@@ -9,11 +9,11 @@ Codemagic offers multiple build machines with different specifications and pre-i
 
 ## Hardware
 
-- Mac mini M2 `3.5GHz 8-Core / 8GB`
+- Mac mini M2 `8-Core CPU / 8GB`
+- Mac mini M4 `10-Core CPU / 16GB`
 
 {{<notebox>}}
-Available on request:
-- Mac mini M4 and M4 Max
+Mac Studio M4 Max available on request.
 {{</notebox>}}
 
 ## System
@@ -24,7 +24,7 @@ Available on request:
 
 ## Xcode versions
 
-- 26.1.1 (17B100) `/Applications/Xcode-26.1.app`, also selected when specifying `26.1` or `latest` in Xcode version settings
+- 26.1.1 (17B100) `/Applications/Xcode-26.1.app`, also selected when specifying `26.1` in Xcode version settings
 
 ### Runtimes and Devices
 

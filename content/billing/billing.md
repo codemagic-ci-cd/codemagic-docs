@@ -58,11 +58,28 @@ Team admins or account owners can manually retry the payment by clicking the **P
 
 Note that overdue invoices should be paid before the subscription can be disabled. Please refer to the [Disable billing](/billing/billing/#disabling-billing) section for further info.
 
-## Tax certificates
+## Tax information
 
-The following certificates are available for download:
+Codemagic is registered to collect taxes on transactions with customers in the following locations.
 
+* **European Union**
 
-- [Tax residency certificate](https://drive.google.com/file/d/1P17RkI82EqJ5j0QyA8FNsWyxwA3F6JQd/view?usp=sharing)
-- [W-8BEN-E certificate](https://drive.google.com/file/d/1ZqDXcorGbkZ1jPbbaoAXjSFSLzktGHY1/view?usp=sharing)
-- [Form GST REG-06](https://drive.google.com/file/d/1ZYLvXImNuZdc7EOibkPLFdPo-l6k332y/view)
+    Codemagic (Nevercode Ltd) is registered for the EU OSS VAT under `EU233019224`.
+
+* **United Kingdom**
+
+    Codemagic (Nevercode Ltd) is registered for the GB VAT under `GB347624190`.
+
+* **India**
+
+    Codemagic (Nevercode Ltd) is registered for Indian GST under GSTIN `9925GBR29027OS2`.
+
+* **Philippines**
+
+    Codemagic (Nevercode Ltd) is registered for Philippine VAT as a non-resident digital services provider under TIN `691133439`.
+
+The following documents are available for download:
+
+* [Tax residency certificate](https://drive.google.com/file/d/1P17RkI82EqJ5j0QyA8FNsWyxwA3F6JQd/view?usp=sharing)
+* [W-8BEN-E certificate](https://drive.google.com/file/d/1ZqDXcorGbkZ1jPbbaoAXjSFSLzktGHY1/view?usp=sharing)
+* [Form GST REG-06](https://drive.google.com/file/d/1ZYLvXImNuZdc7EOibkPLFdPo-l6k332y/view)
