@@ -23,7 +23,7 @@ To authenticate with Firebase, Codemagic requires either a **Firebase token** or
 
 #### 2. Authenticating via token
 {{<notebox>}}
-**Warning:** Firebase has marked authentication via token as deprecated and might disable it in future versions of `firebase tool`. Please authenticate using a service account, as described below.
+**Warning:** Firebase has marked authentication via token as deprecated and might disable it in future versions of `firebase tool`. Please authenticate using a service account, as described above.
 {{</notebox>}}
 
 To retrieve your Firebase token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
