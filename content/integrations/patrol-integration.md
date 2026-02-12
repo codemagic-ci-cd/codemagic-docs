@@ -1,7 +1,7 @@
 ---
 title: Patrol integration
 description: How to integrate your workflows with Patrol using codemagic.yaml
-weight: 17
+weight: 18
 ---
 
 [**Patrol**](https://patrol.leancode.co?utm_source=codemagic&utm_medium=referral) is a powerful, open-source UI testing framework designed specifically for Flutter apps, developed and maintained by [LeanCode](https://leancode.co?utm_source=codemagic&utm_medium=referral), one of the world's leading Flutter development consultancies. Patrol can be seamlessly integrated with Codemagic CI/CD to enable comprehensive automated testing workflows. Patrol allows you to:

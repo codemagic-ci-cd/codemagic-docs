@@ -1,7 +1,7 @@
 ---
 title: Microsoft Teams integration
 description: How to integrate your workflows with Microsoft Teams using codemagic.yaml
-weight: 9
+weight: 17
 ---
 
 **Microsoft Teams** is a communication and collaboration platform that allows teams to chat, share files, and integrate with external services. If your team uses Microsoft Teams, you can configure Codemagic to send build status notifications directly to a Teams channel using an **Incoming Webhook**.

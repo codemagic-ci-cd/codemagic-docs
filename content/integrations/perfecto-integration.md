@@ -1,7 +1,7 @@
 ---
 title: Perfecto integration
 description: How to integrate your workflows with Perfecto using codemagic.yaml
-weight: 19
+weight: 20
 ---
 
 **Perfecto** is a cloud-based test automation platform for web and mobile that allows application developers and QA engineers to create and execute tests across devices and browsers at scale. Being a market leader in its area, Perfecto offers many ways to integrate with different stages of the software development and testing lifecycle. It is possible to integrate with Perfecto directly from your **codemagic.yaml**

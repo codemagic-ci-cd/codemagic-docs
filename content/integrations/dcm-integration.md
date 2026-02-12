@@ -1,7 +1,7 @@
 ---
 title: Dart Code Metrics integration
 description: How to integrate your workflows with Dart Code Metrics using codemagic.yaml
-weight: 8
+weight: 7
 ---
 
 **Dart Code Metrics** is a powerful static analysis tool that helps improve code quality, ensure code consistency, and identify potential issues early in the development process. 

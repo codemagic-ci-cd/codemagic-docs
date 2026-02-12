@@ -1,7 +1,7 @@
 ---
 title: Fastlane integration
 description: How to use Fastlane in codemagic.yaml
-weight: 11
+weight: 10
 aliases:
   - /knowledge-base/beta-deployment-with-fastlane
   - /flutter-publishing/beta-deployment-with-fastlane
