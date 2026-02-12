@@ -24,7 +24,7 @@ This will automatically install the specified Unity version to the build machine
 **The available Unity versions are the following:**
 {{< tabpane >}}
 {{% tab header="v6000" %}}
-- LTS versions newer than `6000.0.37f1` are automaticaly available
+- LTS versions newer than `6000.0.37f1` are automatically available
 {{< /tab >}}
 {{% tab header="2023.X" %}}
 - `2023.1.10f1`

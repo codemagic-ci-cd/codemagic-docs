@@ -1,16 +1,14 @@
 ---
 title: Common Windows issues
 description: How to overcome common issues building mobile apps on Codemagic with Windows
-description: 
 weight: 2
 ---
-
 ### Cannot access variables from the app
 
 ###### Description
 You can't access the variable directly by using `$VAR_NAME`. 
 
-###### Solution
+{{<collapsible title="Solution" id="cannot-access-variables-from-app-solution" >}}
 You can reference the variable in subsequent parts of your workflow by using `$env:VAR_NAME`.
 
 However, when using a variable to set another variable in the `vars:` section, use the following syntax:
@@ -21,13 +19,15 @@ However, when using a variable to set another variable in the `vars:` section, u
       VAR_1: ---\$VAR_2\---
 {{< /highlight >}}
 
+{{< /collapsible >}}
+
 
 ### Using Command Prompt
 
 ###### Description
 The default shell on the Windows machines is `PowerShell`, but you need to run scripts using `Command Prompt`.
 
-###### Solution
+{{<collapsible title="Solution" id="using-command-prompt-solution" >}}
 Invoke the `Command Prompt` app directly and pass your script as an argument:
 
 {{< highlight yaml "style=paraiso-dark">}}
@@ -36,6 +36,8 @@ Invoke the `Command Prompt` app directly and pass your script as an argument:
       script: | 
         cmd.exe \c YOUR_COMMAND_HERE
 {{< /highlight >}}
+
+{{< /collapsible >}}
 
 
 ### Script with spaces and quotes not behaving as expected
@@ -48,7 +50,7 @@ PS> "C:\Program Files\Unity Hub\Unity Hub.exe"
 Hello World
 {{< /highlight >}}
 
-###### Solution
+{{<collapsible title="Solution" id="script-with-spaces-and-quotes-solution" >}}
 If you want PowerShell to interpret the string as a command name, use the call operator **(&)**:
 
 {{< highlight powershell "style=paraiso-dark">}}
@@ -61,18 +63,22 @@ If you want to use `PowerShell` to run an `.exe` file with parameters that conta
 Start-Process -NoNewWindow -FilePath "path-to-your-exe-file" -ArgumentList 'your-arguments-are-here' -Wait
 {{< /highlight >}}
 
+{{< /collapsible >}}
+
 
 ### Wrong value in base64 encoded environment variables
 
 ###### Description
 Scripts fail when using `base64` encoded variables or use incorrect values.
 
-###### Solution
+{{<collapsible title="Solution" id="base64-encoded-variables-solution" >}}
 Encoded variables need to be decoded back into their original form before they can be used. For example, to decode a variable `$VAR1` and save the result as variable `PATH`, use the following script:
 
 {{< highlight powershell "style=paraiso-dark">}}
 [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String("$env:VAR1")) | Out-File -FilePath $env:PATH
 {{< /highlight >}}
+
+{{< /collapsible >}}
 
 
 ### Cannot access the build machine using SSH or VNC/RDP
@@ -80,7 +86,9 @@ Encoded variables need to be decoded back into their original form before they c
 ###### Description
 Linux and macOS machines can be accessed using SSH or VNC. However, the access does not work when using a Windows build machine.
 
-###### Solution
+{{<collapsible title="Solution" id="ssh-vnc-rdp-solution" >}}
 SSH and VNC access is not available on Windows build machines. You can access them using an RDP client instead.
 
 Learn more: [Remote access to the build machine](../troubleshooting/accessing-builder-machine-via-ssh/).
+
+{{< /collapsible >}}
