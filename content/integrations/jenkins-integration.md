@@ -11,8 +11,29 @@ weight: 11
 You need a Codemagic API key to authenticate REST API requests from Jenkins. Every Codemagic account has an API key available.
 1. Log into Codemagic.
 2. Go to Teams → Personal account → Integrations → Codemagic API
-3. Click **Show** and copy the Codemagic API key.
-4. Note your Application ID from the app URL (e.g., https://codemagic.io/app/xxxxxxxxxxxxxxxxxxxxxxxx).
+3. Click **Show** and copy the `codemagic-api-key`.
+
+## Find your Application ID
+The Application ID uniquely identifies your app in Codemagic API calls.
+1. Navigate to your app in Codemagic
+2. Look at the app URL: https://codemagic.io/app/xxxxxxxxxxxxxxxxxxxxxxxx
+3. Copy the UUID at the end - this is your `AppID`.
+
+For further information about adding apps to Codemagic, please click [here](https://docs.codemagic.io/getting-started/adding-apps/).
+
+## Find you Workflow name
+The Workflow name specifies which workflow to trigger.
+1. Navigate to your codemagic.yaml file (in Codemagic or in your repository)
+2. Copy the name of the workflow (e.g., `sample-workflow`)
+3. Use this name as WORKFLOW_NAME in API calls
+
+{{< highlight yaml "style=paraiso-dark" >}}
+workflows:
+  sample-workflow:
+    name: Codemagic Sample Workflow
+{{< /highlight >}}
+
+For further information about using codemagic.yaml, please click [here](https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/).
 
 ## Configuring access to Codemagic in Jenkins
 
@@ -28,6 +49,8 @@ One credential needs to be added to Jenkins for the Codemagic integration: `code
 
 ## Trigger a Codemagic build
 A Pipeline job can be used to send a request to Codemagic with information about which app, workflow, and branch to build.
+
+Learn more about required parameters: [Builds API documentation](https://docs.codemagic.io/rest-api/builds/#start-a-new-build)
 
 The following is an example of how to perform a request that triggers a Codemagic build:
 
