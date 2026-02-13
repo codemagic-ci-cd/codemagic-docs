@@ -22,9 +22,9 @@ One credential needs to be added to Jenkins for the Codemagic integration: `code
 2. Click Add Credentials.
 3. Set Kind to **Secret text**
 4. Set Scope to **Global**
-4. Set Secret to `your-codemagic-api-key`
-5. Set ID to **codemagic-api-key**.
-6. Click OK.
+5. Set Secret to `your-codemagic-api-key`
+6. Set ID to **codemagic-api-key**.
+7. Click OK.
 
 ## Trigger a Codemagic build
 A Pipeline job can be used to send a request to Codemagic with information about which app, workflow, and branch to build.
