@@ -63,7 +63,7 @@ pipeline {
                         ).trim()
 
                         if (response == '200') {
-                            echo "Codemagic build triggered for branch ${CODMAGIC_BRANCH}."
+                            echo "Codemagic build triggered for branch ${CODEMAGIC_BRANCH}."
                         } else {
                             error "Codemagic API returned HTTP ${response}"
                         }
