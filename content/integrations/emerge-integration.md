@@ -1,7 +1,7 @@
 ---
 title: Emerge Tools integration
 description: How to integrate your workflows with Emerge using codemagic.yaml
-weight: 10
+weight: 9
 ---
 
 **Emerge Tools** helps you monitor and reduce app size with insights for instant savings. It provides continuous monitoring to write smaller, better code by profiling binary size on every pull request.

@@ -2,7 +2,7 @@
 description: How to upload dsym artifacts to Sentry
 title: Uploading dSYM to Sentry
 linkTitle: Sentry integration
-weight: 20
+weight: 21
 aliases:
  - /knowledge-base/sentry-crashlytics-dsym-uploading
  - /knowledge-others/sentry-crashlytics-dsym-uploading
