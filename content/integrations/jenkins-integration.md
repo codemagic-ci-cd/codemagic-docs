@@ -19,8 +19,6 @@ The Application ID uniquely identifies your app in Codemagic API calls.
 2. Look at the app URL: https://codemagic.io/app/xxxxxxxxxxxxxxxxxxxxxxxx
 3. Copy the UUID at the end - this is your `AppID`.
 
-For further information about adding apps to Codemagic, please click [here](https://docs.codemagic.io/getting-started/adding-apps/).
-
 ## Find you Workflow name
 The Workflow name specifies which workflow to trigger.
 1. Navigate to your codemagic.yaml file (in Codemagic or in your repository)
@@ -32,8 +30,6 @@ workflows:
   sample-workflow:
     name: Codemagic Sample Workflow
 {{< /highlight >}}
-
-For further information about using codemagic.yaml, please click [here](https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/).
 
 ## Configuring access to Codemagic in Jenkins
 
