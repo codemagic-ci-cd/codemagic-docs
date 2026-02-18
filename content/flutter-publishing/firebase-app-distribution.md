@@ -42,7 +42,7 @@ Using a service account is a more secure option due to granular permission setti
 
 #### 2. Authenticating via token
 
-{{<notebox>}}**Warning:** Firebase has marked authentication via token as deprecated and might disable it in future versions of `firebase tool`. Please authenticate using a service account, as described below.
+{{<notebox>}}**Warning:** Firebase has marked authentication via token as deprecated and might disable it in future versions of `firebase tool`. Please authenticate using a service account, as described above.
 {{</notebox>}}
 
 To retrieve your Firebase token, follow the instructions in [Firebase documentation](https://firebase.google.com/docs/cli#cli-ci-systems).
