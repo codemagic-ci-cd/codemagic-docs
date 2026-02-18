@@ -9,9 +9,9 @@ weight: 2
 ###### Description
 Builds succeeds locally but fails on Codemagic, throwing vague errors (e.g. _**Gradle task bundleRelease failed with exit code 1**_), or the build is successful, but some functions aren't working.
 
+{{<collapsible title="Causes and solutions" id="builds-work-locally-solution" >}}
 ###### Cause
 These issues are likely caused by plugin and/or gradle versions used locally being different from the versions used on Codemagic. If you are using a gradle version that is different from Codemagic, you have to define it in `gradle wrapper`. Otherwise, Codemagic ignores your `build.gradle` file, and your build won't work properly. See which software versions Codemagic uses on [macOS](../specs/versions-macos), on [Linux](../specs/versions-linux) and on [Windows](../specs/versions-windows) instances.
-
 ###### Solution
 First, you need to make sure that the `gradlew` file isn't in `.gitignore`. Look for `**/android/gradlew`, and if it's in `.gitignore`, delete it from there. Then add `!gradle-wrapper.jar` to a new line in `.gitignore` to create an exception so that `gradle-wrapper.jar` would also be excluded from `.gitignore`.
 
@@ -24,7 +24,7 @@ _**Error! Failed to check gradle version. Malformed executable tmpABCDEF/gradlew
 
 Codemagic runs `./gradlew --version` on the builder side to check if it is suitable for execution. If you see the error message shown above, there is something wrong with checking the gradle version.
 
-**To investigate and fix the issues**:
+To investigate and fix the issues:
 
 1. Make a clean clone of the repository and execute the following commands:
 
@@ -38,6 +38,8 @@ Codemagic runs `./gradlew --version` on the builder side to check if it is suita
 3. Commit changes to the repo.
 4. Run the build again in Codemagic.
 
+{{< /collapsible >}}
+
 
 
 ### Cannot resolve Gradle plugin
@@ -45,9 +47,9 @@ Codemagic runs `./gradlew --version` on the builder side to check if it is suita
 ###### Description
 Android users experiencing issues resolving plugins because of the sunset of JCenter.
 
+{{<collapsible title="Causes and solutions" id="cannot-resolve-gradle-plugin-solution" >}}
 ###### Cause
 On February 3. 2021, JFrog, the company that maintains JCenter, [announced that they will be shutting down Bintray and JCenter](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/).
-
 ###### Solution
 To avoid disruptions to your build pipelines, start migrating to a new hosting solution like `mavenCentral()`, rather than using JCenter or Bintray.
 
@@ -64,12 +66,14 @@ To fully migrate away from JCenter, replace all `jcenter()` occurrences with `ma
 
 - Disable or delete cache.
 - Run your build pipeline to see if everything works still.
-  - If your build is successful, you’re done.
-  - If your build still fails, you’ll need to troubleshoot which dependencies still require JCenter. The errors in the failed build step will point out the dependencies using JCenter.
+  - If your build is successful, you're done.
+  - If your build still fails, you'll need to troubleshoot which dependencies still require JCenter. The errors in the failed build step will point out the dependencies using JCenter.
 
 {{<notebox>}}
 Note: You'll have to completely upgrade all dependencies that require JCenter to avoid failed builds.
 {{</notebox>}}
+
+{{< /collapsible >}}
 
 
 ### Java heap space out of memory error or JVM garbage collector is thrashing
@@ -89,9 +93,8 @@ Or
     * What went wrong:
     Gradle build daemon has been stopped: since the JVM garbage collector is thrashing
 
-
+{{<collapsible title="Solution" id="java-heap-space-solution" >}}
 ###### Solution
-
 Java Heap space error is a well-known issue and can be thrown for multiple reasons e.g. enabling ProGuard or DexGuard requires more power to complete the tasks. Here are some suggested solutions to try:
 
 1. Set **JAVA_TOOL_OPTIONS: "-Xmx5g"** as an environement variable. This allows the JVM to use up to 5 GB of memory, which can help prevent memory allocation errors.
@@ -118,14 +121,16 @@ exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.Grad
 To access more powerful macOS M4 and M4 Max Studio machines, please get in touch with us [here](https://codemagic.io/pricing/#enterprise). 
 {{</notebox>}}
 
+{{< /collapsible >}}
+
 ### Could not find method firebaseAppDistribution() for arguments...
 
 ###### Description
 When publishing to Firebase app Distribution using Gradle, build fails with this error "Could not find method firebaseAppDistribution() for arguments..."
 
+{{<collapsible title="Causes and solutions" id="firebase-app-distribution-solution" >}}
 ###### Cause
 This issue is likely caused by missing Distribution Gradle plugin or missing dependency for the App Distribution Gradle plugin.
-
 ###### Solution
 1. In your root-level (project-level) Gradle file (usually android/build.gradle), add the App Distribution Gradle plugin as a buildscript dependency:
 
@@ -158,3 +163,5 @@ apply plugin: 'com.google.firebase.appdistribution'
 {{< /highlight >}}
 
 Check the [official Firebase documentation](https://firebase.google.com/docs/app-distribution/android/distribute-gradle?apptype=aab#step_1_set_up_your_android_project) for more information.
+
+{{< /collapsible >}}

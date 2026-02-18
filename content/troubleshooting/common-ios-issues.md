@@ -9,16 +9,15 @@ aliases:
 ### Getting **Not uploaded** message under the code signing identities for iOS provisioning profiles.
 
 ###### Description
-
 When uploading a provisioning profile by opening the **Code signing identities** section in team settings, you are seeing a red cross ❌.
 
+{{<collapsible title="Causes and solutions" id="not-uploaded-message-solution" >}}
 ###### Cause
-
 It happens when the certificate that is uploaded under the **iOS certificates** tab is not included in that particular provisioning profile that is giving you a red cross warning.
-
 ###### Solution
-
 Find that exact profile in your Apple Developer account > [Profiles](https://developer.apple.com/account/resources/profiles) page and click to edit it. Then choose the certificate that you have uploaded in the Codemagic UI under **Code signing identities** and click to save it. After downloading it to your local machine, you need to upload it to **Code signing identities** in your team settings.
+
+{{< /collapsible >}}
 
 ### Error creating authentication sessions
 
@@ -28,58 +27,93 @@ When App Store Connect is not correctly set up, users might encounter an error m
     altool[xxx:xxx] *** Error: Unable to validate archive '/Users/builder/ipas/xxx'.
     altool[xxx:xxx] *** Error: code -22020 (Unable to validate your application. We are unable to create an authentication session.)
 
+{{<collapsible title="Causes and solutions" id="error-creating-authentication-sessions-solution" >}}
 ###### Cause
-The most common reason for this error message is using your Apple ID password instead of [app-specific password](https://support.apple.com/en-us/HT204397) in App Store Connect publishing settings. 
-
+The most common reason for this error message is using your Apple ID password instead of [app-specific password](https://support.apple.com/en-us/HT204397) in App Store Connect publishing settings.
 ###### Solution
 Publishing iOS apps with **app-specific-password** is deprecated, refer to the documentation [here](https://docs.codemagic.io/yaml-publishing/app-store-connect/) that explains how to publish iOS apps to App Store Connect.
+
+{{< /collapsible >}}
 
 
 ### Errors with code signing
 
 This is the list of the most common issues that may cause iOS code signing errors during a CI build.
 
-###### The uploaded certificate is in a wrong format or corrupt
-Codemagic looks for a certificate in **Personal Information Exchange** (`.p12`) format. See [how to export the certificate](../code-signing/ios-code-signing/#exporting-signing-certificate-and-provisioning-profile).
+#### The uploaded certificate is in a wrong format or corrupt
 
-###### The uploaded certificate and provisioning profile do not match
+###### Description
+Codemagic looks for a certificate in **Personal Information Exchange** (`.p12`) format.
+
+{{<collapsible title="Solution" id="certificate-wrong-format-solution" >}}
+###### Solution
+See [how to export the certificate](../code-signing/ios-code-signing/#exporting-signing-certificate-and-provisioning-profile).
+
+{{< /collapsible >}}
+
+#### The uploaded certificate and provisioning profile do not match
+
+###### Description
 For example, you're using a **development** certificate with a **distribution** profile to sign the build, or the certificate used for signing is not included in the provisioning profile.
 
+{{<collapsible title="Solution" id="certificate-profile-mismatch-solution" >}}
+###### Solution
 Make sure the certificate and the provisioning profile types match.
 
-###### Missing entitlements in the Apple Developer portal
+{{< /collapsible >}}
+
+#### Missing entitlements in the Apple Developer portal
+
+###### Description
 In case of getting errors about an existing provisioning profile's missing entitlements, you can add or update the entitlements by finding and editing the profile in **Apple Developer portal > Certificates, identifier & profiles > Identifiers**. Alternatively, it can be done in Xcode under **Signing & Capabilities** of the given target. 
 
 When building a Flutter project, a similar error could be thrown due to a couple of other reasons:
 
     > Code Signing Error: "Runner" requires a provisioning profile with the Push Notifications feature. Select a provisioning profile in the Signing & Capabilities editor.
 
+{{<collapsible title="Solution" id="missing-entitlements-solution" >}}
+###### Solution
 1. Setting up code signing settings on Xcode project step is missing. Double check if **xcode-project use-profiles** step is missing in **codemagic.yaml** before executing the build command.
-2. Export options are not valid in the project. It can be configured by adding **--export-options-plist=/Users/builder/export_options.plist** to the build command in **codemagic.yaml**. 
+2. Export options are not valid in the project. It can be configured by adding **--export-options-plist=/Users/builder/export_options.plist** to the build command in **codemagic.yaml**.
+
+{{< /collapsible >}}
 
 
-###### iOS scheme not specified for the `archive` action of an Xcode build
+#### iOS scheme not specified for the `archive` action of an Xcode build
 
-This applies when your app has custom iOS schemes. By default, Codemagic builds the `Runner` scheme, but you can use the `CM_FLUTTER_SCHEME` [environment variable](../building/environment-variables) to specify another scheme.
+###### Description
+This applies when your app has custom iOS schemes. By default, Codemagic builds the `Runner` scheme.
+
+{{<collapsible title="Solution" id="ios-scheme-not-specified-solution" >}}
+###### Solution
+You can use the `CM_FLUTTER_SCHEME` [environment variable](../building/environment-variables) to specify another scheme.
+
+{{< /collapsible >}}
 
 
-###### Bundle ID mismatch
+#### Bundle ID mismatch
 
+###### Description
 Make sure that the bundle ID entered in automatic code signing setup on Codemagic matches the bundle ID in the build configuration that is used for archiving the app with Xcode.
 
 Codemagic assigns provisioning profiles to build targets and configurations before building the iOS app. That assignment is based on the bundle ID match in both provisioning profile and the build configuration. If a signing configuration is not assigned to the build target/configuration that is used for archiving, the build will fail.
 
 If bundle identifiers are not properly set for your project, you will often see an error message similar to this one:
 ```
-❌ error: Runner has conflicting provisioning settings. Runner is automatically signed, but code signing identity Apple Push Services has been manually specified. Set the code signing identity value to “iPhone Developer” in the build settings editor, or switch to manual signing in the Signing & Capabilities editor. (in target ‘Runner’ from project ‘Runner’)
+❌ error: Runner has conflicting provisioning settings. Runner is automatically signed, but code signing identity Apple Push Services has been manually specified. Set the code signing identity value to "iPhone Developer" in the build settings editor, or switch to manual signing in the Signing & Capabilities editor. (in target 'Runner' from project 'Runner')
 ```
 
-**Solution**:
+{{<collapsible title="Solution" id="bundle-id-mismatch-solution" >}}
+###### Solution
 * Confirm that you have set the correct bundle identifiers for all targets in Xcode.
 * Verify that the bundle identifier set in Xcode matches the bundle identifier set in the Flutter workflow editor under code signing.
 
+{{< /collapsible >}}
 
-###### Outdated Provisioning profile that does not include Associated Domains.
+
+#### Outdated Provisioning profile that does not include Associated Domains
+
+###### Description
 In such cases, you will often see an error message similar to this one:
 ```
 ❌ error: Provisioning profile "CodeMagic" doesn't support the Associated Domains capability. (in target 'Runner' from project 'Runner').
@@ -87,35 +121,42 @@ In such cases, you will often see an error message similar to this one:
 ❌ error: Provisioning profile "CodeMagic" doesn't include the com.apple.developer.associated-domains entitlement. (in target 'Runner' from project 'Runner').
 ```
 
-**Solution**:
-
+{{<collapsible title="Solution" id="outdated-provisioning-profile-solution" >}}
+###### Solution
 Log in to your Apple Developer account and verify:
 * That you are using the correct bundle identifier.
 * If missing, add the Associated Domain Entitlement from there.
 * Update the provisioning profile and use it to configure your project.
 
-###### iOS deployment target issue
+{{< /collapsible >}}
+
+#### iOS deployment target issue
+
+###### Description
 A common error message with regard to deployment target is the following:
 ```
 The iOS deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 8.0, but the range of supported deployment target versions is 9.0 to 14.4.99
 ```
 The error usually occurs if the deployment target set in Podfile is lower than required or when the Podfile is missing.
 
-**Solution**:
+{{<collapsible title="Solution" id="ios-deployment-target-solution" >}}
+###### Solution
 * Confirm if a Podfile exists in the repository. If not, create a Podfile in the `ios` directory and insert the following manually in there:
 
 {{< highlight bash "style=paraiso-dark">}}
 # Uncomment the next line to define a global platform for your project
-platform :ios, ’10.0’
+platform :ios, '10.0'
 target 'Runner' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
  # Pods for Runner
 end
 {{< /highlight >}}
 
-* Check the Podfile and make sure that `platform :ios, ’10.0’` is set to `10.0` or above as required by dependencies.
+* Check the Podfile and make sure that `platform :ios, '10.0'` is set to `10.0` or above as required by dependencies.
 * Confirm if `IPHONEOS_DEPLOYMENT_TARGET` is set to 9.0 or above
+
+{{< /collapsible >}}
 
 
 ### Build hangs at `Xcode build done`
@@ -137,6 +178,7 @@ Log output look similar to this example
 
 **Flutter**: `1.7.8+hotfix.3`, `1.7.8+hotfix.4`, `1.9.1+hotfix.2`, `1.9.1+hotfix.4`, `1.9.1+hotfix.5`
 
+{{<collapsible title="Solution" id="build-hangs-solution" >}}
 ###### Solution
 This is a known issue that occurs randomly and can be traced back to Flutter:
 
@@ -145,28 +187,39 @@ This is a known issue that occurs randomly and can be traced back to Flutter:
 
 This issue is known to be fixed on the `master` channel.
 
+{{< /collapsible >}}
+
 
 
 ### Mac M2 issues
 
-###### Builds not starting
+#### Builds not starting
 
+###### Description
 Builds not starting at all even though the team has access to the `mac_mini_m2` instance.
 
-**Solution**:
+{{<collapsible title="Solution" id="mac-m2-builds-not-starting-solution" >}}
+###### Solution
 This error occurs on M2 machines when the `xcode` property is set to a version that is not supported. Please configure your workflow to use Xcode version 15 or above.
 
+{{< /collapsible >}}
 
-###### Builds failing intermittently
 
+#### Builds failing intermittently
+
+###### Description
 Builds are intermittently failing without a clear reason.
 
-**Solution**:
+{{<collapsible title="Solution" id="mac-m2-builds-failing-intermittently-solution" >}}
+###### Solution
 This issue can be caused by an earlier version of Xcode. Please use version `13.4.1` or newer, if possible.
 
+{{< /collapsible >}}
 
-###### Error when using an adhoc profile
 
+#### Error when using an adhoc profile
+
+###### Description
 When building iOS apps with an adhoc profile you might get this error: 
 ```
 error: Provisioning profile "XXXX" doesn't include the currently selected
@@ -174,22 +227,26 @@ device "builder's Virtual Machine" (identifier XXXXXXXX-XXXXXXXXXXXXXXXX).
 (in target 'XXXXXXX' from project 'App').
 ```
 
-**Solution**:
+{{<collapsible title="Solution" id="mac-m2-adhoc-profile-solution" >}}
+###### Solution
 Add the following to the end of your `xcode-project build-ipa` command:
 {{< highlight yaml "style=paraiso-dark">}}
   --archive-flags="-destination 'generic/platform=iOS'"
 {{< /highlight >}}
 
+{{< /collapsible >}}
+
 
 
 ### XCode 14 known issues
 
+#### Signing for "XXX" requires a development team
 
-###### Error (Xcode): Signing for "XXX" requires a development team. Select a development team in the Signing & Capabilities editor
+###### Description
+Error (Xcode): Signing for "XXX" requires a development team. Select a development team in the Signing & Capabilities editor
 
-
-**Solution**:
-
+{{<collapsible title="Solution" id="xcode-14-signing-team-solution" >}}
+###### Solution
 This issue has been fixed on the stable channel in **Flutter 3.3.3**.
 
 However, if you would like to continue previous versions of Flutter you can open `ios/Podfile` and add the following at the end of it:
@@ -214,6 +271,8 @@ end
 
 In XCode 13 `CODE_SIGNING_ALLOWED` was set to `NO` by default for resource bundles. While in Xcode 14 they changed this to default to `YES`, which might be causing the problems.
 
+{{< /collapsible >}}
+
 ### A required agreement is missing or has expired
 
 ###### Description
@@ -221,11 +280,13 @@ Builds are failing with the following message:
 
     A required agreement is missing or has expired. - This request requires an in-effect agreement that has not been signed or has expired.
 
+{{<collapsible title="Causes and solutions" id="required-agreement-solution" >}}
 ###### Cause
 Apple has updated Apple Developer Program License Agreement and it needs to be reviewed
-
 ###### Solution
 In order to update your existing apps and submit new apps to the App Store, the Account Holder must review and accept the updated agreement by signing in to their [account](https://appstoreconnect.apple.com/agreements/#/) on the Apple Developer website.
+
+{{< /collapsible >}}
 
 ### Certificate will no longer be valid in 30 days
 
@@ -234,15 +295,17 @@ You received e-mail from Apple stating that:
 
     Your Distribution Certificate will no longer be valid in 30 days. To generate a new certificate, sign in and visit Certificates, Identifiers & Profiles.
 
+{{<collapsible title="Causes and solutions" id="certificate-expiry-solution" >}}
 ###### Cause
 Distribution certificates issued by Apple have a validity period of one year from the date of issuance. After one year, they expire, which means they can no longer be used to sign and distribute apps.
-
 ###### Solution
 Rest assured, Codemagic simplifies the certificate management process for you. Here's how it works:
  - By providing your **App Store Connect API key ID**, **issuer ID**, and API key as a **.p8 file** (more info about how to add environment variables can be found [here](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/)), Codemagic takes care of your certificate and provisioning profile management, including the automatic renewal of certificates, except in the case where you are using a private RSA key associated with an iOS Distribution certificate previously generated within your Apple Developer Program account. You can find additional information on how to update an RSA key (CERTIFICATE_PRIVATE_KEY) for a certificate [here](https://docs.codemagic.io/yaml-code-signing/alternative-code-signing-methods/#:~:text=Obtaining%20the%20Certificate%20private%20key).
 
  - If you're using `manual code signing` or `Codemagic signing identities (CSI)`, you will need to create and upload your certificates and profiles that you generated on the Apple Developer UI manually to Codemagic.
  Alernativley, with CSI, users can also fetch or create resources directly from Codemagic UI instead of navigating the Apple Developer UI when going in **Teams** > **Codesignng identities** > **iOS certificate** tab > **Generate certificate** button and in there provide your API key.
+
+{{< /collapsible >}}
 
 
 ### Did not find xcodeproj from /Users/builder/clone/ios
@@ -252,11 +315,11 @@ Builds are failing with the following message:
 
     Did not find xcodeproj from /Users/builder/clone/ios
 
+{{<collapsible title="Causes and solutions" id="did-not-find-xcodeproj-solution" >}}
 ###### Cause
 Codemagic is not able to locate the Xcode project file (xcodeproj) in the expected directory. This could be due to the project structure being different from the script's assumptions, most likely because the project is a mono repo.
-
 ###### Solution
-The solution is to update the path to your project. In order to target apps inside your monorepo app, **working_directory** key is used. For example, the following sample snippet shows how it works:
+The solution is to update the path to your project. In order to target apps inside your monorepo app, **working_directory** key is used. For example, the following sample snippet shows how it works:
 
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:
@@ -270,6 +333,8 @@ workflows:
 
 If you are using the Workflow Editor, specify the project path inside the Build step by selecting your project from the Project path dropdown.
 
+{{< /collapsible >}}
+
 ### Failed to set code signing settings for **/*.xcodeproj
 
 ###### Description
@@ -280,12 +345,12 @@ When building a React Native iOS project, you may encounter an error similar to 
 
 For example, this error may appear for packages such as `react-native-fast-image`, `react-native-camera-kit`, or other dependencies that include their own `.xcodeproj` files.
 
+{{<collapsible title="Causes and solutions" id="failed-set-code-signing-solution" >}}
 ###### Cause
-By default, Codemagic’s `xcode-project use-profiles` command searches recursively for all `.xcodeproj` files in the repository to apply code signing settings. In React Native projects, several dependencies inside the `node_modules` directory (e.g. `react-native-fast-image`) include their own `.xcodeproj` files.
+By default, Codemagic's `xcode-project use-profiles` command searches recursively for all `.xcodeproj` files in the repository to apply code signing settings. In React Native projects, several dependencies inside the `node_modules` directory (e.g. `react-native-fast-image`) include their own `.xcodeproj` files.
 As a result, Codemagic may attempt to apply signing settings to these dependency projects instead of the actual application project.
-
 ###### Solution
-Explicitly specify your app’s .xcodeproj file when running the `xcode-project use-profiles` command to ensure that code signing settings are applied only to the main project.
+Explicitly specify your app's .xcodeproj file when running the `xcode-project use-profiles` command to ensure that code signing settings are applied only to the main project.
 
 For example, update your script as follows:
 
@@ -302,6 +367,8 @@ Alternatively, if your iOS directory contains a single `.xcodeproj` file, you ca
 xcode-project use-profiles --project ios/*.xcodeproj
 {{< /highlight >}}
 
+{{< /collapsible >}}
+
 ### Scheme "xxx" not found from repository! Please reconfigure your project.
 
 ###### Description
@@ -309,12 +376,12 @@ When building a Flutter app using the Workflow Editor, you may encounter the fol
 
     Scheme "xxx" not found from repository! Please reconfigure your project.
 
+{{<collapsible title="Causes and solutions" id="scheme-not-found-solution" >}}
 ###### Cause
 This issue usually occurs when the iOS project files (such as schemes or workspace definitions) are not fully generated before the automatic dependency installation starts.
 Even though flutter pub get is automatically executed by Codemagic later in the build process, it might happen too late, before the Xcode project is properly set up.
 
 In some cases, the problem can also occur if the specified scheme name is incorrect or if the scheme has not been shared in Xcode.
-
 ###### Solution
 1. Verify your scheme configuration in Xcode locally. Open your project in Xcode and go to Product > Scheme > Manage Schemes and make sure the scheme name matches exactly (case-sensitive) and that the Shared checkbox is enabled for that scheme.
 
@@ -324,6 +391,8 @@ If the scheme is correct and shared, add the following command to the Post-clone
 flutter pub get
 {{< /highlight >}}
 This ensures that all necessary iOS project files are properly generated before dependency installation begins.
+
+{{< /collapsible >}}
 
 ### No matching profiles found for bundle identifier "io.example.test" and distribution type "app_store"
 
@@ -345,7 +414,9 @@ This means that in the ios_signing section of your YAML configuration, you are r
           bundle_identifier: io.example.test
 {{< /highlight >}}
 
+{{<collapsible title="Solution" id="no-matching-profiles-solution" >}}
 ###### Solution
-
 Go to Teams > [your team name] > Code signing identities > iOS Provisioning profiles
 and make sure a valid profile for your bundle identifier and distribution type exists.
+
+{{< /collapsible >}}
