@@ -149,10 +149,10 @@ This issue is often caused by a mismatch or missing environment variable in your
 {{< /collapsible >}}
 
 
-### Builds staying in queue for abnormally long time or workflows taking too long to load
+### Builds initializing for abnormally long time or workflows taking too long to load
 
 ###### Description
-Builds remain in the queued state for an extended period (sometimes hours) before starting, or workflows take an unusually long time to load. This can happen even after deleting branches from your repository.
+Builds remain in the initializing state for an extended period (sometimes hours) before starting, or workflows take an unusually long time to load. This can happen even after deleting branches from your repository.
 
 {{<collapsible title="Causes and solutions" id="large-repository-solution" >}}
 ###### Cause
