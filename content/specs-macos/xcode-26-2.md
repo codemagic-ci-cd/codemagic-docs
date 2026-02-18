@@ -9,11 +9,11 @@ Codemagic offers multiple build machines with different specifications and pre-i
 
 ## Hardware
 
-- Mac mini M2 `8-Core CPU / 8GB`
-- Mac mini M4 `10-Core CPU / 16GB`
+- Mac mini M2 `3.5GHz 8-Core / 8GB`
 
 {{<notebox>}}
-Mac Studio M4 Max available on request.
+Available on request:
+- Mac mini M4 and M4 Max
 {{</notebox>}}
 
 ## System
@@ -24,7 +24,7 @@ Mac Studio M4 Max available on request.
 
 ## Xcode versions
 
-- 26.2 (17C52) `/Applications/Xcode-26.2.app`, also selected when specifying `latest` or `edge` in Xcode version settings
+- 26.2 (17C52) `/Applications/Xcode-26.2.app`, also selected when specifying `latest` in Xcode version settings
 
 ### Runtimes and Devices
 
