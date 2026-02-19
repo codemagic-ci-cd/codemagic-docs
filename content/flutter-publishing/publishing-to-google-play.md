@@ -92,7 +92,7 @@ Once you make all the preparations as described [above](../publishing/publishing
 **Note:** The very first version of the app must be added to Google Play manually. You can download the **app_release.aab** from the build artifacts. In addition, each uploaded binary must have a different version; see how to automatically [increment build version](../building/build-versioning/ 'Build versioning') on Codemagic.
 {{</notebox>}}
 
-1. Navigate to the Distribution section in app settings.
+1. Navigate to the Distribution section in Workflow editor settings.
 2. Click **Google Play** to expand the option.
 3. Upload your credentials JSON file.
 4. Select a **track** for publishing.
