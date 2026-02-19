@@ -20,7 +20,7 @@ Mac Studio M4 Max available on request.
 
 - System version `macOS 26.3 (25D125)`
 - Kernel version `Darwin 25.3.0`
-- Disk `294GB (Free Space: 148GB)`
+- Disk `294GB (Free Space: 145GB)`
 
 ## Xcode versions
 
@@ -130,17 +130,17 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.33.23`
+- aws `2.33.25`
 - azure-cli `2.83.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `1.1.0`
+- ew-cli `1.2.0`
 - fastlane `2.232.1`
 - firebase `15.6.0`
 - gem `4.0.6`
-- gh `2.86.0`
+- gh `2.87.0`
 - git `2.53.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
@@ -152,7 +152,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - npm `11.8.0`
 - python `3.12.7`
 - python3 `3.12.7`
-- ruby `3.4.8`
+- ruby `4.0.1`
 - ssh `10.2p1`
 - sudo `1.9.17p2`
 - swiftgen `6.6.3`
@@ -160,6 +160,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - ucd `0.11.10`
 - unzip `6.00`
 - wget `1.25.0`
+- xcbeautify `3.1.4`
 - yarn `4.9.2`
 - yq `4.52.4`
 - zip `3.0`
