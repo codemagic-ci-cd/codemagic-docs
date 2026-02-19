@@ -80,6 +80,8 @@ Codemagic is registered to collect taxes on transactions with customers in the f
 
 The following documents are available for download:
 
-* [Tax residency certificate](https://drive.google.com/file/d/1eG4pwaVfZ8_8u_l796rw3PbdCgh_0IH9/view?usp=sharing)
+* [Tax residency certificate](https://drive.google.com/file/d/1w1miL-CL6h7soE1mHIGVY79iuBA9AIca/view?usp=drive_link)
 * [W-8BEN-E certificate](https://drive.google.com/file/d/1ZqDXcorGbkZ1jPbbaoAXjSFSLzktGHY1/view?usp=sharing)
 * [Form GST REG-06](https://drive.google.com/file/d/1ZYLvXImNuZdc7EOibkPLFdPo-l6k332y/view)
+* [Philippines Certificate of Registration (COR)](https://drive.google.com/file/d/1TqOAzjDlwuvyizLf4VMzr9OmZsEc5Qxk/view?usp=drive_link)
+
