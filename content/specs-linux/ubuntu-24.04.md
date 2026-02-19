@@ -175,11 +175,11 @@ Available Android Virtual Devices:
 
 ## Other pre-installed tools
 
-- aws `2.27.5`
+- aws `2.33.25`
 - azure-cli `2.74.0`
 - curl `8.5.0`
 - docker `28.0.1`
-- ew-cli `0.12.4`
+- ew-cli `1.2.0`
 - fastlane `2.227.0`
 - firebase `13.34.0`
 - gem `3.6.2`
@@ -195,11 +195,11 @@ Available Android Virtual Devices:
 - OpenSSH  `9.6p1`
 - python `3.12.5`
 - ruby `3.4.2`
-- snapcraft  `8.9.2`
+- snapcraft  `8.14.1`
 - sudo `1.9.15p5`
 - tar `1.35`
 - unzip `6.00`
 - wget `1.21.4`
 - yarn `4.7.0`
-- yq `4.44.5`
+- yq `4.49.2`
 - zip `3.0`
