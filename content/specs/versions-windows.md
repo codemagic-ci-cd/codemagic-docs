@@ -37,56 +37,33 @@ Loading local repository...
 
 Installed packages:
   Path                                                | Version       | Description                                                  | Location
-
   -------                                             | -------       | -------                                                      | -------
-
   build-tools;30.0.3                                  | 30.0.3        | Android SDK Build-Tools 30.0.3                               | build-tools\30.0.3
-
   build-tools;34.0.0                                  | 34.0.0        | Android SDK Build-Tools 34                                   | build-tools\34.0.0
-
   cmake;3.22.1                                        | 3.22.1        | CMake 3.22.1                                                 | cmake\3.22.1
-
   cmdline-tools;latest                                | 13.0          | Android SDK Command-line Tools (latest)                      | cmdline-tools\latest
-
   extras;google;Android_Emulator_Hypervisor_Driver    | 2.0.0         | Android Emulator hypervisor driver (installer)               | extras\google\Android_Emulator_Hypervisor_Driver
   extras;google;google_play_services                  | 49            | Google Play services                                         | extras\google\google_play_services
   extras;google;instantapps                           | 1.9.0         | Google Play Instant Development SDK                          | extras\google\instantapps
-
   extras;google;market_apk_expansion                  | 1             | Google Play APK Expansion library                            | extras\google\market_apk_expansion
   extras;google;market_licensing                      | 1             | Google Play Licensing Library                                | extras\google\market_licensing
   extras;google;usb_driver                            | 13            | Google USB Driver                                            | extras\google\usb_driver
-
   extras;google;webdriver                             | 2             | Google Web Driver                                            | extras\google\webdriver
-
   extras;intel;Hardware_Accelerated_Execution_Manager | 7.6.5         | Intel x86 Emulator Accelerator (HAXM installer) - Deprecated | extras\intel\Hardware_Accelerated_Execution_Manager
   ndk;26.2.11394342                                   | 26.2.11394342 | NDK (Side by side) 26.2.11394342                             | ndk\26.2.11394342
-
   platform-tools                                      | 35.0.1        | Android SDK Platform-Tools                                   | platform-tools
-
   platforms;android-29                                | 5             | Android SDK Platform 29                                      | platforms\android-29
-
   platforms;android-30                                | 3             | Android SDK Platform 30                                      | platforms\android-30
-
   platforms;android-31                                | 1             | Android SDK Platform 31                                      | platforms\android-31
-
   platforms;android-32                                | 1             | Android SDK Platform 32                                      | platforms\android-32
-
   platforms;android-33                                | 3             | Android SDK Platform 33                                      | platforms\android-33
-
   platforms;android-34                                | 3             | Android SDK Platform 34                                      | platforms\android-34
-
   sources;android-29                                  | 1             | Sources for Android 29                                       | sources\android-29
-
   sources;android-30                                  | 1             | Sources for Android 30                                       | sources\android-30
-
   sources;android-31                                  | 1             | Sources for Android 31                                       | sources\android-31
-
   sources;android-32                                  | 1             | Sources for Android 32                                       | sources\android-32
-
   sources;android-33                                  | 1             | Sources for Android 33                                       | sources\android-33
-
   sources;android-34                                  | 2             | Sources for Android 34                                       | sources\android-34
-
   system-images;android-34;google_apis;x86_64         | 12            | Google APIs Intel x86_64 Atom System Image                   | system-images\android-34\google_apis\x86_64
 {{< /collapsible >}}
 
