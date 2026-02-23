@@ -2,14 +2,15 @@
 description: A list of tools available out-of-the-box on Codemagic Linux Ubuntu 24.04
 title: Ubuntu 24.04
 aliases:
-
+- /specs/versions-linux/
 weight: 1
 ---
 
 
 ## Hardware
 
-- Linux virtual machine: `8 vCPUs, 32 GB memory`
+- Linux X2 virtual machine `8 vCPUs, 32 GB memory`
+- Linux X4 virtual machine `16 vCPUs, 64 GB memory`
 
 
 ## System
