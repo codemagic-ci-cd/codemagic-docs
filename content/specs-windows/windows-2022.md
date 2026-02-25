@@ -1,7 +1,9 @@
 ---
-description: A list of tools available out-of-the-box on Codemagic Windows build machines.
-title: Windows machines
-weight: 3
+description: A list of tools available out-of-the-box on Codemagic Windows 2022 build machines.
+title: Windows 2022
+aliases:
+- /specs/versions-windows/
+weight: 1
 ---
 
 ## Hardware
