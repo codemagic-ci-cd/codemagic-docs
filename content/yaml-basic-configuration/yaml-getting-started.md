@@ -175,19 +175,20 @@ workflows:
 
 The main sections in each workflow are described below.
 
-### Instance Type
+### Instance type
 
 `instance_type:` specifies the [build machine type](../specs/machine-type) to use for the build. The supported build machines are:
 | **Instance Type** | **Build Machine** |
 | ------------- | -----------------  |
 | `mac_mini_m2`    | Apple silicon M2 Mac mini |
 | `mac_mini_m4`    | Apple silicon M4 Mac mini |
-| `linux_x2`  | Linux |
+| `linux_x2`  | Linux X2 |
+| `linux_x4`  | Linux X4 |
 | `windows_x2`  | Windows |
 
 <br>
 {{<notebox>}}
-**Note:** Instance types `linux_x2` and `windows_x2` are only available for teams and users with [billing enabled](../billing/billing/). 
+**Note:** Instance types `mac_mini_m4`, `linux_x2`, `linux_x4`, and `windows_x2` are only available for teams and users with [billing enabled](../billing/billing/). 
 {{</notebox>}}
 
 ### Build inputs
@@ -274,7 +275,7 @@ The snippet below shows how to specify the versions of Flutter, Xcode, Ubuntu, C
 environment:
   flutter: stable   # Define the channel name, version (e.g. v1.13.4), or fvm for Flutter Version Management
   xcode: latest     # Define latest, edge or version (e.g. 11.2)
-  ubuntu: 24.04     # Define the OS version for linux_x2 instance type (available options are 20.04, 24.04)
+  ubuntu: 24.04     # Define the OS version for Linux builds (e.g. 24.04)
   cocoapods: 1.9.1  # Define default or version
   node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
   npm: 6.13.7       # Define default, latest, next, lts or version

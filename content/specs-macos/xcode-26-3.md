@@ -20,11 +20,11 @@ Mac Studio M4 Max available on request.
 
 - System version `macOS 26.3 (25D125)`
 - Kernel version `Darwin 25.3.0`
-- Disk `294GB (Free Space: 144GB)`
+- Disk `294GB (Free Space: 143GB)`
 
 ## Xcode versions
 
-- 26.3 (17C519) `/Applications/Xcode-26.3.app`
+- 26.3 (17C528) `/Applications/Xcode-26.3.app`
 
 ### Runtimes and Devices
 
