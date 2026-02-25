@@ -202,6 +202,11 @@ menu:
           parent: specs
           weight: 2
 
+        - identifier: specs-windows
+          name: Windows machines
+          parent: specs
+          weight: 3
+
         - identifier: custom-menu-position
           params:
               hide: true

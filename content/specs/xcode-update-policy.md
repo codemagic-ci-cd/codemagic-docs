@@ -2,7 +2,7 @@
 description: How we release and deprecate Xcode versions
 title: Xcode update policy
 aliases:
-weight: 4
+weight: 1
 ---
 
 ## Overview
