@@ -76,7 +76,7 @@ Installed packages:
 | 1.8 | `C:\Program Files\OpenJDK\jdk-1.8.0` |
 | 11 | `C:\Program Files\OpenJDK\jdk-11.0.22` |
 | 17 | `C:\Program Files\OpenJDK\jdk-17` |
-| 2 | `C:\Program Files\OpenJDK\jdk-20.0.1` |
+| 20 | `C:\Program Files\OpenJDK\jdk-20.0.1` |
 | **21** (default) | `C:\Program Files\OpenJDK\jdk-21.0.2` |
 
 

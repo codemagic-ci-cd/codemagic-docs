@@ -2,21 +2,22 @@
 description: A list of tools available out-of-the-box on Codemagic Linux Ubuntu 24.04
 title: Ubuntu 24.04
 aliases:
-
+- /specs/versions-linux/
 weight: 1
 ---
 
 
 ## Hardware
 
-- Linux virtual machine: `8 vCPUs, 32 GB memory`
+- Linux X2 virtual machine: `8 vCPUs, 32 GB memory`
+- Linux X4 virtual machine: `16 vCPUs, 64 GB memory`
 
 
 ## System
 
-- System version `Ubuntu 24.04.2 LTS`
-- Kernel version `6.8.0-1026-gcp`
-- Disk `155GB (Free Space: 94GB)`
+- System version `Ubuntu 24.04.4 LTS`
+- Kernel version `6.17.0-1008-gcp`
+- Disk `155GB (Free Space: 93GB)`
 
 ## Android Studio
 
@@ -175,10 +176,10 @@ Available Android Virtual Devices:
 
 ## Other pre-installed tools
 
-- aws `2.33.25`
-- azure-cli `2.74.0`
+- aws `2.33.27`
+- azure-cli `2.83.0`
 - curl `8.5.0`
-- docker `28.0.1`
+- docker `29.2.1`
 - ew-cli `1.2.0`
 - fastlane `2.227.0`
 - firebase `13.34.0`
@@ -200,6 +201,6 @@ Available Android Virtual Devices:
 - tar `1.35`
 - unzip `6.00`
 - wget `1.21.4`
-- yarn `4.7.0`
-- yq `4.49.2`
+- yarn `1.22.22`
+- yq `4.44.5`
 - zip `3.0`
