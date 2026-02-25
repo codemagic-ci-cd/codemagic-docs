@@ -176,7 +176,7 @@ Available Android Virtual Devices:
 
 ## Other pre-installed tools
 
-- aws `2.33.27`
+- aws `2.33.29`
 - azure-cli `2.83.0`
 - curl `8.5.0`
 - docker `29.2.1`
@@ -186,8 +186,8 @@ Available Android Virtual Devices:
 - gem `3.6.2`
 - gh `2.45.0`
 - git `2.43.0`
-- Google Cloud SDK `514.0.0`
-- gsutil `5.33`
+- Google Cloud SDK `558.0.0`
+- gsutil `5.35`
 - ionic `7.2.0`
 - jq `1.7`
 - ktlint `1.5.0`
@@ -201,6 +201,6 @@ Available Android Virtual Devices:
 - tar `1.35`
 - unzip `6.00`
 - wget `1.21.4`
-- yarn `1.22.22`
-- yq `4.44.5`
+- yarn `4.12.0`
+- yq `4.49.2`
 - zip `3.0`
