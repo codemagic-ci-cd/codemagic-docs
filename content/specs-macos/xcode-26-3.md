@@ -24,7 +24,7 @@ Mac Studio M4 Max available on request.
 
 ## Xcode versions
 
-- 26.3 (17C528) `/Applications/Xcode-26.3.app`
+- 26.3 (17C529) `/Applications/Xcode-26.3.app`
 
 ### Runtimes and Devices
 
@@ -132,7 +132,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.33.25`
+- aws `2.33.30`
 - azure-cli `2.83.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
@@ -140,13 +140,13 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - curl `8.7.1`
 - ew-cli `1.2.0`
 - fastlane `2.232.1`
-- firebase `15.6.0`
+- firebase `15.8.0`
 - gem `4.0.6`
-- gh `2.87.0`
+- gh `2.87.3`
 - git `2.53.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `5.0.14`
+- homebrew `5.0.15`
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.8.0`
