@@ -52,7 +52,7 @@ Modify your **`android/app/build.gradle`** or **`android/app/build.gradle.kts`**
 
 {{< tab header="build.gradle.kts" >}}
 
-{{< highlight groovy "style=paraiso-dark">}}
+{{< highlight kotlin "style=paraiso-dark">}}
 import java.io.File
 import java.util.*
 
