@@ -18,7 +18,7 @@ Modify your **`android/app/build.gradle`** or **`android/app/build.gradle.kts`**
 {{< tabpane >}}
 {{< tab header="build.gradle" >}}
 
-{{< highlight kotlin "style=paraiso-dark">}}
+{{< highlight groovy "style=paraiso-dark">}}
 ...
   android {
       ...
