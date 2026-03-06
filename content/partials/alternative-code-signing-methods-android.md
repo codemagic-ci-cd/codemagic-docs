@@ -14,7 +14,7 @@ Keytool then prompts you to enter your personal details for creating the certifi
 {{</notebox>}}
 
 #### Signing Android apps using Gradle
-Modify your **`android/app/build.gradle`** or **`build.gradle.kts`**  as follows:
+Modify your **`android/app/build.gradle`** or **`android/app/build.gradle.kts`** as follows:
 {{< tabpane >}}
 {{< tab header="build.gradle" >}}
 
