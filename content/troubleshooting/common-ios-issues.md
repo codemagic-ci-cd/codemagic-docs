@@ -416,7 +416,7 @@ This means that in the ios_signing section of your YAML configuration, you are r
 
 {{<collapsible title="Solution" id="no-matching-profiles-solution" >}}
 ###### Solution
-Go to **Team settings** > **Code signing identities** > **iOS Provisioning profiles**
+Go to **Settings** > **Code signing identities** > **iOS Provisioning profiles**
 and make sure a valid profile for your bundle identifier and distribution type exists.
 
 {{< /collapsible >}}
