@@ -32,7 +32,7 @@ Enterprise users can use SSO for enhanced authentication control, limiting acces
 You can connect several repository accounts (GitHub, GitLab, Bitbucket) with one Codemagic account or Codemagic team (read more about managing team integrations [here](../getting-started/teams/#managing-team-integrations)).
 
 1. Log in to Codemagic with the account you signed up.
-2. Make sure that you have **Personal account** selected from the left navigation bar team selection, then click the **Settings** icon.
+2. Make sure that you have **Personal account** selected from the left navigation bar team selection, then click **Settings**.
 3. In the **Integrations** section, click **Connect** next to the account you would like to connect to Codemagic.
 
 Once you have connected another account to your Codemagic account, you can log in to Codemagic with either of these accounts. Email notifications with build status reports will be sent to the email address that's connected with the repository from which you build.
