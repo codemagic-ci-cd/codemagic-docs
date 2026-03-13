@@ -67,10 +67,10 @@ The Enterprise plan offers the same superb quality service you have come to expe
 ## Where can I find the Codemagic API Token?
 Each Codemagic user has their own personal API token. There is no shared API token at the team level, so you should always use the token from your personal account, even when working within a team.
 
-The token can be found under your personal account settings > **Integrations** > **Codemagic API** > **Show**
+Select **Personal account** in the menu and navigate to **Settings** > **Integrations** > **Codemagic API** > **Show**
 
-## How to Delete a Codemagic account?
-If you need to delete your Codemagic account, navigate to your personal account settings > **Danger zone** > **Delete account**
+## How to delete a Codemagic account?
+If you need to delete your Codemagic account, select **Personal account** in the menu and navigate to **Settings** > **Danger zone** > **Delete account**.
 
 However, please note that the deletion will not occur immediately. There is a 14-day grace period before the deletion takes place, during which you have the opportunity to prevent it from happening before the scheduled deletion day.
 

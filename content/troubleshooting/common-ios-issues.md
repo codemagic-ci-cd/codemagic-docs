@@ -9,7 +9,7 @@ aliases:
 ### Getting **Not uploaded** message under the code signing identities for iOS provisioning profiles.
 
 ###### Description
-When uploading a provisioning profile by opening the **Code signing identities** section in team settings, you are seeing a red cross ❌.
+When uploading a provisioning profile by opening the **Code signing identities** section in personal account or team settings, you are seeing a red cross ❌.
 
 {{<collapsible title="Causes and solutions" id="not-uploaded-message-solution" >}}
 ###### Cause

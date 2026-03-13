@@ -76,7 +76,7 @@ Unless team admins have connected an integration in team settings, team creator'
 
 ## Managing billing
 
-Billing is managed separately for each team. Read more about billing [here](../billing/billing).
+Billing is managed separately for your personal account and each team. Read more about billing [here](../billing/billing).
 
 ## Leaving the team
 

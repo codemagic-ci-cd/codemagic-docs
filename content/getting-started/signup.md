@@ -1,18 +1,20 @@
 ---
 title: Signup
-description: How to signup with Codemagic
+description: How to sign up for Codemagic
 weight: 3 
 aliases:
 ---
 
-You can sign up to Codemagic using a [GitHub](https://github.com/), [Bitbucket](https://bitbucket.org/) or [GitLab](https://about.gitlab.com/) account, or via email. SSO integrations for enterprises are available on request.
+You can sign up for Codemagic using a [GitHub](https://github.com/), [Bitbucket](https://bitbucket.org/) or [GitLab](https://about.gitlab.com/) account, or by using your email address. SSO integrations for enterprises are available on request.
 
-After signup, you can easily add repositories from the above Git providers or any self-hosted or cloud-based Git repository.
+After signing up, you can easily add repositories from the above Git providers or any self-hosted or cloud-based Git repository.
+
 ## Sign up via GitHub, Bitbucket or GitLab
 
 When signing up via GitHub, you will be asked to authorize Codemagic to authenticate yourself without giving any access to your repositories. To add apps from GitHub, you also need to install the Codemagic CI/CD GitHub App, read more about it [here](../getting-started/github).
 
 When authenticating using a Bitbucket or GitLab account via OAuth, Codemagic asks for access to your account and repositories so they can be listed when you're adding applications. You will need to authorize Codemagic to connect the Bitbucket/GitLab account to your Codemagic account.
+
 ## Sign up via email
 
 Enter your email address and name and click **Create your account** to get started. Codemagic will then send a six-character authentication key to the provided email address. Enter the authentication key and click **Continue** to verify the email address and finish signup. Note that an unused key expires in **10 minutes**. 
