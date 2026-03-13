@@ -59,7 +59,7 @@ To add these values you can either use the [Codemagic UI](https://docs.codemagic
 
 To add an environment variable using the Codemagic REST API, you need your API access token, the application id, the client group unique name, and the variable name and value. 
 
-- The access token is available in the Codemagic UI under team settings **Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
+- The access token is available in the Codemagic UI in your personal account settings. Select your personal account and go to **Settings > Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
 - Once you have added your app in Codemagic, open its settings and copy the **application id** from the browser address bar - `https://codemagic.io/app/<APP_ID>/settings`
 - The client group name is the group that holds all variables for this client e.g. `WL_001`, `WL_002`.
 
