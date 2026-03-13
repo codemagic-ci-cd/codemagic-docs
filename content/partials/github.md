@@ -10,7 +10,7 @@ For the best integration with the Git provider, it’s recommended to connect yo
 Adding apps from GitHub requires authorizing Codemagic and installing the Codemagic CI/CD GitHub App to a GitHub account or an organization to be able to load the repositories.
 
 1. Click **Add application** in the top right corner of the Applications page.
-2. You can only add application to a team that has billing enabled and you are the owner of. If you don't own any teams, this step is skipped and the application will be added to your personal account.
+2. You can only add an application to a team with billing enabled where you have the **Admin role**. If you don’t have the Admin role in any teams, this step is skipped and the application will be added to your personal account.
 3. Select **GitHub** as the Git provider. If you have already set up the integration, click **Next: Select repository** and skip to step 4. If the GitHub integration has not been set up, you'll see click **Next: Authorize integration** instead. A new window appears for you to authorize Codemagic. Confirm the authorization by clicking **Authorize Codemagic CI/CD**.
 4. In the next step, click **Install GitHub App** to set up the integration. A GitHub page opens in a new window. Select the account or an organization where to install the app and choose whether to give Codemagic access to all the repositories from this account or only selected ones. Finish the installation by clicking **Install & Authorize**.
 5. Finally, set up the application by selecting the repository from the dropdown menu and specifying the project type. Click **Finish: Add application**. You will be then redirected to the app settings.
