@@ -210,6 +210,7 @@ workflows:
       cache_paths:
         - ~/.gradle/caches
         - ~/.gradle/caches
+```
 
 - Remove any duplicate cache path entries.
 - Save the workflow configuration and trigger a new build.
