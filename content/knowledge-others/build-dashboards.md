@@ -26,7 +26,7 @@ Build dashboards can be disabled anytime by clicking **Disable sharing**.
 ## Creating and sharing a build dashboard
 
 1. Open the **Builds** page via the left navigation bar.
-2. Click the **Share dashboard** button at the top right of the page and use the **application**, **workflow**, **branch**, **tag** and **status** filters to configure a build dashboard.
+2. Click the **Share dashboard** button at the top right of the page and use the **application**, **workflow**, **build status**, **labels**,  **branch** and **tag** filters to configure a build dashboard.
 3. Then click **Create dashboard** at the bottom of the right configuration sidebar to generate a public link. A generated link will appear, and you can copy the link to the clipboard. The generated link will be also saved to the **Build dashboards** section in team settings.
 
 {{<notebox>}}
