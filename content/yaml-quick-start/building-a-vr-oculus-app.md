@@ -367,7 +367,7 @@ To distribute your app to one of their stores, you can use the **Oculus Platform
 ##### Configure Oculus credentials
 Follow [the official guide](https://developer.oculus.com/resources/publish-reference-platform-command-line-utility/#credentials) to obtain either a **Oculus app ID / App secret** combination or an **Oculust user token**.
 
-1. You can add these as global environment variables by opening your Codemagic Team settings > **Global variables and secrets**. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
+1. You can add these as global environment variables in the **Global variables and secrets** section of your Codemagic team settings. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
 2. Enter `OCULUS_APP_ID` as the **_Variable name_**.
 3. Enter the corresponding value as **_Variable value_**.
