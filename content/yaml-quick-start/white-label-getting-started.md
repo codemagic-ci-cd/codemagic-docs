@@ -418,7 +418,7 @@ The Codemagic REST API is used in a white-label workflow to trigger builds for e
 
 To trigger a build using the Codemagic REST API, you need your API access token, the application id, and the workflow id. 
 
-- The access token is available in the Codemagic UI under team settings **Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
+- The access token is available in the Codemagic UI in your personal account settings. Select your personal account and go to **Settings > Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
 - Once you have added your app in Codemagic, open its settings and copy the **application id** from the browser address bar - `https://codemagic.io/app/<APP_ID>/settings`
 - The workflow id is the string value you assigned to the `name` property e.g "ios-qa-build"
 
