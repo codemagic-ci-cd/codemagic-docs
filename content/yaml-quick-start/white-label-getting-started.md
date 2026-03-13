@@ -10,11 +10,11 @@ weight: 15
 
 These are the steps you need to get started white labeling your application using Codemagic.
 
-1. [Add your base app to Codemagic](#add-your-base-app-to-codemagic)
-2. [Storing client’s assets somewhere Codemagic can access](#storing-clients-assets)
-3. [Create a unique environment variable group for each client (via UI or API)](#create-a-new-unique-environment-variables-group-for-each-client-via-ui-or-api)
-4. [Setup your `codemagic.yaml` workflows to dynamically build for all clients](#setup-your-codemagicyaml-workflows-to-dynamically-build-for-all-clients)
-5. [Start new builds via API, passing the client Id, and the environment variable group name](#start-new-builds-via-api)
+1. [Add your base app to Codemagic](#1-add-your-base-app-to-codemagic)
+2. [Storing client’s assets somewhere Codemagic can access](#1-storing-clients-assets)
+3. [Create a unique environment variable group for each client (via UI or API)](#3-create-a-new-unique-environment-variables-group-for-each-client-via-ui-or-api)
+4. [Setup your `codemagic.yaml` workflows to dynamically build for all clients](#4-setup-your-codemagicyaml-workflows-to-dynamically-build-for-all-clients)
+5. [Start new builds via API, passing the client Id, and the environment variable group name](#5-start-new-builds-via-api)
 
 ## 1. Add your base app to Codemagic
 You don’t have to create a Codemagic application for each client you want to white-label for, only one application linked with your base code is required.
@@ -59,7 +59,7 @@ To add these values you can either use the [Codemagic UI](https://docs.codemagic
 
 To add an environment variable using the Codemagic REST API, you need your API access token, the application id, the client group unique name, and the variable name and value. 
 
-- The access token is available in the Codemagic UI under **Teams > Personal Account > Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
+- The access token is available in the Codemagic UI under team settings **Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
 - Once you have added your app in Codemagic, open its settings and copy the **application id** from the browser address bar - `https://codemagic.io/app/<APP_ID>/settings`
 - The client group name is the group that holds all variables for this client e.g. `WL_001`, `WL_002`.
 
@@ -418,7 +418,7 @@ The Codemagic REST API is used in a white-label workflow to trigger builds for e
 
 To trigger a build using the Codemagic REST API, you need your API access token, the application id, and the workflow id. 
 
-- The access token is available in the Codemagic UI under **Teams > Personal Account > Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
+- The access token is available in the Codemagic UI under team settings **Integrations > Codemagic API > Show**. You can then store this as an environment variable if you are calling the REST API from other workflows.
 - Once you have added your app in Codemagic, open its settings and copy the **application id** from the browser address bar - `https://codemagic.io/app/<APP_ID>/settings`
 - The workflow id is the string value you assigned to the `name` property e.g "ios-qa-build"
 

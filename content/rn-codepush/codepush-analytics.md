@@ -4,11 +4,11 @@ description: Installation and usage metrics for OTA updates
 weight: 2
 ---
 
-Customers using a CodePush server managed by Codemagic get access to analytics about their monthly usage as well as detailed deployment metrics on the [OTA Updates](https://codemagic.io/ota) page.
+Customers using a CodePush server managed by Codemagic get access to analytics about their monthly usage as well as detailed deployment metrics on the team OTA Updates page.
 
 ## Usage analytics
 
-The main [OTA Updates](https://codemagic.io/ota) page gives an overview of your OTA usage across all projects (apps), grouped by month.
+The main OTA Updates page gives an overview of your team's OTA usage across all projects (apps), grouped by month.
 
 * **Downloads** - the total number of update downloads across all projects in a given month
 * **Installs** - the total number of successful update installs across all projects in a given month

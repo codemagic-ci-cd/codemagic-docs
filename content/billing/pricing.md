@@ -40,7 +40,7 @@ To start using Codemagic for free, [sign up here](https://codemagic.io/signup).
 
 ### 2. Buying Additional Minutes
 
-You can enable billing on personal accounts and pay for any additional minutes you want to use. You will still have **500 free build minutes** on macOS M2 VM. To enable billing, proceed [here](https://codemagic.io/billing). 
+You can enable billing on personal accounts and pay for any additional minutes you want to use. You will still have **500 free build minutes** on macOS M2 VM. To enable billing, proceed [here](https://codemagic.io/billing/user). 
 
 Postpaid minutes are billed on the first day of the following month in which they were used.
 
@@ -62,7 +62,7 @@ For teams, all build minutes using macOS M2 VM, macOS M4 VM, Linux VM, and Windo
 
 Each extra build concurrency allows running an additional build in parallel. For example, adding two extra build concurrencies allows running a total of three builds in parallel. 
 
-You can **add additional concurrencies** in the Codemagic web app by clicking 'Billing' in the left-hand menu and then clicking on your Team name. In the 'Billing Overview' you should click 'update' in the Build concurrency section and select the number of concurrencies you wish to add to your Team. 
+You can **add additional concurrencies** in the Codemagic web app by clicking 'Billing' in the left-hand menu. In the 'Billing Overview' click 'update' in the Build concurrency section and select the number of concurrencies you wish to add to your Team.
 
 Each additional concurrency is $49/month and you will be billed for each concurrency on the last day of each month.
 
@@ -99,10 +99,9 @@ If you have already created a Team in the Codemagic web app, you can upgrade to 
 
 1. Log in to Codemagic.
 2. Click **Billing** in the left-hand menu.
-3. Click on your Team account.
-4. Click on the **Enable billing** button.
-5. Enter your **credit card** details and **company information**.
-6. Once you have entered your details, pay-as-you-go billing will be enabled. To upgrade to the Fixed Annual plan, click on the **Upgrade** button and follow the instructions to subscribe to the Fixed Annual plan.
+3. Click on the **Enable billing** button.
+4. Enter your **credit card** details and **company information**.
+5. Once you have entered your details, pay-as-you-go billing will be enabled. To upgrade to the Fixed Annual plan, click on the **Upgrade** button and follow the instructions to subscribe to the Fixed Annual plan.
 
 If you require additional concurrencies or have any other questions about the annual plan, including requests for **macOS M4 instances**,  please contact us [here](https://codemagic.io/pricing/#enterprise).
 
