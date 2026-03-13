@@ -14,6 +14,10 @@ This section prepares a project to use CodePush with Codemagic. After completing
 
 Codemagic hosts the CodePush server and developers interact with it using access tokens and the CodePush CLI.
 
+These instructions are for React Native New Architecture projects. If your app is already configured, skip to the deployment key and CI sections to verify configuration.
+
+The same Codemagic server can be used for all of your apps.
+
 ## Setup CodePush with Codemagic
 
 Before integrating CodePush into your app, you need to create a project on the Codemagic CodePush server and configure the CLI.
@@ -63,6 +67,8 @@ code-push login
 ```
 
 Paste the token when prompted. Once authenticated, the CLI can create apps, manage deployments, and publish updates.
+
+If you do not have access to the Codemagic UI, request an access key from the Codemagic team.
 
 ### Install and configure the CLI
 
@@ -117,7 +123,7 @@ Each CodePush deployment has a **deployment key**.
 You can list deployments and keys using:
 
 ```
-code-push deployment list MyApp-Android
+code-push deployment list MyApp-Android -k
 ```
 
 Example output:
@@ -149,6 +155,46 @@ production build ??? Production deployment
 This allows internal testers to validate updates before they reach users.
 
 Deployment keys are typically set in platform configuration files or environment variables during the build process.
+
+### Configure server URL and deployment keys in native projects
+
+Make sure the Codemagic server URL is set in your app. For the hosted service, use:
+
+```
+https://codepush.pro/
+```
+
+Add the server URL and deployment key to the native configuration files.
+
+For iOS (`Info.plist`):
+
+```
+<key>CodePushServerURL</key>
+<string>https://codepush.pro/</string>
+<key>CodePushDeploymentKey</key>
+<string>YOUR_DEPLOYMENT_KEY</string>
+```
+
+For Android (`strings.xml`):
+
+```
+<string moduleConfig="true" name="CodePushServerUrl">https://codepush.pro/</string>
+<string moduleConfig="true" name="CodePushDeploymentKey">YOUR_DEPLOYMENT_KEY</string>
+```
+
+### Add CodePush to your root component
+
+Wrap your app entry point with the CodePush plugin:
+
+```
+import codePush from '@code-push-next/react-native-code-push';
+
+function App() {
+  ...
+}
+
+export default codePush(App);
+```
 
 ### Configure update check behaviour
 
@@ -185,10 +231,14 @@ commit
 
 ### Codemagic YAML example
 
-Example step in a `codemagic.yaml` workflow:
+Example steps in a `codemagic.yaml` workflow:
 
 ```
 scripts:
+  - name: Install CodePush CLI
+    script: |
+      npm install -g @code-push-next/cli
+
   - name: Release OTA update
     script: |
       code-push login --accessKey $CODEPUSH_TOKEN
@@ -196,6 +246,8 @@ scripts:
 ```
 
 The CI pipeline authenticates with the CodePush server and publishes the update.
+
+Store the access token as a secure environment variable and reference it in the workflow.
 
 ### GitHub Actions example
 
@@ -211,6 +263,43 @@ Example step:
 ```
 
 This allows teams to integrate OTA releases into existing CI/CD workflows.
+
+### Common CLI actions
+
+Reveal deployment keys:
+
+```
+code-push deployment list MyApp-Android -k
+```
+
+Manage deployments:
+
+```
+code-push deployment add <appName> <deploymentName>
+code-push deployment rm <appName> <deploymentName>
+code-push deployment rename <appName> <deploymentName> <newDeploymentName>
+```
+
+Manage apps:
+
+```
+code-push app add <appName>
+code-push app rename <appName> <newAppName>
+code-push app rm <appName>
+```
+
+Patch or roll back releases:
+
+```
+code-push patch <appName> <deploymentName>
+code-push rollback <appName> <deploymentName>
+```
+
+Promote a release:
+
+```
+code-push promote <appName> <sourceDeploymentName> <destDeploymentName>
+```
 
 ## Next steps
 
