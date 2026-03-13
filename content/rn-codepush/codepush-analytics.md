@@ -4,7 +4,7 @@ description: Installation and usage metrics for OTA updates
 weight: 2
 ---
 
-Customers using a CodePush server managed by Codemagic get access to analytics about their monthly usage as well as detailed deployment metrics on the team OTA Updates page.
+Customers using a CodePush server managed by Codemagic get access to analytics about their monthly usage as well as detailed deployment metrics on the OTA Updates page.
 
 ## Usage analytics
 
