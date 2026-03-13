@@ -84,7 +84,7 @@ Default environment variables are assigned by Codemagic for the values on the bu
 
 Each Unity build will have to activate a valid Unity Plus or a Unity Pro license using your **Unity email**, **Unity serial number** and the **Unity password**.
 
-1. You can add these as global environment variables by opening your Codemagic Team settings > **Global variables and secrets**. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
+1. You can add these as global environment variables in the **Global variables and secrets** section of your Codemagic team settings. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
 2. Enter `UNITY_EMAIL` as the **_Variable name_**.
 3. Enter the email address used with your Unity ID as **_Variable value_**.
