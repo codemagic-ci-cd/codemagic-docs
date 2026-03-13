@@ -201,7 +201,7 @@ Failed to pack new cache
 The most common cause of this error is having duplicate cache paths defined in your workflow configuration.
 
 To resolve this:
-- Review your workflow cache configuration and check for duplicate path entries & ensure the same directory is not listed multiple times.
+- Review your workflow cache configuration and check for duplicate path entries and ensure the same directory is not listed multiple times.
 
 ```yaml
 workflows:
