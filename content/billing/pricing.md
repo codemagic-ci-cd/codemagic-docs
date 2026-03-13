@@ -62,7 +62,7 @@ For teams, all build minutes using macOS M2 VM, macOS M4 VM, Linux VM, and Windo
 
 Each extra build concurrency allows running an additional build in parallel. For example, adding two extra build concurrencies allows running a total of three builds in parallel. 
 
-You can **add additional concurrencies** in the Codemagic web app by clicking 'Billing' in the left-hand menu. In the 'Billing Overview' click 'update' in the Build concurrency section and select the number of concurrencies you wish to add to your Team.
+You can **add additional concurrencies** in the Codemagic web app by clicking 'Billing' in the left-hand menu. In the 'Billing Overview' click **Update** in the Build concurrency section and select the number of concurrencies you wish to add to your Team.
 
 Each additional concurrency is $49/month and you will be billed for each concurrency on the last day of each month.
 
