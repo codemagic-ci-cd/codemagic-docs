@@ -2,6 +2,8 @@
 description: How to publish a web app to a custom subdomain using the Flutter workflow editor
 title: Codemagic Static Pages
 weight: 7
+menuCategories:
+  - flutter-hosting
 aliases: /publishing/publishing-to-codemagic-static-pages
 ---
 

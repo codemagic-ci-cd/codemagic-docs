@@ -3,6 +3,8 @@ description: Deploy app updates to users' devices using Shorebird in Flutter wor
 title: Code Push with Shorebird
 linkTitle: Code Push with Shorebird
 weight: 4
+menuCategories:
+  - flutter-ota
 aliases: 
 ---
 

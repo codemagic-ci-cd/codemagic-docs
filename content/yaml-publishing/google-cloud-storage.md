@@ -2,6 +2,8 @@
 title: Google Cloud Storage
 description: How to publish build artifacts to Google Cloud Storage using codemagic.yaml
 weight: 12
+menuCategories:
+  - yaml-hosting
 ---
 
 In order to publish your generated artifacts to Google Cloud Storage:

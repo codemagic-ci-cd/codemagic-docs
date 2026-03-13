@@ -3,6 +3,8 @@ description: Deploy a Flutter app to Firebase App Distribution using the Flutter
 title: Firebase App Distribution with Flutter workflow editor
 linkTitle: Firebase App Distribution
 weight: 5
+menuCategories:
+  - flutter-beta
 aliases: /publishing/firebase-app-distribution
 ---
 

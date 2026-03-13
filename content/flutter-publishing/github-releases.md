@@ -3,6 +3,8 @@ description: How to create a GitHub release with artifacts using the Flutter wor
 title: GitHub releases with Flutter workflow editor
 linkTitle: GitHub releases
 weight: 9
+menuCategories:
+  - flutter-hosting
 aliases: /publishing/github-release/
 ---
 

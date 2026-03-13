@@ -2,6 +2,8 @@
 title: Build distribution to tester groups
 description: Distribute app builds to groups of testers
 weight: 3
+menuCategories:
+  - yaml-beta
 aliases:
 ---
 
