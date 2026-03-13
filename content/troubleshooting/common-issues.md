@@ -190,13 +190,13 @@ Before modifying client-side configurations, perform maintenance on the server s
 ### "Failed to pack new cache" error during builds
 
 ###### Description
-During a build (cleaning up step), you may encounter the following error while the cache is being saved:
+During a build (cleanup step), you may encounter the following error while the cache is being saved:
 
 ```
 Failed to pack new cache
 ```
 
-{{<collapsible title="Solution" id="duplicate-cache-define-solution" >}}
+{{<collapsible title="Solution" id="duplicate-cache-defined-solution" >}}
 ###### Solution
 The most common cause of this error is having duplicate cache paths defined in your workflow configuration.
 
