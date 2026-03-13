@@ -201,10 +201,18 @@ Failed to pack new cache
 The most common cause of this error is having duplicate cache paths defined in your workflow configuration.
 
 To resolve this:
-- Review your workflow cache configuration and check for duplicate path entries
-- Ensure the same directory is not listed multiple times (for example /Users/builder/.gradle/caches and ~/.gradle/caches)
-- Remove any duplicate cache path entries
-- Save the workflow configuration and trigger a new build
+- Review your workflow cache configuration and check for duplicate path entries & ensure the same directory is not listed multiple times.
+
+```yaml
+workflows:
+  example-workflow:
+    cache:
+      cache_paths:
+        - ~/.gradle/caches
+        - ~/.gradle/caches
+
+- Remove any duplicate cache path entries.
+- Save the workflow configuration and trigger a new build.
 
 After removing duplicate cache paths, the build should complete successfully without the caching error.
 
