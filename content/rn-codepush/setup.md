@@ -148,8 +148,8 @@ This prevents test updates from reaching production users.
 Most teams configure different deployment keys for different build types.
 
 ```
-development build ??? Staging deployment
-production build ??? Production deployment
+development build uses Staging deployment
+production build uses Production deployment
 ```
 
 This allows internal testers to validate updates before they reach users.
@@ -196,117 +196,12 @@ function App() {
 export default codePush(App);
 ```
 
-### Configure update check behaviour
-
-The CodePush SDK allows different update strategies. Common options include:
-
-Check for updates on every app launch:
-
-```
-checkFrequency: CodePush.CheckFrequency.ON_APP_START
-```
-
-Manual update checks:
-
-```
-CodePush.sync()
-```
-
-Background updates that install on the next restart are also common.
-
-The appropriate strategy depends on how quickly updates should reach users.
-
-## CI integration
-
-Once the CLI and SDK are configured, OTA updates can be released from a CI pipeline.
-
-This allows updates to be automatically published after a successful build or deployment step.
-
-```
-commit
-??? CI build
-??? run CodePush release command
-??? update published
-```
-
-### Codemagic YAML example
-
-Example steps in a `codemagic.yaml` workflow:
-
-```
-scripts:
-  - name: Install CodePush CLI
-    script: |
-      npm install -g @code-push-next/cli
-
-  - name: Release OTA update
-    script: |
-      code-push login --accessKey $CODEPUSH_TOKEN
-      code-push release-react MyApp-Android android
-```
-
-The CI pipeline authenticates with the CodePush server and publishes the update.
-
-Store the access token as a secure environment variable and reference it in the workflow.
-
-### GitHub Actions example
-
-CodePush releases can also be triggered from GitHub Actions.
-
-Example step:
-
-```
-- name: Release CodePush update
-  run: |
-    code-push login --accessKey $CODEPUSH_TOKEN
-    code-push release-react MyApp-Android android
-```
-
-This allows teams to integrate OTA releases into existing CI/CD workflows.
-
-### Common CLI actions
-
-Reveal deployment keys:
-
-```
-code-push deployment list MyApp-Android -k
-```
-
-Manage deployments:
-
-```
-code-push deployment add <appName> <deploymentName>
-code-push deployment rm <appName> <deploymentName>
-code-push deployment rename <appName> <deploymentName> <newDeploymentName>
-```
-
-Manage apps:
-
-```
-code-push app add <appName>
-code-push app rename <appName> <newAppName>
-code-push app rm <appName>
-```
-
-Patch or roll back releases:
-
-```
-code-push patch <appName> <deploymentName>
-code-push rollback <appName> <deploymentName>
-```
-
-Promote a release:
-
-```
-code-push promote <appName> <sourceDeploymentName> <destDeploymentName>
-```
-
 ## Next steps
 
-After completing setup:
+After completing setup, use the following sections to continue:
 
-- the CodePush server is configured
-- the CLI is authenticated
-- the React Native app contains the CodePush SDK
-
-You can now publish your first OTA update using the release workflow described in the next section.
+- [Releasing updates](/rn-codepush/releasing-updates/) - publish your first OTA release
+- [CI integration](/rn-codepush/ci-integration/) - automate releases in CI/CD
+- [Production control](/rn-codepush/production-control/) - rollouts, rollbacks, and version targeting
+- [Security and access](/rn-codepush/security-and-access/) - authentication and signing
+- [Debugging and common issues](/rn-codepush/debugging-and-common-issues/) - troubleshooting
