@@ -8,6 +8,8 @@ CodePush updates can be published manually from a developer machine, but many te
 
 Releasing from CI allows updates to be automatically deployed after successful builds, tests, or merges. This makes OTA updates part of the normal delivery workflow.
 
+This reduces manual release steps and keeps OTA updates consistent with the rest of your CI/CD process.
+
 Typical CI release flow:
 
 ```

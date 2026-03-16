@@ -17,6 +17,8 @@ These metrics allow developers to:
 
 Analytics are typically visible in the Codemagic **OTA Updates dashboard**.
 
+These insights help teams decide when to proceed with a rollout, pause a release, or roll back.
+
 ## OTA update metrics
 
 Each CodePush release tracks several metrics related to update installation.

@@ -184,3 +184,5 @@ If updates still do not install after verifying configuration, the following che
 - inspect device logs for update installation errors
 
 These checks usually identify where the update pipeline is failing.
+
+If you need to review the release process, see [Releasing updates](/rn-codepush/releasing-updates/). For installation metrics and failure counts, see [Analytics](/rn-codepush/analytics/).

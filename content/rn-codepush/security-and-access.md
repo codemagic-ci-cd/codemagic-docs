@@ -51,6 +51,8 @@ code-push login --accessKey $CODEPUSH_TOKEN
 
 This allows automated pipelines to publish updates without manual login.
 
+For configuring tokens in CI workflows, see [CI integration](/rn-codepush/ci-integration/). For initial setup and CLI authentication, see [Setup](/rn-codepush/setup/).
+
 ### Session management
 
 CodePush allows multiple authenticated sessions.

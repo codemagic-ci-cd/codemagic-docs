@@ -136,3 +136,5 @@ The next section covers:
 - version targeting strategies
 - rollbacks
 - update safety mechanisms
+
+For rollout monitoring and release analytics, see [Analytics](/rn-codepush/analytics/). For troubleshooting failed installs, see [Debugging and common issues](/rn-codepush/debugging-and-common-issues/).

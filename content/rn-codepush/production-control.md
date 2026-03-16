@@ -164,3 +164,5 @@ rollback if issues appear
 ```
 
 This approach allows teams to deploy updates safely while still benefiting from the speed of OTA updates.
+
+For rollout monitoring and adoption metrics, see [Analytics](/rn-codepush/analytics/). For access control and signing, see [Security and access](/rn-codepush/security-and-access/).
