@@ -75,7 +75,7 @@ If you do not have access to the Codemagic UI, request an access key from the Co
 Install the CodePush CLI globally:
 
 ```
-npm install -g @code-push-next/cli
+npm install -g @codemagic/code-push-cli
 ```
 
 Verify the installation:
