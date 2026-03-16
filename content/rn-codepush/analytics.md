@@ -28,8 +28,7 @@ Common metrics include:
 | **active** | number of users currently running this release |
 | **downloaded** | update downloaded but not yet installed |
 | **installed** | update successfully installed |
-| **failed** | update installation failed |
-| **rollbacks** | client reverted to previous bundle after crash |
+| **failed** | update installation failed (includes client-side rollbacks) |
 
 These metrics reflect different stages of the update lifecycle.
 
@@ -43,7 +42,7 @@ device checks server
 → update becomes active
 ```
 
-If the app crashes during startup after an update, the client may automatically revert to the previous working version. These events are recorded as **rollbacks**.
+If the app crashes during startup after an update, the client may automatically revert to the previous working version. These events are counted as **failed** installs.
 
 Monitoring these metrics helps detect problems early after a release.
 

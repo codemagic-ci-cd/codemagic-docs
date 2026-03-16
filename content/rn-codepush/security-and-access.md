@@ -76,8 +76,10 @@ CodePush apps support collaboration between multiple developers.
 App owners can grant access to collaborators, allowing teams to:
 
 - publish releases
-- manage deployments
+- promote or roll back updates
 - monitor update metrics
+
+Deployment creation, renaming, and removal remain owner-only actions.
 
 This makes it possible for multiple developers or release engineers to manage OTA updates safely.
 
