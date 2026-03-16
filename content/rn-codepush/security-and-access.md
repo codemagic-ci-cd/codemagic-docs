@@ -69,20 +69,6 @@ code-push session remove <session-id>
 
 Revoking a session immediately prevents further access from that environment.
 
-### Team access
-
-CodePush apps support collaboration between multiple developers.
-
-App owners can grant access to collaborators, allowing teams to:
-
-- publish releases
-- promote or roll back updates
-- monitor update metrics
-
-Deployment creation, renaming, and removal remain owner-only actions.
-
-This makes it possible for multiple developers or release engineers to manage OTA updates safely.
-
 ## Signing OTA updates
 
 In addition to server authentication, CodePush supports **cryptographic signing of update packages**.
