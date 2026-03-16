@@ -25,7 +25,7 @@ Use only the part in angle brackets from the whole address line (e.g. `My awesom
 
 ## Slack
 
-In order to set up publishing to Slack, you first need to connect the Slack workspace in **Teams > Personal Account > Integrations > Slack** for your personal apps and in **Teams > Your Team Name > Team integrations > Slack** for the team apps.
+In order to set up publishing to Slack, you first need to connect the Slack workspace. Navigate to **Personal Account > Settings > Integrations > Slack** to connect Slack for your personal apps or **[Your team] > Settings > Team integrations > Slack** to connect Slack for team apps.
 
 Once your Slack workspace is connected, you can enable Slack publishing and select a channel for publishing in **App settings > Notifications > Slack** when using the workflow editor.
 
