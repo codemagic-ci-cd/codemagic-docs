@@ -111,7 +111,7 @@ Only systems with the private key can create valid update packages.
 
 When signing is enabled, the release process signs each update package using the private key.
 
-The signature is stored with the update metadata on the CodePush server.
+The signature is included in the update package and uploaded to the server alongside the bundle contents.
 
 During installation, the app verifies that the package signature matches the embedded public key.
 

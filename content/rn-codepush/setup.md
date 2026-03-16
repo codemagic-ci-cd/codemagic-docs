@@ -38,13 +38,13 @@ React Native bundles differ between platforms, so separating them avoids install
 Create an app using the CLI:
 
 ```
-code-push app add MyApp-Android android react-native
+code-push app add MyApp-Android
 ```
 
 For iOS:
 
 ```
-code-push app add MyApp-iOS ios react-native
+code-push app add MyApp-iOS
 ```
 
 When an app is created, CodePush automatically creates two deployments:
@@ -75,7 +75,7 @@ If you do not have access to the Codemagic UI, request an access key from the Co
 Install the CodePush CLI globally:
 
 ```
-npm install -g @code-push-next/cli
+npm install -g @codemagic/code-push-cli
 ```
 
 Verify the installation:
