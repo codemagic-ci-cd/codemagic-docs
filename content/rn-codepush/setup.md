@@ -38,13 +38,13 @@ React Native bundles differ between platforms, so separating them avoids install
 Create an app using the CLI:
 
 ```
-code-push app add MyApp-Android android react-native
+code-push app add MyApp-Android
 ```
 
 For iOS:
 
 ```
-code-push app add MyApp-iOS ios react-native
+code-push app add MyApp-iOS
 ```
 
 When an app is created, CodePush automatically creates two deployments:

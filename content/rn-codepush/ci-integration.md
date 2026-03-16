@@ -45,7 +45,7 @@ scripts:
 
   - name: Install CodePush CLI
     script: |
-      npm install -g @code-push-next/cli
+      npm install -g @codemagic/code-push-cli
 
   - name: Release CodePush update
     script: |
@@ -72,7 +72,7 @@ Example GitHub Actions step:
 
 ```
 - name: Install CodePush CLI
-  run: npm install -g @code-push-next/cli
+  run: npm install -g @codemagic/code-push-cli
 
 - name: Release CodePush update
   run: |
