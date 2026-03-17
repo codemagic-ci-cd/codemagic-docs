@@ -55,7 +55,7 @@ The environment variables you add in application settings are accessible only to
 
 ## Global variables and secrets
 
-The **Global variables and secrets** section on the [Teams page](https://codemagic.io/teams) allows defining variable groups that can be made available to any application of the team. 
+The **Global variables and secrets** section in team settings allows defining variable groups that can be made available to any application of the team.
 
 It is possible to limit applications' access to the variable group in variable group settings. Selecting **All applications** will grant all present and future apps access to the variable group. You can review application access settings anytime.
 
