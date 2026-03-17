@@ -24,7 +24,7 @@ Access keys are typically used in two contexts:
 - developer machines running the CLI
 - CI systems that publish updates automatically
 
-The CLI authenticates using an access key generated in the Codemagic UI.
+The CLI authenticates using an access key generated manually.
 
 Example login:
 
@@ -52,24 +52,6 @@ code-push login --accessKey $CODEPUSH_TOKEN
 This allows automated pipelines to publish updates without manual login.
 
 For configuring tokens in CI workflows, see [CI integration](/rn-codepush/ci-integration/). For initial setup and CLI authentication, see [Setup](/rn-codepush/setup/).
-
-### Session management
-
-CodePush allows multiple authenticated sessions.
-
-You can list active sessions:
-
-```
-code-push session list
-```
-
-If a key or session is compromised, it can be revoked:
-
-```
-code-push session remove <session-id>
-```
-
-Revoking a session immediately prevents further access from that environment.
 
 ## Signing OTA updates
 

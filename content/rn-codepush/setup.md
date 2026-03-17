@@ -196,6 +196,18 @@ function App() {
 export default codePush(App);
 ```
 
+## Run a test OTA release
+
+To confirm everything works end-to-end, publish a quick test release:
+
+```
+code-push release-react MyApp-Android android
+```
+
+You only need this one command to bundle, upload, and release an OTA update to a deployment.
+
+For the full release workflow, see [Releasing updates](/rn-codepush/releasing-updates/).
+
 ## Next steps
 
 After completing setup, use the following sections to continue:
