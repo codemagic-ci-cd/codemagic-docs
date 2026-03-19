@@ -61,6 +61,8 @@ CodePush distributes only runtime JavaScript assets. Typical package contents in
 
 CodePush does **not** distribute mobile app binaries such as `.apk` or `.ipa` files. OTA updates only replace the JavaScript layer of the app. Changes that require native code modifications must still be released through the app stores.
 
+When possible, the CodePush client downloads only the changed files, so end users receive smaller differential updates without any extra configuration.
+
 ## Targeting specific app versions
 
 Updates must be compatible with the installed app version. The `targetBinaryVersion` parameter controls which app versions receive the update.
