@@ -20,11 +20,11 @@ Mac Studio M4 Max available on request.
 
 - System version `macOS 26.3.1 (25D2128)`
 - Kernel version `Darwin 25.3.0`
-- Disk `294GB (Free Space: 141GB)`
+- Disk `294GB (Free Space: 132GB)`
 
 ## Xcode versions
 
-- 26.4 (17E5179g) `/Applications/Xcode-26.4.app`, also selected when specifying `edge` in Xcode version settings
+- 26.4 (17E192) `/Applications/Xcode-26.4.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -115,7 +115,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 | **Version** | **Path** |
 |-------------|----------|
-| 25.0.2 | `/Library/Java/JavaVirtualMachines/zulu-25.jdk/Contents/Home` |
+| 26 | `/Library/Java/JavaVirtualMachines/zulu-26.jdk/Contents/Home` |
 | 21.0.10 | `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home` |
 | **17.0.18** (default) | `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` |
 | 11.0.30 | `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` |
@@ -133,7 +133,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.34.6`
+- aws `2.34.12`
 - azure-cli `2.84.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
@@ -141,21 +141,21 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - curl `8.7.1`
 - ew-cli `1.2.0`
 - fastlane `2.232.2`
-- firebase `15.9.1`
+- firebase `15.11.0`
 - gem `4.0.8`
-- gh `2.88.0`
+- gh `2.88.1`
 - git `2.53.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `5.0.16`
+- homebrew `5.1.0`
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.8.0`
-- node `24.13.1`
-- npm `11.8.0`
+- node `24.14.0`
+- npm `11.9.0`
 - python `3.12.7`
 - python3 `3.12.7`
-- ruby `4.0.1`
+- ruby `4.0.2`
 - ssh `10.2p1`
 - sudo `1.9.17p2`
 - swiftgen `6.6.3`
