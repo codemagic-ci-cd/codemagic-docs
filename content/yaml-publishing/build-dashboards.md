@@ -3,7 +3,7 @@ title: Build dashboards
 description: Use public links to distribute builds and artifacts in codemagic.yaml
 weight: 3
 menuCategories:
-  - yaml-hosting
+  - yaml-distributing
 aliases: 
   - /publishing-yaml/public-dashboards
   - /yaml-publishing/public-dashboards

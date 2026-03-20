@@ -4,7 +4,7 @@ linkTitle: Firebase App Distribution
 description: How to deploy an app to Firebase App Distribution using codemagic.yaml
 weight: 5
 menuCategories:
-  - yaml-beta
+  - yaml-distributing
 ---
 
 </p>

@@ -4,7 +4,7 @@ linkTitle: App Store Connect
 description: How to deploy an app to App Store and TestFlight using codemagic.yaml
 weight: 1
 menuCategories:
-  - yaml-stores
+  - yaml-publishing
 aliases: 
   - '/publishing-yaml/distribution/' 
   - '/yaml-publishing/distribution/'

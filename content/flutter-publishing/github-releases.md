@@ -4,7 +4,7 @@ title: GitHub releases with Flutter workflow editor
 linkTitle: GitHub releases
 weight: 9
 menuCategories:
-  - flutter-hosting
+  - flutter-distributing
 aliases: /publishing/github-release/
 ---
 

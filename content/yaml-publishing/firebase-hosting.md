@@ -3,7 +3,7 @@ title: Firebase Hosting
 description: How to deploy an app to Firebase Hosting using codemagic.yaml
 weight: 7
 menuCategories:
-  - yaml-hosting
+  - yaml-distributing
 ---
 
 </p>

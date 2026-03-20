@@ -4,7 +4,7 @@ title: Google Play publishing with Flutter workflow editor
 linkTitle: Google Play
 weight: 2
 menuCategories:
-  - flutter-stores
+  - flutter-publishing
 aliases: 
   - /publishing/publishing-to-google-play
   - /flutter-publishing/publishing-to-google-play

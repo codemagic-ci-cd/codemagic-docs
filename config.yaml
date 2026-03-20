@@ -66,27 +66,23 @@ menu:
           name: Code signing
           parent: yaml
           weight: 4
-        - identifier: yaml-beta
-          name: Tester distribution
+        - identifier: yaml-publishing
+          name: Publishing
           parent: yaml
           weight: 5
-        - identifier: yaml-stores
-          name: Publish to stores
+        - identifier: yaml-distributing
+          name: Distributing
           parent: yaml
           weight: 6
-        - identifier: yaml-hosting
-          name: Static hosting
-          parent: yaml
-          weight: 8
         - identifier: yaml-notification
           name: Notifications
           parent: yaml
-          weight: 9
+          weight: 7
 
         - identifier: integrations
           name: Integrations
           parent: yaml
-          weight: 10
+          weight: 8
         - identifier: knowledge-base
           name: Advanced configuration
           weight: 8
@@ -135,26 +131,18 @@ menu:
           name: Code signing
           parent: flutter
           weight: 4
-        - identifier: flutter-beta
-          name: Tester distribution
+        - identifier: flutter-publishing
+          name: Publishing
           parent: flutter
           weight: 5
-        - identifier: flutter-stores
-          name: Publish to stores
+        - identifier: flutter-distributing
+          name: Distributing
           parent: flutter
           weight: 6
-        - identifier: flutter-ota
-          name: OTA updates
-          parent: flutter
-          weight: 7
-        - identifier: flutter-hosting
-          name: Static hosting
-          parent: flutter
-          weight: 8
         - identifier: flutter-notification
           name: Notifications
           parent: flutter
-          weight: 9
+          weight: 7
         
  
 

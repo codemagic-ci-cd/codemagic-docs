@@ -4,7 +4,7 @@ title: Firebase App Distribution with Flutter workflow editor
 linkTitle: Firebase App Distribution
 weight: 5
 menuCategories:
-  - flutter-beta
+  - flutter-distributing
 aliases: /publishing/firebase-app-distribution
 ---
 

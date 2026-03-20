@@ -3,7 +3,7 @@ description: How to publish a web app to a custom subdomain using the Flutter wo
 title: Codemagic Static Pages
 weight: 7
 menuCategories:
-  - flutter-hosting
+  - flutter-distributing
 aliases: /publishing/publishing-to-codemagic-static-pages
 ---
 

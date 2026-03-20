@@ -4,7 +4,7 @@ title: Microsoft Store publishing with Flutter workflow editor
 linkTitle: Microsoft Store
 weight: 3
 menuCategories:
-  - flutter-stores
+  - flutter-publishing
 aliases: /publishing/publishing-to-microsoft-store
 ---
 

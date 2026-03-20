@@ -4,7 +4,7 @@ title: Code Push with Shorebird
 linkTitle: Code Push with Shorebird
 weight: 4
 menuCategories:
-  - flutter-ota
+  - flutter-distributing
 aliases: 
 ---
 

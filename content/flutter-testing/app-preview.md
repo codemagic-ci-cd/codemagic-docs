@@ -3,7 +3,7 @@ title: Previewing apps in the browser
 description: Test your iOS or Android app in the browser with App Preview
 weight: 4
 menuCategories:
-  - flutter-beta
+  - flutter-distributing
 aliases:
 ---
 

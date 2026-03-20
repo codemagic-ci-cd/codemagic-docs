@@ -3,7 +3,7 @@ title: Post-publish scripts
 description: How to add post-publish scripts in codemagic.yaml
 weight: 13
 menuCategories:
-  - yaml-stores
+  - yaml-distributing
 ---
 
 Codemagic has a number of integrations for publishing but you can also publish elsewhere with custom scripts.

@@ -3,7 +3,7 @@ title: Huawei AppGallery
 description: How to deploy an app to Huawei AppGallery using codemagic.yaml
 weight: 6
 menuCategories:
-  - yaml-stores
+  - yaml-publishing
 ---
 
 Codemagic enables you to automatically publish your iOS or Android app to Huawei AppGallery.

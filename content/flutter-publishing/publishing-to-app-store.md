@@ -4,7 +4,7 @@ title: App Store Connect publishing using Flutter workflow editor
 linkTitle: App Store Connect
 weight: 1
 menuCategories:
-  - flutter-stores
+  - flutter-publishing
 aliases: /publishing/publishing-to-app-store
 ---
 
