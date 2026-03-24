@@ -3,14 +3,13 @@ title: Amazon S3 publishing using codemagic.yaml
 linkTitle: Amazon S3
 description: How to publish build artifacts to Amazon S3 using codemagic.yaml
 weight: 11
-menuCategories:
-  - yaml-distributing
 aliases: 
   - /publishing/publish-build-artifacts-to-amazon-s3
   - /flutter-publishing/publish-build-artifacts-to-amazon-s3
   - /knowledge-base/publish-build-artifacts-to-amazon-s3
   - /custom-scripts/publish-build-artifacts-to-amazon-s3
   - /testing/aws
+  - /yaml-publishing/aws
 ---
 
 In order to publish your web application to AWS S3, you need to configure your access credentials in Codemagic. You can follow the [instructions](https://aws.amazon.com/getting-started/hands-on/backup-to-s3-cli/) provided by Amazon to create your account and get the necessary details.

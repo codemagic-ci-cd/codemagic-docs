@@ -3,9 +3,8 @@ description: Deploy app updates to users' devices using Shorebird in Flutter wor
 title: Code Push with Shorebird
 linkTitle: Code Push with Shorebird
 weight: 4
-menuCategories:
-  - flutter-distributing
-aliases: 
+aliases:
+  - /flutter-publishing/shorebird
 ---
 
 Code push for Flutter is a cloud service by [Shorebird](https://shorebird.dev/) that allows developers to push over-the-air (OTA) app updates directly to users' devices without publishing each update on app stores. With Codemagic, you can use Shorebird to build and publish a release or a patch for Android and iOS.

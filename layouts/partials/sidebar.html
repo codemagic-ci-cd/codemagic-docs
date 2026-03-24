@@ -25,7 +25,7 @@
                         data-js-category-name
                         data-category-id="{{ .Identifier }}"
                         {{if $collapsible}}data-js-category-toggle{{end}}
-                        {{ if or ($currentPage.HasMenuCurrent "main" .) (in $currentPage.Params.menuCategories .Identifier) }}data-js-open{{ end }}
+                        {{ if $currentPage.HasMenuCurrent "main" . }}data-js-open{{ end }}
                     >
                         {{if or (eq .Name "Flutter workflow editor") (eq .Name "Codemagic.yaml")}}Configuration{{else}}{{.Name}}{{end}}
                     </div>
@@ -35,14 +35,7 @@
                         {{ end }}
                         {{ $identifier := .Identifier}}
                         {{ range where site.Pages "Section" $identifier }}
-                            {{ if not .Params.menuCategories }}
-                                {{ template "page-link" (dict "page" . "activePage" $currentPage ) }}
-                            {{ end }}
-                        {{ end }}
-                        {{ range site.Pages }}
-                            {{ if in .Params.menuCategories $identifier }}
-                                {{ template "page-link" (dict "page" . "activePage" $currentPage ) }}
-                            {{ end }}
+                            {{ template "page-link" (dict "page" . "activePage" $currentPage ) }}
                         {{ end }}
                     </div>
                 </div>

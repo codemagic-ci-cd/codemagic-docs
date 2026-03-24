@@ -2,8 +2,6 @@
 description: How to publish a snap to the Snap Store using the Flutter workflow editor
 title: Snapcraft Snap Store
 weight: 6
-menuCategories:
-  - flutter-publishing
 aliases: /publishing/publishing-to-snapcraft
 ---
 

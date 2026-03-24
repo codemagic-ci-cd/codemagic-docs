@@ -2,8 +2,6 @@
 title: Steam
 description: How to deploy an app to Steam using codemagic.yaml
 weight: 8
-menuCategories:
-  - yaml-publishing
 ---
 
 </p>

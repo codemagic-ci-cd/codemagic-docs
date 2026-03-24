@@ -3,8 +3,6 @@ description: Deploy a Flutter app to Google Play using the Flutter workflow edit
 title: Google Play publishing with Flutter workflow editor
 linkTitle: Google Play
 weight: 2
-menuCategories:
-  - flutter-publishing
 aliases: 
   - /publishing/publishing-to-google-play
   - /flutter-publishing/publishing-to-google-play

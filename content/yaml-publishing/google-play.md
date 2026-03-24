@@ -3,8 +3,6 @@ title: Google Play publishing with codemagic.yaml
 linkTitle: Google Play
 description: How to deploy an app to Google Play using codemagic.yaml
 weight: 2
-menuCategories:
-  - yaml-publishing
 ---
 
 Codemagic enables you to automatically publish your android application to Google Play.

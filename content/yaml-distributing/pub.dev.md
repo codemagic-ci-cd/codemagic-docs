@@ -2,8 +2,6 @@
 title: pub.dev
 description: How to deploy a package to pub.dev using codemagic.yaml
 weight: 10
-menuCategories:
-  - yaml-publishing
 ---
 
 In order to get publishing permissions, you first need to log in to **pub.dev** locally. You can do this by running `pub publish --dry-run`.

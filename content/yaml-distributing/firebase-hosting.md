@@ -2,8 +2,8 @@
 title: Firebase Hosting
 description: How to deploy an app to Firebase Hosting using codemagic.yaml
 weight: 7
-menuCategories:
-  - yaml-distributing
+aliases:
+  - /yaml-publishing/firebase-hosting
 ---
 
 </p>
@@ -17,7 +17,7 @@ Publishing to Firebase Hosting with Codemagic is a straightforward process as th
 ### Using Firebase Google Service Account
 1. To get started you will need a Google service account user with `Cloud Build Service Account`, `Firebase Admin` and `API Keys Admin roles` as shown in the Firebase [docs](https://cloud.google.com/build/docs/deploying-builds/deploy-firebase#required_iam_permissions).
 
-2. You can follow the step-by-step guide to create the service account user [here](../yaml-publishing/firebase-app-distribution/).
+2. You can follow the step-by-step guide to create the service account user [here](../yaml-distributing/firebase-app-distribution/).
 
 3. Configure the `JSON` key received from step 2 as an environment variable name `FIREBASE_SERVICE_ACCOUNT` .
 

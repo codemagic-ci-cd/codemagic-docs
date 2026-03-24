@@ -3,8 +3,6 @@ title: Microsoft Store publishing with codemagic.yaml
 linkTitle: Microsoft Store
 description: How to deploy an app to Microsoft Store using codemagic.yaml
 weight: 4
-menuCategories:
-  - yaml-publishing
 ---
 
 Codemagic enables you to automatically publish your Windows desktop apps to the Microsoft Store.

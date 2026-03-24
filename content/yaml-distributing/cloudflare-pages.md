@@ -2,8 +2,8 @@
 title: Cloudflare Pages
 description: How to deploy a website to Cloudflare Pages using codemagic.yaml
 weight: 14
-menuCategories:
-  - yaml-distributing
+aliases:
+  - /yaml-publishing/cloudflare-pages
 ---
 
 [**Cloudflare Pages**](https://pages.cloudflare.com/) is a JAMstack platform for frontend developers to collaborate and deploy websites.

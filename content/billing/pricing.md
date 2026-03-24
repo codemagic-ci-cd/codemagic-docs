@@ -289,7 +289,7 @@ If you need to support older versions of your application and need access to old
 
 You can download build artifacts via the Codemagic UI or using the [Codemagic REST API](../rest-api/builds/). 
 
-To keep copies of your future build artifacts, we advise you to set up publishing to external storage, see an example [here](../yaml-publishing/aws/).
+To keep copies of your future build artifacts, we advise you to set up publishing to external storage, see an example [here](../yaml-distributing/aws/).
 
 ### Instance Types
 

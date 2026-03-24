@@ -3,8 +3,6 @@ description: Deploy a Flutter desktop app to Microsoft Store using the Flutter w
 title: Microsoft Store publishing with Flutter workflow editor
 linkTitle: Microsoft Store
 weight: 3
-menuCategories:
-  - flutter-publishing
 aliases: /publishing/publishing-to-microsoft-store
 ---
 
