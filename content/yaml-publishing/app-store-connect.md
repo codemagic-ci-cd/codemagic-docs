@@ -2,6 +2,8 @@
 title: App Store Connect publishing using codemagic.yaml
 linkTitle: App Store Connect
 description: How to deploy an app to App Store and TestFlight using codemagic.yaml
+meta_title: Publish to App Store Connect from CI
+meta_description: Configure App Store Connect publishing in Codemagic with codemagic.yaml, API keys and automated uploads.
 weight: 1
 aliases: 
   - '/publishing-yaml/distribution/' 
