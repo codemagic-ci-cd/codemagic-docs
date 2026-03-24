@@ -1,6 +1,8 @@
 ---
 title: Flutter apps
 description: How to build a Flutter app with codemagic.yaml
+meta_title: Build Flutter Apps with codemagic.yaml
+meta_description: Build Flutter apps with codemagic.yaml, including dependencies, code signing, build steps and artifacts.
 weight: 4
 aliases:
   - '../yaml/building-a-flutter-app'

@@ -1,6 +1,8 @@
 ---
 title: Signing iOS apps
 description: How to set up iOS code signing in codemagic.yaml
+meta_title: Sign iOS Apps with codemagic.yaml
+meta_description: Configure iOS code signing in codemagic.yaml with certificates, provisioning profiles and App Store Connect credentials.
 weight: 1
 aliases: [../code-signing-yaml/signing, /code-signing-yaml/signing-ios, code-signing-identities, ../yaml-code-signing/code-signing-identities]
 ---

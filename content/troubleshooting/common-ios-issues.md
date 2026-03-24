@@ -1,6 +1,8 @@
 ---
 description: How to overcome common issues building iOS mobile apps on Codemagic 
 title: Common iOS issues
+meta_title: Fix Common iOS Build Issues in Codemagic
+meta_description: Troubleshoot iOS build errors in Codemagic, including code signing, provisioning, Xcode and dependency issues.
 weight: 3
 aliases:
   - /troubleshooting/common-issues

@@ -1,6 +1,8 @@
 ---
 description: How to set up iOS code signing in the Flutter workflow editor
 title: iOS code signing
+meta_title: iOS Code Signing for Flutter Apps
+meta_description: Configure iOS code signing for Flutter apps in Codemagic using certificates, provisioning profiles and App Store Connect.
 weight: 1
 aliases: /code-signing/ios-code-signing
 ---
