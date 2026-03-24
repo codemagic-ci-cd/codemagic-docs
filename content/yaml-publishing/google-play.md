@@ -2,6 +2,8 @@
 title: Google Play publishing with codemagic.yaml
 linkTitle: Google Play
 description: How to deploy an app to Google Play using codemagic.yaml
+meta_title: Publish Android Apps to Google Play with CI
+meta_description: Publish Android apps to Google Play from Codemagic using codemagic.yaml, service accounts and release tracks.
 weight: 2
 ---
 

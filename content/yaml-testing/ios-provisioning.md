@@ -21,7 +21,7 @@ You can also check the [Register Devices](https://help.apple.com/developer-accou
 
 ## Creating a tester group
 
-1. Navigate to **Teams > Your team > iOS test devices**.
+1. Navigate to team settings > **iOS test devices**.
 2. Click **Create tester group**. A popup window appears with details about the tester group.
 3. Enter the **Tester group name**. All the devices registered from this invitation will be added to this group in Codemagic.
 4. Select the **Developer Portal API key**. The API key determines under which Apple Developer Portal account the devices will be registered.

@@ -2,6 +2,8 @@
 description: Deploy app updates to users' devices using Shorebird in Flutter workflow editor
 title: Code Push with Shorebird
 linkTitle: Code Push with Shorebird
+meta_title: Publish Flutter Apps with Shorebird OTA Updates
+meta_description: Integrate Shorebird with Codemagic to publish Flutter apps and deliver over-the-air updates from CI/CD workflows.
 weight: 4
 aliases:
   - /flutter-publishing/shorebird

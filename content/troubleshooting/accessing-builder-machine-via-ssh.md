@@ -1,6 +1,8 @@
 ---
 description: How to connect to the build machine with SSH or VNC/RDP
 title: Remote access to the build machine
+meta_title: Access Codemagic Build Machines via SSH or VNC/RDP
+meta_description: Connect to Codemagic build machines using SSH or VNC/RDP to inspect logs, debug builds and troubleshoot CI/CD issues.
 weight: 1
 ---
 

@@ -1,6 +1,8 @@
 ---
 title: Using codemagic.yaml
 description: Configure all your workflows in a single file
+meta_title: Get Started with codemagic.yaml
+meta_description: Create your first codemagic.yaml workflow, define scripts, set environment variables and run builds.
 weight: 1
 aliases:
   - '../building/yaml'

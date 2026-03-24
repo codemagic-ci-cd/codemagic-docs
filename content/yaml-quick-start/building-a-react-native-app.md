@@ -1,6 +1,8 @@
 ---
 title: React Native apps
 description: How to build a React Native app with codemagic.yaml
+meta_title: Build React Native Apps with codemagic.yaml
+meta_description: Build React Native apps in Codemagic using codemagic.yaml, including dependencies, signing and artifacts.
 weight: 5
 aliases:
   - /yaml/building-a-react-native-app

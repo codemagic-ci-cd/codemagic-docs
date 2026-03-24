@@ -70,7 +70,7 @@ Finally, base64-decode it during build time in your scripts section using the fo
 
 ## Global variables and secrets
 
-Global variable groups can be defined on the team settings page (which you can navigate to for your team on the [Teams page](https://codemagic.io/teams)).
+Global variable groups can be defined in team settings.
 
 By default, variable groups defined here can be used in any codemagic.yaml workflow in any application of the team. It is possible to limit variable groups to specific applications by clicking the edit icon next to the group you wish to manage under **Application access**.
 

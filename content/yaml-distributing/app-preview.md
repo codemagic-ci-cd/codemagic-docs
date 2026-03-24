@@ -1,6 +1,8 @@
 ---
 title: Previewing apps in the browser
 description: Test your iOS or Android app in the browser with App Preview
+meta_title: Create App Previews in Codemagic
+meta_description: Create app previews in Codemagic using codemagic.yaml to test builds and share interactive preview links.
 weight: 4
 aliases:
   - /yaml-testing/app-preview

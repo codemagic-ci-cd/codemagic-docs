@@ -20,7 +20,7 @@ When billing is enabled, you will be charged monthly based on usage.
 
 ## Managing billing and updating billing details
 
-To manage billing for your team or personal account, navigate to the **Billing** page and select the team or account. 
+To manage billing for the currently selected team or personal account, navigate to the **Billing** page.
 
 When billing is enabled, you will see the current usage, the due amount and the next payment date. This is also where you can download the invoices for previous billing periods.
 
@@ -46,7 +46,7 @@ For pay-as-you-go team and user plans, each build minute is billed at the rate o
 
 ## Overdue and failed invoice payments
 
-Invoices that have not been paid on the due date are shown as "Overdue" or "Failed" on the [Billing](https://codemagic.io/billing/) page. This usually happens when there are problems with charging the card, of which team admins or account owners are notified by email. Codemagic will then attempt to retry the payment in 3, 5 or 7 days.
+Invoices that have not been paid on the due date are shown as "Overdue" or "Failed" on the billing page. This usually happens when there are problems with charging the card, of which team admins or account owners are notified by email. Codemagic will then attempt to retry the payment in 3, 5 or 7 days.
 
 As soon as there is a failed invoice payment, your subscription will be put on hold and running builds will be disabled. In order to continue building, all invoices should be paid.
 
