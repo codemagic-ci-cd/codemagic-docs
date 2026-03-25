@@ -1,5 +1,5 @@
 ---
-title: Debugging and common issues
+title: Issues and debugging
 description: Troubleshooting and common failure modes
 weight: 7
 ---
@@ -173,6 +173,18 @@ Info.plist → CFBundleShortVersionString
 If these values are missing or not valid semantic versions, the release command may fail.
 
 In this case the version can be specified manually with the `targetBinaryVersion` option.
+
+#### Missing `notifyAppReady` after a manual update flow
+
+If your app **installs an OTA update without** going through the default **`sync()` on startup** path (for example you use **`checkForUpdate`**, then download and **`install()`** yourself), you must call **`notifyAppReady()`** once the new JavaScript bundle has started successfully.
+
+If **`notifyAppReady`** never runs, CodePush assumes the update **crashed or failed to boot**. On the **next** app restart the runtime can **roll the app back** to the previous bundle so users are not stuck on a broken release. In practice this looks like “the update installed, then disappeared” or “we keep reverting to the old JS,” which is a frequent source of confusion.
+
+The method is also available as **`notifyApplicationReady`** (legacy alias).
+
+When you use **`codePush.sync()`** in the usual way—for example wrapping the root component so **`sync`** runs on launch—the client **calls `notifyAppReady` for you** after a successful check path. You only need to think about this when you implement a **custom** update pipeline.
+
+For more on **`sync`** and related APIs, see [Advanced: sync options](/rn-codepush/advanced-sync-options/). The upstream React Native CodePush docs describe **`notifyAppReady`** in the [JavaScript API reference](https://github.com/microsoft/react-native-code-push/blob/master/docs/api-js.md).
 
 ## When to investigate further
 

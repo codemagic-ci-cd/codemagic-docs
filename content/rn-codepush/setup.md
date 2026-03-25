@@ -217,3 +217,4 @@ After completing setup, use the following sections to continue:
 - [Production control](/rn-codepush/production-control/) - rollouts, rollbacks, and version targeting
 - [Security and access](/rn-codepush/security-and-access/) - authentication and signing
 - [Debugging and common issues](/rn-codepush/debugging-and-common-issues/) - troubleshooting
+- [Advanced: sync options](/rn-codepush/advanced-sync-options/) - customize `sync()`, dialogs, progress, and restart behavior

@@ -105,6 +105,8 @@ Mandatory updates are useful for:
 - security patches
 - breaking logic errors
 
+On the client, **`mandatoryInstallMode`** controls *when* a mandatory update is applied (for example immediately versus on next resume). See [Advanced: sync options](/rn-codepush/advanced-sync-options/).
+
 ### Mandatory update propagation
 
 The mandatory flag propagates across releases.
