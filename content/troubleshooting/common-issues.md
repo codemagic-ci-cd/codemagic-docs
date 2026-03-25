@@ -57,7 +57,7 @@ The following suggestions can help resolve the issue:
 1. Verify that the access credentials e.g. SSH key pairs were added correctly
 2. Generally, ensure that the repository access is up to date. You can find more information [here](https://docs.codemagic.io/getting-started/adding-apps/#modifying-access)
 3. Confirm that the relevant IP addresses are [whitelisted](https://docs.codemagic.io/getting-started/adding-apps/#firewall-configuration-for-privately-hosted-repositories)
-4. Refresh the OAuth integration by going to Teams > Select your team > Team integrations > click to disconnect and re-connect
+4. Refresh the OAuth integration by going to the **Team integrations** section in team settings and disconnecting and reconnecting the integration.
 
 {{< /collapsible >}}
 
@@ -183,5 +183,38 @@ Before modifying client-side configurations, perform maintenance on the server s
 - For GitLab users, refer to the [housekeeping documentation](https://docs.gitlab.com/ee/administration/housekeeping.html)
 - Consider implementing regular repository maintenance as part of your workflow
 - Monitor your repository size and perform cleanup periodically
+
+{{< /collapsible >}}
+
+
+### "Failed to pack new cache" error during builds
+
+###### Description
+During a build (cleanup step), you may encounter the following error while the cache is being saved:
+
+```
+Failed to pack new cache
+```
+
+{{<collapsible title="Solution" id="duplicate-cache-defined-solution" >}}
+###### Solution
+The most common cause of this error is having duplicate cache paths defined in your workflow configuration.
+
+To resolve this:
+- Review your workflow cache configuration and check for duplicate path entries and ensure the same directory is not listed multiple times.
+
+```yaml
+workflows:
+  example-workflow:
+    cache:
+      cache_paths:
+        - ~/.gradle/caches
+        - ~/.gradle/caches
+```
+
+- Remove any duplicate cache path entries.
+- Save the workflow configuration and trigger a new build.
+
+After removing duplicate cache paths, the build should complete successfully without the caching error.
 
 {{< /collapsible >}}

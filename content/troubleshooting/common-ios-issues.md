@@ -1,6 +1,8 @@
 ---
 description: How to overcome common issues building iOS mobile apps on Codemagic 
 title: Common iOS issues
+meta_title: Fix Common iOS Build Issues in Codemagic
+meta_description: Troubleshoot iOS build errors in Codemagic, including code signing, provisioning, Xcode and dependency issues.
 weight: 3
 aliases:
   - /troubleshooting/common-issues
@@ -9,7 +11,7 @@ aliases:
 ### Getting **Not uploaded** message under the code signing identities for iOS provisioning profiles.
 
 ###### Description
-When uploading a provisioning profile by opening the **Code signing identities** section in team settings, you are seeing a red cross ❌.
+When uploading a provisioning profile by opening the **Code signing identities** section in personal account or team settings, you are seeing a red cross ❌.
 
 {{<collapsible title="Causes and solutions" id="not-uploaded-message-solution" >}}
 ###### Cause
@@ -303,7 +305,7 @@ Rest assured, Codemagic simplifies the certificate management process for you. H
  - By providing your **App Store Connect API key ID**, **issuer ID**, and API key as a **.p8 file** (more info about how to add environment variables can be found [here](https://docs.codemagic.io/yaml-basic-configuration/configuring-environment-variables/)), Codemagic takes care of your certificate and provisioning profile management, including the automatic renewal of certificates, except in the case where you are using a private RSA key associated with an iOS Distribution certificate previously generated within your Apple Developer Program account. You can find additional information on how to update an RSA key (CERTIFICATE_PRIVATE_KEY) for a certificate [here](https://docs.codemagic.io/yaml-code-signing/alternative-code-signing-methods/#:~:text=Obtaining%20the%20Certificate%20private%20key).
 
  - If you're using `manual code signing` or `Codemagic signing identities (CSI)`, you will need to create and upload your certificates and profiles that you generated on the Apple Developer UI manually to Codemagic.
- Alernativley, with CSI, users can also fetch or create resources directly from Codemagic UI instead of navigating the Apple Developer UI when going in **Teams** > **Codesignng identities** > **iOS certificate** tab > **Generate certificate** button and in there provide your API key.
+ Alternatively, using code signing identities, you can also fetch or create resources directly from the Codemagic UI. Navigate to **Settings** > **Code signing identities** > **iOS certificates** to do so.
 
 {{< /collapsible >}}
 
@@ -416,7 +418,7 @@ This means that in the ios_signing section of your YAML configuration, you are r
 
 {{<collapsible title="Solution" id="no-matching-profiles-solution" >}}
 ###### Solution
-Go to Teams > [your team name] > Code signing identities > iOS Provisioning profiles
+Go to **Settings** > **Code signing identities** > **iOS Provisioning profiles**
 and make sure a valid profile for your bundle identifier and distribution type exists.
 
 {{< /collapsible >}}

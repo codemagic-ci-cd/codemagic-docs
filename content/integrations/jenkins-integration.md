@@ -10,7 +10,7 @@ weight: 11
 
 You need a Codemagic API key to authenticate REST API requests from Jenkins. Every Codemagic account has an API key available.
 1. Log into Codemagic.
-2. Go to Teams → Personal account → Integrations → Codemagic API
+2. Make sure that you have **Personal account** selected from the left navigation bar team selection, then click **Settings > Integrations > Codemagic API**
 3. Click **Show** and copy the `codemagic-api-key`.
 
 ## Find your Application ID

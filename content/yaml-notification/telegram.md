@@ -24,7 +24,7 @@ Add the following environment variables to your project settings in Codemagic:
 
 - **TELEGRAM_BOT_TOKEN**: Your Telegram bot token
 - **TELEGRAM_CHAT_ID**: The ID of the chat where the bot will send notifications
-- **CODEMAGIC_API_TOKEN**: Your Codemagic API tokenYour Codemagic API token (found under Teams > Personal Account > Integrations > Codemagic API)
+- **CODEMAGIC_API_TOKEN**: Your Codemagic API token (found under Personal account > Settings > Integrations > Codemagic API)
 
 ### Setup Codemagic Configuration
 

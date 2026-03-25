@@ -1,6 +1,8 @@
 ---
 title: Android native apps
 description: How to build an Android app with codemagic.yaml
+meta_title: Build Native Android Apps with codemagic.yaml
+meta_description: Build native Android apps in Codemagic using codemagic.yaml, including Gradle configuration and build artifacts.
 weight: 2
 aliases:
   - /yaml/building-a-native-android-app

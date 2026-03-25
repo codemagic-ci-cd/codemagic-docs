@@ -5,7 +5,7 @@ weight: 1
 ---
 <p>
 {{<notebox>}}
-Join 670+ mobile experts in our [Discord community](https://discord.com/invite/ZJsYR6JCBD) to share knowledge and experiences of migrating from App Center and getting started with Codemagic.
+Join 1,500+ mobile experts in our [Discord community](https://discord.com/invite/ZJsYR6JCBD) to share knowledge and experiences of migrating from App Center and getting started with Codemagic.
 {{</notebox>}}
 
 ## Quick comparison
