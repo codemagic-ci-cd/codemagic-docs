@@ -8,6 +8,8 @@ weight: 6
 
 CodePush updates can be published manually from a developer machine, but many teams choose to release OTA updates from CI pipelines.
 
+For a one-page list of CLI commands (including `login` and `release-react`), see [CLI quick reference](/rn-codepush/cli-quick-reference/).
+
 Releasing from CI allows updates to be automatically deployed after successful builds, tests, or merges. This makes OTA updates part of the normal delivery workflow.
 
 This reduces manual release steps and keeps OTA updates consistent with the rest of your CI/CD process.

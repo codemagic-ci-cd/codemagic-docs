@@ -215,6 +215,7 @@ For the full release workflow, see [Releasing updates](/rn-codepush/releasing-up
 After completing setup, use the following sections to continue:
 
 - [Releasing updates](/rn-codepush/releasing-updates/) - publish your first OTA release
+- [CLI quick reference](/rn-codepush/cli-quick-reference/) - copy-paste commands for auth, releases, and rollouts
 - [CI integration](/rn-codepush/ci-integration/) - automate releases in CI/CD
 - [Production control](/rn-codepush/production-control/) - rollouts, rollbacks, and version targeting
 - [Security and access](/rn-codepush/security-and-access/) - authentication and signing

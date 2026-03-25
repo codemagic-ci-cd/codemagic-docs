@@ -8,6 +8,8 @@ weight: 3
 
 This page explains how to publish OTA updates with the **CodePush CLI**. Bundles are not uploaded or promoted from the Codemagic UI; creating and changing releases is done with CLI commands (locally, in CI, or on any machine with the CLI and an access key).
 
+For a compact list of commands and flags, see [CLI quick reference](/rn-codepush/cli-quick-reference/).
+
 After the SDK is integrated into the React Native app, updates can be released without rebuilding the native application. CodePush distributes new JavaScript bundles and assets to installed apps.
 
 A typical workflow uses two deployments:
@@ -141,4 +143,4 @@ The next section covers:
 - rollbacks
 - update safety mechanisms
 
-For rollout monitoring and release analytics, see [Analytics](/rn-codepush/analytics/). For troubleshooting failed installs, see [Debugging and common issues](/rn-codepush/debugging-and-common-issues/).
+For rollout monitoring and release analytics, see [Analytics](/rn-codepush/analytics/). For troubleshooting failed installs, see [Debugging and common issues](/rn-codepush/debugging-and-common-issues/). For commands only, see [CLI quick reference](/rn-codepush/cli-quick-reference/).
