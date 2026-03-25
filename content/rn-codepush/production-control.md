@@ -1,6 +1,8 @@
 ---
 title: Production control
 description: Manage rollouts, targeting, and rollback behavior
+meta_title: Control CodePush Rollouts, Targeting, and Rollbacks
+meta_description: Manage CodePush production releases with rollouts, binary version targeting, mandatory updates, rollback, and staged promotion workflows.
 weight: 4
 ---
 

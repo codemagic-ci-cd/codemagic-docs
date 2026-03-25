@@ -1,6 +1,8 @@
 ---
 title: Concepts
 description: Core concepts behind CodePush and OTA updates
+meta_title: CodePush OTA update model, deployments, and lifecycle
+meta_description: Learn how CodePush OTA updates work, including bundles versus store releases, deployment channels, and the end-to-end update lifecycle.
 weight: 1
 ---
 
@@ -119,7 +121,7 @@ internal testing
 promote update → Production
 ```
 
-This workflow lets teams validate OTA updates before exposing them to all users.
+This workflow lets teams validate OTA updates before exposing them to all users. Creating, promoting, and changing those releases is done with the **CodePush CLI**, not from a web upload UI—see [Releasing updates](/rn-codepush/releasing-updates/).
 
 ### Deployment keys
 

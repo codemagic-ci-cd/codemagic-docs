@@ -1,6 +1,8 @@
 ---
 title: Setup
 description: Get CodePush running with Codemagic and React Native
+meta_title: Set Up CodePush for React Native Apps and the CodePush CLI
+meta_description: Set up CodePush for React Native, including projects, CLI authentication, deployment keys, app configuration, and deployment channels.
 weight: 2
 aliases:
   - /rn-codepush/codepush-integration/

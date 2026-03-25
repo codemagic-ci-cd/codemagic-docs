@@ -1,10 +1,12 @@
 ---
 title: Releasing updates
 description: Publish and promote CodePush updates
+meta_title: Release and Promote CodePush OTA Bundle Updates to Users
+meta_description: Publish and promote CodePush OTA updates, including staging and production deployments, release metadata, descriptions, and CLI workflows.
 weight: 3
 ---
 
-This page explains how to publish OTA updates with CodePush.
+This page explains how to publish OTA updates with the **CodePush CLI**. Bundles are not uploaded or promoted from the Codemagic UI; creating and changing releases is done with CLI commands (locally, in CI, or on any machine with the CLI and an access key).
 
 After the SDK is integrated into the React Native app, updates can be released without rebuilding the native application. CodePush distributes new JavaScript bundles and assets to installed apps.
 

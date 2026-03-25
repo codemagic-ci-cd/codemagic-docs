@@ -1,6 +1,8 @@
 ---
 title: Security and access
 description: Authentication and signing for OTA updates
+meta_title: CodePush Security, Access Keys, and OTA Package Signing
+meta_description: Secure CodePush OTA updates with access keys, authentication, signed bundles, key hygiene, and safe secrets handling in CI pipelines.
 weight: 5
 ---
 

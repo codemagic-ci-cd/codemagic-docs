@@ -1,6 +1,8 @@
 ---
 title: Analytics
 description: Usage, health, and adoption metrics
+meta_title: CodePush OTA Analytics, Metrics, and Adoption Tracking
+meta_description: Track CodePush OTA adoption, including download and install metrics, deployment health, analytics dashboards, and release success signals.
 weight: 8
 aliases:
   - /rn-codepush/codepush-analytics/
@@ -17,7 +19,7 @@ These metrics allow developers to:
 
 Analytics are typically visible in the Codemagic **OTA Updates dashboard**.
 
-These insights help teams decide when to proceed with a rollout, pause a release, or roll back.
+These insights help teams decide when to proceed with a rollout, adjust or halt rollout using the CodePush CLI, or roll back—see [Production control](/rn-codepush/production-control/).
 
 ## OTA update metrics
 
@@ -81,7 +83,7 @@ monitor crash reports
 increase rollout → 100%
 ```
 
-If issues appear during rollout, the update can be paused or rolled back.
+If issues appear during rollout, use the CodePush CLI to change the rollout (for example with `patch`) or roll back the deployment—see [Production control](/rn-codepush/production-control/).
 
 #### Failure rates
 

@@ -1,6 +1,8 @@
 ---
 title: 'Advanced: sync options'
 description: Customize CodePush sync behavior and UX
+meta_title: Advanced React Native CodePush Sync and Install Options
+meta_description: Customize CodePush sync behavior, including install modes, mandatory updates, check frequency, dialogs, and user-friendly OTA patterns.
 weight: 10
 ---
 
@@ -15,7 +17,7 @@ Those behaviors are documented, but they rarely match the mental model of “Cod
 
 The sections below summarize the most useful levers. Option names and behavior follow the React Native CodePush JavaScript API (for example the API described in the [upstream `api-js.md`](https://github.com/microsoft/react-native-code-push/blob/master/docs/api-js.md)). If you use `@code-push-next/react-native-code-push`, confirm details against your installed version’s types or changelog.
 
-For rollouts, mandatory releases, and `targetBinaryVersion`, see [Production control](/rn-codepush/production-control/). For publishing and release metadata such as descriptions, see [Releasing updates](/rn-codepush/releasing-updates/).
+For rollouts, mandatory releases, and `targetBinaryVersion`, see [Production control](/rn-codepush/production-control/). For CLI publishing and release metadata such as descriptions, see [Releasing updates](/rn-codepush/releasing-updates/).
 
 ---
 
@@ -34,7 +36,7 @@ Combine with `installMode` / `mandatoryInstallMode` in the options object passed
 
 If you enable an update dialog (`updateDialog` — a boolean or an options object), you can set `appendReleaseDescription: true` so the release description you pass when publishing (for example via the CLI) is appended to the message shown to the user.
 
-- Keeps changelog-style text on the server: update the description when you release; the app does not need a new binary to show new text.
+- Keeps changelog-style text on the server: set or change the description on your next **`release-react`** (or equivalent CLI release); the app does not need a new binary to show new text.
 - Use with `descriptionPrefix` if you want a fixed label before the server description.
 
 Before enabling interactive dialogs in store-distributed apps, check your store’s policies on in-app update prompts.
@@ -78,9 +80,9 @@ Alternatively, prefer `InstallMode.ON_NEXT_RESTART` and call `restartApp` only w
 
 ## Mandatory updates — server flag and `mandatoryInstallMode`
 
-Marking a release mandatory on the server (see [Mandatory updates](/rn-codepush/production-control/#mandatory-updates)) changes client behavior: users are not offered a normal “ignore” path for that release. On the client, `mandatoryInstallMode` controls when that mandatory update is applied (for example immediate vs on next resume).
+Publishing a release as mandatory with the CLI (see [Mandatory updates](/rn-codepush/production-control/#mandatory-updates)) stores that flag on the server and changes client behavior: users are not offered a normal “ignore” path for that release. On the client, `mandatoryInstallMode` controls when that mandatory update is applied (for example immediate vs on next resume).
 
-No app binary change is required to turn mandatory on or off for a given release; it is a server-side property of the release (and adjustable via CLI / tooling).
+No app binary change is required to turn mandatory on or off for a given release; it is a property of the release you set when publishing or patching **through the CodePush CLI**.
 
 ---
 
@@ -94,6 +96,6 @@ No app binary change is required to turn mandatory on or off for a given release
 | “What’s new” or pending state | `isFirstRun`, `isPending`, `getUpdateMetadata` |
 | Wrong store binary vs OTA channel | `handleBinaryVersionMismatchCallback` + [targeting](/rn-codepush/production-control/#targeting-builds) |
 | No restart during critical UX | `disallowRestart` / `allowRestart` |
-| Force policy without new binary | Mandatory on release + `mandatoryInstallMode` |
+| Force policy without new binary | Mandatory flag via CLI publish + `mandatoryInstallMode` |
 
 Bare `sync()` is fine for experiments and internal builds; for production UX and predictable rollouts, explicit options usually matter. The APIs above are how you regain control over timing, messaging, and safety without abandoning CodePush’s built-in pipeline.

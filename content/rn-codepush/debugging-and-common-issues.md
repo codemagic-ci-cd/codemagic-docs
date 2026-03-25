@@ -1,6 +1,8 @@
 ---
 title: Issues and debugging
 description: Troubleshooting and common failure modes
+meta_title: 'Debug CodePush OTA Updates: Common Issues and Fixes'
+meta_description: Troubleshoot CodePush OTA updates, including common errors, CLI debugging, device logs, SDK integration issues, and rollout pitfalls.
 weight: 7
 ---
 

@@ -1,6 +1,8 @@
 ---
 title: CI integration
 description: Release updates automatically from CI
+meta_title: Automate CodePush OTA Releases from CI/CD Pipelines
+meta_description: Automate CodePush OTA releases from continuous integration, including workflow configuration, tokens, release commands, and pipeline patterns.
 weight: 6
 ---
 
@@ -36,7 +38,7 @@ To publish updates from CI, the pipeline must:
 
 ## Releasing from Codemagic
 
-Codemagic workflows can publish OTA updates as part of a build pipeline.
+Codemagic workflows publish OTA updates by running the CodePush CLI in a build step—the same `release-react` (or related) commands as locally; there is no separate “publish from dashboard” path.
 
 A typical pattern is to run the release command after the build and tests complete successfully.
 
