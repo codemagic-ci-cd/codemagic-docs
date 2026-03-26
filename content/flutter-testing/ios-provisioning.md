@@ -2,13 +2,9 @@
 title: Registering iOS test devices
 description: Automatically add new test devices to Apple Developer Portal
 weight: 4
-slug: ../testing/ios-provisioning
-menuCategories:
-  - flutter-testing
-  - yaml-testing
 ---
 
-To be able to test iOS builds on physical devices outside TestFlight, e.g. by downloading the app artifact from Slack or a [public link](/yaml-publishing/build-dashboards), the test devices have to be registered in Apple Developer Portal and included in the provisioning profile used for code signing the app. Codemagic enables you to send your trusted testers a device registration link to obtain their device UDIDs and automatically add them to the list of devices in Apple Developer Portal.
+To be able to test iOS builds on physical devices outside TestFlight, e.g. by downloading the app artifact from Slack or a [public link](/yaml-distributing/build-dashboards), the test devices have to be registered in Apple Developer Portal and included in the provisioning profile used for code signing the app. Codemagic enables you to send your trusted testers a device registration link to obtain their device UDIDs and automatically add them to the list of devices in Apple Developer Portal.
 
 {{<notebox>}}
 **Note:** This feature is available for [teams](../teams/teams) only. If you are using a personal account, this has to be done manually by [Registering your devices using your Developer Account](https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices#Register-Devices-in-Your-Developer-Account).
@@ -23,7 +19,7 @@ You can also check the [Register Devices](https://help.apple.com/developer-accou
 
 ## Creating a tester group
 
-1. Navigate to team settings > **iOS test devices**.
+1. Navigate to **Teams > Your team > iOS test devices**.
 2. Click **Create tester group**. A popup window appears with details about the tester group.
 3. Enter the **Tester group name**. All the devices registered from this invitation will be added to this group in Codemagic.
 4. Select the **Developer Portal API key**. The API key determines under which Apple Developer Portal account the devices will be registered.

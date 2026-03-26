@@ -3,6 +3,7 @@ title: Build distribution to tester groups
 description: Distribute app builds to groups of testers
 weight: 3
 aliases:
+  - /yaml-publishing/tester-groups
 ---
 
 Tester groups are a convenient way to manage testers for your app in the Codemagic UI and distribute app builds to a group of email addresses outside of Codemagic. Testers who have confirmed their email addresses will receive an email with the app artifacts after every successful build of the workflow.

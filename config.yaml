@@ -70,15 +70,19 @@ menu:
           name: Publishing
           parent: yaml
           weight: 5
+        - identifier: yaml-distributing
+          name: Distributing
+          parent: yaml
+          weight: 6
         - identifier: yaml-notification
           name: Notifications
           parent: yaml
-          weight: 6
+          weight: 7
 
         - identifier: integrations
           name: Integrations
           parent: yaml
-          weight: 7
+          weight: 8
         - identifier: knowledge-base
           name: Advanced configuration
           weight: 8
@@ -131,10 +135,14 @@ menu:
           name: Publishing
           parent: flutter
           weight: 5
+        - identifier: flutter-distributing
+          name: Distributing
+          parent: flutter
+          weight: 6
         - identifier: flutter-notification
           name: Notifications
           parent: flutter
-          weight: 6
+          weight: 7
         
  
 
