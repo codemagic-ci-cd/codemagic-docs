@@ -186,7 +186,7 @@ The method is also available as **`notifyApplicationReady`** (legacy alias).
 
 When you use **`codePush.sync()`** in the usual way—for example wrapping the root component so **`sync`** runs on launch—the client **calls `notifyAppReady` for you** after a successful check path. You only need to think about this when you implement a **custom** update pipeline.
 
-For more on **`sync`** and related APIs, see [Advanced: sync options](/rn-codepush/advanced-sync-options/). The upstream React Native CodePush docs describe **`notifyAppReady`** in the [JavaScript API reference](https://github.com/microsoft/react-native-code-push/blob/master/docs/api-js.md).
+For more on **`sync`** and related APIs, see [Advanced: sync options](/rn-codepush/advanced-sync-options/). For **`notifyAppReady`** and other client APIs, use [`@code-push-next/react-native-code-push`](https://www.npmjs.com/package/@code-push-next/react-native-code-push) (README and TypeScript types) as the source of truth.
 
 ## When to investigate further
 
