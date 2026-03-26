@@ -2,7 +2,7 @@
 title: Github Releases with codemagic.yaml
 linkTitle: GitHub releases
 description: How to deploy an app to Github Releases using codemagic.yaml
-weight: 9
+weight: 7
 aliases:
   - /yaml-publishing/github-releases
 ---

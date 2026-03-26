@@ -2,7 +2,7 @@
 title: Amazon S3 publishing using codemagic.yaml
 linkTitle: Amazon S3
 description: How to publish build artifacts to Amazon S3 using codemagic.yaml
-weight: 11
+weight: 10
 aliases: 
   - /publishing/publish-build-artifacts-to-amazon-s3
   - /flutter-publishing/publish-build-artifacts-to-amazon-s3

@@ -2,7 +2,7 @@
 title: Firebase App Distribution with codemagic.yaml
 linkTitle: Firebase App Distribution
 description: How to deploy an app to Firebase App Distribution using codemagic.yaml
-weight: 5
+weight: 3
 aliases:
   - /yaml-publishing/firebase-app-distribution
 ---

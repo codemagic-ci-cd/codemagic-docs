@@ -1,7 +1,7 @@
 ---
 title: Post-publish scripts
 description: How to add post-publish scripts in codemagic.yaml
-weight: 13
+weight: 11
 aliases:
   - /yaml-publishing/post-publish
 ---

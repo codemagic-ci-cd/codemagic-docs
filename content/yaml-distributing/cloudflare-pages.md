@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Pages
 description: How to deploy a website to Cloudflare Pages using codemagic.yaml
-weight: 14
+weight: 6
 aliases:
   - /yaml-publishing/cloudflare-pages
 ---

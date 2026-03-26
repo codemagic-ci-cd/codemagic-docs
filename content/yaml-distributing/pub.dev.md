@@ -1,7 +1,7 @@
 ---
 title: pub.dev
 description: How to deploy a package to pub.dev using codemagic.yaml
-weight: 10
+weight: 8
 aliases:
   - /yaml-publishing/pub.dev
 ---

@@ -1,7 +1,7 @@
 ---
 description: How to publish a web app to a custom subdomain using Yaml
 title: Codemagic Static Pages
-weight: 6
+weight: 5
 aliases:
   - /publishing/publishing-to-codemagic-static-pages
   - /yaml-publishing/publishing-to-codemagic-static-pages
