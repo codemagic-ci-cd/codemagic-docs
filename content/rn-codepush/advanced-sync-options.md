@@ -21,7 +21,7 @@ For rollouts, mandatory releases, and `targetBinaryVersion`, see [Production con
 
 ---
 
-## When optional updates install — `minimumBackgroundDuration`
+## Resume and suspend installs — `minimumBackgroundDuration`
 
 If you use `InstallMode.ON_NEXT_RESUME` or `ON_NEXT_SUSPEND`, the runtime can apply an update when the app returns from the background. `minimumBackgroundDuration` (in seconds) sets how long the app must have been in the background before a restart is allowed. That avoids interrupting a user who only briefly switched away.
 
@@ -64,7 +64,7 @@ You can also call `codePush.getUpdateMetadata(updateState)` with `UpdateState.PE
 
 ## Binary version mismatch — `handleBinaryVersionMismatchCallback`
 
-`sync()` can take a `handleBinaryVersionMismatchCallback` invoked when the server has an update that does not match the native app version rules (for example `targetBinaryVersion` on the release). Use it to log, show a “please update from the store” message, or branch your own logic instead of failing silently.
+`sync()` can take a `handleBinaryVersionMismatchCallback` invoked when the installed binary is too old for the latest enabled release. This comes from `targetBinaryVersion` targeting a newer native version than the user has installed. Use it to log, show a “please update from the store” message, or branch your own logic instead of failing silently.
 
 This complements server-side targeting described in [Production control](/rn-codepush/production-control/): the server decides what is offered; the callback lets the client react when the user’s binary is outside that window.
 
