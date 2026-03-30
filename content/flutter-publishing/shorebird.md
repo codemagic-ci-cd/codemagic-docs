@@ -38,8 +38,11 @@ Use this key as your `SHOREBIRD_TOKEN` in Codemagic.
 {{</notebox>}}
 
 Note that the Shorebird token is a secret and should not be shared publicly or checked in to source control.
+{{< tabpane >}}
 
-## Building a release
+
+{{< tab header="Building a release" >}}
+{{< markdown >}}
 
 Release builds can be published to app stores and patched once they've been distributed. Read more about Shorebird [releases](https://docs.shorebird.dev/code-push/release/).
 
@@ -51,6 +54,7 @@ Release builds can be published to app stores and patched once they've been dist
 6. You can add additional **build arguments** to the `shorebird release` build command, e.g. to specify the flavor or target for your app. See more info [here](https://docs.shorebird.dev/code-push/release/).
 7. Scroll down to the **Distribution** section to set up code signing. You can follow the guides for [iOS code signing](../flutter-code-signing/ios-code-signing) and [Android code signing](../flutter-code-signing/android-code-signing) respectively. 
 8. Save the settings and start a new build. On successful build, the release artifact will be uploaded to your Shorebird console.
+   
 
 {{<notebox>}}
 
@@ -61,7 +65,12 @@ Release builds can be published to app stores and patched once they've been dist
 * Every release must have a unique version. Read how to set up [automatic build versioning](../knowledge-codemagic/build-versioning) with Codemagic.
 {{</notebox>}}
 
-## Building a patch
+
+{{< /markdown >}}
+{{< /tab >}}
+
+{{< tab header="Building a patch" >}}
+{{< markdown >}}
 
 Once you have published a release of your app, you can patch it by pushing an app update directly to users' devices. Read more about Shorebird [patches](https://docs.shorebird.dev/code-push/patch/).
 
@@ -74,4 +83,7 @@ Once you have published a release of your app, you can patch it by pushing an ap
 7. You can add additional **build arguments** to the `shorebird patch` build command, e.g. to specify the flavor or target for your app. See more info [here](https://docs.shorebird.dev/code-push/patch/).
 8. Scroll down to the **Distribution** section to set up code signing. You can follow the guides for [iOS code signing](../flutter-code-signing/ios-code-signing) and [Android code signing](../flutter-code-signing/android-code-signing) respectively.
 9. Save the settings and start a new build. On successful build, the patch artifact will be uploaded to your Shorebird console.
+{{< /markdown >}}
+{{< /tab >}}
 
+{{< /tabpane >}}
