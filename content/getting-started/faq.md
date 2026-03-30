@@ -50,7 +50,8 @@ The free build minutes are renewed at the start of each month. However, you can 
 If you require any of the listed advanced account services, they are available as part of our Enterprise plan. Find out more about [Enterprise plan benefits](https://codemagic.io/enterprise/).
 
 ## Do Teams get 500 free build minutes?
-Free build minutes are reserved for personal and hobby projects.
+
+Free build minutes are reserved for personal and hobby projects on Personal accounts. 
 
 ## If i enable Billing for my Personal account, will I still get the 500 free minutes?
 Yes, you will always receive 500 free build minutes on a Personal account, even if billing is enabled.
