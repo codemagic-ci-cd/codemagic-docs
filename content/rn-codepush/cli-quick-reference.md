@@ -28,13 +28,13 @@ See [Setup](/rn-codepush/setup/) for full installation and server configuration.
 Interactive login (paste token when prompted):
 
 ```shell
-code-push login
+code-push login "https://codepush.pro"
 ```
 
 Non-interactive (CI and scripts):
 
 ```shell
-code-push login --accessKey $CODEPUSH_ACCESS_KEY
+code-push login "https://codepush.pro" --accessKey $CODEPUSH_ACCESS_KEY
 ```
 
 See [Security and access](/rn-codepush/security-and-access/) for keys and token handling.
@@ -83,11 +83,7 @@ code-push release-react MyApp-iOS ios
 **Common options** (combine as needed):
 
 ```shell
-code-push release-react MyApp-Android android \
-  --targetBinaryVersion "1.2.x" \
-  --description "Short release notes" \
-  --mandatory \
-  --rollout 25
+code-push release-react MyApp-Android android --targetBinaryVersion "1.2.x" --description "Short release notes" --mandatory --rollout 25
 ```
 
 | Flag | Purpose |
@@ -145,7 +141,7 @@ Requires a connected device, `adb`, and a single Android target. For iOS simulat
 
 ## CI
 
-Run the same commands non-interactively after `code-push login --accessKey …`. See [CI integration](/rn-codepush/ci-integration/) for workflow patterns.
+Run the same commands non-interactively after `code-push login "https://codepush.pro" --accessKey …`. See [CI integration](/rn-codepush/ci-integration/) for workflow patterns.
 
 ---
 

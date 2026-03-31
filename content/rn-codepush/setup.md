@@ -65,7 +65,7 @@ The CodePush CLI authenticates using access tokens generated in the Codemagic UI
 Generate a token and log in from the CLI:
 
 ```
-code-push login
+code-push login "https://codepush.pro"
 ```
 
 Paste the token when prompted. Once authenticated, the CLI can create apps, manage deployments, and publish updates.

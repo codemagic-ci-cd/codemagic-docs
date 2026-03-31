@@ -72,8 +72,7 @@ The `targetBinaryVersion` parameter controls which app versions are allowed to i
 Example:
 
 ```
-code-push release-react MyApp-Android android
---targetBinaryVersion "1.2.x"
+code-push release-react MyApp-Android android --targetBinaryVersion "1.2.x"
 ```
 
 Supported targeting formats include:

@@ -55,7 +55,7 @@ scripts:
 
   - name: Release CodePush update
     script: |
-      code-push login --accessKey $CODEPUSH_TOKEN
+      code-push login "https://codepush.pro" --accessKey $CODEPUSH_TOKEN
       code-push release-react MyApp-Android android
 ```
 
@@ -74,15 +74,18 @@ The access token should be stored as a **secure environment variable** in the Co
 
 CodePush releases can also be triggered from GitHub Actions or other CI systems.
 
-Example GitHub Actions step:
+Example GitHub Actions steps:
+Create a repository secret (for example **`CODEPUSH_TOKEN`**). Without an **`env`** block, `$CODEPUSH_TOKEN` in **`run`** is empty—map the secret as shown, or use `${{ secrets.CODEPUSH_TOKEN }}` in the command instead.
 
-```
+```yaml
 - name: Install CodePush CLI
   run: npm install -g @codemagic/code-push-cli
 
 - name: Release CodePush update
+  env:
+    CODEPUSH_TOKEN: ${{ secrets.CODEPUSH_TOKEN }}
   run: |
-    code-push login --accessKey $CODEPUSH_TOKEN
+    code-push login "https://codepush.pro" --accessKey $CODEPUSH_TOKEN
     code-push release-react MyApp-Android android
 ```
 

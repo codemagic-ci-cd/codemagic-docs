@@ -31,7 +31,7 @@ The CLI authenticates using an access key generated manually.
 Example login:
 
 ```
-code-push login
+code-push login "https://codepush.pro"
 ```
 
 When prompted, paste the access key provided by Codemagic.
@@ -48,7 +48,7 @@ Access keys can also be used directly in CI environments.
 Example:
 
 ```
-code-push login --accessKey $CODEPUSH_TOKEN
+code-push login "https://codepush.pro" --accessKey $CODEPUSH_TOKEN
 ```
 
 This allows automated pipelines to publish updates without manual login.

@@ -74,8 +74,7 @@ Updates must be compatible with the installed app version. The `targetBinaryVers
 Example:
 
 ```
-code-push release-react MyApp-Android android \
-  --targetBinaryVersion "1.2.x"
+code-push release-react MyApp-Android android --targetBinaryVersion "1.2.x"
 ```
 
 Supported version formats include:
