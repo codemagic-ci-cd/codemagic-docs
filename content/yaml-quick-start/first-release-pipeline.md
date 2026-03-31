@@ -3,6 +3,7 @@ title: First Release Pipeline
 description: Build, sign, and distribute a mobile app with Codemagic—internal testing through App Store and Play store release
 weight: 0
 aliases:
+  - /yaml-quick-start/first-signed-build
   - /yaml-quick-start/unified-quick-start
 ---
 
