@@ -132,11 +132,11 @@ menu:
           parent: flutter
           weight: 4
         - identifier: flutter-publishing
-          name: Publishing
+          name: Publishing to the stores
           parent: flutter
           weight: 5
         - identifier: flutter-distributing
-          name: Distributing
+          name: Build distribution
           parent: flutter
           weight: 6
         - identifier: flutter-notification
