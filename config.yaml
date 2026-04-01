@@ -67,11 +67,11 @@ menu:
           parent: yaml
           weight: 4
         - identifier: yaml-publishing
-          name: Publishing
+          name: Publishing to the stores
           parent: yaml
           weight: 5
         - identifier: yaml-distributing
-          name: Distributing
+          name: Build distribution
           parent: yaml
           weight: 6
         - identifier: yaml-notification
