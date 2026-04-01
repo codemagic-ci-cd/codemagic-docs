@@ -3,19 +3,21 @@ description: Deploy a Flutter app to Firebase App Distribution using the Flutter
 title: Firebase App Distribution with Flutter workflow editor
 linkTitle: Firebase App Distribution
 weight: 5
-aliases: /publishing/firebase-app-distribution
+aliases:
+  - /publishing/firebase-app-distribution
+  - /flutter-publishing/firebase-app-distribution
 ---
 
 Set up publishing to [Firebase App Distribution](https://firebase.google.com/docs/app-distribution) to distribute your Android and iOS apps to testers.
 
 {{<notebox>}}
-**Note:** This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml**, please go to [Publishing an app to Firebase App Distribution](../yaml-publishing/firebase-app-distribution).
+**Note:** This guide only applies to workflows configured with the **Flutter workflow editor**. If your workflow is configured with **codemagic.yaml**, please go to [Publishing an app to Firebase App Distribution](../yaml-distributing/firebase-app-distribution).
 {{</notebox>}}
 
 ## Requirements
 
 - [Add Firebase to your Flutter project](https://firebase.google.com/docs/flutter/setup)
-- Generate a [Firebase token](https://firebase.google.com/docs/cli#cli-ci-systems) locally or set up a [service account](https://docs.codemagic.io/yaml-publishing/firebase-app-distribution/#requirements) with **Firebase App Distribution Admin** role to authenticate with Firebase App Distribution.
+- Generate a [Firebase token](https://firebase.google.com/docs/cli#cli-ci-systems) locally or set up a [service account](https://docs.codemagic.io/yaml-distributing/firebase-app-distribution/#requirements) with **Firebase App Distribution Admin** role to authenticate with Firebase App Distribution.
 - If your app uses Firebase services, you need to upload the Firebase configuration files to Codemagic, see the instructions [here](/knowledge-base/load-firebase-configuration/).
 - Set up [iOS code signing](../code-signing/ios-code-signing). Note that an Ad Hoc or Enterprise distribution profile is required to distribute the app outside your development team.
 - Set up [Android code signing](../code-signing/android-code-signing). If you do not set up code signing, the artifact will be signed with a debug keystore from Codemagic build machine.

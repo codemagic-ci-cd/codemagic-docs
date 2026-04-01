@@ -342,7 +342,7 @@ Additionally, you will need to provide project ID (e.g. `228333310124`) and appl
 
 #### Creating Firebase service account credentials
 
-You will need to set up a [Firebase service account](https://docs.codemagic.io/yaml-publishing/firebase-app-distribution/).
+You will need to set up a [Firebase service account](https://docs.codemagic.io/yaml-distributing/firebase-app-distribution/).
 
 #### Configuring the API access environment variables
 
