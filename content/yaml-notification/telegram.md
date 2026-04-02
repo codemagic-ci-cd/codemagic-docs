@@ -53,7 +53,7 @@ android-workflow:
           ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith(".aab")) | .url')
 
           # Set the expiration timestamp for the public URL (3 days from now)
-          expiration_timestamp=$(date -v+3d +%s) # use expiration_timestamp=$(date -d "+3 days" +%s) for linux
+          expiration_timestamp=$(date -v+3d +%s) # use expiration_timestamp=$(date -d "+3 days" +%s) for Linux
 
           # Create a public download URL for the artifact
           response=$(curl -s -H "Content-Type: application/json" \
