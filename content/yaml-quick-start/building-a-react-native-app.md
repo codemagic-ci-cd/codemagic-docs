@@ -410,4 +410,6 @@ workflows:
 ## Next steps
 {{< include "/partials/quickstart/next-steps.md" >}}
 
+If you want to ship OTA updates between store releases, see [CodePush OTA Concepts](/rn-codepush/concepts/).
+
 
