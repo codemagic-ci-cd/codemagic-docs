@@ -1,0 +1,40 @@
+name: Sync upstream
+
+on:
+  schedule:
+    - cron: "0 3 * * 0"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      UPSTREAM_REPO: https://github.com/codemagic-ci-cd/codemagic-docs.git
+      UPSTREAM_BRANCH: master
+      LOCAL_BRANCH: master
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream
+        run: |
+          git remote add upstream "$UPSTREAM_REPO"
+          git fetch upstream "$UPSTREAM_BRANCH"
+
+      - name: Fast-forward from upstream
+        run: |
+          git checkout "$LOCAL_BRANCH"
+          git merge --ff-only "upstream/$UPSTREAM_BRANCH"
+
+      - name: Push to origin
+        run: git push origin "$LOCAL_BRANCH"
