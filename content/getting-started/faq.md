@@ -66,7 +66,7 @@ The Enterprise plan offers the same superb quality service you have come to expe
 
 ## How's a dedicated host different from shared hosts
 
-The common pool operates on shared hardware, where the physical machine resources are shared between two virtual machines.
+The common pool operates on shared hardware, where the physical machine resources are shared between two virtual machines. During peak periods, up to two VMs may be deployed on a single host. 
 
 We actively optimize workload distribution to spread builds evenly across available hardware. However, during periods of high demand, the likelihood of multiple virtual machines sharing the same physical host increases. This can lead to resource contention and, as a result, variability in build performance.
 
