@@ -19,44 +19,50 @@ The tools below help identify where the failure occurs.
 
 ---
 
-# Debugging OTA updates
+## Debugging OTA updates
 
-CodePush provides several ways to inspect update behaviour on a device.
+CodePush provides several ways to inspect and diagnose OTA (over-the-air) update behavior on a device.
 
-These include CLI debug tools and device logs.
+Effective debugging typically combines:
 
-## CLI debugging tools
+* CLI debugging tools
+* Device logs
+* Release metadata (CLI inspection)
+* Error monitoring tools (via source maps)
+
+Understanding how to use these together is key to quickly identifying where an issue occurs.
+
+### CLI debugging tools
 
 The CodePush CLI includes a debug command that streams logs from a connected device.
 
 Example for Android:
 
-```
+{{< highlight bash "style=paraiso-dark">}}
 code-push debug android
-```
+{{< /highlight >}}
 
-This command reads logs using `adb logcat`.
+This command uses Android Debug Bridge (adb logcat) to stream logs and automatically filters CodePush-related messages.
 
-Requirements:
+Requirements (Android):
 
 - Android device connected
 - Android Debug Bridge (`adb`) installed
 - only one connected device
 
-Logs are filtered using the prefix:
+Logs are filtered using the prefix: **[CodePush]**
 
-```
-[CodePush]
-```
 
 This helps isolate messages related to the update process.
 
 Typical log messages include:
 
-- update check results
-- bundle download status
-- installation results
-- rollback events
+* Checking for updates
+* Update found / not found
+* Download progress
+* Installation status
+* Restart triggers
+* Rollback detection
 
 For iOS, logs are collected from the simulator.
 
@@ -67,9 +73,9 @@ Requirements:
 
 Physical iOS devices are not supported by the CLI debug command.
 
-## Inspecting device logs
+### Inspecting device logs
 
-Even without the CLI debug command, OTA behaviour can be inspected through normal device logs.
+Even without the CLI debug command, OTA behaviour can be inspected through standard logging tools.
 
 Useful tools include:
 
@@ -78,22 +84,22 @@ Useful tools include:
 
 Filter logs using:
 
-```
+{{< highlight bash "style=paraiso-dark">}}
 [CodePush]
-```
+{{< /highlight >}}
 
-These messages show each stage of the update process:
+You can trace the full update lifecycle through logs:
 
-```
+{{< highlight text "style=paraiso-dark">}}
 check for update
 download bundle
 install update
 restart application
-```
+{{< /highlight>}}
 
 If an update fails, the logs usually contain the reason.
 
-## Source maps for error monitoring tools
+### Source maps for error monitoring tools
 
 When CodePush releases a new JavaScript bundle, the bundle is compiled and minified.
 
@@ -117,15 +123,15 @@ Most monitoring platforms provide documentation for integrating CodePush release
 
 The following issues are common when releasing CodePush updates.
 
-#### Wrong binary version targeting
+### Wrong binary version targeting
 
 Updates are only installed if the device's app version satisfies the `targetBinaryVersion` constraint.
 
 Example targeting:
 
-```
+{{< highlight bash "style=paraiso-dark">}}
 --targetBinaryVersion "1.2.x"
-```
+{{< /highlight >}}
 
 If the installed app version does not match the specified range, the update will not be delivered.
 
@@ -133,7 +139,7 @@ A common mistake is forgetting to update the target version after releasing a ne
 
 
 
-#### Running the CLI outside the project directory
+### Running the CLI outside the project directory
 
 The `release-react` command expects to run inside the root of a React Native project.
 
@@ -144,7 +150,7 @@ Required files include:
 
 If the command is executed from another directory, the bundle generation step may fail.
 
-#### Incorrect deployment key
+### Incorrect deployment key
 
 If the deployment key embedded in the mobile app does not match the intended deployment, the app will check the wrong update channel.
 
@@ -156,27 +162,27 @@ Common scenarios include:
 
 This can cause updates to appear missing or install unexpectedly.
 
-#### Missing or invalid version metadata
+### Missing or invalid version metadata
 
 The CodePush CLI attempts to automatically detect the app version.
 
-On Android this is usually read from:
+On Android, this is usually read from:
 
-```
+{{< highlight text "style=paraiso-dark">}}
 build.gradle → versionName
-```
+{{< /highlight >}}
 
-On iOS it is read from:
+On iOS, it is read from:
 
-```
+{{< highlight text "style=paraiso-dark">}}
 Info.plist → CFBundleShortVersionString
-```
+{{< /highlight >}}
 
 If these values are missing or not valid semantic versions, the release command may fail.
 
 In this case the version can be specified manually with the `targetBinaryVersion` option.
 
-#### Missing `notifyAppReady` after a manual update flow
+### Missing `notifyAppReady` after a manual update flow
 
 If your app **installs an OTA update without** going through the default **`sync()` on startup** path (for example you use **`checkForUpdate`**, then download and **`install()`** yourself), you must call **`notifyAppReady()`** once the new JavaScript bundle has started successfully.
 

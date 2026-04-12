@@ -26,32 +26,35 @@ Access keys are typically used in two contexts:
 - developer machines running the CLI
 - CI systems that publish updates automatically
 
-The CLI authenticates using an access key generated manually.
+The CLI authenticates using an access key generated manually by the Codemagic team. Request access [here](https://codemagic.io/contact-sales/).
 
 Example login:
 
-```
-code-push login "https://codepush.pro"
-```
-
-When prompted, paste the access key provided by Codemagic.
+{{< highlight bash "style=paraiso-dark">}}
+code-push login "https://codepush.pro/" --access-key $ACCESS_TOKEN
+{{< /highlight >}}
 
 Once authenticated, the CLI can:
 
-- create apps
-- manage deployments
-- publish updates
-- promote releases
+* Create and manage apps
+* Manage deployments
+* Publish updates
+* Promote releases between deployments
 
-Access keys can also be used directly in CI environments.
+Access keys can be used to authenticate the CLI in automated environments such as CI/CD pipelines. For example, by adding an authentication step in your CI pipeline, the CLI can log in using an access key and then execute subsequent commands automatically:
 
-Example:
-
-```
+{{< highlight bash "style=paraiso-dark">}}
 code-push login "https://codepush.pro" --accessKey $CODEPUSH_TOKEN
-```
+code-push release-react <app_name> <platform> --deploymentName Production --rollout 10
+{{< /highlight >}}
 
-This allows automated pipelines to publish updates without manual login.
+In this setup:
+
+* The CLI authenticates using the access key stored in $CODEPUSH_TOKEN
+* All following CLI commands run in the authenticated context
+* No manual login is required
+
+This allows automated pipelines to publish updates without requiring an interactive login.
 
 For configuring tokens in CI workflows, see [CI integration](/rn-codepush/ci-integration/). For initial setup and CLI authentication, see [Setup](/rn-codepush/setup/).
 
@@ -69,47 +72,96 @@ The signing process involves three components:
 - signed update packages
 - a public key embedded in the mobile app
 
+### How signing works
+
+The signing process is based on an RSA key pair and involves three components:
+
+* An RSA key pair (private + public key)
+* Signed update packages generated during release
+* A public key embedded in the mobile app for verification
+
 ### Generate an RSA key pair
 
-A signing key pair must first be created.
+Before you can sign updates, you must generate an RSA key pair.
 
-The **private key** is used to sign update packages during release.
+This produces:
 
-The **public key** is embedded in the mobile application and used to verify updates.
+* A private key used to sign update packages during the release process
+* A public key embedded in the mobile application to verify updates at runtime
 
-Only systems with the private key can create valid update packages.
+You can generate an RSA key pair using OpenSSL:
+
+{{< highlight bash "style=paraiso-dark">}}
+# Generate a private key
+openssl genrsa -out codepush_private.key 2048
+
+# Extract the public key from the private key
+openssl rsa -in codepush_private.key -pubout -out codepush_public.key
+{{< /highlight >}}
+
+- The **private key** is kept securely on your build or CI system
+  - Used to sign update packages during release
+  - Must never be exposed or committed to source control
+- The **public key** is embedded in the mobile app
+  - Used to verify that updates were signed by a trusted source
+  - Can be safely distributed with the application
+
 
 ### Sign update packages
 
-When signing is enabled, the release process signs each update package using the private key.
+Once the RSA key pair is generated, the next step is to configure your build and release process so updates are automatically signed and verified.
 
-The signature is included in the update package and uploaded to the server alongside the bundle contents.
+**1. Store the private key securely**
 
-During installation, the app verifies that the package signature matches the embedded public key.
+The private key should never be included in the mobile app or committed to source control.
 
-If the verification fails, the update is rejected.
+Typical secure storage options:
 
-### Embed the public key in the app
+* CI/CD secret variables (recommended)
+* Secure file storage in build pipelines
+* Dedicated secret managers (e.g., Vault, cloud secrets services)
 
-The public key must be included in the mobile app so the client can verify update packages.
+**2. Embed the public key in the mobile app**
 
-This is typically configured when initializing the CodePush SDK.
+The public key must be bundled into the app so it can verify updates at runtime.
 
-The app will only accept update packages that match the embedded key.
+This is usually done by:
 
-### Client-side verification
+* Adding it to a configuration file
+* Embedding it in native code (Android/iOS)
+* Loading it during app initialization
+
+Example:
+
+{{< highlight bash "style=paraiso-dark">}}
+const codePushConfig = {
+  publicKey: "-----BEGIN PUBLIC KEY-----\n...\n-----END PUBLIC KEY-----"
+};
+{{< /highlight >}}
+
+**3. Signing updates during release**
+
+When you release an update, the CLI uses the **private key** to generate a cryptographic signature for the update package.
+
+{{< highlight bash "style=paraiso-dark">}}
+code-push release-react MyApp-Android android \
+  --privateKeyPath ./codepush_private.key
+{{< /highlight >}}
+
+This produces a signed update bundle that includes:
+
+* JavaScript bundle
+* Assets (if any)
+* Signature generated using the private key
+
+### Verification on the device
 
 When the app downloads an update:
 
-```
-download update package
-→ verify signature using public key
-→ install update if verification succeeds
-```
-
-If verification fails, the update is discarded.
-
-This ensures that even if the update server is compromised, the client will refuse to install unsigned or tampered bundles.
+* The update package is received
+* The app verifies the signature using the embedded **public key**
+* If verification succeeds → update is installed
+* If verification fails → update is rejected
 
 ## Security considerations
 

@@ -16,39 +16,40 @@ This reduces manual release steps and keeps OTA updates consistent with the rest
 
 Typical CI release flow:
 
-```
+{{< highlight text "style=paraiso-dark">}}
 commit
 → CI build
 → tests pass
 → CodePush release command
 → update deployed
-```
+{{< /highlight >}}
 
 In most cases the CI pipeline runs the same `release-react` command used locally.
 
-```
+{{< highlight text "style=paraiso-dark">}}
 build succeeds
 → release-react
 → update deployed
-```
+{{< /highlight >}}
 
 To publish updates from CI, the pipeline must:
 
-- install the CodePush CLI
-- authenticate using an access token
-- run the release command
+- [install the CodePush CLI]()
+- [authenticate using an access token]()
+- [run the release command]()
 
 ## Releasing from Codemagic
 
-Codemagic workflows publish OTA updates by running the CodePush CLI in a build step—the same `release-react` (or related) commands as locally; there is no separate “publish from dashboard” path.
+Codemagic workflows can publish OTA updates by running the CodePush CLI as part of a build step.
 
-A typical pattern is to run the release command after the build and tests complete successfully.
+They use the same commands you would run locally (such as release-react), and there is no separate “dashboard publish” mechanism for OTA releases.
+
+A common pattern is to trigger the CodePush release only after a successful build and test phase as shown above.
 
 Example step in `codemagic.yaml`:
 
-```
+{{< highlight bash "style=paraiso-dark">}}
 scripts:
-
   - name: Install CodePush CLI
     script: |
       npm install -g @codemagic/code-push-cli
@@ -58,15 +59,17 @@ scripts:
       code-push login "https://codepush.pro" --accessKey $CODEPUSH_TOKEN
       code-push release-react MyApp-Android android
 ```
+{{< /highlight>}}
 
 The pipeline performs the following steps:
 
-```
+{{< highlight text "style=paraiso-dark">}}
 build app
+→ install CLI tools
 → authenticate with CodePush
 → bundle JavaScript
 → upload update
-```
+{{< /highlight >}}
 
 The access token should be stored as a **secure environment variable** in the Codemagic project settings.
 
@@ -77,7 +80,7 @@ CodePush releases can also be triggered from GitHub Actions or other CI systems.
 Example GitHub Actions steps:
 Create a repository secret (for example **`CODEPUSH_TOKEN`**). Without an **`env`** block, `$CODEPUSH_TOKEN` in **`run`** is empty—map the secret as shown, or use `${{ secrets.CODEPUSH_TOKEN }}` in the command instead.
 
-```yaml
+{{< highlight bash "style=paraiso-dark">}}
 - name: Install CodePush CLI
   run: npm install -g @codemagic/code-push-cli
 
@@ -87,40 +90,52 @@ Create a repository secret (for example **`CODEPUSH_TOKEN`**). Without an **`env
   run: |
     code-push login "https://codepush.pro" --accessKey $CODEPUSH_TOKEN
     code-push release-react MyApp-Android android
-```
+{{< /highlight>}}
 
 As with Codemagic, the access token should be stored as a repository secret.
 
 ## Choosing when to release OTA updates
 
-Teams use different strategies for triggering OTA releases.
+Teams can choose different strategies for triggering OTA (CodePush) releases depending on their workflow, release frequency, and risk tolerance.
 
-Common approaches include:
+**1. Release on every merge to main**
 
-Release on every successful merge to the main branch:
+In this approach, every change merged into the main branch automatically triggers an OTA release.
 
-```
+Typical flow:
+
+{{< highlight text "style=paraiso-dark">}}
 merge to main
 → CI build
-→ publish OTA update
-```
-
-Release only for specific commits or tags:
-
-```
-tag created
-→ CI build
-→ publish OTA update
-```
-
-Release manually through CI pipelines:
-
-```
-developer triggers pipeline
+→ tests pass
 → OTA update published
-```
+{{< /highlight >}}
 
-The appropriate strategy depends on how frequently updates should be delivered and how tightly the OTA workflow should be coupled with the CI pipeline.
+**2. Release based on tags or specific commits**
+
+Here, OTA updates are only published when a version tag or specific commit is created.
+
+Typical flow:
+
+{{< highlight text "style=paraiso-dark">}}
+tag created (e.g. v1.2.0)
+→ CI build
+→ OTA update published
+{{< /highlight >}}
+
+**3. Manual CI-triggered releases**
+
+In this model, OTA releases are triggered manually via the CI system.
+
+Typical flow:
+
+{{< highlight text "style=paraiso-dark">}}
+developer triggers pipeline
+→ CI build
+→ OTA update published
+{{< /highlight >}}
+
+OTA release strategy is not fixed—teams choose the level of automation based on how often they want to ship and how much control they need over production deployments.
 
 ## Best practices
 

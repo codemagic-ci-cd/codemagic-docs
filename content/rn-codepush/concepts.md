@@ -8,42 +8,49 @@ weight: 1
 
 This section explains how CodePush works at a conceptual level before any setup or commands. Understanding the update model makes the configuration and release workflow easier to follow.
 
-## OTA updates with CodePush
+---
 
-Mobile apps are normally updated through the app stores:
+### The Problem: Slow App Store Updates
 
-```
-developer commits change
-→ CI builds new binary
-→ binary submitted to App Store / Play Store
-→ store review
-→ users download update
-```
-
-This process can take hours or days and requires users to install a new app version.
-
-CodePush enables **over-the-air (OTA) updates** for React Native applications. Instead of distributing a new binary, the app downloads an updated JavaScript bundle from a server.
+By default, shipping a mobile app update looks like this:
 
 ```
-developer releases JS update
+Developer makes a change
+→ Build a new app binary
+→ Submit to App Store / Play Store
+→ Wait for review
+→ Users download the update
+```
+This process is slow and rigid:
+
+* Reviews can take hours or days
+* Urgent fixes are delayed
+* Users must manually update
+
+### The Idea: Over-the-Air (OTA) Updates with CodePush
+
+CodePush enables OTA updates for React Native apps. Instead of distributing a new binary, the app downloads an updated JavaScript bundle from a server:
+
+```
+Developer releases JS update
 → CodePush server stores update
-→ app checks server for updates
-→ new bundle downloaded
-→ update applied on restart
+→ App checks server for updates
+→ New bundle downloaded
+→ Update applied on restart/resume/immediately
 ```
 
-Typical OTA use cases include:
+Typical OTA use cases:
 
-- hotfixes for production bugs
-- small UI changes
-- feature flag changes
-- configuration updates
-- content changes
-- experimentation or staged feature releases
+* Hotfixes for production bugs
+* UI tweaks or styling updates
+* Feature flag changes
+* Configuration or content updates
+* Experimentation or staged feature rollouts
 
-OTA updates reduce release latency and allow teams to fix issues quickly without waiting for store approval.
+Benefits: Faster releases, reduced dependency on app store reviews, and quicker fixes for users.
 
-## JavaScript layer vs native layer
+
+## JavaScript layer vs Native layer
 
 React Native apps contain two layers.
 
@@ -62,30 +69,31 @@ The JavaScript layer contains the React Native application logic:
 - state management
 - bundled static assets
 
-CodePush updates this **JavaScript bundle and its assets**. As long as a change only affects the JavaScript layer, it can usually be delivered as an OTA update.
+CodePush updates this **JavaScript bundle and its assets**. As long as JS remains compatible with the already-installed native binary, it can be delivered as an OTA update.
 
 ## What can and cannot be updated
 
-Typical OTA-safe changes include:
+✅ Can Be Updated via CodePush (OTA-safe):
 
-- fixing JavaScript bugs
-- UI adjustments
-- styling changes
-- updating bundled images or assets
-- feature flag logic
-- JavaScript performance improvements
+* Fixing JavaScript bugs
+* UI or layout adjustments
+* Styling changes
+* Updating bundled images or static assets
+* Feature flags or configuration logic
+* JavaScript performance improvements
 
-These changes modify only the JavaScript bundle.
+These updates modify only the JavaScript bundle, so they can be safely delivered over the air. 
 
-Some changes require rebuilding the native app, such as:
+❌ Require a New App Release
 
-- adding or modifying native modules
-- upgrading native dependencies
-- modifying `build.gradle`, `Info.plist`, or other native configuration
-- changing OS permissions
-- adding platform-specific functionality
+* Adding or modifying native modules
+* Upgrading React Native or native dependencies
+* Editing native configuration files (build.gradle, Info.plist, etc.)
+* Changing app permissions (camera, location, etc.)
+* Adding platform-specific features or integrations
 
-These changes affect the compiled native code and cannot be distributed through CodePush. In these cases, a new binary must be built and released through the app stores.
+ These changes affect compiled native code, so they must go through the App Store or Play Store.
+
 
 ## How the update flow works
 
@@ -93,14 +101,16 @@ A CodePush-enabled app includes a client SDK that communicates with the update s
 
 ```
 app launch
-→ CodePush SDK checks server
-→ update available?
-→ download JavaScript bundle
-→ store update locally
-→ apply update on next restart
+* CodePush SDK checks for updates (based on configuration)
+* update available?
+* download JavaScript bundle + assets
+* store update locally
+* apply update (typically on next restart)
 ```
 
-The update replaces the previously installed JavaScript bundle while keeping the native application unchanged. If an update fails or causes the app to crash on startup, the client can automatically revert to the previous working bundle.
+The update replaces the previously installed JavaScript bundle while keeping the native application unchanged.
+
+If an update fails or causes the app to crash on startup before it is marked as successful, the client can automatically revert to the previous working bundle.
 
 ## Deployment model
 

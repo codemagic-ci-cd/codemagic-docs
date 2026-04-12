@@ -6,130 +6,139 @@ meta_description: Publish and promote CodePush OTA updates, including staging an
 weight: 3
 ---
 
-This page explains how to publish OTA updates with the **CodePush CLI**. Bundles are not uploaded or promoted from the Codemagic UI; creating and changing releases is done with CLI commands (locally, in CI, or on any machine with the CLI and an access key).
 
-For a compact list of commands and flags, see [CLI quick reference](/rn-codepush/cli-quick-reference/).
+This guide explains how to publish and manage over-the-air (OTA) updates using the CodePush CLI.
 
-After the SDK is integrated into the React Native app, updates can be released without rebuilding the native application. CodePush distributes new JavaScript bundles and assets to installed apps.
 
-A typical workflow uses two deployments:
+{{<notebox>}} 
+**Important**:
+CodePush updates are not managed through the Codemagic UI. All releases, promotions, and rollbacks are performed using CLI commands — locally, in CI/CD pipelines, or any environment with the CLI installed and authenticated.
+{{</notebox>}}
 
-```
-Staging
-Production
-```
+## Overview
 
-Updates are first released to **Staging**, tested internally, and then promoted to **Production**.
+After integrating the CodePush SDK into your React Native app as explained in the [previous sectio](http://localhost:1313/rn-codepush/setup/#add-codepush-to-a-react-native-app)n, you can ship updates without rebuilding or resubmitting your app to the App Store or Google Play.
 
-```
-release update → Staging
-test internally
-promote update → Production
-```
+CodePush delivers:
+* Updated JavaScript bundles
+* App assets (e.g. images, fonts)
 
-## Publishing to Staging
+These updates are downloaded silently by users’ devices (depending on your install mode).
 
-The most common way to publish an update is with the `release-react` command.
+## Recommended Workflow
 
-Example:
+Use a **Staging → Production** promotion flow for all releases. This ensures every update is tested before reaching end users and keeps production stable.
 
-```
-code-push release-react MyApp-Android android
-```
+**Step 1: Release to Staging**
 
-For iOS:
+Publish the update to the Staging deployment first. This makes it available only to internal users, QA, or testers.
 
-```
-code-push release-react MyApp-iOS ios
-```
+{{< highlight bash "style=paraiso-dark">}}
+code-push release-react <app-name> <platform> --deployment-name Staging
+{{< /highlight>}}
 
-The command performs several steps automatically:
+At this stage:
 
-```
-react-native bundle
-→ generate JavaScript bundle
-→ collect static assets
-→ package update
-→ upload bundle to CodePush server
-```
+* The update is not visible to production users
+* You can safely validate functionality and stability
+* Multiple iterations can be released without impact
 
-The update is then assigned to the selected deployment. If no deployment is specified, the CLI usually defaults to **Staging**.
+**Step 2: Validate in Staging**
+
+Test the update thoroughly before promoting it. Typical checks include:
+
+* App launch and navigation flow
+* New features and UI changes
+* Regression testing of existing functionality
+* Crash-free behavior on target devices
+* Compatibility with supported app versions
+
+Only proceed once the update is confirmed stable.
+
+**Step 3: Promote to Production**
+
+After successful validation, promote the exact same update from Staging to Production. No rebuild is required.
+{{< highlight bash "style=paraiso-dark">}}
+code-push promote <app-name> Staging Production
+{{< /highlight >}}
+
+This ensures:
+
+* The tested build is what users receive
+* No discrepancies between test and production releases
+* Faster and safer rollout to all users
+
+**Summary Flow:**
+
+{{< highlight bash "style=paraiso-dark">}}
+Release to Staging -> Internal Testing & QA -> Promote to Production
+{{< /highlight >}}
+
+Think of this as a single pipeline with two decision points:
+
+* Release → Staging: publish a new update for validation
+* Test: verify the update is safe to ship
+* Promote → Production: make it live for users
+
 
 ## What gets uploaded
 
-CodePush distributes only runtime JavaScript assets. Typical package contents include:
+CodePush delivers only JavaScript runtime assets and the files required by the application’s JS layer.
 
-- JavaScript bundle
-- images and static assets
-- metadata about the release
+A typical update includes:
 
-CodePush does **not** distribute mobile app binaries such as `.apk` or `.ipa` files. OTA updates only replace the JavaScript layer of the app. Changes that require native code modifications must still be released through the app stores.
+* JavaScript bundle
+* Static assets (images, fonts, etc.)
+* Release metadata (deployment and version information)
 
-When possible, the CodePush client downloads only the changed files, so end users receive smaller differential updates without any extra configuration.
+CodePush does not include native binaries such as **.apk** or **.ipa** files. OTA updates are limited to changes in the JavaScript layer only.
 
-## Targeting specific app versions
+Any modification involving native code (e.g. Swift, Objective-C, Java, Kotlin, or native modules) must be released through the App Store or Google Play.
 
-Updates must be compatible with the installed app version. The `targetBinaryVersion` parameter controls which app versions receive the update.
+## Version control
 
-Example:
+CodePush uses a two-layer versioning model that separates native app versions from JavaScript update versions. This ensures updates are only delivered to compatible app binaries while still allowing fast OTA iteration.
 
-```
-code-push release-react MyApp-Android android --targetBinaryVersion "1.2.x"
-```
+**1. Native App Version (Binary Version)**
 
-Supported version formats include:
+This is the version of the app installed from the App Store / Google Play. It defines the native code baseline that a CodePush update must be compatible with.
 
-```
-1.2.x
-=1.2.3 <1.3.0
-```
+It maps to **CFBundleShortVersionString (e.g. 1.2.0)(for iOS)** and **versionName (e.g. 1.2.0)(for Android)**
 
-Devices install the update only if their binary version satisfies the specified version range.
+This is the version you configure in CodePush as the target binary version.
 
-## Verifying the Staging release
+**2. CodePush Update Version**
 
-After releasing an update to **Staging**, install a build configured with the Staging deployment key.
+Each CodePush release is a **JavaScript + asset bundle update** applied on top of a native binary. These updates:
 
-Typical verification process:
+* Do not change the native app version
+* Are stored and ordered within a deployment history
+* Can be rolled back independently of app store releases
 
-1. install the staging build on a device
-2. launch the app
-3. confirm the update downloads and installs
-4. restart the app to apply the update
+**Target Binary Version (Compatibility Control)**
 
-If the update installs successfully, the OTA pipeline is working correctly. Testing with a staging deployment helps ensure production users are not exposed to broken updates.
+To ensure updates are only delivered to compatible app builds, CodePush uses `--target-binary-version`
 
-## Promoting an update to Production
+This flag determines which native app versions are eligible to receive the update.
 
-Once an update has been validated in Staging, it can be promoted to the Production deployment.
+It directly matches:
 
-Example:
+* CFBundleShortVersionString on iOS
+* versionName on Android
 
-```
-code-push promote MyApp-Android Staging Production
-```
+For an example, if you specify:
+{{< highlight bash "style=paraiso-dark">}}
+--target-binary-version "1.2.0"
+{{< /highlight >}}
 
-Promotion copies the existing release from one deployment to another without rebuilding the bundle.
+Then only apps running version 1.2.0 will receive the update. You can also define ranges:
+{{< highlight bash "style=paraiso-dark">}}
+--target-binary-version "~1.2.0"
+{{< /highlight >}}
 
-```
-Staging release created
-→ internal testing
-→ promote to Production
-```
+This includes compatible patch versions like **1.2.1**, **1.2.2**, etc., depending on semantic versioning rules.
 
-This ensures that the same tested bundle is deployed to end users.
 
-## Monitoring releases
-
-Each release recorded by CodePush includes telemetry metrics such as:
-
-- active installations
-- downloads
-- successful installs
-- failures
-- rollbacks
-
-These metrics help teams monitor update adoption and detect issues with newly deployed bundles.
 
 ## Next steps
 

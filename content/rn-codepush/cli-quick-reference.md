@@ -12,12 +12,12 @@ All bundle uploads and release changes go through the **CLI** (locally or in CI)
 
 ---
 
-## Install and version
+## Install and version check
 
-```shell
+{{< highlight bash "style=paraiso-dark">}}
 npm install -g @codemagic/code-push-cli
 code-push --version
-```
+{{< /highlight >}}
 
 See [Setup](/rn-codepush/setup/) for full installation and server configuration.
 
@@ -25,17 +25,9 @@ See [Setup](/rn-codepush/setup/) for full installation and server configuration.
 
 ## Authentication
 
-Interactive login (paste token when prompted):
-
-```shell
-code-push login "https://codepush.pro"
-```
-
-Non-interactive (CI and scripts):
-
-```shell
+{{< highlight bash "style=paraiso-dark">}}
 code-push login "https://codepush.pro" --accessKey $CODEPUSH_ACCESS_KEY
-```
+{{< /highlight >}}
 
 See [Security and access](/rn-codepush/security-and-access/) for keys and token handling.
 
@@ -45,22 +37,23 @@ See [Security and access](/rn-codepush/security-and-access/) for keys and token 
 
 Register an app (creates **Staging** and **Production** deployments):
 
-```shell
+{{< highlight shell "style=paraiso-dark">}}
 code-push app add MyApp-Android
 code-push app add MyApp-iOS
-```
+{{< /highlight>}}
+
 
 List apps:
 
-```shell
+{{< highlight shell "style=paraiso-dark">}}
 code-push app list
-```
+{{< /highlight >}}
 
 List deployments and **deployment keys** (`-k`):
 
-```shell
+{{< highlight shell "style=paraiso-dark">}}
 code-push deployment list MyApp-Android -k
-```
+{{< /highlight >}}
 
 ---
 
@@ -70,21 +63,21 @@ Default deployment is usually **Staging** if you omit a deployment flag (confirm
 
 **Android**
 
-```shell
+{{< highlight shell "style=paraiso-dark">}}
 code-push release-react MyApp-Android android
-```
+{{< /highlight >}}
 
 **iOS**
 
-```shell
+{{< highlight shell "style=paraiso-dark">}}
 code-push release-react MyApp-iOS ios
-```
+{{< /highlight>}}
 
 **Common options** (combine as needed):
 
-```shell
-code-push release-react MyApp-Android android --targetBinaryVersion "1.2.x" --description "Short release notes" --mandatory --rollout 25
-```
+{{< highlight shell "style=paraiso-dark">}}
+code-push release-react MyApp-Android android -d Production --targetBinaryVersion "1.2.x" --description "Short release notes" --mandatory --rollout 25
+{{< /highlight >}}
 
 | Flag | Purpose |
 |------|---------|
@@ -99,21 +92,23 @@ See [Releasing updates](/rn-codepush/releasing-updates/) and [Production control
 
 ## Promote between deployments
 
-Copy the current release from **Staging** to **Production** without rebuilding:
+Promote an existing release from one deployment to another without rebuilding or creating a new bundle.
 
-```shell
+{{< highlight shell "style=paraiso-dark">}}
 code-push promote MyApp-Android Staging Production
-```
+{{< /highlight>}}
+
+Promotion allows you to safely move tested updates between environments without rebuilding or modifying the original release.
 
 ---
 
-## Change rollout on an existing release (`patch`)
+## Change rollout on an existing release
 
-Update rollout percentage without creating a new release:
+Update the rollout percentage of an existing release without creating a new one using the `patch` command.
 
-```shell
+{{< highlight shell "style=paraiso-dark">}}
 code-push patch MyApp-Android Production --rollout 50
-```
+{{< /highlight >}}
 
 See [Production control](/rn-codepush/production-control/#rollouts) for rollout rules and limits.
 
@@ -121,29 +116,26 @@ See [Production control](/rn-codepush/production-control/#rollouts) for rollout 
 
 ## Roll back a deployment
 
-```shell
-code-push rollback MyApp-Android Production
-```
+To revert a deployment to the previous release, use the rollback command.
 
-Restores the previous release for that deployment. See [Production control](/rn-codepush/production-control/#rollbacks).
+{{< highlight shell "style=paraiso-dark">}}
+code-push rollback MyApp-Android Production
+{{< /highlight>}}
+
+This will deactivate the current release and restore the previously active version for the specified deployment.. See [Production control](/rn-codepush/production-control/#rollbacks).
 
 ---
 
 ## Device debug logs (Android)
 
-```shell
+{{< highlight shell "style=paraiso-dark">}}
 code-push debug android
-```
+{{< /highlight >}}
 
 Requires a connected device, `adb`, and a single Android target. For iOS simulator requirements and log interpretation, see [Issues and debugging](/rn-codepush/debugging-and-common-issues/#cli-debugging-tools).
 
 ---
 
-## CI
-
-Run the same commands non-interactively after `code-push login "https://codepush.pro" --accessKey …`. See [CI integration](/rn-codepush/ci-integration/) for workflow patterns.
-
----
 
 ## Full flag lists
 

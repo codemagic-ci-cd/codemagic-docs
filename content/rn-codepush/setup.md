@@ -14,201 +14,191 @@ This section prepares a project to use CodePush with Codemagic. After completing
 - the CLI installed and authenticated
 - a React Native app configured to receive OTA updates
 
-Codemagic hosts the CodePush server and developers interact with it using access tokens and the CodePush CLI.
+Codemagic hosts the CodePush server and developers interact with it using [access tokens](#get-an-access-token) and the CodePush CLI.
 
-These instructions are for React Native New Architecture projects. If your app is already configured, skip to the deployment key and CI sections to verify configuration.
+These instructions are for React Native New Architecture projects. If your app is already configured, skip to setting up [deployment keys](#configure-deployment-keys) and CI sections to verify configuration.
 
 The same Codemagic server can be used for all of your apps.
 
-## Setup CodePush with Codemagic
+---
 
-Before integrating CodePush into your app, you need to create a project on the Codemagic CodePush server and configure the CLI.
-
-### Create a CodePush project
-
-Each mobile application using CodePush must be registered on the server.
-
-In most cases you should create **separate apps for each platform**, for example:
-
-```
-MyApp-Android
-MyApp-iOS
-```
-
-React Native bundles differ between platforms, so separating them avoids installation issues.
-
-Create an app using the CLI:
-
-```
-code-push app add MyApp-Android
-```
-
-For iOS:
-
-```
-code-push app add MyApp-iOS
-```
-
-When an app is created, CodePush automatically creates two deployments:
-
-```
-Staging
-Production
-```
-
-These deployments act as release channels for OTA updates.
-
-### Get an access token
-
-The CodePush CLI authenticates using access tokens generated in the Codemagic UI.
-
-Generate a token and log in from the CLI:
-
-```
-code-push login "https://codepush.pro"
-```
-
-Paste the token when prompted. Once authenticated, the CLI can create apps, manage deployments, and publish updates.
-
-If you do not have access to the Codemagic UI, request an access key from the Codemagic team.
-
-### Install and configure the CLI
+## Install and configure the CLI
 
 Install the CodePush CLI globally:
 
-```
+{{< highlight bash "style=paraiso-dark">}}
 npm install -g @codemagic/code-push-cli
-```
+{{< /highlight >}}
 
 Verify the installation:
 
-```
+{{< highlight bash "style=paraiso-dark">}}
 code-push --version
-```
+{{< /highlight >}}
 
-You can confirm that authentication and configuration are working by listing your apps:
+This command prints the installed CLI version. If the installation was successful, you will see a version number (e.g., x.x.x). If the command is not found, it usually means the CLI was not installed correctly.
 
-```
-code-push app list
-```
+## Get an access token
+
+The CodePush CLI authenticates using access tokens provided by the Codemagic team. Request a token [here](https://codemagic.io/contact-sales/).
+
+To log in from the CLI:
+
+{{< highlight bash "style=paraiso-dark">}}
+code-push login "https://codepush.pro/" --access-key $ACCESS_TOKEN
+{{< /highlight >}}
+
+This command authenticates the CLI directly using the provided access token. Once authenticated, the CLI can create apps, manage deployments, and publish updates.
+
+## Create a CodePush project
+
+Each mobile application using CodePush must be registered on the server. This step creates a record on the CodePush server that your app will connect to for receiving updates.
+
+In most cases, you should create separate apps for each platform, for example:
+
+
+* MyApp-Android
+* MyApp-iOS
+
+
+React Native bundles differ between platforms, so separating them ensures that each app receives the correct update package and avoids compatibility issues.
+
+
+To create an Android app using the CLI:
+
+{{< highlight bash "style=paraiso-dark">}}
+code-push app add MyApp-Android
+{{< /highlight >}}
+
+For iOS:
+{{< highlight bash "style=paraiso-dark">}}
+code-push app add MyApp-iOS
+{{< /highlight>}}
+
+You can use any naming convention, but including the platform in the name is recommended for clarity when managing multiple apps.
+
+
+When an app is created, CodePush automatically creates two deployments:
+
+* Staging
+* Production
+
+These deployments act as separate release channels, allowing you to control which users receive which updates.
+
+* Staging → typically used for testing updates internally
+* Production → used for releasing updates to end users
+
+You can create additional deployments if needed (e.g., QA, Beta), depending on your workflow by running `code-push deployment add <appName> <deploymentName>`. It is possible to rename existing deployments through `code-push deployment rename <appName> <deploymentName> <newDeploymentName>` and delete via `code-push deployment rm <appName> <deploymentName>`
 
 ## Add CodePush to a React Native app
 
-Once the server and CLI are configured, the next step is integrating the CodePush client SDK into your React Native application.
+After configuring the server and CLI, the next step is integrating the CodePush client SDK into your React Native application. This allows your app to receive over-the-air (OTA) updates without going through the app store.
 
-The SDK allows the app to:
+1. **Install the React Native CodePush package:**
 
-- check the CodePush server for updates
-- download new JavaScript bundles
-- install updates on restart
-
-### Install the SDK
-
-Install the React Native CodePush package:
-
-```
+{{< highlight bash "style=paraiso-dark">}}
+# Using npm
 npm install @code-push-next/react-native-code-push
-```
 
-or
-
-```
+# Using yarn
 yarn add @code-push-next/react-native-code-push
-```
+{{< /highlight>}}
 
-The SDK provides the runtime logic that checks for updates and applies new bundles.
+The SDK handles checking for updates, downloading new bundles, and applying updates when the app restarts.
 
-### Configure deployment keys
+2. **Configure Deployment Keys**
 
-Each CodePush deployment has a **deployment key**.
+Each CodePush deployment has a deployment key that tells the app which deployment to check for updates.
 
-You can list deployments and keys using:
+List deployments and keys:
 
-```
-code-push deployment list MyApp-Android -k
-```
+{{< highlight bash "style=paraiso-dark">}}
+code-push deployment list <app_name> -k
+{{< /highlight >}}
 
-Example output:
+Recommended usage:
 
-```
-Name       Key
-Staging    <deployment-key>
-Production <deployment-key>
-```
+* Development builds → Staging deployment key
+* Production builds → Production deployment key
 
-Deployment keys are embedded in the mobile app so it knows which deployment to check for updates.
+This ensures test updates do not reach production users. Deployment keys are typically injected via environment variables or set in platform configuration files.
 
-Typical configuration:
+3. **Configure Server URL and Deployment Keys in Native Projects**
 
-- development builds use the **Staging** deployment key
-- production builds use the **Production** deployment key
+To connect your React Native app to the CodePush server, you must configure the server URL and the deployment key in your native project files. These values tell the app which server to check for updates and which deployment channel to use.
 
-This prevents test updates from reaching production users.
-
-### Configure staging and production builds
-
-Most teams configure different deployment keys for different build types.
-
-```
-development build uses Staging deployment
-production build uses Production deployment
-```
-
-This allows internal testers to validate updates before they reach users.
-
-Deployment keys are typically set in platform configuration files or environment variables during the build process.
-
-### Configure server URL and deployment keys in native projects
-
-Make sure the Codemagic server URL is set in your app. For the hosted service, use:
-
-```
+Server URL for Codemagic hosted service:
+{{< highlight bash "style=paraiso-dark">}}
 https://codepush.pro/
-```
+{{< /highlight >}}
 
-Add the server URL and deployment key to the native configuration files.
+iOS (Info.plist) example:
 
-For iOS (`Info.plist`):
-
-```
+{{< highlight bash "style=paraiso-dark">}}
 <key>CodePushServerURL</key>
 <string>https://codepush.pro/</string>
 <key>CodePushDeploymentKey</key>
 <string>YOUR_DEPLOYMENT_KEY</string>
-```
+{{< /highlight >}}
 
-For Android (`strings.xml`):
+{{<notebox>}} 
+📒 Notes:
+* Replace YOUR_DEPLOYMENT_KEY with the key for Staging (development builds) or Production (release builds).
+* These keys can also be injected dynamically using build scripts or environment variables to avoid hardcoding sensitive information.
+* Ensures the app connects to the correct deployment when it starts.
+{{</notebox>}}
 
-```
+Android (strings.xml) example:
+
+{{< highlight bash "style=paraiso-dark">}}
 <string moduleConfig="true" name="CodePushServerUrl">https://codepush.pro/</string>
 <string moduleConfig="true" name="CodePushDeploymentKey">YOUR_DEPLOYMENT_KEY</string>
-```
+{{< /highlight >}}
 
-### Add CodePush to your root component
+{{<notebox>}} 
+📒 Notes:
 
-Wrap your app entry point with the CodePush plugin:
+* Same as iOS, use the correct deployment key for your build type.
+* If you have multiple build variants (e.g., debug, release), configure keys separately for each variant to prevent test updates from reaching production users.
+{{</notebox>}} 
 
-```
+4. **Wrap Your Root Component with CodePush**
+
+Integrate CodePush by wrapping your app’s root component:
+
+{{< highlight bash "style=paraiso-dark">}}
 import codePush from '@code-push-next/react-native-code-push';
 
 function App() {
-  ...
+  // Your app code here
 }
 
 export default codePush(App);
-```
+{{< /highlight >}}
 
-## Run a test OTA release
+This enables the SDK to automatically check for updates on app start (or based on your chosen update strategy).
 
-To confirm everything works end-to-end, publish a quick test release:
+6. **Run a test OTA release**
 
-```
-code-push release-react MyApp-Android android
-```
+To verify that CodePush is working end-to-end, you can publish a quick test release:
+{{< highlight bash "style=paraiso-dark">}}
+code-push release-react <app_name> <platform_ios_or_android>
+{{< /highlight>}}
 
-You only need this one command to bundle, upload, and release an OTA update to a deployment.
+This single command:
+
+* Bundles your React Native JavaScript code
+* Uploads it to the CodePush server
+* Releases it to the default deployment (usually Staging, if another deployment channel is needed, you can manage it by adding `-d <deployment_name>` to the command above)
 
 For the full release workflow, see [Releasing updates](/rn-codepush/releasing-updates/).
+
+✅ Best Practices
+* Use Environment Variables – Avoid hardcoding deployment keys.
+* Separate Staging and Production Keys – Always validate updates in Staging before promoting to Production.
+* Confirm Connectivity – After configuration, make sure the app can fetch updates from the server by testing a Staging release.
+
+Properly configuring the server URL and deployment keys ensures that CodePush can deliver OTA updates reliably and safely for each platform.
 
 ## Next steps
 

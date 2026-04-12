@@ -6,151 +6,144 @@ meta_description: Manage CodePush production releases with rollouts, binary vers
 weight: 4
 ---
 
-After OTA updates are working, the next step is managing how updates reach users in production.
+Once OTA updates are set up, the next step is controlling how changes are delivered to users in production.
 
-CodePush provides several controls that allow teams to:
+CodePush provides release controls that let teams:
 
-- gradually roll out updates
-- target specific app versions
-- enforce mandatory updates
-- recover from faulty releases
+* roll out updates gradually
+* target specific app versions
+* enforce mandatory updates when required
+* quickly revert problematic releases
 
-These controls help reduce risk when releasing changes to live users.
+These controls help minimize risk and ensure safe, predictable delivery of updates to production users.
 
 ---
 
-## Rollouts
+## Rollouts (Gradual Release)
 
-Rollouts allow an update to be delivered to only a percentage of users.
+Rollouts allow an update to be delivered to only a percentage of users instead of releasing it to everyone at once.
 
-Instead of immediately deploying an update to everyone, you can gradually increase the rollout percentage as confidence grows.
+This approach helps reduce risk by letting you monitor performance, crashes, and user feedback before increasing exposure.
 
-Example release with a rollout:
+**1. How rollouts work**
 
-```
+You start by releasing an update to a small percentage of users and gradually increase it as confidence grows:
+{{< highlight bash "style=paraiso-dark">}}
+Release update → 10%
+Monitor behavior and stability
+Increase rollout → 25%
+Continue monitoring
+Increase rollout → 50%
+Finalize rollout → 100%
+{{< /highlight >}}
+
+Example release with a rollout: 
+
+{{< highlight bash "style=paraiso-dark">}}
 code-push release-react MyApp-Android android --rollout 25
-```
+{{< /highlight >}}
 
-This update will be delivered to approximately **25% of users** running the compatible app version.
+This publishes an update that is initially delivered to approximately 25% of eligible users (i.e., users running a compatible app version).
 
-Typical rollout process:
+**2. Updating an existing rollout**
 
-```
-release update → 10%
-monitor behaviour
-increase rollout → 25%
-increase rollout → 50%
-increase rollout → 100%
-```
+You can adjust the rollout percentage without creating a new release using the patch command:
 
-Rollouts can be increased using the `patch` command.
-
-Example:
-
-```
+{{< highlight bash "style=paraiso-dark">}}
 code-push patch MyApp-Android Production --rollout 50
-```
+{{< /highlight >}}
 
-This updates the rollout percentage without creating a new release.
+This updates the existing release to be delivered to 50% of users.
 
 ### Rollout constraints
 
-There are several limitations to rollouts:
+There are several constraints to be aware of when using rollouts:
 
-- only **one rollout per deployment** can be active
-- a rollout must reach **100% before another release can be published**
-- rollout values must be between **1 and 100**
+* **Only one active rollout per deployment:** You cannot have multiple in-progress (partial) rollouts within the same deployment.
+* **A rollout must reach 100% before a new release can be created:** You need to either complete the rollout or stop it before publishing another update to the same deployment.
+* **Rollout values must be between 1 and 100:** The percentage must be a whole number within this range.
 
-These constraints prevent multiple partially deployed updates from conflicting with each other.
-
-## Targeting builds
-
-OTA updates must be compatible with the version of the app installed on a device.
-
-The `targetBinaryVersion` parameter controls which app versions are allowed to install an update.
-
-Example:
-
-```
-code-push release-react MyApp-Android android --targetBinaryVersion "1.2.x"
-```
-
-Supported targeting formats include:
-
-```
-1.2.x
-=1.2.3 <1.3.0
-```
-
-When a device checks for updates, CodePush verifies that the installed binary version satisfies the specified version range.
-
-If the version does not match, the update will not be installed.
-
-This allows teams to support multiple active store versions while delivering different updates to each version.
+These constraints ensure consistency and prevent conflicts between updates. Allowing multiple partially deployed releases at the same time could result in users receiving different or incompatible versions of the app, making behavior harder to predict and debug.
 
 ## Mandatory updates
 
-Updates can be marked as **mandatory**.
+Updates can be marked as **mandatory**. Mandatory updates ensure that users install a specific update before continuing to use the app. This is useful when a release contains critical fixes or breaking changes that must be applied immediately.
 
-Mandatory updates install immediately instead of waiting for a later restart.
+When an update is marked as mandatory, the app will install it and typically restart automatically, without waiting for user interaction.
 
 Example:
 
-```
-code-push release-react MyApp-Android android --mandatory
-```
+{{< highlight bash "style=paraiso-dark">}}
+code-push release-react <app_name> <platform> --mandatory
+{{< /highlight>}}
 
-Mandatory updates are useful for:
+This marks the update as mandatory, meaning all eligible users will be required to install it.
 
-- critical bug fixes
-- security patches
-- breaking logic errors
+You can also mark an already released update as mandatory using the patch command:
+
+{{< highlight bash "style=paraiso-dark">}}
+code-push patch <app_name> <platform> --mandatory true
+{{< /highlight >}}
+
+Mandatory updates are best reserved for situations such as:
+
+* Critical bug fixes (e.g., crashes, data corruption)
+* Security issues
+* Breaking API changes
+* Urgent compliance or legal requirements
 
 On the client, **`mandatoryInstallMode`** controls *when* a mandatory update is applied (for example immediately versus on next resume). See [Advanced: sync options](/rn-codepush/advanced-sync-options/).
 
 ### Mandatory update propagation
 
-The mandatory flag propagates across releases.
+The mandatory flag can affect how updates are applied across multiple releases, but it does not literally “propagate” as a property to future releases.
 
 Example release sequence:
 
-```
-v1 optional
-v2 mandatory
-v3 optional
-```
+{{< highlight bash "style=paraiso-dark">}}
+v1 → optional
+v2 → mandatory
+v3 → optional
+{{< /highlight >}}
 
-If a user is running **v1** and checks for updates, they will receive **v3**, but it will be treated as **mandatory**.
-
-This happens because v3 contains the changes introduced in the mandatory release v2.
+If a user is running **v1** and checks for updates, they will receive **v3**. However, the update will be treated as mandatory because the user has not yet installed the mandatory update **(v2)**, the system ensures that any later update containing those changes is still applied as mandatory.
 
 ## Rollbacks
 
-If an update causes problems, CodePush allows teams to quickly revert to a previous working release.
+Rollbacks allow you to quickly revert users to a previous working update if a release introduces issues.
 
-Two rollback mechanisms exist.
+This is a critical safety mechanism that helps minimize the impact of bugs, crashes, or broken functionality in production.
+
+There are two types of rollback mechanisms: **automatic and manual**
+
 
 ### Automatic rollback
 
-The CodePush client monitors app startup behaviour.
+The CodePush client monitors whether an update is successfully applied.
 
-If an update causes the app to crash before the update is confirmed as successful, the client automatically restores the previous working bundle.
+After an update is installed, it is considered pending until the app explicitly confirms it as successful (typically by calling **notifyAppReady**).
 
-This protects users from being stuck with a broken update.
+If the app crashes or restarts before confirming the update, the client assumes the update is faulty and automatically rolls back to the previous working version.
+
+This prevents users from being stuck with a broken update.
 
 ### Manual rollback
 
-A release can also be rolled back manually using the CLI.
+A manual rollback is triggered by explicitly reverting a release using the CLI:
 
-Example:
+{{< highlight bash "style=paraiso-dark">}}
+code-push rollback <app_name> <deployment_name>
+{{< /highlight >}}
 
-```
-code-push rollback MyApp-Android Production
-```
+This disables the latest release and restores the previous stable update for all users in that deployment.
 
-This restores the previous release for that deployment.
-
-After a rollback, devices checking for updates will receive the earlier working version instead.
+{{<notebox>}}
+**📌 Important:**
+* Automatic rollback is not based on generic **startup behavior** alone. 
+It specifically depends on whether the update is confirmed as successful
+* You must ensure your app calls:
+**notifyAppReady()** (or equivalent). Otherwise, even a healthy update may be rolled back unintentionally
+{{</notebox>}}
 
 ## Using these controls together
 
@@ -166,6 +159,11 @@ mark update mandatory if critical
 rollback if issues appear
 ```
 
-This approach allows teams to deploy updates safely while still benefiting from the speed of OTA updates.
+This strategy allows teams to:
+
+* Limit impact of faulty updates through gradual exposure
+* Validate stability using real-world data before full release
+* Enforce critical fixes when necessary
+* Recover quickly using rollbacks
 
 For rollout monitoring and adoption metrics, see [Analytics](/rn-codepush/analytics/). For access control and signing, see [Security and access](/rn-codepush/security-and-access/). For `release-react`, `patch`, and `rollback` syntax, see [CLI quick reference](/rn-codepush/cli-quick-reference/).
