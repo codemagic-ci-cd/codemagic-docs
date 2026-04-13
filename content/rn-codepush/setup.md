@@ -14,7 +14,7 @@ This section prepares a project to use CodePush with Codemagic. After completing
 - the CLI installed and authenticated
 - a React Native app configured to receive OTA updates
 
-Codemagic hosts the CodePush server and developers interact with it using [access tokens](#get-an-access-token) and the CodePush CLI.
+Codemagic hosts the CodePush server and developers interact with it using [access tokens](#get-an-access-token) and the CodePush CLI. If you want to learn about how OTA updates work, check out the [concepts page](https://docs.codemagic.io/rn-codepush/concepts/).
 
 These instructions are for React Native New Architecture projects. If your app is already configured, skip to setting up [deployment keys](#configure-deployment-keys) and CI sections to verify configuration.
 
