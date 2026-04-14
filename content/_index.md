@@ -6,21 +6,21 @@ exclude: true
 ---
 
 <div class="links-group-wrap">
-{{<links-group title="Start using Codemagic">}}
+{{<links-group title="CI/CD Quick starts">}}
 How to get started with Codemagic 
-- [Signup](../getting-started/signup/)
-- [Adding apps to Codemagic](../getting-started/adding-apps/)
-- [Onboarding assistance](https://codemagic.io/onboarding-assistance/)
-- [Publish your first Flutter app to the App Store](https://labs.codemagic.io/your-first-flutter-app-to-appstore?utm_source=codemagic&utm_medium=docs&utm_campaign=landingpage&utm_id=codelab)
+- [Flutter](../yaml-quick-start/building-a-flutter-app/)
+- [React Native](../yaml-quick-start/building-a-react-native-app/)
+- [iOS Native](../yaml-quick-start/building-a-native-ios-app/)
+- [Android Native](../yaml-quick-start/building-a-native-android-app/)
 
 
 {{</links-group>}} 
 
-{{<links-group title="Common questions">}}
-Find answers about using Codemagic
-- [Frequently asked questions](../getting-started/faq/)
-- [Machine specs](../specs/versions-macos/)
-- [Pricing](../billing/pricing/) 
+{{<links-group title="Codepush guides">}}
+OTA for React Native
+- [Concepts](../rn-codepush/concepts/)
+- [Setup](../rn-codepush/setup/)
+- [Troubleshooting](../rn-codepush/debuggin-and-common-issues/) 
 
 
 {{</links-group>}}
