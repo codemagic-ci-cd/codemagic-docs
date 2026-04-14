@@ -20,7 +20,7 @@ How to get started with Codemagic
 OTA for React Native
 - [Concepts](../rn-codepush/concepts/)
 - [Setup](../rn-codepush/setup/)
-- [Troubleshooting](../rn-codepush/debuggin-and-common-issues/) 
+- [Troubleshooting](../rn-codepush/debugging-and-common-issues/) 
 
 
 {{</links-group>}}
