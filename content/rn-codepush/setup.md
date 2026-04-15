@@ -16,7 +16,7 @@ This section prepares a project to use CodePush with Codemagic. After completing
 
 Codemagic hosts the CodePush server and developers interact with it using [access tokens](#get-an-access-token) and the CodePush CLI. If you want to learn about how OTA updates work, check out the [concepts page](https://docs.codemagic.io/rn-codepush/concepts/).
 
-These instructions are for React Native New Architecture projects. If your app is already configured, skip to setting up [deployment keys](#configure-deployment-keys) and CI sections to verify configuration.
+These instructions are for React Native New Architecture projects. If your app is already configured, skip to setting up [deployment keys](#add-codepush-to-a-react-native-app) and CI sections to verify configuration.
 
 The same Codemagic server can be used for all of your apps.
 
@@ -178,7 +178,160 @@ export default codePush(App);
 
 This enables the SDK to automatically check for updates on app start (or based on your chosen update strategy).
 
-6. **Run a test OTA release**
+### CodePush iOS Setup (React Native)
+
+This guide covers the iOS-specific configuration required to enable CodePush OTA updates in your React Native app.
+
+**1. Install iOS Dependencies**
+
+Navigate to the ios directory and install CocoaPods:
+
+{{< highlight bash "style=paraiso-dark">}}
+cd ios && pod install && cd ..
+{{< /highlight>}}
+
+**2. Update AppDelegate**
+
+You need to configure your app to load the JavaScript bundle from CodePush instead of the embedded bundle.
+
+**Objective-C**: If your project is `Objective-C` based (scroll down for `Swift` based configuration), then open the `AppDelegate.m` file and add an import statement for the CodePush headers at the top:
+
+{{< highlight text "style=paraiso-dark">}}
+#import <CodePush/CodePush.h>
+{{< /highlight>}}
+
+**3. Update JS Bundle Location**
+
+Find the following existing bundle reference in the `AppDelegate.m` file:
+
+{{< highlight bash "style=paraiso-dark">}}
+jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+{{< /highlight >}}
+
+And replace it with:
+
+{{< highlight bash "style=paraiso-dark">}}
+jsCodeLocation = [CodePush bundleURL];
+{{< /highlight >}}
+
+At the end, your `sourceURLForBridge` method should look like this:
+
+{{< highlight bash "style=paraiso-dark">}}
+- (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
+{
+  #if DEBUG
+    return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
+  #else
+    return [CodePush bundleURL];
+  #endif
+}
+{{< /highlight >}}
+
+**Swift** :If your project is using `Swift` based configuration, then follow the steps below:
+
+1. Navigate to your iOS project and open the `AppDelegate.swift` file
+2. Add the following import at the top of the file:
+
+{{< highlight bash "style=paraiso-dark">}}
+import CodePush
+{{< /highlight >}}
+
+3. Find the following line of code in the `AppDelegate.swift` file:
+
+{{< highlight bash "style=paraiso-dark">}}
+Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+{{< /highlight >}}
+
+And replace it with:
+
+{{< highlight bash "style=paraiso-dark">}}
+CodePush.bundleURL()
+{{< /highlight>}}
+
+Your `bundleUrl` method should look like this:
+
+{{< highlight bash "style=paraiso-dark">}}
+override func bundleURL() -> URL? {
+#if DEBUG
+   RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
+#else
+   CodePush.bundleURL()
+#endif
+}
+{{< /highlight >}}
+
+### CodePush Android Setup (React Native)
+
+{{<notebox>}}
+Plugin installation and configuration for React Native 0.76 version and above
+{{</notebox>}}
+
+**1. Ensure Native Linking** 
+
+In `android/app/build.gradle`, add `codepush.gradle` as an additional build task definition to the end of the file:
+
+{{< highlight bash "style=paraiso-dark">}}
+apply from: "../../node_modules/@code-push-next/react-native-code-push/android/codepush.gradle"
+{{< /highlight >}}
+
+**2. Update MainApplication**
+
+Open the `MainApplication` file and update it as follows:
+
+{{< highlight shell "style=paraiso-dark">}}
+...
+// 1. Import the plugin class.
+import com.microsoft.codepush.react.CodePush
+
+class MainApplication : Application(), ReactApplication {
+   override val reactNativeHost: ReactNativeHost =
+       object : DefaultReactNativeHost(this) {
+           override fun getPackages(): List<ReactPackage> = PackageList(this).packages.apply {
+             // Packages that cannot be autolinked yet can be added manually here, for example:
+             // add(MyReactNativePackage())
+            }
+
+           // 2. Override the getJSBundleFile method in order to let
+           // the CodePush runtime determine where to get the JS
+           // bundle location from on each app start
+           override fun getJSBundleFile(): String {
+             return CodePush.getJSBundleFile() 
+           }
+    };
+}
+
+{{< /highlight>}}
+
+For React Native **0.82** and above, make the following changes to `MainApplication.kt`:
+
+{{< highlight shell "style=paraiso-dark">}}
+...
+// 1. Import the plugin class.
+import com.microsoft.codepush.react.CodePush
+
+class MainApplication : Application(), ReactApplication {
+
+    override val reactHost: ReactHost by lazy {
+        getDefaultReactHost(
+        context = applicationContext,
+        packageList =
+            PackageList(this).packages.apply {
+            // Packages that cannot be autolinked yet can be added manually here, for example:
+            // add(MyReactNativePackage())
+            },
+        // 2. RN 0.82+ uses ReactHost config instead of overriding getJSBundleFile().
+        // Set jsBundleFilePath to CodePush so CodePush resolves the JS bundle path
+        // at startup (OTA update if available, fallback to bundled JS otherwise).
+        jsBundleFilePath = CodePush.getJSBundleFile(),
+        )
+    }
+}
+{{< /highlight>}}
+
+
+
+
+### Run a test OTA release
 
 To verify that CodePush is working end-to-end, you can publish a quick test release:
 {{< highlight bash "style=paraiso-dark">}}
