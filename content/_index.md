@@ -16,8 +16,8 @@ How to get started with Codemagic
 
 {{</links-group>}} 
 
-{{<links-group title="Codepush guides">}}
-OTA for React Native
+{{<links-group title="CodePush guides">}}
+OTA updates for React Native
 - [Concepts](../rn-codepush/concepts/)
 - [Setup](../rn-codepush/setup/)
 - [Troubleshooting](../rn-codepush/debugging-and-common-issues/) 
