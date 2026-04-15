@@ -23,9 +23,7 @@ Each project is listed below with its latest release and per-release download, i
 
 ### CLI
 
-You can view per-release metrics directly in the terminal without leaving your release workflow.
-
-`deployment ls` shows the latest release for each deployment along with its current install metrics:
+You can view per-release metrics directly in the terminal. `deployment ls` shows the latest release for each deployment along with its current install metrics:
 
 | **Metric** | **Description** |
 | --- | --- |
