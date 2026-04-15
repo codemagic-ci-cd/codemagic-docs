@@ -105,7 +105,30 @@ openssl rsa -in codepush_private.key -pubout -out codepush_public.key
 - The **public key** is embedded in the mobile app
   - Used to verify that updates were signed by a trusted source
   - Can be safely distributed with the application
+  - **iOS:** add `CodePushPublicKey` in `Info.plist` and string value of public key content. Example:
+  {{< highlight bash "style=paraiso-dark">}}
+  <plist version="1.0">
+  <dict>
+    <!-- ...other configs... -->
 
+    <key>CodePushPublicKey</key>
+        <string>-----BEGIN PUBLIC KEY-----
+MFwwDQYJKoZIhvcNAQEy.....==
+-----END PUBLIC KEY-----</string>
+
+    <!-- ...other configs... -->
+  </dict>
+</plist>
+{{< /highlight >}}
+  - **Android:** add `CodePushPublicKey` string item to `strings.xml`. Example:
+  {{< highlight bash "style=paraiso-dark">}}
+<resources>
+   <string name="app_name">my_app</string>
+   <string name="CodePushPublicKey">-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtPSR9lkGzZ4FR0lxF+ZA.......
+-----END PUBLIC KEY-----</string>
+</resources>
+{{< /highlight >}}
 
 ### Sign update packages
 

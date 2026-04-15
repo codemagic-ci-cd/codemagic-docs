@@ -248,7 +248,7 @@ And replace it with:
 CodePush.bundleURL()
 {{< /highlight>}}
 
-Your bundleUrl method should look like this:
+Your `bundleUrl` method should look like this:
 
 {{< highlight bash "style=paraiso-dark">}}
 override func bundleURL() -> URL? {
@@ -263,12 +263,12 @@ override func bundleURL() -> URL? {
 ### CodePush Android Setup (React Native)
 
 {{<notebox>}}
-Plugin installation and configuration for React Native 0.76 version and above (Android)
+Plugin installation and configuration for React Native 0.76 version and above
 {{</notebox>}}
 
 **1. Ensure Native Linking** 
 
-In `android/app/build.gradle`, add the `codepush.gradle` file as an additional build task definition to the end of the file:
+In `android/app/build.gradle`, add `codepush.gradle` as an additional build task definition to the end of the file:
 
 {{< highlight bash "style=paraiso-dark">}}
 apply from: "../../node_modules/@code-push-next/react-native-code-push/android/codepush.gradle"
@@ -276,7 +276,7 @@ apply from: "../../node_modules/@code-push-next/react-native-code-push/android/c
 
 **2. Update MainApplication**
 
-Open the `MainApplication` file and update its content as follows:
+Open the `MainApplication` file and update it as follows:
 
 {{< highlight shell "style=paraiso-dark">}}
 ...
@@ -302,7 +302,7 @@ class MainApplication : Application(), ReactApplication {
 
 {{< /highlight>}}
 
-For React Native **0.82** and above: update the `MainApplication.kt` as follows:
+For React Native **0.82** and above, make the following changes to `MainApplication.kt`:
 
 {{< highlight shell "style=paraiso-dark">}}
 ...
