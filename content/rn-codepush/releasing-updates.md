@@ -85,7 +85,7 @@ Think of this as a single pipeline with two decision points:
 
 CodePush delivers only JavaScript runtime assets and the files required by the application’s JS layer.
 
-A typical update includes:
+A typical update includes only changed files and assets, such as:
 
 * JavaScript bundle
 * Static assets (images, fonts, etc.)
@@ -94,6 +94,12 @@ A typical update includes:
 CodePush does not include native binaries such as **.apk** or **.ipa** files. OTA updates are limited to changes in the JavaScript layer only.
 
 Any modification involving native code (e.g. Swift, Objective-C, Java, Kotlin, or native modules) must be released through the App Store or Google Play.
+
+### Delta updates
+
+CodePush uses delta updates (file-level diffs) for each release and delivers only the files or assets that changed.
+
+This means users download a lightweight delta package instead of the full JavaScript bundle and all assets every time, resulting in faster updates and smaller downloads for users.
 
 ## Version control
 

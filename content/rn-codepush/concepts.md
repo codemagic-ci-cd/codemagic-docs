@@ -95,6 +95,11 @@ These updates modify only the JavaScript bundle, so they can be safely delivered
 
  These changes affect compiled native code, so they must go through the App Store or Play Store.
 
+### Delta updates
+
+CodePush uses delta updates (file-level diffs) for each release and delivers only the JavaScript files and assets that changed.
+
+Instead of redownloading a complete bundle and all static assets on every update, users receive a smaller delta package. This keeps OTA updates faster and reduces bandwidth usage.
 
 ## How the update flow works
 
