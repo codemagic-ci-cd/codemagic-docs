@@ -346,13 +346,6 @@ This single command:
 
 For the full release workflow, see [Releasing updates](/rn-codepush/releasing-updates/).
 
-✅ Best Practices
-* Use Environment Variables – Avoid hardcoding deployment keys.
-* Separate Staging and Production Keys – Always validate updates in Staging before promoting to Production.
-* Confirm Connectivity – After configuration, make sure the app can fetch updates from the server by testing a Staging release.
-
-Properly configuring the server URL and deployment keys ensures that CodePush can deliver OTA updates reliably and safely for each platform.
-
 ## Next steps
 
 After completing setup, use the following sections to continue:
