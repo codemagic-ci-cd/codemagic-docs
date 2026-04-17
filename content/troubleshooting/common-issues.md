@@ -231,7 +231,7 @@ User and Invitation emails do not match
 
 This can happen when the email address used for the invitation does not exactly match the email address used during login.
 
-{{<collapsible title="Solution" id="duplicate-cache-defined-solution" >}}
+{{<collapsible title="Solution" id="user-invitation-do-not-match-joining-team-solution" >}}
 ###### Solution
 The most common cause of this error is a mismatch in the invited email address, including differences in letter casing.
 
