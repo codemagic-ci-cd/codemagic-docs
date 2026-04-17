@@ -247,9 +247,10 @@ Invited: Test@example.com
 Logged in: test@example.com
 ```
 
-- Update the invitation email so it matches the login email address.
-- Ask the user to accept the updated invitation again.
+- If needed, revoke or cancel the incorrect invitation.
+- Send a new invitation to the exact email address the user uses to log in.
+- Ask the user to accept the new invitation.
 
-After correcting the email address, the user should be able to join the team successfully.
+After sending an invitation to the matching email address, the user should be able to join the team successfully.
 
 {{< /collapsible >}}
