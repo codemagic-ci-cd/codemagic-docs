@@ -111,7 +111,7 @@ Installed packages:
 - less `634.0`
 - node `20.12.2`
 - npm `10.5.0`
-- openssl `1.1.1.2100`
+- openssl `3.6.2`
 - powershell-core `7.4.1`
 - pyenv-win `3.1.1`
 - python `3.9.6`
@@ -121,7 +121,7 @@ Installed packages:
 - vcredist140 `14.38.33135`
 - vcredist2015 `14.0.24215.20170201`
 - vim `9.1.202`
-- visualcpp-build-tools `15.0.26228.20170424`
+- visualcpp-build-tools `17.14.29`
 - wget `1.21.4`
 - yarn `1.22.19`
 - zip `3.0.0`
