@@ -1,8 +1,8 @@
 ---
-title: Xcode 26.4.x (edge)
+title: Xcode 26.5.x
 aliases:
 
-weight: 91
+weight: 90
 ---
 
 Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
@@ -24,24 +24,10 @@ Mac Studio M4 Max available on request.
 
 ## Xcode versions
 
-- 26.4.1 (17E202) `/Applications/Xcode-26.4.app`, also selected when specifying `26.4` or `edge` in Xcode version settings
+- 26.5 (17F5022i) `/Applications/Xcode-26.5.app`
 
 ### Runtimes and Devices
 
-
-{{< collapsible title="iOS 26.3" >}}
-- iPad (A16)
-- iPad Air 11-inch (M4)
-- iPad Air 13-inch (M4)
-- iPad Pro 11-inch (M5)
-- iPad Pro 13-inch (M5)
-- iPad mini (A17 Pro)
-- iPhone 17
-- iPhone 17 Pro
-- iPhone 17 Pro Max
-- iPhone 17e
-- iPhone Air
-{{< /collapsible >}}
 
 {{< collapsible title="iOS 26.4" >}}
 - iPad (A16)
@@ -60,17 +46,31 @@ Mac Studio M4 Max available on request.
 - iPhone Air
 {{< /collapsible >}}
 
-{{< collapsible title="tvOS 26.4" >}}
+{{< collapsible title="iOS 26.5" >}}
+- iPad (A16)
+- iPad Air 11-inch (M4)
+- iPad Air 13-inch (M4)
+- iPad Pro 11-inch (M5)
+- iPad Pro 13-inch (M5)
+- iPad mini (A17 Pro)
+- iPhone 17
+- iPhone 17 Pro
+- iPhone 17 Pro Max
+- iPhone 17e
+- iPhone Air
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 26.5" >}}
 - Apple TV
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
 {{< /collapsible >}}
 
-{{< collapsible title="visionOS 26.4" >}}
+{{< collapsible title="visionOS 26.5" >}}
 - Apple Vision Pro
 {{< /collapsible >}}
 
-{{< collapsible title="watchOS 26.4" >}}
+{{< collapsible title="watchOS 26.5" >}}
 - Apple Watch SE 3 (40mm)
 - Apple Watch SE 3 (44mm)
 - Apple Watch Series 11 (42mm)
