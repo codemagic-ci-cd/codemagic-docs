@@ -10,6 +10,7 @@ This section covers tools and techniques for diagnosing problems with OTA update
 
 When an update does not install or behaves unexpectedly, the issue is usually caused by one of the following:
 
+- a native binary without the CodePush SDK (first-time rollout)
 - a configuration mismatch
 - a version targeting problem
 - an SDK integration issue
@@ -122,6 +123,26 @@ Most monitoring platforms provide documentation for integrating CodePush release
 ## Common update failures
 
 The following issues are common when releasing CodePush updates.
+
+### Native binary without the CodePush SDK
+
+OTA updates only install on native builds that already contain the CodePush SDK. If the SDK was recently added to the project but the store binary users have installed predates that change, `release-react` will publish successfully and the update will appear in the deployment history, but **no client will pick it up** — there is nothing on the device to check the server.
+
+Symptoms:
+
+- Release shows in `code-push deployment history <APP> <DEPLOYMENT>` with active installs staying at zero.
+- No `[CodePush]` log entries appear on device when you open the app, even with good network connectivity.
+- The issue affects all users, not a subset.
+
+Fix:
+
+1. Confirm the SDK is wired up in the React Native project (see [Setup](/rn-codepush/setup/#add-codepush-to-a-react-native-app)).
+2. Rebuild the app so the native binary includes the SDK, and install that build on the devices that should receive updates:
+   - **Staging:** a fresh dev or internal-distribution build on your test devices is enough; no store release needed.
+   - **Production:** publish to the App Store / Google Play and wait for users to update.
+3. Subsequent `release-react` calls against the matching deployment will then reach those devices over the air.
+
+This is a one-time gate per deployment when first adopting CodePush; after devices are on an SDK-enabled binary, the regular OTA flow applies. See [Concepts](/rn-codepush/concepts/#prerequisite-a-native-build-with-the-sdk) for the underlying reason.
 
 ### Wrong binary version targeting
 

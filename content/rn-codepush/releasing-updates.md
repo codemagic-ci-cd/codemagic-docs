@@ -17,13 +17,17 @@ CodePush updates are not managed through the Codemagic UI. All releases, promoti
 
 ## Overview
 
-After integrating the CodePush SDK into your React Native app as explained in the [previous sectio](http://localhost:1313/rn-codepush/setup/#add-codepush-to-a-react-native-app)n, you can ship updates without rebuilding or resubmitting your app to the App Store or Google Play.
+After integrating the CodePush SDK into your React Native app as explained in the [previous section](/rn-codepush/setup/#add-codepush-to-a-react-native-app), you can ship updates without rebuilding or resubmitting your app to the App Store or Google Play.
 
 CodePush delivers:
 * Updated JavaScript bundles
 * App assets (e.g. images, fonts)
 
 These updates are downloaded silently by users’ devices (depending on your install mode).
+
+{{<notebox>}}
+**Prerequisite:** OTA updates only install on native builds that already contain the CodePush SDK and the matching deployment key. For **Staging**, your test devices need an SDK-enabled build carrying the Staging key — usually a local debug or internal-distribution build; no store release required. For **Production**, end users must be on a store build that includes the SDK, so the first Production rollout of CodePush always requires an App Store / Google Play release and waiting for users to update. See [Setup](/rn-codepush/setup/) and [Concepts](/rn-codepush/concepts/#prerequisite-a-native-build-with-the-sdk).
+{{</notebox>}}
 
 ## Recommended Workflow
 
