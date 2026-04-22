@@ -95,6 +95,11 @@ These updates modify only the JavaScript bundle, so they can be safely delivered
 
  These changes affect compiled native code, so they must go through the App Store or Play Store.
 
+### Delta updates
+
+CodePush uses delta updates (file-level diffs) for each release and delivers only the JavaScript files and assets that changed.
+
+Instead of redownloading a complete bundle and all static assets on every update, users receive a smaller delta package. This keeps OTA updates faster and reduces bandwidth usage.
 
 ## How the update flow works
 
@@ -112,6 +117,21 @@ app launch
 The update replaces the previously installed JavaScript bundle while keeping the native application unchanged.
 
 If an update fails or causes the app to crash on startup before it is marked as successful, the client can automatically revert to the previous working bundle.
+
+### Prerequisite: a native build with the SDK
+
+Because CodePush relies on the client SDK to check the server, download bundles, and swap the JS layer at launch, **the SDK must already be present in the native binary running on each user's device**. A store build that does not include the SDK cannot install OTA updates — `release-react` will still publish the bundle, but no client will pick it up.
+
+The first time you add CodePush to an existing app, you therefore need to:
+
+1. Integrate the SDK in your React Native project (see [Setup](/rn-codepush/setup/)).
+2. Produce a native build that includes the SDK and the deployment key you want to target.
+3. Install that build on the devices you expect to receive updates — local dev machines or QA devices for **Staging**, App Store / Google Play for **Production**.
+4. Only then start shipping JS changes to that deployment as OTA updates.
+
+For Staging validation this usually just means running a fresh debug build on a test device; no store release is required. For Production, end users must actually update to the new store binary before they can receive anything CodePush publishes.
+
+After that, the usual pattern — occasional native releases for native changes, OTA releases for everything else — applies.
 
 ## Deployment model
 
