@@ -1,5 +1,5 @@
 ---
-title: Xcode 26.5.x
+title: Xcode 26.5.x (edge)
 aliases:
 
 weight: 90
@@ -24,7 +24,7 @@ Mac Studio M4 Max available on request.
 
 ## Xcode versions
 
-- 26.5 (17F5022i) `/Applications/Xcode-26.5.app`
+- 26.5 (17F5022i) `/Applications/Xcode-26.5.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
