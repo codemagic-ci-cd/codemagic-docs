@@ -24,7 +24,7 @@ Mac Studio M4 Max available on request.
 
 ## Xcode versions
 
-- 26.4.1 (17E202) `/Applications/Xcode-26.4.app`, also selected when specifying `26.4` or `edge` in Xcode version settings
+- 26.4.1 (17E202) `/Applications/Xcode-26.4.app`, also selected when specifying `26.4` or `latest` in Xcode version settings
 
 ### Runtimes and Devices
 
