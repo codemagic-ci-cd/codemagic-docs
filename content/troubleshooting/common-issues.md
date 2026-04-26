@@ -240,6 +240,7 @@ To resolve this:
 - Verify the email address the invitation was sent to.
 - Compare it with the email address used to log in.
 - Ensure both email addresses match exactly.
+- Casing is important, so even differences in uppercase and lowercase letters will cause a mismatch. 
 
 Example:
 ```
