@@ -74,7 +74,7 @@ CodePush updates this **JavaScript bundle and its assets**. As long as JS remain
 
 ## What can and cannot be updated
 
-✅ Can Be Updated via CodePush (OTA-safe):
+Can Be Updated via CodePush (OTA-safe):
 
 * Fixing JavaScript bugs
 * UI or layout adjustments
@@ -85,7 +85,7 @@ CodePush updates this **JavaScript bundle and its assets**. As long as JS remain
 
 These updates modify only the JavaScript bundle, so they can be safely delivered over the air. 
 
-❌ Require a New App Release
+Require a New App Release
 
 * Adding or modifying native modules
 * Upgrading React Native or native dependencies
