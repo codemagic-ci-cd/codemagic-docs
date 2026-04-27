@@ -20,6 +20,23 @@ These instructions are for React Native New Architecture projects. If your app i
 
 The same Codemagic server can be used for all of your apps.
 
+{{<notebox>}}
+### Teach your AI assistant (Optional)
+
+If you’re using an AI coding agent, give it the provided `skill.md` file to teach it how to use CodePush. That way, it can help you whenever you need it, without guessing or searching for information.
+
+The skill file includes:
+
+* Required code changes - knowledge about every file your app needs to add or modify.
+* CLI commands - the exact CodePush CLI commands and when to run each one.
+* Concepts and best practices - patterns for deployments, rollbacks, and release flow.
+* Guardrails - what it should not do or touch to use CodePush safely.
+
+Prompt it to write setup code, debug issues, or ship updates.
+
+[Download](#teach-your-ai-assistant-optional "codepush-skill-download")
+{{</notebox>}}
+
 ---
 
 ## Install and configure the CLI

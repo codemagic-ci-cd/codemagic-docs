@@ -182,6 +182,23 @@
                 font-size: 0.9em;
                 line-height: 22px;
             }
+            a[title='codepush-skill-download'] {
+                display: inline-block;
+                margin-top: 8px;
+                padding: 10px 16px;
+                border-radius: 8px;
+                border: 1px solid $grey-l;
+                background: white;
+                color: $black;
+                font-weight: 600;
+                text-decoration: none;
+                transition: background-color 160ms linear;
+
+                &:hover,
+                &:focus {
+                    background: $grey-bg;
+                }
+            }
         }
         .description {
             font-size: 22px;
