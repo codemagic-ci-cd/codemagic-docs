@@ -218,3 +218,40 @@ workflows:
 After removing duplicate cache paths, the build should complete successfully without the caching error.
 
 {{< /collapsible >}}
+
+
+### "User and Invitation emails do not match" error when joining a team
+
+###### Description
+A user may be able to log in successfully but fail to join a team with the following error:
+
+```
+User and Invitation emails do not match
+```
+
+This can happen when the email address used for the invitation does not exactly match the email address used during login.
+
+{{<collapsible title="Solution" id="user-invitation-email-mismatch-solution" >}}
+###### Solution
+The most common cause of this error is a mismatch in the invited email address, including differences in letter casing.
+
+To resolve this:
+
+- Verify the email address the invitation was sent to.
+- Compare it with the email address used to log in.
+- Ensure both email addresses match exactly.
+- Casing is important, so even differences in uppercase and lowercase letters will cause a mismatch. 
+
+Example:
+```
+Invited: Test@example.com
+Logged in: test@example.com
+```
+
+- If needed, revoke or cancel the incorrect invitation.
+- Send a new invitation to the exact email address the user uses to log in.
+- Ask the user to accept the new invitation.
+
+After sending an invitation to the matching email address, the user should be able to join the team successfully.
+
+{{< /collapsible >}}
