@@ -27,7 +27,7 @@ If you’re using an AI coding agent, give it the provided `skill.md` file to te
 
 The skill file includes:
 
-* Required code changes - knowledge about every file your app needs to add or modify.
+* Required code changes - knowledge about every file change needed in your app
 * CLI commands - the exact CodePush CLI commands and when to run each one.
 * Concepts and best practices - patterns for deployments, rollbacks, and release flow.
 * Guardrails - what it should not do or touch to use CodePush safely.
