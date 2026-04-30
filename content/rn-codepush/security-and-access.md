@@ -58,9 +58,9 @@ For configuring tokens in CI workflows, see [CI integration](/rn-codepush/ci-int
 
 ### Obtaining the access key
 
-Access keys are available for Pay-as-you-go subscriptions. To generate one, navigate to **OTA Updates > Manage Access Keys** in Codemagic and click **Generate key**. Enter an identifier for your key and select an expiration period. Once generated, the key is displayed only once — copy and store it securely before closing the dialog.
+Users with an active CodePush subscription can manage access keys in the Codemagic application.
 
-If you're looking to sign up for a fixed-price CodePush subscription, request access to CodePush [here](https://codemagic.io/contact-sales/).
+To generate an access key, navigate to **OTA Updates > Manage Access Keys** and click **Generate key**. Enter an identifier for your key and select an expiration period. Once generated, the key is displayed only once — copy and store it securely before closing the dialog.
 
 ### Revoking the access key
 
