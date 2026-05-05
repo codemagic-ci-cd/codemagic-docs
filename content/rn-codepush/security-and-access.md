@@ -58,13 +58,13 @@ For configuring tokens in CI workflows, see [CI integration](/rn-codepush/ci-int
 
 ### Obtaining the access key
 
-Users with an active CodePush subscription can manage access keys in the Codemagic application.
+Users with an active CodePush subscription can manage access keys in Codemagic.
 
-To generate an access key, navigate to **OTA Updates > Manage Access Keys** and click **Generate key**. Enter an identifier for your key and select an expiration period. Once generated, the key is displayed only once — copy and store it securely before closing the dialog.
+To generate an access key, navigate to **OTA Updates** in Codemagic and click **Manage Access Keys** to open a modal. Click **Generate key**, enter an identifier for your key, and select an expiration period. Once generated, the key is displayed only once — copy and store it securely before closing the dialog.
 
 ### Revoking the access key
 
-You can see your existing access keys in Codemagic by navigating to **OTA Updates > Manage Access Keys**. Click **Revoke access** next to the key you want to remove.
+You can see your existing access keys in Codemagic by navigating to **OTA Updates** and clicking **Manage Access Keys** to open a modal with available keys. Click **Revoke access** next to the key you want to remove.
 
 ## Signing OTA updates
 
