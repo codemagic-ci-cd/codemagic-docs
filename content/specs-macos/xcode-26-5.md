@@ -24,7 +24,7 @@ Mac Studio M4 Max available on request.
 
 ## Xcode versions
 
-- 26.5 (17F5022i) `/Applications/Xcode-26.5.app`, also selected when specifying `edge` in Xcode version settings
+- 26.5 (17F42) `/Applications/Xcode-26.5.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -115,11 +115,11 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 | **Version** | **Path** |
 |-------------|----------|
-| 26 | `/Library/Java/JavaVirtualMachines/zulu-26.jdk/Contents/Home` |
-| 21.0.10 | `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home` |
-| **17.0.18** (default) | `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` |
-| 11.0.30 | `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` |
-| 1.8.0_482 | `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home` |
+| 26.0.1 | `/Library/Java/JavaVirtualMachines/zulu-26.jdk/Contents/Home` |
+| 21.0.11 | `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home` |
+| **17.0.19** (default) | `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` |
+| 11.0.31 | `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` |
+| 1.8.0_492 | `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home` |
 | 1.7.0_352 | `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home` |
 
 
@@ -133,21 +133,21 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.34.32`
-- azure-cli `2.85.0`
+- aws `2.34.42`
+- azure-cli `2.86.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
 - curl `8.7.1`
 - ew-cli `1.2.2`
-- fastlane `2.233.0`
-- firebase `15.15.0`
-- gem `4.0.10`
-- gh `2.90.0`
-- git `2.53.0`
+- fastlane `2.233.1`
+- firebase `15.16.0`
+- gem `4.0.11`
+- gh `2.92.0`
+- git `2.54.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `5.1.7`
+- homebrew `5.1.9`
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.8.0`
@@ -155,7 +155,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - npm `11.12.1`
 - python `3.12.7`
 - python3 `3.12.7`
-- ruby `4.0.2`
+- ruby `4.0.3`
 - ssh `10.2p1`
 - sudo `1.9.17p2`
 - swiftgen `6.6.3`
