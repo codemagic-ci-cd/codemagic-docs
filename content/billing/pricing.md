@@ -4,7 +4,19 @@ description: An overview of Codemagic pricing
 weight: 2
 ---
 
-## CodePush Pricing
+## React Native CodePush
+
+React Native CodePush is available to teams via two subscription models: Pay-as-you-go (billed monthly per successful install) or Fixed-price plan (pay up-front per Monthly Active Users).
+
+### Pay-as-you-go
+
+This is a flexible, usage-based plan charged on the number of successful installs per month.
+
+You are charged $1 for every 2,500 installs (or fewer), with a minimum charge of $1.
+
+You are billed on the 1st of each month for the previous month's usage.
+
+### Fixed price
 
 CodePush (Over-the-Air updates) for React Native projects is priced as follows: 
 
@@ -27,8 +39,10 @@ CodePush (Over-the-Air updates) for React Native projects is priced as follows:
 | 5,000,000                   | $4,950              | $49,500              |
 | 10,000,000                  | $9,900              | $99,000              |
 
-## Pricing for Individuals
-### 1. Free plan
+## CI/CD
+
+### Pricing for Individuals
+#### 1. Free plan
 
 This plan is suitable for individuals working on hobby or indie projects. You can also use this plan for running a proof of concept.
 
@@ -38,7 +52,7 @@ You cannot invite collaborators to an individual plan.
 
 To start using Codemagic for free, [sign up here](https://codemagic.io/signup). 
 
-### 2. Buying Additional Minutes
+#### 2. Buying Additional Minutes
 
 You can enable billing on personal accounts and pay for any additional minutes you want to use. You will still have **500 free build minutes** on macOS M2 VM. To enable billing, proceed [here](https://codemagic.io/billing/user). 
 
@@ -54,9 +68,9 @@ Builds on Linux and Windows do not have free build minutes. The per-minute prici
 | macOS (M4) VM        | $0.114 / minute                    |
 | Linux X2 & Windows VMs          | $0.045 / minute                    |
 
-## Pricing for Teams
+### Pricing for Teams
 
-### 1. Pay-as-you-go
+#### 1. Pay-as-you-go
 
 For teams, all build minutes using macOS M2 VM, macOS M4 VM, Linux VM, and Windows VM are charged at the rates shown below.
 
@@ -76,7 +90,7 @@ Each additional concurrency is $49/month and you will be billed for each concurr
 
 Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M4 Max), Linux, and Windows instances.
 
-### 2. Fixed Annual Plans
+#### 2. Fixed Annual Plans
 
 The following optons are available for teams with different macOS machines:
 
@@ -163,7 +177,7 @@ To request this plan, please contact us [here](https://codemagic.io/pricing/#ent
 
 {{< /tabpane >}}
 
-## Burstable concurrencies
+### Burstable concurrencies
 
 Burstable concurrencies allow you to use more concurrencies than you otherwise would have available during peak times and pay **1/3** of the price for those concurrencies. If queue time is important for you, you can have a reserve of concurrencies available to use during high demand so you don’t build up a queue. Similarly if you’re making a big release that would otherwise take a long time you could use burstable concurrencies. 
 
@@ -175,7 +189,7 @@ To determine which concurrencies are bursted and which ones are not we divide bi
 
 If you subscribe to 20 concurrencies and consume 10 within the 95th percentile, then you pay full price for 10 and **1/3** of the price for the remaining 10.
 
-## Pricing for Enterprises
+### Pricing for Enterprises
 
 This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, **custom base images**, or other account management services. Enterprise plan pricing starts from $12k/year.
 
@@ -266,11 +280,11 @@ If you would like more information about our Enterprise plan, please contact us 
 
 {{< /tabpane >}}
 
-## Resellers
+### Resellers
 
 It's possible to resell the Codemagic Enterprise plan. Contact us [here](https://codemagic.io/pricing/#enterprise) for further details. 
 
-## Build history and artifact storage
+### Build history and artifact storage
 
 Build history and artifact retention periods depend on your account type and pricing plan. We retain your build records, logs, and artifacts stored in Codemagic for the applicable retention period, after which they are automatically deleted.
 
@@ -283,7 +297,7 @@ Build history and artifact retention periods depend on your account type and pri
 | Teams on Fixed Annual plan | 1 year | 
 | Enterprise plans | 1 year by default | 
 
-### Backing up build artifacts
+#### Backing up build artifacts
 
 If you need to support older versions of your application and need access to old versions of your `ipa`, `apk`, `dSYM`, and proguard mapping files to debug issues, then these should be downloaded and stored outside Codemagic. Once they have been deleted from Codemagic, they cannot be retrieved.
 
@@ -291,7 +305,7 @@ You can download build artifacts via the Codemagic UI or using the [Codemagic RE
 
 To keep copies of your future build artifacts, we advise you to set up publishing to external storage, see an example [here](../yaml-distributing/aws/).
 
-### Instance Types
+#### Instance Types
 
 Codemagic provides macOS, Windows, and Linux instance types.
 
