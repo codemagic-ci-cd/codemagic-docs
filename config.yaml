@@ -21,11 +21,33 @@ params:
 imaging:
     resampleFilter: linear
     quality: 90
+outputFormats:
+  MarkdownPage:
+    mediaType: text/markdown
+    baseName: index
+    isPlainText: true
+    notAlternative: true
+  LLMSTxt:
+    mediaType: text/plain
+    baseName: llms
+    isPlainText: true
+    notAlternative: true
+  LLMSFull:
+    mediaType: text/plain
+    baseName: llms-full
+    isPlainText: true
+    notAlternative: true
+
 outputs:
-    home:
-        - HTML
-        - RSS
-        - JSON
+  home:
+    - HTML
+    - RSS
+    - JSON
+    - LLMSTxt
+    - LLMSFull
+  page:
+    - HTML
+    - MarkdownPage
 buildDrafts: true
 defaultContentLanguage: en
 disable404: true
@@ -223,6 +245,9 @@ menu:
               hide: true
 
 mediaTypes:
+    text/markdown:
+        suffixes:
+            - md
     video/mp4:
         suffixes:
             - mp4
@@ -260,6 +285,12 @@ deployment:
         # rss
         - pattern: '^.+\\.xml$'
           contentType: 'application/rss+xml; charset=utf-8'
+          gzip: true
+        - pattern: '^.+\\.md$'
+          contentType: 'text/markdown; charset=utf-8'
+          gzip: true
+        - pattern: '^llms.*\\.txt$'
+          contentType: 'text/plain; charset=utf-8'
           gzip: true
 
 markup:
