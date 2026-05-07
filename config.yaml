@@ -37,7 +37,8 @@ outputFormats:
     baseName: llms-full
     isPlainText: true
     notAlternative: true
-
+uglyURLs:
+  markdownpage: true
 outputs:
   home:
     - HTML
