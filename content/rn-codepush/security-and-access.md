@@ -26,8 +26,6 @@ Access keys are typically used in two contexts:
 - developer machines running the CLI
 - CI systems that publish updates automatically
 
-The CLI authenticates using an access key generated manually by the Codemagic team. Request access [here](https://codemagic.io/contact-sales/).
-
 Example login:
 
 {{< highlight bash "style=paraiso-dark">}}
@@ -57,6 +55,16 @@ In this setup:
 This allows automated pipelines to publish updates without requiring an interactive login.
 
 For configuring tokens in CI workflows, see [CI integration](/rn-codepush/ci-integration/). For initial setup and CLI authentication, see [Setup](/rn-codepush/setup/).
+
+### Obtaining the access key
+
+Users with an active CodePush subscription can manage access keys in Codemagic.
+
+To generate an access key, navigate to **OTA Updates** in Codemagic and click **Manage Access Keys** to open a modal. Click **Generate key**, enter an identifier for your key, and select an expiration period. Once generated, the key is displayed only once — copy and store it securely before closing the dialog.
+
+### Revoking the access key
+
+You can see your existing access keys in Codemagic by navigating to **OTA Updates** and clicking **Manage Access Keys** to open a modal with available keys. Click **Revoke access** next to the key you want to remove.
 
 ## Signing OTA updates
 
