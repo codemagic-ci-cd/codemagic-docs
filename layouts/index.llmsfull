@@ -1,0 +1,16 @@
+{{- range .Site.RegularPages }}
+================================================================================
+source: {{ .Permalink }}
+title: {{ .Title }}
+{{ with .Params.description -}}
+description: {{ . }}
+{{ end -}}
+last_modified: {{ .Lastmod.Format "2006-01-02" }}
+================================================================================
+
+# {{ .Title }}
+{{ with .Params.description }}
+> {{ . }}
+{{ end }}
+{{ .RawContent }}
+{{ end -}}
