@@ -23,43 +23,44 @@ Each project is listed below with its latest release and per-release download, i
 
 ### CLI
 
-You can view per-release metrics directly in the terminal. `deployment ls` shows the latest release for each deployment along with its current install metrics:
+You can view per-release metrics directly in the terminal.
 
 | **Metric** | **Description** |
 | --- | --- |
-| Active | Users currently running this release |
-| Total | All successful installs since release |
+| Active | Number of devices currently running this release |
+| Total | Total successful installs of this release  |
 | Pending | Downloaded but not yet installed |
-| Rollbacks | Automatic client-side rollbacks |
+| Rollbacks | Number of automatic client-side rollbacks |
 
 Run the following command to list deployment metrics for an app:
 
 {{< highlight bash "style=paraiso-dark">}}
-code-push deployment ls MyApp-Android
+code-push deployment ls <app_name>
 {{< /highlight >}}
 
-`deployment history` shows the same metrics for all recent releases in a deployment, useful for comparing adoption across versions:
+The following command shows these metrics for all recent releases in a deployment, which is useful for comparing adoption across versions.
 
 {{< highlight bash "style=paraiso-dark">}}
-code-push deployment history MyApp-Android Production
+code-push deployment history <app_name> Production
 {{< /highlight >}}
 
 ### API
 
-The [REST API](https://codemagic.io/api/v3/schema#tag/over-the-air-updates/GET/api/v3/ota/deployments/{deployment_id}/releases) provides time-series usage data for integrating CodePush metrics into external dashboards or observability tooling.
+The REST API provides time-series usage data for integrating CodePush metrics into external dashboards or observability tooling.
 
 Per-deployment metrics are available for a configurable date range:
-
-| **Metric** | **Description** |
-| --- | --- |
-| download_count | Update downloads over the period |
-| deployment_succeeded_count | Successful installs over the period |
-| deployment_failed_count | Failed installs over the period |
 
 {{< highlight bash "style=paraiso-dark">}}
 curl 'https://codemagic.io/api/v3/ota/deployments/{deployment_id}/releases?page_size=30&page=1' \
   --header 'x-auth-token: YOUR_SECRET_TOKEN'
 {{< /highlight >}}
+
+| **Metric** | **Description** |
+| --- | --- |
+| download_count | Overall count |
+| deployment_succeeded_count | Successful installs over the period |
+| deployment_failed_count | Failed installs over the period |
+
 
 Team-level usage is also available, aggregating across all projects:
 
@@ -68,7 +69,7 @@ curl 'https://codemagic.io/api/v3/ota/{team_id}/usage?period_from=&period_to=' \
   --header 'x-auth-token: YOUR_SECRET_TOKEN'
 {{< /highlight >}}
 
-See the [REST API reference](/codemagic-rest-api/api-overview/) for the full endpoint list.
+See the [REST API reference](https://codemagic.io/api/v3/schema#tag/over-the-air-updates/GET/api/v3/ota/deployments/{deployment_id}/releases) for the full endpoint list.
 
 ## Deployment health
 
