@@ -4,39 +4,45 @@ description: Installation and usage metrics for OTA updates
 weight: 8
 ---
 
-Customers using a CodePush server managed by Codemagic get access to analytics about their monthly usage as well as detailed deployment metrics on the OTA Updates page.
+CodePush analytics are available via the dashboard or CLI so you can use the one suitable to your workflow.
 
-These metrics allow developers to:
+## Accessing your metrics
 
-- monitor update adoption
-- detect installation problems
-- evaluate rollout success
-- understand overall OTA usage
+### Dashboard
 
-Analytics are typically visible in the Codemagic **OTA Updates dashboard**.
+The Codemagic OTA Updates dashboard gives a visual overview of your team's OTA activity.
 
-These insights help teams decide when to proceed with a rollout, adjust or halt rollout using the CodePush CLI, or roll back—see [Production control](/rn-codepush/production-control/).
+The main page shows team-level totals for the current month:
 
-## Usage analytics
+- **Downloads** - total update downloads across all projects
+- **Installs** - total successful installs across all projects
 
-The main OTA Updates page gives an overview of your team's OTA usage across all projects (apps), grouped by month.
+It also includes a time-series chart of succeeded and failed installs, updated hourly.
 
-* **Downloads** - the total number of update downloads across all projects in a given month
-* **Installs** - the total number of successful update installs across all projects in a given month
+Each project is listed below with its latest release and per-release download, install, and failure counts. Clicking through to a project shows time-series charts for downloads, installs, and failures broken down by release version, with a configurable date range.
 
-Additionally, the page includes an installation chart showing the daily number of successful and failed installs, helping you understand when end users install updates and identify trends or potential issues.
+### CLI
 
-{{<notebox>}}
-**Note**: Data on the page is updated hourly.
-{{</notebox>}}
+You can view per-release metrics directly in the terminal.
 
-## Projects and release metrics
+| **Metric** | **Description** |
+| --- | --- |
+| Active | Number of devices currently running this release |
+| Total | Total successful installs of this release  |
+| Pending | Downloaded but not yet installed |
+| Rollbacks | Number of automatic client-side rollbacks |
 
-Your projects (apps) on the server are listed in the **Projects** section of the OTA Updates page. 
+Run the following command to list deployment metrics for an app:
 
-To view detailed metrics for a specific project and deployment channel, click the **arrow** icon next to the project and select the desired **Deployment channel** at the top of the page. 
+{{< highlight bash "style=paraiso-dark">}}
+code-push deployment ls <app_name>
+{{< /highlight >}}
 
-The page then lists all updates to the project for the selected deployment channel and shows the number of downloads, successful installs, and failed installs for each update. You can also select a time period at the top of the page to track adoption trends over time.
+The following command shows these metrics for all recent releases in a deployment, which is useful for comparing adoption across versions.
+
+{{< highlight bash "style=paraiso-dark">}}
+code-push deployment history <app_name> Production
+{{< /highlight >}}
 
 ## Deployment health
 
