@@ -4,7 +4,7 @@ description: Installation and usage metrics for OTA updates
 weight: 8
 ---
 
-CodePush analytics are available via the dashboard, CLI or API, so you can use the one suitable to your workflow.
+CodePush analytics are available via the dashboard or CLI so you can use the one suitable to your workflow.
 
 ## Accessing your metrics
 
@@ -43,33 +43,6 @@ The following command shows these metrics for all recent releases in a deploymen
 {{< highlight bash "style=paraiso-dark">}}
 code-push deployment history <app_name> Production
 {{< /highlight >}}
-
-### API
-
-The REST API provides time-series usage data for integrating CodePush metrics into external dashboards or observability tooling.
-
-Per-deployment metrics are available for a configurable date range:
-
-{{< highlight bash "style=paraiso-dark">}}
-curl 'https://codemagic.io/api/v3/ota/deployments/{deployment_id}/releases?page_size=30&page=1' \
-  --header 'x-auth-token: YOUR_SECRET_TOKEN'
-{{< /highlight >}}
-
-| **Metric** | **Description** |
-| --- | --- |
-| download_count | Overall count |
-| deployment_succeeded_count | Successful installs over the period |
-| deployment_failed_count | Failed installs over the period |
-
-
-Team-level usage is also available, aggregating across all projects:
-
-{{< highlight bash "style=paraiso-dark">}}
-curl 'https://codemagic.io/api/v3/ota/{team_id}/usage?period_from=&period_to=' \
-  --header 'x-auth-token: YOUR_SECRET_TOKEN'
-{{< /highlight >}}
-
-See the [REST API reference](https://codemagic.io/api/v3/schema#tag/over-the-air-updates/GET/api/v3/ota/deployments/{deployment_id}/releases) for the full endpoint list.
 
 ## Deployment health
 
