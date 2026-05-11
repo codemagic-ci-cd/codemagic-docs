@@ -276,7 +276,7 @@ If you are going to publish your app to App Store Connect or Google Play, each u
 
 ## OTA Updates with CodePush
 
-Our hosted CodePush service lets you publish OTA updates for React Native projects directly to users' devices, without going through the App Store or Google Play. Read the [concepts page](../rn-codepush/codepush-concepts/) for how it works, or the [setup page](../rn-codepush/setup-codepush/) to get started.
+Our hosted CodePush service lets you publish OTA updates for React Native projects directly to users' devices, without going through the App Store or Google Play. Read the [concepts page](../rn-codepush/concepts/) for how it works, or the [setup page](../rn-codepush/setup/) to get started.
 
 
 ## Conclusion
