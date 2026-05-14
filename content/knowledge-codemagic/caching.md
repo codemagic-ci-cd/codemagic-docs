@@ -111,3 +111,38 @@ Xcode build logs can be gathered as artifacts by setting the path to the logs in
 artifacts:
   - /tmp/xcodebuild_logs/*.log
 {{< /highlight >}}
+
+## Swift Package Manager caching
+
+Swift Package Manager (SPM) is Apple's official dependency manager for Swift projects. By caching SPM dependencies in your workflow, subsequent builds can reuse previously fetched packages rather than downloading them again, resulting in faster build times.
+
+You can cache the **global SPM cache** which is shared across all projects on the machine
+
+{{< highlight yaml "style=paraiso-dark">}}
+  cache:
+    cache_paths:
+      - ~/Library/Caches/org.swift.swiftpm 
+{{< /highlight >}}
+
+Alternatively, when building and exporting your `.ipa` with Codemagic's CLI tools you can cache **project level SPM dependencies** by setting the path to the `SourcePackages` directory as follows:
+
+{{< highlight yaml "style=paraiso-dark">}}
+  - name: Build ipa for distribution
+    script: | 
+      xcode-project build-ipa \
+        --project "$XCODE_PROJECT" \
+        --scheme "$XCODE_SCHEME" \
+        --archive-flags "-clonedSourcePackagesDirPath $CM_BUILD_DIR/SourcePackages"
+{{< /highlight >}}
+
+You can then set your cache paths as follows:
+
+{{< highlight yaml "style=paraiso-dark">}}
+  cache:
+    cache_paths:
+    - $CM_BUILD_DIR/SourcePackages
+{{< /highlight >}}
+
+
+
+  
