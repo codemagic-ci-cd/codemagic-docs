@@ -124,7 +124,7 @@ You can cache the **global SPM cache** which is shared across all projects on th
       - ~/Library/Caches/org.swift.swiftpm 
 {{< /highlight >}}
 
-Alternatively, When building and exporting your `.ipa` with Codemagic's CLI tools you can cache **project level SPM dependencies** by setting the path to the `SourcePackages` directory as follows:
+Alternatively, when building and exporting your `.ipa` with Codemagic's CLI tools you can cache **project level SPM dependencies** by setting the path to the `SourcePackages` directory as follows:
 
 {{< highlight yaml "style=paraiso-dark">}}
   - name: Build ipa for distribution
