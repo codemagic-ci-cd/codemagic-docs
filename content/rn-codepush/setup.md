@@ -176,7 +176,45 @@ function App() {
 export default codePush(App);
 {{< /highlight >}}
 
-This enables the SDK to automatically check for updates on app start (or based on your chosen update strategy).
+This enables the SDK to automatically check for updates on app start (or based on your chosen update strategy). By default, CodePush looks for updates each time the app launches. When an update is found, it downloads it quietly in the background and applies it the next time the app restarts, whether triggered by the user or the operating system. If you want your app to detect updates faster, you can configure it to sync with the CodePush server whenever the app returns from the background:
+
+{{< highlight bash "style=paraiso-dark">}}
+let codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+};
+
+class MyApp extends Component {}
+
+MyApp = codePush(codePushOptions)(App);
+{{< /highlight >}}
+
+Alternatively, if you need more precise control over when update checks occur—such as after a button tap or at scheduled intervals—you can invoke CodePush.sync() whenever needed with your preferred SyncOptions. You can also disable CodePush’s automatic update checks by setting the checkFrequency to manual:
+
+{{< highlight bash "style=paraiso-dark">}}
+let codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
+
+class MyApp extends Component {
+  onButtonPress() {
+    codePush.sync({
+      updateDialog: true,
+      installMode: codePush.InstallMode.IMMEDIATE,
+    });
+  }
+
+  render() {
+    return (
+      <View>
+        <TouchableOpacity onPress={this.onButtonPress}>
+          <Text>Check for updates</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+MyApp = codePush(codePushOptions)(App);
+
+{{< /highlight >}}
 
 ### CodePush iOS Setup (React Native)
 
@@ -345,13 +383,6 @@ This single command:
 * Releases it to the default deployment (usually Staging, if another deployment channel is needed, you can manage it by adding `-d <deployment_name>` to the command above)
 
 For the full release workflow, see [Releasing updates](/rn-codepush/releasing-updates/).
-
-✅ Best Practices
-* Use Environment Variables – Avoid hardcoding deployment keys.
-* Separate Staging and Production Keys – Always validate updates in Staging before promoting to Production.
-* Confirm Connectivity – After configuration, make sure the app can fetch updates from the server by testing a Staging release.
-
-Properly configuring the server URL and deployment keys ensures that CodePush can deliver OTA updates reliably and safely for each platform.
 
 ## Next steps
 
