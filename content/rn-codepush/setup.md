@@ -42,10 +42,16 @@ This command prints the installed CLI version. If the installation was successfu
 
 The CodePush CLI authenticates using access keys provided by Codemagic. Read more about how to obtain the access key [here](./security-and-access/#obtaining-the-access-key).
 
-To log in from the CLI:
+To log in from the CLI, you can either provide the access token during the login process:
 
 {{< highlight bash "style=paraiso-dark">}}
-code-push login "https://codepush.pro/" --access-key $ACCESS_TOKEN
+code-push login --access-key $ACCESS_TOKEN
+{{< /highlight >}}
+
+Alternatively, you can attach it when prompted by the following command:
+
+{{< highlight bash "style=paraiso-dark">}}
+code-push login
 {{< /highlight >}}
 
 This command authenticates the CLI directly using the provided access token. Once authenticated, the CLI can create apps, manage deployments, and publish updates.
