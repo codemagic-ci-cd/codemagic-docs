@@ -17,6 +17,8 @@ When an update does not install or behaves unexpectedly, the issue is usually ca
 
 The tools below help identify where the failure occurs.
 
+**Optional:** If you use an AI coding assistant, the [Codemagic CodePush Skill](/rn-codepush/setup/#teach-your-ai-assistant-to-use-codepush-optional) will give your assistant knowledge about CodePush setup and troubleshooting.
+
 ---
 
 ## Debugging OTA updates

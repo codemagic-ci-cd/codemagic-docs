@@ -106,16 +106,6 @@ const copyLinkFromTitles = (e) => {
     }
 }
 
-const trackCodePushSkillDownload = (e) => {
-    const target = e.target.closest('a[title="codepush-skill-download"]')
-    if (!target) return
-
-    e.preventDefault()
-    if (typeof window.plausible === 'function') {
-        window.plausible('CodePush Skill Download')
-    }
-}
-
 // Define shared data for sticky elements
 const getDataForSticky = () => {
     const article = document.querySelector('[data-js-article]')
@@ -383,7 +373,6 @@ if (showToc) {
 
 // On click
 document.addEventListener('click', (e) => {
-    trackCodePushSkillDownload(e)
     hashLinkClick(e)
     handleDocsToggle(e)
     changePreference(e.target)
