@@ -20,6 +20,17 @@ These instructions are for React Native New Architecture projects. If your app i
 
 The same Codemagic server can be used for all of your apps.
 
+{{<notebox>}}
+### Teach your AI assistant to use CodePush (Optional)
+
+Codemagic publishes a **Codemagic CodePush** agent skill for AI coding assistants. It gives your assistant the knowledge needed to configure your app, troubleshoot issues and use the CLI.
+
+Run the following in your terminal to install the skill. You will be asked which agents you use; the installer configures them accordingly.
+
+`npx skills add https://github.com/codemagic-ci-cd/codemagic-skills/tree/main/skills/codemagic-codepush`
+
+{{</notebox>}}
+
 ---
 
 ## Install and configure the CLI
@@ -42,10 +53,16 @@ This command prints the installed CLI version. If the installation was successfu
 
 The CodePush CLI authenticates using access keys provided by Codemagic. Read more about how to obtain the access key [here](./security-and-access/#obtaining-the-access-key).
 
-To log in from the CLI:
+To log in from the CLI, you can either provide the access token during the login process:
 
 {{< highlight bash "style=paraiso-dark">}}
-code-push login "https://codepush.pro/" --access-key $ACCESS_TOKEN
+code-push login --access-key $ACCESS_TOKEN
+{{< /highlight >}}
+
+Alternatively, you can attach it when prompted by the following command:
+
+{{< highlight bash "style=paraiso-dark">}}
+code-push login
 {{< /highlight >}}
 
 This command authenticates the CLI directly using the provided access token. Once authenticated, the CLI can create apps, manage deployments, and publish updates.
