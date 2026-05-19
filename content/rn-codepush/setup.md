@@ -14,11 +14,22 @@ This section prepares a project to use CodePush with Codemagic. After completing
 - the CLI installed and authenticated
 - a React Native app configured to receive OTA updates
 
-Codemagic hosts the CodePush server and developers interact with it using [access tokens](#get-an-access-token) and the CodePush CLI. If you want to learn about how OTA updates work, check out the [concepts page](https://docs.codemagic.io/rn-codepush/concepts/).
+Codemagic hosts the CodePush server and developers interact with it using [access keys](#authenticate-the-cli) and the CodePush CLI. If you want to learn about how OTA updates work, check out the [concepts page](https://docs.codemagic.io/rn-codepush/concepts/).
 
 These instructions are for React Native New Architecture projects. If your app is already configured, skip to setting up [deployment keys](#add-codepush-to-a-react-native-app) and CI sections to verify configuration.
 
 The same Codemagic server can be used for all of your apps.
+
+{{<notebox>}}
+### Teach your AI assistant to use CodePush (Optional)
+
+Codemagic publishes a **Codemagic CodePush** agent skill for AI coding assistants. It gives your assistant the knowledge needed to configure your app, troubleshoot issues and use the CLI.
+
+Run the following in your terminal to install the skill. You will be asked which agents you use; the installer configures them accordingly.
+
+`npx skills add https://github.com/codemagic-ci-cd/codemagic-skills/tree/main/skills/codemagic-codepush`
+
+{{</notebox>}}
 
 ---
 
@@ -38,14 +49,20 @@ code-push --version
 
 This command prints the installed CLI version. If the installation was successful, you will see a version number (e.g., x.x.x). If the command is not found, it usually means the CLI was not installed correctly.
 
-## Get an access token
+## Authenticate the CLI
 
-The CodePush CLI authenticates using access tokens provided by the Codemagic team. Request a token [here](https://codemagic.io/contact-sales/).
+The CodePush CLI authenticates using access keys provided by Codemagic. Read more about how to obtain the access key [here](./security-and-access/#obtaining-the-access-key).
 
-To log in from the CLI:
+To log in from the CLI, you can either provide the access token during the login process:
 
 {{< highlight bash "style=paraiso-dark">}}
-code-push login "https://codepush.pro/" --access-key $ACCESS_TOKEN
+code-push login --access-key $ACCESS_TOKEN
+{{< /highlight >}}
+
+Alternatively, you can attach it when prompted by the following command:
+
+{{< highlight bash "style=paraiso-dark">}}
+code-push login
 {{< /highlight >}}
 
 This command authenticates the CLI directly using the provided access token. Once authenticated, the CLI can create apps, manage deployments, and publish updates.
@@ -176,7 +193,45 @@ function App() {
 export default codePush(App);
 {{< /highlight >}}
 
-This enables the SDK to automatically check for updates on app start (or based on your chosen update strategy).
+This enables the SDK to automatically check for updates on app start (or based on your chosen update strategy). By default, CodePush looks for updates each time the app launches. When an update is found, it downloads it quietly in the background and applies it the next time the app restarts, whether triggered by the user or the operating system. If you want your app to detect updates faster, you can configure it to sync with the CodePush server whenever the app returns from the background:
+
+{{< highlight bash "style=paraiso-dark">}}
+let codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+};
+
+class MyApp extends Component {}
+
+MyApp = codePush(codePushOptions)(App);
+{{< /highlight >}}
+
+Alternatively, if you need more precise control over when update checks occur—such as after a button tap or at scheduled intervals—you can invoke CodePush.sync() whenever needed with your preferred SyncOptions. You can also disable CodePush’s automatic update checks by setting the checkFrequency to manual:
+
+{{< highlight bash "style=paraiso-dark">}}
+let codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
+
+class MyApp extends Component {
+  onButtonPress() {
+    codePush.sync({
+      updateDialog: true,
+      installMode: codePush.InstallMode.IMMEDIATE,
+    });
+  }
+
+  render() {
+    return (
+      <View>
+        <TouchableOpacity onPress={this.onButtonPress}>
+          <Text>Check for updates</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+MyApp = codePush(codePushOptions)(App);
+
+{{< /highlight >}}
 
 ### CodePush iOS Setup (React Native)
 
@@ -345,13 +400,6 @@ This single command:
 * Releases it to the default deployment (usually Staging, if another deployment channel is needed, you can manage it by adding `-d <deployment_name>` to the command above)
 
 For the full release workflow, see [Releasing updates](/rn-codepush/releasing-updates/).
-
-✅ Best Practices
-* Use Environment Variables – Avoid hardcoding deployment keys.
-* Separate Staging and Production Keys – Always validate updates in Staging before promoting to Production.
-* Confirm Connectivity – After configuration, make sure the app can fetch updates from the server by testing a Staging release.
-
-Properly configuring the server URL and deployment keys ensures that CodePush can deliver OTA updates reliably and safely for each platform.
 
 ## Next steps
 

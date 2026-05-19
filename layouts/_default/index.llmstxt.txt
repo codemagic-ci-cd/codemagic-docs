@@ -1,0 +1,21 @@
+# Codemagic Docs
+
+> Codemagic is a CI/CD platform for building, testing, signing, and publishing
+> Android, iOS, Flutter, and React Native mobile apps. Pipelines are configured
+> via a codemagic.yaml file committed to your repository.
+>
+> In addition to CI/CD, Codemagic offers CodePush: a separate Over-the-Air (OTA)
+> update service specifically for React Native. CodePush allows developers to deploy
+> instant JavaScript and asset updates directly to users, bypassing the standard app
+> store review process for non-native changes.
+
+## Optional
+
+- [Complete documentation]({{ absURL "llms-full.txt" }}): Every documentation page concatenated into a single file for full-context retrieval
+
+## Documentation
+{{ range .Site.RegularPages.GroupBy "Section" }}
+### {{ .Key }}
+{{ range .Pages }}
+- [{{ .Title }}]({{ .Permalink | strings.TrimSuffix "/" }}.md){{ with .Params.description }}: {{ . }}{{ end }}
+{{ end }}{{ end }}
