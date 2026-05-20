@@ -96,7 +96,7 @@
 {{- if in $processedContent "$$$" -}}
   {{- /* Strip out the $$$variable-name$$$ formatting, leaving only the value */ -}}
   {{- /* Matches: $$$id$$$value$$$ -> value */ -}}
-  {{- $processedContent = replaceRE `\$\$\$[a-zA-Z0-9_-]+\$\$\$(.*?)\$\$$` "$1" $processedContent -}}
+  {{- $processedContent = replaceRE `\$\$\$[a-zA-Z0-9_-]+\$\$\$(.*?)\$\$\$` "$1" $processedContent -}}
 {{- end -}}
 
 
