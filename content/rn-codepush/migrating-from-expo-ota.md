@@ -37,7 +37,7 @@ Before starting the migration, it helps to understand how concepts translate bet
 | `updates.url` in `app.json` | `CodePushServerURL` in `Info.plist` / `strings.xml` | The update server endpoint |
 | EAS access token | CodePush access token | Used for CLI authentication |
 | `eas update --branch ...` promote | `code-push promote MyApp Staging Production` | Promotes a validated update to production |
-| Rollout (EAS doesn't have native %) | `--rollout 25` on `release-react` or `patch` | CodePush supports percentage-based rollouts |
+| `--rollout-percentage=10` | `--rollout 25` on `release-react` or `patch` | Specifies a percentage of users that should receive a new update |
 
 ---
 
