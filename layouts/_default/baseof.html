@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        {{ .Render "head" }}    
+        {{ .Render "head" }}  
+        {{- with .OutputFormats.Get "MarkdownPage" }}
+  <link rel="alternate" type="text/markdown" href="{{ .Permalink }}" title="{{ $.Title }} Markdown" />
+{{- end }}  
     </head>
     <body class="page page--home">
         {{ partial "header" . }}

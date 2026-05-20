@@ -24,9 +24,10 @@ imaging:
 outputFormats:
   MarkdownPage:
     mediaType: text/markdown
-    baseName: index
+    isHTML: false
     isPlainText: true
-    notAlternative: true
+    notAlternative: false
+    ugly: true
   LLMSTxt:
     mediaType: text/plain
     baseName: llms
