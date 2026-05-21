@@ -208,7 +208,7 @@ async checkForUpdatesInteractive() {
   await codePush.sync(
     {
       updateDialog: {
-        title: 'Update Available',
+        updateTitle: 'Update Available',
         optionalUpdateMessage: 'A new version is available. Install now?',
         optionalInstallButtonLabel: 'Install',
         optionalIgnoreButtonLabel: 'Later',
