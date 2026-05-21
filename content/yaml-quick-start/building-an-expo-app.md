@@ -190,6 +190,37 @@ scripts:
     script: | 
       echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
 
+  # --- ANDROID SIGNING ---
+  # expo prebuild --clean regenerates android/app/build.gradle on every build,
+  # so the signingConfigs block does not exist in the freshly generated file.
+  # This step appends a second android {} block to the end of build.gradle.
+  # Gradle's Groovy DSL merges multiple declarations of the same block, so this
+  # cleanly adds signingConfigs.release and wires buildTypes.release to use it,
+  # without modifying any existing content. The cat heredoc approach works
+  # identically on macOS (BSD) and Linux runners.
+  - name: Configure Android release signing
+    script: | 
+      cat << 'EOF' >> "$CM_BUILD_DIR/android/app/build.gradle"
+
+      android {
+          signingConfigs {
+              release {
+                  if (System.getenv("CI")) {
+                      storeFile file(System.getenv("CM_KEYSTORE_PATH"))
+                      storePassword System.getenv("CM_KEYSTORE_PASSWORD")
+                      keyAlias System.getenv("CM_KEY_ALIAS")
+                      keyPassword System.getenv("CM_KEY_PASSWORD")
+                  }
+              }
+          }
+          buildTypes {
+              release {
+                  signingConfig signingConfigs.release
+              }
+          }
+      }
+      EOF
+
   # --- BUILD ---
   - name: Build Android release bundle
     script: | 
@@ -210,6 +241,10 @@ scripts:
 artifacts:
   - android/app/build/outputs/**/*.aab
 {{< /highlight >}}
+
+{{<notebox>}}
+**Note:** The signing step above appends a second `android {}` block to the generated `build.gradle`. Gradle's Groovy DSL merges multiple declarations of the same configuration block, so this is safe and does not duplicate or override existing settings. If your project generates a Kotlin DSL `build.gradle.kts` file instead, this approach will not work — use an [Expo config plugin](https://docs.expo.dev/config-plugins/introduction/) to add the `signingConfigs` block declaratively as part of prebuild.
+{{</notebox>}}
 
 {{< /tab >}}
 {{< tab header="iOS" >}}
@@ -349,6 +384,33 @@ workflows:
       - name: Set Android SDK location
         script: | 
           echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/android/local.properties"
+
+      # --- ANDROID SIGNING ---
+      # Appends a second android {} block to the generated build.gradle.
+      # Gradle merges multiple declarations of the same block, so signingConfigs
+      # and buildTypes.release are added cleanly without touching existing content.
+      - name: Configure Android release signing
+        script: | 
+          cat << 'EOF' >> "$CM_BUILD_DIR/android/app/build.gradle"
+
+          android {
+              signingConfigs {
+                  release {
+                      if (System.getenv("CI")) {
+                          storeFile file(System.getenv("CM_KEYSTORE_PATH"))
+                          storePassword System.getenv("CM_KEYSTORE_PASSWORD")
+                          keyAlias System.getenv("CM_KEY_ALIAS")
+                          keyPassword System.getenv("CM_KEY_PASSWORD")
+                      }
+                  }
+              }
+              buildTypes {
+                  release {
+                      signingConfig signingConfigs.release
+                  }
+              }
+          }
+          EOF
 
       # --- BUILD ---
       # Fetches the latest version code from Google Play and increments it.
@@ -520,6 +582,15 @@ Expo prebuild names the generated scheme after the `name` field in `app.json`, n
       "$APP_STORE_APPLE_ID" 2>/dev/null || echo "0")
     agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
 {{< /highlight >}}
+
+**.`/gradlew bundleRelease `produces an unsigned or debug-signed bundle**
+
+This happens because `expo prebuild --clean` regenerates `android/app/build.gradle` on every CI run, and the freshly generated file has no `signingConfigs.release` block. The `android_signing` block in `codemagic.yaml` places the keystore and `CM_KEYSTORE_*` variables on the machine, but Gradle will not use them unless `build.gradle` is explicitly wired to do so. Make sure the "Configure Android release signing" step from this guide runs between `expo prebuild `and `./gradlew bundleRelease`.
+
+
+**The signing patch step fails on a Kotlin DSL project** `(build.gradle.kts)`
+
+The `cat` approach in this guide targets Groovy DSL `build.gradle`. If your project generates a `build.gradle.kts` file, appending a Groovy block will cause a parse error. In that case, write an [Expo config plugin](https://docs.expo.dev/config-plugins/introduction/) that modifies `build.gradle.kts` declaratively. Config plugins run as part of `expo prebuild` and their output persists in the generated file, making them the cleanest solution for any native modification that must survive a clean prebuild.
 
 **Native module not found at runtime after prebuild**
 
