@@ -11,11 +11,17 @@
 
 ## Optional
 
-- [Complete documentation]({{ absURL "llms-full.txt" }}): Every documentation page concatenated into a single file for full-context retrieval
+- [Complete documentation]({{ "llms-full.txt" | absURL }}): Every documentation page concatenated into a single file for full-context retrieval
 
 ## Documentation
-{{ range .Site.RegularPages.GroupBy "Section" }}
-### {{ .Key }}
-{{ range .Pages }}
+
+{{- /* 1. Filter out pages in the partials folder upfront */ -}}
+{{- $validPages := where .Site.RegularPages "Section" "ne" "partials" -}}
+
+{{- /* 2. Group only the clean pages by section */ -}}
+{{- range $validPages.GroupBy "Section" }}
+### {{ .Key | humanize | title }}
+{{ range .Pages -}}
 - [{{ .Title }}]({{ .Permalink | strings.TrimSuffix "/" }}.md){{ with .Params.description }}: {{ . }}{{ end }}
-{{ end }}{{ end }}
+{{ end }}
+{{ end -}}
