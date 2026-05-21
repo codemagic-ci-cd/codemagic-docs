@@ -14,7 +14,7 @@ This guide walks you through integrating Codemagic CodePush into an Ionic Capaci
 
 - Ionic Capacitor project (Capacitor 4 or later)
 - Node.js 18+
-- A Codemagic account with CodePush access — [contact the Codemagic team](https://codemagic.io/contact-sales/) to get an access token
+- A Codemagic account with CodePush access
 - The Codemagic CodePush CLI:
 
 {{< highlight bash "style=paraiso-dark">}}
@@ -153,22 +153,6 @@ Run `npx cap sync` after any change to `capacitor.config.ts` to propagate the va
 For production builds, replace the Staging keys with your Production deployment keys. A common CI pattern is to generate the config file at build time and inject the appropriate key from an environment variable.
 {{</notebox>}}
 
-If your `src/index.html` includes a Content Security Policy meta tag, add `https://codepush.pro` to `default-src`:
-
-{{< highlight html "style=paraiso-dark">}}
-<meta
-  http-equiv="Content-Security-Policy"
-  content="default-src https://codepush.pro 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"
-/>
-{{< /highlight>}}
-
-Recent Ionic starters do not include a CSP meta tag. If yours does not, add the above or alternatively add to `capacitor.config.ts`:
-
-{{< highlight typescript "style=paraiso-dark">}}
-server: {
-  allowNavigation: ['codepush.pro']
-}
-{{< /highlight>}}
 
 ---
 
