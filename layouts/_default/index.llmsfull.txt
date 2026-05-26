@@ -12,5 +12,6 @@ last_modified: {{ .Lastmod.Format "2006-01-02" }}
 {{ with .Params.description }}
 > {{ . }}
 {{ end }}
-{{ .RawContent }}
+{{ partial "clean-markdown.html" . }}
+
 {{ end -}}

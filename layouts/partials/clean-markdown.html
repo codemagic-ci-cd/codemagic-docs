@@ -1,0 +1,95 @@
+{{- $content := .RawContent -}}
+
+{{- /* Stage 1: Expand Nested Includes (Recursive) */ -}}
+{{- $.Scratch.Set "content" $content -}}
+{{- range seq 10 -}}
+  {{- $currentContent := $.Scratch.Get "content" -}}
+  {{- if in $currentContent "{{< include \"" -}}
+    {{- $chunks := split $currentContent "{{< include \"" -}}
+    {{- $.Scratch.Set "finalContent" (index $chunks 0) -}}
+    {{- range $idx, $chunk := $chunks -}}
+      {{- if gt $idx 0 -}}
+        {{- $parts := split $chunk "\" >}}" -}}
+        {{- $path := index $parts 0 -}}
+        {{- $restOfText := index $parts 1 -}}
+        {{- $includePage := $.Site.GetPage $path -}}
+        {{- $injectedContent := "" -}}
+        {{- if $includePage -}}
+          {{- $injectedContent = $includePage.RawContent -}}
+        {{- else -}}
+          {{- $cleanPath := replace $path "/partials/" "" -}}
+          {{- if templates.Exists (printf "partials/%s" $cleanPath) -}}
+            {{- $injectedContent = partial $cleanPath $ -}}
+          {{- end -}}
+        {{- end -}}
+        {{- $runningContent := $.Scratch.Get "finalContent" -}}
+        {{- $.Scratch.Set "finalContent" (printf "%s%s%s" $runningContent $injectedContent $restOfText) -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $.Scratch.Set "content" ($.Scratch.Get "finalContent") -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $processedContent := $.Scratch.Get "content" -}}
+
+{{- /* Stage 2: Flatten Tabs & Clean Wrapper Tags */ -}}
+{{- if or (in $processedContent "tab header=\"") (replaceRE `.*tab header=.*` "" $processedContent | ne $processedContent) -}}
+  {{- $processedContent = replaceRE `\{\{\s*[<%]\s*tab\s+header\s*=\s*\"` "{{< tab header=\"" $processedContent -}}
+  {{- $tabChunks := split $processedContent "{{< tab header=\"" -}}
+  {{- $.Scratch.Set "flattenedTabs" (index $tabChunks 0) -}}
+  {{- range $idx, $chunk := $tabChunks -}}
+    {{- if gt $idx 0 -}}
+      {{- $parts := split $chunk "\" >}}" -}}
+      {{- if in $chunk "\" %}}" -}}
+        {{- $parts = split $chunk "\" %}}" -}}
+      {{- end -}}
+      {{- $headerName := index $parts 0 -}}
+      {{- $tabBody := index $parts 1 -}}
+      {{- $runningTabs := $.Scratch.Get "flattenedTabs" -}}
+      {{- $.Scratch.Set "flattenedTabs" (printf "%s\n\n### Option: %s\n\n%s" $runningTabs $headerName $tabBody) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $processedContent = $.Scratch.Get "flattenedTabs" -}}
+{{- end -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/?tabpane\s*[>%]\s*\}\}` "" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/?markdown\s*[>%]\s*\}\}` "" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/tab\s*[>%]\s*\}\}` "" $processedContent -}}
+
+{{- /* Stage 3: Convert Highlight & Clickable/Editable Variants to Backticks */ -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*highlight(?:-editable|-clickable)?\s+([a-zA-Z0-9_-]+)[^>%]*[>%]\s*\}\}` "\n```$1\n" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*highlight(?:-editable|-clickable)?\s+[^>%]*[>%]\s*\}\}` "\n```\n" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/?\s*highlight(?:-editable|-clickable)?\s*[>%]\s*\}\}` "{{</closeblock>}}" $processedContent -}}
+{{- $processedContent = replace $processedContent "{{</closeblock>}}" "\n```\n" -}}
+
+{{- /* Stage 4: Strip $$$ Variables from Code Blocks */ -}}
+{{- if in $processedContent "$$$" -}}
+  {{- $processedContent = replaceRE `\$\App-Id\$\$\$(.*?)\$\$\$` "$1" $processedContent -}}
+  {{- /* Fallback using the corrected regex pattern we just fixed */ -}}
+  {{- $processedContent = replaceRE `\$\$\$[a-zA-Z0-9_-]+\$\$\$(.*?)\$\$\$` "$1" $processedContent -}}
+{{- end -}}
+
+{{- /* Stage 5: Convert Noteboxes to Blockquotes */ -}}
+{{- if in $processedContent "notebox" -}}
+  {{- $processedContent = replaceRE `\{\{\s*[<%]\s*notebox\s*[>%]\s*\}\}` "{{<notebox>}}" $processedContent -}}
+  {{- $processedContent = replaceRE `\{\{\s*[<%]\s*/notebox\s*[>%]\s*\}\}` "{{</notebox>}}" $processedContent -}}
+  {{- $noteChunks := split $processedContent "{{<notebox>}}" -}}
+  {{- $.Scratch.Set "cleanNotes" (index $noteChunks 0) -}}
+  {{- range $idx, $chunk := $noteChunks -}}
+    {{- if gt $idx 0 -}}
+      {{- $parts := split $chunk "{{</notebox>}}" -}}
+      {{- $noteBody := index $parts 0 -}}
+      {{- $restOfText := index $parts 1 -}}
+      {{- $blockquoteLines := slice -}}
+      {{- range (split $noteBody "\n") -}}
+         {{- $blockquoteLines = $blockquoteLines | append (printf "> %s" .) -}}
+      {{- end -}}
+      {{- $formattedNote := delimit $blockquoteLines "\n" -}}
+      {{- $runningNotes := $.Scratch.Get "cleanNotes" -}}
+      {{- $.Scratch.Set "cleanNotes" (printf "%s\n\n%s\n\n%s" $runningNotes $formattedNote $restOfText) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $processedContent = $.Scratch.Get "cleanNotes" -}}
+{{- end -}}
+
+{{- /* Return the processed content string completely decoded */ -}}
+{{ $processedContent | htmlUnescape | safeHTML }}
