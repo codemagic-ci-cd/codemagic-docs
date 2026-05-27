@@ -56,7 +56,7 @@ Codemagic does not have a built-in DAG (directed acyclic graph) UI for declaring
 | **Item** | **Where to get it** |
 |---|---|
 | Codemagic account (Team plan or higher) | [Sign up for free](https://codemagic.io/signup) |
-| Codemagic API token | **Personal Account → Settings → Integrations → Codemagic API → Show** |
+| Codemagic API token | **Account settings → API token** |
 | App ID for your app | From the browser address bar (e.g. `https://codemagic.io/app/<APP_ID>/settings`) after selecting **Applications** → **Open app settings (cogwheel icon)** |
 | Sufficient concurrencies | **Team Settings → Concurrencies** — you need enough concurrent slots for the main workflow plus parallel build branches |
 
