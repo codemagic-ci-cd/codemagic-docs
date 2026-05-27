@@ -78,7 +78,7 @@ For customers who require predictable and stable performance, dedicated hosts ar
 
 Each Codemagic user has their own personal API token. There is no shared API token at the team level, so you should always use the token from your personal account, even when working within a team.
 
-Navigate to **Account settings > API token > Show** to get your API token.
+Navigate to **Account settings > API token** to get your API token.
 
 ## How to delete a Codemagic account?
 If you need to delete your Codemagic account, select **Personal account** in the menu and navigate to **Settings** > **Danger zone** > **Delete account**.
