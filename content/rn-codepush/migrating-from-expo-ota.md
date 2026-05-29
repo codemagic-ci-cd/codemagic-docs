@@ -893,11 +893,11 @@ scripts:
   # ... your existing build and test steps ...
 
   - name: Install CodePush CLI
-    script: |
+    script: | 
       npm install -g @codemagic/code-push-cli
 
   - name: Release CodePush update to Staging
-    script: |
+    script: | 
       code-push login "https://codepush.pro" --accessKey $CODEPUSH_TOKEN
       code-push release-react MyApp-iOS ios --deployment-name Staging
       code-push release-react MyApp-Android android --deployment-name Staging
@@ -911,7 +911,7 @@ Store `CODEPUSH_TOKEN` as a **secure environment variable** in your Codemagic pr
 - name: Release CodePush update to Staging
   env:
     CODEPUSH_TOKEN: ${{ secrets.CODEPUSH_TOKEN }}
-  run: |
+  run: | 
     npx @codemagic/code-push-cli login "https://codepush.pro" --accessKey $CODEPUSH_TOKEN
     npx @codemagic/code-push-cli release-react MyApp-iOS ios --deployment-name Staging
     npx @codemagic/code-push-cli release-react MyApp-Android android --deployment-name Staging
