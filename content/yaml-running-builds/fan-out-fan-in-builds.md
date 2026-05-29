@@ -2,6 +2,7 @@
 title: Fan-out / fan-in builds
 linkTitle: Fan-out / fan-in builds
 description: Run parallel module builds across multiple VMs and assemble the results in a single host app build
+draft: true
 weight: 5
 aliases:
   - /yaml-running-builds/fan-out-fan-in
