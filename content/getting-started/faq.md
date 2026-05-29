@@ -75,9 +75,10 @@ Because of this shared model, we cannot guarantee consistent performance at all 
 For customers who require predictable and stable performance, dedicated hosts are recommended. In such setups, hardware resources are reserved, and customers can explicitly configure their environment to run a single virtual machine per physical host, eliminating resource contention.
 
 ## Where can I find the Codemagic API Token?
+
 Each Codemagic user has their own personal API token. There is no shared API token at the team level, so you should always use the token from your personal account, even when working within a team.
 
-Select **Personal account** in the menu and navigate to **Settings** > **Integrations** > **Codemagic API** > **Show**
+Navigate to **Account settings > API token** to get your API token.
 
 ## How to delete a Codemagic account?
 If you need to delete your Codemagic account, select **Personal account** in the menu and navigate to **Settings** > **Danger zone** > **Delete account**.
