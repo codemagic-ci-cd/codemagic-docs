@@ -3,3 +3,5 @@ Allow: /
 
 User-agent: Twitterbot
 Allow: /
+
+https://docs.codemagic.io/sitemap.xml

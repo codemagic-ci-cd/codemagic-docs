@@ -15,12 +15,23 @@
 
 ## Documentation
 
-{{- /* 1. Filter out pages in the partials folder upfront */ -}}
-{{- $validPages := where .Site.RegularPages "Section" "ne" "partials" -}}
+{{- $menuNames := dict -}}
+{{- range .Site.Menus.main -}}
+  {{- if not .Params.hide -}}
+    {{- $parentName := .Name -}}
+    {{- $menuNames = merge $menuNames (dict .Identifier .Name) -}}
+    {{- range .Children -}}
+      {{- if not .Params.hide -}}
+        {{- $menuNames = merge $menuNames (dict .Identifier (printf "%s — %s" $parentName .Name)) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 
-{{- /* 2. Group only the clean pages by section */ -}}
+{{- $validPages := where .Site.RegularPages "Section" "ne" "partials" -}}
 {{- range $validPages.GroupBy "Section" }}
-### {{ .Key | humanize | title }}
+{{- $sectionName := index $menuNames .Key | default (.Key | humanize | title) }}
+### {{ $sectionName }}
 {{ range .Pages -}}
 - [{{ .Title }}]({{ .Permalink | strings.TrimSuffix "/" }}.md){{ with .Params.description }}: {{ . }}{{ end }}
 {{ end }}
