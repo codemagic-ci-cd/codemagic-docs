@@ -4,4 +4,4 @@ Allow: /
 User-agent: Twitterbot
 Allow: /
 
-Sitemap: {{ .Site.BaseURL }}sitemap.xml
+https://docs.codemagic.io/sitemap.xml
