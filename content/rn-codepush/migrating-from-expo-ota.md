@@ -3,6 +3,7 @@ title: 'Migrating from Expo Updates'
 description: Step-by-step guide to replacing Expo Updates (EAS Update) with Codemagic CodePush in a React Native app
 meta_title: Migrate from Expo Updates (EAS Update) to Codemagic CodePush
 meta_description: Learn how to migrate your React Native app from Expo Updates and EAS Update to Codemagic CodePush — including SDK swap, native configuration, CI pipeline changes, and a full concept mapping table.
+draft: true
 weight: 20
 ---
 
