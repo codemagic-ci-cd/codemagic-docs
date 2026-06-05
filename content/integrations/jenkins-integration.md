@@ -19,7 +19,7 @@ The Application ID uniquely identifies your app in Codemagic API calls.
 2. Look at the app URL: https://codemagic.io/app/xxxxxxxxxxxxxxxxxxxxxxxx
 3. Copy the UUID at the end - this is your `AppID`.
 
-## Find you Workflow name
+## Find your Workflow name
 The Workflow name specifies which workflow to trigger.
 1. Navigate to your codemagic.yaml file (in Codemagic or in your repository)
 2. Copy the name of the workflow (e.g., `sample-workflow`)

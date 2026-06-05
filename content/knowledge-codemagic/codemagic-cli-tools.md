@@ -8,7 +8,7 @@ aliases:
     - /cli/codemagic-cli-tools
 ---
 
-[codemagic-cli-tools](https://pypi.org/project/codemagic-cli-tools/) is a set of tools to simplify builds at Codemagic. They can be installed with via pip and run locally.
+[codemagic-cli-tools](https://pypi.org/project/codemagic-cli-tools/) is a set of tools to simplify builds at Codemagic. They can be installed via pip and run locally.
 {{< highlight bash "style=paraiso-dark">}}
   pip3 install codemagic-cli-tools
 {{< /highlight >}}

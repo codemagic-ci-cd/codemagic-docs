@@ -282,7 +282,7 @@ At the end, your `sourceURLForBridge` method should look like this:
 }
 {{< /highlight >}}
 
-**Swift** :If your project is using `Swift` based configuration, then follow the steps below:
+**Swift**: If your project is using `Swift` based configuration, then follow the steps below:
 
 1. Navigate to your iOS project and open the `AppDelegate.swift` file
 2. Add the following import at the top of the file:

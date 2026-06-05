@@ -17,7 +17,7 @@ CodePush updates are not managed through the Codemagic UI. All releases, promoti
 
 ## Overview
 
-After integrating the CodePush SDK into your React Native app as explained in the [previous sectio](http://localhost:1313/rn-codepush/setup/#add-codepush-to-a-react-native-app)n, you can ship updates without rebuilding or resubmitting your app to the App Store or Google Play.
+After integrating the CodePush SDK into your React Native app as explained in the [previous section](http://localhost:1313/rn-codepush/setup/#add-codepush-to-a-react-native-app), you can ship updates without rebuilding or resubmitting your app to the App Store or Google Play.
 
 CodePush delivers:
 * Updated JavaScript bundles

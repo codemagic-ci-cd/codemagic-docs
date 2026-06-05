@@ -23,7 +23,7 @@ NOTE: using `>>` after the first line appends lines to the file
 
 The variables with $ in the above script can be imported from Codemagic UI. For more details, refer to this [document](../yaml-basic-configuration/using-environment-variables/).
 
-`For Windows`, Powershell requires a different command for this case:
+`For Windows`, PowerShell requires a different command for this case:
 
 {{< highlight powershell "style=rrt">}}
 cmd.exe /c "echo "MY_VAR=$env:VAR_NAME" > .env"

@@ -268,7 +268,7 @@ itc_team_id("123456789") # App Store Connect Team ID
 team_id("123A4P567S") # Developer Portal Team ID
 {{< /highlight >}}
 
-- In order to locally get all the current screenshots and metadata with the right files and folders , run:
+- In order to locally get all the current screenshots and metadata with the right files and folders, run:
    `sudo fastlane deliver init --use_live_version true`.
    Here again, you might need to change the owners of the generated files as explained above.
 - Finally, if your app does not use encryption, in your `Info.plist` file, add the `ITSAppUsesNonExemptEncryption` key with `false` for its value.

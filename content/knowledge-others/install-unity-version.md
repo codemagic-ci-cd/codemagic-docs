@@ -77,7 +77,7 @@ If you can't find your desired Unity version in the list, please contact us via 
 **Notes:**
 - These versions are the `Unity Editor (macOS x86_64)`, and have only the `macOS`, `Android`, and `iOS` modules.
 - Mac machines with Apple silicon support Unity built for `x86_64` architecture.
-- If your app requires additional modules then you need to install it using [Unity Hub CLI](./-others/install-unity-version/#unity-installation-script) like this: `/Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version <UNITY_VERSION> -m windows-mono`, this will install the windows modules for the specified` <UNITY_VERSION>`.
+- If your app requires additional modules then you need to install them using [Unity Hub CLI](./-others/install-unity-version/#unity-installation-script) like this: `/Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install-modules --version <UNITY_VERSION> -m windows-mono`, this will install the windows modules for the specified` <UNITY_VERSION>`.
 {{</notebox>}}
 
 ## Download and install from Unity Hub
