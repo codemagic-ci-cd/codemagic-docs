@@ -11,7 +11,7 @@ A sample project that shows how to configure Katalon integration is available in
 
 ## Configure Katalon access
 
-In order to create a project and retrive API key that are used when uploading test to the Katalon testing environment, you need to [sign up](https://katalon.com/) with Katalon.
+In order to create a project and retrieve the API key that is used when uploading tests to the Katalon testing environment, you need to [sign up](https://katalon.com/) with Katalon.
 
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the desired **_Variable name_**, e.g. `KATALON_API_KEY`.

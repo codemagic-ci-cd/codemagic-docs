@@ -5,7 +5,7 @@ weight: 2
 aliases: /code-signing/macos-code-signing
 ---
 
-Code signing is required by Apple for integrating app services, installing your macOS app on another machine or uploading it to distribute it through the Mac App Store or outside of Mac App Store. It enables to identify who developed the app and ensure that all the changes to the app come from you or your team.
+Code signing is required by Apple for integrating app services, installing your macOS app on another machine or uploading it to distribute it through the Mac App Store or outside of Mac App Store. It enables you to identify who developed the app and ensure that all the changes to the app come from you or your team.
 
 To create an application package that can be published to Mac App Store on Codemagic, you need to set up code signing.
 

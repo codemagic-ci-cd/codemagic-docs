@@ -130,7 +130,7 @@ When the `ios_signing` block references these by name in `codemagic.yaml`, Codem
 
 ### App Store Connect API Key
 In the Codemagic UI, go to **Teams → your team → Team integrations → Developer Portal** and click **Connect**. Upload your .p8 API key file and provide the associated Key ID and Issuer ID. Give the integration a name, for example `app_store_connect_key`.
-Once connected, reference it in your workflow with the integrations: block — no API key environment variables are needed in the 
+Once connected, reference it in your workflow with the integrations: block — no API key environment variables are needed in the workflow.
 
 {{< highlight yaml "style=paraiso-dark">}}
   integrations:

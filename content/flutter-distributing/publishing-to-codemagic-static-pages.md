@@ -10,7 +10,7 @@ aliases:
 You can publish your web app to a custom subdomain of `codemagic.app` for easy access.
 
 {{<notebox>}}
-⚠️ **Note**: This feature is intended for **testing purposes only**. Production apps should be deployed to prodcution-grade web hosting services such as Firebase Hosting or Cloudflare pages.
+⚠️ **Note**: This feature is intended for **testing purposes only**. Production apps should be deployed to production-grade web hosting services such as Firebase Hosting or Cloudflare pages.
 {{</notebox>}}
 
 1. Go to **App settings > Distribution > Codemagic Static Pages** to configure publishing to Codemagic Static Pages.

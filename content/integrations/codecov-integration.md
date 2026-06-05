@@ -15,7 +15,7 @@ A sample project that shows how to configure Codecov integration is available in
 1. In order to get a dedicated Codecov token, signing up is required. You can sign up for free [here](https://about.codecov.io/).
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the desired **_Variable name_**, e.g. `CODECOV_TOKEN`.
-3. Copy and paste the Capgo token string as **_Variable value_**.
+3. Copy and paste the Codecov token string as **_Variable value_**.
 4. Enter the variable group name, e.g. **_codecov_credentials_**. Click the button to create the group.
 5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.

@@ -64,7 +64,7 @@ Most definitely. The annual subscription grants you 2 months of free usage for t
 ## What’s an Enterprise plan?
 The Enterprise plan offers the same superb quality service you have come to expect from Codemagic but enhanced with additional customization options. This plan is recommended if you need to go through a security compliance process, vendor registration or have special requirements such as an NDA, DPA, dedicated hosts, custom base images, or other account management services. Enterprise customers are also able to authenticate using SSO.
 
-## How's a dedicated host different from shared hosts
+## How's a dedicated host different from shared hosts?
 
 The common pool operates on shared hardware, where the physical machine resources are shared between two virtual machines. During peak periods, up to two VMs may be deployed on a single host. 
 
