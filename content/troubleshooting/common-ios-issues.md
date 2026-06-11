@@ -147,7 +147,7 @@ The error usually occurs if the deployment target set in Podfile is lower than r
 
 {{< highlight bash "style=paraiso-dark">}}
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+platform :ios, '13.0'
 target 'Runner' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
@@ -155,7 +155,7 @@ target 'Runner' do
 end
 {{< /highlight >}}
 
-* Check the Podfile and make sure that `platform :ios, '10.0'` is set to `10.0` or above as required by dependencies.
+* Check the Podfile and make sure that `platform :ios, '13.0'` is set to `13.0` or above as required by dependencies.
 * Confirm if `IPHONEOS_DEPLOYMENT_TARGET` is set to 9.0 or above
 
 {{< /collapsible >}}

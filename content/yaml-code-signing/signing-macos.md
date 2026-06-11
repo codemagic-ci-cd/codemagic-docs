@@ -286,11 +286,12 @@ To package your application into an `.pkg` Installer package and sign it with th
 
 Notarization is a process where Apple verifies your application to make sure it has a Developer ID code signature and does not contain malicious content. All apps distributed outside the Mac App Store have to be notarized.
 
-Notarizing an app during the Codemagic build process is possible using the **altool** command as follows:
+Notarizing an app during the Codemagic build process is possible using the **notarytool** command as follows:
 
 {{< highlight bash "style=paraiso-dark">}}
-xcrun altool --notarize-app -f <file> --primary-bundle-id <bundle_id>
-           {-u <username> [-p <password>] | --apiKey <api_key> --apiIssuer <issuer_id>}
-           [--asc-provider <name> | --team-id <id> | --asc-public-id <id>]
+xcrun notarytool submit <file> \
+  --apple-id <username> --password <app_specific_password> --team-id <team_id> \
+  --wait
+xcrun stapler staple <file>
 {{< /highlight >}}
 
