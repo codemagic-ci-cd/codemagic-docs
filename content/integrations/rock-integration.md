@@ -212,7 +212,7 @@ workflows:
 
     publishing:
       google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
         track: internal
       email:
         recipients:
@@ -427,7 +427,7 @@ Outputs are placed under `.rock/cache/ios/package/` (`.xcframework`) and `.rock/
 | `CM_KEY_PASSWORD` | auto (android_signing) | Android release | Key password |
 | `CERTIFICATE_PATH` | auto (ios_signing) | iOS release | Path to `.p12` on build machine |
 | `PROVISIONING_PROFILE_PATH` | auto (ios_signing) | iOS release | Path to `.mobileprovision` |
-| `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` | env group | Android publishing | Google Play service account JSON |
+| `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` | env group | Android publishing | Google Play service account JSON |
 
 ---
 
