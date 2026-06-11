@@ -85,7 +85,7 @@ In order to see your tests being uploaded to the **App Automation**, tests need 
 {{< highlight java "style=paraiso-dark">}}
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("platformName", "iOS");
-    capabilities.setCapability("deviceName", "iPhone 10");
+    capabilities.setCapability("deviceName", "iPhone 16");
     capabilities.setCapability("isRealMobile", true);
     capabilities.setCapability("platformVersion","10");
     capabilities.setCapability("app","lt://APP100202151634649275590734");
