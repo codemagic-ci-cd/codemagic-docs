@@ -202,7 +202,7 @@ Builds not starting at all even though the team has access to the `mac_mini_m2` 
 
 {{<collapsible title="Solution" id="mac-m2-builds-not-starting-solution" >}}
 ###### Solution
-This error occurs on M2 machines when the `xcode` property is set to a version that is not supported. Please configure your workflow to use Xcode version 15 or above.
+This error occurs on M2 machines when the `xcode` property is set to a version that is not supported. Please configure your workflow to use a supported Xcode version. See the available versions on the [Codemagic macOS build machine specs](../specs/versions-macos/) page.
 
 {{< /collapsible >}}
 
@@ -214,7 +214,7 @@ Builds are intermittently failing without a clear reason.
 
 {{<collapsible title="Solution" id="mac-m2-builds-failing-intermittently-solution" >}}
 ###### Solution
-This issue can be caused by an earlier version of Xcode. Please use version `13.4.1` or newer, if possible.
+This issue can be caused by an outdated version of Xcode. Please use the latest Xcode version available on Codemagic, if possible.
 
 {{< /collapsible >}}
 

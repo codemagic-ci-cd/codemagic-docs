@@ -64,7 +64,7 @@ workflows:
     name: Flutter iOS Simulator
     environment:
       flutter: 3.27.3
-      xcode: 16.2
+      xcode: latest
     scripts:
       - flutter build ios --simulator --flavor staging  # --flavor is optional
     artifacts:

@@ -144,13 +144,13 @@ buildscript {
 
   dependencies {
       ...
-      classpath("com.android.tools.build:gradle:7.2.0")
+      classpath("com.android.tools.build:gradle:8.13.0")
 
       // Make sure that you have the Google services Gradle plugin dependency
       classpath("com.google.gms:google-services:4.3.15")
 
       // Add the dependency for the App Distribution Gradle plugin
-      classpath("com.google.firebase:firebase-appdistribution-gradle:4.0.0")
+      classpath("com.google.firebase:firebase-appdistribution-gradle:5.2.0")
   }
 }
 {{< /highlight >}}

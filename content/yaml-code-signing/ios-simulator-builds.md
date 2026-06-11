@@ -84,7 +84,7 @@ workflows:
       vars:
         XCODE_WORKSPACE: "your_workspace_name.xcworkspace"
         XCODE_SCHEME: "your_workspace_name"
-      xcode: 13.0
+      xcode: latest
       cocoapods: default
     scripts:
       - name: Install CocoaPods dependencies
