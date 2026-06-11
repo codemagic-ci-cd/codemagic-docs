@@ -29,7 +29,7 @@ xxxx
 xxxx
 -----END RSA PRIVATE KEY-----'
 
-GCLOUD_SERVICE_ACCOUNT_CREDENTIALS='{
+GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS='{
   "type": "service_account",
   "project_id": "xxxx",
   "private_key_id": "xxxx",
@@ -54,7 +54,7 @@ In your codemagic.yaml you’ll need to define the variables so you don’t get 
       APP_STORE_CONNECT_KEY_IDENTIFIER: $APP_STORE_CONNECT_KEY_IDENTIFIER
       APP_STORE_CONNECT_ISSUER_ID: $APP_STORE_CONNECT_ISSUER_ID
       CERTIFICATE_PRIVATE_KEY: $CERTIFICATE_PRIVATE_KEY
-      GCLOUD_SERVICE_ACCOUNT_CREDENTIALS_HOLDER: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+      GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS_HOLDER: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
       ...
 {{< /highlight >}}
 
@@ -64,7 +64,7 @@ In your codemagic.yaml you’ll need to define the variables so you don’t get 
 **Note:** it is important that a valid service account is configured in the UI before overriding with another.  
 {{</notebox>}}
 
-In the Codemagic UI you should create an environment variable called `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` and set its value to a valid Service Account JSON, even if this will be overwritten by another key when white labelling.
+In the Codemagic UI you should create an environment variable called `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` and set its value to a valid Service Account JSON, even if this will be overwritten by another key when white labelling.
 
 ## Writing values to CM_ENV
 
@@ -88,8 +88,8 @@ The following script first loads the **settings.env** file so you can read its v
     echo "$CERTIFICATE_PRIVATE_KEY" >> $CM_ENV
     echo "DELIMITER" >> $CM_ENV
 
-    echo "GCLOUD_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
-    echo "$GCLOUD_SERVICE_ACCOUNT_CREDENTIALS" >> $CM_ENV
+    echo "GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
+    echo "$GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS" >> $CM_ENV
     echo "DELIMITER" >> $CM_ENV
 {{< /highlight >}}
 
@@ -109,7 +109,7 @@ workflow-name:
         APP_STORE_CONNECT_KEY_IDENTIFIER: $APP_STORE_CONNECT_KEY_IDENTIFIER
         APP_STORE_CONNECT_ISSUER_ID: $APP_STORE_CONNECT_ISSUER_ID
         CERTIFICATE_PRIVATE_KEY: $CERTIFICATE_PRIVATE_KEY
-        GCLOUD_SERVICE_ACCOUNT_CREDENTIALS_HOLDER: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS_HOLDER: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
         ...
 
 
@@ -130,8 +130,8 @@ workflow-name:
             echo "$CERTIFICATE_PRIVATE_KEY" >> $CM_ENV
             echo "DELIMITER" >> $CM_ENV
 
-            echo "GCLOUD_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
-            echo "$GCLOUD_SERVICE_ACCOUNT_CREDENTIALS" >> $CM_ENV
+            echo "GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
+            echo "$GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS" >> $CM_ENV
             echo "DELIMITER" >> $CM_ENV
          ...
          publishing:
@@ -140,7 +140,7 @@ workflow-name:
              key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER     
              issuer_id: $APP_STORE_CONNECT_ISSUER_ID
            google_play:
-             credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS_HOLDER
+             credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS_HOLDER
              track: $GOOGLE_PLAY_TRACK
              in_app_update_priority: 0
 {{< /highlight >}}

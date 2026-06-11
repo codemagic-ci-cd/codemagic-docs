@@ -80,7 +80,7 @@ aws secretsmanager get-secret-value \
 {{< tab header="Android" >}}
 {{<markdown>}}
 
-1. The environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` must be provided with a valid Service Account JSON key, even if you will overwrite it with a different key later. Add this variable to a group called `service_account` and then import it into you workflow as follows:
+1. The environment variable `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` must be provided with a valid Service Account JSON key, even if you will overwrite it with a different key later. Add this variable to a group called `service_account` and then import it into you workflow as follows:
 
 {{< highlight yaml "style=paraiso-dark">}}
   environment:
@@ -88,7 +88,7 @@ aws secretsmanager get-secret-value \
       - service_account
       - aws_credentials
   vars:
-    GCLOUD_SERVICE_ACCOUNT_CREDENTIALS_HOLDER: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+    GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS_HOLDER: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
 {{< /highlight >}}
 
 2. In your first script step, retrieve the Service Account JSON from AWS and add it to **CM_ENV**.
@@ -97,9 +97,9 @@ aws secretsmanager get-secret-value \
   scripts:
     - name: Set Service Account JSON from AWS
       script: | 
-        echo "GCLOUD_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
+        echo "GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
         echo "$(aws secretsmanager get-secret-value \
-          --secret-id GCLOUD_SERVICE_ACCOUNT_CREDENTIALS | jq -r '.SecretString')" >> $CM_ENV
+          --secret-id GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS | jq -r '.SecretString')" >> $CM_ENV
         echo "DELIMITER" >> $CM_ENV
 {{< /highlight >}}
 
@@ -108,7 +108,7 @@ aws secretsmanager get-secret-value \
 {{< highlight yaml "style=paraiso-dark">}}
   publishing:
     google_play:
-      credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS_HOLDER
+      credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS_HOLDER
       track: $GOOGLE_PLAY_TRACK
 {{< /highlight >}}
 
@@ -260,16 +260,16 @@ The following example shows how to retrieve a secret called `APP_STORE_CONNECT_I
 echo "APP_STORE_CONNECT_ISSUER_ID=$(doppler secrets get APP_STORE_CONNECT_ISSUER_ID --plain)" >> $CM_ENV
 {{< /highlight >}}
 
-If you want to retrieve a secret with multiline variable, like the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` you can do it like this:
+If you want to retrieve a secret with multiline variable, like the `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` you can do it like this:
 
 {{< highlight bash "style=paraiso-dark">}}
-echo "GCLOUD_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV    
-echo "$(doppler secrets get GCLOUD_SERVICE_ACCOUNT_CREDENTIALS --plain)" >> $CM_ENV
+echo "GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV    
+echo "$(doppler secrets get GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS --plain)" >> $CM_ENV
 echo "DELIMITER" >> $CM_ENV
 {{< /highlight >}}
 
 {{<notebox>}}
-**Note:** If you add the `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` make sure you choose **No** when it asks you to replace `\n` with new lines.
+**Note:** If you add the `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` make sure you choose **No** when it asks you to replace `\n` with new lines.
 {{</notebox>}}
 
 You can download all of your secrets and add them to your environment in a single step.
@@ -359,13 +359,13 @@ vault kv get -field=message secret/greetings
 To add a secret from file such as an RSA key or JSON key, you can add the contents of a file as follows:
 
 {{< highlight bash "style=paraiso-dark">}}
-vault kv put secret/gcloud GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=@gcloud.json
+vault kv put secret/gcloud GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS=@gcloud.json
 {{< /highlight >}}
 
 To retrieve the secret you would do the following:
 
 {{< highlight bash "style=paraiso-dark">}}
-vault kv get -field=GCLOUD_SERVICE_ACCOUNT_CREDENTIALS secret/gcloud
+vault kv get -field=GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS secret/gcloud
 {{< /highlight >}}
 
 
@@ -383,13 +383,13 @@ vault kv get -field=message secret/greetings
 {{< tab header="Android" >}}
 {{<markdown>}}
 
-1. The environment variable `GCLOUD_SERVICE_ACCOUNT_CREDENTIALS` must be provided with a valid Service Account JSON key, even if you will overwrite it with a different key later. Add this variable to a group called `service_account` and then import it into you workflow.
+1. The environment variable `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` must be provided with a valid Service Account JSON key, even if you will overwrite it with a different key later. Add this variable to a group called `service_account` and then import it into you workflow.
 
 2. Add the secret for your **Google Console Service Account** to Hashicorp Vault as follows:
 
 {{< highlight bash "style=paraiso-dark">}}
 vault kv put secret/google \\
-GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=@/path/to/service_account.json
+GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS=@/path/to/service_account.json
 {{< /highlight >}}
 
 3. Add the following environment variables and groups in your `codemagic.yaml`
@@ -400,7 +400,7 @@ GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=@/path/to/service_account.json
       - service_account
       - vault_credentials
     vars:
-      GCLOUD_SERVICE_ACCOUNT_CREDENTIALS_HOLDER: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+      GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS_HOLDER: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
 {{< /highlight >}}
 
 4. In your first script step, retrieve the Service Account JSON from Hashicorp Vault and add it to *CM_ENV*.
@@ -409,8 +409,8 @@ GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=@/path/to/service_account.json
   scripts:
     - name: Set Service Account JSON from Hashicorp Vault
       script: | 
-        echo "GCLOUD_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
-        echo "$(vault kv get -field=GCLOUD_SERVICE_ACCOUNT_CREDENTIALS secret/google)" >> $CM_ENV
+        echo "GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS<<DELIMITER" >> $CM_ENV
+        echo "$(vault kv get -field=GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS secret/google)" >> $CM_ENV
         echo "DELIMITER" >> $CM_ENV
 {{< /highlight >}}
 
@@ -420,7 +420,7 @@ GCLOUD_SERVICE_ACCOUNT_CREDENTIALS=@/path/to/service_account.json
 {{< highlight yaml "style=paraiso-dark">}}
   publishing:
     google_play:
-      credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS_HOLDER
+      credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS_HOLDER
       track: $GOOGLE_PLAY_TRACK
 {{< /highlight >}}
 

@@ -52,7 +52,7 @@ The following is an example of how to perform a cURL request that uses your Disc
 {{< highlight bash "style=paraiso-dark">}}
 
 curl -H "Content-Type: multipart/form-data" \
-  -F 'payload_json={"username" : "codemagic-builds", "content": "**Commit:** `'"$COMMIT"'`\n\n**Commit message:** '"$COMMIT_MESSAGE"'\n\n**Branch:** '"$FCI_BRANCH"'\n\n**Author:** '"$AUTHOR"'\n\n**Artifacts: **\n\n'"$APP_LINK"'\n\n"}' \
+  -F 'payload_json={"username" : "codemagic-builds", "content": "**Commit:** `'"$COMMIT"'`\n\n**Commit message:** '"$COMMIT_MESSAGE"'\n\n**Branch:** '"$CM_BRANCH"'\n\n**Author:** '"$AUTHOR"'\n\n**Artifacts: **\n\n'"$APP_LINK"'\n\n"}' \
   -F "file1=@release_notes.txt" \
   $WEBHOOK_URL
 {{< /highlight >}}
