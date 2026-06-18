@@ -113,7 +113,7 @@ scripts:
       #  
       # create new simulator with specified configuration, you can run 
       # 'xcrun simctl list' - to check the list of available simulator configurations
-      TEST_DEVICE=$(xcrun simctl create test-device com.apple.CoreSimulator.SimDeviceType.iPhone-11 com.apple.CoreSimulator.SimRuntime.iOS-15-0)
+      TEST_DEVICE=$(xcrun simctl create test-device com.apple.CoreSimulator.SimDeviceType.iPhone-16 com.apple.CoreSimulator.SimRuntime.iOS-18-5)
       #
       # boot the newly created simulator
       xcrun simctl boot $TEST_DEVICE
@@ -242,7 +242,7 @@ exports.config = {
   capabilities: [{
      maxInstances: 1,
      browserName: '',
-     appiumVersion: '1.13.0',
+     appiumVersion: '2.0.0',
      platformName: 'Android',
      platformVersion: '<emulator platform version>',    // Specify your emulator details
      deviceName: '<emulator name>',
@@ -296,7 +296,7 @@ To execute the tests, use the following scripts in your `codemagic.yaml` file:
         xcode-project run-tests \
           --workspace MyAwesomeApp.xcworkspace \
           --scheme MyAwesomeApp \
-          --device "iPhone 11"
+          --device "iPhone 16"
     test_report: build/ios/test/*.xml
 {{< /highlight >}}
 

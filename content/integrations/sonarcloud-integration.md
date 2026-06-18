@@ -160,7 +160,7 @@ All of the other steps will be performed using scripts in your `codemagic.yaml` 
           -project "$XCODE_PROJECT" \
           -scheme "$XCODE_SCHEME" \
           -sdk iphonesimulator \
-          -destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=14.5' \
+          -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
           -derivedDataPath Build/ \
           -enableCodeCoverage YES \
           clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO

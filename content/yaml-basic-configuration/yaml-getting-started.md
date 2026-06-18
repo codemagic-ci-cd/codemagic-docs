@@ -278,12 +278,12 @@ environment:
   flutter: stable   # Define the channel name, version (e.g. v1.13.4), or fvm for Flutter Version Management
   xcode: latest     # Define latest, edge or version (e.g. 11.2)
   ubuntu: 24.04     # Define the OS version for Linux builds (e.g. 24.04)
-  cocoapods: 1.9.1  # Define default or version
-  node: 12.14.0     # Define default, latest, current, lts, carbon (or another stream), nightly or version
-  npm: 6.13.7       # Define default, latest, next, lts or version
-  ndk: r21d         # Define default or revision if supported (e.g. r26) or full version (e.g. 26.1.10909125)
-  java: 1.8         # Define default, or platform version (e.g. 11)
-  ruby: 2.7.2       # Define default or version (macOS only)
+  cocoapods: default # Define default or version
+  node: lts         # Define default, latest, current, lts, carbon (or another stream), nightly or version
+  npm: default      # Define default, latest, next, lts or version
+  ndk: r27          # Define default or revision if supported (e.g. r27) or full version (e.g. 27.0.12077973)
+  java: 17          # Define default, or platform version (e.g. 17)
+  ruby: default     # Define default or version (macOS only)
 {{< /highlight >}}
 
 Currently, only the above-mentioned software versions can be customized via the environment section in the yaml file. If a different software version needs to be customized, then it may require a different approach depending upon use cases.
@@ -325,7 +325,7 @@ environment:
 
 {{<notebox>}}
 
-**Note:** Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help speed up iOS builds with Xcode 10.2 or later.
+**Note:** Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help speed up iOS builds.
 
 {{</notebox>}}
 

@@ -23,7 +23,7 @@ A great article on Unity caching can be found in [our blog](https://blog.codemag
 
 
 {{<notebox>}}
-**Note:** Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up iOS builds with Xcode 10.2 or later.
+**Note:** Caching `$HOME/Library/Developer/Xcode/DerivedData` won't help to speed up iOS builds.
 {{</notebox>}}
 
 ## Enabling dependency caching
