@@ -1,8 +1,8 @@
 ---
-title: Xcode 26.5.x
+title: Xcode 27.0.x (edge)
 aliases:
 
-weight: 90
+weight: 88
 ---
 
 Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
@@ -18,33 +18,16 @@ Mac Studio M4 Max available on request.
 
 ## System
 
-- System version `macOS 26.5 (25F71)`
+- System version `macOS 26.5.1 (25F80)`
 - Kernel version `Darwin 25.5.0`
-- Disk `294GB (Free Space: 145GB)`
+- Disk `294GB (Free Space: 143GB)`
 
 ## Xcode versions
 
-- 26.5 (17F42) `/Applications/Xcode-26.5.app`
+- 27.0 (27A5194q) `/Applications/Xcode-27.0.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
-
-{{< collapsible title="iOS 26.4" >}}
-- iPad (A16)
-- iPad Air 11-inch (M3)
-- iPad Air 11-inch (M4)
-- iPad Air 13-inch (M3)
-- iPad Air 13-inch (M4)
-- iPad Pro 11-inch (M5)
-- iPad Pro 13-inch (M5)
-- iPad mini (A17 Pro)
-- iPhone 16e
-- iPhone 17
-- iPhone 17 Pro
-- iPhone 17 Pro Max
-- iPhone 17e
-- iPhone Air
-{{< /collapsible >}}
 
 {{< collapsible title="iOS 26.5" >}}
 - iPad (A16)
@@ -60,17 +43,30 @@ Mac Studio M4 Max available on request.
 - iPhone Air
 {{< /collapsible >}}
 
-{{< collapsible title="tvOS 26.5" >}}
-- Apple TV
+{{< collapsible title="iOS 27.0" >}}
+- iPad (A16)
+- iPad Air 11-inch (M4)
+- iPad Air 13-inch (M4)
+- iPad Pro 11-inch (M5)
+- iPad Pro 13-inch (M5)
+- iPad mini (A17 Pro)
+- iPhone 17
+- iPhone 17 Pro
+- iPhone 17 Pro Max
+- iPhone 17e
+- iPhone Air
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 27.0" >}}
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
 {{< /collapsible >}}
 
-{{< collapsible title="visionOS 26.5" >}}
+{{< collapsible title="visionOS 27.0" >}}
 - Apple Vision Pro
 {{< /collapsible >}}
 
-{{< collapsible title="watchOS 26.5" >}}
+{{< collapsible title="watchOS 27.0" >}}
 - Apple Watch SE 3 (40mm)
 - Apple Watch SE 3 (44mm)
 - Apple Watch Series 11 (42mm)
@@ -133,29 +129,29 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.34.45`
-- azure-cli `2.86.0`
+- aws `2.35.8`
+- azure-cli `2.87.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `1.3.1`
-- fastlane `2.234.0`
-- firebase `15.17.0`
-- gem `4.0.11`
-- gh `2.92.0`
+- ew-cli `1.3.4`
+- fastlane `2.236.1`
+- firebase `15.22.0`
+- gem `4.0.14`
+- gh `2.95.0`
 - git `2.54.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `5.1.11`
+- homebrew `6.0.2`
 - ionic `7.2.1`
 - jq `1.8.1`
 - ktlint `1.8.0`
-- node `24.15.0`
-- npm `11.12.1`
+- node `24.17.0`
+- npm `11.13.0`
 - python `3.12.7`
 - python3 `3.12.7`
-- ruby `4.0.4`
+- ruby `4.0.5`
 - ssh `10.2p1`
 - sudo `1.9.17p2`
 - swiftgen `6.6.3`
@@ -165,5 +161,5 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - wget `1.25.0`
 - xcbeautify `3.2.1`
 - yarn `4.9.2`
-- yq `4.53.2`
+- yq `4.53.3`
 - zip `3.0`
