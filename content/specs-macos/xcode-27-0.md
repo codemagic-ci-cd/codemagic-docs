@@ -20,11 +20,11 @@ Mac Studio M4 Max available on request.
 
 - System version `macOS 26.5.1 (25F80)`
 - Kernel version `Darwin 25.5.0`
-- Disk `294GB (Free Space: 143GB)`
+- Disk `294GB (Free Space: 141GB)`
 
 ## Xcode versions
 
-- 27.0 (27A5194q) `/Applications/Xcode-27.0.app`, also selected when specifying `edge` in Xcode version settings
+- 27.0 (27A5209h) `/Applications/Xcode-27.0.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -77,7 +77,7 @@ Mac Studio M4 Max available on request.
 
 ## Android Studio
 
-> Android Studio `2025.3` installed at `~/programs/android-studio`
+> Android Studio `2026.1` installed at `~/programs/android-studio`
 
 
 ## Android SDK
@@ -129,7 +129,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.35.8`
+- aws `2.35.11`
 - azure-cli `2.87.0`
 - carthage `0.40.0`
 - cocoapods `1.16.2`
@@ -137,15 +137,15 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - curl `8.7.1`
 - ew-cli `1.3.4`
 - fastlane `2.236.1`
-- firebase `15.22.0`
+- firebase `15.22.1`
 - gem `4.0.14`
 - gh `2.95.0`
 - git `2.54.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `6.0.2`
+- homebrew `6.0.3`
 - ionic `7.2.1`
-- jq `1.8.1`
+- jq `1.8.2`
 - ktlint `1.8.0`
 - node `24.17.0`
 - npm `11.13.0`
