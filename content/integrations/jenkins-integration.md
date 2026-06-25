@@ -6,16 +6,6 @@ weight: 11
 
 Trigger Codemagic builds from Jenkins pipeline stages using the [REST API](/rest-api/builds/). Poll build status from Jenkins, or report results back from `codemagic.yaml` publishing scripts.
 
-Codemagic uses two API base URLs with the same `x-auth-token` header:
-
-| Action | URL |
-| ------ | --- |
-| Start build | `POST https://api.codemagic.io/builds` |
-| Cancel build | `POST https://api.codemagic.io/builds/{buildId}/cancel` |
-| Get build status | `GET https://codemagic.io/api/v3/builds/{buildId}` |
-
-For the full v3 surface, see the [Codemagic REST API v3 schema](https://codemagic.io/api/v3/schema). Start and cancel are documented in the [Builds API](/rest-api/builds/).
-
 ## Create a Codemagic API key
 
 You need a Codemagic API key to authenticate REST API requests from Jenkins. The token is **per Codemagic user**; permitted actions follow that user's role on the team. Use a dedicated service account if Jenkins is shared infrastructure. See [API overview](/rest-api/codemagic-rest-api/) for authentication details.
