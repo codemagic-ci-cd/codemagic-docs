@@ -89,7 +89,7 @@ scripts:
 ## Running tests with orchestrator
 
 Add `--use-orchestrator` to run tests with Android Test Orchestrator 
-(more infos [here](https://docs.emulator.wtf/integrations/cli/#run-tests-with-orchestrator-while-clearing-package-data)):
+(more info [here](https://docs.emulator.wtf/integrations/cli/#run-tests-with-orchestrator-while-clearing-package-data)):
 
 {{< highlight yaml "style=paraiso-dark">}}
 scripts:

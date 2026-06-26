@@ -23,7 +23,7 @@ To get started with [Dart Code Metrics](https://dcm.dev/), you need an API key a
 {{< highlight yaml "style=paraiso-dark">}}
   environment:
     groups:
-      - dcm_credntials
+      - dcm_credentials
 {{< /highlight >}}
 
 ## Configuring DCM Rules with `analysis_options.yaml`

@@ -11,7 +11,7 @@ Adding Codemagic status badges to repositories helps to keep the latest build st
 
 ## Adding status badges to your repository
 
-The build status badge URL can be constructed as following: `https://api.codemagic.io/apps/<app-id>/<workflow-id>/status_badge.svg`
+The build status badge URL can be constructed as follows: `https://api.codemagic.io/apps/<app-id>/<workflow-id>/status_badge.svg`
 
 1. To find the `<app-id>`, navigate to your application in the Codemagic UI and copy the ID shown in the URL after `https://codemagic.io/app/`.
 2. In the URL, replace `<workflow-id>` with the ID (workflow name defined in `codemagic.yaml`) of the workflow whose build status you want to display.

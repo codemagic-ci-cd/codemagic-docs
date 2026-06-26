@@ -28,7 +28,7 @@ publishing:
       apkPath=$(find build -name "*.apk" | head -1)
       if [[ -z ${apkPath} ]]
       then
-        echo "No .apk were found"
+        echo "No .apk was found"
       else
         echo "Publishing .apk artifacts"
       fi

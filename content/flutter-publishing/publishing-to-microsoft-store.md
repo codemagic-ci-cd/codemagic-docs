@@ -38,7 +38,7 @@ The Microsoft Partner Center integration can be enabled in **Personal Account > 
 2. In the **Tenant name** field, provide a name for the set of credentials you are going to set up the integration with. This is for identifying the set of credentials in Codemagic.
 3. Enter the **Tenant ID** related to your Azure AD account.
 4. Enter the **Client ID** related to your application in Azure AD.
-5. Enter the the value of your **Client secret** from your Certificates & secrets section under your application in Azure AD.
+5. Enter the value of your **Client secret** from your Certificates & secrets section under your application in Azure AD.
 6. Click **Save** to finish the setup.
 
 You can add additional sets of credentials by clicking **Add another tenant** right after adding the first tenant and repeating the steps described above. You can delete existing tenants or add new ones when you click **Manage tenants** next to the Partner Center integration.

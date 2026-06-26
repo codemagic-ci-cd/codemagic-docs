@@ -91,7 +91,7 @@ The examples below use `mac_mini_m2` for module builds. Codemagic's Mac mini M2 
 
 Each module workflow is a standard build workflow. The only requirement is that its `id` — the key in `codemagic.yaml` — is stable, because the coordinator references it by name.
 
-The three examples below illustrate common real-world variation between modules: a dedicated Android workflow, a dedicated iOS workflow, and a universal parameterised workflow that a single workflow definition can serve many different modules.
+The three examples below illustrate common real-world variation between modules: a dedicated Android workflow, a dedicated iOS workflow, and a universal parameterised workflow where a single workflow definition can serve many different modules.
 
 Workflow-level `when` parameters (such as `changeset` or `condition`) are bypassed by Codemagic when a build is initiated manually or programmatically via the REST API (POST /builds). To achieve change-aware builds when using an API coordinator, you must place the `when: changeset` filter directly inside individual build steps (scripts).
 

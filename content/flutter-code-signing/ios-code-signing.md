@@ -24,7 +24,7 @@ The signing certificates — development or distribution — help to identify wh
 A provisioning profile — development or distribution — contains information about the app ID, the devices on which the app can be installed and the certificates that can be used for signing the app. Note that if your app contains app extensions, you need an additional provisioning profile for each app extension.
 
 {{<notebox >}} 
-**Note:** With **automatic code signing**, Codemagic will create both the certificate and the provisioning profile for you on your behalf without requiring a Mac.
+**Note:** With **automatic code signing**, Codemagic will create both the certificate and the provisioning profile on your behalf without requiring a Mac.
 
 With **manual code signing**, you need to upload the signing files manually.
 {{</notebox>}}

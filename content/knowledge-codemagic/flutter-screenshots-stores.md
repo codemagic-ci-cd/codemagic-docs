@@ -9,7 +9,7 @@ aliases:
 
 If you are going to publish your Flutter app to **App Store Connect** or the **Google Play Store**, you can automate the process of taking screenshots and uploading them to the stores so your users can discover your app.
 
-In order to strictly follow the steps below, you'll need to use [Riverpod](https://pub.dev/packages/flutter_riverpod) (for dependendy injection) and [intl](https://pub.dev/packages/intl) (for internationalization) in your Flutter project. While it might not be necessary for your project, it’s important to keep in mind that, if you want this approach to work, you’ll have to properly separate the UI from the logic in your code, using Riverpod or some other means of dependency injection, so you can easily mock anything you want.
+In order to strictly follow the steps below, you'll need to use [Riverpod](https://pub.dev/packages/flutter_riverpod) (for dependency injection) and [intl](https://pub.dev/packages/intl) (for internationalization) in your Flutter project. While it might not be necessary for your project, it’s important to keep in mind that, if you want this approach to work, you’ll have to properly separate the UI from the logic in your code, using Riverpod or some other means of dependency injection, so you can easily mock anything you want.
 
 ## Automate screenshots generation
 
@@ -158,7 +158,7 @@ You can now take a screenshot of the widget returned by the `getDecoratedScreen(
 
 Finally, you can delete the first screenshot (the one in `screenFile` above): `screenFile.deleteSync()`.
 
-In order to keep your screenshots tests class separated from your other golden tests and unit tests, you may want to do as follow:
+In order to keep your screenshots tests class separated from your other golden tests and unit tests, you may want to do as follows:
 
 - Add a tag at the very top of the test class that generates the screenshots, for example  `[@Tags]([“screenshots”])`, then generate your illustrations with:  `flutter test --update-goldens --tags=screenshots`
 - In order to launch your other tests without interfering with the screenshots test class, add the following argument to exclude the screenshots tests class: `-x screenshots`
@@ -191,7 +191,7 @@ leading: (ref.read(platformScreenshotProvider) != null
         : null)
 {{< /highlight >}}
 
-Note that this provider can be use anywhere in your app, to fake entered text in a `TextFormField` for example.
+Note that this provider can be used anywhere in your app, to fake entered text in a `TextFormField` for example.
 
 ## Automatically upload screenshots to the stores
 
@@ -256,7 +256,7 @@ sudo chown your_id Gemfile.lock
 }
 {{< /highlight >}}
 
-To get the different values, login to the App Store Connect, then go to _My Apps > Users and access > Keys_. Here you can generate a new API Key, which content will go into `key` in the JSON above. On that same page, you can also find the key ID that you’ve just created, and the Issuer ID that you can find on the top of the list.
+To get the different values, login to the App Store Connect, then go to _My Apps > Users and access > Keys_. Here you can generate a new API Key, whose content will go into `key` in the JSON above. On that same page, you can also find the key ID that you’ve just created, and the Issuer ID that you can find on the top of the list.
 
 - For testing purposes, we can locally save that file in the `ios` directory. But don’t forget to add it in your `.gitignore` file.
 - Edit your `Appfile` file so you can update it like the following:
@@ -288,7 +288,7 @@ Now you can add the following in your `.gitignore` file, at the root of your Flu
 
 Since the `google-play-store.json` and the `app_store_connect.json` files are not meant to be added to your repository, we need to provide them in the workflow in a safe way.
 
-With Codemagic, you can for example store the content of the `google-play-store.json` file in a encrypted environment variable named `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`, and run a script in your workflow that will generate the `google-play-store.json` in the right location, with the right content, by doing as follow:
+With Codemagic, you can for example store the content of the `google-play-store.json` file in a encrypted environment variable named `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`, and run a script in your workflow that will generate the `google-play-store.json` in the right location, with the right content, by doing as follows:
 
 {{< highlight bash "style=paraiso-dark">}}
 echo $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS > android/google-play-store.json

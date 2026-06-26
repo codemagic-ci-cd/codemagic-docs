@@ -10,7 +10,7 @@ In order to publish your generated artifacts to Google Cloud Storage:
 
 1. Log in to your Google Cloud platform [console](https://console.cloud.google.com/).
 
-2. Create a new service account under **IAM & Admin > Service Accounts**.Find more information about how to create a service account [here](https://docs.codemagic.io/yaml-publishing/google-play/#configure-google-play-api-access).
+2. Create a new service account under **IAM & Admin > Service Accounts**. Find more information about how to create a service account [here](https://docs.codemagic.io/yaml-publishing/google-play/#configure-google-play-api-access).
 
 3. Generate a JSON key for the service account and download it.
 <br><br>
@@ -27,13 +27,13 @@ In order to publish your generated artifacts to Google Cloud Storage:
 
 11. In case of an existing bucket, make sure that necessary permissions are configured.
 
-   To set up permissions go to the permission section of the bucket, Click on **+ Add** and add the service account details with the role of Storage Object Creator and click save.
+   To set up permissions go to the permission section of the bucket, click on **+ Add** and add the service account details with the role of Storage Object Creator and click save.
 
    ![Google Cloud Storage Permission](../uploads/storage-object-creator-role.png)
 
 <br>
 
-12. Configure your `codemagic.yaml` by adding the following script in your post-publishing step.Replace `gs://YOUR_BUCKET_NAME` with your own bucket name.
+12. Configure your `codemagic.yaml` by adding the following script in your post-publishing step. Replace `gs://YOUR_BUCKET_NAME` with your own bucket name.
 
 {{< highlight yaml "style=paraiso-dark">}}
 publishing:
@@ -46,4 +46,4 @@ publishing:
 {{< /highlight >}}
 
 
-After completing steps above, you can go to your Cloud Storage account and check if the object is uploaded.
+After completing the steps above, you can go to your Cloud Storage account and check if the object is uploaded.

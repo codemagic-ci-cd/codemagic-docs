@@ -13,7 +13,7 @@ A white labeling pipeline will run scripts to change colours, logos, images, fon
 
 These workflows can also be configured to run unit and integration tests, code quality analysis, update release notes, and automatically distribute app builds to your testers. 
 
-Builds can be configured to start as soon code is pushed to your repository, tags are added, or a pull request is merged. Using different workflows on different branches allows you to carry out actions such as producing a build for devs only to try on their own device, or creating a build that is sent directly to your QA testers.
+Builds can be configured to start as soon as code is pushed to your repository, tags are added, or a pull request is merged. Using different workflows on different branches allows you to carry out actions such as producing a build for devs only to try on their own device, or creating a build that is sent directly to your QA testers.
 
 ## Pre-requisites for white labeling
 
@@ -28,7 +28,7 @@ In order to write your white labeling scripts, familiarity with shell scripting 
 The most important part when white labeling your application is your customer's assets.
 So you need to find a way to manage assets. One approach is to create a zip archive for each customer that contains their unique assets and use a unique identifier in the file name for each customer. For example, `assets_001.zip` would clearly identify that this zip archive contains the assets for client `001`. 
 
-Each customer zip archive should has the following files with this naming convention:
+Each customer zip archive should have the following files with this naming convention:
 - **`ios_assets/`**. This folder contains the iOS icons from `/ios/Runner/Assets.xcassets/AppIcon.appiconset/`.
 - **`android_assets/`**. This folder contains the Android icons from `/android/app/src/main/res/`.
 
@@ -46,7 +46,7 @@ An automated white label workflow, on the other hand, doesn’t require that you
 
 ## Limitations of white label workflows
 
-Neither Apple nor Google provide APIs that allow you to add a new application programmatically in their stores. This means you have to manually add the first version of a new application in the App Store or Google Play. Once this has been done it’s possible to automatically publish updated app builds to the stores. Tasks such as updating screenshots and descriptions or other meta data can be updated using third party tools such as Fastlane.
+Neither Apple nor Google provide APIs that allow you to add a new application programmatically in their stores. This means you have to manually add the first version of a new application in the App Store or Google Play. Once this has been done it’s possible to automatically publish updated app builds to the stores. Tasks such as updating screenshots and descriptions or other metadata can be performed using third-party tools such as Fastlane.
 
 ## Pricing for building white label apps
 

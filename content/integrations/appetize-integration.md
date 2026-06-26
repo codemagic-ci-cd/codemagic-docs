@@ -95,7 +95,7 @@ For iOS, you need to upload a `.zip` or `.tar.gz` file containing your compresse
           echo $(curl --location --request POST "https://$API_TOKEN@api.appetize.io/v1/apps/$APP_PUBLIC_KEY" --form "file=@$zipPath")
 {{< /highlight >}}
 
-Don't forget to change the value of the `zipPath` to your actual apk path.
+Don't forget to change the value of the `zipPath` to your actual zip path.
 {{</markdown>}}
 {{< /tab >}}
 {{< /tabpane >}}

@@ -19,9 +19,9 @@ Publishing to Firebase Hosting with Codemagic is a straightforward process as th
 
 2. You can follow the step-by-step guide to create the service account user [here](../yaml-distributing/firebase-app-distribution/).
 
-3. Configure the `JSON` key received from step 2 as an environment variable name `FIREBASE_SERVICE_ACCOUNT` .
+3. Configure the `JSON` key received from step 2 as an environment variable named `FIREBASE_SERVICE_ACCOUNT` .
 
-4. Add an environment variable name GOOGLE_APPLICATION_CREDENTIALS and set its the value to `$CM_BUILD_DIR/firebase_credentials.json`. Make sure to mark it as **Secret** and Enter the variable group name, e.g. **_firebase_credentials_**. You can check the doc [here](../yaml-basic-configuration/configuring-environment-variables/) for more details.
+4. Add an environment variable named GOOGLE_APPLICATION_CREDENTIALS and set its value to `$CM_BUILD_DIR/firebase_credentials.json`. Make sure to mark it as **Secret** and enter the variable group name, e.g. **_firebase_credentials_**. You can check the doc [here](../yaml-basic-configuration/configuring-environment-variables/) for more details.
 
 5. In your workflow, use the below script to copy the contents of the JSON key in your project folder.
 

@@ -76,7 +76,7 @@ workflows:
 {{</notebox>}}
 
 {{<notebox>}}
-**Note**: When using Melos for managing monorepos in conjuction with FVM, and **sdkPath** is set to **.fvm/flutter_sdk** inside **melos.yaml**, then the `sourceFile` needs to be linked to the `targetFile` by running the following command:
+**Note**: When using Melos for managing monorepos in conjunction with FVM, and **sdkPath** is set to **.fvm/flutter_sdk** inside **melos.yaml**, then the `sourceFile` needs to be linked to the `targetFile` by running the following command:
 
 ```yaml
 ln -s $FLUTTER_ROOT $CM_BUILD_DIR/.fvm/flutter_sdk
@@ -308,7 +308,7 @@ The required values are:
 
 When defining the arguments inside codemagic.yaml, the necessary flags to add to the `msix:create` command are `--store`, `--display-name`, `--publisher-display-name`, `--publisher` and `--version`.
 
-The values for `--display-name`, `--publisher-display-name` and `--publisher` can be found when when logging into [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/home) and navigating to **Apps and games > Your application > Product Identity**.
+The values for `--display-name`, `--publisher-display-name` and `--publisher` can be found when logging into [Microsoft Partner Center](https://partner.microsoft.com/en-us/dashboard/home) and navigating to **Apps and games > Your application > Product Identity**.
 
 The argument `--display-name` should be set to match the value of `Package/Identity/Name`, the argument `--publisher` should be set to match the value of `Package/Identity/Publisher` and the argument `--publisher-display-name` should be set to match the value of `Package/Properties/PublisherDisplayName`.
 

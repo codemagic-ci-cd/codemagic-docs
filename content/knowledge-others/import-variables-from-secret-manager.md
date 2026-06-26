@@ -39,7 +39,7 @@ You will need to configure the environment variables `AWS_DEFAULT_REGION` , `AWS
 Make sure that any secrets you store are in the same region as your AWS config file.
 
 1. Log into your AWS account and search for **Secrets Manager**
-2. Use the drop list at the top right to select the region that corresponds with Default region you set in your environment variables.
+2. Use the drop list at the top right to select the region that corresponds with the Default region you set in your environment variables.
 3. Click on the **Store a new secret** button.
 4. Set the secret type to **Other type of secret**.
 5. In the *Key/value* pairs section select **Plain text** and delete any placeholder text.
@@ -47,7 +47,7 @@ Make sure that any secrets you store are in the same region as your AWS config f
 7. Click the **Next** button.
 8. In the **Secret name and description** section enter a name for your secret in the **Secret name** field. For example, if you are storing your App Store Connect API key, you might want to name it using the same naming convention as Codemagic, e.g. `APP_STORE_CONNECT_PRIVATE_KEY`.
 9. Click the **Next** button.
-10. The is no need to configure any secret rotation, so click the **Next** button again.
+10. There is no need to configure any secret rotation, so click the **Next** button again.
 11. On the Review screen, click on the **Store** button to store your secret.
 12. Repeat this process for other values you would like to store.
 
@@ -80,7 +80,7 @@ aws secretsmanager get-secret-value \
 {{< tab header="Android" >}}
 {{<markdown>}}
 
-1. The environment variable `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` must be provided with a valid Service Account JSON key, even if you will overwrite it with a different key later. Add this variable to a group called `service_account` and then import it into you workflow as follows:
+1. The environment variable `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` must be provided with a valid Service Account JSON key, even if you will overwrite it with a different key later. Add this variable to a group called `service_account` and then import it into your workflow as follows:
 
 {{< highlight yaml "style=paraiso-dark">}}
   environment:
@@ -179,7 +179,7 @@ You will need to configure the `DOPPLER_TOKEN` environment variable  in Codemagi
 
 1. Open your Codemagic app settings, and go to the **Environment variables** tab.
 2. Enter the desired **_Variable name_**, e.g. `DOPPLER_TOKEN`.
-3. Enter the tokan value as **_Variable value_**.
+3. Enter the token value as **_Variable value_**.
 4. Enter the variable group name, e.g. **_doppler_credentials_**. Click the button to create the group.
 5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
@@ -284,7 +284,7 @@ Make sure to set the `$DOPPLER_ENV` variable in the **vars** section.
       DOPPLER_ENV: dev
   
   scripts:
-    - name: Import Dopler secrets
+    - name: Import Doppler secrets
       script: | 
         doppler secrets download --no-read-env \
           --no-file \
@@ -302,7 +302,7 @@ Make sure to set the `$DOPPLER_ENV` variable in the **vars** section.
 $env:Path += ";C:\Users\builder\scoop\shims"
 {{< /highlight >}}
 
-2. When accessing the environment variables on the Windows, reference them as `$env:VAR_NAME`. See more [here](../troubleshooting/common-windows-issues/).
+2. When accessing the environment variables on Windows, reference them as `$env:VAR_NAME`. See more [here](../troubleshooting/common-windows-issues/).
 
 <br><br>
 
@@ -314,7 +314,7 @@ $env:Path += ";C:\Users\builder\scoop\shims"
 
 The following steps illustrate how to use Hashicorp Vault with Codemagic.
 
-#### Configure HAshicorp Vault access
+#### Configure Hashicorp Vault access
 
 This example uses token authentication. To authenticate with other methods provided by Hashicorp Vault, please consult their documentation.
 
@@ -383,7 +383,7 @@ vault kv get -field=message secret/greetings
 {{< tab header="Android" >}}
 {{<markdown>}}
 
-1. The environment variable `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` must be provided with a valid Service Account JSON key, even if you will overwrite it with a different key later. Add this variable to a group called `service_account` and then import it into you workflow.
+1. The environment variable `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS` must be provided with a valid Service Account JSON key, even if you will overwrite it with a different key later. Add this variable to a group called `service_account` and then import it into your workflow.
 
 2. Add the secret for your **Google Console Service Account** to Hashicorp Vault as follows:
 

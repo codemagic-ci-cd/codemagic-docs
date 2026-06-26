@@ -7,7 +7,7 @@ aliases:
   - knowledge-base/firebase-crashlytics-dsym-uploading
 ---
 **dSYM** files store the debug symbols for your app. They contain mapping information to decode a stack-trace into a readable format. 
-The purpose of **dSYM** is to replace symbols in the crash logs with the specific methods so it will be readable and helpful for debugging the crash. 
+The purpose of **dSYM** is to replace symbols in the crash logs with the specific methods so they will be readable and helpful for debugging the crash. 
 
 A sample project for uploading **dSYM** files to Firebase Crashlytics can be found in our [Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/firebase_crashlytics_demo_project).
 

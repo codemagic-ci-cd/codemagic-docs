@@ -46,7 +46,7 @@ To upload your **.ipa**, **.apk** or **.aab** to pCloudy, add the following scri
           -F "filter=all" https://device.pcloudy.com/api/upload_file
 {{< /highlight >}}
 
-To also upload test suites for android apps, add the `./gradlew assembleAndroidTest` command to build tests and add another cURL command to upload:
+To also upload test suites for Android apps, add the `./gradlew assembleAndroidTest` command to build tests and add another cURL command to upload:
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:

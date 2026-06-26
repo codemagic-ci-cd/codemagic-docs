@@ -34,7 +34,7 @@ To add devices to an existing group, find the group in the **Tester groups** sec
 
 ## Device registration
 
-Your testers will receive an email with instructions to register a device. The registration link in email invitation is valid for 7 days.
+Your testers will receive an email with instructions to register a device. The registration link in the email invitation is valid for 7 days.
 
 The email contains a QR code and the **Register device** button to download a configuration profile that must be installed on the device. The configuration profile collects the device UDID and forwards it to Codemagic for registration. On successful registration, the device will be added to Apple Developer Portal and listed in the tester group in Codemagic.
 

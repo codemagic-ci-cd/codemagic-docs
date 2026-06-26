@@ -20,7 +20,7 @@ An API client is an identity credential used by **AppGallery Connect** to manage
 4. After the client is successfully created, you need to save the **Client ID** and the **Client Secret** (**Key**) to [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles) in a group named **app_gallery** for example.
 
 ## Get the App ID
-1. Sign in to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html) and click **My apps** and select you app.
+1. Sign in to [AppGallery Connect](https://developer.huawei.com/consumer/en/service/josp/agc/index.html) and click **My apps** and select your app.
 3. Go to **App Information** and save the **App ID** to the environment variables as well in the **app_gallery** environment group.
 
 ## App Signing
@@ -40,7 +40,7 @@ $ keytool -export -rfc -keystore YOUR_KEYSTORE.jks -alias upload -file upload_ce
 5. Upload the **upload_certificate.pem** file to AppGallery Connect under the App Signing tab and click **Submit**.
 
 ## Adding the Fastlane script to your code
-First, you need to set up Fastlane at your project by running `fastlane init` command, see the [docs](https://docs.fastlane.tools/getting-started/android/setup/).
+First, you need to set up Fastlane in your project by running the `fastlane init` command, see the [docs](https://docs.fastlane.tools/getting-started/android/setup/).
 
 Now add this lane to your **Fastfile** file.
 {{< highlight shell "style=paraiso-dark">}}
@@ -66,7 +66,7 @@ Now add this lane to your **Fastfile** file.
 {{< /highlight >}}
 
 ## Publish to the AppGallery store
-After you set everything up you need to execute the lane from you `codemagic.yaml` file, so add this to your scripts section:
+After you set everything up you need to execute the lane from your `codemagic.yaml` file, so add this to your scripts section:
 
 {{< highlight yaml "style=paraiso-dark">}}
       - name: Publish to the AppGallery store

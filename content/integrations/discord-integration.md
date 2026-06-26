@@ -4,7 +4,7 @@ description: How to integrate your workflows with Discord using codemagic.yaml
 weight: 8
 ---
 
-**Discord** is a free voice, video and text chat application originally built for gamers, but has since become a general use platform for many different communities. If your development team uses Discord, it can be used as part of your CI/CD to notify your development team when a build is complete and include information about the build and links to download build artifacts. 
+**Discord** is a free voice, video and text chat application originally built for gamers, but it has since become a general-use platform for many different communities. If your development team uses Discord, it can be used as part of your CI/CD to notify your development team when a build is complete and include information about the build and links to download build artifacts. 
 
 A sample project that shows how to configure Discord integration is available [in our sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/discord_integration_demo_project).
 
@@ -99,7 +99,7 @@ The below example shows how you can generate a **Changelog** and publish a notif
 {{< /highlight >}}
 
 The result will look similar to this:
-![A formatted Jira issue comment](https://github.com/codemagic-ci-cd/codemagic-sample-projects/raw/main/integrations/discord_integration_demo_project/discord-message.png)
+![A formatted Discord message](https://github.com/codemagic-ci-cd/codemagic-sample-projects/raw/main/integrations/discord_integration_demo_project/discord-message.png)
 
 ## Environment variables in JSON
 

@@ -274,7 +274,7 @@ LATEST_BUILD_NUMBER=$(google-play get-latest-build-number --package-name 'com.ex
 **Note:** By default, the action will try to get the latest build number as the maximum build number across all tracks (`internal`, `alpha`, `beta`, `production`, and custom tracks, if available). If you want to limit the search, you can specify particular tracks with the optional argument `--tracks` described [here](https://github.com/codemagic-ci-cd/cli-tools/blob/master/docs/google-play/get-latest-build-number.md#--tracksinternal--alpha--beta--production).
 {{</notebox>}}
 
-There are a number of ways how you can pass the obtained build number to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Check the [android-versioning-example repository](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for more details. Here is an example using `gradlew` arguments:
+There are a number of ways you can pass the obtained build number to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Check the [android-versioning-example repository](https://github.com/codemagic-ci-cd/android-versioning-example/tree/master) for more details. Here is an example using `gradlew` arguments:
 
 1. Edit your `build.gradle` file by adding the functions to read version name and code number from argument properties
 
@@ -404,7 +404,7 @@ Once you have the Firebase access set, you can get the build version using the C
 LATEST_BUILD_VERSION=$(firebase-app-distribution get-latest-build-version -p 228333310124 -a 1:228333310124:ios:5e439e0d0231a788ac8f09)
 {{< /highlight >}}
 
-There are a number of ways how you can pass the obtained build version to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Here is an example using `gradlew` arguments:
+There are a number of ways you can pass the obtained build version to an Android project (through environment variables, `gradlew` argument properties, file, or a call from `build.gradle`). Here is an example using `gradlew` arguments:
 
 1. Edit your `build.gradle` file by adding the functions to read version name and code number from argument properties
 

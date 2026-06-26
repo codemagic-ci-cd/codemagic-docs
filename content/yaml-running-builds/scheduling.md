@@ -9,7 +9,7 @@ aliases:
   - /configuration/scheduling
 ---
 
-You can schedule Codemagic to automatically build your app on certain days and times. This way, your QA can start the day with the latest version of the app, or you can configure a workflow to run the long test suits at a convenient time and only run fast tests with builds triggered by commits to the repo.
+You can schedule Codemagic to automatically build your app on certain days and times. This way, your QA can start the day with the latest version of the app, or you can configure a workflow to run the long test suites at a convenient time and only run fast tests with builds triggered by commits to the repo.
 
 ## Setting up scheduled builds
 

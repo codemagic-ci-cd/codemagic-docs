@@ -51,7 +51,7 @@ This is the subdomain you chose when you set up your Jira account e.g. "YOUR_SUB
 
 #### JIRA_ISSUE environment variable
 
-Issues, epics, and stories have a unique id, usually in the format **'projectKey-id'**, and is visible on your issues either in the bottom right or top left when looking at an issue. Put this value in the `JIRA_ISSUE` environment variable. 
+Issues, epics, and stories have a unique id, usually in the format **'projectKey-id'**, and are visible on your issues either in the bottom right or top left when looking at an issue. Put this value in the `JIRA_ISSUE` environment variable. 
 
 #### JIRA_TRANSITION_ID environment variable
 

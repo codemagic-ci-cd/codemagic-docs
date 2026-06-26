@@ -75,7 +75,7 @@ cat codemagic_api_key.p8 | pbcopy
 11. Create variable `APP_STORE_CONNECT_ISSUER_ID`. The value is the **Issuer ID** field from **App Store Connect > Users and Access > Keys**.
 
 {{<notebox>}}
-**Tip**: Store all the of these variables in the same group so they can be imported to codemagic.yaml workflow at once. 
+**Tip**: Store all of these variables in the same group so they can be imported to codemagic.yaml workflow at once. 
 {{</notebox>}}
 
 Environment variables have to be added to the workflow either individually or as a group. Modify your `codemagic.yaml` file by adding the following:

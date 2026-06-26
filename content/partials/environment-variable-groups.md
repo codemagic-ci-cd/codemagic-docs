@@ -28,7 +28,7 @@ Variables defined in environment variable groups work exactly as [Environment Va
 
 Entering values in the Variable value input and marking the **Secret** checkbox will automatically encrypt those values. However, note that in order to store **_binary files_** as secret environment variables, you first need to **_base64-encode_** them locally. To use the files, you will have to decode them during the build.
 
-Some commonly known binary files that need to be base64-encoded. e.g.
+Some commonly known binary files that need to be base64-encoded, e.g.:
 - Android keystore (.jks or .keystore)
 - Provisioning profiles when using manual code signing (.mobileprovision)
 - iOS distribution certificate (.p12) when using manual code signing.

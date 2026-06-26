@@ -27,7 +27,7 @@ The signing certificates — development or distribution — help to identify wh
 A provisioning profile — development or distribution — contains information about the app ID, the devices on which the app can be installed and the certificates that can be used for signing the app. Note that if your app contains app extensions, you need an additional provisioning profile for each app extension.
 
 {{<notebox >}}
-**Note:** With **automatic code signing**, Codemagic will create both the certificate and the provisioning profile for you on your behalf without requiring a Mac.
+**Note:** With **automatic code signing**, Codemagic will create both the certificate and the provisioning profile on your behalf without requiring a Mac.
 
 With **manual code signing**, you need to upload the signing files manually.
 {{</notebox>}}
@@ -44,7 +44,7 @@ Codemagic makes automatic code signing possible by connecting to [App Store Conn
 
 The following sections describe how to set up automatic code signing for builds configured in the UI. If you're building with `codemagic.yaml`, please refer [here](../code-signing-yaml/signing-macos).
 
-Note that Apple Developer Portal has a limitation of maximum of 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` certificates, Codemagic won't be able to create new ones. Using existing certificates won't be possible because the private key required to install them is only stored on your machine.
+Note that Apple Developer Portal has a limitation of a maximum of 2 macOS distribution certificates per team. This means that if you already have 2 `Mac Installer Distribution` certificates, Codemagic won't be able to create new ones. Using existing certificates won't be possible because the private key required to install them is only stored on your machine.
 
 You may revoke an existing certificate to allow Codemagic to create a new one using a Codemagic team-specific private key which is only stored on Codemagic. Alternatively, you can use [manual code signing](#manual-code-signing-to-publish-to-mac-app-store).
 
@@ -75,7 +75,7 @@ With the manual code signing method, you are required to upload the `Mac App Dis
 
 ### Setting up manual code signing
 
-1. Go to **App settings > Distribution > iOS code signing**.
+1. Go to **App settings > Distribution > macOS code signing**.
 2. Select **Manual** as the code signing method.
 3. Upload your `Mac App Distribution` signing certificate (in `.p12` format). If your certificate is password-protected, enter the **Certificate password**.
 3. Upload your `Mac Installer Distribution` signing certificate (in `.p12` format). If your certificate is password-protected, enter the **Certificate password**.

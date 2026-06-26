@@ -10,7 +10,7 @@ To test your app on simulators, Apple requires you to create an unsigned iOS app
 
 For building an unsigned iOS app, please follow the steps outlined in the [Native iOS guide](/yaml-quick-start/building-a-native-ios-app), stopping short of the code signing step.
 
-Adjust your build script to use this commands instead:
+Adjust your build script to use these commands instead:
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
@@ -39,7 +39,7 @@ Adjust your build script to use this commands instead:
         #    CODE_SIGNING_ALLOWED=NO
 {{< /highlight >}}
 
-Your artifact will be generated at the default Xcode path. You can access them by adding the following pattern in the `artifacts` section of `codemagic.yaml`:
+Your artifacts will be generated at the default Xcode path. You can access them by adding the following pattern in the `artifacts` section of `codemagic.yaml`:
 
 {{< highlight yaml "style=paraiso-dark">}}
   artifacts:

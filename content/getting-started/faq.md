@@ -6,7 +6,7 @@ aliases:
 ---
 
 ## Where are the build servers located?
-Codemagic build servers are all based in US:
+Codemagic build servers are all based in the US:
 - Milwaukee
 - Phoenix
 - Las Vegas

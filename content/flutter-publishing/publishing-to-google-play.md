@@ -81,7 +81,7 @@ To allow Codemagic to publish applications to Google Play, it is necessary to se
 
     ![Google Play 4](../uploads/2024/9/google_play_console_4.png)
 
-16. invite the service account by clicking **Invite user**.
+16. Invite the service account by clicking **Invite user**.
 
     ![Google Play 5](../uploads/2024/9/google_play_console_5.png)
 ## Setting up publishing to Google Play on Codemagic
