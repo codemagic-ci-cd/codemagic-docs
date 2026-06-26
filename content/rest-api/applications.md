@@ -48,7 +48,7 @@ curl -H "Content-Type: application/json" \
 
 `GET /apps/:id`
 
-Based on the application id provided, returns the applications information.
+Based on the application id provided, returns the application's information.
 
 #### Example
 
@@ -137,7 +137,7 @@ Creates an application from a private repository with an SSH key
 | **Name**        | **Type** | **Description** |
 | --------------- | -------- | --------------- |
 | `data` | `string` | **Required.** `base64`-encoded private key file. |
-| `passphrase` | `string` | **Required.** SSH key passphrase or `null` if it SSH key is without a passphrase. | 
+| `passphrase` | `string` | **Required.** SSH key passphrase or `null` if the SSH key is without a passphrase. | 
 
 To encode private key file and paste result to clipboard
 

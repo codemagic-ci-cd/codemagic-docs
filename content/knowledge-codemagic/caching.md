@@ -77,7 +77,7 @@ Starting with Xcode 26 it is possible to use **compilation caching**. This is a 
 
 On macOS, the compilation cache can usually be found in `~/Library/Developer/Xcode/DerivedData/CompilationCache.noindex`.
 
-For Codemagic to reuse the compilation cache you should add the its path to your cache paths in your `codemagic.yaml` configuration file as follows:
+For Codemagic to reuse the compilation cache you should add its path to your cache paths in your `codemagic.yaml` configuration file as follows:
 
 {{< highlight yaml "style=paraiso-dark">}}
   cache:

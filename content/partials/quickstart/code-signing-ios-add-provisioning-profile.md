@@ -26,7 +26,7 @@ You can upload provisioning profiles with the `.mobileprovision` extension, prov
 
 {{< tab header="Fetch from Developer Portal" >}}
 {{<markdown>}}
-You can automatically fetch the provisioning profiles from the Apple Developer Portal based on your team's App Store Connect API key. The bundle identifier is listed for every available profile along with it's name.
+You can automatically fetch the provisioning profiles from the Apple Developer Portal based on your team's App Store Connect API key. The bundle identifier is listed for every available profile along with its name.
 
 The profiles are displayed grouped by category: `Development profiles`, `Ad Hoc profiles`, `App Store profiles`, and `Enterprise profiles`. For each selected profile, it is necessary to provide a unique **Reference name**, which can be later used in `codemagic.yaml` to fetch the profile.
 

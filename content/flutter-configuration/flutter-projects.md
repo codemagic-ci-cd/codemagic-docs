@@ -44,7 +44,7 @@ In order to upload your Android App Bundle to Google Play, you will need to:
 
 1. Build the app in **Release** mode.
 2. Set up [Android code signing](../code-signing/android-code-signing/) in Codemagic to sign the app bundle.
-3. Set up [publishing to Google Play](../publishing/publishing-to-google-play/) in Codemagic to upload your app bundle to one of Google Play tracks.
+3. Set up [publishing to Google Play](../publishing/publishing-to-google-play/) in Codemagic to upload your app bundle to one of the Google Play tracks.
 4. [Enroll your app into app signing by Google Play](https://support.google.com/googleplay/android-developer/answer/7384423) to have Google sign the .apk(s) that are generated from the app bundle during installation.
 
 When you enroll an app into app signing by Google Play, Google will manage your app's signing key for you and use it to sign the .apk for distribution. Note that the app must be signed with the same key throughout its lifecycle, so if the app has already been uploaded to Google Play, make sure to export and upload your original key to Google Play for app signing. It is then recommended to create a new key ("upload key") for signing your app updates and uploading them to Google Play.
@@ -99,7 +99,7 @@ At the end of a successful build, Codemagic outputs a downloadable `.zip` file.
 
 ### Building snap packages
 
-Snaps are packaged apps that can be published to and installed from the [Spancraft Snap Store](https://snapcraft.io/store). Building a snap package requires having a `snapcraft.yaml` configuration file in the root of the repository, read more about how to [create a `snapcraft.yaml` file for a Flutter app](https://snapcraft.io/docs/flutter-applications).
+Snaps are packaged apps that can be published to and installed from the [Snapcraft Snap Store](https://snapcraft.io/store). Building a snap package requires having a `snapcraft.yaml` configuration file in the root of the repository, read more about how to [create a `snapcraft.yaml` file for a Flutter app](https://snapcraft.io/docs/flutter-applications).
 
 To build a snap package, select the **Build Snap package** checkbox in the **Build** section of your Linux workflow. When building a snap, the build configuration comes from the `snapcraft.yaml` file and the Flutter version, build mode and build arguments selected in Codemagic have no effect. To publish the snap to the Snap Store, set up [publishing to the Snap Store](../flutter-publishing/snap-store).
 

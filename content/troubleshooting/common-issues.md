@@ -25,7 +25,7 @@ It is a known issue with repositories coming from AWS CodeCommit through HTTPS. 
 ssh://XXXXXXXX@git-codecommit.us-west-2.amazonaws.com/v1/repos/my_repo.git
 ```
 
-Please note that the ***XXXXXXXXX** refers to your **SSH-Key-ID**
+Please note that the **XXXXXXXXX** refers to your **SSH-Key-ID**.
 
 {{< /collapsible >}}
 

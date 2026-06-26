@@ -223,7 +223,7 @@ In such cases, modify your `package.json` as follows:
 
 [Appium](https://appium.io/) is an open-source testing automation framework for testing cross-platform and mobile applications. You can use **Appium** and **WebDriverIO** with React Native thanks to its out-of-the-box support.
 
-Before running tests in Codemagic, you need to install and setup **WebDriverIO** in your project root directory. Run the following command **on your local machine**: provide input to a series of questions:
+Before running tests in Codemagic, you need to install and setup **WebDriverIO** in your project root directory. Run the following command **on your local machine** and provide input to a series of questions:
 
 {{< highlight bash "style=paraiso-dark">}}
 npx wdio config

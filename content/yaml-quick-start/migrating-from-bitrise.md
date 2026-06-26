@@ -444,7 +444,7 @@ To deploy to Google Play, a service account is required. Creating a service acco
 
 To set up distribution to Google Play on Codemagic, navigate to **Distribution** > **Google Play**. There it is possible to upload the created service account. If you do not have a service account, follow the instructions [here](../knowledge-base/google-services-authentication/).
 
-Like Bitrise's `Google Play Deploy` step, Codemagic allows you to modify the track, rollout fraction, and update priority. In addition, you can conveniently configure to submit the build as a draft or choose not the send the changes directly to review.
+Like Bitrise's `Google Play Deploy` step, Codemagic allows you to modify the track, rollout fraction, and update priority. In addition, you can conveniently configure to submit the build as a draft or choose not to send the changes directly to review.
 {{</markdown>}}
 {{< /tab >}}
 

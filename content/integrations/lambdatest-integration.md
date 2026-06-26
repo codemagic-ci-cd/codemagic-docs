@@ -99,7 +99,7 @@ In order to see your tests being uploaded to the **App Automation**, tests need 
 {{< /tabpane >}}
 
 
-These capabilities will allow **LambdaTest** to detect which platform you want to you execute your test scripts with. In these capabilities, the main part is **app URL** which is generated in the response of the cURL request:
+These capabilities will allow **LambdaTest** to detect which platform you want to execute your test scripts with. In these capabilities, the main part is the **app URL**, which is generated in the response of the cURL request:
 
 {{< highlight bash "style=paraiso-dark">}}
 

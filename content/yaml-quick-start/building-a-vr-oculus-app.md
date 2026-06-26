@@ -48,7 +48,7 @@ Keytool then prompts you to enter your personal details for creating the certifi
 5. Enter the keystore **Reference name**. This is a unique name used to reference the file in `codemagic.yaml`
 6. Click the **Add keystore** button to add the keystore.
 
-For each of the added keystore, its common name, issuer, and expiration date are displayed.
+For each of the added keystores, its common name, issuer, and expiration date are displayed.
 
 {{<notebox>}}
 **Note**: The uploaded keystore cannot be downloaded from Codemagic. It is crucial that you independently store a copy of the keystore file as all subsequent builds released to Google Play should be signed with the same keystore.
@@ -365,7 +365,7 @@ Meta Platforms Technologies provides several options for selling and distributin
 To distribute your app to one of their stores, you can use the **Oculus Platform Utility**. This example will showcase distribution to the **Meta Quest Store** but you can find documentation on other available options in the [official Oculus platform utility docs](https://developer.oculus.com/resources/publish-reference-platform-command-line-utility/).
 
 ##### Configure Oculus credentials
-Follow [the official guide](https://developer.oculus.com/resources/publish-reference-platform-command-line-utility/#credentials) to obtain either a **Oculus app ID / App secret** combination or an **Oculust user token**.
+Follow [the official guide](https://developer.oculus.com/resources/publish-reference-platform-command-line-utility/#credentials) to obtain either an **Oculus app ID / App secret** combination or an **Oculus user token**.
 
 1. You can add these as global environment variables in the **Global variables and secrets** section of your Codemagic team settings. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
@@ -397,7 +397,7 @@ Add following script steps to the `publishing:` section in your `codemagic.yaml`
           wget -O ovr-platform-util \
             "https://www.oculus.com/download_app/?id=1462426033810370&access_token=OC%7C1462426033810370%7C"
           chmod +x ./ovr-platform-util
-      - name: Publish app on a Oculus test release channel
+      - name: Publish app on an Oculus test release channel
         script: | 
           ./ovr-platform-util upload-quest-build \
             --app_id $OCULUS_APP_ID  \
@@ -410,7 +410,7 @@ Add following script steps to the `publishing:` section in your `codemagic.yaml`
 {{<notebox>}}
 **Note:** If you are using Oculus user token to authenticate, replace the last script step with the following:
 {{< highlight yaml >}}
-    - name: Publish app on a Oculus test release channel
+    - name: Publish app on an Oculus test release channel
       script: | 
         ./ovr-platform-util upload-quest-build \
         --app_id $OCULUS_APP_ID  \

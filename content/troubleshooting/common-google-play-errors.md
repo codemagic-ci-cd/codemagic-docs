@@ -4,7 +4,7 @@ description: Troubleshooting common Google Play errors
 weight: 4
 ---
 
-Codemagic enables you to automatically publish your app to the internal, alpha, beta, production or custom tracks on Google Play. While publishing to Google play you may encounter errors if the application does not meet the release criteria. You can see the explanations of some of the common errors:
+Codemagic enables you to automatically publish your app to the internal, alpha, beta, production or custom tracks on Google Play. While publishing to Google Play you may encounter errors if the application does not meet the release criteria. You can see the explanations of some of the common errors:
 
 ### Code: 403, The caller does not have permission. status: PERMISSION_DENIED
 
@@ -29,7 +29,7 @@ Please make sure you have done the following:
 ### The current user has insufficient permissions to perform the requested operation. status: PERMISSION_DENIED
 
 ###### Description
-This error may have caused due to Account permission issues.
+This error may have been caused by Account permission issues.
 
 {{<collapsible title="Solution" id="insufficient-permissions-solution" >}}
 ###### Solution
@@ -45,7 +45,7 @@ This error usually occurs when there are parallel builds running, as in 2 builds
 
 {{<collapsible title="Solution" id="edit-deleted-solution" >}}
 ###### Solution
-Use set `cancel_previous_builds: true` in your triggers, but it doesn't work when builds are triggered using API.
+Set `cancel_previous_builds: true` in your triggers, but it doesn't work when builds are triggered using API.
 
 {{< /collapsible >}}
 
@@ -111,7 +111,7 @@ The error 'Package not found' means that an application with the package name fr
 
 {{<collapsible title="Causes and solutions" id="package-not-found-solution" >}}
 ###### Cause
-This happens when either, you haven't uploaded the first artifact to your Google Play application manually, or the generated artifact package name has some suffixes or changes and doesn't correspond to the one in Google Play.
+This happens when either you haven't uploaded the first artifact to your Google Play application manually, or the generated artifact package name has some suffixes or changes and doesn't correspond to the one in Google Play.
 ###### Solution
 Ensure the package name matches exactly with the one in Google Play, or upload the first artifact manually to create the application.
 

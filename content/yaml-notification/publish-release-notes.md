@@ -81,7 +81,7 @@ There are three supported options to set up release notes:
     
     * For both App Store Connect and Google Play, only the release notes with the supported language codes will be published, omitting language codes that are not supported.
     
-    * For App Store review submission it is possible to also configure _Promotional Text, Description, Keywords, Support URL_ and _Marketing URL- in addition to _What's New_ notes via `release_notes.json` file. In order to do so, those fields need to be defined as follows:
+    * For App Store review submission it is possible to also configure _Promotional Text, Description, Keywords, Support URL_ and _Marketing URL_ in addition to _What's New_ notes via `release_notes.json` file. In order to do so, those fields need to be defined as follows:
 
 {{< highlight json "style=paraiso-dark">}}
 [
@@ -121,7 +121,7 @@ If you use this script locally, it will generate release notes with all the comm
     Fix bug B
 {{< /highlight >}}
 
-However, when using Codemagic, you will also need to configure the `CM_CLONE_DEPTH` environment variable. By default, this variable is set to clone only one commit for builds triggered by tags. To capture all commits between tags, e.g. v1.0.0 and v2.0.0, you should set `CM_CLONE_DEPTH` to a value greater than the number of commits between those tags (e.g. 10 or more). This adjustment will ensure to capture all the commits.
+However, when using Codemagic, you will also need to configure the `CM_CLONE_DEPTH` environment variable. By default, this variable is set to clone only one commit for builds triggered by tags. To capture all commits between tags, e.g. v1.0.0 and v2.0.0, you should set `CM_CLONE_DEPTH` to a value greater than the number of commits between those tags (e.g. 10 or more). This adjustment will ensure that all the commits are captured.
 
 In your YAML file, set the value for the CM_CLONE_DEPTH variable under the environment variable section as shown below;
 {{< highlight yaml "style=paraiso-dark">}}
@@ -132,4 +132,4 @@ workflows:
          CM_CLONE_DEPTH: 5
 {{< /highlight >}}
 
-Keep in mind that by setting CM_CLONE_DEPTH value to a greater number might increase the time it takes to clone the repository during the build, so consider the trade-off between clone depth and build performance.
+Keep in mind that setting the CM_CLONE_DEPTH value to a greater number might increase the time it takes to clone the repository during the build, so consider the trade-off between clone depth and build performance.

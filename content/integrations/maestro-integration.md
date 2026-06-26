@@ -11,7 +11,7 @@ A sample project that shows how to configure Maestro integration is available in
 
 ## Get Maestro Cloud API Key
 
-In order to use Maestro Cloud to run your tests on, you will need to signup here and get the `API Key` from your [console](https://app.maestro.dev/), click on your email, **View API Key** and copy the value.
+In order to use Maestro Cloud to run your tests on, you will need to sign up here and get the `API Key` from your [console](https://app.maestro.dev/), click on your email, **View API Key** and copy the value.
 
 After getting your `API KEY` you need to add it to your [environment variables](/variables/environment-variable-groups/#storing-sensitive-valuesfiles) in a group named ***maestro*** for example.
 
@@ -100,4 +100,4 @@ Don't forget to add the environment variables that holds your XCode workspace na
 {{< /tab >}}
 {{< /tabpane >}}
 
-If your Codemagic's build has failed at the Maestro cloud step, then your tests have failed. Otherwise, everything went well and you can check out the build page for more details.
+If your Codemagic build has failed at the Maestro cloud step, then your tests have failed. Otherwise, everything went well and you can check out the build page for more details.

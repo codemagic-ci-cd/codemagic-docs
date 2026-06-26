@@ -61,7 +61,7 @@ workflows:
   workflow-name:
     ...
     scripts:
-      - name: Export JSON configuation
+      - name: Export JSON configuration
         script: echo "$JSON_CONFIG" | base64 --decode > settings.json
       ...
       - name: Flutter build for iOS
@@ -73,11 +73,11 @@ workflows:
             --export-options-plist=/Users/builder/export_options.plist
 {{< /highlight >}}
 
-You `settings.json` file is saved to the same directory as your app and this is referenced in `dart-define-from-file`.
+Your `settings.json` file is saved to the same directory as your app and this is referenced in `dart-define-from-file`.
 
 ## Using Workflow Editor
 
-You can add your Base64 encoded settings.json as an evironment variable in the Workflow Editor, and then script to decode the value to disk in the **Post-clone script** section.
+You can add your Base64 encoded settings.json as an environment variable in the Workflow Editor, and then script to decode the value to disk in the **Post-clone script** section.
 
 {{< highlight yaml "style=paraiso-dark">}}
 echo "$JSON_CONFIG" | base64 --decode > settings.json

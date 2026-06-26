@@ -30,7 +30,7 @@ This new private key will be used to create a new iOS Distribution certificate i
 1. On the Mac which created the iOS distribution certificate, open the **Keychain Access**, located in the **Applications and Utilities** folder.
 2. Select the certificate entry which should be listed as `iPhone Distribution: company_name (team_id)`.
 3. Right-click on it to select "Export."
-4. In the export prompt window that appears, make sure the file format is set to **Personal Information Exchange (.p12)**"**.
+4. In the export prompt window that appears, make sure the file format is set to **Personal Information Exchange (.p12)**.
 5. Give the file a name such as "IOS_DISTRIBUTION", choose a location and click **Save**.
 6. On the next prompt, leave the password empty and click **OK**.
 7. Use the following `openssl` command to export the private key:

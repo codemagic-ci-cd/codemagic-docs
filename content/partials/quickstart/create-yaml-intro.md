@@ -23,7 +23,7 @@ workflows:
 
 {{<notebox>}}
 **Tip**
-You can have more than one workflow in the same `codemagic.yaml` file. If you are building for both the Android and iOS, simply enter both workflows as:
+You can have more than one workflow in the same `codemagic.yaml` file. If you are building for both Android and iOS, simply enter both workflows as:
 {{</notebox>}}
 {{< highlight yaml "style=paraiso-dark">}}
 workflows:

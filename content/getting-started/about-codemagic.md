@@ -38,7 +38,7 @@ The following documentation pages show the hardware specifications for each inst
 - [Windows hardware specifications](https://docs.codemagic.io/specs/versions-windows/)
 
 
-Our data centers are located in the US but it is possible to set up dedicated macOS hosts in the EU on request.
+Our data centers are located in the US, but it is possible to set up dedicated macOS hosts in the EU on request.
 
 ## Pre-installed software
 All the virtual machines come preloaded with the most common software you would need for building mobile apps such as Xcode, Android Studio, and a variety of CLI tools and frameworks. Codemagic’s engineers continuously monitor system availability and take care of updating software like Xcode and checking everything works when building with new versions so you don’t have to worry about running and maintaining your own systems. 

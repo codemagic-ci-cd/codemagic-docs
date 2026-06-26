@@ -77,7 +77,7 @@ The build virtual machine will remain available for an SSH or VNC/RDP connection
 
 ### Making Configuration Changes
 
-* It is very easy to save any configuration changes that you make on Codemgaic VM. The repository is cloned from your GitHub/GitLab/Bitbucket account, so you can directly commit the changes using git and push them to your account.
+* It is very easy to save any configuration changes that you make on Codemagic VM. The repository is cloned from your GitHub/GitLab/Bitbucket account, so you can directly commit the changes using git and push them to your account.
 * In order to push the changes to your repo, you need to authenticate yourself in your git provider. This is necessary because Codemagic VM only has read access to the GitHub repo. 
 * Example, in order to authenticate with GitHub, you need to use your GitHub personal access token. See how to generate the token from [here](https://github.com/settings/tokens). You can run these commands from the terminal: 
   

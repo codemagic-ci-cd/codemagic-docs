@@ -48,7 +48,7 @@ This new private key will be used to create a new Mac App Distribution certifica
 1. On the Mac which created the `Mac App Distribution` certificate, open the **Keychain Access**, located in the **Applications and Utilities** folder.
 2. Select the appropriate certificate entry.
 3. Right-click on it to select "Export."
-4. In the export prompt window that appears, make sure the file format is set to **Personal Information Exchange (.p12)**"**.
+4. In the export prompt window that appears, make sure the file format is set to **Personal Information Exchange (.p12)**.
 5. Give the file a name such as "MAC_DISTRIBUTION", choose a location and click **Save**.
 6. On the next prompt, leave the password empty and click **OK**.
 7. Use the following `openssl` command to export the private key:
@@ -85,7 +85,7 @@ cat codemagic_api_key.p8 | pbcopy
 11. Create variable `APP_STORE_CONNECT_ISSUER_ID`. The value is the **Issuer ID** field from **App Store Connect > Users and Access > Keys**.
 
 {{<notebox>}}
-**Tip**: Store all the of these variables in the same group so they can be imported to codemagic.yaml workflow at once. 
+**Tip**: Store all of these variables in the same group so they can be imported to codemagic.yaml workflow at once. 
 {{</notebox>}}
 
 Environment variables have to be added to the workflow either individually or as a group. Modify your `codemagic.yaml` file by adding the following:
@@ -141,7 +141,7 @@ To package your application into an `.pkg` Installer package and sign it with th
       cd $(dirname "$APP_NAME")
     
       PACKAGE_NAME=$(basename "$APP_NAME" .app).pkg
-      xcrun productbuild --component "$APP_NAME" /Applications/ unsigned.pkg  # Create and unsigned package
+      xcrun productbuild --component "$APP_NAME" /Applications/ unsigned.pkg  # Create an unsigned package
 
       # Find the installer certificate common name in keychain
       INSTALLER_CERT_NAME=$(keychain list-certificates \

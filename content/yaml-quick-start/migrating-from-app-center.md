@@ -26,7 +26,7 @@ Join 1,500+ mobile experts in our [Discord community](https://discord.com/invite
 | `Manual iOS code signing`   |    ☑️           |      ✅        |
 | `Android code signing`      |    ☑️           |      ✅        |
 | `Automatic build versioning`|    ☑️           |      ✅        |
-| `Running integrations tests`|    ☑️           |      ✅        |
+| `Running integration tests`|    ☑️           |      ✅        |
 | `Running unit tests`        |    ☑️           |      ✅        |
 | `App Store publishing`      |    ☑️           |      ✅        |
 | `Play Store publishing`     |    ☑️           |      ✅        |
@@ -52,7 +52,7 @@ Join 1,500+ mobile experts in our [Discord community](https://discord.com/invite
 | `Dependency caching`            |    ❌       |      ✅        |
 
 
-* Codemagic allows you to integrate with Sentry and Firebase Crahslytics for analytics and uploading debug symbols
+* Codemagic allows you to integrate with Sentry and Firebase Crashlytics for analytics and uploading debug symbols
 
 {{<notebox>}}
 **Note:** When adding React Native projects to App Center, iOS and Android platforms are added separately like two different projects. This behavior does not allow you to build and publish iOS and Android within the same workflow. With Codemagic, React Native repositories are added only once which prevents iOS and Android from being added separately. Besides, both platforms can be built and published within the same workflow. 
@@ -81,7 +81,7 @@ Unlike App Center, Codemagic allows you to have straightforward debugging sessio
 ## Step-by-Step transitioning guide
 
 1. Sign up with Codemagic by clicking the link [here](https://codemagic.io/signup), or if you have already registered, then login to your account [here](https://codemagic.io/login)
-2. Complete the onboarding the process by either getting started with a personal account or by creating a team where you and your colleagues can contribute to your app building and publishing process. You will be guided through once signed up.
+2. Complete the onboarding process by either getting started with a personal account or by creating a team where you and your colleagues can contribute to your app building and publishing process. You will be guided through once signed up.
 3. Add your repository to Codemagic by either connecting your Git cloud provider account or by entering the clone URL manually.
 4. Add **codemagic.yaml** in the root directory of the repository and check the file content below:
 
@@ -226,7 +226,7 @@ Once **codemagic.yaml** is configured, Codemagic automatically detects it and by
 
 ## Automatic build triggering without manual intervention
 
-Codemagic allows you to trigger builds on **pull_request**, **pull_request_labeled**, ** **push** and **tag** events. 
+Codemagic allows you to trigger builds on **pull_request**, **pull_request_labeled**, **push** and **tag** events. 
 
 - **push** - a build will be started every time you commit code to any of the tracked branches.
 - **pull_request** - a build will be started when a pull request is opened or updated to verify the resulting merge commit.
@@ -258,7 +258,7 @@ Open your application repository, go to **Project Settings** > **Service Hooks**
 ```
 {{< /highlight>}}
 
-3. Done! Now, as soon as any changes made based on the events above, builds will be triggered and you can check the webhook messages by navigating to your application and selecting the Webhooks tab.
+3. Done! Now, as soon as any changes are made based on the events above, builds will be triggered and you can check the webhook messages by navigating to your application and selecting the Webhooks tab.
 
 Additionally, by using **when** to run and skip builds along with using **changeset** inside **when**, you can avoid unnecessary builds when functional components of your repository were not modified. More information about it can be found [here](https://docs.codemagic.io/yaml-running-builds/starting-builds-automatically/#using-when-to-run-or-skip-builds)
 

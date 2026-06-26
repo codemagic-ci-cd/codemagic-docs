@@ -69,7 +69,7 @@ Remove any Appflow SDK initialisation calls from your app code — typically `De
 
 ### Where this guide diverges from the React Native CodePush docs
 
-If you have used Codemagic CodePush with React Native, you will notice that several things are different for Capacitorr:
+If you have used Codemagic CodePush with React Native, you will notice that several things are different for Capacitor:
 
 **No `strings.xml` or `Info.plist` entries required.** The React Native plugin reads configuration from native resource files directly because React Native has no equivalent of the Capacitor config layer. In Capacitor, the `plugins` block in `capacitor.config.ts` is read by the native plugin at runtime via Capacitor's configuration bridge. You do not need to touch `strings.xml` or `Info.plist`.
 

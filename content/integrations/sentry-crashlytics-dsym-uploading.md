@@ -81,7 +81,7 @@ In order to upload the dSYM files to Sentry, add the following script to your **
 {{< /highlight >}}
 
  
-The above-mentioned **dsymPath** is React Native and Native iOS specific and it could change depending on what platform the app is built. For example, Flutter apps should use:
+The above-mentioned **dsymPath** is React Native and Native iOS specific and it could change depending on what platform the app is built on. For example, Flutter apps should use:
 
 {{< highlight yaml "style=paraiso-dark">}}
 dsymPath=$(find $CM_BUILD_DIR/build/ios/archive/Runner.xcarchive -name "*.dSYM" | head -1)

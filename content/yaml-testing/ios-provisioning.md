@@ -31,7 +31,7 @@ You can also check the [Register Devices](https://help.apple.com/developer-accou
 To add devices to an existing group, find the group in the **Tester groups** section and click **Add new devices**. 
 
 {{<notebox>}}
-**Note:** It is important to choose the actual bundle identifier when building an not use any XC Wildcards. Otherwise, the tester group will be unable to install the app and will get the error **_"This app cannot be installed because its integrity could not be verified_**"
+**Note:** It is important to choose the actual bundle identifier when building and not use any XC Wildcards. Otherwise, the tester group will be unable to install the app and will get the error **_"This app cannot be installed because its integrity could not be verified_**"
 {{</notebox>}}
 
 ## Device registration

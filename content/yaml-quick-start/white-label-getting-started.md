@@ -49,7 +49,7 @@ This group might contain the following environment variables:
 - Android Keystore information. `CM_KEYSTORE` (base64 encoded), `CM_KEY_ALIAS`, `CM_KEY_PASSWORD`, `CM_KEYSTORE_PASSWORD`, `CM_KEYSTORE_PATH`.
 - The content of the Google Cloud service JSON file to publish to Play Store. `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`, learn how to get it [here](../yaml-publishing/google-play/#configure-google-play-api-access).
 - iOS app details. `APP_STORE_ID`, `BUNDLE_ID`.
-- App Store Connect API key. `APP_STORE_CONNECT_KEY_IDENTIFIER`, `APP_STORE_CONNECT_ISSUER_ID`, `APP_STORE_CONNECT_PRIVATE_KEY`, learn how to create create a new key [here](../yaml-code-signing/alternative-code-signing-methods/#:~:text=Creating%20the%20App%20Store%20Connect%20API%20key).
+- App Store Connect API key. `APP_STORE_CONNECT_KEY_IDENTIFIER`, `APP_STORE_CONNECT_ISSUER_ID`, `APP_STORE_CONNECT_PRIVATE_KEY`, learn how to create a new key [here](../yaml-code-signing/alternative-code-signing-methods/#:~:text=Creating%20the%20App%20Store%20Connect%20API%20key).
 - iOS Distribution certificate private key. `CERTIFICATE_PRIVATE_KEY`, learn how to obtain it [here](../yaml-code-signing/alternative-code-signing-methods/#:~:text=Obtaining%20the%20Certificate%20private%20key).
 - **.env** file if your app uses some secrets at runtime. `DOTENV_FILE` (base64 encoded).
 
@@ -298,7 +298,7 @@ Read more on this [here](https://docs.codemagic.io/yaml-publishing/app-store-con
 {{</notebox>}}
 
 ### Full YAML sample
-Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to download client assets from AWS S3 bucket, chaning app name and icons, replacing exciting package name and bundle Id, build, code sign, automatically version and publish to each customer stores accounts.
+Having followed all of the above steps, you now have a working `codemagic.yaml` file that allows you to download client assets from AWS S3 bucket, changing app name and icons, replacing existing package name and bundle ID, build, code sign, automatically version and publish to each customer stores accounts.
 
 Your final `codemagic.yaml` file should look something like this:
 
@@ -444,7 +444,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <auth-token>" \
   https://api.codemagic.io/builds
 {{< /highlight >}}
 
-Instead of triggering a single build for each client on your local machine manually, you can create a Codemagic workflow that loops through all of your client and trigger a new build for each one of them.
+Instead of triggering a single build for each client on your local machine manually, you can create a Codemagic workflow that loops through all of your clients and triggers a new build for each one of them.
 
 In the following example, you can trigger this workflow by merging a PR into this branch.
 

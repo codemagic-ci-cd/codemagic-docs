@@ -30,7 +30,7 @@ A sample project that shows how to configure Codecov integration is available in
 
 ## Collecting test results
 
-After writing tests with your test suite you can generate a coverage report using **lcov** and upload that coverage report to **Codecov** directly via **codemagic.yaml**. It is also possible to exit the script if code coverage is lower or higher than the expected treshold. Refer to the sample script below:
+After writing tests with your test suite you can generate a coverage report using **lcov** and upload that coverage report to **Codecov** directly via **codemagic.yaml**. It is also possible to exit the script if code coverage is lower or higher than the expected threshold. Refer to the sample script below:
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
@@ -51,7 +51,7 @@ After writing tests with your test suite you can generate a coverage report usin
 {{< /highlight >}}
 
 
-Codecov accepts **.xml** **.json** and **.txt** coverage report formats. You can display test results visually in the build overview by adding them to a path. Just include the **test_report** field with a glob pattern matching the test result file location. More information can be found [here](https://docs.codemagic.io/yaml-testing/testing/).
+Codecov accepts **.xml**, **.json**, and **.txt** coverage report formats. You can display test results visually in the build overview by adding them to a path. Just include the **test_report** field with a glob pattern matching the test result file location. More information can be found [here](https://docs.codemagic.io/yaml-testing/testing/).
 
 
 ## Submitting to Codecov

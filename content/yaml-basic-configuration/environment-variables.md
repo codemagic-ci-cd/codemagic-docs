@@ -8,7 +8,7 @@ aliases:
   - /variables/environment-variables
 ---
 
-Codemagic exports several built-in environment variables during the build that you can use in scripts to customize the build process. Environment variables added by user will override Codemagic defaults. You can check which environment variables are exported by inserting the following script before or after any of the default build steps:
+Codemagic exports several built-in environment variables during the build that you can use in scripts to customize the build process. Environment variables added by the user will override Codemagic defaults. You can check which environment variables are exported by inserting the following script before or after any of the default build steps:
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:

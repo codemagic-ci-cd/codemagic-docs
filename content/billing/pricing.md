@@ -92,7 +92,7 @@ Consider an annual or Enterprise plan if more than three concurrent builds are r
 
 #### 2. Fixed Annual Plans
 
-The following optons are available for teams with different macOS machines:
+The following options are available for teams with different macOS machines:
 
 {{< tabpane >}}
 {{< tab header="macOS M2">}}
@@ -162,13 +162,13 @@ To request this plan, please contact us [here](https://codemagic.io/pricing/#ent
 
 ### Burstable concurrencies
 
-Burstable concurrencies allow you to use more concurrencies than you otherwise would have available during peak times and pay **1/3** of the price for those concurrencies. If queue time is important for you, you can have a reserve of concurrencies available to use during high demand so you don’t build up a queue. Similarly if you’re making a big release that would otherwise take a long time you could use burstable concurrencies. 
+Burstable concurrencies allow you to use more concurrencies than you otherwise would have available during peak times and pay **1/3** of the price for those concurrencies. If queue time is important for you, you can have a reserve of concurrencies available to use during high demand so you don’t build up a queue. Similarly, if you’re making a big release that would otherwise take a long time, you could use burstable concurrencies. 
 
 {{<notebox>}}
 🔔 Burstable concurrencies are available starting from 10 concurrencies and you will get billed monthly using the 95th percentile method. 
 {{</notebox>}}
 
-To determine which concurrencies are bursted and which ones are not we divide billing period into 5 second intervals and sample concurrency usage every 5 seconds. We then reorder this graph in descending order so the left of the graph is consisting of high use of concurrency and tail end of the graph is low use of concurrency. We then discard 5% of the high use as “bursting” and consider only the use at 95th percentile.
+To determine which concurrencies are bursted and which ones are not we divide the billing period into 5 second intervals and sample concurrency usage every 5 seconds. We then reorder this graph in descending order so the left of the graph consists of high use of concurrency and the tail end of the graph is low use of concurrency. We then discard 5% of the high use as “bursting” and consider only the use at 95th percentile.
 
 If you subscribe to 20 concurrencies and consume 10 within the 95th percentile, then you pay full price for 10 and **1/3** of the price for the remaining 10.
 
@@ -250,7 +250,7 @@ Annual invoicing with bank transfer is available for Enterprise plans.
 
 Payment is also possible via **AWS Marketplace** and **Google Cloud Marketplace** private offers.
 
-Discounts are available for multi year contracts.
+Discounts are available for multi-year contracts.
 
 Codemagic is **SOC 2 Type II** audited and the report is available on request. 
 

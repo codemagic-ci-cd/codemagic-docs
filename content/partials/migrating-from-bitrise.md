@@ -201,9 +201,9 @@ If you have already uploaded your service account to Bitrise, you can download i
 
 To add your service account to your configuration file, add it as an environment variable. For example, `GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS`. First, navigate to your application and click the `Environment variables` tab. To add the file, encode its contents with base64 and paste the value into Codemagic; make sure to check **Secret** when providing sensitive information. You can either add it to an already created group or create a new group, which you can later reference in your `codemagic.yaml`.
 
-Like Bitrise's `Google Play Deploy` step, Codemagic allows you to modify the track, rollout fraction, and update priority. In addition, you can conveniently configure to submit the build as a draft or choose not the send the changes directly to review.
+Like Bitrise's `Google Play Deploy` step, Codemagic allows you to modify the track, rollout fraction, and update priority. In addition, you can conveniently configure to submit the build as a draft or choose not to send the changes directly to review.
 
-Follow the example [here](../yaml-publishing/google-play/) to configure publishing to Google Play it in your `codemagic.yaml`.
+Follow the example [here](../yaml-publishing/google-play/) to configure publishing to Google Play in your `codemagic.yaml`.
 
 The `Google Play Deploy` step in `bitrise.yml` and the publishing in `codemagic.yaml` are relatively similar. However, Bitrise requires you to add the package name of the application. Codemagic publishes the relevant artifacts generated during the build with their respective names.
 
@@ -236,7 +236,7 @@ publishing:
 
 ## Migrating Flutter builds with Flutter workflow editor
 
-Besides using the `codemagic.yaml` file for configuration; it is also possible to use the Flutter workflow editor for Flutter applications. Note that you can either create separate workflows for `iOS` and `Android` or build them in the same workflow. Flutter becomes preinstalled on all Codemagic's build machines.
+Besides using the `codemagic.yaml` file for configuration; it is also possible to use the Flutter workflow editor for Flutter applications. Note that you can either create separate workflows for `iOS` and `Android` or build them in the same workflow. Flutter is preinstalled on all Codemagic's build machines.
 
 ### iOS workflow
 
@@ -252,7 +252,7 @@ As with manual code signing, setting up automatic code signing once you have alr
 
 In Bitrise, to connect your Apple Developer account, you must first navigate to your profile settings, set up the connection, explicitly enable it under your application settings and add the `Manage iOS Code Signing` step to your workflow.
 
-Codemagic Flutter workflow editor works almost the same. You can find the option to connect your Developer Portal account under user or team settings. Codemagic requires you to provide all of the same data - a name for your API key, issuer ID, and key ID, along with a .p8 file downloaded from App Store Connect. A step by step instruction on generating the key can can be found [here](../flutter-code-signing/ios-code-signing/#step-1-creating-an-app-store-api-key-for-codemagic).
+Codemagic Flutter workflow editor works almost the same. You can find the option to connect your Developer Portal account under user or team settings. Codemagic requires you to provide all of the same data - a name for your API key, issuer ID, and key ID, along with a .p8 file downloaded from App Store Connect. A step by step instruction on generating the key can be found [here](../flutter-code-signing/ios-code-signing/#step-1-creating-an-app-store-api-key-for-codemagic).
 
 Then, choose the correct API key in your workflow settings under iOS code signing. Check `Automatic` under `Select code signing method` and select the provisioning profile type under `Provisioning profile type`. If the certificates and profiles do not exist, Codemagic will attempt to generate them. Take note that Apple only allows three distribution certificates per account. 
 
@@ -294,4 +294,4 @@ To deploy to Google Play, a service account is required. Creating a service acco
 
 To set up distribution to Google Play on Codemagic, navigate to **Distribution** > **Google Play**. There it is possible to upload the created service account. If you do not have a service account, follow the instructions [here](../knowledge-base/google-services-authentication/).
 
-Like Bitrise's `Google Play Deploy` step, Codemagic allows you to modify the track, rollout fraction, and update priority. In addition, you can conveniently configure to submit the build as a draft or choose not the send the changes directly to review.
+Like Bitrise's `Google Play Deploy` step, Codemagic allows you to modify the track, rollout fraction, and update priority. In addition, you can conveniently configure to submit the build as a draft or choose not to send the changes directly to review.

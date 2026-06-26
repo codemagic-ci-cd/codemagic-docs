@@ -31,7 +31,7 @@ When App Store Connect is not correctly set up, users might encounter an error m
 
 {{<collapsible title="Causes and solutions" id="error-creating-authentication-sessions-solution" >}}
 ###### Cause
-The most common reason for this error message is using your Apple ID password instead of [app-specific password](https://support.apple.com/en-us/HT204397) in App Store Connect publishing settings.
+The most common reason for this error message is using your Apple ID password instead of an [app-specific password](https://support.apple.com/en-us/HT204397) in App Store Connect publishing settings.
 ###### Solution
 Publishing iOS apps with **app-specific-password** is deprecated, refer to the documentation [here](https://docs.codemagic.io/yaml-publishing/app-store-connect/) that explains how to publish iOS apps to App Store Connect.
 
@@ -251,7 +251,7 @@ Error (Xcode): Signing for "XXX" requires a development team. Select a developme
 ###### Solution
 This issue has been fixed on the stable channel in **Flutter 3.3.3**.
 
-However, if you would like to continue previous versions of Flutter you can open `ios/Podfile` and add the following at the end of it:
+However, if you would like to continue using previous versions of Flutter you can open `ios/Podfile` and add the following at the end of it:
 
 {{< highlight yaml "style=paraiso-dark">}}
 post_install do |installer|

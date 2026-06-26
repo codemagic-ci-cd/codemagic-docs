@@ -61,12 +61,12 @@ If you are already familiar with mobile development, you may want to use React N
 
 To run a build on CI/CD we need to have the `ios` and `android` project folders. If you can't or don’t want to permanently prebuild Expo from your app, then you can do it on the build server each time you run a build. Follow the steps below to get started. You can check the finished sample app in our [samples repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/react-native/expo-react-native-not-ejected/codemagic.yaml).
 
-1. Clone your repository to a temporary new location or create a new branch. in order to prebuild Expo once and get the `android/app/build.gradle` file.
+1. Clone your repository to a temporary new location or create a new branch, in order to prebuild Expo once and get the `android/app/build.gradle` file.
 2. Generates native projects by running the following command:
 {{< highlight Shell "style=rrt">}}
 npx expo prebuild
 {{< /highlight >}}
-3. Make sure that `namespace` and `applicationId` under `android{` section in `app/build.gradle` file uses the same package name. It will be used as a reference for the `app.json` file.
+3. Make sure that `namespace` and `applicationId` under `android{` section in `app/build.gradle` file use the same package name. It will be used as a reference for the `app.json` file.
 4. Copy the `android/app/build.gradle` file from the generated project and add it to your main repository. In our example, we create a `support-files` folder and store the `build.gradle` inside.
 5. Whenever this guide calls for making changes to the `android/app/build.gradle`, apply these changes to the `support-files/build.gradle` file instead.
 6. Follow the steps in other **Expo without prebuild** sections in this guide to install the expo cli tools on the VM, run the scripts to copy the `build.gradle` file to the correct location and use other tools to adjust iOS settings in the `info.plist` file.

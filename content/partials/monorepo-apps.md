@@ -57,4 +57,4 @@ workflows:
 {{< /highlight >}}
 
 
-A sample project can be found [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/codemagic.yaml). You can also checkout the blog article [How to mange your Flutter monorepo](https://blog.codemagic.io/flutter-monorepos/).
+A sample project can be found [here](https://github.com/codemagic-ci-cd/codemagic-sample-projects/blob/main/codemagic.yaml). You can also checkout the blog article [How to manage your Flutter monorepo](https://blog.codemagic.io/flutter-monorepos/).

@@ -43,4 +43,4 @@ When you set up email or Slack publishing, Codemagic publishes the following art
 
 - `app`, `ipa`, `apk`, the archive with Flutter web build directory, Linux application bundle files, Windows MSIX packages, and .exe files.
 
-** NOTE: We only send emails on successful builds when there are above mentioned artifact types **
+** NOTE: We only send emails on successful builds when there are above-mentioned artifact types **

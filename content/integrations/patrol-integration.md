@@ -28,7 +28,7 @@ Refer to the sample project's README and configuration files for detailed setup 
 
 Before integrating Patrol with Codemagic, ensure you have:
 
-- A Flutter project with Patrol tests already set up, if you need help check [Patrol documentation](https://patrol.leancode.co?utm_source=codemagic&utm_medium=referral) to get started.
+- A Flutter project with Patrol tests already set up. If you need help, check [Patrol documentation](https://patrol.leancode.co?utm_source=codemagic&utm_medium=referral) to get started.
 - Codemagic account and project configured
 - Access to device farms (optional, for cloud testing)
 
@@ -94,7 +94,7 @@ Patrol can be integrated with popular device farms through Codemagic:
 - **BrowserStack**: Execute tests on BrowserStack's real device cloud
 - **emulator.wtf**: Run tests on emulator.wtf's cloud emulators
 
-It can be also run on your Codemagic itself. There is a [Blog post](https://blog.codemagic.io/how-to-test-native-features-in-flutter-apps-with-patrol-and-codemagic/).
+It can also be run on Codemagic itself. There is a [Blog post](https://blog.codemagic.io/how-to-test-native-features-in-flutter-apps-with-patrol-and-codemagic/).
 
 ### Getting Help
 

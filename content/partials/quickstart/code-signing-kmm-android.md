@@ -18,7 +18,7 @@ Keytool then prompts you to enter your personal details for creating the certifi
 5. Enter the keystore **Reference name**. This is a unique name used to reference the file in `codemagic.yaml`
 6. Click the **Add keystore** button to add the keystore.
 
-For each of the added keystore, its common name, issuer, and expiration date are displayed.
+For each of the added keystores, its common name, issuer, and expiration date are displayed.
 
 {{<notebox>}}
 **Note**: The uploaded keystore cannot be downloaded from Codemagic. It is crucial that you independently store a copy of the keystore file as all subsequent builds released to Google Play should be signed with the same keystore.

@@ -19,7 +19,7 @@ Click create App.
 
 ![Create a new slack app](../uploads/create-new-slack-app.png)
 
-Go to you **App settings > Basic Information > Display Information** and fill all the general details.
+Go to your **App settings > Basic Information > Display Information** and fill all the general details.
 
 ![Create a new slack app](../uploads/general-info.png)
 

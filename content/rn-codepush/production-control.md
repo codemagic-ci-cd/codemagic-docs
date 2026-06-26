@@ -106,7 +106,7 @@ v2 → mandatory
 v3 → optional
 {{< /highlight >}}
 
-If a user is running **v1** and checks for updates, they will receive **v3**. However, the update will be treated as mandatory because the user has not yet installed the mandatory update **(v2)**, the system ensures that any later update containing those changes is still applied as mandatory.
+If a user is running **v1** and checks for updates, they will receive **v3**. However, the update will be treated as mandatory because the user has not yet installed the mandatory update **(v2)**. The system ensures that any later update containing those changes is still applied as mandatory.
 
 ## Rollbacks
 
