@@ -60,7 +60,7 @@ pipeline {
 
     environment {
         CODEMAGIC_APP_ID   = 'YOUR_APP_ID' // change to your AppID
-        CODEMAGIC_WORKFLOW = 'YOUR_WORKFLOW_NAME'  // workflow key from codemagic.yaml
+        CODEMAGIC_WORKFLOW = 'YOUR_WORKFLOW_KEY'  // workflow key from codemagic.yaml
         CODEMAGIC_BRANCH   = 'YOUR_BRANCH_NAME' // change to your branch name
     }
 
@@ -160,7 +160,7 @@ pipeline {
 
     environment {
         CODEMAGIC_APP_ID   = 'YOUR_APP_ID'
-        CODEMAGIC_WORKFLOW = 'YOUR_WORKFLOW_NAME'
+        CODEMAGIC_WORKFLOW = 'YOUR_WORKFLOW_KEY'  // workflow key from codemagic.yaml
         CODEMAGIC_BRANCH   = 'YOUR_BRANCH_NAME'
     }
 
