@@ -29,7 +29,7 @@ workflows:
 
 ## Configuring access to Codemagic in Jenkins
 
-One credential needs to be added to Jenkins for the Codemagic integration: `codemagic-api-key`.
+Store your Codemagic API key as a Jenkins Secret text credential with ID `codemagic-api-key`.
 
 1. Go to Manage Jenkins → Credentials → System → Global credentials.
 2. Click Add Credentials.
