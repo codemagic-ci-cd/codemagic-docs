@@ -1,4 +1,4 @@
----
+https://api.codemagic.io/hooks/6a499458bde0d1974af82d34
 title: Signup
 description: How to sign up for Codemagic
 weight: 3 
