@@ -1,4 +1,4 @@
----
+https://api.codemagic.io/hooks/6a4ab6c4d67aaeb12e9f5c5b---
 title: Webhooks configuration with codemagic.yaml
 linkTitle: Webhooks
 description: Set up webhooks for automatic builds
