@@ -214,7 +214,7 @@ pipeline {
 
 ## Report results back to Jenkins
 
-Codemagic runs builds in the cloud. The publishing script POSTs to Jenkins when the build finishes, so Jenkins must be reachable at a **public HTTPS URL** (reverse proxy, ingress, and so on). A `localhost` Jenkins URL will not work.
+Codemagic runs builds in the cloud. The publishing script sends a POST request to Jenkins when the build finishes, so Jenkins must be reachable at a **public HTTPS URL** (reverse proxy, ingress, and so on). A `localhost` Jenkins URL will not work.
 
 ### Create the callback job
 
