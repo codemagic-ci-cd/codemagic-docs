@@ -725,7 +725,7 @@ public class IosBuildPostprocessor
 }
 {{< /highlight >}}
 
-## Caching
+## How caching works for Unity
 Caching certain directories can significantly speed up the build process by avoiding unnecessary recompilation or re-downloading of dependencies. Here are some directories that you should consider caching: 
 
 - `Library`: The Library directory in your Unity project contains various generated files, including the Unity package cache, script compilation artifacts, and build settings.

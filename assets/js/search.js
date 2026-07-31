@@ -1,4 +1,4 @@
-const algolia = algoliasearch('27CIRMYZIB', '7e88305c04e90188508daa6c89e5f4df').initIndex('codemagic_docs')
+const algolia = algoliasearch('27CIRMYZIB', '7e88305c04e90188508daa6c89e5f4df').initIndex('codemagic_docs_main')
 
 const getBreadcrumbsHtml = (path, title) => {
     const parts = path.slice(1, -1).split('/')
@@ -138,26 +138,31 @@ const getResultHtml = (algoliaResultList, query) => {
         return !resultConfiguration || resultConfiguration === preferredConfiguration
     })
 
-    if (!algoliaResultList.length)
-        return createHtmlElement('div', {
-            className: 'no-results-message',
-            innerText: `No results matching "${query}"`,
-        })
+    if (!algoliaResultList.length) {
+        return createHtmlElement('div', { className: 'no-results-message' }, [
+            createHtmlElement('p', { innerText: `No results matching "${query}"` }),
+            createHtmlElement('p', {
+                className: 'support-message',
+                innerHTML: "Don't see what you're looking for? <a href='https://codemagic.io/contact/'>Contact us</a> or let us know via support chat widget in <a href='https://codemagic.io/apps'>app</a>.",
+            }),
+        ])
+    }
 
     const results = algoliaResultList.map((result) => {
-        const subtitle = result._highlightResult.subtitle.value
+        const subtitle = result._highlightResult?.subtitle?.value ?? ''
+        const pageTitle = result._highlightResult?.title?.value ?? result.title ?? ''
         return createHtmlElement('li', null, [
             createHtmlElement('a', { href: result.uri }, [
-                createHtmlElement('p', { innerHTML: result._highlightResult.title.value, className: 'title' }),
-                subtitle ? createHtmlElement('p', { innerHTML: subtitle, className: 'subtitle' }) : null,
+                createHtmlElement('p', { innerHTML: subtitle || pageTitle, className: 'title' }),
+                subtitle ? createHtmlElement('p', { innerHTML: pageTitle, className: 'subtitle' }) : null,
                 createHtmlElement('p', {
-                    innerHTML: getBreadcrumbsHtml(result.uri, result.title),
+                    innerHTML: getBreadcrumbsHtml(result.uri, subtitle ? result.title : null),
                     className: 'breadcrumbs',
                 }),
                 createHtmlElement(
                     'div',
                     { className: 'content' },
-                    result._snippetResult.content.value
+                    (result._snippetResult?.content?.value ?? result.content ?? '')
                         .split('\n')
                         .map((p) => createHtmlElement('p', { innerHTML: p })),
                 ),
@@ -165,11 +170,18 @@ const getResultHtml = (algoliaResultList, query) => {
         ])
     })
 
-    return createHtmlElement('ul', null, results)
+    const supportLink = createHtmlElement('li', { className: 'support-link' }, [
+        createHtmlElement('p', {
+            className: 'title',
+            innerHTML: "Don't see what you're looking for? <a href='https://codemagic.io/contact/'>Contact us</a> or let us know via support chat widget in <a href='https://codemagic.io/apps'>app</a>.",
+        }),
+    ])
+
+    return createHtmlElement('ul', null, [...results, supportLink])
 }
 
 const getResults = (query) =>
-    query
+    query && query.trim().length >= 3 && !['and', 'the', 'then', 'or', 'but', 'for', 'with', 'not', 'from', 'this', 'that', 'are', 'was', 'has', 'how', 'what', 'when', 'where', 'who', 'why', 'can', 'use', 'using', 'set', 'get', 'its', 'into', 'also', 'other', 'next', 'used'].includes(query.trim().toLowerCase())
         ? algolia
               .search(`'${query}`, {
                   highlightPreTag: '<mark data-markjs="true">',

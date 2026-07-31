@@ -1,17 +1,57 @@
-[{{ range $pageIndex, $ := where .Site.Pages "Kind" "page" }}
-  {{- if $pageIndex }}, {{ end -}}
+[{{ $first := true }}{{ range where .Site.Pages "Kind" "page" }}
+  {{- $page := . }}
+  {{- $pageTitle := .Title }}
+  {{- $uri := .RelPermalink }}
+  {{- $rawContent := .RawContent }}
+  {{- $weight := $page.Params.weight | default 99 }}
+  {{- $sections := split $rawContent "\n## " }}
+  {{- range $i, $section := $sections }}
+    {{- if eq $i 0 }}
+      {{- /* First chunk: content before the first ## heading — use page title/description */ -}}
+      {{- $text := replaceRE "(?s)```[^`]*```" "" $section }}
+      {{- $text = replaceRE "(?s)\\{\\{<\\s*highlight[^>]*>\\}\\}.*?\\{\\{<\\s*/highlight\\s*>\\}\\}" "" $text }}
+      {{- $text = $text | plainify | htmlUnescape }}
+      {{- $text = replaceRE `\{\{[^}]*\}\}` "" $text }}
+      {{- $text = replaceRE `#{1,6} ` "" $text }}
+      {{- $text = replaceRE `\*{1,3}([^*]+)\*{1,3}` "$1" $text }}
+      {{- $text = replaceRE `_{1,3}([^_]+)_{1,3}` "$1" $text }}
+      {{- $text = replaceRE "`[^`]+`" "" $text }}
+      {{- $text = replaceRE `!?\[([^\]]*)\]\([^)]*\)` "$1" $text }}
+      {{- $text = replaceRE `\s+` " " $text | strings.TrimSpace }}
+      {{- if gt (len $text) 20 }}
+        {{- if not $first }}, {{ end }}{{ $first = false }}
   {
-    {{- with .Title }}
-    "title": "{{ htmlEscape . }}",
-    {{- end }}
-    {{- if .Description }}
-    "subtitle": "{{ htmlEscape .Description }}",
-    {{- else }}
-    "subtitle": "",
-    {{- end }}
-    {{- with .Plain }}
-    "content": {{ jsonify . }},
-    {{- end }}
-    "uri": "{{ .RelPermalink }}"
+    "title": {{ jsonify $pageTitle }},
+    "subtitle": {{ jsonify ($page.Description | default "") }},
+    "content": {{ jsonify $text }},
+    "uri": {{ jsonify $uri }},
+    "weight": {{ $weight }}
   }
-  {{- end }}]
+      {{- end }}
+    {{- else }}
+      {{- /* Subsequent chunks: each ## section */ -}}
+      {{- $lines := split $section "\n" }}
+      {{- $heading := index $lines 0 | strings.TrimSpace }}
+      {{- $body := delimit (after 1 $lines) "\n" }}
+      {{- $body = replaceRE "(?s)```[^`]*```" "" $body }}
+      {{- $body = replaceRE "(?s)\\{\\{<\\s*highlight[^>]*>\\}\\}.*?\\{\\{<\\s*/highlight\\s*>\\}\\}" "" $body }}
+      {{- $body = $body | plainify | htmlUnescape }}
+      {{- $body = replaceRE `\{\{[^}]*\}\}` "" $body }}
+      {{- $body = replaceRE `#{1,6} ` "" $body }}
+      {{- $body = replaceRE `\*{1,3}([^*]+)\*{1,3}` "$1" $body }}
+      {{- $body = replaceRE `_{1,3}([^_]+)_{1,3}` "$1" $body }}
+      {{- $body = replaceRE "`[^`]+`" "" $body }}
+      {{- $body = replaceRE `!?\[([^\]]*)\]\([^)]*\)` "$1" $body }}
+      {{- $body = replaceRE `\s+` " " $body | strings.TrimSpace }}
+      {{- $anchor := $heading | urlize }}
+      {{- if not $first }}, {{ end }}{{ $first = false }}
+  {
+    "title": {{ jsonify $pageTitle }},
+    "subtitle": {{ jsonify $heading }},
+    "content": {{ jsonify $body }},
+    "uri": {{ jsonify (printf "%s#%s" $uri $anchor) }},
+    "weight": {{ $weight }}
+  }
+    {{- end }}
+  {{- end }}
+{{- end }}]

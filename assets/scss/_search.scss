@@ -170,5 +170,35 @@
                 }
             }
         }
+        .no-results-message {
+            p {
+                margin-bottom: 12px;
+            }
+            a {
+                color: $blue;
+                font-size: 13px;
+            }
+            .support-message {
+                font-size: 13px;
+                font-weight: normal;
+                color: $grey-text-light;
+                border-top: 1px solid $blue-xl-border;
+                padding-top: 12px;
+            }
+        }
+        .support-link {
+            a {
+                color: $blue;
+            }
+            .title {
+                font-size: 13px;
+                font-weight: normal;
+                color: $grey-text-light;
+                margin-bottom: 0;
+            }
+            &:hover .title {
+                color: $blue;
+            }
+        }
     }
 }
