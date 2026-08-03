@@ -125,19 +125,6 @@ const getResultHtml = (algoliaResultList, query) => {
             innerText: 'Invalid search query: ' + algoliaResultList.message,
         })
 
-    const preferredConfiguration = localStorage.getItem('preferred-configuration') || defaultPreferredConfiguration
-
-    algoliaResultList = algoliaResultList.filter((result) => {
-        let resultConfiguration = null
-        preferredConfigurations.some((configuration) => {
-            if (result.uri.startsWith(`/${configuration}`)) {
-                resultConfiguration = configuration
-                return true
-            }
-        })
-        return !resultConfiguration || resultConfiguration === preferredConfiguration
-    })
-
     if (!algoliaResultList.length) {
         return createHtmlElement('div', { className: 'no-results-message' }, [
             createHtmlElement('p', { innerText: `No results matching "${query}"` }),
@@ -148,12 +135,21 @@ const getResultHtml = (algoliaResultList, query) => {
         ])
     }
 
+    const getConfigBadge = (uri) => {
+        if (uri.startsWith('/yaml')) return createHtmlElement('span', { className: 'result-badge result-badge--yaml', innerText: 'codemagic.yaml' })
+        if (uri.startsWith('/flutter')) return createHtmlElement('span', { className: 'result-badge result-badge--workflow', innerText: 'Workflow Editor' })
+        return null
+    }
+
     const results = algoliaResultList.map((result) => {
         const subtitle = result._highlightResult?.subtitle?.value ?? ''
         const pageTitle = result._highlightResult?.title?.value ?? result.title ?? ''
         return createHtmlElement('li', null, [
             createHtmlElement('a', { href: result.uri }, [
-                createHtmlElement('p', { innerHTML: subtitle || pageTitle, className: 'title' }),
+                createHtmlElement('div', { className: 'title-row' }, [
+                    createHtmlElement('p', { innerHTML: subtitle || pageTitle, className: 'title' }),
+                    getConfigBadge(result.uri),
+                ]),
                 subtitle ? createHtmlElement('p', { innerHTML: pageTitle, className: 'subtitle' }) : null,
                 createHtmlElement('p', {
                     innerHTML: getBreadcrumbsHtml(result.uri, subtitle ? result.title : null),
