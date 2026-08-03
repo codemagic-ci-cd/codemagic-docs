@@ -141,7 +141,15 @@ const getResultHtml = (algoliaResultList, query) => {
         return null
     }
 
-    const results = algoliaResultList.map((result) => {
+    const preference = window.localStorage.getItem('preferred-configuration') ?? 'yaml'
+    const getTabScore = (uri) => {
+        if (preference === 'yaml' && (uri.startsWith('/yaml') || uri.startsWith('/rn-codepush'))) return 0
+        if (preference === 'flutter' && uri.startsWith('/flutter')) return 0
+        return 1
+    }
+    const sortedResults = algoliaResultList.slice().sort((a, b) => getTabScore(a.uri) - getTabScore(b.uri))
+
+    const results = sortedResults.map((result) => {
         const subtitle = result._highlightResult?.subtitle?.value ?? ''
         const pageTitle = result._highlightResult?.title?.value ?? result.title ?? ''
         return createHtmlElement('li', null, [
