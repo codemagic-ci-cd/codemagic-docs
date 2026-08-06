@@ -219,8 +219,8 @@
                 color: $grey-text-light;
                 margin-bottom: 0;
             }
-            &:hover .title {
-                color: $blue;
+            &:hover {
+                background-color: transparent;
             }
         }
     }
