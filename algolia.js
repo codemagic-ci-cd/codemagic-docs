@@ -4,7 +4,7 @@ const fs = require('fs')
 const apiKey = process.argv[2]
 
 const client = algoliasearch('27CIRMYZIB', apiKey)
-const index = client.initIndex('codemagic_docs')
+const index = client.initIndex('codemagic_docs_main')
 
 const newObjects = JSON.parse(fs.readFileSync('./public/index.json'))
     .map((newObject) => ({

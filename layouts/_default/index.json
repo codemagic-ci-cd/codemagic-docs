@@ -1,17 +1,25 @@
-[{{ range $pageIndex, $ := where .Site.Pages "Kind" "page" }}
-  {{- if $pageIndex }}, {{ end -}}
+[{{ $first := true }}{{ range where .Site.Pages "Kind" "page" }}
+  {{- $page := . }}
+  {{- $pageTitle := .Title }}
+  {{- $uri := .RelPermalink }}
+  {{- $weight := $page.Params.weight | default 99 }}
+  {{- $sections := split .RawContent "\n## " }}
+  {{- range $i, $section := $sections }}
+    {{- $isIntro := eq $i 0 }}
+    {{- $heading := cond $isIntro ($page.Description | default "") (index (split $section "\n") 0 | strings.TrimSpace) }}
+    {{- $rawText := cond $isIntro $section (delimit (after 1 (split $section "\n")) "\n") }}
+    {{- $text := partial "clean-text.html" $rawText }}
+    {{- $anchor := cond $isIntro "" ($heading | urlize) }}
+    {{- $recordUri := cond (or $isIntro (not $anchor)) $uri (printf "%s#%s" $uri $anchor) }}
+    {{- if gt (len $text) 20 }}
+      {{- if not $first }}, {{ end }}{{ $first = false }}
   {
-    {{- with .Title }}
-    "title": "{{ htmlEscape . }}",
-    {{- end }}
-    {{- if .Description }}
-    "subtitle": "{{ htmlEscape .Description }}",
-    {{- else }}
-    "subtitle": "",
-    {{- end }}
-    {{- with .Plain }}
-    "content": {{ jsonify . }},
-    {{- end }}
-    "uri": "{{ .RelPermalink }}"
+    "title": {{ jsonify $pageTitle }},
+    "subtitle": {{ jsonify $heading }},
+    "content": {{ jsonify $text }},
+    "uri": {{ jsonify $recordUri }},
+    "weight": {{ $weight }}
   }
-  {{- end }}]
+    {{- end }}
+  {{- end }}
+{{- end }}]

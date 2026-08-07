@@ -25,7 +25,9 @@
         }
         &:focus {
             border-color: transparent;
-            box-shadow: 0 0 0 1px $blue, 0 0 0 5px transparentize($blue, 0.9);
+            box-shadow:
+                0 0 0 1px $blue,
+                0 0 0 5px transparentize($blue, 0.9);
         }
         &::placeholder {
             color: $grey-text-light;
@@ -73,7 +75,7 @@
         position: absolute;
         top: 50%;
         right: 3%;
-        transform: translate(50%,-50%);
+        transform: translate(50%, -50%);
     }
 
     #search-results {
@@ -136,16 +138,41 @@
         a {
             color: inherit;
         }
+        .title-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
         .title {
             color: $blue;
             font-weight: 600;
             font-size: 16px;
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 0;
 
             mark {
                 color: $blue;
                 font-weight: bold;
+            }
+        }
+        .result-badge {
+            flex-shrink: 0;
+            font-size: 11px;
+            line-height: 20px;
+            font-weight: 600;
+            padding: 0 8px;
+            height: 20px;
+            border-radius: 6px;
+            white-space: nowrap;
+
+            &--yaml {
+                color: white;
+                background: $blue;
+            }
+            &--workflow {
+                background-color: transparentize($cyan, 0.88);
+                color: darken($cyan, 20%);
             }
         }
         .subtitle {
@@ -158,8 +185,9 @@
             padding: 0;
             font-size: 12px;
             background-color: transparent;
-            gap: 10px;
+            gap: 0 10px;
             margin: 0 0 20px 0;
+            flex-wrap: wrap;
 
             span {
                 &:first-child::before {
@@ -168,6 +196,36 @@
                 &::before {
                     margin-right: 10px;
                 }
+            }
+        }
+        .no-results-message {
+            p {
+                margin-bottom: 12px;
+            }
+            a {
+                color: $blue;
+                font-size: 13px;
+            }
+            .support-message {
+                font-size: 13px;
+                font-weight: normal;
+                color: $grey-text-light;
+                border-top: 1px solid $blue-xl-border;
+                padding-top: 12px;
+            }
+        }
+        .support-link {
+            a {
+                color: $blue;
+            }
+            .title {
+                font-size: 13px;
+                font-weight: normal;
+                color: $grey-text-light;
+                margin-bottom: 0;
+            }
+            &:hover {
+                background-color: transparent;
             }
         }
     }
