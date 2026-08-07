@@ -25,7 +25,9 @@
         }
         &:focus {
             border-color: transparent;
-            box-shadow: 0 0 0 1px $blue, 0 0 0 5px transparentize($blue, 0.9);
+            box-shadow:
+                0 0 0 1px $blue,
+                0 0 0 5px transparentize($blue, 0.9);
         }
         &::placeholder {
             color: $grey-text-light;
@@ -73,7 +75,7 @@
         position: absolute;
         top: 50%;
         right: 3%;
-        transform: translate(50%,-50%);
+        transform: translate(50%, -50%);
     }
 
     #search-results {
@@ -137,9 +139,9 @@
             color: inherit;
         }
         .title-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
             margin-bottom: 10px;
         }
         .title {
@@ -157,14 +159,16 @@
         .result-badge {
             flex-shrink: 0;
             font-size: 11px;
+            line-height: 20px;
             font-weight: 600;
-            padding: 2px 7px;
-            border-radius: 4px;
+            padding: 0 8px;
+            height: 20px;
+            border-radius: 6px;
             white-space: nowrap;
 
             &--yaml {
-                background-color: $blue-bg-l;
-                color: $blue;
+                color: white;
+                background: $blue;
             }
             &--workflow {
                 background-color: transparentize($cyan, 0.88);
@@ -181,8 +185,9 @@
             padding: 0;
             font-size: 12px;
             background-color: transparent;
-            gap: 10px;
+            gap: 0 10px;
             margin: 0 0 20px 0;
+            flex-wrap: wrap;
 
             span {
                 &:first-child::before {
