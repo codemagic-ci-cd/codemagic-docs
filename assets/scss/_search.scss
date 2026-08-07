@@ -126,6 +126,17 @@
                 border-bottom: none;
             }
         }
+        .search-tab-notice {
+            font-size: 12px;
+            color: $grey-text-light;
+            padding: 10px 20px;
+            &::after {
+                display: none;
+            }
+            &:hover {
+                background-color: transparent;
+            }
+        }
         p {
             word-break: break-all;
         }

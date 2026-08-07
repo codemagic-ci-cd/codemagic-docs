@@ -169,36 +169,28 @@ const getResultHtml = (algoliaResultList, query) => {
         ])
     }
 
-    const getConfigBadge = (uri) => {
-        if (uri.startsWith('/yaml'))
-            return createHtmlElement('span', {
-                className: 'result-badge result-badge--yaml',
-                innerText: 'codemagic.yaml',
-            })
-        if (uri.startsWith('/flutter'))
-            return createHtmlElement('span', {
-                className: 'result-badge result-badge--workflow',
-                innerText: 'Workflow Editor',
-            })
-        return null
-    }
-
     const preference = window.localStorage.getItem('preferred-configuration') ?? 'yaml'
-    const getTabScore = (uri) => {
-        if (preference === 'yaml' && (uri.startsWith('/yaml') || uri.startsWith('/rn-codepush'))) return 0
-        if (preference === 'flutter' && uri.startsWith('/flutter')) return 0
-        return 1
-    }
-    const sortedResults = algoliaResultList.slice().sort((a, b) => getTabScore(a.uri) - getTabScore(b.uri))
+    const filteredResults = algoliaResultList.filter((result) => {
+        if (preference === 'yaml') return !result.uri.startsWith('/flutter')
+        if (preference === 'flutter') return !result.uri.startsWith('/yaml') && !result.uri.startsWith('/rn-codepush')
+        return true
+    })
 
-    const results = sortedResults.map((result) => {
+    const tabLabel = preference === 'yaml' ? 'codemagic.yaml' : 'Workflow Editor'
+    const otherTabLabel = preference === 'yaml' ? 'Workflow Editor' : 'codemagic.yaml'
+    const notice = createHtmlElement('li', { className: 'search-tab-notice' }, [
+        createHtmlElement('p', {
+            innerText: `Showing results for ${tabLabel}. Switch tabs on the left to search the ${otherTabLabel} results.`,
+        }),
+    ])
+
+    const results = filteredResults.map((result) => {
         const subtitle = result._highlightResult?.subtitle?.value ?? ''
         const pageTitle = result._highlightResult?.title?.value ?? result.title ?? ''
         return createHtmlElement('li', null, [
             createHtmlElement('a', { href: result.uri }, [
                 createHtmlElement('div', { className: 'title-row' }, [
                     createHtmlElement('p', { innerHTML: subtitle || pageTitle, className: 'title' }),
-                    getConfigBadge(result.uri),
                 ]),
                 subtitle ? createHtmlElement('p', { innerHTML: pageTitle, className: 'subtitle' }) : null,
                 createHtmlElement('p', {
@@ -224,7 +216,7 @@ const getResultHtml = (algoliaResultList, query) => {
         }),
     ])
 
-    return createHtmlElement('ul', null, [...results, supportLink])
+    return createHtmlElement('ul', null, [notice, ...results, supportLink])
 }
 
 const getResults = (query) =>
