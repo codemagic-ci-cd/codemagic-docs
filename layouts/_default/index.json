@@ -8,6 +8,12 @@
     {{- $isIntro := eq $i 0 }}
     {{- $heading := cond $isIntro ($page.Description | default "") (index (split $section "\n") 0 | strings.TrimSpace) }}
     {{- $rawText := cond $isIntro $section (delimit (after 1 (split $section "\n")) "\n") }}
+    {{- range findRE `\{\{<\s*include\s+"([^"]+)"\s*>\}\}` $rawText }}
+      {{- $includePath := replaceRE `\{\{<\s*include\s+"([^"]+)"\s*>\}\}` "$1" . }}
+      {{- $fileContent := readFile (printf "content%s" $includePath) }}
+      {{- $fileContent = replaceRE `(?s)^\s*---.*?---\s*` "" $fileContent }}
+      {{- $rawText = replace $rawText . $fileContent }}
+    {{- end }}
     {{- $text := partial "clean-text.html" $rawText }}
     {{- $anchor := cond $isIntro "" ($heading | urlize) }}
     {{- $recordUri := cond (or $isIntro (not $anchor)) $uri (printf "%s#%s" $uri $anchor) }}
