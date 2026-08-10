@@ -176,13 +176,23 @@ const getResultHtml = (algoliaResultList, query) => {
         return true
     })
 
+    if (!filteredResults.length) {
+        return createHtmlElement('div', { className: 'no-results-message' }, [
+            createHtmlElement('p', { innerText: `No results matching "${query}"` }),
+            createHtmlElement('p', {
+                className: 'support-message',
+                innerHTML:
+                    "Don't see what you're looking for? <a href='https://codemagic.io/contact/'>Contact us</a> or let us know via support chat widget in <a href='https://codemagic.io/apps'>app</a>.",
+            }),
+        ])
+    }
+
     const tabLabel = preference === 'yaml' ? 'codemagic.yaml' : 'Workflow Editor'
     const otherTabLabel = preference === 'yaml' ? 'Workflow Editor' : 'codemagic.yaml'
-    const notice = createHtmlElement('li', { className: 'search-tab-notice' }, [
-        createHtmlElement('p', {
-            innerText: `Showing results for ${tabLabel}. Switch tabs on the left to search the ${otherTabLabel} results.`,
-        }),
-    ])
+    const notice = createHtmlElement('li', {
+        className: 'search-tab-notice',
+        innerText: `Showing results for ${tabLabel}. Switch tabs on the left to search the ${otherTabLabel} results.`,
+    })
 
     const results = filteredResults.map((result) => {
         const subtitle = result._highlightResult?.subtitle?.value ?? ''
