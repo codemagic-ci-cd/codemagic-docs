@@ -18,13 +18,13 @@ Mac Studio M4 Max available on request.
 
 ## System
 
-- System version `macOS 26.5.2 (25F84)`
-- Kernel version `Darwin 25.5.0`
-- Disk `294GB (Free Space: 143GB)`
+- System version `macOS 26.6.1 (25G76)`
+- Kernel version `Darwin 25.6.0`
+- Disk `294GB (Free Space: 147GB)`
 
 ## Xcode versions
 
-- 27.0 (27A5228h) `/Applications/Xcode-27.0.app`, also selected when specifying `edge` in Xcode version settings
+- 27.0 (27A5237l) `/Applications/Xcode-27.0.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -111,11 +111,11 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 | **Version** | **Path** |
 |-------------|----------|
-| 26.0.1 | `/Library/Java/JavaVirtualMachines/zulu-26.jdk/Contents/Home` |
-| 21.0.11 | `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home` |
-| **17.0.19** (default) | `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` |
-| 11.0.31 | `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` |
-| 1.8.0_492 | `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home` |
+| 26.0.2 | `/Library/Java/JavaVirtualMachines/zulu-26.jdk/Contents/Home` |
+| 21.0.12 | `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home` |
+| **17.0.20** (default) | `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` |
+| 11.0.32 | `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` |
+| 1.8.0_502 | `/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home` |
 | 1.7.0_352 | `/Library/Java/JavaVirtualMachines/zulu-7.jdk/Contents/Home` |
 
 
@@ -129,30 +129,30 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.36.4`
-- azure-cli `2.88.0`
+- aws `2.36.20`
+- azure-cli `2.89.0`
 - carthage `0.40.0`
 - cocoapods `1.17.0`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `1.4.0`
+- ew-cli `1.4.1`
 - fastlane `2.237.0`
-- firebase `15.24.0`
-- gem `4.0.16`
-- gh `2.96.0`
+- firebase `15.26.0`
+- gem `4.0.18`
+- gh `2.97.0`
 - git `2.55.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `6.0.12`
+- homebrew `6.0.17`
 - ionic `7.2.1`
 - jq `1.8.2`
 - ktlint `1.8.0`
-- node `24.18.0`
-- npm `11.16.0`
+- node `24.19.0`
+- npm `11.17.0`
 - python `3.12.7`
 - python3 `3.12.7`
 - ruby `4.0.6`
-- ssh `10.2p1`
+- ssh `10.3p1`
 - sudo `1.9.17p2`
 - swiftgen `6.6.3`
 - tar `3.5.3`
