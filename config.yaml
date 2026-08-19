@@ -209,6 +209,8 @@ menu:
         - identifier: rn-codepush
           name: React Native CodePush
           weight: 9
+          params:
+              preference: 'yaml'
 
         - identifier: troubleshooting
           name: Troubleshooting
