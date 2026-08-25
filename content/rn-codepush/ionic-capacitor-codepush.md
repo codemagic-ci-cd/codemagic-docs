@@ -38,6 +38,8 @@ If you are migrating from Ionic Appflow, the mental model is similar but the imp
 | **CLI** | `ionic deploy` | `code-push release` |
 | **Rollback** | Dashboard | Automatic on crash; `code-push rollback` |
 
+If you are leaving Appflow and will use [Capgo](../integrations/capgo-integration/) for Capacitor live updates with Codemagic CI/CD instead of CodePush, follow that integration guide. This page covers CodePush.
+
 ### Migrating from Appflow — what to remove
 
 Before adding CodePush, remove all Appflow Live Updates references from your project. Leaving them in place will cause conflicts, since both SDKs attempt to manage and replace the same web assets. The steps below cover the most common Appflow setup — your project may use a subset of these depending on which Appflow features you had enabled.
@@ -537,3 +539,4 @@ The plugin registers after the native platform is ready. In Angular, make sure y
 - [Building Ionic Capacitor apps with Codemagic](../yaml-quick-start/building-an-ionic-app/)
 - [Environment variables and secrets](../yaml-basic-configuration/environment-variables/)
 - [Build versioning](../configuration/build-versioning/)
+- [Capgo integration](../integrations/capgo-integration/) for Capacitor live updates with Codemagic CI/CD
