@@ -8,7 +8,7 @@ aliases: /code-signing-yaml/code-signing-personal-accounts
 All iOS, macOS and Android applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed.
 
 {{<notebox>}}
-**Note:** This guide covers an alternative approach to code signing that manages certificates and provisioning profiles through CLI tools in build scripts, instead of Codemagic's Code Signing Identities UI. If you prefer using Code Signing Identities, see [Signing iOS apps](../signing-ios) and [Android apps](../signing-android).
+**Note:** This guide covers an alternative approach to code signing that manages certificates and provisioning profiles through CLI tools in build scripts, instead of Codemagic's Code Signing Identities UI. If you prefer using Code Signing Identities, see [Signing iOS apps](../yaml-code-signing/signing-ios) and [Android apps](../yaml-code-signing/signing-android).
 {{</notebox>}}
 
 <br>
