@@ -7,6 +7,11 @@ aliases: /code-signing-yaml/signing-android
 
 All Android applications have to be digitally signed before they are made available to the public to confirm their author and guarantee that the code has not been altered or corrupted since it was signed. 
 
+{{<notebox>}}
+**Note:** This guide covers Android code signing using Codemagic's **Code Signing Identities** — uploading keystore files to the Codemagic UI once and reference them in `codemagic.yaml`.
+
+If you prefer to use CLI tools in your build scripts to manage code signing resources, see [Alternative code signing methods](../alternative-code-signing-methods).
+{{</notebox>}}
 
 <br>
 
