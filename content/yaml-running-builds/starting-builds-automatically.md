@@ -11,7 +11,7 @@ In order to fully automate your CI/CD pipeline, you can set up automatic build t
 
 `triggering:` section in `codemagic.yaml` defines the events for automatic build triggering and watched branches. If no events are defined, you can start builds only manually.
 
-For repositories added via SSH or HTTP/HTTPS, or if you are configuring your builds using `codemagic.yaml`, you would have to [set up webhooks manually](../building/webhooks). Note that webhook triggers might not be supported for all repository providers.
+For repositories added via SSH or HTTP/HTTPS, or if you are configuring your builds using `codemagic.yaml`, you would have to [set up webhooks manually](../building/webhooks). In contrast, when using the Workflow Editor with Flutter, the webhook is added automatically to the repository settings. Note that webhook triggers might not be supported for all repository providers.
 
 {{<notebox>}}
 **Note:** The team admin who added the repository can update the webhook by clicking the **Update webhook** button in the Codemagic UI.
