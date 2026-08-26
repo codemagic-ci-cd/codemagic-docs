@@ -9,8 +9,13 @@ aliases: [../code-signing-yaml/signing, /code-signing-yaml/signing-ios, code-sig
 
 All iOS applications have to be digitally signed before they can be installed on real devices or made available to the public.
 
+{{<notebox>}}
+**Note:** This guide covers iOS code signing using Codemagic's **Code Signing Identities** — uploading certificates and provisioning profiles to the Codemagic UI once and reference them in `codemagic.yaml`.
 
-<br> 
+If you prefer to use CLI tools in your build scripts to manage code signing resources, see [Alternative code signing methods](../alternative-code-signing-methods).
+{{</notebox>}}
+
+<br>
 
 {{< youtube idRJZxVafY0 >}}
 
