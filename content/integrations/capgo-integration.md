@@ -8,6 +8,8 @@ weight: 5
 
 A sample project that shows how to configure Capgo integration is available [in our Sample projects repository](https://github.com/codemagic-ci-cd/codemagic-sample-projects/tree/main/integrations/capgo_integration_demo_project).
 
+If you are migrating from Ionic Appflow Live Updates, Capgo is a Capacitor live-update option you can wire into the same Codemagic workflows. For Appflow SDK uninstall steps on Capacitor, see [OTA updates for Ionic Capacitor apps](../rn-codepush/ionic-capacitor-codepush/).
+
 
 ## Configuring Capgo in Codemagic
 
