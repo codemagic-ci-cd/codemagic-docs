@@ -11,10 +11,13 @@ Note that if the app is part of a team, only team admins can update repository a
 
 ## Updating access to the repository
 
-You may need to update repository access settings if the repository has been renamed or relocated, or when you need to update the username and password or the private key used to access it.
+If Codemagic no longer has access to your repository, you may need to update your repository access settings. This can happen for several reasons, for example:
 
-If the repository is added **via GitHub, Bitbucket or GitLab integration**, click the **Update repository URL** button. Codemagic will attempt to automatically update the URL based on the repository ID.
+* the repository has been renamed
+* the repository has been moved to a different organization or Git provider
+* the username and password used to authenticate have changed
+* the private SSH key has expired, or you want to rotate keys
 
-If the repository is added **from a URL**, click **Change settings** under **Repository access settings**. This will allow you to modify the repository URL, change username or password or update the SSH key. You can also generate a new private key in the settings section. Once you have changed the relevant settings, click **Update access settings**. Codemagic will verify that it has access to the repository using the updated details before saving the settings.
+To update repository access settings, navigate to **App settings > Repository settings > Repository URL** and click **Change repository**. Select a suitable authentication method and follow the steps to set up access to the repository.
 
-
+Once you have finished, click **Change repository** again to confirm your changes. Codemagic will verify that it has access to the repository using the updated details before saving the settings.
