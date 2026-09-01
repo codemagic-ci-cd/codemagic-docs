@@ -18,6 +18,6 @@ If Codemagic no longer has access to your repository, you may need to update you
 * the username and password used to authenticate have changed
 * you want to update your SSH key after rotation
 
-To update repository access settings, navigate to **App settings > Repository settings > Repository URL** and click **Change repository**. This opens a modal for reconfiguring the repository. Select a suitable authentication method and follow the steps to set up access to the repository. To confirm the changes and exit the flow, click **Change repository** in the modal.
+To update repository access settings, navigate to **App settings > Repository settings > Repository URL** and click **Change repository**. This opens a modal for reconfiguring the repository. Select a suitable authentication method and follow the steps to set up access to the repository. To confirm the changes and exit the flow, click **Confirm changes** in the modal.
 
 Before saving the changes, Codemagic will verify that it has access to the repository. 
