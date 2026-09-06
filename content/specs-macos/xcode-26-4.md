@@ -1,5 +1,5 @@
 ---
-title: Xcode 26.4.x (default)
+title: Xcode 26.4.x
 aliases:
 - /specs/versions-macos/
 weight: 91
