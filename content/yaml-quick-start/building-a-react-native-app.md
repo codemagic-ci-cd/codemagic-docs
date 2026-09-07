@@ -274,9 +274,9 @@ If you are going to publish your app to App Store Connect or Google Play, each u
 {{< include "/partials/publishing-android-ios.md" >}}
 
 
-## OTA Updates with CodePush
+## OTA Updates with Codemagic Patch
 
-Our hosted CodePush service lets you publish OTA updates for React Native projects directly to users' devices, without going through the App Store or Google Play. Read the [concepts page](../rn-codepush/concepts/) for how it works, or the [setup page](../rn-codepush/setup/) to get started.
+[Codemagic Patch](https://patch.codemagic.io) lets you publish OTA updates for React Native projects directly to users' devices, without going through the App Store or Google Play. You can self-host it, or [get in touch](https://codemagic.io/contact-sales/) if you would like us to host a server for you.
 
 
 ## Conclusion

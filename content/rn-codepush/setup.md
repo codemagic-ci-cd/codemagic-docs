@@ -8,6 +8,14 @@ aliases:
   - /rn-codepush/codepush-integration/
 ---
 
+{{<notebox>}}
+### New users should use Codemagic Patch, our new OTA tool
+
+If you are setting up OTA updates for the first time, check out [Codemagic Patch](https://patch.codemagic.io), our new CodePush alternative. It includes native fingerprinting, an improved dashboard and an interactive CLI.
+
+If you would like us to host it for you, [get in touch](https://codemagic.io/contact-sales/).
+{{</notebox>}}
+
 This section prepares a project to use CodePush with Codemagic. After completing these steps you will have:
 
 - a CodePush project created on the Codemagic server
@@ -20,16 +28,6 @@ These instructions are for React Native New Architecture projects. If your app i
 
 The same Codemagic server can be used for all of your apps.
 
-{{<notebox>}}
-### Teach your AI assistant to use CodePush (Optional)
-
-Codemagic publishes a **Codemagic CodePush** agent skill for AI coding assistants. It gives your assistant the knowledge needed to configure your app, troubleshoot issues and use the CLI.
-
-Run the following in your terminal to install the skill. You will be asked which agents you use; the installer configures them accordingly.
-
-`npx skills add https://github.com/codemagic-ci-cd/codemagic-skills/tree/main/skills/codemagic-codepush`
-
-{{</notebox>}}
 
 ---
 
