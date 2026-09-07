@@ -144,9 +144,17 @@ You will learn later in this page how to add a [condition](#using-condition-insi
 
 ## Exit or ignore build on certain commit message
 
-You can **skip building** automatically triggered workflows by adding `[skip ci]` or `[ci skip]` to your commit message. The workflow will still be started but it will exit without building.
+You can **skip building** automatically triggered workflows by adding `[skip ci]` or `[ci skip]` to your commit message. A similar result can be achieved using `when`, but in this case, the build starts and stops at the Fetching app sources step when the condition is met. For example:
 
-If you want to exit a build **when commit message does not include certain string**, then you can add the following script at the top of your scripts section and it will take care of exiting the build or moving forward. In the following example, builds will proceed only if the commit message includes **_buildcd_** string.
+{{< highlight yaml "style=paraiso-dark">}}
+  triggering:
+    events:
+      - pull_request
+  when: 
+    condition: not event.pull_request.title == "buildcd"
+{{< /highlight >}}
+
+If you want to exit a build **when the commit message does not include a certain string**, then you can add the following script at the top of your scripts section and it will take care of exiting the build or moving forward. In the following example, builds will proceed only if the commit message includes **_buildcd_** string.
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
