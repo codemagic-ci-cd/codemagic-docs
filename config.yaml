@@ -207,7 +207,7 @@ menu:
           weight: 8
 
         - identifier: rn-codepush
-          name: React Native CodePush
+          name: React Native CodePush (Legacy)
           weight: 9
 
         - identifier: troubleshooting
