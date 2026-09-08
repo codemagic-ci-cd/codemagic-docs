@@ -144,7 +144,9 @@ You will learn later in this page how to add a [condition](#using-condition-insi
 
 ## Exit or ignore build on certain commit message
 
-You can **skip building** automatically triggered workflows by adding `[skip ci]` or `[ci skip]` to your commit message. A similar result can be achieved using `when`, but in this case, the build starts and stops at the Fetching app sources step when the condition is met. For example:
+You can **skip building** automatically triggered workflows by adding `[skip ci]` or `[ci skip]` to your commit message.
+
+A similar result can be achieved using `when` in codemagic.yaml, but in this case, the build starts and stops at the Fetching app sources step when the condition is met. For example:
 
 {{< highlight yaml "style=paraiso-dark">}}
   triggering:
