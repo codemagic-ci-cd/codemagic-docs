@@ -18,13 +18,13 @@ Mac Studio M4 Max available on request.
 
 ## System
 
-- System version `macOS 26.6.2 (25G83)`
-- Kernel version `Darwin 25.6.0`
-- Disk `294GB (Free Space: 146GB)`
+- System version `macOS 27.0 (26A428)`
+- Kernel version `Darwin 27.0.0`
+- Disk `294GB (Free Space: 145GB)`
 
 ## Xcode versions
 
-- 27.0 (27A5252f) `/Applications/Xcode-27.0.app`, also selected when specifying `edge` in Xcode version settings
+- 27.0 (27A266a) `/Applications/Xcode-27.0.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
@@ -54,6 +54,8 @@ Mac Studio M4 Max available on request.
 - iPhone 17 Pro
 - iPhone 17 Pro Max
 - iPhone 17e
+- iPhone 18 Pro
+- iPhone 18 Pro Max
 - iPhone Air
 {{< /collapsible >}}
 
@@ -71,7 +73,10 @@ Mac Studio M4 Max available on request.
 - Apple Watch SE 3 (44mm)
 - Apple Watch Series 11 (42mm)
 - Apple Watch Series 11 (46mm)
+- Apple Watch Series 12 (42mm)
+- Apple Watch Series 12 (46mm)
 - Apple Watch Ultra 3 (49mm)
+- Apple Watch Ultra 4 (49mm)
 {{< /collapsible >}}
 
 
@@ -220,7 +225,7 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 
 | **Version** | **Path** |
 |-------------|----------|
-| 26.0.2.1 | `/Library/Java/JavaVirtualMachines/zulu-26.jdk/Contents/Home` |
+| 27 | `/Library/Java/JavaVirtualMachines/zulu-27.jdk/Contents/Home` |
 | 21.0.12.1 | `/Library/Java/JavaVirtualMachines/zulu-21.jdk/Contents/Home` |
 | **17.0.20.1** (default) | `/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` |
 | 11.0.32.1 | `/Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home` |
@@ -238,29 +243,29 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.36.30`
-- azure-cli `2.89.1`
+- aws `2.36.46`
+- azure-cli `2.90.0`
 - carthage `0.40.0`
 - cocoapods `1.17.0`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `1.4.2`
-- fastlane `2.238.0`
-- firebase `15.28.1`
-- gem `4.0.19`
-- gh `2.98.0`
+- ew-cli `1.5.0`
+- fastlane `2.240.1`
+- firebase `15.30.1`
+- gem `4.0.21`
+- gh `2.101.0`
 - git `2.55.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `6.0.19`
+- homebrew `7.0.2`
 - ionic `7.2.1`
 - jq `1.8.2`
 - ktlint `1.8.0`
-- node `24.19.0`
-- npm `11.17.0`
+- node `24.21.0`
+- npm `11.19.0`
 - python `3.12.7`
 - python3 `3.12.7`
-- ruby `4.0.6`
+- ruby `4.0.7`
 - ssh `10.3p1`
 - sudo `1.9.17p2`
 - swiftgen `6.6.3`
