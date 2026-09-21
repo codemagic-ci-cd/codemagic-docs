@@ -4,40 +4,35 @@ description: An overview of Codemagic pricing
 weight: 2
 ---
 
-## React Native CodePush
+## Codemagic Patch for React Native OTA updates
 
-React Native CodePush is available to teams via two subscription models: Pay-as-you-go (billed monthly per successful install) or Fixed-price plan (pay up-front per Monthly Active Users).
-
-### Pay-as-you-go
-
-This is a flexible, usage-based plan charged on the number of successful installs per month.
-
-You are charged $1 for every 2,500 installs (or fewer), with a minimum charge of $1.
-
-You are billed on the 1st of each month for the previous month's usage.
+Codemagic Patch for Over-the-air React Native updates is available to teams with a monthly or annual subscription. 
 
 ### Fixed price
 
-CodePush (Over-the-Air updates) for React Native projects is priced as follows: 
+Over-the-Air updates for React Native projects is priced as follows: 
 
-1. $99/month per 100k Monthly Active Users (MAU)
+1. $99/month per 100k Monthly Active Users (MAU). The first 100k MAU is free.
 2. No limit on updates and bandwidth
 3. We can offer up to 12 months up front payment, otherwise billing is monthly. Invoicing is available starting 1M MAU.
 
 {{<notebox>}}
-🔔 Annual subscriptions get 2 months of free usage discount.
+🔔 Annual subscriptions get a 10% discount.
 {{</notebox>}}
 
-| Monthly Active Users (MAUs) | Monthly price (USD) | Yearly price (USD)   |
-|-----------------------------|---------------------|----------------------|
-| 10,000                      | $99                 | $990                 |
-| 100,000                     | $99                 | $990                 |
-| 150,000                     | $198                | $1,980               |
-| 500,000                     | $495                | $4,950               |
-| 1,000,000                   | $990                | $9,900               | 
-| 2,000,000                   | $1,980              | $19,800              |
-| 5,000,000                   | $4,950              | $49,500              |
-| 10,000,000                  | $9,900              | $99,000              |
+The first 100,000 MAUs are free. Each additional block of up to 100,000 MAUs costs $99/month. Annual subscriptions include a 10% discount.
+
+| Monthly Active Users (MAUs) | Monthly price (USD) | Yearly price (USD) |
+| -------------------------- | ------------------ | ----------------- |
+| 1–100,000                  | Free               | Free              |
+| 200,000                    | $99                | $1,069.20         |
+| 300,000                    | $198               | $2,138.40         |
+| 400,000                    | $297               | $3,207.60         |
+| 500,000                    | $396               | $4,276.80         |
+| 1,000,000                  | $891               | $9,622.80         |
+| 2,000,000                  | $1,881             | $20,314.80        |
+| 5,000,000                  | $4,851             | $52,390.80        |
+| 10,000,000                 | $9,801             | $105,850.80       |
 
 ## CI/CD
 
