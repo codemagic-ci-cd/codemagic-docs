@@ -1,6 +1,6 @@
 ---
 title: Unity apps
-description: How to build Unity mobile apps with codemagic.yaml
+description: How to build Unity mobile apps with codemagic.yaml, including with a free Unity Personal license
 weight: 12
 
 ---
@@ -13,9 +13,18 @@ You can find a complete project showcasing these steps in our [Sample projects r
 
 ## Unity licensing requirements
 
-Building Unity apps in a cloud CI/CD environment requires a Unity **Plus** or a **Pro** license. Your license is used to activate Unity on the Codemagic build server so the iOS and Android projects can be exported.  The license is returned during the publishing step of the workflow which is always run **except if the build is cancelled**.
+Building a Unity app on Codemagic requires an active Unity license on the build machine. Unity offers the following plans:
 
-You can use [Unity dashboard](https://id.unity.com/en/serials) to check the number of free seats on your license or to manually return a seat if necessary.
+- **Personal**, a free plan available to individuals and organizations with up to $200,000 in combined annual revenue and funding.
+- **Pro**, **Enterprise**, and **Industry**, paid, seat-based plans. Unity's older **Plus** plan has been discontinued; existing Plus subscriptions are treated the same as Pro for licensing purposes.
+
+Codemagic supports all of these plans. Which activation method you use depends on your plan:
+
+- Pro, Enterprise, and Industry licenses activate online, using your Unity account email and password, and a serial number if your license has one. This is the default method and is covered in **Configuring a Pro, Enterprise, or Industry license** and **Activating and deactivating the license** below.
+- Enterprise and Industry seats, and legacy serial-based Pro licenses, can also activate offline using a license file generated once and reused across builds. This avoids activating and deactivating on every build. See **Offline activation** below.
+- Personal licenses activate using a different tool and do not follow the same email, password, and serial number flow as paid plans. See **Building with a Unity Personal license** below.
+
+You can use the [Unity dashboard](https://id.unity.com/en/serials) to check the number of free seats on your license or to manually return a seat if necessary.
 
 ## Adding the app to Codemagic
 {{< include "/partials/quickstart/add-app-to-codemagic.md" >}}
@@ -96,9 +105,11 @@ Code signing is not required when creating Windows Unity apps.
 {{< /tabpane >}}
 
 
-## Configuring Unity license
+## Configuring a Pro, Enterprise, or Industry license
 
-Each Unity build will have to activate a valid Unity Plus or a Unity Pro license using your **Unity email**, **Unity serial number** and the **Unity password**.
+This section applies to paid Unity plans. If you are using a free Unity Personal license, skip to **Building with a Unity Personal license** below instead.
+
+Each Unity build will have to activate a valid Unity Pro, Enterprise, or Industry license using your **Unity email** and **Unity password**, and your **Unity serial number** if your license has one. Named user licenses on the current Pro, Enterprise, and Industry plans are generally not tied to a serial number. If you do not have a serial number, leave the `UNITY_SERIAL` variable below empty.
 
 1. You can add these as global environment variables in the **Global variables and secrets** section of your Codemagic team settings. Likewise, you can add the environment variables at the application level by clicking the **Environment variables** tab.
 
@@ -107,7 +118,7 @@ Each Unity build will have to activate a valid Unity Plus or a Unity Pro license
 4. Enter the variable group name, e.g. **_unity_credentials_**. Click the button to create the group.
 5. Make sure the **Secret** option is selected.
 6. Click the **Add** button to add the variable.
-7. Repeat the steps to also add `UNITY_SERIAL` and `UNITY_PASSWORD` variables.
+7. Repeat the steps to also add `UNITY_SERIAL` (if applicable) and `UNITY_PASSWORD` variables.
 8. Add the **unity_credentials** variable group to the `codemagic.yaml`:
 {{< highlight yaml "style=paraiso-dark">}}
   environment:
@@ -144,6 +155,10 @@ When using Codemagic Windows instance types, Unity activation is performed in th
 {{% /tab %}}
 
 {{< /tabpane >}}
+
+{{<notebox>}}
+**Note:** If your Pro, Enterprise, or Industry license is a named user license with no serial number, activate it by passing `-serial` with no value after it, instead of `-serial ${UNITY_SERIAL}`. Only include a value for `-serial` if you have one.
+{{</notebox>}}
 
 #### Deactivation
 To deactivate a Unity license on the build machine, add the following script step in the `publishing:` section in `codemagic.yaml`:
@@ -186,6 +201,178 @@ To deactivate a Unity license on the build machine, add the following script ste
 **Note:** If a build is manually cancelled before reaching the publishing section, the license WILL NOT BE RETURNED automatically. This may cause future builds to fail if there are no free license seats available.
 
 Visit [Unity dashboard](https://id.unity.com/en/subscriptions) to manually deactivate license.
+{{</notebox>}}
+
+#### Offline activation
+
+Enterprise and Industry assigned seats, and legacy serial-based Pro licenses, can be activated offline using a license file generated once and loaded before each build. This avoids the activation and deactivation steps described above and removes the risk of a cancelled build leaving a seat checked out. This method does not work for current Pro named user licenses or for Unity Personal.
+
+1. Generate a license request file on a Codemagic build machine. A temporary workflow that only runs this step works well:
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  unity-license-request:
+    name: Unity license request file
+    instance_type: mac_mini_m2
+    scripts:
+      - name: Create Unity license request file
+        script: |
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode -createManualActivationFile -logFile -
+    artifacts:
+      - Unity_*.alf
+{{< /highlight >}}
+2. Download the resulting `.alf` file from the build artifacts.
+3. Go to the [manual activation page](https://license.unity3d.com/manual) and upload the `.alf` file.
+4. Select the eligible seat, or enter your serial number if you have a legacy serial-based Pro license.
+5. Download the resulting license file. An assigned seat produces an `.xml` file, and a serial number produces a `.ulf` file.
+6. Open the file in a text editor, copy its contents, and add a new Codemagic environment variable named `UNITY_LICENSE` with that content as the value. Mark it **Secret** and add it to the same group as your other Unity credentials.
+
+Add the following step at the top of your `scripts:` section instead of the activation step described above:
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Activate Unity license from file
+    script: |
+      printf '%s' "$UNITY_LICENSE" > unity_license_file
+      $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - -manualLicenseFile unity_license_file
+{{< /highlight >}}
+
+Invoke Unity as usual for the rest of the build. No deactivation step is required in the `publishing:` section.
+
+## Building with a Unity Personal license
+
+Unity Personal cannot be activated using the methods described above. It does not support the manual/offline activation method, and it does not support the `-serial` command line flags used for Pro, Enterprise, and Industry licenses. Activating a Personal license in a CI environment requires Unity's Licensing Client tool instead.
+
+Both approaches ultimately rely on the same kind of credentials: your Unity account email and password. The difference is which tool applies them. Pro, Enterprise, and Industry licenses activate through flags on the Unity Editor itself, a method Unity documents. Personal licenses activate through a separate bundled tool, the Licensing Client, because the Editor's own flags have never supported Personal, and this method is not officially documented by Unity for this purpose. Pro, Enterprise, and Industry licenses also check out an actual seat on every build and must return it, while Personal does not. These differences are why the two are covered as separate paths here rather than a single combined method.
+
+### Setting up your Unity Personal license
+
+Complete the following one-time setup with your Unity ID before activating a Personal license in a Codemagic build.
+
+#### Set a password for your Unity ID
+
+Activating a license from the command line requires a Unity ID email address and password. If you created your Unity ID by signing in with Google or another provider, your account may not have a password set.
+
+1. Go to [login.unity.com](https://login.unity.com).
+2. Enter the email address for your Unity ID and click **Continue**.
+3. Click **Reset your password** and follow the prompts to set a password.
+
+This does not remove your existing sign-in options. You can still sign in with Google or another provider if you prefer.
+
+#### Claim your free Personal license
+
+A Unity Personal license has to be claimed once before it can be activated anywhere else, including in a CI build. This step can only be done through Unity Hub.
+
+1. Download and install [Unity Hub](https://unity.com/download).
+2. Open Unity Hub and sign in with your Unity ID.
+3. Select the gear icon, then select **Licenses**.
+4. Select **Add license**.
+5. Select **Get a free personal license**.
+6. Read the terms, then select **Agree and get personal edition license**.
+
+After completing this step, your Personal license shows as active under **My Seats** at [id.unity.com](https://id.unity.com). You do not need to install a Unity Editor on this machine, and you only need to do this once per Unity ID.
+
+### Configuring Unity Personal credentials in Codemagic
+
+1. Open your Codemagic Team settings and go to the **Global variables and secrets** section, or the app-level **Environment variables** tab.
+2. Add `UNITY_EMAIL` as a secret variable, using the email address for your Unity ID.
+3. Add `UNITY_PASSWORD` as a secret variable, using the password you set above.
+4. Group both variables under a name such as **unity_personal_credentials**.
+5. Add the group to `codemagic.yaml`:
+
+{{< highlight yaml "style=paraiso-dark">}}
+environment:
+  groups:
+    - unity_personal_credentials
+{{< /highlight >}}
+
+### Choosing a Unity version
+
+Command line activation for Personal licenses relies on Unity's Licensing Client tool, which is bundled with the Unity Editor. Which Editor versions include a Licensing Client that supports this is not published by Unity. In general, early patches of a version line, and version lines that stopped receiving patches while still on an older Licensing Client, are less likely to support it. Unity 2022.2.16f1 is an example of a version that does not support it.
+
+The following have been confirmed to work:
+
+- Unity 2022 LTS, from version 2022.3.30f1 onward
+- Unity 6, from version 6000.0.40f1 onward
+
+You do not need to upgrade to Unity 6 if your project is on 2022 LTS. Specify a confirmed version in the `unity` field of your workflow environment:
+
+{{< highlight yaml "style=paraiso-dark">}}
+environment:
+  unity: 2022.3.30f1
+{{< /highlight >}}
+
+If you need to use a different Unity version, you can check whether its Licensing Client supports command line Personal activation without running a Codemagic build. Install that Editor version locally with Unity Hub, then run its Licensing Client with the `--help` flag from a terminal:
+
+{{< highlight Shell "style=paraiso-dark">}}
+"/Applications/Unity/Hub/Editor/<version>/Unity.app/Contents/Frameworks/UnityLicensingClient.app/Contents/MacOS/Unity.Licensing.Client" --help
+{{< /highlight >}}
+
+If `--include-personal` appears in the output, that version supports command line Personal activation.
+
+### Activating the license
+
+Add the following script as the first step in your workflow, before any step that calls Unity:
+
+{{< highlight yaml "style=paraiso-dark">}}
+scripts:
+  - name: Activate Unity Personal license
+    script: |
+      "$UNITY_HOME/Contents/Frameworks/UnityLicensingClient.app/Contents/MacOS/Unity.Licensing.Client" \
+        --activate-all --include-personal \
+        --username "$UNITY_EMAIL" --password "$UNITY_PASSWORD"
+{{< /highlight >}}
+
+This activates your Personal license on the build machine before Unity starts. From here, invoke Unity as usual, without the `-serial`, `-username`, or `-password` flags used for Pro, Enterprise, and Industry licenses.
+
+{{<notebox>}}
+**Note:** Unity in batch mode can report a successful exit code even when a license fails to activate. If you want to confirm activation explicitly, add a verification step after your build step that checks the build log for a line containing `Type: Assigned` and `Product: Unity Personal`.
+{{</notebox>}}
+
+#### Deactivation is not required
+
+Unlike Pro, Enterprise, and Industry licenses, a Personal license activated this way does not need to be returned at the end of the build. A deactivation script in the `publishing:` section is not necessary, and a cancelled build does not leave a seat checked out.
+
+### Complete example
+
+{{< highlight yaml "style=paraiso-dark">}}
+workflows:
+  unity-personal-android-workflow:
+    name: Unity Personal Android Workflow
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+    environment:
+      unity: 2022.3.30f1
+      groups:
+        - unity_personal_credentials
+      vars:
+        BUILD_SCRIPT: BuildAndroid
+    scripts:
+      - name: Activate Unity Personal license
+        script: |
+          "$UNITY_HOME/Contents/Frameworks/UnityLicensingClient.app/Contents/MacOS/Unity.Licensing.Client" \
+            --activate-all --include-personal \
+            --username "$UNITY_EMAIL" --password "$UNITY_PASSWORD"
+      - name: Build the project
+        script: |
+          $UNITY_HOME/Contents/MacOS/Unity -batchmode \
+            -quit \
+            -logFile \
+            -projectPath . \
+            -executeMethod BuildScript.BuildAndroid \
+            -nographics
+    artifacts:
+      - android/*.aab
+    publishing:
+      email:
+        recipients:
+          - user_1@example.com
+        notify:
+          success: true
+          failure: false
+{{< /highlight >}}
+
+{{<notebox>}}
+**Note:** Unity Personal does not include some features available on paid plans, such as publishing to game consoles or Apple Vision Pro and priority support, and it displays the Unity splash screen on your builds. Check [unity.com/pricing](https://unity.com/pricing) for the current feature comparison between plans.
 {{</notebox>}}
 
 ## Creating a build script
