@@ -35,4 +35,4 @@ workflows:
             - name: Install dependencies
               script: npm ci
             - name: Update Algolia search index
-              script: npm run algolia "$ALGOLIA_ADMIN_KEY"
+              script: npm run algolia "$ALGOLIA_API_KEY"
