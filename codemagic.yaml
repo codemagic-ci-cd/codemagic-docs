@@ -33,6 +33,6 @@ workflows:
             - name: Deploy to S3 and invalidate CDN
               script: ./hugo deploy --environment production --invalidateCDN true --maxDeletes -1
             - name: Install dependencies
-              script: yarn install
+              script: npm ci
             - name: Update Algolia search index
-              script: yarn run algolia "$ALGOLIA_ADMIN_KEY"
+              script: npm run algolia "$ALGOLIA_ADMIN_KEY"
