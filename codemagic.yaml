@@ -1,0 +1,38 @@
+workflows:
+    docs-deploy:
+        name: Docs deployment
+        instance_type: linux_x2
+        max_build_duration: 30
+        environment:
+            groups:
+                - aws_deploy
+                - algolia
+            vars:
+                HUGO_VERSION: 0.139.2
+                CM_CLONE_UNSHALLOW: 'true' # enableGitInfo needs the full commit history
+            node: lts
+        triggering:
+            events:
+                - push
+            branch_patterns:
+                - pattern: master
+                  include: true
+                  source: true
+            cancel_previous_builds: false
+        scripts:
+            - name: Install Hugo extended
+              script: |
+                  set -ex
+                  curl --location \
+                    "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_withdeploy_${HUGO_VERSION}_Linux-64bit.tar.gz" \
+                    | tar -vxzO hugo > hugo
+                  chmod a+x hugo
+                  ./hugo version
+            - name: Build site
+              script: ./hugo --environment production --minify
+            - name: Deploy to S3 and invalidate CDN
+              script: ./hugo deploy --environment production --invalidateCDN true --maxDeletes -1
+            - name: Install dependencies
+              script: yarn install
+            - name: Update Algolia search index
+              script: yarn run algolia "$ALGOLIA_ADMIN_KEY"
