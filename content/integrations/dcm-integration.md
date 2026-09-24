@@ -63,6 +63,7 @@ scripts:
     script: | 
       brew tap CQLabs/dcm
       export HOMEBREW_NO_AUTO_UPDATE=1
+      brew trust --formula cqlabs/dcm/dcm
       brew install dcm
   - name: Install flutter packages
     script: flutter pub get
