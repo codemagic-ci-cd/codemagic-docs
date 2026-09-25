@@ -20,8 +20,7 @@ Building a Unity app on Codemagic requires an active Unity license on the build 
 
 Codemagic supports all of these plans. Which activation method you use depends on your plan:
 
-- Pro, Enterprise, and Industry licenses activate online, using your Unity account email and password, and a serial number if your license has one. This is the default method and is covered in **Configuring a Pro, Enterprise, or Industry license** and **Activating and deactivating the license** below.
-- Enterprise and Industry seats, and legacy serial-based Pro licenses, can also activate offline using a license file generated once and reused across builds. This avoids activating and deactivating on every build. See **Offline activation** below.
+- Pro, Enterprise, and Industry licenses activate online, using your Unity account email and password, and a serial number if your license has one. This is covered in **Configuring a Pro, Enterprise, or Industry license** and **Activating and deactivating the license** below.
 - Personal licenses activate using a different tool and do not follow the same email, password, and serial number flow as paid plans. See **Building with a Unity Personal license** below.
 
 You can use the [Unity dashboard](https://id.unity.com/en/serials) to check the number of free seats on your license or to manually return a seat if necessary.
@@ -202,41 +201,6 @@ To deactivate a Unity license on the build machine, add the following script ste
 
 Visit [Unity dashboard](https://id.unity.com/en/subscriptions) to manually deactivate license.
 {{</notebox>}}
-
-#### Offline activation
-
-Enterprise and Industry assigned seats, and legacy serial-based Pro licenses, can be activated offline using a license file generated once and loaded before each build. This avoids the activation and deactivation steps described above and removes the risk of a cancelled build leaving a seat checked out. This method does not work for current Pro named user licenses or for Unity Personal.
-
-1. Generate a license request file on a Codemagic build machine. A temporary workflow that only runs this step works well:
-{{< highlight yaml "style=paraiso-dark">}}
-workflows:
-  unity-license-request:
-    name: Unity license request file
-    instance_type: mac_mini_m2
-    scripts:
-      - name: Create Unity license request file
-        script: |
-          $UNITY_HOME/Contents/MacOS/Unity -batchmode -createManualActivationFile -logFile -
-    artifacts:
-      - Unity_*.alf
-{{< /highlight >}}
-2. Download the resulting `.alf` file from the build artifacts.
-3. Go to the [manual activation page](https://license.unity3d.com/manual) and upload the `.alf` file.
-4. Select the eligible seat, or enter your serial number if you have a legacy serial-based Pro license.
-5. Download the resulting license file. An assigned seat produces an `.xml` file, and a serial number produces a `.ulf` file.
-6. Open the file in a text editor, copy its contents, and add a new Codemagic environment variable named `UNITY_LICENSE` with that content as the value. Mark it **Secret** and add it to the same group as your other Unity credentials.
-
-Add the following step at the top of your `scripts:` section instead of the activation step described above:
-
-{{< highlight yaml "style=paraiso-dark">}}
-scripts:
-  - name: Activate Unity license from file
-    script: |
-      printf '%s' "$UNITY_LICENSE" > unity_license_file
-      $UNITY_HOME/Contents/MacOS/Unity -batchmode -quit -logFile - -manualLicenseFile unity_license_file
-{{< /highlight >}}
-
-Invoke Unity as usual for the rest of the build. No deactivation step is required in the `publishing:` section.
 
 ## Building with a Unity Personal license
 
