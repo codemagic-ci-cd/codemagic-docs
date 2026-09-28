@@ -422,3 +422,26 @@ Go to **Settings** > **Code signing identities** > **iOS Provisioning profiles**
 and make sure a valid profile for your bundle identifier and distribution type exists.
 
 {{< /collapsible >}}
+
+### JSON-based project.xcproj is not yet supported
+
+###### Description
+
+When building an Xcode project that uses the JSON-based `.xcproj` project configuration format (Xcode 27.0 or later), the build log shows the following warning:
+
+    JSON-based project.xcproj is not yet supported. Converting *.xcodeproj/project.xcproj to *.xcodeproj/project.pbxproj using `xcodebuild -convert-project`
+
+{{<collapsible title="Causes and solutions" id="json-xcproj-not-supported-solution" >}}
+###### Cause
+
+Your project uses the new JSON-based `.xcproj` format instead of the older `.pbxproj` format. This happens if the project was created with Xcode 27.2 which uses this format by default, or if an older project was migrated to the new format.
+
+Codemagic tooling doesn't support the `.xcproj` format yet. To read your project configuration and apply the correct code signing settings, it temporarily converts the project to the `.pbxproj` format during the build.
+
+###### Solution
+
+No action is required. The conversion happens only on the build machine and doesn't change your repository.
+
+Read more about the Xcode project configuration file format changes in the [Apple documentation](https://developer.apple.com/documentation/xcode/updating-your-xcode-project-configuration-file-format).
+
+{{< /collapsible >}}
