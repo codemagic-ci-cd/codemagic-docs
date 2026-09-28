@@ -45,18 +45,18 @@ When you set up email publishing, Codemagic publishes the following artifacts:
 
 External recipients — people who are not members of your Codemagic team — will need to verify their email address by opting in to receive emails from Codemagic. 
 
-{{<notebox>}}
-**Note:** Verification is team-wide, so external recipients only need to verify their email address once to receive notifications across all workflows within that team.
-{{</notebox>}}
-
 When an unverified external recipient is first included as a recipient, they’ll receive an opt-in email from Codemagic when the workflow runs. Once they verify their email address, they’ll begin receiving build notifications from subsequent workflow runs.
 
 The workflow that triggers the verification email will not send a build notification to the unverified recipient.
 
-To exempt a recipient from verification, team admins can invite them to join the team from Team Settings in the Codemagic UI. Once they become a team member, they are verified automatically and do not need to complete email verification.
+{{<notebox>}}
+**Note for teams:** 
+- To exempt a recipient from verification, team admins can invite them to join the team from team settings in the Codemagic UI. Once they become a team member, they are verified automatically and do not need to complete email verification.
+- Verification is team-wide, so external recipients only need to verify their email address once to receive notifications across all workflows within that team.
+{{</notebox>}}
 
 ### Monitoring email verification status
 
-The external email addresses from your build notifications are visibile in **Team Settings > External emails** in the Codemagic UI. For each email address, you can also see its verification status. 
+The external email addresses from your build notifications are visibile when you select your personal account or team and go to **Settings > External emails** in the Codemagic UI. For each email address, you can also see its verification status. 
 
-Additionally, when a build notification configuration includes an unverified recipient, the email address will be flagged in the build logs and team admins will receive an email notification. 
+Additionally, when a build notification configuration includes an unverified recipient, the email address will be flagged in the build logs and team admins (or account owners) will receive an email notification. 
