@@ -2,7 +2,7 @@
 description: How to configure build status updates with links to artifacts in the Flutter workflow editor
 title: Email and Slack notifications
 weight: 11
-aliases: 
+aliases:
   - /publishing/email-and-slack-notifications
   - /flutter-publishing/email-and-slack-notifications
 ---
@@ -11,11 +11,29 @@ aliases:
 
 Email publishing settings can be found in **App settings > Notifications > Email**.
 
-Email publishing is the only publishing option that is enabled by default. Codemagic uses the email specified as the default one in the service you used to log in (Github, Bitbucket, Gitlab). You can add multiple email addresses.
+Email publishing is the only publishing option that is enabled by default. Codemagic uses the email specified as the default one in the service you used to log in (GitHub, Bitbucket, GitLab). You can add multiple email addresses as build notification recipients. Note that any external email addresses must be [verified](#email-recipient-verification) to receive build notification emails.
 
-If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the provided email. The artifact download links in email are, by default, valid for 24 hours. You can configure the lifetime of publicly accessible artifact download links by selecting your personal account or team and navigating to **Settings > Artifact download links**.
+If the build succeeds, the email includes release notes (if provided) and download links for the build artifacts. By default, the links are valid for 24 hours. To change this, select your personal account or team and go to **Settings > Artifact download links**.
 
-If the build fails, you will be sent a link to the build logs. Check the **Publish artifacts even if tests fail** option in the workflow editor to publish artifacts even when one or more tests fail. If that option is unchecked, generated artifacts (if there are any) will be attached only to successful builds.
+If the build fails, the email includes a link to the build logs. Check the **Publish artifacts even if tests fail** option in the workflow editor to publish artifacts even when one or more tests fail. If that option is unchecked, generated artifacts (if there are any) will be attached only to successful builds.
+
+### Email recipient verification
+
+External recipients — people who are not members of your Codemagic team — must verify their email address by opting in to receive emails from Codemagic.
+
+The first time an unverified external address is added as a recipient, it receives an opt-in email from Codemagic when the workflow runs. That workflow run does not send a build notification to the unverified recipient. Once they verify their email address, they'll receive build notifications from subsequent workflow runs.
+
+{{<notebox>}}
+**Note for teams:**
+- Verification is team-wide, so external recipients only need to verify their email address once to receive notifications across all workflows within that team.
+- To exempt a recipient from verification, team admins can invite them to join the team from team settings in the Codemagic UI. Once they become a team member, they are verified automatically and do not need to complete email verification.
+{{</notebox>}}
+
+#### Monitoring email verification status
+
+To see external email addresses and their verification status, select your personal account or team and go to **Settings > External emails** in the Codemagic UI.
+
+Additionally, when a build notification configuration includes an unverified recipient, the email address will be flagged in the build logs and team admins (or account owners) will receive an email notification.
 
 ### MS Teams
 
@@ -25,13 +43,13 @@ Use only the part in angle brackets from the whole address line (e.g. `My awesom
 
 ## Slack
 
-In order to set up publishing to Slack, you first need to connect the Slack workspace. Navigate to **Personal Account > Settings > Integrations > Slack** to connect Slack for your personal apps or **[Your team] > Settings > Team integrations > Slack** to connect Slack for team apps.
+To set up publishing to Slack, you first need to connect the Slack workspace. Navigate to **Personal Account > Settings > Integrations > Slack** to connect Slack for your personal apps or **[Your team] > Settings > Team integrations > Slack** to connect Slack for team apps.
 
 Once your Slack workspace is connected, you can enable Slack publishing and select a channel for publishing in **App settings > Notifications > Slack** when using the workflow editor.
 
-In order to publish to **private channels**, you need to invite the Codemagic app to the channels, otherwise, the app does not have access to private channels. To invite the Codemagic app to private channels, write `@codemagic` in the channel. If you are in the Codemagic web app, refresh the page, and the new channel will become available in the dropdown menu.
+To publish to **private channels**, you need to invite the Codemagic app to them. To invite the Codemagic app to private channels, write `@codemagic` in the channel. If you are in the Codemagic web app, refresh the page, and the new channel will become available in the dropdown menu.
 
-If the build finishes successfully, release notes (if passed) and the generated artifacts will be published to the specified channel. The artifact download links in Slack notifications are, by default, valid for 24 hours. You can configure the lifetime of publicly accessible artifact download links by selecting your personal account or team and navigating to **Settings > Artifact download links**.
+If the build succeeds, the Slack message includes release notes (if provided) and download links for the build artifacts. By default, the links are valid for 24 hours. To change this, select your personal account or team and go to **Settings > Artifact download links**.
 
 If the build fails, a link to the build logs is published. Check **Publish artifacts even if tests fail** to publish artifacts even when one or more tests fail. If the option is unchecked, generated artifacts (if any) will be attached to successful builds only.
 
@@ -41,6 +59,11 @@ To receive a notification when a build starts, check the checkbox **Notify when 
 
 When you set up email or Slack publishing, Codemagic publishes the following artifacts:
 
-- `app`, `ipa`, `apk`, the archive with Flutter web build directory, Linux application bundle files, Windows MSIX packages, and .exe files.
+- `.app`, `.ipa`, `.apk`, `.exe`
+- Flutter web build archive
+- Linux application bundle files
+- Windows MSIX packages
 
-** NOTE: We only send emails on successful builds when there are above-mentioned artifact types **
+{{<notebox>}}
+**Important:** Success emails are only sent when artifacts are available for Codemagic to collect.
+{{</notebox>}}
