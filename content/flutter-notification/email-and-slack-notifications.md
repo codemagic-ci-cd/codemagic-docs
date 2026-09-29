@@ -11,7 +11,9 @@ aliases:
 
 Email publishing settings can be found in **App settings > Notifications > Email**.
 
-Email publishing is the only publishing option that is enabled by default. Codemagic automatically publishes to your signup email or the email specified as the default one in the service you signed up with (GitHub, Bitbucket, GitLab). You can add multiple email addresses as build notification recipients. Note that any external email addresses must be [verified](#email-recipient-verification) to receive build notification emails.
+Email publishing is the only publishing option that is enabled by default. Codemagic automatically publishes to your signup email or the email specified as the default one in the service you signed up with (GitHub, Bitbucket, GitLab). 
+
+You can add your team members or people outside of Codemagic as build notification recipients. Note that any external email addresses must be [verified](#email-recipient-verification) to receive build notification emails.
 
 If the build succeeds, the email includes release notes (if provided) and download links for the build artifacts. By default, the links are valid for 24 hours. To change this, select your personal account or team and go to **Settings > Artifact download links**.
 
