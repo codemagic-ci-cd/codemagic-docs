@@ -1,8 +1,8 @@
 ---
-title: Xcode 27.0.x
+title: Xcode 27.1.x
 aliases:
 
-weight: 88
+weight: 87
 ---
 
 Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
@@ -18,13 +18,13 @@ Mac Studio M4 Max available on request.
 
 ## System
 
-- System version `macOS 27.0 (26A428)`
+- System version `macOS 27.0.1 (26A434)`
 - Kernel version `Darwin 27.0.0`
-- Disk `294GB (Free Space: 145GB)`
+- Disk `294GB (Free Space: 140GB)`
 
 ## Xcode versions
 
-- 27.0 (27A266a) `/Applications/Xcode-27.0.app`
+- 27.1 (27A9269) `/Applications/Xcode-27.1.app`
 
 ### Runtimes and Devices
 
@@ -57,6 +57,10 @@ Mac Studio M4 Max available on request.
 - iPhone 18 Pro
 - iPhone 18 Pro Max
 - iPhone Air
+{{< /collapsible >}}
+
+{{< collapsible title="iOS 27.1" >}}
+- iPhone Duo
 {{< /collapsible >}}
 
 {{< collapsible title="tvOS 27.0" >}}
@@ -243,21 +247,21 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.36.46`
+- aws `2.37.4`
 - azure-cli `2.90.0`
 - carthage `0.40.0`
 - cocoapods `1.17.0`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `1.5.0`
+- ew-cli `1.5.1`
 - fastlane `2.240.1`
-- firebase `15.30.1`
+- firebase `15.32.0`
 - gem `4.0.21`
 - gh `2.101.0`
 - git `2.55.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `7.0.2`
+- homebrew `7.0.7`
 - ionic `7.2.1`
 - jq `1.8.2`
 - ktlint `1.8.0`
