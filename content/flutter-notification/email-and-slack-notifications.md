@@ -27,7 +27,12 @@ If the build fails, the email includes a link to the build logs. Check the **Pub
 
 External recipients — people who are not members of your Codemagic team — must verify their email address and consent to receiving build notifications from Codemagic. Both happen in a single step.
 
-Unverified recipients receive an opt-in email from Codemagic the first time a workflow runs with their email address as a recipient. That run doesn't send them a build notification yet. Once they click **Confirm** in the opt-in email, their email address is verified and they'll receive build notifications from subsequent workflow runs.
+Codemagic sends unverified recipients an opt-in email in one of two ways:
+
+- **In advance:** Team admins (or account owners) can go to **Settings > External emails** and click **Add external recipients**. The opt-in email is sent immediately.
+- **On the first build:** If the recipient hasn't been added in advance, they receive the opt-in email the first time a workflow runs with their email address as a recipient. That run doesn't send them a build notification yet.
+
+Once they click **Confirm** in the opt-in email, their email address is verified and they'll receive build notifications from then on.
 
 {{<notebox>}}
 **Note for teams:**
@@ -36,7 +41,7 @@ Verification is team-wide, so external recipients only need to verify their emai
 
 #### Monitoring email verification status
 
-To see external email addresses and their verification status, select your personal account or team and go to **Settings > External emails** in the Codemagic UI.
+To see external email addresses and their verification status, select your personal account or team and go to **Settings > External emails** in the Codemagic UI. All team members can view this list, but only team admins can add recipients.
 
 Additionally, when a build notification configuration includes an unverified recipient, team admins (or account owners) will receive an email notification.
 
