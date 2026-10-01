@@ -4,80 +4,33 @@ description: API for starting and managing app builds
 weight: 3
 ---
 
-APIs for managing builds are currently available for developers to preview. During the preview period, the API may change without advance notice.
-{{<notebox>}}
-**Note:** Using REST API will not fetch information about workflows when configuring with **codemagic.yaml**. It is because only workflows from the Workflow Editor are defaulted as no accessible data is present from **codemagic.yaml** until a repository is cloned, which means that there is no way to retrieve workflow IDs from **codemagic.yaml** before triggering a build.
-{{</notebox>}}
+Use the Codemagic REST API to start builds, check their status, and list builds for your team. For the full list of endpoints, request parameters, and response formats, see the **Builds** section of the [Codemagic REST API documentation](https://codemagic.io/api/v3/schema#tag/builds).
+
+## Available endpoints
+
+| **Endpoint**                                   | **Description**                                               |
+|------------------------------------------------|---------------------------------------------------------------|
+| `POST /api/v3/apps/{app_id}/builds`            | Start a new build for an application.                         |
+| `GET /api/v3/builds/{build_id}`                | Get information about a build, including its status.          |
+| `GET /api/v3/builds/{build_id}/actions`        | Get the actions (steps) of a build.                           |
+| `GET /api/v3/builds/{build_id}/remote-access`  | Get remote access information for a build.                    |
+| `GET /api/v3/teams/{team_id}/builds`           | List builds for a team.                                       |
+
+Requests are authenticated with the `x-auth-token` header. See [Codemagic REST API](/rest-api/codemagic-rest-api/) for how to get your API token.
 
 ## Start a new build
 
-`POST /builds`
+`workflow_id` can be either the ID of a workflow in your `codemagic.yaml` file (as in `workflows.<workflow_id>`) or the ID of a Workflow Editor workflow. Exactly one of `branch` or `tag` is required.
 
 {{<notebox>}}
-**Note:** The workflow and branch information is passed with the curl request when starting builds from an API request. Any configuration related to triggers or branches in Flutter workflow editor or codemagic.yaml is ignored.
+**Note:** The workflow and branch information is passed with the request when starting builds from the API. Any configuration related to triggers or branches in the Flutter Workflow Editor or `codemagic.yaml` is ignored.
 {{</notebox>}}
 
-#### Parameters
-
-| **Name**      | **Type** | **Description**                                                                                                                                         |
-|---------------| -------- |---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `appId`       | `string` | **Required.** The application identifier.                                                                                                               |
-| `workflowId`  | `string` | **Required.** The workflow identifier as specified in YAML file.                                                                                        |
-| `branch`      | `string` | Optional. The branch name. Either `branch` or `tag` is **required**.                                                                                    |
-| `tag`         | `string` | Optional. The tag name. Either `branch` or `tag` is **required**.                                                                                       |
-| `environment` | `object` | Optional. Specify environment variables, variable groups, and software versions to override or define in workflow settings.                             |
-| `labels`      | `list`   | Optional. Specify labels to be included for the build in addition to existing labels.                                                                   |
-
-
-#### Example
-
-{{< highlight bash "style=paraiso-dark">}}
-  curl -H "Content-Type: application/json" \
-       -H "x-auth-token: <API Token>" \
-       --data '{
-         "appId": "<app_id>",
-         "workflowId": "<workflow_id>",
-         "branch": "<git_branch_name>"
-       }' \
-       -X POST https://api.codemagic.io/builds
-{{< /highlight >}}
-
-#### Pass custom build parameters
-
-{{< highlight json "style=paraiso-dark">}}
-{
-  "appId": "5c9c064185dd2310123b8e96",
-  "workflowId": "release",
-  "branch": "master",
-  "labels": ["foo", "bar"],
-  "environment": {
-    "variables": {
-      "ENVIRONMENT_VARIABLE_1": "...",
-      "ENVIRONMENT_VARIABLE_2": "..."
-    },
-    "groups": [
-      "variable_group_1",
-      "variable_group_2"
-    ],
-    "softwareVersions": {
-      "xcode": "11.4.1",
-      "flutter": "v1.12.13+hotfix.9"
-    }
-  },
-  "instanceType": "mac_mini_m2"
-}
-{{< /highlight >}}
-
-#### Response
-
-{{< highlight json "style=paraiso-dark">}}
-  {
-    "buildId":"5fabc6414c483700143f4f92"
-  }
-{{< /highlight >}}
-
+You can also pass labels, an instance type, workflow inputs, and environment overrides in the request body. See the [Codemagic REST API documentation](https://codemagic.io/api/v3/schema#tag/builds) for all available parameters.
 
 ## Cancel build
+
+Cancelling builds is not yet available in the new API. Use the following endpoint to cancel a build:
 
 `POST /builds/:id/cancel`
 
@@ -90,7 +43,3 @@ APIs for managing builds are currently available for developers to preview. Duri
 {{< /highlight >}}
 
 The request will return `208 Already Reported` if the build has already finished.
-
-{{<notebox>}}
-**Note:** If you have multiple similar workflows for the same project, you can configure your workflows dynamically using API calls, read more about it <a href="https://blog.codemagic.io/dynamic-workflows-with-codemagic-api/" target="_blank" onclick="sendGtag('Link_in_docs_clicked','dynamic-workflows-with-codemagic-api')">here</a>.
-{{</notebox>}}
