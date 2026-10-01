@@ -15,9 +15,9 @@ aliases:
 
 Email publishing settings can be found in **App settings > Notifications > Email**.
 
-Email publishing is the only publishing option that is enabled by default. Codemagic automatically publishes to your signup email or the email specified as the default one in the service you signed up with (GitHub, Bitbucket, GitLab). 
+Email publishing is the only publishing option that is enabled by default. Codemagic automatically publishes to your signup email or the email specified as the default one in the service you signed up with (GitHub, Bitbucket, GitLab).
 
-You can add your team members or people outside of Codemagic as build notification recipients. Note that any external email addresses must be [verified](#email-recipient-verification) to receive build notification emails.
+You can add your team members or people outside of Codemagic as build notification recipients. Note that external recipients need to [verify their email address and consent](#email-recipient-verification) to receiving build notifications.
 
 If the build succeeds, the email includes release notes (if provided) and download links for the build artifacts. By default, the links are valid for 24 hours. To change this, select your personal account or team and go to **Settings > Artifact download links**.
 
@@ -34,6 +34,8 @@ Codemagic sends unverified recipients an opt-in email in one of two ways:
 
 Once they click **Confirm** in the opt-in email, their email address is verified and they'll receive build notifications from then on.
 
+Codemagic sends the opt-in email only once. If a recipient misses it, please reach out to our support team.
+
 {{<notebox>}}
 **Note for teams:**
 Verification is team-wide, so external recipients only need to verify their email address once to receive notifications across all workflows within that team.
@@ -41,9 +43,9 @@ Verification is team-wide, so external recipients only need to verify their emai
 
 #### Monitoring email verification status
 
-To see external email addresses and their verification status, select your personal account or team and go to **Settings > External emails** in the Codemagic UI. All team members can view this list, but only team admins can add recipients.
+To see external email addresses and their verification status, select your personal account or team and go to **Settings > External emails** in the Codemagic UI. All team members can view this list, but only team admins (or account owners) can add recipients.
 
-Additionally, when a build notification configuration includes an unverified recipient, team admins (or account owners) will receive an email notification.
+Additionally, when a workflow runs with an unverified email address as a recipient, team admins (or account owners) are notified by email. This notification is sent only once per unverified email address.
 
 ### MS Teams
 
