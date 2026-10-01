@@ -43,9 +43,9 @@ When you set up email publishing, Codemagic publishes the following artifacts:
 
 ## Email recipient verification
 
-External recipients — people who are not members of your Codemagic team — must verify their email address by opting in to receive emails from Codemagic.
+External recipients — people who are not members of your Codemagic team — must verify their email address and consent to receiving build notifications from Codemagic. Both happen in a single step.
 
-Unverified recipients receive an opt-in email from Codemagic the first time a workflow runs with their email address as a recipient. That run doesn't send them a build notification. Once they verify their email address, they'll receive build notifications from subsequent workflow runs.
+Unverified recipients receive an opt-in email from Codemagic the first time a workflow runs with their email address as a recipient. That run doesn't send them a build notification yet. Once they click **Confirm** in the opt-in email, their email address is verified and they'll receive build notifications from subsequent workflow runs.
 
 {{<notebox>}}
 **Note for teams:**
