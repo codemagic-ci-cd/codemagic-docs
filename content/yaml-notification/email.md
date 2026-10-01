@@ -6,6 +6,12 @@ aliases:
   - /yaml-publishing/email
 ---
 
+## Configuring email notifications
+
+{{<notebox>}}
+**Note:** This guide applies to workflows configured with **codemagic.yaml**. If you're using **Flutter Workflow Editor**, please refer [here](../flutter-notification/email-and-slack-notifications).
+{{</notebox>}}
+
 Notify your Codemagic team members or [external recipients](#email-recipient-verification) by email when a build finishes.
 
 If the build succeeds, the email includes release notes (if provided) and download links for the build artifacts. By default, the links are valid for 24 hours. To change this, select your personal account or team and go to **Settings > Artifact download links**.

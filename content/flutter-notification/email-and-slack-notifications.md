@@ -9,6 +9,10 @@ aliases:
 
 ## Email
 
+{{<notebox>}}
+**Note:** This guide applies to workflows configured with **Flutter Workflow Editor**. If you're using **codemagic.yaml**, please refer [here](../yaml-notification/email).
+{{</notebox>}}
+
 Email publishing settings can be found in **App settings > Notifications > Email**.
 
 Email publishing is the only publishing option that is enabled by default. Codemagic automatically publishes to your signup email or the email specified as the default one in the service you signed up with (GitHub, Bitbucket, GitLab). 
