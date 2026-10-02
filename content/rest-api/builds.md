@@ -16,7 +16,7 @@ Use the Codemagic REST API to start builds, check their status, and list builds 
 | `GET /api/v3/builds/{build_id}/remote-access`  | Get remote access information for a build.                    |
 | `GET /api/v3/teams/{team_id}/builds`           | List builds for a team.                                       |
 
-Requests are authenticated with the `x-auth-token` header. See [Codemagic REST API](/rest-api/codemagic-rest-api/) for how to get your API token.
+Requests are authenticated with the `x-auth-token` header. See the [Authentication](/rest-api/codemagic-rest-api#authentication) section for how to get your API token.
 
 ## Start a new build
 
