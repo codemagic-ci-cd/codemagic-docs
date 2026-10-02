@@ -1,8 +1,8 @@
 ---
-title: Xcode 27.0.x
+title: Xcode 27.2.x (edge)
 aliases:
 
-weight: 88
+weight: 86
 ---
 
 Codemagic offers multiple build machines with different specifications and pre-installed tools. You can choose between them by specifying the required Xcode version.
@@ -18,30 +18,16 @@ Mac Studio M4 Max available on request.
 
 ## System
 
-- System version `macOS 27.0 (26A428)`
+- System version `macOS 27.0.1 (26A434)`
 - Kernel version `Darwin 27.0.0`
-- Disk `294GB (Free Space: 145GB)`
+- Disk `294GB (Free Space: 137GB)`
 
 ## Xcode versions
 
-- 27.0 (27A266a) `/Applications/Xcode-27.0.app`
+- 27.2 (27B5028f) `/Applications/Xcode-27.2.app`, also selected when specifying `edge` in Xcode version settings
 
 ### Runtimes and Devices
 
-
-{{< collapsible title="iOS 26.5" >}}
-- iPad (A16)
-- iPad Air 11-inch (M4)
-- iPad Air 13-inch (M4)
-- iPad Pro 11-inch (M5)
-- iPad Pro 13-inch (M5)
-- iPad mini (A17 Pro)
-- iPhone 17
-- iPhone 17 Pro
-- iPhone 17 Pro Max
-- iPhone 17e
-- iPhone Air
-{{< /collapsible >}}
 
 {{< collapsible title="iOS 27.0" >}}
 - iPad (A16)
@@ -59,23 +45,34 @@ Mac Studio M4 Max available on request.
 - iPhone Air
 {{< /collapsible >}}
 
-{{< collapsible title="tvOS 27.0" >}}
+{{< collapsible title="iOS 27.2" >}}
+- iPad (A16)
+- iPad Air 11-inch (M4)
+- iPad Air 13-inch (M4)
+- iPad Pro 11-inch (M5)
+- iPad Pro 13-inch (M5)
+- iPad mini (A17 Pro)
+- iPhone 17
+- iPhone 17e
+- iPhone 18 Pro
+- iPhone 18 Pro Max
+- iPhone Air
+{{< /collapsible >}}
+
+{{< collapsible title="tvOS 27.2" >}}
 - Apple TV 4K (3rd generation)
 - Apple TV 4K (3rd generation) (at 1080p)
 {{< /collapsible >}}
 
-{{< collapsible title="visionOS 27.0" >}}
+{{< collapsible title="visionOS 27.2" >}}
 - Apple Vision Pro
 {{< /collapsible >}}
 
-{{< collapsible title="watchOS 27.0" >}}
+{{< collapsible title="watchOS 27.2" >}}
 - Apple Watch SE 3 (40mm)
 - Apple Watch SE 3 (44mm)
-- Apple Watch Series 11 (42mm)
-- Apple Watch Series 11 (46mm)
 - Apple Watch Series 12 (42mm)
 - Apple Watch Series 12 (46mm)
-- Apple Watch Ultra 3 (49mm)
 - Apple Watch Ultra 4 (49mm)
 {{< /collapsible >}}
 
@@ -243,21 +240,21 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.36.46`
+- aws `2.37.4`
 - azure-cli `2.90.0`
 - carthage `0.40.0`
 - cocoapods `1.17.0`
 - cordova `12.0.0`
 - curl `8.7.1`
-- ew-cli `1.5.0`
+- ew-cli `1.5.1`
 - fastlane `2.240.1`
-- firebase `15.30.1`
+- firebase `15.32.0`
 - gem `4.0.21`
 - gh `2.101.0`
 - git `2.55.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `7.0.2`
+- homebrew `7.0.7`
 - ionic `7.2.1`
 - jq `1.8.2`
 - ktlint `1.8.0`
