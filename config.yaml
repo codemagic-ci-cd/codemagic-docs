@@ -128,6 +128,10 @@ menu:
           name: White Label Apps
           weight: 5
           parent: knowledge-base
+        - identifier: knowledge-supply-chain-security
+          name: Supply Chain Security
+          weight: 6
+          parent: knowledge-base
 
 
 
