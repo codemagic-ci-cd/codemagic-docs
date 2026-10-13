@@ -181,6 +181,7 @@ The following options are available with the Enterprise offering:
 
 - Unlimited builds on: 
   - macOS M4 (Mac mini M4 10-core CPU / 16GB RAM)
+    - 4-core CPU / 14GB RAM available to build
   - Linux X4 (16 vCPUs, 64 GB memory)
   - Windows (8 vCPUs, 32 GB memory)
 - 180-minute build timeout
@@ -204,6 +205,7 @@ If you would like more information about our Enterprise plan, please contact us 
 
 - Unlimited builds on:  
   - macOS Studio M4 Max (Mac Studio M4 Max 16-core CPU / 32GB RAM)
+    - 7-core CPU / 30GB RAM available to build
   - Linux X4 (16 vCPUs, 64 GB memory)
   - Windows instances (8 vCPUs, 32 GB memory)
 - 180-minute build timeout
@@ -290,14 +292,14 @@ Codemagic provides macOS, Windows, and Linux instance types.
 The instance types and hardware specifications can be found below.
 
 
-| **Item**                 | **Specification**                                                               |
-| ------------------------ | --------------------------------------------------------------------------------|
-| macOS M2 VM              | Mac mini M2 8-core CPU / 8GB RAM                                                |
-| macOS M4 VM              | Mac mini M4 10-core CPU / 16GB RAM                                              |
-| macOS Studio M4 Max VM   | Mac Studio M4 Max 16-core CPU / 32GB RAM                                        |
-| Linux X2 VM              | 8 vCPUs, 32 GB memory                                                           |
-| Linux X4 VM              | 16 vCPUs, 64 GB memory                                                          |
-| Windows VM               | 8 vCPUs, 32 GB memory  
+| **Item**               | **Machine**                              | **Available to build**     |
+| ---------------------- | ---------------------------------------- | -------------------------- |
+| macOS M2 VM            | Mac mini M2 8-core CPU / 8GB RAM         | 3-5 core CPU / 10-14GB RAM |
+| macOS M4 VM            | Mac mini M4 10-core CPU / 16GB RAM       | 4-core CPU / 14GB RAM      |
+| macOS Studio M4 Max VM | Mac Studio M4 Max 16-core CPU / 32GB RAM | 7-core CPU / 30GB RAM      |
+| Linux X2 VM            | 8 vCPUs, 32 GB memory                    | Full machine specification |
+| Linux X4 VM            | 16 vCPUs, 64 GB memory                   | Full machine specification |
+| Windows VM             | 8 vCPUs, 32 GB memory                    | Full machine specification |
 
 {{<notebox>}}
 To access more powerful macOS M4 Max Studio and Linux X4, please get in touch with us [here](https://codemagic.io/pricing/#enterprise).
