@@ -116,7 +116,7 @@ pipeline {
 
 For release pipelines that build from a Git tag, send `tag` instead of `branch` in the JSON body.
 
-You can pass software version overrides in the `environment` object, and `instanceType` at the **top level** of the request body (not inside `environment`). See [Pass custom build parameters](/rest-api/builds/#pass-custom-build-parameters). Variables you pass from Jenkins are available in Codemagic build scripts alongside [built-in environment variables](/yaml-basic-configuration/environment-variables/) (`CM_TRIGGER_SOURCE` is `api` for API-started builds). That includes Jenkins callback variables for the [publishing script](#report-results-back-to-jenkins) when you want per-build URLs without editing Codemagic settings:
+You can pass software version overrides in the `environment` object, and `instanceType` at the **top level** of the request body (not inside `environment`). See [Start a new build](https://codemagic.io/api/v3/schema#tag/builds/POST/api/v3/apps/{app_id}/builds) in the Codemagic REST API documentation. Variables you pass from Jenkins are available in Codemagic build scripts alongside [built-in environment variables](/yaml-basic-configuration/environment-variables/) (`CM_TRIGGER_SOURCE` is `api` for API-started builds). That includes Jenkins callback variables for the [publishing script](#report-results-back-to-jenkins) when you want per-build URLs without editing Codemagic settings:
 
 {{< highlight json "style=paraiso-dark" >}}
 "environment": {
