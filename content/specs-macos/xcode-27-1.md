@@ -20,11 +20,11 @@ Mac Studio M4 Max available on request.
 
 - System version `macOS 27.0.1 (26A434)`
 - Kernel version `Darwin 27.0.0`
-- Disk `294GB (Free Space: 140GB)`
+- Disk `294GB (Free Space: 139GB)`
 
 ## Xcode versions
 
-- 27.1 (27A9269) `/Applications/Xcode-27.1.app`
+- 27.1 (27A9275) `/Applications/Xcode-27.1.app`
 
 ### Runtimes and Devices
 
@@ -86,7 +86,7 @@ Mac Studio M4 Max available on request.
 
 ## Android Studio
 
-> Android Studio `2026.1` installed at `~/programs/android-studio`
+> Android Studio `2026.2` installed at `~/programs/android-studio`
 
 
 ## Android SDK
@@ -156,7 +156,7 @@ Installed packages:
   cmake;3.6.4111459                        | 3.6.4111459       | CMake 3.6.4111459                                | cmake/3.6.4111459
   cmake;4.1.2                              | 4.1.2             | CMake 4.1.2                                      | cmake/4.1.2
   cmdline-tools;22.0                       | 22.0              | Android SDK Command-line Tools                   | cmdline-tools/22.0
-  emulator                                 | 37.1.11           | Android Emulator                                 | emulator
+  emulator                                 | 37.2.12           | Android Emulator                                 | emulator
   extras;google;google_play_services       | 49                | Google Play services                             | extras/google/google_play_services
   extras;google;instantapps                | 1.9.0             | Google Play Instant Development SDK (Deprecated) | extras/google/instantapps
   extras;google;market_apk_expansion       | 1                 | Google Play APK Expansion library                | extras/google/market_apk_expansion
@@ -188,6 +188,8 @@ Installed packages:
   platforms;android-35                     | 2                 | Android SDK Platform 35                          | platforms/android-35
   platforms;android-36.1                   | 1                 | Android SDK Platform 36.1                        | platforms/android-36.1
   platforms;android-37.0                   | 2                 | Android SDK Platform 37.0                        | platforms/android-37.0
+  platforms;android-37.1                   | 1                 | Android SDK Platform 37.1                        | platforms/android-37.1
+  platforms;android-37.2                   | 1                 | Android SDK Platform 37.2                        | platforms/android-37.2
   platforms;android-TiramisuPrivacySandbox | 8                 | Android SDK Platform TiramisuPrivacySandbox      | platforms/android-TiramisuPrivacySandbox
   sources;android-19                       | 2                 | Sources for Android 19                           | sources/android-19
   sources;android-20                       | 1                 | Sources for Android 20                           | sources/android-20
@@ -207,6 +209,8 @@ Installed packages:
   sources;android-35                       | 1                 | Sources for Android 35                           | sources/android-35
   sources;android-36.1                     | 1                 | Sources for Android 36.1                         | sources/android-36.1
   sources;android-37.0                     | 2                 | Sources for Android 37.0                         | sources/android-37.0
+  sources;android-37.1                     | 1                 | Sources for Android 37.1                         | sources/android-37.1
+  sources;android-37.2                     | 1                 | Sources for Android 37.2                         | sources/android-37.2
 {{< /collapsible >}}
 
 
@@ -247,26 +251,26 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 ## Other pre-installed tools
 
 - appium `2.19.0`
-- aws `2.37.4`
+- aws `2.38.1`
 - azure-cli `2.90.0`
 - carthage `0.40.0`
 - cocoapods `1.17.0`
 - cordova `12.0.0`
 - curl `8.7.1`
 - ew-cli `1.5.1`
-- fastlane `2.240.1`
-- firebase `15.32.0`
-- gem `4.0.21`
-- gh `2.101.0`
-- git `2.55.0`
+- fastlane `2.241.1`
+- firebase `15.34.0`
+- gem `4.0.23`
+- gh `2.102.0`
+- git `2.56.0`
 - Google Cloud SDK `502.0.0`
 - gsutil `5.31`
-- homebrew `7.0.7`
+- homebrew `7.0.9`
 - ionic `7.2.1`
 - jq `1.8.2`
 - ktlint `1.8.0`
-- node `24.21.0`
-- npm `11.19.0`
+- node `24.22.0`
+- npm `11.19.1`
 - python `3.12.7`
 - python3 `3.12.7`
 - ruby `4.0.7`
@@ -279,5 +283,5 @@ Android emulators are unavailable on Apple silicon machines due to the Apple Vir
 - wget `1.25.0`
 - xcbeautify `3.2.1`
 - yarn `4.9.2`
-- yq `4.53.6`
+- yq `4.54.1`
 - zip `3.0`
