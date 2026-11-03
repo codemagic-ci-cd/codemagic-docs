@@ -39,7 +39,7 @@ Codemagic allows you a lot of freedom and flexibility in choosing your tools and
 If you are building a Flutter project using Codemagic Workflow Editor, you can select the required versions for Flutter, Xcode, and CocoaPods directly from a dropdown list within the **Build** section.
 
 ## Why is my build shown as ‘queued’ and when will it start?
-Depending on your concurrency settings, you may be able to run up to 3 builds in parallel on the standard plan. If any additional builds are triggered, they will wait in queue for one of the active builds to finish. If you need more than 3 parallel builds, additional concurrencies are available for purchase.
+Depending on your concurrency settings, you may be able to run up to 3 builds in parallel on the standard plan. If any additional builds are triggered, they will wait in queue for one of the active builds to finish. If you need more than 3 parallel builds, additional concurrencies are available for purchase. To start an urgent build ahead of your team's other queued builds, use [priority builds](https://docs.codemagic.io/yaml-running-builds/priority-builds/).
 	
 Builds can also be queued if there is a temporary spike in network traffic or a hardware issue in one of the data centers. However, these issues are normally resolved in a matter of minutes. Should you experience a longer delay, please contact our support team.
 
