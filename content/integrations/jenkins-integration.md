@@ -144,7 +144,7 @@ Poll `GET https://codemagic.io/api/v3/builds/{buildId}` until the build reaches 
 | `finished` | Build completed successfully |
 | `failed`, `canceled`, `timeout`, `skipped` | Build did not complete successfully |
 
-See [Build statuses](/rest-api/builds/#build-statuses) for what each status means.
+See [Build statuses](/yaml-running-builds/build-statuses/) for what each status means.
 
 There is no separate `success` status — treat `finished` as success.
 

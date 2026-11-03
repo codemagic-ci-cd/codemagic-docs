@@ -43,7 +43,7 @@ A build is **queued** when your team is already running as many builds as its co
 	
 A build is **waiting** when it already has a concurrency slot and Codemagic is getting a build machine for it. This usually takes only a moment, but builds can wait longer if there is a temporary spike in network traffic or a hardware issue in one of the data centers. However, these issues are normally resolved in a matter of minutes. Should you experience a longer delay, please contact our support team.
 
-See [Build statuses](/rest-api/builds/#build-statuses) for the full list of statuses.
+See [Build statuses](/yaml-running-builds/build-statuses/) for the full list of statuses.
 
 ## I have used up my 500 free build minutes. How can I continue using the service?
 The free build minutes are renewed at the start of each month. However, you can [enable billing](https://docs.codemagic.io/billing/billing/#enabling-billing) at any point and continue using the service at our standard prices in the meantime.
