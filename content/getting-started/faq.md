@@ -38,10 +38,12 @@ Codemagic allows you a lot of freedom and flexibility in choosing your tools and
 
 If you are building a Flutter project using Codemagic Workflow Editor, you can select the required versions for Flutter, Xcode, and CocoaPods directly from a dropdown list within the **Build** section.
 
-## Why is my build shown as ‘queued’ and when will it start?
-Depending on your concurrency settings, you may be able to run up to 3 builds in parallel on the standard plan. If any additional builds are triggered, they will wait in queue for one of the active builds to finish. If you need more than 3 parallel builds, additional concurrencies are available for purchase.
+## Why is my build shown as ‘queued’ or ‘waiting’ and when will it start?
+A build is **queued** when your team is already running as many builds as its concurrency settings allow. Depending on your concurrency settings, you may be able to run up to 3 builds in parallel on the standard plan. If any additional builds are triggered, they will wait in queue for one of the active builds to finish. If you need more than 3 parallel builds, additional concurrencies are available for purchase.
 	
-Builds can also be queued if there is a temporary spike in network traffic or a hardware issue in one of the data centers. However, these issues are normally resolved in a matter of minutes. Should you experience a longer delay, please contact our support team.
+A build is **waiting** when it already has a concurrency slot and Codemagic is getting a build machine for it. This usually takes only a moment, but builds can wait longer if there is a temporary spike in network traffic or a hardware issue in one of the data centers. However, these issues are normally resolved in a matter of minutes. Should you experience a longer delay, please contact our support team.
+
+See [Build statuses](/yaml-running-builds/build-statuses/) for the full list of statuses.
 
 ## I have used up my 500 free build minutes. How can I continue using the service?
 The free build minutes are renewed at the start of each month. However, you can [enable billing](https://docs.codemagic.io/billing/billing/#enabling-billing) at any point and continue using the service at our standard prices in the meantime.

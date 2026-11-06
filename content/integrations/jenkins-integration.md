@@ -140,9 +140,11 @@ Poll `GET https://codemagic.io/api/v3/builds/{buildId}` until the build reaches 
 
 | Status | Meaning |
 | ------ | ------- |
-| `initializing`, `queued`, `preparing`, `fetching`, `testing`, `building`, `publishing`, `finishing` | In progress — keep polling |
+| `initializing`, `queued`, `waiting`, `preparing`, `fetching`, `testing`, `building`, `publishing`, `finishing` | In progress — keep polling |
 | `finished` | Build completed successfully |
 | `failed`, `canceled`, `timeout`, `skipped` | Build did not complete successfully |
+
+See [Build statuses](/yaml-running-builds/build-statuses/) for what each status means.
 
 There is no separate `success` status — treat `finished` as success.
 
