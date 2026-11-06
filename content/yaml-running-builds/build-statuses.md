@@ -19,7 +19,7 @@ Every build has a `status` field. While a build is in progress, its status moves
 | `publishing`   | Artifacts are being published                                                                                                     |
 | `finishing`    | The build steps are done and Codemagic is wrapping up the build                                                                   |
 
-A build ends in one of the following statuses. These do not change anymore.
+A build ends in one of the following statuses.
 
 | Status     | Meaning                                                                             |
 |------------|-------------------------------------------------------------------------------------|
