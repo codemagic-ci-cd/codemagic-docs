@@ -1,5 +1,5 @@
 ---
-title: Xcode 27.2.x (edge)
+title: Xcode 27.2.x
 aliases:
 
 weight: 86
@@ -24,7 +24,7 @@ Mac Studio M4 Max available on request.
 
 ## Xcode versions
 
-- 27.2 (27B52) `/Applications/Xcode-27.2.app`, also selected when specifying `edge` in Xcode version settings
+- 27.2 (27B52) `/Applications/Xcode-27.2.app`
 
 ### Runtimes and Devices
 
