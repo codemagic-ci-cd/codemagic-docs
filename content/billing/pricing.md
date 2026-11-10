@@ -169,7 +169,7 @@ If you subscribe to 10 concurrencies and consume 4 within the 95th percentile, t
 
 ### Pricing for Enterprises
 
-This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, **custom base images**, or other account management services. Enterprise plan pricing starts from $12k/year.
+This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, **custom base images**, or other account management services. Enterprise plan pricing starts from $24k/year.
 
 The following options are available with the Enterprise offering:
 
