@@ -6,7 +6,8 @@
 {{ end }}
 {{ with .Description }}
 <p class="description">{{.}}</p>
-{{ end }} {{ with .Params.StartLineBreak }}
+{{ end }}
+{{ partial "agent-hint" . }} {{ with .Params.StartLineBreak }}
 <br />
 {{ end }} {{ partial "content" . }} {{ with .TableOfContents }}
 <aside id="toc" data-js-toc>
@@ -21,6 +22,7 @@
         {{ .Render "head" }}
     </head>
     <body class="page page--article">
+        {{ partial "agent-directive" . }}
         {{ partial "header" . }}
         <div id="content-wrap" data-js-content-wrap class="inner">
             <aside id="sidebar-positioner" data-js-sidebar-positioner></aside>
