@@ -1,0 +1,8 @@
+{{/* Pointer to the llms.txt index. Must stay the first element in <body>
+     (called from baseof.html and single.html) so agents that read only the
+     start of a document still find it. Visually hidden but focusable, the
+     same pattern as a "skip to content" link. */}}
+<a class="agent-directive" href="{{ "llms.txt" | absURL }}"
+  >For AI agents: every page is available as Markdown by appending <code>.md</code> to its URL, and the full
+  documentation index is at /llms.txt</a
+>

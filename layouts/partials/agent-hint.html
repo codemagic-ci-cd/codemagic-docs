@@ -1,0 +1,11 @@
+{{/* Human-visible counterpart to partials/agent-directive.html. Renders only
+     when the page has a Markdown rendition to link to. data-markdown-ignore is
+     an agentdocsspec.com convention marking HTML-only chrome, so parity
+     checking does not expect this line in the .md version. */}}
+{{- with .OutputFormats.Get "MarkdownPage" }}
+  <p class="agent-hint" data-markdown-ignore>
+    For AI agents: read this page as
+    <a href="{{ .RelPermalink }}">Markdown</a>, or start from
+    <a href="{{ "llms.txt" | absURL }}">/llms.txt</a>.
+  </p>
+{{- end }}

@@ -14,6 +14,10 @@
   <link rel="canonical" href="{{ . }}" />
 {{ end }}
 
+{{/* Advertise the machine-readable entry points: llms.txt (index) and
+     llms-full.txt (whole corpus). See https://llmstxt.org */}}
+<link rel="alternate" type="text/plain" href="{{ "llms.txt" | absURL }}" title="llms.txt" />
+
 {{ range .AlternativeOutputFormats -}}
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink site.Title | safeHTML }}
 {{ end -}}

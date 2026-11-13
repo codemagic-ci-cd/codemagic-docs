@@ -1,3 +1,24 @@
+{{- /* A notebox nested in a list item carries that item's indentation.
+       Strip the common indent, or markdownify reads the body as a code
+       block and renders the note as literal text. */ -}}
+{{- $inner := .Inner -}}
+{{- $indent := -1 -}}
+{{- range (split $inner "\n") -}}
+  {{- if ne (trim . " \t") "" -}}
+    {{- $n := sub (len .) (len (strings.TrimLeft " \t" .)) -}}
+    {{- if or (lt $indent 0) (lt $n $indent) -}}
+      {{- $indent = $n -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if gt $indent 0 -}}
+  {{- $pad := strings.Repeat $indent " " -}}
+  {{- $dedented := slice -}}
+  {{- range (split $inner "\n") -}}
+    {{- $dedented = $dedented | append (strings.TrimPrefix $pad .) -}}
+  {{- end -}}
+  {{- $inner = delimit $dedented "\n" -}}
+{{- end -}}
 <div class="notebox">
-  {{ .Inner | markdownify }}
+  {{ $inner | markdownify }}
 </div>

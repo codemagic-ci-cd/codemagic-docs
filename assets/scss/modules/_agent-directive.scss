@@ -1,0 +1,58 @@
+/*
+ * .agent-directive: first element in <body>, visually hidden but focusable.
+ * .agent-hint: the visible counterpart under the page title.
+ */
+
+.agent-directive {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    border: 0;
+
+    &:focus,
+    &:focus-visible {
+        position: fixed;
+        top: 8px;
+        left: 8px;
+        z-index: 1000;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 8px 14px;
+        overflow: visible;
+        white-space: normal;
+        clip: auto;
+        clip-path: none;
+        max-width: 420px;
+        background: #ffffff;
+        border: 1px solid $blue-xl-border;
+        border-radius: 4px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        color: $blue;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+}
+
+.agent-hint {
+    margin: 8px 0 0;
+    padding: 0;
+    color: $grey-text-light;
+    font-size: 13px;
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+
+        &:hover,
+        &:focus {
+            color: $blue;
+        }
+    }
+}
