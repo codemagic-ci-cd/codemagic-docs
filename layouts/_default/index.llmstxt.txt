@@ -34,5 +34,8 @@
 ### {{ $sectionName }}
 {{ range .Pages -}}
 - [{{ .Title }}]({{ .Permalink | strings.TrimSuffix "/" }}.md){{ with .Params.description }}: {{ . }}{{ end }}
+{{ end -}}
+{{ if eq .Key "rest-api" -}}
+- [OpenAPI schema (v3)](https://codemagic.io/api/v3/schema/openapi.json): The current Codemagic REST API as an OpenAPI JSON document, also available as [YAML](https://codemagic.io/api/v3/schema/openapi.yaml)
 {{ end }}
 {{ end -}}
