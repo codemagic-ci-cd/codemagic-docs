@@ -8,7 +8,7 @@ aliases: /rest-api/overview
 The Codemagic REST API provides numerous possibilities for integrating your CI/CD builds with other tools or for managing advanced workflow chains. 
 
 {{<notebox>}}
-⚠️ Note: We are transitioning to our new API. For up-to-date information, please refer to the [Codemagic REST API documentation](https://codemagic.io/api/v3/schema).
+⚠️ Note: We are transitioning to our new API. For up-to-date information, please refer to the [Codemagic REST API documentation](https://codemagic.io/api/v3/schema). Its OpenAPI schema is available as [JSON](https://codemagic.io/api/v3/schema/openapi.json) and [YAML](https://codemagic.io/api/v3/schema/openapi.yaml).
 {{</notebox>}}
 
 ## Authentication
