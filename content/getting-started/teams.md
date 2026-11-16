@@ -69,7 +69,7 @@ Team-scoped roles give users access to all team apps and, depending on the role,
 
 ### App-scoped roles
 
-These users only see the apps they've been given access to, not the rest of the team or its settings. A user can have a different role in each app. For example, they can be a Developer in one app and a Viewer in another.
+These users only see the apps they've been given access to, not the rest of the team or its settings. A user can have a different role in each app, for example Developer in one app and Viewer in another.
 
 * **Developer**. Can start builds, manage app environment variables, use remote access and app previews, and manage tester groups.
 * **Viewer**. Read-only access to the apps, their builds, app previews, and tester groups.
@@ -81,10 +81,6 @@ These users only see the apps they've been given access to, not the rest of the 
 Admins can change a team-scoped user's role by clicking the three dots next to their name and selecting **Change team role**. Before you save, you'll see a preview of the permissions that will be added or removed.
 
 App-scoped users can't be given a team-scoped role. Instead, admins can manage their access per app: give them access to more apps, remove access to an app, or switch their role in an app between Developer and Viewer.
-
-### Transferring team ownership
-
-A team must always have an owner. To make another user the owner, the current owner clicks the three dots next to that user's name and selects **Transfer ownership**.
 
 ## Build dashboards
 
@@ -102,7 +98,7 @@ Billing is managed separately for your personal account and each team. Read more
 
 ## Leaving the team
 
-A team member can leave the team at any time by clicking **Leave team** in the lower part of the page. If the team owner wants to leave, they first have to [transfer ownership](#transferring-team-ownership) to another user or delete the team.
+A team member can leave the team at any time by clicking **Leave team** in the lower part of the page. If the team owner wants to leave the team while there are other members, they first have to transfer ownership to another user by clicking the three dots next to that user's name and selecting **Transfer ownership**. If the owner is the only member, they can leave by deleting the team. 
 
 ## Deleting the team
 
