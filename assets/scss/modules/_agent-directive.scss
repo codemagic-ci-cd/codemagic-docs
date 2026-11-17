@@ -1,6 +1,5 @@
 /*
  * .agent-directive: first element in <body>, visually hidden but focusable.
- * .agent-hint: the visible counterpart under the page title.
  */
 
 .agent-directive {
@@ -37,22 +36,5 @@
         color: $blue;
         font-size: 13px;
         line-height: 1.4;
-    }
-}
-
-.agent-hint {
-    margin: 8px 0 0;
-    padding: 0;
-    color: $grey-text-light;
-    font-size: 13px;
-
-    a {
-        color: inherit;
-        text-decoration: underline;
-
-        &:hover,
-        &:focus {
-            color: $blue;
-        }
     }
 }

@@ -7,7 +7,7 @@
 {{ with .Description }}
 <p class="description">{{.}}</p>
 {{ end }}
-{{ partial "agent-hint" . }} {{ with .Params.StartLineBreak }}
+{{ with .Params.StartLineBreak }}
 <br />
 {{ end }} {{ partial "content" . }} {{ with .TableOfContents }}
 <aside id="toc" data-js-toc>
