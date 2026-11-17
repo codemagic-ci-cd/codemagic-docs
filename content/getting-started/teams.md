@@ -42,27 +42,45 @@ To add new applications to a team, click **Add application** on the Apps page an
 
 Deleting an application in team settings removes the app from Codemagic.
 
-## Inviting team members
+## Inviting users
 
-You can invite users to the team by clicking on **Invite team member**. An email invitation will be sent to the user to join the team. If they don't yet have a Codemagic account, they will be asked to register before joining the team. 
+Team admins can invite users to the team. To invite a user:
 
-If there are users that have triggered builds but are not yet part of the team in Codemagic, you can click **Add to team** on their email address to send them an invitation.
+1. Navigate to the **Users** section in team settings and click **Invite users**.
+2. Enter the email address of the user you want to invite.
+3. Select the **Access scope**:
+    * **Team** gives the user access to the team, including all team apps.
+    * **App** gives the user access only to the apps you select. They won't see the rest of the team.
+4. Select a role. For team scope, choose **Admin** or **Member**. For app scope, choose **Developer** or **Viewer**, and select the apps the user should have access to. The user gets the selected role in each selected app. Click **Show permissions** for each role to see what it allows. See [Managing user roles](#managing-user-roles) for more details.
+5. Click **Send invite**.
 
-To remove any team members, click on the three dots next to their name and select **Remove user**.
+An email invitation will be sent to the user to join the team. If they don't yet have a Codemagic account, they will be asked to register before joining the team.
+
+To remove a user from the team, click the three dots next to their name and select **Remove from team**.
 
 ## Managing user roles
 
-Users in Codemagic teams can have one of the three roles.
+Team-scoped roles give users access to all team apps and, depending on the role, to team settings. App-scoped roles give users access only to selected apps. This is useful when you want a contractor or client to work on their project without exposing the rest of your team.
 
-* **Admin**. (previously called **Owner**) The user creating a team will become a team admin by default and has full access to all team, app, and repository settings. Other members of the team can be upgraded to admins as well. Admins can select the repositories to be shared with the team, invite new team members, change their roles or remove existing members, including other team admins, manage team integrations and billing.
+### Team-scoped roles
 
-* **Member**. A user with this role has access to the Codemagic UI and can view team settings, configure app settings and trigger new builds. Members cannot modify any team settings, billing details, or repository settings other than the app name.
+* **Admin**. Full access to all team, app, and repository settings, including members, integrations, and billing. The user who creates the team becomes the team **Owner** and always has admin permissions.
+* **Member**. Can view team settings, configure apps, and start builds. Can't change team settings, billing, or repository settings other than the app name.
 
-* **User**. Any user that triggers builds from a webhook but does not have access to the team in Codemagic UI.
+### App-scoped roles
 
-Admins can upgrade members to admins by clicking on the three dots next to their name and selecting **Upgrade to admin**, or downgrade other admins by selecting **Downgrade to member**. 
+These users only see the apps they've been given access to, not the rest of the team or its settings. A user can have a different role in each app, for example Developer in one app and Viewer in another.
 
-Users that have triggered builds can be invited to the team by clicking **Add to team** on the email address in the list of users.
+* **Developer**. Can start builds, manage app environment variables, use remote access and app previews, and manage tester groups.
+* **Viewer**. Read-only access to the apps, their builds, app previews, and tester groups.
+
+{{<notebox>}}To list all roles and their permissions programmatically, use the [Codemagic API](https://codemagic.io/api/v3/schema#tag/team-members/GET/api/v3/teams/{team_id}/roles).{{</notebox>}}
+
+### Changing roles
+
+Admins can change a team-scoped user's role by clicking the three dots next to their name and selecting **Change team role**. Before you save, you'll see a preview of the permissions that will be added or removed.
+
+App-scoped users can't be given a team-scoped role. Instead, admins can manage their access per app: give them access to more apps, remove access to an app, or switch their role in an app between Developer and Viewer.
 
 ## Build dashboards
 
@@ -80,10 +98,10 @@ Billing is managed separately for your personal account and each team. Read more
 
 ## Leaving the team
 
-A team member can leave the team at any time by clicking **Leave team** in the lower part of the page. If the only team admin wants to leave the team, they first have to upgrade another member to the admin role or delete the team completely.
+A team member can leave the team at any time by clicking **Leave team** in the lower part of the page. If the team owner wants to leave the team while there are other members, they first have to transfer ownership to another user by clicking the three dots next to that user's name and selecting **Transfer ownership**. If the owner is the only member, they can leave by deleting the team. 
 
 ## Deleting the team
 
-Only the team admin can delete the team. To do so, scroll down to the **Danger zone** and click **Delete team**.
+Only team admins can delete the team. To do so, scroll down to the **Danger zone** and click **Delete team**.
 
 {{<notebox>}}**Note:** Teams can only be deleted if they are empty (no members or shared applications) and billing has been disabled.{{</notebox>}}
