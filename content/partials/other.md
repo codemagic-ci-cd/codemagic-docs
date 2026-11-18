@@ -12,7 +12,7 @@ Apps that cannot be added via a repository integration can be cloned from a URL.
 
 1. Click **Add application** in the top right corner of the Applications page.
 2. You can only add an application to a team with billing enabled where you have the **Admin role**. If you don’t have the Admin role in any teams, this step is skipped and the application will be added to your personal account.
-3. Select **Other** and click **Next: Select repository**.
+3. Select **HTTPS/SSH** and click **Next: Select repository**.
 4. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository by clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `git@example.com:username/repo.git`.
 5. Upload the **SSH private key** file. If your key is password-protected, enter the **Private key passphrase**.
 
@@ -36,7 +36,7 @@ After you have added the public key to your repository settings, finish adding t
 ## Connecting repository via HTTP/HTTPS
 
 1. Click **Add application** in the top right corner of the Applications page.
-2. Select **Other** and click **Next: Select repository**.
+2. Select **HTTPS/SSH** and click **Next: Select repository**.
 3. Enter the **Repository URL** for **cloning** the repository. You can find the URL from your repository by clicking **Clone** / **Clone or download**. Usually, the URL is in this format: `https://example.com/path/to/repository.git`.
 4. If the repository is private, then enter your **Username** and **Password**, or **Username** and [**Personal access token**](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) if it's a GitHub repository. In the case of a public repository, select **Public repository**.
 5. Finish setting up the application by selecting the project type and clicking **Finish: Add application**. You will be then redirected to the app settings.
