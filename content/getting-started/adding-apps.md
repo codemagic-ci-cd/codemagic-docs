@@ -33,7 +33,7 @@ Adding applications to Codemagic is a simple and straightforward process of conn
 {{< include "/partials/bitbucket.md" >}}
 {{< /tab >}}
 
-{{< tab header="Others" >}}
+{{< tab header="HTTPS/SSH" >}}
 {{< include "/partials/other.md" >}}
 {{< /tab >}}
 
