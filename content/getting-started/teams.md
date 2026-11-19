@@ -7,26 +7,43 @@ aliases:
  - /teams/users
 ---
 
-If more than one developer is contributing to a project, it is wiser to set up a team to work on the project together. Working in teams comes with some advantages:
+Teams let you build, test, and release your apps together in one shared workspace. Instead of each developer working from a personal account, everyone works on the same apps with the same settings and build history.
 
-* One account is used to access the app repository
-* Team members can jointly configure app settings
-* Team members have access to build logs, build history and artifacts
-* Consistent build versioning
+With a team, you can:
 
-{{<notebox>}}**Note:** Teams is a paid feature on Codemagic; see our [pricing page](https://codemagic.io/pricing/).{{</notebox>}}
+* **Collaborate on the same apps.** Team members share app settings, workflows, environment variables, and integrations, so everyone builds from the same configuration. The team connects to your repository through one shared account, and build numbers stay consistent no matter who starts the build.
+* **See everything in one place.** Build logs, build history, and artifacts are available to the whole team.
+* **Control who can do what.** Give each user the access they need, from full admin rights to read-only access to selected apps. This makes it easy to bring in contractors or clients without exposing the rest of your work.
+* **Scale as you grow.** Teams are billed separately from your personal account, so you can add users, apps, and build capacity as your projects grow. See the [pricing page](https://codemagic.io/pricing/) for plan details.
 
 ## Creating a new team
 
-To create a new team:
-
-1. Click on the team selector in the navigation and select **Create new team**.
-2. Enter a suitable name for your team.
-3. Select applications from your personal account to be managed in this team. You can add more applications later.
-4. Click **Next: Add payment details**. You will be then asked to add your credit card details and company information (if relevant) to enable billing for the team.
-5. Then click **Finish: Create team** to enable billing and continue setting up the team.
+{{<notebox>}}**Note:** Your personal account and your team are separate accounts. Creating a team doesn't change your personal account, and you keep its free tier benefits.{{</notebox>}}
 
 Once the team has been created, team admins can change the team's name, add or remove shared applications, add or remove users, change user roles and manage billing.
+
+### Creating your first team
+
+Your first team comes with a **14-day free trial**. You don't need a payment method to start it.
+
+1. Click **Create a team** in the left navigation.
+2. Select **Continue with free trial**.
+3. Enter a **Team name** and your business details.
+4. Click **Start trial**.
+
+To skip the trial and set up billing right away, select **Continue with subscription** in step 2 instead. You'll be asked to add your payment details to finish creating the team.
+
+When the trial ends, enable billing to continue using the team. Read more about [billing](../billing/billing).
+
+After creating the team, add apps to it or transfer them from your personal account. See [Managing team applications](#managing-team-applications).
+
+### Creating additional teams
+
+1. Click on the team selector in the navigation and select **Create a team**.
+2. Enter a name for your team.
+3. Select applications from your personal account to be managed in this team. You can add more applications later.
+4. Click **Next: Add payment details** and add your card details and billing information.
+5. Click **Finish: Create team**.
 
 ## Managing team applications
 
