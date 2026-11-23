@@ -45,6 +45,26 @@ In the `events:` section, specify which events in the repository trigger builds.
 
 To avoid running builds on outdated commits, you can set `cancel_previous_builds` to automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch.
 
+By default, both queued and running builds are cancelled. To let a build that has already started finish, and cancel only the builds still waiting in the queue, add `cancel_phases`:
+
+{{< highlight yaml "style=paraiso-dark">}}
+triggering:
+  events:
+    - push
+  cancel_previous_builds: true
+  cancel_phases:
+    - pending
+{{< /highlight >}}
+
+- **pending** - the build is waiting in the queue and has not been assigned a build machine yet.
+- **running** - the build has been assigned a build machine or is already running. A build counts as running from the moment a machine is assigned to it, a few seconds before its status changes from queued to preparing.
+
+`cancel_phases` applies only when `cancel_previous_builds` is `true`, and defaults to both phases. Listing only `running` is possible but rarely useful: it cancels builds that have already started, while older queued builds are kept and run before the newest one.
+
+{{<notebox>}}
+**Note:** A build waits in the queue only while all of your team's concurrent builds are in use. If a concurrency slot is free, a newer build starts right away next to the running one, so with `cancel_phases: [pending]` nothing is cancelled.
+{{</notebox>}}
+
 {{<notebox>}}
 **Note:** When starting workflows using webhooks, Codemagic uses the `codemagic.yaml` file from the source branch. If you are triggering builds on Pull requests, make sure the PR source branch has a valid `codemagic.yaml` file. Otherwise, the build will be skipped and the **Recent deliveries** section in **Apps > Webhooks** will show a message similar to _*"Webhook is skipped. There are no workflows configured to run on pull request from 'testing' to 'release'"*_.
 {{</notebox>}}
@@ -87,6 +107,9 @@ triggering:
     - pattern: included-tag
       include: true
   cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
+  cancel_phases:                 # Optional, which outdated builds to cancel (default: both)
+    - pending                    # Builds waiting in the queue for a build machine
+    - running                    # Builds already assigned a build machine
 {{< /highlight >}}
 
 ### Pattern examples

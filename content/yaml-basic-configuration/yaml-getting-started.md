@@ -356,6 +356,7 @@ You can read more about configuring caching for your builds and its usage limits
 A branch pattern can match the name of a particular branch, or you can use wildcard symbols to create a pattern that matches several branches. Note that for **pull request builds**, you have to specify whether the watched branch is the source or the target of the pull request.
 
 To avoid running builds on outdated commits, you can set `cancel_previous_builds` to automatically cancel all ongoing and queued builds triggered by webhooks on push or pull request commit when a more recent build has been triggered for the same branch.
+Use `cancel_phases` to cancel only builds that are still waiting in the queue, see [Build triggers](../yaml-running-builds/starting-builds-automatically/#build-triggers).
 
 {{< highlight yaml "style=paraiso-dark">}}
 triggering:
@@ -382,6 +383,9 @@ triggering:
     - pattern: included-tag
       include: true
   cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
+  cancel_phases:                 # Optional, which outdated builds to cancel (default: both)
+    - pending                    # Builds waiting in the queue for a build machine
+    - running                    # Builds already assigned a build machine
 {{< /highlight >}}
 
 {{<notebox>}}For information about using API calls to trigger builds, look [here](../rest-api/overview/).{{</notebox>}}
