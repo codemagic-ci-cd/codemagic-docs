@@ -19,6 +19,8 @@ Codemagic Patch for Over-the-air React Native updates is free for up to 100K Mon
 🔔 Annual subscriptions get a 10% discount.
 {{</notebox>}}
 
+<div class="table-wrap">
+
 | Monthly Active Users (MAUs) | Monthly price (USD) | Yearly price (USD) |
 | -------------------------- | ------------------ | ----------------- |
 | 1–100,000                  | Free               | Free              |
@@ -31,17 +33,23 @@ Codemagic Patch for Over-the-air React Native updates is free for up to 100K Mon
 | 5,000,000                  | $4,851             | $52,390        |
 | 10,000,000                 | $9,801             | $105,850       |
 
+</div>
+
 ### Self-hosted Patch pricing
 
 You can self-host Codemagic Patch for free while you stay at or below 1M Monthly Active Users (unique devices that request an update in a calendar month). Above that, you need a commercial license from Codemagic.
 
 Above 1M MAU, pricing is per million users per year. Bands stack: each slice of MAU is billed at that band's rate.
 
+<div class="table-wrap">
+
 | Monthly Active Users (MAUs) | Price (per million users per year) |
 | --------------------------- | ---------------------------------- |
 | 1–50 million                | $990                               |
 | 50–100 million              | $750                               |
 | Over 100 million            | $500                               |
+
+</div>
 
 For example, 120 million MAU costs $97,000/year (50 × $990 + 50 × $750 + 20 × $500).
 
@@ -72,11 +80,15 @@ Usage on macOS M2 VM that exceeds 500 minutes is charged at the rate shown below
 
 Builds on Linux and Windows do not have free build minutes. The per-minute pricing for each instance type is shown below.
 
+<div class="table-wrap">
+
 | **Item**                     | **Price**                          |
 | ---------------------------- | ---------------------------------  |
 | macOS (M2) VM        | $0.095 / minute                    |
 | macOS (M4) VM        | $0.114 / minute                    |
 | Linux X2 & Windows VMs          | $0.045 / minute                    |
+
+</div>
 
 ### Pricing for Teams
 
@@ -91,12 +103,16 @@ You can **add additional concurrencies** in the Codemagic web app by clicking 'B
 Each additional concurrency is $49/month and you will be billed for each concurrency on the last day of each month.
 
 
+<div class="table-wrap">
+
 | **Item**                   | **Price**       |
 | -------------------------- | --------------- |
 | macOS (M2) VM              | $0.095 / minute |
 | macOS (M4) VM              | $0.114 / minute |
 | Linux X2 & Windows VMs     | $0.045 / minute |
 | Extra build concurrency    | $49 / month     | 
+
+</div>
 
 Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M4 Max), Linux, and Windows instances.
 
@@ -283,12 +299,16 @@ Build history and artifact retention periods depend on your account type and pri
 
 <br>
 
+<div class="table-wrap">
+
 | **Account type**  |  **Retention period** |
 |---------------|-------------------|
 | Personal accounts | 30 days | 
 | Teams on Pay as you go plan | 60 days | 
 | Teams on Fixed Annual plan | 1 year | 
 | Enterprise plans | 1 year by default | 
+
+</div>
 
 #### Backing up build artifacts
 
@@ -305,6 +325,8 @@ Codemagic provides macOS, Windows, and Linux instance types.
 The instance types and hardware specifications can be found below.
 
 
+<div class="table-wrap">
+
 | **Item**                 | **Specification**                                                               |
 | ------------------------ | --------------------------------------------------------------------------------|
 | macOS M2 VM              | Mac mini M2 8-core CPU / 8GB RAM                                                |
@@ -313,6 +335,8 @@ The instance types and hardware specifications can be found below.
 | Linux X2 VM              | 8 vCPUs, 32 GB memory                                                           |
 | Linux X4 VM              | 16 vCPUs, 64 GB memory                                                          |
 | Windows VM               | 8 vCPUs, 32 GB memory  
+
+</div>
 
 {{<notebox>}}
 To access more powerful macOS M4 Max Studio and Linux X4, please get in touch with us [here](https://codemagic.io/pricing/#enterprise).
