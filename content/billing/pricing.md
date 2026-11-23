@@ -6,21 +6,18 @@ weight: 2
 
 ## Codemagic Patch for React Native OTA updates
 
-Codemagic Patch for Over-the-air React Native updates is available to teams with a monthly or annual subscription. 
+Codemagic Patch for Over-the-air React Native updates is free for up to 100K Monthly Active Users (MAU), no subscription required. If you need more, you only pay for MAU above 100K. The first 100K stay free on every plan.
 
-### Fixed price
+### Managed Patch server pricing
 
-Over-the-Air updates for React Native projects is priced as follows: 
-
-1. $99/month per 100k Monthly Active Users (MAU). The first 100k MAU is free.
-2. No limit on updates and bandwidth
-3. We can offer up to 12 months up front payment, otherwise billing is monthly. Invoicing is available starting 1M MAU.
+1. First 100K MAU: free, no subscription required.
+2. Above 100K MAU: $99/month for each additional block of up to 100K MAU.
+3. No limit on updates and bandwidth.
+4. Billing is monthly, or up to 12 months paid up front. Invoicing is available starting 1M MAU.
 
 {{<notebox>}}
 🔔 Annual subscriptions get a 10% discount.
 {{</notebox>}}
-
-The first 100,000 MAUs are free. Each additional block of up to 100,000 MAUs costs $99/month. Annual subscriptions include a 10% discount.
 
 | Monthly Active Users (MAUs) | Monthly price (USD) | Yearly price (USD) |
 | -------------------------- | ------------------ | ----------------- |
@@ -34,7 +31,25 @@ The first 100,000 MAUs are free. Each additional block of up to 100,000 MAUs cos
 | 5,000,000                  | $4,851             | $52,390.80        |
 | 10,000,000                 | $9,801             | $105,850.80       |
 
-## CI/CD
+### Self-hosted Patch pricing
+
+You can self-host Codemagic Patch for free while you stay at or below 1M Monthly Active Users (unique devices that request an update in a calendar month). Above that, you need a commercial license from Codemagic.
+
+Above 1M MAU, pricing is per million users per year. Bands stack: each slice of MAU is billed at that band's rate.
+
+| Monthly Active Users (MAUs) | Price (per million users per year) |
+| --------------------------- | ---------------------------------- |
+| 1–50 million                | $990                               |
+| 50–100 million              | $750                               |
+| Over 100 million            | $500                               |
+
+For example, 120 million MAU costs $97,000/year (50 × $990 + 50 × $750 + 20 × $500).
+
+Commercial licenses include a dedicated Slack channel with Codemagic for support.
+
+To buy a self-host license, email [sales@codemagic.io](mailto:sales@codemagic.io).
+
+## CI/CD Pricing
 
 ### Pricing for Individuals
 #### 1. Free plan
