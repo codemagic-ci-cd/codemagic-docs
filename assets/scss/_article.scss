@@ -254,9 +254,10 @@
                 word-break: keep-all;
             }
 
+            // Stack cells on small screens, except tables inside .table-wrap, which scroll sideways instead.
             @media (max-width: 768px) {
-                thead tr,
-                tbody tr {
+                &:not(.table-wrap table) thead tr,
+                &:not(.table-wrap table) tbody tr {
                     border: none;
                     border-bottom: 2px solid #ccc;
 
