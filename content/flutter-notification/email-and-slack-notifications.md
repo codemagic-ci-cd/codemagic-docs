@@ -29,7 +29,7 @@ External recipients — people who are not members of your Codemagic team — mu
 
 Codemagic sends unverified recipients an opt-in email in one of two ways:
 
-- **In advance:** Team admins (or account owners) can go to **Settings > External emails** and click **Add external recipients**. The opt-in email is sent immediately.
+- **In advance:** Team admins (or account owners) can go to **Settings > External recipients** and click **Add external recipients**. The opt-in email is sent immediately.
 - **On the first build:** If the recipient hasn't been added in advance, they receive the opt-in email the first time a workflow runs with their email address as a recipient. That run doesn't send them a build notification yet.
 
 Once they click **Confirm** in the opt-in email, their email address is verified and they'll receive build notifications from then on.
@@ -43,9 +43,25 @@ Verification is team-wide, so external recipients only need to verify their emai
 
 #### Monitoring email verification status
 
-To see external email addresses and their verification status, select your personal account or team and go to **Settings > External emails** in the Codemagic UI. All team members can view this list, but only team admins (or account owners) can add recipients.
+To see external email addresses and their verification status, select your personal account or team and go to **Settings > External recipients** in the Codemagic UI. All team members can view this list, but only team admins (or account owners) can add recipients.
 
 Additionally, when a workflow runs with an unverified email address as a recipient, team admins (or account owners) are notified by email. This notification is sent only once per unverified email address.
+
+#### Restricting notifications to whitelisted domains
+
+To make sure build notifications only reach addresses your organization trusts, team admins (or account owners) can restrict external recipients to specific email domains:
+
+1. Select your personal account or team and go to **Settings > External recipients**.
+2. Turn on **Enable domain whitelisting** and enter a domain, such as `example.com`.
+3. To add more domains, click **Whitelist a domain**. You can whitelist up to 50 domains.
+
+Once at least one domain is whitelisted, build notifications are only sent to external recipients whose email addresses are on a whitelisted domain. Keep in mind that:
+
+- Team members always receive build notifications, whatever their email domain.
+- Domains match exactly, so `example.com` doesn't cover `mail.example.com`. Whitelist each subdomain separately.
+- When a build skips an external recipient because their domain isn't whitelisted, team admins (or account owners) are notified by email. This notification is sent once per address until the list of whitelisted domains changes.
+
+To see the whitelisted domains, expand **Whitelisted domains** in the same section. To remove a domain, click the bin icon next to it. Removing the last domain turns domain whitelisting off, and build notifications are sent to all confirmed external recipients again.
 
 ### MS Teams
 
