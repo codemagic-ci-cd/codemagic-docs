@@ -4,7 +4,7 @@ description: API for starting and managing app builds
 weight: 3
 ---
 
-Use the Codemagic REST API to start builds, check their status, and list builds for your team. For the full list of endpoints, request parameters, and response formats, see the **Builds** section of the [Codemagic REST API documentation](https://codemagic.io/api/v3/schema#tag/builds).
+Use the Codemagic REST API to start and cancel builds, check their status, and list builds for your team. For the full list of endpoints, request parameters, and response formats, see the **Builds** section of the [Codemagic REST API documentation](https://codemagic.io/api/v3/schema#tag/builds).
 
 ## Available endpoints
 
@@ -14,6 +14,7 @@ Use the Codemagic REST API to start builds, check their status, and list builds 
 | `GET /api/v3/builds/{build_id}`                | Get information about a build, including its status.          |
 | `GET /api/v3/builds/{build_id}/actions`        | Get the actions (steps) of a build.                           |
 | `GET /api/v3/builds/{build_id}/remote-access`  | Get remote access information for a build.                    |
+| `POST /api/v3/builds/{build_id}/cancel`        | Cancel a running build.                                       |
 | `GET /api/v3/teams/{team_id}/builds`           | List builds for a team.                                       |
 
 Requests are authenticated with the `x-auth-token` header. See the [Authentication](/rest-api/codemagic-rest-api#authentication) section for how to get your API token.
@@ -28,18 +29,6 @@ Requests are authenticated with the `x-auth-token` header. See the [Authenticati
 
 You can also pass labels, an instance type, workflow inputs, and environment overrides in the request body. See the [Codemagic REST API documentation](https://codemagic.io/api/v3/schema#tag/builds) for all available parameters.
 
-## Cancel build
+## Cancel a build
 
-Cancelling builds is not yet available in the new API. Use the following endpoint to cancel a build:
-
-`POST /builds/:id/cancel`
-
-#### Example
-
-{{< highlight bash "style=paraiso-dark">}}
-  curl -H "Content-Type: application/json" \
-       -H "x-auth-token: <API Token>" \
-       --request POST https://api.codemagic.io/builds/<build_id>/cancel
-{{< /highlight >}}
-
-The request will return `208 Already Reported` if the build has already finished.
+Cancelling a build marks the build and its running steps as canceled and releases the build machine. A successful request returns `204 No Content`. If the build has already finished, the request returns `409 Conflict` and the build keeps the status it finished with.

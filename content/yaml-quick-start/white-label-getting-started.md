@@ -428,8 +428,7 @@ An example of triggering a single build and passing an environment variable to s
 {{< highlight yaml "style=paraiso-dark">}}
 curl -H "Content-Type: application/json" -H "x-auth-token: <auth-token>" \
   --data '{
-      "appId": "<app-id>", 
-      "workflowId": "<workflow-id>",
+      "workflow_id": "<workflow-id>",
       "branch": "<branch-name>",
       "labels": ["<client-id>"],
       "environment": { 
@@ -441,7 +440,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: <auth-token>" \
           ]
       }
     }' \
-  https://api.codemagic.io/builds
+  https://codemagic.io/api/v3/apps/<app-id>/builds
 {{< /highlight >}}
 
 Instead of triggering a single build for each client on your local machine manually, you can create a Codemagic workflow that loops through all of your clients and triggers a new build for each one of them.
@@ -470,8 +469,7 @@ workflows:
                 echo "CLIENT: $CLIENT"  
                 curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
                     --data '{
-                        "appId": "<app-id>", 
-                        "workflowId": "<workflow-id>",
+                        "workflow_id": "<workflow-id>",
                         "branch": "<branch-name>",
                         "environment": { 
                             "variables": { 
@@ -482,7 +480,7 @@ workflows:
                             ]                      
                         }
                     }' \
-                https://api.codemagic.io/builds
+                https://codemagic.io/api/v3/apps/<app-id>/builds
             done
 {{< /highlight >}}
 

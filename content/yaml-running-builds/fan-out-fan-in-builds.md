@@ -78,9 +78,9 @@ This approach uses a dedicated `coordinator` workflow in `codemagic.yaml` that f
 ### How it works
 
 1. A push to your main branch triggers the `coordinator` workflow.
-2. The coordinator calls `POST /builds` for each module workflow simultaneously, capturing each returned `buildId`.
-3. It polls `GET /builds/:buildId` at a regular interval until every module build reaches a terminal status (`finished`, `failed`, `canceled`, or `timeout`).
-4. If all modules succeed, it extracts the artifact URL from each build's response and triggers the host app build via `POST /builds`, injecting the artifact URLs as environment variables.
+2. The coordinator calls `POST /api/v3/apps/{app_id}/builds` for each module workflow simultaneously, capturing each returned build ID.
+3. It polls `GET /api/v3/builds/{build_id}` at a regular interval until every module build reaches a terminal status (`finished`, `failed`, `canceled`, or `timeout`).
+4. If all modules succeed, it extracts the artifact URL from each build's response and triggers the host app build via `POST /api/v3/apps/{app_id}/builds`, injecting the artifact URLs as environment variables.
 5. If any module fails, the coordinator exits with a non-zero code, failing the coordinator build and blocking the host app.
 
 ### Instance type
@@ -93,7 +93,7 @@ Each module workflow is a standard build workflow. The only requirement is that 
 
 The three examples below illustrate common real-world variation between modules: a dedicated Android workflow, a dedicated iOS workflow, and a universal parameterised workflow where a single workflow definition can serve many different modules.
 
-Workflow-level `when` parameters (such as `changeset` or `condition`) are bypassed by Codemagic when a build is initiated manually or programmatically via the REST API (POST /builds). To achieve change-aware builds when using an API coordinator, you must place the `when: changeset` filter directly inside individual build steps (scripts).
+Workflow-level `when` parameters (such as `changeset` or `condition`) are bypassed by Codemagic when a build is initiated manually or programmatically via the REST API (`POST /api/v3/apps/{app_id}/builds`). To achieve change-aware builds when using an API coordinator, you must place the `when: changeset` filter directly inside individual build steps (scripts).
 
 Under this configuration, the coordinator triggers all module workflows unconditionally. Each worker VM provisions, clones the repository, and checks the changeset rules at the specific step level. If no changes are detected within the tracked path, that build step is skipped. The worker workflow will then finish with a successful (finished) terminal state, but it will not produce an artifact. The coordinator script detects this absence of an artifact to deduce that a module was skipped.
 
@@ -285,7 +285,6 @@ POLL_INTERVAL     = 30       # seconds between status checks
 TIMEOUT_SECONDS   = 7200     # 2 hours maximum wait
 TERMINAL_STATUSES = {"finished", "failed", "canceled", "timeout", "skipped"}
 
-API_BASE    = "https://api.codemagic.io"
 API_V3_BASE = "https://codemagic.io/api/v3"
 
 def get_env(name):
@@ -309,20 +308,20 @@ def api_request(method, url, data=None, token=None):
         raise
 
 def trigger_build(app_id, workflow_id, branch, token, extra_env=None):
-    payload = {"appId": app_id, "workflowId": workflow_id, "branch": branch}
+    payload = {"workflow_id": workflow_id, "branch": branch}
     if extra_env:
         payload["environment"] = {"variables": extra_env}
-    result   = api_request("POST", f"{API_BASE}/builds", data=payload, token=token)
-    build_id = result.get("buildId")
+    result   = api_request("POST", f"{API_V3_BASE}/apps/{app_id}/builds", data=payload, token=token)
+    build_id = result.get("data", {}).get("id")
     if not build_id:
-        print(f"ERROR: No buildId returned for {workflow_id}. Response: {result}")
+        print(f"ERROR: No build ID returned for {workflow_id}. Response: {result}")
         sys.exit(1)
     print(f"  Triggered {workflow_id} → {build_id}")
     return build_id
 
 def get_build(build_id, token):
-    url = f"{API_BASE}/builds/{build_id}"
-    return api_request("GET", url, token=token) # Returns the single build dictionary directly
+    url = f"{API_V3_BASE}/builds/{build_id}"
+    return api_request("GET", url, token=token)["data"]  # v3 wraps the build under "data"
 
 def wait_for_builds(build_ids, team_id, token):
     """Poll until all builds reach a terminal status. Abort on any failure."""
@@ -336,7 +335,7 @@ def wait_for_builds(build_ids, team_id, token):
         time.sleep(POLL_INTERVAL)
         elapsed += POLL_INTERVAL
         for bid in list(pending):
-            build  = get_build(bid, team_id, token)
+            build  = get_build(bid, token)
             status = build.get("status", "unknown")
             if status in TERMINAL_STATUSES:
                 pending.discard(bid)
@@ -559,18 +558,16 @@ workflows:
           # all four VMs (this coordinator + 3 agents) into one pipeline run.
           # jq is pre-installed on all Codemagic instances.
           for i in 1 2 3; do
-            curl -fsSL -X POST https://api.codemagic.io/builds \
+            curl -fsSL -X POST "https://codemagic.io/api/v3/apps/$CM_APP_ID/builds" \
               -H "Content-Type: application/json" \
               -H "x-auth-token: $CM_API_TOKEN" \
               --data "$(jq -n \
-                --arg appId  "$CM_APP_ID" \
                 --arg branch "$CM_BRANCH" \
                 --arg execId "$CM_BUILD_ID" \
                 --arg token  "$NX_CLOUD_ACCESS_TOKEN" \
                 --arg agent  "agent-$i" \
                 '{
-                  appId: $appId,
-                  workflowId: "nx-agent",
+                  workflow_id: "nx-agent",
                   branch: $branch,
                   environment: {
                     variables: {
