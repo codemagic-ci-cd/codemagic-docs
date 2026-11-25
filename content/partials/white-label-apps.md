@@ -68,8 +68,7 @@ An example of calling the Codemagic REST API might look something like this wher
 ```bash
 curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
 --data '{
-    "appId": "60c8a0dd628c3e293b8bc001", 
-    "workflowId": "ios-production",
+    "workflow_id": "ios-production",
     "branch": "main", 
     "environment": { 
         "variables": { 
@@ -79,7 +78,7 @@ curl -H "Content-Type: application/json" -H "x-auth-token: ${CM_API_KEY}" \
         }
     }
 }' \
-https://api.codemagic.io/builds
+https://codemagic.io/api/v3/apps/60c8a0dd628c3e293b8bc001/builds
 ```
 
 Having passed a specific `CLIENT_ID` in the API call, you can then use the value to specify script steps in the codemagic.yaml configuration which authenticate with your CMS system and fetch the assets for that particular client ID and run the build for a specific client. 

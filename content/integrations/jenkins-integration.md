@@ -17,9 +17,9 @@ The Application ID uniquely identifies your app in Codemagic API calls.
 3. Copy the UUID at the end - this is your `AppID`.
 
 ## Find your workflow key
-The workflow key identifies which workflow to trigger. Pass it as `workflowId` in API requests.
+The workflow key identifies which workflow to trigger. Pass it as `workflow_id` in API requests.
 1. Navigate to your `codemagic.yaml` file (in Codemagic or in your repository)
-2. Copy the **workflow key** under `workflows:` (e.g., `sample-workflow`). This is the value for `workflowId` in API calls—not the optional display `name:` field.
+2. Copy the **workflow key** under `workflows:` (e.g., `sample-workflow`). This is the value for `workflow_id` in API calls—not the optional display `name:` field.
 
 {{< highlight yaml "style=paraiso-dark" >}}
 workflows:
@@ -45,10 +45,10 @@ A Pipeline job can send a request to Codemagic with the app, workflow, and branc
 Learn more about required parameters: [Builds API documentation](/rest-api/builds/#start-a-new-build)
 
 {{<notebox>}}
-**Note:** When you start a build through the API, `appId`, `workflowId`, and `branch` or `tag` in the request determine what runs. Trigger and branch filters in `codemagic.yaml` are **not** applied to API-started builds.
+**Note:** When you start a build through the API, the app ID in the request URL and `workflow_id` and `branch` or `tag` in the request body determine what runs. Trigger and branch filters in `codemagic.yaml` are **not** applied to API-started builds.
 {{</notebox>}}
 
-The following example triggers a Codemagic build, passes Jenkins metadata as environment variables, and stores the returned `buildId`. JSON is parsed with Groovy's built-in `JsonSlurper` (no extra Jenkins plugin required). If you already use [Pipeline Utility Steps](https://plugins.jenkins.io/pipeline-utility-steps/), `readJSON text: body` is equivalent. For API-only pipelines that do not use the repository on the agent, add `options { skipDefaultCheckout(true) }` to skip an unnecessary SCM checkout.
+The following example triggers a Codemagic build, passes Jenkins metadata as environment variables, and stores the returned build ID (`data.id`). JSON is parsed with Groovy's built-in `JsonSlurper` (no extra Jenkins plugin required). If you already use [Pipeline Utility Steps](https://plugins.jenkins.io/pipeline-utility-steps/), `readJSON text: body` is equivalent. For API-only pipelines that do not use the repository on the agent, add `options { skipDefaultCheckout(true) }` to skip an unnecessary SCM checkout.
 
 {{< highlight groovy "style=paraiso-dark" >}}
 pipeline {
@@ -76,9 +76,8 @@ pipeline {
                                     -H "Content-Type: application/json" \
                                     -H "x-auth-token: \$CODEMAGIC_API_KEY" \
                                     -d '{
-                                        \"appId\": \"${CODEMAGIC_APP_ID}\",
+                                        \"workflow_id\": \"${CODEMAGIC_WORKFLOW}\",
                                         \"branch\": \"${CODEMAGIC_BRANCH}\",
-                                        \"workflowId\": \"${CODEMAGIC_WORKFLOW}\",
                                         \"environment\": {
                                             \"variables\": {
                                                 \"BUILD_NUMBER\": \"${env.BUILD_NUMBER}\",
@@ -89,7 +88,7 @@ pipeline {
                                             ]
                                         }
                                     }' \
-                                    https://api.codemagic.io/builds
+                                    https://codemagic.io/api/v3/apps/${CODEMAGIC_APP_ID}/builds
                             """,
                             returnStdout: true
                         ).trim()
@@ -98,10 +97,10 @@ pipeline {
                         def body = parts[0].trim()
                         def httpCode = parts[1].trim()
 
-                        if (httpCode == '200') {
+                        if (httpCode == '202') {
                             def build = new groovy.json.JsonSlurper().parseText(body)
-                            env.CODEMAGIC_BUILD_ID = build.buildId as String
-                            echo "Codemagic build triggered: https://codemagic.io/app/${CODEMAGIC_APP_ID}/build/${build.buildId}"
+                            env.CODEMAGIC_BUILD_ID = build.data.id as String
+                            echo "Codemagic build triggered: https://codemagic.io/app/${CODEMAGIC_APP_ID}/build/${env.CODEMAGIC_BUILD_ID}"
                         } else {
                             error "Codemagic API returned HTTP ${httpCode}: ${body}"
                         }
@@ -116,7 +115,7 @@ pipeline {
 
 For release pipelines that build from a Git tag, send `tag` instead of `branch` in the JSON body.
 
-You can pass software version overrides in the `environment` object, and `instanceType` at the **top level** of the request body (not inside `environment`). See [Pass custom build parameters](/rest-api/builds/#pass-custom-build-parameters). Variables you pass from Jenkins are available in Codemagic build scripts alongside [built-in environment variables](/yaml-basic-configuration/environment-variables/) (`CM_TRIGGER_SOURCE` is `api` for API-started builds). That includes Jenkins callback variables for the [publishing script](#report-results-back-to-jenkins) when you want per-build URLs without editing Codemagic settings:
+You can pass software version overrides in the `environment` object, and `instanceType` at the **top level** of the request body (not inside `environment`). See [Start a new build](https://codemagic.io/api/v3/schema#tag/builds/POST/api/v3/apps/{app_id}/builds) in the Codemagic REST API documentation. Variables you pass from Jenkins are available in Codemagic build scripts alongside [built-in environment variables](/yaml-basic-configuration/environment-variables/) (`CM_TRIGGER_SOURCE` is `api` for API-started builds). That includes Jenkins callback variables for the [publishing script](#report-results-back-to-jenkins) when you want per-build URLs without editing Codemagic settings:
 
 {{< highlight json "style=paraiso-dark" >}}
 "environment": {
@@ -132,11 +131,11 @@ You can pass software version overrides in the `environment` object, and `instan
 
 Store secrets in a Codemagic [environment variable group](/yaml-basic-configuration/environment-variables/) when the values are fixed across builds.
 
-If a Jenkins run is aborted while a Codemagic build is in flight, call [Cancel build](/rest-api/builds/#cancel-build) with the stored `buildId`.
+If a Jenkins run is aborted while a Codemagic build is in flight, call [Cancel a build](/rest-api/builds/#cancel-a-build) (`POST /api/v3/builds/{build_id}/cancel`) with the stored build ID.
 
 ## Poll build status
 
-Poll `GET https://codemagic.io/api/v3/builds/{buildId}` until the build reaches a terminal status. The v3 response wraps the build under `data`; read **`data.status`**, not a top-level `status` field.
+Poll `GET https://codemagic.io/api/v3/builds/{build_id}` until the build reaches a terminal status. The v3 response wraps the build under `data`; read **`data.status`**, not a top-level `status` field.
 
 | Status | Meaning |
 | ------ | ------- |
