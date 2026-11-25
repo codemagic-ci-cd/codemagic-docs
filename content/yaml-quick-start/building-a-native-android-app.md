@@ -1,5 +1,5 @@
 ---
-title: Android native apps
+title: Android native,\myamnay-2d-3d apps
 description: How to build an Android app with codemagic.yaml
 meta_title: Build Native Android Apps with codemagic.yaml
 meta_description: Build native Android apps in Codemagic using codemagic.yaml, including Gradle configuration and build artifacts.
