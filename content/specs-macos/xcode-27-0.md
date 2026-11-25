@@ -1,5 +1,5 @@
 ---
-title: Xcode 27.0.x (edge)
+title: Xcode 27.0.x
 aliases:
 
 weight: 88
@@ -24,7 +24,7 @@ Mac Studio M4 Max available on request.
 
 ## Xcode versions
 
-- 27.0 (27A266a) `/Applications/Xcode-27.0.app`, also selected when specifying `edge` in Xcode version settings
+- 27.0 (27A266a) `/Applications/Xcode-27.0.app`
 
 ### Runtimes and Devices
 

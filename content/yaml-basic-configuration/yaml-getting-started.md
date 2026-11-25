@@ -450,7 +450,15 @@ There are several things to keep in mind about patterns:
 
 ### Publishing
 
-Codemagic has a number of integrations for publishing but you can also publish elsewhere with custom scripts. See the options under the [Publishing section](../publishing-yaml/distribution/).
+Codemagic has built-in integrations for publishing to app stores, distributing builds to testers, and sending build notifications that are configured under the `publishing` section in codemagic.yaml. For example:
+
+- **Publishing to the stores**: [App Store Connect](../yaml-publishing/app-store-connect/), [Google Play](../yaml-publishing/google-play/), and more
+- **Build distribution**: [Firebase App Distribution](../yaml-distributing/firebase-app-distribution/), [tester groups](../yaml-distributing/tester-groups/), and more
+- **Notifications**: [email](../yaml-notification/email/), [Slack](../yaml-notification/slack/), and more
+
+See the **Publishing to the stores**, **Build distribution**, and **Notifications** sections for the full list.
+
+If there's no built-in integration for your target, you can publish almost anywhere with custom scripts. Publishing scripts are regular shell scripts, so you can upload artifacts to any service you can reach with a CLI tool or an HTTP request. See [post-publish scripts](../yaml-distributing/post-publish/) for examples.
 
 Note that by default the publishing scripts are run regardless of the build status. You can specify additional conditions with if statements.
 

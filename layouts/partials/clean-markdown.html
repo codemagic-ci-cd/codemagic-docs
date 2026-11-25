@@ -1,17 +1,25 @@
 {{- $content := .RawContent -}}
 
-{{- /* Stage 1: Expand Nested Includes (Recursive) */ -}}
+{{- /* Stage 1: Expand Nested Includes (Recursive)
+
+       Split on the quote character, not on the full `" >}}` closer: a tab or
+       highlight shortcode later in the same chunk also contains `" >}}`, and
+       splitting on that silently drops everything after it. */ -}}
 {{- $.Scratch.Set "content" $content -}}
 {{- range seq 10 -}}
   {{- $currentContent := $.Scratch.Get "content" -}}
+  {{- /* Normalise every include opener to one spelling before splitting */ -}}
+  {{- $currentContent = replaceRE `\{\{\s*[<%]-?\s*include\s+\"` "{{< include \"" $currentContent -}}
   {{- if in $currentContent "{{< include \"" -}}
     {{- $chunks := split $currentContent "{{< include \"" -}}
     {{- $.Scratch.Set "finalContent" (index $chunks 0) -}}
     {{- range $idx, $chunk := $chunks -}}
       {{- if gt $idx 0 -}}
-        {{- $parts := split $chunk "\" >}}" -}}
-        {{- $path := index $parts 0 -}}
-        {{- $restOfText := index $parts 1 -}}
+        {{- $quoted := split $chunk "\"" -}}
+        {{- $path := index $quoted 0 -}}
+        {{- $restOfText := delimit (after 1 $quoted) "\"" -}}
+        {{- /* Drop the closer left at the head of the remainder */ -}}
+        {{- $restOfText = replaceRE `^\s*-?[>%]\}\}` "" $restOfText -}}
         {{- $includePage := $.Site.GetPage $path -}}
         {{- $injectedContent := "" -}}
         {{- if $includePage -}}
@@ -23,37 +31,44 @@
           {{- end -}}
         {{- end -}}
         {{- $runningContent := $.Scratch.Get "finalContent" -}}
-        {{- $.Scratch.Set "finalContent" (printf "%s%s%s" $runningContent $injectedContent $restOfText) -}}
+        {{- $.Scratch.Set "finalContent" (printf "%s\n%s\n%s" $runningContent $injectedContent $restOfText) -}}
       {{- end -}}
     {{- end -}}
     {{- $.Scratch.Set "content" ($.Scratch.Get "finalContent") -}}
+  {{- else -}}
+    {{- $.Scratch.Set "content" $currentContent -}}
   {{- end -}}
 {{- end -}}
 
 {{- $processedContent := $.Scratch.Get "content" -}}
 
-{{- /* Stage 2: Flatten Tabs & Clean Wrapper Tags */ -}}
-{{- if or (in $processedContent "tab header=\"") (replaceRE `.*tab header=.*` "" $processedContent | ne $processedContent) -}}
-  {{- $processedContent = replaceRE `\{\{\s*[<%]\s*tab\s+header\s*=\s*\"` "{{< tab header=\"" $processedContent -}}
-  {{- $tabChunks := split $processedContent "{{< tab header=\"" -}}
-  {{- $.Scratch.Set "flattenedTabs" (index $tabChunks 0) -}}
-  {{- range $idx, $chunk := $tabChunks -}}
-    {{- if gt $idx 0 -}}
-      {{- $parts := split $chunk "\" >}}" -}}
-      {{- if in $chunk "\" %}}" -}}
-        {{- $parts = split $chunk "\" %}}" -}}
-      {{- end -}}
-      {{- $headerName := index $parts 0 -}}
-      {{- $tabBody := index $parts 1 -}}
-      {{- $runningTabs := $.Scratch.Get "flattenedTabs" -}}
-      {{- $.Scratch.Set "flattenedTabs" (printf "%s\n\n### Option: %s\n\n%s" $runningTabs $headerName $tabBody) -}}
-    {{- end -}}
-  {{- end -}}
-  {{- $processedContent = $.Scratch.Get "flattenedTabs" -}}
-{{- end -}}
-{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/?tabpane\s*[>%]\s*\}\}` "" $processedContent -}}
-{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/?markdown\s*[>%]\s*\}\}` "" $processedContent -}}
-{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/tab\s*[>%]\s*\}\}` "" $processedContent -}}
+{{- /* Stage 2: Flatten Tabs & Clean Wrapper Tags
+
+       Each tab becomes a heading, so the variant it documents stays addressable.
+       A replacement rather than a split, so shortcodes inside a tab body
+       survive. */ -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]-?\s*tab\s+(?:[^}>%]*?\s)?header\s*=\s*\"([^\"]*)\"[^}]*?-?[>%]\s*\}\}` "\n\n### Option: $1\n\n" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]-?\s*tab\s+\"([^\"]*)\"[^}]*?-?[>%]\s*\}\}` "\n\n### Option: $1\n\n" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/?tabpane[^}]*?[>%]\s*\}\}` "\n" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/?markdown\s*[>%]\s*\}\}` "\n" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/tab\s*[>%]\s*\}\}` "\n" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*tab\s*[>%]\s*\}\}` "\n" $processedContent -}}
+
+{{- /* Stage 2b: Remaining block shortcodes
+
+       Whatever the HTML renders as visible text has to survive into Markdown,
+       or the two renditions drift apart. Decorative shortcodes are dropped. */ -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]-?\s*collapsible\s+(?:[^}>%]*?\s)?title\s*=\s*\"([^\"]*)\"[^}]*?-?[>%]\s*\}\}` "\n\n**$1**\n\n" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/collapsible\s*[>%]\s*\}\}` "\n" $processedContent -}}
+{{- /* Mermaid renders its source as visible text in the HTML */ -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*mermaid\s*[>%]\s*\}\}` "\n```mermaid\n" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/mermaid\s*[>%]\s*\}\}` "\n```\n" $processedContent -}}
+{{- /* A figure caption renders as a figcaption, so keep it as alt text */ -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]-?\s*figure\s+(?:[^}>%]*?\s)?src\s*=\s*\"([^\"]*)\"(?:[^}>%]*?\s)?caption\s*=\s*\"([^\"]*)\"[^}]*?-?[>%]\s*\}\}` "\n\n![$2]($1)\n\n" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]-?\s*figure\s+(?:[^}>%]*?\s)?src\s*=\s*\"([^\"]*)\"[^}]*?-?[>%]\s*\}\}` "\n\n![]($1)\n\n" $processedContent -}}
+{{- /* Embedded video carries no text in the HTML, so link to it instead */ -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]-?\s*youtube\s+(?:id\s*=\s*\")?([a-zA-Z0-9_-]+)\"?[^}]*?-?[>%]\s*\}\}` "\n\n[Video](https://www.youtube.com/watch?v=$1)\n\n" $processedContent -}}
+{{- $processedContent = replaceRE `\{\{\s*[<%]\s*/?spacer\s*[>%]\s*\}\}` "\n" $processedContent -}}
 
 {{- /* Stage 3: Convert Highlight & Clickable/Editable Variants to Backticks */ -}}
 {{- $processedContent = replaceRE `\{\{\s*[<%]\s*highlight(?:-editable|-clickable)?\s+([a-zA-Z0-9_-]+)[^>%]*[>%]\s*\}\}` "\n```$1\n" $processedContent -}}
@@ -64,7 +79,6 @@
 {{- /* Stage 4: Strip $$$ Variables from Code Blocks */ -}}
 {{- if in $processedContent "$$$" -}}
   {{- $processedContent = replaceRE `\$\App-Id\$\$\$(.*?)\$\$\$` "$1" $processedContent -}}
-  {{- /* Fallback using the corrected regex pattern we just fixed */ -}}
   {{- $processedContent = replaceRE `\$\$\$[a-zA-Z0-9_-]+\$\$\$(.*?)\$\$\$` "$1" $processedContent -}}
 {{- end -}}
 
@@ -78,13 +92,23 @@
     {{- if gt $idx 0 -}}
       {{- $parts := split $chunk "{{</notebox>}}" -}}
       {{- $noteBody := index $parts 0 -}}
-      {{- $restOfText := index $parts 1 -}}
+      {{- $restOfText := delimit (after 1 $parts) "{{</notebox>}}" -}}
+      {{- $runningNotes := $.Scratch.Get "cleanNotes" -}}
+      {{- /* Carry any indentation on the opening marker onto the blockquote.
+             A quote at column 0 ends an enclosing list, which turns the steps
+             that follow it into an indented code block. */ -}}
+      {{- $openerLines := split $runningNotes "\n" -}}
+      {{- $lastLine := index $openerLines (sub (len $openerLines) 1) -}}
+      {{- $indent := "" -}}
+      {{- if and (gt (len $lastLine) 0) (eq (trim $lastLine " \t") "") -}}
+        {{- $indent = $lastLine -}}
+        {{- $runningNotes = strings.TrimSuffix $indent $runningNotes -}}
+      {{- end -}}
       {{- $blockquoteLines := slice -}}
       {{- range (split $noteBody "\n") -}}
-         {{- $blockquoteLines = $blockquoteLines | append (printf "> %s" .) -}}
+         {{- $blockquoteLines = $blockquoteLines | append (printf "%s> %s" $indent (strings.TrimPrefix $indent .)) -}}
       {{- end -}}
       {{- $formattedNote := delimit $blockquoteLines "\n" -}}
-      {{- $runningNotes := $.Scratch.Get "cleanNotes" -}}
       {{- $.Scratch.Set "cleanNotes" (printf "%s\n\n%s\n\n%s" $runningNotes $formattedNote $restOfText) -}}
     {{- end -}}
   {{- end -}}

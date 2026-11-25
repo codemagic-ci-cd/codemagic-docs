@@ -6,35 +6,58 @@ weight: 2
 
 ## Codemagic Patch for React Native OTA updates
 
-Codemagic Patch for Over-the-air React Native updates is available to teams with a monthly or annual subscription. 
+Codemagic Patch for Over-the-air React Native updates is free for up to 100K Monthly Active Users (MAU), no subscription required. If you need more, you only pay for MAU above 100K. The first 100K stay free on every plan.
 
-### Fixed price
+### Managed Patch server pricing
 
-Over-the-Air updates for React Native projects is priced as follows: 
-
-1. $99/month per 100k Monthly Active Users (MAU). The first 100k MAU is free.
-2. No limit on updates and bandwidth
-3. We can offer up to 12 months up front payment, otherwise billing is monthly. Invoicing is available starting 1M MAU.
+1. First 100K MAU: free, no subscription required.
+2. Above 100K MAU: $99/month for each additional block of up to 100K MAU.
+3. No limit on updates and bandwidth.
+4. Billing is monthly, or up to 12 months paid up front. Invoicing is available starting 1M MAU.
 
 {{<notebox>}}
 🔔 Annual subscriptions get a 10% discount.
 {{</notebox>}}
 
-The first 100,000 MAUs are free. Each additional block of up to 100,000 MAUs costs $99/month. Annual subscriptions include a 10% discount.
+<div class="table-wrap">
 
 | Monthly Active Users (MAUs) | Monthly price (USD) | Yearly price (USD) |
 | -------------------------- | ------------------ | ----------------- |
 | 1–100,000                  | Free               | Free              |
-| 200,000                    | $99                | $1,069.20         |
-| 300,000                    | $198               | $2,138.40         |
-| 400,000                    | $297               | $3,207.60         |
-| 500,000                    | $396               | $4,276.80         |
-| 1,000,000                  | $891               | $9,622.80         |
-| 2,000,000                  | $1,881             | $20,314.80        |
-| 5,000,000                  | $4,851             | $52,390.80        |
-| 10,000,000                 | $9,801             | $105,850.80       |
+| 200,000                    | $99                | $1,069         |
+| 300,000                    | $198               | $2,138         |
+| 400,000                    | $297               | $3,207         |
+| 500,000                    | $396               | $4,276         |
+| 1,000,000                  | $891               | $9,622         |
+| 2,000,000                  | $1,881             | $20,314        |
+| 5,000,000                  | $4,851             | $52,390        |
+| 10,000,000                 | $9,801             | $105,850       |
 
-## CI/CD
+</div>
+
+### Self-hosted Patch pricing
+
+You can self-host Codemagic Patch for free while you stay at or below 1M Monthly Active Users (unique devices that request an update in a calendar month). Above that, you need a commercial license from Codemagic.
+
+Above 1M MAU, pricing is per million users per year. Bands stack: each slice of MAU is billed at that band's rate.
+
+<div class="table-wrap">
+
+| Monthly Active Users (MAUs) | Price (per million users per year) |
+| --------------------------- | ---------------------------------- |
+| 1–50 million                | $990                               |
+| 50–100 million              | $750                               |
+| Over 100 million            | $500                               |
+
+</div>
+
+For example, 120 million MAU costs $97,000/year (50 × $990 + 50 × $750 + 20 × $500).
+
+Commercial licenses include a dedicated Slack channel with Codemagic for support.
+
+To buy a self-host license, email [sales@codemagic.io](mailto:sales@codemagic.io).
+
+## CI/CD Pricing
 
 ### Pricing for Individuals
 #### 1. Free plan
@@ -57,11 +80,15 @@ Usage on macOS M2 VM that exceeds 500 minutes is charged at the rate shown below
 
 Builds on Linux and Windows do not have free build minutes. The per-minute pricing for each instance type is shown below.
 
+<div class="table-wrap">
+
 | **Item**                     | **Price**                          |
 | ---------------------------- | ---------------------------------  |
 | macOS (M2) VM        | $0.095 / minute                    |
 | macOS (M4) VM        | $0.114 / minute                    |
 | Linux X2 & Windows VMs          | $0.045 / minute                    |
+
+</div>
 
 ### Pricing for Teams
 
@@ -76,12 +103,16 @@ You can **add additional concurrencies** in the Codemagic web app by clicking 'B
 Each additional concurrency is $49/month and you will be billed for each concurrency on the last day of each month.
 
 
+<div class="table-wrap">
+
 | **Item**                   | **Price**       |
 | -------------------------- | --------------- |
 | macOS (M2) VM              | $0.095 / minute |
 | macOS (M4) VM              | $0.114 / minute |
 | Linux X2 & Windows VMs     | $0.045 / minute |
 | Extra build concurrency    | $49 / month     | 
+
+</div>
 
 Consider an annual or Enterprise plan if more than three concurrent builds are required or if you would like unlimited build minutes on macOS (Apple Silicon M4 Max), Linux, and Windows instances.
 
@@ -169,7 +200,7 @@ If you subscribe to 10 concurrencies and consume 4 within the 95th percentile, t
 
 ### Pricing for Enterprises
 
-This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, **custom base images**, or other account management services. Enterprise plan pricing starts from $12k/year.
+This plan is recommended if you need to go through a **security compliance process**, **vendor registration** or have special requirements such as an **NDA**, **DPA**, **dedicated hosts**, **custom base images**, or other account management services. Enterprise plan pricing starts from $24k/year.
 
 The following options are available with the Enterprise offering:
 
@@ -268,12 +299,16 @@ Build history and artifact retention periods depend on your account type and pri
 
 <br>
 
+<div class="table-wrap">
+
 | **Account type**  |  **Retention period** |
 |---------------|-------------------|
 | Personal accounts | 30 days | 
 | Teams on Pay as you go plan | 60 days | 
 | Teams on Fixed Annual plan | 1 year | 
 | Enterprise plans | 1 year by default | 
+
+</div>
 
 #### Backing up build artifacts
 
@@ -290,6 +325,8 @@ Codemagic provides macOS, Windows, and Linux instance types.
 The instance types and hardware specifications can be found below.
 
 
+<div class="table-wrap">
+
 | **Item**                 | **Specification**                                                               |
 | ------------------------ | --------------------------------------------------------------------------------|
 | macOS M2 VM              | Mac mini M2 8-core CPU / 8GB RAM                                                |
@@ -298,6 +335,8 @@ The instance types and hardware specifications can be found below.
 | Linux X2 VM              | 8 vCPUs, 32 GB memory                                                           |
 | Linux X4 VM              | 16 vCPUs, 64 GB memory                                                          |
 | Windows VM               | 8 vCPUs, 32 GB memory  
+
+</div>
 
 {{<notebox>}}
 To access more powerful macOS M4 Max Studio and Linux X4, please get in touch with us [here](https://codemagic.io/pricing/#enterprise).

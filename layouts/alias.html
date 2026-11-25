@@ -1,0 +1,21 @@
+{{/* Override of Hugo's built-in alias template. The default emits a head-only
+     document with a meta refresh, which an agent reads as an empty page. This
+     keeps the refresh for browsers and adds a real link to the target. */}}
+<!DOCTYPE html>
+<html lang="{{ or site.Language.LanguageCode site.Language.Lang }}">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ .Permalink }}</title>
+    <link rel="canonical" href="{{ .Permalink }}" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content="0; url={{ .Permalink }}" />
+  </head>
+  <body>
+    <p>
+      For AI agents: the documentation index is at
+      <a href="{{ "llms.txt" | absURL }}">/llms.txt</a>, and every page is available as Markdown by
+      appending <code>.md</code> to its URL.
+    </p>
+    <p>This page has moved to <a href="{{ .Permalink }}">{{ .Permalink }}</a>.</p>
+  </body>
+</html>

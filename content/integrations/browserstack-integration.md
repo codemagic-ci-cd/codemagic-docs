@@ -32,7 +32,7 @@ Signing up with BrowserStack is required in order to be able to get the **userna
 
 ## App Live
 
-To use **App Live** and test your **.ipa** and **.apk** artifacts directly on real devices rather than simulators, add the following script to your `codemagic.yaml file:
+To use **App Live** and test your **.ipa** and **.apk** artifacts directly on real devices rather than simulators, add the following script to your `codemagic.yaml` file:
 
 {{< highlight yaml "style=paraiso-dark">}}
   scripts:
